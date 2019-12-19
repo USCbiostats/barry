@@ -20,5 +20,19 @@ For start, the main class object should hold the following:
 
 * **Counters** Users should be able to define counters using change statistics. From the
   ERGM literature, we know that change statistics can be a very efficient way of counting
-  when we have a Markov process. In our case, since we will be doing exahustive ennumeration,
-  a good an efficient way of counting statistics is 
+  when we have a Markov process. In our case, since we will be doing exhaustive ennumeration,
+  a good an efficient way of counting statistics is counting as we add/remove zeros.
+  
+* **Constrained Exhaust enumeration** Exhaust enumeration can be done using recursive algorithms
+  activating and deactivating cells in the array. One nice feature would be to allow users
+  to specify constrained, essentially blocked, cells in the array. This would go together with 
+  the counters.
+  
+  The constrains can just be `std::unordered_map` objects in which the coordinates of the 
+  cells that need to be blocked are specified. Some standard constrains can be:
+  
+  - Blocks (ranges).
+  - Symmetry (in the case of square, undirected graphs).
+  
+  Furthermore, we should, at least in principle, allow the user to speficy default values
+  for the blocked cells (0/1).
