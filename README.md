@@ -36,6 +36,22 @@ For start, the main class object should hold the following:
   when we have a Markov process. In our case, since we will be doing exhaustive ennumeration,
   a good an efficient way of counting statistics is counting as we add/remove zeros.
   
+  Counters should have the following implementation:
+  
+  ```cpp
+  double counter_[name](const Array & x, unsigned int row, unsigned int col) {
+    // Visit neighbors
+    Array::local_iterator iter(x, row, col);
+    double counts = 0;
+    for (auto i = iter.begin(); i != iter.end(); ++i) {
+      ...[do your thing]...
+      counts += ...
+    }
+    
+    return counts;
+  }
+  ```
+  
 * **Constrained Exhaust enumeration** Exhaust enumeration can be done using recursive algorithms
   activating and deactivating cells in the array. One nice feature would be to allow users
   to specify constrained, essentially blocked, cells in the array. This would go together with 
