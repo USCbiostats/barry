@@ -1,0 +1,196 @@
+---
+title: "Sufficient statistics"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Definitions
+
+## Array
+
+```cpp
+class array {
+public:
+  // Creation
+  array(std::vector< unsigned int> row, std::vector< unsigned int> col);
+  
+  // Queries
+  unsigned int nrow() const {return nrow_;}
+  unsigned int ncol() const {return ncol_;}
+  bool is_blocked(unsigned int row, unsigned int col) const;
+  bool is_in_range(unsigned int row, unsigned int col) const;
+  
+  int cell(unsigned int row, unsigned int col);
+  
+  // Actions
+  int set_cell_on(unsigned int row, unsigned int col);
+  int set_cell_off(unsigned int row, unsigned int col);
+  int toggle_cell(unsigned int row, unsigned int col, bool check) {
+    
+    // Checking boundaries
+    if (check) {
+    
+      int ans = is_in_range(row, col);
+      if (ans != 0) return ans;
+      
+      ans = is_blocked(row, col);
+      if (ans != 0) return ans;
+      
+    }
+  
+    if (this->cell(row, col) == 1) {
+      return set_cell_off(row, col);
+    } 
+  };
+
+private:
+  unsigned int nrow_, ncol_;
+  TBD blocked_;
+  TBD data_;
+
+}
+```
+
+## Change
+
+```cpp
+class array_change {
+public:
+  
+  /* Initialization
+   * @param ptr Pointer to an `array` object
+   * @param row,col Coordinates where to add it.
+   */
+  int array_change(array_pointer array, unsigned int row, unsigned int col) :
+  row_(row), col_(col), array_(array){
+    
+    // When turning cells on or off, we also check whether these have values
+    // or don't, as well as the size of the arrays.
+    if (array->cell(row, col) == 0) {
+      add = true;
+      return array->set_cell_on(row, col);
+    } else {
+      add = false;
+      return array->set_cell_off(row, col);
+    }
+    
+    return 0;
+
+  };
+  
+  /* Update the change
+   * 
+   */
+  int change(unsigned int row, unsigned int col) {
+  
+    // Checking the dimmensions
+    if (array->nrow() <= row) return 1;
+    if (array->ncol() <= col) return 1;
+    if (array->blocked(row, col)) return 1;
+    
+    return 0;
+  
+  }
+  
+  // Queries
+  unsigned int row() {return row_;}
+  unsigned int col() {return col_;}
+  bool is_add() {return add_;}
+  
+private:
+  unsigned int row_, col_;
+  array_pointer array_;
+  bool add_;
+  
+}
+```
+
+
+## Number of non-zero cells
+
+## Transitions
+
+**Duplication event**
+
+These usually happen once at a time. At each bifurcation it is usually the case that only one function is gain after a duplication event. In our model, we assume that we observe the genes at that point, so we actually represent it by not having any function prior to that.
+
+Another point to consider is that this usually happens with a single sibling, this is, in a duplication event, of $n$ siblings only one gains a new function. For example, if we have 2 siblings (columns) and two functions (rows), we would see a transition in this form: 
+
+$$
+\left[\begin{array}{cc}
+0 & 1\\
+0 & 0
+\end{array}\right]\to
+\left[\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right]
+$$
+
+In principle, to allow the statistic to have enough variability, we can count how many of these types of transitions we observe, in particular, one column holding constant from one step to the other and the other changing a single cell.
+
+In change statistics this is very straight forward to implent:
+
+
+
+```cpp
+int change_single_gains(
+  array_operation oper,
+  array_ptr       ptr
+  ) {
+  
+  // We first check if we are adding or removing a cell
+  if (oper->is_add()) {
+    
+    // In the case of adding, the result is straight forward and it only
+    // implies returning # siblings - 1
+    return ptr->ncols() - 1;
+  
+  } else if (ptr->cell(oper)) {
+    
+  } else {
+  
+  
+  
+    // Otherwise, if we are removing, we need to see if this counter was
+    // been used before
+    int half = ptr->ncols() / 2;
+    
+    // We start by assuming that we will delete something
+    int ans  = -1; 
+    
+    for (int i = 0; i < half; ++i) {
+    
+      // We don't need to count the current sibling
+      if (i == oper->col())
+        continue;
+      
+      for (int j = 0; j < half; ++j) {
+      
+        // Again, we don't need to check this twice
+        if (j == oper->col())
+          continue;
+          
+        // Now we need to look at all transitions
+        for (k = 0; k < ptr->nrows(); ++k) {
+          
+          // No gain or loss
+          if (ptr->cell(k, j) == ptr->cell(k, j + half))
+          
+        }
+        
+        
+      }
+      
+      
+    }
+    
+  
+  }
+
+}
+```
