@@ -19,6 +19,8 @@ typedef unsigned int uint;
 typedef std::vector< int > ivec;
 typedef std::vector< uint > uvec;
 typedef std::vector< double > dvec;
+typedef std::unordered_map< uint, double > map2dbl;
+typedef std::unordered_map< uint, map2dbl > map2map;
 
 class array {
 public:
@@ -59,7 +61,7 @@ public:
 private:
   uint nrow_, ncol_;
   TBD blocked_;
-  TBD data_;
+  map2map data_;
 
 }
 ```
