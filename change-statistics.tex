@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, theorem}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+
+
+\newcommand{\Y}{\mathbf{Y}{}}
+\newcommand{\y}[2]{\mathbf{y}_{#1}^{#2}}
+\newcommand{\one}[1]{\mathbf{1}\left(#1\right)}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\begin{document}
+
+\section{Preliminaries}
+
+We are dealing with an array $\Y$ that has $|K|$ rows and $|N|$ columns, with $K$ is the set of functions and $N$ the set of genes.
+
+Following the notation used in Exponential Random Graph Models, a sufficient statistic will be denoted by $g(\Y)$ and its correspondent change statistic that is defined switching $0\to1$ will be $\delta_{ij}^+ = g_{ij}(\Y^+) - g_{ij}(\Y^-)$. Without the + symbol, we represent the general version of it (so it can either apply for addition or deletion of a cell).
+
+\section{Sufficient statistics}
+
+\subsection{Single sibling-wide single function change}
+
+We count how many instances we observe in which for a given function $k$ only either of two siblings had a change (regardless of whether it was gain/loss). 
+
+\begin{align}
+	g_i & = \sum_{\set{(n,m) \in N^2: n\neq m}}\left[\one{\y{in}{t}\neq\y{in}{t+1}}\one{\y{im}{t}=\y{im}{t+1}} + \one{\y{in}{t}=\y{in}{t+1}}\one{\y{im}{t}\neq\y{im}{t+1}}\right] \\
+	\delta_i & =
+\end{align}
+
+
+\subsection{Number of gains and losses}
+
+This adds one statistic equal to the number of gains or losses observed in the transition.
+
+Gains
+
+\begin{align}
+g = & \sum_{i,n}\one{\y{in}{t} =0}\times\one{\y{in}{t+1}=1} \\
+\delta = & (1 - \y{in}{t})(1 - 2\y{in}{t+1})
+\end{align}
+
+Losses
+
+\begin{align}
+g = & \sum_{i,n}\one{\y{in}{t} =1}\times\one{\y{in}{t+1}=0} \\
+\delta = & \y{in}{t}(2\y{in}{t+1} - 1)
+\end{align}
+
+
+\end{document}
