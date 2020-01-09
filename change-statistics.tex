@@ -1,9 +1,10 @@
-\documentclass{article}
+\documentclass[11pt]{article}
 
 \usepackage{amsmath, amssymb, theorem}
 \usepackage{hyperref}
 \usepackage[margin=1in]{geometry}
-
+\usepackage{booktabs}
+\usepackage{tabularx}
 
 \newcommand{\Y}{\mathbf{Y}{}}
 \newcommand{\y}[2]{\mathbf{y}_{#1}^{#2}}
@@ -18,6 +19,52 @@ We are dealing with an array $\Y$ that has $|K|$ rows and $|N|$ columns, with $K
 
 Following the notation used in Exponential Random Graph Models, a sufficient statistic will be denoted by $g(\Y)$ and its correspondent change statistic that is defined switching $0\to1$ will be $\delta_{ij}^+ = g_{ij}(\Y^+) - g_{ij}(\Y^-)$. Without the + symbol, we represent the general version of it (so it can either apply for addition or deletion of a cell).
 
+
+\section{List of sufficient statistics}
+
+\begin{itemize}
+\item \textit{Gains/Loss counts} \textbf{(per function)} This function adds one sufficient statistic which equals to the number of functions that transitioned from 0 to 1 (or 0 to 1) across siblings.
+
+Gains:
+
+\begin{align}
+g = & \sum_{i,n}\one{\y{in}{t} =0}\times\one{\y{in}{t+1}=1} \\
+\delta = & (1 - \y{in}{t})(1 - 2\y{in}{t+1})
+\end{align}
+
+Losses:
+
+\begin{align}
+g = & \sum_{i,n}\one{\y{in}{t} =1}\times\one{\y{in}{t+1}=0} \\
+\delta = & \y{in}{t}(2\y{in}{t+1} - 1)
+\end{align}
+
+
+
+\item \textit{Function swaps (negative correlation)} \textbf{(per pair of functions)} This adds one sufficient statistic that is equal to the number of times that two functions swapped values within the same gene, this is $(0,1) \to (1, 0)$.
+
+\item \textit{Unique mutations} \textbf{(per pair of genes, per function)} This statistic equals to the number of times that, for each function x pair of genes, there was a single mutation, e.g.
+
+$$
+\left[\begin{array}{cc}
+0 & 0 \\
+0 & 1
+\end{array}\right] \to
+\left[\begin{array}{cc}
+0 & 0 \\
+\text{\textbf{1}} & 1
+\end{array}\right]
+$$
+
+This could also be specified to work regardless of the function, this is, count how many times me see this behavior across functions.
+
+\item \textit{Function correlation} \textbf{(per pair of functions)} Number of times during which two functions are either gained or lost simultaneusly.
+
+\item \textit{Largest branch} \textbf{(per function)} This statistic equals to one if the longest branch is amongst those that transitioned
+
+\item \textit{Largest branch (gain/loss)} \textbf{(per function)} This equals to one if the longest branch is amongst those that gain/loss a function.
+\end{itemize}
+
 \section{Sufficient statistics}
 
 \subsection{Single sibling-wide single function change}
@@ -29,24 +76,6 @@ We count how many instances we observe in which for a given function $k$ only ei
 	\delta_i & =
 \end{align}
 
-
-\subsection{Number of gains and losses}
-
-This adds one statistic equal to the number of gains or losses observed in the transition.
-
-Gains
-
-\begin{align}
-g = & \sum_{i,n}\one{\y{in}{t} =0}\times\one{\y{in}{t+1}=1} \\
-\delta = & (1 - \y{in}{t})(1 - 2\y{in}{t+1})
-\end{align}
-
-Losses
-
-\begin{align}
-g = & \sum_{i,n}\one{\y{in}{t} =1}\times\one{\y{in}{t+1}=0} \\
-\delta = & \y{in}{t}(2\y{in}{t+1} - 1)
-\end{align}
 
 
 \end{document}
