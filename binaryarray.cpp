@@ -1,89 +1,6 @@
 #include <Rcpp.h>
+#include "array.hpp"
 using namespace Rcpp;
-
-
-
-
-// Definition of the class structure
-
-// Edgelist
-typedef unsigned int uint;
-typedef std::unordered_map< uint, double > umap_int_dbl;
-
-class EdgeList {
-public:
-  uint N;
-  uint M;
-  std::vector< umap_int_dbl > EL;
-  
-  // Empty datum
-  EdgeList (uint N_, uint M_) : N(N_), M(M_), EL(N_) {};
-  
-  // Edgelist with data
-  EdgeList (
-      uint N_, uint M_,
-      const std::vector< uint > & source,
-      const std::vector< uint > & target,
-      const std::vector< double > & value,
-      bool add = true
-    ) {
-    
-    if (source.size() != target.size())
-      Rcpp::stop("Must match the size.");
-    if (source.size() != value.size())
-      Rcpp::stop("Must match the size.");
-    
-    // Initializing
-    N = N_;
-    M = M_;
-    EL.resize(N);
-    
-    // Writing the data
-    for (uint i = 0u; i < source.size(); ++i) {
-      
-      // Checking range
-      if (source.at(i) >= N_ | target.at(i) >= M_)
-        Rcpp::stop("Out of range.");
-      
-      // Checking if it exists
-      auto search = EL.at(source.at(i)).find(target.at(i));
-      if (search != EL.at(source.at(i)).end()) {
-        if (!add)
-          Rcpp::stop("The value already exists");
-        
-        EL.at(source.at(i))[target.at(i)] = search->second + value.at(i);
-        continue;
-      }
-        
-      // Adding the value
-      EL.at(source.at(i))[target.at(i)] = value.at(i);
-    }
-    
-    return;
-    
-  }
-  
-  // Function to access the elements
-  double get_cell(uint i, uint j) const {
-    
-    if (this->EL.at(i).size() == 0u)
-      return 0.0;
-    
-    // If it is not empty, then find and return
-    auto search = EL.at(i).find(j);
-    if (search != EL.at(i).end())
-      return search->second;
-    
-    // This is if it is empty
-    return 0.0;
-    
-  }
-  
-  umap_int_dbl get_row(uint i) const {
-    return EL.at(i);
-  }
-};
-
 
 // [[Rcpp::export]]
 SEXP new_EdgeList(
@@ -114,33 +31,114 @@ NumericVector get_row(SEXP x, int i) {
   
   Rcpp::XPtr< EdgeList > xptr(x);
   NumericVector ans(xptr->M, 0);
-  umap_int_dbl m = xptr->get_row(i);
+  const umap_int_cell * m = xptr->get_row(i);
   
-  for (auto row = m.begin(); row != m.end(); ++row)
-    ans[row->first] = row->second;
+  for (auto row = m->begin(); row != m->end(); ++row)
+    ans[row->first] = row->second.value;
   
   return ans;
   
 }
 
+// [[Rcpp::export]]
+NumericVector get_col(SEXP x, int i) {
+  
+  Rcpp::XPtr< EdgeList > xptr(x);
+  NumericVector ans(xptr->N, 0);
+  const umap_int_cell_ptr * m = xptr->get_col(i);
+  
+  for (auto row = m->begin(); row != m->end(); ++row)
+    ans[row->first] = row->second->value;
+  
+  return ans;
+  
+}
+
+// [[Rcpp::export]]
+int rm_cell(SEXP x, int i, int j) {
+  
+  Rcpp::XPtr< EdgeList > xptr(x);
+  xptr->rm_cell(i, j);
+  return 0; 
+  
+}
+
+// [[Rcpp::export]]
+int insert_cell(SEXP x, int i, int j, double v) {
+  Rcpp::XPtr< EdgeList > xptr(x);
+  xptr->insert_cell(i, j, v);
+  return 0;
+}
+
 /***R
 
 set.seed(123)
-N <- 10000
-M <- 20000
+N <- 1000
+M <- 2000
 
-nedges  <- 1e4
+nedges  <- 1e3
 source <- sample.int(N, nedges, replace = TRUE)
 target <- sample.int(M, nedges, replace = TRUE)
 values <- runif(nedges)
 
 el <- new_EdgeList(N, M, source - 1L, target - 1L, values)
-cbind(cbind(source, target) - 1, values)
+View(cbind(cbind(source, target) - 1, values))
 
 ans <- sapply(1:nedges, function(i) get_cell(el, source[i]-1, target[i]-1))
 range(values - ans)
 
-rowz <- get_row(el, 1)
-mat <- matrix(nrow = N, ncol = M)
+# The most popular values
+i_max <- table(source)
+i_max <- as.integer(names(i_max)[which.max(i_max)])
+j_max <- table(target)
+j_max <- as.integer(names(j_max)[which.max(j_max)])
+
+# This has 3 values
+unique(get_row(el, i_max - 1))
+unique(get_col(el, j_max - 1))
+
+# Comparing with a sparse matrix
+library(Matrix)
+x_sparse <- sparseMatrix(i = source, j = target, x = values, dims = c(N,M))
+
+# All equal?
+ans <- sapply(1:N - 1, get_row, x = el)
+range(t(ans) - x_sparse)
+mean(ans)
+
+# Is it worth it?
+library(microbenchmark)
+microbenchmark(
+  Matrix = x_sparse[i_max,],
+  Array  = get_row(el, i_max - 1)
+)
+
+microbenchmark(
+  Matrix = x_sparse[,j_max],
+  Array  = get_col(el, j_max - 1)
+)
+# range(x_sparse[7425,] - get_row(el, 7424))
+
+# Checking removing cells
+set.seed(123)
+M <- N <- 10
+source <- sample.int(N, 5)
+target <- sample.int(N, 5)
+values <- runif(5)
+
+el2 <- new_EdgeList(N, M, source - 1L, target - 1L, values)
+
+# Getting matrix
+mat0 <- sparseMatrix(i = source, j = target, x = values, dims = c(N, M))
+mat1 <- as(t(sapply(1:N - 1, get_row, x = el2)), "dgCMatrix")
+
+# Removing one
+rm_cell(el2, 5, 0)
+as(t(sapply(1:N - 1, get_row, x = el2)), "dgCMatrix")
+
+# Adding two
+insert_cell(el2, 0, 0, 1)
+insert_cell(el2, 1, 1, 2)
+as(t(sapply(1:N - 1, get_row, x = el2)), "dgCMatrix")
 
 */
