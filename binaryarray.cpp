@@ -3,15 +3,15 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-SEXP new_EdgeList(
+SEXP new_Array(
     int N, int M,
     const std::vector< uint > & source,
     const std::vector< uint > & target,
     const std::vector< double > & value
 ) {
   
-  Rcpp::XPtr< EdgeList > ptr(
-    new EdgeList((uint) N, (uint) M, source, target, value),
+  Rcpp::XPtr< Array > ptr(
+    new Array((uint) N, (uint) M, source, target, value),
     true
   );
   
@@ -21,7 +21,7 @@ SEXP new_EdgeList(
 
 // [[Rcpp::export]]
 double get_cell(SEXP x, int i, int j) {
-  Rcpp::XPtr< EdgeList > xptr(x);
+  Rcpp::XPtr< Array > xptr(x);
   return xptr->get_cell(i, j);
 }
 
@@ -29,7 +29,7 @@ double get_cell(SEXP x, int i, int j) {
 // [[Rcpp::export]]
 NumericVector get_row(SEXP x, int i) {
   
-  Rcpp::XPtr< EdgeList > xptr(x);
+  Rcpp::XPtr< Array > xptr(x);
   NumericVector ans(xptr->M, 0);
   const umap_int_cell * m = xptr->get_row(i);
   
@@ -43,7 +43,7 @@ NumericVector get_row(SEXP x, int i) {
 // [[Rcpp::export]]
 NumericVector get_col(SEXP x, int i) {
   
-  Rcpp::XPtr< EdgeList > xptr(x);
+  Rcpp::XPtr< Array > xptr(x);
   NumericVector ans(xptr->N, 0);
   const umap_int_cell_ptr * m = xptr->get_col(i);
   
@@ -57,7 +57,7 @@ NumericVector get_col(SEXP x, int i) {
 // [[Rcpp::export]]
 int rm_cell(SEXP x, int i, int j) {
   
-  Rcpp::XPtr< EdgeList > xptr(x);
+  Rcpp::XPtr< Array > xptr(x);
   xptr->rm_cell(i, j);
   return 0; 
   
@@ -65,8 +65,22 @@ int rm_cell(SEXP x, int i, int j) {
 
 // [[Rcpp::export]]
 int insert_cell(SEXP x, int i, int j, double v) {
-  Rcpp::XPtr< EdgeList > xptr(x);
+  Rcpp::XPtr< Array > xptr(x);
   xptr->insert_cell(i, j, v);
+  return 0;
+}
+
+// [[Rcpp::export]]
+int swap_cells(SEXP x, int i0, int j0, int i1, int j1) {
+  Rcpp::XPtr< Array > xptr(x);
+  xptr->swap_cells(i0, j0, i1, j1);
+  return 0;
+}
+
+// [[Rcpp::export]]
+int swap_rows(SEXP x, int i0, int i1) {
+  Rcpp::XPtr< Array > xptr(x);
+  xptr->swap_rows(i0, i1);
   return 0;
 }
 
@@ -81,7 +95,7 @@ source <- sample.int(N, nedges, replace = TRUE)
 target <- sample.int(M, nedges, replace = TRUE)
 values <- runif(nedges)
 
-el <- new_EdgeList(N, M, source - 1L, target - 1L, values)
+el <- new_Array(N, M, source - 1L, target - 1L, values)
 View(cbind(cbind(source, target) - 1, values))
 
 ans <- sapply(1:nedges, function(i) get_cell(el, source[i]-1, target[i]-1))
@@ -126,7 +140,7 @@ source <- sample.int(N, 5)
 target <- sample.int(N, 5)
 values <- runif(5)
 
-el2 <- new_EdgeList(N, M, source - 1L, target - 1L, values)
+el2 <- new_Array(N, M, source - 1L, target - 1L, values)
 
 # Getting matrix
 mat0 <- sparseMatrix(i = source, j = target, x = values, dims = c(N, M))
@@ -141,4 +155,20 @@ insert_cell(el2, 0, 0, 1)
 insert_cell(el2, 1, 1, 2)
 as(t(sapply(1:N - 1, get_row, x = el2)), "dgCMatrix")
 
+# Swapping cells
+swap_cells(el2, 0, 0, 1, 1)
+swap_cells(el2, N-1, N-1, N-2, N-2)
+swap_cells(el2, 9, 3, 8, 2)
+swap_cells(el2, 9, 3, 8, 2)
+# insert_cell(el2, 1, 1, 2)
+as(t(sapply(1:N - 1, get_row, x = el2)), "dgCMatrix")
+
+microbenchmark(
+  swap_rows(el2, 0, 1),
+  {mat0[c(1,2),] <- mat0[c(2,1),]}
+)
+
+swap_rows(el2, 0, 1)
+as(t(sapply(1:N - 1, get_row, x = el2)), "dgCMatrix")
+as(sapply(1:M - 1, get_col, x = el2), "dgCMatrix") # Should be equivalent
 */

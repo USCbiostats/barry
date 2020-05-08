@@ -29,7 +29,7 @@ public:
   void add(double x) {this->value+=x;};
 };
 
-class EdgeList {
+class Array {
 public:
   uint N;
   uint M;
@@ -37,10 +37,10 @@ public:
   std::vector< umap_int_cell_ptr > el_ji;
   
   // Empty datum
-  EdgeList (uint N_, uint M_) : N(N_), M(M_), el_ij(N_), el_ji(M_) {};
+  Array (uint N_, uint M_) : N(N_), M(M_), el_ij(N_), el_ji(M_) {};
   
   // Edgelist with data
-  EdgeList (
+  Array (
       uint N_, uint M_,
       const std::vector< uint > & source,
       const std::vector< uint > & target,
@@ -49,19 +49,30 @@ public:
   );
   
   // Function to access the elements
-  double get_cell(uint i, uint j) const;
-  const umap_int_cell * get_row(uint i) const {return &(el_ij.at(i));}
-  const umap_int_cell_ptr * get_col(uint i) const {return &(el_ji.at(i));}
+  // bool check_cell
+  void out_of_range(uint i, uint j) const {
+    bool ans = ((i >= this->N) || (j >= this->M)) ? true : false;
+    if (ans)
+      Rcpp::stop("Out of range!.");
+    return;
+  }
+  double get_cell(uint i, uint j, bool check_bounds = true) const;
+  const umap_int_cell * get_row(uint i, bool check_bounds = true) const {return &(el_ij.at(i));}
+  const umap_int_cell_ptr * get_col(uint i, bool check_bounds = true) const {return &(el_ji.at(i));}
   
   // Deletion addition operations
-  void rm_cell(uint i, uint j);
-  void insert_cell(uint i, uint j, double v);
+  void rm_cell(uint i, uint j, bool check_bounds = true);
+  void insert_cell(uint i, uint j, double v, bool check_bounds = true);
+  void insert_cell(uint i, uint j, bool check_bounds = true);
+  void swap_cells(uint i0, uint j0, uint i1, uint j1, bool check_bounds = true);
+  void swap_rows(uint i0, uint i1, bool check_bounds = true);
+  void swap_col(uint j0, uint j1, bool check_bounds = true);
   
   
 };
 
 // Edgelist with data
-EdgeList::EdgeList (
+Array::Array (
     uint N_, uint M_,
     const std::vector< uint > & source,
     const std::vector< uint > & target,
@@ -108,7 +119,10 @@ EdgeList::EdgeList (
   
 }
 
-double EdgeList::get_cell(uint i, uint j) const {
+double Array::get_cell(uint i, uint j, bool check_bounds) const {
+  
+  if (check_bounds)
+    out_of_range(i,j);
   
   if (this->el_ij.at(i).size() == 0u)
     return 0.0;
@@ -123,12 +137,12 @@ double EdgeList::get_cell(uint i, uint j) const {
   
 }
 
-void EdgeList::rm_cell(uint i, uint j) {
+void Array::rm_cell(uint i, uint j, bool check_bounds) {
   
   // Checking the boundaries
-  if (i >= this->N | j >= this->M)
-    Rcpp::stop("Removing out of range.");
-  
+  if (check_bounds)
+    out_of_range(i,j);
+
   // Nothing to do
   if (this->el_ij.at(i).size() == 0u)
     return;
@@ -152,7 +166,10 @@ void EdgeList::rm_cell(uint i, uint j) {
 /***
  * This member adds a new object to the edgelist
  */
-void EdgeList::insert_cell(uint i, uint j, double v) {
+void Array::insert_cell(uint i, uint j, double v, bool check_bounds) {
+  
+  if (check_bounds)
+    out_of_range(i,j);
   
   // Checking if nothing here, then we move along
   if (this->el_ij.at(i).size() == 0u) {
@@ -175,5 +192,141 @@ void EdgeList::insert_cell(uint i, uint j, double v) {
   return;
   
 }
+
+void Array::insert_cell(uint i, uint j, bool check_bounds) {
+  
+  if (check_bounds)
+    out_of_range(i,j);
+  
+  // Checking if nothing here, then we move along
+  if (this->el_ij.at(i).size() == 0u) {
+    
+    this->el_ij.at(i)[j] = Cell(1.0);
+    this->el_ji.at(j)[i] = &this->el_ij.at(i).at(j);
+    return;
+    
+  }
+  
+  // In this case, the row exists, but we are checking that the value is empty
+  auto search = this->el_ij.at(i).find(j);
+  if (search == this->el_ij.at(i).end()) {
+    this->el_ij.at(i)[j] = Cell(1.0);
+    this->el_ji.at(j)[i] = &this->el_ij.at(i).at(j);
+  } else {
+    this->el_ij.at(i).at(j).add(1.0);
+  }
+  
+  return;
+  
+}
+
+void Array::swap_cells(uint i0, uint j0, uint i1, uint j1, bool check_bounds) {
+  
+  if (check_bounds) {
+    out_of_range(i0,j0);
+    out_of_range(i1,j1);
+  }
+    
+  bool move0 = true, move1 = true;
+  
+  // Do we need to move 0?
+  if (this->el_ij.at(i0).size() == 0u) move0 = false;
+  else if (this->el_ji.at(j0).size() == 0u) move0 = false;
+  
+  // How about 1?
+  if (this->el_ij.at(i1).size() == 0u) move1 = false;
+  else if (this->el_ji.at(j1).size() == 0u) move1 = false;
+  
+  // Case 1: Both need to be moved:
+  if (move0 && move1) {
+    
+    // Swapping elements, the pointers will work OK as the memory
+    // location hasn't change, right?
+    Cell c0 = this->el_ij.at(i0).at(j0);
+    this->el_ij.at(i0).at(j0) = this->el_ij.at(i1).at(j1);
+    this->el_ij.at(i1).at(j1) = c0;
+    
+  } else if (move0 && !move1) {
+    
+    // Adding and removing at the same time
+    this->insert_cell(i1, j1, this->el_ij.at(i0).at(j0).value, false);
+    this->rm_cell(i0, j0, false);
+    
+  } else if (!move0 && move1) {
+    
+    // Likewise, but the other element
+    this->insert_cell(i0, j0, this->el_ij.at(i1).at(j1).value, false);
+    this->rm_cell(i1, j1, false);
+    
+  }
+  
+  return;
+}
+
+
+void Array::swap_rows(uint i0, uint i1, bool check_bounds) {
+  
+  if (check_bounds) {
+    out_of_range(i0,0u);
+    out_of_range(i1,0u);
+  }
+  
+  bool move0=true, move1=true;
+  if (this->el_ij.at(i0).size() == 0u) move0 = false;
+  if (this->el_ij.at(i1).size() == 0u) move1 = false;
+  
+  if (!move0 && !move1)
+    return;
+  
+  // Swapping happens naturally, need to take care of the pointers
+  // though
+  this->el_ij.at(i0).swap(this->el_ij.at(i1));
+
+  // Delete the thing
+  if (move0)
+    for (auto iter = el_ij.at(i1).begin(); iter != el_ij.at(i1).end(); ++iter)
+      el_ji.at(iter->first).erase(i0);
+  
+  if (move1)
+    for (auto iter = el_ij.at(i0).begin(); iter != el_ij.at(i0).end(); ++iter)
+      el_ji.at(iter->first).erase(i1);
+  
+  // Now, point to the thing, if it has something to point at. Recall that
+  // the indices swapped.
+  if (move1)
+    for (auto iter = el_ij.at(i0).begin(); iter != el_ij.at(i0).end(); ++iter)
+      el_ji.at(iter->first)[i0] = &el_ij.at(i0).at(iter->first);
+  
+  if (move0)
+    for (auto iter = el_ij.at(i1).begin(); iter != el_ij.at(i1).end(); ++iter)
+      el_ji.at(iter->first)[i1] = &el_ij.at(i1).at(iter->first);
+  
+  return;
+}
+
+// This swapping is more expensive overall
+void Array::swap_col(uint j0, uint j1, bool check_bounds) {
+  
+  // if (check_bounds) {
+  //   out_of_range(j0,0u);
+  //   out_of_range(j1,0u);
+  // }
+  // 
+  // bool move0=true, move1=true;
+  // if (this->el_ji.at(j0).size() == 0u) move0 = false;
+  // if (this->el_ji.at(j1).size() == 0u) move1 = false;
+  // 
+  // this->swap_cells()
+  
+  return;
+}
+
+class LArray {
+public:
+  std::vector< Array* > data;
+  LArray() {};
+  LArray(uint n) : data(n) {};
+  ~LArray() {};
+};
 
 #endif
