@@ -11,6 +11,11 @@ using namespace Rcpp;
 #define ARRAY_CHECK_ONE 1
 #define ARRAY_CHECK_TWO 2
 
+#define ARRAY_BOTH_EXIST -1
+#define ARRAY_NONE_EXIST 0
+#define ARRAY_ONE_EXISTS 1
+#define ARRAY_TWO_EXISTS 1
+
 // Definition of the class structure
 
 // Edgelist
@@ -82,7 +87,11 @@ public:
   void insert_cell(uint i, uint j, Cell v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
-  void swap_cells(uint i0, uint j0, uint i1, uint j1, bool check_bounds = true, int check_exists = ARRAY_CHECK_BOTH);
+  void swap_cells(
+      uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,
+      int check_exists = ARRAY_CHECK_BOTH,
+      int * report     = nullptr
+      );
   
   void swap_rows(uint i0, uint i1, bool check_bounds = true);
   void swap_cols(uint j0, uint j1, bool check_bounds = true);
@@ -307,19 +316,27 @@ void Array::insert_cell(uint i, uint j, bool check_bounds, bool check_exists) {
   
 }
 
-void Array::swap_cells(uint i0, uint j0, uint i1, uint j1, bool check_bounds, int check_exists) {
+void Array::swap_cells(
+    uint i0, uint j0, uint i1, uint j1, bool check_bounds,
+    int check_exists,
+    int * report
+  ) {
   
   if (check_bounds) {
     out_of_range(i0,j0);
     out_of_range(i1,j1);
   }
   
-  // If source and target coincide, we do nothing
-  if ((i0 == i1) && (j0 == j1))
-    return;
-  
   // Simplest case, we know both exists, so we don't need to check anything
   if (check_exists == ARRAY_CHECK_NONE) {
+    
+    // Just in case, if this was passed
+    if (report != nullptr)
+      (*report) = ARRAY_BOTH_EXIST;
+    
+    // If source and target coincide, we do nothing
+    if ((i0 == i1) && (j0 == j1)) 
+      return;
     
     Cell c0 = this->el_ij.at(i0).at(j0);
     this->rm_cell(i0, j0, false, false);
@@ -332,75 +349,61 @@ void Array::swap_cells(uint i0, uint j0, uint i1, uint j1, bool check_bounds, in
     return;
 
   }
+  
+  bool check0, check1;
+  if (check_exists == ARRAY_CHECK_BOTH) {
     
-  bool move0 = true, move1 = true;
-  
-  // Do we need to move 0?
-  bool check0 = (check_exists == ARRAY_CHECK_BOTH) || (check_exists == ARRAY_CHECK_ONE);
-  bool check1 = (check_exists == ARRAY_CHECK_BOTH) || (check_exists == ARRAY_CHECK_TWO);
-  
-  if (check0) {
-    if      (this->el_ij.at(i0).size() == 0u) move0 = false;
-    else if (this->el_ji.at(j0).size() == 0u) move0 = false;
+    check0 = !this->is_empty(i0, j0, false);
+    check1 = !this->is_empty(i1, j1, false);
+    
+  } else if (check_exists == ARRAY_CHECK_ONE) {
+    
+    check0 = !this->is_empty(i0, j0, false);
+    check1 = true;
+    
+  } else if (check_exists == ARRAY_CHECK_TWO) {
+    
+    check0 = true;
+    check1 = !this->is_empty(i1, j1, false);
+    
   }
   
-  // How about 1?
-  if (check1) {
-    if      (this->el_ij.at(i1).size() == 0u) move1 = false;
-    else if (this->el_ji.at(j1).size() == 0u) move1 = false;
-  }
+  if (report != nullptr) 
+    (*report) = ARRAY_NONE_EXIST;
   
-  
-  // Case 1: Both need to be moved:
-  if (move0 && move1) {
+  // If both cells exists
+  if (check0 & check1) {
     
-    // Swapping elements, the pointers will work OK as the memory
-    // location hasn't change, right?
-    check0 = !check0 || (this->el_ij.at(i0).find(j0) != this->el_ij.at(i0).end());
-    check1 = !check1 || (this->el_ij.at(i1).find(j1) != this->el_ij.at(i1).end());
+    if (report != nullptr) 
+      (*report) = ARRAY_BOTH_EXIST;
     
-    // If both cells exists
-    if (check0 & check1) {
-      
-      Cell c0 = this->el_ij.at(i0).at(j0);
-      this->rm_cell(i0, j0, false, false);
-      Cell c1 = this->el_ij.at(i1).at(j1);
-      this->rm_cell(i1, j1, false, false);
-      
-      this->insert_cell(i0, j0, c1, false, false);
-      this->insert_cell(i1, j1, c0, false, false);
-      
-    } else if (!check0 & check1) { // If only the second exists
-      
-      this->insert_cell(i0, j0, this->el_ij.at(i1).at(j1), false, false);
-      this->rm_cell(i1, j1, false, false);
-      
-    } else if (check0 & !check1) {
-      
-      this->insert_cell(i1, j1, this->el_ij.at(i0).at(j0), false, false);
-      this->rm_cell(i0, j0, false, false);
-      
-    }
+    // If source and target coincide, we do nothing
+    if ((i0 == i1) && (j0 == j1)) 
+      return;
     
-  } else if (move0 && !move1) {
+    Cell c0 = this->el_ij.at(i0).at(j0);
+    this->rm_cell(i0, j0, false, false);
+    Cell c1 = this->el_ij.at(i1).at(j1);
+    this->rm_cell(i1, j1, false, false);
     
-    check0 = !check0 || (this->el_ij.at(i0).find(j0) != this->el_ij.at(i0).end());
+    this->insert_cell(i0, j0, c1, false, false);
+    this->insert_cell(i1, j1, c0, false, false);
     
-    // Adding and removing at the same time
-    if (check0) {
-      this->insert_cell(i1, j1, this->el_ij.at(i0).at(j0), false, false);
-      this->rm_cell(i0, j0, false, false);
-    }
+  } else if (!check0 & check1) { // If only the second exists
     
-  } else if (!move0 && move1) {
+    if (report != nullptr) 
+      (*report) = ARRAY_TWO_EXISTS;
     
-    check1 = !check1 || (this->el_ij.at(i1).find(j1) != this->el_ij.at(i1).end());
+    this->insert_cell(i0, j0, this->el_ij.at(i1).at(j1), false, false);
+    this->rm_cell(i1, j1, false, false);
     
-    // Likewise, but the other element
-    if (check1) {
-      this->insert_cell(i0, j0, this->el_ij.at(i1).at(j1), false, false);
-      this->rm_cell(i1, j1, false, false);
-    }
+  } else if (check0 & !check1) {
+    
+    if (report != nullptr) 
+      (*report) = ARRAY_ONE_EXISTS;
+    
+    this->insert_cell(i1, j1, this->el_ij.at(i0).at(j0), false, false);
+    this->rm_cell(i0, j0, false, false);
     
   }
   
@@ -470,13 +473,14 @@ void Array::swap_cols(uint j0, uint j1, bool check_bounds) {
     // values or not
     umap_int_cell_ptr col0 = this->el_ji.at(j0);
     umap_int_cell_ptr col1 = this->el_ji.at(j1);
+    int status;
     for (auto col = col0.begin(); col != col0.end(); ++col) {
       
       // We first swap
-      this->swap_cells(col->first, j0, col->first, j1, false, ARRAY_CHECK_TWO);
+      this->swap_cells(col->first, j0, col->first, j1, false, ARRAY_CHECK_TWO, &status);
       
       // We tagged the ones that were already swapped as done
-      if (col1.find(col->first) != col1.end())
+      if (status == ARRAY_BOTH_EXIST)
         col1.erase(col->first);
 
     }
@@ -501,7 +505,7 @@ void Array::transpose() {
   else if (this->N < this->M) this->el_ij.resize(this->M);
   
   // uint N0 = this->N, M0 = this->M;
-
+  int status;
   for (uint i = 0u; i < this->N; ++i) {
     
     // Do we need to move anything?
@@ -516,10 +520,10 @@ void Array::transpose() {
       if (this->el_ij.at(i).at(col->first).visited != this->visited) {
         
         // First, swap the contents
-        this->swap_cells(i, col->first, col->first, i, false, ARRAY_CHECK_TWO);
+        this->swap_cells(i, col->first, col->first, i, false, ARRAY_CHECK_TWO, &status);
         
         // Changing the switch
-        if (!this->is_empty(i, col->first, false))
+        if (status == ARRAY_BOTH_EXIST)
           this->el_ij.at(i).at(col->first).visited = this->visited;
         
         this->el_ij.at(col->first).at(i).visited = this->visited;

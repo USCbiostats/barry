@@ -194,7 +194,7 @@ as(sapply(1:M - 1, get_col, x = el2), "dgCMatrix")[1:5, 1:5] # Should be equival
 
 # Checking transpose -----------------------------------------------------------
 set.seed(123)
-M <- N <- 2000
+M <- N <- 10
 M <- M/2
 ncells <- M
 source <- sample.int(N, ncells)
@@ -204,14 +204,17 @@ values <- runif(ncells)
 el3 <- new_Array(N, M, source - 1L, target - 1L, values)
 (m0 <- as(sapply(1:M - 1, get_col, x = el3), "dgCMatrix"))[1:5, 1:5]
 
-# transpose(el3)
-# (m1 <- as(sapply(1:N - 1, get_col, x = el3), "dgCMatrix"))
+transpose(el3)
+(m1 <- as(sapply(1:N - 1, get_col, x = el3), "dgCMatrix"))[1:5, 1:5]
+range(m0 - t(m1)) # Should be zero
 
 
 # Comparing 
+md<-as.matrix(m0)
 microbenchmark::microbenchmark(
   m0 <<- t(m0),
-  transpose(el3), times = 1e3,
+  transpose(el3), times = 1000,
+  md <<- t(md),
   unit = "relative"
 )
 
