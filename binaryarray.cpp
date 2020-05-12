@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include "array.hpp"
+#include "include/barray.hpp"
 using namespace Rcpp;
 
 // [[Rcpp::export]]
@@ -10,8 +10,8 @@ SEXP new_Array(
     const std::vector< double > & value
 ) {
   
-  Rcpp::XPtr< Array > ptr(
-    new Array((uint) N, (uint) M, source, target, value),
+  Rcpp::XPtr< barray::BArray > ptr(
+    new barray::BArray((uint) N, (uint) M, source, target, value),
     true
   );
   
@@ -21,7 +21,7 @@ SEXP new_Array(
 
 // [[Rcpp::export]]
 double get_cell(SEXP x, int i, int j) {
-  Rcpp::XPtr< Array > xptr(x);
+  Rcpp::XPtr< barray::BArray > xptr(x);
   return xptr->get_cell(i, j);
 }
 
@@ -29,9 +29,9 @@ double get_cell(SEXP x, int i, int j) {
 // [[Rcpp::export]]
 NumericVector get_row(SEXP x, int i) {
   
-  Rcpp::XPtr< Array > xptr(x);
+  Rcpp::XPtr< barray::BArray > xptr(x);
   NumericVector ans(xptr->M, 0);
-  const umap_int_cell * m = xptr->get_row(i);
+  const barray::umap_int_cell * m = xptr->get_row(i);
   
   for (auto row = m->begin(); row != m->end(); ++row)
     ans[row->first] = row->second.value;
@@ -43,9 +43,9 @@ NumericVector get_row(SEXP x, int i) {
 // [[Rcpp::export]]
 NumericVector get_col(SEXP x, int i) {
   
-  Rcpp::XPtr< Array > xptr(x);
+  Rcpp::XPtr< barray::BArray > xptr(x);
   NumericVector ans(xptr->N, 0);
-  const umap_int_cell_ptr * m = xptr->get_col(i);
+  const barray::umap_int_cell_ptr * m = xptr->get_col(i);
   
   for (auto row = m->begin(); row != m->end(); ++row)
     ans[row->first] = row->second->value;
@@ -57,7 +57,7 @@ NumericVector get_col(SEXP x, int i) {
 // [[Rcpp::export]]
 int rm_cell(SEXP x, int i, int j) {
   
-  Rcpp::XPtr< Array > xptr(x);
+  Rcpp::XPtr< barray::BArray > xptr(x);
   xptr->rm_cell(i, j);
   return 0; 
   
@@ -65,37 +65,77 @@ int rm_cell(SEXP x, int i, int j) {
 
 // [[Rcpp::export]]
 int insert_cell(SEXP x, int i, int j, double v) {
-  Rcpp::XPtr< Array > xptr(x);
+  Rcpp::XPtr< barray::BArray > xptr(x);
   xptr->insert_cell(i, j, v);
   return 0;
 }
 
 // [[Rcpp::export]]
 int swap_cells(SEXP x, int i0, int j0, int i1, int j1) {
-  Rcpp::XPtr< Array > xptr(x);
+  Rcpp::XPtr< barray::BArray > xptr(x);
   xptr->swap_cells(i0, j0, i1, j1);
   return 0;
 }
 
 // [[Rcpp::export]]
 int swap_rows(SEXP x, int i0, int i1) {
-  Rcpp::XPtr< Array > xptr(x);
+  Rcpp::XPtr< barray::BArray > xptr(x);
   xptr->swap_rows(i0, i1);
   return 0;
 }
 
 // [[Rcpp::export]]
 int swap_cols(SEXP x, int j0, int j1) {
-  Rcpp::XPtr< Array > xptr(x);
+  Rcpp::XPtr< barray::BArray > xptr(x);
   xptr->swap_cols(j0, j1);
   return 0;
 }
 
 // [[Rcpp::export]]
 int transpose(SEXP x) {
-  Rcpp::XPtr< Array > xptr(x);
+  Rcpp::XPtr< barray::BArray > xptr(x);
   xptr->transpose();
   return 0;
+}
+
+// [[Rcpp::export]]
+int resize(SEXP x, int n, int m) {
+  
+  Rcpp::XPtr< barray::BArray > xptr(x);
+  xptr->resize(n, m);
+  
+  return 0;
+  
+}
+
+
+// [[Rcpp::export]]
+int toggle(SEXP x, int i, int j) {
+  Rcpp::XPtr< barray::BArray > xptr(x);
+  xptr->toggle_cell(i, j);
+  
+  return 0;
+}
+
+// [[Rcpp::export]]
+int psets(int n, int m) { 
+  
+  Rcpp::XPtr< barray::LBArray > xptr(
+    new barray::LBArray((uint) n, (uint) m),
+    true
+  );
+  
+  // Generating the powerset
+  xptr->pset();
+  
+  // Looking at the elements
+  std::cout << "Number of elements " << xptr->data.size() << std::endl;
+  
+  // Returning the data
+  // xptr->data.at(0).
+  
+  return 0;
+  
 }
 
 /***R
@@ -213,9 +253,28 @@ range(m0 - t(m1)) # Should be zero
 md<-as.matrix(m0)
 microbenchmark::microbenchmark(
   m0 <<- t(m0),
-  transpose(el3), times = 1000,
+  transpose(el3), times = 500,
   md <<- t(md),
   unit = "relative"
 )
 
+# Removing allset.seed(123)
+M <- N <- 10
+M <- M/2
+ncells <- M
+source <- sample.int(N, ncells)
+target <- sample.int(M, ncells)
+values <- runif(ncells)
+
+el4 <- new_Array(N, M, source - 1L, target - 1L, values)
+m0  <- as(sapply(1:M - 1, get_col, x = el4), "dgCMatrix")
+resize(el4, 11, 6)
+as(sapply(1:(M + 1) - 1, get_col, x = el4), "dgCMatrix")
+
+resize(el4, 5, 5)
+as(sapply(1:M - 1, get_col, x = el4), "dgCMatrix")
+
+resize(el4, 10, 5)
+as(sapply(1:M - 1, get_col, x = el4), "dgCMatrix")
+psets(2, 2)
 */
