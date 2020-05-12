@@ -118,7 +118,21 @@ int toggle(SEXP x, int i, int j) {
 }
 
 // [[Rcpp::export]]
-int psets(int n, int m) { 
+List get_entries(const SEXP & x) {
+  
+  Rcpp::XPtr< barray::BArray > xptr(x);
+  barray::Entries res = xptr->get_entries();
+  
+  return List::create(
+    _["source"] = res.source,
+    _["target"] = res.target,
+    _["val"] = res.val
+  );
+  
+}
+
+// [[Rcpp::export]]
+List psets(int n, int m) { 
   
   Rcpp::XPtr< barray::LBArray > xptr(
     new barray::LBArray((uint) n, (uint) m),
@@ -128,13 +142,23 @@ int psets(int n, int m) {
   // Generating the powerset
   xptr->pset();
   
-  // Looking at the elements
-  // std::cout << "Number of elements " << xptr->data.size() << std::endl;
+  // Generating the data
+  List ans(xptr->data.size());
+  uint counter = 0u;
+  for (auto iter = xptr->data.begin(); iter != xptr->data.end(); ++iter) {
+    
+    barray::Entries set = iter->get_entries();
+    
+    ans[counter++] = List::create(
+      _["source"] = set.source,
+      _["target"] = set.target,
+      _["val"] = set.val
+    );
+    
+  }
+    
   
-  // Returning the data
-  // xptr->data.at(0).
-  
-  return 0;
+  return ans;
   
 }
 
@@ -276,5 +300,30 @@ as(sapply(1:M - 1, get_col, x = el4), "dgCMatrix")
 
 resize(el4, 10, 5)
 as(sapply(1:M - 1, get_col, x = el4), "dgCMatrix")
-psets(2,3)
+PS_2_3 <- psets(2,3)
+
+PS_2_3 <- lapply(PS_2_3, function(p.) {
+  ans <- matrix(0, nrow = 2, ncol = 3)
+  ans[cbind(p.$source, p.$target) + 1] <- p.$val
+  ans
+})
+
+# table(table(sapply(PS_2_3, paste, collapse = "")))
+# 
+# system.time({
+#   PS_2_3 <- psets(5,4)
+# })
+# system.time({
+#   tmp <- matrix(0, nrow = 5, ncol = 4)
+#   PS_2_3 <- lapply(PS_2_3, function(p.) {
+#     tmp[cbind(p.$source, p.$target) + 1] <- p.$val
+#     tmp
+#   })
+#   
+# })
+# 
+# system.time(PS_2_3e <- ergmito::powerset(5))
+
 */
+
+

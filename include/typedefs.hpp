@@ -24,8 +24,6 @@ namespace EXISTS {
 }
 
 
-
-
 // Definition of the class structure
 
 // Edgelist
@@ -34,10 +32,29 @@ class Cell;
 typedef std::unordered_map< uint, Cell > umap_int_cell;
 typedef std::unordered_map< uint, Cell* > umap_int_cell_ptr;
 
-struct edge_list {
+class Entries {
+public:
   std::vector< uint > source;
   std::vector< uint > target;
   std::vector< double > val;
+  
+  Entries() : source(0u), target(0u), val(0) {};
+  Entries(uint n) {
+    source.reserve(n);
+    target.reserve(n);
+    val.reserve(n);
+    return;
+  };
+  
+  ~Entries() {};
+  
+  void resize(uint n) {
+    source.resize(n);
+    target.resize(n);
+    val.resize(n);
+    return;
+  }
+  
 };
 
 #endif

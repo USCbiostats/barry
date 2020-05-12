@@ -14,10 +14,34 @@ class Cell {
 public:
   double value;
   bool visited;
-  Cell() {};
+  Cell() : value(1.0), visited(false) {};
   Cell(double value_) : value(value_), visited(false) {};
   Cell(double value_, bool visited_) : value(value_), visited(visited_) {};
   ~Cell() {};
+  
+  // Copy by-reference constructor
+  Cell(Cell& arg) : value(arg.value), visited(arg.visited) {};
+  
+  // This is an explicit declaration since in other cases it seems
+  // to try to use the move operator, which I do not intent to use.
+  Cell(const Cell& arg) = delete;//: value(arg.value), visited(arg.visited) {};
+  
+  // Copy by assignment
+  Cell& operator=(Cell& other) {
+    this->value = other.value;
+    this->visited = other.visited;
+    return *this;
+  };
+  
+  // Move constructor
+  Cell(Cell&& arg): value(std::move(arg.value)), visited(std::move(arg.visited)) {} ;
+  
+  // Move assign operator
+  Cell& operator=(Cell&& other) {
+    this->value = other.value;
+    this->visited = other.visited;
+    return *this;
+  };
   
   void add(double x) {this->value+=x;};
 };
@@ -26,7 +50,7 @@ class BArray {
 public:
   uint N;
   uint M;
-  uint NCells;
+  uint NCells = 0u;
   std::vector< umap_int_cell >  el_ij;
   std::vector< umap_int_cell_ptr > el_ji;
   
@@ -35,8 +59,14 @@ public:
   // cell.visited = true and visited = true, it means that we haven't been here
   // yet. Ideally, any routine using this->visited should switch it at the
   // beginning of the routine.
-  bool visited;
+  bool visited = false;
   
+  /***
+   * ! Other information regarding the object
+   */
+  bool symetric;
+  bool valued;
+
   // Empty datum
   BArray() : N(0u), M(0u), el_ij(0u), el_ji(0u), NCells(0u) {};
   BArray (uint N_, uint M_) : N(N_), M(M_), el_ij(N_), el_ji(M_), NCells(0u) {};
@@ -56,15 +86,21 @@ public:
   double get_cell(uint i, uint j, bool check_bounds = true) const;
   const umap_int_cell * get_row(uint i, bool check_bounds = true) const;
   const umap_int_cell_ptr * get_col(uint i, bool check_bounds = true) const;
+  Entries get_entries() const;
+  
+  
+  // Queries
   bool is_empty(uint i, uint j, bool check_bounds = true) const;
 
   // Deletion addition operations
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
+  void insert_cell(uint i, uint j, Cell * v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, Cell v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, double v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, Cell * v, bool check_bounds = true, bool check_exists = true);
   
   void swap_cells(
       uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,

@@ -5,7 +5,7 @@
 #define BARRAY_MEAT_HPP 
 
 // Edgelist with data
-BArray::BArray (
+inline BArray::BArray (
     uint N_, uint M_,
     const std::vector< uint > & source,
     const std::vector< uint > & target,
@@ -21,9 +21,7 @@ BArray::BArray (
   // Initializing
   this->N = N_;
   this->M = M_;
-  this->visited = false;
-  this->NCells = 0u;
-  
+
   el_ij.resize(N);
   el_ji.resize(M);
   
@@ -48,8 +46,11 @@ BArray::BArray (
     }
     
     // Adding the value and creating a pointer to it
-    el_ij.at(source.at(i)).emplace(target.at(i), Cell(value.at(i), this->visited));
-    el_ji.at(target.at(i)).emplace(source.at(i), &el_ij.at(source.at(i))[target.at(i)]);
+    this->el_ij.at(source.at(i)).emplace(std::pair<uint, Cell>(target.at(i), Cell(value.at(i), this->visited)));
+    this->el_ji.at(target.at(i)).emplace(
+        source.at(i),
+        &this->el_ij.at(source.at(i))[target.at(i)]
+    );
     this->NCells++;
   }
   
@@ -57,7 +58,7 @@ BArray::BArray (
   
 }
 
-void BArray::out_of_range(uint i, uint j) const {
+inline void BArray::out_of_range(uint i, uint j) const {
   if (i >= this->N)
     throw std::range_error("The row is out of range.");
   else if (j >= this->M)
@@ -66,19 +67,19 @@ void BArray::out_of_range(uint i, uint j) const {
 }
   
 
-double BArray::get_cell(uint i, uint j, bool check_bounds) const {
+inline double BArray::get_cell(uint i, uint j, bool check_bounds) const {
   
   // Checking boundaries  
   if (check_bounds)
-    out_of_range(i,j);
+    this->out_of_range(i,j);
   
 
   if (this->el_ij.at(i).size() == 0u)
     return 0.0;
   
   // If it is not empty, then find and return
-  auto search = el_ij.at(i).find(j);
-  if (search != el_ij.at(i).end())
+  auto search = this->el_ij.at(i).find(j);
+  if (search != this->el_ij.at(i).end())
     return search->second.value;
   
   // This is if it is empty
@@ -86,26 +87,44 @@ double BArray::get_cell(uint i, uint j, bool check_bounds) const {
   
 }
 
-const umap_int_cell * BArray::get_row(uint i, bool check_bounds) const {
+inline const umap_int_cell * BArray::get_row(uint i, bool check_bounds) const {
 
   // Checking boundaries  
   if (check_bounds) 
-    out_of_range(i, 0u);
+    this->out_of_range(i, 0u);
 
-  return &(el_ij.at(i));
+  return &(this->el_ij.at(i));
 }
 
-const umap_int_cell_ptr * BArray::get_col(uint i, bool check_bounds) const {
+inline const umap_int_cell_ptr * BArray::get_col(uint i, bool check_bounds) const {
   
   // Checking boundaries  
   if (check_bounds) 
-    out_of_range(0u, i);
+    this->out_of_range(0u, i);
   
-  return &(el_ji.at(i));
+  return &(this->el_ji.at(i));
 }
 
+inline Entries BArray::get_entries() const {
+  
+  Entries res(this->NCells);
+  
+  for (uint i = 0u; i < this->N; ++i) {
+    
+    if (this->el_ij.at(i).size() == 0u)
+      continue;
+    
+    for (auto col = this->el_ij.at(i).begin(); col != this->el_ij.at(i).end(); ++col) {
+      res.source.push_back(i),
+      res.target.push_back(col->first),
+      res.val.push_back(col->second.value);
+    }
+  }
+  
+  return res;
+}
 
-bool BArray::is_empty(uint i, uint j, bool check_bounds) const {
+inline bool BArray::is_empty(uint i, uint j, bool check_bounds) const {
   
   if (check_bounds)
     out_of_range(i, j);
@@ -122,7 +141,7 @@ bool BArray::is_empty(uint i, uint j, bool check_bounds) const {
   
 }
 
-void BArray::rm_cell(uint i, uint j, bool check_bounds, bool check_exists) {
+inline void BArray::rm_cell(uint i, uint j, bool check_bounds, bool check_exists) {
   
   // Checking the boundaries
   if (check_bounds)
@@ -151,7 +170,7 @@ void BArray::rm_cell(uint i, uint j, bool check_bounds, bool check_exists) {
   return;
 }
 
-void BArray::insert_cell(uint i, uint j, Cell v, bool check_bounds, bool check_exists) {
+inline void BArray::insert_cell(uint i, uint j, Cell * v, bool check_bounds, bool check_exists) {
   
   if (check_bounds)
     out_of_range(i,j);
@@ -161,7 +180,7 @@ void BArray::insert_cell(uint i, uint j, Cell v, bool check_bounds, bool check_e
     // Checking if nothing here, then we move along
     if (this->el_ij.at(i).size() == 0u) {
       
-      this->el_ij.at(i).emplace(j, v);
+      this->el_ij.at(i).insert(std::pair<uint, Cell>(j, *v));
       this->el_ji.at(j).emplace(i, &this->el_ij.at(i).at(j));
       this->NCells++;
       return;
@@ -170,7 +189,7 @@ void BArray::insert_cell(uint i, uint j, Cell v, bool check_bounds, bool check_e
     
     // In this case, the row exists, but we are checking that the value is empty  
     if (this->el_ij.at(i).find(j) == this->el_ij.at(i).end()) {
-      this->el_ij.at(i).emplace(j, v);
+      this->el_ij.at(i).insert(std::pair<uint, Cell>(j, *v));
       this->el_ji.at(j).emplace(i, &this->el_ij.at(i).at(j));
       this->NCells++;
     } else {
@@ -179,7 +198,7 @@ void BArray::insert_cell(uint i, uint j, Cell v, bool check_bounds, bool check_e
     
   } else {
     
-    this->el_ij.at(i).emplace(j, v);
+    this->el_ij.at(i).insert(std::pair<uint, Cell>(j, *v));
     this->el_ji.at(j).emplace(i, &this->el_ij.at(i).at(j));
     
   }
@@ -188,26 +207,51 @@ void BArray::insert_cell(uint i, uint j, Cell v, bool check_bounds, bool check_e
   
 }
 
-void BArray::insert_cell(uint i, uint j, bool check_bounds, bool check_exists) {
-  return this->insert_cell(i, j, Cell(1.0, this->visited), check_bounds, check_exists);
+inline void BArray::insert_cell(uint i, uint j, Cell v, bool check_bounds, bool check_exists) {
+  return this->insert_cell(i, j, &v, check_bounds, check_exists);
 }
 
-void BArray::insert_cell(uint i, uint j, double v, bool check_bounds, bool check_exists) {
-  return this->insert_cell(i, j, Cell(v, this->visited), check_bounds, check_exists);
+inline void BArray::insert_cell(uint i, uint j, bool check_bounds, bool check_exists) {
+  Cell * tmpcell = new Cell(1.0, this->visited);
+  this->insert_cell(i, j, tmpcell, check_bounds, check_exists);
+  delete tmpcell;
+  return;
 }
 
-void BArray::insert_cell(uint i, bool check_bounds, bool check_exists) {
+inline void BArray::insert_cell(uint i, uint j, double v, bool check_bounds, bool check_exists) {
+  Cell * tmpcell = new Cell(v, this->visited);
+  this->insert_cell(i, j, tmpcell, check_bounds, check_exists);
+  delete tmpcell;
+  return;
+}
+
+inline void BArray::insert_cell(uint i, bool check_bounds, bool check_exists) {
+  // std::cout << "inserting by single i: " << i <<" at(" << i0 <<", " << j0 << " )"  << std::endl;
+  Cell * tmpcell = new Cell(1.0, this->visited);
+  this->insert_cell(
+      (int) i % (int) this->N,
+      floor((int) i / (int) this->N),
+      tmpcell,
+      check_bounds,
+      check_exists
+  );
+  delete tmpcell;
+  return;
+}
+
+inline void BArray::insert_cell(uint i, Cell * v, bool check_bounds, bool check_exists) {
   // std::cout << "inserting by single i: " << i <<" at(" << i0 <<", " << j0 << " )"  << std::endl;
   return this->insert_cell(
       (int) i % (int) this->N,
       floor((int) i / (int) this->N),
-      Cell(1.0, this->visited),
+      v,
       check_bounds,
       check_exists
   );
 }
 
-void BArray::swap_cells(
+
+inline void BArray::swap_cells(
     uint i0, uint j0,
     uint i1, uint j1,
     bool check_bounds,
@@ -231,11 +275,16 @@ void BArray::swap_cells(
     if ((i0 == i1) && (j0 == j1)) 
       return;
     
-    Cell c0 = this->el_ij.at(i0).at(j0);
+    // Using the initializing by move, after this, the cell becomes
+    // invalid. We use pointers instead as this way we access the Heap memory,
+    // which should be faster to access.
+    Cell c0(std::move(this->el_ij.at(i0).at(j0)));
     this->rm_cell(i0, j0, false, false);
-    Cell c1 = this->el_ij.at(i1).at(j1);
+    Cell c1(std::move(this->el_ij.at(i1).at(j1)));
     this->rm_cell(i1, j1, false, false);
     
+    
+    // Inserting the cells by reference, these will be deleted afterwards
     this->insert_cell(i0, j0, c1, false, false);
     this->insert_cell(i1, j1, c0, false, false);
     
@@ -274,20 +323,20 @@ void BArray::swap_cells(
     if ((i0 == i1) && (j0 == j1)) 
       return;
     
-    Cell c0 = this->el_ij.at(i0).at(j0);
+    Cell c0(std::move(this->el_ij.at(i0).at(j0)));
     this->rm_cell(i0, j0, false, false);
-    Cell c1 = this->el_ij.at(i1).at(j1);
+    Cell c1(std::move(this->el_ij.at(i1).at(j1)));
     this->rm_cell(i1, j1, false, false);
     
-    this->insert_cell(i0, j0, c1, false, false);
-    this->insert_cell(i1, j1, c0, false, false);
+    this->insert_cell(i0, j0, &c1, false, false);
+    this->insert_cell(i1, j1, &c0, false, false);
     
   } else if (!check0 & check1) { // If only the second exists
     
     if (report != nullptr) 
       (*report) = EXISTS::TWO;
     
-    this->insert_cell(i0, j0, this->el_ij.at(i1).at(j1), false, false);
+    this->insert_cell(i0, j0, &this->el_ij.at(i1).at(j1), false, false);
     this->rm_cell(i1, j1, false, false);
     
   } else if (check0 & !check1) {
@@ -295,7 +344,7 @@ void BArray::swap_cells(
     if (report != nullptr) 
       (*report) = EXISTS::ONE;
     
-    this->insert_cell(i1, j1, this->el_ij.at(i0).at(j0), false, false);
+    this->insert_cell(i1, j1, &this->el_ij.at(i0).at(j0), false, false);
     this->rm_cell(i0, j0, false, false);
     
   }
@@ -303,7 +352,7 @@ void BArray::swap_cells(
   return;
 }
 
-void BArray::toggle_cell(uint i, uint j, bool check_bounds, int check_exists) {
+inline void BArray::toggle_cell(uint i, uint j, bool check_bounds, int check_exists) {
   
   if (check_bounds)
     out_of_range(i, j);
@@ -329,7 +378,7 @@ void BArray::toggle_cell(uint i, uint j, bool check_bounds, int check_exists) {
   
 }
 
-void BArray::swap_rows(uint i0, uint i1, bool check_bounds) {
+inline void BArray::swap_rows(uint i0, uint i1, bool check_bounds) {
   
   if (check_bounds) {
     out_of_range(i0,0u);
@@ -370,7 +419,7 @@ void BArray::swap_rows(uint i0, uint i1, bool check_bounds) {
 }
 
 // This swapping is more expensive overall
-void BArray::swap_cols(uint j0, uint j1, bool check_bounds) {
+inline void BArray::swap_cols(uint j0, uint j1, bool check_bounds) {
   
   if (check_bounds) {
     out_of_range(0u, j0);
@@ -413,7 +462,7 @@ void BArray::swap_cols(uint j0, uint j1, bool check_bounds) {
   return;
 }
 
-void BArray::zero_row(uint i, bool check_bounds) {
+inline void BArray::zero_row(uint i, bool check_bounds) {
   
   if (check_bounds)
     this->out_of_range(i, 0u);
@@ -431,7 +480,7 @@ void BArray::zero_row(uint i, bool check_bounds) {
   
 }
 
-void BArray::zero_col(uint j, bool check_bounds) {
+inline void BArray::zero_col(uint j, bool check_bounds) {
   
   if (check_bounds)
     this->out_of_range(0u, j);
@@ -449,7 +498,7 @@ void BArray::zero_col(uint j, bool check_bounds) {
   
 }
 
-void BArray::transpose() {
+inline void BArray::transpose() {
   
   // Start by flipping the switch 
   this->visited = !this->visited;
@@ -498,7 +547,7 @@ void BArray::transpose() {
   return;
 }
 
-void BArray::clear() {
+inline void BArray::clear() {
   this->el_ji.clear();
   this->el_ij.clear();
   
@@ -510,7 +559,7 @@ void BArray::clear() {
   
 }
 
-void BArray::resize(uint N_, uint M_) {
+inline void BArray::resize(uint N_, uint M_) {
   
   // Removing rows
   if (N_ < this->N)
@@ -536,14 +585,6 @@ void BArray::resize(uint N_, uint M_) {
   return;
 
 }
-
-class LArray {
-public:
-  std::vector< BArray* > data;
-  LArray() {};
-  LArray(uint n) : data(n) {};
-  ~LArray() {};
-};
 
 #endif
 
