@@ -151,40 +151,6 @@ void BArray::rm_cell(uint i, uint j, bool check_bounds, bool check_exists) {
   return;
 }
 
-/***
- * This member adds a new object to the edgelist
- */
-void BArray::insert_cell(uint i, uint j, double v, bool check_bounds, bool check_exists) {
-  
-  if (check_bounds)
-    out_of_range(i,j);
-  
-  if (check_exists) {
-    
-    // Checking if nothing here, then we move along
-    if (this->el_ij.at(i).size() == 0u) {
-      
-      this->el_ij.at(i).emplace(j, Cell(v, this->visited));
-      this->el_ji.at(j).emplace(i, &this->el_ij.at(i).at(j));
-      this->NCells++;
-      return;
-      
-    }
-    
-    // In this case, the row exists, but we are checking that the value is empty
-    if (this->el_ij.at(i).find(j) == this->el_ij.at(i).end()) {
-      this->el_ij.at(i).emplace(j, Cell(v, this->visited));
-      this->el_ji.at(j).emplace(i, &this->el_ij.at(i).at(j));
-      this->NCells++;
-    }
-    
-  } else 
-    this->el_ij.at(i).at(j).add(v);
-  
-  return;
-  
-}
-
 void BArray::insert_cell(uint i, uint j, Cell v, bool check_bounds, bool check_exists) {
   
   if (check_bounds)
@@ -223,7 +189,22 @@ void BArray::insert_cell(uint i, uint j, Cell v, bool check_bounds, bool check_e
 }
 
 void BArray::insert_cell(uint i, uint j, bool check_bounds, bool check_exists) {
-  return this->insert_cell(i, j, 1.0, check_bounds, check_exists);
+  return this->insert_cell(i, j, Cell(1.0, this->visited), check_bounds, check_exists);
+}
+
+void BArray::insert_cell(uint i, uint j, double v, bool check_bounds, bool check_exists) {
+  return this->insert_cell(i, j, Cell(v, this->visited), check_bounds, check_exists);
+}
+
+void BArray::insert_cell(uint i, bool check_bounds, bool check_exists) {
+  // std::cout << "inserting by single i: " << i <<" at(" << i0 <<", " << j0 << " )"  << std::endl;
+  return this->insert_cell(
+      (int) i % (int) this->N,
+      floor((int) i / (int) this->N),
+      Cell(1.0, this->visited),
+      check_bounds,
+      check_exists
+  );
 }
 
 void BArray::swap_cells(

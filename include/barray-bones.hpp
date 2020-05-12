@@ -61,9 +61,10 @@ public:
   // Deletion addition operations
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
-  void insert_cell(uint i, uint j, double v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, Cell v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, uint j, double v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, bool check_bounds = true, bool check_exists = true);
   
   void swap_cells(
       uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,

@@ -29,45 +29,27 @@ public:
   /***
    * Function to generate the powerset of the 
    */
-  void pset(uint i = 0u, uint j = 0u, BArray * a0 = nullptr) {
+  void pset(uint i = 0u, BArray * a0 = nullptr) {
     
     // If it is size 0, then need to recalculate the size, and initialize
     // the first datum
     if (a0 == nullptr) {
-      this->data.reserve(pow(N * M, 2.0));
-      BArray a_empty(this->N, this->M);
-      a0 = &a_empty;
+      
+      this->data.reserve(pow(2.0, this->N * this->M));
+      this->data.push_back(BArray(this->N, this->M));
+      a0 = &this->data.at(0u);
+      
     }
     
-    
-    
     // Here is the deal
-    this->data.push_back(*a0);
     this->data.push_back(*a0); // Making it one
-    this->counter += 2;
-    std::cout << "Coords ("<< i << ", " << j << "), current size: " << data.size() << std::endl;
-    std::cout << "Size of [0] (" << this->data.at(0).N << ", " <<  this->data.at(0).M << ")" << std::endl;
-    std::cout << "Size of [1] (" << this->data.at(1).N << ", " <<  this->data.at(1).M << ")" << std::endl;
-    
-    this->data.at(counter - 1).toggle_cell(i, j);
-    
-    a0          = &this->data.at(this->counter - 2);
-    BArray * a1 = &this->data.at(this->counter - 1);
-    
-    std::cout << "Entering the recursion" << std::endl;
+    this->data.at(++this->counter).insert_cell(i, false, false);
     
     // If the sum is even, we increase i, otherwise j
-    if ((i + 1) < this->N)
-      pset(i + 1, j, a1);
-    
-    if ((j + 1) < this->M)
-      pset(i, j + 1, a1);
-    
-    if ((i + 1) < this->N)
-      pset(i + 1, j, a0);
-    
-    if ((j + 1) < this->M)
-      pset(i, j + 1, a0);
+    if ((i + 1) < (this->N * this->M)) {
+      pset(i + 1u, &this->data.at(this->counter));
+      pset(i + 1u, a0);
+    }
     
     return;
     

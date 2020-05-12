@@ -129,7 +129,7 @@ int psets(int n, int m) {
   xptr->pset();
   
   // Looking at the elements
-  std::cout << "Number of elements " << xptr->data.size() << std::endl;
+  // std::cout << "Number of elements " << xptr->data.size() << std::endl;
   
   // Returning the data
   // xptr->data.at(0).
@@ -276,5 +276,5 @@ as(sapply(1:M - 1, get_col, x = el4), "dgCMatrix")
 
 resize(el4, 10, 5)
 as(sapply(1:M - 1, get_col, x = el4), "dgCMatrix")
-psets(2, 2)
+psets(2,3)
 */
