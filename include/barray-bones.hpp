@@ -1,50 +1,11 @@
 #include <vector>
 #include <unordered_map>
 #include "typedefs.hpp"
+#include "cell-bones.hpp"
 
 #ifndef BARRAY_BONES_HPP 
 #define BARRAY_BONES_HPP 1
 
-/* A cell is a fundamental type that holds information about a cell
- * for now, it only has two members:
- * - value: the content
- * - visited: boolean (just a convenient)
- */
-class Cell {
-public:
-  double value;
-  bool visited;
-  Cell() : value(1.0), visited(false) {};
-  Cell(double value_) : value(value_), visited(false) {};
-  Cell(double value_, bool visited_) : value(value_), visited(visited_) {};
-  ~Cell() {};
-  
-  // Copy by-reference constructor
-  Cell(Cell& arg) : value(arg.value), visited(arg.visited) {};
-  
-  // This is an explicit declaration since in other cases it seems
-  // to try to use the move operator, which I do not intent to use.
-  Cell(const Cell& arg) = delete;//: value(arg.value), visited(arg.visited) {};
-  
-  // Copy by assignment
-  Cell& operator=(Cell& other) {
-    this->value = other.value;
-    this->visited = other.visited;
-    return *this;
-  };
-  
-  // Move constructor
-  Cell(Cell&& arg): value(std::move(arg.value)), visited(std::move(arg.visited)) {} ;
-  
-  // Move assign operator
-  Cell& operator=(Cell&& other) {
-    this->value = other.value;
-    this->visited = other.visited;
-    return *this;
-  };
-  
-  void add(double x) {this->value+=x;};
-};
 
 class BArray {
 public:
@@ -95,12 +56,15 @@ public:
   // Deletion addition operations
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
-  void insert_cell(uint i, uint j, Cell * v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, uint j, Cell v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, uint j, std::pair< double, bool> v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, uint j, Cell & v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, double v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
+  
+  void insert_cell(uint i, std::pair< double, bool> v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, Cell & v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, double v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, Cell * v, bool check_bounds = true, bool check_exists = true);
   
   void swap_cells(
       uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,

@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include "include/barray.hpp"
+#include "../include/barray.hpp"
 using namespace Rcpp;
 
 // [[Rcpp::export]]
@@ -19,13 +19,6 @@ SEXP new_Array(
   
 }
 
-// [[Rcpp::export]]
-double get_cell(SEXP x, int i, int j) {
-  Rcpp::XPtr< barray::BArray > xptr(x);
-  return xptr->get_cell(i, j);
-}
-
-// Returning the i-th row
 // [[Rcpp::export]]
 NumericVector get_row(SEXP x, int i) {
   
@@ -116,80 +109,6 @@ int toggle(SEXP x, int i, int j) {
   
   return 0;
 }
-
-// [[Rcpp::export]]
-List get_entries(const SEXP & x) {
-  
-  Rcpp::XPtr< barray::BArray > xptr(x);
-  barray::Entries res = xptr->get_entries();
-  
-  return List::create(
-    _["source"] = res.source,
-    _["target"] = res.target,
-    _["val"] = res.val
-  );
-  
-}
-
-// [[Rcpp::export]]
-List psets(int n, int m) { 
-  
-  Rcpp::XPtr< barray::LBArray > xptr(
-    new barray::LBArray((uint) n, (uint) m),
-    true
-  );
-  
-  // Generating the powerset
-  xptr->pset();
-  
-  // Generating the data
-  List ans(xptr->data.size());
-  uint counter = 0u;
-  for (auto iter = xptr->data.begin(); iter != xptr->data.end(); ++iter) {
-    
-    barray::Entries set = iter->get_entries();
-    
-    ans[counter++] = List::create(
-      _["source"] = set.source,
-      _["target"] = set.target,
-      _["val"] = set.val
-    );
-    
-  }
-    
-  
-  return ans;
-  
-}
-
-// [[Rcpp::export]]
-List suff_stats(const NumericMatrix & x) {
-  
-  Rcpp::XPtr< barray::SuffStats > xptr(
-    new barray::SuffStats(),
-    true
-  );
-  
-  // Counting the stats
-  for (barray::uint i = 0u; i < x.nrow(); ++i) {
-    std::vector< double > r(x.row(i).begin(), x.row(i).end());
-    xptr->add(r);
-  }
-  
-  // Now, getting the data
-  barray::vec_pair_dbl_uint ans = xptr->get_entries();
-  
-  List res(ans.size());
-  for (unsigned int i = 0u; i < res.size(); ++i) {
-    res[i] = List::create(
-      _["x"] = ans.at(i).first,
-      _["count"] = ans.at(i).second
-    );
-  }
-  
-  return res;
-}
-
 /***R
 
 set.seed(123)
@@ -327,44 +246,6 @@ as(sapply(1:M - 1, get_col, x = el4), "dgCMatrix")
 
 resize(el4, 10, 5)
 as(sapply(1:M - 1, get_col, x = el4), "dgCMatrix")
-PS_2_3 <- psets(2,3)
-
-PS_2_3 <- lapply(PS_2_3, function(p.) {
-  ans <- matrix(0, nrow = 2, ncol = 3)
-  ans[cbind(p.$source, p.$target) + 1] <- p.$val
-  ans
-})
-
-# table(table(sapply(PS_2_3, paste, collapse = "")))
-# 
-# system.time({
-#   PS_2_3 <- psets(5,4)
-# })
-# system.time({
-#   tmp <- matrix(0, nrow = 5, ncol = 4)
-#   PS_2_3 <- lapply(PS_2_3, function(p.) {
-#     tmp[cbind(p.$source, p.$target) + 1] <- p.$val
-#     tmp
-#   })
-#   
-# })
-# 
-# system.time(PS_2_3e <- ergmito::powerset(5))
-
-# Example with sufficient statistics
-set.seed(123)
-x <- seq(0, 10, length.out = 20)
-x <- matrix(sample(x, 50000*3, TRUE), ncol = 3)
-
-microbenchmark::microbenchmark(
-  ans0 <- suff_stats(x),
-  ans1 <- table(x[,1], x[,2], x[,3])
-)
-
-ans0 <- suff_stats(x)
-ans1 <- t(sapply(ans0, function(a) c(a[[1]], a[[2]])))
-maxcount <- ans1[order(-ans1[,4]),][1,]
-
 
 */
 

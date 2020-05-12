@@ -3,6 +3,9 @@
 #ifndef BARRAY_TYPEDEFS_HPP
 #define BARRAY_TYPEDEFS_HPP 
 
+#define ROW(a) this->el_ij.at(a)
+#define COL(a) this->el_ji.at(a)
+
 // Constants
 namespace CHECK {
   const int BOTH = -1;
