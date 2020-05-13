@@ -3,6 +3,7 @@
 #ifndef BARRAY_TYPEDEFS_HPP
 #define BARRAY_TYPEDEFS_HPP 
 
+// Mostly relevant for the BArray definition -----------------------------------
 #define ROW(a) this->el_ij.at(a)
 #define COL(a) this->el_ji.at(a)
 
@@ -32,8 +33,8 @@ namespace EXISTS {
 // Edgelist
 typedef unsigned int uint;
 class Cell;
-typedef std::unordered_map< uint, Cell > umap_int_cell;
-typedef std::unordered_map< uint, Cell* > umap_int_cell_ptr;
+typedef std::unordered_map< uint, Cell > Row_type;
+typedef std::unordered_map< uint, Cell* > Col_type;
 
 class Entries {
 public:
@@ -59,5 +60,13 @@ public:
   }
   
 };
+
+// Mostly relevant in the case of the stats count functions -------------------
+class BArray;
+#define A_ROW(a) Array->el_ij.at(a)
+#define A_COL(a) Array->el_ji.at(a)
+
+typedef std::function<double(const BArray *, uint, uint)> Counter_type;
+
 
 #endif

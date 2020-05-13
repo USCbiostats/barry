@@ -12,8 +12,8 @@ public:
   uint N;
   uint M;
   uint NCells = 0u;
-  std::vector< umap_int_cell >  el_ij;
-  std::vector< umap_int_cell_ptr > el_ji;
+  std::vector< Row_type >  el_ij;
+  std::vector< Col_type > el_ji;
   
   // This is as a reference, if we need to iterate through the cells and we need
   // to keep track which were visited, we use this as a reference. So that if
@@ -44,9 +44,9 @@ public:
   // Function to access the elements
   // bool check_cell
   void out_of_range(uint i, uint j) const;
-  double get_cell(uint i, uint j, bool check_bounds = true) const;
-  const umap_int_cell * get_row(uint i, bool check_bounds = true) const;
-  const umap_int_cell_ptr * get_col(uint i, bool check_bounds = true) const;
+  double get_cell(uint i, uint j, bool check_bounds = true) const; 
+  const Row_type * get_row(uint i, bool check_bounds = true) const;
+  const Col_type * get_col(uint i, bool check_bounds = true) const;
   Entries get_entries() const;
   
   

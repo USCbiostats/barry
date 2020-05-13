@@ -54,12 +54,13 @@ SEXP counter(
   barray::SuffStats stats;
 
   
-  // Creating the counter object;
+  // Creating the counter object; 
   barray::StatsCounter dat(&Array, &stats);
   
   // Adding functions
-  dat.add_fun(barray::counter_edges);
-  dat.add_fun(barray::counter_mutual);
+  dat.add_counter(barray::counters::edges);
+  dat.add_counter(barray::counters::mutual);
+  dat.add_counter(barray::counters::isolates);
   
   // Fingers crossed
   dat.count_all();
@@ -110,6 +111,12 @@ source <- sample.int(N, nedges, replace = TRUE)
 target <- sample.int(M, nedges, replace = TRUE)
 values <- runif(nedges)
 
+# Removing diagonal
+idx <- which(source != target)
+source <- source[idx]
+target <- target[idx]
+values <- values[idx]
+
 # Adding a few mutual
 source <- c(source, target[1:20])
 target <- c(target, source[1:20])
@@ -121,10 +128,11 @@ el <- counter(N, M, source - 1L, target - 1L, values)
 mat <- matrix(0, nrow = N, ncol = M)
 mat[cbind(source, target)] <- 1L
 microbenchmark::microbenchmark(
-  ergmito::count_stats(mat ~ edges + mutual),
-  ergm::summary_formula(mat ~ edges + mutual),
+  # ergmito::count_stats(mat ~ edges + mutual),
+  ergm::summary_formula(mat ~ edges + mutual + isolates),
   counter(N, M, source - 1L, target - 1L, values)
 )
+
 
 */
 

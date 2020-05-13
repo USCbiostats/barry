@@ -31,7 +31,7 @@ NumericVector get_row(SEXP x, int i) {
   
   Rcpp::XPtr< barray::BArray > xptr(x);
   NumericVector ans(xptr->M, 0);
-  const barray::umap_int_cell * m = xptr->get_row(i);
+  const barray::Row_type * m = xptr->get_row(i);
   
   for (auto row = m->begin(); row != m->end(); ++row)
     ans[row->first] = row->second.value;
@@ -45,7 +45,7 @@ NumericVector get_col(SEXP x, int i) {
   
   Rcpp::XPtr< barray::BArray > xptr(x);
   NumericVector ans(xptr->N, 0);
-  const barray::umap_int_cell_ptr * m = xptr->get_col(i);
+  const barray::Col_type * m = xptr->get_col(i);
   
   for (auto row = m->begin(); row != m->end(); ++row)
     ans[row->first] = row->second->value;

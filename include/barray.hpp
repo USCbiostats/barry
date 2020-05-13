@@ -12,6 +12,7 @@ namespace barray {
 #include "barray-bones.hpp"
 #include "barray-meat.hpp"
 
+#include "barray-counters.hpp"
 #include "lbarray-bones.hpp"
 
 }
