@@ -81,6 +81,7 @@ typedef std::vector< std::pair< std::vector<double>, uint > > vec_pair_dbl_uint;
 
 class SuffStats {
 public:
+  uint ncols;
   std::unordered_map< std::vector< double >, uint, vecHasher< double > > stats;
   SuffStats() {};
   ~SuffStats() {};
@@ -111,5 +112,119 @@ public:
   
   
 };
+
+typedef std::function<double(const BArray *, uint, uint)> f_array_uint_uint;
+ 
+
+/***
+ * ! Users can a list of functions that can be used with this.
+ * ! The baseline set of arguments is a pointer to a binary array.
+ */ 
+class StatsCounter {
+public:
+  
+  // Should receive an array
+  const BArray * Array;
+  BArray EmptyArray;
+  std::vector< double > current_stats;
+  std::vector< double > change_stats;
+  
+  // We will save the data here
+  SuffStats * stats;
+  
+  std::vector< f_array_uint_uint > f;
+  StatsCounter(const BArray * data, SuffStats * stats_) :
+    f(0u), Array(data), EmptyArray(data->N, data->M), stats(stats_) {}
+  
+  void add_fun(f_array_uint_uint f_) {
+    f.push_back(f_);
+    return;
+  }
+  
+  /***
+   * ! This function recurses through the entries of Array and at each step of
+   * ! adding a new cell it uses the functions to list the statistics.
+   */
+  void count_current(uint i, uint j);
+  void count_all();
+  
+};
+
+inline void StatsCounter::count_current(uint i, uint j) {
+  
+  // Iterating through the functions, and updating the set of
+  // statistics.
+  for (uint n = 0u; n < f.size(); ++n) {
+    this->change_stats.at(n) = (f.at(n))(this->Array, i, j);
+    this->current_stats.at(n) += this->change_stats.at(n);
+  }
+
+  return;
+  
+}
+
+inline void StatsCounter::count_all() {
+  
+  // Initializing the counter on the empty array
+  this->current_stats.resize(this->f.size(), 0.0);
+  this->change_stats.resize(this->f.size());
+  
+  // Setting it to zero.
+  this->EmptyArray.clear();
+  
+  // Start iterating through the data
+  uint N = this->Array->N;
+  uint M = this->Array->M;
+  for (uint i = 0; i < N; ++i) {
+    
+    // Any element?
+    if (Array->el_ij.at(i).size() == 0u)
+      continue;
+    
+    // If there's one, then update the statistic, by iterating
+    for (auto iter = Array->el_ij.at(i).begin(); iter != Array->el_ij.at(i).end(); ++iter) {
+      
+      // Adding a cell
+      EmptyArray.insert_cell(i, iter->first);
+      
+      // Computing the change statistics
+      this->count_current(i, iter->first);
+     
+    }
+    
+  }
+  
+  // Adding to the sufficient statistics
+  this->stats->add(this->current_stats);
+  return;
+  
+}
+
+/***
+ * Some example functions
+ */
+
+// Always adding, so this is trivially equal to +1
+double counter_edges(const BArray * Array, uint i, uint j) {
+  return 1.0;
+}
+
+double counter_mutual(const BArray * Array, uint i, uint j) {
+  
+  // We only count one direction
+  if (i > j)
+    return 0.0;
+  
+  // Is there any tie at ji? If not, then we have a new mutual!
+  // but this only makes sence if the jth row and ith column exists
+  if ((Array->N > j) && (Array->M > i) && !Array->is_empty(j, i)) {
+    // std::cout << "Yep, Isee\n";
+    return 1.0;
+  }
+  
+  return 0.0;
+  
+}
+
 
 #endif
