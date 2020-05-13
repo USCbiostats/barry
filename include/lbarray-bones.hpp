@@ -158,7 +158,7 @@ inline void StatsCounter::count_init(uint i, uint j) {
   current_stats.resize(counters.size(), 0.0);
   change_stats.resize(counters.size(), 0.0);
   for (uint n = 0u; n < counters.size(); ++n) 
-    current_stats.at(n) = counters.at(n).init(Array, i, j);
+    current_stats.at(n) = counters.at(n).init(&EmptyArray, i, j);
   
   return;
 }
@@ -168,7 +168,7 @@ inline void StatsCounter::count_current(uint i, uint j) {
   // Iterating through the functions, and updating the set of
   // statistics.
   for (uint n = 0u; n < counters.size(); ++n) {
-    change_stats.at(n)   = counters.at(n).count(Array, i, j);
+    change_stats.at(n)   = counters.at(n).count(&EmptyArray, i, j);
     current_stats.at(n) += change_stats.at(n);
   }
 

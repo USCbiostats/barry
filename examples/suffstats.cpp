@@ -61,6 +61,9 @@ SEXP counter(
   dat.add_counter(barray::counters::edges);
   dat.add_counter(barray::counters::mutual);
   dat.add_counter(barray::counters::isolates);
+  dat.add_counter(barray::counters::istar2);
+  dat.add_counter(barray::counters::ostar2);
+  dat.add_counter(barray::counters::ttriads);
   
   // Fingers crossed
   dat.count_all();
@@ -129,10 +132,14 @@ mat <- matrix(0, nrow = N, ncol = M)
 mat[cbind(source, target)] <- 1L
 microbenchmark::microbenchmark(
   # ergmito::count_stats(mat ~ edges + mutual),
-  ergm::summary_formula(mat ~ edges + mutual + isolates),
-  counter(N, M, source - 1L, target - 1L, values)
+  ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad),
+  counter(N, M, source - 1L, target - 1L, values),
+  unit = "relative"
 )
 
+ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad)
+ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad)
+counter(N, M, source - 1L, target - 1L, values)
 
 */
 
