@@ -139,10 +139,10 @@ nrow(ans1)
 
 # Example with functions
 set.seed(123)
-N <- 5
+N <- 500
 M <- N
 
-nedges  <- 5
+nedges  <- N
 source <- sample.int(N, nedges, replace = TRUE)
 target <- sample.int(M, nedges, replace = TRUE)
 values <- runif(nedges)
@@ -165,7 +165,7 @@ mat <- matrix(0, nrow = N, ncol = M)
 mat[cbind(source, target)] <- 1L
 microbenchmark::microbenchmark(
   # ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad),
-  ergm::summary_formula(mat ~ edges + mutual + istar(2) + ostar(2)),
+  ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2)),
   counter(N, M, source - 1L, target - 1L, values),
   unit = "relative"
 )
@@ -176,7 +176,7 @@ counter(N, M, source - 1L, target - 1L, values)
 
 # stop()
 set.seed(123)
-N <- 6
+N <- 5
 M <- N
 
 nedges  <- 1
@@ -199,7 +199,7 @@ ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
 microbenchmark::microbenchmark(
   barray = support(N, M),
   ergm   = ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2), zeroobs = FALSE),
-  times = 1,
+  times = 10,
   unit = "relative"
 )
 
