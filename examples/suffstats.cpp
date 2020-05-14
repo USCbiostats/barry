@@ -42,7 +42,7 @@ List get_suff_stats(SEXP x) {
 
 // A more elaborated example
 // [[Rcpp::export]]
-SEXP counter(
+List counter(
     int N, int M,
     const std::vector< uint > & source,
     const std::vector< uint > & target,
@@ -63,7 +63,7 @@ SEXP counter(
   dat.add_counter(barray::counters::isolates);
   dat.add_counter(barray::counters::istar2);
   dat.add_counter(barray::counters::ostar2);
-  dat.add_counter(barray::counters::ttriads);
+  // dat.add_counter(barray::counters::ttriads);
   
   // Fingers crossed
   dat.count_all();
@@ -75,13 +75,46 @@ SEXP counter(
     res[i] = List::create(
       _["x"] = ans.at(i).first,
       _["count"] = ans.at(i).second
-    );
+    ); 
   }
   
   return res;
   
 }
 
+// To get the support
+// [[Rcpp::export]] 
+List support (
+    int N, int M
+) {
+  
+  // Initializing the Binary array, and also the the suffstats counter
+  barray::Support dat(N, M);
+  
+  // Adding functions
+  dat.add_counter(barray::counters::edges);
+  dat.add_counter(barray::counters::mutual);
+  dat.add_counter(barray::counters::isolates);
+  dat.add_counter(barray::counters::istar2);
+  dat.add_counter(barray::counters::ostar2);
+  // dat.add_counter(barray::counters::ttriads);
+  
+  // Generating the data
+  dat.calc();
+  
+  // Generating the entries
+  barray::vec_pair_dbl_uint ans = dat.support.get_entries();
+  
+  List res(ans.size());
+  for (unsigned int i = 0u; i < res.size(); ++i) {
+    res[i] = List::create(
+      _["x"] = ans.at(i).first,
+      _["count"] = ans.at(i).second
+    );
+  }
+  
+  return res;
+}
 
 
 /***R
@@ -106,10 +139,10 @@ nrow(ans1)
 
 # Example with functions
 set.seed(123)
-N <- 100
+N <- 5
 M <- N
 
-nedges  <- 1000
+nedges  <- 5
 source <- sample.int(N, nedges, replace = TRUE)
 target <- sample.int(M, nedges, replace = TRUE)
 values <- runif(nedges)
@@ -121,9 +154,9 @@ target <- target[idx]
 values <- values[idx]
 
 # Adding a few mutual
-source <- c(source, target[1:20])
-target <- c(target, source[1:20])
-values <- c(values, 1:20)
+# source <- c(source, target[1:20])
+# target <- c(target, source[1:20])
+# values <- c(values, 1:20)
 
 el <- counter(N, M, source - 1L, target - 1L, values)
 
@@ -131,16 +164,94 @@ el <- counter(N, M, source - 1L, target - 1L, values)
 mat <- matrix(0, nrow = N, ncol = M)
 mat[cbind(source, target)] <- 1L
 microbenchmark::microbenchmark(
-  # ergmito::count_stats(mat ~ edges + mutual),
-  ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad),
+  # ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad),
+  ergm::summary_formula(mat ~ edges + mutual + istar(2) + ostar(2)),
   counter(N, M, source - 1L, target - 1L, values),
   unit = "relative"
 )
 
-ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad)
-ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad)
+ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2))
+ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2)
 counter(N, M, source - 1L, target - 1L, values)
 
+# stop()
+set.seed(123)
+N <- 6
+M <- N
+
+nedges  <- 1
+source <- sample.int(N, nedges, replace = TRUE)
+target <- sample.int(M, nedges, replace = TRUE)
+values <- runif(nedges)
+
+# Removing diagonal
+idx <- which(source != target)
+source <- source[idx]
+target <- target[idx]
+values <- values[idx]
+
+mat <- matrix(0, nrow = N, ncol = M)
+mat[cbind(source, target)] <- 1L
+
+ans0 <- support(N, M)
+ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
+
+microbenchmark::microbenchmark(
+  barray = support(N, M),
+  ergm   = ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2), zeroobs = FALSE),
+  times = 1,
+  unit = "relative"
+)
+
+ans1 <- ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2), zeroobs = FALSE)
+ans1 <- cbind(ans1$statmat, w = ans1$weights)
+
+# Sorting equally
+sort_all <- function(x) {
+  x[do.call(order, lapply(1:ncol(x), function(i) x[, i])),,drop=FALSE]
+  
+}
+ans1 <- sort_all(ans1)
+ans0 <- sort_all(ans0)
+colnames(ans0) <- colnames(ans1)
+range(ans1 - ans0)
+
+ans0
+ans1
+
+nrow(ans0)
+nrow(ans1)
+
+# Are these equal
+ans1 <- 
+
+apply(ans0, 2, range)
+apply(ans1$statmat, 2, range)
+
+sum(ans0[,ncol(ans0)])
+sum(ans1$weights)
+
+# Which combs are not included
+c0 <- apply(ans0[,-ncol(ans0)],1,paste, collapse = "")
+c1 <- apply(ans1$statmat,1,paste, collapse = "")
+
+ps <- ergmito::powerset(3)
+ps <- lapply(ps, function(ps.) {
+  d <- which(ps. != 0, arr.ind = TRUE) - 1
+  counter(3,3, d[,1], d[,2], integer(nrow(d)))[[1]]
+})
+ps <- t(sapply(ps, function(ps.) c(ps.$x, ps.$count)))
+unique(ps[,-ncol(ps)])
+
+colnames(ps) <- c(
+  "edges",
+  "mutual",
+  "isolates",
+  "istar2",
+  "ostar2",
+  "count"
+)
+ps
 */
 
 

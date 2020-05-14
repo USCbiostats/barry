@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include "typedefs.hpp"
 #include "barray-bones.hpp"
-#include "barray-counters.hpp"
+#include "counters-bones.hpp"
 
 #ifndef LBARRAY_BONES_HPP 
 #define LBARRAY_BONES_HPP 1
@@ -130,8 +130,9 @@ public:
    
   // We will save the data here
   SuffStats * stats;
-  
   std::vector< Counter > counters;
+  
+  // Functions
   StatsCounter(const BArray * data, SuffStats * stats_) :
     counters(0u), Array(data), EmptyArray(data->N, data->M), stats(stats_) {}
   
@@ -210,6 +211,102 @@ inline void StatsCounter::count_all() {
   stats->add(current_stats);
   return;
   
+}
+
+/***
+ * ! Compute the support of a model by iterating through all
+ * ! possible combinations, as we would do in a powerset.
+ */
+
+typedef std::vector< double > DoubleVec_type;
+class Support {
+public:
+  
+  const BArray * Array;
+  BArray EmptyArray;
+  SuffStats support;
+  std::vector< Counter > counters;
+  DoubleVec_type current_stats;
+  
+  uint N, M;
+  bool initialized = false;
+  
+  Support(const BArray * Array_) : Array(Array_), EmptyArray(Array_->N, Array_->M),
+    N(Array_->N), M(Array_->M) {};
+  Support(uint N_, uint M_) : EmptyArray(N_, M_) ,N(N_), M(M_) {};
+  ~Support() {};
+
+  void add_counter(Counter f_);  
+  
+  void calc(uint pos = 0u) {
+    
+
+    // Getting the location 
+    uint i = (int) pos % (int) N;
+    uint j = floor((int) pos / (int) N);
+    
+    // No self ties, go to the next step and return.
+    if (i == j)
+      return calc(pos + 1u);
+    
+    // If reached the end, also return
+    if ((i >= N) || (j >= M))
+      return;
+    
+    // Initializing
+    if (!initialized) {
+      
+      // Initializing
+      initialized = true;
+      EmptyArray.clear();
+      current_stats.resize(counters.size());
+      
+      for (uint n = 0u; n < counters.size(); ++n) 
+        current_stats.at(n) = counters.at(n).init(&EmptyArray, i, j);
+      
+      // Adding to the overall count
+      support.add(current_stats);
+      
+    }
+
+    // We will pass it to the next step, if the iteration makes sense.
+    calc(pos + 1u);
+    
+    // Once we have returned, everything will be back as it used to be, so we
+    // treat the data as if nothing has changed.
+    
+    // Toggle the cell (we will toggle it back after calling the counter)
+    EmptyArray.insert_cell(i, j, std::pair<double, bool>{1.0, EmptyArray.visited}, false, false);
+    
+    // Counting
+    DoubleVec_type change_stats(counters.size());
+    for (uint n = 0u; n < counters.size(); ++n) {
+      change_stats.at(n) = counters.at(n).count(&EmptyArray, i, j);
+      current_stats.at(n) += change_stats.at(n);
+    }
+    
+    // Adding to the overall count
+    support.add(current_stats);
+    
+    // Again, we only pass it to the next level iff the next level is not
+    // passed the last step.
+    calc(pos + 1);
+
+    // We need to restore the state of the cell
+    EmptyArray.rm_cell(i, j, false, false);
+    for (uint n = 0u; n < counters.size(); ++n) 
+      current_stats.at(n) -= change_stats.at(n);
+    
+    
+    return;
+    
+  }
+  
+};
+
+inline void Support::add_counter(Counter f_) {
+  counters.push_back(f_);
+  return;
 }
 
 /***

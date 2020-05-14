@@ -6,7 +6,6 @@
 #ifndef BARRAY_BONES_HPP 
 #define BARRAY_BONES_HPP 1
 
-
 class BArray {
 public:
   uint N;

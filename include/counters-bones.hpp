@@ -48,6 +48,9 @@ namespace counters {
   // Isolates counter
   inline double count_isolates(const BArray * Array, uint i, uint j) {
     
+    if (i == j)
+      return 0.0;
+    
     double res = 0.0;
     
     // i is sending its first tie
@@ -74,10 +77,16 @@ namespace counters {
 
     // Is there any tie at ji? If not, then we have a new mutual!
     // but this only makes sence if the jth row and ith column exists
-    if ((Array->N > j) && (Array->M > i)) 
-      if (!Array->is_empty(j, i, true)) {
-          return 1.0;
-      }
+    // if ((Array->N > j) && (Array->M > i)) 
+    if (i == j)
+      return 0.0;
+    
+    // printf("Checking if it is empty or not at (%i, %i)... ", i, j);
+    if (!Array->is_empty(j, i, false)) {
+      // printf("Yes, mutual.\n");
+        return 1.0;
+    }
+    // printf("No, no mutual.\n");
     
     return 0.0;
     
