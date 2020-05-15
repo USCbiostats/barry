@@ -3,15 +3,15 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-SEXP new_Array(
+SEXP new_Array( 
     int N, int M,
     const std::vector< uint > & source,
     const std::vector< uint > & target,
     const std::vector< double > & value
 ) {
   
-  Rcpp::XPtr< barray::BArray > ptr(
-    new barray::BArray((uint) N, (uint) M, source, target, value),
+  Rcpp::XPtr< barray::BArray<double> > ptr(
+    new barray::BArray<double>((uint) N, (uint) M, source, target, value),
     true
   );
   
@@ -21,7 +21,7 @@ SEXP new_Array(
 
 // [[Rcpp::export]]
 double get_cell(SEXP x, int i, int j) {
-  Rcpp::XPtr< barray::BArray > xptr(x);
+  Rcpp::XPtr< barray::BArray<double> > xptr(x);
   return xptr->get_cell(i, j);
 }
 
@@ -29,9 +29,9 @@ double get_cell(SEXP x, int i, int j) {
 // [[Rcpp::export]]
 NumericVector get_row(SEXP x, int i) {
   
-  Rcpp::XPtr< barray::BArray > xptr(x);
+  Rcpp::XPtr< barray::BArray<double> > xptr(x);
   NumericVector ans(xptr->M, 0);
-  const barray::Row_type * m = xptr->get_row(i);
+  const barray::Row_type<double> * m = xptr->get_row(i);
   
   for (auto row = m->begin(); row != m->end(); ++row)
     ans[row->first] = row->second.value;
@@ -43,12 +43,13 @@ NumericVector get_row(SEXP x, int i) {
 // [[Rcpp::export]]
 NumericVector get_col(SEXP x, int i) {
   
-  Rcpp::XPtr< barray::BArray > xptr(x);
+  Rcpp::XPtr< barray::BArray<double> > xptr(x);
   NumericVector ans(xptr->N, 0);
-  const barray::Col_type * m = xptr->get_col(i);
+  const barray::Col_type< double > * m = xptr->get_col(i);
   
-  for (auto row = m->begin(); row != m->end(); ++row)
-    ans[row->first] = row->second->value;
+  for (auto row = m->begin(); row != m->end(); ++row) {
+    ans[row->first] = row->second->value; 
+  }
   
   return ans;
   
@@ -57,13 +58,13 @@ NumericVector get_col(SEXP x, int i) {
 // [[Rcpp::export]]
 List get_entries(const SEXP & x) {
   
-  Rcpp::XPtr< barray::BArray > xptr(x);
-  barray::Entries res = xptr->get_entries();
+  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  barray::Entries<double> res = xptr->get_entries();
   
   return List::create(
     _["source"] = res.source,
-    _["target"] = res.target,
-    _["val"] = res.val
+    _["target"] = res.target, 
+    _["val"]    = res.val
   );
   
 }

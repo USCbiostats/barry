@@ -5,13 +5,13 @@ using namespace Rcpp;
 
 // [[Rcpp::export]]
 List psets(int n, int m) { 
-  
-  Rcpp::XPtr< barray::LBArray > xptr(
-    new barray::LBArray((uint) n, (uint) m),
+    
+  Rcpp::XPtr< barray::LBArray< bool >> xptr(
+    new barray::LBArray< bool >((uint) n, (uint) m),
     true
   );
   
-  // Generating the powerset
+  // Generating the powerset 
   xptr->pset();
   
   // Generating the data
@@ -19,7 +19,7 @@ List psets(int n, int m) {
   uint counter = 0u;
   for (auto iter = xptr->data.begin(); iter != xptr->data.end(); ++iter) {
     
-    barray::Entries set = iter->get_entries();
+    barray::Entries<bool> set = iter->get_entries();
     
     ans[counter++] = List::create(
       _["source"] = set.source,
@@ -35,16 +35,18 @@ List psets(int n, int m) {
 }
 
 /***R
-PS_2_3 <- psets(2,3)
+N <- 4
+M <- 5
+PS_2_3 <- psets(N,M)
 
 PS_2_3 <- lapply(PS_2_3, function(p.) {
-  ans <- matrix(0, nrow = 2, ncol = 3)
+  ans <- matrix(0, nrow = N, ncol = M)
   ans[cbind(p.$source, p.$target) + 1] <- p.$val
   ans
 })
 
 table(sapply(PS_2_3, paste, collapse = ""))
-table(table(sapply(PS_2_3, paste, collapse = ""))) == 2 ^ 6
+table(table(sapply(PS_2_3, paste, collapse = ""))) == 2 ^ (N*M)
 
 */
 

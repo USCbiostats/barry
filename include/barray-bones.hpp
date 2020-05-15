@@ -6,13 +6,13 @@
 #ifndef BARRAY_BONES_HPP 
 #define BARRAY_BONES_HPP 1
 
-class BArray {
+template <typename Cell_Type> class BArray {
 public:
   uint N;
   uint M;
   uint NCells = 0u;
-  std::vector< Row_type >  el_ij;
-  std::vector< Col_type > el_ji;
+  std::vector< Row_type< Cell_Type > > el_ij;
+  std::vector< Col_type< Cell_Type > > el_ji;
   
   // This is as a reference, if we need to iterate through the cells and we need
   // to keep track which were visited, we use this as a reference. So that if
@@ -36,17 +36,25 @@ public:
       uint N_, uint M_,
       const std::vector< uint > & source,
       const std::vector< uint > & target,
-      const std::vector< double > & value,
+      const std::vector< Cell_Type > & value,
       bool add = true
+  );
+   
+  // Edgelist with no data (simpler)
+  BArray (
+    uint N_, uint M_,
+    const std::vector< uint > & source,
+    const std::vector< uint > & target,
+    bool add = true
   );
   
   // Function to access the elements
   // bool check_cell
   void out_of_range(uint i, uint j) const;
-  double get_cell(uint i, uint j, bool check_bounds = true) const; 
-  const Row_type * get_row(uint i, bool check_bounds = true) const;
-  const Col_type * get_col(uint i, bool check_bounds = true) const;
-  Entries get_entries() const;
+  Cell_Type get_cell(uint i, uint j, bool check_bounds = true) const; 
+  const Row_type< Cell_Type > * get_row(uint i, bool check_bounds = true) const;
+  const Col_type< Cell_Type > * get_col(uint i, bool check_bounds = true) const;
+  Entries<Cell_Type> get_entries() const;
   
   
   // Queries
@@ -55,14 +63,14 @@ public:
   // Deletion addition operations
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
-  void insert_cell(uint i, uint j, std::pair< double, bool> v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, uint j, Cell & v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, uint j, double v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, uint j, std::pair< Cell_Type, bool> v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, uint j, Cell< Cell_Type > & v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
-  void insert_cell(uint i, std::pair< double, bool> v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, Cell & v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, double v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, std::pair< Cell_Type, bool> v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, Cell< Cell_Type > & v, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, Cell_Type v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, bool check_bounds = true, bool check_exists = true);
   
   void swap_cells(

@@ -12,10 +12,11 @@
  * - value: the content
  * - visited: boolean (just a convenient)
  */
+template <typename Cell_Type > 
 class LBArray {
   
 public:
-  std::vector< BArray > data;
+  std::vector< BArray<Cell_Type> > data;
   uint size, N, M;
   uint counter;
   
@@ -29,21 +30,21 @@ public:
   /***
    * Function to generate the powerset of the 
    */
-  void pset(uint i = 0u, BArray * a0 = nullptr) {
+  void pset(uint i = 0u, BArray<Cell_Type> * a0 = nullptr) {
     
     // If it is size 0, then need to recalculate the size, and initialize
     // the first datum
     if (a0 == nullptr) {
       
       this->data.reserve(pow(2.0, this->N * this->M));
-      this->data.push_back(BArray(this->N, this->M));
+      this->data.push_back(BArray<Cell_Type>(this->N, this->M));
       a0 = &this->data.at(0u);
       
     }
     
     // Here is the deal
     this->data.push_back(*a0); // Making it one
-    this->data.at(++this->counter).insert_cell(i, false, false);
+    this->data.at(++this->counter).insert_cell(i, (Cell_Type) true, false, false);
     
     // If the sum is even, we increase i, otherwise j
     if ((i + 1) < (this->N * this->M)) {
@@ -119,24 +120,25 @@ public:
  * ! Users can a list of functions that can be used with this.
  * ! The baseline set of arguments is a pointer to a binary array.
  */ 
+template <typename Cell_Type>
 class StatsCounter {
 public:
   
   // Should receive an array
-  const BArray * Array;
-  BArray EmptyArray;
+  const BArray<Cell_Type> * Array;
+  BArray<Cell_Type> EmptyArray;
   std::vector< double > current_stats;
   std::vector< double > change_stats;
    
   // We will save the data here
   SuffStats * stats;
-  std::vector< Counter > counters;
+  std::vector< Counter<Cell_Type> > counters;
   
   // Functions
-  StatsCounter(const BArray * data, SuffStats * stats_) :
+  StatsCounter(const BArray<Cell_Type> * data, SuffStats * stats_) :
     counters(0u), Array(data), EmptyArray(data->N, data->M), stats(stats_) {}
   
-  void add_counter(Counter f_);
+  void add_counter(Counter<Cell_Type> f_);
   
   /***
    * ! This function recurses through the entries of Array and at each step of
@@ -148,12 +150,14 @@ public:
   
 };
 
-inline void StatsCounter::add_counter(Counter f_){
+template <typename Cell_Type>
+inline void StatsCounter<Cell_Type>::add_counter(Counter<Cell_Type> f_){
   counters.push_back(f_);
   return;
 }
 
-inline void StatsCounter::count_init(uint i, uint j) {
+template <typename Cell_Type>
+inline void StatsCounter<Cell_Type>::count_init(uint i, uint j) {
   // Iterating through the functions, and updating the set of
   // statistics.
   current_stats.resize(counters.size(), 0.0);
@@ -164,7 +168,8 @@ inline void StatsCounter::count_init(uint i, uint j) {
   return;
 }
 
-inline void StatsCounter::count_current(uint i, uint j) {
+template <typename Cell_Type>
+inline void StatsCounter<Cell_Type>::count_current(uint i, uint j) {
   
   // Iterating through the functions, and updating the set of
   // statistics.
@@ -177,7 +182,8 @@ inline void StatsCounter::count_current(uint i, uint j) {
   
 }
 
-inline void StatsCounter::count_all() {
+template <typename Cell_Type>
+inline void StatsCounter<Cell_Type>::count_all() {
   
   // Initializing the counter on the empty array
   count_init(0u, 0u);
@@ -219,24 +225,26 @@ inline void StatsCounter::count_all() {
  */
 
 typedef std::vector< double > DoubleVec_type;
+
+template <typename Cell_Type>
 class Support {
 public:
   
-  const BArray * Array;
-  BArray EmptyArray;
+  const BArray<Cell_Type> * Array;
+  BArray<Cell_Type> EmptyArray;
   SuffStats support;
-  std::vector< Counter > counters;
+  std::vector< Counter<Cell_Type> > counters;
   DoubleVec_type current_stats;
   
   uint N, M;
   bool initialized = false;
   
-  Support(const BArray * Array_) : Array(Array_), EmptyArray(Array_->N, Array_->M),
+  Support(const BArray<Cell_Type> * Array_) : Array(Array_), EmptyArray(Array_->N, Array_->M),
     N(Array_->N), M(Array_->M) {};
   Support(uint N_, uint M_) : EmptyArray(N_, M_) ,N(N_), M(M_) {};
   ~Support() {};
 
-  void add_counter(Counter f_);  
+  void add_counter(Counter<Cell_Type> f_);  
   
   void calc(uint pos = 0u) {
     
@@ -276,7 +284,7 @@ public:
     // treat the data as if nothing has changed.
     
     // Toggle the cell (we will toggle it back after calling the counter)
-    EmptyArray.insert_cell(i, j, std::pair<double, bool>{1.0, EmptyArray.visited}, false, false);
+    EmptyArray.insert_cell(i, j, true, false, false);
     
     // Counting
     DoubleVec_type change_stats(counters.size());
@@ -304,7 +312,8 @@ public:
   
 };
 
-inline void Support::add_counter(Counter f_) {
+template <typename Cell_Type>
+inline void Support<Cell_Type>::add_counter(Counter<Cell_Type> f_) {
   counters.push_back(f_);
   return;
 }

@@ -9,13 +9,13 @@
  * - value: the content
  * - visited: boolean (just a convenient)
  */
-class Cell {
+template <class Cell_Type > class Cell {
 public:
-  double value;
+  Cell_Type value;
   bool visited;
-  Cell() : value(1.0), visited(false) {};
-  Cell(double value_) : value(value_), visited(false) {};
-  Cell(double value_, bool visited_) : value(value_), visited(visited_) {};
+  Cell();
+  Cell(Cell_Type value_) : value(value_), visited(false) {};
+  Cell(Cell_Type value_, bool visited_) : value(value_), visited(visited_) {};
   ~Cell() {};
   
   // Copy by-reference constructor
@@ -42,6 +42,23 @@ public:
     return *this;
   };
   
-  void add(double x) {this->value+=x;};
+  void add(Cell_Type x);
 };
+
+/***
+ * Specializations
+ */
+
+template <> inline void Cell<double>::add(double x) {
+  value += x;
+  return;
+}
+
+template <> inline void Cell<bool>::add(bool x) {
+  value = true;
+  return;
+}
+
+template<> inline Cell< double >::Cell() : value(1.0), visited(false) {};
+template<> inline Cell< bool >::Cell() : value(true), visited(false) {};
 #endif

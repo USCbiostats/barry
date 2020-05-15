@@ -45,19 +45,18 @@ List get_suff_stats(SEXP x) {
 List counter(
     int N, int M,
     const std::vector< uint > & source,
-    const std::vector< uint > & target,
-    const std::vector< double > & value
+    const std::vector< uint > & target
 ) {
   
   // Initializing the Binary array, and also the the suffstats counter
-  const barray::BArray Array((uint) N, (uint) M, source, target, value);
+  const barray::BArray<bool> Array((uint) N, (uint) M, source, target);
   barray::SuffStats stats;
 
   
   // Creating the counter object; 
-  barray::StatsCounter dat(&Array, &stats);
+  barray::StatsCounter<bool> dat(&Array, &stats);
   
-  // Adding functions
+  // Adding functions 
   dat.add_counter(barray::counters::edges);
   dat.add_counter(barray::counters::mutual);
   dat.add_counter(barray::counters::isolates);
@@ -89,7 +88,7 @@ List support (
 ) {
   
   // Initializing the Binary array, and also the the suffstats counter
-  barray::Support dat(N, M);
+  barray::Support<bool> dat(N, M);
   
   // Adding functions
   dat.add_counter(barray::counters::edges);
@@ -139,10 +138,10 @@ nrow(ans1)
 
 # Example with functions
 set.seed(123)
-N <- 500
+N <- 10000
 M <- N
 
-nedges  <- N
+nedges  <- N*10
 source <- sample.int(N, nedges, replace = TRUE)
 target <- sample.int(M, nedges, replace = TRUE)
 values <- runif(nedges)
@@ -158,25 +157,29 @@ values <- values[idx]
 # target <- c(target, source[1:20])
 # values <- c(values, 1:20)
 
-el <- counter(N, M, source - 1L, target - 1L, values)
+el <- counter(N, M, source - 1L, target - 1L)
 
 # Comparing with ergm
 mat <- matrix(0, nrow = N, ncol = M)
 mat[cbind(source, target)] <- 1L
+mat <- network::network(mat)
 microbenchmark::microbenchmark(
   # ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad),
   ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2)),
-  counter(N, M, source - 1L, target - 1L, values),
-  unit = "relative"
+  counter(N, M, source - 1L, target - 1L),
+  unit = "relative",
+  times = 10
 )
 
+
 ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2))
-ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2)
-counter(N, M, source - 1L, target - 1L, values)
+counter(N, M, source - 1L, target - 1L)
+
+
 
 # stop()
 set.seed(123)
-N <- 5
+N <- 3
 M <- N
 
 nedges  <- 1
@@ -192,6 +195,7 @@ values <- values[idx]
 
 mat <- matrix(0, nrow = N, ncol = M)
 mat[cbind(source, target)] <- 1L
+mat <- network::network(mat)
 
 ans0 <- support(N, M)
 ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
@@ -199,7 +203,7 @@ ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
 microbenchmark::microbenchmark(
   barray = support(N, M),
   ergm   = ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2), zeroobs = FALSE),
-  times = 10,
+  times = 5,
   unit = "relative"
 )
 
@@ -216,29 +220,11 @@ ans0 <- sort_all(ans0)
 colnames(ans0) <- colnames(ans1)
 range(ans1 - ans0)
 
-ans0
-ans1
-
-nrow(ans0)
-nrow(ans1)
-
-# Are these equal
-ans1 <- 
-
-apply(ans0, 2, range)
-apply(ans1$statmat, 2, range)
-
-sum(ans0[,ncol(ans0)])
-sum(ans1$weights)
-
-# Which combs are not included
-c0 <- apply(ans0[,-ncol(ans0)],1,paste, collapse = "")
-c1 <- apply(ans1$statmat,1,paste, collapse = "")
 
 ps <- ergmito::powerset(3)
 ps <- lapply(ps, function(ps.) {
   d <- which(ps. != 0, arr.ind = TRUE) - 1
-  counter(3,3, d[,1], d[,2], integer(nrow(d)))[[1]]
+  counter(3, 3, d[,1], d[,2])[[1]]
 })
 ps <- t(sapply(ps, function(ps.) c(ps.$x, ps.$count)))
 unique(ps[,-ncol(ps)])

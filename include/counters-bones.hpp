@@ -10,26 +10,32 @@
  * ! as zero.
  *  
  */
+template <typename Cell_Type>
 class Counter {
 public:
-  Counter_type count_fun;
-  Counter_type init_fun;
+  Counter_type<Cell_Type> count_fun;
+  Counter_type<Cell_Type> init_fun;
   Counter() : count_fun(nullptr), init_fun(nullptr) {};
-  Counter(Counter_type count_fun_) : count_fun(count_fun_), init_fun(nullptr) {};
-  Counter(Counter_type count_fun_, Counter_type init_fun_):
+  Counter(Counter_type<Cell_Type> count_fun_) :
+    count_fun(count_fun_), init_fun(nullptr) {};
+  Counter(Counter_type<Cell_Type> count_fun_, Counter_type<Cell_Type> init_fun_):
     count_fun(count_fun_), init_fun(init_fun_) {};
   
-  double count(const BArray * Array, uint i, uint j);
-  double init(const BArray * Array, uint i, uint j);
+  double count(const BArray<Cell_Type> * Array, uint i, uint j);
+  double init(const BArray<Cell_Type> * Array, uint i, uint j);
 };
 
-inline double Counter::count(const BArray * Array, uint i, uint j) {
+template <typename Cell_Type>
+inline double Counter<Cell_Type>::count(
+    const BArray<Cell_Type> * Array, uint i, uint j) {
   if (count_fun == nullptr)
     return 0.0;
   return count_fun(Array, i, j);
 }
 
-inline double Counter::init(const BArray * Array, uint i, uint j) {
+template <typename Cell_Type>
+inline double Counter<Cell_Type>::init(
+    const BArray<Cell_Type> * Array, uint i, uint j) {
   if (init_fun == nullptr)
     return 0.0;
   return init_fun(Array, i, j);
@@ -39,14 +45,16 @@ inline double Counter::init(const BArray * Array, uint i, uint j) {
 namespace counters {
 
   // Edges counter
-  inline double count_edges(const BArray * Array, uint i, uint j) {
+  template <typename Cell_Type>
+  inline double count_edges(const BArray<Cell_Type> * Array, uint i, uint j) {
     return 1.0;
   }
 
-  Counter edges(count_edges);
+  Counter<bool> edges(count_edges<bool>);
   
   // Isolates counter
-  inline double count_isolates(const BArray * Array, uint i, uint j) {
+  template <typename Cell_Type>
+  inline double count_isolates(const BArray<Cell_Type> * Array, uint i, uint j) {
     
     if (i == j)
       return 0.0;
@@ -66,14 +74,16 @@ namespace counters {
     
   }
   
-  inline double init_isolates(const BArray * Array, uint i, uint j) {
+  template <typename Cell_Type>
+  inline double init_isolates(const BArray<Cell_Type> * Array, uint i, uint j) {
     return (double) (Array->N);
   }
   
-  Counter isolates(count_isolates, init_isolates);
+  Counter<bool> isolates(count_isolates<bool>, init_isolates<bool>);
   
   // Mutuals
-  inline double count_mutual(const BArray * Array, uint i, uint j) {
+  template <typename Cell_Type>
+  inline double count_mutual(const BArray<Cell_Type> * Array, uint i, uint j) {
 
     // Is there any tie at ji? If not, then we have a new mutual!
     // but this only makes sence if the jth row and ith column exists
@@ -92,10 +102,11 @@ namespace counters {
     
   }
   
-  Counter mutual(count_mutual);
+  Counter<bool> mutual(count_mutual<bool>);
   
   // 2-istars
-  inline double count_istar2(const BArray * Array, uint i, uint j) {
+  template<typename Cell_Type>
+  inline double count_istar2(const BArray<Cell_Type> * Array, uint i, uint j) {
    
     // Need to check the receiving, if he/she is getting a new set of stars
     // when looking at triads
@@ -108,10 +119,11 @@ namespace counters {
     // return 0.0; 
   }
 
-  Counter istar2(count_istar2);
+  Counter<bool> istar2(count_istar2<bool>);
   
   // 2-ostars
-  inline double count_ostar2(const BArray * Array, uint i, uint j) {
+  template<typename Cell_Type>
+  inline double count_ostar2(const BArray<Cell_Type> * Array, uint i, uint j) {
     
     // Need to check the receiving, if he/she is getting a new set of stars
     // when looking at triads
@@ -124,10 +136,11 @@ namespace counters {
     // return 0.0; 
   }
   
-  Counter ostar2(count_ostar2);
+  Counter<bool> ostar2(count_ostar2<bool>);
   
   // ttriads
-  inline double count_ttriads(const BArray * Array, uint i, uint j) {
+  template <typename Cell_Type>
+  inline double count_ttriads(const BArray<Cell_Type> * Array, uint i, uint j) {
     
     // i-j, j-k, i-k
     double ans = 0.0;
@@ -149,7 +162,7 @@ namespace counters {
 
   }
   
-  Counter ttriads(count_ttriads);
+  Counter<bool> ttriads(count_ttriads<bool>);
 }
 
 #endif

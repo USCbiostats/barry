@@ -32,17 +32,22 @@ namespace EXISTS {
 
 // Edgelist
 typedef unsigned int uint;
-class Cell;
-typedef std::unordered_map< uint, Cell > Row_type;
-typedef std::unordered_map< uint, Cell* > Col_type;
+template <class Type_A > class Cell;
 
+template<typename Cell_Type>
+using Row_type = std::unordered_map< uint, Cell<Cell_Type> >;
+
+template<typename Cell_Type>
+using Col_type = std::unordered_map< uint, Cell<Cell_Type>* >;
+
+template<typename Cell_Type>
 class Entries {
 public:
   std::vector< uint > source;
   std::vector< uint > target;
-  std::vector< double > val;
+  std::vector< Cell_Type > val;
   
-  Entries() : source(0u), target(0u), val(0) {};
+  Entries() : source(0u), target(0u), val(0u) {};
   Entries(uint n) {
     source.reserve(n);
     target.reserve(n);
@@ -60,13 +65,14 @@ public:
   }
   
 };
-
+ 
 // Mostly relevant in the case of the stats count functions -------------------
-class BArray;
+template <typename Cell_Type> class BArray;
 #define A_ROW(a) Array->el_ij.at(a)
 #define A_COL(a) Array->el_ji.at(a)
 
-typedef std::function<double(const BArray *, uint, uint)> Counter_type;
+template <typename Cell_Type>
+using Counter_type = std::function<double(const BArray<Cell_Type> *, uint, uint)>;
 
 
 #endif

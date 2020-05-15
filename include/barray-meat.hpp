@@ -5,11 +5,11 @@
 #define BARRAY_MEAT_HPP 
 
 // Edgelist with data
-inline BArray::BArray (
+template<typename Cell_Type> inline BArray< Cell_Type >::BArray (
     uint N_, uint M_,
     const std::vector< uint > & source,
     const std::vector< uint > & target,
-    const std::vector< double > & value,
+    const std::vector< Cell_Type > & value,
     bool add
 ) {
   
@@ -46,7 +46,7 @@ inline BArray::BArray (
     }
     
     // Adding the value and creating a pointer to it
-    ROW(source.at(i)).emplace(std::pair<uint, Cell>(target.at(i), Cell(value.at(i), visited)));
+    ROW(source.at(i)).emplace(std::pair<uint, Cell< Cell_Type> >(target.at(i), Cell< Cell_Type > (value.at(i), visited)));
     COL(target.at(i)).emplace(
         source.at(i),
         &ROW(source.at(i))[target.at(i)]
@@ -58,7 +58,63 @@ inline BArray::BArray (
   
 }
 
-inline void BArray::out_of_range(uint i, uint j) const {
+// Edgelist with data
+template<typename Cell_Type> inline BArray< Cell_Type >::BArray (
+    uint N_, uint M_,
+    const std::vector< uint > & source,
+    const std::vector< uint > & target,
+    bool add
+) {
+  
+  std::vector< Cell_Type > value(source.size(), (Cell_Type) 1.0);
+
+  if (source.size() != target.size())
+    throw std::length_error("-source- and -target- don't match on length.");
+  if (source.size() != value.size())
+    throw std::length_error("-sorce- and -value- don't match on length.");
+  
+  // Initializing
+  N = N_;
+  M = M_;
+  
+  el_ij.resize(N);
+  el_ji.resize(M);
+  
+  
+  // Writing the data
+  for (uint i = 0u; i < source.size(); ++i) {
+    
+    // Checking range
+    if (source.at(i) >= N_ | target.at(i) >= M_)
+      throw std::range_error("Either source or target point to an element outside of the range by (N,M).");
+    
+    // Checking if it exists
+    auto search = ROW(source.at(i)).find(target.at(i));
+    if (search != ROW(source.at(i)).end()) {
+      if (!add)
+        throw std::logic_error("The value already exists. Use 'add = true'.");
+      
+      // Increasing the value (this will automatically update the
+      // other value)
+      ROW(source.at(i))[target.at(i)].add(value.at(i));
+      continue;
+    }
+    
+    // Adding the value and creating a pointer to it
+    ROW(source.at(i)).emplace(std::pair<uint, Cell< Cell_Type> >(target.at(i), Cell< Cell_Type > (value.at(i), visited)));
+    COL(target.at(i)).emplace(
+        source.at(i),
+        &ROW(source.at(i))[target.at(i)]
+    );
+    NCells++;
+  }
+  
+  return;
+  
+}
+
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::out_of_range(uint i, uint j) const {
   if (i >= N)
     throw std::range_error("The row is out of range.");
   else if (j >= M)
@@ -67,7 +123,8 @@ inline void BArray::out_of_range(uint i, uint j) const {
 }
   
 
-inline double BArray::get_cell(uint i, uint j, bool check_bounds) const {
+template<typename Cell_Type>
+inline Cell_Type BArray<Cell_Type>::get_cell(uint i, uint j, bool check_bounds) const {
   
   // Checking boundaries  
   if (check_bounds)
@@ -75,7 +132,7 @@ inline double BArray::get_cell(uint i, uint j, bool check_bounds) const {
   
 
   if (ROW(i).size() == 0u)
-    return 0.0;
+    return (Cell_Type) 0.0;
   
   // If it is not empty, then find and return
   auto search = ROW(i).find(j);
@@ -83,11 +140,13 @@ inline double BArray::get_cell(uint i, uint j, bool check_bounds) const {
     return search->second.value;
   
   // This is if it is empty
-  return 0.0;
+  return (Cell_Type) 0.0;
   
 }
 
-inline const Row_type * BArray::get_row(uint i, bool check_bounds) const {
+template<typename Cell_Type>
+inline const Row_type< Cell_Type > *
+BArray<Cell_Type>::get_row(uint i, bool check_bounds) const {
 
   // Checking boundaries  
   if (check_bounds) 
@@ -96,7 +155,9 @@ inline const Row_type * BArray::get_row(uint i, bool check_bounds) const {
   return &ROW(i);
 }
 
-inline const Col_type * BArray::get_col(uint i, bool check_bounds) const {
+template<typename Cell_Type>
+inline const Col_type<Cell_Type> *
+BArray< Cell_Type >::get_col(uint i, bool check_bounds) const {
   
   // Checking boundaries  
   if (check_bounds) 
@@ -105,9 +166,10 @@ inline const Col_type * BArray::get_col(uint i, bool check_bounds) const {
   return &COL(i);
 }
 
-inline Entries BArray::get_entries() const {
+template<typename Cell_Type>
+inline Entries<Cell_Type> BArray<Cell_Type>::get_entries() const {
   
-  Entries res(NCells);
+  Entries<Cell_Type> res(NCells);
   
   for (uint i = 0u; i < N; ++i) {
     
@@ -124,7 +186,8 @@ inline Entries BArray::get_entries() const {
   return res;
 }
 
-inline bool BArray::is_empty(uint i, uint j, bool check_bounds) const {
+template<typename Cell_Type>
+inline bool BArray<Cell_Type>::is_empty(uint i, uint j, bool check_bounds) const {
   
   if (check_bounds)
     out_of_range(i, j);
@@ -141,7 +204,8 @@ inline bool BArray::is_empty(uint i, uint j, bool check_bounds) const {
   
 }
 
-inline void BArray::rm_cell(uint i, uint j, bool check_bounds, bool check_exists) {
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::rm_cell(uint i, uint j, bool check_bounds, bool check_exists) {
   
   // Checking the boundaries
   if (check_bounds)
@@ -170,7 +234,8 @@ inline void BArray::rm_cell(uint i, uint j, bool check_bounds, bool check_exists
   return;
 }
 
-inline void BArray::insert_cell(uint i, uint j, std::pair< double, bool> v, bool check_bounds, bool check_exists) { 
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::insert_cell(uint i, uint j, std::pair< Cell_Type, bool> v, bool check_bounds, bool check_exists) { 
   
   if (check_bounds)
     out_of_range(i,j);
@@ -180,7 +245,7 @@ inline void BArray::insert_cell(uint i, uint j, std::pair< double, bool> v, bool
     // Checking if nothing here, then we move along
     if (ROW(i).size() == 0u) {
       
-      ROW(i).emplace(j, std::move(Cell(v.first, v.second)));
+      ROW(i).emplace(j, std::move(Cell<Cell_Type>(v.first, v.second)));
       COL(j).emplace(i, &ROW(i).at(j));
       NCells++;
       return;
@@ -189,7 +254,7 @@ inline void BArray::insert_cell(uint i, uint j, std::pair< double, bool> v, bool
     
     // In this case, the row exists, but we are checking that the value is empty  
     if (ROW(i).find(j) == ROW(i).end()) {
-      ROW(i).emplace(j, std::move(Cell(v.first, v.second)));
+      ROW(i).emplace(j, std::move(Cell<Cell_Type>(v.first, v.second)));
       COL(j).emplace(i, &ROW(i).at(j));
       NCells++;
     } else {
@@ -198,7 +263,7 @@ inline void BArray::insert_cell(uint i, uint j, std::pair< double, bool> v, bool
     
   } else {
     
-    ROW(i).emplace(j, std::move(Cell(v.first, v.second)));
+    ROW(i).emplace(j, std::move(Cell<Cell_Type>(v.first, v.second)));
     COL(j).emplace(i, &ROW(i).at(j));
     
   }
@@ -207,20 +272,26 @@ inline void BArray::insert_cell(uint i, uint j, std::pair< double, bool> v, bool
   
 }
 
-inline void BArray::insert_cell(uint i, uint j, Cell & v, bool check_bounds, bool check_exists) {
-  return insert_cell(i, j, std::pair<double, bool>(v.value, v.visited), check_bounds, check_exists);
+template <typename Cell_Type>
+inline void BArray<Cell_Type>::insert_cell(uint i, uint j, Cell<Cell_Type> & v, bool check_bounds, bool check_exists) {
+  return insert_cell(i, j, std::pair<Cell_Type, bool>(v.value, v.visited), check_bounds, check_exists);
 }
 
-inline void BArray::insert_cell(uint i, uint j, double v, bool check_bounds, bool check_exists) {
-  return insert_cell(i, j, std::pair<double, bool>(v, visited), check_bounds, check_exists);
+template <typename Cell_Type>
+inline void BArray<Cell_Type>::insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists) {
+  return insert_cell(i, j, std::pair<Cell_Type, bool>(v, visited), check_bounds, check_exists);
 }
 
-inline void BArray::insert_cell(uint i, uint j, bool check_bounds, bool check_exists) {
+template <typename Cell_Type>
+inline void BArray<Cell_Type>::insert_cell(uint i, uint j, bool check_bounds, bool check_exists) {
   return insert_cell(i, j, std::pair<double,bool>(1.0, visited), check_bounds, check_exists);
   
 }
 
-inline void BArray::insert_cell(uint i, std::pair< double, bool > v, bool check_bounds, bool check_exists) {
+template <typename Cell_Type>
+inline void BArray<Cell_Type>::insert_cell(
+    uint i, std::pair< Cell_Type, bool > v, bool check_bounds, bool check_exists
+  ) {
   
   return insert_cell(
       (int) i % (int) N,
@@ -231,39 +302,55 @@ inline void BArray::insert_cell(uint i, std::pair< double, bool > v, bool check_
   );
 }
 
-inline void BArray::insert_cell(uint i, Cell & v, bool check_bounds, bool check_exists) {
+template <typename Cell_Type>
+inline void BArray<Cell_Type>::insert_cell(uint i, Cell<Cell_Type> & v, bool check_bounds, bool check_exists) {
   
   return insert_cell(
       (int) i % (int) N,
       floor((int) i / (int) N),
-      std::pair<double,bool>(v.value, v.visited), check_bounds, check_exists
+      std::pair<Cell_Type,bool>(v.value, v.visited), check_bounds, check_exists
   );
   
 }
 
-inline void BArray::insert_cell(uint i, double v, bool check_bounds, bool check_exists) {
+template <typename Cell_Type>
+inline void BArray<Cell_Type>::insert_cell(uint i, Cell_Type v, bool check_bounds, bool check_exists) {
   
   return insert_cell(
       (int) i % (int) N,
       floor((int) i / (int) N),
-      std::pair<double,bool>(v, visited),
+      std::pair<Cell_Type,bool>(v, visited),
       check_bounds,
       check_exists
   );
 }
 
-inline void BArray::insert_cell(uint i, bool check_bounds, bool check_exists) {
+template <>
+inline void BArray<double>::insert_cell(uint i, bool check_bounds, bool check_exists) {
 
   return insert_cell(
       (int) i % (int) N,
       floor((int) i / (int) N),
-      std::pair<double,bool>(1.0, visited),
+      std::pair<double, bool>(1.0, visited),
       check_bounds,
       check_exists
   );
 }
 
-inline void BArray::swap_cells(
+template <>
+inline void BArray<bool>::insert_cell(uint i, bool check_bounds, bool check_exists) {
+  
+  return insert_cell(
+    (int) i % (int) N,
+    floor((int) i / (int) N),
+    std::pair<bool, bool>(true, visited),
+    check_bounds,
+    check_exists
+  );
+}
+
+template <typename Cell_Type>
+inline void BArray<Cell_Type>::swap_cells(
     uint i0, uint j0,
     uint i1, uint j1,
     bool check_bounds,
@@ -290,9 +377,9 @@ inline void BArray::swap_cells(
     // Using the initializing by move, after this, the cell becomes
     // invalid. We use pointers instead as this way we access the Heap memory,
     // which should be faster to access.
-    Cell c0(std::move(ROW(i0).at(j0)));
+    Cell<Cell_Type> c0(std::move(ROW(i0).at(j0)));
     rm_cell(i0, j0, false, false);
-    Cell c1(std::move(ROW(i1).at(j1)));
+    Cell<Cell_Type> c1(std::move(ROW(i1).at(j1)));
     rm_cell(i1, j1, false, false);
     
     // Inserting the cells by reference, these will be deleted afterwards
@@ -334,9 +421,9 @@ inline void BArray::swap_cells(
     if ((i0 == i1) && (j0 == j1)) 
       return;
     
-    Cell c0(std::move(ROW(i0).at(j0)));
+    Cell<Cell_Type> c0(std::move(ROW(i0).at(j0)));
     rm_cell(i0, j0, false, false);
-    Cell c1(std::move(ROW(i1).at(j1)));
+    Cell<Cell_Type> c1(std::move(ROW(i1).at(j1)));
     rm_cell(i1, j1, false, false);
     
     insert_cell(i0, j0, c1, false, false);
@@ -363,7 +450,8 @@ inline void BArray::swap_cells(
   return;
 }
 
-inline void BArray::toggle_cell(uint i, uint j, bool check_bounds, int check_exists) {
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::toggle_cell(uint i, uint j, bool check_bounds, int check_exists) {
   
   if (check_bounds)
     out_of_range(i, j);
@@ -389,7 +477,8 @@ inline void BArray::toggle_cell(uint i, uint j, bool check_bounds, int check_exi
   
 }
 
-inline void BArray::swap_rows(uint i0, uint i1, bool check_bounds) {
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::swap_rows(uint i0, uint i1, bool check_bounds) {
   
   if (check_bounds) {
     out_of_range(i0,0u);
@@ -430,7 +519,8 @@ inline void BArray::swap_rows(uint i0, uint i1, bool check_bounds) {
 }
 
 // This swapping is more expensive overall
-inline void BArray::swap_cols(uint j0, uint j1, bool check_bounds) {
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::swap_cols(uint j0, uint j1, bool check_bounds) {
   
   if (check_bounds) {
     out_of_range(0u, j0);
@@ -446,8 +536,8 @@ inline void BArray::swap_cols(uint j0, uint j1, bool check_bounds) {
     
     // Just swapping one at a time
     int status;
-    Col_type col_tmp = COL(j1);
-    Col_type col1 = COL(j0);
+    Col_type<Cell_Type> col_tmp = COL(j1);
+    Col_type<Cell_Type> col1 = COL(j0);
     for (auto iter = col1.begin(); iter != col1.end(); ++iter) {
       
       // Swapping values (col-wise)
@@ -497,7 +587,8 @@ inline void BArray::swap_cols(uint j0, uint j1, bool check_bounds) {
   return;
 }
 
-inline void BArray::zero_row(uint i, bool check_bounds) {
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::zero_row(uint i, bool check_bounds) {
   
   if (check_bounds)
     out_of_range(i, 0u);
@@ -515,7 +606,8 @@ inline void BArray::zero_row(uint i, bool check_bounds) {
   
 }
 
-inline void BArray::zero_col(uint j, bool check_bounds) {
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::zero_col(uint j, bool check_bounds) {
   
   if (check_bounds)
     out_of_range(0u, j);
@@ -533,7 +625,8 @@ inline void BArray::zero_col(uint j, bool check_bounds) {
   
 }
 
-inline void BArray::transpose() {
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::transpose() {
   
   // Start by flipping the switch 
   visited = !visited;
@@ -551,7 +644,7 @@ inline void BArray::transpose() {
       continue;
     
     // We now iterate changing rows
-    Row_type row = ROW(i);
+    Row_type<Cell_Type> row = ROW(i);
     for (auto col = row.begin(); col != row.end(); ++col) {
       
       // Skip if in the diagoal
@@ -589,7 +682,8 @@ inline void BArray::transpose() {
   return;
 }
 
-inline void BArray::clear() {
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::clear() {
   el_ji.clear();
   el_ij.clear();
   
@@ -601,7 +695,8 @@ inline void BArray::clear() {
   
 }
 
-inline void BArray::resize(uint N_, uint M_) {
+template<typename Cell_Type>
+inline void BArray<Cell_Type>::resize(uint N_, uint M_) {
   
   // Removing rows
   if (N_ < N)
