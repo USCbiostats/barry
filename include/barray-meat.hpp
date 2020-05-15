@@ -459,7 +459,7 @@ inline void BArray<Cell_Type>::toggle_cell(uint i, uint j, bool check_bounds, in
   if (check_exists == EXISTS::UKNOWN) {
     
     if (is_empty(i, j, false))
-      insert_cell(i, j, std::pair<double,bool>(1.0, valued), false, false);
+      insert_cell(i, j, std::pair<double,bool>(1.0, visited), false, false);
     else
       rm_cell(i, j, false, false);
     
@@ -469,7 +469,7 @@ inline void BArray<Cell_Type>::toggle_cell(uint i, uint j, bool check_bounds, in
     
   } else if (check_exists == EXISTS::AS_ZERO) {
     
-    insert_cell(i, j, std::pair<double,bool>(1.0, valued), false, false);
+    insert_cell(i, j, std::pair<double,bool>(1.0, visited), false, false);
     
   }
   

@@ -79,8 +79,6 @@ struct vecHasher {
   }
 };
 
-typedef std::vector< std::pair< std::vector<double>, uint > > vec_pair_dbl_uint;
-
 class SuffStats {
 public:
   uint ncols;
@@ -100,10 +98,9 @@ public:
     return; 
   };
   
-  
-  vec_pair_dbl_uint get_entries() const {
+  Counts_type get_entries() const { 
     
-    vec_pair_dbl_uint ans;
+    Counts_type ans;
     ans.reserve(stats.size());
     for (auto iter = stats.begin(); iter != stats.end(); ++iter)
       ans.push_back(*iter);
@@ -136,7 +133,11 @@ public:
   
   // Functions
   StatsCounter(const BArray<Cell_Type> * data, SuffStats * stats_) :
-    counters(0u), Array(data), EmptyArray(data->N, data->M), stats(stats_) {}
+    counters(0u), Array(data), EmptyArray(data->N, data->M), stats(stats_) {
+    // Copying the information
+    EmptyArray.meta = Array->meta;
+    return;
+  }
   
   void add_counter(Counter<Cell_Type> f_);
   
@@ -224,8 +225,6 @@ inline void StatsCounter<Cell_Type>::count_all() {
  * ! possible combinations, as we would do in a powerset.
  */
 
-typedef std::vector< double > DoubleVec_type;
-
 template <typename Cell_Type>
 class Support {
 public:
@@ -234,13 +233,18 @@ public:
   BArray<Cell_Type> EmptyArray;
   SuffStats support;
   std::vector< Counter<Cell_Type> > counters;
-  DoubleVec_type current_stats;
+  std::vector< double > current_stats;
   
   uint N, M;
   bool initialized = false;
   
   Support(const BArray<Cell_Type> * Array_) : Array(Array_), EmptyArray(Array_->N, Array_->M),
-    N(Array_->N), M(Array_->M) {};
+    N(Array_->N), M(Array_->M) {
+    
+    EmptyArray.meta = Array->meta;
+    return;
+    
+  };
   Support(uint N_, uint M_) : EmptyArray(N_, M_) ,N(N_), M(M_) {};
   ~Support() {};
 
@@ -287,7 +291,7 @@ public:
     EmptyArray.insert_cell(i, j, true, false, false);
     
     // Counting
-    DoubleVec_type change_stats(counters.size());
+    std::vector< double > change_stats(counters.size());
     for (uint n = 0u; n < counters.size(); ++n) {
       change_stats.at(n) = counters.at(n).count(&EmptyArray, i, j);
       current_stats.at(n) += change_stats.at(n);
@@ -304,7 +308,7 @@ public:
     EmptyArray.rm_cell(i, j, false, false);
     for (uint n = 0u; n < counters.size(); ++n) 
       current_stats.at(n) -= change_stats.at(n);
-    
+     
     
     return;
     

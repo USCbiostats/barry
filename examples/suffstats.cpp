@@ -26,7 +26,7 @@ List get_suff_stats(SEXP x) {
   Rcpp::XPtr< barray::SuffStats > xptr(x);
   
   // Now, getting the data
-  barray::vec_pair_dbl_uint ans = xptr->get_entries();
+  barray::Counts_type ans = xptr->get_entries();
   
   List res(ans.size());
   for (unsigned int i = 0u; i < res.size(); ++i) {
@@ -49,9 +49,10 @@ List counter(
 ) {
   
   // Initializing the Binary array, and also the the suffstats counter
-  const barray::BArray<bool> Array((uint) N, (uint) M, source, target);
+  barray::BArray<bool> Array((uint) N, (uint) M, source, target);
   barray::SuffStats stats;
 
+  Array.meta.set("undirected", true);
   
   // Creating the counter object; 
   barray::StatsCounter<bool> dat(&Array, &stats);
@@ -62,12 +63,13 @@ List counter(
   dat.add_counter(barray::counters::isolates);
   dat.add_counter(barray::counters::istar2);
   dat.add_counter(barray::counters::ostar2);
-  // dat.add_counter(barray::counters::ttriads);
+  dat.add_counter(barray::counters::ttriads);
+  dat.add_counter(barray::counters::ctriads);
   
   // Fingers crossed
   dat.count_all();
   
-  barray::vec_pair_dbl_uint ans = stats.get_entries();
+  barray::Counts_type ans = stats.get_entries();
   
   List res(ans.size());
   for (unsigned int i = 0u; i < res.size(); ++i) {
@@ -96,13 +98,14 @@ List support (
   dat.add_counter(barray::counters::isolates);
   dat.add_counter(barray::counters::istar2);
   dat.add_counter(barray::counters::ostar2);
-  // dat.add_counter(barray::counters::ttriads);
+  dat.add_counter(barray::counters::ttriads);
+  dat.add_counter(barray::counters::ctriads);
   
   // Generating the data
   dat.calc();
   
   // Generating the entries
-  barray::vec_pair_dbl_uint ans = dat.support.get_entries();
+  barray::Counts_type ans = dat.support.get_entries();
   
   List res(ans.size());
   for (unsigned int i = 0u; i < res.size(); ++i) {
@@ -138,10 +141,10 @@ nrow(ans1)
 
 # Example with functions
 set.seed(123)
-N <- 10000
+N <- 100
 M <- N
 
-nedges  <- N*10
+nedges  <- N*20
 source <- sample.int(N, nedges, replace = TRUE)
 target <- sample.int(M, nedges, replace = TRUE)
 values <- runif(nedges)
@@ -160,21 +163,19 @@ values <- values[idx]
 el <- counter(N, M, source - 1L, target - 1L)
 
 # Comparing with ergm
-mat <- matrix(0, nrow = N, ncol = M)
-mat[cbind(source, target)] <- 1L
-mat <- network::network(mat)
+net <- network::as.edgelist(cbind(source, target), n = N)
+net <- network::as.network(net)
 microbenchmark::microbenchmark(
   # ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad),
-  ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2)),
+  ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad),
   counter(N, M, source - 1L, target - 1L),
   unit = "relative",
-  times = 10
+  times = 100
 )
 
 
-ergm::summary_formula(mat ~ edges + mutual + isolates + istar(2) + ostar(2))
+ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2)+ ttriad + ctriad)
 counter(N, M, source - 1L, target - 1L)
-
 
 
 # stop()
@@ -195,19 +196,19 @@ values <- values[idx]
 
 mat <- matrix(0, nrow = N, ncol = M)
 mat[cbind(source, target)] <- 1L
-mat <- network::network(mat)
+mat <- network::as.network(mat)
 
 ans0 <- support(N, M)
 ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
 
 microbenchmark::microbenchmark(
   barray = support(N, M),
-  ergm   = ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2), zeroobs = FALSE),
-  times = 5,
+  ergm   = ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad  + ctriad, zeroobs = FALSE),
+  times = 100,
   unit = "relative"
 )
 
-ans1 <- ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2), zeroobs = FALSE)
+ans1 <- ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad, zeroobs = FALSE)
 ans1 <- cbind(ans1$statmat, w = ans1$weights)
 
 # Sorting equally
@@ -235,6 +236,8 @@ colnames(ps) <- c(
   "isolates",
   "istar2",
   "ostar2",
+  "ttriad",
+  "ctriad",
   "count"
 )
 ps

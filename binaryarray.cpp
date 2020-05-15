@@ -177,7 +177,7 @@ List suff_stats(const NumericMatrix & x) {
   }
   
   // Now, getting the data
-  barray::vec_pair_dbl_uint ans = xptr->get_entries();
+  barray::Counts_type ans = xptr->get_entries();
   
   List res(ans.size());
   for (unsigned int i = 0u; i < res.size(); ++i) {

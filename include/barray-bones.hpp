@@ -1,5 +1,6 @@
 #include <vector>
 #include <unordered_map>
+#include "meta.hpp"
 #include "typedefs.hpp"
 #include "cell-bones.hpp"
 
@@ -24,8 +25,7 @@ public:
   /***
    * ! Other information regarding the object
    */
-  bool symetric;
-  bool valued;
+  Meta meta;
 
   // Empty datum
   BArray() : N(0u), M(0u), el_ij(0u), el_ji(0u), NCells(0u) {};

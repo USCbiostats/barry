@@ -27,10 +27,11 @@ namespace EXISTS {
   const int AS_ONE  = 1;
 }
 
+/***
+ * A single count
+ */
+typedef std::vector< std::pair< std::vector<double>, uint > > Counts_type;
 
-// Definition of the class structure
-
-// Edgelist
 typedef unsigned int uint;
 template <class Type_A > class Cell;
 
@@ -72,7 +73,7 @@ template <typename Cell_Type> class BArray;
 #define A_COL(a) Array->el_ji.at(a)
 
 template <typename Cell_Type>
-using Counter_type = std::function<double(const BArray<Cell_Type> *, uint, uint)>;
+using Counter_type = std::function<double(BArray<Cell_Type> *, uint, uint)>;
 
 
 #endif
