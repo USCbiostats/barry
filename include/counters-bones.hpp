@@ -258,8 +258,40 @@ namespace counters {
   // Density --------------------------------------------------------------
   template <typename Cell_Type>
   inline double count_density(BArray<Cell_Type> * Array, uint i, uint j) {
-    return 1.0/(Array->N * Array->M);
+    return 1.0/(Array->N * (Array->M - 1));
   }
+  
+  Counter<bool> density(count_density<bool>);
+  
+  // idegree1.5  -------------------------------------------------------------
+  template <typename Cell_Type>
+  inline double count_idegree15(BArray<Cell_Type> * Array, uint i, uint j) {
+    
+    // In case of the first, we need to add
+    if (A_COL(j).size() == 1u)
+      return 1.0;
+    
+    return 
+      pow((double) A_COL(j).size(), 1.5) - pow((double) A_COL(j).size() - 1, 1.5)
+    ;
+  }
+  
+  Counter<bool> idegree15(count_idegree15<bool>);
+  
+  // odegree1.5  -------------------------------------------------------------
+  template <typename Cell_Type>
+  inline double count_odegree15(BArray<Cell_Type> * Array, uint i, uint j) {
+    
+    // In case of the first, we need to add
+    if (A_ROW(i).size() == 1u)
+      return 1;
+    
+    return 
+      pow((double) A_ROW(i).size(), 1.5) - pow((double) A_ROW(i).size() - 1, 1.5)
+    ;
+  }
+  
+  Counter<bool> odegree15(count_odegree15<bool>);
 }
 
 #endif

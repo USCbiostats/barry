@@ -4,7 +4,7 @@ using namespace Rcpp;
 
 
 // [[Rcpp::export]]
-List psets(int n, int m) { 
+SEXP psets(int n, int m) { 
     
   Rcpp::XPtr< barray::LBArray< bool >> xptr(
     new barray::LBArray< bool >((uint) n, (uint) m),
@@ -13,7 +13,15 @@ List psets(int n, int m) {
   
   // Generating the powerset 
   xptr->pset();
-  
+  // std::cout << "Size: " << sizeof(*xptr) << std::endl;
+  return xptr;
+}
+
+
+// [[Rcpp::export]]
+List get_data(SEXP x) {
+  Rcpp::XPtr< barray::LBArray< bool >> xptr(x);
+
   // Generating the data
   List ans(xptr->data.size());
   uint counter = 0u;
@@ -36,8 +44,18 @@ List psets(int n, int m) {
 
 /***R
 N <- 4
-M <- 5
+M <- 3
+
 PS_2_3 <- psets(N,M)
+x <- ergmito::powerset(4)
+
+# microbenchmark::microbenchmark(
+#   PS_2_3 <- psets(N,M),
+#   x <- ergmito::powerset(4)
+# )
+
+
+stop()
 
 PS_2_3 <- lapply(PS_2_3, function(p.) {
   ans <- matrix(0, nrow = N, ncol = M)

@@ -4,6 +4,9 @@
 #ifndef BARRAY_MEAT_HPP
 #define BARRAY_MEAT_HPP 
 
+template <typename Cell_Type>
+Cell<Cell_Type> BArray<Cell_Type>::Cell_default = Cell<Cell_Type>(); 
+
 // Edgelist with data
 template<typename Cell_Type> inline BArray< Cell_Type >::BArray (
     uint N_, uint M_,
@@ -235,17 +238,17 @@ inline void BArray<Cell_Type>::rm_cell(uint i, uint j, bool check_bounds, bool c
 }
 
 template<typename Cell_Type>
-inline void BArray<Cell_Type>::insert_cell(uint i, uint j, std::pair< Cell_Type, bool> v, bool check_bounds, bool check_exists) { 
+inline void BArray<Cell_Type>::insert_cell(uint i, uint j, Cell< Cell_Type> & v, bool check_bounds, bool check_exists) { 
   
   if (check_bounds)
-    out_of_range(i,j);
+    out_of_range(i,j); 
   
   if (check_exists) {
     
     // Checking if nothing here, then we move along
     if (ROW(i).size() == 0u) {
       
-      ROW(i).emplace(j, std::move(Cell<Cell_Type>(v.first, v.second)));
+      ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
       COL(j).emplace(i, &ROW(i).at(j));
       NCells++;
       return;
@@ -254,7 +257,7 @@ inline void BArray<Cell_Type>::insert_cell(uint i, uint j, std::pair< Cell_Type,
     
     // In this case, the row exists, but we are checking that the value is empty  
     if (ROW(i).find(j) == ROW(i).end()) {
-      ROW(i).emplace(j, std::move(Cell<Cell_Type>(v.first, v.second)));
+      ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v)); 
       COL(j).emplace(i, &ROW(i).at(j));
       NCells++;
     } else {
@@ -263,7 +266,7 @@ inline void BArray<Cell_Type>::insert_cell(uint i, uint j, std::pair< Cell_Type,
     
   } else {
     
-    ROW(i).emplace(j, std::move(Cell<Cell_Type>(v.first, v.second)));
+    ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
     COL(j).emplace(i, &ROW(i).at(j));
     
   }
@@ -273,24 +276,22 @@ inline void BArray<Cell_Type>::insert_cell(uint i, uint j, std::pair< Cell_Type,
 }
 
 template <typename Cell_Type>
-inline void BArray<Cell_Type>::insert_cell(uint i, uint j, Cell<Cell_Type> & v, bool check_bounds, bool check_exists) {
-  return insert_cell(i, j, std::pair<Cell_Type, bool>(v.value, v.visited), check_bounds, check_exists);
-}
-
-template <typename Cell_Type>
 inline void BArray<Cell_Type>::insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists) {
-  return insert_cell(i, j, std::pair<Cell_Type, bool>(v, visited), check_bounds, check_exists);
+  
+  Cell<Cell_Type> vc(v, visited);
+  
+  return insert_cell(i, j, vc, check_bounds, check_exists);
 }
 
 template <typename Cell_Type>
 inline void BArray<Cell_Type>::insert_cell(uint i, uint j, bool check_bounds, bool check_exists) {
-  return insert_cell(i, j, std::pair<double,bool>(1.0, visited), check_bounds, check_exists);
+  return insert_cell(i, j, BArray<Cell_Type>::Cell_default, check_bounds, check_exists);
   
 }
 
-template <typename Cell_Type>
+template <typename Cell_Type> 
 inline void BArray<Cell_Type>::insert_cell(
-    uint i, std::pair< Cell_Type, bool > v, bool check_bounds, bool check_exists
+    uint i, Cell<Cell_Type> & v, bool check_bounds, bool check_exists
   ) {
   
   return insert_cell(
@@ -303,23 +304,14 @@ inline void BArray<Cell_Type>::insert_cell(
 }
 
 template <typename Cell_Type>
-inline void BArray<Cell_Type>::insert_cell(uint i, Cell<Cell_Type> & v, bool check_bounds, bool check_exists) {
-  
-  return insert_cell(
-      (int) i % (int) N,
-      floor((int) i / (int) N),
-      std::pair<Cell_Type,bool>(v.value, v.visited), check_bounds, check_exists
-  );
-  
-}
-
-template <typename Cell_Type>
 inline void BArray<Cell_Type>::insert_cell(uint i, Cell_Type v, bool check_bounds, bool check_exists) {
   
+  Cell<Cell_Type> vc(v, visited);
+  
   return insert_cell(
       (int) i % (int) N,
       floor((int) i / (int) N),
-      std::pair<Cell_Type,bool>(v, visited),
+      vc,
       check_bounds,
       check_exists
   );
@@ -331,7 +323,7 @@ inline void BArray<double>::insert_cell(uint i, bool check_bounds, bool check_ex
   return insert_cell(
       (int) i % (int) N,
       floor((int) i / (int) N),
-      std::pair<double, bool>(1.0, visited),
+      BArray<double>::Cell_default,
       check_bounds,
       check_exists
   );
@@ -343,7 +335,7 @@ inline void BArray<bool>::insert_cell(uint i, bool check_bounds, bool check_exis
   return insert_cell(
     (int) i % (int) N,
     floor((int) i / (int) N),
-    std::pair<bool, bool>(true, visited),
+    BArray<bool>::Cell_default,
     check_bounds,
     check_exists
   );
@@ -458,9 +450,10 @@ inline void BArray<Cell_Type>::toggle_cell(uint i, uint j, bool check_bounds, in
   
   if (check_exists == EXISTS::UKNOWN) {
     
-    if (is_empty(i, j, false))
-      insert_cell(i, j, std::pair<double,bool>(1.0, visited), false, false);
-    else
+    if (is_empty(i, j, false)) {
+      insert_cell(i, j, BArray<Cell_Type>::Cell_default, false, false);
+      ROW(i).at(j).visited = visited;
+    } else
       rm_cell(i, j, false, false);
     
   } else if (check_exists == EXISTS::AS_ONE) {
@@ -469,7 +462,8 @@ inline void BArray<Cell_Type>::toggle_cell(uint i, uint j, bool check_bounds, in
     
   } else if (check_exists == EXISTS::AS_ZERO) {
     
-    insert_cell(i, j, std::pair<double,bool>(1.0, visited), false, false);
+    insert_cell(i, j, BArray<Cell_Type>::Cell_default, false, false);
+    ROW(i).at(j).visited = visited;
     
   }
   
@@ -562,7 +556,7 @@ inline void BArray<Cell_Type>::swap_cols(uint j0, uint j1, bool check_bounds) {
   } else if (check0 && !check1) {
     
     // 1 is empty, so we just add new cells and remove the other ones
-    for (auto iter = COL(j0).begin(); iter != COL(j0).begin(); ++iter) 
+    for (auto iter = COL(j0).begin(); iter != COL(j0).begin(); ++iter)
       insert_cell(iter->first, j1, *iter->second, false, false);
     
     // Setting the column to be zero

@@ -52,7 +52,7 @@ List counter(
   barray::BArray<bool> Array((uint) N, (uint) M, source, target);
   barray::SuffStats stats;
 
-  Array.meta.set("undirected", true);
+  // Array.meta.set("undirected", true);
   
   // Creating the counter object; 
   barray::StatsCounter<bool> dat(&Array, &stats);
@@ -65,6 +65,9 @@ List counter(
   dat.add_counter(barray::counters::ostar2);
   dat.add_counter(barray::counters::ttriads);
   dat.add_counter(barray::counters::ctriads);
+  dat.add_counter(barray::counters::density);
+  dat.add_counter(barray::counters::idegree15);
+  dat.add_counter(barray::counters::odegree15);
   
   // Fingers crossed
   dat.count_all();
@@ -100,6 +103,9 @@ List support (
   dat.add_counter(barray::counters::ostar2);
   dat.add_counter(barray::counters::ttriads);
   dat.add_counter(barray::counters::ctriads);
+  dat.add_counter(barray::counters::density);
+  dat.add_counter(barray::counters::idegree15);
+  dat.add_counter(barray::counters::odegree15);
   
   // Generating the data
   dat.calc();
@@ -167,20 +173,20 @@ net <- network::as.edgelist(cbind(source, target), n = N)
 net <- network::as.network(net)
 microbenchmark::microbenchmark(
   # ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad),
-  ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad),
+  ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad + density + idegree1.5 + odegree1.5),
   counter(N, M, source - 1L, target - 1L),
   unit = "relative",
   times = 100
 )
 
 
-ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2)+ ttriad + ctriad)
+ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2)+ ttriad + ctriad + density + idegree1.5 + odegree1.5)
 counter(N, M, source - 1L, target - 1L)
 
 
 # stop()
 set.seed(123)
-N <- 3
+N <- 4
 M <- N
 
 nedges  <- 1
@@ -203,12 +209,12 @@ ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
 
 microbenchmark::microbenchmark(
   barray = support(N, M),
-  ergm   = ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad  + ctriad, zeroobs = FALSE),
+  ergm   = ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad  + ctriad + density + idegree1.5 + odegree1.5, zeroobs = FALSE),
   times = 100,
   unit = "relative"
 )
 
-ans1 <- ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad, zeroobs = FALSE)
+ans1 <- ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad + density + idegree1.5 + odegree1.5, zeroobs = FALSE)
 ans1 <- cbind(ans1$statmat, w = ans1$weights)
 
 # Sorting equally
@@ -219,6 +225,14 @@ sort_all <- function(x) {
 ans1 <- sort_all(ans1)
 ans0 <- sort_all(ans0)
 colnames(ans0) <- colnames(ans1)
+
+# Checking as support
+set.seed(123)
+pars <- runif(ncol(ans1) - 1)
+log(exp(pars %*% t(ans1[, -ncol(ans1)])) %*% cbind(ans1[,ncol(ans1)]))
+log(exp(pars %*% t(ans0[, -ncol(ans0)])) %*% cbind(ans0[,ncol(ans0)]))
+
+# Checking range
 range(ans1 - ans0)
 
 
@@ -238,7 +252,10 @@ colnames(ps) <- c(
   "ostar2",
   "ttriad",
   "ctriad",
-  "count"
+  "count",
+  "density",
+  "idegree1.5",
+  "odegree1.5"
 )
 ps
 */

@@ -15,6 +15,8 @@ public:
   std::vector< Row_type< Cell_Type > > el_ij;
   std::vector< Col_type< Cell_Type > > el_ji;
   
+  static Cell< Cell_Type > Cell_default;
+  
   // This is as a reference, if we need to iterate through the cells and we need
   // to keep track which were visited, we use this as a reference. So that if
   // cell.visited = true and visited = true, it means that we haven't been here
@@ -63,12 +65,10 @@ public:
   // Deletion addition operations
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
-  void insert_cell(uint i, uint j, std::pair< Cell_Type, bool> v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, Cell< Cell_Type > & v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
-  void insert_cell(uint i, std::pair< Cell_Type, bool> v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, Cell< Cell_Type > & v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, Cell_Type v, bool check_bounds = true, bool check_exists = true);
   void insert_cell(uint i, bool check_bounds = true, bool check_exists = true);
