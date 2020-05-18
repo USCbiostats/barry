@@ -37,8 +37,8 @@ public:
   
   // Move assign operator
   Cell& operator=(Cell&& other) {
-    this->value = other.value;
-    this->visited = other.visited;
+    this->value   = std::move(other.value);
+    this->visited = std::move(other.visited);
     return *this;
   };
   

@@ -6,8 +6,8 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 SEXP suff_stats(const NumericMatrix & x) {
   
-  Rcpp::XPtr< barray::SuffStats > xptr(
-    new barray::SuffStats(),
+  Rcpp::XPtr< barray::StatsDB > xptr( 
+    new barray::StatsDB(),
     true
   );
   
@@ -23,7 +23,7 @@ SEXP suff_stats(const NumericMatrix & x) {
 // [[Rcpp::export]]
 List get_suff_stats(SEXP x) {
   
-  Rcpp::XPtr< barray::SuffStats > xptr(x);
+  Rcpp::XPtr< barray::StatsDB > xptr(x);
   
   // Now, getting the data
   barray::Counts_type ans = xptr->get_entries();
@@ -50,7 +50,7 @@ List counter(
   
   // Initializing the Binary array, and also the the suffstats counter
   barray::BArray<bool> Array((uint) N, (uint) M, source, target);
-  barray::SuffStats stats;
+  barray::StatsDB stats;
 
   // Array.meta.set("undirected", true);
   

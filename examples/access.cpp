@@ -107,7 +107,7 @@ unique(get_col(el, j_max - 1))
 # Comparing with a sparse matrix
 library(Matrix)
 x_sparse <- sparseMatrix(i = source, j = target, x = values, dims = c(N,M))
-
+ 
 # All equal?
 ans <- sapply(1:N - 1, get_row, x = el)
 range(t(ans) - x_sparse)

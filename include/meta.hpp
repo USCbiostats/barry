@@ -4,6 +4,12 @@
 #ifndef BARRAY_META_HPP
 #define BARRAY_META_HPP 1
 
+/***
+ * ! Metadata
+ * ! Simply a map of type bool (default) that marks true/false
+ * ! for certain properties. Users can query with the default equals to
+ * ! false
+*/
 class Meta {
 public:
   Meta() : data(0u) {};
@@ -28,3 +34,4 @@ inline void Meta::set(const std::string & attr, bool value) {
 }
 
 #endif
+

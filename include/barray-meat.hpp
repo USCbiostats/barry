@@ -34,7 +34,9 @@ template<typename Cell_Type> inline BArray< Cell_Type >::BArray (
     
     // Checking range
     if (source.at(i) >= N_ | target.at(i) >= M_)
-      throw std::range_error("Either source or target point to an element outside of the range by (N,M).");
+      throw std::range_error(
+          "Either source or target point to an element outside of the range by (N,M)."
+          );
     
     // Checking if it exists
     auto search = ROW(source.at(i)).find(target.at(i));
@@ -49,7 +51,12 @@ template<typename Cell_Type> inline BArray< Cell_Type >::BArray (
     }
     
     // Adding the value and creating a pointer to it
-    ROW(source.at(i)).emplace(std::pair<uint, Cell< Cell_Type> >(target.at(i), Cell< Cell_Type > (value.at(i), visited)));
+    ROW(source.at(i)).emplace(
+        std::pair<uint, Cell< Cell_Type> >(
+            target.at(i),
+            Cell< Cell_Type > (value.at(i), visited)
+      )
+      );
     COL(target.at(i)).emplace(
         source.at(i),
         &ROW(source.at(i))[target.at(i)]
@@ -104,7 +111,13 @@ template<typename Cell_Type> inline BArray< Cell_Type >::BArray (
     }
     
     // Adding the value and creating a pointer to it
-    ROW(source.at(i)).emplace(std::pair<uint, Cell< Cell_Type> >(target.at(i), Cell< Cell_Type > (value.at(i), visited)));
+    ROW(source.at(i)).emplace(
+        std::pair<uint, Cell< Cell_Type> >(
+            target.at(i),
+            Cell< Cell_Type >(value.at(i), visited)
+      )
+      );
+    
     COL(target.at(i)).emplace(
         source.at(i),
         &ROW(source.at(i))[target.at(i)]
@@ -127,7 +140,9 @@ inline void BArray<Cell_Type>::out_of_range(uint i, uint j) const {
   
 
 template<typename Cell_Type>
-inline Cell_Type BArray<Cell_Type>::get_cell(uint i, uint j, bool check_bounds) const {
+inline Cell_Type BArray<Cell_Type>::get_cell(
+    uint i, uint j, bool check_bounds
+  ) const {
   
   // Checking boundaries  
   if (check_bounds)
@@ -190,7 +205,9 @@ inline Entries<Cell_Type> BArray<Cell_Type>::get_entries() const {
 }
 
 template<typename Cell_Type>
-inline bool BArray<Cell_Type>::is_empty(uint i, uint j, bool check_bounds) const {
+inline bool BArray<Cell_Type>::is_empty(
+    uint i, uint j, bool check_bounds
+  ) const {
   
   if (check_bounds)
     out_of_range(i, j);
@@ -208,7 +225,9 @@ inline bool BArray<Cell_Type>::is_empty(uint i, uint j, bool check_bounds) const
 }
 
 template<typename Cell_Type>
-inline void BArray<Cell_Type>::rm_cell(uint i, uint j, bool check_bounds, bool check_exists) {
+inline void BArray<Cell_Type>::rm_cell(
+    uint i, uint j, bool check_bounds, bool check_exists
+  ) {
   
   // Checking the boundaries
   if (check_bounds)
@@ -238,7 +257,9 @@ inline void BArray<Cell_Type>::rm_cell(uint i, uint j, bool check_bounds, bool c
 }
 
 template<typename Cell_Type>
-inline void BArray<Cell_Type>::insert_cell(uint i, uint j, Cell< Cell_Type> & v, bool check_bounds, bool check_exists) { 
+inline void BArray<Cell_Type>::insert_cell(
+    uint i, uint j, Cell< Cell_Type> & v, bool check_bounds, bool check_exists
+  ) { 
   
   if (check_bounds)
     out_of_range(i,j); 
