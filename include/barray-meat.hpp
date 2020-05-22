@@ -33,33 +33,33 @@ template<typename Cell_Type> inline BArray< Cell_Type >::BArray (
   for (uint i = 0u; i < source.size(); ++i) {
     
     // Checking range
-    if (source.at(i) >= N_ | target.at(i) >= M_)
+    if (source[i] >= N_ | target[i] >= M_)
       throw std::range_error(
           "Either source or target point to an element outside of the range by (N,M)."
           );
     
     // Checking if it exists
-    auto search = ROW(source.at(i)).find(target.at(i));
-    if (search != ROW(source.at(i)).end()) {
+    auto search = ROW(source[i]).find(target[i]);
+    if (search != ROW(source[i]).end()) {
       if (!add)
         throw std::logic_error("The value already exists. Use 'add = true'.");
       
       // Increasing the value (this will automatically update the
       // other value)
-      ROW(source.at(i))[target.at(i)].add(value.at(i));
+      ROW(source[i])[target[i]].add(value[i]);
       continue;
     }
     
     // Adding the value and creating a pointer to it
-    ROW(source.at(i)).emplace(
+    ROW(source[i]).emplace(
         std::pair<uint, Cell< Cell_Type> >(
-            target.at(i),
-            Cell< Cell_Type > (value.at(i), visited)
+            target[i],
+            Cell< Cell_Type > (value[i], visited)
       )
       );
-    COL(target.at(i)).emplace(
-        source.at(i),
-        &ROW(source.at(i))[target.at(i)]
+    COL(target[i]).emplace(
+        source[i],
+        &ROW(source[i])[target[i]]
     );
     NCells++;
   }
@@ -95,32 +95,32 @@ template<typename Cell_Type> inline BArray< Cell_Type >::BArray (
   for (uint i = 0u; i < source.size(); ++i) {
     
     // Checking range
-    if (source.at(i) >= N_ | target.at(i) >= M_)
+    if (source[i] >= N_ | target[i] >= M_)
       throw std::range_error("Either source or target point to an element outside of the range by (N,M).");
     
     // Checking if it exists
-    auto search = ROW(source.at(i)).find(target.at(i));
-    if (search != ROW(source.at(i)).end()) {
+    auto search = ROW(source[i]).find(target[i]);
+    if (search != ROW(source[i]).end()) {
       if (!add)
         throw std::logic_error("The value already exists. Use 'add = true'.");
       
       // Increasing the value (this will automatically update the
       // other value)
-      ROW(source.at(i))[target.at(i)].add(value.at(i));
+      ROW(source[i])[target[i]].add(value[i]);
       continue;
     }
     
     // Adding the value and creating a pointer to it
-    ROW(source.at(i)).emplace(
+    ROW(source[i]).emplace(
         std::pair<uint, Cell< Cell_Type> >(
-            target.at(i),
-            Cell< Cell_Type >(value.at(i), visited)
+            target[i],
+            Cell< Cell_Type >(value[i], visited)
       )
       );
     
-    COL(target.at(i)).emplace(
-        source.at(i),
-        &ROW(source.at(i))[target.at(i)]
+    COL(target[i]).emplace(
+        source[i],
+        &ROW(source[i])[target[i]]
     );
     NCells++;
   }
@@ -270,7 +270,7 @@ inline void BArray<Cell_Type>::insert_cell(
     if (ROW(i).size() == 0u) {
       
       ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
-      COL(j).emplace(i, &ROW(i).at(j));
+      COL(j).emplace(i, &ROW(i)[j]);
       NCells++;
       return;
       
@@ -279,7 +279,7 @@ inline void BArray<Cell_Type>::insert_cell(
     // In this case, the row exists, but we are checking that the value is empty  
     if (ROW(i).find(j) == ROW(i).end()) {
       ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v)); 
-      COL(j).emplace(i, &ROW(i).at(j));
+      COL(j).emplace(i, &ROW(i)[j]);
       NCells++;
     } else {
       throw std::logic_error("The cell already exists.");
@@ -288,7 +288,7 @@ inline void BArray<Cell_Type>::insert_cell(
   } else {
     
     ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
-    COL(j).emplace(i, &ROW(i).at(j));
+    COL(j).emplace(i, &ROW(i)[j]);
     
   }
   
@@ -390,9 +390,9 @@ inline void BArray<Cell_Type>::swap_cells(
     // Using the initializing by move, after this, the cell becomes
     // invalid. We use pointers instead as this way we access the Heap memory,
     // which should be faster to access.
-    Cell<Cell_Type> c0(std::move(ROW(i0).at(j0)));
+    Cell<Cell_Type> c0(std::move(ROW(i0)[j0]));
     rm_cell(i0, j0, false, false);
-    Cell<Cell_Type> c1(std::move(ROW(i1).at(j1)));
+    Cell<Cell_Type> c1(std::move(ROW(i1)[j1]));
     rm_cell(i1, j1, false, false);
     
     // Inserting the cells by reference, these will be deleted afterwards
@@ -434,9 +434,9 @@ inline void BArray<Cell_Type>::swap_cells(
     if ((i0 == i1) && (j0 == j1)) 
       return;
     
-    Cell<Cell_Type> c0(std::move(ROW(i0).at(j0)));
+    Cell<Cell_Type> c0(std::move(ROW(i0)[j0]));
     rm_cell(i0, j0, false, false);
-    Cell<Cell_Type> c1(std::move(ROW(i1).at(j1)));
+    Cell<Cell_Type> c1(std::move(ROW(i1)[j1]));
     rm_cell(i1, j1, false, false);
     
     insert_cell(i0, j0, c1, false, false);
@@ -447,7 +447,7 @@ inline void BArray<Cell_Type>::swap_cells(
     if (report != nullptr) 
       (*report) = EXISTS::TWO;
     
-    insert_cell(i0, j0, ROW(i1).at(j1), false, false);
+    insert_cell(i0, j0, ROW(i1)[j1], false, false);
     rm_cell(i1, j1, false, false);
     
   } else if (check0 & !check1) {
@@ -455,7 +455,7 @@ inline void BArray<Cell_Type>::swap_cells(
     if (report != nullptr) 
       (*report) = EXISTS::ONE;
     
-    insert_cell(i1, j1, ROW(i0).at(j0), false, false);
+    insert_cell(i1, j1, ROW(i0)[j0], false, false);
     rm_cell(i0, j0, false, false);
     
   }
@@ -473,7 +473,7 @@ inline void BArray<Cell_Type>::toggle_cell(uint i, uint j, bool check_bounds, in
     
     if (is_empty(i, j, false)) {
       insert_cell(i, j, BArray<Cell_Type>::Cell_default, false, false);
-      ROW(i).at(j).visited = visited;
+      ROW(i)[j].visited = visited;
     } else
       rm_cell(i, j, false, false);
     
@@ -484,7 +484,7 @@ inline void BArray<Cell_Type>::toggle_cell(uint i, uint j, bool check_bounds, in
   } else if (check_exists == EXISTS::AS_ZERO) {
     
     insert_cell(i, j, BArray<Cell_Type>::Cell_default, false, false);
-    ROW(i).at(j).visited = visited;
+    ROW(i)[j].visited = visited;
     
   }
   
@@ -524,11 +524,11 @@ inline void BArray<Cell_Type>::swap_rows(uint i0, uint i1, bool check_bounds) {
   // the indices swapped.
   if (move1)
     for (auto iter = ROW(i0).begin(); iter != ROW(i0).end(); ++iter)
-      COL(iter->first)[i0] = &ROW(i0).at(iter->first);
+      COL(iter->first)[i0] = &ROW(i0)[iter->first];
   
   if (move0)
     for (auto iter = ROW(i1).begin(); iter != ROW(i1).end(); ++iter)
-      COL(iter->first)[i1] = &ROW(i1).at(iter->first);
+      COL(iter->first)[i1] = &ROW(i1)[iter->first];
   
   return;
 }
@@ -664,21 +664,21 @@ inline void BArray<Cell_Type>::transpose() {
       
       // Skip if in the diagoal
       if (i == col->first) {
-        ROW(i).at(i).visited = visited;
+        ROW(i)[i].visited = visited;
         continue;
       }
       
       // We have not visited this yet, we need to change that
-      if (ROW(i).at(col->first).visited != visited) {
+      if (ROW(i)[col->first].visited != visited) {
         
         // First, swap the contents
         swap_cells(i, col->first, col->first, i, false, CHECK::TWO, &status);
         
         // Changing the switch
         if (status == EXISTS::BOTH)
-          ROW(i).at(col->first).visited = visited;
+          ROW(i)[col->first].visited = visited;
         
-        ROW(col->first).at(i).visited = visited;
+        ROW(col->first)[i].visited = visited;
         
       }
       

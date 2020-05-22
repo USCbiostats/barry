@@ -59,7 +59,7 @@ inline void StatsCounter<Cell_Type>::count_init(uint i, uint j) {
   current_stats.resize(counters.size(), 0.0);
   change_stats.resize(counters.size(), 0.0);
   for (uint n = 0u; n < counters.size(); ++n) 
-    current_stats.at(n) = counters.at(n).init(&EmptyArray, i, j);
+    current_stats[n] = counters[n].init(&EmptyArray, i, j);
   
   return;
 }
@@ -70,8 +70,8 @@ inline void StatsCounter<Cell_Type>::count_current(uint i, uint j) {
   // Iterating through the functions, and updating the set of
   // statistics.
   for (uint n = 0u; n < counters.size(); ++n) {
-    change_stats.at(n)   = counters.at(n).count(&EmptyArray, i, j);
-    current_stats.at(n) += change_stats.at(n);
+    change_stats[n]   = counters[n].count(&EmptyArray, i, j);
+    current_stats[n] += change_stats[n];
   }
 
   return;
@@ -169,7 +169,7 @@ public:
       current_stats.resize(counters.size());
       
       for (uint n = 0u; n < counters.size(); ++n) 
-        current_stats.at(n) = counters.at(n).init(&EmptyArray, i, j);
+        current_stats[n] = counters[n].init(&EmptyArray, i, j);
       
       // Adding to the overall count
       support.add(current_stats);
@@ -188,8 +188,8 @@ public:
     // Counting
     std::vector< double > change_stats(counters.size());
     for (uint n = 0u; n < counters.size(); ++n) {
-      change_stats.at(n) = counters.at(n).count(&EmptyArray, i, j);
-      current_stats.at(n) += change_stats.at(n);
+      change_stats[n] = counters[n].count(&EmptyArray, i, j);
+      current_stats[n] += change_stats[n];
     }
     
     // Adding to the overall count
@@ -202,7 +202,7 @@ public:
     // We need to restore the state of the cell
     EmptyArray.rm_cell(i, j, false, false);
     for (uint n = 0u; n < counters.size(); ++n) 
-      current_stats.at(n) -= change_stats.at(n);
+      current_stats[n] -= change_stats[n];
      
     
     return;
