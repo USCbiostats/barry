@@ -73,6 +73,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A counter function based on change statistics.  
+ <a href="classbarray_1_1_counter.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="barray_8hpp_source.html">barray.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -80,8 +83,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c77125d2df30d540aca442101b0e835"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarray_1_1_counter.html#a7c77125d2df30d540aca442101b0e835">Counter</a> ()</td></tr>
 <tr class="separator:a7c77125d2df30d540aca442101b0e835"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ccae4a42138c64cb98891d565582524"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarray_1_1_counter.html#a3ccae4a42138c64cb98891d565582524">Counter</a> (<a class="el" href="namespacebarray.html#a4e53ad306ef79910e07db94c29ec4f0e">Counter_type</a>&lt; Cell_Type &gt; count_fun_)</td></tr>
+<tr class="memdesc:a3ccae4a42138c64cb98891d565582524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creator passing only a counter function.  <a href="#a3ccae4a42138c64cb98891d565582524">More...</a><br /></td></tr>
 <tr class="separator:a3ccae4a42138c64cb98891d565582524"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad803c9467c2166ebbd9c312459132329"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarray_1_1_counter.html#ad803c9467c2166ebbd9c312459132329">Counter</a> (<a class="el" href="namespacebarray.html#a4e53ad306ef79910e07db94c29ec4f0e">Counter_type</a>&lt; Cell_Type &gt; count_fun_, <a class="el" href="namespacebarray.html#a4e53ad306ef79910e07db94c29ec4f0e">Counter_type</a>&lt; Cell_Type &gt; init_fun_)</td></tr>
+<tr class="memdesc:ad803c9467c2166ebbd9c312459132329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creator passing a counter and an initializer.  <a href="#ad803c9467c2166ebbd9c312459132329">More...</a><br /></td></tr>
 <tr class="separator:ad803c9467c2166ebbd9c312459132329"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12bddc242a5f2279930cd96e415dd6de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarray_1_1_counter.html#a12bddc242a5f2279930cd96e415dd6de">~Counter</a> ()</td></tr>
 <tr class="separator:a12bddc242a5f2279930cd96e415dd6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -101,6 +106,8 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename Cell_Type&gt;<br />
 class barray::Counter&lt; Cell_Type &gt;</h3>
 
+<p>A counter function based on change statistics. </p>
+<p>This class is used by <code>CountStats</code> and <code><a class="el" href="classbarray_1_1_stats_counter.html" title="Count stats for a single Array. ">StatsCounter</a></code> as a way to count statistics using change statistics. </p>
 
 <p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00014">14</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -129,7 +136,7 @@ template&lt;typename Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00027">27</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00023">23</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
 
 </div>
 </div>
@@ -159,7 +166,15 @@ template&lt;typename Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00028">28</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
+<p>Creator passing only a counter function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count_fun</td><td>The main counter function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00029">29</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
 
 </div>
 </div>
@@ -199,7 +214,16 @@ template&lt;typename Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00030">30</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
+<p>Creator passing a counter and an initializer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count_fun</td><td>The main counter function. </td></tr>
+    <tr><td class="paramname">init_fun</td><td>The initializer function can also be used to check if the <code><a class="el" href="classbarray_1_1_b_array.html">BArray</a></code> has the required metadata (e.g. is it a directed graph?). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00038">38</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
 
 </div>
 </div>
@@ -228,7 +252,7 @@ template&lt;typename Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00033">33</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00041">41</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
 
 </div>
 </div>
@@ -275,7 +299,7 @@ template&lt;typename Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00043">43</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00051">51</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
 
 </div>
 </div>
@@ -321,7 +345,7 @@ template&lt;typename Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00051">51</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00059">59</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
 
 </div>
 </div>
@@ -340,7 +364,7 @@ template&lt;typename Cell_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00021">21</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00017">17</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
 
 </div>
 </div>
@@ -358,7 +382,7 @@ template&lt;typename Cell_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00022">22</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray_8hpp_source.html#l00018">18</a> of file <a class="el" href="barray_8hpp_source.html">barray.hpp</a>.</p>
 
 </div>
 </div>

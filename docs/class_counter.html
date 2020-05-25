@@ -69,6 +69,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A counter function based on change statistics.  
+ <a href="class_counter.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -76,8 +79,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a98edebb3141f08ae6f5b754e714ae6b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counter.html#a98edebb3141f08ae6f5b754e714ae6b6">Counter</a> ()</td></tr>
 <tr class="separator:a98edebb3141f08ae6f5b754e714ae6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fc1dc684e820150a68763ee954ce32b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counter.html#a8fc1dc684e820150a68763ee954ce32b">Counter</a> (<a class="el" href="typedefs_8hpp.html#ae5b431107f7234d43dfbf6ec4587e746">Counter_type</a>&lt; Cell_Type &gt; count_fun_)</td></tr>
+<tr class="memdesc:a8fc1dc684e820150a68763ee954ce32b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creator passing only a counter function.  <a href="#a8fc1dc684e820150a68763ee954ce32b">More...</a><br /></td></tr>
 <tr class="separator:a8fc1dc684e820150a68763ee954ce32b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e82cc6e2053ca455d49814c820b7d96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counter.html#a0e82cc6e2053ca455d49814c820b7d96">Counter</a> (<a class="el" href="typedefs_8hpp.html#ae5b431107f7234d43dfbf6ec4587e746">Counter_type</a>&lt; Cell_Type &gt; count_fun_, <a class="el" href="typedefs_8hpp.html#ae5b431107f7234d43dfbf6ec4587e746">Counter_type</a>&lt; Cell_Type &gt; init_fun_)</td></tr>
+<tr class="memdesc:a0e82cc6e2053ca455d49814c820b7d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creator passing a counter and an initializer.  <a href="#a0e82cc6e2053ca455d49814c820b7d96">More...</a><br /></td></tr>
 <tr class="separator:a0e82cc6e2053ca455d49814c820b7d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d42eae5f83761e56a900a2e08b67abd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counter.html#a2d42eae5f83761e56a900a2e08b67abd">~Counter</a> ()</td></tr>
 <tr class="separator:a2d42eae5f83761e56a900a2e08b67abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,6 +102,8 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename Cell_Type&gt;<br />
 class Counter&lt; Cell_Type &gt;</h3>
 
+<p>A counter function based on change statistics. </p>
+<p>This class is used by <code>CountStats</code> and <code><a class="el" href="class_stats_counter.html" title="Count stats for a single Array. ">StatsCounter</a></code> as a way to count statistics using change statistics. </p>
 
 <p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00014">14</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -125,7 +132,7 @@ template&lt;typename Cell_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00027">27</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00023">23</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -155,7 +162,15 @@ template&lt;typename Cell_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00028">28</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p>Creator passing only a counter function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count_fun</td><td>The main counter function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00029">29</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -195,7 +210,16 @@ template&lt;typename Cell_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00030">30</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p>Creator passing a counter and an initializer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count_fun</td><td>The main counter function. </td></tr>
+    <tr><td class="paramname">init_fun</td><td>The initializer function can also be used to check if the <code><a class="el" href="class_b_array.html" title="Baseline class for binary arrays. ">BArray</a></code> has the required metadata (e.g. is it a directed graph?). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00038">38</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -224,7 +248,7 @@ template&lt;typename Cell_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00033">33</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00041">41</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -271,7 +295,7 @@ template&lt;typename Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00043">43</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00051">51</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -317,7 +341,7 @@ template&lt;typename Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00051">51</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00059">59</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -336,7 +360,7 @@ template&lt;typename Cell_Type&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00021">21</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00017">17</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -354,7 +378,7 @@ template&lt;typename Cell_Type&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00022">22</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00018">18</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>

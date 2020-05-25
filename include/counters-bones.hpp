@@ -4,20 +4,16 @@
 #ifndef BARRAY_COUNTERS_H
 #define BARRAY_COUNTERS_H
 
-/***
- * ! Counter class of function. Right now it has two members, 
- * ! the initializer and the actual counter. By default all counts are initialized
- * ! as zero.
- *  
+/**
+ * @brief A counter function based on change statistics.
+ * 
+ * This class is used by `CountStats` and `StatsCounter` as a way to count
+ * statistics using change statistics.
  */
 template <typename Cell_Type>
 class Counter {
 public:
   
-  /***
-   * The init_fun function can be used to check for attributes, e.g.
-   * that the network is directed or not, or something else.
-   */
   Counter_type<Cell_Type> count_fun;
   Counter_type<Cell_Type> init_fun;
 
@@ -25,8 +21,20 @@ public:
    * ! Initializers
    */
   Counter() : count_fun(nullptr), init_fun(nullptr) {};
+  
+  /**
+   * @brief Creator passing only a counter function
+   * @param count_fun The main counter function.
+   */
   Counter(Counter_type<Cell_Type> count_fun_) :
     count_fun(count_fun_), init_fun(nullptr) {};
+  /**
+   * @brief Creator passing a counter and an initializer
+   * 
+   * @param count_fun The main counter function.
+   * @param init_fun The initializer function can also be used to check if the
+   *  `BArray` has the required metadata (e.g. is it a directed graph?).
+   */
   Counter(Counter_type<Cell_Type> count_fun_, Counter_type<Cell_Type> init_fun_):
     count_fun(count_fun_), init_fun(init_fun_) {};
   

@@ -8,9 +8,11 @@
 #ifndef LBARRAY_BONES_HPP 
 #define LBARRAY_BONES_HPP 1
 
-/***
- * ! Users can a list of functions that can be used with this.
- * ! The baseline set of arguments is a pointer to a binary array.
+/**
+ * @brief Count stats for a single Array.
+ * 
+ * Users can a list of functions that can be used with this. The baseline set of
+ * arguments is a pointer to a binary array and a dataset to add the counts to.
  */ 
 template <typename Cell_Type>
 class StatsCounter {
@@ -26,7 +28,12 @@ public:
   StatsDB * stats;
   std::vector< Counter<Cell_Type> > counters;
   
-  // Functions
+  /**
+   * @brief Creator of a `StatsCounter`
+   * 
+   * @param data A const pointer to a `BArray`.
+   * @param Stats_ A pointer to a dataset of stats `StatsDB`.
+   */
   StatsCounter(const BArray<Cell_Type> * data, StatsDB * stats_) :
     counters(0u), Array(data), EmptyArray(data->N, data->M), stats(stats_) {
     // Copying the information
