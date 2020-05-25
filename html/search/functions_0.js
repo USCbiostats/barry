@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['add',['add',['../classbarray_1_1_cell.html#ac6bc03bcee187b59b1f97e55d2be9e84',1,'barray::Cell::add()'],['../classbarray_1_1_stats_d_b.html#a196bdb1b0a8e166d03a90aadc0e103b0',1,'barray::StatsDB::add()'],['../class_cell.html#a3d063afd2a8743623d0e524debbd55e9',1,'Cell::add()'],['../class_stats_d_b.html#a5759e17b759fcafeec7601188aaa8266',1,'StatsDB::add()'],['../class_cell.html#a64d4b92f322ccb8cfbad53f816d2caf8',1,'Cell::add(double x)'],['../class_cell.html#a0da6d3d39069cc22486442cc51c7685c',1,'Cell::add(bool x)'],['../class_cell.html#a64d4b92f322ccb8cfbad53f816d2caf8',1,'Cell::add(double x)'],['../class_cell.html#a0da6d3d39069cc22486442cc51c7685c',1,'Cell::add(bool x)']]],
+  ['add_5fcounter',['add_counter',['../classbarray_1_1_stats_counter.html#a49c095c44d121c2a8a1e4a26155deae7',1,'barray::StatsCounter::add_counter()'],['../classbarray_1_1_support.html#a6747fb6d5814b282f9ccd3d0ff978850',1,'barray::Support::add_counter()'],['../class_stats_counter.html#a49c095c44d121c2a8a1e4a26155deae7',1,'StatsCounter::add_counter()'],['../class_support.html#a6747fb6d5814b282f9ccd3d0ff978850',1,'Support::add_counter()']]]
+];
