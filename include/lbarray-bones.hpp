@@ -25,7 +25,6 @@ public:
   std::vector< double > change_stats;
    
   // We will save the data here
-  StatsDB * stats;
   std::vector< Counter<Cell_Type> > counters;
   
   /**
@@ -34,8 +33,8 @@ public:
    * @param data A const pointer to a `BArray`.
    * @param Stats_ A pointer to a dataset of stats `StatsDB`.
    */
-  StatsCounter(const BArray<Cell_Type> * data, StatsDB * stats_) :
-    counters(0u), Array(data), EmptyArray(data->N, data->M), stats(stats_) {
+  StatsCounter(const BArray<Cell_Type> * data) :
+    counters(0u), Array(data), EmptyArray(data->N, data->M) {
     // Copying the information
     EmptyArray.meta = Array->meta;
     return;
@@ -49,7 +48,7 @@ public:
    */
   void count_init(uint i, uint j);
   void count_current(uint i, uint j);
-  void count_all();
+  std::vector< double > count_all();
   
 };
 
@@ -86,7 +85,7 @@ inline void StatsCounter<Cell_Type>::count_current(uint i, uint j) {
 }
 
 template <typename Cell_Type>
-inline void StatsCounter<Cell_Type>::count_all() {
+inline std::vector< double > StatsCounter<Cell_Type>::count_all() {
   
   // Initializing the counter on the empty array
   count_init(0u, 0u);
@@ -117,16 +116,16 @@ inline void StatsCounter<Cell_Type>::count_all() {
   }
   
   // Adding to the sufficient statistics
-  stats->add(current_stats);
-  return;
+  return current_stats;
   
 }
 
-/***
- * ! Compute the support of a model by iterating through all
- * ! possible combinations, as we would do in a powerset.
+/**@brief Compute the support of sufficient statistics
+ * 
+ * Given an array and a set of counters, this object iterates throughout the
+ * support set of the Array while at the same time computing the support of
+ * the sufficient statitics.
  */
-
 template <typename Cell_Type>
 class Support {
 public:
@@ -154,7 +153,6 @@ public:
   
   void calc(uint pos = 0u) {
     
-
     // Getting the location 
     uint i = (int) pos % (int) N;
     uint j = floor((int) pos / (int) N);

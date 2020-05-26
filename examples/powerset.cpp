@@ -6,13 +6,13 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 SEXP psets(int n, int m) { 
     
-  Rcpp::XPtr< barray::LBArray< bool >> xptr(
-    new barray::LBArray< bool >((uint) n, (uint) m),
+  Rcpp::XPtr< barray::PowerSet< bool >> xptr(
+    new barray::PowerSet< bool >((uint) n, (uint) m),
     true
   );
   
   // Generating the powerset 
-  xptr->pset();
+  xptr->calc();
   // std::cout << "Size: " << sizeof(*xptr) << std::endl;
   return xptr;
 }
@@ -20,7 +20,7 @@ SEXP psets(int n, int m) {
 
 // [[Rcpp::export]]
 List get_data(SEXP x) {
-  Rcpp::XPtr< barray::LBArray< bool >> xptr(x);
+  Rcpp::XPtr< barray::PowerSet< bool >> xptr(x);
 
   // Generating the data
   List ans(xptr->data.size());
@@ -49,10 +49,10 @@ M <- 3
 PS_2_3 <- psets(N,M)
 x <- ergmito::powerset(4)
 
-# microbenchmark::microbenchmark(
-#   PS_2_3 <- psets(N,M),
-#   x <- ergmito::powerset(4)
-# )
+microbenchmark::microbenchmark(
+  PS_2_3 <- psets(N,M),
+  x <- ergmito::powerset(4)
+)
 
 
 stop()

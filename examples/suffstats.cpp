@@ -31,7 +31,7 @@ List get_suff_stats(SEXP x) {
   List res(ans.size());
   for (unsigned int i = 0u; i < res.size(); ++i) {
     res[i] = List::create(
-      _["x"] = ans.at(i).first,
+      _["x"]     = ans.at(i).first,
       _["count"] = ans.at(i).second
     );
   }
@@ -42,7 +42,7 @@ List get_suff_stats(SEXP x) {
 
 // A more elaborated example
 // [[Rcpp::export]]
-List counter(
+NumericVector counter(
     int N, int M,
     const std::vector< uint > & source,
     const std::vector< uint > & target
@@ -50,12 +50,11 @@ List counter(
   
   // Initializing the Binary array, and also the the suffstats counter
   barray::BArray<bool> Array((uint) N, (uint) M, source, target);
-  barray::StatsDB stats;
 
   // Array.meta.set("undirected", true);
   
   // Creating the counter object; 
-  barray::StatsCounter<bool> dat(&Array, &stats);
+  barray::StatsCounter<bool> dat(&Array);
   
   // Adding functions 
   dat.add_counter(barray::counters::edges);
@@ -70,19 +69,9 @@ List counter(
   dat.add_counter(barray::counters::odegree15);
   
   // Fingers crossed
-  dat.count_all();
+  std::vector< double > ans = dat.count_all();
   
-  barray::Counts_type ans = stats.get_entries();
-  
-  List res(ans.size());
-  for (unsigned int i = 0u; i < res.size(); ++i) {
-    res[i] = List::create(
-      _["x"] = ans.at(i).first,
-      _["count"] = ans.at(i).second
-    ); 
-  }
-  
-  return res;
+  return wrap(ans);
   
 }
 
@@ -173,14 +162,17 @@ net <- network::as.edgelist(cbind(source, target), n = N)
 net <- network::as.network(net)
 microbenchmark::microbenchmark(
   # ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad),
-  ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad + density + idegree1.5 + odegree1.5),
-  counter(N, M, source - 1L, target - 1L),
+  ergm = ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad + density + idegree1.5 + odegree1.5),
+  barray = counter(N, M, source - 1L, target - 1L),
   unit = "relative",
   times = 100
 )
 
 
-ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2)+ ttriad + ctriad + density + idegree1.5 + odegree1.5)
+ergm::summary_formula(
+  net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
+    density + idegree1.5 + odegree1.5
+  ) - 
 counter(N, M, source - 1L, target - 1L)
 
 
@@ -237,11 +229,11 @@ range(ans1 - ans0)
 
 
 ps <- ergmito::powerset(3)
-ps <- lapply(ps, function(ps.) {
+ps <- sapply(ps, function(ps.) {
   d <- which(ps. != 0, arr.ind = TRUE) - 1
-  counter(3, 3, d[,1], d[,2])[[1]]
+  counter(3, 3, d[,1], d[,2])
 })
-ps <- t(sapply(ps, function(ps.) c(ps.$x, ps.$count)))
+ps <- t(ps)
 unique(ps[,-ncol(ps)])
 
 colnames(ps) <- c(
@@ -252,7 +244,7 @@ colnames(ps) <- c(
   "ostar2",
   "ttriad",
   "ctriad",
-  "count",
+  # "count",
   "density",
   "idegree1.5",
   "odegree1.5"

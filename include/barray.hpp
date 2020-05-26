@@ -16,6 +16,7 @@ namespace barray {
 #include "counters-bones.hpp"
 #include "lbarray-bones.hpp"
 #include "block-bones.hpp"
+#include "powerset.hpp"
 
 }
 #endif

@@ -63,6 +63,10 @@ public:
     bool add = true
   );
   
+  // In principle, copy can be faster by using openmp on the rows
+  // since those are independent.
+  // BArray(BArray & A);
+  
   // Function to access the elements
   // bool check_cell
   void out_of_range(uint i, uint j) const;

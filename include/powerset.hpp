@@ -16,18 +16,24 @@ class PowerSet {
   
 public:
   std::vector< BArray<Cell_Type> > data;
-  uint size, N, M;
+  uint N, M;
   uint counter;
   
   /***
    * ! Creator and destructor functions
    */
-  // PSet() : data(0u), size(0u), M(0u), N(0u) {};
-  PowerSet(uint N_, uint M_) : data(0u), size(0u), M(M_), N(N_), counter(0u) {};
+  PowerSet() : data(0u), M(0u), N(0u) {};
+  PowerSet(uint N_, uint M_) : data(0u), M(M_), N(N_), counter(0u) {};
   ~PowerSet() {};
   
   void calc(uint i = 0u, BArray<Cell_Type> * a0 = nullptr);
+  void reset(uint N_, uint M_);
   
+  /**
+   * Getter functions
+   */
+  const std::vector< BArray<Cell_Type> > * get_data_ptr() const {return &data;};
+  std::vector< BArray<Cell_Type> > get_data() const {return data;};
   
 };
 
@@ -49,16 +55,24 @@ inline void PowerSet<Cell_Type>::calc(uint i, BArray<Cell_Type> * a0) {
   
   // Here is the deal
   this->data.push_back(*a0); // Making it one
-  this->data.at(++this->counter).insert_cell(i, false, false);
+  this->data.at(++this->counter).insert_cell(i, true, false, false);
   
   // If the sum is even, we increase i, otherwise j
   if ((i + 1) < (this->N * this->M)) {
-    pset(i + 1u, &this->data.at(this->counter));
-    pset(i + 1u, a0);
+    calc(i + 1u, &this->data.at(this->counter));
+    calc(i + 1u, a0);
   }
   
   return;
   
+}
+
+template <typename Cell_Type>
+inline void PowerSet<Cell_Type>::reset(uint N_, uint M_) {
+  data.empty();
+  N = N_, M = M_, counter = 0u;
+  
+  return;
 }
 
 #endif
