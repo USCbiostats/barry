@@ -13,21 +13,21 @@
  * Given an array and a set of counters, this object iterates throughout the
  * support set of the Array while at the same time computing the support of
  * the sufficient statitics.
- */
-template <typename Cell_Type>
+ */ 
+template <typename Array_Type, typename Counter_Type>
 class Support {
 public:
   
-  const BArray<Cell_Type> * Array;
-  BArray<Cell_Type> EmptyArray;
+  const Array_Type * Array;
+  Array_Type EmptyArray;
   StatsDB support;
-  std::vector< Counter<Cell_Type> > counters;
+  std::vector< Counter_fun_type<Array_Type, Counter_Type> > counters;
   std::vector< double > current_stats;
   
   uint N, M;
   bool initialized = false;
   
-  Support(const BArray<Cell_Type> * Array_) : Array(Array_), EmptyArray(Array_->N, Array_->M),
+  Support(const Array_Type * Array_) : Array(Array_), EmptyArray(Array_->N, Array_->M),
     N(Array_->N), M(Array_->M) {
     
     EmptyArray.meta = Array->meta;
@@ -37,7 +37,7 @@ public:
   Support(uint N_, uint M_) : EmptyArray(N_, M_) ,N(N_), M(M_) {};
   ~Support() {};
 
-  void add_counter(Counter<Cell_Type> f_);  
+  void add_counter(Counter<Array_Type, Counter_Type> f_);  
   
   void calc(uint pos = 0u) {
     
@@ -104,8 +104,10 @@ public:
   
 };
 
-template <typename Cell_Type>
-inline void Support<Cell_Type>::add_counter(Counter<Cell_Type> f_) {
+template <typename Array_Type, typename Counter_Type>
+inline void Support<Array_Type,Counter_Type>::add_counter(
+    Counter<Cell_Type> f_
+  ) {
   counters.push_back(f_);
   return;
 }
