@@ -14,7 +14,8 @@ namespace barray {
 #include "barray-meat.hpp"
 
 #include "counters-bones.hpp"
-#include "lbarray-bones.hpp"
+#include "statscounter.hpp"
+#include "support.hpp"
 #include "block-bones.hpp"
 #include "powerset.hpp"
 

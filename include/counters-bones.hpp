@@ -52,7 +52,7 @@ inline double Counter<Cell_Type>::count(
     BArray<Cell_Type> * Array, uint i, uint j) {
   if (count_fun == nullptr)
     return 0.0;
-  return count_fun(Array, i, j);
+  return count_fun(Array, i, j, &this);
 }
 
 template <typename Cell_Type>
@@ -60,7 +60,7 @@ inline double Counter<Cell_Type>::init(
     BArray<Cell_Type> * Array, uint i, uint j) {
   if (init_fun == nullptr)
     return 0.0;
-  return init_fun(Array, i, j);
+  return init_fun(Array, i, j, &this);
 }
 
 
@@ -68,7 +68,10 @@ namespace counters {
 
   // Edges counter
   template <typename Cell_Type>
-  inline double count_edges(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_edges(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+    ) {
     return 1.0;
   }
 
@@ -76,7 +79,10 @@ namespace counters {
    
   // Isolates counter
   template <typename Cell_Type>
-  inline double count_isolates(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_isolates(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+    ) {
     
     if (i == j)
       return 0.0;
@@ -97,7 +103,10 @@ namespace counters {
   }
   
   template <typename Cell_Type>
-  inline double init_isolates(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double init_isolates(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+  ) {
     return (double) (Array->N);
   }
   
@@ -105,7 +114,10 @@ namespace counters {
   
   // Mutuals -------------------------------------------------------------------
   template <typename Cell_Type>
-  inline double init_mutual(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double init_mutual(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+  ) {
     
     if (Array->N != Array->M)
       throw std::logic_error("The -mutual- counter only works on square arrays.");
@@ -117,7 +129,10 @@ namespace counters {
   }
   
   template <typename Cell_Type>
-  inline double count_mutual(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_mutual(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+    ) {
 
     // Is there any tie at ji? If not, then we have a new mutual!
     // but this only makes sence if the jth row and ith column exists
@@ -140,7 +155,10 @@ namespace counters {
   
   // 2-istars
   template<typename Cell_Type>
-  inline double count_istar2(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_istar2(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+  ) {
    
     // Need to check the receiving, if he/she is getting a new set of stars
     // when looking at triads
@@ -157,7 +175,10 @@ namespace counters {
   
   // 2-ostars
   template<typename Cell_Type>
-  inline double count_ostar2(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_ostar2(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+  ) {
     
     // Need to check the receiving, if he/she is getting a new set of stars
     // when looking at triads
@@ -174,7 +195,10 @@ namespace counters {
   
   // ttriads
   template <typename Cell_Type>
-  inline double count_ttriads(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_ttriads(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+  ) {
     
     // Self ties do not count
     if (i == j)
@@ -237,7 +261,10 @@ namespace counters {
   
   // Cycle triads --------------------------------------------------------------
   template <typename Cell_Type>
-  inline double count_ctriads(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_ctriads(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+  ) {
     
     if (i == j)
       return 0.0;
@@ -265,7 +292,10 @@ namespace counters {
   
   // Density --------------------------------------------------------------
   template <typename Cell_Type>
-  inline double count_density(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_density(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+  ) {
     return 1.0/(Array->N * (Array->M - 1));
   }
   
@@ -273,7 +303,10 @@ namespace counters {
   
   // idegree1.5  -------------------------------------------------------------
   template <typename Cell_Type>
-  inline double count_idegree15(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_idegree15(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+  ) {
     
     // In case of the first, we need to add
     if (A_COL(j).size() == 1u)
@@ -288,7 +321,10 @@ namespace counters {
   
   // odegree1.5  -------------------------------------------------------------
   template <typename Cell_Type>
-  inline double count_odegree15(BArray<Cell_Type> * Array, uint i, uint j) {
+  inline double count_odegree15(
+      BArray<Cell_Type> * Array, uint i, uint j,
+      Counter<Cell_Type> * counter
+  ) {
     
     // In case of the first, we need to add
     if (A_ROW(i).size() == 1u)
