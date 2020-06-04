@@ -1,13 +1,13 @@
 #include <Rcpp.h>
 #include "../include/barray.hpp"
-#include "../include/lbarray-bones.hpp"
+// #include "../include/lbarray-bones.hpp"
 using namespace Rcpp;
 
 // [[Rcpp::export]]
 SEXP suff_stats(const NumericMatrix & x) {
   
   Rcpp::XPtr< barray::StatsDB > xptr( 
-    new barray::StatsDB(),
+    new barray::StatsDB(), 
     true
   );
   
@@ -49,12 +49,12 @@ NumericVector counter(
 ) {
   
   // Initializing the Binary array, and also the the suffstats counter
-  barray::BArray<bool> Array((uint) N, (uint) M, source, target);
+  barray::BArray<bool,bool> Array((uint) N, (uint) M, source, target);
 
   // Array.meta.set("undirected", true);
   
   // Creating the counter object; 
-  barray::StatsCounter<bool> dat(&Array);
+  barray::StatsCounter<barray::BArray<bool,bool>,bool> dat(&Array);
   
   // Adding functions 
   dat.add_counter(barray::counters::edges);
@@ -82,7 +82,7 @@ List support (
 ) {
   
   // Initializing the Binary array, and also the the suffstats counter
-  barray::Support<bool> dat(N, M);
+  barray::Support<barray::BArray<bool,bool>,bool> dat(N, M);
   
   // Adding functions
   dat.add_counter(barray::counters::edges);
@@ -97,7 +97,7 @@ List support (
   dat.add_counter(barray::counters::odegree15);
   
   // Generating the data
-  dat.calc();
+  dat.calc(); 
   
   // Generating the entries
   barray::Counts_type ans = dat.support.get_entries();

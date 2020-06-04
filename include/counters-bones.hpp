@@ -4,18 +4,22 @@
 #ifndef BARRAY_COUNTERS_H
 #define BARRAY_COUNTERS_H
 
+#define COUNTER_FUNCTION(a) template <typename Array_Type, typename Data_Type> \
+  inline double (a) (Array_Type * Array, uint i, uint j, Data_Type * counter)
+
 /**
  * @brief A counter function based on change statistics.
  * 
  * This class is used by `CountStats` and `StatsCounter` as a way to count
  * statistics using change statistics.
  */
-template <typename Array_Type, typename Counter_Type>
+template <typename Array_Type, typename Data_Type>
 class Counter {
 public:
   
-  Counter_fun_type<Array_Type,Counter_Type> count_fun;
-  Counter_fun_type<Array_Type,Counter_Type> init_fun;
+  Data_Type * data = nullptr;
+  Counter_fun_type<Array_Type,Data_Type> count_fun;
+  Counter_fun_type<Array_Type,Data_Type> init_fun;
 
   /***
    * ! Initializers
@@ -26,7 +30,9 @@ public:
    * @brief Creator passing only a counter function
    * @param count_fun The main counter function.
    */
-  Counter(Counter_fun_type<Array_Type,Counter_Type> count_fun_) :
+  Counter(
+    Counter_fun_type<Array_Type,Data_Type> count_fun_
+    ) :
     count_fun(count_fun_), init_fun(nullptr) {};
   /**
    * @brief Creator passing a counter and an initializer
@@ -36,8 +42,8 @@ public:
    *  `BArray` has the required metadata (e.g. is it a directed graph?).
    */
   Counter(
-    Counter_fun_type<Array_Type,Counter_Type> count_fun_,
-    Counter_fun_type<Array_Type,Counter_Type> init_fun_
+    Counter_fun_type<Array_Type,Data_Type> count_fun_,
+    Counter_fun_type<Array_Type,Data_Type> init_fun_
     ): count_fun(count_fun_), init_fun(init_fun_) {};
   
   ~Counter() {};
@@ -49,42 +55,34 @@ public:
   double init(Array_Type * Array, uint i, uint j);
 };
 
-template <typename Array_Type, typename Counter_Type>
-inline double Counter<Array_Type, Counter_Type>::count(
+template <typename Array_Type, typename Data_Type>
+inline double Counter<Array_Type, Data_Type>::count(
     Array_Type * Array, uint i, uint j) {
   if (count_fun == nullptr)
     return 0.0;
-  return count_fun(Array, i, j, &this);
+  return count_fun(Array, i, j, data);
 }
 
-template <typename Array_Type, typename Counter_Type>
-inline double Counter<Array_Type, Counter_Type>::init(
+template <typename Array_Type, typename Data_Type>
+inline double Counter<Array_Type, Data_Type>::init(
     Array_Type * Array, uint i, uint j) {
   if (init_fun == nullptr)
     return 0.0;
-  return init_fun(Array, i, j, &this);
+  return init_fun(Array, i, j, data);
 }
 
 
 namespace counters {
 
   // Edges counter
-  template <typename Array_Type, typename Counter_Type>
-  inline double count_edges(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-    ) {
+  COUNTER_FUNCTION(count_edges) {
     return 1.0;
-  }
+  } 
 
-  Counter<BArray<bool>, bool> edges(count_edges<BArray<bool>, bool>);
+  Counter<BArray<bool,bool>, bool> edges(count_edges<BArray<bool,bool>, bool>);
    
   // Isolates counter
-  template <typename Array_Type, typename Counter_Type>
-  inline double count_isolates(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-    ) {
+  COUNTER_FUNCTION(count_isolates) {
     
     if (i == j)
       return 0.0;
@@ -104,25 +102,17 @@ namespace counters {
     
   }
   
-  template <typename Array_Type, typename Counter_Type>
-  inline double init_isolates(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-  ) {
+  COUNTER_FUNCTION(init_isolates) {
     return (double) (Array->N);
   }
   
-  Counter<BArray<bool>, bool> isolates(
-      count_isolates<BArray<bool>, bool>,
-      init_isolates<BArray<bool>, bool>
+  Counter<BArray<bool,bool>, bool> isolates(
+      count_isolates<BArray<bool,bool>, bool>,
+      init_isolates<BArray<bool,bool>, bool>
   );
   
   // Mutuals -------------------------------------------------------------------
-  template <typename Array_Type, typename Counter_Type>
-  inline double init_mutual(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-  ) {
+  COUNTER_FUNCTION(init_mutual) {
     
     if (Array->N != Array->M)
       throw std::logic_error("The -mutual- counter only works on square arrays.");
@@ -133,10 +123,10 @@ namespace counters {
     return 0.0;
   }
   
-  template <typename Array_Type, typename Counter_Type>
+  template <typename Array_Type, typename Data_Type>
   inline double count_mutual(
       Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
+      Data_Type * counter
     ) {
 
     // Is there any tie at ji? If not, then we have a new mutual!
@@ -156,16 +146,13 @@ namespace counters {
     
   }
   
-  Counter<BArray<bool>, bool> mutual(
-      count_mutual<BArray<bool>, bool>,
-      init_mutual<BArray<bool>, bool>);
+  Counter<BArray<bool,bool>, bool> mutual(
+      count_mutual<BArray<bool,bool>, bool>,
+      init_mutual<BArray<bool,bool>, bool>
+  );
   
   // 2-istars
-  template <typename Array_Type, typename Counter_Type>
-  inline double count_istar2(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-  ) {
+  COUNTER_FUNCTION(count_istar2) {
    
     // Need to check the receiving, if he/she is getting a new set of stars
     // when looking at triads
@@ -178,14 +165,10 @@ namespace counters {
     // return 0.0; 
   }
 
-  Counter<BArray<bool>, bool> istar2(count_istar2<BArray<bool>, bool>);
+  Counter<BArray<bool,bool>, bool> istar2(count_istar2<BArray<bool,bool>, bool>);
   
   // 2-ostars
-  template <typename Array_Type, typename Counter_Type>
-  inline double count_ostar2(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-  ) {
+  COUNTER_FUNCTION(count_ostar2) {
     
     // Need to check the receiving, if he/she is getting a new set of stars
     // when looking at triads
@@ -198,14 +181,10 @@ namespace counters {
     // return 0.0; 
   }
   
-  Counter<BArray<bool>, bool> ostar2(count_ostar2<BArray<bool>, bool>);
+  Counter<BArray<bool,bool>, bool> ostar2(count_ostar2<BArray<bool,bool>, bool>);
   
   // ttriads
-  template <typename Array_Type, typename Counter_Type>
-  inline double count_ttriads(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-  ) {
+  COUNTER_FUNCTION(count_ttriads) {
     
     // Self ties do not count
     if (i == j)
@@ -264,14 +243,10 @@ namespace counters {
 
   }
   
-  Counter<BArray<bool>, bool> ttriads(count_ttriads<BArray<bool>, bool>);
+  Counter<BArray<bool,bool>, bool> ttriads(count_ttriads<BArray<bool,bool>, bool>);
   
   // Cycle triads --------------------------------------------------------------
-  template <typename Array_Type, typename Counter_Type>
-  inline double count_ctriads(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-  ) {
+  COUNTER_FUNCTION(count_ctriads) {
     
     if (i == j)
       return 0.0;
@@ -295,25 +270,17 @@ namespace counters {
     
   }
   
-  Counter<BArray<bool>, bool> ctriads(count_ctriads<BArray<bool>, bool>);
+  Counter<BArray<bool,bool>, bool> ctriads(count_ctriads<BArray<bool,bool>, bool>);
   
   // Density --------------------------------------------------------------
-  template <typename Array_Type, typename Counter_Type>
-  inline double count_density(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-  ) {
+  COUNTER_FUNCTION (count_density) {
     return 1.0/(Array->N * (Array->M - 1));
   }
   
-  Counter<BArray<bool>, bool> density(count_density<BArray<bool>, bool>);
+  Counter<BArray<bool,bool>, bool> density(count_density<BArray<bool,bool>, bool>);
   
   // idegree1.5  -------------------------------------------------------------
-  template <typename Array_Type, typename Counter_Type>
-  inline double count_idegree15(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-  ) {
+  COUNTER_FUNCTION(count_idegree15) {
     
     // In case of the first, we need to add
     if (A_COL(j).size() == 1u)
@@ -324,14 +291,10 @@ namespace counters {
     ;
   }
   
-  Counter<BArray<bool>, bool> idegree15(count_idegree15<BArray<bool>, bool>);
+  Counter<BArray<bool,bool>, bool> idegree15(count_idegree15<BArray<bool,bool>, bool>);
   
   // odegree1.5  -------------------------------------------------------------
-  template <typename Array_Type, typename Counter_Type>
-  inline double count_odegree15(
-      Array_Type * Array, uint i, uint j,
-      Counter<Array_Type, Counter_Type> * counter
-  ) {
+  COUNTER_FUNCTION(count_odegree15) {
     
     // In case of the first, we need to add
     if (A_ROW(i).size() == 1u)
@@ -342,7 +305,7 @@ namespace counters {
     ;
   }
   
-  Counter<BArray<bool>, bool> odegree15(count_odegree15<BArray<bool>,bool>);
+  Counter<BArray<bool,bool>, bool> odegree15(count_odegree15<BArray<bool,bool>,bool>);
 }
 
 #endif

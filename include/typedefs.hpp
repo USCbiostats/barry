@@ -68,15 +68,15 @@ public:
 };
  
 // Mostly relevant in the case of the stats count functions -------------------
-template <typename Cell_Type> class BArray;
+template <typename Cell_Type, typename Data_Type> class BArray;
 template <typename Array_Type, typename Counter_Type> class Counter;
 #define A_ROW(a) Array->el_ij.at(a)
 #define A_COL(a) Array->el_ji.at(a)
 
-template <typename Array_Type, typename Counter_Type>
+template <typename Array_Type, typename Data_Type>
 using Counter_fun_type = std::function<double(
   Array_Type *, uint, uint,
-  Counter<Array_Type, Counter_Type> *
+  Data_Type *
 )>;
 
 

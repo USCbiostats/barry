@@ -14,13 +14,14 @@
  *  are stored by row and indexed using `unordered_map`s, i.e.
  *  `std::vector< std::unordered_map<unsigned int,Cell_Type> >`.
  */
-template <typename Cell_Type> class BArray {
+template <typename Cell_Type, typename Data_Type> class BArray {
 public:
   uint N;
   uint M;
   uint NCells = 0u;
   std::vector< Row_type< Cell_Type > > el_ij;
   std::vector< Col_type< Cell_Type > > el_ji;
+  Data_Type * data = nullptr;
   
   static Cell< Cell_Type > Cell_default;
   

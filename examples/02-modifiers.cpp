@@ -10,8 +10,8 @@ SEXP new_Array(
     const std::vector< double > & value
 ) {
   
-  Rcpp::XPtr< barray::BArray<double> > ptr(
-    new barray::BArray<double>((uint) N, (uint) M, source, target, value),
+  Rcpp::XPtr< barray::BArray<double,double> > ptr(
+    new barray::BArray<double,double>((uint) N, (uint) M, source, target, value),
     true
   );
    
@@ -22,7 +22,7 @@ SEXP new_Array(
 // [[Rcpp::export]]
 NumericVector get_row(SEXP x, int i) {
   
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   NumericVector ans(xptr->M, 0);
   const barray::Row_type<double> * m = xptr->get_row(i);
   
@@ -36,7 +36,7 @@ NumericVector get_row(SEXP x, int i) {
 // [[Rcpp::export]]
 NumericVector get_col(SEXP x, int i) {
   
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   NumericVector ans(xptr->N, 0);
   const barray::Col_type<double> * m = xptr->get_col(i);
   
@@ -50,7 +50,7 @@ NumericVector get_col(SEXP x, int i) {
 // [[Rcpp::export]]
 int rm_cell(SEXP x, int i, int j) {
   
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   xptr->rm_cell(i, j);
   return 0; 
   
@@ -58,35 +58,35 @@ int rm_cell(SEXP x, int i, int j) {
 
 // [[Rcpp::export]]
 int insert_cell(SEXP x, int i, int j, double v) {
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   xptr->insert_cell(i, j, v); 
   return 0;
 }
 
 // [[Rcpp::export]]
 int swap_cells(SEXP x, int i0, int j0, int i1, int j1) {
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   xptr->swap_cells(i0, j0, i1, j1);
   return 0;
 }
 
 // [[Rcpp::export]]
 int swap_rows(SEXP x, int i0, int i1) {
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   xptr->swap_rows(i0, i1);
   return 0;
 }
 
 // [[Rcpp::export]]
 int swap_cols(SEXP x, int j0, int j1) {
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   xptr->swap_cols(j0, j1);
   return 0;
 }
 
 // [[Rcpp::export]]
 int transpose(SEXP x) {
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   xptr->transpose();
   return 0;
 }
@@ -94,7 +94,7 @@ int transpose(SEXP x) {
 // [[Rcpp::export]]
 int resize(SEXP x, int n, int m) {
   
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   xptr->resize(n, m);
   
   return 0;
@@ -104,7 +104,7 @@ int resize(SEXP x, int n, int m) {
 
 // [[Rcpp::export]]
 int toggle(SEXP x, int i, int j) {
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   xptr->toggle_cell(i, j);
   
   return 0;

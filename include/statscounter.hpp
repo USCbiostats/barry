@@ -14,18 +14,18 @@
  * Users can a list of functions that can be used with this. The baseline set of
  * arguments is a pointer to a binary array and a dataset to add the counts to.
  */ 
-template <typename Cell_Type>
+template <typename Array_Type, typename Data_Type>
 class StatsCounter {
 public:
   
   // Should receive an array
-  const BArray<Cell_Type> * Array;
-  BArray<Cell_Type> EmptyArray;
+  const Array_Type * Array;
+  Array_Type EmptyArray;
   std::vector< double > current_stats;
   std::vector< double > change_stats;
    
   // We will save the data here
-  std::vector< Counter<Cell_Type> > counters;
+  std::vector< Counter<Array_Type,Data_Type> > counters;
   
   /**
    * @brief Creator of a `StatsCounter`
@@ -33,14 +33,14 @@ public:
    * @param data A const pointer to a `BArray`.
    * @param Stats_ A pointer to a dataset of stats `StatsDB`.
    */
-  StatsCounter(const BArray<Cell_Type> * data) :
+  StatsCounter(const Array_Type * data) :
     counters(0u), Array(data), EmptyArray(data->N, data->M) {
     // Copying the information
     EmptyArray.meta = Array->meta;
     return;
   }
   
-  void add_counter(Counter<Cell_Type> f_);
+  void add_counter(Counter<Array_Type,Data_Type> f_);
   
   /***
    * ! This function recurses through the entries of Array and at each step of
@@ -52,14 +52,22 @@ public:
   
 };
 
-template <typename Cell_Type>
-inline void StatsCounter<Cell_Type>::add_counter(Counter<Cell_Type> f_){
+template <typename Array_Type, typename Data_Type>
+inline void StatsCounter<Array_Type,Data_Type>::add_counter(
+    Counter<Array_Type,Data_Type> f_
+  ) {
+  
   counters.push_back(f_);
   return;
+  
 }
 
-template <typename Cell_Type>
-inline void StatsCounter<Cell_Type>::count_init(uint i, uint j) {
+template <typename Array_Type, typename Data_Type>
+inline void StatsCounter<Array_Type, Data_Type>::count_init(
+    uint i,
+    uint j
+  ) {
+  
   // Iterating through the functions, and updating the set of
   // statistics.
   current_stats.resize(counters.size(), 0.0);
@@ -70,8 +78,11 @@ inline void StatsCounter<Cell_Type>::count_init(uint i, uint j) {
   return;
 }
 
-template <typename Cell_Type>
-inline void StatsCounter<Cell_Type>::count_current(uint i, uint j) {
+template <typename Array_Type, typename Data_Type>
+inline void StatsCounter<Array_Type, Data_Type>::count_current(
+    uint i,
+    uint j
+  ) {
   
   // Iterating through the functions, and updating the set of
   // statistics.
@@ -84,8 +95,8 @@ inline void StatsCounter<Cell_Type>::count_current(uint i, uint j) {
   
 }
 
-template <typename Cell_Type>
-inline std::vector< double > StatsCounter<Cell_Type>::count_all() {
+template <typename Array_Type, typename Data_Type>
+inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
   
   // Initializing the counter on the empty array
   count_init(0u, 0u);
