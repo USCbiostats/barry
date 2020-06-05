@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['meta_2ehpp',['meta.hpp',['../meta_8hpp.html',1,'']]]
+  ['phylo_2ehpp',['phylo.hpp',['../phylo_8hpp.html',1,'']]],
+  ['powerset_2ehpp',['powerset.hpp',['../powerset_8hpp.html',1,'']]]
 ];

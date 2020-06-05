@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['statsdb_2ehpp',['statsdb.hpp',['../statsdb_8hpp.html',1,'']]]
+  ['typedefs_2ehpp',['typedefs.hpp',['../typedefs_8hpp.html',1,'']]]
 ];
