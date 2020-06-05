@@ -1,5 +1,3 @@
-#include <unordered_map>
-
 #ifndef BARRAY_TYPEDEFS_HPP
 #define BARRAY_TYPEDEFS_HPP 
 
@@ -74,10 +72,7 @@ template <typename Array_Type, typename Counter_Type> class Counter;
 #define A_COL(a) Array->el_ji.at(a)
 
 template <typename Array_Type, typename Data_Type>
-using Counter_fun_type = std::function<double(
-  Array_Type *, uint, uint,
-  Data_Type *
-)>;
+using Counter_fun_type = std::function<double(Array_Type *, uint, uint, Data_Type *)>;
 
 
 #endif

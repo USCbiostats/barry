@@ -49,12 +49,12 @@ NumericVector counter(
 ) {
   
   // Initializing the Binary array, and also the the suffstats counter
-  barray::BArray<bool,bool> Array((uint) N, (uint) M, source, target);
+  barray::BArray<> Array((uint) N, (uint) M, source, target);
 
   // Array.meta.set("undirected", true);
   
   // Creating the counter object; 
-  barray::StatsCounter<barray::BArray<bool,bool>,bool> dat(&Array);
+  barray::StatsCounter<> dat(&Array);
   
   // Adding functions 
   dat.add_counter(barray::counters::edges);
@@ -79,10 +79,10 @@ NumericVector counter(
 // [[Rcpp::export]] 
 List support (
     int N, int M
-) {
+) { 
   
   // Initializing the Binary array, and also the the suffstats counter
-  barray::Support<barray::BArray<bool,bool>,bool> dat(N, M);
+  barray::Support<> dat(N, M);
   
   // Adding functions
   dat.add_counter(barray::counters::edges);
@@ -97,7 +97,7 @@ List support (
   dat.add_counter(barray::counters::odegree15);
   
   // Generating the data
-  dat.calc(); 
+  dat.calc(0u, false); 
   
   // Generating the entries
   barray::Counts_type ans = dat.support.get_entries();

@@ -1,5 +1,5 @@
-#include <vector>
-#include <unordered_map>
+// #include <vector>
+// #include <unordered_map>
 #include "typedefs.hpp"
 #include "barray-bones.hpp"
 #include "statsdb.hpp"
@@ -14,7 +14,7 @@
  * Users can a list of functions that can be used with this. The baseline set of
  * arguments is a pointer to a binary array and a dataset to add the counts to.
  */ 
-template <typename Array_Type, typename Data_Type>
+template <typename Array_Type = BArray<>, typename Data_Type = bool>
 class StatsCounter {
 public:
   

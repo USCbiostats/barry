@@ -4,10 +4,10 @@ using namespace Rcpp;
  
 
 // [[Rcpp::export]]
-SEXP psets(int n, int m) { 
+SEXP psets(int n, int m) {
     
-  Rcpp::XPtr< barray::PowerSet< bool,bool >> xptr(
-    new barray::PowerSet< bool,bool >((uint) n, (uint) m),
+  Rcpp::XPtr< barray::PowerSet<>> xptr(
+    new barray::PowerSet<>((uint) n, (uint) m),
     true
   );
   
@@ -20,7 +20,7 @@ SEXP psets(int n, int m) {
 
 // [[Rcpp::export]]
 List get_data(SEXP x) {
-  Rcpp::XPtr< barray::PowerSet< bool,bool >> xptr(x);
+  Rcpp::XPtr< barray::PowerSet<>> xptr(x);
 
   // Generating the data
   List ans(xptr->data.size());

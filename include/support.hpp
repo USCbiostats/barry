@@ -1,5 +1,5 @@
-#include <vector>
-#include <unordered_map>
+// #include <vector>
+// #include <unordered_map>
 #include "typedefs.hpp"
 #include "barray-bones.hpp"
 #include "statsdb.hpp"
@@ -14,7 +14,7 @@
  * support set of the Array while at the same time computing the support of
  * the sufficient statitics.
  */ 
-template <typename Array_Type, typename Data_Type>
+template <typename Array_Type = BArray<>, typename Data_Type = bool>
 class Support {
 public:
   
@@ -32,6 +32,9 @@ public:
     N(Array_->N), M(Array_->M) {
     
     EmptyArray.meta = Array->meta;
+    if (Array_->data != nullptr)
+      EmptyArray.data = &(*Array_->data);
+    
     return;
     
   };
@@ -40,15 +43,15 @@ public:
 
   void add_counter(Counter<Array_Type, Data_Type> f_);  
   
-  void calc(uint pos = 0u) {
+  void calc(uint pos = 0u, const bool & diag = false) {
     
     // Getting the location 
     uint i = (int) pos % (int) N;
     uint j = floor((int) pos / (int) N);
     
     // No self ties, go to the next step and return.
-    if (i == j)
-      return calc(pos + 1u);
+    if (!diag && (i == j))
+      return calc(pos + 1u, diag);
     
     // If reached the end, also return
     if ((i >= N) || (j >= M))
@@ -71,7 +74,7 @@ public:
     }
 
     // We will pass it to the next step, if the iteration makes sense.
-    calc(pos + 1u);
+    calc(pos + 1u, diag);
     
     // Once we have returned, everything will be back as it used to be, so we
     // treat the data as if nothing has changed.
@@ -91,7 +94,7 @@ public:
     
     // Again, we only pass it to the next level iff the next level is not
     // passed the last step.
-    calc(pos + 1);
+    calc(pos + 1, diag);
 
     // We need to restore the state of the cell
     EmptyArray.rm_cell(i, j, false, false);

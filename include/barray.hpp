@@ -1,5 +1,9 @@
 #include <vector>
 #include <unordered_map>
+#include <functional>
+#include <stdexcept>
+#include <cmath>
+#include <map>
 
 #ifndef BARRAY_HPP
 #define BARRAY_HPP 

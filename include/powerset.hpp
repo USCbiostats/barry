@@ -1,5 +1,5 @@
-#include <vector>
-#include <unordered_map>
+// #include <vector>
+// #include <unordered_map>
 #include "typedefs.hpp"
 #include "barray-bones.hpp"
 
@@ -11,7 +11,7 @@
  * - value: the content
  * - visited: boolean (just a convenient)
  */
-template <typename Cell_Type, typename Data_Type > 
+template <typename Cell_Type = bool, typename Data_Type = bool > 
 class PowerSet {
   
 public:

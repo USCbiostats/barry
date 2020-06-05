@@ -1,4 +1,4 @@
-#include <stdexcept>
+// #include <stdexcept>
 #include "barray-bones.hpp"
 
 #ifndef BARRAY_MEAT_HPP
@@ -335,7 +335,7 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
   
   return insert_cell(
       (int) i % (int) N,
-      floor((int) i / (int) N),
+      std::floor((int) i / (int) N),
       v,
       check_bounds,
       check_exists
@@ -354,7 +354,7 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
   
   return insert_cell(
       (int) i % (int) N,
-      floor((int) i / (int) N),
+      std::floor((int) i / (int) N),
       vc,
       check_bounds,
       check_exists
@@ -368,13 +368,15 @@ inline void BArray<double, bool>::insert_cell(
     bool check_exists
   ) {
 
-  return insert_cell(
+  insert_cell(
       (int) i % (int) N,
-      floor((int) i / (int) N),
+      std::floor((int) i / (int) N),
       BArray<double, bool>::Cell_default,
       check_bounds,
       check_exists
   );
+  
+  return;
 }
 
 template <>
@@ -384,13 +386,15 @@ inline void BArray<bool, bool>::insert_cell(
     bool check_exists
   ) {
   
-  return insert_cell(
+  insert_cell(
     (int) i % (int) N,
-    floor((int) i / (int) N),
+    std::floor((int) i / (int) N),
     BArray<bool, bool>::Cell_default,
     check_bounds,
     check_exists
   );
+  
+  return;
 }
 
 template <typename Cell_Type, typename Data_Type>
