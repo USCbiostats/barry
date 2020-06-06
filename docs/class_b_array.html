@@ -24,7 +24,7 @@
    <div id="projectname">Binary Arrays
    &#160;<span id="projectnumber">0.0-0</span>
    </div>
-   <div id="projectbrief">Full enumeration of sample space for binary arrays</div>
+   <div id="projectbrief">Full enumeration of sample space and fast count of sufficient statistics for binary arrays</div>
   </td>
  </tr>
  </tbody>
@@ -87,80 +87,82 @@ Collaboration diagram for BArray&lt; Cell_Type, Data_Type &gt;:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1bbfcc43ad43f30fd448b63e9ab5861f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a1bbfcc43ad43f30fd448b63e9ab5861f">BArray</a> ()</td></tr>
 <tr class="separator:a1bbfcc43ad43f30fd448b63e9ab5861f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a411b65e1985396261ca9df2923a6f3c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a411b65e1985396261ca9df2923a6f3c6">BArray</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
+<tr class="memitem:a411b65e1985396261ca9df2923a6f3c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a411b65e1985396261ca9df2923a6f3c6">BArray</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
 <tr class="separator:a411b65e1985396261ca9df2923a6f3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a098b6170a1ea4b2a8e0832d1163e9ed1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a098b6170a1ea4b2a8e0832d1163e9ed1">BArray</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_, const std::vector&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;source, const std::vector&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;target, const std::vector&lt; Cell_Type &gt; &amp;value, bool add=true)</td></tr>
+<tr class="memitem:a098b6170a1ea4b2a8e0832d1163e9ed1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a098b6170a1ea4b2a8e0832d1163e9ed1">BArray</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_, const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;source, const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;target, const std::vector&lt; Cell_Type &gt; &amp;value, bool add=true)</td></tr>
 <tr class="memdesc:a098b6170a1ea4b2a8e0832d1163e9ed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edgelist with data.  <a href="#a098b6170a1ea4b2a8e0832d1163e9ed1">More...</a><br /></td></tr>
 <tr class="separator:a098b6170a1ea4b2a8e0832d1163e9ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5f13f86c045a1f9c39b9a7df4126c78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aa5f13f86c045a1f9c39b9a7df4126c78">BArray</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_, const std::vector&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;source, const std::vector&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;target, bool add=true)</td></tr>
+<tr class="memitem:aa5f13f86c045a1f9c39b9a7df4126c78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aa5f13f86c045a1f9c39b9a7df4126c78">BArray</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_, const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;source, const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;target, bool add=true)</td></tr>
 <tr class="separator:aa5f13f86c045a1f9c39b9a7df4126c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af39acdf29aa5999a7f5fd48141be384e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#af39acdf29aa5999a7f5fd48141be384e">~BArray</a> ()</td></tr>
 <tr class="separator:af39acdf29aa5999a7f5fd48141be384e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87bad4dcad82009d5721d21808b7e469"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a87bad4dcad82009d5721d21808b7e469">out_of_range</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j) const</td></tr>
+<tr class="memitem:a87bad4dcad82009d5721d21808b7e469"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a87bad4dcad82009d5721d21808b7e469">out_of_range</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j) const</td></tr>
 <tr class="separator:a87bad4dcad82009d5721d21808b7e469"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4096e4447f91ba52766587a08c62f1fa"><td class="memItemLeft" align="right" valign="top">Cell_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true) const</td></tr>
+<tr class="memitem:a4096e4447f91ba52766587a08c62f1fa"><td class="memItemLeft" align="right" valign="top">Cell_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true) const</td></tr>
 <tr class="separator:a4096e4447f91ba52766587a08c62f1fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c969ceb1d37eff9ebcac25741de1808"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951">Row_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2c969ceb1d37eff9ebcac25741de1808">get_row</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
+<tr class="memitem:a2c969ceb1d37eff9ebcac25741de1808"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951">Row_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2c969ceb1d37eff9ebcac25741de1808">get_row</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
 <tr class="separator:a2c969ceb1d37eff9ebcac25741de1808"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90bd31bc0b3fa59d11150cd4ea39b3b6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a00f3fedec1671706175b572e5c57ee0b">Col_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a90bd31bc0b3fa59d11150cd4ea39b3b6">get_col</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
+<tr class="memitem:a90bd31bc0b3fa59d11150cd4ea39b3b6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a00f3fedec1671706175b572e5c57ee0b">Col_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a90bd31bc0b3fa59d11150cd4ea39b3b6">get_col</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
 <tr class="separator:a90bd31bc0b3fa59d11150cd4ea39b3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee224325422d214624771a5b4d91b55e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entries.html">Entries</a>&lt; Cell_Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aee224325422d214624771a5b4d91b55e">get_entries</a> () const</td></tr>
 <tr class="separator:aee224325422d214624771a5b4d91b55e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37ed3962c0ee5030b23cb6cde23a5cdf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a37ed3962c0ee5030b23cb6cde23a5cdf">is_empty</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true) const</td></tr>
+<tr class="memitem:a37ed3962c0ee5030b23cb6cde23a5cdf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a37ed3962c0ee5030b23cb6cde23a5cdf">is_empty</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true) const</td></tr>
 <tr class="memdesc:a37ed3962c0ee5030b23cb6cde23a5cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the cell is empty.  <a href="#a37ed3962c0ee5030b23cb6cde23a5cdf">More...</a><br /></td></tr>
 <tr class="separator:a37ed3962c0ee5030b23cb6cde23a5cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaead894ff275479db4f733793ce037db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aaead894ff275479db4f733793ce037db">rm_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true, bool check_exists=true)</td></tr>
+<tr class="memitem:aaead894ff275479db4f733793ce037db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aaead894ff275479db4f733793ce037db">rm_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true, bool check_exists=true)</td></tr>
 <tr class="separator:aaead894ff275479db4f733793ce037db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a098b5214df6790a5b4aaf3e0f7c1473a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a098b5214df6790a5b4aaf3e0f7c1473a">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds=true, bool check_exists=true)</td></tr>
+<tr class="memitem:a098b5214df6790a5b4aaf3e0f7c1473a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a098b5214df6790a5b4aaf3e0f7c1473a">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds=true, bool check_exists=true)</td></tr>
 <tr class="separator:a098b5214df6790a5b4aaf3e0f7c1473a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7268761d977833b688123d161d17d1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aa7268761d977833b688123d161d17d1b">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Cell_Type v, bool check_bounds=true, bool check_exists=true)</td></tr>
+<tr class="memitem:aa7268761d977833b688123d161d17d1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aa7268761d977833b688123d161d17d1b">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Cell_Type v, bool check_bounds=true, bool check_exists=true)</td></tr>
 <tr class="separator:aa7268761d977833b688123d161d17d1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4deb6afa6040603fc4fb5a90eef90761"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a4deb6afa6040603fc4fb5a90eef90761">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true, bool check_exists=true)</td></tr>
+<tr class="memitem:a4deb6afa6040603fc4fb5a90eef90761"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a4deb6afa6040603fc4fb5a90eef90761">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true, bool check_exists=true)</td></tr>
 <tr class="separator:a4deb6afa6040603fc4fb5a90eef90761"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac631a7a4b7308b00073a5e521d548933"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ac631a7a4b7308b00073a5e521d548933">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds=true, bool check_exists=true)</td></tr>
+<tr class="memitem:ac631a7a4b7308b00073a5e521d548933"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ac631a7a4b7308b00073a5e521d548933">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds=true, bool check_exists=true)</td></tr>
 <tr class="separator:ac631a7a4b7308b00073a5e521d548933"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeeee5972aa4301465b84dfc431fa6cf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aeeee5972aa4301465b84dfc431fa6cf9">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, Cell_Type v, bool check_bounds=true, bool check_exists=true)</td></tr>
+<tr class="memitem:aeeee5972aa4301465b84dfc431fa6cf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aeeee5972aa4301465b84dfc431fa6cf9">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, Cell_Type v, bool check_bounds=true, bool check_exists=true)</td></tr>
 <tr class="separator:aeeee5972aa4301465b84dfc431fa6cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e930e9e59632684e9526f499bfff0e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a8e930e9e59632684e9526f499bfff0e1">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true, bool check_exists=true)</td></tr>
+<tr class="memitem:a8e930e9e59632684e9526f499bfff0e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a8e930e9e59632684e9526f499bfff0e1">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true, bool check_exists=true)</td></tr>
 <tr class="separator:a8e930e9e59632684e9526f499bfff0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb7976f67770b850922c1a7e1d6b07cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#afb7976f67770b850922c1a7e1d6b07cc">swap_cells</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i0, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j0, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i1, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j1, bool check_bounds=true, int check_exists=<a class="el" href="namespace_c_h_e_c_k.html#a3acda1c74bfabb5b6b67e19d0ad2d52a">CHECK::BOTH</a>, int *report=nullptr)</td></tr>
+<tr class="memitem:afb7976f67770b850922c1a7e1d6b07cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#afb7976f67770b850922c1a7e1d6b07cc">swap_cells</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i0, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j0, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i1, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j1, bool check_bounds=true, int check_exists=<a class="el" href="namespace_c_h_e_c_k.html#a3acda1c74bfabb5b6b67e19d0ad2d52a">CHECK::BOTH</a>, int *report=nullptr)</td></tr>
 <tr class="separator:afb7976f67770b850922c1a7e1d6b07cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ab2b200b329abc718cfb3574f566cf6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2ab2b200b329abc718cfb3574f566cf6">toggle_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true, int check_exists=<a class="el" href="namespace_e_x_i_s_t_s.html#a81eb362d951445c658942a433afddb97">EXISTS::UKNOWN</a>)</td></tr>
+<tr class="memitem:a2ab2b200b329abc718cfb3574f566cf6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2ab2b200b329abc718cfb3574f566cf6">toggle_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true, int check_exists=<a class="el" href="namespace_e_x_i_s_t_s.html#a81eb362d951445c658942a433afddb97">EXISTS::UKNOWN</a>)</td></tr>
 <tr class="separator:a2ab2b200b329abc718cfb3574f566cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a742773803481c18e2865b2b2a1e68949"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a742773803481c18e2865b2b2a1e68949">swap_rows</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i0, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i1, bool check_bounds=true)</td></tr>
+<tr class="memitem:a742773803481c18e2865b2b2a1e68949"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a742773803481c18e2865b2b2a1e68949">swap_rows</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i0, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i1, bool check_bounds=true)</td></tr>
 <tr class="separator:a742773803481c18e2865b2b2a1e68949"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae94f7e61ca5985244968d9daf2859229"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ae94f7e61ca5985244968d9daf2859229">swap_cols</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j0, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j1, bool check_bounds=true)</td></tr>
+<tr class="memitem:ae94f7e61ca5985244968d9daf2859229"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ae94f7e61ca5985244968d9daf2859229">swap_cols</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j0, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j1, bool check_bounds=true)</td></tr>
 <tr class="separator:ae94f7e61ca5985244968d9daf2859229"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a411085fcb7530669c72d9847340f1bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a411085fcb7530669c72d9847340f1bac">zero_row</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true)</td></tr>
+<tr class="memitem:a411085fcb7530669c72d9847340f1bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a411085fcb7530669c72d9847340f1bac">zero_row</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true)</td></tr>
 <tr class="separator:a411085fcb7530669c72d9847340f1bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fa473027d00ec53ed08eaea03ac3ef7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a0fa473027d00ec53ed08eaea03ac3ef7">zero_col</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true)</td></tr>
+<tr class="memitem:a0fa473027d00ec53ed08eaea03ac3ef7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a0fa473027d00ec53ed08eaea03ac3ef7">zero_col</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true)</td></tr>
 <tr class="separator:a0fa473027d00ec53ed08eaea03ac3ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0284f7f2148b7c1b474ebe01f6548b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a0284f7f2148b7c1b474ebe01f6548b98">transpose</a> ()</td></tr>
 <tr class="separator:a0284f7f2148b7c1b474ebe01f6548b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3669363c4ec2f08764022968ded280b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aa3669363c4ec2f08764022968ded280b">clear</a> ()</td></tr>
 <tr class="separator:aa3669363c4ec2f08764022968ded280b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefe411fe1890273518bfbc3f8ca616ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aefe411fe1890273518bfbc3f8ca616ce">resize</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
+<tr class="memitem:aefe411fe1890273518bfbc3f8ca616ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aefe411fe1890273518bfbc3f8ca616ce">resize</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
 <tr class="separator:aefe411fe1890273518bfbc3f8ca616ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d150c44b23cf1e4af45f540508db1de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9d150c44b23cf1e4af45f540508db1de">print</a> () const</td></tr>
+<tr class="separator:a9d150c44b23cf1e4af45f540508db1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65aaf8f78714cd94616cf826b3eef6e1"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
-<tr class="memitem:a65aaf8f78714cd94616cf826b3eef6e1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_b_array.html#a65aaf8f78714cd94616cf826b3eef6e1">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds, bool check_exists)</td></tr>
+<tr class="memitem:a65aaf8f78714cd94616cf826b3eef6e1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_b_array.html#a65aaf8f78714cd94616cf826b3eef6e1">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds, bool check_exists)</td></tr>
 <tr class="separator:a65aaf8f78714cd94616cf826b3eef6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a554db909a326d9110caa1d050f33e4"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
-<tr class="memitem:a9a554db909a326d9110caa1d050f33e4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9a554db909a326d9110caa1d050f33e4">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds, bool check_exists)</td></tr>
+<tr class="memitem:a9a554db909a326d9110caa1d050f33e4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9a554db909a326d9110caa1d050f33e4">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds, bool check_exists)</td></tr>
 <tr class="separator:a9a554db909a326d9110caa1d050f33e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65aaf8f78714cd94616cf826b3eef6e1"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
-<tr class="memitem:a65aaf8f78714cd94616cf826b3eef6e1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_b_array.html#a65aaf8f78714cd94616cf826b3eef6e1">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds, bool check_exists)</td></tr>
+<tr class="memitem:a65aaf8f78714cd94616cf826b3eef6e1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_b_array.html#a65aaf8f78714cd94616cf826b3eef6e1">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds, bool check_exists)</td></tr>
 <tr class="separator:a65aaf8f78714cd94616cf826b3eef6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a554db909a326d9110caa1d050f33e4"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
-<tr class="memitem:a9a554db909a326d9110caa1d050f33e4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9a554db909a326d9110caa1d050f33e4">insert_cell</a> (<a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds, bool check_exists)</td></tr>
+<tr class="memitem:a9a554db909a326d9110caa1d050f33e4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9a554db909a326d9110caa1d050f33e4">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds, bool check_exists)</td></tr>
 <tr class="separator:a9a554db909a326d9110caa1d050f33e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a4b34ec8636c989efe80bbe3f1cea217e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a4b34ec8636c989efe80bbe3f1cea217e">N</a></td></tr>
+<tr class="memitem:a4b34ec8636c989efe80bbe3f1cea217e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a4b34ec8636c989efe80bbe3f1cea217e">N</a></td></tr>
 <tr class="separator:a4b34ec8636c989efe80bbe3f1cea217e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a197359753fd1bc054a1a14f7641d3fd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a197359753fd1bc054a1a14f7641d3fd1">M</a></td></tr>
+<tr class="memitem:a197359753fd1bc054a1a14f7641d3fd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a197359753fd1bc054a1a14f7641d3fd1">M</a></td></tr>
 <tr class="separator:a197359753fd1bc054a1a14f7641d3fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31fd64c6b54408ca98e07abc9c4241c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a31fd64c6b54408ca98e07abc9c4241c5">NCells</a> = 0u</td></tr>
+<tr class="memitem:a31fd64c6b54408ca98e07abc9c4241c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a31fd64c6b54408ca98e07abc9c4241c5">NCells</a> = 0u</td></tr>
 <tr class="separator:a31fd64c6b54408ca98e07abc9c4241c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2161dc7c2046a57d3e663ac5c0d70431"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951">Row_type</a>&lt; Cell_Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2161dc7c2046a57d3e663ac5c0d70431">el_ij</a></td></tr>
 <tr class="separator:a2161dc7c2046a57d3e663ac5c0d70431"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -231,13 +233,13 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::<a class="el" href="class_b_array.html">BArray</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>N_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>M_</em>&#160;</td>
         </tr>
         <tr>
@@ -271,25 +273,25 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::<a class="el" href="class_b_array.html">BArray</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>N_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>M_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>source</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>target</em>, </td>
         </tr>
         <tr>
@@ -347,25 +349,25 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::<a class="el" href="class_b_array.html">BArray</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>N_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>M_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>source</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>target</em>, </td>
         </tr>
         <tr>
@@ -464,13 +466,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">Cell_Type <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::get_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j</em>, </td>
         </tr>
         <tr>
@@ -510,7 +512,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">const <a class="el" href="typedefs_8hpp.html#a00f3fedec1671706175b572e5c57ee0b">Col_type</a>&lt; Cell_Type &gt; * <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::get_col </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -579,7 +581,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">const <a class="el" href="typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951">Row_type</a>&lt; Cell_Type &gt; * <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::get_row </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -619,13 +621,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j</em>, </td>
         </tr>
         <tr>
@@ -677,13 +679,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j</em>, </td>
         </tr>
         <tr>
@@ -735,13 +737,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j</em>, </td>
         </tr>
         <tr>
@@ -787,7 +789,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -839,7 +841,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -888,7 +890,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -927,7 +929,7 @@ template&lt;&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; double, bool &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -973,7 +975,7 @@ template&lt;&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; double, bool &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -1019,7 +1021,7 @@ template&lt;&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; bool, bool &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -1065,7 +1067,7 @@ template&lt;&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; bool, bool &gt;::insert_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -1111,13 +1113,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">bool <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::is_empty </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j</em>, </td>
         </tr>
         <tr>
@@ -1166,13 +1168,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::out_of_range </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j</em>&#160;</td>
         </tr>
         <tr>
@@ -1192,6 +1194,35 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 
 </div>
 </div>
+<a id="a9d150c44b23cf1e4af45f540508db1de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d150c44b23cf1e4af45f540508db1de">&#9670;&nbsp;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Cell_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::print </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00793">793</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aefe411fe1890273518bfbc3f8ca616ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aefe411fe1890273518bfbc3f8ca616ce">&#9670;&nbsp;</a></span>resize()</h2>
 
@@ -1206,13 +1237,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::resize </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>N_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>M_</em>&#160;</td>
         </tr>
         <tr>
@@ -1246,13 +1277,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::rm_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j</em>, </td>
         </tr>
         <tr>
@@ -1298,25 +1329,25 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::swap_cells </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i0</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j0</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j1</em>, </td>
         </tr>
         <tr>
@@ -1368,13 +1399,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::swap_cols </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j0</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j1</em>, </td>
         </tr>
         <tr>
@@ -1414,13 +1445,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::swap_rows </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i0</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i1</em>, </td>
         </tr>
         <tr>
@@ -1460,13 +1491,13 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::toggle_cell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j</em>, </td>
         </tr>
         <tr>
@@ -1541,7 +1572,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::zero_col </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>j</em>, </td>
         </tr>
         <tr>
@@ -1581,7 +1612,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::zero_row </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
@@ -1697,7 +1728,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::M</td>
+          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::M</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1735,7 +1766,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::N</td>
+          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::N</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1753,7 +1784,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::NCells = 0u</td>
+          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::NCells = 0u</td>
         </tr>
       </table>
 </div><div class="memdoc">

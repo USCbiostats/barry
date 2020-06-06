@@ -789,5 +789,24 @@ inline void BArray<Cell_Type, Data_Type>::resize(
 
 }
 
+template <typename Cell_Type, typename Data_Type>
+inline void BArray< Cell_Type, Data_Type >::print() const {
+  
+  for (uint i = 0u; i < N; ++i) {
+    printf("[%3i,] ", i);
+    for (uint j = 0u; j < M; ++j) {
+      if (this->is_empty(i, j, false)) {
+        printf(" . ");
+      } else {
+        printf(" 1 ");
+      }
+    }
+    printf("\n");
+  }
+  
+  
+  return;
+}
+
 #endif
 

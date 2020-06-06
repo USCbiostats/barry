@@ -24,7 +24,7 @@
    <div id="projectname">Binary Arrays
    &#160;<span id="projectnumber">0.0-0</span>
    </div>
-   <div id="projectbrief">Full enumeration of sample space for binary arrays</div>
+   <div id="projectbrief">Full enumeration of sample space and fast count of sufficient statistics for binary arrays</div>
   </td>
  </tr>
  </tbody>
@@ -66,10 +66,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">counters-bones.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -92,10 +89,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="counters-bones_8hpp__dep__incl.png" border="0" usemap="#include_2counters-bones_8hppdep" alt=""/></div>
 <map name="include_2counters-bones_8hppdep" id="include_2counters-bones_8hppdep">
-<area shape="rect" id="node2" href="barray_8hpp.html" title="include/barray.hpp" alt="" coords="40,155,168,181"/>
-<area shape="rect" id="node4" href="statscounter_8hpp.html" title="include/statscounter.hpp" alt="" coords="22,80,186,107"/>
-<area shape="rect" id="node5" href="support_8hpp.html" title="include/support.hpp" alt="" coords="210,80,345,107"/>
-<area shape="rect" id="node3" href="phylo_8hpp.html" title="include/phylo.hpp" alt="" coords="43,229,166,256"/>
+<area shape="rect" id="node2" href="barray_8hpp.html" title="include/barray.hpp" alt="" coords="215,155,343,181"/>
+<area shape="rect" id="node3" href="statscounter_8hpp.html" title="include/statscounter.hpp" alt="" coords="24,80,188,107"/>
+<area shape="rect" id="node4" href="support_8hpp.html" title="include/support.hpp" alt="" coords="212,80,346,107"/>
+<area shape="rect" id="node5" href="network_8hpp.html" title="include/counters/network.hpp" alt="" coords="371,80,563,107"/>
+<area shape="rect" id="node6" href="phylo_8hpp.html" title="include/counters/phylo.hpp" alt="" coords="588,80,765,107"/>
 </map>
 </div>
 </div>
@@ -105,11 +103,6 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counter.html">Counter&lt; Array_Type, Data_Type &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A counter function based on change statistics.  <a href="class_counter.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespacecounters"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html">counters</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -124,56 +117,6 @@ Macros</h2></td></tr>
 <tr class="separator:a691d9746a102bcc2fb66487076138f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7fbc217bad33cff559b1fc41375a8ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="counters-bones_8hpp.html#ae7fbc217bad33cff559b1fc41375a8ff">COUNTER_FUNCTION</a>(a)</td></tr>
 <tr class="separator:ae7fbc217bad33cff559b1fc41375a8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a7e3248247de2a17aac2b02b27f78fa11"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a7e3248247de2a17aac2b02b27f78fa11">counters::COUNTER_FUNCTION_DEFAULT</a> (count_edges)</td></tr>
-<tr class="separator:a7e3248247de2a17aac2b02b27f78fa11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bb698ff1178ee5dc760fd9597269ae2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a2bb698ff1178ee5dc760fd9597269ae2">counters::COUNTER_FUNCTION_DEFAULT</a> (count_isolates)</td></tr>
-<tr class="separator:a2bb698ff1178ee5dc760fd9597269ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bbb4b20239df8359834a0bf531045bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a5bbb4b20239df8359834a0bf531045bc">counters::COUNTER_FUNCTION_DEFAULT</a> (init_isolates)</td></tr>
-<tr class="separator:a5bbb4b20239df8359834a0bf531045bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42e9a8748d506b7e8b422c69aa262c2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a42e9a8748d506b7e8b422c69aa262c2e">counters::COUNTER_FUNCTION_DEFAULT</a> (init_mutual)</td></tr>
-<tr class="separator:a42e9a8748d506b7e8b422c69aa262c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a3094fba5a8576a717e92a223382fa0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a7a3094fba5a8576a717e92a223382fa0">counters::COUNTER_FUNCTION_DEFAULT</a> (count_mutual)</td></tr>
-<tr class="separator:a7a3094fba5a8576a717e92a223382fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1033c77fee688a3604a92e462b0655d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a1033c77fee688a3604a92e462b0655d0">counters::COUNTER_FUNCTION_DEFAULT</a> (count_istar2)</td></tr>
-<tr class="separator:a1033c77fee688a3604a92e462b0655d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a4b15f371d634c31f5d6cdaef01ed69"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a0a4b15f371d634c31f5d6cdaef01ed69">counters::COUNTER_FUNCTION_DEFAULT</a> (count_ostar2)</td></tr>
-<tr class="separator:a0a4b15f371d634c31f5d6cdaef01ed69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a367e00a607897c087789480960ded810"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a367e00a607897c087789480960ded810">counters::COUNTER_FUNCTION_DEFAULT</a> (count_ttriads)</td></tr>
-<tr class="separator:a367e00a607897c087789480960ded810"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd3f8d1d1b3c02d73890e9d4daebb5e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#abd3f8d1d1b3c02d73890e9d4daebb5e9">counters::COUNTER_FUNCTION_DEFAULT</a> (count_ctriads)</td></tr>
-<tr class="separator:abd3f8d1d1b3c02d73890e9d4daebb5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6ac31529e189df8ed6c948b3dd26c12"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#ac6ac31529e189df8ed6c948b3dd26c12">counters::COUNTER_FUNCTION_DEFAULT</a> (count_density)</td></tr>
-<tr class="separator:ac6ac31529e189df8ed6c948b3dd26c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30cd1d5c1060e8097bf7fa69b2c64948"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a30cd1d5c1060e8097bf7fa69b2c64948">counters::COUNTER_FUNCTION_DEFAULT</a> (count_idegree15)</td></tr>
-<tr class="separator:a30cd1d5c1060e8097bf7fa69b2c64948"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3daac49213d1ac56ca65e169f7476d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#aa3daac49213d1ac56ca65e169f7476d0">counters::COUNTER_FUNCTION_DEFAULT</a> (count_odegree15)</td></tr>
-<tr class="separator:aa3daac49213d1ac56ca65e169f7476d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:add0b7936c65fe243feeb6172134cc1cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#add0b7936c65fe243feeb6172134cc1cc">counters::edges</a> (count_edges&lt;&gt;)</td></tr>
-<tr class="separator:add0b7936c65fe243feeb6172134cc1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f5dba898b77efbc0fd24dc3e3d3bc9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a3f5dba898b77efbc0fd24dc3e3d3bc9b">counters::isolates</a> (count_isolates&lt;&gt;, init_isolates&lt;&gt;)</td></tr>
-<tr class="separator:a3f5dba898b77efbc0fd24dc3e3d3bc9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb7533c3aa1d93d0abd87222bd3ab1ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#adb7533c3aa1d93d0abd87222bd3ab1ec">counters::mutual</a> (count_mutual&lt;&gt;, init_mutual&lt;&gt;)</td></tr>
-<tr class="separator:adb7533c3aa1d93d0abd87222bd3ab1ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c84a53b7160d4633a71636d96c31d47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a9c84a53b7160d4633a71636d96c31d47">counters::istar2</a> (count_istar2&lt;&gt;)</td></tr>
-<tr class="separator:a9c84a53b7160d4633a71636d96c31d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a71c3553c8d38fb2e730bcc492eb9ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#a1a71c3553c8d38fb2e730bcc492eb9ae">counters::ostar2</a> (count_ostar2&lt;&gt;)</td></tr>
-<tr class="separator:a1a71c3553c8d38fb2e730bcc492eb9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc969e213447b929fa9f346a71a02fe5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#acc969e213447b929fa9f346a71a02fe5">counters::ttriads</a> (count_ttriads&lt;&gt;)</td></tr>
-<tr class="separator:acc969e213447b929fa9f346a71a02fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add58e989152a575a4dd80d50c8c54af6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#add58e989152a575a4dd80d50c8c54af6">counters::ctriads</a> (count_ctriads&lt;&gt;)</td></tr>
-<tr class="separator:add58e989152a575a4dd80d50c8c54af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad18705848a3d0689a2078fd261785a47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#ad18705848a3d0689a2078fd261785a47">counters::density</a> (count_density&lt;&gt;)</td></tr>
-<tr class="separator:ad18705848a3d0689a2078fd261785a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac890cdc7d5d1310e7a7fd1981ce92f1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#ac890cdc7d5d1310e7a7fd1981ce92f1e">counters::idegree15</a> (count_idegree15&lt;&gt;)</td></tr>
-<tr class="separator:ac890cdc7d5d1310e7a7fd1981ce92f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee8843ddc2e7cc7e2be3a645dfe99dd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecounters.html#aee8843ddc2e7cc7e2be3a645dfe99dd5">counters::odegree15</a> (count_odegree15&lt;&gt;)</td></tr>
-<tr class="separator:aee8843ddc2e7cc7e2be3a645dfe99dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a6c60a358a2b89973d5d4b9436374ef8b"></a>
@@ -207,7 +150,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt; \</div><div class="line">  inline double (a) (Array_Type * Array, <a class="code" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="phylo_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00009">phylo.hpp:9</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt; \</div><div class="line">  inline double (a) (Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00033">typedefs.hpp:33</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00024">counters-bones.hpp:24</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00010">10</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
@@ -229,7 +172,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt; \</div><div class="line">  inline double (a) (Array_Type * Array, <a class="code" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="phylo_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00009">phylo.hpp:9</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt; \</div><div class="line">  inline double (a) (Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00033">typedefs.hpp:33</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00024">counters-bones.hpp:24</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -249,7 +192,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  inline double (a) (Array_Type * Array, <a class="code" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="phylo_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00009">phylo.hpp:9</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  inline double (a) (Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00033">typedefs.hpp:33</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00024">counters-bones.hpp:24</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00007">7</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
@@ -271,7 +214,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  inline double (a) (Array_Type * Array, <a class="code" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="phylo_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00009">phylo.hpp:9</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  inline double (a) (Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00033">typedefs.hpp:33</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00024">counters-bones.hpp:24</a></div></div>
 </div><!-- fragment -->
 </div>

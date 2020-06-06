@@ -124,6 +124,8 @@ public:
   // Advances operators
   // void toggle_iterator
   
+  // Misc
+  void print() const;
     
 };
 

@@ -24,7 +24,7 @@
    <div id="projectname">Binary Arrays
    &#160;<span id="projectnumber">0.0-0</span>
    </div>
-   <div id="projectbrief">Full enumeration of sample space for binary arrays</div>
+   <div id="projectbrief">Full enumeration of sample space and fast count of sufficient statistics for binary arrays</div>
   </td>
  </tr>
  </tbody>
@@ -90,30 +90,26 @@ $(function() {
 <code>#include &quot;<a class="el" href="support_8hpp_source.html">support.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="block-bones_8hpp_source.html">block-bones.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="powerset_8hpp_source.html">powerset.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="network_8hpp_source.html">counters/network.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="phylo_8hpp_source.html">counters/phylo.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for barray.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="barray_8hpp__incl.png" border="0" usemap="#include_2barray_8hpp" alt=""/></div>
 <map name="include_2barray_8hpp" id="include_2barray_8hpp">
-<area shape="rect" id="node8" href="typedefs_8hpp.html" title="typedefs.hpp" alt="" coords="1114,379,1211,405"/>
-<area shape="rect" id="node9" href="meta_8hpp.html" title="meta.hpp" alt="" coords="550,304,626,331"/>
-<area shape="rect" id="node10" href="cell-bones_8hpp.html" title="cell&#45;bones.hpp" alt="" coords="859,304,965,331"/>
-<area shape="rect" id="node11" href="barray-bones_8hpp.html" title="barray&#45;bones.hpp" alt="" coords="851,229,973,256"/>
-<area shape="rect" id="node12" href="barray-meat_8hpp.html" title="barray&#45;meat.hpp" alt="" coords="853,155,969,181"/>
-<area shape="rect" id="node13" href="counters-bones_8hpp.html" title="counters&#45;bones.hpp" alt="" coords="1095,155,1231,181"/>
-<area shape="rect" id="node14" href="statscounter_8hpp.html" title="statscounter.hpp" alt="" coords="998,80,1117,107"/>
-<area shape="rect" id="node16" href="support_8hpp.html" title="support.hpp" alt="" coords="1223,80,1313,107"/>
-<area shape="rect" id="node17" href="block-bones_8hpp.html" title="block&#45;bones.hpp" alt="" coords="1425,229,1543,256"/>
-<area shape="rect" id="node18" href="powerset_8hpp.html" title="powerset.hpp" alt="" coords="677,155,777,181"/>
-<area shape="rect" id="node15" href="statsdb_8hpp.html" title="statsdb.hpp" alt="" coords="1305,155,1396,181"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="barray_8hpp__dep__incl.png" border="0" usemap="#include_2barray_8hppdep" alt=""/></div>
-<map name="include_2barray_8hppdep" id="include_2barray_8hppdep">
-<area shape="rect" id="node2" href="phylo_8hpp.html" title="include/phylo.hpp" alt="" coords="8,80,131,107"/>
+<area shape="rect" id="node8" href="typedefs_8hpp.html" title="typedefs.hpp" alt="" coords="1061,379,1158,405"/>
+<area shape="rect" id="node9" href="meta_8hpp.html" title="meta.hpp" alt="" coords="561,304,637,331"/>
+<area shape="rect" id="node10" href="cell-bones_8hpp.html" title="cell&#45;bones.hpp" alt="" coords="832,304,939,331"/>
+<area shape="rect" id="node11" href="barray-bones_8hpp.html" title="barray&#45;bones.hpp" alt="" coords="864,229,987,256"/>
+<area shape="rect" id="node12" href="barray-meat_8hpp.html" title="barray&#45;meat.hpp" alt="" coords="771,155,887,181"/>
+<area shape="rect" id="node13" href="counters-bones_8hpp.html" title="counters&#45;bones.hpp" alt="" coords="1280,155,1416,181"/>
+<area shape="rect" id="node14" href="statscounter_8hpp.html" title="statscounter.hpp" alt="" coords="917,80,1035,107"/>
+<area shape="rect" id="node16" href="support_8hpp.html" title="support.hpp" alt="" coords="1060,80,1151,107"/>
+<area shape="rect" id="node17" href="block-bones_8hpp.html" title="block&#45;bones.hpp" alt="" coords="1432,229,1549,256"/>
+<area shape="rect" id="node18" href="powerset_8hpp.html" title="powerset.hpp" alt="" coords="647,155,747,181"/>
+<area shape="rect" id="node19" href="network_8hpp.html" title="counters/network.hpp" alt="" coords="1175,80,1321,107"/>
+<area shape="rect" id="node20" href="phylo_8hpp.html" title="counters/phylo.hpp" alt="" coords="1346,80,1478,107"/>
+<area shape="rect" id="node15" href="statsdb_8hpp.html" title="statsdb.hpp" alt="" coords="1064,155,1155,181"/>
 </map>
 </div>
 </div>
@@ -151,6 +147,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarray_1_1_power_set.html">barray::PowerSet&lt; Cell_Type, Data_Type &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarray_1_1counters_1_1_node_data.html">barray::counters::NodeData</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -162,49 +160,76 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacebarray_1_1counters"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html">barray::counters</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacebarray_1_1counters_1_1network"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html">barray::counters::network</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a402b1982cc07118fb03b259b3fbe6b13"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::pair&lt; std::vector&lt; double &gt;, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray.html#a402b1982cc07118fb03b259b3fbe6b13">barray::Counts_type</a></td></tr>
+<tr class="memitem:a402b1982cc07118fb03b259b3fbe6b13"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::pair&lt; std::vector&lt; double &gt;, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray.html#a402b1982cc07118fb03b259b3fbe6b13">barray::Counts_type</a></td></tr>
 <tr class="separator:a402b1982cc07118fb03b259b3fbe6b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9756a31953db233f80a9cfe1ef31c32"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray.html#af9756a31953db233f80a9cfe1ef31c32">barray::uint</a></td></tr>
 <tr class="separator:af9756a31953db233f80a9cfe1ef31c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4f74265365989ae59858a57ddfa92a7"><td class="memTemplParams" colspan="2">template&lt;typename Cell_Type &gt; </td></tr>
-<tr class="memitem:ab4f74265365989ae59858a57ddfa92a7"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarray.html#ab4f74265365989ae59858a57ddfa92a7">barray::Row_type</a> = std::unordered_map&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &gt;</td></tr>
+<tr class="memitem:ab4f74265365989ae59858a57ddfa92a7"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarray.html#ab4f74265365989ae59858a57ddfa92a7">barray::Row_type</a> = std::unordered_map&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &gt;</td></tr>
 <tr class="separator:ab4f74265365989ae59858a57ddfa92a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39da823e85ccd18ec69ad6d69125c8b9"><td class="memTemplParams" colspan="2">template&lt;typename Cell_Type &gt; </td></tr>
-<tr class="memitem:a39da823e85ccd18ec69ad6d69125c8b9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarray.html#a39da823e85ccd18ec69ad6d69125c8b9">barray::Col_type</a> = std::unordered_map&lt; <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; *&gt;</td></tr>
+<tr class="memitem:a39da823e85ccd18ec69ad6d69125c8b9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarray.html#a39da823e85ccd18ec69ad6d69125c8b9">barray::Col_type</a> = std::unordered_map&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; *&gt;</td></tr>
 <tr class="separator:a39da823e85ccd18ec69ad6d69125c8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad73a1be25ddc29190ba37b20a4c44cac"><td class="memTemplParams" colspan="2">template&lt;typename Array_Type , typename Data_Type &gt; </td></tr>
-<tr class="memitem:ad73a1be25ddc29190ba37b20a4c44cac"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarray.html#ad73a1be25ddc29190ba37b20a4c44cac">barray::Counter_fun_type</a> = std::function&lt; double(Array_Type *, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="phylo_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, Data_Type *)&gt;</td></tr>
+<tr class="memitem:ad73a1be25ddc29190ba37b20a4c44cac"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarray.html#ad73a1be25ddc29190ba37b20a4c44cac">barray::Counter_fun_type</a> = std::function&lt; double(Array_Type *, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, Data_Type *)&gt;</td></tr>
 <tr class="separator:ad73a1be25ddc29190ba37b20a4c44cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae615f28df48ad14d54549870325a9d34"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_b_array.html">BArray</a>&lt; bool, <a class="el" href="class_node_data.html">NodeData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ae615f28df48ad14d54549870325a9d34">barray::counters::PhyloArray</a></td></tr>
+<tr class="separator:ae615f28df48ad14d54549870325a9d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7899949c19d9915ddc164b59004adbd2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7899949c19d9915ddc164b59004adbd2"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a7899949c19d9915ddc164b59004adbd2">barray::counters::Vec</a> = std::vector&lt; T &gt;</td></tr>
+<tr class="separator:a7899949c19d9915ddc164b59004adbd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a748fe0f36505b5cb4f1ac2024bf56a84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a748fe0f36505b5cb4f1ac2024bf56a84">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_edges)</td></tr>
-<tr class="separator:a748fe0f36505b5cb4f1ac2024bf56a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ccdd0c0c420596dcbadc68b65ac6e7c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a1ccdd0c0c420596dcbadc68b65ac6e7c">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_isolates)</td></tr>
-<tr class="separator:a1ccdd0c0c420596dcbadc68b65ac6e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab57745917b65ad479884524bc52aa320"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ab57745917b65ad479884524bc52aa320">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (init_isolates)</td></tr>
-<tr class="separator:ab57745917b65ad479884524bc52aa320"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad984391f2cdc40a7065bf8fdf7eef52f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ad984391f2cdc40a7065bf8fdf7eef52f">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (init_mutual)</td></tr>
-<tr class="separator:ad984391f2cdc40a7065bf8fdf7eef52f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae062b50fb1d80e957afee5ab4cc943e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ae062b50fb1d80e957afee5ab4cc943e9">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_mutual)</td></tr>
-<tr class="separator:ae062b50fb1d80e957afee5ab4cc943e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5dc4eef2c0ebfbf02f1da8d1d175924"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ad5dc4eef2c0ebfbf02f1da8d1d175924">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_istar2)</td></tr>
-<tr class="separator:ad5dc4eef2c0ebfbf02f1da8d1d175924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed9040e080fb0dec34d0eec566c179cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#aed9040e080fb0dec34d0eec566c179cb">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_ostar2)</td></tr>
-<tr class="separator:aed9040e080fb0dec34d0eec566c179cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb9b03e1d31960fc05bd69b04a9a5330"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#afb9b03e1d31960fc05bd69b04a9a5330">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_ttriads)</td></tr>
-<tr class="separator:afb9b03e1d31960fc05bd69b04a9a5330"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36c094563020f1d3dbbd3cca5f94cade"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a36c094563020f1d3dbbd3cca5f94cade">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_ctriads)</td></tr>
-<tr class="separator:a36c094563020f1d3dbbd3cca5f94cade"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82f51403b98be0bee6f15ec9c5eab447"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a82f51403b98be0bee6f15ec9c5eab447">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_density)</td></tr>
-<tr class="separator:a82f51403b98be0bee6f15ec9c5eab447"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa94ef0f024647b372c4a1c88c4c1dcb9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#aa94ef0f024647b372c4a1c88c4c1dcb9">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_idegree15)</td></tr>
-<tr class="separator:aa94ef0f024647b372c4a1c88c4c1dcb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41cd8f8efaf89ace6f55eedd08c8e030"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a41cd8f8efaf89ace6f55eedd08c8e030">barray::counters::COUNTER_FUNCTION_DEFAULT</a> (count_odegree15)</td></tr>
-<tr class="separator:a41cd8f8efaf89ace6f55eedd08c8e030"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65e58c44975dcdcfd46a6e7df89bf6be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a65e58c44975dcdcfd46a6e7df89bf6be">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_edges)</td></tr>
+<tr class="separator:a65e58c44975dcdcfd46a6e7df89bf6be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5752759cf0a741a6eccd0f88d095dd5b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a5752759cf0a741a6eccd0f88d095dd5b">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_isolates)</td></tr>
+<tr class="separator:a5752759cf0a741a6eccd0f88d095dd5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61c7f11f28aa4807b36d023cbcc90109"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a61c7f11f28aa4807b36d023cbcc90109">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (init_isolates)</td></tr>
+<tr class="separator:a61c7f11f28aa4807b36d023cbcc90109"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b5bde4e1d9fcb1c83dfedc2398df29"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a43b5bde4e1d9fcb1c83dfedc2398df29">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (init_mutual)</td></tr>
+<tr class="separator:a43b5bde4e1d9fcb1c83dfedc2398df29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a953850511bb073619ea7eccc6fecc929"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a953850511bb073619ea7eccc6fecc929">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_mutual)</td></tr>
+<tr class="separator:a953850511bb073619ea7eccc6fecc929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab91787f5b644f5d9f55a52fbbb93610"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#aab91787f5b644f5d9f55a52fbbb93610">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_istar2)</td></tr>
+<tr class="separator:aab91787f5b644f5d9f55a52fbbb93610"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71258ed8cb8ad2776dde8e35af87a0e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a71258ed8cb8ad2776dde8e35af87a0e6">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_ostar2)</td></tr>
+<tr class="separator:a71258ed8cb8ad2776dde8e35af87a0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa15659fa49f34b1d0856f700876222f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#aa15659fa49f34b1d0856f700876222f7">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_ttriads)</td></tr>
+<tr class="separator:aa15659fa49f34b1d0856f700876222f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd1ac23e6b9ef8df97a61c935329750b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#abd1ac23e6b9ef8df97a61c935329750b">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_ctriads)</td></tr>
+<tr class="separator:abd1ac23e6b9ef8df97a61c935329750b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ba1fede754d56736a3f61cb9300231b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a7ba1fede754d56736a3f61cb9300231b">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_density)</td></tr>
+<tr class="separator:a7ba1fede754d56736a3f61cb9300231b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd84fecfb4d5dfeece909fd949f372ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#acd84fecfb4d5dfeece909fd949f372ef">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_idegree15)</td></tr>
+<tr class="separator:acd84fecfb4d5dfeece909fd949f372ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f0df5a8f1ae6857cc5b1f89a5916a13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a3f0df5a8f1ae6857cc5b1f89a5916a13">barray::counters::network::COUNTER_FUNCTION_DEFAULT</a> (count_odegree15)</td></tr>
+<tr class="separator:a3f0df5a8f1ae6857cc5b1f89a5916a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe627d7b16786e9fc6ce7eca3102f8d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#afe627d7b16786e9fc6ce7eca3102f8d3">barray::counters::PHYLO_COUNTER</a> (count_gains)</td></tr>
+<tr class="separator:afe627d7b16786e9fc6ce7eca3102f8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37bebdc3e60c320eca1394140e22a604"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a37bebdc3e60c320eca1394140e22a604">barray::counters::PHYLO_COUNTER</a> (init_count_gains)</td></tr>
+<tr class="separator:a37bebdc3e60c320eca1394140e22a604"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a27ff9f7a8723ce794d23fdb1aeb7fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a9a27ff9f7a8723ce794d23fdb1aeb7fc">barray::counters::PHYLO_COUNTER</a> (count_loss)</td></tr>
+<tr class="separator:a9a27ff9f7a8723ce794d23fdb1aeb7fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae52a7f705e386564d6f8445d945ebd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a7ae52a7f705e386564d6f8445d945ebd">barray::counters::PHYLO_COUNTER</a> (init_count_loss)</td></tr>
+<tr class="separator:a7ae52a7f705e386564d6f8445d945ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d43c455e95399c8af510b40419a5d8e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a5d43c455e95399c8af510b40419a5d8e">barray::counters::PHYLO_COUNTER</a> (count_subfun)</td></tr>
+<tr class="separator:a5d43c455e95399c8af510b40419a5d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0f77f620ad919989c9914dc896caa75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#af0f77f620ad919989c9914dc896caa75">barray::counters::PHYLO_COUNTER</a> (init_count_subfun)</td></tr>
+<tr class="separator:af0f77f620ad919989c9914dc896caa75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa80ccbed69057460fa51f4b55cdb8889"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#aa80ccbed69057460fa51f4b55cdb8889">barray::counters::PHYLO_COUNTER</a> (count_cogain)</td></tr>
+<tr class="separator:aa80ccbed69057460fa51f4b55cdb8889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fd8d6bac2801c6deac588dbf05e2210"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a2fd8d6bac2801c6deac588dbf05e2210">barray::counters::PHYLO_COUNTER</a> (init_count_cogain)</td></tr>
+<tr class="separator:a2fd8d6bac2801c6deac588dbf05e2210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d98892775b2d66ad32eb20a37a762f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#aa4d98892775b2d66ad32eb20a37a762f">barray::counters::PHYLO_COUNTER</a> (count_longest)</td></tr>
+<tr class="separator:aa4d98892775b2d66ad32eb20a37a762f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5f0e22d01bc44eb84ceb7bd9b501a4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#aef5f0e22d01bc44eb84ceb7bd9b501a4">barray::counters::PHYLO_COUNTER</a> (init_count_longest)</td></tr>
+<tr class="separator:aef5f0e22d01bc44eb84ceb7bd9b501a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -230,26 +255,36 @@ Variables</h2></td></tr>
 <tr class="separator:a6d73facc9d247c1186bb425541a16988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5237a8f5f8d64747b1480cfd3b693967"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1_e_x_i_s_t_s.html#a5237a8f5f8d64747b1480cfd3b693967">barray::EXISTS::AS_ONE</a> = 1</td></tr>
 <tr class="separator:a5237a8f5f8d64747b1480cfd3b693967"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f98e32d8dec2674f0cf95b9b276372e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a3f98e32d8dec2674f0cf95b9b276372e">barray::counters::edges</a> (count_edges&lt;&gt;)</td></tr>
-<tr class="separator:a3f98e32d8dec2674f0cf95b9b276372e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad16ae2633a8563d0b415688d17ce005b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ad16ae2633a8563d0b415688d17ce005b">barray::counters::isolates</a> (count_isolates&lt;&gt;, init_isolates&lt;&gt;)</td></tr>
-<tr class="separator:ad16ae2633a8563d0b415688d17ce005b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c9b2c54a0438a41e6d5e0fc7d24ac37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a8c9b2c54a0438a41e6d5e0fc7d24ac37">barray::counters::mutual</a> (count_mutual&lt;&gt;, init_mutual&lt;&gt;)</td></tr>
-<tr class="separator:a8c9b2c54a0438a41e6d5e0fc7d24ac37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac93a977133d46e93f1fc924c67fb697a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ac93a977133d46e93f1fc924c67fb697a">barray::counters::istar2</a> (count_istar2&lt;&gt;)</td></tr>
-<tr class="separator:ac93a977133d46e93f1fc924c67fb697a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac321a948345d74c8251701adf214b2d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ac321a948345d74c8251701adf214b2d5">barray::counters::ostar2</a> (count_ostar2&lt;&gt;)</td></tr>
-<tr class="separator:ac321a948345d74c8251701adf214b2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9ae73f2c4b1045e44f399943fa5e820"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ab9ae73f2c4b1045e44f399943fa5e820">barray::counters::ttriads</a> (count_ttriads&lt;&gt;)</td></tr>
-<tr class="separator:ab9ae73f2c4b1045e44f399943fa5e820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a781a49817e35074e6a3171bbcfe133d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a781a49817e35074e6a3171bbcfe133d7">barray::counters::ctriads</a> (count_ctriads&lt;&gt;)</td></tr>
-<tr class="separator:a781a49817e35074e6a3171bbcfe133d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5512aaf630508ffae6908d78447b8b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ab5512aaf630508ffae6908d78447b8b0">barray::counters::density</a> (count_density&lt;&gt;)</td></tr>
-<tr class="separator:ab5512aaf630508ffae6908d78447b8b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ece0303312cd3c1012d68c60d5ccdbf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a8ece0303312cd3c1012d68c60d5ccdbf">barray::counters::idegree15</a> (count_idegree15&lt;&gt;)</td></tr>
-<tr class="separator:a8ece0303312cd3c1012d68c60d5ccdbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e9042c4f5fc15016fd42fb491629960"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a7e9042c4f5fc15016fd42fb491629960">barray::counters::odegree15</a> (count_odegree15&lt;&gt;)</td></tr>
-<tr class="separator:a7e9042c4f5fc15016fd42fb491629960"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d7c7745a0762dd24e1604c75deb70e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#ab1d7c7745a0762dd24e1604c75deb70e">barray::counters::network::edges</a> (count_edges&lt;&gt;)</td></tr>
+<tr class="separator:ab1d7c7745a0762dd24e1604c75deb70e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e77a402d02d48311e4fc6d66ff40532"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a6e77a402d02d48311e4fc6d66ff40532">barray::counters::network::isolates</a> (count_isolates&lt;&gt;, init_isolates&lt;&gt;)</td></tr>
+<tr class="separator:a6e77a402d02d48311e4fc6d66ff40532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab6f0dff27d6d5f6d3682b124ce4d991"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#aab6f0dff27d6d5f6d3682b124ce4d991">barray::counters::network::mutual</a> (count_mutual&lt;&gt;, init_mutual&lt;&gt;)</td></tr>
+<tr class="separator:aab6f0dff27d6d5f6d3682b124ce4d991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a769585711f2107eb4bc70c3b35ae43db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a769585711f2107eb4bc70c3b35ae43db">barray::counters::network::istar2</a> (count_istar2&lt;&gt;)</td></tr>
+<tr class="separator:a769585711f2107eb4bc70c3b35ae43db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac579cced7ccacba646a9f2d0dcdcf827"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#ac579cced7ccacba646a9f2d0dcdcf827">barray::counters::network::ostar2</a> (count_ostar2&lt;&gt;)</td></tr>
+<tr class="separator:ac579cced7ccacba646a9f2d0dcdcf827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab1549ac06b613404f5ee94bd6258597"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#aab1549ac06b613404f5ee94bd6258597">barray::counters::network::ttriads</a> (count_ttriads&lt;&gt;)</td></tr>
+<tr class="separator:aab1549ac06b613404f5ee94bd6258597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06fff92a117d2bff28b4e4d8b84fc2a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a06fff92a117d2bff28b4e4d8b84fc2a8">barray::counters::network::ctriads</a> (count_ctriads&lt;&gt;)</td></tr>
+<tr class="separator:a06fff92a117d2bff28b4e4d8b84fc2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23dbe2088271aaa90a6240413e9379c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a23dbe2088271aaa90a6240413e9379c9">barray::counters::network::density</a> (count_density&lt;&gt;)</td></tr>
+<tr class="separator:a23dbe2088271aaa90a6240413e9379c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f9327e331919e914ba5981b4a532f0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a7f9327e331919e914ba5981b4a532f0b">barray::counters::network::idegree15</a> (count_idegree15&lt;&gt;)</td></tr>
+<tr class="separator:a7f9327e331919e914ba5981b4a532f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fee6f3cb4f2eeddb5cced8120bf28ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters_1_1network.html#a8fee6f3cb4f2eeddb5cced8120bf28ab">barray::counters::network::odegree15</a> (count_odegree15&lt;&gt;)</td></tr>
+<tr class="separator:a8fee6f3cb4f2eeddb5cced8120bf28ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a842e1b61f3c8e17a2ee8a6bc9e779583"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&lt; <a class="el" href="phylo_8hpp.html#aa942fa3af91344d3a6528d3f72e9bc10">PhyloArray</a>, <a class="el" href="phylo_8hpp.html#a7966e901999842222671212316797352">Vec</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a842e1b61f3c8e17a2ee8a6bc9e779583">barray::counters::gains</a> (count_gains, init_count_gains)</td></tr>
+<tr class="separator:a842e1b61f3c8e17a2ee8a6bc9e779583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3218cf51dc0c1a2870cb818b9c2f31b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&lt; <a class="el" href="phylo_8hpp.html#aa942fa3af91344d3a6528d3f72e9bc10">PhyloArray</a>, <a class="el" href="phylo_8hpp.html#a7966e901999842222671212316797352">Vec</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a3218cf51dc0c1a2870cb818b9c2f31b9">barray::counters::loss</a> (count_loss, init_count_loss)</td></tr>
+<tr class="separator:a3218cf51dc0c1a2870cb818b9c2f31b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22dc89918a63a358d618642e5c4e54e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&lt; <a class="el" href="phylo_8hpp.html#aa942fa3af91344d3a6528d3f72e9bc10">PhyloArray</a>, <a class="el" href="phylo_8hpp.html#a7966e901999842222671212316797352">Vec</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#a22dc89918a63a358d618642e5c4e54e5">barray::counters::subfun</a> (count_subfun, init_count_subfun)</td></tr>
+<tr class="separator:a22dc89918a63a358d618642e5c4e54e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cb4c6ce0c710c9417d0320647631ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&lt; <a class="el" href="phylo_8hpp.html#aa942fa3af91344d3a6528d3f72e9bc10">PhyloArray</a>, <a class="el" href="phylo_8hpp.html#a7966e901999842222671212316797352">Vec</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#af3cb4c6ce0c710c9417d0320647631ec">barray::counters::cogain</a> (count_cogain, init_count_cogain)</td></tr>
+<tr class="separator:af3cb4c6ce0c710c9417d0320647631ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12a1fee1ba0048c1a6caed52e7f783f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&lt; <a class="el" href="phylo_8hpp.html#aa942fa3af91344d3a6528d3f72e9bc10">PhyloArray</a>, <a class="el" href="phylo_8hpp.html#a7966e901999842222671212316797352">Vec</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarray_1_1counters.html#ab12a1fee1ba0048c1a6caed52e7f783f">barray::counters::longest</a> (count_longest, init_count_longest)</td></tr>
+<tr class="separator:ab12a1fee1ba0048c1a6caed52e7f783f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

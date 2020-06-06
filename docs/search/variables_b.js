@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['target',['target',['../classbarray_1_1_entries.html#a6ee07a19fe9412417b6b2394689dd0dc',1,'barray::Entries::target()'],['../class_entries.html#a02dad3917fa68044b9ea9c60b2909fd7',1,'Entries::target()']]],
-  ['ttriads',['ttriads',['../namespacebarray_1_1counters.html#ab9ae73f2c4b1045e44f399943fa5e820',1,'barray::counters::ttriads()'],['../namespacecounters.html#acc969e213447b929fa9f346a71a02fe5',1,'counters::ttriads()']]],
-  ['two',['TWO',['../namespacebarray_1_1_c_h_e_c_k.html#a1d786f922bc95bbff0bd33a5ba0e04d3',1,'barray::CHECK::TWO()'],['../namespacebarray_1_1_e_x_i_s_t_s.html#aa624d3f524592c728ed5317721a6fff5',1,'barray::EXISTS::TWO()'],['../namespace_c_h_e_c_k.html#a2b112aaec4c59311376a5a60f291aa48',1,'CHECK::TWO()'],['../namespace_e_x_i_s_t_s.html#ad76d02e8eb6d20715d333b72394b0648',1,'EXISTS::TWO()']]]
+  ['seq',['Seq',['../classbarray_1_1_cell_seq.html#aa026242c5a91b405fcc08915a31da236',1,'barray::CellSeq::Seq()'],['../class_cell_seq.html#af15df5f62488560f36f71336ac5cb0a5',1,'CellSeq::Seq()']]],
+  ['seq_5fcomputed',['seq_computed',['../classbarray_1_1_cell_seq.html#a681fe627c2d8b932d8114e91cc8982e0',1,'barray::CellSeq::seq_computed()'],['../class_cell_seq.html#aa813f6c9f5438cc472a0c12078b44c97',1,'CellSeq::seq_computed()']]],
+  ['source',['source',['../classbarray_1_1_entries.html#ab8d603d5371b5c5f354d7a4208771a9a',1,'barray::Entries::source()'],['../class_entries.html#a6a7c589df4cd6ea98386466440dfdc98',1,'Entries::source()']]],
+  ['states',['states',['../classbarray_1_1counters_1_1_node_data.html#ab92b2415dff82a4665a68d3db7bc4305',1,'barray::counters::NodeData::states()'],['../class_node_data.html#a4eca9b107effe3e95eecfac6a47b7353',1,'NodeData::states()']]],
+  ['stats',['stats',['../classbarray_1_1_stats_d_b.html#abdf3bb2c4b597f1d356cf5a3609b7211',1,'barray::StatsDB::stats()'],['../class_stats_d_b.html#a675ecc967115b14bf8693858920a4a6c',1,'StatsDB::stats()']]],
+  ['subfun',['subfun',['../namespacebarray_1_1counters.html#a22dc89918a63a358d618642e5c4e54e5',1,'barray::counters::subfun()'],['../phylo_8hpp.html#a160b786b1a4eeb1e41bb1a3c4bc1ae4b',1,'subfun():&#160;phylo.hpp']]],
+  ['support',['support',['../classbarray_1_1_support.html#a5c509beff6f44ff560179180ceaf6fd3',1,'barray::Support::support()'],['../class_support.html#ab2f404c7c11d5bc58e876124cc52d073',1,'Support::support()']]]
 ];
