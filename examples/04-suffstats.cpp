@@ -1,13 +1,13 @@
 #include <Rcpp.h>
 #include "../include/barray.hpp"
-#include "../include/lbarray-bones.hpp"
-using namespace Rcpp;
+// #include "../include/lbarray-bones.hpp"
+using namespace Rcpp; 
 
 // [[Rcpp::export]]
 SEXP suff_stats(const NumericMatrix & x) {
   
   Rcpp::XPtr< barray::StatsDB > xptr( 
-    new barray::StatsDB(),
+    new barray::StatsDB(), 
     true
   );
   
@@ -49,24 +49,24 @@ NumericVector counter(
 ) {
   
   // Initializing the Binary array, and also the the suffstats counter
-  barray::BArray<bool> Array((uint) N, (uint) M, source, target);
+  barray::BArray<> Array((uint) N, (uint) M, source, target);
 
   // Array.meta.set("undirected", true);
   
   // Creating the counter object; 
-  barray::StatsCounter<bool> dat(&Array);
+  barray::StatsCounter<> dat(&Array);
   
   // Adding functions 
-  dat.add_counter(barray::counters::edges);
-  dat.add_counter(barray::counters::mutual);
-  dat.add_counter(barray::counters::isolates);
-  dat.add_counter(barray::counters::istar2);
-  dat.add_counter(barray::counters::ostar2);
-  dat.add_counter(barray::counters::ttriads);
-  dat.add_counter(barray::counters::ctriads);
-  dat.add_counter(barray::counters::density);
-  dat.add_counter(barray::counters::idegree15);
-  dat.add_counter(barray::counters::odegree15);
+  dat.add_counter(barray::counters::network::edges);
+  dat.add_counter(barray::counters::network::mutual);
+  dat.add_counter(barray::counters::network::isolates);
+  dat.add_counter(barray::counters::network::istar2);
+  dat.add_counter(barray::counters::network::ostar2);
+  dat.add_counter(barray::counters::network::ttriads);
+  dat.add_counter(barray::counters::network::ctriads);
+  dat.add_counter(barray::counters::network::density);
+  dat.add_counter(barray::counters::network::idegree15);
+  dat.add_counter(barray::counters::network::odegree15);
   
   // Fingers crossed
   std::vector< double > ans = dat.count_all();
@@ -79,25 +79,25 @@ NumericVector counter(
 // [[Rcpp::export]] 
 List support (
     int N, int M
-) {
+) { 
   
   // Initializing the Binary array, and also the the suffstats counter
-  barray::Support<bool> dat(N, M);
+  barray::Support<> dat(N, M);
   
   // Adding functions
-  dat.add_counter(barray::counters::edges);
-  dat.add_counter(barray::counters::mutual);
-  dat.add_counter(barray::counters::isolates);
-  dat.add_counter(barray::counters::istar2);
-  dat.add_counter(barray::counters::ostar2);
-  dat.add_counter(barray::counters::ttriads);
-  dat.add_counter(barray::counters::ctriads);
-  dat.add_counter(barray::counters::density);
-  dat.add_counter(barray::counters::idegree15);
-  dat.add_counter(barray::counters::odegree15);
+  dat.add_counter(barray::counters::network::edges);
+  dat.add_counter(barray::counters::network::mutual);
+  dat.add_counter(barray::counters::network::isolates);
+  dat.add_counter(barray::counters::network::istar2);
+  dat.add_counter(barray::counters::network::ostar2);
+  dat.add_counter(barray::counters::network::ttriads);
+  dat.add_counter(barray::counters::network::ctriads);
+  dat.add_counter(barray::counters::network::density);
+  dat.add_counter(barray::counters::network::idegree15);
+  dat.add_counter(barray::counters::network::odegree15);
   
   // Generating the data
-  dat.calc();
+  dat.calc(0u, false); 
   
   // Generating the entries
   barray::Counts_type ans = dat.support.get_entries();

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['vechasher',['vecHasher',['../structvec_hasher.html',1,'vecHasher&lt; T &gt;'],['../structbarray_1_1vec_hasher.html',1,'barray::vecHasher&lt; T &gt;']]]
+  ['statscounter',['StatsCounter',['../class_stats_counter.html',1,'StatsCounter&lt; Array_Type, Data_Type &gt;'],['../classbarray_1_1_stats_counter.html',1,'barray::StatsCounter&lt; Array_Type, Data_Type &gt;']]],
+  ['statsdb',['StatsDB',['../classbarray_1_1_stats_d_b.html',1,'barray::StatsDB'],['../class_stats_d_b.html',1,'StatsDB']]],
+  ['support',['Support',['../class_support.html',1,'Support&lt; Array_Type, Data_Type &gt;'],['../classbarray_1_1_support.html',1,'barray::Support&lt; Array_Type, Data_Type &gt;']]]
 ];

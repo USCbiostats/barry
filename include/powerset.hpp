@@ -1,5 +1,5 @@
-#include <vector>
-#include <unordered_map>
+// #include <vector>
+// #include <unordered_map>
 #include "typedefs.hpp"
 #include "barray-bones.hpp"
 
@@ -11,11 +11,11 @@
  * - value: the content
  * - visited: boolean (just a convenient)
  */
-template <typename Cell_Type > 
+template <typename Cell_Type = bool, typename Data_Type = bool > 
 class PowerSet {
   
 public:
-  std::vector< BArray<Cell_Type> > data;
+  std::vector< BArray<Cell_Type, Data_Type> > data;
   uint N, M;
   uint counter;
   
@@ -26,29 +26,32 @@ public:
   PowerSet(uint N_, uint M_) : data(0u), M(M_), N(N_), counter(0u) {};
   ~PowerSet() {};
   
-  void calc(uint i = 0u, BArray<Cell_Type> * a0 = nullptr);
+  void calc(uint i = 0u, BArray<Cell_Type, Data_Type> * a0 = nullptr);
   void reset(uint N_, uint M_);
   
   /**
    * Getter functions
    */
-  const std::vector< BArray<Cell_Type> > * get_data_ptr() const {return &data;};
-  std::vector< BArray<Cell_Type> > get_data() const {return data;};
+  const std::vector< BArray<Cell_Type, Data_Type> > * get_data_ptr() const {return &data;};
+  std::vector< BArray<Cell_Type, Data_Type> > get_data() const {return data;};
   
 };
 
 /***
  * Function to generate the powerset of the 
  */
-template <typename Cell_Type>
-inline void PowerSet<Cell_Type>::calc(uint i, BArray<Cell_Type> * a0) {
+template <typename Cell_Type, typename Data_Type>
+inline void PowerSet<Cell_Type, Data_Type>::calc(
+    uint i,
+    BArray<Cell_Type,Data_Type> * a0
+  ) {
   
   // If it is size 0, then need to recalculate the size, and initialize
   // the first datum
   if (a0 == nullptr) {
     
     this->data.reserve(pow(2.0, this->N * this->M));
-    this->data.push_back(BArray<Cell_Type>(this->N, this->M));
+    this->data.push_back(BArray<Cell_Type,Data_Type>(this->N, this->M));
     a0 = &this->data.at(0u);
     
   }
@@ -67,8 +70,12 @@ inline void PowerSet<Cell_Type>::calc(uint i, BArray<Cell_Type> * a0) {
   
 }
 
-template <typename Cell_Type>
-inline void PowerSet<Cell_Type>::reset(uint N_, uint M_) {
+template <typename Cell_Type, typename Data_Type>
+inline void PowerSet<Cell_Type,Data_Type>::reset(
+    uint N_,
+    uint M_
+  ) {
+  
   data.empty();
   N = N_, M = M_, counter = 0u;
   

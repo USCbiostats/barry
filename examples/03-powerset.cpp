@@ -1,13 +1,13 @@
 #include <Rcpp.h>
 #include "../include/barray.hpp"
 using namespace Rcpp;
-
+ 
 
 // [[Rcpp::export]]
-SEXP psets(int n, int m) { 
+SEXP psets(int n, int m) {
     
-  Rcpp::XPtr< barray::PowerSet< bool >> xptr(
-    new barray::PowerSet< bool >((uint) n, (uint) m),
+  Rcpp::XPtr< barray::PowerSet<>> xptr(
+    new barray::PowerSet<>((uint) n, (uint) m),
     true
   );
   
@@ -20,7 +20,7 @@ SEXP psets(int n, int m) {
 
 // [[Rcpp::export]]
 List get_data(SEXP x) {
-  Rcpp::XPtr< barray::PowerSet< bool >> xptr(x);
+  Rcpp::XPtr< barray::PowerSet<>> xptr(x);
 
   // Generating the data
   List ans(xptr->data.size());
@@ -46,7 +46,7 @@ List get_data(SEXP x) {
 N <- 4
 M <- 3
 
-PS_2_3 <- psets(N,M)
+PS_2_3 <- psets(N, M)
 x <- ergmito::powerset(4)
 
 microbenchmark::microbenchmark(
@@ -57,14 +57,17 @@ microbenchmark::microbenchmark(
 
 stop()
 
-PS_2_3 <- lapply(PS_2_3, function(p.) {
-  ans <- matrix(0, nrow = N, ncol = M)
+PS <- psets(3,1)
+PS <- get_data(PS)
+
+PS <- lapply(PS, function(p.) {
+  ans <- matrix(0, nrow = 3, ncol = 1)
   ans[cbind(p.$source, p.$target) + 1] <- p.$val
   ans
 })
 
-table(sapply(PS_2_3, paste, collapse = ""))
-table(table(sapply(PS_2_3, paste, collapse = ""))) == 2 ^ (N*M)
+table(sapply(PS, paste, collapse = ""))
+table(table(sapply(PS, paste, collapse = ""))) == 2 ^ (3)
 
 */
 

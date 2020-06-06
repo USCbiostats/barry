@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Binary Arrays: PowerSet&lt; Cell_Type &gt; Class Template Reference</title>
+<title>Binary Arrays: PowerSet&lt; Cell_Type, Data_Type &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,7 +24,7 @@
    <div id="projectname">Binary Arrays
    &#160;<span id="projectnumber">0.0-0</span>
    </div>
-   <div id="projectbrief">Full enumeration of sample space for binary arrays</div>
+   <div id="projectbrief">Full enumeration of sample space and fast count of sufficient statistics for binary arrays</div>
   </td>
  </tr>
  </tbody>
@@ -65,7 +65,7 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_power_set-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">PowerSet&lt; Cell_Type &gt; Class Template Reference</div>  </div>
+<div class="title">PowerSet&lt; Cell_Type, Data_Type &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -73,52 +73,52 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac1b31360e81d38b36bf83ebc78c41872"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#ac1b31360e81d38b36bf83ebc78c41872">PowerSet</a> ()</td></tr>
-<tr class="separator:ac1b31360e81d38b36bf83ebc78c41872"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae541c82e3e06e1854e716f13e72317af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#ae541c82e3e06e1854e716f13e72317af">PowerSet</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
-<tr class="separator:ae541c82e3e06e1854e716f13e72317af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aada1bfe8c9927f81393b0dc2fc01b20a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#aada1bfe8c9927f81393b0dc2fc01b20a">~PowerSet</a> ()</td></tr>
-<tr class="separator:aada1bfe8c9927f81393b0dc2fc01b20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9bab7d664be2e8bc89c8984b97d8bed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#aa9bab7d664be2e8bc89c8984b97d8bed">calc</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i=0u, BArray&lt; Cell_Type &gt; *a0=nullptr)</td></tr>
-<tr class="separator:aa9bab7d664be2e8bc89c8984b97d8bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86fe65643af0dee807b213c06b0d99a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a86fe65643af0dee807b213c06b0d99a1">reset</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
-<tr class="separator:a86fe65643af0dee807b213c06b0d99a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38b2d99fed87ca8baaf4d2458ccfa62a"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type &gt; &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a38b2d99fed87ca8baaf4d2458ccfa62a">get_data_ptr</a> () const</td></tr>
-<tr class="separator:a38b2d99fed87ca8baaf4d2458ccfa62a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c01b4dfe0681d46687f664fcb974e08"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a2c01b4dfe0681d46687f664fcb974e08">get_data</a> () const</td></tr>
-<tr class="separator:a2c01b4dfe0681d46687f664fcb974e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eacd45a7ed035773020df7d1db154c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a3eacd45a7ed035773020df7d1db154c0">PowerSet</a> ()</td></tr>
+<tr class="separator:a3eacd45a7ed035773020df7d1db154c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b1a73cd0b9a1dbab0a139d32d4e8b8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a2b1a73cd0b9a1dbab0a139d32d4e8b8d">PowerSet</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
+<tr class="separator:a2b1a73cd0b9a1dbab0a139d32d4e8b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6736bc9d8a2a57669f3531ecb429c42f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a6736bc9d8a2a57669f3531ecb429c42f">~PowerSet</a> ()</td></tr>
+<tr class="separator:a6736bc9d8a2a57669f3531ecb429c42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93e31ba8891642db6ecf0fca82c71f6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a93e31ba8891642db6ecf0fca82c71f6a">calc</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i=0u, BArray&lt; Cell_Type, Data_Type &gt; *a0=nullptr)</td></tr>
+<tr class="separator:a93e31ba8891642db6ecf0fca82c71f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8074f5a6d44b6b7f6bad56d15576eb9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a8074f5a6d44b6b7f6bad56d15576eb9f">reset</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
+<tr class="separator:a8074f5a6d44b6b7f6bad56d15576eb9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ff9c2195a8d83b60813b38f5143693f"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a1ff9c2195a8d83b60813b38f5143693f">get_data_ptr</a> () const</td></tr>
+<tr class="separator:a1ff9c2195a8d83b60813b38f5143693f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1700af475e219c59a5969a89a0d80d3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#aa1700af475e219c59a5969a89a0d80d3">get_data</a> () const</td></tr>
+<tr class="separator:aa1700af475e219c59a5969a89a0d80d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aeb0c25e051be9e32a7cbe6b8c581a358"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#aeb0c25e051be9e32a7cbe6b8c581a358">data</a></td></tr>
-<tr class="separator:aeb0c25e051be9e32a7cbe6b8c581a358"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80e6d4df995af932e1d841e590f3e692"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a80e6d4df995af932e1d841e590f3e692">N</a></td></tr>
-<tr class="separator:a80e6d4df995af932e1d841e590f3e692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef941266100e33cdb97758c13296c5f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#aef941266100e33cdb97758c13296c5f1">M</a></td></tr>
-<tr class="separator:aef941266100e33cdb97758c13296c5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad99b876951541fa198be7939329d932a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#ad99b876951541fa198be7939329d932a">counter</a></td></tr>
-<tr class="separator:ad99b876951541fa198be7939329d932a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd362b10cfda594de272cfa5dd5db0ee"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#abd362b10cfda594de272cfa5dd5db0ee">data</a></td></tr>
+<tr class="separator:abd362b10cfda594de272cfa5dd5db0ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47a7918d73f8f9709751aae3b1344889"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a47a7918d73f8f9709751aae3b1344889">N</a></td></tr>
+<tr class="separator:a47a7918d73f8f9709751aae3b1344889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03cb2e123a85cc761375835fc59cab3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a03cb2e123a85cc761375835fc59cab3a">M</a></td></tr>
+<tr class="separator:a03cb2e123a85cc761375835fc59cab3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c6f00df0ab8cfce977635958c6e1b46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power_set.html#a4c6f00df0ab8cfce977635958c6e1b46">counter</a></td></tr>
+<tr class="separator:a4c6f00df0ab8cfce977635958c6e1b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename Cell_Type&gt;<br />
-class PowerSet&lt; Cell_Type &gt;</h3>
+<div class="textblock"><h3>template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt;<br />
+class PowerSet&lt; Cell_Type, Data_Type &gt;</h3>
 
 
 <p class="definition">Definition at line <a class="el" href="powerset_8hpp_source.html#l00015">15</a> of file <a class="el" href="powerset_8hpp_source.html">powerset.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac1b31360e81d38b36bf83ebc78c41872"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1b31360e81d38b36bf83ebc78c41872">&#9670;&nbsp;</a></span>PowerSet() <span class="overload">[1/2]</span></h2>
+<a id="a3eacd45a7ed035773020df7d1db154c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eacd45a7ed035773020df7d1db154c0">&#9670;&nbsp;</a></span>PowerSet() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::<a class="el" href="class_power_set.html">PowerSet</a> </td>
+          <td class="memname"><a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::<a class="el" href="class_power_set.html">PowerSet</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -135,19 +135,19 @@ template&lt;typename Cell_Type &gt; </div>
 
 </div>
 </div>
-<a id="ae541c82e3e06e1854e716f13e72317af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae541c82e3e06e1854e716f13e72317af">&#9670;&nbsp;</a></span>PowerSet() <span class="overload">[2/2]</span></h2>
+<a id="a2b1a73cd0b9a1dbab0a139d32d4e8b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b1a73cd0b9a1dbab0a139d32d4e8b8d">&#9670;&nbsp;</a></span>PowerSet() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::<a class="el" href="class_power_set.html">PowerSet</a> </td>
+          <td class="memname"><a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::<a class="el" href="class_power_set.html">PowerSet</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>N_</em>, </td>
@@ -175,19 +175,19 @@ template&lt;typename Cell_Type &gt; </div>
 
 </div>
 </div>
-<a id="aada1bfe8c9927f81393b0dc2fc01b20a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aada1bfe8c9927f81393b0dc2fc01b20a">&#9670;&nbsp;</a></span>~PowerSet()</h2>
+<a id="a6736bc9d8a2a57669f3531ecb429c42f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6736bc9d8a2a57669f3531ecb429c42f">&#9670;&nbsp;</a></span>~PowerSet()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::~<a class="el" href="class_power_set.html">PowerSet</a> </td>
+          <td class="memname"><a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::~<a class="el" href="class_power_set.html">PowerSet</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -205,19 +205,19 @@ template&lt;typename Cell_Type &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa9bab7d664be2e8bc89c8984b97d8bed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9bab7d664be2e8bc89c8984b97d8bed">&#9670;&nbsp;</a></span>calc()</h2>
+<a id="a93e31ba8891642db6ecf0fca82c71f6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93e31ba8891642db6ecf0fca82c71f6a">&#9670;&nbsp;</a></span>calc()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::calc </td>
+          <td class="memname">void <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::calc </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em> = <code>0u</code>, </td>
@@ -225,7 +225,7 @@ template&lt;typename Cell_Type &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type &gt; *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; *&#160;</td>
           <td class="paramname"><em>a0</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
@@ -245,19 +245,19 @@ template&lt;typename Cell_Type &gt; </div>
 
 </div>
 </div>
-<a id="a2c01b4dfe0681d46687f664fcb974e08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c01b4dfe0681d46687f664fcb974e08">&#9670;&nbsp;</a></span>get_data()</h2>
+<a id="aa1700af475e219c59a5969a89a0d80d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1700af475e219c59a5969a89a0d80d3">&#9670;&nbsp;</a></span>get_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt;Cell_Type&gt; &gt; <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::get_data </td>
+          <td class="memname">std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt;Cell_Type, Data_Type&gt; &gt; <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::get_data </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -274,19 +274,19 @@ template&lt;typename Cell_Type &gt; </div>
 
 </div>
 </div>
-<a id="a38b2d99fed87ca8baaf4d2458ccfa62a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38b2d99fed87ca8baaf4d2458ccfa62a">&#9670;&nbsp;</a></span>get_data_ptr()</h2>
+<a id="a1ff9c2195a8d83b60813b38f5143693f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff9c2195a8d83b60813b38f5143693f">&#9670;&nbsp;</a></span>get_data_ptr()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt;Cell_Type&gt; &gt;* <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::get_data_ptr </td>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt;Cell_Type, Data_Type&gt; &gt;* <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::get_data_ptr </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -304,19 +304,19 @@ template&lt;typename Cell_Type &gt; </div>
 
 </div>
 </div>
-<a id="a86fe65643af0dee807b213c06b0d99a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86fe65643af0dee807b213c06b0d99a1">&#9670;&nbsp;</a></span>reset()</h2>
+<a id="a8074f5a6d44b6b7f6bad56d15576eb9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8074f5a6d44b6b7f6bad56d15576eb9f">&#9670;&nbsp;</a></span>reset()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::reset </td>
+          <td class="memname">void <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::reset </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>N_</em>, </td>
@@ -340,21 +340,21 @@ template&lt;typename Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="powerset_8hpp_source.html#l00071">71</a> of file <a class="el" href="powerset_8hpp_source.html">powerset.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="powerset_8hpp_source.html#l00074">74</a> of file <a class="el" href="powerset_8hpp_source.html">powerset.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ad99b876951541fa198be7939329d932a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad99b876951541fa198be7939329d932a">&#9670;&nbsp;</a></span>counter</h2>
+<a id="a4c6f00df0ab8cfce977635958c6e1b46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c6f00df0ab8cfce977635958c6e1b46">&#9670;&nbsp;</a></span>counter</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::counter</td>
+          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::counter</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -363,16 +363,16 @@ template&lt;typename Cell_Type &gt; </div>
 
 </div>
 </div>
-<a id="aeb0c25e051be9e32a7cbe6b8c581a358"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb0c25e051be9e32a7cbe6b8c581a358">&#9670;&nbsp;</a></span>data</h2>
+<a id="abd362b10cfda594de272cfa5dd5db0ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd362b10cfda594de272cfa5dd5db0ee">&#9670;&nbsp;</a></span>data</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt;Cell_Type&gt; &gt; <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::data</td>
+          <td class="memname">std::vector&lt; <a class="el" href="class_b_array.html">BArray</a>&lt;Cell_Type, Data_Type&gt; &gt; <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::data</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -381,16 +381,16 @@ template&lt;typename Cell_Type &gt; </div>
 
 </div>
 </div>
-<a id="aef941266100e33cdb97758c13296c5f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef941266100e33cdb97758c13296c5f1">&#9670;&nbsp;</a></span>M</h2>
+<a id="a03cb2e123a85cc761375835fc59cab3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03cb2e123a85cc761375835fc59cab3a">&#9670;&nbsp;</a></span>M</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::M</td>
+          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::M</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -399,16 +399,16 @@ template&lt;typename Cell_Type &gt; </div>
 
 </div>
 </div>
-<a id="a80e6d4df995af932e1d841e590f3e692"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80e6d4df995af932e1d841e590f3e692">&#9670;&nbsp;</a></span>N</h2>
+<a id="a47a7918d73f8f9709751aae3b1344889"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47a7918d73f8f9709751aae3b1344889">&#9670;&nbsp;</a></span>N</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Cell_Type &gt; </div>
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type &gt;::N</td>
+          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_power_set.html">PowerSet</a>&lt; Cell_Type, Data_Type &gt;::N</td>
         </tr>
       </table>
 </div><div class="memdoc">

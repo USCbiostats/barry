@@ -1,6 +1,6 @@
 #include <Rcpp.h>
 #include "../include/barray.hpp"
-using namespace Rcpp;
+using namespace Rcpp; 
 
 // [[Rcpp::export]]
 SEXP new_Array( 
@@ -10,8 +10,8 @@ SEXP new_Array(
     const std::vector< double > & value
 ) {
   
-  Rcpp::XPtr< barray::BArray<double> > ptr(
-    new barray::BArray<double>((uint) N, (uint) M, source, target, value),
+  Rcpp::XPtr< barray::BArray<double,double> > ptr(
+    new barray::BArray<double,double>((uint) N, (uint) M, source, target, value),
     true
   );
   
@@ -21,7 +21,7 @@ SEXP new_Array(
 
 // [[Rcpp::export]]
 double get_cell(SEXP x, int i, int j) {
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   return xptr->get_cell(i, j);
 }
 
@@ -29,7 +29,7 @@ double get_cell(SEXP x, int i, int j) {
 // [[Rcpp::export]]
 NumericVector get_row(SEXP x, int i) {
   
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   NumericVector ans(xptr->M, 0);
   const barray::Row_type<double> * m = xptr->get_row(i);
   
@@ -43,7 +43,7 @@ NumericVector get_row(SEXP x, int i) {
 // [[Rcpp::export]]
 NumericVector get_col(SEXP x, int i) {
   
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   NumericVector ans(xptr->N, 0);
   const barray::Col_type< double > * m = xptr->get_col(i);
   
@@ -58,7 +58,7 @@ NumericVector get_col(SEXP x, int i) {
 // [[Rcpp::export]]
 List get_entries(const SEXP & x) {
   
-  Rcpp::XPtr< barray::BArray<double> > xptr(x);
+  Rcpp::XPtr< barray::BArray<double,double> > xptr(x);
   barray::Entries<double> res = xptr->get_entries();
   
   return List::create(

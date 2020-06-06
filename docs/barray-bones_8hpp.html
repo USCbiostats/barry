@@ -24,7 +24,7 @@
    <div id="projectname">Binary Arrays
    &#160;<span id="projectnumber">0.0-0</span>
    </div>
-   <div id="projectbrief">Full enumeration of sample space for binary arrays</div>
+   <div id="projectbrief">Full enumeration of sample space and fast count of sufficient statistics for binary arrays</div>
   </td>
  </tr>
  </tbody>
@@ -71,9 +71,7 @@ $(function() {
 <div class="title">barray-bones.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;unordered_map&gt;</code><br />
-<code>#include &quot;<a class="el" href="meta_8hpp_source.html">meta.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="meta_8hpp_source.html">meta.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cell-bones_8hpp_source.html">cell-bones.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -81,9 +79,9 @@ Include dependency graph for barray-bones.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="barray-bones_8hpp__incl.png" border="0" usemap="#include_2barray-bones_8hpp" alt=""/></div>
 <map name="include_2barray-bones_8hpp" id="include_2barray-bones_8hpp">
-<area shape="rect" id="node4" href="meta_8hpp.html" title="meta.hpp" alt="" coords="5,80,81,107"/>
-<area shape="rect" id="node5" href="typedefs_8hpp.html" title="typedefs.hpp" alt="" coords="195,155,292,181"/>
-<area shape="rect" id="node6" href="cell-bones_8hpp.html" title="cell&#45;bones.hpp" alt="" coords="157,80,263,107"/>
+<area shape="rect" id="node2" href="meta_8hpp.html" title="meta.hpp" alt="" coords="5,80,81,107"/>
+<area shape="rect" id="node3" href="typedefs_8hpp.html" title="typedefs.hpp" alt="" coords="116,155,213,181"/>
+<area shape="rect" id="node4" href="cell-bones_8hpp.html" title="cell&#45;bones.hpp" alt="" coords="157,80,263,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -92,12 +90,14 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="barray-bones_8hpp__dep__incl.png" border="0" usemap="#include_2barray-bones_8hppdep" alt=""/></div>
 <map name="include_2barray-bones_8hppdep" id="include_2barray-bones_8hppdep">
 <area shape="rect" id="node2" href="barray-iterator_8hpp.html" title="include/barray&#45;iterator.hpp" alt="" coords="5,80,177,107"/>
-<area shape="rect" id="node3" href="barray-meat_8hpp.html" title="include/barray&#45;meat.hpp" alt="" coords="67,155,228,181"/>
-<area shape="rect" id="node4" href="barray_8hpp.html" title="include/barray.hpp" alt="" coords="253,229,381,256"/>
-<area shape="rect" id="node6" href="counters-bones_8hpp.html" title="include/counters&#45;bones.hpp" alt="" coords="303,80,485,107"/>
-<area shape="rect" id="node7" href="lbarray-bones_8hpp.html" title="include/lbarray&#45;bones.hpp" alt="" coords="354,155,525,181"/>
-<area shape="rect" id="node8" href="powerset_8hpp.html" title="include/powerset.hpp" alt="" coords="549,155,695,181"/>
-<area shape="rect" id="node5" href="phylo_8hpp.html" title="include/phylo.hpp" alt="" coords="255,304,378,331"/>
+<area shape="rect" id="node3" href="barray-meat_8hpp.html" title="include/barray&#45;meat.hpp" alt="" coords="201,80,363,107"/>
+<area shape="rect" id="node4" href="barray_8hpp.html" title="include/barray.hpp" alt="" coords="626,229,754,256"/>
+<area shape="rect" id="node5" href="counters-bones_8hpp.html" title="include/counters&#45;bones.hpp" alt="" coords="603,80,785,107"/>
+<area shape="rect" id="node6" href="statscounter_8hpp.html" title="include/statscounter.hpp" alt="" coords="421,155,585,181"/>
+<area shape="rect" id="node7" href="support_8hpp.html" title="include/support.hpp" alt="" coords="1079,155,1213,181"/>
+<area shape="rect" id="node10" href="powerset_8hpp.html" title="include/powerset.hpp" alt="" coords="1052,80,1197,107"/>
+<area shape="rect" id="node8" href="network_8hpp.html" title="include/counters/network.hpp" alt="" coords="661,155,853,181"/>
+<area shape="rect" id="node9" href="phylo_8hpp.html" title="include/counters/phylo.hpp" alt="" coords="877,155,1055,181"/>
 </map>
 </div>
 </div>
@@ -105,7 +105,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html">BArray&lt; Cell_Type &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html">BArray&lt; Cell_Type, Data_Type &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Baseline class for binary arrays.  <a href="class_b_array.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">

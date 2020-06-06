@@ -1,5 +1,5 @@
-#include <vector>
-#include <unordered_map>
+// #include <vector>
+// #include <unordered_map>
 #include "meta.hpp"
 #include "typedefs.hpp"
 #include "cell-bones.hpp"
@@ -14,13 +14,14 @@
  *  are stored by row and indexed using `unordered_map`s, i.e.
  *  `std::vector< std::unordered_map<unsigned int,Cell_Type> >`.
  */
-template <typename Cell_Type> class BArray {
+template <typename Cell_Type = bool, typename Data_Type = bool> class BArray {
 public:
   uint N;
   uint M;
   uint NCells = 0u;
   std::vector< Row_type< Cell_Type > > el_ij;
   std::vector< Col_type< Cell_Type > > el_ji;
+  Data_Type * data = nullptr;
   
   static Cell< Cell_Type > Cell_default;
   
@@ -62,6 +63,12 @@ public:
     const std::vector< uint > & target,
     bool add = true
   );
+  
+  ~BArray() {
+    if (data != nullptr)
+      data = nullptr;
+    return;
+  };
   
   // In principle, copy can be faster by using openmp on the rows
   // since those are independent.
@@ -117,6 +124,8 @@ public:
   // Advances operators
   // void toggle_iterator
   
+  // Misc
+  void print() const;
     
 };
 
