@@ -3,6 +3,9 @@
 // #include "../include/lbarray-bones.hpp"
 using namespace Rcpp; 
 
+
+typedef std::vector< unsigned int > vuint;
+ 
 // [[Rcpp::export]]
 SEXP suff_stats(const NumericMatrix & x) {
   
@@ -45,31 +48,45 @@ List get_suff_stats(SEXP x) {
 NumericVector counter(
     int N, int M,
     const std::vector< uint > & source,
-    const std::vector< uint > & target
+    const std::vector< uint > & target,
+    const std::vector< double > & gender
 ) {
   
   // Initializing the Binary array, and also the the suffstats counter
-  barray::BArray<> Array((uint) N, (uint) M, source, target);
+  netcounters::Network Array((uint) N, (uint) M, source, target);
+  
+  std::vector< std::vector< double > > G(gender.size());
+  for (uint i = 0u; i < gender.size(); ++i)
+    G[i].push_back(gender[i]);
+  netcounters::NetworkData Gnet(G);
+  Array.data = &Gnet;
 
   // Array.meta.set("undirected", true);
   
   // Creating the counter object; 
-  barray::StatsCounter<> dat(&Array);
+  barray::StatsCounter<netcounters::Network, vuint> dat(&Array);
   
   // Adding functions 
-  dat.add_counter(barray::counters::network::edges);
-  dat.add_counter(barray::counters::network::mutual);
-  dat.add_counter(barray::counters::network::isolates);
-  dat.add_counter(barray::counters::network::istar2);
-  dat.add_counter(barray::counters::network::ostar2);
-  dat.add_counter(barray::counters::network::ttriads);
-  dat.add_counter(barray::counters::network::ctriads);
-  dat.add_counter(barray::counters::network::density);
-  dat.add_counter(barray::counters::network::idegree15);
-  dat.add_counter(barray::counters::network::odegree15);
+  dat.add_counter(netcounters::edges);
+  dat.add_counter(netcounters::mutual);
+  dat.add_counter(netcounters::isolates);
+  dat.add_counter(netcounters::istar2);
+  dat.add_counter(netcounters::ostar2);
+  dat.add_counter(netcounters::ttriads);
+  dat.add_counter(netcounters::ctriads);
+  dat.add_counter(netcounters::density);
+  dat.add_counter(netcounters::idegree15);
+  dat.add_counter(netcounters::odegree15);
+  
+  netcounters::NetCounter nodematchfem = netcounters::nodematch;
+  nodematchfem.data = new vuint({0u});
+  dat.add_counter(nodematchfem);
   
   // Fingers crossed
   std::vector< double > ans = dat.count_all();
+  
+  delete nodematchfem.data;
+  nodematchfem.data = nullptr;
   
   return wrap(ans);
   
@@ -78,29 +95,45 @@ NumericVector counter(
 // To get the support
 // [[Rcpp::export]] 
 List support (
-    int N, int M
-) { 
+    int N, int M,
+    std::vector< double > gender
+  ) { 
   
   // Initializing the Binary array, and also the the suffstats counter
-  barray::Support<> dat(N, M);
+  netcounters::Network net(N,M);
+  
+  std::vector< std::vector< double > > G(gender.size());
+  for (uint i = 0u; i < gender.size(); ++i)
+    G[i].push_back(gender[i]);
+  
+  netcounters::NetworkData Gnet(G);
+  net.data = &Gnet;
+  
+  barray::Support<netcounters::Network, vuint> dat(&net);
   
   // Adding functions
-  dat.add_counter(barray::counters::network::edges);
-  dat.add_counter(barray::counters::network::mutual);
-  dat.add_counter(barray::counters::network::isolates);
-  dat.add_counter(barray::counters::network::istar2);
-  dat.add_counter(barray::counters::network::ostar2);
-  dat.add_counter(barray::counters::network::ttriads);
-  dat.add_counter(barray::counters::network::ctriads);
-  dat.add_counter(barray::counters::network::density);
-  dat.add_counter(barray::counters::network::idegree15);
-  dat.add_counter(barray::counters::network::odegree15);
+  dat.add_counter(netcounters::edges);
+  dat.add_counter(netcounters::mutual);
+  dat.add_counter(netcounters::isolates);
+  dat.add_counter(netcounters::istar2);
+  dat.add_counter(netcounters::ostar2);
+  dat.add_counter(netcounters::ttriads);
+  dat.add_counter(netcounters::ctriads);
+  dat.add_counter(netcounters::density);
+  dat.add_counter(netcounters::idegree15);
+  dat.add_counter(netcounters::odegree15);
+  
+  netcounters::NetCounter nodematchfem = netcounters::nodematch;
+  nodematchfem.data = new vuint({0u});
+  dat.add_counter(nodematchfem);
+  
   
   // Generating the data
   dat.calc(0u, false); 
   
   // Generating the entries
   barray::Counts_type ans = dat.support.get_entries();
+  
   
   List res(ans.size());
   for (unsigned int i = 0u; i < res.size(); ++i) {
@@ -109,6 +142,9 @@ List support (
       _["count"] = ans.at(i).second
     );
   }
+  
+  delete nodematchfem.data;
+  nodematchfem.data = nullptr;
   
   return res;
 }
@@ -138,6 +174,7 @@ nrow(ans1)
 set.seed(123)
 N <- 100
 M <- N
+gender <- sample.int(2, N, TRUE)
 
 nedges  <- N*20
 source <- sample.int(N, nedges, replace = TRUE)
@@ -155,15 +192,16 @@ values <- values[idx]
 # target <- c(target, source[1:20])
 # values <- c(values, 1:20)
 
-el <- counter(N, M, source - 1L, target - 1L)
+el <- counter(N, M, source - 1L, target - 1L, gender)
 
 # Comparing with ergm
 net <- network::as.edgelist(cbind(source, target), n = N)
 net <- network::as.network(net)
+
 microbenchmark::microbenchmark(
   # ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad),
-  ergm = ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad + density + idegree1.5 + odegree1.5),
-  barray = counter(N, M, source - 1L, target - 1L),
+  ergm = ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad + density + idegree1.5 + odegree1.5 + nodematch()),
+  barray = counter(N, M, source - 1L, target - 1L, gender),
   unit = "relative",
   times = 100
 )
@@ -173,13 +211,14 @@ ergm::summary_formula(
   net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
     density + idegree1.5 + odegree1.5
   ) - 
-counter(N, M, source - 1L, target - 1L)
+counter(N, M, source - 1L, target - 1L, gender)
 
 
 # stop()
 set.seed(123)
 N <- 4
 M <- N
+gender <- sample.int(2, N, TRUE)
 
 nedges  <- 1
 source <- sample.int(N, nedges, replace = TRUE)
@@ -196,11 +235,11 @@ mat <- matrix(0, nrow = N, ncol = M)
 mat[cbind(source, target)] <- 1L
 mat <- network::as.network(mat)
 
-ans0 <- support(N, M)
+ans0 <- support(N, M,gender)
 ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
 
 microbenchmark::microbenchmark(
-  barray = support(N, M),
+  barray = support(N, M, gender),
   ergm   = ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad  + ctriad + density + idegree1.5 + odegree1.5, zeroobs = FALSE),
   times = 100,
   unit = "relative"
@@ -247,7 +286,8 @@ colnames(ps) <- c(
   # "count",
   "density",
   "idegree1.5",
-  "odegree1.5"
+  "odegree1.5",
+  "nodematch(gender)"
 )
 ps
 */

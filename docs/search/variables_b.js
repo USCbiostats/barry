@@ -3,8 +3,8 @@ var searchData=
   ['seq',['Seq',['../classbarray_1_1_cell_seq.html#aa026242c5a91b405fcc08915a31da236',1,'barray::CellSeq::Seq()'],['../class_cell_seq.html#af15df5f62488560f36f71336ac5cb0a5',1,'CellSeq::Seq()']]],
   ['seq_5fcomputed',['seq_computed',['../classbarray_1_1_cell_seq.html#a681fe627c2d8b932d8114e91cc8982e0',1,'barray::CellSeq::seq_computed()'],['../class_cell_seq.html#aa813f6c9f5438cc472a0c12078b44c97',1,'CellSeq::seq_computed()']]],
   ['source',['source',['../classbarray_1_1_entries.html#ab8d603d5371b5c5f354d7a4208771a9a',1,'barray::Entries::source()'],['../class_entries.html#a6a7c589df4cd6ea98386466440dfdc98',1,'Entries::source()']]],
-  ['states',['states',['../classbarray_1_1counters_1_1_node_data.html#ab92b2415dff82a4665a68d3db7bc4305',1,'barray::counters::NodeData::states()'],['../class_node_data.html#a4eca9b107effe3e95eecfac6a47b7353',1,'NodeData::states()']]],
+  ['states',['states',['../classbarray_1_1counters_1_1phylo_1_1_node_data.html#a2f22473266c1ef55e66bab1288d9efd3',1,'barray::counters::phylo::NodeData::states()'],['../class_node_data.html#a33caaadde6afe892624501bdb0edaea6',1,'NodeData::states()']]],
   ['stats',['stats',['../classbarray_1_1_stats_d_b.html#abdf3bb2c4b597f1d356cf5a3609b7211',1,'barray::StatsDB::stats()'],['../class_stats_d_b.html#a675ecc967115b14bf8693858920a4a6c',1,'StatsDB::stats()']]],
-  ['subfun',['subfun',['../namespacebarray_1_1counters.html#a22dc89918a63a358d618642e5c4e54e5',1,'barray::counters::subfun()'],['../phylo_8hpp.html#a160b786b1a4eeb1e41bb1a3c4bc1ae4b',1,'subfun():&#160;phylo.hpp']]],
+  ['subfun',['subfun',['../namespacebarray_1_1counters_1_1phylo.html#aed5d92145dff5faa654a73141eb12f22',1,'barray::counters::phylo::subfun()'],['../phylo_8hpp.html#ad4f30d181ccdc6b220b73e744241041e',1,'subfun():&#160;phylo.hpp']]],
   ['support',['support',['../classbarray_1_1_support.html#a5c509beff6f44ff560179180ceaf6fd3',1,'barray::Support::support()'],['../class_support.html#ab2f404c7c11d5bc58e876124cc52d073',1,'Support::support()']]]
 ];

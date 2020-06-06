@@ -15,32 +15,32 @@ List counter_phylo(
     ) {
   
   // Initializing the node
-  barray::counters::PhyloArray tree(nfun, noffspring);
-  barray::counters::NodeData data(as<Vec<double>>(blenghts), as<Vec<bool>>(x)); 
+  phylocounters::PhyloArray tree(nfun, noffspring);
+  phylocounters::NodeData data(as<Vec<double>>(blenghts), as<Vec<bool>>(x)); 
   tree.data = &data;
   
   // Setting counters, one per function
-  barray::Counter<barray::counters::PhyloArray, Vec<uint>> counter0 = barray::counters::gains;
-  barray::Counter<barray::counters::PhyloArray, Vec<uint>> counter1 = barray::counters::gains;
+  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter0 = phylocounters::gains;
+  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter1 = phylocounters::gains;
   counter0.data = new Vec<uint>({0u});
   counter1.data = new Vec<uint>({1u});
   
-  barray::Counter<barray::counters::PhyloArray, Vec<uint>> counter2 = barray::counters::loss;
-  barray::Counter<barray::counters::PhyloArray, Vec<uint>> counter3 = barray::counters::loss;
+  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter2 = phylocounters::loss;
+  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter3 = phylocounters::loss;
   counter2.data = new Vec<uint>({0u});
   counter3.data = new Vec<uint>({1u});
   
-  barray::Counter<barray::counters::PhyloArray, Vec<uint>> counter4 = barray::counters::subfun;
+  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter4 = phylocounters::subfun;
   counter4.data = new Vec<uint>({0u, 1u});
   
-  barray::Counter<barray::counters::PhyloArray, Vec<uint>> counter5 = barray::counters::cogain;
+  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter5 = phylocounters::cogain;
   counter5.data = new Vec<uint>({0u, 1u});
   
-  barray::Counter<barray::counters::PhyloArray, Vec<uint>> counter6 = barray::counters::longest;
+  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter6 = phylocounters::longest;
   counter6.data = new Vec<uint>(0u);
   
   
-  barray::Support<barray::counters::PhyloArray, Vec<uint>> support(&tree);
+  barray::Support<phylocounters::PhyloArray, Vec<uint>> support(&tree);
   support.add_counter(counter0);
   support.add_counter(counter1);
   support.add_counter(counter2);

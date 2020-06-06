@@ -23,10 +23,17 @@ namespace barray {
   #include "block-bones.hpp"
   #include "powerset.hpp"
   
-    namespace counters {
+  namespace counters {
+    namespace network {
       #include "counters/network.hpp"
+    }
+    namespace phylo {
       #include "counters/phylo.hpp"
     }
-  
   }
+  
+}
+
+namespace netcounters = barray::counters::network;
+namespace phylocounters = barray::counters::phylo;
 #endif

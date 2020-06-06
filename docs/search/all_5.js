@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['gains',['gains',['../namespacebarray_1_1counters.html#a842e1b61f3c8e17a2ee8a6bc9e779583',1,'barray::counters::gains()'],['../phylo_8hpp.html#a67159c21e5bdf37d6864c5bff8a88de5',1,'gains():&#160;phylo.hpp']]],
+  ['gains',['gains',['../namespacebarray_1_1counters_1_1phylo.html#aeae4c313ad119c538eb62db1d87efab2',1,'barray::counters::phylo::gains()'],['../phylo_8hpp.html#afa97752008638410e413d10cd316e6a3',1,'gains():&#160;phylo.hpp']]],
   ['get_5fcell',['get_cell',['../class_b_array.html#a4096e4447f91ba52766587a08c62f1fa',1,'BArray']]],
   ['get_5fcol',['get_col',['../class_b_array.html#a90bd31bc0b3fa59d11150cd4ea39b3b6',1,'BArray']]],
   ['get_5fdata',['get_data',['../classbarray_1_1_power_set.html#a22265b4a46c95e35f8739d076d5763ba',1,'barray::PowerSet::get_data()'],['../class_power_set.html#aa1700af475e219c59a5969a89a0d80d3',1,'PowerSet::get_data()']]],

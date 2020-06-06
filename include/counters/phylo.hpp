@@ -3,29 +3,23 @@
 #ifndef BARRAY_PHYLO_H
 #define BARRAY_PHYLO_H 1
 
-class NodeData;
-typedef BArray<bool, NodeData> PhyloArray;
-
-template <typename T>
-using Vec = std::vector< T >;
-
 class NodeData {
 public:
-  Vec< double > blengths;
-  Vec< bool > states;
+  std::vector< double > blengths;
+  std::vector< bool > states;
   NodeData() : blengths(0u), states(0u) {};
   NodeData(
-    Vec< double > & blengths_,
-    Vec< bool > & states_
+    std::vector< double > & blengths_,
+    std::vector< bool > & states_
   ) : blengths(blengths_), states(states_) {};
   NodeData(
-    Vec< double > blengths_,
-    Vec< bool > states_
+    std::vector< double > blengths_,
+    std::vector< bool > states_
   ) : blengths(blengths_), states(states_) {};
   ~NodeData() {};
 };
 
-
+typedef BArray<bool, NodeData> PhyloArray;
 
 
 /**@brief Extension of a simple counter.
@@ -38,7 +32,7 @@ public:
  * 
  */
 #define PHYLO_COUNTER(a) inline double (a) (PhyloArray * Array, uint i, \
-  uint j, Vec<uint> * data)                                         \
+  uint j, std::vector<uint> * data)                                         \
     
 
 // Functional gains ----------------------------------------------------------
@@ -54,7 +48,7 @@ PHYLO_COUNTER(init_count_gains) {
   return 0.0;
 }
 
-Counter<PhyloArray, Vec<uint>> gains(count_gains, init_count_gains);
+Counter<PhyloArray, std::vector<uint>> gains(count_gains, init_count_gains);
 
 // Functional loss ----------------------------------------------------------
 
@@ -70,7 +64,7 @@ PHYLO_COUNTER(init_count_loss) {
   return Array->data->states[(*data)[0u]]? Array->M : 0.0;
 }
 
-Counter<PhyloArray, Vec<uint>> loss(count_loss, init_count_loss);
+Counter<PhyloArray, std::vector<uint>> loss(count_loss, init_count_loss);
 
 // Sub-functionalization ----------------------------------------------------
 // It requires to specify data = {funA, funB}
@@ -131,7 +125,7 @@ PHYLO_COUNTER(init_count_subfun) {
   return 0.0;
 }
 
-Counter<PhyloArray, Vec<uint>> subfun(count_subfun, init_count_subfun);
+Counter<PhyloArray, std::vector<uint>> subfun(count_subfun, init_count_subfun);
 
 // Co-evolution (joint gain or loss) -----------------------------------------
 PHYLO_COUNTER(count_cogain) {
@@ -171,7 +165,7 @@ PHYLO_COUNTER(init_count_cogain) {
   return 0.0;
 }
 
-Counter<PhyloArray, Vec<uint>> cogain(count_cogain, init_count_cogain);
+Counter<PhyloArray, std::vector<uint>> cogain(count_cogain, init_count_cogain);
 
 // Longest branch mutates (either by gain or by loss) ------------------------
 PHYLO_COUNTER(count_longest) {
@@ -255,6 +249,6 @@ PHYLO_COUNTER(init_count_longest) {
   return res;
 }
 
-Counter<PhyloArray, Vec<uint>> longest(count_longest, init_count_longest);
+Counter<PhyloArray, std::vector<uint>> longest(count_longest, init_count_longest);
 
 #endif

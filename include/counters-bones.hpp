@@ -4,9 +4,7 @@
 #ifndef BARRAY_COUNTERS_H
 #define BARRAY_COUNTERS_H
 
-#define COUNTER_FUNCTION_DEFAULT(a) template <typename Array_Type = BArray<>, typename Data_Type = bool> \
-  inline double (a) (Array_Type * Array, uint i, uint j, Data_Type * data)\
-    
+  
 #define COUNTER_FUNCTION(a) template <typename Array_Type, typename Data_Type> \
   inline double (a) (Array_Type * Array, uint i, uint j, Data_Type * data)\
     

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['row_5ftype',['Row_type',['../namespacebarray.html#ab4f74265365989ae59858a57ddfa92a7',1,'barray::Row_type()'],['../typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951',1,'Row_type():&#160;typedefs.hpp']]]
+  ['phyloarray',['PhyloArray',['../namespacebarray_1_1counters_1_1phylo.html#ad0fe3e98c998e8e43b227fd2e97a086c',1,'barray::counters::phylo::PhyloArray()'],['../phylo_8hpp.html#aa942fa3af91344d3a6528d3f72e9bc10',1,'PhyloArray():&#160;phylo.hpp']]]
 ];
