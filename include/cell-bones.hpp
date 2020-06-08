@@ -4,8 +4,8 @@
 #ifndef CELL_BONES_HPP 
 #define CELL_BONES_HPP 1
 
-/* A cell is a fundamental type that holds information about a cell
- * for now, it only has two members:
+/**@brief Entries in BArray.
+ * For now, it only has two members:
  * - value: the content
  * - visited: boolean (just a convenient)
  */
@@ -50,6 +50,16 @@ public:
  */
 
 template <> inline void Cell<double>::add(double x) {
+  value += x;
+  return;
+}
+
+template <> inline void Cell<unsigned int>::add(unsigned int x) {
+  value += x;
+  return;
+}
+
+template <> inline void Cell<int>::add(int x) {
   value += x;
   return;
 }

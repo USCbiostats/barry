@@ -37,7 +37,9 @@
  * 
  */
 
-// Baseline class --------------------------------------------------------------
+/**@brief Sequence of cells indices.
+ * 
+ */
 class CellSeq {
 private:
   // Since we are using column-major order, the first is the column.

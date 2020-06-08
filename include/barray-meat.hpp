@@ -7,6 +7,7 @@
 template <typename Cell_Type, typename Data_Type>
 Cell<Cell_Type> BArray<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(); 
 
+
 // Edgelist with data
 template <typename Cell_Type, typename Data_Type>
 inline BArray< Cell_Type,Data_Type >::BArray (

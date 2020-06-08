@@ -10,7 +10,6 @@ var searchData=
   ['barray_5fcounters_5fh',['BARRAY_COUNTERS_H',['../barray_8hpp.html#a6c60a358a2b89973d5d4b9436374ef8b',1,'barray.hpp']]],
   ['barray_5fiterator_5fhpp',['BARRAY_ITERATOR_HPP',['../barray-iterator_8hpp.html#af7d28058e98dd1797def3cd230abe121',1,'barray-iterator.hpp']]],
   ['barray_5fmeat_5fhpp',['BARRAY_MEAT_HPP',['../barray_8hpp.html#abfe11a04b2bd2b5c4493824232f61731',1,'barray.hpp']]],
-  ['barray_5fmeta_5fhpp',['BARRAY_META_HPP',['../barray_8hpp.html#acc4ce8da0d8800ea7de7ebb172bede5b',1,'barray.hpp']]],
   ['barray_5fnetwork_5fh',['BARRAY_NETWORK_H',['../barray_8hpp.html#a800f859ee09f9b4c00f96bbd2e32bbdb',1,'BARRAY_NETWORK_H():&#160;barray.hpp'],['../network_8hpp.html#a800f859ee09f9b4c00f96bbd2e32bbdb',1,'BARRAY_NETWORK_H():&#160;network.hpp']]],
   ['barray_5fphylo_5fh',['BARRAY_PHYLO_H',['../barray_8hpp.html#a3a004348f8af372717ca85a1aeb21f36',1,'barray.hpp']]],
   ['barray_5ftypedefs_5fhpp',['BARRAY_TYPEDEFS_HPP',['../barray_8hpp.html#a368e534905c6c10d975f70debc4cbef8',1,'barray.hpp']]],

@@ -2,7 +2,7 @@ var searchData=
 [
   ['cell_5fdefault',['Cell_default',['../class_b_array.html#a5700cd9bb3814f84c62dda0ea47931bc',1,'BArray']]],
   ['change_5fstats',['change_stats',['../classbarray_1_1_stats_counter.html#a36e139e694c81d9e2b7c07d816959b9d',1,'barray::StatsCounter::change_stats()'],['../class_stats_counter.html#a42c926799d8cb0abc6f5a1cfbc073f69',1,'StatsCounter::change_stats()']]],
-  ['cogain',['cogain',['../namespacebarray_1_1counters_1_1phylo.html#a76a8804a9a65dea94bfb4d9eeba06093',1,'barray::counters::phylo::cogain()'],['../phylo_8hpp.html#a6f91d4249cd5ce1794fd4714ff3bdf42',1,'cogain():&#160;phylo.hpp']]],
+  ['cogain',['cogain',['../namespacebarray_1_1counters_1_1phylo.html#a78228f029d2d6628916e9cead3c99417',1,'barray::counters::phylo::cogain()'],['../phylo_8hpp.html#abeac115c19b3342e8a29887232114680',1,'cogain():&#160;phylo.hpp']]],
   ['coords',['coords',['../classbarray_1_1_cell_seq.html#a784f078d11ad20735dd17dba9966e419',1,'barray::CellSeq::coords()'],['../class_cell_seq.html#af68709ebb782d4ffc243788c3dd256f4',1,'CellSeq::coords()']]],
   ['count_5ffun',['count_fun',['../classbarray_1_1_counter.html#a3da828c8a55302a3cbda73bb46916c36',1,'barray::Counter::count_fun()'],['../class_counter.html#a804d287379ef9b4204a0838edcce3b71',1,'Counter::count_fun()']]],
   ['counter',['counter',['../classbarray_1_1_power_set.html#af4dc47b2c5fc2a740fc5ae3f82d80126',1,'barray::PowerSet::counter()'],['../class_power_set.html#a4c6f00df0ab8cfce977635958c6e1b46',1,'PowerSet::counter()']]],

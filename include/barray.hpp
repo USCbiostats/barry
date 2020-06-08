@@ -12,7 +12,6 @@ namespace barray {
   
   //! Tree class and TreeIterator class
   #include "typedefs.hpp"
-  #include "meta.hpp"
   #include "cell-bones.hpp"
   #include "barray-bones.hpp"
   #include "barray-meat.hpp"

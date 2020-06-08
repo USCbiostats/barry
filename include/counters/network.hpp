@@ -1,8 +1,14 @@
 #include "../counters-bones.hpp"
 
 #ifndef BARRAY_NETWORK_H
-#define BARRAY_NETWORK_H
+#define BARRAY_NETWORK_H 1
 
+/**@brief Data class for Networks.
+ * 
+ * This holds information about whether the graph is directed or not, and,
+ * if defined, vectors of node (vertex) attributes (`vertex_attr`).
+ * 
+ */
 class NetworkData {
 public:
   
@@ -12,9 +18,14 @@ public:
   NetworkData() : vertex_attr(0u) {};
   
   NetworkData(
-    std::vector< std::vector< double > > & vertex_attr_,
+    std::vector< double >  vertex_attr_,
     bool directed_ = true
-  ) : directed(directed_), vertex_attr(vertex_attr_){};
+  ) : directed(directed_), vertex_attr(1u, vertex_attr_) {};
+  
+  NetworkData(
+    std::vector< std::vector< double > > vertex_attr_,
+    bool directed_ = true
+  ) : directed(directed_), vertex_attr(vertex_attr_) {};
   
   
   ~NetworkData() {};
@@ -24,7 +35,7 @@ typedef BArray<bool, NetworkData> Network;
 typedef Counter<Network, std::vector<uint> > NetCounter;
 
 #define NETWORK_COUNTER(a) inline double (a) \
-(Network * Array, uint i, uint j, std::vector<uint>  * data)
+(const Network * Array, uint i, uint j, std::vector<uint> * data)
   
 
 // Edges counter
@@ -67,7 +78,7 @@ NETWORK_COUNTER(init_mutual) {
   if (Array->N != Array->M)
     throw std::logic_error("The -mutual- counter only works on square arrays.");
 
-  if (Array->meta.is("symmetric") || Array->meta.is("undirected"))
+  if (!Array->data->directed)
     throw std::logic_error("The -mutual- counter only works on directed (non-symmetric) arrays.");
   
   return 0.0;
@@ -264,18 +275,18 @@ NETWORK_COUNTER(count_nodematch) {
 NETWORK_COUNTER(init_nodematch) {
   
   if (data == nullptr)
-    throw std::logic_error("data must be specified.");
+    throw std::logic_error("data for the counter must be specified.");
   
   if (data->size() != 1u)
-    throw std::logic_error("data must be of size 1.");
+    throw std::logic_error("data of the counter must be of size 1.");
   
   if (Array->data == nullptr)
-    throw std::logic_error("data must be specified.");
+    throw std::logic_error("data for the array must be specified.");
   
   if (Array->data->vertex_attr.size() == 0u)
     throw std::range_error("No attributes in the Array.");
   
-  if (Array->data->vertex_attr.size() <= ((*data)[0u] - 1u))
+  if (((*data)[0u] != 0u) && (Array->data->vertex_attr.size() <= ((*data)[0u] - 1u)))
     throw std::range_error("Attribute index out of range.");
   
   return 0.0;

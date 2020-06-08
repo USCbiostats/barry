@@ -1,0 +1,28 @@
+dist: xenial
+
+language: cpp
+
+compiler: g++
+
+script: cd tests/ && make 
+
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    packages:
+      - doxygen
+
+script:
+  - doxygen Doxyfile.dox
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: docs/html
+  github_token: $GH_REPO_TOKEN
+  on:
+    branch: master
+

@@ -54,18 +54,12 @@ NumericVector counter(
   
   // Initializing the Binary array, and also the the suffstats counter
   netcounters::Network Array((uint) N, (uint) M, source, target);
-  
-  std::vector< std::vector< double > > G(gender.size());
-  for (uint i = 0u; i < gender.size(); ++i)
-    G[i].push_back(gender[i]);
-  netcounters::NetworkData Gnet(G);
-  Array.data = &Gnet;
+  Array.data = new netcounters::NetworkData(gender);
 
-  // Array.meta.set("undirected", true);
   
   // Creating the counter object; 
   barray::StatsCounter<netcounters::Network, vuint> dat(&Array);
-  
+
   // Adding functions 
   dat.add_counter(netcounters::edges);
   dat.add_counter(netcounters::mutual);
@@ -79,15 +73,16 @@ NumericVector counter(
   dat.add_counter(netcounters::odegree15);
   
   netcounters::NetCounter nodematchfem = netcounters::nodematch;
-  nodematchfem.data = new vuint({0u});
+  nodematchfem.data = new std::vector< unsigned int >({0u});
   dat.add_counter(nodematchfem);
   
   // Fingers crossed
   std::vector< double > ans = dat.count_all();
-  
+
+  // Removing data  
+  delete Array.data;
   delete nodematchfem.data;
-  nodematchfem.data = nullptr;
-  
+
   return wrap(ans);
   
 }
@@ -101,17 +96,10 @@ List support (
   
   // Initializing the Binary array, and also the the suffstats counter
   netcounters::Network net(N,M);
-  
-  std::vector< std::vector< double > > G(gender.size());
-  for (uint i = 0u; i < gender.size(); ++i)
-    G[i].push_back(gender[i]);
-  
-  netcounters::NetworkData Gnet(G);
-  net.data = &Gnet;
+  net.data = new netcounters::NetworkData(gender);
   
   barray::Support<netcounters::Network, vuint> dat(&net);
   
-  // Adding functions
   dat.add_counter(netcounters::edges);
   dat.add_counter(netcounters::mutual);
   dat.add_counter(netcounters::isolates);
@@ -123,10 +111,10 @@ List support (
   dat.add_counter(netcounters::idegree15);
   dat.add_counter(netcounters::odegree15);
   
+  // Adding functions
   netcounters::NetCounter nodematchfem = netcounters::nodematch;
   nodematchfem.data = new vuint({0u});
-  dat.add_counter(nodematchfem);
-  
+  dat.add_counter(nodematchfem);  
   
   // Generating the data
   dat.calc(0u, false); 
@@ -143,8 +131,8 @@ List support (
     );
   }
   
+  delete net.data;
   delete nodematchfem.data;
-  nodematchfem.data = nullptr;
   
   return res;
 }
@@ -193,14 +181,18 @@ values <- values[idx]
 # values <- c(values, 1:20)
 
 el <- counter(N, M, source - 1L, target - 1L, gender)
+# stop("OK")
 
 # Comparing with ergm
 net <- network::as.edgelist(cbind(source, target), n = N)
 net <- network::as.network(net)
+network::set.vertex.attribute(net, "gender", gender)
 
 microbenchmark::microbenchmark(
   # ergmito::count_stats(mat ~ edges + mutual + istar2 + ostar2 + ttriad),
-  ergm = ergm::summary_formula(net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad + density + idegree1.5 + odegree1.5 + nodematch()),
+  ergm = ergm::summary_formula(
+    net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
+      density + idegree1.5 + odegree1.5 + nodematch("gender")),
   barray = counter(N, M, source - 1L, target - 1L, gender),
   unit = "relative",
   times = 100
@@ -209,14 +201,14 @@ microbenchmark::microbenchmark(
 
 ergm::summary_formula(
   net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
-    density + idegree1.5 + odegree1.5
+    density + idegree1.5 + odegree1.5 + nodematch("gender")
   ) - 
 counter(N, M, source - 1L, target - 1L, gender)
 
 
 # stop()
 set.seed(123)
-N <- 4
+N <- 5
 M <- N
 gender <- sample.int(2, N, TRUE)
 
@@ -234,18 +226,23 @@ values <- values[idx]
 mat <- matrix(0, nrow = N, ncol = M)
 mat[cbind(source, target)] <- 1L
 mat <- network::as.network(mat)
+network::set.vertex.attribute(mat, "gender", gender)
 
 ans0 <- support(N, M,gender)
 ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
 
 microbenchmark::microbenchmark(
   barray = support(N, M, gender),
-  ergm   = ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad  + ctriad + density + idegree1.5 + odegree1.5, zeroobs = FALSE),
+  ergm   = ergm::ergm.allstats(
+    mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad  + ctriad +
+      density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE),
   times = 100,
   unit = "relative"
 )
 
-ans1 <- ergm::ergm.allstats(mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad + density + idegree1.5 + odegree1.5, zeroobs = FALSE)
+ans1 <- ergm::ergm.allstats(
+  mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
+    density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE)
 ans1 <- cbind(ans1$statmat, w = ans1$weights)
 
 # Sorting equally
@@ -268,9 +265,10 @@ range(ans1 - ans0)
 
 
 ps <- ergmito::powerset(3)
+gender <- sample.int(2, 3, TRUE)
 ps <- sapply(ps, function(ps.) {
   d <- which(ps. != 0, arr.ind = TRUE) - 1
-  counter(3, 3, d[,1], d[,2])
+  counter(3, 3, d[,1], d[,2], gender)
 })
 ps <- t(ps)
 unique(ps[,-ncol(ps)])

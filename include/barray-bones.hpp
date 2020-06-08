@@ -1,6 +1,5 @@
 // #include <vector>
 // #include <unordered_map>
-#include "meta.hpp"
 #include "typedefs.hpp"
 #include "cell-bones.hpp"
 
@@ -33,12 +32,10 @@ public:
    */
   bool visited = false;
   
-  //! Other information regarding the object.
-  Meta meta;
-
   // Empty datum
   BArray() : N(0u), M(0u), el_ij(0u), el_ji(0u), NCells(0u) {};
   BArray (uint N_, uint M_) : N(N_), M(M_), el_ij(N_), el_ji(M_), NCells(0u) {};
+  // BArray(BArray & Array_);
   
   //! Edgelist with data
   /** This function takes the following arguments

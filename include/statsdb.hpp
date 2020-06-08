@@ -25,6 +25,11 @@ struct vecHasher {
   }
 };
 
+/**@brief Database of statistics.
+ * 
+ * This is mostly used in `Support`.
+ * 
+ */
 class StatsDB {
 public:
   uint ncols;

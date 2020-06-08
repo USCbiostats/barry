@@ -3,23 +3,37 @@
 #ifndef BARRAY_PHYLO_H
 #define BARRAY_PHYLO_H 1
 
+/**@brief Data definition for the `PhyloArray` class.
+ * 
+ * This holds basic information about a given node.
+ * 
+ */
 class NodeData {
 public:
+  
+  /**
+   * Branch length.
+   */
   std::vector< double > blengths;
+  
+  /**
+   * State of the parent node.
+   */
   std::vector< bool > states;
+  
   NodeData() : blengths(0u), states(0u) {};
-  NodeData(
-    std::vector< double > & blengths_,
-    std::vector< bool > & states_
-  ) : blengths(blengths_), states(states_) {};
+  
   NodeData(
     std::vector< double > blengths_,
     std::vector< bool > states_
   ) : blengths(blengths_), states(states_) {};
+  
   ~NodeData() {};
+  
 };
 
 typedef BArray<bool, NodeData> PhyloArray;
+typedef Counter<PhyloArray, std::vector<uint>> PhyloCounter;
 
 
 /**@brief Extension of a simple counter.
@@ -31,16 +45,23 @@ typedef BArray<bool, NodeData> PhyloArray;
  * 
  * 
  */
-#define PHYLO_COUNTER(a) inline double (a) (PhyloArray * Array, uint i, \
-  uint j, std::vector<uint> * data)                                         \
+#define PHYLO_COUNTER(a) inline double (a) (const PhyloArray * Array, uint i, \
+  uint j, std::vector<uint> * data)
     
 
+// Overall functional gains ----------------------------------------------------
+PHYLO_COUNTER(count_overall_gains) {
+  return 1.0;
+}
+
+PhyloCounter overall_gains(count_overall_gains);
+  
 // Functional gains ----------------------------------------------------------
 PHYLO_COUNTER(count_gains) {
   return (!Array->data->states[i]) && (i == (*data)[0u]) ? 1.0 : 0.0;
 }
  
-PHYLO_COUNTER(init_count_gains) {
+PHYLO_COUNTER(init_gains) {
   
   if (data == nullptr)
     throw std::logic_error("count_gains needs to initialize the data.");
@@ -48,7 +69,18 @@ PHYLO_COUNTER(init_count_gains) {
   return 0.0;
 }
 
-Counter<PhyloArray, std::vector<uint>> gains(count_gains, init_count_gains);
+PhyloCounter gains(count_gains, init_gains);
+
+// Overall functional loss -----------------------------------------------------
+PHYLO_COUNTER(count_overall_loss) {
+  return -1.0;
+}
+
+PHYLO_COUNTER(init_overall_loss) {
+  return Array->N * Array->M;
+}
+
+PhyloCounter overall_loss(count_overall_loss, init_overall_loss);
 
 // Functional loss ----------------------------------------------------------
 
@@ -56,7 +88,7 @@ PHYLO_COUNTER(count_loss) {
   return (Array->data->states[i]) && (i == (*data)[0u]) ? -1.0 : 0.0;
 }
 
-PHYLO_COUNTER(init_count_loss) {
+PHYLO_COUNTER(init_loss) {
   
   if (data == nullptr)
     throw std::logic_error("count_loss needs to initialize the data.");
@@ -64,7 +96,7 @@ PHYLO_COUNTER(init_count_loss) {
   return Array->data->states[(*data)[0u]]? Array->M : 0.0;
 }
 
-Counter<PhyloArray, std::vector<uint>> loss(count_loss, init_count_loss);
+PhyloCounter loss(count_loss, init_loss);
 
 // Sub-functionalization ----------------------------------------------------
 // It requires to specify data = {funA, funB}
@@ -114,7 +146,7 @@ PHYLO_COUNTER(count_subfun) {
   return res;
 }
 
-PHYLO_COUNTER(init_count_subfun) {
+PHYLO_COUNTER(init_subfun) {
   
   if (data == nullptr)
     throw std::logic_error("subfun needs to initialize the data.");
@@ -125,7 +157,7 @@ PHYLO_COUNTER(init_count_subfun) {
   return 0.0;
 }
 
-Counter<PhyloArray, std::vector<uint>> subfun(count_subfun, init_count_subfun);
+PhyloCounter subfun(count_subfun, init_subfun);
 
 // Co-evolution (joint gain or loss) -----------------------------------------
 PHYLO_COUNTER(count_cogain) {
@@ -154,7 +186,7 @@ PHYLO_COUNTER(count_cogain) {
   
 }
 
-PHYLO_COUNTER(init_count_cogain) {
+PHYLO_COUNTER(init_cogain) {
   
   if (data == nullptr)
     throw std::logic_error("cogain needs to initialize the data.");
@@ -165,7 +197,7 @@ PHYLO_COUNTER(init_count_cogain) {
   return 0.0;
 }
 
-Counter<PhyloArray, std::vector<uint>> cogain(count_cogain, init_count_cogain);
+PhyloCounter cogain(count_cogain, init_cogain);
 
 // Longest branch mutates (either by gain or by loss) ------------------------
 PHYLO_COUNTER(count_longest) {
@@ -194,7 +226,7 @@ PHYLO_COUNTER(count_longest) {
   
 }
 
-PHYLO_COUNTER(init_count_longest) {
+PHYLO_COUNTER(init_longest) {
   
   if (Array->data == nullptr)
     throw std::logic_error("longest needs to initialize the data.");
@@ -249,6 +281,6 @@ PHYLO_COUNTER(init_count_longest) {
   return res;
 }
 
-Counter<PhyloArray, std::vector<uint>> longest(count_longest, init_count_longest);
+PhyloCounter longest(count_longest, init_longest);
 
 #endif

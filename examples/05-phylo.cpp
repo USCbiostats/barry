@@ -50,7 +50,8 @@ List counter_phylo(
   support.add_counter(counter6);
   
   // Computing and retrieving
-  support.calc(0u, true);
+  std::vector< std::vector< double > > observed(0u);
+  support.calc(0u, true, nullptr, &observed);
   
   delete counter0.data;
   delete counter1.data;
@@ -78,7 +79,10 @@ List counter_phylo(
     );
   }
   
-  return res;
+  return List::create(
+    _["suff_stats"] = res,
+    _["pset_stats"] = wrap(observed)
+  );
   
 }
 
@@ -98,7 +102,7 @@ snames <- c(
 
 wrap <- function(x) {
   structure(
-    do.call(rbind, lapply(x, unlist)),
+    do.call(rbind, lapply(x$suff_stats, unlist)),
     dimnames = list(NULL, snames)
   )
 }
@@ -127,8 +131,6 @@ blengths2 <- blengths
 blengths2[2] <- 2
 (ans1 <- wrap(counter_phylo(c(TRUE, TRUE), nfun = nfun, noffspring = noffspring, blengths2)))
 sum(ans1[,"counts"])
-
-
 
 */
 

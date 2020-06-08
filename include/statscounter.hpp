@@ -35,8 +35,10 @@ public:
    */
   StatsCounter(const Array_Type * data) :
     counters(0u), Array(data), EmptyArray(data->N, data->M) {
-    // Copying the information
-    EmptyArray.meta = Array->meta;
+    
+    if (data->data != nullptr)
+      EmptyArray.data = data->data;
+    
     return;
   }
   

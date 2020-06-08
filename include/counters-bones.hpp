@@ -41,14 +41,16 @@ public:
    * 
    * @param count_fun The main counter function.
    * @param init_fun The initializer function can also be used to check if the
-   *  `BArray` has the required metadata (e.g. is it a directed graph?).
+   *  `BArray` as the needed variables (see BArray::data).
    */
   Counter(
     Counter_fun_type<Array_Type,Data_Type> count_fun_,
     Counter_fun_type<Array_Type,Data_Type> init_fun_
     ): count_fun(count_fun_), init_fun(init_fun_) {};
   
-  ~Counter() {};
+  ~Counter() {
+    // delete data;
+  };
   
   /***
    * ! Main functions.
