@@ -21,12 +21,18 @@ public:
    */
   std::vector< bool > states;
   
+  /**
+   * 
+   */
+  bool duplication = true;
+  
   NodeData() : blengths(0u), states(0u) {};
   
   NodeData(
-    std::vector< double > blengths_,
-    std::vector< bool > states_
-  ) : blengths(blengths_), states(states_) {};
+    const std::vector< double > & blengths_,
+    const std::vector< bool > & states_,
+    bool duplication_ = true
+  ) : blengths(blengths_), states(states_), duplication(duplication_) {};
   
   ~NodeData() {};
   
@@ -283,4 +289,58 @@ PHYLO_COUNTER(init_longest) {
 
 PhyloCounter longest(count_longest, init_longest);
 
+PHYLO_COUNTER(count_neofun) {
+  
+  // Is the function in scope relevant?
+  if ((i != (*data)[0u]) && (i != (*data)[1u]))
+    return 0.0;
+
+  // Checking if the parent has both functions
+  if (!Array->data->states[(*data)[0u]] && !Array->data->states[(*data)[1u]]) {
+    return 0.0;
+  } else if (Array->data->states[(*data)[0u]] && Array->data->states[(*data)[1u]]) {
+    return 0.0;
+  }
+  
+  // Figuring out which is the first (reference) function
+  uint other = (i == (*data)[0u])? (*data)[1u] : (*data)[0u];
+  double res = 0.0;
+  
+  if (Array->is_empty(other, j, false)) {
+    
+    for (auto off = 0u; off < Array->M; ++off) {
+      if (off == j)
+        continue;
+      
+      if (Array->is_empty(i, off, false) && !Array->is_empty(other, off, false))
+        res += 1.0;
+      
+    }
+    
+  } else {
+    
+    for (auto off = 0u; off < Array->M; ++off) {
+      if (off == j)
+        continue;
+      
+      if (!Array->is_empty(i, off, false) && Array->is_empty(other, off, false))
+        res -= 1.0;
+      
+    }
+    
+  }
+  
+  return res;
+}
+
+PHYLO_COUNTER(init_neofun) {
+  
+  if (data == nullptr)
+    throw std::logic_error("neofun needs to initialize the data.");
+  
+  if (data->size() != 2u)
+    throw std::logic_error("neofun should be initialized with a vec of size 2.");
+  
+  return 0.0;
+}
 #endif
