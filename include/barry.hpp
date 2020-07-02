@@ -5,10 +5,10 @@
 #include <cmath>
 #include <map>
 
-#ifndef BARRAY_HPP
-#define BARRAY_HPP 
+#ifndef BARRY_HPP
+#define BARRY_HPP 
 
-namespace barray {
+namespace barry {
   
   //! Tree class and TreeIterator class
   #include "typedefs.hpp"
@@ -33,6 +33,6 @@ namespace barray {
   
 }
 
-namespace netcounters = barray::counters::network;
-namespace phylocounters = barray::counters::phylo;
+namespace netcounters = barry::counters::network;
+namespace phylocounters = barry::counters::phylo;
 #endif

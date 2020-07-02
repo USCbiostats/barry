@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include "../include/barray.hpp"
+#include "../include/barry.hpp"
 
 using namespace Rcpp;
 
@@ -14,33 +14,33 @@ List counter_phylo(
     const NumericVector & blenghts
     ) {
   
-  // Initializing the node
+  // Initializing the node 
   phylocounters::PhyloArray tree(nfun, noffspring);
   phylocounters::NodeData data(as<Vec<double>>(blenghts), as<Vec<bool>>(x)); 
   tree.data = &data;
   
   // Setting counters, one per function
-  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter0 = phylocounters::gains;
-  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter1 = phylocounters::gains;
+  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter0 = phylocounters::gains;
+  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter1 = phylocounters::gains;
   counter0.data = new Vec<uint>({0u});
   counter1.data = new Vec<uint>({1u});
   
-  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter2 = phylocounters::loss;
-  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter3 = phylocounters::loss;
+  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter2 = phylocounters::loss;
+  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter3 = phylocounters::loss;
   counter2.data = new Vec<uint>({0u});
   counter3.data = new Vec<uint>({1u});
   
-  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter4 = phylocounters::subfun;
+  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter4 = phylocounters::subfun;
   counter4.data = new Vec<uint>({0u, 1u});
   
-  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter5 = phylocounters::cogain;
+  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter5 = phylocounters::cogain;
   counter5.data = new Vec<uint>({0u, 1u});
   
-  barray::Counter<phylocounters::PhyloArray, Vec<uint>> counter6 = phylocounters::longest;
+  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter6 = phylocounters::longest;
   counter6.data = new Vec<uint>(0u);
   
   
-  barray::Support<phylocounters::PhyloArray, Vec<uint>> support(&tree);
+  barry::Support<phylocounters::PhyloArray, Vec<uint>> support(&tree);
   support.add_counter(counter0);
   support.add_counter(counter1);
   support.add_counter(counter2);
@@ -69,7 +69,7 @@ List counter_phylo(
   counter6.data = nullptr;
   
   // Generating the entries
-  barray::Counts_type ans = support.support.get_entries();
+  barry::Counts_type ans = support.support.get_entries();
   
   List res(ans.size());
   for (unsigned int i = 0u; i < res.size(); ++i) {

@@ -1,13 +1,13 @@
 #include <Rcpp.h>
-#include "../include/barray.hpp"
+#include "../include/barry.hpp"
 using namespace Rcpp;
  
 
 // [[Rcpp::export]]
 SEXP psets(int n, int m) {
     
-  Rcpp::XPtr< barray::PowerSet<>> xptr(
-    new barray::PowerSet<>((uint) n, (uint) m),
+  Rcpp::XPtr< barry::PowerSet<>> xptr(
+    new barry::PowerSet<>((uint) n, (uint) m),
     true
   );
   
@@ -20,14 +20,14 @@ SEXP psets(int n, int m) {
 
 // [[Rcpp::export]]
 List get_data(SEXP x) {
-  Rcpp::XPtr< barray::PowerSet<>> xptr(x);
+  Rcpp::XPtr< barry::PowerSet<>> xptr(x);
 
   // Generating the data
   List ans(xptr->data.size());
   uint counter = 0u;
   for (auto iter = xptr->data.begin(); iter != xptr->data.end(); ++iter) {
     
-    barray::Entries<bool> set = iter->get_entries();
+    barry::Entries<bool> set = iter->get_entries();
     
     ans[counter++] = List::create(
       _["source"] = set.source,

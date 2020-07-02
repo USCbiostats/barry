@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include "../include/barray.hpp"
+#include "../include/barry.hpp"
 // #include "../include/lbarray-bones.hpp"
 using namespace Rcpp; 
 
@@ -9,13 +9,13 @@ typedef std::vector< unsigned int > vuint;
 // [[Rcpp::export]]
 SEXP suff_stats(const NumericMatrix & x) {
   
-  Rcpp::XPtr< barray::StatsDB > xptr( 
-    new barray::StatsDB(), 
+  Rcpp::XPtr< barry::StatsDB > xptr( 
+    new barry::StatsDB(), 
     true
   );
   
   // Counting the stats
-  for (barray::uint i = 0u; i < x.ncol(); ++i) {
+  for (barry::uint i = 0u; i < x.ncol(); ++i) {
     const std::vector< double > r(x.column(i).begin(), x.column(i).end());
     xptr->add(r);
   }
@@ -26,10 +26,10 @@ SEXP suff_stats(const NumericMatrix & x) {
 // [[Rcpp::export]]
 List get_suff_stats(SEXP x) {
   
-  Rcpp::XPtr< barray::StatsDB > xptr(x);
+  Rcpp::XPtr< barry::StatsDB > xptr(x);
   
   // Now, getting the data
-  barray::Counts_type ans = xptr->get_entries();
+  barry::Counts_type ans = xptr->get_entries();
   
   List res(ans.size());
   for (unsigned int i = 0u; i < res.size(); ++i) {
@@ -58,7 +58,7 @@ NumericVector counter(
 
   
   // Creating the counter object; 
-  barray::StatsCounter<netcounters::Network, vuint> dat(&Array);
+  barry::StatsCounter<netcounters::Network, vuint> dat(&Array);
 
   // Adding functions 
   dat.add_counter(netcounters::edges);
@@ -98,7 +98,7 @@ List support (
   netcounters::Network net(N,M);
   net.data = new netcounters::NetworkData(gender);
   
-  barray::Support<netcounters::Network, vuint> dat(&net);
+  barry::Support<netcounters::Network, vuint> dat(&net);
   
   dat.add_counter(netcounters::edges);
   dat.add_counter(netcounters::mutual);
@@ -120,7 +120,7 @@ List support (
   dat.calc(0u, false); 
   
   // Generating the entries
-  barray::Counts_type ans = dat.support.get_entries();
+  barry::Counts_type ans = dat.support.get_entries();
   
   
   List res(ans.size());
