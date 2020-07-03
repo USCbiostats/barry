@@ -1,0 +1,249 @@
+\hypertarget{class_support}{}\section{Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Class Template Reference}
+\label{class_support}\index{Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$@{Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
+
+
+Compute the support of sufficient statistics.  
+
+
+
+
+{\ttfamily \#include $<$support.\+hpp$>$}
+
+
+
+Collaboration diagram for Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{class_support__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_support_a4a0587bc6f1f268005a94fea039ea6ba}{Support} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
+\item 
+\hyperlink{class_support_aff7d2705d6f765fcbd8958453b7dbefe}{Support} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+)
+\item 
+\hyperlink{class_support_a03228371869980fa356b7b86871d94e8}{$\sim$\+Support} ()
+\item 
+void \hyperlink{class_support_a9fc89bd8b15dcad6a4140a3c74073d10}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&f\+\_\+)
+\item 
+void \hyperlink{class_support_ab5261952be0746f188ee024e3e8c26c1}{calc} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} pos=0u, const bool \&diag=false, std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$array\+\_\+bank=nullptr, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$stats\+\_\+bank=nullptr)
+\begin{DoxyCompactList}\small\item\em Computes the entire support. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const Array\+\_\+\+Type $\ast$ \hyperlink{class_support_a73f1375ad76be291f9f3768e9d6f912c}{Array}
+\item 
+Data\+\_\+\+Type $\ast$ \hyperlink{class_support_ad185d111ea5ea3bfe16cf458a36efc63}{data} = nullptr
+\item 
+Array\+\_\+\+Type \hyperlink{class_support_a9364028f9966697e3cdd3fc6a5cd90de}{Empty\+Array}
+\item 
+\hyperlink{class_stats_d_b}{Stats\+DB} \hyperlink{class_support_ab2f404c7c11d5bc58e876124cc52d073}{support}
+\item 
+std\+::vector$<$ \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $>$ \hyperlink{class_support_a04c684d0e662d58aad1c90b9c0a595b5}{counters}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_support_ada67557033378742f8592a96f39d1127}{current\+\_\+stats}
+\item 
+\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_support_ab15c7125d6b99ae15ec4dbb34c9ce9b6}{N}
+\item 
+\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_support_ace1d46b871c67caa774ac2269930e97f}{M}
+\item 
+bool \hyperlink{class_support_ac352c6473720fcdcd9895c48bd872ef5}{initialized} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$\newline
+class Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+
+Compute the support of sufficient statistics. 
+
+Given an array and a set of counters, this object iterates throughout the support set of the Array while at the same time computing the support of the sufficient statitics. 
+
+Definition at line 18 of file support.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_support_a4a0587bc6f1f268005a94fea039ea6ba}\label{class_support_a4a0587bc6f1f268005a94fea039ea6ba}} 
+\index{Support@{Support}!Support@{Support}}
+\index{Support@{Support}!Support@{Support}}
+\subsubsection{\texorpdfstring{Support()}{Support()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_support}{Support} (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 31 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_aff7d2705d6f765fcbd8958453b7dbefe}\label{class_support_aff7d2705d6f765fcbd8958453b7dbefe}} 
+\index{Support@{Support}!Support@{Support}}
+\index{Support@{Support}!Support@{Support}}
+\subsubsection{\texorpdfstring{Support()}{Support()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_support}{Support} (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{N\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 40 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_a03228371869980fa356b7b86871d94e8}\label{class_support_a03228371869980fa356b7b86871d94e8}} 
+\index{Support@{Support}!````~Support@{$\sim$\+Support}}
+\index{````~Support@{$\sim$\+Support}!Support@{Support}}
+\subsubsection{\texorpdfstring{$\sim$\+Support()}{~Support()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::$\sim$\hyperlink{class_support}{Support} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 41 of file support.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_support_a9fc89bd8b15dcad6a4140a3c74073d10}\label{class_support_a9fc89bd8b15dcad6a4140a3c74073d10}} 
+\index{Support@{Support}!add\+\_\+counter@{add\+\_\+counter}}
+\index{add\+\_\+counter@{add\+\_\+counter}!Support@{Support}}
+\subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&}]{f\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 151 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_ab5261952be0746f188ee024e3e8c26c1}\label{class_support_ab5261952be0746f188ee024e3e8c26c1}} 
+\index{Support@{Support}!calc@{calc}}
+\index{calc@{calc}!Support@{Support}}
+\subsubsection{\texorpdfstring{calc()}{calc()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::calc (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{pos = {\ttfamily 0u},  }\item[{const bool \&}]{diag = {\ttfamily false},  }\item[{std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$}]{array\+\_\+bank = {\ttfamily nullptr},  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{stats\+\_\+bank = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes the entire support. 
+
+Not to be used by the user. Sets the starting point in the array (column-\/major).
+
+
+\begin{DoxyParams}{Parameters}
+{\em diag} & When {\ttfamily true}, includes the diagonal (i=j) in the counts.\\
+\hline
+{\em array\+\_\+bank} & If specified, the counter will add to the vector each possible state of the array, as it counts.\\
+\hline
+{\em stats\+\_\+bank} & If specified, the counter will add to the vector each possible set of statistics, as it counts. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 70 of file support.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_support_a73f1375ad76be291f9f3768e9d6f912c}\label{class_support_a73f1375ad76be291f9f3768e9d6f912c}} 
+\index{Support@{Support}!Array@{Array}}
+\index{Array@{Array}!Support@{Support}}
+\subsubsection{\texorpdfstring{Array}{Array}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+const Array\+\_\+\+Type$\ast$ \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::Array}
+
+
+
+Definition at line 21 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_a04c684d0e662d58aad1c90b9c0a595b5}\label{class_support_a04c684d0e662d58aad1c90b9c0a595b5}} 
+\index{Support@{Support}!counters@{counters}}
+\index{counters@{counters}!Support@{Support}}
+\subsubsection{\texorpdfstring{counters}{counters}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ \hyperlink{class_counter}{Counter}$<$Array\+\_\+\+Type, Data\+\_\+\+Type$>$ $>$ \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counters}
+
+
+
+Definition at line 25 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_ada67557033378742f8592a96f39d1127}\label{class_support_ada67557033378742f8592a96f39d1127}} 
+\index{Support@{Support}!current\+\_\+stats@{current\+\_\+stats}}
+\index{current\+\_\+stats@{current\+\_\+stats}!Support@{Support}}
+\subsubsection{\texorpdfstring{current\+\_\+stats}{current\_stats}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ double $>$ \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::current\+\_\+stats}
+
+
+
+Definition at line 26 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_ad185d111ea5ea3bfe16cf458a36efc63}\label{class_support_ad185d111ea5ea3bfe16cf458a36efc63}} 
+\index{Support@{Support}!data@{data}}
+\index{data@{data}!Support@{Support}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+Data\+\_\+\+Type$\ast$ \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::data = nullptr}
+
+
+
+Definition at line 22 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_a9364028f9966697e3cdd3fc6a5cd90de}\label{class_support_a9364028f9966697e3cdd3fc6a5cd90de}} 
+\index{Support@{Support}!Empty\+Array@{Empty\+Array}}
+\index{Empty\+Array@{Empty\+Array}!Support@{Support}}
+\subsubsection{\texorpdfstring{Empty\+Array}{EmptyArray}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+Array\+\_\+\+Type \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::Empty\+Array}
+
+
+
+Definition at line 23 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_ac352c6473720fcdcd9895c48bd872ef5}\label{class_support_ac352c6473720fcdcd9895c48bd872ef5}} 
+\index{Support@{Support}!initialized@{initialized}}
+\index{initialized@{initialized}!Support@{Support}}
+\subsubsection{\texorpdfstring{initialized}{initialized}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+bool \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::initialized = false}
+
+
+
+Definition at line 29 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_ace1d46b871c67caa774ac2269930e97f}\label{class_support_ace1d46b871c67caa774ac2269930e97f}} 
+\index{Support@{Support}!M@{M}}
+\index{M@{M}!Support@{Support}}
+\subsubsection{\texorpdfstring{M}{M}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::M}
+
+
+
+Definition at line 28 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_ab15c7125d6b99ae15ec4dbb34c9ce9b6}\label{class_support_ab15c7125d6b99ae15ec4dbb34c9ce9b6}} 
+\index{Support@{Support}!N@{N}}
+\index{N@{N}!Support@{Support}}
+\subsubsection{\texorpdfstring{N}{N}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::N}
+
+
+
+Definition at line 28 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_ab2f404c7c11d5bc58e876124cc52d073}\label{class_support_ab2f404c7c11d5bc58e876124cc52d073}} 
+\index{Support@{Support}!support@{support}}
+\index{support@{support}!Support@{Support}}
+\subsubsection{\texorpdfstring{support}{support}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{class_stats_d_b}{Stats\+DB} \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::support}
+
+
+
+Definition at line 24 of file support.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{support_8hpp}{support.\+hpp}\end{DoxyCompactItemize}

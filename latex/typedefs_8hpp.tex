@@ -1,0 +1,224 @@
+\hypertarget{typedefs_8hpp}{}\section{include/typedefs.hpp File Reference}
+\label{typedefs_8hpp}\index{include/typedefs.\+hpp@{include/typedefs.\+hpp}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{typedefs_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_cell}{Cell$<$ Cell\+\_\+\+Type $>$}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_entries}{Entries} in \hyperlink{class_b_array}{B\+Array}. For now, it only has two members\+: \end{DoxyCompactList}\item 
+class \hyperlink{class_entries}{Entries$<$ Cell\+\_\+\+Type $>$}
+\item 
+class \hyperlink{class_b_array}{B\+Array$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
+\begin{DoxyCompactList}\small\item\em Baseline class for binary arrays. \end{DoxyCompactList}\item 
+class \hyperlink{class_counter}{Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+\begin{DoxyCompactList}\small\item\em A counter function based on change statistics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespace_c_h_e_c_k}{C\+H\+E\+CK}
+\item 
+ \hyperlink{namespace_e_x_i_s_t_s}{E\+X\+I\+S\+TS}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{barry_8hpp_a368e534905c6c10d975f70debc4cbef8}{B\+A\+R\+R\+A\+Y\+\_\+\+T\+Y\+P\+E\+D\+E\+F\+S\+\_\+\+H\+PP}
+\begin{DoxyCompactList}\small\item\em Tree class and Tree\+Iterator class. \end{DoxyCompactList}\item 
+\#define \hyperlink{barry_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}{R\+OW}(a)~this-\/$>$el\+\_\+ij.\+at(a)
+\item 
+\#define \hyperlink{barry_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}{C\+OL}(a)~this-\/$>$el\+\_\+ji.\+at(a)
+\item 
+\#define \hyperlink{barry_8hpp_ac3f14709e872fe684ba3cea262981ac3}{A\+\_\+\+R\+OW}(a)~Array-\/$>$el\+\_\+ij.\+at(a)
+\item 
+\#define \hyperlink{barry_8hpp_ac4ed0c1525d352c76a5f22fae625c9e8}{A\+\_\+\+C\+OL}(a)~Array-\/$>$el\+\_\+ji.\+at(a)
+\item 
+\#define \hyperlink{typedefs_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}{R\+OW}(a)~this-\/$>$el\+\_\+ij.\+at(a)
+\item 
+\#define \hyperlink{typedefs_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}{C\+OL}(a)~this-\/$>$el\+\_\+ji.\+at(a)
+\item 
+\#define \hyperlink{typedefs_8hpp_ac3f14709e872fe684ba3cea262981ac3}{A\+\_\+\+R\+OW}(a)~Array-\/$>$el\+\_\+ij.\+at(a)
+\item 
+\#define \hyperlink{typedefs_8hpp_ac4ed0c1525d352c76a5f22fae625c9e8}{A\+\_\+\+C\+OL}(a)~Array-\/$>$el\+\_\+ji.\+at(a)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type}
+\item 
+typedef unsigned int \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}
+\item 
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $>$
+\item 
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{namespace_c_h_e_c_k_a3acda1c74bfabb5b6b67e19d0ad2d52a}{C\+H\+E\+C\+K\+::\+B\+O\+TH} = -\/1
+\item 
+const int \hyperlink{namespace_c_h_e_c_k_a35fad085a9d64167bd4550445c4dc9e1}{C\+H\+E\+C\+K\+::\+N\+O\+NE} = 0
+\item 
+const int \hyperlink{namespace_c_h_e_c_k_acf8ecf93ddfb75456112712630f8f722}{C\+H\+E\+C\+K\+::\+O\+NE} = 1
+\item 
+const int \hyperlink{namespace_c_h_e_c_k_a2b112aaec4c59311376a5a60f291aa48}{C\+H\+E\+C\+K\+::\+T\+WO} = 2
+\item 
+const int \hyperlink{namespace_e_x_i_s_t_s_a256db431572e1e7f26f8dfa6c9cae9bd}{E\+X\+I\+S\+T\+S\+::\+B\+O\+TH} = -\/1
+\item 
+const int \hyperlink{namespace_e_x_i_s_t_s_a2f75d813424980b47f3e7c9608fb8416}{E\+X\+I\+S\+T\+S\+::\+N\+O\+NE} = 0
+\item 
+const int \hyperlink{namespace_e_x_i_s_t_s_a4c3717397d716d2bbd69d8239b3de033}{E\+X\+I\+S\+T\+S\+::\+O\+NE} = 1
+\item 
+const int \hyperlink{namespace_e_x_i_s_t_s_ad76d02e8eb6d20715d333b72394b0648}{E\+X\+I\+S\+T\+S\+::\+T\+WO} = 1
+\item 
+const int \hyperlink{namespace_e_x_i_s_t_s_a81eb362d951445c658942a433afddb97}{E\+X\+I\+S\+T\+S\+::\+U\+K\+N\+O\+WN} = -\/1
+\item 
+const int \hyperlink{namespace_e_x_i_s_t_s_a03d550dd049f50f852b8fb4caa48238a}{E\+X\+I\+S\+T\+S\+::\+A\+S\+\_\+\+Z\+E\+RO} = 0
+\item 
+const int \hyperlink{namespace_e_x_i_s_t_s_a735e5ca6565905e84346e3ff62842a0a}{E\+X\+I\+S\+T\+S\+::\+A\+S\+\_\+\+O\+NE} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{barry_8hpp_ac4ed0c1525d352c76a5f22fae625c9e8}\label{barry_8hpp_ac4ed0c1525d352c76a5f22fae625c9e8}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+C\+OL@{A\+\_\+\+C\+OL}}
+\index{A\+\_\+\+C\+OL@{A\+\_\+\+C\+OL}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{A\+\_\+\+C\+OL}{A\_COL}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define A\+\_\+\+C\+OL(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~Array-\/$>$el\+\_\+ji.\+at(a)}
+
+\mbox{\Hypertarget{typedefs_8hpp_ac4ed0c1525d352c76a5f22fae625c9e8}\label{typedefs_8hpp_ac4ed0c1525d352c76a5f22fae625c9e8}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+C\+OL@{A\+\_\+\+C\+OL}}
+\index{A\+\_\+\+C\+OL@{A\+\_\+\+C\+OL}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{A\+\_\+\+C\+OL}{A\_COL}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define A\+\_\+\+C\+OL(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~Array-\/$>$el\+\_\+ji.\+at(a)}
+
+
+
+Definition at line 72 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_ac3f14709e872fe684ba3cea262981ac3}\label{typedefs_8hpp_ac3f14709e872fe684ba3cea262981ac3}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}}
+\index{A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{A\+\_\+\+R\+OW}{A\_ROW}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define A\+\_\+\+R\+OW(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~Array-\/$>$el\+\_\+ij.\+at(a)}
+
+
+
+Definition at line 71 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{barry_8hpp_ac3f14709e872fe684ba3cea262981ac3}\label{barry_8hpp_ac3f14709e872fe684ba3cea262981ac3}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}}
+\index{A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{A\+\_\+\+R\+OW}{A\_ROW}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define A\+\_\+\+R\+OW(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~Array-\/$>$el\+\_\+ij.\+at(a)}
+
+\mbox{\Hypertarget{barry_8hpp_a368e534905c6c10d975f70debc4cbef8}\label{barry_8hpp_a368e534905c6c10d975f70debc4cbef8}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!B\+A\+R\+R\+A\+Y\+\_\+\+T\+Y\+P\+E\+D\+E\+F\+S\+\_\+\+H\+PP@{B\+A\+R\+R\+A\+Y\+\_\+\+T\+Y\+P\+E\+D\+E\+F\+S\+\_\+\+H\+PP}}
+\index{B\+A\+R\+R\+A\+Y\+\_\+\+T\+Y\+P\+E\+D\+E\+F\+S\+\_\+\+H\+PP@{B\+A\+R\+R\+A\+Y\+\_\+\+T\+Y\+P\+E\+D\+E\+F\+S\+\_\+\+H\+PP}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{B\+A\+R\+R\+A\+Y\+\_\+\+T\+Y\+P\+E\+D\+E\+F\+S\+\_\+\+H\+PP}{BARRAY\_TYPEDEFS\_HPP}}
+{\footnotesize\ttfamily \#define B\+A\+R\+R\+A\+Y\+\_\+\+T\+Y\+P\+E\+D\+E\+F\+S\+\_\+\+H\+PP}
+
+
+
+Tree class and Tree\+Iterator class. 
+
+
+
+Definition at line 3 of file barry.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}\label{typedefs_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!C\+OL@{C\+OL}}
+\index{C\+OL@{C\+OL}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{C\+OL}{COL}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define C\+OL(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~this-\/$>$el\+\_\+ji.\+at(a)}
+
+
+
+Definition at line 6 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{barry_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}\label{barry_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!C\+OL@{C\+OL}}
+\index{C\+OL@{C\+OL}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{C\+OL}{COL}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define C\+OL(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~this-\/$>$el\+\_\+ji.\+at(a)}
+
+\mbox{\Hypertarget{barry_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}\label{barry_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!R\+OW@{R\+OW}}
+\index{R\+OW@{R\+OW}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{R\+OW}{ROW}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define R\+OW(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~this-\/$>$el\+\_\+ij.\+at(a)}
+
+\mbox{\Hypertarget{typedefs_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}\label{typedefs_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!R\+OW@{R\+OW}}
+\index{R\+OW@{R\+OW}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{R\+OW}{ROW}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define R\+OW(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~this-\/$>$el\+\_\+ij.\+at(a)}
+
+
+
+Definition at line 5 of file typedefs.\+hpp.
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}\label{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!Col\+\_\+type@{Col\+\_\+type}}
+\index{Col\+\_\+type@{Col\+\_\+type}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{Col\+\_\+type}{Col\_type}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type $>$ \\
+using \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type} =  std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$Cell\+\_\+\+Type$>$$\ast$ $>$}
+
+
+
+Definition at line 40 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}\label{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!Counter\+\_\+fun\+\_\+type@{Counter\+\_\+fun\+\_\+type}}
+\index{Counter\+\_\+fun\+\_\+type@{Counter\+\_\+fun\+\_\+type}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{Counter\+\_\+fun\+\_\+type}{Counter\_fun\_type}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+using \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type} =  std\+::function$<$double(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$}
+
+
+
+Definition at line 75 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}\label{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!Counts\+\_\+type@{Counts\+\_\+type}}
+\index{Counts\+\_\+type@{Counts\+\_\+type}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{Counts\+\_\+type}{Counts\_type}}
+{\footnotesize\ttfamily typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$double$>$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type}}
+
+
+
+Definition at line 31 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}\label{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!Row\+\_\+type@{Row\+\_\+type}}
+\index{Row\+\_\+type@{Row\+\_\+type}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{Row\+\_\+type}{Row\_type}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type $>$ \\
+using \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type} =  std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$Cell\+\_\+\+Type$>$ $>$}
+
+
+
+Definition at line 37 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}\label{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!uint@{uint}}
+\index{uint@{uint}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{uint}{uint}}
+{\footnotesize\ttfamily typedef unsigned int \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}
+
+
+
+Definition at line 33 of file typedefs.\+hpp.
+

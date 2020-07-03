@@ -1,0 +1,216 @@
+\hypertarget{barry_8hpp}{}\section{include/barry.hpp File Reference}
+\label{barry_8hpp}\index{include/barry.\+hpp@{include/barry.\+hpp}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include \char`\"{}typedefs.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cell-\/bones.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}barray-\/bones.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}barray-\/meat.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}counters-\/bones.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}statscounter.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}support.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}block-\/bones.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}powerset.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}counters/network.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}counters/phylo.\+hpp\char`\"{}}\newline
+Include dependency graph for barry.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{barry_8hpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classbarry_1_1_cell}{barry\+::\+Cell$<$ Cell\+\_\+\+Type $>$}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classbarry_1_1_entries}{Entries} in \hyperlink{classbarry_1_1_b_array}{B\+Array}. For now, it only has two members\+: \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_entries}{barry\+::\+Entries$<$ Cell\+\_\+\+Type $>$}
+\item 
+class \hyperlink{classbarry_1_1_b_array}{barry\+::\+B\+Array$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
+\item 
+class \hyperlink{classbarry_1_1_counter}{barry\+::\+Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+\begin{DoxyCompactList}\small\item\em A counter function based on change statistics. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_cell}{barry\+::\+Cell$<$ Cell\+\_\+\+Type $>$}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classbarry_1_1_entries}{Entries} in \hyperlink{classbarry_1_1_b_array}{B\+Array}. For now, it only has two members\+: \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_counter}{barry\+::\+Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+\begin{DoxyCompactList}\small\item\em A counter function based on change statistics. \end{DoxyCompactList}\item 
+struct \hyperlink{structbarry_1_1vec_hasher}{barry\+::vec\+Hasher$<$ T $>$}
+\item 
+class \hyperlink{classbarry_1_1_stats_d_b}{barry\+::\+Stats\+DB}
+\begin{DoxyCompactList}\small\item\em Database of statistics. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_stats_counter}{barry\+::\+Stats\+Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+\begin{DoxyCompactList}\small\item\em Count stats for a single Array. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_support}{barry\+::\+Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+\begin{DoxyCompactList}\small\item\em Compute the support of sufficient statistics. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_cell_seq}{barry\+::\+Cell\+Seq}
+\begin{DoxyCompactList}\small\item\em Sequence of cells indices. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
+\item 
+class \hyperlink{classbarry_1_1counters_1_1network_1_1_network_data}{barry\+::counters\+::network\+::\+Network\+Data}
+\begin{DoxyCompactList}\small\item\em Data class for Networks. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1counters_1_1phylo_1_1_node_data}{barry\+::counters\+::phylo\+::\+Node\+Data}
+\begin{DoxyCompactList}\small\item\em Data definition for the {\ttfamily Phylo\+Array} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacebarry}{barry}
+\item 
+ \hyperlink{namespacebarry_1_1_c_h_e_c_k}{barry\+::\+C\+H\+E\+CK}
+\item 
+ \hyperlink{namespacebarry_1_1_e_x_i_s_t_s}{barry\+::\+E\+X\+I\+S\+TS}
+\item 
+ \hyperlink{namespacebarry_1_1counters}{barry\+::counters}
+\item 
+ \hyperlink{namespacebarry_1_1counters_1_1network}{barry\+::counters\+::network}
+\item 
+ \hyperlink{namespacebarry_1_1counters_1_1phylo}{barry\+::counters\+::phylo}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{barry\+::\+Counts\+\_\+type}
+\item 
+typedef unsigned int \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{barry\+::uint}
+\item 
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}{barry\+::\+Row\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $>$
+\item 
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_adc551002e63e38057d304f78d7756308}{barry\+::\+Col\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{barry\+::\+Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\item 
+typedef \hyperlink{class_b_array}{B\+Array}$<$ bool, \hyperlink{class_network_data}{Network\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{barry\+::counters\+::network\+::\+Network}
+\item 
+typedef \hyperlink{class_counter}{Counter}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a2d14cbc0a77bfba218df85a750bfeb84}{barry\+::counters\+::network\+::\+Net\+Counter}
+\item 
+typedef \hyperlink{class_b_array}{B\+Array}$<$ bool, \hyperlink{class_node_data}{Node\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1phylo_a50a6652c16ff57d76b4099043d6a0bbb}{barry\+::counters\+::phylo\+::\+Phylo\+Array}
+\item 
+typedef \hyperlink{class_counter}{Counter}$<$ \hyperlink{phylo_8hpp_aa942fa3af91344d3a6528d3f72e9bc10}{Phylo\+Array}, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{namespacebarry_1_1counters_1_1phylo_aa4a36956c99f63ed02b7068a495bb56a}{barry\+::counters\+::phylo\+::\+Phylo\+Counter}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_ac6c1b51aacfe3a6c0df270ec606197b6}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+edges)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a2742d688807b24cd1b7edd7c920832d0}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+isolates)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_afc3b4dc36d42cb7bc1beb8a09e0a4ec4}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+isolates)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a655f903c09c0a87f10d0c3de28d3223f}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+mutual)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a47fa9fbd75bc098926d9d7ff88736f11}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+mutual)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a16ecffc977756862c833be5ff629d992}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+istar2)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a2a73c4c01b3b383c9379823e12781bf6}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+ostar2)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a1cf95b245bb1893c42c38dccfb917eb3}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+ttriads)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a4512797d0d58449973463006df3799e4}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+ctriads)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_aed95675f653398b88e53f9aa72081b75}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+density)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a216a5253d08cf37735bac8ee008cc345}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+idegree15)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a46ec6e9713d19bb70754f270367e228e}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+odegree15)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_aefb95d7d5d416a143af04428f84c93c1}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+nodematch)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1network_a80833d4c17d21e071c97f3e09c2ab699}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+nodematch)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_aff5bb18e1e512766165db69a49aa5faf}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+overall\+\_\+gains)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a05016e4206f7119fe2750fe635fd5d9e}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+gains)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_ab8fa2f7821ceb10802cebe0978b16a9e}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+gains)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a221360f9f38e0533053e9b841e47af05}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+overall\+\_\+loss)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a0e06390620b292d2af11f242b42be8d3}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+overall\+\_\+loss)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_adb64adc4b5d8c51d7b487080575b82fe}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+loss)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a6f08ac44d27135b3024cf05cee645cab}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+loss)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a5e16549d061fe504ff179cce13cb3c75}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+subfun)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a6719ed3dce4ad7d265ef30c763a2922f}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+subfun)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_ae63e464a69b55f96310beff8efbdab16}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+cogain)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a78ce78c8bd2aff03f9e466a94b98419b}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+cogain)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a315b1475914060a311844505634c0e55}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+longest)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a36b4c845e294f47ef902d1b32c586036}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+longest)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a61a2efcc99186d3182fd425c08ea8e01}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+neofun)
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_aa0fef3ad5de8d0661e033c87986a7b95}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+neofun)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{namespacebarry_1_1_c_h_e_c_k_a604b0ef801ff768bd8561362cef579b2}{barry\+::\+C\+H\+E\+C\+K\+::\+B\+O\+TH} = -\/1
+\item 
+const int \hyperlink{namespacebarry_1_1_c_h_e_c_k_aa64c84acf4e28b6cb1243ccda1eec41c}{barry\+::\+C\+H\+E\+C\+K\+::\+N\+O\+NE} = 0
+\item 
+const int \hyperlink{namespacebarry_1_1_c_h_e_c_k_add50baad3a196b1979efbbf9e6c86913}{barry\+::\+C\+H\+E\+C\+K\+::\+O\+NE} = 1
+\item 
+const int \hyperlink{namespacebarry_1_1_c_h_e_c_k_a6aa56c3d8a8260d90867278d21ace4d2}{barry\+::\+C\+H\+E\+C\+K\+::\+T\+WO} = 2
+\item 
+const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_aac36d54d92c9ec1d030e8c08d0594a47}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+B\+O\+TH} = -\/1
+\item 
+const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_a67dfa30940f84313c4936321298e5b1b}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+N\+O\+NE} = 0
+\item 
+const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_a9f25c9b3787f9e1cf03e28f5a6dbe725}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+O\+NE} = 1
+\item 
+const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_ac6cc1f304cbfc3576d15294cef82c868}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+T\+WO} = 1
+\item 
+const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_a95d6fdf6b1f3028fff8f2aef01f50f65}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+U\+K\+N\+O\+WN} = -\/1
+\item 
+const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_aa86651704b200b6bb125b289fb5b3cfc}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+A\+S\+\_\+\+Z\+E\+RO} = 0
+\item 
+const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_a5b06fbd1208ff2094213da0791609950}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+A\+S\+\_\+\+O\+NE} = 1
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a025eda0612c21b33ce59299b107845cb}{barry\+::counters\+::network\+::edges} (count\+\_\+edges)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a9aecd717b6c7f12760b4c4ce08395844}{barry\+::counters\+::network\+::isolates} (count\+\_\+isolates, init\+\_\+isolates)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a6df86b773f8b0ff358e8988122562a28}{barry\+::counters\+::network\+::mutual} (count\+\_\+mutual, init\+\_\+mutual)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a61a7a588792249d68f3711e87bd53ad4}{barry\+::counters\+::network\+::istar2} (count\+\_\+istar2)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_abbf28b19669fd98aee3026360210e40c}{barry\+::counters\+::network\+::ostar2} (count\+\_\+ostar2)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_aab259a7692f59f9276f75914f50bddca}{barry\+::counters\+::network\+::ttriads} (count\+\_\+ttriads)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a67940daab1e0101588a05d84d6f9ad22}{barry\+::counters\+::network\+::ctriads} (count\+\_\+ctriads)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_aa15d84663778df2b26161a2812cbd4c6}{barry\+::counters\+::network\+::density} (count\+\_\+density)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_ab0e6bdd119e291f67a6f94dd715391f5}{barry\+::counters\+::network\+::idegree15} (count\+\_\+idegree15)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_ac204cfc5dd18deb85d71dec056edfc16}{barry\+::counters\+::network\+::odegree15} (count\+\_\+odegree15)
+\item 
+\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a2903bd8cf46b7c8b72d49c92dd52c8ae}{barry\+::counters\+::network\+::nodematch} (count\+\_\+nodematch, init\+\_\+nodematch)
+\item 
+\hyperlink{phylo_8hpp_acc4e4b2f7d2a9b864df6a8087c6d920a}{Phylo\+Counter} \hyperlink{namespacebarry_1_1counters_1_1phylo_afb7d5e1d4a7457c6d2c794239407dcdb}{barry\+::counters\+::phylo\+::overall\+\_\+gains} (count\+\_\+overall\+\_\+gains)
+\item 
+\hyperlink{phylo_8hpp_acc4e4b2f7d2a9b864df6a8087c6d920a}{Phylo\+Counter} \hyperlink{namespacebarry_1_1counters_1_1phylo_adb9fd1ed2c6af82bd0deecebe5e41c0d}{barry\+::counters\+::phylo\+::gains} (count\+\_\+gains, init\+\_\+gains)
+\item 
+\hyperlink{phylo_8hpp_acc4e4b2f7d2a9b864df6a8087c6d920a}{Phylo\+Counter} \hyperlink{namespacebarry_1_1counters_1_1phylo_ac9c47e5228507fb455f894f2a0978314}{barry\+::counters\+::phylo\+::overall\+\_\+loss} (count\+\_\+overall\+\_\+loss, init\+\_\+overall\+\_\+loss)
+\item 
+\hyperlink{phylo_8hpp_acc4e4b2f7d2a9b864df6a8087c6d920a}{Phylo\+Counter} \hyperlink{namespacebarry_1_1counters_1_1phylo_a12cebdc97bb77ae2bb660fc48640596f}{barry\+::counters\+::phylo\+::loss} (count\+\_\+loss, init\+\_\+loss)
+\item 
+\hyperlink{phylo_8hpp_acc4e4b2f7d2a9b864df6a8087c6d920a}{Phylo\+Counter} \hyperlink{namespacebarry_1_1counters_1_1phylo_aee78851723795b1d8ba773b3c3c58afc}{barry\+::counters\+::phylo\+::subfun} (count\+\_\+subfun, init\+\_\+subfun)
+\item 
+\hyperlink{phylo_8hpp_acc4e4b2f7d2a9b864df6a8087c6d920a}{Phylo\+Counter} \hyperlink{namespacebarry_1_1counters_1_1phylo_aaab2fdcc1114bc778e319afebc8cd90f}{barry\+::counters\+::phylo\+::cogain} (count\+\_\+cogain, init\+\_\+cogain)
+\item 
+\hyperlink{phylo_8hpp_acc4e4b2f7d2a9b864df6a8087c6d920a}{Phylo\+Counter} \hyperlink{namespacebarry_1_1counters_1_1phylo_a558ab73b56530347c45f8a3f2481f74d}{barry\+::counters\+::phylo\+::longest} (count\+\_\+longest, init\+\_\+longest)
+\end{DoxyCompactItemize}

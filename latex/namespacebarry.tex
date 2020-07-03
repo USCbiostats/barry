@@ -1,0 +1,103 @@
+\hypertarget{namespacebarry}{}\section{barry Namespace Reference}
+\label{namespacebarry}\index{barry@{barry}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacebarry_1_1_c_h_e_c_k}{C\+H\+E\+CK}
+\item 
+ \hyperlink{namespacebarry_1_1counters}{counters}
+\item 
+ \hyperlink{namespacebarry_1_1_e_x_i_s_t_s}{E\+X\+I\+S\+TS}
+\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classbarry_1_1_b_array}{B\+Array}
+\item 
+class \hyperlink{classbarry_1_1_cell}{Cell}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classbarry_1_1_entries}{Entries} in \hyperlink{classbarry_1_1_b_array}{B\+Array}. For now, it only has two members\+: \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_cell_seq}{Cell\+Seq}
+\begin{DoxyCompactList}\small\item\em Sequence of cells indices. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_counter}{Counter}
+\begin{DoxyCompactList}\small\item\em A counter function based on change statistics. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_entries}{Entries}
+\item 
+class \hyperlink{classbarry_1_1_power_set}{Power\+Set}
+\item 
+class \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}
+\begin{DoxyCompactList}\small\item\em Count stats for a single Array. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_stats_d_b}{Stats\+DB}
+\begin{DoxyCompactList}\small\item\em Database of statistics. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_support}{Support}
+\begin{DoxyCompactList}\small\item\em Compute the support of sufficient statistics. \end{DoxyCompactList}\item 
+struct \hyperlink{structbarry_1_1vec_hasher}{vec\+Hasher}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{Counts\+\_\+type}
+\item 
+typedef unsigned int \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}
+\item 
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}{Row\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{classbarry_1_1_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $>$
+\item 
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_adc551002e63e38057d304f78d7756308}{Col\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{classbarry_1_1_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{namespacebarry_adc551002e63e38057d304f78d7756308}\label{namespacebarry_adc551002e63e38057d304f78d7756308}} 
+\index{barry@{barry}!Col\+\_\+type@{Col\+\_\+type}}
+\index{Col\+\_\+type@{Col\+\_\+type}!barry@{barry}}
+\subsubsection{\texorpdfstring{Col\+\_\+type}{Col\_type}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type $>$ \\
+using \hyperlink{namespacebarry_adc551002e63e38057d304f78d7756308}{barry\+::\+Col\+\_\+type} = typedef std\+::unordered\+\_\+map$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{classbarry_1_1_cell}{Cell}$<$Cell\+\_\+\+Type$>$$\ast$ $>$}
+
+
+
+Definition at line 41 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}\label{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}} 
+\index{barry@{barry}!Counter\+\_\+fun\+\_\+type@{Counter\+\_\+fun\+\_\+type}}
+\index{Counter\+\_\+fun\+\_\+type@{Counter\+\_\+fun\+\_\+type}!barry@{barry}}
+\subsubsection{\texorpdfstring{Counter\+\_\+fun\+\_\+type}{Counter\_fun\_type}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{barry\+::\+Counter\+\_\+fun\+\_\+type} = typedef std\+::function$<$double(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$}
+
+
+
+Definition at line 76 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}\label{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}} 
+\index{barry@{barry}!Counts\+\_\+type@{Counts\+\_\+type}}
+\index{Counts\+\_\+type@{Counts\+\_\+type}!barry@{barry}}
+\subsubsection{\texorpdfstring{Counts\+\_\+type}{Counts\_type}}
+{\footnotesize\ttfamily typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$double$>$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{barry\+::\+Counts\+\_\+type}}
+
+
+
+Definition at line 32 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}\label{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}} 
+\index{barry@{barry}!Row\+\_\+type@{Row\+\_\+type}}
+\index{Row\+\_\+type@{Row\+\_\+type}!barry@{barry}}
+\subsubsection{\texorpdfstring{Row\+\_\+type}{Row\_type}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type $>$ \\
+using \hyperlink{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}{barry\+::\+Row\+\_\+type} = typedef std\+::unordered\+\_\+map$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{classbarry_1_1_cell}{Cell}$<$Cell\+\_\+\+Type$>$ $>$}
+
+
+
+Definition at line 38 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}\label{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}} 
+\index{barry@{barry}!uint@{uint}}
+\index{uint@{uint}!barry@{barry}}
+\subsubsection{\texorpdfstring{uint}{uint}}
+{\footnotesize\ttfamily typedef unsigned int \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{barry\+::uint}}
+
+
+
+Definition at line 34 of file barry.\+hpp.
+

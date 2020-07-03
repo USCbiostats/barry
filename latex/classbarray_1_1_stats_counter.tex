@@ -1,0 +1,184 @@
+\hypertarget{classbarray_1_1_stats_counter}{}\section{barray\+:\+:Stats\+Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Class Template Reference}
+\label{classbarray_1_1_stats_counter}\index{barray\+::\+Stats\+Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$@{barray\+::\+Stats\+Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
+
+
+Count stats for a single Array.  
+
+
+
+
+{\ttfamily \#include $<$barray.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbarray_1_1_stats_counter_a3cbb563fbe257755837649db27a35136}{Stats\+Counter} (const Array\+\_\+\+Type $\ast$data)
+\begin{DoxyCompactList}\small\item\em Creator of a {\ttfamily \hyperlink{classbarray_1_1_stats_counter}{Stats\+Counter}} \end{DoxyCompactList}\item 
+void \hyperlink{classbarray_1_1_stats_counter_ad175dcd2bd30d017881783de546ac333}{add\+\_\+counter} (\hyperlink{classbarray_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ f\+\_\+)
+\item 
+void \hyperlink{classbarray_1_1_stats_counter_a19bd5936619e190c0d8918b4f343922e}{count\+\_\+init} (\hyperlink{namespacebarray_af9756a31953db233f80a9cfe1ef31c32}{uint} i, \hyperlink{namespacebarray_af9756a31953db233f80a9cfe1ef31c32}{uint} j)
+\item 
+void \hyperlink{classbarray_1_1_stats_counter_ab81166f7cb67eeaecc469016d237019a}{count\+\_\+current} (\hyperlink{namespacebarray_af9756a31953db233f80a9cfe1ef31c32}{uint} i, \hyperlink{namespacebarray_af9756a31953db233f80a9cfe1ef31c32}{uint} j)
+\item 
+std\+::vector$<$ double $>$ \hyperlink{classbarray_1_1_stats_counter_a83bd92031a1499109c98f238221cbd67}{count\+\_\+all} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const Array\+\_\+\+Type $\ast$ \hyperlink{classbarray_1_1_stats_counter_ab6b997c20a8da062f364796796f463bf}{Array}
+\item 
+Array\+\_\+\+Type \hyperlink{classbarray_1_1_stats_counter_a5882e329a534159cd0f536cab41766a2}{Empty\+Array}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{classbarray_1_1_stats_counter_ac9472b6f14107c97555d912bd92547f1}{current\+\_\+stats}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{classbarray_1_1_stats_counter_a36e139e694c81d9e2b7c07d816959b9d}{change\+\_\+stats}
+\item 
+std\+::vector$<$ \hyperlink{classbarray_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $>$ \hyperlink{classbarray_1_1_stats_counter_ad2da838a6b8235395c7c5b9c58d1c780}{counters}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$\newline
+class barray\+::\+Stats\+Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+
+Count stats for a single Array. 
+
+Users can a list of functions that can be used with this. The baseline set of arguments is a pointer to a binary array and a dataset to add the counts to. 
+
+Definition at line 18 of file barray.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_a3cbb563fbe257755837649db27a35136}\label{classbarray_1_1_stats_counter_a3cbb563fbe257755837649db27a35136}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!Stats\+Counter@{Stats\+Counter}}
+\index{Stats\+Counter@{Stats\+Counter}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{Stats\+Counter()}{StatsCounter()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarray_1_1_stats_counter}{barray\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarray_1_1_stats_counter}{Stats\+Counter} (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creator of a {\ttfamily \hyperlink{classbarray_1_1_stats_counter}{Stats\+Counter}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A const pointer to a {\ttfamily \hyperlink{classbarray_1_1_b_array}{B\+Array}}. \\
+\hline
+{\em Stats\+\_\+} & A pointer to a dataset of stats {\ttfamily \hyperlink{classbarray_1_1_stats_d_b}{Stats\+DB}}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file barray.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_ad175dcd2bd30d017881783de546ac333}\label{classbarray_1_1_stats_counter_ad175dcd2bd30d017881783de546ac333}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!add\+\_\+counter@{add\+\_\+counter}}
+\index{add\+\_\+counter@{add\+\_\+counter}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarray_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{classbarray_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{f\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 58 of file barray.\+hpp.
+
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_a83bd92031a1499109c98f238221cbd67}\label{classbarray_1_1_stats_counter_a83bd92031a1499109c98f238221cbd67}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!count\+\_\+all@{count\+\_\+all}}
+\index{count\+\_\+all@{count\+\_\+all}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{count\+\_\+all()}{count\_all()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+std\+::vector$<$ double $>$ \hyperlink{classbarray_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::count\+\_\+all (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 101 of file barray.\+hpp.
+
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_ab81166f7cb67eeaecc469016d237019a}\label{classbarray_1_1_stats_counter_ab81166f7cb67eeaecc469016d237019a}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!count\+\_\+current@{count\+\_\+current}}
+\index{count\+\_\+current@{count\+\_\+current}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{count\+\_\+current()}{count\_current()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarray_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::count\+\_\+current (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarray_af9756a31953db233f80a9cfe1ef31c32}{uint}}]{i,  }\item[{\hyperlink{namespacebarray_af9756a31953db233f80a9cfe1ef31c32}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 84 of file barray.\+hpp.
+
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_a19bd5936619e190c0d8918b4f343922e}\label{classbarray_1_1_stats_counter_a19bd5936619e190c0d8918b4f343922e}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!count\+\_\+init@{count\+\_\+init}}
+\index{count\+\_\+init@{count\+\_\+init}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{count\+\_\+init()}{count\_init()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarray_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::count\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarray_af9756a31953db233f80a9cfe1ef31c32}{uint}}]{i,  }\item[{\hyperlink{namespacebarray_af9756a31953db233f80a9cfe1ef31c32}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 68 of file barray.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_ab6b997c20a8da062f364796796f463bf}\label{classbarray_1_1_stats_counter_ab6b997c20a8da062f364796796f463bf}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!Array@{Array}}
+\index{Array@{Array}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{Array}{Array}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+const Array\+\_\+\+Type$\ast$ \hyperlink{classbarray_1_1_stats_counter}{barray\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::Array}
+
+
+
+Definition at line 22 of file barray.\+hpp.
+
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_a36e139e694c81d9e2b7c07d816959b9d}\label{classbarray_1_1_stats_counter_a36e139e694c81d9e2b7c07d816959b9d}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!change\+\_\+stats@{change\+\_\+stats}}
+\index{change\+\_\+stats@{change\+\_\+stats}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{change\+\_\+stats}{change\_stats}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ double $>$ \hyperlink{classbarray_1_1_stats_counter}{barray\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::change\+\_\+stats}
+
+
+
+Definition at line 25 of file barray.\+hpp.
+
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_ad2da838a6b8235395c7c5b9c58d1c780}\label{classbarray_1_1_stats_counter_ad2da838a6b8235395c7c5b9c58d1c780}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!counters@{counters}}
+\index{counters@{counters}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{counters}{counters}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ \hyperlink{classbarray_1_1_counter}{Counter}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ $>$ \hyperlink{classbarray_1_1_stats_counter}{barray\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counters}
+
+
+
+Definition at line 28 of file barray.\+hpp.
+
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_ac9472b6f14107c97555d912bd92547f1}\label{classbarray_1_1_stats_counter_ac9472b6f14107c97555d912bd92547f1}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!current\+\_\+stats@{current\+\_\+stats}}
+\index{current\+\_\+stats@{current\+\_\+stats}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{current\+\_\+stats}{current\_stats}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ double $>$ \hyperlink{classbarray_1_1_stats_counter}{barray\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::current\+\_\+stats}
+
+
+
+Definition at line 24 of file barray.\+hpp.
+
+\mbox{\Hypertarget{classbarray_1_1_stats_counter_a5882e329a534159cd0f536cab41766a2}\label{classbarray_1_1_stats_counter_a5882e329a534159cd0f536cab41766a2}} 
+\index{barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}!Empty\+Array@{Empty\+Array}}
+\index{Empty\+Array@{Empty\+Array}!barray\+::\+Stats\+Counter@{barray\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{Empty\+Array}{EmptyArray}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+Array\+\_\+\+Type \hyperlink{classbarray_1_1_stats_counter}{barray\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::Empty\+Array}
+
+
+
+Definition at line 23 of file barray.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{barray_8hpp}{barray.\+hpp}\end{DoxyCompactItemize}
