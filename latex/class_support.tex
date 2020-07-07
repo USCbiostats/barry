@@ -27,6 +27,10 @@ Collaboration diagram for Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+:\
 \item 
 \hyperlink{class_support_a03228371869980fa356b7b86871d94e8}{$\sim$\+Support} ()
 \item 
+void \hyperlink{class_support_a5878ac60282fc1380c92f3ba502f249e}{reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the support calculator. \end{DoxyCompactList}\item 
+void \hyperlink{class_support_afbe207cc2762bc698c9ccb3212e9de78}{reset} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
+\item 
 void \hyperlink{class_support_a9fc89bd8b15dcad6a4140a3c74073d10}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&f\+\_\+)
 \item 
 void \hyperlink{class_support_ab5261952be0746f188ee024e3e8c26c1}{calc} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} pos=0u, const bool \&diag=false, std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$array\+\_\+bank=nullptr, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$stats\+\_\+bank=nullptr)
@@ -112,7 +116,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $
 
 
 
-Definition at line 151 of file support.\+hpp.
+Definition at line 183 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_ab5261952be0746f188ee024e3e8c26c1}\label{class_support_ab5261952be0746f188ee024e3e8c26c1}} 
 \index{Support@{Support}!calc@{calc}}
@@ -138,7 +142,40 @@ Not to be used by the user. Sets the starting point in the array (column-\/major
 \end{DoxyParams}
 
 
-Definition at line 70 of file support.\+hpp.
+Definition at line 102 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_a5878ac60282fc1380c92f3ba502f249e}\label{class_support_a5878ac60282fc1380c92f3ba502f249e}} 
+\index{Support@{Support}!reset@{reset}}
+\index{reset@{reset}!Support@{Support}}
+\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resets the support calculator. 
+
+If needed, the counters of a support object can be reused.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Array\+\_\+} & New array over which the support will be computed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 79 of file support.\+hpp.
+
+\mbox{\Hypertarget{class_support_afbe207cc2762bc698c9ccb3212e9de78}\label{class_support_afbe207cc2762bc698c9ccb3212e9de78}} 
+\index{Support@{Support}!reset@{reset}}
+\index{reset@{reset}!Support@{Support}}
+\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reset (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 87 of file support.\+hpp.
 
 
 

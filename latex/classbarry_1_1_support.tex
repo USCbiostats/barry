@@ -11,8 +11,7 @@ Compute the support of sufficient statistics.
 
 
 
-Collaboration diagram for barry\+:\+:Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+:
-\nopagebreak
+Collaboration diagram for barry\+:\+:Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,6 +26,10 @@ Collaboration diagram for barry\+:\+:Support$<$ Array\+\_\+\+Type, Data\+\_\+\+T
 \hyperlink{classbarry_1_1_support_aa451bd21c09935b686869fef96c5b874}{Support} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} N\+\_\+, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} M\+\_\+)
 \item 
 \hyperlink{classbarry_1_1_support_a1ffd5ee63fa68338cbbf443e1e54e5b4}{$\sim$\+Support} ()
+\item 
+void \hyperlink{classbarry_1_1_support_a5878ac60282fc1380c92f3ba502f249e}{reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the support calculator. \end{DoxyCompactList}\item 
+void \hyperlink{classbarry_1_1_support_afbe207cc2762bc698c9ccb3212e9de78}{reset} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
 \item 
 void \hyperlink{classbarry_1_1_support_a9fc89bd8b15dcad6a4140a3c74073d10}{add\+\_\+counter} (\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&f\+\_\+)
 \item 
@@ -113,7 +116,7 @@ void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 151 of file barry.\+hpp.
+Definition at line 183 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_support_ab5261952be0746f188ee024e3e8c26c1}\label{classbarry_1_1_support_ab5261952be0746f188ee024e3e8c26c1}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!calc@{calc}}
@@ -139,7 +142,40 @@ Not to be used by the user. Sets the starting point in the array (column-\/major
 \end{DoxyParams}
 
 
-Definition at line 70 of file barry.\+hpp.
+Definition at line 102 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_support_a5878ac60282fc1380c92f3ba502f249e}\label{classbarry_1_1_support_a5878ac60282fc1380c92f3ba502f249e}} 
+\index{barry\+::\+Support@{barry\+::\+Support}!reset@{reset}}
+\index{reset@{reset}!barry\+::\+Support@{barry\+::\+Support}}
+\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resets the support calculator. 
+
+If needed, the counters of a support object can be reused.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Array\+\_\+} & New array over which the support will be computed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 79 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_support_afbe207cc2762bc698c9ccb3212e9de78}\label{classbarry_1_1_support_afbe207cc2762bc698c9ccb3212e9de78}} 
+\index{barry\+::\+Support@{barry\+::\+Support}!reset@{reset}}
+\index{reset@{reset}!barry\+::\+Support@{barry\+::\+Support}}
+\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reset (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 87 of file barry.\+hpp.
 
 
 

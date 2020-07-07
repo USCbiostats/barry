@@ -39,7 +39,16 @@ public:
   };
   Support(uint N_, uint M_) : EmptyArray(N_, M_) ,N(N_), M(M_){};
   ~Support() {};
-
+  
+  /**@brief Resets the support calculator
+   * 
+   * If needed, the counters of a support object can be reused.
+   * 
+   * @param Array_ New array over which the support will be computed.
+   */
+  void reset();
+  void reset(const Array_Type * Array_);
+  
   void add_counter(Counter<Array_Type, Data_Type> & f_);  
   
   /**@brief Computes the entire support
@@ -65,6 +74,29 @@ public:
   
   
 };
+
+template <typename Array_Type, typename Data_Type>
+inline void Support<Array_Type, Data_Type>::reset() {
+  
+  support.clear();
+  initialized = false;
+  
+}
+
+template <typename Array_Type, typename Data_Type>
+inline void Support<Array_Type, Data_Type>::reset(const Array_Type * Array_) {
+  
+  support.clear();
+  initialized = false;
+  Array = Array_;
+  N = Array_->N;
+  M = Array_->M;
+  EmptyArray.resize(N, M);
+  if (Array_->data != nullptr) 
+    EmptyArray.data = Array_->data;
+  
+  
+}
 
 template <typename Array_Type, typename Data_Type>
 inline void Support<Array_Type, Data_Type>::calc(

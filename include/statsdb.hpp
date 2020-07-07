@@ -32,7 +32,7 @@ struct vecHasher {
  */
 class StatsDB {
 public:
-  uint ncols;
+  // uint ncols;
   std::unordered_map< std::vector< double >, uint, vecHasher< double > > stats;
   StatsDB() {};
   ~StatsDB() {};
@@ -60,6 +60,15 @@ public:
     return ans;
   };
   
+  void clear();
+  
   
 };
+
+inline void StatsDB::clear() {
+  stats.clear();
+  return;
+}
+
+
 #endif

@@ -2,7 +2,6 @@ var searchData=
 [
   ['n',['N',['../class_b_array.html#a4b34ec8636c989efe80bbe3f1cea217e',1,'BArray::N()'],['../classbarry_1_1_support.html#a1e3158ceae716505cb0c5fb14374be9b',1,'barry::Support::N()'],['../classbarry_1_1_cell_seq.html#aa870f5b3789fc9abe1399351f443ccb0',1,'barry::CellSeq::N()'],['../classbarry_1_1_power_set.html#aaa3bac8806b743aa84b18eb904b2f034',1,'barry::PowerSet::N()'],['../class_cell_seq.html#a407684cfa214fe0b2d4d1ed25936d037',1,'CellSeq::N()'],['../class_power_set.html#a47a7918d73f8f9709751aae3b1344889',1,'PowerSet::N()'],['../class_support.html#ab15c7125d6b99ae15ec4dbb34c9ce9b6',1,'Support::N()']]],
   ['ncells',['NCells',['../class_b_array.html#a31fd64c6b54408ca98e07abc9c4241c5',1,'BArray']]],
-  ['ncols',['ncols',['../classbarry_1_1_stats_d_b.html#a72aa06a48053cf79c4be7f821f83bd9b',1,'barry::StatsDB::ncols()'],['../class_stats_d_b.html#a4910142d21475182bdb326436bb59564',1,'StatsDB::ncols()']]],
   ['netcounter',['NetCounter',['../namespacebarry_1_1counters_1_1network.html#a2d14cbc0a77bfba218df85a750bfeb84',1,'barry::counters::network::NetCounter()'],['../network_8hpp.html#acc44acfd418369d48aa13ee6a8ae2573',1,'NetCounter():&#160;network.hpp']]],
   ['network',['Network',['../namespacebarry_1_1counters_1_1network.html#a4cb88d4572ded3b447ea269c9cd0b2c0',1,'barry::counters::network::Network()'],['../network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370',1,'Network():&#160;network.hpp']]],
   ['network_2ehpp',['network.hpp',['../network_8hpp.html',1,'']]],
