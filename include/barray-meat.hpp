@@ -98,7 +98,7 @@ inline BArray< Cell_Type,Data_Type >::BArray (
   for (uint i = 0u; i < source.size(); ++i) {
     
     // Checking range
-    if (source[i] >= N_ | target[i] >= M_)
+    if ((source[i] >= N_) | (target[i] >= M_))
       throw std::range_error("Either source or target point to an element outside of the range by (N,M).");
     
     // Checking if it exists

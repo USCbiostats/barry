@@ -69,6 +69,6 @@ template <> inline void Cell<bool>::add(bool x) {
   return;
 }
 
-template<> inline Cell< double >::Cell() : value(1.0), visited(false) {};
-template<> inline Cell< bool >::Cell() : value(true), visited(false) {};
+template<> inline Cell< double >::Cell() : value(1.0), visited(false) {}
+template<> inline Cell< bool >::Cell() : value(true), visited(false) {}
 #endif

@@ -154,7 +154,7 @@ inline bool CellSeq::next(uint & i, uint & j) const {
   // Have we reached the end already?
   
   // Iterating until this is out of the range
-  auto iter = data.begin();
+  // auto iter = data.begin();
   uint safeward = N*M, step = 0u;
   while (true) {
     

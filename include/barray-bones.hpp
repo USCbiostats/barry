@@ -33,8 +33,8 @@ public:
   bool visited = false;
   
   // Empty datum
-  BArray() : N(0u), M(0u), el_ij(0u), el_ji(0u), NCells(0u) {};
-  BArray (uint N_, uint M_) : N(N_), M(M_), el_ij(N_), el_ji(M_), NCells(0u) {};
+  BArray() : N(0u), M(0u), NCells(0u), el_ij(0u), el_ji(0u) {};
+  BArray (uint N_, uint M_) : N(N_), M(M_), NCells(0u), el_ij(N_), el_ji(M_) {};
   // BArray(BArray & Array_);
   
   //! Edgelist with data
