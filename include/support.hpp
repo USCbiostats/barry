@@ -187,8 +187,5 @@ inline void Support<Array_Type,Data_Type>::add_counter(
   return;
 }
 
-/***
- * Some example functions
- */
 
 #endif

@@ -1,4 +1,5 @@
 #include "../counters-bones.hpp"
+#include "../support.hpp"
 
 #ifndef BARRAY_NETWORK_H
 #define BARRAY_NETWORK_H 1
@@ -17,11 +18,22 @@ public:
   
   NetworkData() : vertex_attr(0u) {};
   
+  /**@brief Constructor using a single attribute
+   * @param vertex_attr_ Double vector of length equal to the number of vertices
+   * in the data.
+   * @param directed_ When `true` the graph as treated as directed.
+   */
   NetworkData(
     std::vector< double >  vertex_attr_,
     bool directed_ = true
   ) : directed(directed_), vertex_attr(1u, vertex_attr_) {};
   
+  /**@brief Constructor using multiple attributes
+   * @param vertex_attr_ Vector of double vectors. The size equals to the number
+   * of attributes to be created. Each individual vector should be of length
+   * equal to the number of vertices.
+   * @param directed_ When `true` the graph as treated as directed.
+   */
   NetworkData(
     std::vector< std::vector< double > > vertex_attr_,
     bool directed_ = true
@@ -33,6 +45,7 @@ public:
 
 typedef BArray<bool, NetworkData> Network;
 typedef Counter<Network, std::vector<uint> > NetCounter;
+typedef Support<Network, std::vector<uint> > NetSupport;
 
 #define NETWORK_COUNTER(a) inline double (a) \
 (const Network * Array, uint i, uint j, std::vector<uint> * data)

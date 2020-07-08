@@ -16,10 +16,11 @@
  */ 
 template <typename Array_Type = BArray<>, typename Data_Type = bool>
 class StatsCounter {
+  
 public:
   
   // Should receive an array
-  const Array_Type * Array;
+  Array_Type * Array;
   Array_Type EmptyArray;
   std::vector< double > current_stats;
   std::vector< double > change_stats;
@@ -33,19 +34,30 @@ public:
    * @param data A const pointer to a `BArray`.
    * @param Stats_ A pointer to a dataset of stats `StatsDB`.
    */
-  StatsCounter(const Array_Type * data) :
-    counters(0u), Array(data), EmptyArray(data->N, data->M) {
+  StatsCounter(Array_Type * Array_) :
+    Array(Array_), EmptyArray(Array_->N, Array_->M),counters(0u) {
     
-    if (data->data != nullptr)
-      EmptyArray.data = data->data;
+    if (Array_->data != nullptr)
+      EmptyArray.data = Array_->data;
     
     return;
   }
   
+  /**@brief Can be created without setting the array.
+   * 
+   */
+  StatsCounter() : Array(nullptr), EmptyArray(0u,0u), counters(0u) {};
+  
+  /**@brief Changes the reference array for the counting.
+   * 
+   * @param Array_ A pointer to an array of class `Array_Type`.
+   */
+  void reset_array(Array_Type * Array_);
+  
   void add_counter(Counter<Array_Type,Data_Type> f_);
   
   /***
-   * ! This function recurses through the entries of Array and at each step of
+   * ! This function recurses through the entries of `Array` and at each step of
    * ! adding a new cell it uses the functions to list the statistics.
    */
   void count_init(uint i, uint j);
@@ -53,6 +65,20 @@ public:
   std::vector< double > count_all();
   
 };
+
+template <typename Array_Type, typename Data_Type>
+inline void StatsCounter<Array_Type,Data_Type>::reset_array(
+  Array_Type * Array_
+) {
+  
+  Array = Array_;
+  EmptyArray.resize(Array_->N, Array_->M);
+  
+  if (Array_->data != nullptr)
+    EmptyArray.data = Array_->data;
+  
+  return;
+}
 
 template <typename Array_Type, typename Data_Type>
 inline void StatsCounter<Array_Type,Data_Type>::add_counter(
@@ -107,9 +133,7 @@ inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
   EmptyArray.clear();
   
   // Start iterating through the data
-  uint N = Array->N;
-  uint M = Array->M;
-  for (uint row = 0; row < N; ++row) {
+  for (uint row = 0; row < Array->N; ++row) {
     
     // Any element?
     if (A_ROW(row).size() == 0u)

@@ -76,15 +76,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="counters-bones_8hpp_source.html">../counters-bones.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="support_8hpp_source.html">../support.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for network.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="network_8hpp__incl.png" border="0" usemap="#include_2counters_2network_8hpp" alt=""/></div>
 <map name="include_2counters_2network_8hpp" id="include_2counters_2network_8hpp">
-<area shape="rect" id="node2" href="counters-bones_8hpp.html" title="../counters&#45;bones.hpp" alt="" coords="27,80,175,107"/>
-<area shape="rect" id="node3" href="typedefs_8hpp.html" title="typedefs.hpp" alt="" coords="54,304,151,331"/>
-<area shape="rect" id="node4" href="barray-bones_8hpp.html" title="barray&#45;bones.hpp" alt="" coords="89,155,212,181"/>
-<area shape="rect" id="node5" href="cell-bones_8hpp.html" title="cell&#45;bones.hpp" alt="" coords="140,229,247,256"/>
+<area shape="rect" id="node2" href="counters-bones_8hpp.html" title="../counters&#45;bones.hpp" alt="" coords="5,155,153,181"/>
+<area shape="rect" id="node6" href="support_8hpp.html" title="../support.hpp" alt="" coords="140,80,243,107"/>
+<area shape="rect" id="node3" href="typedefs_8hpp.html" title="typedefs.hpp" alt="" coords="103,379,200,405"/>
+<area shape="rect" id="node4" href="barray-bones_8hpp.html" title="barray&#45;bones.hpp" alt="" coords="65,229,187,256"/>
+<area shape="rect" id="node5" href="cell-bones_8hpp.html" title="cell&#45;bones.hpp" alt="" coords="98,304,205,331"/>
+<area shape="rect" id="node7" href="statsdb_8hpp.html" title="statsdb.hpp" alt="" coords="279,229,370,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -121,6 +124,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a7bf32f21811fd9bf0ba81bb929335370"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc44acfd418369d48aa13ee6a8ae2573"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_counter.html">Counter</a>&lt; <a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#acc44acfd418369d48aa13ee6a8ae2573">NetCounter</a></td></tr>
 <tr class="separator:acc44acfd418369d48aa13ee6a8ae2573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e98cc41853d3f9801fba14f8198daeb"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_support.html">Support</a>&lt; <a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a3e98cc41853d3f9801fba14f8198daeb">NetSupport</a></td></tr>
+<tr class="separator:a3e98cc41853d3f9801fba14f8198daeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -205,7 +210,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00004">4</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00005">5</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -228,7 +233,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00033">typedefs.hpp:33</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00022">counters-bones.hpp:22</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00037">37</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00050">50</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -266,7 +271,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00035">35</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00047">47</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3e98cc41853d3f9801fba14f8198daeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e98cc41853d3f9801fba14f8198daeb">&#9670;&nbsp;</a></span>NetSupport</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="class_support.html">Support</a>&lt;<a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, std::vector&lt;<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&gt; &gt; <a class="el" href="network_8hpp.html#a3e98cc41853d3f9801fba14f8198daeb">NetSupport</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00048">48</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -282,7 +303,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00034">34</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00046">46</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -303,7 +324,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00042">42</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00055">55</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -323,7 +344,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00049">49</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00062">62</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -343,7 +364,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00069">69</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00082">82</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -363,7 +384,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00076">76</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00089">89</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -383,7 +404,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00087">87</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00100">100</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -403,7 +424,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00109">109</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00122">122</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -423,7 +444,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00125">125</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00138">138</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -443,7 +464,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00141">141</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00154">154</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -463,7 +484,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00203">203</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00216">216</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -483,7 +504,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00230">230</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00243">243</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -503,7 +524,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00237">237</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00250">250</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -523,7 +544,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00251">251</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00264">264</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -543,7 +564,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00265">265</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00278">278</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -563,7 +584,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00275">275</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00288">288</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
