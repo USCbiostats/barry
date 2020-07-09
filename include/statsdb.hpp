@@ -31,9 +31,11 @@ struct vecHasher {
  * 
  */
 class StatsDB {
+private:
+  std::unordered_map< std::vector< double >, uint, vecHasher< double > > stats;
+  
 public:
   // uint ncols;
-  std::unordered_map< std::vector< double >, uint, vecHasher< double > > stats;
   StatsDB() {};
   ~StatsDB() {};
   

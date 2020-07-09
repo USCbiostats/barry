@@ -39,15 +39,15 @@ List counter_phylo(
   barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter6 = phylocounters::longest;
   counter6.data = new Vec<uint>(0u);
   
-  
+   
   barry::Support<phylocounters::PhyloArray, Vec<uint>> support(&tree);
-  support.add_counter(counter0);
-  support.add_counter(counter1);
-  support.add_counter(counter2);
-  support.add_counter(counter3);
-  support.add_counter(counter4);
-  support.add_counter(counter5);
-  support.add_counter(counter6);
+  support.add_counter(&counter0);
+  support.add_counter(&counter1);
+  support.add_counter(&counter2);
+  support.add_counter(&counter3);
+  support.add_counter(&counter4);
+  support.add_counter(&counter5);
+  support.add_counter(&counter6);
   
   // Computing and retrieving
   std::vector< std::vector< double > > observed(0u);
@@ -69,7 +69,7 @@ List counter_phylo(
   counter6.data = nullptr;
   
   // Generating the entries
-  barry::Counts_type ans = support.support.get_entries();
+  barry::Counts_type ans = support.get_counts();
   
   List res(ans.size());
   for (unsigned int i = 0u; i < res.size(); ++i) {

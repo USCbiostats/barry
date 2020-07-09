@@ -22,8 +22,9 @@ public:
   Data_Type * data = nullptr;
   Array_Type EmptyArray;
   StatsDB support;
-  std::vector< Counter<Array_Type, Data_Type> > counters;
+  std::vector< Counter<Array_Type, Data_Type> * > counters;
   std::vector< double > current_stats;
+  // std::vector< double > target_stats;
   
   uint N, M;
   bool initialized = false;
@@ -48,8 +49,7 @@ public:
    */
   void reset();
   void reset(const Array_Type * Array_);
-  
-  void add_counter(Counter<Array_Type, Data_Type> & f_);  
+  void add_counter(Counter<Array_Type, Data_Type> * f_);
   
   /**@brief Computes the entire support
    * 
@@ -72,6 +72,7 @@ public:
       std::vector< std::vector< double > > * stats_bank = nullptr
     );
   
+  Counts_type get_counts() const;
   
 };
 
@@ -126,7 +127,7 @@ inline void Support<Array_Type, Data_Type>::calc(
     current_stats.resize(counters.size());
     
     for (uint n = 0u; n < counters.size(); ++n) 
-      current_stats[n] = counters[n].init(&EmptyArray, i, j);
+      current_stats[n] = counters[n]->init(&EmptyArray, i, j);
     
     // Adding to the overall count
     support.add(current_stats);
@@ -151,7 +152,7 @@ inline void Support<Array_Type, Data_Type>::calc(
   // Counting
   std::vector< double > change_stats(counters.size());
   for (uint n = 0u; n < counters.size(); ++n) {
-    change_stats[n] = counters[n].count(&EmptyArray, i, j);
+    change_stats[n] = counters[n]->count(&EmptyArray, i, j);
     current_stats[n] += change_stats[n];
   }
   
@@ -181,10 +182,17 @@ inline void Support<Array_Type, Data_Type>::calc(
 
 template <typename Array_Type, typename Data_Type>
 inline void Support<Array_Type,Data_Type>::add_counter(
-    Counter<Array_Type, Data_Type> & f_
+    Counter<Array_Type, Data_Type> * f_
   ) {
   counters.push_back(f_);
   return;
+}
+
+template <typename Array_Type, typename Data_Type>
+inline Counts_type Support<Array_Type,Data_Type>::get_counts() const {
+  
+  return support.get_entries();
+  
 }
 
 

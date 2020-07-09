@@ -112,7 +112,7 @@ List support (
     dat.calc(0u, false); 
     
     // Generating the entries
-    barry::Counts_type ans = dat.support.get_entries();
+    barry::Counts_type ans = dat.get_counts();
     
     List res_tmp(ans.size());
     for (unsigned int j = 0u; j < res_tmp.size(); ++j) {

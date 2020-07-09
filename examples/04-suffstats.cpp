@@ -61,20 +61,20 @@ NumericVector counter(
   barry::StatsCounter<netcounters::Network, vuint> dat(&Array);
 
   // Adding functions 
-  dat.add_counter(netcounters::edges);
-  dat.add_counter(netcounters::mutual);
-  dat.add_counter(netcounters::isolates);
-  dat.add_counter(netcounters::istar2);
-  dat.add_counter(netcounters::ostar2);
-  dat.add_counter(netcounters::ttriads);
-  dat.add_counter(netcounters::ctriads);
-  dat.add_counter(netcounters::density);
-  dat.add_counter(netcounters::idegree15);
-  dat.add_counter(netcounters::odegree15);
+  dat.add_counter(&netcounters::edges);
+  dat.add_counter(&netcounters::mutual);
+  dat.add_counter(&netcounters::isolates);
+  dat.add_counter(&netcounters::istar2);
+  dat.add_counter(&netcounters::ostar2);
+  dat.add_counter(&netcounters::ttriads);
+  dat.add_counter(&netcounters::ctriads);
+  dat.add_counter(&netcounters::density);
+  dat.add_counter(&netcounters::idegree15);
+  dat.add_counter(&netcounters::odegree15);
   
   netcounters::NetCounter nodematchfem = netcounters::nodematch;
   nodematchfem.data = new std::vector< unsigned int >({0u});
-  dat.add_counter(nodematchfem);
+  dat.add_counter(&nodematchfem);
   
   // Fingers crossed
   std::vector< double > ans = dat.count_all();
@@ -100,27 +100,27 @@ List support (
   
   barry::Support<netcounters::Network, vuint> dat(&net);
   
-  dat.add_counter(netcounters::edges);
-  dat.add_counter(netcounters::mutual);
-  dat.add_counter(netcounters::isolates);
-  dat.add_counter(netcounters::istar2);
-  dat.add_counter(netcounters::ostar2);
-  dat.add_counter(netcounters::ttriads);
-  dat.add_counter(netcounters::ctriads);
-  dat.add_counter(netcounters::density);
-  dat.add_counter(netcounters::idegree15);
-  dat.add_counter(netcounters::odegree15);
+  dat.add_counter(&netcounters::edges);
+  dat.add_counter(&netcounters::mutual);
+  dat.add_counter(&netcounters::isolates);
+  dat.add_counter(&netcounters::istar2);
+  dat.add_counter(&netcounters::ostar2);
+  dat.add_counter(&netcounters::ttriads);
+  dat.add_counter(&netcounters::ctriads);
+  dat.add_counter(&netcounters::density);
+  dat.add_counter(&netcounters::idegree15);
+  dat.add_counter(&netcounters::odegree15);
   
   // Adding functions
   netcounters::NetCounter nodematchfem = netcounters::nodematch;
   nodematchfem.data = new vuint({0u});
-  dat.add_counter(nodematchfem);  
+  dat.add_counter(&nodematchfem);  
   
   // Generating the data
   dat.calc(0u, false); 
   
   // Generating the entries
-  barry::Counts_type ans = dat.support.get_entries();
+  barry::Counts_type ans = dat.get_counts();
   
   
   List res(ans.size());
@@ -208,7 +208,7 @@ counter(N, M, source - 1L, target - 1L, gender)
 
 # stop()
 set.seed(123)
-N <- 5
+N <- 4
 M <- N
 gender <- sample.int(2, N, TRUE)
 
@@ -235,7 +235,8 @@ microbenchmark::microbenchmark(
   barray = support(N, M, gender),
   ergm   = ergm::ergm.allstats(
     mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad  + ctriad +
-      density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE),
+      density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE,
+    maxNumChangeStatVectors = 2^20),
   times = 100,
   unit = "relative"
 )

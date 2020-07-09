@@ -36,27 +36,27 @@ TEST_CASE("Computing support for networks", "[support]") {
   netcounters::NetSupport support(&net);
   
   // Preparing model  
-  support.add_counter(netcounters::edges);
-  support.add_counter(netcounters::mutual);
-  support.add_counter(netcounters::isolates);
-  support.add_counter(netcounters::istar2);
-  support.add_counter(netcounters::ostar2);
-  support.add_counter(netcounters::ttriads);
-  support.add_counter(netcounters::ctriads);
-  support.add_counter(netcounters::density);
-  support.add_counter(netcounters::idegree15);
-  support.add_counter(netcounters::odegree15);
+  support.add_counter(&netcounters::edges);
+  support.add_counter(&netcounters::mutual);
+  support.add_counter(&netcounters::isolates);
+  support.add_counter(&netcounters::istar2); 
+  support.add_counter(&netcounters::ostar2);
+  support.add_counter(&netcounters::ttriads);
+  support.add_counter(&netcounters::ctriads);
+  support.add_counter(&netcounters::density);
+  support.add_counter(&netcounters::idegree15);
+  support.add_counter(&netcounters::odegree15);
   
   // Adding functions
   netcounters::NetCounter nodematchfem = netcounters::nodematch;
   nodematchfem.data = new std::vector< unsigned int >({0u});
-  support.add_counter(nodematchfem);  
+  support.add_counter(&nodematchfem);  
   
   // Getting the full support
   support.calc(0u, false); 
   
   // Generating the entries
-  barry::Counts_type ans = support.support.get_entries();
+  barry::Counts_type ans = support.get_counts();
   
   // log(exp(p0 %*% t(ans[, -ncol(ans)])) %*% cbind(ans[,ncol(ans)]))
   std::vector< double > logs = {0.0, 0.0};

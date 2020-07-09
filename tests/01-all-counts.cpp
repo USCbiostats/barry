@@ -36,20 +36,20 @@ TEST_CASE("Network counts work", "[counts]") {
   
   barry::StatsCounter<netcounters::Network, std::vector< unsigned int >> counter(&net);
   
-  counter.add_counter(netcounters::edges);
-  counter.add_counter(netcounters::mutual);
-  counter.add_counter(netcounters::isolates);
-  counter.add_counter(netcounters::istar2);
-  counter.add_counter(netcounters::ostar2);
-  counter.add_counter(netcounters::ttriads);
-  counter.add_counter(netcounters::ctriads);
-  counter.add_counter(netcounters::density);
-  counter.add_counter(netcounters::idegree15);
-  counter.add_counter(netcounters::odegree15);
+  counter.add_counter(&netcounters::edges);
+  counter.add_counter(&netcounters::mutual);
+  counter.add_counter(&netcounters::isolates);
+  counter.add_counter(&netcounters::istar2);
+  counter.add_counter(&netcounters::ostar2);
+  counter.add_counter(&netcounters::ttriads);
+  counter.add_counter(&netcounters::ctriads);
+  counter.add_counter(&netcounters::density);
+  counter.add_counter(&netcounters::idegree15);
+  counter.add_counter(&netcounters::odegree15);
   
   netcounters::NetCounter nodematchfem = netcounters::nodematch;
   nodematchfem.data = new std::vector< unsigned int >({0u});
-  counter.add_counter(nodematchfem);
+  counter.add_counter(&nodematchfem);
   
   std::vector< double > ans = counter.count_all();
   
