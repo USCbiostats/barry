@@ -115,8 +115,9 @@ public:
   void zero_col(uint j, bool check_bounds = true);
   
   void transpose();
-  void clear();
+  void clear(bool hard = true);
   void resize(uint N_, uint M_);
+  void reserve();
   
   // Advances operators
   // void toggle_iterator

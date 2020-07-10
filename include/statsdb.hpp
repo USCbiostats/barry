@@ -64,6 +64,9 @@ public:
   
   void clear();
   
+  void reserve(unsigned int n);
+  // void rehash();
+  
   
 };
 
@@ -72,5 +75,16 @@ inline void StatsDB::clear() {
   return;
 }
 
+inline void StatsDB::reserve(
+  unsigned int n
+) {
+  stats.reserve(n);
+  return;
+}
+
+// inline void StatsDB::rehash() {
+//   stats.rehash();
+//   return;
+// }
 
 #endif

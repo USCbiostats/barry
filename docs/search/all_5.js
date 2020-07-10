@@ -3,6 +3,7 @@ var searchData=
   ['gains',['gains',['../namespacebarry_1_1counters_1_1phylo.html#adb9fd1ed2c6af82bd0deecebe5e41c0d',1,'barry::counters::phylo::gains()'],['../phylo_8hpp.html#a98c4643028aa49117a9ec51abae05646',1,'gains():&#160;phylo.hpp']]],
   ['get_5fcell',['get_cell',['../class_b_array.html#a4096e4447f91ba52766587a08c62f1fa',1,'BArray']]],
   ['get_5fcol',['get_col',['../class_b_array.html#a90bd31bc0b3fa59d11150cd4ea39b3b6',1,'BArray']]],
+  ['get_5fcounts',['get_counts',['../classbarry_1_1_support.html#a00ebb01a467b41e4b65df4c9a916909b',1,'barry::Support::get_counts()'],['../class_support.html#a00ebb01a467b41e4b65df4c9a916909b',1,'Support::get_counts()']]],
   ['get_5fdata',['get_data',['../classbarry_1_1_power_set.html#a273dae1795f3d663ef031c50bd218788',1,'barry::PowerSet::get_data()'],['../class_power_set.html#aa1700af475e219c59a5969a89a0d80d3',1,'PowerSet::get_data()']]],
   ['get_5fdata_5fptr',['get_data_ptr',['../classbarry_1_1_power_set.html#ab909404d85f177a3cd0b8cca1eaf4efd',1,'barry::PowerSet::get_data_ptr()'],['../class_power_set.html#a1ff9c2195a8d83b60813b38f5143693f',1,'PowerSet::get_data_ptr()']]],
   ['get_5fentries',['get_entries',['../class_b_array.html#aee224325422d214624771a5b4d91b55e',1,'BArray::get_entries()'],['../classbarry_1_1_stats_d_b.html#a396e0921c34a854320a8027ce0f29278',1,'barry::StatsDB::get_entries()'],['../class_stats_d_b.html#a8ed62f6a3939b90b3493de944c9b67fc',1,'StatsDB::get_entries()']]],

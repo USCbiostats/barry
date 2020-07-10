@@ -208,7 +208,7 @@ counter(N, M, source - 1L, target - 1L, gender)
 
 # stop()
 set.seed(123)
-N <- 4
+N <- 5
 M <- N
 gender <- sample.int(2, N, TRUE)
 
@@ -231,16 +231,16 @@ network::set.vertex.attribute(mat, "gender", gender)
 ans0 <- support(N, M,gender)
 ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
 
-microbenchmark::microbenchmark(
+(bm <- microbenchmark::microbenchmark(
   barray = support(N, M, gender),
   ergm   = ergm::ergm.allstats(
     mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad  + ctriad +
       density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE,
     maxNumChangeStatVectors = 2^20),
-  times = 100,
+  times = 20,
   unit = "relative"
-)
-
+))
+stop()
 ans1 <- ergm::ergm.allstats(
   mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
     density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE)

@@ -29,11 +29,12 @@ public:
   uint N, M;
   bool initialized = false;
   
-  Support(const Array_Type * Array_) : Array(Array_), EmptyArray(Array_->N, Array_->M),
+  Support(const Array_Type * Array_) :
+    Array(Array_), EmptyArray(*Array_),
     N(Array_->N), M(Array_->M) {
     
-    if (Array_->data != nullptr) 
-      EmptyArray.data = Array_->data;
+    // if (Array_->data != nullptr) 
+    //   EmptyArray.data = Array_->data;
     
     return;
     
@@ -90,11 +91,12 @@ inline void Support<Array_Type, Data_Type>::reset(const Array_Type * Array_) {
   support.clear();
   initialized = false;
   Array = Array_;
+  EmptyArray = *Array_;
   N = Array_->N;
   M = Array_->M;
-  EmptyArray.resize(N, M);
-  if (Array_->data != nullptr) 
-    EmptyArray.data = Array_->data;
+  // EmptyArray.resize(N, M);
+  // if (Array_->data != nullptr) 
+  //   EmptyArray.data = Array_->data;
   
   
 }
@@ -123,8 +125,12 @@ inline void Support<Array_Type, Data_Type>::calc(
     
     // Initializing
     initialized = true;
-    EmptyArray.clear();
+    EmptyArray.clear(true);
+    EmptyArray.reserve();
     current_stats.resize(counters.size());
+    
+    // Resizing support
+    support.reserve(pow(2.0, N * (M - 1.0)));
     
     for (uint n = 0u; n < counters.size(); ++n) 
       current_stats[n] = counters[n]->init(&EmptyArray, i, j);

@@ -35,10 +35,14 @@ public:
    * @param Stats_ A pointer to a dataset of stats `StatsDB`.
    */
   StatsCounter(const Array_Type * Array_) :
-    Array(Array_), EmptyArray(Array_->N, Array_->M),counters(0u) {
+    Array(Array_), EmptyArray(*Array_), counters(0u) {
+
+    // We are removing the entries without freeing the memory. This should
+    // make the insertion faster.
+    EmptyArray.clear(false);
     
-    if (Array_->data != nullptr)
-      EmptyArray.data = Array_->data;
+    // if (Array_->data != nullptr)
+    //   EmptyArray.data = Array_->data;
     
     return;
   }
@@ -72,10 +76,10 @@ inline void StatsCounter<Array_Type,Data_Type>::reset_array(
 ) {
   
   Array = Array_;
-  EmptyArray.resize(Array_->N, Array_->M);
+  EmptyArray = *Array_;
   
-  if (Array_->data != nullptr)
-    EmptyArray.data = Array_->data;
+  // if (Array_->data != nullptr)
+  //   EmptyArray.data = Array_->data;
   
   return;
 }

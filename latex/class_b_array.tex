@@ -62,9 +62,11 @@ void \hyperlink{class_b_array_a0fa473027d00ec53ed08eaea03ac3ef7}{zero\+\_\+col} 
 \item 
 void \hyperlink{class_b_array_a0284f7f2148b7c1b474ebe01f6548b98}{transpose} ()
 \item 
-void \hyperlink{class_b_array_aa3669363c4ec2f08764022968ded280b}{clear} ()
+void \hyperlink{class_b_array_a6dd5ebff333b376c6fb569e48290935f}{clear} (bool hard=true)
 \item 
 void \hyperlink{class_b_array_aefe411fe1890273518bfbc3f8ca616ce}{resize} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+)
+\item 
+void \hyperlink{class_b_array_a5eacd388e3d0f638f2c35b6e0f0c490c}{reserve} ()
 \item 
 void \hyperlink{class_b_array_a9d150c44b23cf1e4af45f540508db1de}{print} () const
 \item 
@@ -188,12 +190,12 @@ Definition at line 64 of file barray-\/bones.\+hpp.
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_b_array_aa3669363c4ec2f08764022968ded280b}\label{class_b_array_aa3669363c4ec2f08764022968ded280b}} 
+\mbox{\Hypertarget{class_b_array_a6dd5ebff333b376c6fb569e48290935f}\label{class_b_array_a6dd5ebff333b376c6fb569e48290935f}} 
 \index{B\+Array@{B\+Array}!clear@{clear}}
 \index{clear@{clear}!B\+Array@{B\+Array}}
 \subsubsection{\texorpdfstring{clear()}{clear()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::clear (\begin{DoxyParamCaption}\item[{bool}]{hard = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -391,7 +393,18 @@ void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $
 
 
 
-Definition at line 794 of file barray-\/meat.\+hpp.
+Definition at line 816 of file barray-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_a5eacd388e3d0f638f2c35b6e0f0c490c}\label{class_b_array_a5eacd388e3d0f638f2c35b6e0f0c490c}} 
+\index{B\+Array@{B\+Array}!reserve@{reserve}}
+\index{reserve@{reserve}!B\+Array@{B\+Array}}
+\subsubsection{\texorpdfstring{reserve()}{reserve()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reserve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 803 of file barray-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_aefe411fe1890273518bfbc3f8ca616ce}\label{class_b_array_aefe411fe1890273518bfbc3f8ca616ce}} 
 \index{B\+Array@{B\+Array}!resize@{resize}}
@@ -402,7 +415,7 @@ void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $
 
 
 
-Definition at line 763 of file barray-\/meat.\+hpp.
+Definition at line 772 of file barray-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_aaead894ff275479db4f733793ce037db}\label{class_b_array_aaead894ff275479db4f733793ce037db}} 
 \index{B\+Array@{B\+Array}!rm\+\_\+cell@{rm\+\_\+cell}}

@@ -746,14 +746,23 @@ inline void BArray<Cell_Type, Data_Type>::transpose() {
 }
 
 template <typename Cell_Type, typename Data_Type>
-inline void BArray<Cell_Type, Data_Type>::clear() {
+inline void BArray<Cell_Type, Data_Type>::clear(bool hard) {
   
-  el_ji.clear();
-  el_ij.clear();
-  
-  el_ij.resize(N);
-  el_ji.resize(M);
-  NCells = 0u;
+  if (hard) {
+    
+    el_ji.clear();
+    el_ij.clear();
+    
+    el_ij.resize(N);
+    el_ji.resize(M);
+    NCells = 0u;
+    
+  } else {
+    
+    for (unsigned int i = 0u; i < N; ++i)
+      zero_row(i, false);
+    
+  }
   
   return;
   
@@ -791,6 +800,19 @@ inline void BArray<Cell_Type, Data_Type>::resize(
 }
 
 template <typename Cell_Type, typename Data_Type>
+inline void BArray< Cell_Type, Data_Type >::reserve() {
+ 
+  for (uint i = 0u; i < N; i++)
+    ROW(i).reserve(M);
+  
+  for (uint i = 0u; i < M; i++)
+    COL(i).reserve(N);
+  
+  return;
+  
+}
+
+template <typename Cell_Type, typename Data_Type>
 inline void BArray< Cell_Type, Data_Type >::print() const {
   
   for (uint i = 0u; i < N; ++i) {
@@ -808,6 +830,7 @@ inline void BArray< Cell_Type, Data_Type >::print() const {
   
   return;
 }
+
 
 #endif
 

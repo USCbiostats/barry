@@ -130,10 +130,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0fa473027d00ec53ed08eaea03ac3ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0284f7f2148b7c1b474ebe01f6548b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a0284f7f2148b7c1b474ebe01f6548b98">transpose</a> ()</td></tr>
 <tr class="separator:a0284f7f2148b7c1b474ebe01f6548b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3669363c4ec2f08764022968ded280b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aa3669363c4ec2f08764022968ded280b">clear</a> ()</td></tr>
-<tr class="separator:aa3669363c4ec2f08764022968ded280b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dd5ebff333b376c6fb569e48290935f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a6dd5ebff333b376c6fb569e48290935f">clear</a> (bool hard=true)</td></tr>
+<tr class="separator:a6dd5ebff333b376c6fb569e48290935f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefe411fe1890273518bfbc3f8ca616ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aefe411fe1890273518bfbc3f8ca616ce">resize</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
 <tr class="separator:aefe411fe1890273518bfbc3f8ca616ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eacd388e3d0f638f2c35b6e0f0c490c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a5eacd388e3d0f638f2c35b6e0f0c490c">reserve</a> ()</td></tr>
+<tr class="separator:a5eacd388e3d0f638f2c35b6e0f0c490c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d150c44b23cf1e4af45f540508db1de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9d150c44b23cf1e4af45f540508db1de">print</a> () const</td></tr>
 <tr class="separator:a9d150c44b23cf1e4af45f540508db1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65aaf8f78714cd94616cf826b3eef6e1"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
@@ -413,8 +415,8 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa3669363c4ec2f08764022968ded280b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3669363c4ec2f08764022968ded280b">&#9670;&nbsp;</a></span>clear()</h2>
+<a id="a6dd5ebff333b376c6fb569e48290935f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dd5ebff333b376c6fb569e48290935f">&#9670;&nbsp;</a></span>clear()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -427,7 +429,8 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::clear </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>hard</em> = <code>true</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1209,7 +1212,36 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00794">794</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00816">816</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5eacd388e3d0f638f2c35b6e0f0c490c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eacd388e3d0f638f2c35b6e0f0c490c">&#9670;&nbsp;</a></span>reserve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Cell_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::reserve </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00803">803</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1249,7 +1281,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00763">763</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00772">772</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>

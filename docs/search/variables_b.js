@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['seq',['Seq',['../classbarry_1_1_cell_seq.html#a4fa35bd68111dc58761e74aa1f9f01d3',1,'barry::CellSeq::Seq()'],['../class_cell_seq.html#af15df5f62488560f36f71336ac5cb0a5',1,'CellSeq::Seq()']]],
-  ['seq_5fcomputed',['seq_computed',['../classbarry_1_1_cell_seq.html#ae494832512818af7c82315c7f5655db0',1,'barry::CellSeq::seq_computed()'],['../class_cell_seq.html#aa813f6c9f5438cc472a0c12078b44c97',1,'CellSeq::seq_computed()']]],
-  ['source',['source',['../classbarry_1_1_entries.html#a5992282ca5f39dbbbd4195d7176b6295',1,'barry::Entries::source()'],['../class_entries.html#a6a7c589df4cd6ea98386466440dfdc98',1,'Entries::source()']]],
-  ['states',['states',['../classbarry_1_1counters_1_1phylo_1_1_node_data.html#a9a88332b03b6c78f386a1fafac660052',1,'barry::counters::phylo::NodeData::states()'],['../class_node_data.html#a33caaadde6afe892624501bdb0edaea6',1,'NodeData::states()']]],
-  ['stats',['stats',['../classbarry_1_1_stats_d_b.html#a37af92a5d40cd2582446d86209ea7f26',1,'barry::StatsDB::stats()'],['../class_stats_d_b.html#a675ecc967115b14bf8693858920a4a6c',1,'StatsDB::stats()']]],
-  ['subfun',['subfun',['../namespacebarry_1_1counters_1_1phylo.html#aee78851723795b1d8ba773b3c3c58afc',1,'barry::counters::phylo::subfun()'],['../phylo_8hpp.html#a08aeda2297e24541358f0df8b3c49afb',1,'subfun():&#160;phylo.hpp']]],
-  ['support',['support',['../classbarry_1_1_support.html#ac9942324040dfed9e0f2347b4d9d25b3',1,'barry::Support::support()'],['../class_support.html#ab2f404c7c11d5bc58e876124cc52d073',1,'Support::support()']]]
+  ['odegree15',['odegree15',['../namespacebarry_1_1counters_1_1network.html#ac204cfc5dd18deb85d71dec056edfc16',1,'barry::counters::network::odegree15()'],['../network_8hpp.html#a086e65781d855327eccbf3a958c1bfbb',1,'odegree15():&#160;network.hpp']]],
+  ['one',['ONE',['../namespacebarry_1_1_c_h_e_c_k.html#add50baad3a196b1979efbbf9e6c86913',1,'barry::CHECK::ONE()'],['../namespacebarry_1_1_e_x_i_s_t_s.html#a9f25c9b3787f9e1cf03e28f5a6dbe725',1,'barry::EXISTS::ONE()'],['../namespace_c_h_e_c_k.html#acf8ecf93ddfb75456112712630f8f722',1,'CHECK::ONE()'],['../namespace_e_x_i_s_t_s.html#a4c3717397d716d2bbd69d8239b3de033',1,'EXISTS::ONE()']]],
+  ['ostar2',['ostar2',['../namespacebarry_1_1counters_1_1network.html#abbf28b19669fd98aee3026360210e40c',1,'barry::counters::network::ostar2()'],['../network_8hpp.html#a9e1eb7762c08dd1ea3ab680354b9871e',1,'ostar2():&#160;network.hpp']]],
+  ['overall_5fgains',['overall_gains',['../namespacebarry_1_1counters_1_1phylo.html#afb7d5e1d4a7457c6d2c794239407dcdb',1,'barry::counters::phylo::overall_gains()'],['../phylo_8hpp.html#a7e8b12f35e7fc207c4ba23dd44ab0164',1,'overall_gains():&#160;phylo.hpp']]],
+  ['overall_5floss',['overall_loss',['../namespacebarry_1_1counters_1_1phylo.html#ac9c47e5228507fb455f894f2a0978314',1,'barry::counters::phylo::overall_loss()'],['../phylo_8hpp.html#afd3d2cf4e0e8909b0a72168ed5faa47c',1,'overall_loss():&#160;phylo.hpp']]]
 ];
