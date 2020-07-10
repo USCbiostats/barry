@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,6 +58,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('phylo_8hpp.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +87,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_d569f91614126aa717c45996ef26757b.html">counters</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -204,7 +227,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> double (a) (<span class="keyword">const</span> <a class="code" href="class_b_array.html">PhyloArray</a> * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, \</div><div class="line">  uint j, std::vector&lt;uint&gt; * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)</div><div class="ttc" id="class_b_array_html"><div class="ttname"><a href="class_b_array.html">BArray</a></div><div class="ttdoc">Baseline class for binary arrays. </div><div class="ttdef"><b>Definition:</b> <a href="barray-bones_8hpp_source.html#l00016">barray-bones.hpp:16</a></div></div>
-<div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00033">typedefs.hpp:33</a></div></div>
+<div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00005">typedefs.hpp:5</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00022">counters-bones.hpp:22</a></div></div>
 </div><!-- fragment -->
 <p>Extension of a simple counter. </p>
@@ -230,7 +253,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> double (a) (<span class="keyword">const</span> <a class="code" href="class_b_array.html">PhyloArray</a> * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, \</div><div class="line">  uint j, std::vector&lt;uint&gt; * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)</div><div class="ttc" id="class_b_array_html"><div class="ttname"><a href="class_b_array.html">BArray</a></div><div class="ttdoc">Baseline class for binary arrays. </div><div class="ttdef"><b>Definition:</b> <a href="barray-bones_8hpp_source.html#l00016">barray-bones.hpp:16</a></div></div>
-<div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00033">typedefs.hpp:33</a></div></div>
+<div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00005">typedefs.hpp:5</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00022">counters-bones.hpp:22</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -669,11 +692,15 @@ Variables</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_d569f91614126aa717c45996ef26757b.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
+    <li class="footer">Generated on Fri Jul 10 2020 16:32:48 for barry: Your go-to motif accountant by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

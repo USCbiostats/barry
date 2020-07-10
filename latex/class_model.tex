@@ -1,0 +1,223 @@
+\hypertarget{class_model}{}\section{Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Class Template Reference}
+\label{class_model}\index{Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$@{Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
+
+
+General framework for discrete exponential models.  
+
+
+
+
+{\ttfamily \#include $<$model-\/bones.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_model_a38122122aa4eb799b90ed1ee49b9410c}{Model} ()
+\item 
+\hyperlink{class_model_aaed0a5937479c213e620bf8095ddea5d}{$\sim$\+Model} ()
+\item 
+void \hyperlink{class_model_afa4736153fa419e1f141839eda735dfe}{set\+\_\+keygen} (std\+::function$<$ std\+::vector$<$ double $>$(const Array\+\_\+\+Type \&)$>$ keygen\+\_\+)
+\item 
+void \hyperlink{class_model_a4cf4d6fc6cf43d598fa6195c25f5cca5}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$f\+\_\+)
+\item 
+\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_model_a9f66c7c39acb51cd49658ebd1c5999d4}{add\+\_\+array} (const Array\+\_\+\+Type \&Array\+\_\+)
+\begin{DoxyCompactList}\small\item\em Adds an array to the support of not already included. \end{DoxyCompactList}\item 
+double \hyperlink{class_model_a9981974cc551be9393c73a0c423a92c0}{likelihood} (const Array\+\_\+\+Type \&Array\+\_\+, bool add=false)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{class_model_a0bbd3396f6ab0c19cee3f6825ba98b6e}{support\+\_\+calculator}
+\item 
+\hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{class_model_a5af3db8f0635a1aa59519ab94bfd7ebb}{counter}
+\item 
+std\+::vector$<$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type} $>$ \hyperlink{class_model_a1816b0dd69226394643dc31916c8645e}{stats}
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_model_ab0f4642a2d4602fabb6774914b7dbd39}{target\+\_\+stats}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_model_aabe906408c76bb1d793720caddfb8bea}{params\+\_\+last}
+\item 
+\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}$<$ double, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{class_model_a706e07b974a8d16cbdb363517d756f41}{keys}
+\item 
+std\+::function$<$ std\+::vector$<$ double $>$const Array\+\_\+\+Type \&)$>$ \hyperlink{class_model_a087db7c5e2ee47f4353d2e181223dd5a}{keygen} = nullptr
+\begin{DoxyCompactList}\small\item\em Function to extract features of the array to be hash. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$\newline
+class Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+
+General framework for discrete exponential models. 
+
+This class allows generating discrete exponential models in the form of a linear exponential model\+: \[ \frac{ \exp{\left(\theta^{\mbox{t}}c(A)\right)} }{ \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mbox{t}}c(A')\right)} } \]
+
+This implementation aims to reduce the number of times that the support needs to be computed. Models included here use more than a single array, and thus allow the function to recycle support sets as needed. For example, if we are looking at directed graphs all of the same size and without vertex level features, i.\+e. a model that only counts edges, triangles, etc. then the support needs to be fully computed only once. 
+
+Definition at line 93 of file model-\/bones.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_a38122122aa4eb799b90ed1ee49b9410c}\label{class_model_a38122122aa4eb799b90ed1ee49b9410c}} 
+\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\subsubsection{\texorpdfstring{Model()}{Model()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_model}{Model} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 110 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_aaed0a5937479c213e620bf8095ddea5d}\label{class_model_aaed0a5937479c213e620bf8095ddea5d}} 
+\index{Model@{Model}!````~Model@{$\sim$\+Model}}
+\index{````~Model@{$\sim$\+Model}!Model@{Model}}
+\subsubsection{\texorpdfstring{$\sim$\+Model()}{~Model()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::$\sim$\hyperlink{class_model}{Model} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 115 of file model-\/bones.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_a9f66c7c39acb51cd49658ebd1c5999d4}\label{class_model_a9f66c7c39acb51cd49658ebd1c5999d4}} 
+\index{Model@{Model}!add\+\_\+array@{add\+\_\+array}}
+\index{add\+\_\+array@{add\+\_\+array}!Model@{Model}}
+\subsubsection{\texorpdfstring{add\+\_\+array()}{add\_array()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+array (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds an array to the support of not already included. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Array\+\_\+} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 147 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_a4cf4d6fc6cf43d598fa6195c25f5cca5}\label{class_model_a4cf4d6fc6cf43d598fa6195c25f5cca5}} 
+\index{Model@{Model}!add\+\_\+counter@{add\+\_\+counter}}
+\index{add\+\_\+counter@{add\+\_\+counter}!Model@{Model}}
+\subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{f\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 137 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_a9981974cc551be9393c73a0c423a92c0}\label{class_model_a9981974cc551be9393c73a0c423a92c0}} 
+\index{Model@{Model}!likelihood@{likelihood}}
+\index{likelihood@{likelihood}!Model@{Model}}
+\subsubsection{\texorpdfstring{likelihood()}{likelihood()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::likelihood (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+,  }\item[{bool}]{add = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_model_afa4736153fa419e1f141839eda735dfe}\label{class_model_afa4736153fa419e1f141839eda735dfe}} 
+\index{Model@{Model}!set\+\_\+keygen@{set\+\_\+keygen}}
+\index{set\+\_\+keygen@{set\+\_\+keygen}!Model@{Model}}
+\subsubsection{\texorpdfstring{set\+\_\+keygen()}{set\_keygen()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::set\+\_\+keygen (\begin{DoxyParamCaption}\item[{std\+::function$<$ std\+::vector$<$ double $>$(const Array\+\_\+\+Type \&)$>$}]{keygen\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 129 of file model-\/bones.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_model_a5af3db8f0635a1aa59519ab94bfd7ebb}\label{class_model_a5af3db8f0635a1aa59519ab94bfd7ebb}} 
+\index{Model@{Model}!counter@{counter}}
+\index{counter@{counter}!Model@{Model}}
+\subsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{class_stats_counter}{Stats\+Counter}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counter}
+
+
+
+Definition at line 98 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_a087db7c5e2ee47f4353d2e181223dd5a}\label{class_model_a087db7c5e2ee47f4353d2e181223dd5a}} 
+\index{Model@{Model}!keygen@{keygen}}
+\index{keygen@{keygen}!Model@{Model}}
+\subsubsection{\texorpdfstring{keygen}{keygen}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::function$<$std\+::vector$<$double$>$const Array\+\_\+\+Type \&)$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::keygen = nullptr}
+
+
+
+Function to extract features of the array to be hash. 
+
+
+
+Definition at line 108 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_a706e07b974a8d16cbdb363517d756f41}\label{class_model_a706e07b974a8d16cbdb363517d756f41}} 
+\index{Model@{Model}!keys@{keys}}
+\index{keys@{keys}!Model@{Model}}
+\subsubsection{\texorpdfstring{keys}{keys}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}$<$ double, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::keys}
+
+
+
+Definition at line 104 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_aabe906408c76bb1d793720caddfb8bea}\label{class_model_aabe906408c76bb1d793720caddfb8bea}} 
+\index{Model@{Model}!params\+\_\+last@{params\+\_\+last}}
+\index{params\+\_\+last@{params\+\_\+last}!Model@{Model}}
+\subsubsection{\texorpdfstring{params\+\_\+last}{params\_last}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ double $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::params\+\_\+last}
+
+
+
+Definition at line 103 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_a1816b0dd69226394643dc31916c8645e}\label{class_model_a1816b0dd69226394643dc31916c8645e}} 
+\index{Model@{Model}!stats@{stats}}
+\index{stats@{stats}!Model@{Model}}
+\subsubsection{\texorpdfstring{stats}{stats}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type} $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::stats}
+
+
+
+Definition at line 100 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_a0bbd3396f6ab0c19cee3f6825ba98b6e}\label{class_model_a0bbd3396f6ab0c19cee3f6825ba98b6e}} 
+\index{Model@{Model}!support\+\_\+calculator@{support\+\_\+calculator}}
+\index{support\+\_\+calculator@{support\+\_\+calculator}!Model@{Model}}
+\subsubsection{\texorpdfstring{support\+\_\+calculator}{support\_calculator}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{class_support}{Support}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::support\+\_\+calculator}
+
+
+
+Definition at line 97 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_ab0f4642a2d4602fabb6774914b7dbd39}\label{class_model_ab0f4642a2d4602fabb6774914b7dbd39}} 
+\index{Model@{Model}!target\+\_\+stats@{target\+\_\+stats}}
+\index{target\+\_\+stats@{target\+\_\+stats}!Model@{Model}}
+\subsubsection{\texorpdfstring{target\+\_\+stats}{target\_stats}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::target\+\_\+stats}
+
+
+
+Definition at line 101 of file model-\/bones.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{model-bones_8hpp}{model-\/bones.\+hpp}\end{DoxyCompactItemize}

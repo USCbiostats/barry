@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,6 +58,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('powerset_8hpp_source.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +87,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">powerset.hpp</div>  </div>
@@ -74,7 +97,7 @@ $(function() {
 <div class="ttc" id="barray-bones_8hpp_html"><div class="ttname"><a href="barray-bones_8hpp.html">barray-bones.hpp</a></div></div>
 <div class="ttc" id="class_b_array_html"><div class="ttname"><a href="class_b_array.html">BArray</a></div><div class="ttdoc">Baseline class for binary arrays. </div><div class="ttdef"><b>Definition:</b> <a href="barray-bones_8hpp_source.html#l00016">barray-bones.hpp:16</a></div></div>
 <div class="ttc" id="class_power_set_html_a2b1a73cd0b9a1dbab0a139d32d4e8b8d"><div class="ttname"><a href="class_power_set.html#a2b1a73cd0b9a1dbab0a139d32d4e8b8d">PowerSet::PowerSet</a></div><div class="ttdeci">PowerSet(uint N_, uint M_)</div><div class="ttdef"><b>Definition:</b> <a href="powerset_8hpp_source.html#l00026">powerset.hpp:26</a></div></div>
-<div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00033">typedefs.hpp:33</a></div></div>
+<div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00005">typedefs.hpp:5</a></div></div>
 <div class="ttc" id="class_power_set_html_a6736bc9d8a2a57669f3531ecb429c42f"><div class="ttname"><a href="class_power_set.html#a6736bc9d8a2a57669f3531ecb429c42f">PowerSet::~PowerSet</a></div><div class="ttdeci">~PowerSet()</div><div class="ttdef"><b>Definition:</b> <a href="powerset_8hpp_source.html#l00027">powerset.hpp:27</a></div></div>
 <div class="ttc" id="class_power_set_html_a93e31ba8891642db6ecf0fca82c71f6a"><div class="ttname"><a href="class_power_set.html#a93e31ba8891642db6ecf0fca82c71f6a">PowerSet::calc</a></div><div class="ttdeci">void calc(uint i=0u, BArray&lt; Cell_Type, Data_Type &gt; *a0=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="powerset_8hpp_source.html#l00044">powerset.hpp:44</a></div></div>
 <div class="ttc" id="class_power_set_html_a8074f5a6d44b6b7f6bad56d15576eb9f"><div class="ttname"><a href="class_power_set.html#a8074f5a6d44b6b7f6bad56d15576eb9f">PowerSet::reset</a></div><div class="ttdeci">void reset(uint N_, uint M_)</div><div class="ttdef"><b>Definition:</b> <a href="powerset_8hpp_source.html#l00074">powerset.hpp:74</a></div></div>
@@ -86,11 +109,15 @@ $(function() {
 <div class="ttc" id="class_power_set_html_a3eacd45a7ed035773020df7d1db154c0"><div class="ttname"><a href="class_power_set.html#a3eacd45a7ed035773020df7d1db154c0">PowerSet::PowerSet</a></div><div class="ttdeci">PowerSet()</div><div class="ttdef"><b>Definition:</b> <a href="powerset_8hpp_source.html#l00025">powerset.hpp:25</a></div></div>
 <div class="ttc" id="class_power_set_html_a47a7918d73f8f9709751aae3b1344889"><div class="ttname"><a href="class_power_set.html#a47a7918d73f8f9709751aae3b1344889">PowerSet::N</a></div><div class="ttdeci">uint N</div><div class="ttdef"><b>Definition:</b> <a href="powerset_8hpp_source.html#l00019">powerset.hpp:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="powerset_8hpp.html">powerset.hpp</a></li>
+    <li class="footer">Generated on Fri Jul 10 2020 16:32:48 for barry: Your go-to motif accountant by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

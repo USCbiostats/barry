@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,6 +58,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_entries.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +87,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -97,7 +124,7 @@ Public Attributes</h2></td></tr>
 class Entries&lt; Cell_Type &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00043">43</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00044">44</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9e6cba5965f285beb3c0356c79f592d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9e6cba5965f285beb3c0356c79f592d2">&#9670;&nbsp;</a></span>Entries() <span class="overload">[1/2]</span></h2>
@@ -124,7 +151,7 @@ template&lt;typename Cell_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00049">49</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00050">50</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -154,7 +181,7 @@ template&lt;typename Cell_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00050">50</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00051">51</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -183,7 +210,7 @@ template&lt;typename Cell_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00057">57</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00058">58</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -214,7 +241,7 @@ template&lt;typename Cell_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00059">59</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00060">60</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -233,7 +260,7 @@ template&lt;typename Cell_Type&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00045">45</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00046">46</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -251,7 +278,7 @@ template&lt;typename Cell_Type&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00046">46</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00047">47</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -269,7 +296,7 @@ template&lt;typename Cell_Type&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00047">47</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00048">48</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -277,11 +304,15 @@ template&lt;typename Cell_Type&gt; </div>
 <li>include/<a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_entries.html">Entries</a></li>
+    <li class="footer">Generated on Fri Jul 10 2020 16:32:48 for barry: Your go-to motif accountant by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

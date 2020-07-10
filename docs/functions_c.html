@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +59,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_c.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -87,12 +114,14 @@ $(function() {
 </li>
 <li>change_stats
 : <a class="el" href="classbarry_1_1_stats_counter.html#a90b8fddb02b2628cc8d71986f8cdf0ed">barry::StatsCounter&lt; Array_Type, Data_Type &gt;</a>
+, <a class="el" href="classbarry_1_1_support.html#a09cebbb8953514f77e2f70d447d3ff2a">barry::Support&lt; Array_Type, Data_Type &gt;</a>
 , <a class="el" href="class_stats_counter.html#a42c926799d8cb0abc6f5a1cfbc073f69">StatsCounter&lt; Array_Type, Data_Type &gt;</a>
+, <a class="el" href="class_support.html#ae6e6f53f963c1be75bea0ee9896d1afe">Support&lt; Array_Type, Data_Type &gt;</a>
 </li>
 <li>clear()
 : <a class="el" href="class_b_array.html#a6dd5ebff333b376c6fb569e48290935f">BArray&lt; Cell_Type, Data_Type &gt;</a>
-, <a class="el" href="classbarry_1_1_stats_d_b.html#a5de68def55b0a3b99a8f609815624a00">barry::StatsDB</a>
-, <a class="el" href="class_stats_d_b.html#a5de68def55b0a3b99a8f609815624a00">StatsDB</a>
+, <a class="el" href="classbarry_1_1_freq_table.html#a326660096e4309780aea8355d0f74ac7">barry::FreqTable&lt; T &gt;</a>
+, <a class="el" href="class_freq_table.html#a326660096e4309780aea8355d0f74ac7">FreqTable&lt; T &gt;</a>
 </li>
 <li>compute_seq()
 : <a class="el" href="classbarry_1_1_cell_seq.html#a6588fe1ad4e37f7a845386eca46c13c2">barry::CellSeq</a>
@@ -126,7 +155,7 @@ $(function() {
 , <a class="el" href="class_stats_counter.html#a19bd5936619e190c0d8918b4f343922e">StatsCounter&lt; Array_Type, Data_Type &gt;</a>
 </li>
 <li>Counter()
-: <a class="el" href="classbarry_1_1_counter.html#a19668015222fd41f127e961c17f7a609">barry::Counter&lt; Array_Type, Data_Type &gt;</a>
+: <a class="el" href="classbarry_1_1_counter.html#a3c990d6dbcdc553b3179c8353497a7df">barry::Counter&lt; Array_Type, Data_Type &gt;</a>
 </li>
 <li>counter
 : <a class="el" href="classbarry_1_1_power_set.html#a5d318c7894867263313e2907c8821c70">barry::PowerSet&lt; Cell_Type, Data_Type &gt;</a>
@@ -135,13 +164,18 @@ $(function() {
 : <a class="el" href="class_counter.html#a6085b2ef220e2706c9558001f76125bd">Counter&lt; Array_Type, Data_Type &gt;</a>
 </li>
 <li>counter
-: <a class="el" href="class_power_set.html#a4c6f00df0ab8cfce977635958c6e1b46">PowerSet&lt; Cell_Type, Data_Type &gt;</a>
+: <a class="el" href="class_model.html#a5af3db8f0635a1aa59519ab94bfd7ebb">Model&lt; Array_Type, Data_Type &gt;</a>
+, <a class="el" href="class_power_set.html#a4c6f00df0ab8cfce977635958c6e1b46">PowerSet&lt; Cell_Type, Data_Type &gt;</a>
+</li>
+<li>counter_deleted
+: <a class="el" href="classbarry_1_1_support.html#a96c18c68794e756bc84ee2405dca505a">barry::Support&lt; Array_Type, Data_Type &gt;</a>
+, <a class="el" href="class_support.html#acb3f9a11e2c64bdea950174f7c133536">Support&lt; Array_Type, Data_Type &gt;</a>
 </li>
 <li>counters
 : <a class="el" href="classbarry_1_1_stats_counter.html#a691b13aff3386ec6519f0712fa65c8f7">barry::StatsCounter&lt; Array_Type, Data_Type &gt;</a>
-, <a class="el" href="classbarry_1_1_support.html#a699d0025361014e70fc405f3e2dc5960">barry::Support&lt; Array_Type, Data_Type &gt;</a>
+, <a class="el" href="classbarry_1_1_support.html#ab7cd458219742709c0a214d7bf70b7d9">barry::Support&lt; Array_Type, Data_Type &gt;</a>
 , <a class="el" href="class_stats_counter.html#ab81464f54ee44deedf3fb1f16f9b87c5">StatsCounter&lt; Array_Type, Data_Type &gt;</a>
-, <a class="el" href="class_support.html#a650201174421779897fbea8fa4dc766e">Support&lt; Array_Type, Data_Type &gt;</a>
+, <a class="el" href="class_support.html#a1e668ea187df3a8e1406ae712099f849">Support&lt; Array_Type, Data_Type &gt;</a>
 </li>
 <li>current_col
 : <a class="el" href="class_const_b_array_row_iter.html#ae227ab3d9ed122274eefdf1de89686cc">ConstBArrayRowIter</a>
@@ -157,11 +191,14 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Fri Jul 10 2020 16:32:48 for barry: Your go-to motif accountant by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

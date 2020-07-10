@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['statscounter',['StatsCounter',['../class_stats_counter.html',1,'StatsCounter&lt; Array_Type, Data_Type &gt;'],['../classbarry_1_1_stats_counter.html',1,'barry::StatsCounter&lt; Array_Type, Data_Type &gt;']]],
-  ['statsdb',['StatsDB',['../classbarry_1_1_stats_d_b.html',1,'barry::StatsDB'],['../class_stats_d_b.html',1,'StatsDB']]],
-  ['support',['Support',['../classbarry_1_1_support.html',1,'barry::Support&lt; Array_Type, Data_Type &gt;'],['../class_support.html',1,'Support&lt; Array_Type, Data_Type &gt;']]]
+  ['networkdata',['NetworkData',['../class_network_data.html',1,'NetworkData'],['../classbarry_1_1counters_1_1network_1_1_network_data.html',1,'barry::counters::network::NetworkData']]],
+  ['nodedata',['NodeData',['../class_node_data.html',1,'NodeData'],['../classbarry_1_1counters_1_1phylo_1_1_node_data.html',1,'barry::counters::phylo::NodeData']]]
 ];

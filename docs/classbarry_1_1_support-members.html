@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,6 +58,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classbarry_1_1_support.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +87,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacebarry.html">barry</a></li><li class="navelem"><a class="el" href="classbarry_1_1_support.html">Support</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">barry::Support&lt; Array_Type, Data_Type &gt; Member List</div>  </div>
@@ -73,28 +96,36 @@ $(function() {
 <p>This is the complete list of members for <a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#a0ad8bb6202451253697d771a28859210">add_counter</a>(Counter&lt; Array_Type, Data_Type &gt; *f_)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a782b1912d7fa2963d79d48a50947f033">Array</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#ab5261952be0746f188ee024e3e8c26c1">calc</a>(uint pos=0u, const bool &amp;diag=false, std::vector&lt; Array_Type &gt; *array_bank=nullptr, std::vector&lt; std::vector&lt; double &gt; &gt; *stats_bank=nullptr)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a699d0025361014e70fc405f3e2dc5960">counters</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#a094f0851c7d6bfa7876eb0df2be4439e">current_stats</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#ad53c81c95b0a30ec2cea7e7e88774c0c">data</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#ae26e46356041286028ffcc27195b9e8a">EmptyArray</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a00ebb01a467b41e4b65df4c9a916909b">get_counts</a>() const</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#a737bc10d6a6e4e3b18aeef0228bd45bb">initialized</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#aaceb2f83d235c70034e089087991cff8">M</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#a1e3158ceae716505cb0c5fb14374be9b">N</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a5878ac60282fc1380c92f3ba502f249e">reset</a>()</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#afbe207cc2762bc698c9ccb3212e9de78">reset</a>(const Array_Type *Array_)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#ac9942324040dfed9e0f2347b4d9d25b3">support</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#ab946f83af83c571de8bd5a17ce453240">Support</a>(const Array_Type *Array_)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#aa451bd21c09935b686869fef96c5b874">Support</a>(uint N_, uint M_)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#a1ffd5ee63fa68338cbbf443e1e54e5b4">~Support</a>()</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#ab5261952be0746f188ee024e3e8c26c1">calc</a>(uint pos=0u, const bool &amp;diag=false, std::vector&lt; Array_Type &gt; *array_bank=nullptr, std::vector&lt; std::vector&lt; double &gt; &gt; *stats_bank=nullptr)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#a09cebbb8953514f77e2f70d447d3ff2a">change_stats</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a96c18c68794e756bc84ee2405dca505a">counter_deleted</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#ab7cd458219742709c0a214d7bf70b7d9">counters</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a094f0851c7d6bfa7876eb0df2be4439e">current_stats</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#afae160c07727e72f36fcf5a16828ed21">data</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#ae26e46356041286028ffcc27195b9e8a">EmptyArray</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#a00ebb01a467b41e4b65df4c9a916909b">get_counts</a>() const</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a170776abc15d0fa8e02df36268e900a7">get_counts_ptr</a>() const</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#aef6fda6e7a0989f53fcd252609d770c9">init_support</a>()</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a737bc10d6a6e4e3b18aeef0228bd45bb">initialized</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#aaceb2f83d235c70034e089087991cff8">M</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a1e3158ceae716505cb0c5fb14374be9b">N</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#ac6012c953dd04c2e74c2105b193f50ac">pos_i</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a5aeba4c4447efe7523abfb1cef864e63">pos_j</a></td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#a5878ac60282fc1380c92f3ba502f249e">reset</a>()</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#afbe207cc2762bc698c9ccb3212e9de78">reset</a>(const Array_Type *Array_)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#a07f225ee54158980ededaccc47abad4c">set_counters</a>(std::vector&lt; Counter&lt; Array_Type, Data_Type &gt; *&gt; *counters_)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#ab946f83af83c571de8bd5a17ce453240">Support</a>(const Array_Type *Array_)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classbarry_1_1_support.html#aa451bd21c09935b686869fef96c5b874">Support</a>(uint N_, uint M_)</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classbarry_1_1_support.html#a1ffd5ee63fa68338cbbf443e1e54e5b4">~Support</a>()</td><td class="entry"><a class="el" href="classbarry_1_1_support.html">barry::Support&lt; Array_Type, Data_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Fri Jul 10 2020 16:32:48 for barry: Your go-to motif accountant by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

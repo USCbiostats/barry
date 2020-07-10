@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['m',['M',['../class_b_array.html#a197359753fd1bc054a1a14f7641d3fd1',1,'BArray::M()'],['../classbarry_1_1_support.html#aaceb2f83d235c70034e089087991cff8',1,'barry::Support::M()'],['../classbarry_1_1_cell_seq.html#acd15aaca4fc9160a7e89d68cec310fba',1,'barry::CellSeq::M()'],['../classbarry_1_1_power_set.html#a33f837a6cdcbaec8d06a3ce3311ea4ca',1,'barry::PowerSet::M()'],['../class_cell_seq.html#a8710fd7f03b3f4423e90f4a2910ad98b',1,'CellSeq::M()'],['../class_power_set.html#a03cb2e123a85cc761375835fc59cab3a',1,'PowerSet::M()'],['../class_support.html#ace1d46b871c67caa774ac2269930e97f',1,'Support::M()']]],
-  ['model',['Model',['../class_model.html',1,'']]],
-  ['model_2dbones_2ehpp',['model-bones.hpp',['../model-bones_8hpp.html',1,'']]],
-  ['mutual',['mutual',['../namespacebarry_1_1counters_1_1network.html#a6df86b773f8b0ff358e8988122562a28',1,'barry::counters::network::mutual()'],['../network_8hpp.html#a2c434e60a64ffd744effa2937629e410',1,'mutual():&#160;network.hpp']]]
+  ['lbarray_5fpowerset_5fhpp',['LBARRAY_POWERSET_HPP',['../barry_8hpp.html#a707502c794083673439e006ba0646592',1,'barry.hpp']]],
+  ['lbarray_5fstatsdb_5fhpp',['LBARRAY_STATSDB_HPP',['../barry_8hpp.html#ab8b23226e678393ead26691f42ed6f58',1,'barry.hpp']]],
+  ['likelihood',['likelihood',['../class_model.html#a9981974cc551be9393c73a0c423a92c0',1,'Model::likelihood()'],['../model-bones_8hpp.html#a0fa8078cca870ae78006afe2fe147717',1,'likelihood():&#160;model-bones.hpp']]],
+  ['longest',['longest',['../namespacebarry_1_1counters_1_1phylo.html#a558ab73b56530347c45f8a3f2481f74d',1,'barry::counters::phylo::longest()'],['../phylo_8hpp.html#a56f8b323704b839b86d9ccf946e7ddb6',1,'longest():&#160;phylo.hpp']]],
+  ['loss',['loss',['../namespacebarry_1_1counters_1_1phylo.html#a12cebdc97bb77ae2bb660fc48640596f',1,'barry::counters::phylo::loss()'],['../phylo_8hpp.html#af68f3e954e50be1f44c5ae544e821e13',1,'loss():&#160;phylo.hpp']]]
 ];

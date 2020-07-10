@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['statscounter',['StatsCounter',['../classbarry_1_1_stats_counter.html#a43e9fa90ef0b1fb716f0e75d1b803ef1',1,'barry::StatsCounter::StatsCounter(const Array_Type *Array_)'],['../classbarry_1_1_stats_counter.html#a407df1580b207faac92c476c7062b840',1,'barry::StatsCounter::StatsCounter()'],['../class_stats_counter.html#aad1531e93d2d217c5cfd6b389ccf6fba',1,'StatsCounter::StatsCounter(const Array_Type *Array_)'],['../class_stats_counter.html#a6cef1e5bb4914a49ba8dd0f63070f81c',1,'StatsCounter::StatsCounter()']]],
-  ['statsdb',['StatsDB',['../classbarry_1_1_stats_d_b.html#a917ba8ccacb9dce050c481eb8a6d3c22',1,'barry::StatsDB::StatsDB()'],['../class_stats_d_b.html#a454159e71dfe6af418dfdd8704c38c8c',1,'StatsDB::StatsDB()']]],
-  ['support',['Support',['../classbarry_1_1_support.html#ab946f83af83c571de8bd5a17ce453240',1,'barry::Support::Support(const Array_Type *Array_)'],['../classbarry_1_1_support.html#aa451bd21c09935b686869fef96c5b874',1,'barry::Support::Support(uint N_, uint M_)'],['../class_support.html#a4a0587bc6f1f268005a94fea039ea6ba',1,'Support::Support(const Array_Type *Array_)'],['../class_support.html#aff7d2705d6f765fcbd8958453b7dbefe',1,'Support::Support(uint N_, uint M_)']]],
-  ['swap_5fcells',['swap_cells',['../class_b_array.html#afb7976f67770b850922c1a7e1d6b07cc',1,'BArray']]],
-  ['swap_5fcols',['swap_cols',['../class_b_array.html#ae94f7e61ca5985244968d9daf2859229',1,'BArray']]],
-  ['swap_5frows',['swap_rows',['../class_b_array.html#a742773803481c18e2865b2b2a1e68949',1,'BArray']]]
+  ['operator_28_29',['operator()',['../structbarry_1_1vec_hasher.html#ada8dea483f4fc12f469e161b2fd09225',1,'barry::vecHasher::operator()()'],['../struct_array___hasher.html#a096dc8674477127f45a54ff4dc4038b0',1,'Array_Hasher::operator()()'],['../struct_array___hasher_3_01_b_array_3_4_01_4.html#a5a40ad373242142e6e8ca77611fb1be3',1,'Array_Hasher&lt; BArray&lt;&gt; &gt;::operator()()'],['../structvec_hasher.html#ae8127d9b7d302fe59bd64e7067e7ba61',1,'vecHasher::operator()()']]],
+  ['operator_3d',['operator=',['../classbarry_1_1_cell.html#a2a23ba83119de9162b6e3b6a994f4b61',1,'barry::Cell::operator=(Cell &amp;other)'],['../classbarry_1_1_cell.html#ac0f00c52254617f8e4ba9d03ddf5b890',1,'barry::Cell::operator=(Cell &amp;&amp;other)'],['../class_cell.html#acf4bbf136ed394887c35cfd4e78f50b9',1,'Cell::operator=(Cell &amp;other)'],['../class_cell.html#a9bb18ace78fd9010b461c853ccc2c0f7',1,'Cell::operator=(Cell &amp;&amp;other)']]],
+  ['out_5fof_5frange',['out_of_range',['../class_b_array.html#a87bad4dcad82009d5721d21808b7e469',1,'BArray']]]
 ];

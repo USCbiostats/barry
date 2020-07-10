@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,6 +58,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_support.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +87,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -79,18 +106,22 @@ Collaboration diagram for Support&lt; Array_Type, Data_Type &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_support__coll__graph.png" border="0" usemap="#_support_3_01_array___type_00_01_data___type_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="_support_3_01_array___type_00_01_data___type_01_4_coll__map" id="_support_3_01_array___type_00_01_data___type_01_4_coll__map">
-<area shape="rect" id="node2" href="class_stats_d_b.html" title="Database of statistics. " alt="" coords="45,5,117,32"/>
+<area shape="rect" id="node2" href="class_freq_table.html" title="Database of statistics. " alt="" coords="25,5,137,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4a0587bc6f1f268005a94fea039ea6ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a4a0587bc6f1f268005a94fea039ea6ba">Support</a> (const Array_Type *Array_)</td></tr>
+<tr class="memdesc:a4a0587bc6f1f268005a94fea039ea6ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor passing a reference Array.  <a href="#a4a0587bc6f1f268005a94fea039ea6ba">More...</a><br /></td></tr>
 <tr class="separator:a4a0587bc6f1f268005a94fea039ea6ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff7d2705d6f765fcbd8958453b7dbefe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#aff7d2705d6f765fcbd8958453b7dbefe">Support</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> M_)</td></tr>
+<tr class="memdesc:aff7d2705d6f765fcbd8958453b7dbefe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor specifying the dimensions of the array (empty).  <a href="#aff7d2705d6f765fcbd8958453b7dbefe">More...</a><br /></td></tr>
 <tr class="separator:aff7d2705d6f765fcbd8958453b7dbefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03228371869980fa356b7b86871d94e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a03228371869980fa356b7b86871d94e8">~Support</a> ()</td></tr>
 <tr class="separator:a03228371869980fa356b7b86871d94e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef6fda6e7a0989f53fcd252609d770c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#aef6fda6e7a0989f53fcd252609d770c9">init_support</a> ()</td></tr>
+<tr class="separator:aef6fda6e7a0989f53fcd252609d770c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5878ac60282fc1380c92f3ba502f249e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a5878ac60282fc1380c92f3ba502f249e">reset</a> ()</td></tr>
 <tr class="memdesc:a5878ac60282fc1380c92f3ba502f249e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the support calculator.  <a href="#a5878ac60282fc1380c92f3ba502f249e">More...</a><br /></td></tr>
 <tr class="separator:a5878ac60282fc1380c92f3ba502f249e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,32 +129,41 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afbe207cc2762bc698c9ccb3212e9de78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ad8bb6202451253697d771a28859210"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a0ad8bb6202451253697d771a28859210">add_counter</a> (<a class="el" href="class_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *f_)</td></tr>
 <tr class="separator:a0ad8bb6202451253697d771a28859210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07f225ee54158980ededaccc47abad4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a07f225ee54158980ededaccc47abad4c">set_counters</a> (std::vector&lt; <a class="el" href="class_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *&gt; *counters_)</td></tr>
+<tr class="separator:a07f225ee54158980ededaccc47abad4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5261952be0746f188ee024e3e8c26c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ab5261952be0746f188ee024e3e8c26c1">calc</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> pos=0u, const bool &amp;diag=false, std::vector&lt; Array_Type &gt; *array_bank=nullptr, std::vector&lt; std::vector&lt; double &gt; &gt; *stats_bank=nullptr)</td></tr>
 <tr class="memdesc:ab5261952be0746f188ee024e3e8c26c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the entire support.  <a href="#ab5261952be0746f188ee024e3e8c26c1">More...</a><br /></td></tr>
 <tr class="separator:ab5261952be0746f188ee024e3e8c26c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00ebb01a467b41e4b65df4c9a916909b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#aee40fa17c1fddb63dd1f2b1470ade95b">Counts_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a00ebb01a467b41e4b65df4c9a916909b">get_counts</a> () const</td></tr>
 <tr class="separator:a00ebb01a467b41e4b65df4c9a916909b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a170776abc15d0fa8e02df36268e900a7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a02ed8dec96bc528c8bc3d8cb3c4674a5">MapVec_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a170776abc15d0fa8e02df36268e900a7">get_counts_ptr</a> () const</td></tr>
+<tr class="separator:a170776abc15d0fa8e02df36268e900a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a73f1375ad76be291f9f3768e9d6f912c"><td class="memItemLeft" align="right" valign="top">const Array_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a73f1375ad76be291f9f3768e9d6f912c">Array</a></td></tr>
-<tr class="separator:a73f1375ad76be291f9f3768e9d6f912c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad185d111ea5ea3bfe16cf458a36efc63"><td class="memItemLeft" align="right" valign="top">Data_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ad185d111ea5ea3bfe16cf458a36efc63">data</a> = nullptr</td></tr>
-<tr class="separator:ad185d111ea5ea3bfe16cf458a36efc63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9364028f9966697e3cdd3fc6a5cd90de"><td class="memItemLeft" align="right" valign="top">Array_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a9364028f9966697e3cdd3fc6a5cd90de">EmptyArray</a></td></tr>
+<tr class="memdesc:a9364028f9966697e3cdd3fc6a5cd90de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference array to generate the support.  <a href="#a9364028f9966697e3cdd3fc6a5cd90de">More...</a><br /></td></tr>
 <tr class="separator:a9364028f9966697e3cdd3fc6a5cd90de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2f404c7c11d5bc58e876124cc52d073"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_stats_d_b.html">StatsDB</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ab2f404c7c11d5bc58e876124cc52d073">support</a></td></tr>
-<tr class="separator:ab2f404c7c11d5bc58e876124cc52d073"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a650201174421779897fbea8fa4dc766e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a650201174421779897fbea8fa4dc766e">counters</a></td></tr>
-<tr class="separator:a650201174421779897fbea8fa4dc766e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada67557033378742f8592a96f39d1127"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ada67557033378742f8592a96f39d1127">current_stats</a></td></tr>
-<tr class="separator:ada67557033378742f8592a96f39d1127"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad399b4c1f9619c4e90dea0ffcf3c85c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_freq_table.html">FreqTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ad399b4c1f9619c4e90dea0ffcf3c85c1">data</a></td></tr>
+<tr class="separator:ad399b4c1f9619c4e90dea0ffcf3c85c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e668ea187df3a8e1406ae712099f849"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *&gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a1e668ea187df3a8e1406ae712099f849">counters</a></td></tr>
+<tr class="separator:a1e668ea187df3a8e1406ae712099f849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab15c7125d6b99ae15ec4dbb34c9ce9b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ab15c7125d6b99ae15ec4dbb34c9ce9b6">N</a></td></tr>
 <tr class="separator:ab15c7125d6b99ae15ec4dbb34c9ce9b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace1d46b871c67caa774ac2269930e97f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ace1d46b871c67caa774ac2269930e97f">M</a></td></tr>
 <tr class="separator:ace1d46b871c67caa774ac2269930e97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac352c6473720fcdcd9895c48bd872ef5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ac352c6473720fcdcd9895c48bd872ef5">initialized</a> = false</td></tr>
 <tr class="separator:ac352c6473720fcdcd9895c48bd872ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb3f9a11e2c64bdea950174f7c133536"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#acb3f9a11e2c64bdea950174f7c133536">counter_deleted</a> = false</td></tr>
+<tr class="separator:acb3f9a11e2c64bdea950174f7c133536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada67557033378742f8592a96f39d1127"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ada67557033378742f8592a96f39d1127">current_stats</a></td></tr>
+<tr class="separator:ada67557033378742f8592a96f39d1127"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e3b2d36d26bb771d1a49dfaad75b966"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a8e3b2d36d26bb771d1a49dfaad75b966">pos_i</a></td></tr>
+<tr class="separator:a8e3b2d36d26bb771d1a49dfaad75b966"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac256816f09e47a843cf478a470223a5b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ac256816f09e47a843cf478a470223a5b">pos_j</a></td></tr>
+<tr class="separator:ac256816f09e47a843cf478a470223a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6e6f53f963c1be75bea0ee9896d1afe"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#ae6e6f53f963c1be75bea0ee9896d1afe">change_stats</a></td></tr>
+<tr class="separator:ae6e6f53f963c1be75bea0ee9896d1afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt;<br />
@@ -140,7 +180,7 @@ class Support&lt; Array_Type, Data_Type &gt;</h3>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -160,7 +200,9 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00032">32</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p>Constructor passing a reference Array. </p>
+
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00039">39</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -170,7 +212,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -200,7 +242,9 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00042">42</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p>Constructor specifying the dimensions of the array (empty). </p>
+
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00050">50</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -210,7 +254,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -229,7 +273,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00043">43</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00059">59</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -260,7 +304,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00190">190</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00220">220</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -323,7 +367,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00105">105</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00138">138</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -352,7 +396,65 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00198">198</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00242">242</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a170776abc15d0fa8e02df36268e900a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a170776abc15d0fa8e02df36268e900a7">&#9670;&nbsp;</a></span>get_counts_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="typedefs_8hpp.html#a02ed8dec96bc528c8bc3d8cb3c4674a5">MapVec_type</a> * <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::get_counts_ptr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00249">249</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aef6fda6e7a0989f53fcd252609d770c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef6fda6e7a0989f53fcd252609d770c9">&#9670;&nbsp;</a></span>init_support()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::init_support </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00105">105</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -390,7 +492,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00081">81</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00118">118</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -420,39 +522,87 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00089">89</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00126">126</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a07f225ee54158980ededaccc47abad4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07f225ee54158980ededaccc47abad4c">&#9670;&nbsp;</a></span>set_counters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::set_counters </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *&gt; *&#160;</td>
+          <td class="paramname"><em>counters_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00228">228</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a73f1375ad76be291f9f3768e9d6f912c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73f1375ad76be291f9f3768e9d6f912c">&#9670;&nbsp;</a></span>Array</h2>
+<a id="ae6e6f53f963c1be75bea0ee9896d1afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6e6f53f963c1be75bea0ee9896d1afe">&#9670;&nbsp;</a></span>change_stats</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const Array_Type* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::Array</td>
+          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::change_stats</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00021">21</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00035">35</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a650201174421779897fbea8fa4dc766e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a650201174421779897fbea8fa4dc766e">&#9670;&nbsp;</a></span>counters</h2>
+<a id="acb3f9a11e2c64bdea950174f7c133536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb3f9a11e2c64bdea950174f7c133536">&#9670;&nbsp;</a></span>counter_deleted</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="class_counter.html">Counter</a>&lt;Array_Type, Data_Type&gt; * &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::counters</td>
+          <td class="memname">bool <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::counter_deleted = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00029">29</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1e668ea187df3a8e1406ae712099f849"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e668ea187df3a8e1406ae712099f849">&#9670;&nbsp;</a></span>counters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_counter.html">Counter</a>&lt;Array_Type, Data_Type&gt;* &gt;* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::counters</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -467,7 +617,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; double &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::current_stats</td>
@@ -475,25 +625,25 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00026">26</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00032">32</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad185d111ea5ea3bfe16cf458a36efc63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad185d111ea5ea3bfe16cf458a36efc63">&#9670;&nbsp;</a></span>data</h2>
+<a id="ad399b4c1f9619c4e90dea0ffcf3c85c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad399b4c1f9619c4e90dea0ffcf3c85c1">&#9670;&nbsp;</a></span>data</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Data_Type* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::data = nullptr</td>
+          <td class="memname"><a class="el" href="class_freq_table.html">FreqTable</a> <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::data</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00022">22</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00024">24</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -503,13 +653,15 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">Array_Type <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::EmptyArray</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reference array to generate the support. </p>
 
 <p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00023">23</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
@@ -521,7 +673,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::initialized = false</td>
@@ -529,7 +681,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00030">30</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00028">28</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -539,7 +691,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::M</td>
@@ -547,7 +699,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00029">29</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00027">27</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -557,7 +709,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::N</td>
@@ -565,25 +717,43 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00029">29</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00027">27</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ab2f404c7c11d5bc58e876124cc52d073"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2f404c7c11d5bc58e876124cc52d073">&#9670;&nbsp;</a></span>support</h2>
+<a id="a8e3b2d36d26bb771d1a49dfaad75b966"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e3b2d36d26bb771d1a49dfaad75b966">&#9670;&nbsp;</a></span>pos_i</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_stats_d_b.html">StatsDB</a> <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::support</td>
+          <td class="memname">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::pos_i</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00024">24</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00033">33</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac256816f09e47a843cf478a470223a5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac256816f09e47a843cf478a470223a5b">&#9670;&nbsp;</a></span>pos_j</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::pos_j</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support_8hpp_source.html#l00034">34</a> of file <a class="el" href="support_8hpp_source.html">support.hpp</a>.</p>
 
 </div>
 </div>
@@ -591,11 +761,15 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <li>include/<a class="el" href="support_8hpp_source.html">support.hpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_support.html">Support</a></li>
+    <li class="footer">Generated on Fri Jul 10 2020 16:32:48 for barry: Your go-to motif accountant by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

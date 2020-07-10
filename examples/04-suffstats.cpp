@@ -9,8 +9,8 @@ typedef std::vector< unsigned int > vuint;
 // [[Rcpp::export]]
 SEXP suff_stats(const NumericMatrix & x) {
   
-  Rcpp::XPtr< barry::StatsDB > xptr( 
-    new barry::StatsDB(), 
+  Rcpp::XPtr< barry::FreqTable<> > xptr( 
+    new barry::FreqTable<>(), 
     true
   );
   
@@ -26,7 +26,7 @@ SEXP suff_stats(const NumericMatrix & x) {
 // [[Rcpp::export]]
 List get_suff_stats(SEXP x) {
   
-  Rcpp::XPtr< barry::StatsDB > xptr(x);
+  Rcpp::XPtr< barry::FreqTable<> > xptr(x);
   
   // Now, getting the data
   barry::Counts_type ans = xptr->get_entries();
@@ -160,7 +160,7 @@ nrow(ans1)
 
 # Example with functions
 set.seed(123)
-N <- 100
+N <- 500
 M <- N
 gender <- sample.int(2, N, TRUE)
 
@@ -194,8 +194,8 @@ microbenchmark::microbenchmark(
     net ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
       density + idegree1.5 + odegree1.5 + nodematch("gender")),
   barray = counter(N, M, source - 1L, target - 1L, gender),
-  unit = "relative",
-  times = 100
+  unit = "s",
+  times = 10
 )
 
 
@@ -205,10 +205,9 @@ ergm::summary_formula(
   ) - 
 counter(N, M, source - 1L, target - 1L, gender)
 
-
 # stop()
 set.seed(123)
-N <- 5
+N <- 4
 M <- N
 gender <- sample.int(2, N, TRUE)
 

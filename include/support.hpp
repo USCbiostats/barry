@@ -18,29 +18,51 @@ template <typename Array_Type = BArray<>, typename Data_Type = bool>
 class Support {
 public:
   
-  const Array_Type * Array;
-  Data_Type * data = nullptr;
-  Array_Type EmptyArray;
-  StatsDB support;
-  std::vector< Counter<Array_Type, Data_Type> * > counters;
-  std::vector< double > current_stats;
-  // std::vector< double > target_stats;
-  
+  /**@brief Reference array to generate the support.
+   */
+  Array_Type                                       EmptyArray;
+  FreqTable<>                                      data;
+  std::vector< Counter<Array_Type, Data_Type>* > * counters;
+
   uint N, M;
   bool initialized = false;
+  bool counter_deleted = false;
   
+  // Temp variables to reduce memory allocation
+  std::vector< double >                current_stats;
+  std::vector< uint >                  pos_i;
+  std::vector< uint >                  pos_j;
+  std::vector< std::vector< double > > change_stats;
+  
+  /**@brief Constructor passing a reference Array.
+   */
   Support(const Array_Type * Array_) :
-    Array(Array_), EmptyArray(*Array_),
-    N(Array_->N), M(Array_->M) {
+    EmptyArray(*Array_), N(Array_->N), M(Array_->M) {
     
-    // if (Array_->data != nullptr) 
-    //   EmptyArray.data = Array_->data;
-    
+    counters = new std::vector< Counter<Array_Type, Data_Type>* >(0u);
+    init_support();
     return;
     
   };
-  Support(uint N_, uint M_) : EmptyArray(N_, M_) ,N(N_), M(M_){};
-  ~Support() {};
+  
+  /**@brief Constructor specifying the dimensions of the array (empty).
+   */
+  Support(uint N_, uint M_) :
+    EmptyArray(N_, M_) ,N(N_), M(M_) {
+    
+    counters = new std::vector< Counter<Array_Type, Data_Type>* >(0u);
+    init_support();
+    return;
+    
+  };
+  
+  ~Support() {
+    if (!counter_deleted)
+      delete counters;
+  };
+  
+  void init_support();
+  
   
   /**@brief Resets the support calculator
    * 
@@ -51,6 +73,7 @@ public:
   void reset();
   void reset(const Array_Type * Array_);
   void add_counter(Counter<Array_Type, Data_Type> * f_);
+  void set_counters(std::vector< Counter<Array_Type,Data_Type> *> * counters_);
   
   /**@brief Computes the entire support
    * 
@@ -73,14 +96,28 @@ public:
       std::vector< std::vector< double > > * stats_bank = nullptr
     );
   
-  Counts_type get_counts() const;
+  Counts_type           get_counts() const;
+  const MapVec_type<> * get_counts_ptr() const;
   
 };
 
 template <typename Array_Type, typename Data_Type>
+inline void Support<Array_Type, Data_Type>::init_support() {
+  
+  pos_i.resize(N*M);
+  pos_j.resize(N*M);
+  for (uint pos = 0u; pos < pos_i.size(); ++pos) {
+    pos_i[pos] = (int) pos % (int) N;
+    pos_j[pos] = floor((int) pos / (int) N);
+  }
+  
+  return;
+}
+
+template <typename Array_Type, typename Data_Type>
 inline void Support<Array_Type, Data_Type>::reset() {
   
-  support.clear();
+  data.clear();
   initialized = false;
   
 }
@@ -88,16 +125,12 @@ inline void Support<Array_Type, Data_Type>::reset() {
 template <typename Array_Type, typename Data_Type>
 inline void Support<Array_Type, Data_Type>::reset(const Array_Type * Array_) {
   
-  support.clear();
+  data.clear();
   initialized = false;
-  Array = Array_;
   EmptyArray = *Array_;
   N = Array_->N;
   M = Array_->M;
-  // EmptyArray.resize(N, M);
-  // if (Array_->data != nullptr) 
-  //   EmptyArray.data = Array_->data;
-  
+  init_support();
   
 }
 
@@ -108,17 +141,13 @@ inline void Support<Array_Type, Data_Type>::calc(
     std::vector< std::vector< double > > * stats_bank
   ) {
   
-  // Getting the location 
-  uint i = (int) pos % (int) N;
-  uint j = floor((int) pos / (int) N);
+  if (pos >= N*M) {
+    return;
+  }
   
   // No self ties, go to the next step and return.
-  if (!diag && (i == j))
+  if (!diag && (pos_i[pos] == pos_j[pos]))
     return calc(pos + 1u, diag, array_bank, stats_bank);
-  
-  // If reached the end, also return
-  if ((i >= N) || (j >= M))
-    return;
   
   // Initializing
   if (!initialized) {
@@ -127,16 +156,17 @@ inline void Support<Array_Type, Data_Type>::calc(
     initialized = true;
     EmptyArray.clear(true);
     EmptyArray.reserve();
-    current_stats.resize(counters.size());
+    current_stats.resize(counters->size());
+    change_stats.resize(N*M, current_stats);
     
     // Resizing support
-    support.reserve(pow(2.0, N * (M - 1.0)));
+    data.reserve(pow(2.0, N * (M - 1.0)));
     
-    for (uint n = 0u; n < counters.size(); ++n) 
-      current_stats[n] = counters[n]->init(&EmptyArray, i, j);
+    for (uint n = 0u; n < counters->size(); ++n) 
+      current_stats[n] = counters->operator[](n)->init(&EmptyArray, pos_i[pos], pos_j[pos]);
     
     // Adding to the overall count
-    support.add(current_stats);
+    data.add(current_stats);
     
     if (array_bank != nullptr)
       array_bank->push_back(EmptyArray);
@@ -153,17 +183,17 @@ inline void Support<Array_Type, Data_Type>::calc(
   // treat the data as if nothing has changed.
   
   // Toggle the cell (we will toggle it back after calling the counter)
-  EmptyArray.insert_cell(i, j, true, false, false);
+  EmptyArray.insert_cell(pos_i[pos], pos_j[pos], true, false, false);
   
   // Counting
-  std::vector< double > change_stats(counters.size());
-  for (uint n = 0u; n < counters.size(); ++n) {
-    change_stats[n] = counters[n]->count(&EmptyArray, i, j);
-    current_stats[n] += change_stats[n];
+  // std::vector< double > change_stats(counters.size());
+  for (uint n = 0u; n < counters->size(); ++n) {
+    change_stats[pos][n] = counters->operator[](n)->count(&EmptyArray, pos_i[pos], pos_j[pos]);
+    current_stats[n] += change_stats[pos][n];
   }
   
   // Adding to the overall count
-  support.add(current_stats);
+  data.add(current_stats);
   
   // Need to save?
   if (array_bank != nullptr)
@@ -177,9 +207,9 @@ inline void Support<Array_Type, Data_Type>::calc(
   calc(pos + 1, diag, array_bank, stats_bank);
   
   // We need to restore the state of the cell
-  EmptyArray.rm_cell(i, j, false, false);
-  for (uint n = 0u; n < counters.size(); ++n) 
-    current_stats[n] -= change_stats[n];
+  EmptyArray.rm_cell(pos_i[pos], pos_j[pos], false, false);
+  for (uint n = 0u; n < counters->size(); ++n) 
+    current_stats[n] -= change_stats[pos][n];
   
   
   return;
@@ -190,15 +220,36 @@ template <typename Array_Type, typename Data_Type>
 inline void Support<Array_Type,Data_Type>::add_counter(
     Counter<Array_Type, Data_Type> * f_
   ) {
-  counters.push_back(f_);
+  counters->push_back(f_);
   return;
+}
+
+template <typename Array_Type, typename Data_Type>
+inline void Support<Array_Type,Data_Type>::set_counters(
+    std::vector< Counter<Array_Type,Data_Type> *> * counters_
+) {
+  
+  if (!counter_deleted)
+    delete counters;
+  
+  counters = counters;
+  
+  return;
+  
 }
 
 template <typename Array_Type, typename Data_Type>
 inline Counts_type Support<Array_Type,Data_Type>::get_counts() const {
   
-  return support.get_entries();
+  return data.as_vector(); 
   
+}
+
+template <typename Array_Type, typename Data_Type>
+inline const MapVec_type<> * Support<Array_Type,Data_Type>::get_counts_ptr() const {
+  
+  return data.get_data_ptr();
+   
 }
 
 

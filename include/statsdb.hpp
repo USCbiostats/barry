@@ -5,80 +5,81 @@
 
 #ifndef LBARRAY_STATSDB_HPP 
 #define LBARRAY_STATSDB_HPP 1
-
-template <typename T>
-struct vecHasher {
-  std::size_t operator()(std::vector< T > const&  dat) const noexcept {
-    
-    std::hash< T > hasher;
-    std::size_t hash = hasher(dat[0u]);
-    
-    // ^ makes bitwise XOR
-    // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
-    // << is a shift operator, something like lhs * 2^(rhs)
-    if (dat.size() > 1u)
-      for (unsigned int i = 1u; i < dat.size(); ++i)
-        hash ^= hasher(dat[i]) + 0x9e3779b9 + (hash<<6) + (hash>>2);
-    
-    return hash;
-    
-  }
-};
-
+ 
 /**@brief Database of statistics.
  * 
  * This is mostly used in `Support`.
  * 
  */
-class StatsDB {
+template<typename T = double> 
+class FreqTable {
 private:
-  std::unordered_map< std::vector< double >, uint, vecHasher< double > > stats;
+  MapVec_type<T, uint> data;
   
 public:
   // uint ncols;
-  StatsDB() {};
-  ~StatsDB() {};
+  FreqTable() {};
+  ~FreqTable() {};
   
-  void add(const std::vector< double > & x) {
-    
-    // The term exists, then we add it to the list and we initialize it
-    // with a single count
-    if (stats.find(x) == stats.end()) {
-      stats[x] = 1u;
-    } else // We increment the counter
-      stats.at(x)++;
-   
-    return; 
-  };
+  void add(const std::vector< T > & x);
   
-  Counts_type get_entries() const { 
-    
-    Counts_type ans;
-    ans.reserve(stats.size());
-    for (auto iter = stats.begin(); iter != stats.end(); ++iter)
-      ans.push_back(*iter);
-    
-    
-    return ans;
-  };
+  Counts_type                 as_vector() const;
+  MapVec_type<T,uint>         get_data() const;
+  const MapVec_type<T,uint> * get_data_ptr() const;
   
   void clear();
-  
   void reserve(unsigned int n);
   // void rehash();
   
   
 };
 
-inline void StatsDB::clear() {
-  stats.clear();
+template<typename T>  
+inline void FreqTable<T>::add(const std::vector< T > & x) { 
+  
+  // The term exists, then we add it to the list and we initialize it
+  // with a single count
+  if (data.find(x) == data.end()) {
+    data[x] = 1u;
+  } else // We increment the counter
+    data.at(x)++;
+  
+  return; 
+}
+
+template<typename T>
+inline Counts_type FreqTable<T>::as_vector() const { 
+  
+  Counts_type ans;
+  ans.reserve(data.size());
+  for (auto iter = data.begin(); iter != data.end(); ++iter)
+    ans.push_back(*iter);
+  
+  
+  return ans;
+}
+
+template<typename T>
+inline MapVec_type<T,uint> FreqTable<T>::get_data() const {
+  return data;
+}
+
+template<typename T>
+inline const MapVec_type<T,uint> * FreqTable<T>::get_data_ptr() const {
+  return &data;
+}
+
+template<typename T>
+inline void FreqTable<T>::clear() {
+  data.clear();
   return;
 }
 
-inline void StatsDB::reserve(
+template<typename T>
+inline void FreqTable<T>::reserve(
   unsigned int n
 ) {
-  stats.reserve(n);
+  data.reserve(n);
   return;
 }
 

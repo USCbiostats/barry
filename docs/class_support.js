@@ -1,0 +1,25 @@
+var class_support =
+[
+    [ "Support", "class_support.html#a4a0587bc6f1f268005a94fea039ea6ba", null ],
+    [ "Support", "class_support.html#aff7d2705d6f765fcbd8958453b7dbefe", null ],
+    [ "~Support", "class_support.html#a03228371869980fa356b7b86871d94e8", null ],
+    [ "add_counter", "class_support.html#a0ad8bb6202451253697d771a28859210", null ],
+    [ "calc", "class_support.html#ab5261952be0746f188ee024e3e8c26c1", null ],
+    [ "get_counts", "class_support.html#a00ebb01a467b41e4b65df4c9a916909b", null ],
+    [ "get_counts_ptr", "class_support.html#a170776abc15d0fa8e02df36268e900a7", null ],
+    [ "init_support", "class_support.html#aef6fda6e7a0989f53fcd252609d770c9", null ],
+    [ "reset", "class_support.html#a5878ac60282fc1380c92f3ba502f249e", null ],
+    [ "reset", "class_support.html#afbe207cc2762bc698c9ccb3212e9de78", null ],
+    [ "set_counters", "class_support.html#a07f225ee54158980ededaccc47abad4c", null ],
+    [ "change_stats", "class_support.html#ae6e6f53f963c1be75bea0ee9896d1afe", null ],
+    [ "counter_deleted", "class_support.html#acb3f9a11e2c64bdea950174f7c133536", null ],
+    [ "counters", "class_support.html#a1e668ea187df3a8e1406ae712099f849", null ],
+    [ "current_stats", "class_support.html#ada67557033378742f8592a96f39d1127", null ],
+    [ "data", "class_support.html#ad399b4c1f9619c4e90dea0ffcf3c85c1", null ],
+    [ "EmptyArray", "class_support.html#a9364028f9966697e3cdd3fc6a5cd90de", null ],
+    [ "initialized", "class_support.html#ac352c6473720fcdcd9895c48bd872ef5", null ],
+    [ "M", "class_support.html#ace1d46b871c67caa774ac2269930e97f", null ],
+    [ "N", "class_support.html#ab15c7125d6b99ae15ec4dbb34c9ce9b6", null ],
+    [ "pos_i", "class_support.html#a8e3b2d36d26bb771d1a49dfaad75b966", null ],
+    [ "pos_j", "class_support.html#ac256816f09e47a843cf478a470223a5b", null ]
+];

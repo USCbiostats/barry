@@ -15,6 +15,8 @@ class \hyperlink{class_cell}{Cell$<$ Cell\+\_\+\+Type $>$}
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_entries}{Entries} in \hyperlink{class_b_array}{B\+Array}. For now, it only has two members\+: \end{DoxyCompactList}\item 
 class \hyperlink{class_entries}{Entries$<$ Cell\+\_\+\+Type $>$}
 \item 
+struct \hyperlink{structvec_hasher}{vec\+Hasher$<$ T $>$}
+\item 
 class \hyperlink{class_b_array}{B\+Array$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
 \begin{DoxyCompactList}\small\item\em Baseline class for binary arrays. \end{DoxyCompactList}\item 
 class \hyperlink{class_counter}{Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
@@ -50,13 +52,15 @@ class \hyperlink{class_counter}{Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type}
-\item 
 typedef unsigned int \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}
+\item 
+typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type}
 \item 
 {\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $>$
 \item 
 {\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
+\item 
+{\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structvec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
 \end{DoxyCompactItemize}
@@ -102,7 +106,7 @@ const int \hyperlink{namespace_e_x_i_s_t_s_a735e5ca6565905e84346e3ff62842a0a}{E\
 
 
 
-Definition at line 72 of file typedefs.\+hpp.
+Definition at line 97 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_ac3f14709e872fe684ba3cea262981ac3}\label{typedefs_8hpp_ac3f14709e872fe684ba3cea262981ac3}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}}
@@ -112,7 +116,7 @@ Definition at line 72 of file typedefs.\+hpp.
 
 
 
-Definition at line 71 of file typedefs.\+hpp.
+Definition at line 96 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_ac3f14709e872fe684ba3cea262981ac3}\label{barry_8hpp_ac3f14709e872fe684ba3cea262981ac3}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}}
@@ -142,7 +146,7 @@ Definition at line 3 of file barry.\+hpp.
 
 
 
-Definition at line 6 of file typedefs.\+hpp.
+Definition at line 9 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}\label{barry_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!C\+OL@{C\+OL}}
@@ -164,7 +168,7 @@ Definition at line 6 of file typedefs.\+hpp.
 
 
 
-Definition at line 5 of file typedefs.\+hpp.
+Definition at line 8 of file typedefs.\+hpp.
 
 
 
@@ -178,7 +182,7 @@ using \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type}
 
 
 
-Definition at line 40 of file typedefs.\+hpp.
+Definition at line 41 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}\label{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Counter\+\_\+fun\+\_\+type@{Counter\+\_\+fun\+\_\+type}}
@@ -189,7 +193,7 @@ using \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+f
 
 
 
-Definition at line 75 of file typedefs.\+hpp.
+Definition at line 100 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}\label{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Counts\+\_\+type@{Counts\+\_\+type}}
@@ -199,7 +203,18 @@ Definition at line 75 of file typedefs.\+hpp.
 
 
 
-Definition at line 31 of file typedefs.\+hpp.
+Definition at line 34 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}\label{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!Map\+Vec\+\_\+type@{Map\+Vec\+\_\+type}}
+\index{Map\+Vec\+\_\+type@{Map\+Vec\+\_\+type}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{Map\+Vec\+\_\+type}{MapVec\_type}}
+{\footnotesize\ttfamily template$<$typename Ta  = double, typename Tb  = uint$>$ \\
+using \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type} =  std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structvec_hasher}{vec\+Hasher}$<$Ta$>$ $>$}
+
+
+
+Definition at line 90 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}\label{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Row\+\_\+type@{Row\+\_\+type}}
@@ -210,7 +225,7 @@ using \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type}
 
 
 
-Definition at line 37 of file typedefs.\+hpp.
+Definition at line 38 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}\label{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!uint@{uint}}
@@ -220,5 +235,5 @@ Definition at line 37 of file typedefs.\+hpp.
 
 
 
-Definition at line 33 of file typedefs.\+hpp.
+Definition at line 5 of file typedefs.\+hpp.
 

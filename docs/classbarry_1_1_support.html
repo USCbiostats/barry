@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,6 +58,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classbarry_1_1_support.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +87,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacebarry.html">barry</a></li><li class="navelem"><a class="el" href="classbarry_1_1_support.html">Support</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -83,18 +106,22 @@ Collaboration diagram for barry::Support&lt; Array_Type, Data_Type &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classbarry_1_1_support__coll__graph.png" border="0" usemap="#barry_1_1_support_3_01_array___type_00_01_data___type_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="barry_1_1_support_3_01_array___type_00_01_data___type_01_4_coll__map" id="barry_1_1_support_3_01_array___type_00_01_data___type_01_4_coll__map">
-<area shape="rect" id="node2" href="classbarry_1_1_stats_d_b.html" title="Database of statistics. " alt="" coords="24,5,133,32"/>
+<area shape="rect" id="node2" href="classbarry_1_1_freq_table.html" title="Database of statistics. " alt="" coords="5,5,155,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab946f83af83c571de8bd5a17ce453240"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#ab946f83af83c571de8bd5a17ce453240">Support</a> (const Array_Type *Array_)</td></tr>
+<tr class="memdesc:ab946f83af83c571de8bd5a17ce453240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor passing a reference Array.  <a href="#ab946f83af83c571de8bd5a17ce453240">More...</a><br /></td></tr>
 <tr class="separator:ab946f83af83c571de8bd5a17ce453240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa451bd21c09935b686869fef96c5b874"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#aa451bd21c09935b686869fef96c5b874">Support</a> (<a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> N_, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> M_)</td></tr>
+<tr class="memdesc:aa451bd21c09935b686869fef96c5b874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor specifying the dimensions of the array (empty).  <a href="#aa451bd21c09935b686869fef96c5b874">More...</a><br /></td></tr>
 <tr class="separator:aa451bd21c09935b686869fef96c5b874"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ffd5ee63fa68338cbbf443e1e54e5b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a1ffd5ee63fa68338cbbf443e1e54e5b4">~Support</a> ()</td></tr>
 <tr class="separator:a1ffd5ee63fa68338cbbf443e1e54e5b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef6fda6e7a0989f53fcd252609d770c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#aef6fda6e7a0989f53fcd252609d770c9">init_support</a> ()</td></tr>
+<tr class="separator:aef6fda6e7a0989f53fcd252609d770c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5878ac60282fc1380c92f3ba502f249e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a5878ac60282fc1380c92f3ba502f249e">reset</a> ()</td></tr>
 <tr class="memdesc:a5878ac60282fc1380c92f3ba502f249e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the support calculator.  <a href="#a5878ac60282fc1380c92f3ba502f249e">More...</a><br /></td></tr>
 <tr class="separator:a5878ac60282fc1380c92f3ba502f249e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,32 +129,41 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afbe207cc2762bc698c9ccb3212e9de78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ad8bb6202451253697d771a28859210"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a0ad8bb6202451253697d771a28859210">add_counter</a> (<a class="el" href="classbarry_1_1_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *f_)</td></tr>
 <tr class="separator:a0ad8bb6202451253697d771a28859210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07f225ee54158980ededaccc47abad4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a07f225ee54158980ededaccc47abad4c">set_counters</a> (std::vector&lt; <a class="el" href="classbarry_1_1_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *&gt; *counters_)</td></tr>
+<tr class="separator:a07f225ee54158980ededaccc47abad4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5261952be0746f188ee024e3e8c26c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#ab5261952be0746f188ee024e3e8c26c1">calc</a> (<a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> pos=0u, const bool &amp;diag=false, std::vector&lt; Array_Type &gt; *array_bank=nullptr, std::vector&lt; std::vector&lt; double &gt; &gt; *stats_bank=nullptr)</td></tr>
 <tr class="memdesc:ab5261952be0746f188ee024e3e8c26c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the entire support.  <a href="#ab5261952be0746f188ee024e3e8c26c1">More...</a><br /></td></tr>
 <tr class="separator:ab5261952be0746f188ee024e3e8c26c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00ebb01a467b41e4b65df4c9a916909b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacebarry.html#a3e2d8c3b6cf602107559d4237d9f1315">Counts_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a00ebb01a467b41e4b65df4c9a916909b">get_counts</a> () const</td></tr>
 <tr class="separator:a00ebb01a467b41e4b65df4c9a916909b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a170776abc15d0fa8e02df36268e900a7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacebarry.html#a2f0d3aab1d67e4c8eaeab9022e16139f">MapVec_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a170776abc15d0fa8e02df36268e900a7">get_counts_ptr</a> () const</td></tr>
+<tr class="separator:a170776abc15d0fa8e02df36268e900a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a782b1912d7fa2963d79d48a50947f033"><td class="memItemLeft" align="right" valign="top">const Array_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a782b1912d7fa2963d79d48a50947f033">Array</a></td></tr>
-<tr class="separator:a782b1912d7fa2963d79d48a50947f033"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad53c81c95b0a30ec2cea7e7e88774c0c"><td class="memItemLeft" align="right" valign="top">Data_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#ad53c81c95b0a30ec2cea7e7e88774c0c">data</a> = nullptr</td></tr>
-<tr class="separator:ad53c81c95b0a30ec2cea7e7e88774c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae26e46356041286028ffcc27195b9e8a"><td class="memItemLeft" align="right" valign="top">Array_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#ae26e46356041286028ffcc27195b9e8a">EmptyArray</a></td></tr>
+<tr class="memdesc:ae26e46356041286028ffcc27195b9e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference array to generate the support.  <a href="#ae26e46356041286028ffcc27195b9e8a">More...</a><br /></td></tr>
 <tr class="separator:ae26e46356041286028ffcc27195b9e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9942324040dfed9e0f2347b4d9d25b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbarry_1_1_stats_d_b.html">StatsDB</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#ac9942324040dfed9e0f2347b4d9d25b3">support</a></td></tr>
-<tr class="separator:ac9942324040dfed9e0f2347b4d9d25b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a699d0025361014e70fc405f3e2dc5960"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classbarry_1_1_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a699d0025361014e70fc405f3e2dc5960">counters</a></td></tr>
-<tr class="separator:a699d0025361014e70fc405f3e2dc5960"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a094f0851c7d6bfa7876eb0df2be4439e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a094f0851c7d6bfa7876eb0df2be4439e">current_stats</a></td></tr>
-<tr class="separator:a094f0851c7d6bfa7876eb0df2be4439e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afae160c07727e72f36fcf5a16828ed21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbarry_1_1_freq_table.html">FreqTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#afae160c07727e72f36fcf5a16828ed21">data</a></td></tr>
+<tr class="separator:afae160c07727e72f36fcf5a16828ed21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7cd458219742709c0a214d7bf70b7d9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classbarry_1_1_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *&gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#ab7cd458219742709c0a214d7bf70b7d9">counters</a></td></tr>
+<tr class="separator:ab7cd458219742709c0a214d7bf70b7d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e3158ceae716505cb0c5fb14374be9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a1e3158ceae716505cb0c5fb14374be9b">N</a></td></tr>
 <tr class="separator:a1e3158ceae716505cb0c5fb14374be9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaceb2f83d235c70034e089087991cff8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#aaceb2f83d235c70034e089087991cff8">M</a></td></tr>
 <tr class="separator:aaceb2f83d235c70034e089087991cff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a737bc10d6a6e4e3b18aeef0228bd45bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a737bc10d6a6e4e3b18aeef0228bd45bb">initialized</a> = false</td></tr>
 <tr class="separator:a737bc10d6a6e4e3b18aeef0228bd45bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c18c68794e756bc84ee2405dca505a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a96c18c68794e756bc84ee2405dca505a">counter_deleted</a> = false</td></tr>
+<tr class="separator:a96c18c68794e756bc84ee2405dca505a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a094f0851c7d6bfa7876eb0df2be4439e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a094f0851c7d6bfa7876eb0df2be4439e">current_stats</a></td></tr>
+<tr class="separator:a094f0851c7d6bfa7876eb0df2be4439e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6012c953dd04c2e74c2105b193f50ac"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#ac6012c953dd04c2e74c2105b193f50ac">pos_i</a></td></tr>
+<tr class="separator:ac6012c953dd04c2e74c2105b193f50ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aeba4c4447efe7523abfb1cef864e63"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a5aeba4c4447efe7523abfb1cef864e63">pos_j</a></td></tr>
+<tr class="separator:a5aeba4c4447efe7523abfb1cef864e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09cebbb8953514f77e2f70d447d3ff2a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html#a09cebbb8953514f77e2f70d447d3ff2a">change_stats</a></td></tr>
+<tr class="separator:a09cebbb8953514f77e2f70d447d3ff2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt;<br />
@@ -164,7 +200,9 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00032">32</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p>Constructor passing a reference Array. </p>
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00039">39</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -204,7 +242,9 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00042">42</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p>Constructor specifying the dimensions of the array (empty). </p>
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00050">50</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -233,7 +273,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00043">43</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00059">59</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -264,7 +304,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00190">190</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00220">220</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -327,7 +367,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00105">105</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00138">138</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -356,7 +396,65 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00198">198</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00242">242</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a170776abc15d0fa8e02df36268e900a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a170776abc15d0fa8e02df36268e900a7">&#9670;&nbsp;</a></span>get_counts_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespacebarry.html#a2f0d3aab1d67e4c8eaeab9022e16139f">MapVec_type</a> * <a class="el" href="classbarry_1_1_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::get_counts_ptr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00249">249</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aef6fda6e7a0989f53fcd252609d770c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef6fda6e7a0989f53fcd252609d770c9">&#9670;&nbsp;</a></span>init_support()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbarry_1_1_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::init_support </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00105">105</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -394,7 +492,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00081">81</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00118">118</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -424,13 +522,43 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00089">89</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00126">126</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a07f225ee54158980ededaccc47abad4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07f225ee54158980ededaccc47abad4c">&#9670;&nbsp;</a></span>set_counters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classbarry_1_1_support.html">Support</a>&lt; Array_Type, Data_Type &gt;::set_counters </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classbarry_1_1_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *&gt; *&#160;</td>
+          <td class="paramname"><em>counters_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00228">228</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a782b1912d7fa2963d79d48a50947f033"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a782b1912d7fa2963d79d48a50947f033">&#9670;&nbsp;</a></span>Array</h2>
+<a id="a09cebbb8953514f77e2f70d447d3ff2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09cebbb8953514f77e2f70d447d3ff2a">&#9670;&nbsp;</a></span>change_stats</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -438,17 +566,17 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const Array_Type* <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::Array</td>
+          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::change_stats</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00021">21</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00035">35</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a699d0025361014e70fc405f3e2dc5960"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a699d0025361014e70fc405f3e2dc5960">&#9670;&nbsp;</a></span>counters</h2>
+<a id="a96c18c68794e756bc84ee2405dca505a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96c18c68794e756bc84ee2405dca505a">&#9670;&nbsp;</a></span>counter_deleted</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -456,7 +584,25 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="classbarry_1_1_counter.html">Counter</a>&lt;Array_Type, Data_Type&gt; * &gt; <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::counters</td>
+          <td class="memname">bool <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::counter_deleted = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00029">29</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab7cd458219742709c0a214d7bf70b7d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7cd458219742709c0a214d7bf70b7d9">&#9670;&nbsp;</a></span>counters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classbarry_1_1_counter.html">Counter</a>&lt;Array_Type, Data_Type&gt;* &gt;* <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::counters</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -479,12 +625,12 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00026">26</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00032">32</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad53c81c95b0a30ec2cea7e7e88774c0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad53c81c95b0a30ec2cea7e7e88774c0c">&#9670;&nbsp;</a></span>data</h2>
+<a id="afae160c07727e72f36fcf5a16828ed21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afae160c07727e72f36fcf5a16828ed21">&#9670;&nbsp;</a></span>data</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -492,12 +638,12 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Data_Type* <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::data = nullptr</td>
+          <td class="memname"><a class="el" href="classbarry_1_1_freq_table.html">FreqTable</a> <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::data</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00022">22</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00024">24</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -514,6 +660,8 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reference array to generate the support. </p>
 
 <p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00023">23</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
@@ -533,7 +681,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00030">30</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00028">28</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -551,7 +699,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00029">29</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00027">27</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -569,12 +717,12 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00029">29</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00027">27</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ac9942324040dfed9e0f2347b4d9d25b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9942324040dfed9e0f2347b4d9d25b3">&#9670;&nbsp;</a></span>support</h2>
+<a id="ac6012c953dd04c2e74c2105b193f50ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6012c953dd04c2e74c2105b193f50ac">&#9670;&nbsp;</a></span>pos_i</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -582,12 +730,30 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classbarry_1_1_stats_d_b.html">StatsDB</a> <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::support</td>
+          <td class="memname">std::vector&lt; <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> &gt; <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::pos_i</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00024">24</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00033">33</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5aeba4c4447efe7523abfb1cef864e63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aeba4c4447efe7523abfb1cef864e63">&#9670;&nbsp;</a></span>pos_j</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> &gt; <a class="el" href="classbarry_1_1_support.html">barry::Support</a>&lt; Array_Type, Data_Type &gt;::pos_j</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00034">34</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -595,11 +761,15 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <li>include/<a class="el" href="barry_8hpp_source.html">barry.hpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacebarry.html">barry</a></li><li class="navelem"><a class="el" href="classbarry_1_1_support.html">Support</a></li>
+    <li class="footer">Generated on Fri Jul 10 2020 16:32:48 for barry: Your go-to motif accountant by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

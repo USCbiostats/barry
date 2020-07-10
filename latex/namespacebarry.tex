@@ -22,12 +22,12 @@ class \hyperlink{classbarry_1_1_counter}{Counter}
 \begin{DoxyCompactList}\small\item\em A counter function based on change statistics. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_entries}{Entries}
 \item 
+class \hyperlink{classbarry_1_1_freq_table}{Freq\+Table}
+\begin{DoxyCompactList}\small\item\em Database of statistics. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_power_set}{Power\+Set}
 \item 
 class \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}
 \begin{DoxyCompactList}\small\item\em Count stats for a single Array. \end{DoxyCompactList}\item 
-class \hyperlink{classbarry_1_1_stats_d_b}{Stats\+DB}
-\begin{DoxyCompactList}\small\item\em Database of statistics. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_support}{Support}
 \begin{DoxyCompactList}\small\item\em Compute the support of sufficient statistics. \end{DoxyCompactList}\item 
 struct \hyperlink{structbarry_1_1vec_hasher}{vec\+Hasher}
@@ -35,13 +35,15 @@ struct \hyperlink{structbarry_1_1vec_hasher}{vec\+Hasher}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{Counts\+\_\+type}
-\item 
 typedef unsigned int \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}
+\item 
+typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{Counts\+\_\+type}
 \item 
 {\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}{Row\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{classbarry_1_1_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $>$
 \item 
 {\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_adc551002e63e38057d304f78d7756308}{Col\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{classbarry_1_1_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
+\item 
+{\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structbarry_1_1vec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$
 \end{DoxyCompactItemize}
@@ -57,7 +59,7 @@ using \hyperlink{namespacebarry_adc551002e63e38057d304f78d7756308}{barry\+::\+Co
 
 
 
-Definition at line 41 of file barry.\+hpp.
+Definition at line 42 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}\label{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}} 
 \index{barry@{barry}!Counter\+\_\+fun\+\_\+type@{Counter\+\_\+fun\+\_\+type}}
@@ -68,7 +70,7 @@ using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{barry\+::\+Co
 
 
 
-Definition at line 76 of file barry.\+hpp.
+Definition at line 101 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}\label{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}} 
 \index{barry@{barry}!Counts\+\_\+type@{Counts\+\_\+type}}
@@ -78,7 +80,18 @@ Definition at line 76 of file barry.\+hpp.
 
 
 
-Definition at line 32 of file barry.\+hpp.
+Definition at line 35 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}\label{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}} 
+\index{barry@{barry}!Map\+Vec\+\_\+type@{Map\+Vec\+\_\+type}}
+\index{Map\+Vec\+\_\+type@{Map\+Vec\+\_\+type}!barry@{barry}}
+\subsubsection{\texorpdfstring{Map\+Vec\+\_\+type}{MapVec\_type}}
+{\footnotesize\ttfamily template$<$typename Ta  = double, typename Tb  = uint$>$ \\
+using \hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{barry\+::\+Map\+Vec\+\_\+type} = typedef std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structbarry_1_1vec_hasher}{vec\+Hasher}$<$Ta$>$ $>$}
+
+
+
+Definition at line 91 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}\label{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}} 
 \index{barry@{barry}!Row\+\_\+type@{Row\+\_\+type}}
@@ -89,7 +102,7 @@ using \hyperlink{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}{barry\+::\+Ro
 
 
 
-Definition at line 38 of file barry.\+hpp.
+Definition at line 39 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}\label{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}} 
 \index{barry@{barry}!uint@{uint}}
@@ -99,5 +112,5 @@ Definition at line 38 of file barry.\+hpp.
 
 
 
-Definition at line 34 of file barry.\+hpp.
+Definition at line 6 of file barry.\+hpp.
 

@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,6 +58,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('phylo_8hpp_source.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +87,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_d569f91614126aa717c45996ef26757b.html">counters</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">phylo.hpp</div>  </div>
@@ -76,7 +99,7 @@ $(function() {
 <div class="ttc" id="phylo_8hpp_html_abeac115c19b3342e8a29887232114680"><div class="ttname"><a href="phylo_8hpp.html#abeac115c19b3342e8a29887232114680">cogain</a></div><div class="ttdeci">PhyloCounter cogain(count_cogain, init_cogain)</div></div>
 <div class="ttc" id="phylo_8hpp_html_aa942fa3af91344d3a6528d3f72e9bc10"><div class="ttname"><a href="phylo_8hpp.html#aa942fa3af91344d3a6528d3f72e9bc10">PhyloArray</a></div><div class="ttdeci">BArray&lt; bool, NodeData &gt; PhyloArray</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00041">phylo.hpp:41</a></div></div>
 <div class="ttc" id="class_b_array_html"><div class="ttname"><a href="class_b_array.html">BArray</a></div><div class="ttdoc">Baseline class for binary arrays. </div><div class="ttdef"><b>Definition:</b> <a href="barray-bones_8hpp_source.html#l00016">barray-bones.hpp:16</a></div></div>
-<div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00033">typedefs.hpp:33</a></div></div>
+<div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00005">typedefs.hpp:5</a></div></div>
 <div class="ttc" id="class_node_data_html_a56da12a9de7c80c25a905012749c8671"><div class="ttname"><a href="class_node_data.html#a56da12a9de7c80c25a905012749c8671">NodeData::NodeData</a></div><div class="ttdeci">NodeData()</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00029">phylo.hpp:29</a></div></div>
 <div class="ttc" id="class_node_data_html_ad870d466c40b9be96ad79adccab79038"><div class="ttname"><a href="class_node_data.html#ad870d466c40b9be96ad79adccab79038">NodeData::~NodeData</a></div><div class="ttdeci">~NodeData()</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00037">phylo.hpp:37</a></div></div>
 <div class="ttc" id="phylo_8hpp_html_a56f8b323704b839b86d9ccf946e7ddb6"><div class="ttname"><a href="phylo_8hpp.html#a56f8b323704b839b86d9ccf946e7ddb6">longest</a></div><div class="ttdeci">PhyloCounter longest(count_longest, init_longest)</div></div>
@@ -90,11 +113,15 @@ $(function() {
 <div class="ttc" id="class_node_data_html_a0a90191ba4c987afa3406f829967d8e2"><div class="ttname"><a href="class_node_data.html#a0a90191ba4c987afa3406f829967d8e2">NodeData::NodeData</a></div><div class="ttdeci">NodeData(const std::vector&lt; double &gt; &amp;blengths_, const std::vector&lt; bool &gt; &amp;states_, bool duplication_=true)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00031">phylo.hpp:31</a></div></div>
 <div class="ttc" id="class_node_data_html_a02da5f097c105813216d87ef89ad7bd4"><div class="ttname"><a href="class_node_data.html#a02da5f097c105813216d87ef89ad7bd4">NodeData::blengths</a></div><div class="ttdeci">std::vector&lt; double &gt; blengths</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00017">phylo.hpp:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_d569f91614126aa717c45996ef26757b.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
+    <li class="footer">Generated on Fri Jul 10 2020 16:32:48 for barry: Your go-to motif accountant by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,6 +1,9 @@
 #ifndef BARRAY_TYPEDEFS_HPP
 #define BARRAY_TYPEDEFS_HPP 
 
+// Basic types
+typedef unsigned int uint;
+
 // Mostly relevant for the BArray definition -----------------------------------
 #define ROW(a) this->el_ij.at(a)
 #define COL(a) this->el_ji.at(a)
@@ -29,8 +32,6 @@ namespace EXISTS {
  * A single count
  */
 typedef std::vector< std::pair< std::vector<double>, uint > > Counts_type;
-
-typedef unsigned int uint;
 template <class Type_A > class Cell;
 
 template<typename Cell_Type>
@@ -64,7 +65,31 @@ public:
   }
   
 };
+
+// Relevant for anything using vecHasher function ------------------------------
+template <typename T>
+struct vecHasher {
+  std::size_t operator()(std::vector< T > const&  dat) const noexcept {
+    
+    std::hash< T > hasher;
+    std::size_t hash = hasher(dat[0u]);
+    
+    // ^ makes bitwise XOR
+    // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
+    // << is a shift operator, something like lhs * 2^(rhs)
+    if (dat.size() > 1u)
+      for (unsigned int i = 1u; i < dat.size(); ++i)
+        hash ^= hasher(dat[i]) + 0x9e3779b9 + (hash<<6) + (hash>>2);
+    
+    return hash;
+    
+  }
+};
+
+template<typename Ta = double, typename Tb = uint> 
+using MapVec_type = std::unordered_map< std::vector< Ta >, Tb, vecHasher<Ta>>;
  
+
 // Mostly relevant in the case of the stats count functions -------------------
 template <typename Cell_Type, typename Data_Type> class BArray;
 template <typename Array_Type, typename Counter_Type> class Counter;

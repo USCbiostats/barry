@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,6 +58,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('namespacebarry.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +87,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
@@ -94,13 +121,13 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_entries.html">Entries</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_freq_table.html">FreqTable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Database of statistics.  <a href="classbarry_1_1_freq_table.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_power_set.html">PowerSet</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_stats_counter.html">StatsCounter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count stats for a single Array.  <a href="classbarry_1_1_stats_counter.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_stats_d_b.html">StatsDB</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Database of statistics.  <a href="classbarry_1_1_stats_d_b.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_support.html">Support</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the support of sufficient statistics.  <a href="classbarry_1_1_support.html#details">More...</a><br /></td></tr>
@@ -110,16 +137,19 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a3e2d8c3b6cf602107559d4237d9f1315"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::pair&lt; std::vector&lt; double &gt;, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a3e2d8c3b6cf602107559d4237d9f1315">Counts_type</a></td></tr>
-<tr class="separator:a3e2d8c3b6cf602107559d4237d9f1315"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11dfc53ddb4672278319aa04f1e09a6c"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a></td></tr>
 <tr class="separator:a11dfc53ddb4672278319aa04f1e09a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e2d8c3b6cf602107559d4237d9f1315"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::pair&lt; std::vector&lt; double &gt;, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a3e2d8c3b6cf602107559d4237d9f1315">Counts_type</a></td></tr>
+<tr class="separator:a3e2d8c3b6cf602107559d4237d9f1315"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f67f2e1e26f3cb10d240b7e1a1d917c"><td class="memTemplParams" colspan="2">template&lt;typename Cell_Type &gt; </td></tr>
 <tr class="memitem:a8f67f2e1e26f3cb10d240b7e1a1d917c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a8f67f2e1e26f3cb10d240b7e1a1d917c">Row_type</a> = std::unordered_map&lt; <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a>, <a class="el" href="classbarry_1_1_cell.html">Cell</a>&lt; Cell_Type &gt; &gt;</td></tr>
 <tr class="separator:a8f67f2e1e26f3cb10d240b7e1a1d917c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc551002e63e38057d304f78d7756308"><td class="memTemplParams" colspan="2">template&lt;typename Cell_Type &gt; </td></tr>
 <tr class="memitem:adc551002e63e38057d304f78d7756308"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#adc551002e63e38057d304f78d7756308">Col_type</a> = std::unordered_map&lt; <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a>, <a class="el" href="classbarry_1_1_cell.html">Cell</a>&lt; Cell_Type &gt; *&gt;</td></tr>
 <tr class="separator:adc551002e63e38057d304f78d7756308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f0d3aab1d67e4c8eaeab9022e16139f"><td class="memTemplParams" colspan="2">template&lt;typename Ta  = double, typename Tb  = uint&gt; </td></tr>
+<tr class="memitem:a2f0d3aab1d67e4c8eaeab9022e16139f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a2f0d3aab1d67e4c8eaeab9022e16139f">MapVec_type</a> = std::unordered_map&lt; std::vector&lt; Ta &gt;, Tb, <a class="el" href="structbarry_1_1vec_hasher.html">vecHasher</a>&lt; Ta &gt; &gt;</td></tr>
+<tr class="separator:a2f0d3aab1d67e4c8eaeab9022e16139f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaaae3200da8e4b7faac3c04fe9c3081"><td class="memTemplParams" colspan="2">template&lt;typename Array_Type , typename Data_Type &gt; </td></tr>
 <tr class="memitem:abaaae3200da8e4b7faac3c04fe9c3081"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#abaaae3200da8e4b7faac3c04fe9c3081">Counter_fun_type</a> = std::function&lt; double(const Array_Type *, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a>, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a>, Data_Type *)&gt;</td></tr>
 <tr class="separator:abaaae3200da8e4b7faac3c04fe9c3081"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,7 +169,7 @@ template&lt;typename Cell_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00041">41</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00042">42</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -157,7 +187,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00076">76</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00101">101</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -173,7 +203,25 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00032">32</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00035">35</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2f0d3aab1d67e4c8eaeab9022e16139f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f0d3aab1d67e4c8eaeab9022e16139f">&#9670;&nbsp;</a></span>MapVec_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Ta  = double, typename Tb  = uint&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacebarry.html#a2f0d3aab1d67e4c8eaeab9022e16139f">barry::MapVec_type</a> = typedef std::unordered_map&lt; std::vector&lt; Ta &gt;, Tb, <a class="el" href="structbarry_1_1vec_hasher.html">vecHasher</a>&lt;Ta&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00091">91</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -191,7 +239,7 @@ template&lt;typename Cell_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00038">38</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00039">39</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -207,16 +255,20 @@ template&lt;typename Cell_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00034">34</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00006">6</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacebarry.html">barry</a></li>
+    <li class="footer">Generated on Fri Jul 10 2020 16:32:48 for barry: Your go-to motif accountant by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>
