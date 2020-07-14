@@ -11,8 +11,8 @@ var class_stats_counter =
     [ "reset_array", "class_stats_counter.html#a8dabc3a7a9931acbb76900a67d728f70", null ],
     [ "Array", "class_stats_counter.html#aa826cd748cd3b1a57cbec52424285485", null ],
     [ "change_stats", "class_stats_counter.html#a42c926799d8cb0abc6f5a1cfbc073f69", null ],
-    [ "counters", "class_stats_counter.html#ab81464f54ee44deedf3fb1f16f9b87c5", null ],
+    [ "counters", "class_stats_counter.html#a3115a96cbc1b35483a240b1fdc84eab6", null ],
     [ "current_stats", "class_stats_counter.html#af98192f893280a2681a59f4b73051ca3", null ],
-    [ "EmptyArray", "class_stats_counter.html#a026304bec607994865ba5bb4e18f9104", null ],
-    [ "to_be_deleted", "class_stats_counter.html#ad51fb41c505da55c134d6696d6c01075", null ]
+    [ "deleted", "class_stats_counter.html#aa3abe7929b0b8db78892aebe9294a911", null ],
+    [ "EmptyArray", "class_stats_counter.html#a026304bec607994865ba5bb4e18f9104", null ]
 ];

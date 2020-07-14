@@ -27,23 +27,21 @@ List counter(
    throw std::length_error("N and target should have the same length");
   
   List ans(N.size());
-  barry::StatsCounter<netcounters::Network, vuint> dat;
-  
+  netcounters::NetStatsCounter dat;
+
   // Adding functions 
-  dat.add_counter(netcounters::edges);
-  dat.add_counter(netcounters::mutual);
-  dat.add_counter(netcounters::isolates);
-  dat.add_counter(netcounters::istar2);
-  dat.add_counter(netcounters::ostar2);
-  dat.add_counter(netcounters::ttriads);
-  dat.add_counter(netcounters::ctriads);
-  dat.add_counter(netcounters::density);
-  dat.add_counter(netcounters::idegree15);
-  dat.add_counter(netcounters::odegree15);
+  netcounters::counter_edges(dat.counters);
+  netcounters::counter_mutual(dat.counters);
+  netcounters::counter_isolates(dat.counters);
+  netcounters::counter_istar2(dat.counters);
+  netcounters::counter_ostar2(dat.counters);
+  netcounters::counter_ttriads(dat.counters);
+  netcounters::counter_ctriads(dat.counters);
+  netcounters::counter_density(dat.counters);
+  netcounters::counter_idegree15(dat.counters);
+  netcounters::counter_odegree15(dat.counters);
+  netcounters::counter_nodematch(dat.counters, 0u);
   
-  netcounters::NetCounter nodematchfem = netcounters::nodematch;
-  nodematchfem.data = new std::vector< unsigned int >({0u});
-  dat.add_counter(nodematchfem);
   // std::cout << "UYe" << std::endl;
   for (unsigned int i = 0u; i < N.size(); ++i) {
     
@@ -56,7 +54,6 @@ List counter(
     delete Array.data;
   }
  
-  delete nodematchfem.data;
   return wrap(ans);
  
 }
@@ -80,23 +77,19 @@ List support (
   
   // Preparing model  
   netcounters::NetSupport dat(0u, 0u);
-  dat.add_counter(netcounters::edges);
-  dat.add_counter(netcounters::mutual);
-  dat.add_counter(netcounters::isolates);
-  dat.add_counter(netcounters::istar2);
-  dat.add_counter(netcounters::ostar2);
-  dat.add_counter(netcounters::ttriads);
-  dat.add_counter(netcounters::ctriads);
-  dat.add_counter(netcounters::density);
-  dat.add_counter(netcounters::idegree15);
-  dat.add_counter(netcounters::odegree15);
+  netcounters::counter_edges(dat.counters);
+  netcounters::counter_mutual(dat.counters);
+  netcounters::counter_isolates(dat.counters);
+  netcounters::counter_istar2(dat.counters);
+  netcounters::counter_ostar2(dat.counters);
+  netcounters::counter_ttriads(dat.counters);
+  netcounters::counter_ctriads(dat.counters);
+  netcounters::counter_density(dat.counters);
+  netcounters::counter_idegree15(dat.counters);
+  netcounters::counter_odegree15(dat.counters);
+  netcounters::counter_nodematch(dat.counters, 0u);
   
-  // Adding functions
-  netcounters::NetCounter nodematchfem = netcounters::nodematch;
-  nodematchfem.data = new vuint({0u});
-  dat.add_counter(nodematchfem);  
-  
-  
+
   // Single counter function
   // barry::StatsCounter<netcounters::Network, vuint> counter()
   
@@ -126,9 +119,6 @@ List support (
     res[i] = clone(res_tmp);
     
   }
-  
-  // Final cleanup
-  delete nodematchfem.data;
   
   return res;
 }

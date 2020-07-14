@@ -44,9 +44,10 @@ public:
   ~NetworkData() {};
 };
 
-
+/**@brief Data class used to store arbitrary uint or double vectors */
 class NetCounterData {
 public:
+  
   std::vector< uint > indices;
   std::vector< double > numbers;
   
@@ -66,31 +67,42 @@ public:
 #define NET_C_DATA_NUM(i) (data->numbers[i])
 
 
+/**@name Convenient typedefs for network objects.
+ */
+///@{
 typedef BArray<bool, NetworkData> Network;
 typedef Counter<Network, NetCounterData > NetCounter;
+typedef CounterVector< Network, NetCounterData> NetCounterVector;
 typedef Support<Network, NetCounterData > NetSupport;
 typedef StatsCounter<Network, NetCounterData> NetStatsCounter;
+///@}
 
+/**@name Macros for defining counters
+ */
+///@{
+/**Function for definition of a network counter function*/
 #define NETWORK_COUNTER(a) inline double (a) \
 (const Network * Array, uint i, uint j, NetCounterData * data)
-
+/**Lambda function for definition of a network counter function*/
 #define NETWORK_COUNTER_LAMBDA(a) Counter_fun_type<Network, NetCounterData> a = \
   [](const Network * Array, uint i, uint j, NetCounterData * data)
+///@}
 
 // Edges counter ---------------------------------------------------------------
-inline NetCounter counter_edges() {
+inline void counter_edges(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(count_edges) {
     return 1.0;
   };
   
-  NetCounter edges(count_edges);
-  return edges;
+  counters->add_counter(count_edges);
+  
+  return;
 }
 
 
 // Isolates counter ------------------------------------------------------------
-inline NetCounter counter_isolates() {
+inline void counter_isolates(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     if (i == j)
@@ -114,12 +126,12 @@ inline NetCounter counter_isolates() {
     return (double) (Array->N);
   };
   
-  NetCounter tmp_counter(tmp_count, tmp_init);
-  return tmp_counter;
+  counters->add_counter(tmp_count, tmp_init);
+  return;
 }
 
 // Mutuals -------------------------------------------------------------------
-inline NetCounter counter_mutual() {
+inline void counter_mutual(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     // Is there any tie at ji? If not, then we have a new mutual!
@@ -148,13 +160,13 @@ inline NetCounter counter_mutual() {
     return 0.0;
   };
   
-  NetCounter tmp_counter(tmp_count, tmp_init);
-  return tmp_counter;
+  counters->add_counter(tmp_count, tmp_init);
+  return ;
 }
 
 
 // 2-istars --------------------------------------------------------------------
-inline NetCounter counter_istar2() {
+inline void counter_istar2(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     // Need to check the receiving, if he/she is getting a new set of stars
@@ -166,12 +178,13 @@ inline NetCounter counter_istar2() {
     return ((double) A_COL(j).size() - 1.0);
   };
   
-  NetCounter tmp_counter(tmp_count);
-  return tmp_counter;
+  counters->add_counter(tmp_count);
+  
+  return ;
 }
 
 // 2-ostars --------------------------------------------------------------------
-inline NetCounter counter_ostar2() {
+inline void counter_ostar2(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     // Need to check the receiving, if he/she is getting a new set of stars
@@ -183,13 +196,14 @@ inline NetCounter counter_ostar2() {
     return ((double) A_ROW(i).size() - 1.0);
   };
   
-  NetCounter tmp_counter(tmp_count);
-  return tmp_counter;
+  counters->add_counter(tmp_count);
+  return ;
+  
 }
 
 
 // ttriads ---------------------------------------------------------------------
-inline NetCounter counter_ttriads() {
+inline void counter_ttriads(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     // Self ties do not count
@@ -253,15 +267,14 @@ inline NetCounter counter_ttriads() {
     return 0.0;
   };
   
+  counters->add_counter(tmp_count, tmp_init);
   
-  
-  NetCounter tmp_counter(tmp_count, tmp_init);
-  return tmp_counter;
+  return;
 }
 
 
 // Cycle triads --------------------------------------------------------------
-inline NetCounter counter_ctriads() {
+inline void counter_ctriads(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     if (i == j)
@@ -291,13 +304,13 @@ inline NetCounter counter_ctriads() {
     return 0.0;
   };
   
-  NetCounter tmp_counter(tmp_count, tmp_init);
-  return tmp_counter;
+  counters->add_counter(tmp_count, tmp_init);
+  return;
   
 }
   
 // Density --------------------------------------------------------------
-inline NetCounter counter_density() {
+inline void counter_density(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -307,13 +320,13 @@ inline NetCounter counter_density() {
   
   // Preparing the counter data and returning. We make sure that the memory is 
   // released so we set delete_data = true.
-  NetCounter tmp_counter(tmp_count);
-  return tmp_counter;
+  counters->add_counter(tmp_count);
+  return ;
   
 }
 
 // idegree1.5  -------------------------------------------------------------
-inline NetCounter counter_idegree15() {
+inline void counter_idegree15(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -327,13 +340,13 @@ inline NetCounter counter_idegree15() {
     
   };
   
-  NetCounter tmp_counter(tmp_count);
-  return tmp_counter;
+  counters->add_counter(tmp_count);
+  return;
   
 }
 
 // odegree1.5  -------------------------------------------------------------
-inline NetCounter counter_odegree15() {
+inline void counter_odegree15(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -347,14 +360,14 @@ inline NetCounter counter_odegree15() {
     
   };
   
-  NetCounter tmp_counter(tmp_count);
-  return tmp_counter;
+  counters->add_counter(tmp_count);
+  return;
   
 }
 
 
 // Nodematch -------------------------------------------------------------------
-inline NetCounter counter_absdiff(uint attr_id, double alpha = 1.0) {
+inline void counter_absdiff(NetCounterVector * counters, uint attr_id, double alpha = 1.0) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -380,10 +393,13 @@ inline NetCounter counter_absdiff(uint attr_id, double alpha = 1.0) {
     
   };
   
-  NetCounter tmp_counter(tmp_count);
-  tmp_counter.data = new NetCounterData({attr_id}, {alpha});
-  tmp_counter.delete_data = true;
-  return tmp_counter;
+  counters->add_counter(
+      tmp_count, tmp_init,
+      new NetCounterData({attr_id}, {alpha}),
+      true
+    );
+  
+  return;
   
 }
 
@@ -404,7 +420,7 @@ NETWORK_COUNTER(init_single_attr) {
   
 }
 
-inline NetCounter counter_nodeicov(uint attr_id) {
+inline void counter_nodeicov(NetCounterVector * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -412,13 +428,16 @@ inline NetCounter counter_nodeicov(uint attr_id) {
     
   };
   
-  NetCounter tmp_counter(tmp_count, init_single_attr);
-  tmp_counter.data = new NetCounterData({attr_id}, {});
-  tmp_counter.delete_data = true;
-  return tmp_counter;
+  counters->add_counter(
+      tmp_count, init_single_attr,
+      new NetCounterData({attr_id}, {}),
+      true
+      );
+   
+  return;
 }
 
-inline NetCounter counter_nodeocov(uint attr_id) {
+inline void counter_nodeocov(NetCounterVector * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -426,13 +445,16 @@ inline NetCounter counter_nodeocov(uint attr_id) {
     
   };
   
-  NetCounter tmp_counter(tmp_count, init_single_attr);
-  tmp_counter.data = new NetCounterData({attr_id}, {});
-  tmp_counter.delete_data = true;
-  return tmp_counter;
+  counters->add_counter(
+    tmp_count, init_single_attr,
+    new NetCounterData({attr_id}, {}),
+    true
+  );
+  
+  return;
 }
 
-inline NetCounter counter_nodecov(uint attr_id) {
+inline void counter_nodecov(NetCounterVector * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -441,13 +463,16 @@ inline NetCounter counter_nodecov(uint attr_id) {
     
   };
   
-  NetCounter tmp_counter(tmp_count, init_single_attr);
-  tmp_counter.data = new NetCounterData({attr_id}, {});
-  tmp_counter.delete_data = true;
-  return tmp_counter;
+  counters->add_counter(
+    tmp_count, init_single_attr,
+    new NetCounterData({attr_id}, {}),
+    true
+  );
+  
+  return;
 }
 
-inline NetCounter counter_nodematch(uint attr_id) {
+inline void counter_nodematch(NetCounterVector * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -461,10 +486,13 @@ inline NetCounter counter_nodematch(uint attr_id) {
   
   // Preparing the counter data and returning. We make sure that the memory is 
   // released so we set delete_data = true.
-  NetCounter nodematch(tmp_count, init_single_attr);
-  nodematch.data = new NetCounterData({attr_id}, {});
-  nodematch.delete_data = true;
-  return nodematch;
+  counters->add_counter(
+    tmp_count, init_single_attr,
+    new NetCounterData({attr_id}, {}),
+    true
+  );
+  
+  return ;
   
 }
 

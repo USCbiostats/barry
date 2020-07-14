@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['gains',['gains',['../namespacebarry_1_1counters_1_1phylo.html#adb9fd1ed2c6af82bd0deecebe5e41c0d',1,'barry::counters::phylo::gains()'],['../phylo_8hpp.html#a98c4643028aa49117a9ec51abae05646',1,'gains():&#160;phylo.hpp']]],
   ['get_5fcell',['get_cell',['../class_b_array.html#a4096e4447f91ba52766587a08c62f1fa',1,'BArray']]],
   ['get_5fcol',['get_col',['../class_b_array.html#a90bd31bc0b3fa59d11150cd4ea39b3b6',1,'BArray']]],
   ['get_5fcounts',['get_counts',['../classbarry_1_1_support.html#a00ebb01a467b41e4b65df4c9a916909b',1,'barry::Support::get_counts()'],['../class_support.html#a00ebb01a467b41e4b65df4c9a916909b',1,'Support::get_counts()']]],

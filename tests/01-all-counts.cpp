@@ -42,23 +42,22 @@ TEST_CASE("Network counts work", "[counts]") {
   net.data = new netcounters::NetworkData(vattrs);
   
   netcounters::NetStatsCounter counter(&net); 
-  
-  counter.add_counter(netcounters::counter_edges()); 
-  counter.add_counter(netcounters::counter_mutual()); 
-  counter.add_counter(netcounters::counter_isolates());
-  counter.add_counter(netcounters::counter_istar2());
-  counter.add_counter(netcounters::counter_ostar2());
-  counter.add_counter(netcounters::counter_ttriads());
-  counter.add_counter(netcounters::counter_ctriads());
-  counter.add_counter(netcounters::counter_density());
-  counter.add_counter(netcounters::counter_idegree15());
-  counter.add_counter(netcounters::counter_odegree15()); 
-  counter.add_counter(netcounters::counter_nodematch(0u));
-  counter.add_counter(netcounters::counter_nodeicov(0u));
-  counter.add_counter(netcounters::counter_nodeocov(0u));
-  counter.add_counter(netcounters::counter_nodecov(0u));
-  counter.add_counter(netcounters::counter_absdiff(1u, 1.0));
-  
+
+  netcounters::counter_edges(counter.counters);
+  netcounters::counter_mutual(counter.counters);
+  netcounters::counter_isolates(counter.counters);
+  netcounters::counter_istar2(counter.counters);
+  netcounters::counter_ostar2(counter.counters);
+  netcounters::counter_ttriads(counter.counters);
+  netcounters::counter_ctriads(counter.counters);
+  netcounters::counter_density(counter.counters);
+  netcounters::counter_idegree15(counter.counters);
+  netcounters::counter_odegree15(counter.counters);
+  netcounters::counter_nodematch(counter.counters, 0u);
+  netcounters::counter_nodeicov(counter.counters, 0u);
+  netcounters::counter_nodeocov(counter.counters, 0u);
+  netcounters::counter_nodecov(counter.counters, 0u);
+  netcounters::counter_absdiff(counter.counters, 1u, 1.0);
   
   std::vector< double > ans = counter.count_all();
   

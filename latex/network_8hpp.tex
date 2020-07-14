@@ -3,16 +3,14 @@
 {\ttfamily \#include \char`\"{}../counters-\/bones.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../support.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../statscounter.\+hpp\char`\"{}}\newline
-Include dependency graph for network.\+hpp\+:
-\nopagebreak
+Include dependency graph for network.\+hpp\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{network_8hpp__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,7 +23,7 @@ This graph shows which files directly or indirectly include this file\+:
 class \hyperlink{class_network_data}{Network\+Data}
 \begin{DoxyCompactList}\small\item\em Data class for Networks. \end{DoxyCompactList}\item 
 class \hyperlink{class_net_counter_data}{Net\+Counter\+Data}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Data class used to store arbitrary uint or double vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -44,56 +42,64 @@ class \hyperlink{class_net_counter_data}{Net\+Counter\+Data}
 \#define \hyperlink{network_8hpp_aa75d9c31d709148061626dc54a07723a}{N\+E\+T\+\_\+\+C\+\_\+\+D\+A\+T\+A\+\_\+\+I\+DX}(i)~(data-\/$>$indices\mbox{[}i\mbox{]})
 \item 
 \#define \hyperlink{network_8hpp_ad5ead8d8915b0536a4d5a6c3ef5001fb}{N\+E\+T\+\_\+\+C\+\_\+\+D\+A\+T\+A\+\_\+\+N\+UM}(i)~(data-\/$>$numbers\mbox{[}i\mbox{]})
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Macros for defining counters}\par
+\begin{DoxyCompactItemize}
 \item 
 \#define \hyperlink{network_8hpp_ad7bf24e04cb161400f56990502bda0e2}{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER}(a)
 \item 
 \#define \hyperlink{network_8hpp_a8d2a3024f1f05e716a1b4cacfe661fac}{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+L\+A\+M\+B\+DA}(a)
 \end{DoxyCompactItemize}
+\end{Indent}
 \subsection*{Typedefs}
+\begin{Indent}\textbf{ Convenient typedefs for network objects.}\par
 \begin{DoxyCompactItemize}
 \item 
 typedef \hyperlink{class_b_array}{B\+Array}$<$ bool, \hyperlink{class_network_data}{Network\+Data} $>$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}
 \item 
 typedef \hyperlink{class_counter}{Counter}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, \hyperlink{class_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter}
 \item 
+typedef \hyperlink{class_counter_vector}{Counter\+Vector}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, \hyperlink{class_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector}
+\item 
 typedef \hyperlink{class_support}{Support}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, \hyperlink{class_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{network_8hpp_a05f5e7afe62d1c07b46876b4fbec0f4c}{Net\+Support}
 \item 
 typedef \hyperlink{class_stats_counter}{Stats\+Counter}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, \hyperlink{class_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{network_8hpp_a1c44fa47dcf1cca1ba35eea6e70950a3}{Net\+Stats\+Counter}
 \end{DoxyCompactItemize}
+\end{Indent}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_afd10783b7f3eda6d917108c59a4eaf01}{counter\+\_\+edges} ()
+void \hyperlink{network_8hpp_ad99a1aea236ff51c04fef9adc2c109d6}{counter\+\_\+edges} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_a4aa310b363ac33e308a3125b1288e984}{counter\+\_\+isolates} ()
+void \hyperlink{network_8hpp_aba4b5f1b19373c13ad98c560472e3a50}{counter\+\_\+isolates} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_a40626d6e7810c7586fdb34886f39c658}{counter\+\_\+mutual} ()
+void \hyperlink{network_8hpp_a00c2d4285f8b49f4abbb07dc8fd11267}{counter\+\_\+mutual} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_aa9e11e1b4b1a25574040fca2dd609069}{counter\+\_\+istar2} ()
+void \hyperlink{network_8hpp_ac362e1d8f41e2346e6d786ad0f341438}{counter\+\_\+istar2} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_a601b3e8fcd3fd4b0c08af0c5d49d90b2}{counter\+\_\+ostar2} ()
+void \hyperlink{network_8hpp_ad128728f6380cdf69dd2ad2da11db463}{counter\+\_\+ostar2} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_a2f552d1b2be322b87952efd333608328}{counter\+\_\+ttriads} ()
+void \hyperlink{network_8hpp_a043549f6d9ef81413b15ca87247dfb2e}{counter\+\_\+ttriads} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_a651b851e3b4241071707fd785357b57c}{counter\+\_\+ctriads} ()
+void \hyperlink{network_8hpp_a76e9747c3e1205de253863aaf28f669e}{counter\+\_\+ctriads} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_a2bdb07d26a6e39f9377e55a35c21e72f}{counter\+\_\+density} ()
+void \hyperlink{network_8hpp_a1e50380142d19b617a383f06e6612b39}{counter\+\_\+density} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_a4c0f70ceef4939712d5fcd54a6c93ba1}{counter\+\_\+idegree15} ()
+void \hyperlink{network_8hpp_a10bf6da89c6afc85f991cbd00156cf6a}{counter\+\_\+idegree15} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_abf1ee7254ed60eab113bbfbd22d2cb6e}{counter\+\_\+odegree15} ()
+void \hyperlink{network_8hpp_a4b9d68a4604ef4b098635f32cf1b54c5}{counter\+\_\+odegree15} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_af36ebce523485ae7092896e980620136}{counter\+\_\+absdiff} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id, double alpha=1.\+0)
+void \hyperlink{network_8hpp_a7dad6296ee6be193386299fe953e504a}{counter\+\_\+absdiff} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id, double alpha=1.\+0)
 \item 
 \hyperlink{network_8hpp_ad6539320de604e7c6e31e9fb152f70bd}{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+single\+\_\+attr)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_a2d27d367fbe78d07587d2f49b5eb69e6}{counter\+\_\+nodeicov} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
+void \hyperlink{network_8hpp_a9b4df4510b38ce356f322a5fa27d9b68}{counter\+\_\+nodeicov} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_a03a6f3ac8d0a21d405658bf693e73386}{counter\+\_\+nodeocov} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
+void \hyperlink{network_8hpp_a96f3b1f5e74dce91dd2c53516bcb3bb9}{counter\+\_\+nodeocov} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_ac9f6b88d0ec6bd79dd1042db21aebb74}{counter\+\_\+nodecov} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
+void \hyperlink{network_8hpp_acf25dab71c89584fed023e54a3843cad}{counter\+\_\+nodecov} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
 \item 
-\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{network_8hpp_ae23d70b104e3f645e44ea163cf3adbd8}{counter\+\_\+nodematch} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
+void \hyperlink{network_8hpp_ae860410b8333786409348f54bd212d36}{counter\+\_\+nodematch} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
 \end{DoxyCompactItemize}
 
 
@@ -128,7 +134,7 @@ Definition at line 6 of file network.\+hpp.
 
 
 
-Definition at line 65 of file network.\+hpp.
+Definition at line 66 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_ad5ead8d8915b0536a4d5a6c3ef5001fb}\label{network_8hpp_ad5ead8d8915b0536a4d5a6c3ef5001fb}} 
 \index{network.\+hpp@{network.\+hpp}!N\+E\+T\+\_\+\+C\+\_\+\+D\+A\+T\+A\+\_\+\+N\+UM@{N\+E\+T\+\_\+\+C\+\_\+\+D\+A\+T\+A\+\_\+\+N\+UM}}
@@ -138,7 +144,7 @@ Definition at line 65 of file network.\+hpp.
 
 
 
-Definition at line 66 of file network.\+hpp.
+Definition at line 67 of file network.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_ad5ead8d8915b0536a4d5a6c3ef5001fb}\label{barry_8hpp_ad5ead8d8915b0536a4d5a6c3ef5001fb}} 
 \index{network.\+hpp@{network.\+hpp}!N\+E\+T\+\_\+\+C\+\_\+\+D\+A\+T\+A\+\_\+\+N\+UM@{N\+E\+T\+\_\+\+C\+\_\+\+D\+A\+T\+A\+\_\+\+N\+UM}}
@@ -158,9 +164,9 @@ Definition at line 66 of file network.\+hpp.
 (\textcolor{keyword}{const} \hyperlink{class_b_array}{Network} * Array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, \hyperlink{class_net_counter_data}{NetCounterData} * 
       \hyperlink{class_counter_a9ebfed99a67888f80c19cabc4098bdd0}{data})
 \end{DoxyCode}
+Function for definition of a network counter function 
 
-
-Definition at line 74 of file network.\+hpp.
+Definition at line 84 of file network.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_ad7bf24e04cb161400f56990502bda0e2}\label{barry_8hpp_ad7bf24e04cb161400f56990502bda0e2}} 
 \index{network.\+hpp@{network.\+hpp}!N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER@{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER}}
@@ -186,9 +192,9 @@ Definition at line 74 of file network.\+hpp.
   [](\textcolor{keyword}{const} \hyperlink{class_b_array}{Network} * Array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, \hyperlink{class_net_counter_data}{NetCounterData} * 
       \hyperlink{class_counter_a9ebfed99a67888f80c19cabc4098bdd0}{data})
 \end{DoxyCode}
+Lambda function for definition of a network counter function 
 
-
-Definition at line 77 of file network.\+hpp.
+Definition at line 87 of file network.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_a8d2a3024f1f05e716a1b4cacfe661fac}\label{barry_8hpp_a8d2a3024f1f05e716a1b4cacfe661fac}} 
 \index{network.\+hpp@{network.\+hpp}!N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+L\+A\+M\+B\+DA@{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+E\+R\+\_\+\+L\+A\+M\+B\+DA}}
@@ -213,7 +219,17 @@ Definition at line 77 of file network.\+hpp.
 
 
 
-Definition at line 70 of file network.\+hpp.
+Definition at line 74 of file network.\+hpp.
+
+\mbox{\Hypertarget{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}\label{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}} 
+\index{network.\+hpp@{network.\+hpp}!Net\+Counter\+Vector@{Net\+Counter\+Vector}}
+\index{Net\+Counter\+Vector@{Net\+Counter\+Vector}!network.\+hpp@{network.\+hpp}}
+\subsubsection{\texorpdfstring{Net\+Counter\+Vector}{NetCounterVector}}
+{\footnotesize\ttfamily typedef \hyperlink{class_counter_vector}{Counter\+Vector}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, \hyperlink{class_net_counter_data}{Net\+Counter\+Data}$>$ \hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector}}
+
+
+
+Definition at line 75 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a1c44fa47dcf1cca1ba35eea6e70950a3}\label{network_8hpp_a1c44fa47dcf1cca1ba35eea6e70950a3}} 
 \index{network.\+hpp@{network.\+hpp}!Net\+Stats\+Counter@{Net\+Stats\+Counter}}
@@ -223,7 +239,7 @@ Definition at line 70 of file network.\+hpp.
 
 
 
-Definition at line 72 of file network.\+hpp.
+Definition at line 77 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a05f5e7afe62d1c07b46876b4fbec0f4c}\label{network_8hpp_a05f5e7afe62d1c07b46876b4fbec0f4c}} 
 \index{network.\+hpp@{network.\+hpp}!Net\+Support@{Net\+Support}}
@@ -233,7 +249,7 @@ Definition at line 72 of file network.\+hpp.
 
 
 
-Definition at line 71 of file network.\+hpp.
+Definition at line 76 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}\label{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}} 
 \index{network.\+hpp@{network.\+hpp}!Network@{Network}}
@@ -243,160 +259,160 @@ Definition at line 71 of file network.\+hpp.
 
 
 
-Definition at line 69 of file network.\+hpp.
+Definition at line 73 of file network.\+hpp.
 
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{network_8hpp_af36ebce523485ae7092896e980620136}\label{network_8hpp_af36ebce523485ae7092896e980620136}} 
+\mbox{\Hypertarget{network_8hpp_a7dad6296ee6be193386299fe953e504a}\label{network_8hpp_a7dad6296ee6be193386299fe953e504a}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+absdiff@{counter\+\_\+absdiff}}
 \index{counter\+\_\+absdiff@{counter\+\_\+absdiff}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+absdiff()}{counter\_absdiff()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+absdiff (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id,  }\item[{double}]{alpha = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+absdiff (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id,  }\item[{double}]{alpha = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 357 of file network.\+hpp.
+Definition at line 370 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a651b851e3b4241071707fd785357b57c}\label{network_8hpp_a651b851e3b4241071707fd785357b57c}} 
+\mbox{\Hypertarget{network_8hpp_a76e9747c3e1205de253863aaf28f669e}\label{network_8hpp_a76e9747c3e1205de253863aaf28f669e}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+ctriads@{counter\+\_\+ctriads}}
 \index{counter\+\_\+ctriads@{counter\+\_\+ctriads}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+ctriads()}{counter\_ctriads()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+ctriads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+ctriads (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 264 of file network.\+hpp.
+Definition at line 277 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a2bdb07d26a6e39f9377e55a35c21e72f}\label{network_8hpp_a2bdb07d26a6e39f9377e55a35c21e72f}} 
+\mbox{\Hypertarget{network_8hpp_a1e50380142d19b617a383f06e6612b39}\label{network_8hpp_a1e50380142d19b617a383f06e6612b39}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+density@{counter\+\_\+density}}
 \index{counter\+\_\+density@{counter\+\_\+density}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+density()}{counter\_density()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+density (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+density (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 300 of file network.\+hpp.
+Definition at line 313 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_afd10783b7f3eda6d917108c59a4eaf01}\label{network_8hpp_afd10783b7f3eda6d917108c59a4eaf01}} 
+\mbox{\Hypertarget{network_8hpp_ad99a1aea236ff51c04fef9adc2c109d6}\label{network_8hpp_ad99a1aea236ff51c04fef9adc2c109d6}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+edges@{counter\+\_\+edges}}
 \index{counter\+\_\+edges@{counter\+\_\+edges}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+edges()}{counter\_edges()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+edges (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 81 of file network.\+hpp.
+Definition at line 92 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a4c0f70ceef4939712d5fcd54a6c93ba1}\label{network_8hpp_a4c0f70ceef4939712d5fcd54a6c93ba1}} 
+\mbox{\Hypertarget{network_8hpp_a10bf6da89c6afc85f991cbd00156cf6a}\label{network_8hpp_a10bf6da89c6afc85f991cbd00156cf6a}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+idegree15@{counter\+\_\+idegree15}}
 \index{counter\+\_\+idegree15@{counter\+\_\+idegree15}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+idegree15()}{counter\_idegree15()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+idegree15 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+idegree15 (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 316 of file network.\+hpp.
+Definition at line 329 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a4aa310b363ac33e308a3125b1288e984}\label{network_8hpp_a4aa310b363ac33e308a3125b1288e984}} 
+\mbox{\Hypertarget{network_8hpp_aba4b5f1b19373c13ad98c560472e3a50}\label{network_8hpp_aba4b5f1b19373c13ad98c560472e3a50}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+isolates@{counter\+\_\+isolates}}
 \index{counter\+\_\+isolates@{counter\+\_\+isolates}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+isolates()}{counter\_isolates()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+isolates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+isolates (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 93 of file network.\+hpp.
+Definition at line 105 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_aa9e11e1b4b1a25574040fca2dd609069}\label{network_8hpp_aa9e11e1b4b1a25574040fca2dd609069}} 
+\mbox{\Hypertarget{network_8hpp_ac362e1d8f41e2346e6d786ad0f341438}\label{network_8hpp_ac362e1d8f41e2346e6d786ad0f341438}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+istar2@{counter\+\_\+istar2}}
 \index{counter\+\_\+istar2@{counter\+\_\+istar2}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+istar2()}{counter\_istar2()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+istar2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+istar2 (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 157 of file network.\+hpp.
+Definition at line 169 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a40626d6e7810c7586fdb34886f39c658}\label{network_8hpp_a40626d6e7810c7586fdb34886f39c658}} 
+\mbox{\Hypertarget{network_8hpp_a00c2d4285f8b49f4abbb07dc8fd11267}\label{network_8hpp_a00c2d4285f8b49f4abbb07dc8fd11267}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+mutual@{counter\+\_\+mutual}}
 \index{counter\+\_\+mutual@{counter\+\_\+mutual}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+mutual()}{counter\_mutual()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+mutual (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+mutual (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 122 of file network.\+hpp.
+Definition at line 134 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_ac9f6b88d0ec6bd79dd1042db21aebb74}\label{network_8hpp_ac9f6b88d0ec6bd79dd1042db21aebb74}} 
+\mbox{\Hypertarget{network_8hpp_acf25dab71c89584fed023e54a3843cad}\label{network_8hpp_acf25dab71c89584fed023e54a3843cad}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+nodecov@{counter\+\_\+nodecov}}
 \index{counter\+\_\+nodecov@{counter\+\_\+nodecov}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+nodecov()}{counter\_nodecov()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+nodecov (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+nodecov (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 435 of file network.\+hpp.
+Definition at line 457 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a2d27d367fbe78d07587d2f49b5eb69e6}\label{network_8hpp_a2d27d367fbe78d07587d2f49b5eb69e6}} 
+\mbox{\Hypertarget{network_8hpp_a9b4df4510b38ce356f322a5fa27d9b68}\label{network_8hpp_a9b4df4510b38ce356f322a5fa27d9b68}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+nodeicov@{counter\+\_\+nodeicov}}
 \index{counter\+\_\+nodeicov@{counter\+\_\+nodeicov}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+nodeicov()}{counter\_nodeicov()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+nodeicov (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+nodeicov (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 407 of file network.\+hpp.
+Definition at line 423 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_ae23d70b104e3f645e44ea163cf3adbd8}\label{network_8hpp_ae23d70b104e3f645e44ea163cf3adbd8}} 
+\mbox{\Hypertarget{network_8hpp_ae860410b8333786409348f54bd212d36}\label{network_8hpp_ae860410b8333786409348f54bd212d36}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+nodematch@{counter\+\_\+nodematch}}
 \index{counter\+\_\+nodematch@{counter\+\_\+nodematch}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+nodematch()}{counter\_nodematch()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+nodematch (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+nodematch (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 450 of file network.\+hpp.
+Definition at line 475 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a03a6f3ac8d0a21d405658bf693e73386}\label{network_8hpp_a03a6f3ac8d0a21d405658bf693e73386}} 
+\mbox{\Hypertarget{network_8hpp_a96f3b1f5e74dce91dd2c53516bcb3bb9}\label{network_8hpp_a96f3b1f5e74dce91dd2c53516bcb3bb9}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+nodeocov@{counter\+\_\+nodeocov}}
 \index{counter\+\_\+nodeocov@{counter\+\_\+nodeocov}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+nodeocov()}{counter\_nodeocov()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+nodeocov (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+nodeocov (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 421 of file network.\+hpp.
+Definition at line 440 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_abf1ee7254ed60eab113bbfbd22d2cb6e}\label{network_8hpp_abf1ee7254ed60eab113bbfbd22d2cb6e}} 
+\mbox{\Hypertarget{network_8hpp_a4b9d68a4604ef4b098635f32cf1b54c5}\label{network_8hpp_a4b9d68a4604ef4b098635f32cf1b54c5}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+odegree15@{counter\+\_\+odegree15}}
 \index{counter\+\_\+odegree15@{counter\+\_\+odegree15}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+odegree15()}{counter\_odegree15()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+odegree15 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+odegree15 (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 336 of file network.\+hpp.
+Definition at line 349 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a601b3e8fcd3fd4b0c08af0c5d49d90b2}\label{network_8hpp_a601b3e8fcd3fd4b0c08af0c5d49d90b2}} 
+\mbox{\Hypertarget{network_8hpp_ad128728f6380cdf69dd2ad2da11db463}\label{network_8hpp_ad128728f6380cdf69dd2ad2da11db463}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+ostar2@{counter\+\_\+ostar2}}
 \index{counter\+\_\+ostar2@{counter\+\_\+ostar2}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+ostar2()}{counter\_ostar2()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+ostar2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+ostar2 (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 174 of file network.\+hpp.
+Definition at line 187 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a2f552d1b2be322b87952efd333608328}\label{network_8hpp_a2f552d1b2be322b87952efd333608328}} 
+\mbox{\Hypertarget{network_8hpp_a043549f6d9ef81413b15ca87247dfb2e}\label{network_8hpp_a043549f6d9ef81413b15ca87247dfb2e}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+ttriads@{counter\+\_\+ttriads}}
 \index{counter\+\_\+ttriads@{counter\+\_\+ttriads}!network.\+hpp@{network.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+ttriads()}{counter\_ttriads()}}
-{\footnotesize\ttfamily \hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} counter\+\_\+ttriads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+ttriads (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 192 of file network.\+hpp.
+Definition at line 206 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_ad6539320de604e7c6e31e9fb152f70bd}\label{network_8hpp_ad6539320de604e7c6e31e9fb152f70bd}} 
 \index{network.\+hpp@{network.\+hpp}!N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER@{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER}}
@@ -406,5 +422,5 @@ Definition at line 192 of file network.\+hpp.
 
 
 
-Definition at line 392 of file network.\+hpp.
+Definition at line 408 of file network.\+hpp.
 

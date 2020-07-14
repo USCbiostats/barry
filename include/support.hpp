@@ -20,10 +20,9 @@ public:
   
   /**@brief Reference array to generate the support.
    */
-  Array_Type                                       EmptyArray;
-  FreqTable<>                                      data;
-  std::vector< Counter<Array_Type, Data_Type>* > * counters;
-  std::vector< uint >                              to_be_deleted;
+  Array_Type                            EmptyArray;
+  FreqTable<>                           data;
+  CounterVector<Array_Type,Data_Type> * counters = new CounterVector<Array_Type,Data_Type>();
 
   uint N, M;
   bool initialized = false;
@@ -39,8 +38,6 @@ public:
    */
   Support(const Array_Type * Array_) :
     EmptyArray(*Array_), N(Array_->N), M(Array_->M) {
-    
-    counters = new std::vector< Counter<Array_Type, Data_Type>* >(0u);
     init_support();
     return;
     
@@ -50,17 +47,12 @@ public:
    */
   Support(uint N_, uint M_) :
     EmptyArray(N_, M_) ,N(N_), M(M_) {
-    
-    counters = new std::vector< Counter<Array_Type, Data_Type>* >(0u);
     init_support();
     return;
     
   };
   
   ~Support() {
-    for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
-      delete counters->operator[](*iter);
-    
     if (!counter_deleted)
       delete counters;
   };
@@ -165,9 +157,9 @@ inline void Support<Array_Type, Data_Type>::calc(
     change_stats.resize(N*M, current_stats);
     
     // Resizing support
-    data.reserve(pow(2.0, N * (M - 1.0)));
+    data.reserve(pow(2.0, N * (M - 1.0))); 
     
-    for (uint n = 0u; n < counters->size(); ++n) 
+    for (uint n = 0u; n < counters->size(); ++n)
       current_stats[n] = counters->operator[](n)->init(&EmptyArray, pos_i[pos], pos_j[pos]);
     
     // Adding to the overall count
@@ -225,8 +217,10 @@ template <typename Array_Type, typename Data_Type>
 inline void Support<Array_Type,Data_Type>::add_counter(
     Counter<Array_Type, Data_Type> * f_
   ) {
-  counters->push_back(f_);
+  
+  counters->add_counter(f_);
   return;
+  
 }
 
 template <typename Array_Type, typename Data_Type>
@@ -234,9 +228,7 @@ inline void Support<Array_Type,Data_Type>::add_counter(
     Counter<Array_Type,Data_Type> f_
 ) {
   
-  to_be_deleted.push_back(counters->size());
-  counters->push_back(new Counter<Array_Type,Data_Type>(f_));
-  
+  counters->add_counter(f_);
   return;
   
 }
@@ -246,9 +238,7 @@ inline void Support<Array_Type,Data_Type>::set_counters(
     std::vector< Counter<Array_Type,Data_Type> *> * counters_
 ) {
   
-  for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
-    delete counters->operator[](*iter);
-  
+  // Cleaning up before replacing the memory
   if (!counter_deleted)
     delete counters;
   

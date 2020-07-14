@@ -5,6 +5,7 @@ var searchData=
   ['_7ecellseq',['~CellSeq',['../classbarry_1_1_cell_seq.html#a3af19bd8e8ea575565bc0fa9fe66158d',1,'barry::CellSeq::~CellSeq()'],['../class_cell_seq.html#a1ed463a49ab2ea5f1ff704b74eb68515',1,'CellSeq::~CellSeq()']]],
   ['_7econstbarrayrowiter',['~ConstBArrayRowIter',['../class_const_b_array_row_iter.html#aca51d35c5730466345e4c8bb303f619e',1,'ConstBArrayRowIter']]],
   ['_7ecounter',['~Counter',['../classbarry_1_1_counter.html#ad899c3d55bb15e76ed7df05006e88b38',1,'barry::Counter::~Counter()'],['../class_counter.html#a66594b4ffbbf337241b032c1f039b3c0',1,'Counter::~Counter()']]],
+  ['_7ecountervector',['~CounterVector',['../classbarry_1_1_counter_vector.html#a6a6cfc7b9a3ff220311d312786a8e3eb',1,'barry::CounterVector::~CounterVector()'],['../class_counter_vector.html#ac6fc360b2df296630fb2614836dd74af',1,'CounterVector::~CounterVector()']]],
   ['_7eentries',['~Entries',['../classbarry_1_1_entries.html#a8d74af4d3b545fb79f9f4e8e894160cb',1,'barry::Entries::~Entries()'],['../class_entries.html#aeda42186376731bd3a9b3902a09395a4',1,'Entries::~Entries()']]],
   ['_7efreqtable',['~FreqTable',['../classbarry_1_1_freq_table.html#a420a7e4e6740ed7f2b0db1a238f53713',1,'barry::FreqTable::~FreqTable()'],['../class_freq_table.html#a7ed627807a61c484243636137609abcd',1,'FreqTable::~FreqTable()']]],
   ['_7emodel',['~Model',['../class_model.html#aaed0a5937479c213e620bf8095ddea5d',1,'Model']]],

@@ -20,53 +20,20 @@ List counter_phylo(
   tree.data = &data;
   
   // Setting counters, one per function
-  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter0 = phylocounters::gains;
-  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter1 = phylocounters::gains;
-  counter0.data = new Vec<uint>({0u});
-  counter1.data = new Vec<uint>({1u});
+  phylocounters::PhyloSupport support(&tree);
   
-  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter2 = phylocounters::loss;
-  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter3 = phylocounters::loss;
-  counter2.data = new Vec<uint>({0u});
-  counter3.data = new Vec<uint>({1u});
-  
-  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter4 = phylocounters::subfun;
-  counter4.data = new Vec<uint>({0u, 1u});
-  
-  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter5 = phylocounters::cogain;
-  counter5.data = new Vec<uint>({0u, 1u});
-  
-  barry::Counter<phylocounters::PhyloArray, Vec<uint>> counter6 = phylocounters::longest;
-  counter6.data = new Vec<uint>(0u);
-  
-   
-  barry::Support<phylocounters::PhyloArray, Vec<uint>> support(&tree);
-  support.add_counter(&counter0);
-  support.add_counter(&counter1);
-  support.add_counter(&counter2);
-  support.add_counter(&counter3);
-  support.add_counter(&counter4);
-  support.add_counter(&counter5);
-  support.add_counter(&counter6);
+  // Adding counters
+  phylocounters::counter_gains(support.counters, 0u);
+  phylocounters::counter_gains(support.counters, 1u);
+  phylocounters::counter_loss(support.counters, 0u);
+  phylocounters::counter_loss(support.counters, 1u);
+  phylocounters::counter_subfun(support.counters, 0u, 1u);
+  phylocounters::counter_cogain(support.counters, 0u, 1u);
+  phylocounters::counter_longest(support.counters);
   
   // Computing and retrieving
   std::vector< std::vector< double > > observed(0u);
   support.calc(0u, true, nullptr, &observed);
-  
-  delete counter0.data;
-  delete counter1.data;
-  delete counter2.data;
-  delete counter3.data;
-  delete counter4.data;
-  delete counter5.data;
-  delete counter6.data;
-  counter0.data = nullptr;
-  counter1.data = nullptr;
-  counter2.data = nullptr;
-  counter3.data = nullptr;
-  counter4.data = nullptr;
-  counter5.data = nullptr;
-  counter6.data = nullptr;
   
   // Generating the entries
   barry::Counts_type ans = support.get_counts();

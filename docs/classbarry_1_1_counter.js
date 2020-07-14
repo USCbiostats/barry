@@ -1,8 +1,7 @@
 var classbarry_1_1_counter =
 [
     [ "Counter", "classbarry_1_1_counter.html#a3c990d6dbcdc553b3179c8353497a7df", null ],
-    [ "Counter", "classbarry_1_1_counter.html#a33a032bc90384bf0e4178daeded5b10c", null ],
-    [ "Counter", "classbarry_1_1_counter.html#a19668015222fd41f127e961c17f7a609", null ],
+    [ "Counter", "classbarry_1_1_counter.html#a1e886197c8f42b2552ada2786726fa38", null ],
     [ "~Counter", "classbarry_1_1_counter.html#ad899c3d55bb15e76ed7df05006e88b38", null ],
     [ "count", "classbarry_1_1_counter.html#afe1d23e72c3bdca9b2481f36ebde1d95", null ],
     [ "init", "classbarry_1_1_counter.html#ae0451979ddc51a5fbf00de78c37d3216", null ],

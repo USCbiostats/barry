@@ -26,8 +26,8 @@ public:
   std::vector< double > change_stats;
    
   // We will save the data here
-  std::vector< Counter<Array_Type,Data_Type> * > counters;
-  std::vector< uint > to_be_deleted;
+  CounterVector<Array_Type,Data_Type> * counters = new CounterVector<Array_Type,Data_Type>();
+  bool                                  deleted  = false;
   
   /**
    * @brief Creator of a `StatsCounter`
@@ -36,7 +36,7 @@ public:
    * @param Stats_ A pointer to a dataset of stats `StatsDB`.
    */
   StatsCounter(const Array_Type * Array_) :
-    Array(Array_), EmptyArray(*Array_), counters(0u) {
+    Array(Array_), EmptyArray(*Array_) {
 
     // We are removing the entries without freeing the memory. This should
     // make the insertion faster.
@@ -48,7 +48,7 @@ public:
   /**@brief Can be created without setting the array.
    * 
    */
-  StatsCounter() : Array(nullptr), EmptyArray(0u,0u), counters(0u) {};
+  StatsCounter() : Array(nullptr), EmptyArray(0u,0u) {};
   ~StatsCounter();
   
   /**@brief Changes the reference array for the counting.
@@ -73,8 +73,8 @@ public:
 
 template <typename Array_Type, typename Data_Type>
 inline StatsCounter<Array_Type,Data_Type>::~StatsCounter() {
-  for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
-    delete counters[*iter];
+  if (!deleted)
+    delete counters;
   return;
 }
 
@@ -94,7 +94,7 @@ inline void StatsCounter<Array_Type,Data_Type>::add_counter(
     Counter<Array_Type,Data_Type> * f_
   ) {
   
-  counters.push_back(f_);
+  counters->add_counter(f_);
   return;
   
 }
@@ -104,8 +104,7 @@ inline void StatsCounter<Array_Type,Data_Type>::add_counter(
     Counter<Array_Type,Data_Type> f_
 ) {
   
-  to_be_deleted.push_back(counters.size());
-  counters.push_back(new Counter<Array_Type,Data_Type>(f_));
+  counters->add_counter(f_);
   
   return;
   
@@ -119,10 +118,10 @@ inline void StatsCounter<Array_Type, Data_Type>::count_init(
   
   // Iterating through the functions, and updating the set of
   // statistics.
-  current_stats.resize(counters.size(), 0.0);
-  change_stats.resize(counters.size(), 0.0);
-  for (uint n = 0u; n < counters.size(); ++n) 
-    current_stats[n] = counters[n]->init(&EmptyArray, i, j);
+  current_stats.resize(counters->size(), 0.0);
+  change_stats.resize(counters->size(), 0.0);
+  for (uint n = 0u; n < counters->size(); ++n) 
+    current_stats[n] = counters->operator[](n)->init(&EmptyArray, i, j);
   
   return;
 }
@@ -135,8 +134,8 @@ inline void StatsCounter<Array_Type, Data_Type>::count_current(
   
   // Iterating through the functions, and updating the set of
   // statistics.
-  for (uint n = 0u; n < counters.size(); ++n) {
-    change_stats[n]   = counters[n]->count(&EmptyArray, i, j);
+  for (uint n = 0u; n < counters->size(); ++n) {
+    change_stats[n]   = counters->operator[](n)->count(&EmptyArray, i, j);
     current_stats[n] += change_stats[n];
   }
 

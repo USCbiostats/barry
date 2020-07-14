@@ -1,7 +1,7 @@
-// #include <vector>
-// #include "../include/barry.hpp"
-// #include "catch.hpp"
-// #include "tests.h"
+#include <vector>
+#include "../include/barry.hpp"
+#include "catch.hpp"
+#include "tests.h"
 
 TEST_CASE("Computing support for networks", "[support]") {
   
@@ -36,17 +36,18 @@ TEST_CASE("Computing support for networks", "[support]") {
   netcounters::NetSupport support(&net); 
   
   // Preparing model  
-  support.add_counter(netcounters::counter_edges());
-  support.add_counter(netcounters::counter_mutual());
-  support.add_counter(netcounters::counter_isolates());
-  support.add_counter(netcounters::counter_istar2()); 
-  support.add_counter(netcounters::counter_ostar2());
-  support.add_counter(netcounters::counter_ttriads());
-  support.add_counter(netcounters::counter_ctriads());
-  support.add_counter(netcounters::counter_density());
-  support.add_counter(netcounters::counter_idegree15());
-  support.add_counter(netcounters::counter_odegree15());
-  support.add_counter(netcounters::counter_nodematch(0u));  
+  
+  netcounters::counter_edges(support.counters);
+  netcounters::counter_mutual(support.counters);
+  netcounters::counter_isolates(support.counters);
+  netcounters::counter_istar2(support.counters);
+  netcounters::counter_ostar2(support.counters);
+  netcounters::counter_ttriads(support.counters);
+  netcounters::counter_ctriads(support.counters);
+  netcounters::counter_density(support.counters);
+  netcounters::counter_idegree15(support.counters);
+  netcounters::counter_odegree15(support.counters);
+  netcounters::counter_nodematch(support.counters,0u);
   
   
   // Getting the full support

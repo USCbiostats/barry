@@ -1,8 +1,7 @@
 var class_counter =
 [
     [ "Counter", "class_counter.html#a56c2f4ad875497dea97934cd3ddebc81", null ],
-    [ "Counter", "class_counter.html#a1cb9cb17062f8785fcb4c4babd932d68", null ],
-    [ "Counter", "class_counter.html#a6085b2ef220e2706c9558001f76125bd", null ],
+    [ "Counter", "class_counter.html#ad2a63c2b9b6c593d292dfd47e2f7a780", null ],
     [ "~Counter", "class_counter.html#a66594b4ffbbf337241b032c1f039b3c0", null ],
     [ "count", "class_counter.html#afe1d23e72c3bdca9b2481f36ebde1d95", null ],
     [ "init", "class_counter.html#ae0451979ddc51a5fbf00de78c37d3216", null ],
