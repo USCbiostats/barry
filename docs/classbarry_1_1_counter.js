@@ -8,5 +8,6 @@ var classbarry_1_1_counter =
     [ "init", "classbarry_1_1_counter.html#ae0451979ddc51a5fbf00de78c37d3216", null ],
     [ "count_fun", "classbarry_1_1_counter.html#aa535e164838a3a9c780e8d15fe45679b", null ],
     [ "data", "classbarry_1_1_counter.html#af8196eeaaa4b58b788969c07aee7f1ee", null ],
+    [ "delete_data", "classbarry_1_1_counter.html#a5445fa47abeff4b5675a5e5c12e4917a", null ],
     [ "init_fun", "classbarry_1_1_counter.html#a2509d75d3fc9e33d708911a38373d8ab", null ]
 ];

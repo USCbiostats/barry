@@ -20,6 +20,7 @@ class Counter {
 public:
   
   Data_Type * data = nullptr;
+  bool delete_data = false;
   Counter_fun_type<Array_Type,Data_Type> count_fun;
   Counter_fun_type<Array_Type,Data_Type> init_fun;
 
@@ -50,6 +51,8 @@ public:
   
   ~Counter() {
     // delete data;
+    if (delete_data)
+      delete data;
   };
   
   /***

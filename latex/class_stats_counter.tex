@@ -16,9 +16,13 @@ Count stats for a single Array.
 \begin{DoxyCompactList}\small\item\em Creator of a {\ttfamily \hyperlink{class_stats_counter}{Stats\+Counter}} \end{DoxyCompactList}\item 
 \hyperlink{class_stats_counter_a6cef1e5bb4914a49ba8dd0f63070f81c}{Stats\+Counter} ()
 \begin{DoxyCompactList}\small\item\em Can be created without setting the array. \end{DoxyCompactList}\item 
+\hyperlink{class_stats_counter_a2824d86765d94e909e4b33396250b6c7}{$\sim$\+Stats\+Counter} ()
+\item 
 void \hyperlink{class_stats_counter_a8dabc3a7a9931acbb76900a67d728f70}{reset\+\_\+array} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
 \begin{DoxyCompactList}\small\item\em Changes the reference array for the counting. \end{DoxyCompactList}\item 
 void \hyperlink{class_stats_counter_a829e41243a7b18cf71337deeec9f7030}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$f\+\_\+)
+\item 
+void \hyperlink{class_stats_counter_ad175dcd2bd30d017881783de546ac333}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ f\+\_\+)
 \item 
 void \hyperlink{class_stats_counter_a19bd5936619e190c0d8918b4f343922e}{count\+\_\+init} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
 \item 
@@ -38,6 +42,8 @@ std\+::vector$<$ double $>$ \hyperlink{class_stats_counter_af98192f893280a2681a5
 std\+::vector$<$ double $>$ \hyperlink{class_stats_counter_a42c926799d8cb0abc6f5a1cfbc073f69}{change\+\_\+stats}
 \item 
 std\+::vector$<$ \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$$>$ \hyperlink{class_stats_counter_ab81464f54ee44deedf3fb1f16f9b87c5}{counters}
+\item 
+std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{class_stats_counter_ad51fb41c505da55c134d6696d6c01075}{to\+\_\+be\+\_\+deleted}
 \end{DoxyCompactItemize}
 
 
@@ -74,7 +80,7 @@ Creator of a {\ttfamily \hyperlink{class_stats_counter}{Stats\+Counter}}
 \end{DoxyParams}
 
 
-Definition at line 37 of file statscounter.\+hpp.
+Definition at line 38 of file statscounter.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a6cef1e5bb4914a49ba8dd0f63070f81c}\label{class_stats_counter_a6cef1e5bb4914a49ba8dd0f63070f81c}} 
 \index{Stats\+Counter@{Stats\+Counter}!Stats\+Counter@{Stats\+Counter}}
@@ -89,7 +95,18 @@ Can be created without setting the array.
 
 
 
-Definition at line 53 of file statscounter.\+hpp.
+Definition at line 51 of file statscounter.\+hpp.
+
+\mbox{\Hypertarget{class_stats_counter_a2824d86765d94e909e4b33396250b6c7}\label{class_stats_counter_a2824d86765d94e909e4b33396250b6c7}} 
+\index{Stats\+Counter@{Stats\+Counter}!````~Stats\+Counter@{$\sim$\+Stats\+Counter}}
+\index{````~Stats\+Counter@{$\sim$\+Stats\+Counter}!Stats\+Counter@{Stats\+Counter}}
+\subsubsection{\texorpdfstring{$\sim$\+Stats\+Counter()}{~StatsCounter()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::$\sim$\hyperlink{class_stats_counter}{Stats\+Counter} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 75 of file statscounter.\+hpp.
 
 
 
@@ -97,13 +114,24 @@ Definition at line 53 of file statscounter.\+hpp.
 \mbox{\Hypertarget{class_stats_counter_a829e41243a7b18cf71337deeec9f7030}\label{class_stats_counter_a829e41243a7b18cf71337deeec9f7030}} 
 \index{Stats\+Counter@{Stats\+Counter}!add\+\_\+counter@{add\+\_\+counter}}
 \index{add\+\_\+counter@{add\+\_\+counter}!Stats\+Counter@{Stats\+Counter}}
-\subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}}
+\subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
 void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{f\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 88 of file statscounter.\+hpp.
+Definition at line 93 of file statscounter.\+hpp.
+
+\mbox{\Hypertarget{class_stats_counter_ad175dcd2bd30d017881783de546ac333}\label{class_stats_counter_ad175dcd2bd30d017881783de546ac333}} 
+\index{Stats\+Counter@{Stats\+Counter}!add\+\_\+counter@{add\+\_\+counter}}
+\index{add\+\_\+counter@{add\+\_\+counter}!Stats\+Counter@{Stats\+Counter}}
+\subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{f\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 103 of file statscounter.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a83bd92031a1499109c98f238221cbd67}\label{class_stats_counter_a83bd92031a1499109c98f238221cbd67}} 
 \index{Stats\+Counter@{Stats\+Counter}!count\+\_\+all@{count\+\_\+all}}
@@ -114,7 +142,7 @@ std\+::vector$<$ double $>$ \hyperlink{class_stats_counter}{Stats\+Counter}$<$ A
 
 
 
-Definition at line 131 of file statscounter.\+hpp.
+Definition at line 148 of file statscounter.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_ab81166f7cb67eeaecc469016d237019a}\label{class_stats_counter_ab81166f7cb67eeaecc469016d237019a}} 
 \index{Stats\+Counter@{Stats\+Counter}!count\+\_\+current@{count\+\_\+current}}
@@ -125,7 +153,7 @@ void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\
 
 
 
-Definition at line 114 of file statscounter.\+hpp.
+Definition at line 131 of file statscounter.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a19bd5936619e190c0d8918b4f343922e}\label{class_stats_counter_a19bd5936619e190c0d8918b4f343922e}} 
 \index{Stats\+Counter@{Stats\+Counter}!count\+\_\+init@{count\+\_\+init}}
@@ -136,7 +164,7 @@ void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\
 
 
 
-Definition at line 98 of file statscounter.\+hpp.
+Definition at line 115 of file statscounter.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a8dabc3a7a9931acbb76900a67d728f70}\label{class_stats_counter_a8dabc3a7a9931acbb76900a67d728f70}} 
 \index{Stats\+Counter@{Stats\+Counter}!reset\+\_\+array@{reset\+\_\+array}}
@@ -156,7 +184,7 @@ Changes the reference array for the counting.
 \end{DoxyParams}
 
 
-Definition at line 74 of file statscounter.\+hpp.
+Definition at line 82 of file statscounter.\+hpp.
 
 
 
@@ -215,6 +243,17 @@ Array\+\_\+\+Type \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+
 
 
 Definition at line 24 of file statscounter.\+hpp.
+
+\mbox{\Hypertarget{class_stats_counter_ad51fb41c505da55c134d6696d6c01075}\label{class_stats_counter_ad51fb41c505da55c134d6696d6c01075}} 
+\index{Stats\+Counter@{Stats\+Counter}!to\+\_\+be\+\_\+deleted@{to\+\_\+be\+\_\+deleted}}
+\index{to\+\_\+be\+\_\+deleted@{to\+\_\+be\+\_\+deleted}!Stats\+Counter@{Stats\+Counter}}
+\subsubsection{\texorpdfstring{to\+\_\+be\+\_\+deleted}{to\_be\_deleted}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$ \\
+std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::to\+\_\+be\+\_\+deleted}
+
+
+
+Definition at line 30 of file statscounter.\+hpp.
 
 
 

@@ -17,7 +17,8 @@
 {\ttfamily \#include \char`\"{}powerset.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}counters/network.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}counters/phylo.\+hpp\char`\"{}}\newline
-Include dependency graph for barry.\+hpp\+:\nopagebreak
+Include dependency graph for barry.\+hpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -53,6 +54,8 @@ class \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set$<$ Cell\+\_\+\+
 \item 
 class \hyperlink{classbarry_1_1counters_1_1network_1_1_network_data}{barry\+::counters\+::network\+::\+Network\+Data}
 \begin{DoxyCompactList}\small\item\em Data class for Networks. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{barry\+::counters\+::network\+::\+Net\+Counter\+Data}
+\item 
 class \hyperlink{classbarry_1_1counters_1_1phylo_1_1_node_data}{barry\+::counters\+::phylo\+::\+Node\+Data}
 \begin{DoxyCompactList}\small\item\em Data definition for the {\ttfamily Phylo\+Array} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Namespaces}
@@ -87,9 +90,11 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{
 \item 
 typedef \hyperlink{class_b_array}{B\+Array}$<$ bool, \hyperlink{class_network_data}{Network\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{barry\+::counters\+::network\+::\+Network}
 \item 
-typedef \hyperlink{class_counter}{Counter}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a2d14cbc0a77bfba218df85a750bfeb84}{barry\+::counters\+::network\+::\+Net\+Counter}
+typedef \hyperlink{class_counter}{Counter}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, \hyperlink{class_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a067bd9de04608fc2e1586324d3864a45}{barry\+::counters\+::network\+::\+Net\+Counter}
 \item 
-typedef \hyperlink{class_support}{Support}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a55b00fe30207cc3c3e5eecb6feb0db90}{barry\+::counters\+::network\+::\+Net\+Support}
+typedef \hyperlink{class_support}{Support}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, \hyperlink{class_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a4d30be7f465efd7d218f0264f8386b32}{barry\+::counters\+::network\+::\+Net\+Support}
+\item 
+typedef \hyperlink{class_stats_counter}{Stats\+Counter}$<$ \hyperlink{network_8hpp_a7bf32f21811fd9bf0ba81bb929335370}{Network}, \hyperlink{class_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_ae26c399917113fe280b3f2859376b8b9}{barry\+::counters\+::network\+::\+Net\+Stats\+Counter}
 \item 
 typedef \hyperlink{class_b_array}{B\+Array}$<$ bool, \hyperlink{class_node_data}{Node\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1phylo_a50a6652c16ff57d76b4099043d6a0bbb}{barry\+::counters\+::phylo\+::\+Phylo\+Array}
 \item 
@@ -98,33 +103,37 @@ typedef \hyperlink{class_counter}{Counter}$<$ \hyperlink{phylo_8hpp_aa942fa3af91
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_ac6c1b51aacfe3a6c0df270ec606197b6}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+edges)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a0c35780c6c0d2a87c6b78304fc1c3664}{barry\+::counters\+::network\+::counter\+\_\+edges} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a2742d688807b24cd1b7edd7c920832d0}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+isolates)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a617079afca6d5d15fe5ba46718320408}{barry\+::counters\+::network\+::counter\+\_\+isolates} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_afc3b4dc36d42cb7bc1beb8a09e0a4ec4}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+isolates)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a9fe5b8896fdcbfaa36df41c105eca4c2}{barry\+::counters\+::network\+::counter\+\_\+mutual} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a655f903c09c0a87f10d0c3de28d3223f}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+mutual)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a99219cca9b8907d199c065b6eca053f2}{barry\+::counters\+::network\+::counter\+\_\+istar2} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a47fa9fbd75bc098926d9d7ff88736f11}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+mutual)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a46aace0109e55d039c824a0aacfb55a3}{barry\+::counters\+::network\+::counter\+\_\+ostar2} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a16ecffc977756862c833be5ff629d992}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+istar2)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a1e21fb2e0400c8644da1333337c3699a}{barry\+::counters\+::network\+::counter\+\_\+ttriads} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a2a73c4c01b3b383c9379823e12781bf6}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+ostar2)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a46633354cf1e81a1fe19eba64456ca75}{barry\+::counters\+::network\+::counter\+\_\+ctriads} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a1cf95b245bb1893c42c38dccfb917eb3}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+ttriads)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a9cbf0a070797cf3e142a06f7a2a87da1}{barry\+::counters\+::network\+::counter\+\_\+density} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a4512797d0d58449973463006df3799e4}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+ctriads)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_afef4ccbe9841a3902b2c0afcdc63bc01}{barry\+::counters\+::network\+::counter\+\_\+idegree15} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_aed95675f653398b88e53f9aa72081b75}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+density)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a7ecd388f5654d16d65b470e08a9c9432}{barry\+::counters\+::network\+::counter\+\_\+odegree15} ()
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a216a5253d08cf37735bac8ee008cc345}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+idegree15)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a03bd4bb3270e9386dfaefcae818f216a}{barry\+::counters\+::network\+::counter\+\_\+absdiff} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id, double alpha=1.\+0)
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a46ec6e9713d19bb70754f270367e228e}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+odegree15)
+\hyperlink{namespacebarry_1_1counters_1_1network_a7649cd035af193258a69058aea425941}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+single\+\_\+attr)
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_aefb95d7d5d416a143af04428f84c93c1}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+nodematch)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_aeb0f972d3a2c2ebfcc736edb1f6cb46e}{barry\+::counters\+::network\+::counter\+\_\+nodeicov} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1network_a80833d4c17d21e071c97f3e09c2ab699}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+nodematch)
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_aad6440a640edda2f4c217f218b570c91}{barry\+::counters\+::network\+::counter\+\_\+nodeocov} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
+\item 
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a68a87af025966df3b0aa3f22217f43bd}{barry\+::counters\+::network\+::counter\+\_\+nodecov} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
+\item 
+\hyperlink{network_8hpp_a1b43d27746882e340d44cdb438c8c27a}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_aca093c21b831f7f775cf9861ef0a5f9d}{barry\+::counters\+::network\+::counter\+\_\+nodematch} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
 \item 
 \hyperlink{namespacebarry_1_1counters_1_1phylo_aff5bb18e1e512766165db69a49aa5faf}{barry\+::counters\+::phylo\+::\+P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER} (count\+\_\+overall\+\_\+gains)
 \item 
@@ -180,28 +189,6 @@ const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_a95d6fdf6b1f3028fff8f2aef01f
 const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_aa86651704b200b6bb125b289fb5b3cfc}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+A\+S\+\_\+\+Z\+E\+RO} = 0
 \item 
 const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_a5b06fbd1208ff2094213da0791609950}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+A\+S\+\_\+\+O\+NE} = 1
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a025eda0612c21b33ce59299b107845cb}{barry\+::counters\+::network\+::edges} (count\+\_\+edges)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a9aecd717b6c7f12760b4c4ce08395844}{barry\+::counters\+::network\+::isolates} (count\+\_\+isolates, init\+\_\+isolates)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a6df86b773f8b0ff358e8988122562a28}{barry\+::counters\+::network\+::mutual} (count\+\_\+mutual, init\+\_\+mutual)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a61a7a588792249d68f3711e87bd53ad4}{barry\+::counters\+::network\+::istar2} (count\+\_\+istar2)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_abbf28b19669fd98aee3026360210e40c}{barry\+::counters\+::network\+::ostar2} (count\+\_\+ostar2)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_aab259a7692f59f9276f75914f50bddca}{barry\+::counters\+::network\+::ttriads} (count\+\_\+ttriads)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a67940daab1e0101588a05d84d6f9ad22}{barry\+::counters\+::network\+::ctriads} (count\+\_\+ctriads)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_aa15d84663778df2b26161a2812cbd4c6}{barry\+::counters\+::network\+::density} (count\+\_\+density)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_ab0e6bdd119e291f67a6f94dd715391f5}{barry\+::counters\+::network\+::idegree15} (count\+\_\+idegree15)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_ac204cfc5dd18deb85d71dec056edfc16}{barry\+::counters\+::network\+::odegree15} (count\+\_\+odegree15)
-\item 
-\hyperlink{network_8hpp_acc44acfd418369d48aa13ee6a8ae2573}{Net\+Counter} \hyperlink{namespacebarry_1_1counters_1_1network_a2903bd8cf46b7c8b72d49c92dd52c8ae}{barry\+::counters\+::network\+::nodematch} (count\+\_\+nodematch, init\+\_\+nodematch)
 \item 
 \hyperlink{phylo_8hpp_acc4e4b2f7d2a9b864df6a8087c6d920a}{Phylo\+Counter} \hyperlink{namespacebarry_1_1counters_1_1phylo_afb7d5e1d4a7457c6d2c794239407dcdb}{barry\+::counters\+::phylo\+::overall\+\_\+gains} (count\+\_\+overall\+\_\+gains)
 \item 

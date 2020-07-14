@@ -23,6 +23,7 @@ public:
   Array_Type                                       EmptyArray;
   FreqTable<>                                      data;
   std::vector< Counter<Array_Type, Data_Type>* > * counters;
+  std::vector< uint >                              to_be_deleted;
 
   uint N, M;
   bool initialized = false;
@@ -57,6 +58,9 @@ public:
   };
   
   ~Support() {
+    for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
+      delete counters->operator[](*iter);
+    
     if (!counter_deleted)
       delete counters;
   };
@@ -73,6 +77,7 @@ public:
   void reset();
   void reset(const Array_Type * Array_);
   void add_counter(Counter<Array_Type, Data_Type> * f_);
+  void add_counter(Counter<Array_Type,Data_Type> f_);
   void set_counters(std::vector< Counter<Array_Type,Data_Type> *> * counters_);
   
   /**@brief Computes the entire support
@@ -225,9 +230,24 @@ inline void Support<Array_Type,Data_Type>::add_counter(
 }
 
 template <typename Array_Type, typename Data_Type>
+inline void Support<Array_Type,Data_Type>::add_counter(
+    Counter<Array_Type,Data_Type> f_
+) {
+  
+  to_be_deleted.push_back(counters->size());
+  counters->push_back(new Counter<Array_Type,Data_Type>(f_));
+  
+  return;
+  
+}
+
+template <typename Array_Type, typename Data_Type>
 inline void Support<Array_Type,Data_Type>::set_counters(
     std::vector< Counter<Array_Type,Data_Type> *> * counters_
 ) {
+  
+  for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
+    delete counters->operator[](*iter);
   
   if (!counter_deleted)
     delete counters;

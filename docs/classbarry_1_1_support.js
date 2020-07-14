@@ -4,6 +4,7 @@ var classbarry_1_1_support =
     [ "Support", "classbarry_1_1_support.html#aa451bd21c09935b686869fef96c5b874", null ],
     [ "~Support", "classbarry_1_1_support.html#a1ffd5ee63fa68338cbbf443e1e54e5b4", null ],
     [ "add_counter", "classbarry_1_1_support.html#a0ad8bb6202451253697d771a28859210", null ],
+    [ "add_counter", "classbarry_1_1_support.html#aa8680937a0237286a8b0401bca07cbf6", null ],
     [ "calc", "classbarry_1_1_support.html#ab5261952be0746f188ee024e3e8c26c1", null ],
     [ "get_counts", "classbarry_1_1_support.html#a00ebb01a467b41e4b65df4c9a916909b", null ],
     [ "get_counts_ptr", "classbarry_1_1_support.html#a170776abc15d0fa8e02df36268e900a7", null ],
@@ -21,5 +22,6 @@ var classbarry_1_1_support =
     [ "M", "classbarry_1_1_support.html#aaceb2f83d235c70034e089087991cff8", null ],
     [ "N", "classbarry_1_1_support.html#a1e3158ceae716505cb0c5fb14374be9b", null ],
     [ "pos_i", "classbarry_1_1_support.html#ac6012c953dd04c2e74c2105b193f50ac", null ],
-    [ "pos_j", "classbarry_1_1_support.html#a5aeba4c4447efe7523abfb1cef864e63", null ]
+    [ "pos_j", "classbarry_1_1_support.html#a5aeba4c4447efe7523abfb1cef864e63", null ],
+    [ "to_be_deleted", "classbarry_1_1_support.html#a026b2c5eecc7404e5715f8a90a594ea1", null ]
 ];

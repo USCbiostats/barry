@@ -11,6 +11,7 @@ var annotated_dup =
     [ "Entries", "class_entries.html", "class_entries" ],
     [ "FreqTable", "class_freq_table.html", "class_freq_table" ],
     [ "Model", "class_model.html", "class_model" ],
+    [ "NetCounterData", "class_net_counter_data.html", "class_net_counter_data" ],
     [ "NetworkData", "class_network_data.html", "class_network_data" ],
     [ "NodeData", "class_node_data.html", "class_node_data" ],
     [ "PowerSet", "class_power_set.html", "class_power_set" ],

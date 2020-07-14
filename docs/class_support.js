@@ -4,6 +4,7 @@ var class_support =
     [ "Support", "class_support.html#aff7d2705d6f765fcbd8958453b7dbefe", null ],
     [ "~Support", "class_support.html#a03228371869980fa356b7b86871d94e8", null ],
     [ "add_counter", "class_support.html#a0ad8bb6202451253697d771a28859210", null ],
+    [ "add_counter", "class_support.html#aa8680937a0237286a8b0401bca07cbf6", null ],
     [ "calc", "class_support.html#ab5261952be0746f188ee024e3e8c26c1", null ],
     [ "get_counts", "class_support.html#a00ebb01a467b41e4b65df4c9a916909b", null ],
     [ "get_counts_ptr", "class_support.html#a170776abc15d0fa8e02df36268e900a7", null ],
@@ -21,5 +22,6 @@ var class_support =
     [ "M", "class_support.html#ace1d46b871c67caa774ac2269930e97f", null ],
     [ "N", "class_support.html#ab15c7125d6b99ae15ec4dbb34c9ce9b6", null ],
     [ "pos_i", "class_support.html#a8e3b2d36d26bb771d1a49dfaad75b966", null ],
-    [ "pos_j", "class_support.html#ac256816f09e47a843cf478a470223a5b", null ]
+    [ "pos_j", "class_support.html#ac256816f09e47a843cf478a470223a5b", null ],
+    [ "to_be_deleted", "class_support.html#a802b7941551f5e178260015154d1f109", null ]
 ];

@@ -286,12 +286,14 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
     
     // In this case, the row exists, but we are checking that the value is empty  
     if (ROW(i).find(j) == ROW(i).end()) {
+      
       ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v)); 
       COL(j).emplace(i, &ROW(i)[j]);
       NCells++;
-    } else {
+      
+    } else
       throw std::logic_error("The cell already exists.");
-    }
+    
     
   } else {
     

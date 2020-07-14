@@ -15,7 +15,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
@@ -35,8 +35,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_power_set.html#a3eacd45a7ed035773020df7d1db154c0",
-"network_8hpp.html#ad828a7356567fba2e181ab7614712b49"
+"class_power_set.html#a1ff9c2195a8d83b60813b38f5143693f",
+"namespacebarry_1_1counters_1_1phylo.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

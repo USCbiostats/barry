@@ -27,6 +27,7 @@ public:
    
   // We will save the data here
   std::vector< Counter<Array_Type,Data_Type> * > counters;
+  std::vector< uint > to_be_deleted;
   
   /**
    * @brief Creator of a `StatsCounter`
@@ -41,9 +42,6 @@ public:
     // make the insertion faster.
     EmptyArray.clear(false);
     
-    // if (Array_->data != nullptr)
-    //   EmptyArray.data = Array_->data;
-    
     return;
   }
   
@@ -51,6 +49,7 @@ public:
    * 
    */
   StatsCounter() : Array(nullptr), EmptyArray(0u,0u), counters(0u) {};
+  ~StatsCounter();
   
   /**@brief Changes the reference array for the counting.
    * 
@@ -59,6 +58,7 @@ public:
   void reset_array(const Array_Type * Array_);
   
   void add_counter(Counter<Array_Type,Data_Type> * f_);
+  void add_counter(Counter<Array_Type,Data_Type> f_);
   
   /***
    * ! This function recurses through the entries of `Array` and at each step of
@@ -70,6 +70,14 @@ public:
   
 };
 
+
+template <typename Array_Type, typename Data_Type>
+inline StatsCounter<Array_Type,Data_Type>::~StatsCounter() {
+  for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
+    delete counters[*iter];
+  return;
+}
+
 template <typename Array_Type, typename Data_Type>
 inline void StatsCounter<Array_Type,Data_Type>::reset_array(
   const Array_Type * Array_
@@ -77,9 +85,6 @@ inline void StatsCounter<Array_Type,Data_Type>::reset_array(
   
   Array = Array_;
   EmptyArray = *Array_;
-  
-  // if (Array_->data != nullptr)
-  //   EmptyArray.data = Array_->data;
   
   return;
 }
@@ -90,6 +95,18 @@ inline void StatsCounter<Array_Type,Data_Type>::add_counter(
   ) {
   
   counters.push_back(f_);
+  return;
+  
+}
+
+template <typename Array_Type, typename Data_Type>
+inline void StatsCounter<Array_Type,Data_Type>::add_counter(
+    Counter<Array_Type,Data_Type> f_
+) {
+  
+  to_be_deleted.push_back(counters.size());
+  counters.push_back(new Counter<Array_Type,Data_Type>(f_));
+  
   return;
   
 }

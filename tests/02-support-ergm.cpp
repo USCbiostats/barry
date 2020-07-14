@@ -33,24 +33,21 @@ TEST_CASE("Computing support for networks", "[support]") {
   
   netcounters::Network net(4, 4);
   net.data = new netcounters::NetworkData({0,0,1,0});
-  netcounters::NetSupport support(&net);
+  netcounters::NetSupport support(&net); 
   
   // Preparing model  
-  support.add_counter(&netcounters::edges);
-  support.add_counter(&netcounters::mutual);
-  support.add_counter(&netcounters::isolates);
-  support.add_counter(&netcounters::istar2); 
-  support.add_counter(&netcounters::ostar2);
-  support.add_counter(&netcounters::ttriads);
-  support.add_counter(&netcounters::ctriads);
-  support.add_counter(&netcounters::density);
-  support.add_counter(&netcounters::idegree15);
-  support.add_counter(&netcounters::odegree15);
+  support.add_counter(netcounters::counter_edges());
+  support.add_counter(netcounters::counter_mutual());
+  support.add_counter(netcounters::counter_isolates());
+  support.add_counter(netcounters::counter_istar2()); 
+  support.add_counter(netcounters::counter_ostar2());
+  support.add_counter(netcounters::counter_ttriads());
+  support.add_counter(netcounters::counter_ctriads());
+  support.add_counter(netcounters::counter_density());
+  support.add_counter(netcounters::counter_idegree15());
+  support.add_counter(netcounters::counter_odegree15());
+  support.add_counter(netcounters::counter_nodematch(0u));  
   
-  // Adding functions
-  netcounters::NetCounter nodematchfem = netcounters::nodematch;
-  nodematchfem.data = new std::vector< unsigned int >({0u});
-  support.add_counter(&nodematchfem);  
   
   // Getting the full support
   support.calc(0u, false); 
@@ -88,11 +85,11 @@ TEST_CASE("Computing support for networks", "[support]") {
   
   
   delete net.data;
-  delete nodematchfem.data;
   std::vector< double > margin = {0.00001, 0.00001};
   std::cout << nnets << " networks." << std::endl;
   print(logs);
   print(logs_expected);
   REQUIRE(vabsdiff(logs, logs_expected) < margin);
+  
 }
 
