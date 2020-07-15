@@ -26,7 +26,7 @@ public:
   std::vector< double > change_stats;
    
   // We will save the data here
-  CounterVector<Array_Type,Data_Type> * counters = new CounterVector<Array_Type,Data_Type>();
+  CounterVector<Array_Type,Data_Type> * counters;
   bool                                  deleted  = false;
   
   /**
@@ -36,8 +36,9 @@ public:
    * @param Stats_ A pointer to a dataset of stats `StatsDB`.
    */
   StatsCounter(const Array_Type * Array_) :
-    Array(Array_), EmptyArray(*Array_) {
-
+    Array(Array_), EmptyArray(*Array_),
+    counters(new CounterVector<Array_Type,Data_Type>()) {
+    
     // We are removing the entries without freeing the memory. This should
     // make the insertion faster.
     EmptyArray.clear(false);
@@ -48,7 +49,9 @@ public:
   /**@brief Can be created without setting the array.
    * 
    */
-  StatsCounter() : Array(nullptr), EmptyArray(0u,0u) {};
+  StatsCounter() :
+    Array(nullptr), EmptyArray(0u,0u),
+    counters(new CounterVector<Array_Type,Data_Type>()) {};
   ~StatsCounter();
   
   /**@brief Changes the reference array for the counting.

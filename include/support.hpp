@@ -22,7 +22,7 @@ public:
    */
   Array_Type                            EmptyArray;
   FreqTable<>                           data;
-  CounterVector<Array_Type,Data_Type> * counters = new CounterVector<Array_Type,Data_Type>();
+  CounterVector<Array_Type,Data_Type> * counters;
 
   uint N, M;
   bool initialized = false;
@@ -37,7 +37,9 @@ public:
   /**@brief Constructor passing a reference Array.
    */
   Support(const Array_Type * Array_) :
-    EmptyArray(*Array_), N(Array_->N), M(Array_->M) {
+    EmptyArray(*Array_),
+    counters(new CounterVector<Array_Type,Data_Type>()),
+    N(Array_->N), M(Array_->M) {
     init_support();
     return;
     
@@ -46,10 +48,11 @@ public:
   /**@brief Constructor specifying the dimensions of the array (empty).
    */
   Support(uint N_, uint M_) :
-    EmptyArray(N_, M_) ,N(N_), M(M_) {
+    EmptyArray(N_, M_),
+    counters(new CounterVector<Array_Type,Data_Type>()),
+    N(N_), M(M_) {
     init_support();
     return;
-    
   };
   
   ~Support() {
