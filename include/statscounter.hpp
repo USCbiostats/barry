@@ -27,7 +27,7 @@ public:
    
   // We will save the data here
   CounterVector<Array_Type,Data_Type> * counters;
-  bool                                  deleted  = false;
+  bool                                  counter_deleted  = false;
   
   /**
    * @brief Creator of a `StatsCounter`
@@ -62,6 +62,7 @@ public:
   
   void add_counter(Counter<Array_Type,Data_Type> * f_);
   void add_counter(Counter<Array_Type,Data_Type> f_);
+  void set_counters(CounterVector<Array_Type,Data_Type> * counters_);
   
   /***
    * ! This function recurses through the entries of `Array` and at each step of
@@ -76,7 +77,7 @@ public:
 
 template <typename Array_Type, typename Data_Type>
 inline StatsCounter<Array_Type,Data_Type>::~StatsCounter() {
-  if (!deleted)
+  if (!counter_deleted)
     delete counters;
   return;
 }
@@ -108,6 +109,21 @@ inline void StatsCounter<Array_Type,Data_Type>::add_counter(
 ) {
   
   counters->add_counter(f_);
+  
+  return;
+  
+}
+
+template <typename Array_Type, typename Data_Type>
+inline void StatsCounter<Array_Type,Data_Type>::set_counters(
+    CounterVector<Array_Type,Data_Type> * counters_
+) {
+  
+  // Cleaning up before replacing the memory
+  if (!counter_deleted)
+    delete counters;
+  
+  counters = counters;
   
   return;
   

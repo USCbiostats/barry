@@ -73,7 +73,7 @@ public:
   void reset(const Array_Type * Array_);
   void add_counter(Counter<Array_Type, Data_Type> * f_);
   void add_counter(Counter<Array_Type,Data_Type> f_);
-  void set_counters(std::vector< Counter<Array_Type,Data_Type> *> * counters_);
+  void set_counters(CounterVector<Array_Type,Data_Type> * counters_);
   
   /**@brief Computes the entire support
    * 
@@ -238,7 +238,7 @@ inline void Support<Array_Type,Data_Type>::add_counter(
 
 template <typename Array_Type, typename Data_Type>
 inline void Support<Array_Type,Data_Type>::set_counters(
-    std::vector< Counter<Array_Type,Data_Type> *> * counters_
+    CounterVector<Array_Type,Data_Type> * counters_
 ) {
   
   // Cleaning up before replacing the memory

@@ -94,27 +94,59 @@ class Model {
 
 public:
   
-  Support<Array_Type,Data_Type>       support_calculator;
-  StatsCounter<Array_Type,Data_Type>  counter;
+  /**@name Functions to compute statistics
+   * @details Arguments are recycled to save memory and computation.
+   */
+  ///@[{
+  Support<Array_Type,Data_Type>       support_fun;
+  StatsCounter<Array_Type,Data_Type>  counter_fun;
+  CounterVector<Array_Type,Data_Type> counters;
+  ///@}
   
+  /**@brief */
   std::vector< Counts_type >          stats;
+  std::vector< uint >                 n_arrays_per_stats;
   std::vector< std::vector< double >> target_stats;
+  std::vector< uint >                 arrays2support;
   
+  /**@brief Vector of the previously used parameters */
   std::vector< double > params_last;
-  MapVec_type< double, uint > keys;
+  
+  /**@brief Map of types of arrays to support sets
+   * @details This is of the same length as the vector `stats`.
+   */
+  MapVec_type< double, uint > keys2support;
 
   /**@brief Function to extract features of the array to be hash
   */
   std::function<std::vector<double>(const Array_Type &)> keygen = nullptr;  
 
   Model() {
-    // The support uses the same counters as the actual counter.
-    support_calculator.set_counters(&counter.counters);
+    
+    // Counters are shared
+    support_fun.set_counters(&counters);
+    counter_fun.set_counters(&counters);
+    
     return;
   };
   ~Model() {};
+  
   void set_keygen(std::function<std::vector<double>(const Array_Type &)> keygen_);
-  void add_counter(Counter<Array_Type, Data_Type> * f_);
+  
+  /**@name Wrappers for the `CounterVector` member. 
+   * @details These will add counters to the model, which are shared by the
+   * support and the actual counter function.
+   */
+  ///@{
+  void add_counter(Counter<Array_Type, Data_Type> & counter);
+  void add_counter(Counter<Array_Type, Data_Type> * counter);
+  void add_counter(
+      Counter_fun_type<Array_Type,Data_Type> count_fun_,
+      Counter_fun_type<Array_Type,Data_Type> init_fun_    = nullptr,
+      Data_Type *                            data_        = nullptr,
+      bool                                   delete_data_ = false
+  );
+  ///@}
   
   /**@brief Adds an array to the support of not already included.
    * 
@@ -135,10 +167,38 @@ inline void Model<Array_Type,Data_Type>::set_keygen(
 
 template <typename Array_Type, typename Data_Type>
 inline void Model<Array_Type,Data_Type>::add_counter(
-  Counter<Array_Type, Data_Type> * f_
+    Counter<Array_Type, Data_Type> & counter
 ) {
   
-  counter.add_counter(f_);
+  counters.add_counter(counter);
+  return;
+}
+
+template <typename Array_Type, typename Data_Type>
+inline void Model<Array_Type,Data_Type>::add_counter(
+    Counter<Array_Type, Data_Type> * counter
+) {
+  
+  counters.add_counter(counter);
+  return;
+  
+}
+
+template <typename Array_Type, typename Data_Type>
+inline void Model<Array_Type,Data_Type>::add_counter(
+    Counter_fun_type<Array_Type,Data_Type> count_fun_,
+    Counter_fun_type<Array_Type,Data_Type> init_fun_,
+    Data_Type *                            data_,
+    bool                                   delete_data_
+) {
+  
+  counters.add_counter(
+      count_fun_,
+      init_fun_,
+      data_,
+      delete_data_
+  );
+  
   return;
   
 }
@@ -155,28 +215,29 @@ inline uint Model<Array_Type,Data_Type>::add_array(
   // If the data hasn't been analyzed earlier, then we need to compute
   // the support
   std::vector< double > key = keygen(Array_);
-  MapVec_type< double, uint >::const_iterator locator = keys.find(key);
-  if (locator == keys.end()) {
+  MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
+  if (locator == keys2support.end()) {
     
     // Adding to the map
-    keys[key] = keys.size();
+    keys2support[key] = keys2support.size();
     
     // Array counts
-    counter.reset_array(&Array_);
-    target_stats.push_back(counter.count_all());
+    counter_fun.reset_array(&Array_);
+    target_stats.push_back(counter_fun.count_all());
     
     // Computing support using the counters included in the model
-    support_calculator.reset(&Array_);
-    support_calculator.calc();
-    stats.push_back(support_calculator.get_counts());
+    support_fun.reset(&Array_);
+    support_fun.calc();
+    stats.push_back(support_fun.get_counts());
     
-    return keys.size();
+    return keys2support.size();
     
   } 
   
-  return locator->second;
-  return 0u;
+  arrays2support.push_back(locator->second);
   
+  return locator->second;
+
 }
 
 #endif

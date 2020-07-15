@@ -142,7 +142,7 @@ inline void CounterVector<Array_Type,Data_Type>::add_counter(
 }
 
 template <typename Array_Type, typename Data_Type>
-void CounterVector<Array_Type,Data_Type>::add_counter(
+inline void CounterVector<Array_Type,Data_Type>::add_counter(
     Counter_fun_type<Array_Type,Data_Type> count_fun_,
     Counter_fun_type<Array_Type,Data_Type> init_fun_,
     Data_Type *                            data_,

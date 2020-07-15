@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/USCbiostats/barry.svg?branch=master)](https://travis-ci.com/USCbiostats/barry)
+
 <h1>Barry: your to-go motif accountant<img src="logo.svg" style="max-width:300px;width:50%;"></h1>
 
 
