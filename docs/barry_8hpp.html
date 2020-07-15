@@ -26,6 +26,7 @@
 });
 </script><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="barry.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -92,7 +93,6 @@ $(document).ready(function(){initNavTree('barry_8hpp.html','');});
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">barry.hpp File Reference</div>  </div>
@@ -244,11 +244,22 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Counters for network models</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">counters</td><td>A pointer to a <code>NetCounterVector</code> object (<code><a class="el" href="class_counter_vector.html" title="Vector of counters. ">CounterVector</a></code>&lt;<code>Network</code>, <code><a class="el" href="class_net_counter_data.html" title="Data class used to store arbitrary uint or double vectors. ">NetCounterData</a></code>&gt;). </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:a3c0a9e6c5697b3ec65827d405826bb33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a3c0a9e6c5697b3ec65827d405826bb33">barry::counters::network::counter_edges</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters)</td></tr>
+<tr class="memdesc:a3c0a9e6c5697b3ec65827d405826bb33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of edges.  <a href="namespacebarry_1_1counters_1_1network.html#a3c0a9e6c5697b3ec65827d405826bb33">More...</a><br /></td></tr>
 <tr class="separator:a3c0a9e6c5697b3ec65827d405826bb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16449353394312feed59aa5444d17dad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a16449353394312feed59aa5444d17dad">barry::counters::network::counter_isolates</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters)</td></tr>
+<tr class="memdesc:a16449353394312feed59aa5444d17dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of isolated vertices.  <a href="namespacebarry_1_1counters_1_1network.html#a16449353394312feed59aa5444d17dad">More...</a><br /></td></tr>
 <tr class="separator:a16449353394312feed59aa5444d17dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc4086d5788c8d5fa60ec529d9fa15dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#afc4086d5788c8d5fa60ec529d9fa15dd">barry::counters::network::counter_mutual</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters)</td></tr>
+<tr class="memdesc:afc4086d5788c8d5fa60ec529d9fa15dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of mutual ties.  <a href="namespacebarry_1_1counters_1_1network.html#afc4086d5788c8d5fa60ec529d9fa15dd">More...</a><br /></td></tr>
 <tr class="separator:afc4086d5788c8d5fa60ec529d9fa15dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95eea8464d85c595efa305cdf9a5a82b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a95eea8464d85c595efa305cdf9a5a82b">barry::counters::network::counter_istar2</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters)</td></tr>
 <tr class="separator:a95eea8464d85c595efa305cdf9a5a82b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -265,7 +276,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a7a43854f3227f5f92d3ff580e99c7136"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a7a43854f3227f5f92d3ff580e99c7136">barry::counters::network::counter_odegree15</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters)</td></tr>
 <tr class="separator:a7a43854f3227f5f92d3ff580e99c7136"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc210d80021cb5a79f1a9daf097e1c99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#acc210d80021cb5a79f1a9daf097e1c99">barry::counters::network::counter_absdiff</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id, double alpha=1.0)</td></tr>
+<tr class="memdesc:acc210d80021cb5a79f1a9daf097e1c99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum of absolute attribute difference between ego and alter.  <a href="namespacebarry_1_1counters_1_1network.html#acc210d80021cb5a79f1a9daf097e1c99">More...</a><br /></td></tr>
 <tr class="separator:acc210d80021cb5a79f1a9daf097e1c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8f024a17f6c518aef79c2cf670e49f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#af8f024a17f6c518aef79c2cf670e49f5">barry::counters::network::counter_diff</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id, double alpha=1.0, double tail_head=true)</td></tr>
+<tr class="memdesc:af8f024a17f6c518aef79c2cf670e49f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum of attribute difference between ego and alter to pow(alpha)  <a href="namespacebarry_1_1counters_1_1network.html#af8f024a17f6c518aef79c2cf670e49f5">More...</a><br /></td></tr>
+<tr class="separator:af8f024a17f6c518aef79c2cf670e49f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7649cd035af193258a69058aea425941"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a7649cd035af193258a69058aea425941">barry::counters::network::NETWORK_COUNTER</a> (init_single_attr)</td></tr>
 <tr class="separator:a7649cd035af193258a69058aea425941"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef48e4ae85d30c2a949006faee2b5bae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#aef48e4ae85d30c2a949006faee2b5bae">barry::counters::network::counter_nodeicov</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
@@ -276,6 +291,15 @@ Functions</h2></td></tr>
 <tr class="separator:a7087c6419195bc768c1e8c7730757d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0a33b2990950574552ab909e6847f96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#ab0a33b2990950574552ab909e6847f96">barry::counters::network::counter_nodematch</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
 <tr class="separator:ab0a33b2990950574552ab909e6847f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87617883960a1fc818048036fb13b83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#ab87617883960a1fc818048036fb13b83">barry::counters::network::counter_idegree</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; d)</td></tr>
+<tr class="memdesc:ab87617883960a1fc818048036fb13b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts number of vertices with a given in-degree.  <a href="namespacebarry_1_1counters_1_1network.html#ab87617883960a1fc818048036fb13b83">More...</a><br /></td></tr>
+<tr class="separator:ab87617883960a1fc818048036fb13b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af679a51acdd35805c7c40748af65c0f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#af679a51acdd35805c7c40748af65c0f4">barry::counters::network::counter_odegree</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; d)</td></tr>
+<tr class="memdesc:af679a51acdd35805c7c40748af65c0f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts number of vertices with a given out-degree.  <a href="namespacebarry_1_1counters_1_1network.html#af679a51acdd35805c7c40748af65c0f4">More...</a><br /></td></tr>
+<tr class="separator:af679a51acdd35805c7c40748af65c0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c7ef19041094ac55a17106940c7d244"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a8c7ef19041094ac55a17106940c7d244">barry::counters::network::counter_degree</a> (<a class="el" href="network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c">NetCounterVector</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; d)</td></tr>
+<tr class="memdesc:a8c7ef19041094ac55a17106940c7d244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts number of vertices with a given out-degree.  <a href="namespacebarry_1_1counters_1_1network.html#a8c7ef19041094ac55a17106940c7d244">More...</a><br /></td></tr>
+<tr class="separator:a8c7ef19041094ac55a17106940c7d244"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Counters for phylogenetic modeling.</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -340,7 +364,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="barry_8hpp.html">barry.hpp</a></li>
-    <li class="footer">Generated on Tue Jul 14 2020 16:33:51 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Tue Jul 14 2020 23:03:37 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

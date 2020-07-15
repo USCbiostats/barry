@@ -325,12 +325,12 @@ inline void counter_longest(PhyloCounterVector * counters) {
     // Starting the counter, since all in zero, then this will be equal to
     // the number of functions in 1 x number of longest branches
     double res = 0.0;
-    for (uint ii = 0u; ii < Array->N; ++ii)
+    for (uint ii = 0u; ii < Array->N; ++ii) {
       if (Array->data->states[ii])
         res += (1.0 * data->size());
-      
-      
-      return res;
+    }
+    
+    return res;
   };
   
   counters->add_counter(

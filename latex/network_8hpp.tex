@@ -67,14 +67,20 @@ typedef \hyperlink{class_stats_counter}{Stats\+Counter}$<$ \hyperlink{network_8h
 \end{DoxyCompactItemize}
 \end{Indent}
 \subsection*{Functions}
-\begin{DoxyCompactItemize}
+\begin{Indent}\textbf{ Counters for network models}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em counters} & A pointer to a {\ttfamily Net\+Counter\+Vector} object ({\ttfamily \hyperlink{class_counter_vector}{Counter\+Vector}}$<${\ttfamily Network}, {\ttfamily \hyperlink{class_net_counter_data}{Net\+Counter\+Data}}$>$). \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
 \item 
 void \hyperlink{network_8hpp_ad99a1aea236ff51c04fef9adc2c109d6}{counter\+\_\+edges} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
-\item 
+\begin{DoxyCompactList}\small\item\em Number of edges. \end{DoxyCompactList}\item 
 void \hyperlink{network_8hpp_aba4b5f1b19373c13ad98c560472e3a50}{counter\+\_\+isolates} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
-\item 
+\begin{DoxyCompactList}\small\item\em Number of isolated vertices. \end{DoxyCompactList}\item 
 void \hyperlink{network_8hpp_a00c2d4285f8b49f4abbb07dc8fd11267}{counter\+\_\+mutual} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
-\item 
+\begin{DoxyCompactList}\small\item\em Number of mutual ties. \end{DoxyCompactList}\item 
 void \hyperlink{network_8hpp_ac362e1d8f41e2346e6d786ad0f341438}{counter\+\_\+istar2} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
 void \hyperlink{network_8hpp_ad128728f6380cdf69dd2ad2da11db463}{counter\+\_\+ostar2} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
@@ -90,7 +96,9 @@ void \hyperlink{network_8hpp_a10bf6da89c6afc85f991cbd00156cf6a}{counter\+\_\+ide
 void \hyperlink{network_8hpp_a4b9d68a4604ef4b098635f32cf1b54c5}{counter\+\_\+odegree15} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
 void \hyperlink{network_8hpp_a7dad6296ee6be193386299fe953e504a}{counter\+\_\+absdiff} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id, double alpha=1.\+0)
-\item 
+\begin{DoxyCompactList}\small\item\em Sum of absolute attribute difference between ego and alter. \end{DoxyCompactList}\item 
+void \hyperlink{network_8hpp_a65ed507d513c4fd728e63b0cfa44c534}{counter\+\_\+diff} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id, double alpha=1.\+0, double tail\+\_\+head=true)
+\begin{DoxyCompactList}\small\item\em Sum of attribute difference between ego and alter to pow(alpha) \end{DoxyCompactList}\item 
 \hyperlink{network_8hpp_ad6539320de604e7c6e31e9fb152f70bd}{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+single\+\_\+attr)
 \item 
 void \hyperlink{network_8hpp_a9b4df4510b38ce356f322a5fa27d9b68}{counter\+\_\+nodeicov} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
@@ -100,7 +108,14 @@ void \hyperlink{network_8hpp_a96f3b1f5e74dce91dd2c53516bcb3bb9}{counter\+\_\+nod
 void \hyperlink{network_8hpp_acf25dab71c89584fed023e54a3843cad}{counter\+\_\+nodecov} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
 \item 
 void \hyperlink{network_8hpp_ae860410b8333786409348f54bd212d36}{counter\+\_\+nodematch} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
-\end{DoxyCompactItemize}
+\item 
+void \hyperlink{network_8hpp_ad852813826b22313ecfdca76c8bf7130}{counter\+\_\+idegree} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ d)
+\begin{DoxyCompactList}\small\item\em Counts number of vertices with a given in-\/degree. \end{DoxyCompactList}\item 
+void \hyperlink{network_8hpp_a70e8401fdf45860dd9dd8c54c57c8c80}{counter\+\_\+odegree} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ d)
+\begin{DoxyCompactList}\small\item\em Counts number of vertices with a given out-\/degree. \end{DoxyCompactList}\item 
+void \hyperlink{network_8hpp_a3df51508ce6258a10d0a63e3b2884d10}{counter\+\_\+degree} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ d)
+\begin{DoxyCompactList}\small\item\em Counts number of vertices with a given out-\/degree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
 
 
 \subsection{Macro Definition Documentation}
@@ -272,7 +287,11 @@ Definition at line 73 of file network.\+hpp.
 
 
 
-Definition at line 370 of file network.\+hpp.
+Sum of absolute attribute difference between ego and alter. 
+
+
+
+Definition at line 378 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a76e9747c3e1205de253863aaf28f669e}\label{network_8hpp_a76e9747c3e1205de253863aaf28f669e}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+ctriads@{counter\+\_\+ctriads}}
@@ -282,7 +301,21 @@ Definition at line 370 of file network.\+hpp.
 
 
 
-Definition at line 277 of file network.\+hpp.
+Definition at line 284 of file network.\+hpp.
+
+\mbox{\Hypertarget{network_8hpp_a3df51508ce6258a10d0a63e3b2884d10}\label{network_8hpp_a3df51508ce6258a10d0a63e3b2884d10}} 
+\index{network.\+hpp@{network.\+hpp}!counter\+\_\+degree@{counter\+\_\+degree}}
+\index{counter\+\_\+degree@{counter\+\_\+degree}!network.\+hpp@{network.\+hpp}}
+\subsubsection{\texorpdfstring{counter\+\_\+degree()}{counter\_degree()}}
+{\footnotesize\ttfamily void counter\+\_\+degree (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Counts number of vertices with a given out-\/degree. 
+
+
+
+Definition at line 643 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a1e50380142d19b617a383f06e6612b39}\label{network_8hpp_a1e50380142d19b617a383f06e6612b39}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+density@{counter\+\_\+density}}
@@ -292,7 +325,21 @@ Definition at line 277 of file network.\+hpp.
 
 
 
-Definition at line 313 of file network.\+hpp.
+Definition at line 320 of file network.\+hpp.
+
+\mbox{\Hypertarget{network_8hpp_a65ed507d513c4fd728e63b0cfa44c534}\label{network_8hpp_a65ed507d513c4fd728e63b0cfa44c534}} 
+\index{network.\+hpp@{network.\+hpp}!counter\+\_\+diff@{counter\+\_\+diff}}
+\index{counter\+\_\+diff@{counter\+\_\+diff}!network.\+hpp@{network.\+hpp}}
+\subsubsection{\texorpdfstring{counter\+\_\+diff()}{counter\_diff()}}
+{\footnotesize\ttfamily void counter\+\_\+diff (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{attr\+\_\+id,  }\item[{double}]{alpha = {\ttfamily 1.0},  }\item[{double}]{tail\+\_\+head = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sum of attribute difference between ego and alter to pow(alpha) 
+
+
+
+Definition at line 420 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_ad99a1aea236ff51c04fef9adc2c109d6}\label{network_8hpp_ad99a1aea236ff51c04fef9adc2c109d6}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+edges@{counter\+\_\+edges}}
@@ -302,7 +349,25 @@ Definition at line 313 of file network.\+hpp.
 
 
 
-Definition at line 92 of file network.\+hpp.
+Number of edges. 
+
+
+
+Definition at line 97 of file network.\+hpp.
+
+\mbox{\Hypertarget{network_8hpp_ad852813826b22313ecfdca76c8bf7130}\label{network_8hpp_ad852813826b22313ecfdca76c8bf7130}} 
+\index{network.\+hpp@{network.\+hpp}!counter\+\_\+idegree@{counter\+\_\+idegree}}
+\index{counter\+\_\+idegree@{counter\+\_\+idegree}!network.\+hpp@{network.\+hpp}}
+\subsubsection{\texorpdfstring{counter\+\_\+idegree()}{counter\_idegree()}}
+{\footnotesize\ttfamily void counter\+\_\+idegree (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Counts number of vertices with a given in-\/degree. 
+
+
+
+Definition at line 563 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a10bf6da89c6afc85f991cbd00156cf6a}\label{network_8hpp_a10bf6da89c6afc85f991cbd00156cf6a}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+idegree15@{counter\+\_\+idegree15}}
@@ -312,7 +377,7 @@ Definition at line 92 of file network.\+hpp.
 
 
 
-Definition at line 329 of file network.\+hpp.
+Definition at line 336 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_aba4b5f1b19373c13ad98c560472e3a50}\label{network_8hpp_aba4b5f1b19373c13ad98c560472e3a50}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+isolates@{counter\+\_\+isolates}}
@@ -322,7 +387,11 @@ Definition at line 329 of file network.\+hpp.
 
 
 
-Definition at line 105 of file network.\+hpp.
+Number of isolated vertices. 
+
+
+
+Definition at line 111 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_ac362e1d8f41e2346e6d786ad0f341438}\label{network_8hpp_ac362e1d8f41e2346e6d786ad0f341438}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+istar2@{counter\+\_\+istar2}}
@@ -332,7 +401,7 @@ Definition at line 105 of file network.\+hpp.
 
 
 
-Definition at line 169 of file network.\+hpp.
+Definition at line 176 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a00c2d4285f8b49f4abbb07dc8fd11267}\label{network_8hpp_a00c2d4285f8b49f4abbb07dc8fd11267}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+mutual@{counter\+\_\+mutual}}
@@ -342,7 +411,11 @@ Definition at line 169 of file network.\+hpp.
 
 
 
-Definition at line 134 of file network.\+hpp.
+Number of mutual ties. 
+
+
+
+Definition at line 141 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_acf25dab71c89584fed023e54a3843cad}\label{network_8hpp_acf25dab71c89584fed023e54a3843cad}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+nodecov@{counter\+\_\+nodecov}}
@@ -352,7 +425,7 @@ Definition at line 134 of file network.\+hpp.
 
 
 
-Definition at line 457 of file network.\+hpp.
+Definition at line 517 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a9b4df4510b38ce356f322a5fa27d9b68}\label{network_8hpp_a9b4df4510b38ce356f322a5fa27d9b68}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+nodeicov@{counter\+\_\+nodeicov}}
@@ -362,7 +435,7 @@ Definition at line 457 of file network.\+hpp.
 
 
 
-Definition at line 423 of file network.\+hpp.
+Definition at line 479 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_ae860410b8333786409348f54bd212d36}\label{network_8hpp_ae860410b8333786409348f54bd212d36}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+nodematch@{counter\+\_\+nodematch}}
@@ -372,7 +445,7 @@ Definition at line 423 of file network.\+hpp.
 
 
 
-Definition at line 475 of file network.\+hpp.
+Definition at line 537 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a96f3b1f5e74dce91dd2c53516bcb3bb9}\label{network_8hpp_a96f3b1f5e74dce91dd2c53516bcb3bb9}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+nodeocov@{counter\+\_\+nodeocov}}
@@ -382,7 +455,21 @@ Definition at line 475 of file network.\+hpp.
 
 
 
-Definition at line 440 of file network.\+hpp.
+Definition at line 498 of file network.\+hpp.
+
+\mbox{\Hypertarget{network_8hpp_a70e8401fdf45860dd9dd8c54c57c8c80}\label{network_8hpp_a70e8401fdf45860dd9dd8c54c57c8c80}} 
+\index{network.\+hpp@{network.\+hpp}!counter\+\_\+odegree@{counter\+\_\+odegree}}
+\index{counter\+\_\+odegree@{counter\+\_\+odegree}!network.\+hpp@{network.\+hpp}}
+\subsubsection{\texorpdfstring{counter\+\_\+odegree()}{counter\_odegree()}}
+{\footnotesize\ttfamily void counter\+\_\+odegree (\begin{DoxyParamCaption}\item[{\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Counts number of vertices with a given out-\/degree. 
+
+
+
+Definition at line 602 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a4b9d68a4604ef4b098635f32cf1b54c5}\label{network_8hpp_a4b9d68a4604ef4b098635f32cf1b54c5}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+odegree15@{counter\+\_\+odegree15}}
@@ -392,7 +479,7 @@ Definition at line 440 of file network.\+hpp.
 
 
 
-Definition at line 349 of file network.\+hpp.
+Definition at line 356 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_ad128728f6380cdf69dd2ad2da11db463}\label{network_8hpp_ad128728f6380cdf69dd2ad2da11db463}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+ostar2@{counter\+\_\+ostar2}}
@@ -402,7 +489,7 @@ Definition at line 349 of file network.\+hpp.
 
 
 
-Definition at line 187 of file network.\+hpp.
+Definition at line 194 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a043549f6d9ef81413b15ca87247dfb2e}\label{network_8hpp_a043549f6d9ef81413b15ca87247dfb2e}} 
 \index{network.\+hpp@{network.\+hpp}!counter\+\_\+ttriads@{counter\+\_\+ttriads}}
@@ -412,7 +499,7 @@ Definition at line 187 of file network.\+hpp.
 
 
 
-Definition at line 206 of file network.\+hpp.
+Definition at line 213 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_ad6539320de604e7c6e31e9fb152f70bd}\label{network_8hpp_ad6539320de604e7c6e31e9fb152f70bd}} 
 \index{network.\+hpp@{network.\+hpp}!N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER@{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER}}
@@ -422,5 +509,5 @@ Definition at line 206 of file network.\+hpp.
 
 
 
-Definition at line 408 of file network.\+hpp.
+Definition at line 462 of file network.\+hpp.
 

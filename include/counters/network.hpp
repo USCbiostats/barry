@@ -88,7 +88,12 @@ typedef StatsCounter<Network, NetCounterData> NetStatsCounter;
   [](const Network * Array, uint i, uint j, NetCounterData * data)
 ///@}
 
-// Edges counter ---------------------------------------------------------------
+/**@name Counters for network models
+ * @param counters A pointer to a `NetCounterVector` object (`CounterVector`<`Network`, `NetCounterData`>).
+ */
+///@{
+// -----------------------------------------------------------------------------
+/**@brief Number of edges */
 inline void counter_edges(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(count_edges) {
@@ -101,7 +106,8 @@ inline void counter_edges(NetCounterVector * counters) {
 }
 
 
-// Isolates counter ------------------------------------------------------------
+// -----------------------------------------------------------------------------
+/**@brief Number of isolated vertices */
 inline void counter_isolates(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -130,7 +136,8 @@ inline void counter_isolates(NetCounterVector * counters) {
   return;
 }
 
-// Mutuals -------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+/**@brief Number of mutual ties */
 inline void counter_mutual(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -366,8 +373,13 @@ inline void counter_odegree15(NetCounterVector * counters) {
 }
 
 
-// Nodematch -------------------------------------------------------------------
-inline void counter_absdiff(NetCounterVector * counters, uint attr_id, double alpha = 1.0) {
+// -----------------------------------------------------------------------------
+/**@brief Sum of absolute attribute difference between ego and alter */
+inline void counter_absdiff(
+    NetCounterVector * counters,
+    uint attr_id,
+    double alpha = 1.0
+  ) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -402,7 +414,49 @@ inline void counter_absdiff(NetCounterVector * counters, uint attr_id, double al
   return;
   
 }
-
+  
+// -----------------------------------------------------------------------------
+/**@brief Sum of attribute difference between ego and alter to pow(alpha)*/
+inline void counter_diff(
+    NetCounterVector * counters,
+    uint attr_id,
+    double alpha     = 1.0,
+    double tail_head = true
+) {
+  
+  NETWORK_COUNTER_LAMBDA(tmp_count) {
+    
+    return std::pow(NET_C_DATA_NUM(1u) * (
+        Array->data->vertex_attr[NET_C_DATA_IDX(0u)][i] - 
+          Array->data->vertex_attr[NET_C_DATA_IDX(0u)][j]
+    ), NET_C_DATA_NUM(0u));
+    
+  };
+  
+  NETWORK_COUNTER_LAMBDA(tmp_init) {
+    
+    if (Array->data == nullptr)
+      throw std::logic_error("data for the array must be specified.");
+    
+    if (Array->data->vertex_attr.size() == 0u)
+      throw std::range_error("No attributes in the Array.");
+    
+    if ((NET_C_DATA_IDX(0u) != 0u) && (Array->data->vertex_attr.size() <= (NET_C_DATA_IDX(0u) - 1u)))
+      throw std::range_error("Attribute index out of range.");
+    
+    return 0.0;
+    
+  };
+  
+  counters->add_counter(
+      tmp_count, tmp_init,
+      new NetCounterData({attr_id}, {alpha, tail_head ? 1.0: -1.0}),
+      true
+  );
+  
+  return;
+  
+}
 
 // Nodeicov, nodeocov, and Nodematch -------------------------------------------
 NETWORK_COUNTER(init_single_attr) {
@@ -420,6 +474,8 @@ NETWORK_COUNTER(init_single_attr) {
   
 }
 
+// -----------------------------------------------------------------------------
+//*@brief Attribute sum over receiver nodes */
 inline void counter_nodeicov(NetCounterVector * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -437,6 +493,8 @@ inline void counter_nodeicov(NetCounterVector * counters, uint attr_id) {
   return;
 }
 
+// -----------------------------------------------------------------------------
+//*@brief Attribute sum over sender nodes */
 inline void counter_nodeocov(NetCounterVector * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -454,6 +512,8 @@ inline void counter_nodeocov(NetCounterVector * counters, uint attr_id) {
   return;
 }
 
+// -----------------------------------------------------------------------------
+//*@brief Attribute sum over receiver and sender nodes */
 inline void counter_nodecov(NetCounterVector * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -472,6 +532,8 @@ inline void counter_nodecov(NetCounterVector * counters, uint attr_id) {
   return;
 }
 
+// -----------------------------------------------------------------------------
+//*@brief Number of homophililic ties */
 inline void counter_nodematch(NetCounterVector * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -496,4 +558,127 @@ inline void counter_nodematch(NetCounterVector * counters, uint attr_id) {
   
 }
 
+// -----------------------------------------------------------------------------
+/**@brief Counts number of vertices with a given in-degree */
+inline void counter_idegree(
+    NetCounterVector * counters,
+    std::vector< uint > d) {
+
+  NETWORK_COUNTER_LAMBDA(tmp_count) {
+    
+    uint d = A_COL(j).size();
+    if (d == NET_C_DATA_IDX(0u))
+      return 1.0;
+    else if (d == (NET_C_DATA_IDX(0u) + 1))
+      return -1.0;
+    
+    return 0.0;
+  };
+  
+  NETWORK_COUNTER_LAMBDA(tmp_init) {
+    
+    if (!Array->data->directed)
+      throw std::logic_error("-odegree- counter is only valid for directed graphs");
+    
+    if (NET_C_DATA_IDX(0u) == 0u)
+      return (double) Array->N;
+    
+    return 0.0;
+  };
+  
+  for (auto iter = d.begin(); iter != d.end(); ++iter) {
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new NetCounterData({*iter}, {}),
+        true
+    );
+  }
+  
+  return;  
+}
+
+// -----------------------------------------------------------------------------
+/**@brief Counts number of vertices with a given out-degree */
+inline void counter_odegree(
+    NetCounterVector * counters,
+    std::vector<uint> d
+    ) {
+  
+  NETWORK_COUNTER_LAMBDA(tmp_count) {
+    
+    uint d = A_ROW(i).size();
+    if (d == NET_C_DATA_IDX(0u))
+      return 1.0;
+    else if (d == (NET_C_DATA_IDX(0u) + 1))
+      return -1.0;
+    
+    return 0.0;
+  };
+  
+  NETWORK_COUNTER_LAMBDA(tmp_init) {
+    
+    if (!Array->data->directed)
+      throw std::logic_error("-odegree- counter is only valid for directed graphs");
+    
+    if (NET_C_DATA_IDX(0u) == 0u)
+      return (double) Array->N;
+    
+    return 0.0;
+  };
+    
+    
+  for (auto iter = d.begin(); iter != d.end(); ++iter) {
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new NetCounterData({*iter}, {}),
+        true
+    );
+  }
+  
+  return;  
+}
+  
+// -----------------------------------------------------------------------------
+/**@brief Counts number of vertices with a given out-degree */
+inline void counter_degree(
+    NetCounterVector * counters,
+    std::vector<uint> d
+) {
+  
+  NETWORK_COUNTER_LAMBDA(tmp_count) {
+    
+    uint d = A_ROW(i).size();
+    if (d == NET_C_DATA_IDX(0u))
+      return 1.0;
+    else if (d == (NET_C_DATA_IDX(0u) + 1))
+      return -1.0;
+    
+    return 0.0;
+  };
+  
+  NETWORK_COUNTER_LAMBDA(tmp_init) {
+    
+    if (Array->data->directed)
+      throw std::logic_error("-degree- counter is only valid for undirected graphs");
+    
+    if (NET_C_DATA_IDX(0u) == 0u)
+      return (double) Array->N;
+    
+    return 0.0;
+  };
+  
+  
+  for (auto iter = d.begin(); iter != d.end(); ++iter) {
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new NetCounterData({*iter}, {}),
+        true
+    );
+  }
+  
+  return;  
+}
+  
+///@}
+  
 #endif

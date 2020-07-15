@@ -23,7 +23,9 @@ TEST_CASE("Network counts work", "[counts]") {
    library(ergm)
    ans <- ergm::summary_formula(x ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad +
    ctriad + density + idegree1.5 + odegree1.5 + nodematch("gender") +
-   nodeicov("gender") + nodeocov("gender") + nodecov("gender") + absdiff("age"))
+   nodeicov("gender") + nodeocov("gender") + nodecov("gender") +
+   absdiff("age") + diff("age", pow=1) + diff("age", pow=2) + diff("age", pow=3) +
+   idegree(1:4) + odegree(1:4))
    cat(sprintf("%.4f", unname(ans)), sep = ", ")
    */
   
@@ -33,7 +35,12 @@ TEST_CASE("Network counts work", "[counts]") {
   std::vector< unsigned int > target = {0,0,0,1,2,2,2,2,2,2,3,3,3,4,4,4,5,5,6,6,7,7,7,10,10,12,12,13,13,13,14,14,14,14,14,14,14,15,15,15,15,16,16,16,16,17,17,17,18,18,18,18,19,19,19,19,19};
 
   // As computed by ergm  
-  std::vector< double > expected_counts = {57.0000, 2.0000, 2.0000, 86.0000, 75.0000, 25.0000, 11.0000, 0.1500, 111.8882, 107.2032, 24.0000, 85.0000, 82.0000, 167.0000, 15.6926};
+  std::vector< double > expected_counts = {
+    57.0000, 2.0000, 2.0000, 86.0000, 75.0000, 25.0000, 11.0000, 0.1500,
+    111.8882, 107.2032, 24.0000, 85.0000, 82.0000, 167.0000, 15.6926,
+    -0.7202, 7.4380, -0.4130,
+    1.0000, 4.0000, 6.0000, 3.0000, 2.0000, 3.0000, 6.0000, 4.0000
+    };
   
   netcounters::Network net(20, 20, source, target);
   std::vector< std::vector< double > > vattrs(2);
@@ -58,12 +65,17 @@ TEST_CASE("Network counts work", "[counts]") {
   netcounters::counter_nodeocov(counter.counters, 0u);
   netcounters::counter_nodecov(counter.counters, 0u);
   netcounters::counter_absdiff(counter.counters, 1u, 1.0);
+  netcounters::counter_diff(counter.counters, 1u, 1.0);
+  netcounters::counter_diff(counter.counters, 1u, 2.0);
+  netcounters::counter_diff(counter.counters, 1u, 3.0);
+  netcounters::counter_idegree(counter.counters, {1u,2u,3u,4u});
+  netcounters::counter_odegree(counter.counters, {1u,2u,3u,4u});
   
   std::vector< double > ans = counter.count_all();
   
   delete net.data;
   
-  std::vector<double> margin(ans.size(), 0.01);
+  std::vector<double> margin(ans.size(), 0.001);
   print(ans);
   print(expected_counts);
   REQUIRE(vabsdiff(ans, expected_counts) < margin);

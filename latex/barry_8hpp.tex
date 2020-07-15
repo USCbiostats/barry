@@ -120,14 +120,20 @@ typedef \hyperlink{class_stats_counter}{Stats\+Counter}$<$ \hyperlink{phylo_8hpp
 \end{DoxyCompactItemize}
 \end{Indent}
 \subsection*{Functions}
-\begin{DoxyCompactItemize}
+\begin{Indent}\textbf{ Counters for network models}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em counters} & A pointer to a {\ttfamily Net\+Counter\+Vector} object ({\ttfamily \hyperlink{class_counter_vector}{Counter\+Vector}}$<${\ttfamily Network}, {\ttfamily \hyperlink{class_net_counter_data}{Net\+Counter\+Data}}$>$). \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
 \item 
 void \hyperlink{namespacebarry_1_1counters_1_1network_a3c0a9e6c5697b3ec65827d405826bb33}{barry\+::counters\+::network\+::counter\+\_\+edges} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
-\item 
+\begin{DoxyCompactList}\small\item\em Number of edges. \end{DoxyCompactList}\item 
 void \hyperlink{namespacebarry_1_1counters_1_1network_a16449353394312feed59aa5444d17dad}{barry\+::counters\+::network\+::counter\+\_\+isolates} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
-\item 
+\begin{DoxyCompactList}\small\item\em Number of isolated vertices. \end{DoxyCompactList}\item 
 void \hyperlink{namespacebarry_1_1counters_1_1network_afc4086d5788c8d5fa60ec529d9fa15dd}{barry\+::counters\+::network\+::counter\+\_\+mutual} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
-\item 
+\begin{DoxyCompactList}\small\item\em Number of mutual ties. \end{DoxyCompactList}\item 
 void \hyperlink{namespacebarry_1_1counters_1_1network_a95eea8464d85c595efa305cdf9a5a82b}{barry\+::counters\+::network\+::counter\+\_\+istar2} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
 void \hyperlink{namespacebarry_1_1counters_1_1network_af76d9df31e55422bdffdb9e56870a46f}{barry\+::counters\+::network\+::counter\+\_\+ostar2} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
@@ -143,7 +149,9 @@ void \hyperlink{namespacebarry_1_1counters_1_1network_a148e6fbb549eea53ff6d744b0
 void \hyperlink{namespacebarry_1_1counters_1_1network_a7a43854f3227f5f92d3ff580e99c7136}{barry\+::counters\+::network\+::counter\+\_\+odegree15} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters)
 \item 
 void \hyperlink{namespacebarry_1_1counters_1_1network_acc210d80021cb5a79f1a9daf097e1c99}{barry\+::counters\+::network\+::counter\+\_\+absdiff} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id, double alpha=1.\+0)
-\item 
+\begin{DoxyCompactList}\small\item\em Sum of absolute attribute difference between ego and alter. \end{DoxyCompactList}\item 
+void \hyperlink{namespacebarry_1_1counters_1_1network_af8f024a17f6c518aef79c2cf670e49f5}{barry\+::counters\+::network\+::counter\+\_\+diff} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id, double alpha=1.\+0, double tail\+\_\+head=true)
+\begin{DoxyCompactList}\small\item\em Sum of attribute difference between ego and alter to pow(alpha) \end{DoxyCompactList}\item 
 \hyperlink{namespacebarry_1_1counters_1_1network_a7649cd035af193258a69058aea425941}{barry\+::counters\+::network\+::\+N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+single\+\_\+attr)
 \item 
 void \hyperlink{namespacebarry_1_1counters_1_1network_aef48e4ae85d30c2a949006faee2b5bae}{barry\+::counters\+::network\+::counter\+\_\+nodeicov} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
@@ -153,7 +161,14 @@ void \hyperlink{namespacebarry_1_1counters_1_1network_a2804cd2dba633fdccc7a1ca6a
 void \hyperlink{namespacebarry_1_1counters_1_1network_a7087c6419195bc768c1e8c7730757d2e}{barry\+::counters\+::network\+::counter\+\_\+nodecov} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
 \item 
 void \hyperlink{namespacebarry_1_1counters_1_1network_ab0a33b2990950574552ab909e6847f96}{barry\+::counters\+::network\+::counter\+\_\+nodematch} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} attr\+\_\+id)
-\end{DoxyCompactItemize}
+\item 
+void \hyperlink{namespacebarry_1_1counters_1_1network_ab87617883960a1fc818048036fb13b83}{barry\+::counters\+::network\+::counter\+\_\+idegree} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ d)
+\begin{DoxyCompactList}\small\item\em Counts number of vertices with a given in-\/degree. \end{DoxyCompactList}\item 
+void \hyperlink{namespacebarry_1_1counters_1_1network_af679a51acdd35805c7c40748af65c0f4}{barry\+::counters\+::network\+::counter\+\_\+odegree} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ d)
+\begin{DoxyCompactList}\small\item\em Counts number of vertices with a given out-\/degree. \end{DoxyCompactList}\item 
+void \hyperlink{namespacebarry_1_1counters_1_1network_a8c7ef19041094ac55a17106940c7d244}{barry\+::counters\+::network\+::counter\+\_\+degree} (\hyperlink{network_8hpp_a3e53d7fce7f737a121a8e2fca1a4052c}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ d)
+\begin{DoxyCompactList}\small\item\em Counts number of vertices with a given out-\/degree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
 \begin{Indent}\textbf{ Counters for phylogenetic modeling.}\par
 {\em 
 \begin{DoxyParams}{Parameters}
