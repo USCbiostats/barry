@@ -21,6 +21,7 @@ public:
   std::vector< Row_type< Cell_Type > > el_ij;
   std::vector< Col_type< Cell_Type > > el_ji;
   Data_Type * data = nullptr;
+  bool delete_data = false;
   
   static Cell< Cell_Type > Cell_default;
   
@@ -61,15 +62,55 @@ public:
     bool add = true
   );
   
+  BArray(const BArray<Cell_Type,Data_Type> & Array_) : N(Array_.N), M(Array_.M){
+    
+    // Dimensions
+    el_ij.resize(N);
+    el_ji.resize(N);
+    
+    // Entries
+    for (uint i = 0u; i < N; ++i) {
+      
+      if (Array_.el_ij[i].size() == 0u)
+        continue;
+      
+      for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
+        this->insert_cell(i, row->first, row->second.value, false, false);
+      
+    }
+    
+    // Data
+    data = Array_.data;
+    delete_data = false;
+    
+    return;
+    
+  };
+  
   ~BArray() {
-    if (data != nullptr)
-      data = nullptr;
+    
+    if ((data != nullptr) && delete_data)
+      delete data;
+    
+    data = nullptr;
+    
     return;
   };
   
   // In principle, copy can be faster by using openmp on the rows
   // since those are independent.
   // BArray(BArray & A);
+  
+  void set_data(Data_Type * data_, bool delete_data_ = false) {
+    
+    if ((data != nullptr) && delete_data)
+      delete data;
+    
+    data        = data_;
+    delete_data = delete_data_;
+    
+    return;
+  }
   
   // Function to access the elements
   // bool check_cell

@@ -13,5 +13,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "statscounter.hpp", "statscounter_8hpp.html", "statscounter_8hpp" ],
     [ "statsdb.hpp", "statsdb_8hpp.html", "statsdb_8hpp" ],
     [ "support.hpp", "support_8hpp.html", "support_8hpp" ],
-    [ "typedefs.hpp", "typedefs_8hpp.html", "typedefs_8hpp" ]
+    [ "typedefs.hpp", "typedefs_8hpp.html", "typedefs_8hpp" ],
+    [ "vectors.hpp", "vectors_8hpp.html", "vectors_8hpp" ]
 ];

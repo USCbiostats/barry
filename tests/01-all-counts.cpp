@@ -46,7 +46,7 @@ TEST_CASE("Network counts work", "[counts]") {
   std::vector< std::vector< double > > vattrs(2);
   vattrs[0] = gender;
   vattrs[1] = age;
-  net.data = new netcounters::NetworkData(vattrs);
+  net.set_data(new netcounters::NetworkData(vattrs), true);
   
   netcounters::NetStatsCounter counter(&net); 
 
@@ -73,7 +73,7 @@ TEST_CASE("Network counts work", "[counts]") {
   
   std::vector< double > ans = counter.count_all();
   
-  delete net.data;
+  // delete net.data;
   
   std::vector<double> margin(ans.size(), 0.001);
   print(ans);

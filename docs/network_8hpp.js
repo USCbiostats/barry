@@ -14,6 +14,7 @@ var network_8hpp =
     [ "NETWORK_COUNTER_LAMBDA", "barry_8hpp.html#a8d2a3024f1f05e716a1b4cacfe661fac", null ],
     [ "NetCounter", "network_8hpp.html#a1b43d27746882e340d44cdb438c8c27a", null ],
     [ "NetCounterVector", "network_8hpp.html#a3e53d7fce7f737a121a8e2fca1a4052c", null ],
+    [ "NetModel", "network_8hpp.html#af3b1cb75a0d8b8fe9765e16d17ff5fe9", null ],
     [ "NetStatsCounter", "network_8hpp.html#a1c44fa47dcf1cca1ba35eea6e70950a3", null ],
     [ "NetSupport", "network_8hpp.html#a05f5e7afe62d1c07b46876b4fbec0f4c", null ],
     [ "Network", "network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370", null ],

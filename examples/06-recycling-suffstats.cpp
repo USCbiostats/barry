@@ -99,7 +99,7 @@ List support (
     net.data = new netcounters::NetworkData(gender[i]);
     
     // Need to pass the data every time
-    dat.reset(&net);
+    dat.reset_array(&net);
     
     // Generating the data
     dat.calc(0u, false); 

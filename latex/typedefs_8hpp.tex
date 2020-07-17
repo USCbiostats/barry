@@ -1,6 +1,7 @@
 \hypertarget{typedefs_8hpp}{}\section{include/typedefs.hpp File Reference}
 \label{typedefs_8hpp}\index{include/typedefs.\+hpp@{include/typedefs.\+hpp}}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -62,6 +63,15 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{
 {\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structvec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}{vec\+\_\+equal} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Compares if -\/a-\/ and -\/b-\/ are equal. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{typedefs_8hpp_aec4a47b2d5c6f46872f300633cf1e938}{vec\+\_\+equal\+\_\+approx} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b, double eps=1e-\/10)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{typedefs_8hpp_ace8b1e32cd51e89706e3cabdc89aa382}{vec\+\_\+inner\+\_\+prod} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -235,4 +245,52 @@ Definition at line 38 of file typedefs.\+hpp.
 
 
 Definition at line 5 of file typedefs.\+hpp.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}\label{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!vec\+\_\+equal@{vec\+\_\+equal}}
+\index{vec\+\_\+equal@{vec\+\_\+equal}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{vec\+\_\+equal()}{vec\_equal()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool vec\+\_\+equal (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{a,  }\item[{const std\+::vector$<$ T $>$ \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compares if -\/a-\/ and -\/b-\/ are equal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a,b} & Two vectors of the same length \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if all elements are equal. 
+\end{DoxyReturn}
+
+
+Definition at line 109 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_aec4a47b2d5c6f46872f300633cf1e938}\label{typedefs_8hpp_aec4a47b2d5c6f46872f300633cf1e938}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!vec\+\_\+equal\+\_\+approx@{vec\+\_\+equal\+\_\+approx}}
+\index{vec\+\_\+equal\+\_\+approx@{vec\+\_\+equal\+\_\+approx}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{vec\+\_\+equal\+\_\+approx()}{vec\_equal\_approx()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool vec\+\_\+equal\+\_\+approx (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{a,  }\item[{const std\+::vector$<$ T $>$ \&}]{b,  }\item[{double}]{eps = {\ttfamily 1e-\/10} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 124 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_ace8b1e32cd51e89706e3cabdc89aa382}\label{typedefs_8hpp_ace8b1e32cd51e89706e3cabdc89aa382}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!vec\+\_\+inner\+\_\+prod@{vec\+\_\+inner\+\_\+prod}}
+\index{vec\+\_\+inner\+\_\+prod@{vec\+\_\+inner\+\_\+prod}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{vec\+\_\+inner\+\_\+prod()}{vec\_inner\_prod()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{a,  }\item[{const std\+::vector$<$ T $>$ \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 144 of file typedefs.\+hpp.
 

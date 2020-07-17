@@ -12,6 +12,10 @@
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \hyperlink{structbarry_1_1_array___hasher}{Array\+\_\+\+Hasher}
+\begin{DoxyCompactList}\small\item\em Array Hasher class (used for computing support) \end{DoxyCompactList}\item 
+struct \hyperlink{structbarry_1_1_array___hasher_3_01_b_array_3_4_01_4}{Array\+\_\+\+Hasher$<$ B\+Array$<$$>$ $>$}
+\item 
 class \hyperlink{classbarry_1_1_b_array}{B\+Array}
 \item 
 class \hyperlink{classbarry_1_1_cell}{Cell}
@@ -26,6 +30,8 @@ class \hyperlink{classbarry_1_1_entries}{Entries}
 \item 
 class \hyperlink{classbarry_1_1_freq_table}{Freq\+Table}
 \begin{DoxyCompactList}\small\item\em Database of statistics. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_model}{Model}
+\begin{DoxyCompactList}\small\item\em General framework for discrete exponential models. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_power_set}{Power\+Set}
 \item 
 class \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}
@@ -48,6 +54,21 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{
 {\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structbarry_1_1vec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_afbdb85734a7793890ea4268ea114858e}{vec\+\_\+equal} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Compares if -\/a-\/ and -\/b-\/ are equal. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}{vec\+\_\+equal\+\_\+approx} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b, double eps=1e-\/10)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_aef17775e18ec3512cc62c821bb6dae02}{vec\+\_\+inner\+\_\+prod} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
+\item 
+double \hyperlink{namespacebarry_a822db820c95822d0e7a51728d9b9858d}{update\+\_\+normalizing\+\_\+constant} (const std\+::vector$<$ double $>$ \&params, const \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{Counts\+\_\+type} \&support)
+\item 
+double \hyperlink{namespacebarry_a1dcc0a46544cc9733ca8ee5619ef6d20}{likelihood\+\_\+} (const std\+::vector$<$ double $>$ \&target\+\_\+stats, const std\+::vector$<$ double $>$ \&params, const double normalizing\+\_\+constant, bool log\+\_\+=false)
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type $>$ }\\std\+::vector$<$ double $>$ \hyperlink{namespacebarry_a22bfc7c4a1f5b5922edfd1101b8ffe3d}{keygen\+\_\+default} (const Array\+\_\+\+Type \&Array\+\_\+)
 \end{DoxyCompactItemize}
 
 
@@ -115,4 +136,83 @@ Definition at line 39 of file barry.\+hpp.
 
 
 Definition at line 6 of file barry.\+hpp.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacebarry_a22bfc7c4a1f5b5922edfd1101b8ffe3d}\label{namespacebarry_a22bfc7c4a1f5b5922edfd1101b8ffe3d}} 
+\index{barry@{barry}!keygen\+\_\+default@{keygen\+\_\+default}}
+\index{keygen\+\_\+default@{keygen\+\_\+default}!barry@{barry}}
+\subsubsection{\texorpdfstring{keygen\+\_\+default()}{keygen\_default()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type $>$ \\
+std\+::vector$<$ double $>$ barry\+::keygen\+\_\+default (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 77 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a1dcc0a46544cc9733ca8ee5619ef6d20}\label{namespacebarry_a1dcc0a46544cc9733ca8ee5619ef6d20}} 
+\index{barry@{barry}!likelihood\+\_\+@{likelihood\+\_\+}}
+\index{likelihood\+\_\+@{likelihood\+\_\+}!barry@{barry}}
+\subsubsection{\texorpdfstring{likelihood\+\_\+()}{likelihood\_()}}
+{\footnotesize\ttfamily double barry\+::likelihood\+\_\+ (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{target\+\_\+stats,  }\item[{const std\+::vector$<$ double $>$ \&}]{params,  }\item[{const double}]{normalizing\+\_\+constant,  }\item[{bool}]{log\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 32 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a822db820c95822d0e7a51728d9b9858d}\label{namespacebarry_a822db820c95822d0e7a51728d9b9858d}} 
+\index{barry@{barry}!update\+\_\+normalizing\+\_\+constant@{update\+\_\+normalizing\+\_\+constant}}
+\index{update\+\_\+normalizing\+\_\+constant@{update\+\_\+normalizing\+\_\+constant}!barry@{barry}}
+\subsubsection{\texorpdfstring{update\+\_\+normalizing\+\_\+constant()}{update\_normalizing\_constant()}}
+{\footnotesize\ttfamily double barry\+::update\+\_\+normalizing\+\_\+constant (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{params,  }\item[{const \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{Counts\+\_\+type} \&}]{support }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 11 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_afbdb85734a7793890ea4268ea114858e}\label{namespacebarry_afbdb85734a7793890ea4268ea114858e}} 
+\index{barry@{barry}!vec\+\_\+equal@{vec\+\_\+equal}}
+\index{vec\+\_\+equal@{vec\+\_\+equal}!barry@{barry}}
+\subsubsection{\texorpdfstring{vec\+\_\+equal()}{vec\_equal()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool barry\+::vec\+\_\+equal (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{a,  }\item[{const std\+::vector$<$ T $>$ \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compares if -\/a-\/ and -\/b-\/ are equal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a,b} & Two vectors of the same length \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if all elements are equal. 
+\end{DoxyReturn}
+
+
+Definition at line 110 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}\label{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}} 
+\index{barry@{barry}!vec\+\_\+equal\+\_\+approx@{vec\+\_\+equal\+\_\+approx}}
+\index{vec\+\_\+equal\+\_\+approx@{vec\+\_\+equal\+\_\+approx}!barry@{barry}}
+\subsubsection{\texorpdfstring{vec\+\_\+equal\+\_\+approx()}{vec\_equal\_approx()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool barry\+::vec\+\_\+equal\+\_\+approx (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{a,  }\item[{const std\+::vector$<$ T $>$ \&}]{b,  }\item[{double}]{eps = {\ttfamily 1e-\/10} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 125 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_aef17775e18ec3512cc62c821bb6dae02}\label{namespacebarry_aef17775e18ec3512cc62c821bb6dae02}} 
+\index{barry@{barry}!vec\+\_\+inner\+\_\+prod@{vec\+\_\+inner\+\_\+prod}}
+\index{vec\+\_\+inner\+\_\+prod@{vec\+\_\+inner\+\_\+prod}!barry@{barry}}
+\subsubsection{\texorpdfstring{vec\+\_\+inner\+\_\+prod()}{vec\_inner\_prod()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool barry\+::vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{a,  }\item[{const std\+::vector$<$ T $>$ \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 145 of file barry.\+hpp.
 

@@ -24,6 +24,8 @@ void \hyperlink{classbarry_1_1_stats_counter_a829e41243a7b18cf71337deeec9f7030}{
 \item 
 void \hyperlink{classbarry_1_1_stats_counter_ad175dcd2bd30d017881783de546ac333}{add\+\_\+counter} (\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ f\+\_\+)
 \item 
+void \hyperlink{classbarry_1_1_stats_counter_a6aae81ab39ef452aedd7743fa8221855}{set\+\_\+counters} (\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$counters\+\_\+)
+\item 
 void \hyperlink{classbarry_1_1_stats_counter_a19bd5936619e190c0d8918b4f343922e}{count\+\_\+init} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j)
 \item 
 void \hyperlink{classbarry_1_1_stats_counter_ab81166f7cb67eeaecc469016d237019a}{count\+\_\+current} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j)
@@ -41,9 +43,9 @@ std\+::vector$<$ double $>$ \hyperlink{classbarry_1_1_stats_counter_ad99718884cf
 \item 
 std\+::vector$<$ double $>$ \hyperlink{classbarry_1_1_stats_counter_a90b8fddb02b2628cc8d71986f8cdf0ed}{change\+\_\+stats}
 \item 
-\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$ \hyperlink{classbarry_1_1_stats_counter_a1ffeff39cb50c6008f25cf5cf4d20246}{counters} = new \hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$()
+\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$ \hyperlink{classbarry_1_1_stats_counter_a1ffeff39cb50c6008f25cf5cf4d20246}{counters}
 \item 
-bool \hyperlink{classbarry_1_1_stats_counter_a95e6f96ec10e3e92a7a7595463be43e6}{deleted} = false
+bool \hyperlink{classbarry_1_1_stats_counter_a0e9924b44520a91c7384a464fa9711b7}{counter\+\_\+deleted} = false
 \end{DoxyCompactItemize}
 
 
@@ -95,7 +97,7 @@ Can be created without setting the array.
 
 
 
-Definition at line 51 of file barry.\+hpp.
+Definition at line 52 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_stats_counter_a2824d86765d94e909e4b33396250b6c7}\label{classbarry_1_1_stats_counter_a2824d86765d94e909e4b33396250b6c7}} 
 \index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!````~Stats\+Counter@{$\sim$\+Stats\+Counter}}
@@ -106,7 +108,7 @@ Definition at line 51 of file barry.\+hpp.
 
 
 
-Definition at line 75 of file barry.\+hpp.
+Definition at line 79 of file barry.\+hpp.
 
 
 
@@ -120,7 +122,7 @@ void \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Ty
 
 
 
-Definition at line 93 of file barry.\+hpp.
+Definition at line 97 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_stats_counter_ad175dcd2bd30d017881783de546ac333}\label{classbarry_1_1_stats_counter_ad175dcd2bd30d017881783de546ac333}} 
 \index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!add\+\_\+counter@{add\+\_\+counter}}
@@ -131,7 +133,7 @@ void \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Ty
 
 
 
-Definition at line 103 of file barry.\+hpp.
+Definition at line 107 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_stats_counter_a83bd92031a1499109c98f238221cbd67}\label{classbarry_1_1_stats_counter_a83bd92031a1499109c98f238221cbd67}} 
 \index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!count\+\_\+all@{count\+\_\+all}}
@@ -142,7 +144,7 @@ std\+::vector$<$ double $>$ \hyperlink{classbarry_1_1_stats_counter}{Stats\+Coun
 
 
 
-Definition at line 147 of file barry.\+hpp.
+Definition at line 170 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_stats_counter_ab81166f7cb67eeaecc469016d237019a}\label{classbarry_1_1_stats_counter_ab81166f7cb67eeaecc469016d237019a}} 
 \index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!count\+\_\+current@{count\+\_\+current}}
@@ -153,7 +155,7 @@ void \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Ty
 
 
 
-Definition at line 130 of file barry.\+hpp.
+Definition at line 153 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_stats_counter_a19bd5936619e190c0d8918b4f343922e}\label{classbarry_1_1_stats_counter_a19bd5936619e190c0d8918b4f343922e}} 
 \index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!count\+\_\+init@{count\+\_\+init}}
@@ -164,7 +166,7 @@ void \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Ty
 
 
 
-Definition at line 114 of file barry.\+hpp.
+Definition at line 133 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_stats_counter_a8dabc3a7a9931acbb76900a67d728f70}\label{classbarry_1_1_stats_counter_a8dabc3a7a9931acbb76900a67d728f70}} 
 \index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!reset\+\_\+array@{reset\+\_\+array}}
@@ -184,7 +186,18 @@ Changes the reference array for the counting.
 \end{DoxyParams}
 
 
-Definition at line 82 of file barry.\+hpp.
+Definition at line 86 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_stats_counter_a6aae81ab39ef452aedd7743fa8221855}\label{classbarry_1_1_stats_counter_a6aae81ab39ef452aedd7743fa8221855}} 
+\index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!set\+\_\+counters@{set\+\_\+counters}}
+\index{set\+\_\+counters@{set\+\_\+counters}!barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{set\+\_\+counters()}{set\_counters()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::set\+\_\+counters (\begin{DoxyParamCaption}\item[{\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{counters\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 118 of file barry.\+hpp.
 
 
 
@@ -211,12 +224,23 @@ std\+::vector$<$ double $>$ \hyperlink{classbarry_1_1_stats_counter}{barry\+::\+
 
 Definition at line 26 of file barry.\+hpp.
 
+\mbox{\Hypertarget{classbarry_1_1_stats_counter_a0e9924b44520a91c7384a464fa9711b7}\label{classbarry_1_1_stats_counter_a0e9924b44520a91c7384a464fa9711b7}} 
+\index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!counter\+\_\+deleted@{counter\+\_\+deleted}}
+\index{counter\+\_\+deleted@{counter\+\_\+deleted}!barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}}
+\subsubsection{\texorpdfstring{counter\+\_\+deleted}{counter\_deleted}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+bool \hyperlink{classbarry_1_1_stats_counter}{barry\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counter\+\_\+deleted = false}
+
+
+
+Definition at line 30 of file barry.\+hpp.
+
 \mbox{\Hypertarget{classbarry_1_1_stats_counter_a1ffeff39cb50c6008f25cf5cf4d20246}\label{classbarry_1_1_stats_counter_a1ffeff39cb50c6008f25cf5cf4d20246}} 
 \index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!counters@{counters}}
 \index{counters@{counters}!barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}}
 \subsubsection{\texorpdfstring{counters}{counters}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
-\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$$\ast$ \hyperlink{classbarry_1_1_stats_counter}{barry\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counters = new \hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$()}
+\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$$\ast$ \hyperlink{classbarry_1_1_stats_counter}{barry\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counters}
 
 
 
@@ -232,17 +256,6 @@ std\+::vector$<$ double $>$ \hyperlink{classbarry_1_1_stats_counter}{barry\+::\+
 
 
 Definition at line 25 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_stats_counter_a95e6f96ec10e3e92a7a7595463be43e6}\label{classbarry_1_1_stats_counter_a95e6f96ec10e3e92a7a7595463be43e6}} 
-\index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!deleted@{deleted}}
-\index{deleted@{deleted}!barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}}
-\subsubsection{\texorpdfstring{deleted}{deleted}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
-bool \hyperlink{classbarry_1_1_stats_counter}{barry\+::\+Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::deleted = false}
-
-
-
-Definition at line 30 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_stats_counter_ad78463fadfa385a69121c40fdc8fd193}\label{classbarry_1_1_stats_counter_ad78463fadfa385a69121c40fdc8fd193}} 
 \index{barry\+::\+Stats\+Counter@{barry\+::\+Stats\+Counter}!Empty\+Array@{Empty\+Array}}

@@ -55,6 +55,14 @@ public:
     return;
   };
   
+  Support() :
+    EmptyArray(0u, 0u),
+    counters(new CounterVector<Array_Type,Data_Type>()),
+    N(0u), M(0u) {
+    init_support();
+    return;
+  };
+  
   ~Support() {
     if (!counter_deleted)
       delete counters;
@@ -69,8 +77,8 @@ public:
    * 
    * @param Array_ New array over which the support will be computed.
    */
-  void reset();
-  void reset(const Array_Type * Array_);
+  void reset_array();
+  void reset_array(const Array_Type * Array_);
   void add_counter(Counter<Array_Type, Data_Type> * f_);
   void add_counter(Counter<Array_Type,Data_Type> f_);
   void set_counters(CounterVector<Array_Type,Data_Type> * counters_);
@@ -115,7 +123,7 @@ inline void Support<Array_Type, Data_Type>::init_support() {
 }
 
 template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type, Data_Type>::reset() {
+inline void Support<Array_Type, Data_Type>::reset_array() {
   
   data.clear();
   initialized = false;
@@ -123,7 +131,7 @@ inline void Support<Array_Type, Data_Type>::reset() {
 }
 
 template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type, Data_Type>::reset(const Array_Type * Array_) {
+inline void Support<Array_Type, Data_Type>::reset_array(const Array_Type * Array_) {
   
   data.clear();
   initialized = false;
@@ -151,6 +159,10 @@ inline void Support<Array_Type, Data_Type>::calc(
   
   // Initializing
   if (!initialized) {
+    
+    // Do we have any counter?
+    if (counters->size() == 0u)
+      throw std::logic_error("No counters added: Cannot compute the support without knowning what to count!");
     
     // Initializing
     initialized = true;
@@ -244,8 +256,8 @@ inline void Support<Array_Type,Data_Type>::set_counters(
   // Cleaning up before replacing the memory
   if (!counter_deleted)
     delete counters;
-  
-  counters = counters;
+  counter_deleted = true;
+  counters = counters_;
   
   return;
   

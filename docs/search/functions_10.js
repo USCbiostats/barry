@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['zero_5fcol',['zero_col',['../class_b_array.html#a0fa473027d00ec53ed08eaea03ac3ef7',1,'BArray']]],
-  ['zero_5frow',['zero_row',['../class_b_array.html#a411085fcb7530669c72d9847340f1bac',1,'BArray']]]
+  ['update_5fnormalizing_5fconstant',['update_normalizing_constant',['../namespacebarry.html#a822db820c95822d0e7a51728d9b9858d',1,'barry::update_normalizing_constant()'],['../model-bones_8hpp.html#a557368a4713ccf9ee1867c1bd17d58ba',1,'update_normalizing_constant():&#160;model-bones.hpp']]]
 ];

@@ -1,6 +1,7 @@
 #include "../counters-bones.hpp"
 #include "../support.hpp"
 #include "../statscounter.hpp"
+#include "../model-bones.hpp"
 
 #ifndef BARRAY_NETWORK_H
 #define BARRAY_NETWORK_H 1
@@ -75,6 +76,7 @@ typedef Counter<Network, NetCounterData > NetCounter;
 typedef CounterVector< Network, NetCounterData> NetCounterVector;
 typedef Support<Network, NetCounterData > NetSupport;
 typedef StatsCounter<Network, NetCounterData> NetStatsCounter;
+typedef Model<Network, NetCounterData> NetModel;
 ///@}
 
 /**@name Macros for defining counters

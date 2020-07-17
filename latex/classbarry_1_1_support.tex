@@ -25,19 +25,21 @@ Collaboration diagram for barry\+:\+:Support$<$ Array\+\_\+\+Type, Data\+\_\+\+T
 \begin{DoxyCompactList}\small\item\em Constructor passing a reference Array. \end{DoxyCompactList}\item 
 \hyperlink{classbarry_1_1_support_aa451bd21c09935b686869fef96c5b874}{Support} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} N\+\_\+, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} M\+\_\+)
 \begin{DoxyCompactList}\small\item\em Constructor specifying the dimensions of the array (empty). \end{DoxyCompactList}\item 
+\hyperlink{classbarry_1_1_support_a652c1d9c8021c02844320eabd88c0f06}{Support} ()
+\item 
 \hyperlink{classbarry_1_1_support_a1ffd5ee63fa68338cbbf443e1e54e5b4}{$\sim$\+Support} ()
 \item 
 void \hyperlink{classbarry_1_1_support_aef6fda6e7a0989f53fcd252609d770c9}{init\+\_\+support} ()
 \item 
-void \hyperlink{classbarry_1_1_support_a5878ac60282fc1380c92f3ba502f249e}{reset} ()
+void \hyperlink{classbarry_1_1_support_a831220076ece01ef72abce7c700b6d9b}{reset\+\_\+array} ()
 \begin{DoxyCompactList}\small\item\em Resets the support calculator. \end{DoxyCompactList}\item 
-void \hyperlink{classbarry_1_1_support_afbe207cc2762bc698c9ccb3212e9de78}{reset} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
+void \hyperlink{classbarry_1_1_support_a4b3c832b8a6e84638ff89f346d0454cf}{reset\+\_\+array} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
 \item 
 void \hyperlink{classbarry_1_1_support_a0ad8bb6202451253697d771a28859210}{add\+\_\+counter} (\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$f\+\_\+)
 \item 
 void \hyperlink{classbarry_1_1_support_aa8680937a0237286a8b0401bca07cbf6}{add\+\_\+counter} (\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ f\+\_\+)
 \item 
-void \hyperlink{classbarry_1_1_support_a07f225ee54158980ededaccc47abad4c}{set\+\_\+counters} (std\+::vector$<$ \hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$$>$ $\ast$counters\+\_\+)
+void \hyperlink{classbarry_1_1_support_a6933478f6329793a6216e0326e79dff3}{set\+\_\+counters} (\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$counters\+\_\+)
 \item 
 void \hyperlink{classbarry_1_1_support_ab5261952be0746f188ee024e3e8c26c1}{calc} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} pos=0u, const bool \&diag=false, std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$array\+\_\+bank=nullptr, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$stats\+\_\+bank=nullptr)
 \begin{DoxyCompactList}\small\item\em Computes the entire support. \end{DoxyCompactList}\item 
@@ -52,7 +54,7 @@ Array\+\_\+\+Type \hyperlink{classbarry_1_1_support_ae26e46356041286028ffcc27195
 \begin{DoxyCompactList}\small\item\em Reference array to generate the support. \end{DoxyCompactList}\item 
 \hyperlink{classbarry_1_1_freq_table}{Freq\+Table} \hyperlink{classbarry_1_1_support_afae160c07727e72f36fcf5a16828ed21}{data}
 \item 
-\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$ \hyperlink{classbarry_1_1_support_a2c68a5afabf6288af291105c386b022d}{counters} = new \hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$()
+\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$ \hyperlink{classbarry_1_1_support_a2c68a5afabf6288af291105c386b022d}{counters}
 \item 
 \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_support_a1e3158ceae716505cb0c5fb14374be9b}{N}
 \item 
@@ -88,7 +90,7 @@ Definition at line 18 of file barry.\+hpp.
 \mbox{\Hypertarget{classbarry_1_1_support_ab946f83af83c571de8bd5a17ce453240}\label{classbarry_1_1_support_ab946f83af83c571de8bd5a17ce453240}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!Support@{Support}}
 \index{Support@{Support}!barry\+::\+Support@{barry\+::\+Support}}
-\subsubsection{\texorpdfstring{Support()}{Support()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\subsubsection{\texorpdfstring{Support()}{Support()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
 \hyperlink{classbarry_1_1_support}{barry\+::\+Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_support}{Support} (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -103,7 +105,7 @@ Definition at line 39 of file barry.\+hpp.
 \mbox{\Hypertarget{classbarry_1_1_support_aa451bd21c09935b686869fef96c5b874}\label{classbarry_1_1_support_aa451bd21c09935b686869fef96c5b874}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!Support@{Support}}
 \index{Support@{Support}!barry\+::\+Support@{barry\+::\+Support}}
-\subsubsection{\texorpdfstring{Support()}{Support()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\subsubsection{\texorpdfstring{Support()}{Support()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
 \hyperlink{classbarry_1_1_support}{barry\+::\+Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_support}{Support} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{N\+\_\+,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -113,7 +115,18 @@ Constructor specifying the dimensions of the array (empty).
 
 
 
-Definition at line 48 of file barry.\+hpp.
+Definition at line 50 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_support_a652c1d9c8021c02844320eabd88c0f06}\label{classbarry_1_1_support_a652c1d9c8021c02844320eabd88c0f06}} 
+\index{barry\+::\+Support@{barry\+::\+Support}!Support@{Support}}
+\index{Support@{Support}!barry\+::\+Support@{barry\+::\+Support}}
+\subsubsection{\texorpdfstring{Support()}{Support()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarry_1_1_support}{barry\+::\+Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_support}{Support} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 58 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_support_a1ffd5ee63fa68338cbbf443e1e54e5b4}\label{classbarry_1_1_support_a1ffd5ee63fa68338cbbf443e1e54e5b4}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!````~Support@{$\sim$\+Support}}
@@ -124,7 +137,7 @@ Definition at line 48 of file barry.\+hpp.
 
 
 
-Definition at line 55 of file barry.\+hpp.
+Definition at line 66 of file barry.\+hpp.
 
 
 
@@ -138,7 +151,7 @@ void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 217 of file barry.\+hpp.
+Definition at line 232 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_support_aa8680937a0237286a8b0401bca07cbf6}\label{classbarry_1_1_support_aa8680937a0237286a8b0401bca07cbf6}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!add\+\_\+counter@{add\+\_\+counter}}
@@ -149,7 +162,7 @@ void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 227 of file barry.\+hpp.
+Definition at line 242 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_support_ab5261952be0746f188ee024e3e8c26c1}\label{classbarry_1_1_support_ab5261952be0746f188ee024e3e8c26c1}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!calc@{calc}}
@@ -175,7 +188,7 @@ Not to be used by the user. Sets the starting point in the array (column-\/major
 \end{DoxyParams}
 
 
-Definition at line 135 of file barry.\+hpp.
+Definition at line 146 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_support_a00ebb01a467b41e4b65df4c9a916909b}\label{classbarry_1_1_support_a00ebb01a467b41e4b65df4c9a916909b}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!get\+\_\+counts@{get\+\_\+counts}}
@@ -186,7 +199,7 @@ Definition at line 135 of file barry.\+hpp.
 
 
 
-Definition at line 252 of file barry.\+hpp.
+Definition at line 267 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_support_a170776abc15d0fa8e02df36268e900a7}\label{classbarry_1_1_support_a170776abc15d0fa8e02df36268e900a7}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!get\+\_\+counts\+\_\+ptr@{get\+\_\+counts\+\_\+ptr}}
@@ -197,7 +210,7 @@ const \hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{Map\+Vec\+\_\
 
 
 
-Definition at line 259 of file barry.\+hpp.
+Definition at line 274 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_support_aef6fda6e7a0989f53fcd252609d770c9}\label{classbarry_1_1_support_aef6fda6e7a0989f53fcd252609d770c9}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!init\+\_\+support@{init\+\_\+support}}
@@ -208,14 +221,14 @@ void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 102 of file barry.\+hpp.
+Definition at line 113 of file barry.\+hpp.
 
-\mbox{\Hypertarget{classbarry_1_1_support_a5878ac60282fc1380c92f3ba502f249e}\label{classbarry_1_1_support_a5878ac60282fc1380c92f3ba502f249e}} 
-\index{barry\+::\+Support@{barry\+::\+Support}!reset@{reset}}
-\index{reset@{reset}!barry\+::\+Support@{barry\+::\+Support}}
-\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\mbox{\Hypertarget{classbarry_1_1_support_a831220076ece01ef72abce7c700b6d9b}\label{classbarry_1_1_support_a831220076ece01ef72abce7c700b6d9b}} 
+\index{barry\+::\+Support@{barry\+::\+Support}!reset\+\_\+array@{reset\+\_\+array}}
+\index{reset\+\_\+array@{reset\+\_\+array}!barry\+::\+Support@{barry\+::\+Support}}
+\subsubsection{\texorpdfstring{reset\+\_\+array()}{reset\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reset\+\_\+array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -230,29 +243,29 @@ If needed, the counters of a support object can be reused.
 \end{DoxyParams}
 
 
-Definition at line 115 of file barry.\+hpp.
+Definition at line 126 of file barry.\+hpp.
 
-\mbox{\Hypertarget{classbarry_1_1_support_afbe207cc2762bc698c9ccb3212e9de78}\label{classbarry_1_1_support_afbe207cc2762bc698c9ccb3212e9de78}} 
-\index{barry\+::\+Support@{barry\+::\+Support}!reset@{reset}}
-\index{reset@{reset}!barry\+::\+Support@{barry\+::\+Support}}
-\subsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\mbox{\Hypertarget{classbarry_1_1_support_a4b3c832b8a6e84638ff89f346d0454cf}\label{classbarry_1_1_support_a4b3c832b8a6e84638ff89f346d0454cf}} 
+\index{barry\+::\+Support@{barry\+::\+Support}!reset\+\_\+array@{reset\+\_\+array}}
+\index{reset\+\_\+array@{reset\+\_\+array}!barry\+::\+Support@{barry\+::\+Support}}
+\subsubsection{\texorpdfstring{reset\+\_\+array()}{reset\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reset (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reset\+\_\+array (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 123 of file barry.\+hpp.
+Definition at line 134 of file barry.\+hpp.
 
-\mbox{\Hypertarget{classbarry_1_1_support_a07f225ee54158980ededaccc47abad4c}\label{classbarry_1_1_support_a07f225ee54158980ededaccc47abad4c}} 
+\mbox{\Hypertarget{classbarry_1_1_support_a6933478f6329793a6216e0326e79dff3}\label{classbarry_1_1_support_a6933478f6329793a6216e0326e79dff3}} 
 \index{barry\+::\+Support@{barry\+::\+Support}!set\+\_\+counters@{set\+\_\+counters}}
 \index{set\+\_\+counters@{set\+\_\+counters}!barry\+::\+Support@{barry\+::\+Support}}
 \subsubsection{\texorpdfstring{set\+\_\+counters()}{set\_counters()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::set\+\_\+counters (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$$>$ $\ast$}]{counters\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::set\+\_\+counters (\begin{DoxyParamCaption}\item[{\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{counters\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 237 of file barry.\+hpp.
+Definition at line 252 of file barry.\+hpp.
 
 
 
@@ -284,7 +297,7 @@ Definition at line 29 of file barry.\+hpp.
 \index{counters@{counters}!barry\+::\+Support@{barry\+::\+Support}}
 \subsubsection{\texorpdfstring{counters}{counters}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
-\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$$\ast$ \hyperlink{classbarry_1_1_support}{barry\+::\+Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counters = new \hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$()}
+\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$$\ast$ \hyperlink{classbarry_1_1_support}{barry\+::\+Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counters}
 
 
 

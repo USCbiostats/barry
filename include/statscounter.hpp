@@ -122,8 +122,8 @@ inline void StatsCounter<Array_Type,Data_Type>::set_counters(
   // Cleaning up before replacing the memory
   if (!counter_deleted)
     delete counters;
-  
-  counters = counters;
+  counter_deleted = true;
+  counters = counters_;
   
   return;
   
@@ -134,6 +134,10 @@ inline void StatsCounter<Array_Type, Data_Type>::count_init(
     uint i,
     uint j
   ) {
+  
+  // Do we have any counter?
+  if (counters->size() == 0u)
+    throw std::logic_error("No counters added: Cannot count without knowning what to count!");
   
   // Iterating through the functions, and updating the set of
   // statistics.

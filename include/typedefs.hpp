@@ -100,4 +100,58 @@ template <typename Array_Type, typename Data_Type>
 using Counter_fun_type = std::function<double(const Array_Type *, uint, uint, Data_Type *)>;
 
 
+// Misc ------------------------------------------------------------------------
+/**@brief Compares if -a- and -b- are equal
+ * @param a,b Two vectors of the same length
+ * @return `true` if all elements are equal.
+ */
+template <typename T>
+inline bool vec_equal(const std::vector< T > & a, const std::vector< T > & b) {
+  
+  if (a.size() != b.size())
+    throw std::length_error("-a- and -b- should have the same length.");
+  
+  unsigned int i = 0;
+  while (a.at(i) == b.at(i++)) {
+    if (i == a.size())
+      return true;
+  }
+  
+  return false;
+}
+
+template <typename T>
+inline bool vec_equal_approx(
+    const std::vector< T > & a,
+    const std::vector< T > & b,
+    double eps = 1e-10
+  ) {
+  
+  if (a.size() != b.size())
+    throw std::length_error("-a- and -b- should have the same length.");
+  
+  unsigned int i = 0;
+  while ((double) std::abs(a.at(i) - b.at(i++)) < eps) {
+    if (i == a.size())
+      return true;
+  }
+  
+  return false;
+}
+
+
+template <typename T>
+inline bool vec_inner_prod(const std::vector< T > & a, const std::vector< T > & b) {
+  
+  if (a.size() != b.size())
+    throw std::length_error("-a- and -b- should have the same length.");
+  
+  double res = 0.0;
+  for (unsigned int i = 0u; i < a.size(); ++i)
+    res += (a[i] * b[i]);
+  
+  return res;
+}
+
+
 #endif
