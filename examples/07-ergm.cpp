@@ -41,7 +41,7 @@ double loglik(
   netcounters::counter_density(&model.counters);
   netcounters::counter_idegree15(&model.counters);
   netcounters::counter_odegree15(&model.counters);
-  netcounters::counter_nodematch(&model.counters, 0u);
+  // netcounters::counter_nodematch(&model.counters, 0u);
   
   // Adding the arrays
   std::vector< unsigned int > ids(gender.size());
@@ -49,12 +49,14 @@ double loglik(
     
     // Creating the network object
     netcounters::Network net((uint) N[i], (uint) M[i], source[i], target[i]);
-    net.set_data(new netcounters::NetworkData(gender[i]), true);
+    net.set_data(new netcounters::NetworkData, true);
     
     // For now, we are just forcing the thing
     ids[i] = model.add_array(net, true);
 
+    
   }
+
   
   // Computing likelihoods
   double ans = model.likelihood_total(params, true);
@@ -68,11 +70,15 @@ double loglik(
 
 # Checking the counters --------------------------------------------------------
 set.seed(173)
-adjm <- ergmito::rbernoulli(c(4, 4), .5)
-gender <- list(gender=sample.int(2, 4, TRUE), gender=sample.int(2, 4, TRUE))
+# adjm <- ergmito::rbernoulli(c(4, 4), .5)
+adjm <- list(structure(c(0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 
+                 0), .Dim = c(4L, 4L)), structure(c(0, 1, 0, 0, 0, 0, 0, 1, 0, 
+                                                    1, 0, 0, 0, 1, 1, 0), .Dim = c(4L, 4L)))
+# gender <- list(gender=sample.int(2, 4, TRUE), gender=sample.int(2, 4, TRUE))
+gender <- list(gender = c(1L, 2L, 1L, 1L), gender = c(2L, 1L, 1L, 2L))
 
 el <- lapply(adjm, function(i) which(i!=0, arr.ind = TRUE) - 1L)
-param <- runif(11)
+param <- runif(10)
 ans1 <- loglik(
   N = c(4L, 4L),
   M = c(4L, 4L),
@@ -81,7 +87,7 @@ ans1 <- loglik(
   gender = gender,
   params = param
   )
-
+q("no")
 networks <- Map(function(a,b) network::network(a, vertex.attr = list(gender = b)), a = adjm, b=gender)
 
 f <- ergmito::ergmito_formulae(

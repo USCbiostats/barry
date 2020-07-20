@@ -163,6 +163,9 @@ inline void counter_mutual(NetCounterVector * counters) {
     if (Array->N != Array->M)
       throw std::logic_error("The -mutual- counter only works on square arrays.");
     
+    if (Array->data == nullptr)
+      throw std::logic_error("The array data has not been initialized");
+    
     if (!Array->data->directed)
       throw std::logic_error("The -mutual- counter only works on directed (non-symmetric) arrays.");
     
@@ -271,6 +274,10 @@ inline void counter_ttriads(NetCounterVector * counters) {
   };
   
   NETWORK_COUNTER_LAMBDA(tmp_init) {
+    
+    if (Array->data == nullptr)
+      throw std::logic_error("The array data has not been initialized");
+    
     if (!(Array->data->directed))
       throw std::invalid_argument("The ttriads counter is only valid for directed networks. This is undirected.");
     return 0.0;
@@ -308,6 +315,9 @@ inline void counter_ctriads(NetCounterVector * counters) {
   };
   
   NETWORK_COUNTER_LAMBDA(tmp_init) {
+    if (Array->data == nullptr)
+      throw std::logic_error("The array data has not been initialized");
+    
     if (!(Array->data->directed))
       throw std::invalid_argument("The ctriads counter is only valid for directed networks. This is undirected.");
     return 0.0;
@@ -395,7 +405,7 @@ inline void counter_absdiff(
   NETWORK_COUNTER_LAMBDA(tmp_init) {
     
     if (Array->data == nullptr)
-      throw std::logic_error("data for the array must be specified.");
+      throw std::logic_error("The array data has not been initialized");
     
     if (Array->data->vertex_attr.size() == 0u)
       throw std::range_error("No attributes in the Array.");
@@ -438,7 +448,7 @@ inline void counter_diff(
   NETWORK_COUNTER_LAMBDA(tmp_init) {
     
     if (Array->data == nullptr)
-      throw std::logic_error("data for the array must be specified.");
+      throw std::logic_error("The array data has not been initialized");
     
     if (Array->data->vertex_attr.size() == 0u)
       throw std::range_error("No attributes in the Array.");
@@ -464,7 +474,7 @@ inline void counter_diff(
 NETWORK_COUNTER(init_single_attr) {
   
   if (Array->data == nullptr)
-    throw std::logic_error("data for the array must be specified.");
+    throw std::logic_error("The array data has not been initialized");
   
   if (Array->data->vertex_attr.size() == 0u)
     throw std::range_error("No attributes in the Array.");
@@ -579,6 +589,9 @@ inline void counter_idegree(
   
   NETWORK_COUNTER_LAMBDA(tmp_init) {
     
+    if (Array->data == nullptr)
+      throw std::logic_error("The array data has not been initialized");
+    
     if (!Array->data->directed)
       throw std::logic_error("-odegree- counter is only valid for directed graphs");
     
@@ -618,6 +631,9 @@ inline void counter_odegree(
   };
   
   NETWORK_COUNTER_LAMBDA(tmp_init) {
+    
+    if (Array->data == nullptr)
+      throw std::logic_error("The array data has not been initialized");
     
     if (!Array->data->directed)
       throw std::logic_error("-odegree- counter is only valid for directed graphs");
@@ -659,6 +675,9 @@ inline void counter_degree(
   };
   
   NETWORK_COUNTER_LAMBDA(tmp_init) {
+    
+    if (Array->data == nullptr)
+      throw std::logic_error("The array data has not been initialized");
     
     if (Array->data->directed)
       throw std::logic_error("-degree- counter is only valid for undirected graphs");

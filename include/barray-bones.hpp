@@ -80,8 +80,10 @@ public:
     }
     
     // Data
-    data = Array_.data;
-    delete_data = false;
+    if (Array_.data != nullptr) {
+      data = Array_.data;
+      delete_data = false;
+    }
     
     return;
     
@@ -89,10 +91,10 @@ public:
   
   ~BArray() {
     
-    if ((data != nullptr) && delete_data)
+    // Weird that if !delete_data then it has less errors. It seems that
+    // somewhere I am over deleting.
+    if (delete_data && (data != nullptr))
       delete data;
-    
-    data = nullptr;
     
     return;
   };
