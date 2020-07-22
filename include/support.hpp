@@ -136,6 +136,7 @@ inline void Support<Array_Type, Data_Type>::reset_array(const Array_Type * Array
   data.clear();
   initialized = false;
   EmptyArray = *Array_;
+  EmptyArray.delete_data = false;
   N = Array_->N;
   M = Array_->M;
   init_support();

@@ -70,7 +70,7 @@ var barry_8hpp =
     [ "update_normalizing_constant", "barry_8hpp.html#a822db820c95822d0e7a51728d9b9858d", null ],
     [ "vec_equal", "barry_8hpp.html#afbdb85734a7793890ea4268ea114858e", null ],
     [ "vec_equal_approx", "barry_8hpp.html#a24c4bd4a99dd82edf66c2d3b645dca08", null ],
-    [ "vec_inner_prod", "barry_8hpp.html#aef17775e18ec3512cc62c821bb6dae02", null ],
+    [ "vec_inner_prod", "barry_8hpp.html#a0343fb4152724d5fa1ffa00d4b6182d9", null ],
     [ "AS_ONE", "barry_8hpp.html#a5b06fbd1208ff2094213da0791609950", null ],
     [ "AS_ZERO", "barry_8hpp.html#aa86651704b200b6bb125b289fb5b3cfc", null ],
     [ "BOTH", "barry_8hpp.html#a604b0ef801ff768bd8561362cef579b2", null ],

@@ -131,8 +131,8 @@ inline bool vec_equal_approx(
     throw std::length_error("-a- and -b- should have the same length.");
   
   unsigned int i = 0;
-  while ((double) std::abs(a.at(i) - b.at(i++)) < eps) {
-    if (i == a.size())
+  while (((double) std::abs(a[i] - b[i])) < eps) {
+    if (++i == a.size())
       return true;
   }
   
@@ -141,7 +141,7 @@ inline bool vec_equal_approx(
 
 
 template <typename T>
-inline bool vec_inner_prod(const std::vector< T > & a, const std::vector< T > & b) {
+inline T vec_inner_prod(const std::vector< T > & a, const std::vector< T > & b) {
   
   if (a.size() != b.size())
     throw std::length_error("-a- and -b- should have the same length.");

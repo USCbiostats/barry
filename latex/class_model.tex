@@ -64,6 +64,8 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_model_a627aaec
 \begin{DoxyCompactList}\small\item\em Vector of the previously used parameters. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \hyperlink{class_model_ad4ec6d7a19e7a47fb6ffabbf191e1877}{normalizing\+\_\+constants}
 \item 
+bool \hyperlink{class_model_aeef0171c5c34e3e694cb51eebc449596}{first\+\_\+calc\+\_\+done} = false
+\item 
 std\+::function$<$ std\+::vector$<$ double $>$const Array\+\_\+\+Type \&)$>$ \hyperlink{class_model_a087db7c5e2ee47f4353d2e181223dd5a}{keygen} = nullptr
 \begin{DoxyCompactList}\small\item\em Function to extract features of the array to be hash. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Information about the arrays used in the model}\par
@@ -98,7 +100,7 @@ This class allows generating discrete exponential models in the form of a linear
 
 This implementation aims to reduce the number of times that the support needs to be computed. Models included here use more than a single array, and thus allow the function to recycle support sets as needed. For example, if we are looking at directed graphs all of the same size and without vertex level features, i.\+e. a model that only counts edges, triangles, etc. then the support needs to be fully computed only once. 
 
-Definition at line 103 of file model-\/bones.\+hpp.
+Definition at line 102 of file model-\/bones.\+hpp.
 
 
 
@@ -123,7 +125,7 @@ Definition at line 205 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 225 of file model-\/bones.\+hpp.
+Definition at line 219 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_aaed0a5937479c213e620bf8095ddea5d}\label{class_model_aaed0a5937479c213e620bf8095ddea5d}} 
 \index{Model@{Model}!````~Model@{$\sim$\+Model}}
@@ -157,7 +159,7 @@ Adds an array to the support of not already included.
 \end{DoxyParams}
 
 
-Definition at line 288 of file model-\/bones.\+hpp.
+Definition at line 282 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a1ed91acc6c747eabc8a83726c0ec7de5}\label{class_model_a1ed91acc6c747eabc8a83726c0ec7de5}} 
 \index{Model@{Model}!add\+\_\+counter@{add\+\_\+counter}}
@@ -168,7 +170,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+
 
 
 
-Definition at line 250 of file model-\/bones.\+hpp.
+Definition at line 244 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a05265a5a9a12109a4a2b56b3bb42015e}\label{class_model_a05265a5a9a12109a4a2b56b3bb42015e}} 
 \index{Model@{Model}!add\+\_\+counter@{add\+\_\+counter}}
@@ -179,7 +181,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+
 
 
 
-Definition at line 259 of file model-\/bones.\+hpp.
+Definition at line 253 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a950b0429e07047d4774eac60f7c335f2}\label{class_model_a950b0429e07047d4774eac60f7c335f2}} 
 \index{Model@{Model}!add\+\_\+counter@{add\+\_\+counter}}
@@ -190,7 +192,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+
 
 
 
-Definition at line 269 of file model-\/bones.\+hpp.
+Definition at line 263 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_abc2f255c6b6c4dd0ff3680aab35fd308}\label{class_model_abc2f255c6b6c4dd0ff3680aab35fd308}} 
 \index{Model@{Model}!likelihood@{likelihood}}
@@ -201,7 +203,7 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$
 
 
 
-Definition at line 337 of file model-\/bones.\+hpp.
+Definition at line 331 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_adf2c30d9c5ffdc87af6813d110146968}\label{class_model_adf2c30d9c5ffdc87af6813d110146968}} 
 \index{Model@{Model}!likelihood@{likelihood}}
@@ -212,7 +214,7 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$
 
 
 
-Definition at line 368 of file model-\/bones.\+hpp.
+Definition at line 364 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a2fe9cf412c5b2323c35c18952f9cb09d}\label{class_model_a2fe9cf412c5b2323c35c18952f9cb09d}} 
 \index{Model@{Model}!likelihood\+\_\+total@{likelihood\+\_\+total}}
@@ -223,7 +225,7 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$
 
 
 
-Definition at line 388 of file model-\/bones.\+hpp.
+Definition at line 384 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_afa4736153fa419e1f141839eda735dfe}\label{class_model_afa4736153fa419e1f141839eda735dfe}} 
 \index{Model@{Model}!set\+\_\+keygen@{set\+\_\+keygen}}
@@ -234,7 +236,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+
 
 
 
-Definition at line 242 of file model-\/bones.\+hpp.
+Definition at line 236 of file model-\/bones.\+hpp.
 
 
 
@@ -248,7 +250,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uin
 
 
 
-Definition at line 119 of file model-\/bones.\+hpp.
+Definition at line 118 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a880b9e2535fcdaea9cc60d4dbdc7bcbc}\label{class_model_a880b9e2535fcdaea9cc60d4dbdc7bcbc}} 
 \index{Model@{Model}!arrays2support@{arrays2support}}
@@ -259,7 +261,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uin
 
 
 
-Definition at line 120 of file model-\/bones.\+hpp.
+Definition at line 119 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a126cffe699d64e664ba6aa0b1796c780}\label{class_model_a126cffe699d64e664ba6aa0b1796c780}} 
 \index{Model@{Model}!counter\+\_\+fun@{counter\+\_\+fun}}
@@ -270,7 +272,7 @@ Definition at line 120 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 134 of file model-\/bones.\+hpp.
+Definition at line 133 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a1a711382ab0593f3b54ad549746e9149}\label{class_model_a1a711382ab0593f3b54ad549746e9149}} 
 \index{Model@{Model}!counters@{counters}}
@@ -285,7 +287,18 @@ Definition at line 134 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 132 of file model-\/bones.\+hpp.
+Definition at line 131 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_aeef0171c5c34e3e694cb51eebc449596}\label{class_model_aeef0171c5c34e3e694cb51eebc449596}} 
+\index{Model@{Model}!first\+\_\+calc\+\_\+done@{first\+\_\+calc\+\_\+done}}
+\index{first\+\_\+calc\+\_\+done@{first\+\_\+calc\+\_\+done}!Model@{Model}}
+\subsubsection{\texorpdfstring{first\+\_\+calc\+\_\+done}{first\_calc\_done}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+bool \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::first\+\_\+calc\+\_\+done = false}
+
+
+
+Definition at line 139 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a087db7c5e2ee47f4353d2e181223dd5a}\label{class_model_a087db7c5e2ee47f4353d2e181223dd5a}} 
 \index{Model@{Model}!keygen@{keygen}}
@@ -315,7 +328,7 @@ Map of types of arrays to support sets.
 
 This is of the same length as the vector {\ttfamily stats}. 
 
-Definition at line 126 of file model-\/bones.\+hpp.
+Definition at line 125 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_ab43351423d375b537a1a6a497c65caa1}\label{class_model_ab43351423d375b537a1a6a497c65caa1}} 
 \index{Model@{Model}!n\+\_\+arrays\+\_\+per\+\_\+stats@{n\+\_\+arrays\+\_\+per\+\_\+stats}}
@@ -326,7 +339,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uin
 
 
 
-Definition at line 109 of file model-\/bones.\+hpp.
+Definition at line 108 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_ad4ec6d7a19e7a47fb6ffabbf191e1877}\label{class_model_ad4ec6d7a19e7a47fb6ffabbf191e1877}} 
 \index{Model@{Model}!normalizing\+\_\+constants@{normalizing\+\_\+constants}}
@@ -337,7 +350,7 @@ std\+::vector$<$ double $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type,
 
 
 
-Definition at line 139 of file model-\/bones.\+hpp.
+Definition at line 138 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a627aaec1fe2c0e25546f68da78b0c00b}\label{class_model_a627aaec1fe2c0e25546f68da78b0c00b}} 
 \index{Model@{Model}!params\+\_\+last@{params\+\_\+last}}
@@ -352,7 +365,7 @@ Vector of the previously used parameters.
 
 
 
-Definition at line 138 of file model-\/bones.\+hpp.
+Definition at line 137 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a1816b0dd69226394643dc31916c8645e}\label{class_model_a1816b0dd69226394643dc31916c8645e}} 
 \index{Model@{Model}!stats@{stats}}
@@ -363,7 +376,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Cou
 
 
 
-Definition at line 108 of file model-\/bones.\+hpp.
+Definition at line 107 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a192302b6d7402bd4ef6edae623074ad0}\label{class_model_a192302b6d7402bd4ef6edae623074ad0}} 
 \index{Model@{Model}!support\+\_\+fun@{support\+\_\+fun}}
@@ -374,7 +387,7 @@ Definition at line 108 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 133 of file model-\/bones.\+hpp.
+Definition at line 132 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_ab0f4642a2d4602fabb6774914b7dbd39}\label{class_model_ab0f4642a2d4602fabb6774914b7dbd39}} 
 \index{Model@{Model}!target\+\_\+stats@{target\+\_\+stats}}
@@ -385,7 +398,7 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_model}{Model}$
 
 
 
-Definition at line 118 of file model-\/bones.\+hpp.
+Definition at line 117 of file model-\/bones.\+hpp.
 
 
 

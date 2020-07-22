@@ -21,8 +21,7 @@ inline double update_normalizing_constant(
     for (unsigned int j = 0u; j < params.size(); ++j)
       tmp += support[n].first[j] * params[j];
     
-    tmp = exp(tmp);
-    res += tmp * support[n].second;
+    res += exp(tmp) * support[n].second;
   }
   
   return res;
@@ -137,6 +136,7 @@ public:
   /**@brief Vector of the previously used parameters */
   std::vector< std::vector<double> > params_last;
   std::vector< double > normalizing_constants;
+  bool first_calc_done = false;
 
   /**@brief Function to extract features of the array to be hash
   */
@@ -210,12 +210,6 @@ inline Model<Array_Type,Data_Type>::Model() :
   // Counters are shared
   support_fun.set_counters(&counters);
   counter_fun.set_counters(&counters);
-  
-  // std::cout << &counters << std::endl;
-  // std::cout << support_fun.counters << std::endl;
-  // std::cout << counter_fun.counters << std::endl;
-  // 
-  // throw std::logic_error("upsi");
   
   return;
   
@@ -345,7 +339,9 @@ inline double Model<Array_Type,Data_Type>::likelihood(
     throw std::range_error("The requested support is out of range");
   
   // Checking if we have updated the normalizing constant or not
-  if ( !vec_equal(params, params_last[arrays2support[i]]) ) {
+  if (!first_calc_done || !vec_equal(params, params_last[arrays2support[i]]) ) {
+    
+    first_calc_done = true;
     
     normalizing_constants[arrays2support[i]] = update_normalizing_constant(
       params, stats[arrays2support[i]]
@@ -391,8 +387,9 @@ inline double Model<Array_Type,Data_Type>::likelihood_total(
 ) {
   
   for (uint i = 0u; i < params_last.size(); ++i) {
-    if (! vec_equal_approx(params, params_last[i]) ) {
+    if (!first_calc_done || !vec_equal_approx(params, params_last[i]) ) {
       
+      first_calc_done = true;
       normalizing_constants[i] = update_normalizing_constant(
         params, stats[i]
       );
@@ -404,7 +401,7 @@ inline double Model<Array_Type,Data_Type>::likelihood_total(
   
   double res = 0.0;
   if (as_log) {
-    for (uint i = 0; i < target_stats.size(); ++i)
+    for (uint i = 0; i < target_stats.size(); ++i) 
       res += vec_inner_prod(target_stats[i], params);
     
     for (uint i = 0u; i < params_last.size(); ++i) {

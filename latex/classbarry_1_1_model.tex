@@ -1,0 +1,407 @@
+\hypertarget{classbarry_1_1_model}{}\section{barry\+:\+:Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Class Template Reference}
+\label{classbarry_1_1_model}\index{barry\+::\+Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$@{barry\+::\+Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
+
+
+General framework for discrete exponential models.  
+
+
+
+
+{\ttfamily \#include $<$barry.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbarry_1_1_model_a38122122aa4eb799b90ed1ee49b9410c}{Model} ()
+\item 
+\hyperlink{classbarry_1_1_model_a841a883c666ecd9b07385bfb36078bc5}{Model} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} size\+\_\+)
+\item 
+\hyperlink{classbarry_1_1_model_ab01cbe8e9e9c6ceb56463dbe6be90059}{$\sim$\+Model} ()
+\item 
+void \hyperlink{classbarry_1_1_model_afa4736153fa419e1f141839eda735dfe}{set\+\_\+keygen} (std\+::function$<$ std\+::vector$<$ double $>$(const Array\+\_\+\+Type \&)$>$ keygen\+\_\+)
+\item 
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_model_a28ad7090cb5b3f3be9e24d9aef15ce75}{add\+\_\+array} (const Array\+\_\+\+Type \&Array\+\_\+, bool force\+\_\+new=false)
+\begin{DoxyCompactList}\small\item\em Adds an array to the support of not already included. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Wrappers for the `\+Counter\+Vector` member.}\par
+{\em These will add counters to the model, which are shared by the support and the actual counter function. }\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classbarry_1_1_model_a1ed91acc6c747eabc8a83726c0ec7de5}{add\+\_\+counter} (\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&counter)
+\item 
+void \hyperlink{classbarry_1_1_model_a05265a5a9a12109a4a2b56b3bb42015e}{add\+\_\+counter} (\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$counter)
+\item 
+void \hyperlink{classbarry_1_1_model_a950b0429e07047d4774eac60f7c335f2}{add\+\_\+counter} (\hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ init\+\_\+fun\+\_\+=nullptr, Data\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Likelihood functions.}\par
+{\em Calculation of likelihood functions is done reusing normalizing constants. Before recalculating the normalizing constant, the function checks whether {\ttfamily params} matches the last set vector of parameters used to compute it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & Vector of parameters \\
+\hline
+{\em as\+\_\+log} & When {\ttfamily true}, the function returns the log-\/likelihood. \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classbarry_1_1_model_abc2f255c6b6c4dd0ff3680aab35fd308}{likelihood} (const std\+::vector$<$ double $>$ \&params, const \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&i, bool as\+\_\+log=false)
+\item 
+double \hyperlink{classbarry_1_1_model_adf2c30d9c5ffdc87af6813d110146968}{likelihood} (const std\+::vector$<$ double $>$ \&params, const Array\+\_\+\+Type \&Array\+\_\+, bool as\+\_\+log=false)
+\item 
+double \hyperlink{classbarry_1_1_model_a2fe9cf412c5b2323c35c18952f9cb09d}{likelihood\+\_\+total} (const std\+::vector$<$ double $>$ \&params, bool as\+\_\+log=false)
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{Counts\+\_\+type} $>$ \hyperlink{classbarry_1_1_model_a5e74e613d0e4b9fef01bba0d196fcfe6}{stats}
+\item 
+std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ \hyperlink{classbarry_1_1_model_a0c69ecef1b6633aec9f95f360a8baeaf}{n\+\_\+arrays\+\_\+per\+\_\+stats}
+\item 
+\hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{Map\+Vec\+\_\+type}$<$ double, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ \hyperlink{classbarry_1_1_model_af6c9a2fbf53e9e12237fc200f3d8ffc2}{keys2support}
+\begin{DoxyCompactList}\small\item\em Map of types of arrays to support sets. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{classbarry_1_1_model_a2fa6149fc084c16fbe70150b0954f293}{params\+\_\+last}
+\begin{DoxyCompactList}\small\item\em Vector of the previously used parameters. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{classbarry_1_1_model_a4bf380231afbb968d977f0e0dc5f5bee}{normalizing\+\_\+constants}
+\item 
+bool \hyperlink{classbarry_1_1_model_a22a07971754864203728cd43b2c026c3}{first\+\_\+calc\+\_\+done} = false
+\item 
+std\+::function$<$ std\+::vector$<$ double $>$const Array\+\_\+\+Type \&)$>$ \hyperlink{classbarry_1_1_model_af0375943f9e6f9df15b305ed2bfd17a7}{keygen} = nullptr
+\begin{DoxyCompactList}\small\item\em Function to extract features of the array to be hash. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Information about the arrays used in the model}\par
+{\em {\ttfamily target\+\_\+stats} holds the observed sufficient statistics for each array in the dataset. {\ttfamily array\+\_\+frequency} contains the frequency with which each of the target stats (arrays) shows in the support. {\ttfamily array2support} maps array indices (0, 1, ...) to the corresponding support. }\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{classbarry_1_1_model_a68a8443e506fb8d3f1800f42689d8ec5}{target\+\_\+stats}
+\item 
+std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ \hyperlink{classbarry_1_1_model_a2f3a938709950efc2ff4685132d2cefb}{array\+\_\+frequency}
+\item 
+std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ \hyperlink{classbarry_1_1_model_aadf6c5f35d59c4fe4c67f954ac1dab94}{arrays2support}
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Functions to compute statistics}\par
+{\em Arguments are recycled to save memory and computation. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_model_a8d045fb12c7340681c942d2aade3d088}{counters}
+\begin{DoxyCompactList}\small\item\em @\mbox{[}\{ \end{DoxyCompactList}\item 
+\hyperlink{classbarry_1_1_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_model_aa40caa45d0d8ca5d0f16e8dadb0db5ce}{support\+\_\+fun}
+\item 
+\hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_model_a1c848eda59386aaa81346cff9565268b}{counter\+\_\+fun}
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$\newline
+class barry\+::\+Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+
+General framework for discrete exponential models. 
+
+This class allows generating discrete exponential models in the form of a linear exponential model\+: \[ \frac{ \exp{\left(\theta^{\mbox{t}}c(A)\right)} }{ \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mbox{t}}c(A')\right)} } \]
+
+This implementation aims to reduce the number of times that the support needs to be computed. Models included here use more than a single array, and thus allow the function to recycle support sets as needed. For example, if we are looking at directed graphs all of the same size and without vertex level features, i.\+e. a model that only counts edges, triangles, etc. then the support needs to be fully computed only once. 
+
+Definition at line 102 of file barry.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbarry_1_1_model_a38122122aa4eb799b90ed1ee49b9410c}\label{classbarry_1_1_model_a38122122aa4eb799b90ed1ee49b9410c}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!Model@{Model}}
+\index{Model@{Model}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_model}{Model} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 205 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a841a883c666ecd9b07385bfb36078bc5}\label{classbarry_1_1_model_a841a883c666ecd9b07385bfb36078bc5}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!Model@{Model}}
+\index{Model@{Model}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_model}{Model} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{size\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 219 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_ab01cbe8e9e9c6ceb56463dbe6be90059}\label{classbarry_1_1_model_ab01cbe8e9e9c6ceb56463dbe6be90059}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!````~Model@{$\sim$\+Model}}
+\index{````~Model@{$\sim$\+Model}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{$\sim$\+Model()}{~Model()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::$\sim$\hyperlink{classbarry_1_1_model}{Model} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 147 of file barry.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbarry_1_1_model_a28ad7090cb5b3f3be9e24d9aef15ce75}\label{classbarry_1_1_model_a28ad7090cb5b3f3be9e24d9aef15ce75}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!add\+\_\+array@{add\+\_\+array}}
+\index{add\+\_\+array@{add\+\_\+array}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{add\+\_\+array()}{add\_array()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+array (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+,  }\item[{bool}]{force\+\_\+new = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds an array to the support of not already included. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Array\+\_\+} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 282 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a1ed91acc6c747eabc8a83726c0ec7de5}\label{classbarry_1_1_model_a1ed91acc6c747eabc8a83726c0ec7de5}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!add\+\_\+counter@{add\+\_\+counter}}
+\index{add\+\_\+counter@{add\+\_\+counter}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&}]{counter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 244 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a05265a5a9a12109a4a2b56b3bb42015e}\label{classbarry_1_1_model_a05265a5a9a12109a4a2b56b3bb42015e}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!add\+\_\+counter@{add\+\_\+counter}}
+\index{add\+\_\+counter@{add\+\_\+counter}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{counter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 253 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a950b0429e07047d4774eac60f7c335f2}\label{classbarry_1_1_model_a950b0429e07047d4774eac60f7c335f2}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!add\+\_\+counter@{add\+\_\+counter}}
+\index{add\+\_\+counter@{add\+\_\+counter}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{\hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{init\+\_\+fun\+\_\+ = {\ttfamily nullptr},  }\item[{Data\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 263 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_abc2f255c6b6c4dd0ff3680aab35fd308}\label{classbarry_1_1_model_abc2f255c6b6c4dd0ff3680aab35fd308}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!likelihood@{likelihood}}
+\index{likelihood@{likelihood}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{likelihood()}{likelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+double \hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::likelihood (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{params,  }\item[{const \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&}]{i,  }\item[{bool}]{as\+\_\+log = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 331 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_adf2c30d9c5ffdc87af6813d110146968}\label{classbarry_1_1_model_adf2c30d9c5ffdc87af6813d110146968}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!likelihood@{likelihood}}
+\index{likelihood@{likelihood}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{likelihood()}{likelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+double \hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::likelihood (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{params,  }\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+,  }\item[{bool}]{as\+\_\+log = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 364 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a2fe9cf412c5b2323c35c18952f9cb09d}\label{classbarry_1_1_model_a2fe9cf412c5b2323c35c18952f9cb09d}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!likelihood\+\_\+total@{likelihood\+\_\+total}}
+\index{likelihood\+\_\+total@{likelihood\+\_\+total}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{likelihood\+\_\+total()}{likelihood\_total()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+double \hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::likelihood\+\_\+total (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{params,  }\item[{bool}]{as\+\_\+log = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 384 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_afa4736153fa419e1f141839eda735dfe}\label{classbarry_1_1_model_afa4736153fa419e1f141839eda735dfe}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!set\+\_\+keygen@{set\+\_\+keygen}}
+\index{set\+\_\+keygen@{set\+\_\+keygen}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{set\+\_\+keygen()}{set\_keygen()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::set\+\_\+keygen (\begin{DoxyParamCaption}\item[{std\+::function$<$ std\+::vector$<$ double $>$(const Array\+\_\+\+Type \&)$>$}]{keygen\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 236 of file barry.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classbarry_1_1_model_a2f3a938709950efc2ff4685132d2cefb}\label{classbarry_1_1_model_a2f3a938709950efc2ff4685132d2cefb}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!array\+\_\+frequency@{array\+\_\+frequency}}
+\index{array\+\_\+frequency@{array\+\_\+frequency}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{array\+\_\+frequency}{array\_frequency}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::array\+\_\+frequency}
+
+
+
+Definition at line 118 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_aadf6c5f35d59c4fe4c67f954ac1dab94}\label{classbarry_1_1_model_aadf6c5f35d59c4fe4c67f954ac1dab94}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!arrays2support@{arrays2support}}
+\index{arrays2support@{arrays2support}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{arrays2support}{arrays2support}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::arrays2support}
+
+
+
+Definition at line 119 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a1c848eda59386aaa81346cff9565268b}\label{classbarry_1_1_model_a1c848eda59386aaa81346cff9565268b}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!counter\+\_\+fun@{counter\+\_\+fun}}
+\index{counter\+\_\+fun@{counter\+\_\+fun}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{counter\+\_\+fun}{counter\_fun}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counter\+\_\+fun}
+
+
+
+Definition at line 133 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a8d045fb12c7340681c942d2aade3d088}\label{classbarry_1_1_model_a8d045fb12c7340681c942d2aade3d088}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!counters@{counters}}
+\index{counters@{counters}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{counters}{counters}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counters}
+
+
+
+@\mbox{[}\{ 
+
+
+
+Definition at line 131 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a22a07971754864203728cd43b2c026c3}\label{classbarry_1_1_model_a22a07971754864203728cd43b2c026c3}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!first\+\_\+calc\+\_\+done@{first\+\_\+calc\+\_\+done}}
+\index{first\+\_\+calc\+\_\+done@{first\+\_\+calc\+\_\+done}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{first\+\_\+calc\+\_\+done}{first\_calc\_done}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+bool \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::first\+\_\+calc\+\_\+done = false}
+
+
+
+Definition at line 139 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_af0375943f9e6f9df15b305ed2bfd17a7}\label{classbarry_1_1_model_af0375943f9e6f9df15b305ed2bfd17a7}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!keygen@{keygen}}
+\index{keygen@{keygen}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{keygen}{keygen}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::function$<$std\+::vector$<$double$>$const Array\+\_\+\+Type \&)$>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::keygen = nullptr}
+
+
+
+Function to extract features of the array to be hash. 
+
+
+
+Definition at line 143 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_af6c9a2fbf53e9e12237fc200f3d8ffc2}\label{classbarry_1_1_model_af6c9a2fbf53e9e12237fc200f3d8ffc2}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!keys2support@{keys2support}}
+\index{keys2support@{keys2support}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{keys2support}{keys2support}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{Map\+Vec\+\_\+type}$<$ double, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::keys2support}
+
+
+
+Map of types of arrays to support sets. 
+
+This is of the same length as the vector {\ttfamily stats}. 
+
+Definition at line 125 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a0c69ecef1b6633aec9f95f360a8baeaf}\label{classbarry_1_1_model_a0c69ecef1b6633aec9f95f360a8baeaf}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!n\+\_\+arrays\+\_\+per\+\_\+stats@{n\+\_\+arrays\+\_\+per\+\_\+stats}}
+\index{n\+\_\+arrays\+\_\+per\+\_\+stats@{n\+\_\+arrays\+\_\+per\+\_\+stats}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{n\+\_\+arrays\+\_\+per\+\_\+stats}{n\_arrays\_per\_stats}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::n\+\_\+arrays\+\_\+per\+\_\+stats}
+
+
+
+Definition at line 108 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a4bf380231afbb968d977f0e0dc5f5bee}\label{classbarry_1_1_model_a4bf380231afbb968d977f0e0dc5f5bee}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!normalizing\+\_\+constants@{normalizing\+\_\+constants}}
+\index{normalizing\+\_\+constants@{normalizing\+\_\+constants}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{normalizing\+\_\+constants}{normalizing\_constants}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ double $>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::normalizing\+\_\+constants}
+
+
+
+Definition at line 138 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a2fa6149fc084c16fbe70150b0954f293}\label{classbarry_1_1_model_a2fa6149fc084c16fbe70150b0954f293}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!params\+\_\+last@{params\+\_\+last}}
+\index{params\+\_\+last@{params\+\_\+last}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{params\+\_\+last}{params\_last}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ std\+::vector$<$double$>$ $>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::params\+\_\+last}
+
+
+
+Vector of the previously used parameters. 
+
+
+
+Definition at line 137 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a5e74e613d0e4b9fef01bba0d196fcfe6}\label{classbarry_1_1_model_a5e74e613d0e4b9fef01bba0d196fcfe6}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!stats@{stats}}
+\index{stats@{stats}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{stats}{stats}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{Counts\+\_\+type} $>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::stats}
+
+
+
+Definition at line 107 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_aa40caa45d0d8ca5d0f16e8dadb0db5ce}\label{classbarry_1_1_model_aa40caa45d0d8ca5d0f16e8dadb0db5ce}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!support\+\_\+fun@{support\+\_\+fun}}
+\index{support\+\_\+fun@{support\+\_\+fun}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{support\+\_\+fun}{support\_fun}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarry_1_1_support}{Support}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::support\+\_\+fun}
+
+
+
+Definition at line 132 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_model_a68a8443e506fb8d3f1800f42689d8ec5}\label{classbarry_1_1_model_a68a8443e506fb8d3f1800f42689d8ec5}} 
+\index{barry\+::\+Model@{barry\+::\+Model}!target\+\_\+stats@{target\+\_\+stats}}
+\index{target\+\_\+stats@{target\+\_\+stats}!barry\+::\+Model@{barry\+::\+Model}}
+\subsubsection{\texorpdfstring{target\+\_\+stats}{target\_stats}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{classbarry_1_1_model}{barry\+::\+Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::target\+\_\+stats}
+
+
+
+Definition at line 117 of file barry.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{barry_8hpp}{barry.\+hpp}\end{DoxyCompactItemize}

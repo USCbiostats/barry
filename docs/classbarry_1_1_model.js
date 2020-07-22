@@ -15,6 +15,7 @@ var classbarry_1_1_model =
     [ "arrays2support", "classbarry_1_1_model.html#aadf6c5f35d59c4fe4c67f954ac1dab94", null ],
     [ "counter_fun", "classbarry_1_1_model.html#a1c848eda59386aaa81346cff9565268b", null ],
     [ "counters", "classbarry_1_1_model.html#a8d045fb12c7340681c942d2aade3d088", null ],
+    [ "first_calc_done", "classbarry_1_1_model.html#a22a07971754864203728cd43b2c026c3", null ],
     [ "keygen", "classbarry_1_1_model.html#af0375943f9e6f9df15b305ed2bfd17a7", null ],
     [ "keys2support", "classbarry_1_1_model.html#af6c9a2fbf53e9e12237fc200f3d8ffc2", null ],
     [ "n_arrays_per_stats", "classbarry_1_1_model.html#a0c69ecef1b6633aec9f95f360a8baeaf", null ],

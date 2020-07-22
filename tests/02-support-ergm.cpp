@@ -49,7 +49,6 @@ TEST_CASE("Computing support for networks", "[support]") {
   netcounters::counter_odegree15(support.counters);
   netcounters::counter_nodematch(support.counters,0u);
   
-  
   // Getting the full support
   support.calc(0u, false); 
   

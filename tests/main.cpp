@@ -11,3 +11,4 @@
 
 #include "01-all-counts.cpp"
 #include "02-support-ergm.cpp"
+#include "03-support-ergm-b.cpp"

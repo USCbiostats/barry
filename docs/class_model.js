@@ -15,6 +15,7 @@ var class_model =
     [ "arrays2support", "class_model.html#a880b9e2535fcdaea9cc60d4dbdc7bcbc", null ],
     [ "counter_fun", "class_model.html#a126cffe699d64e664ba6aa0b1796c780", null ],
     [ "counters", "class_model.html#a1a711382ab0593f3b54ad549746e9149", null ],
+    [ "first_calc_done", "class_model.html#aeef0171c5c34e3e694cb51eebc449596", null ],
     [ "keygen", "class_model.html#a087db7c5e2ee47f4353d2e181223dd5a", null ],
     [ "keys2support", "class_model.html#a83d72b83e29ccaf09a5a05d2a67d0f05", null ],
     [ "n_arrays_per_stats", "class_model.html#ab43351423d375b537a1a6a497c65caa1", null ],
