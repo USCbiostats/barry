@@ -64,14 +64,19 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   // Adding the network to the model
   model.add_array(net);
   
-  std::vector< double > logs = {0.0, 0.0};
-  logs[0u] = model.likelihood_total(p0, true);
-  logs[1u] = model.likelihood_total(p1, true);
-  
+  std::vector< double > logs0(2);
+  std::vector< double > logs1(2);
+  logs0[0u] = model.likelihood_total(p0, true); 
+  logs0[1u] = model.likelihood_total(p1, true);
+  logs1[0u] = model.likelihood(p0, net, true); 
+  logs1[1u] = model.likelihood(p1, net, true);
+
   std::vector< double > margin = {0.00001, 0.00001};
-  print(logs);
+  print(logs0);
+  print(logs1);
   print(logs_expected);
-  REQUIRE(vabsdiff(logs, logs_expected) < margin);
+  REQUIRE(vabsdiff(logs0, logs_expected) < margin);
+  REQUIRE(vabsdiff(logs1, logs_expected) < margin);
   
 }
 

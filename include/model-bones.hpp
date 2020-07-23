@@ -339,7 +339,7 @@ inline double Model<Array_Type,Data_Type>::likelihood(
     throw std::range_error("The requested support is out of range");
   
   // Checking if we have updated the normalizing constant or not
-  if (!first_calc_done || !vec_equal(params, params_last[arrays2support[i]]) ) {
+  if (!first_calc_done || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
     
     first_calc_done = true;
     
@@ -347,7 +347,7 @@ inline double Model<Array_Type,Data_Type>::likelihood(
       params, stats[arrays2support[i]]
     );
     
-    params_last = params;
+    params_last[arrays2support[i]] = params;
     
   }
   

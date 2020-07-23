@@ -106,7 +106,10 @@ using Counter_fun_type = std::function<double(const Array_Type *, uint, uint, Da
  * @return `true` if all elements are equal.
  */
 template <typename T>
-inline bool vec_equal(const std::vector< T > & a, const std::vector< T > & b) {
+inline bool vec_equal(
+    const std::vector< T > & a,
+    const std::vector< T > & b
+  ) {
   
   if (a.size() != b.size())
     throw std::length_error("-a- and -b- should have the same length.");
