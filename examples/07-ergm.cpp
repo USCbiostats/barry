@@ -8,13 +8,12 @@ typedef std::vector< unsigned int > vuint;
  
 // A more elaborated example
 // [[Rcpp::export]]
-double loglik(
+SEXP new_model(
    std::vector< int > N,
    std::vector< int > M,
    const std::vector< std::vector< uint >> & source,
    const std::vector< std::vector< uint >> & target,
-   const std::vector< std::vector< double >> & gender,
-   const std::vector< double > params
+   const std::vector< std::vector< double >> & gender
 ) {
  
   // Checking sizes
@@ -29,19 +28,23 @@ double loglik(
 
   
   // Building a model
-  netcounters::NetModel model;
+  Rcpp::XPtr< netcounters::NetModel > model(
+    new netcounters::NetModel,
+    true
+  );
+  // netcounters::NetModel model;
   
-  netcounters::counter_edges(&model.counters);
-  netcounters::counter_mutual(&model.counters);
-  netcounters::counter_isolates(&model.counters);
-  netcounters::counter_istar2(&model.counters);
-  netcounters::counter_ostar2(&model.counters);
-  netcounters::counter_ttriads(&model.counters);
-  netcounters::counter_ctriads(&model.counters);
-  netcounters::counter_density(&model.counters);
-  netcounters::counter_idegree15(&model.counters);
-  netcounters::counter_odegree15(&model.counters);
-  netcounters::counter_nodematch(&model.counters, 0u);
+  netcounters::counter_edges(&model->counters);
+  netcounters::counter_mutual(&model->counters);
+  netcounters::counter_isolates(&model->counters);
+  netcounters::counter_istar2(&model->counters);
+  netcounters::counter_ostar2(&model->counters);
+  netcounters::counter_ttriads(&model->counters);
+  netcounters::counter_ctriads(&model->counters);
+  netcounters::counter_density(&model->counters);
+  netcounters::counter_idegree15(&model->counters);
+  netcounters::counter_odegree15(&model->counters);
+  netcounters::counter_nodematch(&model->counters, 0u);
   
   // Adding the arrays
   std::vector< unsigned int > ids(gender.size());
@@ -52,21 +55,22 @@ double loglik(
     net.set_data(new netcounters::NetworkData(gender[i]), true);
     
     // For now, we are just forcing the thing
-    ids[i] = model.add_array(net, true);
+    ids[i] = model->add_array(net, true);
 
     
   }
 
-  // Computing likelihoods
-  double ans = model.likelihood_total(params, true);
-  print(wrap(model.normalizing_constants));
-  print(wrap(model.n_arrays_per_stats));
-  print(wrap(model.arrays2support));
-  print(wrap(model.target_stats));
-    
-  return ans;
+  return model;
  
 }
+
+// [[Rcpp::export]]
+double loglik(SEXP model, const std::vector<double> & par, bool as_log = true) {
+
+  Rcpp::XPtr< netcounters::NetModel > ptr(model);
+  return ptr->likelihood_total(par, as_log);  
+}
+
  
 
 /***R
@@ -82,14 +86,15 @@ gender <- list(gender = c(1L, 2L, 1L, 1L), gender = c(2L, 1L, 1L, 2L))
 
 el <- lapply(adjm, function(i) which(i!=0, arr.ind = TRUE) - 1L)
 param <- runif(11)
-ans1 <- loglik(
+model <- new_model(
   N = c(4L, 4L),
   M = c(4L, 4L),
   source = lapply(el, "[", i=, j=1),
   target = lapply(el, "[", i=, j=2),
-  gender = gender,
-  params = param
+  gender = gender
   )
+
+ans1 <- loglik(model, param)
 
 networks <- Map(function(a,b) network::network(a, vertex.attr = list(gender = b)), a = adjm, b=gender)
 
@@ -99,6 +104,22 @@ f <- ergmito::ergmito_formulae(
 )
 
 f$loglik(param) - ans1
+
+# How faster/slower?
+microbenchmark::microbenchmark(
+  f$loglik(runif(11)),
+  loglik(model, runif(11)), times = 1000, unit = "relative"
+)
+
+# Consistency
+nchecks <- 1e3
+consistency <- replicate(
+  nchecks, {
+    p <- runif(11)
+    f$loglik(p) - loglik(model, p)
+  })
+
+hist(consistency, xlim = c(-0.01, 0.01))
 
 */
 
