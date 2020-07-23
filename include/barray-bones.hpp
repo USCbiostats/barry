@@ -62,42 +62,13 @@ public:
     bool add = true
   );
   
-  BArray(const BArray<Cell_Type,Data_Type> & Array_) : N(Array_.N), M(Array_.M){
-    
-    // Dimensions
-    el_ij.resize(N);
-    el_ji.resize(N);
-    
-    // Entries
-    for (uint i = 0u; i < N; ++i) {
-      
-      if (Array_.el_ij[i].size() == 0u)
-        continue;
-      
-      for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
-        this->insert_cell(i, row->first, row->second.value, false, false);
-      
-    }
-    
-    // Data
-    if (Array_.data != nullptr) {
-      data = Array_.data;
-      delete_data = false;
-    }
-    
-    return;
-    
-  };
+  BArray(const BArray<Cell_Type,Data_Type> & Array_);
+  BArray<Cell_Type,Data_Type> & operator=(const BArray<Cell_Type,Data_Type> & Array_);
   
-  ~BArray() {
-    
-    // Weird that if !delete_data then it has less errors. It seems that
-    // somewhere I am over deleting.
-    if (delete_data && (data != nullptr))
-      delete data;
-    
-    return;
-  };
+  bool operator==(const BArray<Cell_Type,Data_Type> & Array_);
+
+  
+  ~BArray();
   
   // In principle, copy can be faster by using openmp on the rows
   // since those are independent.

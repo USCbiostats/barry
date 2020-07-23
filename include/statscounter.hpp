@@ -89,7 +89,6 @@ inline void StatsCounter<Array_Type,Data_Type>::reset_array(
   
   Array = Array_;
   EmptyArray = *Array_;
-  EmptyArray.delete_data = false;
   
   return;
 }

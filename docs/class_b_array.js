@@ -22,6 +22,8 @@ var class_b_array =
     [ "insert_cell", "class_b_array.html#a9a554db909a326d9110caa1d050f33e4", null ],
     [ "insert_cell", "class_b_array.html#a9a554db909a326d9110caa1d050f33e4", null ],
     [ "is_empty", "class_b_array.html#a37ed3962c0ee5030b23cb6cde23a5cdf", null ],
+    [ "operator=", "class_b_array.html#aa6dba52877c92fa8eafc35faa5f7f304", null ],
+    [ "operator==", "class_b_array.html#a1e6e18162202b06e19f214097eb993bf", null ],
     [ "out_of_range", "class_b_array.html#a87bad4dcad82009d5721d21808b7e469", null ],
     [ "print", "class_b_array.html#a9d150c44b23cf1e4af45f540508db1de", null ],
     [ "reserve", "class_b_array.html#a5eacd388e3d0f638f2c35b6e0f0c490c", null ],

@@ -132,6 +132,110 @@ inline BArray< Cell_Type,Data_Type >::BArray (
   
 }
 
+template<typename Cell_Type, typename Data_Type>
+inline BArray<Cell_Type,Data_Type>::BArray(const BArray<Cell_Type,Data_Type> & Array_) : N(Array_.N), M(Array_.M){
+  
+  // Dimensions
+  el_ij.resize(N);
+  el_ji.resize(N);
+  
+  // Entries
+  for (uint i = 0u; i < N; ++i) {
+    
+    if (Array_.el_ij[i].size() == 0u)
+      continue;
+    
+    for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
+      this->insert_cell(i, row->first, row->second.value, false, false);
+    
+  }
+  
+  // Data
+  if (Array_.data != nullptr) {
+    data = Array_.data;
+    delete_data = false;
+  }
+  
+  return;
+  
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
+  const BArray<Cell_Type,Data_Type> & Array_
+) {
+  
+  // Clearing
+  if (this != &Array_) {
+    
+    this->clear(true);
+    this->resize(Array_.N, Array_.M);
+    
+    // Entries
+    for (uint i = 0u; i < N; ++i) {
+      
+      if (Array_.el_ij[i].size() == 0u)
+        continue;
+      
+      for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
+        this->insert_cell(i, row->first, row->second.value, false, false);
+      
+    }
+    
+    // Data
+    if (Array_.data != nullptr) {
+      data = Array_.data;
+      delete_data = false;
+    }
+    
+  }
+    
+  return *this;
+  
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline bool BArray<Cell_Type,Data_Type>::operator==(
+  const BArray<Cell_Type,Data_Type> & Array_
+) {
+  
+  // Dimension and number of cells used
+  if ((N != Array_.N) | (M != Array_.M) | (NCells != Array_.NCells))
+    return false;
+  
+  // One holds, and the other doesn't.
+  if ((!data & Array_.data) | (data & !Array_.data))
+    return false;
+  
+  // Checking the cells
+  // for (uint i = 0u; i < N; ++i) {
+  //   
+  //   // Anything to compare?
+  //   if (ROW(i).size() == 0u)
+  //     continue;
+  //   
+  //   if (ROW(i).size() != Array_.el_ij[i].size())
+  //     return false;
+  //   
+  //   for (uint j = 0u; j < M; ++j) {
+  //     
+  //   }
+  // }
+  if (this->el_ij != Array_.el_ij)
+    return false;
+  
+  return true;
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline BArray<Cell_Type,Data_Type>::~BArray() {
+  
+  if (delete_data && (data != nullptr))
+    delete data;
+  
+  return;
+}
+
 template <typename Cell_Type, typename Data_Type>
 inline void BArray< Cell_Type,Data_Type >::out_of_range(uint i, uint j) const {
   if (i >= N)

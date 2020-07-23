@@ -52,17 +52,17 @@ inline void PowerSet<Cell_Type, Data_Type>::calc(
     
     this->data.reserve(pow(2.0, this->N * this->M));
     this->data.push_back(BArray<Cell_Type,Data_Type>(this->N, this->M));
-    a0 = &this->data.at(0u);
+    a0 = &this->data[0u];
     
   }
   
   // Here is the deal
   this->data.push_back(*a0); // Making it one
-  this->data.at(++this->counter).insert_cell(i, true, false, false);
+  this->data[++this->counter].insert_cell(i, true, false, false);
   
   // If the sum is even, we increase i, otherwise j
   if ((i + 1) < (this->N * this->M)) {
-    calc(i + 1u, &this->data.at(this->counter));
+    calc(i + 1u, &this->data[this->counter]);
     calc(i + 1u, a0);
   }
   
