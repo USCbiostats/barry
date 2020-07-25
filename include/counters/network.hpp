@@ -131,7 +131,7 @@ inline void counter_isolates(NetCounterVector * counters) {
   };
   
   NETWORK_COUNTER_LAMBDA(tmp_init) {
-    return (double) (Array->N);
+    return (double) (Array->nrow());
   };
   
   counters->add_counter(tmp_count, tmp_init);
@@ -145,7 +145,7 @@ inline void counter_mutual(NetCounterVector * counters) {
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     // Is there any tie at ji? If not, then we have a new mutual!
     // but this only makes sence if the jth row and ith column exists
-    // if ((Array->N > j) && (Array->M > i)) 
+    // if ((Array->nrow() > j) && (Array->ncol() > i)) 
     if (i == j)
       return 0.0;
     
@@ -160,7 +160,7 @@ inline void counter_mutual(NetCounterVector * counters) {
   };
   
   NETWORK_COUNTER_LAMBDA(tmp_init) {
-    if (Array->N != Array->M)
+    if (Array->nrow() != Array->ncol())
       throw std::logic_error("The -mutual- counter only works on square arrays.");
     
     if (Array->data == nullptr)
@@ -333,7 +333,7 @@ inline void counter_density(NetCounterVector * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
-    return 1.0/(Array->N * (Array->M - 1));
+    return 1.0/(Array->nrow() * (Array->ncol() - 1));
     
   };
   
@@ -596,7 +596,7 @@ inline void counter_idegree(
       throw std::logic_error("-odegree- counter is only valid for directed graphs");
     
     if (NET_C_DATA_IDX(0u) == 0u)
-      return (double) Array->N;
+      return (double) Array->nrow();
     
     return 0.0;
   };
@@ -639,7 +639,7 @@ inline void counter_odegree(
       throw std::logic_error("-odegree- counter is only valid for directed graphs");
     
     if (NET_C_DATA_IDX(0u) == 0u)
-      return (double) Array->N;
+      return (double) Array->nrow();
     
     return 0.0;
   };
@@ -683,7 +683,7 @@ inline void counter_degree(
       throw std::logic_error("-degree- counter is only valid for undirected graphs");
     
     if (NET_C_DATA_IDX(0u) == 0u)
-      return (double) Array->N;
+      return (double) Array->nrow();
     
     return 0.0;
   };

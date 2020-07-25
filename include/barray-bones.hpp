@@ -7,6 +7,18 @@
 #define BARRAY_BONES_HPP 1
 
 
+template <typename Cell_Type = bool, typename Data_Type = bool> class BArrayCell {
+private:
+  BArray<Cell_Type,Data_Type> * Array;
+  uint row;
+  uint col;
+public:
+  BArrayCell(BArray<Cell_Type,Data_Type> * Array_, uint row_, uint col_) : 
+  Array(Array_), row(row_), col(col_) {};
+  ~BArrayCell(){};
+  void operator=(bool add);
+};
+
 //! Baseline class for binary arrays.
 /** `BArray` class objects are arbitrary arrays
  *  in which non-empty cells hold data of type `Cell_Type`. The non-empty cells
@@ -14,6 +26,7 @@
  *  `std::vector< std::unordered_map<unsigned int,Cell_Type> >`.
  */
 template <typename Cell_Type = bool, typename Data_Type = bool> class BArray {
+  friend class BArrayCell<Cell_Type,Data_Type>;
 public:
   uint N;
   uint M;
@@ -67,7 +80,6 @@ public:
   
   bool operator==(const BArray<Cell_Type,Data_Type> & Array_);
 
-  
   ~BArray();
   
   // In principle, copy can be faster by using openmp on the rows
@@ -94,16 +106,34 @@ public:
   Entries<Cell_Type> get_entries() const;
   
   
-  // Queries
 
-  //! Check whether the cell is empty
-  /**
+  /**@name Queries
+   * @details `is_empty` queries a single cell. `nrow`, `ncol`, and `nnozero`
+   * return the number of rows, columns, and non-zero cells respectively.
    * @param i,j Coordinates
    * @param check_bounds If `false` avoids checking bounds.
    */
+  ///@{
   bool is_empty(uint i, uint j, bool check_bounds = true) const;
+  uint nrow() const;
+  uint ncol() const;
+  uint nnozero() const;
+  ///@}
 
-  // Deletion addition operations
+  /**@name Cell-wise insertion/deletion
+   * @param i,j Row,column
+   * @param check_bounds When `true` and out of range, the function throws an
+   * error.
+   * @param check_exists Wither check if the cell exists (before trying to
+   * delete/add), or, in the case of `swap_cells`, check if either of both
+   * cells exists/don't exist.
+   */
+  /**@{*/
+  
+  BArray<Cell_Type,Data_Type> & operator+=(const std::pair<uint, uint> & coords);
+  BArray<Cell_Type,Data_Type> & operator-=(const std::pair<uint, uint> & coords);
+  BArrayCell<Cell_Type,Data_Type> operator()(uint row, uint col);
+  
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
   void insert_cell(uint i, uint j, Cell< Cell_Type > & v, bool check_bounds = true, bool check_exists = true);
@@ -121,12 +151,16 @@ public:
       );
   
   void toggle_cell(uint i, uint j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
+  /**@}*/
   
+  /**@name Column/row wise interchange*/
+  ///@{
   void swap_rows(uint i0, uint i1, bool check_bounds = true);
   void swap_cols(uint j0, uint j1, bool check_bounds = true);
   
   void zero_row(uint i, bool check_bounds = true);
   void zero_col(uint j, bool check_bounds = true);
+  ///@}
   
   void transpose();
   void clear(bool hard = true);

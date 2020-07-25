@@ -39,7 +39,7 @@ public:
   Support(const Array_Type * Array_) :
     EmptyArray(*Array_),
     counters(new CounterVector<Array_Type,Data_Type>()),
-    N(Array_->N), M(Array_->M) {
+    N(Array_->nrow()), M(Array_->ncol()) {
     init_support();
     return;
     
@@ -136,8 +136,8 @@ inline void Support<Array_Type, Data_Type>::reset_array(const Array_Type * Array
   data.clear();
   initialized = false;
   EmptyArray = *Array_;
-  N = Array_->N;
-  M = Array_->M;
+  N = Array_->nrow();
+  M = Array_->ncol();
   init_support();
   
 }

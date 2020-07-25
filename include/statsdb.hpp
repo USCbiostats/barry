@@ -16,6 +16,12 @@ class FreqTable {
 private:
   MapVec_type<T, uint> data;
   
+  /**
+   * A nasty way to declare when using :: on template members
+   * https://stackoverflow.com/questions/6571381/dependent-scope-and-nested-templates/6571836
+   */
+  typename MapVec_type<T,uint>::iterator iter;
+  
 public:
   // uint ncols;
   FreqTable() {};
@@ -39,10 +45,11 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
   
   // The term exists, then we add it to the list and we initialize it
   // with a single count
-  if (data.find(x) == data.end()) {
-    data[x] = 1u;
+  iter = data.find(x);
+  if (iter == data.end()) {
+    data.insert(std::make_pair(x, 1u));
   } else // We increment the counter
-    data.at(x)++;
+    iter->second++;
   
   return; 
 }

@@ -4,6 +4,7 @@ var annotated_dup =
     [ "Array_Hasher", "struct_array___hasher.html", "struct_array___hasher" ],
     [ "Array_Hasher< BArray<> >", "struct_array___hasher_3_01_b_array_3_4_01_4.html", "struct_array___hasher_3_01_b_array_3_4_01_4" ],
     [ "BArray", "class_b_array.html", "class_b_array" ],
+    [ "BArrayCell", "class_b_array_cell.html", "class_b_array_cell" ],
     [ "Cell", "class_cell.html", "class_cell" ],
     [ "CellSeq", "class_cell_seq.html", "class_cell_seq" ],
     [ "ConstBArrayRowIter", "class_const_b_array_row_iter.html", "class_const_b_array_row_iter" ],

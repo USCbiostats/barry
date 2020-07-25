@@ -4,85 +4,99 @@
 
 This repository contains a C++ template library that essentially counts sufficient statistics on binary arrays. The idea of the library is that this can be used together to build exponential family models as those in Exponential Random Graph Models (E\+R\+G\+Ms), but as a generalization that also deals with non square arrays.
 
-\section*{Design considerations}
+\section*{Examples}
 
-\subsection*{Data structures}
+\subsection*{Counting statistics in a graph}
 
-For start, the main class object should hold the following\+:
-
-
-\begin{DoxyItemize}
-\item {\bfseries The array structure} Right now, we are thinking on dealing with an {\ttfamily std\+::unordered\+\_\+map} type of structure since search/addition/removel operations have constant average time.
-\item {\bfseries Pointer to undefined structure} Besides of the graph itself, the data may be acompained by other datasets, for example, in the case of genetic annotation we may have the current state of some genes, i.\+e., a binary vector.
-\item {\bfseries Structural constrains} Having arrays specifying the blocked spaces of the array. This, in principle, could affect all operations related to modifying the array, e.\+g. if the pair {\ttfamily (i, j)} is blocked, then no addition/deletion can be done on that respect.
-
-The structural constrains may be better reflected as a counterpart\+: free blocks. This way, any algorithm that needs to iterate through cells that can be changed can use its counter part.
-
-Enumeration of both sets would have in total \$n  m\$ unordered pairs. One problem of this is the fact that this type of data structure is unefficient as it can grow too fast. Yet, the whole idea of this C++ library is to be able to fully enumerate support of arrays, so problems that need to deal with larger datasets may not be suitable for this approach.
-\end{DoxyItemize}
-
-\subsection*{Algorithms to implement}
-
-
-\begin{DoxyItemize}
-\item {\bfseries Counters} Users should be able to define counters using change statistics. From the E\+R\+GM literature, we know that change statistics can be a very efficient way of counting when we have a Markov process. In our case, since we will be doing exhaustive ennumeration, a good an efficient way of counting statistics is counting as we add/remove zeros.
-
-Counters should have the following implementation\+:
-\end{DoxyItemize}
+In the following code we create an array of size 5x5 of class {\ttfamily Network} (available in the namespace \href{https://uscbiostats.github.io/barry/namespacebarry_1_1counters_1_1network.html}{\tt netcounters}), add/remove ties, print the graph, and count common statistics used in E\+R\+G\+Ms\+:
 
 
 \begin{DoxyCode}
-\textcolor{keywordtype}{double} counter\_[name](\textcolor{keyword}{const} Array & x, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} col) \{
-  \textcolor{comment}{// Visit neighbors}
-  Array::local\_iterator iter(x, row, col);
-  \textcolor{keywordtype}{double} counts = 0;
-  \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = iter.begin(); i != iter.end(); ++i) \{
-    ...[\textcolor{keywordflow}{do} your thing]...
-    counts += ...
-  \}
+\textcolor{preprocessor}{#include <iostream>}
+\textcolor{preprocessor}{#include <ostream>}
+\textcolor{preprocessor}{#include "../include/barry.hpp"}
 
-  \textcolor{keywordflow}{return} counts;
+\textcolor{keyword}{typedef} std::vector< unsigned int > vuint;
+
+\textcolor{keywordtype}{int} main() \{
+  \textcolor{comment}{// Creating network of size six with five ties}
+  \hyperlink{classbarry_1_1_b_array}{netcounters::Network} net(
+      6, 6,
+      \{0, 0, 4, 4, 2, 0, 1\},
+      \{1, 2, 0, 2, 4, 0, 1\}
+  );
+
+  \textcolor{comment}{// How does this looks like?}
+  std::cout << \textcolor{stringliteral}{"Current view"} << std::endl;
+  net.print();
+
+  \textcolor{comment}{// Adding extra ties}
+  net += \{1, 0\};
+  net(2, 0) = \textcolor{keyword}{true};
+
+  \textcolor{comment}{// And removing a couple}
+  net(0, 0) = \textcolor{keyword}{false};
+  net -= \{1, 1\};
+
+  std::cout << \textcolor{stringliteral}{"New view"} << std::endl;  
+  net.print();
+
+  \textcolor{comment}{// Initializing the data. The program deals with freing the memory}
+  net.set\_data(\textcolor{keyword}{new} \hyperlink{classbarry_1_1counters_1_1network_1_1_network_data}{netcounters::NetworkData}, \textcolor{keyword}{true});
+
+  \textcolor{comment}{// Creating counter object for the network and adding stats to count}
+  \hyperlink{classbarry_1_1_stats_counter}{netcounters::NetStatsCounter} counter(&net);
+  \hyperlink{network_8hpp_ad99a1aea236ff51c04fef9adc2c109d6}{netcounters::counter\_edges}(counter.counters);
+  \hyperlink{network_8hpp_a043549f6d9ef81413b15ca87247dfb2e}{netcounters::counter\_ttriads}(counter.counters);
+  \hyperlink{network_8hpp_aba4b5f1b19373c13ad98c560472e3a50}{netcounters::counter\_isolates}(counter.counters);
+  \hyperlink{network_8hpp_a76e9747c3e1205de253863aaf28f669e}{netcounters::counter\_ctriads}(counter.counters);
+  \hyperlink{network_8hpp_a00c2d4285f8b49f4abbb07dc8fd11267}{netcounters::counter\_mutual}(counter.counters);
+
+  \textcolor{comment}{// Counting and printing the results}
+  std::vector< double > counts = counter.count\_all();
+
+  std::cout <<
+    \textcolor{stringliteral}{"Edges             : "} << counts[0] << std::endl <<
+    \textcolor{stringliteral}{"Transitive triads : "} << counts[1] << std::endl <<
+    \textcolor{stringliteral}{"Isolates          : "} << counts[2] << std::endl <<
+    \textcolor{stringliteral}{"C triads          : "} << counts[3] << std::endl <<
+    \textcolor{stringliteral}{"Mutuals           : "} << counts[4] << std::endl;
+
+  \textcolor{keywordflow}{return} 0;
 \}
 \end{DoxyCode}
 
 
-
-\begin{DoxyItemize}
-\item {\bfseries Constrained Exhaust enumeration} Exhaust enumeration can be done using recursive algorithms activating and deactivating cells in the array. One nice feature would be to allow users to specify constrained, essentially blocked, cells in the array. This would go together with the counters.
-
-The constrains can just be {\ttfamily std\+::unordered\+\_\+map} objects in which the coordinates of the cells that need to be blocked are specified. Some standard constrains can be\+:
-\begin{DoxyItemize}
-\item Blocks (ranges).
-\item Symmetry (in the case of square, undirected graphs).
-\end{DoxyItemize}
-
-Furthermore, we should, at least in principle, allow the user to speficy default values for the blocked cells (0/1).
-\item {\bfseries Array changes} Addition and deletion of 0/1 states. If we use {\ttfamily std\+::unordered\+\_\+map} this should be straight forward. Perhaps just making an alias or binary operator, e.\+g.
-\end{DoxyItemize}
+Compiling this program using g++
 
 
 \begin{DoxyCode}
-X += (i, j);
-X.add(i, j);
-X.rm(i, j);
+g++ -std=c++11 -Wall -pedantic 08-counts.cpp -o counts && ./counts
 \end{DoxyCode}
 
 
+Yields the following output\+:
 
-\begin{DoxyItemize}
-\item {\bfseries Markov Chains} This would be nice to have, but not necesary for now. The idea is to have various types of algorithms to implement transitions to new states, for example
-\begin{DoxyItemize}
-\item Randomly adding/removing new pairs.
-\item Unconstrained endpoints-\/switching/swap.
-\item Constrained endpoints-\/swap.
-\end{DoxyItemize}
 
-The constrained component can be related to the graph constrains specified part of the countner.
-\item {\bfseries Estimate support size} Do this conditioning on the constrains. This should be rather straight forward. The support of the set should be defined by
-
-\$\$ 2$^\wedge$\{(n m -\/ $\vert$blocked$\vert$)\} \$\$
-
-Where \$blocked\$ is the set of blocked cells.
-\end{DoxyItemize}
-
-To-\/do\+: \href{https://github.com/codecov/example-cpp11/blob/master/.travis.yml}{\tt https\+://github.\+com/codecov/example-\/cpp11/blob/master/.\+travis.\+yml} 
+\begin{DoxyCode}
+Current view
+[  0,]  1  1  1  .  .  . 
+[  1,]  .  1  .  .  .  . 
+[  2,]  .  .  .  .  1  . 
+[  3,]  .  .  .  .  .  . 
+[  4,]  1  .  1  .  .  . 
+[  5,]  .  .  .  .  .  . 
+New view
+[  0,]  .  1  1  .  .  . 
+[  1,]  1  .  .  .  .  . 
+[  2,]  1  .  .  .  1  . 
+[  3,]  .  .  .  .  .  . 
+[  4,]  1  .  1  .  .  . 
+[  5,]  .  .  .  .  .  . 
+Edges             : 7
+Transitive triads : 3
+Isolates          : 2
+C triads          : 1
+Mutuals           : 3
+\end{DoxyCode}
+ 

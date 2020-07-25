@@ -115,8 +115,8 @@ inline bool vec_equal(
     throw std::length_error("-a- and -b- should have the same length.");
   
   unsigned int i = 0;
-  while (a.at(i) == b.at(i++)) {
-    if (i == a.size())
+  while (a[i] == b[i]) {
+    if (++i == a.size())
       return true;
   }
   

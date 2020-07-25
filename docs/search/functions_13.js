@@ -1,6 +1,7 @@
 var searchData=
 [
   ['_7ebarray',['~BArray',['../class_b_array.html#af39acdf29aa5999a7f5fd48141be384e',1,'BArray']]],
+  ['_7ebarraycell',['~BArrayCell',['../class_b_array_cell.html#a6fbc56424caade490a72685cc35ad0e9',1,'BArrayCell']]],
   ['_7ecell',['~Cell',['../classbarry_1_1_cell.html#a2500924b447d4d881916749041974d81',1,'barry::Cell::~Cell()'],['../class_cell.html#a12667d768c7eab9e295b3476a5d60c0e',1,'Cell::~Cell()']]],
   ['_7ecellseq',['~CellSeq',['../classbarry_1_1_cell_seq.html#a3af19bd8e8ea575565bc0fa9fe66158d',1,'barry::CellSeq::~CellSeq()'],['../class_cell_seq.html#a1ed463a49ab2ea5f1ff704b74eb68515',1,'CellSeq::~CellSeq()']]],
   ['_7econstbarrayrowiter',['~ConstBArrayRowIter',['../class_const_b_array_row_iter.html#aca51d35c5730466345e4c8bb303f619e',1,'ConstBArrayRowIter']]],

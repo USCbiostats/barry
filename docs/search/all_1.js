@@ -12,6 +12,8 @@ var searchData=
   ['barray_5fnetwork_5fh',['BARRAY_NETWORK_H',['../barry_8hpp.html#a800f859ee09f9b4c00f96bbd2e32bbdb',1,'BARRAY_NETWORK_H():&#160;barry.hpp'],['../network_8hpp.html#a800f859ee09f9b4c00f96bbd2e32bbdb',1,'BARRAY_NETWORK_H():&#160;network.hpp']]],
   ['barray_5fphylo_5fh',['BARRAY_PHYLO_H',['../barry_8hpp.html#a3a004348f8af372717ca85a1aeb21f36',1,'barry.hpp']]],
   ['barray_5ftypedefs_5fhpp',['BARRAY_TYPEDEFS_HPP',['../barry_8hpp.html#a368e534905c6c10d975f70debc4cbef8',1,'barry.hpp']]],
+  ['barraycell',['BArrayCell',['../class_b_array_cell.html',1,'BArrayCell&lt; Cell_Type, Data_Type &gt;'],['../class_b_array_cell.html#a0ebc5e7ef22511ee4a04d737b1fe056c',1,'BArrayCell::BArrayCell()']]],
+  ['barraycell_3c_20cell_5ftype_2c_20data_5ftype_20_3e',['BArrayCell&lt; Cell_Type, Data_Type &gt;',['../class_b_array.html#a2cd2ece8a4fc1027d3151b1ec33151cb',1,'BArray']]],
   ['barry',['barry',['../namespacebarry.html',1,'']]],
   ['barry_2ehpp',['barry.hpp',['../barry_8hpp.html',1,'']]],
   ['blengths',['blengths',['../classbarry_1_1counters_1_1phylo_1_1_node_data.html#a2ce8909e4774fa283d91ea550c8987b7',1,'barry::counters::phylo::NodeData::blengths()'],['../class_node_data.html#a02da5f097c105813216d87ef89ad7bd4',1,'NodeData::blengths()']]],

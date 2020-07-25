@@ -197,7 +197,7 @@ counter(N, M, source - 1L, target - 1L, gender)
 
 # stop()
 set.seed(123)
-N <- 4
+N <- 5
 M <- N
 gender <- sample.int(2, N, TRUE)
 
@@ -226,7 +226,7 @@ ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
     mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad  + ctriad +
       density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE,
     maxNumChangeStatVectors = 2^20),
-  times = 20,
+  times = 10,
   unit = "relative"
 ))
 stop()
