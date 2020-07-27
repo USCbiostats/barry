@@ -7,7 +7,6 @@
 #ifndef MODEL_BONES_HPP 
 #define MODEL_BONES_HPP 1
 
-
 inline double update_normalizing_constant(
   const std::vector< double > & params,
   const Counts_type & support
@@ -104,8 +103,18 @@ class Model {
 public:
   
   /**@brief */
-  std::vector< Counts_type >          stats;
-  std::vector< uint >                 n_arrays_per_stats;
+  std::vector< Counts_type >         stats;
+  std::vector< uint >                n_arrays_per_stats;
+  
+  /**@name Container space for the powerset (and its sufficient stats)
+   * @details This is useful in the case of using simulations or evaluating
+   * functions that need to account for the full set of states.
+   */
+  ///@{
+  bool with_pset = false;
+  std::vector< std::vector< BArray<Array_Type,Data_Type> > > pset_arrays;
+  std::vector< std::vector<double> >                         pset_stats;
+  ///@}
   
   /**@name Information about the arrays used in the model 
    * @details `target_stats` holds the observed sufficient statistics for each
@@ -146,6 +155,7 @@ public:
   Model(uint size_);
   ~Model() {};
   
+  void store_psets();
   void set_keygen(std::function<std::vector<double>(const Array_Type &)> keygen_);
   
   /**@name Wrappers for the `CounterVector` member. 
@@ -203,8 +213,8 @@ public:
 
 template <typename Array_Type, typename Data_Type>
 inline Model<Array_Type,Data_Type>::Model() :
-  stats(0u), n_arrays_per_stats(0u), target_stats(0u),
-  arrays2support(0u), keys2support(0u), counters() 
+  stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
+  target_stats(0u), arrays2support(0u), keys2support(0u), counters() 
 {
   
   // Counters are shared
@@ -217,8 +227,8 @@ inline Model<Array_Type,Data_Type>::Model() :
 
 template <typename Array_Type, typename Data_Type>
 inline Model<Array_Type,Data_Type>::Model(uint size_) :
-  stats(0u), n_arrays_per_stats(0u), target_stats(0u),
-  arrays2support(0u), keys2support(0u), counters() 
+  stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
+  target_stats(0u), arrays2support(0u), keys2support(0u), counters() 
 {
   
   target_stats.reserve(size_);
@@ -230,6 +240,14 @@ inline Model<Array_Type,Data_Type>::Model(uint size_) :
   
   return;
   
+}
+
+template <typename Array_Type, typename Data_Type>
+inline void Model<Array_Type,Data_Type>::store_psets() {
+  if (with_pset)
+    throw std::logic_error("Powerset storage alreay activated.");
+  with_pset = true;
+  return;
 }
 
 template <typename Array_Type, typename Data_Type>
@@ -305,7 +323,23 @@ inline uint Model<Array_Type,Data_Type>::add_array(
     
     // Computing support using the counters included in the model
     support_fun.reset_array(&Array_);
-    support_fun.calc();
+    
+    /** When computing with the powerset, we need to grow the corresponding
+      * vectors on the fly */
+    if (with_pset) {
+      
+      pset_arrays.resize(pset_arrays.size() + 1u);
+      pset_stats.resize(pset_stats.size() + 1u);
+      support_fun.calc(
+        0u,
+        true,
+        &pset_arrays[pset_arrays.size() - 1u],
+        &pset_stats[pset_stats.size() - 1u]
+      );
+      
+    } else
+      support_fun.calc();
+    
     stats.push_back(support_fun.get_counts());
     
     // Making room for the previous parameters. This will be used to check if

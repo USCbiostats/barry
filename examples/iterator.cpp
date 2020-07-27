@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include "../include/barray.hpp"
+#include "../include/barry.hpp"
 using namespace Rcpp;
 
 // [[Rcpp::export]]
@@ -14,8 +14,8 @@ SEXP new_block(const IntegerVector & row, const IntegerVector & col, int N, int 
   for (uint i = 0u; i < row.size(); ++i)
     dat.push_back({row.at(i), col.at(i)});
   
-  Rcpp::XPtr< barray::CellSeq > xptr( 
-    new barray::CellSeq(dat, N, M),
+  Rcpp::XPtr< barry::CellSeq > xptr( 
+    new barry::CellSeq(dat, N, M),
     true
   );
   
@@ -25,7 +25,7 @@ SEXP new_block(const IntegerVector & row, const IntegerVector & col, int N, int 
 // [[Rcpp::export]]
 IntegerMatrix get_sequence(SEXP x) {
   
-  Rcpp::XPtr< barray::CellSeq > xptr(x);
+  Rcpp::XPtr< barry::CellSeq > xptr(x);
   typedef unsigned int uint;
   const std::vector< std::pair<uint,uint> > * ans = xptr->get_seq();
   

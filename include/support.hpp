@@ -144,8 +144,9 @@ inline void Support<Array_Type, Data_Type>::reset_array(const Array_Type * Array
 
 template <typename Array_Type, typename Data_Type>
 inline void Support<Array_Type, Data_Type>::calc(
-    uint pos, const bool & diag,
-    std::vector< Array_Type > * array_bank,
+    uint                                   pos,
+    const bool &                           diag,
+    std::vector< Array_Type > *            array_bank,
     std::vector< std::vector< double > > * stats_bank
   ) {
   
