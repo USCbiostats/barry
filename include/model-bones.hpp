@@ -112,8 +112,8 @@ public:
    */
   ///@{
   bool with_pset = false;
-  std::vector< std::vector< BArray<Array_Type,Data_Type> > > pset_arrays;
-  std::vector< std::vector<double> >                         pset_stats;
+  std::vector< std::vector< Array_Type > >          pset_arrays;
+  std::vector< std::vector< std::vector<double> > > pset_stats;
   ///@}
   
   /**@name Information about the arrays used in the model 
@@ -333,8 +333,8 @@ inline uint Model<Array_Type,Data_Type>::add_array(
       support_fun.calc(
         0u,
         true,
-        &pset_arrays[pset_arrays.size() - 1u],
-        &pset_stats[pset_stats.size() - 1u]
+        &(pset_arrays[pset_arrays.size() - 1u]),
+        &(pset_stats[pset_stats.size() - 1u])
       );
       
     } else
