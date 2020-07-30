@@ -2,6 +2,25 @@
 #include <ostream>
 #include "../include/barry.hpp"
 
+template<typename T>
+inline void print(const std::vector< T > & x) {
+  std::cout << "[";
+  for (auto iter = x.begin(); iter != x.end(); ++iter)
+    std::cout << *iter << ", ";
+  std::cout << "]" << std::endl;
+  return; 
+}
+
+inline std::vector< double > keygen_phylo(
+    const phylocounters::PhyloArray & Array_
+  ) {
+  return {
+    (double) Array_.N, (double) Array_.M,
+    (double) Array_.data->states[0],
+    (double) Array_.data->states[1]
+    };
+}
+
 typedef std::vector< unsigned int > vuint;
 
 int main() {
@@ -26,65 +45,62 @@ int main() {
     {3,4}, {3,5}
   };
   
-  /**We will be looking at two functions only, and thus, for each pair of parent
-   * states, we will have 2^4 = 16 possible transitions. For simplicity, we will
-   * just keep 4 objects with all the possible arrays.
-   */
-  std::vector< phylocounters::PhyloArray > par00;
-  std::vector< phylocounters::PhyloArray > par01;
-  std::vector< phylocounters::PhyloArray > par10;
-  std::vector< phylocounters::PhyloArray > par11;
-
-  std::vector< double > prob00;
-  std::vector< double > prob01;
-  std::vector< double > prob10;
-  std::vector< double > prob11;
-
-    
-  barry::PowerSet<>
+  /**All nodes will share these four states (0,0), (1,0), (0,1), (1,1)*/
+  phylocounters::PhyloArray n0(2,2);
+  phylocounters::PhyloArray n1(2,2);
+  phylocounters::PhyloArray n2(2,2);
+  phylocounters::PhyloArray n3(2,2);
   
-  // Creating network of size six with five ties
-  netcounters::Network net(
-      6, 6,
-      {0, 0, 4, 4, 2, 0, 1},
-      {1, 2, 0, 2, 4, 0, 1}
+  n0.set_data(new phylocounters::NodeData({1u,1u}, {false,false} ), true);
+  n1.set_data(new phylocounters::NodeData({1u,1u}, {true,false} ), true);
+  n2.set_data(new phylocounters::NodeData({1u,1u}, {false,true} ), true);
+  n3.set_data(new phylocounters::NodeData({1u,1u}, {true,true} ), true);
+  
+  
+  // We only generate a single powerset since transitions are shared?
+  phylocounters::PhyloModel model;
+  model.set_keygen(keygen_phylo);
+  
+  // Activating the storage of powersets (because we'll need it!)
+  model.store_psets();
+  
+  // Adding terms (gains/losses for each)
+  phylocounters::counter_gains(&model.counters, {0, 1}); 
+  phylocounters::counter_loss(&model.counters, {0, 1});
+  
+  // Now it is interesting: neofun and subfun
+  phylocounters::counter_neofun(&model.counters, 0, 1);
+  phylocounters::counter_subfun(&model.counters, 0, 1);
+  
+  // Adding the data! while forcing it to keep different counters
+  std::vector< unsigned int > idx(4u);
+  idx[0u] = model.add_array(n0, true);
+  idx[1u] = model.add_array(n1, true);
+  idx[2u] = model.add_array(n2, true);
+  idx[3u] = model.add_array(n3, true);
+  
+  // Printing the first one
+  std::cout << "pset_stat.size()      = " << model.pset_stats.size() << std::endl;
+  std::cout << "pset_stat[0].size()   = " << model.pset_stats[0].size() << std::endl;
+  std::cout << "pset_arrays[0].size() = " << model.pset_arrays[0].size() << std::endl;
+
+  
+  print(model.pset_stats[0][0]);
+  
+  std::cout << "The likelihood for model with parameters 1 equals:\n " << std::endl;
+  print(idx);
+  print(
+    (std::vector<double>) {
+      model.likelihood({1,1,1,1,1,1}, idx[0u], false),
+      model.likelihood({1,1,1,1,1,1}, idx[1u], false),
+      model.likelihood({1,1,1,1,1,1}, idx[2u], false),
+      model.likelihood({1,1,1,1,1,1}, idx[3u], false)
+    }
   );
+   
   
-  // How does this looks like?
-  std::cout << "Current view" << std::endl;
-  net.print();
+  print(model.normalizing_constants);
   
-  // Adding extra ties
-  net += {1, 0};
-  net(2, 0) = true;
-  
-  // And removing a couple
-  net(0, 0) = false;
-  net -= {1, 1};
-
-  std::cout << "New view" << std::endl;  
-  net.print();
-  
-  // Initializing the data. The program deals with freing the memory
-  net.set_data(new netcounters::NetworkData, true);
-
-  // Creating counter object for the network and adding stats to count
-  netcounters::NetStatsCounter counter(&net);
-  netcounters::counter_edges(counter.counters);
-  netcounters::counter_ttriads(counter.counters);
-  netcounters::counter_isolates(counter.counters);
-  netcounters::counter_ctriads(counter.counters);
-  netcounters::counter_mutual(counter.counters);
-  
-  // Counting and printing the results
-  std::vector< double > counts = counter.count_all();
-  
-  std::cout <<
-    "Edges             : " << counts[0] << std::endl <<
-    "Transitive triads : " << counts[1] << std::endl <<
-    "Isolates          : " << counts[2] << std::endl <<
-    "C triads          : " << counts[3] << std::endl <<
-    "Mutuals           : " << counts[4] << std::endl;
   
   return 0;
 }

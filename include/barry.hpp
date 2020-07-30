@@ -22,6 +22,7 @@ namespace barry {
   #include "block-bones.hpp"
   #include "powerset.hpp"
   #include "model-bones.hpp"
+  #include "model-meat.hpp"
   
   namespace counters {
     namespace network {

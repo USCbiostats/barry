@@ -1,6 +1,7 @@
 #include "../counters-bones.hpp"
 #include "../support.hpp"
 #include "../statscounter.hpp"
+#include "../model-bones.hpp"
 
 #ifndef BARRAY_PHYLO_H
 #define BARRAY_PHYLO_H 1
@@ -52,6 +53,7 @@ typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
 typedef CounterVector< PhyloArray, PhyloCounterData> PhyloCounterVector;
 typedef Support<PhyloArray, PhyloCounterData > PhyloSupport;
 typedef StatsCounter<PhyloArray, PhyloCounterData> PhyloStatsCounter;
+typedef Model<PhyloArray, PhyloCounterData> PhyloModel;
 ///@}
 
 
@@ -91,17 +93,19 @@ inline void counter_overall_gains(PhyloCounterVector * counters) {
 
 // -----------------------------------------------------------------------------
 /**@brief Functional gains for a specific function (`nfun`). */
-inline void counter_gains(PhyloCounterVector * counters, uint nfun) {
+inline void counter_gains(PhyloCounterVector * counters, std::vector<uint> nfun) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     return (!Array->data->states[i]) && (i == PHYLO_C_DATA_IDX(0u)) ? 1.0 : 0.0;
   };
   
-  counters->add_counter(
-      tmp_count, nullptr,
-      new PhyloCounterData({nfun}),
-      true
-  );
+  for (auto i = nfun.begin(); i != nfun.end(); ++i) {
+    counters->add_counter(
+        tmp_count, nullptr,
+        new PhyloCounterData({*i}),
+        true
+    );
+  }
   
   return;
   
@@ -132,7 +136,7 @@ inline void counter_overall_loss(PhyloCounterVector * counters, uint nfun) {
   
 // -----------------------------------------------------------------------------
 /**@brief Total count of losses for an specific function. */
-inline void counter_loss(PhyloCounterVector * counters, uint nfun) {
+inline void counter_loss(PhyloCounterVector * counters, std::vector<uint> nfun) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     return (Array->data->states[i]) && (i == PHYLO_C_DATA_IDX(0u)) ? -1.0 : 0.0;
@@ -142,11 +146,13 @@ inline void counter_loss(PhyloCounterVector * counters, uint nfun) {
     return Array->data->states[PHYLO_C_DATA_IDX(0u)]? Array->M : 0.0;
   };
   
-  counters->add_counter(
-      tmp_count, tmp_init,
-      new PhyloCounterData({nfun}),
-      true
-  );
+  for (auto i = nfun.begin(); i != nfun.end(); ++i) {
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new PhyloCounterData({*i}),
+        true
+    );
+  }
   
   return;
   

@@ -181,7 +181,7 @@ inline void Support<Array_Type, Data_Type>::calc(
     // Adding to the overall count
     data.add(current_stats);
     
-    if (array_bank != nullptr)
+    if (array_bank != nullptr) 
       array_bank->push_back(EmptyArray);
     
     if (stats_bank != nullptr)
@@ -197,7 +197,7 @@ inline void Support<Array_Type, Data_Type>::calc(
   
   // Toggle the cell (we will toggle it back after calling the counter)
   EmptyArray.insert_cell(pos_i[pos], pos_j[pos], true, false, false);
-  
+
   // Counting
   // std::vector< double > change_stats(counters.size());
   for (uint n = 0u; n < counters->size(); ++n) {
