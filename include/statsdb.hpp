@@ -35,6 +35,7 @@ public:
   
   void clear();
   void reserve(unsigned int n);
+  void print() const;
   // void rehash();
   
   
@@ -94,5 +95,13 @@ inline void FreqTable<T>::reserve(
 //   stats.rehash();
 //   return;
 // }
+
+template<typename T>
+inline void FreqTable<T>::print() const {
+  for (auto i = data.begin(); i != data.end(); ++i) {
+    std::cout << i->first << ", " << i->second << std::endl;
+  }
+  return;
+}
 
 #endif

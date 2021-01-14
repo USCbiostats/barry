@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entries',['Entries',['../class_entries.html',1,'Entries&lt; Cell_Type &gt;'],['../classbarry_1_1_entries.html',1,'barry::Entries&lt; Cell_Type &gt;']]]
+  ['freqtable',['FreqTable',['../classbarry_1_1_freq_table.html',1,'barry::FreqTable&lt; T &gt;'],['../class_freq_table.html',1,'FreqTable&lt; T &gt;']]]
 ];

@@ -16,9 +16,11 @@
 {\ttfamily \#include \char`\"{}block-\/bones.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}powerset.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}model-\/bones.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}model-\/meat.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}counters/network.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}counters/phylo.\+hpp\char`\"{}}\newline
-Include dependency graph for barry.\+hpp\+:\nopagebreak
+Include dependency graph for barry.\+hpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -53,10 +55,6 @@ class \hyperlink{classbarry_1_1_support}{barry\+::\+Support$<$ Array\+\_\+\+Type
 class \hyperlink{classbarry_1_1_cell_seq}{barry\+::\+Cell\+Seq}
 \begin{DoxyCompactList}\small\item\em Sequence of cells indices. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
-\item 
-struct \hyperlink{structbarry_1_1_array___hasher}{barry\+::\+Array\+\_\+\+Hasher$<$ Array\+\_\+\+Type $>$}
-\begin{DoxyCompactList}\small\item\em Array Hasher class (used for computing support) \end{DoxyCompactList}\item 
-struct \hyperlink{structbarry_1_1_array___hasher_3_01_b_array_3_4_01_4}{barry\+::\+Array\+\_\+\+Hasher$<$ B\+Array$<$$>$ $>$}
 \item 
 class \hyperlink{classbarry_1_1_model}{barry\+::\+Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
 \begin{DoxyCompactList}\small\item\em General framework for discrete exponential models. \end{DoxyCompactList}\item 
@@ -126,6 +124,8 @@ typedef \hyperlink{class_counter_vector}{Counter\+Vector}$<$ \hyperlink{phylo_8h
 typedef \hyperlink{class_support}{Support}$<$ \hyperlink{phylo_8hpp_aa942fa3af91344d3a6528d3f72e9bc10}{Phylo\+Array}, \hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1phylo_a40ee9e679f0f95fdeeb18cd0a2e45d48}{barry\+::counters\+::phylo\+::\+Phylo\+Support}
 \item 
 typedef \hyperlink{class_stats_counter}{Stats\+Counter}$<$ \hyperlink{phylo_8hpp_aa942fa3af91344d3a6528d3f72e9bc10}{Phylo\+Array}, \hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1phylo_abfefb6cff81a19d278b306a79cc011a3}{barry\+::counters\+::phylo\+::\+Phylo\+Stats\+Counter}
+\item 
+typedef \hyperlink{class_model}{Model}$<$ \hyperlink{phylo_8hpp_aa942fa3af91344d3a6528d3f72e9bc10}{Phylo\+Array}, \hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1phylo_ad444f866521f3b4fc617c5fffe16b1d8}{barry\+::counters\+::phylo\+::\+Phylo\+Model}
 \end{DoxyCompactItemize}
 \end{Indent}
 \subsection*{Functions}
@@ -142,7 +142,7 @@ double \hyperlink{namespacebarry_a822db820c95822d0e7a51728d9b9858d}{barry\+::upd
 double \hyperlink{namespacebarry_a1dcc0a46544cc9733ca8ee5619ef6d20}{barry\+::likelihood\+\_\+} (const std\+::vector$<$ double $>$ \&target\+\_\+stats, const std\+::vector$<$ double $>$ \&params, const double normalizing\+\_\+constant, bool log\+\_\+=false)
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type $>$ }\\std\+::vector$<$ double $>$ \hyperlink{namespacebarry_a22bfc7c4a1f5b5922edfd1101b8ffe3d}{barry\+::keygen\+\_\+default} (const Array\+\_\+\+Type \&Array\+\_\+)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Array Hasher class (used for computing support) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Counters for network models}\par
 {\em 
 \begin{DoxyParams}{Parameters}
@@ -202,11 +202,11 @@ void \hyperlink{namespacebarry_1_1counters_1_1network_a8c7ef19041094ac55a1710694
 \item 
 void \hyperlink{namespacebarry_1_1counters_1_1phylo_a6f3a551165270e27f874d3df4d07cf8b}{barry\+::counters\+::phylo\+::counter\+\_\+overall\+\_\+gains} (\hyperlink{phylo_8hpp_a8a62b096251480e0e62bd1ce22d658cc}{Phylo\+Counter\+Vector} $\ast$counters)
 \begin{DoxyCompactList}\small\item\em Overall functional gains. \end{DoxyCompactList}\item 
-void \hyperlink{namespacebarry_1_1counters_1_1phylo_a7f94d430b818b7bd9b2bcdc78ac2a29a}{barry\+::counters\+::phylo\+::counter\+\_\+gains} (\hyperlink{phylo_8hpp_a8a62b096251480e0e62bd1ce22d658cc}{Phylo\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} nfun)
+void \hyperlink{namespacebarry_1_1counters_1_1phylo_ab040401fb8219f9023c9bfec80a4c78a}{barry\+::counters\+::phylo\+::counter\+\_\+gains} (\hyperlink{phylo_8hpp_a8a62b096251480e0e62bd1ce22d658cc}{Phylo\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ nfun)
 \begin{DoxyCompactList}\small\item\em Functional gains for a specific function ({\ttfamily nfun}). \end{DoxyCompactList}\item 
 void \hyperlink{namespacebarry_1_1counters_1_1phylo_a45ae9af92d4821d218c99eaddaa9471e}{barry\+::counters\+::phylo\+::counter\+\_\+overall\+\_\+loss} (\hyperlink{phylo_8hpp_a8a62b096251480e0e62bd1ce22d658cc}{Phylo\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} nfun)
 \begin{DoxyCompactList}\small\item\em Overall functional loss. \end{DoxyCompactList}\item 
-void \hyperlink{namespacebarry_1_1counters_1_1phylo_a095c62704de05d78bed1a77a4c5f4311}{barry\+::counters\+::phylo\+::counter\+\_\+loss} (\hyperlink{phylo_8hpp_a8a62b096251480e0e62bd1ce22d658cc}{Phylo\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} nfun)
+void \hyperlink{namespacebarry_1_1counters_1_1phylo_a3696a504003f84eadd48865dd8d51559}{barry\+::counters\+::phylo\+::counter\+\_\+loss} (\hyperlink{phylo_8hpp_a8a62b096251480e0e62bd1ce22d658cc}{Phylo\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ nfun)
 \begin{DoxyCompactList}\small\item\em Total count of losses for an specific function. \end{DoxyCompactList}\item 
 void \hyperlink{namespacebarry_1_1counters_1_1phylo_a1e4ae98fb2aea199150308431518c4bf}{barry\+::counters\+::phylo\+::counter\+\_\+subfun} (\hyperlink{phylo_8hpp_a8a62b096251480e0e62bd1ce22d658cc}{Phylo\+Counter\+Vector} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} nfunA, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} nfunB)
 \begin{DoxyCompactList}\small\item\em Total count of Sub-\/functionalization events. \end{DoxyCompactList}\item 

@@ -10,7 +10,12 @@ var classbarry_1_1_model =
     [ "likelihood", "classbarry_1_1_model.html#abc2f255c6b6c4dd0ff3680aab35fd308", null ],
     [ "likelihood", "classbarry_1_1_model.html#adf2c30d9c5ffdc87af6813d110146968", null ],
     [ "likelihood_total", "classbarry_1_1_model.html#a2fe9cf412c5b2323c35c18952f9cb09d", null ],
+    [ "n_arrays", "classbarry_1_1_model.html#a35678412d71c9f96aa19099c72179f3d", null ],
+    [ "print_stats", "classbarry_1_1_model.html#a1109a7cacf9993aa3189240bc41d5bec", null ],
+    [ "sample", "classbarry_1_1_model.html#ab128d184427583d7b0e296a668047200", null ],
+    [ "sample", "classbarry_1_1_model.html#a7f694a828e10372f94d856452dde7610", null ],
     [ "set_keygen", "classbarry_1_1_model.html#afa4736153fa419e1f141839eda735dfe", null ],
+    [ "store_psets", "classbarry_1_1_model.html#afd6d7130b41f92e5ec1984ea53c83720", null ],
     [ "array_frequency", "classbarry_1_1_model.html#a2f3a938709950efc2ff4685132d2cefb", null ],
     [ "arrays2support", "classbarry_1_1_model.html#aadf6c5f35d59c4fe4c67f954ac1dab94", null ],
     [ "counter_fun", "classbarry_1_1_model.html#a1c848eda59386aaa81346cff9565268b", null ],
@@ -21,7 +26,11 @@ var classbarry_1_1_model =
     [ "n_arrays_per_stats", "classbarry_1_1_model.html#a0c69ecef1b6633aec9f95f360a8baeaf", null ],
     [ "normalizing_constants", "classbarry_1_1_model.html#a4bf380231afbb968d977f0e0dc5f5bee", null ],
     [ "params_last", "classbarry_1_1_model.html#a2fa6149fc084c16fbe70150b0954f293", null ],
+    [ "pset_arrays", "classbarry_1_1_model.html#aafa28c9a165e67071c262ae8eecd3f87", null ],
+    [ "pset_probs", "classbarry_1_1_model.html#a60359b14f0f5962c1c635b9dcbd42805", null ],
+    [ "pset_stats", "classbarry_1_1_model.html#aac69044ccc599e83ed2910d93cc135e9", null ],
     [ "stats", "classbarry_1_1_model.html#a5e74e613d0e4b9fef01bba0d196fcfe6", null ],
     [ "support_fun", "classbarry_1_1_model.html#aa40caa45d0d8ca5d0f16e8dadb0db5ce", null ],
-    [ "target_stats", "classbarry_1_1_model.html#a68a8443e506fb8d3f1800f42689d8ec5", null ]
+    [ "target_stats", "classbarry_1_1_model.html#a68a8443e506fb8d3f1800f42689d8ec5", null ],
+    [ "with_pset", "classbarry_1_1_model.html#ac150584eb79bb1ff9a109dc1f1d5f8ab", null ]
 ];

@@ -1,8 +1,6 @@
 var namespacebarry =
 [
     [ "counters", "namespacebarry_1_1counters.html", "namespacebarry_1_1counters" ],
-    [ "Array_Hasher", "structbarry_1_1_array___hasher.html", "structbarry_1_1_array___hasher" ],
-    [ "Array_Hasher< BArray<> >", "structbarry_1_1_array___hasher_3_01_b_array_3_4_01_4.html", "structbarry_1_1_array___hasher_3_01_b_array_3_4_01_4" ],
     [ "BArray", "classbarry_1_1_b_array.html", null ],
     [ "Cell", "classbarry_1_1_cell.html", "classbarry_1_1_cell" ],
     [ "CellSeq", "classbarry_1_1_cell_seq.html", "classbarry_1_1_cell_seq" ],

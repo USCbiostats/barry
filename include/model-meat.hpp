@@ -13,6 +13,9 @@ inline Model<Array_Type,Data_Type>::Model() :
   support_fun.set_counters(&counters);
   counter_fun.set_counters(&counters);
   
+  // Checking with the hasher function: Is this present?
+  keygen = keygen_default<Array_Type>;
+  
   return;
   
 }
@@ -29,6 +32,9 @@ inline Model<Array_Type,Data_Type>::Model(uint size_) :
   // Counters are shared
   support_fun.set_counters(&counters);
   counter_fun.set_counters(&counters);
+  
+  // Checking with the hasher function: Is this present?
+  keygen = keygen_default<Array_Type>;
   
   return;
   
@@ -98,10 +104,6 @@ inline uint Model<Array_Type,Data_Type>::add_array(
   counter_fun.reset_array(&Array_);
   target_stats.push_back(counter_fun.count_all());
   
-  // Checking with the hasher function: Is this present?
-  if (keygen == nullptr)
-    keygen = keygen_default<Array_Type>;
-  
   // If the data hasn't been analyzed earlier, then we need to compute
   // the support
   std::vector< double > key = keygen(Array_);
@@ -120,8 +122,11 @@ inline uint Model<Array_Type,Data_Type>::add_array(
       * vectors on the fly */
     if (with_pset) {
       
+      // Making space for storing the support
       pset_arrays.resize(pset_arrays.size() + 1u);
       pset_stats.resize(pset_stats.size() + 1u);
+      pset_probs.resize(pset_probs.size() + 1u);
+      
       support_fun.calc(
         0u,
         true,
@@ -245,5 +250,86 @@ inline double Model<Array_Type,Data_Type>::likelihood_total(
   return res;
   
 }
+
+template<typename Array_Type, typename Data_Type>
+inline void Model<Array_Type,Data_Type>::print_stats(uint i) const {
+  
+  for (uint l = 0u; l < stats[i].size(); ++l) {
+    std::cout << "counts " << stats[i][l].second << " motif: ";
+    for (unsigned int k = 0u; k < stats[i][l].first.size(); ++k) {
+      std::cout << stats[i][l].first[k] << ", ";
+    }
+    std::cout << std::endl;
+  }
+  
+  return;
+  
+}
+
+template<typename Array_Type, typename Data_Type>
+inline uint Model<Array_Type,Data_Type>::n_arrays() const {
+  return this->stats.size();
+}
+  
+  
+// template<typename Array_Type, typename Data_Type>
+// inline Array_Type Model<Array_Type,Data_Type>::sample(
+//   const Array_Type & Array_,
+//   const std::vector<double> & params
+// ) {
+//   
+//   // Can we find the array in the data
+//   auto location = keys2support.find(keygen(Array_));
+//   
+//   if (location == keys2support.end())
+//     throw std::range_error("The requested array has not been analyzed.");
+//   
+//   unsigned int idx = arrays2support[location->second];
+//   
+//   // Checking normalizing constant
+//   bool new_params = !vec_equal_approx(params, params_last[idx]);
+//   if (!first_calc_done || new_params ) {
+//     
+//     first_calc_done = true;
+//     normalizing_constants[idx] = update_normalizing_constant(
+//       params, stats[idx]
+//     );
+//     
+//     params_last[idx] = params;
+//     
+//   }
+// 
+//   /**If this data hasn't been computed yet, then we need to compute the
+//    * likelihood for each array in the support in order to be able to
+//    * sample.*/
+//   if (pset_probs[idx].size() == 0) {
+//     
+//     pset_probs[idx].resize(pset_arrays[idx].size());    
+//     
+//     for (unsigned int i = 0u; i != pset_stats[idx].size(); ++i) {
+//       pset_probs[idx][i] = likelihood_(
+//         pset_stats[idx][i], stats[idx], normalizing_constants[idx], false
+//       );
+//     }
+// 
+//   } else if (new_params) { // We only need to re-compute likelihoods if not done before
+//     
+//     for (unsigned int i = 0u; i != pset_stats[idx].size(); ++i) {
+//       pset_probs[idx][i] = likelihood_(
+//         pset_stats[idx][i], stats[idx], normalizing_constants[idx], false
+//       );
+//     }
+//     
+//   }
+//   
+//   
+//   // Drawing a random sample
+//   double cumprob = 0.0;
+//   double p       = runif();
+//   
+//   
+//   
+// }
+
 
 #endif

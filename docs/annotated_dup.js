@@ -1,8 +1,6 @@
 var annotated_dup =
 [
     [ "barry", "namespacebarry.html", "namespacebarry" ],
-    [ "Array_Hasher", "struct_array___hasher.html", "struct_array___hasher" ],
-    [ "Array_Hasher< BArray<> >", "struct_array___hasher_3_01_b_array_3_4_01_4.html", "struct_array___hasher_3_01_b_array_3_4_01_4" ],
     [ "BArray", "class_b_array.html", "class_b_array" ],
     [ "BArrayCell", "class_b_array_cell.html", "class_b_array_cell" ],
     [ "Cell", "class_cell.html", "class_cell" ],

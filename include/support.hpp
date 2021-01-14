@@ -106,6 +106,7 @@ public:
   
   Counts_type           get_counts() const;
   const MapVec_type<> * get_counts_ptr() const;
+  void print() const;
   
 };
 
@@ -278,5 +279,9 @@ inline const MapVec_type<> * Support<Array_Type,Data_Type>::get_counts_ptr() con
    
 }
 
+template <typename Array_Type, typename Data_Type>
+inline void Support<Array_Type,Data_Type>::print() const {
+  data.print();
+}
 
 #endif

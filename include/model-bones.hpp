@@ -56,22 +56,6 @@ inline double likelihood_(
  * 
  */
 template<typename Array_Type>
-struct Array_Hasher {
-  
-  virtual std::vector<double> operator()(Array_Type const& dat) const noexcept {
-    return {(double) dat.N, (double) dat.M};
-  }
-  
-};
-
-template<>
-struct Array_Hasher<BArray<>> {
-  std::vector<double> operator()(BArray<> const&dat) const noexcept {
-    return {(double) dat.N, (double) dat.M};
-  }
-};
-
-template<typename Array_Type>
 inline std::vector< double > keygen_default(const Array_Type & Array_) {
   return {(double) Array_.N, (double) Array_.M};
 }
@@ -102,6 +86,11 @@ class Model {
 
 public:
   
+  /**@name Random number generation*/
+  ///@{
+  
+  ///@}
+  
   /**@brief */
   std::vector< Counts_type >         stats;
   std::vector< uint >                n_arrays_per_stats;
@@ -114,6 +103,7 @@ public:
   bool with_pset = false;
   std::vector< std::vector< Array_Type > >          pset_arrays;
   std::vector< std::vector< std::vector<double> > > pset_stats;
+  std::vector< std::vector<double> >                pset_probs;
   ///@}
   
   /**@name Information about the arrays used in the model 
@@ -166,10 +156,10 @@ public:
   void add_counter(Counter<Array_Type, Data_Type> & counter);
   void add_counter(Counter<Array_Type, Data_Type> * counter);
   void add_counter(
-      Counter_fun_type<Array_Type,Data_Type> count_fun_,
-      Counter_fun_type<Array_Type,Data_Type> init_fun_    = nullptr,
-      Data_Type *                            data_        = nullptr,
-      bool                                   delete_data_ = false
+    Counter_fun_type<Array_Type,Data_Type> count_fun_,
+    Counter_fun_type<Array_Type,Data_Type> init_fun_    = nullptr,
+    Data_Type *                            data_        = nullptr,
+    bool                                   delete_data_ = false
   );
   ///@}
   
@@ -192,22 +182,29 @@ public:
    */
   ///@{
   double likelihood(
-      const std::vector<double> & params,
-      const uint & i,
-      bool as_log = false
+    const std::vector<double> & params,
+    const uint & i,
+    bool as_log = false
   );
   
   double likelihood(
-      const std::vector<double> & params,
-      const Array_Type & Array_,
-      bool as_log = false
+    const std::vector<double> & params,
+    const Array_Type & Array_,
+    bool as_log = false
     );
   
   double likelihood_total(
-      const std::vector<double> & params,
-      bool as_log = false
+    const std::vector<double> & params,
+    bool as_log = false
   );
   ///@}
+  
+  void print_stats(uint i) const;
+  
+  Array_Type sample(const Array_Type & Array_, const std::vector<double> & params = {});
+  Array_Type sample(const uint & i, const std::vector<double> & params = {});
+  
+  unsigned int n_arrays() const;
   
 };
 

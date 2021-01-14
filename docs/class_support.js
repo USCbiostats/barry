@@ -10,6 +10,7 @@ var class_support =
     [ "get_counts", "class_support.html#a00ebb01a467b41e4b65df4c9a916909b", null ],
     [ "get_counts_ptr", "class_support.html#a170776abc15d0fa8e02df36268e900a7", null ],
     [ "init_support", "class_support.html#aef6fda6e7a0989f53fcd252609d770c9", null ],
+    [ "print", "class_support.html#ac33e0552070fcaa74119f68c8a62d18d", null ],
     [ "reset_array", "class_support.html#a831220076ece01ef72abce7c700b6d9b", null ],
     [ "reset_array", "class_support.html#a4b3c832b8a6e84638ff89f346d0454cf", null ],
     [ "set_counters", "class_support.html#a6933478f6329793a6216e0326e79dff3", null ],

@@ -7,5 +7,6 @@ var classbarry_1_1_freq_table =
     [ "clear", "classbarry_1_1_freq_table.html#a326660096e4309780aea8355d0f74ac7", null ],
     [ "get_data", "classbarry_1_1_freq_table.html#a7b99496d1c2f4193654752856b30d1a5", null ],
     [ "get_data_ptr", "classbarry_1_1_freq_table.html#ab5dd6677f52072c93d18b2b9a3369ae7", null ],
+    [ "print", "classbarry_1_1_freq_table.html#a4fe8f5e3b5bf64a1cbaf99deb96298d4", null ],
     [ "reserve", "classbarry_1_1_freq_table.html#a0bdced25f7c0bee38e073c4654578d19", null ]
 ];

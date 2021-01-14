@@ -1,6 +1,13 @@
 #ifndef BARRAY_TYPEDEFS_HPP
 #define BARRAY_TYPEDEFS_HPP 
 
+#include <vector>
+#include <unordered_map>
+#include <functional>
+#include <stdexcept>
+#include <cmath>
+#include <map>
+
 // Basic types
 typedef unsigned int uint;
 

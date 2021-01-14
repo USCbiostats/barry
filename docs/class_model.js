@@ -10,7 +10,12 @@ var class_model =
     [ "likelihood", "class_model.html#abc2f255c6b6c4dd0ff3680aab35fd308", null ],
     [ "likelihood", "class_model.html#adf2c30d9c5ffdc87af6813d110146968", null ],
     [ "likelihood_total", "class_model.html#a2fe9cf412c5b2323c35c18952f9cb09d", null ],
+    [ "n_arrays", "class_model.html#a35678412d71c9f96aa19099c72179f3d", null ],
+    [ "print_stats", "class_model.html#a1109a7cacf9993aa3189240bc41d5bec", null ],
+    [ "sample", "class_model.html#aee8f9832e77a43f29b3767ae91b9a0ad", null ],
+    [ "sample", "class_model.html#a6cd63c3177775e07b20a64baa62daa39", null ],
     [ "set_keygen", "class_model.html#afa4736153fa419e1f141839eda735dfe", null ],
+    [ "store_psets", "class_model.html#afd6d7130b41f92e5ec1984ea53c83720", null ],
     [ "array_frequency", "class_model.html#a55b4255d2514b1b22a0fb7361187fead", null ],
     [ "arrays2support", "class_model.html#a880b9e2535fcdaea9cc60d4dbdc7bcbc", null ],
     [ "counter_fun", "class_model.html#a126cffe699d64e664ba6aa0b1796c780", null ],
@@ -21,7 +26,11 @@ var class_model =
     [ "n_arrays_per_stats", "class_model.html#ab43351423d375b537a1a6a497c65caa1", null ],
     [ "normalizing_constants", "class_model.html#ad4ec6d7a19e7a47fb6ffabbf191e1877", null ],
     [ "params_last", "class_model.html#a627aaec1fe2c0e25546f68da78b0c00b", null ],
+    [ "pset_arrays", "class_model.html#a21c6f91330a24c2647366e21fdf89e6a", null ],
+    [ "pset_probs", "class_model.html#a5ff31039ecd3c8c61e8315a87eebdebc", null ],
+    [ "pset_stats", "class_model.html#aa18c30611ad6382a94076c5438ec5e37", null ],
     [ "stats", "class_model.html#a1816b0dd69226394643dc31916c8645e", null ],
     [ "support_fun", "class_model.html#a192302b6d7402bd4ef6edae623074ad0", null ],
-    [ "target_stats", "class_model.html#ab0f4642a2d4602fabb6774914b7dbd39", null ]
+    [ "target_stats", "class_model.html#ab0f4642a2d4602fabb6774914b7dbd39", null ],
+    [ "with_pset", "class_model.html#ab970956dc7f7977f45c022beb388cf5b", null ]
 ];
