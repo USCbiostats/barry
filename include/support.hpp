@@ -151,6 +151,7 @@ inline void Support<Array_Type, Data_Type>::calc(
     std::vector< std::vector< double > > * stats_bank
   ) {
   
+  // Did we reached the end??
   if (pos >= N*M) {
     return;
   }
@@ -197,7 +198,7 @@ inline void Support<Array_Type, Data_Type>::calc(
   // treat the data as if nothing has changed.
   
   // Toggle the cell (we will toggle it back after calling the counter)
-  EmptyArray.insert_cell(pos_i[pos], pos_j[pos], true, false, false);
+  EmptyArray.insert_cell(pos_i[pos], pos_j[pos], EmptyArray.Cell_default , false, false);
 
   // Counting
   // std::vector< double > change_stats(counters.size());
