@@ -137,12 +137,12 @@ public:
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
   void insert_cell(uint i, uint j, Cell< Cell_Type > & v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds = true, bool check_exists = true, bool locked = false);
+  // void insert_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true, bool locked = false);
   
   void insert_cell(uint i, Cell< Cell_Type > & v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, Cell_Type v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, bool check_bounds = true, bool check_exists = true);
+  void insert_cell(uint i, Cell_Type v, bool check_bounds = true, bool check_exists = true, bool locked = false);
+  // void insert_cell(uint i, bool check_bounds = true, bool check_exists = true, bool locked = false);
   
   void swap_cells(
       uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,

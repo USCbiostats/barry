@@ -68,7 +68,7 @@ inline BArray< Cell_Type,Data_Type >::BArray (
     ROW(source[i]).emplace(
         std::pair<uint, Cell< Cell_Type> >(
             target[i],
-            Cell< Cell_Type > (value[i], visited)
+            Cell< Cell_Type > (value[i], false, visited)
       )
       );
     COL(target[i]).emplace(
@@ -129,7 +129,7 @@ inline BArray< Cell_Type,Data_Type >::BArray (
     ROW(source[i]).emplace(
         std::pair<uint, Cell< Cell_Type> >(
             target[i],
-            Cell< Cell_Type >(value[i], visited)
+            Cell< Cell_Type >(value[i], false, visited)
       )
       );
     
@@ -158,7 +158,7 @@ inline BArray<Cell_Type,Data_Type>::BArray(const BArray<Cell_Type,Data_Type> & A
       continue;
     
     for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
-      this->insert_cell(i, row->first, row->second.value, false, false);
+      this->insert_cell(i, row->first, row->second.value, false, false, row->second.locked);
     
   }
   
@@ -190,7 +190,7 @@ inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
         continue;
       
       for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
-        this->insert_cell(i, row->first, row->second.value, false, false);
+        this->insert_cell(i, row->first, row->second.value, false, false, row->second.locked);
       
     }
     
@@ -448,8 +448,9 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
       COL(j).emplace(i, &ROW(i)[j]);
       NCells++;
       
-    } else
+    } else {
       throw std::logic_error("The cell already exists.");
+    }
     
     
   } else {
@@ -465,25 +466,26 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
 
 template<typename Cell_Type, typename Data_Type>
 inline void BArray<Cell_Type, Data_Type>::insert_cell(
-    uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists) {
+    uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists, bool locked) {
   
-  Cell<Cell_Type> vc(v, visited);
+  Cell<Cell_Type> vc(v, locked, visited);
   
   return insert_cell(i, j, vc, check_bounds, check_exists);
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline void BArray<Cell_Type, Data_Type>::insert_cell(
-    uint i,
-    uint j,
-    bool check_bounds,
-    bool check_exists
-  ) {
-  return insert_cell(
-    i, j, BArray<Cell_Type, Data_Type>::Cell_default, check_bounds, check_exists
-  );
-  
-}
+// template<typename Cell_Type, typename Data_Type>
+// inline void BArray<Cell_Type, Data_Type>::insert_cell(
+//     uint i,
+//     uint j,
+//     bool check_bounds,
+//     bool check_exists,
+//     bool locked
+//   ) {
+//   return insert_cell(
+//     i, j, BArray<Cell_Type, Data_Type>::Cell_default, check_bounds, check_exists
+//   );
+//   
+// }
 
 template<typename Cell_Type, typename Data_Type>
 inline void BArray<Cell_Type, Data_Type>::insert_cell(
@@ -507,10 +509,11 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
     uint i,
     Cell_Type v,
     bool check_bounds,
-    bool check_exists
+    bool check_exists,
+    bool locked
   ) {
   
-  Cell<Cell_Type> vc(v, visited);
+  Cell<Cell_Type> vc(v, locked, visited);
   
   return insert_cell(
       (int) i % (int) N,
@@ -523,41 +526,45 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
 
 /**@name Specializations for cell insertion*/
 ///@{
-template<>
-inline void BArray<double, bool>::insert_cell(
-    uint i,
-    bool check_bounds,
-    bool check_exists
-  ) {
-
-  insert_cell(
-      (int) i % (int) N,
-      std::floor((int) i / (int) N),
-      BArray<double, bool>::Cell_default,
-      check_bounds,
-      check_exists
-  );
-  
-  return;
-}
-
-template<>
-inline void BArray<bool, bool>::insert_cell(
-    uint i,
-    bool check_bounds,
-    bool check_exists
-  ) {
-  
-  insert_cell(
-    (int) i % (int) N,
-    std::floor((int) i / (int) N),
-    BArray<bool, bool>::Cell_default,
-    check_bounds,
-    check_exists
-  );
-  
-  return;
-}
+// template<>
+// inline void BArray<double, bool>::insert_cell(
+//     uint i,
+//     bool check_bounds,
+//     bool check_exists,
+//     bool locked
+//   ) {
+// 
+//   insert_cell(
+//       (int) i % (int) N,
+//       std::floor((int) i / (int) N),
+//       BArray<double, bool>::Cell_default.value,
+//       check_bounds,
+//       check_exists,
+//       locked
+//   );
+//   
+//   return;
+// }
+// 
+// template<>
+// inline void BArray<bool, bool>::insert_cell(
+//     uint i,
+//     bool check_bounds,
+//     bool check_exists,
+//     bool locked
+//   ) {
+//   
+//   insert_cell(
+//     (int) i % (int) N,
+//     std::floor((int) i / (int) N),
+//     BArray<bool, bool>::Cell_default.value,
+//     check_bounds,
+//     check_exists,
+//     locked
+//   );
+//   
+//   return;
+// }
 ///@}
 
 template<typename Cell_Type, typename Data_Type>

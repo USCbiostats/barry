@@ -42,7 +42,11 @@ TEST_CASE("Network counts work", "[counts]") {
     1.0000, 4.0000, 6.0000, 3.0000, 2.0000, 3.0000, 6.0000, 4.0000
     };
   
+  std::cout << "Creating the network...";
   netcounters::Network net(20, 20, source, target);
+  std::cout << "done." << std::endl;
+  
+  std::cout << "Preparating the model...";
   std::vector< std::vector< double > > vattrs(2);
   vattrs[0] = gender;
   vattrs[1] = age;
@@ -70,8 +74,11 @@ TEST_CASE("Network counts work", "[counts]") {
   netcounters::counter_diff(counter.counters, 1u, 3.0);
   netcounters::counter_idegree(counter.counters, {1u,2u,3u,4u});
   netcounters::counter_odegree(counter.counters, {1u,2u,3u,4u});
+  std::cout << "done." << std::endl;
   
+  std::cout << "Starting the count...";
   std::vector< double > ans = counter.count_all();
+  std::cout << "done." << std::endl;
   
   // delete net.data;
   
