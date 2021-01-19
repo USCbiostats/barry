@@ -186,7 +186,7 @@ inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
     for (auto col = A_ROW(row).begin(); col != A_ROW(row).end(); ++col) {
       
       // Adding a cell
-      EmptyArray.insert_cell(row, col->first);
+      EmptyArray.insert_cell(row, col->first, false, false);
       
       // Computing the change statistics
       count_current(row, col->first);

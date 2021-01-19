@@ -127,15 +127,36 @@ inline uint Model<Array_Type,Data_Type>::add_array(
       pset_stats.resize(pset_stats.size() + 1u);
       pset_probs.resize(pset_probs.size() + 1u);
       
-      support_fun.calc(
-        0u,
-        true,
-        &(pset_arrays[pset_arrays.size() - 1u]),
-        &(pset_stats[pset_stats.size() - 1u])
-      );
+      try {
+        
+        support_fun.calc(
+          0u,
+          true,
+          &(pset_arrays[pset_arrays.size() - 1u]),
+          &(pset_stats[pset_stats.size() - 1u])
+        );
+        
+      } catch (const std::exception& e) {
+        
+        std::cout << "A problem ocurred while trying to add the array (and recording the powerset)." <<
+          "with error: " << e.what();
+        throw std::logic_error("");
+        
+      }
       
-    } else
-      support_fun.calc();
+    } else {
+      
+      try {
+        support_fun.calc();
+      } catch (const std::exception& e) {
+        
+        std::cout << "A problem ocurred while trying to add the array." <<
+          "with error: " << e.what();
+        throw std::logic_error("");
+        
+      }
+      
+    }
     
     stats.push_back(support_fun.get_counts());
     
