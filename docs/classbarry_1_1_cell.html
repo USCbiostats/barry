@@ -107,10 +107,8 @@ $(document).ready(function(){initNavTree('classbarry_1_1_cell.html','');});
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa7beee933fc291cbc4ac84ec3ab63352"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html#aa7beee933fc291cbc4ac84ec3ab63352">Cell</a> ()</td></tr>
 <tr class="separator:aa7beee933fc291cbc4ac84ec3ab63352"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a228ee63eccb0250954f7540a8b946c78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html#a228ee63eccb0250954f7540a8b946c78">Cell</a> (Cell_Type value_)</td></tr>
-<tr class="separator:a228ee63eccb0250954f7540a8b946c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a421e81ef4364c2d8f2c27a291d4bc830"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html#a421e81ef4364c2d8f2c27a291d4bc830">Cell</a> (Cell_Type value_, bool visited_)</td></tr>
-<tr class="separator:a421e81ef4364c2d8f2c27a291d4bc830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9cbcd525d11964bc33c579086ed2b68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html#ad9cbcd525d11964bc33c579086ed2b68">Cell</a> (Cell_Type value_, bool locked_=false, bool visited_=false)</td></tr>
+<tr class="separator:ad9cbcd525d11964bc33c579086ed2b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2500924b447d4d881916749041974d81"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html#a2500924b447d4d881916749041974d81">~Cell</a> ()</td></tr>
 <tr class="separator:a2500924b447d4d881916749041974d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5768e9495f6d7570fdbadf362bc46e3a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html#a5768e9495f6d7570fdbadf362bc46e3a">Cell</a> (<a class="el" href="classbarry_1_1_cell.html">Cell</a> &amp;arg)</td></tr>
@@ -130,6 +128,8 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a52918ded332c6a12109b5962d6bf3ae9"><td class="memItemLeft" align="right" valign="top">Cell_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html#a52918ded332c6a12109b5962d6bf3ae9">value</a></td></tr>
 <tr class="separator:a52918ded332c6a12109b5962d6bf3ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad962aebcd997fe8f7e05c5b14f17d123"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html#ad962aebcd997fe8f7e05c5b14f17d123">locked</a></td></tr>
+<tr class="separator:ad962aebcd997fe8f7e05c5b14f17d123"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7800879e5079e6b5a3982827adc38c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html#ad7800879e5079e6b5a3982827adc38c1">visited</a></td></tr>
 <tr class="separator:ad7800879e5079e6b5a3982827adc38c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -146,7 +146,7 @@ class barry::Cell&lt; Cell_Type &gt;</h3>
 <p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00043">43</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa7beee933fc291cbc4ac84ec3ab63352"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7beee933fc291cbc4ac84ec3ab63352">&#9670;&nbsp;</a></span>Cell() <span class="overload">[1/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7beee933fc291cbc4ac84ec3ab63352">&#9670;&nbsp;</a></span>Cell() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,38 +164,8 @@ template&lt;class Cell_Type &gt; </div>
 
 </div>
 </div>
-<a id="a228ee63eccb0250954f7540a8b946c78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a228ee63eccb0250954f7540a8b946c78">&#9670;&nbsp;</a></span>Cell() <span class="overload">[2/6]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Cell_Type &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classbarry_1_1_cell.html">barry::Cell</a>&lt; Cell_Type &gt;::<a class="el" href="classbarry_1_1_cell.html">Cell</a> </td>
-          <td>(</td>
-          <td class="paramtype">Cell_Type&#160;</td>
-          <td class="paramname"><em>value_</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00017">17</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a421e81ef4364c2d8f2c27a291d4bc830"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a421e81ef4364c2d8f2c27a291d4bc830">&#9670;&nbsp;</a></span>Cell() <span class="overload">[3/6]</span></h2>
+<a id="ad9cbcd525d11964bc33c579086ed2b68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9cbcd525d11964bc33c579086ed2b68">&#9670;&nbsp;</a></span>Cell() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,7 +185,13 @@ template&lt;class Cell_Type &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>visited_</em>&#160;</td>
+          <td class="paramname"><em>locked_</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>visited_</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -259,12 +235,12 @@ template&lt;class Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00019">19</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00020">20</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
 <a id="a5768e9495f6d7570fdbadf362bc46e3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5768e9495f6d7570fdbadf362bc46e3a">&#9670;&nbsp;</a></span>Cell() <span class="overload">[4/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5768e9495f6d7570fdbadf362bc46e3a">&#9670;&nbsp;</a></span>Cell() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -289,12 +265,12 @@ template&lt;class Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00022">22</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00023">23</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
 <a id="a5db94e6e2ad797d4e9b41e73a3a94e32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5db94e6e2ad797d4e9b41e73a3a94e32">&#9670;&nbsp;</a></span>Cell() <span class="overload">[5/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5db94e6e2ad797d4e9b41e73a3a94e32">&#9670;&nbsp;</a></span>Cell() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -319,12 +295,12 @@ template&lt;class Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00026">26</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00027">27</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
 <a id="a56d2ab8f2a26b1fd8f3b3b9bfef37c1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56d2ab8f2a26b1fd8f3b3b9bfef37c1b">&#9670;&nbsp;</a></span>Cell() <span class="overload">[6/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a56d2ab8f2a26b1fd8f3b3b9bfef37c1b">&#9670;&nbsp;</a></span>Cell() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -349,7 +325,7 @@ template&lt;class Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00036">36</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00038">38</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -400,7 +376,7 @@ template&lt;class Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00029">29</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00030">30</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -430,11 +406,29 @@ template&lt;class Cell_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00039">39</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00044">44</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad962aebcd997fe8f7e05c5b14f17d123"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad962aebcd997fe8f7e05c5b14f17d123">&#9670;&nbsp;</a></span>locked</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Cell_Type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classbarry_1_1_cell.html">barry::Cell</a>&lt; Cell_Type &gt;::locked</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00015">15</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a52918ded332c6a12109b5962d6bf3ae9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a52918ded332c6a12109b5962d6bf3ae9">&#9670;&nbsp;</a></span>value</h2>
 
@@ -467,7 +461,7 @@ template&lt;class Cell_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00015">15</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00016">16</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -480,7 +474,7 @@ template&lt;class Cell_Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacebarry.html">barry</a></li><li class="navelem"><a class="el" href="classbarry_1_1_cell.html">Cell</a></li>
-    <li class="footer">Generated on Wed Jan 13 2021 17:35:24 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Tue Jan 19 2021 13:37:29 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
