@@ -81,10 +81,15 @@ TEST_CASE("Network counts work", "[counts]") {
   std::cout << "done." << std::endl;
   
   // delete net.data;
-  
   std::vector<double> margin(ans.size(), 0.001);
+  std::cout << "Observed counts: " << std::endl;
+  counter.EmptyArray.print();
   print(ans);
+  
+  std::cout << "Expected counts: " << std::endl;
+  net.print();
   print(expected_counts);
+  
   REQUIRE(vabsdiff(ans, expected_counts) < margin);
 }
 

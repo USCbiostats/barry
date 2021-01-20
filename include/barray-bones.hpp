@@ -9,14 +9,18 @@
 
 template <typename Cell_Type = bool, typename Data_Type = bool> class BArrayCell {
 private:
+  
   BArray<Cell_Type,Data_Type> * Array;
   uint row;
   uint col;
+  
 public:
+  
   BArrayCell(BArray<Cell_Type,Data_Type> * Array_, uint row_, uint col_) : 
   Array(Array_), row(row_), col(col_) {};
   ~BArrayCell(){};
   void operator=(bool add);
+  
 };
 
 //! Baseline class for binary arrays.
@@ -33,9 +37,10 @@ public:
   uint NCells = 0u;
   std::vector< Row_type< Cell_Type > > el_ij;
   std::vector< Col_type< Cell_Type > > el_ji;
+  BArray<bool,bool> * locked = nullptr;
   Data_Type * data = nullptr;
   bool delete_data = false;
-  
+
   static Cell< Cell_Type > Cell_default;
   
   /** This is as a reference, if we need to iterate through the cells and we need
@@ -104,8 +109,6 @@ public:
   const Row_type< Cell_Type > * get_row(uint i, bool check_bounds = true) const;
   const Col_type< Cell_Type > * get_col(uint i, bool check_bounds = true) const;
   Entries<Cell_Type> get_entries() const;
-  
-  
 
   /**@name Queries
    * @details `is_empty` queries a single cell. `nrow`, `ncol`, and `nnozero`
@@ -136,13 +139,11 @@ public:
   
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
-  void insert_cell(uint i, uint j, Cell< Cell_Type > & v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds = true, bool check_exists = true, bool locked = false);
-  // void insert_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true, bool locked = false);
+  void insert_cell(uint i, uint j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
+  void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists, bool locked);
   
-  void insert_cell(uint i, Cell< Cell_Type > & v, bool check_bounds = true, bool check_exists = true);
-  void insert_cell(uint i, Cell_Type v, bool check_bounds = true, bool check_exists = true, bool locked = false);
-  // void insert_cell(uint i, bool check_bounds = true, bool check_exists = true, bool locked = false);
+  void insert_cell_row_maj(uint i, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
+  void insert_cell_row_maj(uint i, Cell_Type v, bool check_bounds, bool check_exists, bool locked);
   
   void swap_cells(
       uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,
@@ -151,6 +152,7 @@ public:
       );
   
   void toggle_cell(uint i, uint j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
+  void toggle_lock(uint i, uint j, bool check_bounds = true);
   /**@}*/
   
   /**@name Column/row wise interchange*/
@@ -166,6 +168,13 @@ public:
   void clear(bool hard = true);
   void resize(uint N_, uint M_);
   void reserve();
+  
+  /**@name Locked cells */
+  ///@{
+  bool is_locked(uint i, uint j, bool check_bounds = true) const;
+  void lock_cell(uint i, uint j, bool check_bounds = true);
+  void unlock_cell(uint i, uint j, bool check_bounds = true);
+  ///@}
   
   // Advances operators
   // void toggle_iterator
