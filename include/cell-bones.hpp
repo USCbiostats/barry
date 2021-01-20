@@ -29,7 +29,7 @@ public:
   // Copy by assignment
   Cell& operator=(Cell& other) {
     this->value   = other.value;
-    this->locked = other.locked;
+    this->locked  = other.locked;
     this->visited = other.visited;
     return *this;
   };
@@ -49,6 +49,11 @@ public:
   };
   
   void add(Cell_Type x);
+  
+  // Casting operator (implicit and explicit)
+  // int x = Cell<int>(1); // returns 1
+  operator Cell_Type() const {return this->value;};
+  
 };
 
 /***

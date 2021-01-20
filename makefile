@@ -2,4 +2,7 @@ docs:
 	doxygen Doxyfile
 tests:
 	cd tests && $(MAKE) 
-.PHONY: docs tests
+clean:
+	cd tests && $(MAKE) clean
+.PHONY: docs tests clean
+
