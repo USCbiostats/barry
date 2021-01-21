@@ -37,7 +37,6 @@ public:
   uint NCells = 0u;
   std::vector< Row_type< Cell_Type > > el_ij;
   std::vector< Col_type< Cell_Type > > el_ji;
-  BArray<bool,bool> * locked = nullptr;
   Data_Type * data = nullptr;
   bool delete_data = false;
 
@@ -169,12 +168,12 @@ public:
   void resize(uint N_, uint M_);
   void reserve();
   
-  /**@name Locked cells */
-  ///@{
-  bool is_locked(uint i, uint j, bool check_bounds = true) const;
-  void lock_cell(uint i, uint j, bool check_bounds = true);
-  void unlock_cell(uint i, uint j, bool check_bounds = true);
-  ///@}
+  // /**@name Locked cells */
+  // ///@{
+  // bool is_locked(uint i, uint j, bool check_bounds = true) const;
+  // void lock_cell(uint i, uint j, bool check_bounds = true);
+  // void unlock_cell(uint i, uint j, bool check_bounds = true);
+  // ///@}
   
   // Advances operators
   // void toggle_iterator

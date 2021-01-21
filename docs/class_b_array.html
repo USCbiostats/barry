@@ -144,8 +144,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aefe411fe1890273518bfbc3f8ca616ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5eacd388e3d0f638f2c35b6e0f0c490c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a5eacd388e3d0f638f2c35b6e0f0c490c">reserve</a> ()</td></tr>
 <tr class="separator:a5eacd388e3d0f638f2c35b6e0f0c490c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d150c44b23cf1e4af45f540508db1de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9d150c44b23cf1e4af45f540508db1de">print</a> () const</td></tr>
-<tr class="separator:a9d150c44b23cf1e4af45f540508db1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Queries</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p><code>is_empty</code> queries a single cell. <code>nrow</code>, <code>ncol</code>, and <code>nnozero</code> return the number of rows, columns, and non-zero cells respectively. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -181,18 +179,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8ddd0f172972420dce2cfce014126dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaead894ff275479db4f733793ce037db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aaead894ff275479db4f733793ce037db">rm_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true, bool check_exists=true)</td></tr>
 <tr class="separator:aaead894ff275479db4f733793ce037db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a098b5214df6790a5b4aaf3e0f7c1473a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a098b5214df6790a5b4aaf3e0f7c1473a">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds=true, bool check_exists=true)</td></tr>
-<tr class="separator:a098b5214df6790a5b4aaf3e0f7c1473a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1012df48cc6665f9ddbdcf6ae35596f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a1012df48cc6665f9ddbdcf6ae35596f3">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Cell_Type v, bool check_bounds=true, bool check_exists=true, bool locked=false)</td></tr>
-<tr class="separator:a1012df48cc6665f9ddbdcf6ae35596f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac631a7a4b7308b00073a5e521d548933"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ac631a7a4b7308b00073a5e521d548933">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds=true, bool check_exists=true)</td></tr>
-<tr class="separator:ac631a7a4b7308b00073a5e521d548933"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af10e789c183fa848d289213e8101975f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#af10e789c183fa848d289213e8101975f">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, Cell_Type v, bool check_bounds=true, bool check_exists=true, bool locked=false)</td></tr>
-<tr class="separator:af10e789c183fa848d289213e8101975f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f32967d46f1df46ee4b0eea593a66d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a25f32967d46f1df46ee4b0eea593a66d">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, const <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds, bool check_exists)</td></tr>
+<tr class="separator:a25f32967d46f1df46ee4b0eea593a66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf5b075767f20649090fbaaa115bc8ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#abf5b075767f20649090fbaaa115bc8ec">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Cell_Type v, bool check_bounds, bool check_exists, bool locked)</td></tr>
+<tr class="separator:abf5b075767f20649090fbaaa115bc8ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32ce549812fcac0af0a39c3ba0a22add"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a32ce549812fcac0af0a39c3ba0a22add">insert_cell_row_maj</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, const <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds, bool check_exists)</td></tr>
+<tr class="separator:a32ce549812fcac0af0a39c3ba0a22add"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aeb332f4f8b97d1f04f510ecea9e1eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a3aeb332f4f8b97d1f04f510ecea9e1eb">insert_cell_row_maj</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, Cell_Type v, bool check_bounds, bool check_exists, bool locked)</td></tr>
+<tr class="separator:a3aeb332f4f8b97d1f04f510ecea9e1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb7976f67770b850922c1a7e1d6b07cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#afb7976f67770b850922c1a7e1d6b07cc">swap_cells</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i0, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j0, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i1, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j1, bool check_bounds=true, int check_exists=<a class="el" href="namespace_c_h_e_c_k.html#a3acda1c74bfabb5b6b67e19d0ad2d52a">CHECK::BOTH</a>, int *report=nullptr)</td></tr>
 <tr class="separator:afb7976f67770b850922c1a7e1d6b07cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ab2b200b329abc718cfb3574f566cf6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2ab2b200b329abc718cfb3574f566cf6">toggle_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true, int check_exists=<a class="el" href="namespace_e_x_i_s_t_s.html#a81eb362d951445c658942a433afddb97">EXISTS::UKNOWN</a>)</td></tr>
 <tr class="separator:a2ab2b200b329abc718cfb3574f566cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5079b33fc5300dd912cdf85bb51ac53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ac5079b33fc5300dd912cdf85bb51ac53">toggle_lock</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true)</td></tr>
+<tr class="separator:ac5079b33fc5300dd912cdf85bb51ac53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Column/row wise interchange</div></td></tr>
 <tr class="memitem:a742773803481c18e2865b2b2a1e68949"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a742773803481c18e2865b2b2a1e68949">swap_rows</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i0, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i1, bool check_bounds=true)</td></tr>
 <tr class="separator:a742773803481c18e2865b2b2a1e68949"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -202,6 +202,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a411085fcb7530669c72d9847340f1bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fa473027d00ec53ed08eaea03ac3ef7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a0fa473027d00ec53ed08eaea03ac3ef7">zero_col</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true)</td></tr>
 <tr class="separator:a0fa473027d00ec53ed08eaea03ac3ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Locked cells</div></td></tr>
+<tr class="memitem:a9d150c44b23cf1e4af45f540508db1de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9d150c44b23cf1e4af45f540508db1de">print</a> () const</td></tr>
+<tr class="separator:a9d150c44b23cf1e4af45f540508db1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -239,7 +242,7 @@ class BArray&lt; Cell_Type, Data_Type &gt;</h3>
 <p>Baseline class for binary arrays. </p>
 <p><code><a class="el" href="class_b_array.html" title="Baseline class for binary arrays. ">BArray</a></code> class objects are arbitrary arrays in which non-empty cells hold data of type <code>Cell_Type</code>. The non-empty cells are stored by row and indexed using <code>unordered_map</code>s, i.e. <code>std::vector&lt; std::unordered_map&lt;unsigned int,Cell_Type&gt; &gt;</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00028">28</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00032">32</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1bbfcc43ad43f30fd448b63e9ab5861f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1bbfcc43ad43f30fd448b63e9ab5861f">&#9670;&nbsp;</a></span>BArray() <span class="overload">[1/5]</span></h2>
@@ -266,7 +269,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00050">50</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00054">54</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -306,7 +309,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00051">51</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00055">55</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -440,7 +443,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00087">87</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00068">68</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -470,7 +473,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00148">148</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00129">129</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -499,7 +502,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00229">229</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00210">210</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -530,7 +533,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00918">918</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00844">844</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -576,7 +579,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00248">248</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00229">229</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -616,7 +619,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00283">283</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00264">264</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -645,7 +648,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00294">294</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00275">275</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -685,12 +688,12 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00272">272</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00253">253</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a098b5214df6790a5b4aaf3e0f7c1473a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a098b5214df6790a5b4aaf3e0f7c1473a">&#9670;&nbsp;</a></span>insert_cell() <span class="overload">[1/4]</span></h2>
+<a id="a25f32967d46f1df46ee4b0eea593a66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25f32967d46f1df46ee4b0eea593a66d">&#9670;&nbsp;</a></span>insert_cell() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -715,20 +718,20 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;&#160;</td>
           <td class="paramname"><em>v</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_bounds</em> = <code>true</code>, </td>
+          <td class="paramname"><em>check_bounds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_exists</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>check_exists</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -743,12 +746,12 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00421">421</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00402">402</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a1012df48cc6665f9ddbdcf6ae35596f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1012df48cc6665f9ddbdcf6ae35596f3">&#9670;&nbsp;</a></span>insert_cell() <span class="overload">[2/4]</span></h2>
+<a id="abf5b075767f20649090fbaaa115bc8ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf5b075767f20649090fbaaa115bc8ec">&#9670;&nbsp;</a></span>insert_cell() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -780,19 +783,19 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_bounds</em> = <code>true</code>, </td>
+          <td class="paramname"><em>check_bounds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_exists</em> = <code>true</code>, </td>
+          <td class="paramname"><em>check_exists</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>locked</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>locked</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -807,12 +810,12 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00468">468</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00449">449</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ac631a7a4b7308b00073a5e521d548933"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac631a7a4b7308b00073a5e521d548933">&#9670;&nbsp;</a></span>insert_cell() <span class="overload">[3/4]</span></h2>
+<a id="a32ce549812fcac0af0a39c3ba0a22add"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32ce549812fcac0af0a39c3ba0a22add">&#9670;&nbsp;</a></span>insert_cell_row_maj() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -823,7 +826,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell </td>
+          <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell_row_maj </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
@@ -831,20 +834,20 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;&#160;</td>
           <td class="paramname"><em>v</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_bounds</em> = <code>true</code>, </td>
+          <td class="paramname"><em>check_bounds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_exists</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>check_exists</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -859,12 +862,12 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00491">491</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00458">458</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af10e789c183fa848d289213e8101975f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af10e789c183fa848d289213e8101975f">&#9670;&nbsp;</a></span>insert_cell() <span class="overload">[4/4]</span></h2>
+<a id="a3aeb332f4f8b97d1f04f510ecea9e1eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aeb332f4f8b97d1f04f510ecea9e1eb">&#9670;&nbsp;</a></span>insert_cell_row_maj() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -875,7 +878,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell </td>
+          <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::insert_cell_row_maj </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
@@ -890,19 +893,19 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_bounds</em> = <code>true</code>, </td>
+          <td class="paramname"><em>check_bounds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_exists</em> = <code>true</code>, </td>
+          <td class="paramname"><em>check_exists</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>locked</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>locked</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -917,7 +920,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00508">508</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00475">475</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -963,7 +966,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00314">314</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00295">295</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -992,7 +995,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00339">339</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00320">320</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1021,7 +1024,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00344">344</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00325">325</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1050,7 +1053,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00334">334</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00315">315</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1090,7 +1093,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00380">380</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00361">361</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1120,7 +1123,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00349">349</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00330">330</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1150,7 +1153,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00365">365</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00346">346</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1180,7 +1183,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00176">176</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00157">157</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1210,7 +1213,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00210">210</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00191">191</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1250,7 +1253,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00238">238</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00219">219</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1279,7 +1282,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00985">985</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00911">911</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1308,7 +1311,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00972">972</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00898">898</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1348,7 +1351,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00941">941</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00867">867</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1400,7 +1403,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00389">389</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00370">370</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1440,7 +1443,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00089">89</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00093">93</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1510,7 +1513,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00571">571</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00497">497</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1556,7 +1559,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00752">752</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00678">678</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1602,7 +1605,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00706">706</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00632">632</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1654,7 +1657,43 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00672">672</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00598">598</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac5079b33fc5300dd912cdf85bb51ac53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5079b33fc5300dd912cdf85bb51ac53">&#9670;&nbsp;</a></span>toggle_lock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::toggle_lock </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>check_bounds</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1683,7 +1722,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00861">861</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00787">787</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1723,7 +1762,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00839">839</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00765">765</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1763,7 +1802,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00820">820</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00746">746</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1790,7 +1829,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00029">29</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00033">33</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1817,7 +1856,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00039">39</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00043">43</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1835,7 +1874,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00036">36</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00040">40</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1853,7 +1892,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00037">37</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00041">41</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1871,7 +1910,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00034">34</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00038">38</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1889,7 +1928,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00035">35</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00039">39</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1907,7 +1946,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00032">32</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00036">36</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1925,7 +1964,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00031">31</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00035">35</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1943,7 +1982,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00033">33</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00037">37</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1962,7 +2001,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 </div><div class="memdoc">
 <p>This is as a reference, if we need to iterate through the cells and we need to keep track which were visited, we use this as a reference. So that if cell.visited = true and visited = true, it means that we haven't been here yet. Ideally, any routine using this-&gt;visited should switch it at the beginning of the routine. </p>
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00047">47</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00051">51</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1977,7 +2016,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_b_array.html">BArray</a></li>
-    <li class="footer">Generated on Tue Jan 19 2021 13:37:29 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Wed Jan 20 2021 14:16:43 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
