@@ -7,6 +7,8 @@
 #define BARRAY_BLOCK_BONES_HPP 1
 
 
+
+
 /***
  * Various ways to describe blocks of cells that are static. We have the
  * following ways:
@@ -40,6 +42,7 @@
 /**@brief Sequence of cells indices.
  * 
  */
+template<typename Array_Type, typename Data_Type>
 class CellSeq {
 private:
   // Since we are using column-major order, the first is the column.
@@ -48,8 +51,10 @@ private:
 protected:
   uint N, M;
   std::pair<uint,uint> coords;
+  const Data_Type * rule_data = nullptr;
   std::vector< std::pair< uint , uint > > Seq; 
   bool seq_computed = false;
+  Rule_fun_type<Array_Type, Data_Type> rule = nullptr;
   
 public:
   CellSeq(std::vector< std::pair< uint, uint> > & data_, uint N_, uint M_);
@@ -105,7 +110,8 @@ public:
   
 };
 
-inline CellSeq::CellSeq(
+template <typename Array_Type, typename Data_Type>
+inline CellSeq<Array_Type, Data_Type>::CellSeq(
     std::vector< std::pair< uint, uint> > & data_, uint N_, uint M_
 ) : N(N_), M(M_){
   
@@ -128,7 +134,8 @@ inline CellSeq::CellSeq(
   return;
 }
 
-inline bool CellSeq::is_blocked(uint & i) {
+template <typename Array_Type, typename Data_Type>
+inline bool CellSeq<Array_Type, Data_Type>::is_blocked(uint & i) {
   
   if (data.size() == 0u)
     return false;
@@ -138,7 +145,8 @@ inline bool CellSeq::is_blocked(uint & i) {
   
 }
 
-inline bool CellSeq::is_blocked(uint & i, uint & j) {
+template <typename Array_Type, typename Data_Type>
+inline bool CellSeq<Array_Type, Data_Type>::is_blocked(uint & i, uint & j) {
   
   if (data.size() == 0u)
     return false;
@@ -147,9 +155,8 @@ inline bool CellSeq::is_blocked(uint & i, uint & j) {
   
 }
 
-
-
-inline bool CellSeq::next(uint & i, uint & j) const {
+template <typename Array_Type, typename Data_Type>
+inline bool CellSeq<Array_Type, Data_Type>::next(uint & i, uint & j) const {
   
   // Have we reached the end already?
   
@@ -187,8 +194,8 @@ inline bool CellSeq::next(uint & i, uint & j) const {
   
 }
 
-
-inline void CellSeq::compute_seq() {
+template <typename Array_Type, typename Data_Type>
+inline void CellSeq<Array_Type, Data_Type>::compute_seq() {
   
   if (seq_computed)
     return;
@@ -212,7 +219,8 @@ inline void CellSeq::compute_seq() {
   
 }
 
-inline const std::vector< std::pair< uint, uint> > * CellSeq::get_seq() {
+template <typename Array_Type, typename Data_Type>
+inline const std::vector< std::pair< uint, uint> > * CellSeq<Array_Type, Data_Type>::get_seq() {
   
   // Updating (if needed)
   compute_seq();

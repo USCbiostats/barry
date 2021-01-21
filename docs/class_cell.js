@@ -19,6 +19,7 @@ var class_cell =
     [ "add", "class_cell.html#a74cb069c7341de33354c396465818c2f", null ],
     [ "add", "class_cell.html#a0da6d3d39069cc22486442cc51c7685c", null ],
     [ "add", "class_cell.html#a0da6d3d39069cc22486442cc51c7685c", null ],
+    [ "operator Cell_Type", "class_cell.html#abe9b289bc80d4f5d0717ba9e69197c0b", null ],
     [ "operator=", "class_cell.html#acf4bbf136ed394887c35cfd4e78f50b9", null ],
     [ "operator=", "class_cell.html#a9bb18ace78fd9010b461c853ccc2c0f7", null ],
     [ "locked", "class_cell.html#a8188629882a0c9acad81eff9f89e3d6e", null ],

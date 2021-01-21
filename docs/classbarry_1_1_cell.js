@@ -7,6 +7,7 @@ var classbarry_1_1_cell =
     [ "Cell", "classbarry_1_1_cell.html#a5db94e6e2ad797d4e9b41e73a3a94e32", null ],
     [ "Cell", "classbarry_1_1_cell.html#a56d2ab8f2a26b1fd8f3b3b9bfef37c1b", null ],
     [ "add", "classbarry_1_1_cell.html#a40c9aad3ba2c9d5a1a91833c66522ad8", null ],
+    [ "operator Cell_Type", "classbarry_1_1_cell.html#a90bea0b3306e1780747ca1ef6f389e91", null ],
     [ "operator=", "classbarry_1_1_cell.html#a2a23ba83119de9162b6e3b6a994f4b61", null ],
     [ "operator=", "classbarry_1_1_cell.html#ac0f00c52254617f8e4ba9d03ddf5b890", null ],
     [ "locked", "classbarry_1_1_cell.html#ad962aebcd997fe8f7e05c5b14f17d123", null ],

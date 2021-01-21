@@ -103,9 +103,17 @@ template <typename Array_Type, typename Counter_Type> class Counter;
 #define A_ROW(a) Array->el_ij[a]
 #define A_COL(a) Array->el_ji[a]
 
+/**@brief 
+ * @param Array_Type a BArray
+ * @param unit, uint Focal cell
+ * @param Data_Type Data associated with the function, for example, id of the attribute
+ *  in the Array.
+ */
 template <typename Array_Type, typename Data_Type>
 using Counter_fun_type = std::function<double(const Array_Type *, uint, uint, Data_Type *)>;
 
+template <typename Array_Type, typename Data_Type>
+using Rule_fun_type = std::function<bool(const Array_Type *, uint, uint, Data_Type *)>;
 
 // Misc ------------------------------------------------------------------------
 /**@brief Compares if -a- and -b- are equal

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['operator_20cell_5ftype',['operator Cell_Type',['../classbarry_1_1_cell.html#a90bea0b3306e1780747ca1ef6f389e91',1,'barry::Cell::operator Cell_Type()'],['../class_cell.html#abe9b289bc80d4f5d0717ba9e69197c0b',1,'Cell::operator Cell_Type()']]],
   ['operator_28_29',['operator()',['../class_b_array.html#a8ddd0f172972420dce2cfce014126dba',1,'BArray::operator()()'],['../structbarry_1_1vec_hasher.html#ada8dea483f4fc12f469e161b2fd09225',1,'barry::vecHasher::operator()()'],['../structvec_hasher.html#ae8127d9b7d302fe59bd64e7067e7ba61',1,'vecHasher::operator()()']]],
   ['operator_2b_3d',['operator+=',['../class_b_array.html#a706ee6da2f9a232970d286ccdd944d50',1,'BArray']]],
   ['operator_2d_3d',['operator-=',['../class_b_array.html#ae5dc994ddca6944654e05bf813a8b402',1,'BArray']]],
