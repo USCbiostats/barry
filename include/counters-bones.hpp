@@ -149,7 +149,11 @@ inline void CounterVector<Array_Type,Data_Type>::add_counter(
     bool                                   delete_data_
 ) {
  
+  /* We still need to delete the counter since we are using the 'new' operator.
+   * Yet, the actual data may not need to be deleted.
+   */
   to_be_deleted.push_back(data.size());
+  
   data.push_back(new Counter<Array_Type,Data_Type>(
     count_fun_,
     init_fun_,
