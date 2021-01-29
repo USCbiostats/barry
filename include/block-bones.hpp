@@ -39,193 +39,105 @@
  * 
  */
 
+template <typename Array_Type, typename Data_Type>
+inline bool default_rule(const Array_Type * A, uint i, uint j, Data_Type *) {
+  return false;
+}
+
 /**@brief Sequence of cells indices.
  * 
  */
 template<typename Array_Type, typename Data_Type>
 class CellSeq {
-private:
-  // Since we are using column-major order, the first is the column.
-  std::map< std::pair<uint,uint> , bool > data; 
-  
 protected:
-  uint N, M;
-  std::pair<uint,uint> coords;
-  const Data_Type * rule_data = nullptr;
-  std::vector< std::pair< uint , uint > > Seq; 
-  bool seq_computed = false;
+  // Input data
   Rule_fun_type<Array_Type, Data_Type> rule = nullptr;
-  
+  Data_Type * rule_data                     = nullptr;
+
 public:
-  CellSeq(std::vector< std::pair< uint, uint> > & data_, uint N_, uint M_);
-  CellSeq() : N(0u), M(0u) {};
+  CellSeq() : rule(default_rule<Array_Type,Data_Type>) {};
+  CellSeq(Rule_fun_type<Array_Type,Data_Type> rule_): rule(rule_) {};
   ~CellSeq() {};
   
   /***
    * Query functions
    */
-  bool is_blocked(uint & i) ;
-  bool is_blocked(uint & i, uint & j) ;
-  
-  /***
-   * These functions compute the next or the previous one.
-   */
-  bool next(uint & i, uint & j) const;
-  bool next(uint & i) const;
-  // virtual bool prev(uint & i, uint & j) const;
-  // virtual bool prev(uint & i) const;
-  
-  /***
-   * Update functions
-   */
-  void compute_seq();
-  
-  /***
-   * Utility functions
-   */
-  void calc_coords(uint & i) {
-    
-    if (i == 0) coords = {0u,0u};
-    else if ((i - 1u) == N*M) coords = {N-1u, M-1u};
-    else if (i >= N*M) {
-      
-      throw std::range_error("The coordinate is out of range.");
-      
-    } else {
-      
-      coords = {
-        i % N,
-        floor((int) i / (int) N)
-      };
-      
-    }
-    
-    return;
-  }
+  // bool is_blocked(const Array_Type * dat, uint & i) ;
+  bool is_blocked(const Array_Type * A, uint i, uint j) ;
   
   /***
    * Getter function
    */
-  const std::vector< std::pair< uint , uint > > * get_seq() ; 
+  void get_seq(
+      std::vector< std::pair< uint , uint > > * seq,
+      const Array_Type * A,
+      bool invert = false
+    ) ; 
   
 };
 
 template <typename Array_Type, typename Data_Type>
-inline CellSeq<Array_Type, Data_Type>::CellSeq(
-    std::vector< std::pair< uint, uint> > & data_, uint N_, uint M_
-) : N(N_), M(M_){
-  
-  
-  if (N < 1u || M < 1u)
-    throw std::logic_error("Either zero rows or columns.");
-  
-  for (auto iter = data_.begin(); iter != data_.end(); ++iter) {
-    
-    // Checking the ranges
-    if (iter->first >= N)
-      throw std::range_error("One element is out of range (row).");
-    if (iter->second >= M)
-      throw std::range_error("One element is out of range (col).");
-    
-    if (data.find(*iter) == data.end())
-      data[*iter] = true;
-  }
-  
-  return;
-}
+inline bool CellSeq<Array_Type,Data_Type>::is_blocked(
+    const Array_Type * A,
+    uint i, uint j
+  ) {
 
-template <typename Array_Type, typename Data_Type>
-inline bool CellSeq<Array_Type, Data_Type>::is_blocked(uint & i) {
-  
-  if (data.size() == 0u)
-    return false;
-  
-  calc_coords(i);
-  return data.find(coords) != data.end();
+  return rule(A, i, j, rule_data);
   
 }
 
 template <typename Array_Type, typename Data_Type>
-inline bool CellSeq<Array_Type, Data_Type>::is_blocked(uint & i, uint & j) {
+inline void CellSeq<Array_Type, Data_Type>::get_seq(
+    std::vector< std::pair< uint, uint> > * seq,
+    const Array_Type * A,
+    bool invert
+) {
   
-  if (data.size() == 0u)
-    return false;
+  uint N = A->nrow();
+  uint K = A->ncol();
   
-  return data.find({i, j}) != data.end();
-  
-}
-
-template <typename Array_Type, typename Data_Type>
-inline bool CellSeq<Array_Type, Data_Type>::next(uint & i, uint & j) const {
-  
-  // Have we reached the end already?
-  
-  // Iterating until this is out of the range
-  // auto iter = data.begin();
-  uint safeward = N*M, step = 0u;
-  while (true) {
-    
-    // Basic check
-    if (safeward <= step++)
-      throw std::logic_error("Upsi, the next function went overflown (shouldn't happen)!.");
-    
-    // Increasing the row, if possible
-    if (++i >= N) {
-      
-      i = 0u; // Restarts the list, so we need to increase the column.
-      
-      // Need to check on j?
-      if (++j >= M) { // If we reached this far, then we reached the end
-        j--;
-        i = N - 1u;
-        return true;
+  if (!invert) {
+    for (uint i = 0u; i < N; ++i) {
+      for (uint j = 0u; j < K; ++j) {
+        if (!this->is_blocked(A, i, j))
+          seq->push_back({i, j});
       }
-      
     }
-    
-    // Is it on the list?
-    if (data.find({i, j}) == data.end()) 
-      break;
-    
-    continue;
+  } else {
+    for (uint i = 0u; i < N; ++i) {
+      for (uint j = 0u; j < K; ++j) {
+        if (this->is_blocked(A, i, j))
+          seq->push_back({i, j});
+      }
+    }
   }
   
-  return false;
-  
-}
-
-template <typename Array_Type, typename Data_Type>
-inline void CellSeq<Array_Type, Data_Type>::compute_seq() {
-  
-  if (seq_computed)
-    return;
-  
-  // Starting from zero
-  coords = {0u, 0u};
-  bool reached_end = false;
-  while (is_blocked(coords.first, coords.second)) 
-    reached_end = next(coords.first, coords.second);
-  
-  if (reached_end)
-    return;
-  
-  // Adding the first to the sequence
-  Seq.push_back(coords);
-  
-  while (!next(coords.first, coords.second)) 
-    Seq.push_back(coords);
   
   return;
+}
+
+
+
+// Common rules
+
+// Zero diag
+template <typename Array_Type, typename Data_Type>
+inline bool sequence_rule_zero_diag(const Array_Type * A, uint i, uint j, Data_Type *) {
   
+  return i == j;
 }
 
 template <typename Array_Type, typename Data_Type>
-inline const std::vector< std::pair< uint, uint> > * CellSeq<Array_Type, Data_Type>::get_seq() {
+inline bool sequence_rule_lower_tri(const Array_Type * A, uint i, uint j, Data_Type *) {
   
-  // Updating (if needed)
-  compute_seq();
+  return i < j;
+}
+
+template <typename Array_Type, typename Data_Type>
+inline bool sequence_rule_upper_tri(const Array_Type * A, uint i, uint j, Data_Type *) {
   
-  return &Seq;
+  return i > j;
+  
 }
 
 /*
