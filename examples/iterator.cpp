@@ -2,41 +2,67 @@
 #include "../include/barry.hpp"
 using namespace Rcpp;
 
-// [[Rcpp::export]]
-SEXP new_block(const IntegerVector & row, const IntegerVector & col, int N, int M) {
+// Upper diagonal are blocked
+template <typename Array_Type, typename Data_Type>
+inline bool rule_lowertri(
+    const Array_Type * a, barry::uint i, barry::uint j, Data_Type * d = nullptr
+) {
+  return i < j;
+}
 
-  if (row.size() != col.size())
-    stop("row and col should have the same size.");
-    
-  // Preparing the data
-  typedef unsigned int uint;
-  std::vector< std::pair< uint, uint > > dat;
-  for (uint i = 0u; i < row.size(); ++i)
-    dat.push_back({row.at(i), col.at(i)});
-  
-  Rcpp::XPtr< barry::CellSeq > xptr( 
-    new barry::CellSeq(dat, N, M),
+// Diagonal blocked
+template <typename Array_Type, typename Data_Type>
+inline bool rule_diag(
+    const Array_Type * a, barry::uint i, barry::uint j, Data_Type * d = nullptr
+) {
+  return i == j;
+}
+
+// [[Rcpp::export]]
+SEXP new_block(int i = 0) {
+
+  typedef barry::Rules< barry::BArray<>, bool > rulet;
+  Rcpp::XPtr< rulet > xptr( 
+    new barry::Rules< barry::BArray<>, bool >(),
     true
   );
+  
+  // Adding two simple rules: Only lower triangle matrix with zero diagonal
+  // are to be touched.
+  xptr->add_rule(rule_lowertri<barry::BArray<>,bool>);
+  xptr->add_rule(rule_diag<barry::BArray<>,bool>);
   
   return xptr;
 }
 
 // [[Rcpp::export]]
-IntegerMatrix get_sequence(SEXP x) {
+List get_sequence(SEXP x, int N, int K) {
   
-  Rcpp::XPtr< barry::CellSeq > xptr(x);
+  // Making space
   typedef unsigned int uint;
-  const std::vector< std::pair<uint,uint> > * ans = xptr->get_seq();
+  std::vector< std::pair<uint,uint> > ans0(0);
+  std::vector< std::pair<uint,uint> > ans1(0);
   
-  IntegerMatrix res(ans->size(), 2u);
+  // This function needs to be applied over an array
+  Rcpp::XPtr< barry::Rules< barry::BArray<>, bool > > xptr(x);
+  barry::BArray<> adjmat(N, K);
+  xptr->get_seq(&adjmat, &ans0, &ans1);
+  
+  // Preparing the output to be exported to R
+  IntegerMatrix res0(ans0.size(), 2u);
+  IntegerMatrix res1(ans1.size(), 2u);
   int i = 0u;
-  for (auto iter = ans->begin(); iter != ans->end(); ++iter) {
-    res(i, 0u) = iter->first;
-    res(i++, 1u) = iter->second;
+  for (auto iter = ans0.begin(); iter != ans0.end(); ++iter) {
+    res0(i, 0u) = iter->first;
+    res0(i++, 1u) = iter->second;
+  }
+  i = 0u;
+  for (auto iter = ans1.begin(); iter != ans1.end(); ++iter) {
+    res1(i, 0u) = iter->first;
+    res1(i++, 1u) = iter->second;
   }
   
-  return res;
+  return List::create(_["free"] = res0, _["blocked"] = res1);
   
 }
 
@@ -44,27 +70,15 @@ IntegerMatrix get_sequence(SEXP x) {
 
 /***R
 
-# No diagonal
-N<-M<-10
-rows <- 0:(N-1)
-cols <- rows
-
-# microbenchmark::microbenchmark(
-# build = {
-ptr <- new_block(rows, cols, N, M)
-ans <- get_sequence(ptr) + 1
-# }, unit = "s")
+N <- 1e2
+ptr <- new_block()
+ans <- get_sequence(ptr, N, N)
 m   <- matrix(0, N, N)
-m[ans] <- 1
-m
+m[ans$free + 1L] <- 1
 
-# Block diagonal
-dat <- ans[ans[,1] <= ans[,2],]
-ptr <- new_block(dat[,1] - 1, dat[,2] - 1, N, M)
-ans <- get_sequence(ptr) + 1
-m   <- matrix(0, N, N)
-m[ans] <- 1
-m
+library(Matrix)
+Matrix::image(as(m, "dgCMatrix"))
+
 
 */
 

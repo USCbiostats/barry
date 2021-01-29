@@ -4,6 +4,7 @@
 #include "barray-bones.hpp"
 #include "statsdb.hpp"
 #include "counters-bones.hpp"
+#include "rules-bones.hpp"
 
 #ifndef SUPPORT_HPP 
 #define SUPPORT_HPP 1
@@ -14,7 +15,11 @@
  * support set of the Array while at the same time computing the support of
  * the sufficient statitics.
  */ 
-template <typename Array_Type = BArray<>, typename Data_Type = bool>
+template <
+  typename Array_Type = BArray<>,
+  typename Data_Counter_Type = bool,
+  typename Data_Rule_Type = bool
+  >
 class Support {
 public:
   
@@ -22,11 +27,13 @@ public:
    */
   Array_Type                            EmptyArray;
   FreqTable<>                           data;
-  CounterVector<Array_Type,Data_Type> * counters;
+  CounterVector<Array_Type,Data_Counter_Type> * counters;
+  Rules<Array_Type,Data_Rule_Type>            * rules;
 
   uint N, M;
-  bool initialized = false;
+  bool initialized     = false;
   bool counter_deleted = false;
+  bool rules_deleted   = false;
   
   // Temp variables to reduce memory allocation
   std::vector< double >                current_stats;
@@ -38,7 +45,8 @@ public:
    */
   Support(const Array_Type * Array_) :
     EmptyArray(*Array_),
-    counters(new CounterVector<Array_Type,Data_Type>()),
+    counters(new CounterVector<Array_Type,Data_Counter_Type>()),
+    rules(new Rules<Array_Type,Data_Rule_Type>()),
     N(Array_->nrow()), M(Array_->ncol()) {
     init_support();
     return;
@@ -49,7 +57,8 @@ public:
    */
   Support(uint N_, uint M_) :
     EmptyArray(N_, M_),
-    counters(new CounterVector<Array_Type,Data_Type>()),
+    counters(new CounterVector<Array_Type,Data_Counter_Type>()),
+    rules(new Rules<Array_Type,Data_Rule_Type>()),
     N(N_), M(M_) {
     init_support();
     return;
@@ -57,7 +66,8 @@ public:
   
   Support() :
     EmptyArray(0u, 0u),
-    counters(new CounterVector<Array_Type,Data_Type>()),
+    counters(new CounterVector<Array_Type,Data_Counter_Type>()),
+    rules(new Rules<Array_Type,Data_Rule_Type>()),
     N(0u), M(0u) {
     init_support();
     return;
@@ -66,6 +76,8 @@ public:
   ~Support() {
     if (!counter_deleted)
       delete counters;
+    if (!rules_deleted)
+      delete rules;
   };
   
   void init_support();
@@ -79,9 +91,14 @@ public:
    */
   void reset_array();
   void reset_array(const Array_Type * Array_);
-  void add_counter(Counter<Array_Type, Data_Type> * f_);
-  void add_counter(Counter<Array_Type,Data_Type> f_);
-  void set_counters(CounterVector<Array_Type,Data_Type> * counters_);
+  
+  void add_counter(Counter<Array_Type, Data_Counter_Type> * f_);
+  void add_counter(Counter<Array_Type,Data_Counter_Type> f_);
+  void set_counters(CounterVector<Array_Type,Data_Counter_Type> * counters_);
+  
+  void add_rule(Rule<Array_Type, Data_Rule_Type> * f_);
+  void add_rule(Rule<Array_Type,Data_Rule_Type> f_);
+  void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);
   
   /**@brief Computes the entire support
    * 
@@ -110,8 +127,8 @@ public:
   
 };
 
-template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type, Data_Type>::init_support() {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support() {
   
   pos_i.resize(N*M);
   pos_j.resize(N*M);
@@ -123,16 +140,16 @@ inline void Support<Array_Type, Data_Type>::init_support() {
   return;
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type, Data_Type>::reset_array() {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array() {
   
   data.clear();
   initialized = false;
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type, Data_Type>::reset_array(const Array_Type * Array_) {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array(const Array_Type * Array_) {
   
   data.clear();
   initialized = false;
@@ -143,8 +160,8 @@ inline void Support<Array_Type, Data_Type>::reset_array(const Array_Type * Array
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type, Data_Type>::calc(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc(
     uint                                   pos,
     const bool &                           diag,
     std::vector< Array_Type > *            array_bank,
@@ -231,9 +248,9 @@ inline void Support<Array_Type, Data_Type>::calc(
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type,Data_Type>::add_counter(
-    Counter<Array_Type, Data_Type> * f_
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_counter(
+    Counter<Array_Type, Data_Counter_Type> * f_
   ) {
   
   counters->add_counter(f_);
@@ -241,9 +258,9 @@ inline void Support<Array_Type,Data_Type>::add_counter(
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type,Data_Type>::add_counter(
-    Counter<Array_Type,Data_Type> f_
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_counter(
+    Counter<Array_Type,Data_Counter_Type> f_
 ) {
   
   counters->add_counter(f_);
@@ -251,9 +268,9 @@ inline void Support<Array_Type,Data_Type>::add_counter(
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type,Data_Type>::set_counters(
-    CounterVector<Array_Type,Data_Type> * counters_
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_counters(
+    CounterVector<Array_Type,Data_Counter_Type> * counters_
 ) {
   
   // Cleaning up before replacing the memory
@@ -266,22 +283,61 @@ inline void Support<Array_Type,Data_Type>::set_counters(
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline Counts_type Support<Array_Type,Data_Type>::get_counts() const {
+/////////////////////////////
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_rule(
+    Rule<Array_Type, Data_Rule_Type> * f_
+) {
+  
+  rules->add_rule(f_);
+  return;
+  
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_rule(
+    Rule<Array_Type,Data_Rule_Type> f_
+) {
+  
+  rules->add_rule(f_);
+  return;
+  
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_rules(
+    Rules<Array_Type,Data_Rule_Type> * rules_
+) {
+  
+  // Cleaning up before replacing the memory
+  if (!rules_deleted)
+    delete rules;
+  rules_deleted = true;
+  rules = rules_;
+  
+  return;
+  
+}
+
+//////////////////////////
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline Counts_type Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::get_counts() const {
   
   return data.as_vector(); 
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline const MapVec_type<> * Support<Array_Type,Data_Type>::get_counts_ptr() const {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline const MapVec_type<> * Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::get_counts_ptr() const {
   
   return data.get_data_ptr();
    
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Support<Array_Type,Data_Type>::print() const {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::print() const {
   data.print();
 }
 
