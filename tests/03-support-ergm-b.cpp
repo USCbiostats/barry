@@ -61,6 +61,9 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   netcounters::counter_odegree15(&model.counters);
   netcounters::counter_nodematch(&model.counters,0u);
   
+  // Adding rules
+  netcounters::rules_zerodiag(&model.rules);
+  
   // Adding the network to the model
   model.add_array(net);
   

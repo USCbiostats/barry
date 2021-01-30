@@ -3,8 +3,8 @@
 #ifndef MODEL_MEAT_HPP 
 #define MODEL_MEAT_HPP 1
 
-template <typename Array_Type, typename Data_Type>
-inline Model<Array_Type,Data_Type>::Model() :
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model() :
   stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
   target_stats(0u), arrays2support(0u), keys2support(0u), counters() 
 {
@@ -13,6 +13,9 @@ inline Model<Array_Type,Data_Type>::Model() :
   support_fun.set_counters(&counters);
   counter_fun.set_counters(&counters);
   
+  // Rules are shared
+  support_fun.set_rules(&rules);
+  
   // Checking with the hasher function: Is this present?
   keygen = keygen_default<Array_Type>;
   
@@ -20,8 +23,8 @@ inline Model<Array_Type,Data_Type>::Model() :
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline Model<Array_Type,Data_Type>::Model(uint size_) :
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(uint size_) :
   stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
   target_stats(0u), arrays2support(0u), keys2support(0u), counters() 
 {
@@ -33,6 +36,9 @@ inline Model<Array_Type,Data_Type>::Model(uint size_) :
   support_fun.set_counters(&counters);
   counter_fun.set_counters(&counters);
   
+  // Rules are shared
+  support_fun.set_rules(&rules);
+  
   // Checking with the hasher function: Is this present?
   keygen = keygen_default<Array_Type>;
   
@@ -40,34 +46,34 @@ inline Model<Array_Type,Data_Type>::Model(uint size_) :
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Model<Array_Type,Data_Type>::store_psets() {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::store_psets() {
   if (with_pset)
     throw std::logic_error("Powerset storage alreay activated.");
   with_pset = true;
   return;
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Model<Array_Type,Data_Type>::set_keygen(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::set_keygen(
     std::function<std::vector<double>(const Array_Type &)> keygen_
 ) {
   keygen = keygen_;
   return;
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Model<Array_Type,Data_Type>::add_counter(
-    Counter<Array_Type, Data_Type> & counter
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
+    Counter<Array_Type, Data_Counter_Type> & counter
 ) {
   
   counters.add_counter(counter);
   return;
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Model<Array_Type,Data_Type>::add_counter(
-    Counter<Array_Type, Data_Type> * counter
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
+    Counter<Array_Type, Data_Counter_Type> * counter
 ) {
   
   counters.add_counter(counter);
@@ -75,11 +81,11 @@ inline void Model<Array_Type,Data_Type>::add_counter(
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void Model<Array_Type,Data_Type>::add_counter(
-    Counter_fun_type<Array_Type,Data_Type> count_fun_,
-    Counter_fun_type<Array_Type,Data_Type> init_fun_,
-    Data_Type *                            data_,
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
+    Counter_fun_type<Array_Type,Data_Counter_Type> count_fun_,
+    Counter_fun_type<Array_Type,Data_Counter_Type> init_fun_,
+    Data_Counter_Type *                            data_,
     bool                                   delete_data_
 ) {
   
@@ -94,8 +100,44 @@ inline void Model<Array_Type,Data_Type>::add_counter(
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline uint Model<Array_Type,Data_Type>::add_array(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
+    Rule<Array_Type, Data_Rule_Type> & rule
+) {
+  
+  rules.add_rule(rule);
+  return;
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
+    Rule<Array_Type, Data_Rule_Type> * rule
+) {
+  
+  rules.add_rule(rule);
+  return;
+  
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
+    Rule_fun_type<Array_Type,Data_Rule_Type> rule_fun_,
+    Data_Rule_Type *                            data_,
+    bool                                   delete_data_
+) {
+  
+  rules.add_rule(
+    rule_fun_,
+    data_,
+    delete_data_
+  );
+  
+  return;
+  
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_array(
   const Array_Type & Array_,
   bool force_new
 ) {
@@ -130,8 +172,6 @@ inline uint Model<Array_Type,Data_Type>::add_array(
       try {
         
         support_fun.calc(
-          0u,
-          true,
           &(pset_arrays[pset_arrays.size() - 1u]),
           &(pset_stats[pset_stats.size() - 1u])
         );
@@ -179,8 +219,8 @@ inline uint Model<Array_Type,Data_Type>::add_array(
 
 }
 
-template <typename Array_Type, typename Data_Type>
-inline double Model<Array_Type,Data_Type>::likelihood(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
     const std::vector<double> & params,
     const uint & i,
     bool as_log
@@ -212,8 +252,8 @@ inline double Model<Array_Type,Data_Type>::likelihood(
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline double Model<Array_Type,Data_Type>::likelihood(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
     const std::vector<double> & params,
     const Array_Type & Array_,
     bool as_log
@@ -232,8 +272,8 @@ inline double Model<Array_Type,Data_Type>::likelihood(
   
 }
 
-template <typename Array_Type, typename Data_Type>
-inline double Model<Array_Type,Data_Type>::likelihood_total(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood_total(
     const std::vector<double> & params,
     bool as_log
 ) {
@@ -272,8 +312,8 @@ inline double Model<Array_Type,Data_Type>::likelihood_total(
   
 }
 
-template<typename Array_Type, typename Data_Type>
-inline void Model<Array_Type,Data_Type>::print_stats(uint i) const {
+template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::print_stats(uint i) const {
   
   for (uint l = 0u; l < stats[i].size(); ++l) {
     std::cout << "counts " << stats[i][l].second << " motif: ";
@@ -287,14 +327,14 @@ inline void Model<Array_Type,Data_Type>::print_stats(uint i) const {
   
 }
 
-template<typename Array_Type, typename Data_Type>
-inline uint Model<Array_Type,Data_Type>::n_arrays() const {
+template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::n_arrays() const {
   return this->stats.size();
 }
   
   
-// template<typename Array_Type, typename Data_Type>
-// inline Array_Type Model<Array_Type,Data_Type>::sample(
+// template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+// inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::sample(
 //   const Array_Type & Array_,
 //   const std::vector<double> & params
 // ) {

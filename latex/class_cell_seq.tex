@@ -1,5 +1,5 @@
-\hypertarget{class_cell_seq}{}\section{Cell\+Seq Class Reference}
-\label{class_cell_seq}\index{Cell\+Seq@{Cell\+Seq}}
+\hypertarget{class_cell_seq}{}\section{Cell\+Seq$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Class Template Reference}
+\label{class_cell_seq}\index{Cell\+Seq$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$@{Cell\+Seq$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
 
 
 Sequence of cells indices.  
@@ -12,202 +12,120 @@ Sequence of cells indices.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_cell_seq_a3f1fcc18a3e9a9572d403791368f0db7}{Cell\+Seq} (std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \&data\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+)
+\hyperlink{class_cell_seq_a1668f6f6768838864d1a85f018be2aa6}{Cell\+Seq} ()
 \item 
-\hyperlink{class_cell_seq_a92513554c453533b27ebcc1486452a00}{Cell\+Seq} ()
+\hyperlink{class_cell_seq_aa08a1ebbb81673baea62c9eb91946f4d}{Cell\+Seq} (\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ rule\+\_\+)
 \item 
-\hyperlink{class_cell_seq_a1ed463a49ab2ea5f1ff704b74eb68515}{$\sim$\+Cell\+Seq} ()
+\hyperlink{class_cell_seq_aa52be587e92f0d246bd84980c3e8b540}{$\sim$\+Cell\+Seq} ()
 \item 
-bool \hyperlink{class_cell_seq_a994900efdcf73e7619f728d584e92c5a}{is\+\_\+blocked} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&i)
+bool \hyperlink{class_cell_seq_a32d85d2f118a68b58d1f7a6095ff42ca}{is\+\_\+blocked} (const Array\+\_\+\+Type $\ast$A, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
 \item 
-bool \hyperlink{class_cell_seq_a5a5730ec094c9a4251753302a9504149}{is\+\_\+blocked} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&j)
-\item 
-bool \hyperlink{class_cell_seq_a05687b1000bcce13c0f81c0203363ce7}{next} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&j) const
-\item 
-bool \hyperlink{class_cell_seq_a799a65f5ea44cc1c752d39d6e7613364}{next} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&i) const
-\item 
-void \hyperlink{class_cell_seq_a6588fe1ad4e37f7a845386eca46c13c2}{compute\+\_\+seq} ()
-\item 
-void \hyperlink{class_cell_seq_afce7ba75badccac90475c853368424ad}{calc\+\_\+coords} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&i)
-\item 
-const std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$ \hyperlink{class_cell_seq_a12235ff9c4a0183ed477679b61c4a19a}{get\+\_\+seq} ()
+void \hyperlink{class_cell_seq_a844b28a2053fd2c6810340a5a9aef945}{get\+\_\+seq} (std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$seq, const Array\+\_\+\+Type $\ast$A, bool invert=false)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_cell_seq_a407684cfa214fe0b2d4d1ed25936d037}{N}
+\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{class_cell_seq_a96562d860b3e66a90330854ff9184ba5}{rule} = nullptr
 \item 
-\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_cell_seq_a8710fd7f03b3f4423e90f4a2910ad98b}{M}
-\item 
-std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{class_cell_seq_af68709ebb782d4ffc243788c3dd256f4}{coords}
-\item 
-std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{class_cell_seq_af15df5f62488560f36f71336ac5cb0a5}{Seq}
-\item 
-bool \hyperlink{class_cell_seq_aa813f6c9f5438cc472a0c12078b44c97}{seq\+\_\+computed} = false
+Data\+\_\+\+Type $\ast$ \hyperlink{class_cell_seq_a543981f0422f690a3c52da29f82d8e0e}{rule\+\_\+data} = nullptr
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+\subsubsection*{template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$\newline
+class Cell\+Seq$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+
 Sequence of cells indices. 
-
-
-
-Definition at line 43 of file block-\/bones.\+hpp.
-
-
-
-\subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_cell_seq_a3f1fcc18a3e9a9572d403791368f0db7}\label{class_cell_seq_a3f1fcc18a3e9a9572d403791368f0db7}} 
-\index{Cell\+Seq@{Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
-\index{Cell\+Seq@{Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{Cell\+Seq()}{CellSeq()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Cell\+Seq\+::\+Cell\+Seq (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \&}]{data\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{N\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 108 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a92513554c453533b27ebcc1486452a00}\label{class_cell_seq_a92513554c453533b27ebcc1486452a00}} 
-\index{Cell\+Seq@{Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
-\index{Cell\+Seq@{Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{Cell\+Seq()}{CellSeq()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Cell\+Seq\+::\+Cell\+Seq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 56 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a1ed463a49ab2ea5f1ff704b74eb68515}\label{class_cell_seq_a1ed463a49ab2ea5f1ff704b74eb68515}} 
-\index{Cell\+Seq@{Cell\+Seq}!````~Cell\+Seq@{$\sim$\+Cell\+Seq}}
-\index{````~Cell\+Seq@{$\sim$\+Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{$\sim$\+Cell\+Seq()}{~CellSeq()}}
-{\footnotesize\ttfamily Cell\+Seq\+::$\sim$\+Cell\+Seq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 57 of file block-\/bones.\+hpp.
-
-
-
-\subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_cell_seq_afce7ba75badccac90475c853368424ad}\label{class_cell_seq_afce7ba75badccac90475c853368424ad}} 
-\index{Cell\+Seq@{Cell\+Seq}!calc\+\_\+coords@{calc\+\_\+coords}}
-\index{calc\+\_\+coords@{calc\+\_\+coords}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{calc\+\_\+coords()}{calc\_coords()}}
-{\footnotesize\ttfamily void Cell\+Seq\+::calc\+\_\+coords (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 81 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a6588fe1ad4e37f7a845386eca46c13c2}\label{class_cell_seq_a6588fe1ad4e37f7a845386eca46c13c2}} 
-\index{Cell\+Seq@{Cell\+Seq}!compute\+\_\+seq@{compute\+\_\+seq}}
-\index{compute\+\_\+seq@{compute\+\_\+seq}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{compute\+\_\+seq()}{compute\_seq()}}
-{\footnotesize\ttfamily void Cell\+Seq\+::compute\+\_\+seq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 191 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a12235ff9c4a0183ed477679b61c4a19a}\label{class_cell_seq_a12235ff9c4a0183ed477679b61c4a19a}} 
-\index{Cell\+Seq@{Cell\+Seq}!get\+\_\+seq@{get\+\_\+seq}}
-\index{get\+\_\+seq@{get\+\_\+seq}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{get\+\_\+seq()}{get\_seq()}}
-{\footnotesize\ttfamily const std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$ Cell\+Seq\+::get\+\_\+seq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 215 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a994900efdcf73e7619f728d584e92c5a}\label{class_cell_seq_a994900efdcf73e7619f728d584e92c5a}} 
-\index{Cell\+Seq@{Cell\+Seq}!is\+\_\+blocked@{is\+\_\+blocked}}
-\index{is\+\_\+blocked@{is\+\_\+blocked}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{is\+\_\+blocked()}{is\_blocked()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily bool Cell\+Seq\+::is\+\_\+blocked (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 131 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a5a5730ec094c9a4251753302a9504149}\label{class_cell_seq_a5a5730ec094c9a4251753302a9504149}} 
-\index{Cell\+Seq@{Cell\+Seq}!is\+\_\+blocked@{is\+\_\+blocked}}
-\index{is\+\_\+blocked@{is\+\_\+blocked}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{is\+\_\+blocked()}{is\_blocked()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily bool Cell\+Seq\+::is\+\_\+blocked (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 141 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a05687b1000bcce13c0f81c0203363ce7}\label{class_cell_seq_a05687b1000bcce13c0f81c0203363ce7}} 
-\index{Cell\+Seq@{Cell\+Seq}!next@{next}}
-\index{next@{next}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{next()}{next()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily bool Cell\+Seq\+::next (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 152 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a799a65f5ea44cc1c752d39d6e7613364}\label{class_cell_seq_a799a65f5ea44cc1c752d39d6e7613364}} 
-\index{Cell\+Seq@{Cell\+Seq}!next@{next}}
-\index{next@{next}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{next()}{next()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily bool Cell\+Seq\+::next (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&}]{i }\end{DoxyParamCaption}) const}
-
-
-
-\subsection{Member Data Documentation}
-\mbox{\Hypertarget{class_cell_seq_af68709ebb782d4ffc243788c3dd256f4}\label{class_cell_seq_af68709ebb782d4ffc243788c3dd256f4}} 
-\index{Cell\+Seq@{Cell\+Seq}!coords@{coords}}
-\index{coords@{coords}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{coords}{coords}}
-{\footnotesize\ttfamily std\+::pair$<$\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint},\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}$>$ Cell\+Seq\+::coords\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line 50 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a8710fd7f03b3f4423e90f4a2910ad98b}\label{class_cell_seq_a8710fd7f03b3f4423e90f4a2910ad98b}} 
-\index{Cell\+Seq@{Cell\+Seq}!M@{M}}
-\index{M@{M}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{M}{M}}
-{\footnotesize\ttfamily \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} Cell\+Seq\+::M\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line 49 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_a407684cfa214fe0b2d4d1ed25936d037}\label{class_cell_seq_a407684cfa214fe0b2d4d1ed25936d037}} 
-\index{Cell\+Seq@{Cell\+Seq}!N@{N}}
-\index{N@{N}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{N}{N}}
-{\footnotesize\ttfamily \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} Cell\+Seq\+::N\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line 49 of file block-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_cell_seq_af15df5f62488560f36f71336ac5cb0a5}\label{class_cell_seq_af15df5f62488560f36f71336ac5cb0a5}} 
-\index{Cell\+Seq@{Cell\+Seq}!Seq@{Seq}}
-\index{Seq@{Seq}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{Seq}{Seq}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} , \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ Cell\+Seq\+::\+Seq\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
 Definition at line 51 of file block-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_cell_seq_aa813f6c9f5438cc472a0c12078b44c97}\label{class_cell_seq_aa813f6c9f5438cc472a0c12078b44c97}} 
-\index{Cell\+Seq@{Cell\+Seq}!seq\+\_\+computed@{seq\+\_\+computed}}
-\index{seq\+\_\+computed@{seq\+\_\+computed}!Cell\+Seq@{Cell\+Seq}}
-\subsubsection{\texorpdfstring{seq\+\_\+computed}{seq\_computed}}
-{\footnotesize\ttfamily bool Cell\+Seq\+::seq\+\_\+computed = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cell_seq_a1668f6f6768838864d1a85f018be2aa6}\label{class_cell_seq_a1668f6f6768838864d1a85f018be2aa6}} 
+\index{Cell\+Seq@{Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
+\index{Cell\+Seq@{Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
+\subsubsection{\texorpdfstring{Cell\+Seq()}{CellSeq()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{class_cell_seq}{Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_cell_seq}{Cell\+Seq} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 52 of file block-\/bones.\+hpp.
+Definition at line 58 of file block-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_cell_seq_aa08a1ebbb81673baea62c9eb91946f4d}\label{class_cell_seq_aa08a1ebbb81673baea62c9eb91946f4d}} 
+\index{Cell\+Seq@{Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
+\index{Cell\+Seq@{Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
+\subsubsection{\texorpdfstring{Cell\+Seq()}{CellSeq()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{class_cell_seq}{Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_cell_seq}{Cell\+Seq} (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{rule\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 59 of file block-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_cell_seq_aa52be587e92f0d246bd84980c3e8b540}\label{class_cell_seq_aa52be587e92f0d246bd84980c3e8b540}} 
+\index{Cell\+Seq@{Cell\+Seq}!````~Cell\+Seq@{$\sim$\+Cell\+Seq}}
+\index{````~Cell\+Seq@{$\sim$\+Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
+\subsubsection{\texorpdfstring{$\sim$\+Cell\+Seq()}{~CellSeq()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{class_cell_seq}{Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::$\sim$\hyperlink{class_cell_seq}{Cell\+Seq} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 60 of file block-\/bones.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cell_seq_a844b28a2053fd2c6810340a5a9aef945}\label{class_cell_seq_a844b28a2053fd2c6810340a5a9aef945}} 
+\index{Cell\+Seq@{Cell\+Seq}!get\+\_\+seq@{get\+\_\+seq}}
+\index{get\+\_\+seq@{get\+\_\+seq}!Cell\+Seq@{Cell\+Seq}}
+\subsubsection{\texorpdfstring{get\+\_\+seq()}{get\_seq()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_cell_seq}{Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+seq (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$}]{seq,  }\item[{const Array\+\_\+\+Type $\ast$}]{A,  }\item[{bool}]{invert = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 90 of file block-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_cell_seq_a32d85d2f118a68b58d1f7a6095ff42ca}\label{class_cell_seq_a32d85d2f118a68b58d1f7a6095ff42ca}} 
+\index{Cell\+Seq@{Cell\+Seq}!is\+\_\+blocked@{is\+\_\+blocked}}
+\index{is\+\_\+blocked@{is\+\_\+blocked}!Cell\+Seq@{Cell\+Seq}}
+\subsubsection{\texorpdfstring{is\+\_\+blocked()}{is\_blocked()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool \hyperlink{class_cell_seq}{Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::is\+\_\+blocked (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{A,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 80 of file block-\/bones.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_cell_seq_a96562d860b3e66a90330854ff9184ba5}\label{class_cell_seq_a96562d860b3e66a90330854ff9184ba5}} 
+\index{Cell\+Seq@{Cell\+Seq}!rule@{rule}}
+\index{rule@{rule}!Cell\+Seq@{Cell\+Seq}}
+\subsubsection{\texorpdfstring{rule}{rule}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$Array\+\_\+\+Type, Data\+\_\+\+Type$>$ \hyperlink{class_cell_seq}{Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::rule = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 54 of file block-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_cell_seq_a543981f0422f690a3c52da29f82d8e0e}\label{class_cell_seq_a543981f0422f690a3c52da29f82d8e0e}} 
+\index{Cell\+Seq@{Cell\+Seq}!rule\+\_\+data@{rule\+\_\+data}}
+\index{rule\+\_\+data@{rule\+\_\+data}!Cell\+Seq@{Cell\+Seq}}
+\subsubsection{\texorpdfstring{rule\+\_\+data}{rule\_data}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+Data\+\_\+\+Type$\ast$ \hyperlink{class_cell_seq}{Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::rule\+\_\+data = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 55 of file block-\/bones.\+hpp.
 
 
 

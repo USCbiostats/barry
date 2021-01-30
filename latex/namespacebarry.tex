@@ -30,6 +30,10 @@ class \hyperlink{classbarry_1_1_model}{Model}
 \begin{DoxyCompactList}\small\item\em General framework for discrete exponential models. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_power_set}{Power\+Set}
 \item 
+class \hyperlink{classbarry_1_1_rule}{Rule}
+\begin{DoxyCompactList}\small\item\em Sequence of cells indices. \end{DoxyCompactList}\item 
+class \hyperlink{classbarry_1_1_rules}{Rules}
+\item 
 class \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}
 \begin{DoxyCompactList}\small\item\em Count stats for a single Array. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_support}{Support}
@@ -50,6 +54,8 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{
 {\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structbarry_1_1vec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type} = std\+::function$<$ bool(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -59,6 +65,16 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{
 {\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}{vec\+\_\+equal\+\_\+approx} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b, double eps=1e-\/10)
 \item 
 {\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespacebarry_a0343fb4152724d5fa1ffa00d4b6182d9}{vec\+\_\+inner\+\_\+prod} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\bool \hyperlink{namespacebarry_a94a182c49127126893afd500945b98e9}{rule\+\_\+fun\+\_\+default} (const Array\+\_\+\+Type $\ast$A, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j, Data\+\_\+\+Type $\ast$)
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\bool \hyperlink{namespacebarry_a1cb28b501bc7f88c0b3d68d51ad672e1}{default\+\_\+rule} (const Array\+\_\+\+Type $\ast$A, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j, Data\+\_\+\+Type $\ast$)
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\bool \hyperlink{namespacebarry_adec8d64df14ef90c3e94445e791eaa92}{sequence\+\_\+rule\+\_\+zero\+\_\+diag} (const Array\+\_\+\+Type $\ast$A, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j, Data\+\_\+\+Type $\ast$)
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\bool \hyperlink{namespacebarry_a2889c6210e2711e33c34ca9c8b5de7d9}{sequence\+\_\+rule\+\_\+lower\+\_\+tri} (const Array\+\_\+\+Type $\ast$A, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j, Data\+\_\+\+Type $\ast$)
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\bool \hyperlink{namespacebarry_a1433970b34e5904f846a0aa41abef448}{sequence\+\_\+rule\+\_\+upper\+\_\+tri} (const Array\+\_\+\+Type $\ast$A, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j, Data\+\_\+\+Type $\ast$)
 \item 
 double \hyperlink{namespacebarry_a822db820c95822d0e7a51728d9b9858d}{update\+\_\+normalizing\+\_\+constant} (const std\+::vector$<$ double $>$ \&params, const \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{Counts\+\_\+type} \&support)
 \item 
@@ -88,8 +104,17 @@ Definition at line 49 of file barry.\+hpp.
 using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{barry\+::\+Counter\+\_\+fun\+\_\+type} = typedef std\+::function$<$double(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$}
 
 
+\begin{DoxyParams}{Parameters}
+{\em Array\+\_\+\+Type} & a \hyperlink{classbarry_1_1_b_array}{B\+Array} \\
+\hline
+{\em unit,uint} & Focal cell \\
+\hline
+{\em Data\+\_\+\+Type} & Data associated with the function, for example, id of the attribute in the Array. \\
+\hline
+\end{DoxyParams}
 
-Definition at line 108 of file barry.\+hpp.
+
+Definition at line 114 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}\label{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}} 
 \index{barry@{barry}!Counts\+\_\+type@{Counts\+\_\+type}}
@@ -123,6 +148,17 @@ using \hyperlink{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}{barry\+::\+Ro
 
 Definition at line 46 of file barry.\+hpp.
 
+\mbox{\Hypertarget{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}\label{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}} 
+\index{barry@{barry}!Rule\+\_\+fun\+\_\+type@{Rule\+\_\+fun\+\_\+type}}
+\index{Rule\+\_\+fun\+\_\+type@{Rule\+\_\+fun\+\_\+type}!barry@{barry}}
+\subsubsection{\texorpdfstring{Rule\+\_\+fun\+\_\+type}{Rule\_fun\_type}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+using \hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{barry\+::\+Rule\+\_\+fun\+\_\+type} = typedef std\+::function$<$bool(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$}
+
+
+
+Definition at line 117 of file barry.\+hpp.
+
 \mbox{\Hypertarget{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}\label{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}} 
 \index{barry@{barry}!uint@{uint}}
 \index{uint@{uint}!barry@{barry}}
@@ -136,6 +172,17 @@ Definition at line 13 of file barry.\+hpp.
 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{namespacebarry_a1cb28b501bc7f88c0b3d68d51ad672e1}\label{namespacebarry_a1cb28b501bc7f88c0b3d68d51ad672e1}} 
+\index{barry@{barry}!default\+\_\+rule@{default\+\_\+rule}}
+\index{default\+\_\+rule@{default\+\_\+rule}!barry@{barry}}
+\subsubsection{\texorpdfstring{default\+\_\+rule()}{default\_rule()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool barry\+::default\+\_\+rule (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{A,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{i,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{j,  }\item[{Data\+\_\+\+Type $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 43 of file barry.\+hpp.
+
 \mbox{\Hypertarget{namespacebarry_a22bfc7c4a1f5b5922edfd1101b8ffe3d}\label{namespacebarry_a22bfc7c4a1f5b5922edfd1101b8ffe3d}} 
 \index{barry@{barry}!keygen\+\_\+default@{keygen\+\_\+default}}
 \index{keygen\+\_\+default@{keygen\+\_\+default}!barry@{barry}}
@@ -160,6 +207,50 @@ Definition at line 59 of file barry.\+hpp.
 
 
 Definition at line 30 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a94a182c49127126893afd500945b98e9}\label{namespacebarry_a94a182c49127126893afd500945b98e9}} 
+\index{barry@{barry}!rule\+\_\+fun\+\_\+default@{rule\+\_\+fun\+\_\+default}}
+\index{rule\+\_\+fun\+\_\+default@{rule\+\_\+fun\+\_\+default}!barry@{barry}}
+\subsubsection{\texorpdfstring{rule\+\_\+fun\+\_\+default()}{rule\_fun\_default()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool barry\+::rule\+\_\+fun\+\_\+default (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{A,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{i,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{j,  }\item[{Data\+\_\+\+Type $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 11 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a2889c6210e2711e33c34ca9c8b5de7d9}\label{namespacebarry_a2889c6210e2711e33c34ca9c8b5de7d9}} 
+\index{barry@{barry}!sequence\+\_\+rule\+\_\+lower\+\_\+tri@{sequence\+\_\+rule\+\_\+lower\+\_\+tri}}
+\index{sequence\+\_\+rule\+\_\+lower\+\_\+tri@{sequence\+\_\+rule\+\_\+lower\+\_\+tri}!barry@{barry}}
+\subsubsection{\texorpdfstring{sequence\+\_\+rule\+\_\+lower\+\_\+tri()}{sequence\_rule\_lower\_tri()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool barry\+::sequence\+\_\+rule\+\_\+lower\+\_\+tri (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{A,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{i,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{j,  }\item[{Data\+\_\+\+Type $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 131 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_a1433970b34e5904f846a0aa41abef448}\label{namespacebarry_a1433970b34e5904f846a0aa41abef448}} 
+\index{barry@{barry}!sequence\+\_\+rule\+\_\+upper\+\_\+tri@{sequence\+\_\+rule\+\_\+upper\+\_\+tri}}
+\index{sequence\+\_\+rule\+\_\+upper\+\_\+tri@{sequence\+\_\+rule\+\_\+upper\+\_\+tri}!barry@{barry}}
+\subsubsection{\texorpdfstring{sequence\+\_\+rule\+\_\+upper\+\_\+tri()}{sequence\_rule\_upper\_tri()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool barry\+::sequence\+\_\+rule\+\_\+upper\+\_\+tri (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{A,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{i,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{j,  }\item[{Data\+\_\+\+Type $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 137 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_adec8d64df14ef90c3e94445e791eaa92}\label{namespacebarry_adec8d64df14ef90c3e94445e791eaa92}} 
+\index{barry@{barry}!sequence\+\_\+rule\+\_\+zero\+\_\+diag@{sequence\+\_\+rule\+\_\+zero\+\_\+diag}}
+\index{sequence\+\_\+rule\+\_\+zero\+\_\+diag@{sequence\+\_\+rule\+\_\+zero\+\_\+diag}!barry@{barry}}
+\subsubsection{\texorpdfstring{sequence\+\_\+rule\+\_\+zero\+\_\+diag()}{sequence\_rule\_zero\_diag()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool barry\+::sequence\+\_\+rule\+\_\+zero\+\_\+diag (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{A,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{i,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{j,  }\item[{Data\+\_\+\+Type $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 125 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a822db820c95822d0e7a51728d9b9858d}\label{namespacebarry_a822db820c95822d0e7a51728d9b9858d}} 
 \index{barry@{barry}!update\+\_\+normalizing\+\_\+constant@{update\+\_\+normalizing\+\_\+constant}}
@@ -192,7 +283,7 @@ Compares if -\/a-\/ and -\/b-\/ are equal.
 \end{DoxyReturn}
 
 
-Definition at line 117 of file barry.\+hpp.
+Definition at line 125 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}\label{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}} 
 \index{barry@{barry}!vec\+\_\+equal\+\_\+approx@{vec\+\_\+equal\+\_\+approx}}
@@ -203,7 +294,7 @@ bool barry\+::vec\+\_\+equal\+\_\+approx (\begin{DoxyParamCaption}\item[{const s
 
 
 
-Definition at line 135 of file barry.\+hpp.
+Definition at line 143 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a0343fb4152724d5fa1ffa00d4b6182d9}\label{namespacebarry_a0343fb4152724d5fa1ffa00d4b6182d9}} 
 \index{barry@{barry}!vec\+\_\+inner\+\_\+prod@{vec\+\_\+inner\+\_\+prod}}
@@ -214,5 +305,5 @@ T barry\+::vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{const std\+:
 
 
 
-Definition at line 155 of file barry.\+hpp.
+Definition at line 163 of file barry.\+hpp.
 

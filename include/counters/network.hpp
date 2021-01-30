@@ -77,6 +77,8 @@ typedef CounterVector< Network, NetCounterData> NetCounterVector;
 typedef Support<Network, NetCounterData > NetSupport;
 typedef StatsCounter<Network, NetCounterData> NetStatsCounter;
 typedef Model<Network, NetCounterData> NetModel;
+typedef Rule<Network,bool> NetRule;
+typedef Rules<Network,bool> NetRules;
 ///@}
 
 /**@name Macros for defining counters
@@ -88,6 +90,18 @@ typedef Model<Network, NetCounterData> NetModel;
 /**Lambda function for definition of a network counter function*/
 #define NETWORK_COUNTER_LAMBDA(a) Counter_fun_type<Network, NetCounterData> a = \
   [](const Network * Array, uint i, uint j, NetCounterData * data)
+///@}
+
+
+/**@name Macros for defining rules
+ */
+///@{
+/**Function for definition of a network counter function*/
+#define NETWORK_RULE(a) inline bool (a) \
+(const Network * Array, uint i, uint j, bool * data)
+/**Lambda function for definition of a network counter function*/
+#define NETWORK_RULE_LAMBDA(a) Rule_fun_type<Network, bool> a = \
+[](const Network * Array, uint i, uint j, bool * data)
 ///@}
 
 /**@name Counters for network models
@@ -700,6 +714,26 @@ inline void counter_degree(
   return;  
 }
   
+///@}
+
+
+/**@name Rules for network models
+ * @param rules A pointer to a `NetRules` object (`Rules`<`Network`, `bool`>).
+ */
+///@{
+// -----------------------------------------------------------------------------
+/**@brief Number of edges */
+inline void rules_zerodiag(NetRules * rules) {
+  
+  NETWORK_RULE_LAMBDA(no_self_tie) {
+    return i == j;
+  };
+  
+  rules->add_rule(no_self_tie);
+  
+  return;
+}
+
 ///@}
   
 #endif

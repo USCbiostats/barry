@@ -81,7 +81,10 @@ inline std::vector< double > keygen_default(const Array_Type & Array_) {
  * then the support needs to be fully computed only once.
  * 
  */
-template <typename Array_Type = BArray<>, typename Data_Type = bool>
+template <
+  typename Array_Type = BArray<>,
+  typename Data_Counter_Type = bool,
+  typename Data_Rule_Type = bool>
 class Model {
 
 public:
@@ -127,9 +130,10 @@ public:
    * @details Arguments are recycled to save memory and computation.
    */
   ///@[{
-  CounterVector<Array_Type,Data_Type> counters;
-  Support<Array_Type,Data_Type>       support_fun;
-  StatsCounter<Array_Type,Data_Type>  counter_fun;
+  CounterVector<Array_Type,Data_Counter_Type> counters;
+  Rules<Array_Type,Data_Rule_Type>            rules;
+  Support<Array_Type,Data_Counter_Type>       support_fun;
+  StatsCounter<Array_Type,Data_Counter_Type>  counter_fun;
   ///@}
   
   /**@brief Vector of the previously used parameters */
@@ -153,13 +157,27 @@ public:
    * support and the actual counter function.
    */
   ///@{
-  void add_counter(Counter<Array_Type, Data_Type> & counter);
-  void add_counter(Counter<Array_Type, Data_Type> * counter);
+  void add_counter(Counter<Array_Type, Data_Counter_Type> & counter);
+  void add_counter(Counter<Array_Type, Data_Counter_Type> * counter);
   void add_counter(
-    Counter_fun_type<Array_Type,Data_Type> count_fun_,
-    Counter_fun_type<Array_Type,Data_Type> init_fun_    = nullptr,
-    Data_Type *                            data_        = nullptr,
+    Counter_fun_type<Array_Type,Data_Counter_Type> count_fun_,
+    Counter_fun_type<Array_Type,Data_Counter_Type> init_fun_    = nullptr,
+    Data_Counter_Type *                            data_        = nullptr,
     bool                                   delete_data_ = false
+  );
+  ///@}
+  
+  /**@name Wrappers for the `Rules` member. 
+   * @details These will add rules to the model, which are shared by the
+   * support and the actual counter function.
+   */
+  ///@{
+  void add_rule(Rule<Array_Type, Data_Rule_Type> & rule);
+  void add_rule(Rule<Array_Type, Data_Rule_Type> * rule);
+  void add_rule(
+      Rule_fun_type<Array_Type,Data_Rule_Type> count_fun_,
+      Data_Rule_Type * data_ = nullptr,
+      bool delete_data_ = false
   );
   ///@}
   

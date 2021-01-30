@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['keygen',['keygen',['../classbarry_1_1_model.html#af0375943f9e6f9df15b305ed2bfd17a7',1,'barry::Model::keygen()'],['../class_model.html#a087db7c5e2ee47f4353d2e181223dd5a',1,'Model::keygen()']]],
-  ['keys2support',['keys2support',['../classbarry_1_1_model.html#af6c9a2fbf53e9e12237fc200f3d8ffc2',1,'barry::Model::keys2support()'],['../class_model.html#a83d72b83e29ccaf09a5a05d2a67d0f05',1,'Model::keys2support()']]]
+  ['keygen',['keygen',['../classbarry_1_1_model.html#a68f7422006423a4f0a00c3e4f5d0e1d5',1,'barry::Model::keygen()'],['../class_model.html#a16561e15c0abbb080927382b30d43e35',1,'Model::keygen()']]],
+  ['keys2support',['keys2support',['../classbarry_1_1_model.html#a802069270d02f2e2ad7e5f2adb51c2bc',1,'barry::Model::keys2support()'],['../class_model.html#a2a81190ac618b04479686411d02b3c5f',1,'Model::keys2support()']]]
 ];

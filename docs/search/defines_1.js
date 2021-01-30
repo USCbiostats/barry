@@ -7,5 +7,7 @@ var searchData=
   ['barray_5fmeat_5fhpp',['BARRAY_MEAT_HPP',['../barry_8hpp.html#abfe11a04b2bd2b5c4493824232f61731',1,'barry.hpp']]],
   ['barray_5fnetwork_5fh',['BARRAY_NETWORK_H',['../barry_8hpp.html#a800f859ee09f9b4c00f96bbd2e32bbdb',1,'BARRAY_NETWORK_H():&#160;barry.hpp'],['../network_8hpp.html#a800f859ee09f9b4c00f96bbd2e32bbdb',1,'BARRAY_NETWORK_H():&#160;network.hpp']]],
   ['barray_5fphylo_5fh',['BARRAY_PHYLO_H',['../barry_8hpp.html#a3a004348f8af372717ca85a1aeb21f36',1,'barry.hpp']]],
+  ['barray_5frules_5fbones_5fhpp',['BARRAY_RULES_BONES_HPP',['../barry_8hpp.html#a334efcd2fa320e5b31d9a9971180d06f',1,'barry.hpp']]],
+  ['barray_5frules_5fmeat_5fhpp',['BARRAY_RULES_MEAT_HPP',['../barry_8hpp.html#a0a755661e645acb75eb9e2c7197d508f',1,'barry.hpp']]],
   ['barray_5ftypedefs_5fhpp',['BARRAY_TYPEDEFS_HPP',['../barry_8hpp.html#a368e534905c6c10d975f70debc4cbef8',1,'barry.hpp']]]
 ];

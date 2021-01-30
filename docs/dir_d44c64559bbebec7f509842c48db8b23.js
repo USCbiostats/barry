@@ -11,6 +11,8 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "model-bones.hpp", "model-bones_8hpp.html", "model-bones_8hpp" ],
     [ "model-meat.hpp", "model-meat_8hpp.html", "model-meat_8hpp" ],
     [ "powerset.hpp", "powerset_8hpp.html", "powerset_8hpp" ],
+    [ "rules-bones.hpp", "rules-bones_8hpp.html", "rules-bones_8hpp" ],
+    [ "rules-meat.hpp", "rules-meat_8hpp.html", "rules-meat_8hpp" ],
     [ "statscounter.hpp", "statscounter_8hpp.html", "statscounter_8hpp" ],
     [ "statsdb.hpp", "statsdb_8hpp.html", "statsdb_8hpp" ],
     [ "support.hpp", "support_8hpp.html", "support_8hpp" ],

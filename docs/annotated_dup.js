@@ -15,6 +15,8 @@ var annotated_dup =
     [ "NetworkData", "class_network_data.html", "class_network_data" ],
     [ "NodeData", "class_node_data.html", "class_node_data" ],
     [ "PowerSet", "class_power_set.html", "class_power_set" ],
+    [ "Rule", "class_rule.html", "class_rule" ],
+    [ "Rules", "class_rules.html", "class_rules" ],
     [ "StatsCounter", "class_stats_counter.html", "class_stats_counter" ],
     [ "Support", "class_support.html", "class_support" ],
     [ "vecHasher", "structvec_hasher.html", "structvec_hasher" ]

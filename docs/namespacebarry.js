@@ -10,6 +10,8 @@ var namespacebarry =
     [ "FreqTable", "classbarry_1_1_freq_table.html", "classbarry_1_1_freq_table" ],
     [ "Model", "classbarry_1_1_model.html", "classbarry_1_1_model" ],
     [ "PowerSet", "classbarry_1_1_power_set.html", "classbarry_1_1_power_set" ],
+    [ "Rule", "classbarry_1_1_rule.html", "classbarry_1_1_rule" ],
+    [ "Rules", "classbarry_1_1_rules.html", "classbarry_1_1_rules" ],
     [ "StatsCounter", "classbarry_1_1_stats_counter.html", "classbarry_1_1_stats_counter" ],
     [ "Support", "classbarry_1_1_support.html", "classbarry_1_1_support" ],
     [ "vecHasher", "structbarry_1_1vec_hasher.html", "structbarry_1_1vec_hasher" ]

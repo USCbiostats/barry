@@ -1,5 +1,5 @@
-\hypertarget{classbarry_1_1_cell_seq}{}\section{barry\+:\+:Cell\+Seq Class Reference}
-\label{classbarry_1_1_cell_seq}\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
+\hypertarget{classbarry_1_1_cell_seq}{}\section{barry\+:\+:Cell\+Seq$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Class Template Reference}
+\label{classbarry_1_1_cell_seq}\index{barry\+::\+Cell\+Seq$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$@{barry\+::\+Cell\+Seq$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
 
 
 Sequence of cells indices.  
@@ -12,202 +12,120 @@ Sequence of cells indices.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classbarry_1_1_cell_seq_a3f1fcc18a3e9a9572d403791368f0db7}{Cell\+Seq} (std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ \&data\+\_\+, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} N\+\_\+, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} M\+\_\+)
+\hyperlink{classbarry_1_1_cell_seq_a7e9250af55622cdf1429d23e1052635c}{Cell\+Seq} ()
 \item 
-\hyperlink{classbarry_1_1_cell_seq_adaef92a0551e50ac803c2f8f2d54d6a9}{Cell\+Seq} ()
+\hyperlink{classbarry_1_1_cell_seq_af7ea37359c8cd87e45394482b7e27b41}{Cell\+Seq} (\hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ rule\+\_\+)
 \item 
-\hyperlink{classbarry_1_1_cell_seq_a3af19bd8e8ea575565bc0fa9fe66158d}{$\sim$\+Cell\+Seq} ()
+\hyperlink{classbarry_1_1_cell_seq_a8cb52b7bdcc9181df159a049c60d04f9}{$\sim$\+Cell\+Seq} ()
 \item 
-bool \hyperlink{classbarry_1_1_cell_seq_a994900efdcf73e7619f728d584e92c5a}{is\+\_\+blocked} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&i)
+bool \hyperlink{classbarry_1_1_cell_seq_a32d85d2f118a68b58d1f7a6095ff42ca}{is\+\_\+blocked} (const Array\+\_\+\+Type $\ast$A, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j)
 \item 
-bool \hyperlink{classbarry_1_1_cell_seq_a5a5730ec094c9a4251753302a9504149}{is\+\_\+blocked} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&j)
-\item 
-bool \hyperlink{classbarry_1_1_cell_seq_a05687b1000bcce13c0f81c0203363ce7}{next} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&j) const
-\item 
-bool \hyperlink{classbarry_1_1_cell_seq_aa294a7d0620ff938150094b0b3e895a5}{next} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&i) const
-\item 
-void \hyperlink{classbarry_1_1_cell_seq_a6588fe1ad4e37f7a845386eca46c13c2}{compute\+\_\+seq} ()
-\item 
-void \hyperlink{classbarry_1_1_cell_seq_aa3814680024ba20695c8846c4dae7036}{calc\+\_\+coords} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&i)
-\item 
-const std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ $\ast$ \hyperlink{classbarry_1_1_cell_seq_a12235ff9c4a0183ed477679b61c4a19a}{get\+\_\+seq} ()
+void \hyperlink{classbarry_1_1_cell_seq_a844b28a2053fd2c6810340a5a9aef945}{get\+\_\+seq} (std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ $\ast$seq, const Array\+\_\+\+Type $\ast$A, bool invert=false)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_cell_seq_aa870f5b3789fc9abe1399351f443ccb0}{N}
+\hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_cell_seq_a57dfbe0d6e42b3828cb8d0ba8ddc8640}{rule} = nullptr
 \item 
-\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_cell_seq_acd15aaca4fc9160a7e89d68cec310fba}{M}
-\item 
-std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ \hyperlink{classbarry_1_1_cell_seq_a40aa32ec41df99a1db9a58fe578b543f}{coords}
-\item 
-std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ \hyperlink{classbarry_1_1_cell_seq_a4fa35bd68111dc58761e74aa1f9f01d3}{Seq}
-\item 
-bool \hyperlink{classbarry_1_1_cell_seq_ae494832512818af7c82315c7f5655db0}{seq\+\_\+computed} = false
+Data\+\_\+\+Type $\ast$ \hyperlink{classbarry_1_1_cell_seq_ad8d6cd5a38746d02d98f4fc8b7624863}{rule\+\_\+data} = nullptr
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+\subsubsection*{template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$\newline
+class barry\+::\+Cell\+Seq$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
+
 Sequence of cells indices. 
-
-
-
-Definition at line 43 of file barry.\+hpp.
-
-
-
-\subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_a3f1fcc18a3e9a9572d403791368f0db7}\label{classbarry_1_1_cell_seq_a3f1fcc18a3e9a9572d403791368f0db7}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
-\index{Cell\+Seq@{Cell\+Seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{Cell\+Seq()}{CellSeq()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Cell\+Seq\+::\+Cell\+Seq (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ \&}]{data\+\_\+,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{N\+\_\+,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 108 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_adaef92a0551e50ac803c2f8f2d54d6a9}\label{classbarry_1_1_cell_seq_adaef92a0551e50ac803c2f8f2d54d6a9}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
-\index{Cell\+Seq@{Cell\+Seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{Cell\+Seq()}{CellSeq()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily barry\+::\+Cell\+Seq\+::\+Cell\+Seq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 56 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_a3af19bd8e8ea575565bc0fa9fe66158d}\label{classbarry_1_1_cell_seq_a3af19bd8e8ea575565bc0fa9fe66158d}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!````~Cell\+Seq@{$\sim$\+Cell\+Seq}}
-\index{````~Cell\+Seq@{$\sim$\+Cell\+Seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{$\sim$\+Cell\+Seq()}{~CellSeq()}}
-{\footnotesize\ttfamily barry\+::\+Cell\+Seq\+::$\sim$\+Cell\+Seq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 57 of file barry.\+hpp.
-
-
-
-\subsection{Member Function Documentation}
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_aa3814680024ba20695c8846c4dae7036}\label{classbarry_1_1_cell_seq_aa3814680024ba20695c8846c4dae7036}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!calc\+\_\+coords@{calc\+\_\+coords}}
-\index{calc\+\_\+coords@{calc\+\_\+coords}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{calc\+\_\+coords()}{calc\_coords()}}
-{\footnotesize\ttfamily void barry\+::\+Cell\+Seq\+::calc\+\_\+coords (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 81 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_a6588fe1ad4e37f7a845386eca46c13c2}\label{classbarry_1_1_cell_seq_a6588fe1ad4e37f7a845386eca46c13c2}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!compute\+\_\+seq@{compute\+\_\+seq}}
-\index{compute\+\_\+seq@{compute\+\_\+seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{compute\+\_\+seq()}{compute\_seq()}}
-{\footnotesize\ttfamily void Cell\+Seq\+::compute\+\_\+seq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 191 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_a12235ff9c4a0183ed477679b61c4a19a}\label{classbarry_1_1_cell_seq_a12235ff9c4a0183ed477679b61c4a19a}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!get\+\_\+seq@{get\+\_\+seq}}
-\index{get\+\_\+seq@{get\+\_\+seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{get\+\_\+seq()}{get\_seq()}}
-{\footnotesize\ttfamily const std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ $\ast$ Cell\+Seq\+::get\+\_\+seq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 215 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_a994900efdcf73e7619f728d584e92c5a}\label{classbarry_1_1_cell_seq_a994900efdcf73e7619f728d584e92c5a}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!is\+\_\+blocked@{is\+\_\+blocked}}
-\index{is\+\_\+blocked@{is\+\_\+blocked}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{is\+\_\+blocked()}{is\_blocked()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily bool Cell\+Seq\+::is\+\_\+blocked (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 131 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_a5a5730ec094c9a4251753302a9504149}\label{classbarry_1_1_cell_seq_a5a5730ec094c9a4251753302a9504149}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!is\+\_\+blocked@{is\+\_\+blocked}}
-\index{is\+\_\+blocked@{is\+\_\+blocked}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{is\+\_\+blocked()}{is\_blocked()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily bool Cell\+Seq\+::is\+\_\+blocked (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&}]{i,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 141 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_a05687b1000bcce13c0f81c0203363ce7}\label{classbarry_1_1_cell_seq_a05687b1000bcce13c0f81c0203363ce7}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!next@{next}}
-\index{next@{next}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{next()}{next()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily bool Cell\+Seq\+::next (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&}]{i,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 152 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_aa294a7d0620ff938150094b0b3e895a5}\label{classbarry_1_1_cell_seq_aa294a7d0620ff938150094b0b3e895a5}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!next@{next}}
-\index{next@{next}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{next()}{next()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily bool barry\+::\+Cell\+Seq\+::next (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \&}]{i }\end{DoxyParamCaption}) const}
-
-
-
-\subsection{Member Data Documentation}
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_a40aa32ec41df99a1db9a58fe578b543f}\label{classbarry_1_1_cell_seq_a40aa32ec41df99a1db9a58fe578b543f}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!coords@{coords}}
-\index{coords@{coords}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{coords}{coords}}
-{\footnotesize\ttfamily std\+::pair$<$\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint},\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}$>$ barry\+::\+Cell\+Seq\+::coords\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line 50 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_acd15aaca4fc9160a7e89d68cec310fba}\label{classbarry_1_1_cell_seq_acd15aaca4fc9160a7e89d68cec310fba}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!M@{M}}
-\index{M@{M}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{M}{M}}
-{\footnotesize\ttfamily \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} barry\+::\+Cell\+Seq\+::M\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line 49 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_aa870f5b3789fc9abe1399351f443ccb0}\label{classbarry_1_1_cell_seq_aa870f5b3789fc9abe1399351f443ccb0}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!N@{N}}
-\index{N@{N}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{N}{N}}
-{\footnotesize\ttfamily \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} barry\+::\+Cell\+Seq\+::N\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line 49 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_a4fa35bd68111dc58761e74aa1f9f01d3}\label{classbarry_1_1_cell_seq_a4fa35bd68111dc58761e74aa1f9f01d3}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!Seq@{Seq}}
-\index{Seq@{Seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{Seq}{Seq}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} , \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ barry\+::\+Cell\+Seq\+::\+Seq\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
 Definition at line 51 of file barry.\+hpp.
 
-\mbox{\Hypertarget{classbarry_1_1_cell_seq_ae494832512818af7c82315c7f5655db0}\label{classbarry_1_1_cell_seq_ae494832512818af7c82315c7f5655db0}} 
-\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!seq\+\_\+computed@{seq\+\_\+computed}}
-\index{seq\+\_\+computed@{seq\+\_\+computed}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
-\subsubsection{\texorpdfstring{seq\+\_\+computed}{seq\_computed}}
-{\footnotesize\ttfamily bool barry\+::\+Cell\+Seq\+::seq\+\_\+computed = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbarry_1_1_cell_seq_a7e9250af55622cdf1429d23e1052635c}\label{classbarry_1_1_cell_seq_a7e9250af55622cdf1429d23e1052635c}} 
+\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
+\index{Cell\+Seq@{Cell\+Seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
+\subsubsection{\texorpdfstring{Cell\+Seq()}{CellSeq()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{classbarry_1_1_cell_seq}{barry\+::\+Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_cell_seq}{Cell\+Seq} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 52 of file barry.\+hpp.
+Definition at line 58 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_cell_seq_af7ea37359c8cd87e45394482b7e27b41}\label{classbarry_1_1_cell_seq_af7ea37359c8cd87e45394482b7e27b41}} 
+\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!Cell\+Seq@{Cell\+Seq}}
+\index{Cell\+Seq@{Cell\+Seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
+\subsubsection{\texorpdfstring{Cell\+Seq()}{CellSeq()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{classbarry_1_1_cell_seq}{barry\+::\+Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_cell_seq}{Cell\+Seq} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{rule\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 59 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_cell_seq_a8cb52b7bdcc9181df159a049c60d04f9}\label{classbarry_1_1_cell_seq_a8cb52b7bdcc9181df159a049c60d04f9}} 
+\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!````~Cell\+Seq@{$\sim$\+Cell\+Seq}}
+\index{````~Cell\+Seq@{$\sim$\+Cell\+Seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
+\subsubsection{\texorpdfstring{$\sim$\+Cell\+Seq()}{~CellSeq()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{classbarry_1_1_cell_seq}{barry\+::\+Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::$\sim$\hyperlink{classbarry_1_1_cell_seq}{Cell\+Seq} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 60 of file barry.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbarry_1_1_cell_seq_a844b28a2053fd2c6810340a5a9aef945}\label{classbarry_1_1_cell_seq_a844b28a2053fd2c6810340a5a9aef945}} 
+\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!get\+\_\+seq@{get\+\_\+seq}}
+\index{get\+\_\+seq@{get\+\_\+seq}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
+\subsubsection{\texorpdfstring{get\+\_\+seq()}{get\_seq()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_cell_seq}{Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+seq (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ $\ast$}]{seq,  }\item[{const Array\+\_\+\+Type $\ast$}]{A,  }\item[{bool}]{invert = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 90 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_cell_seq_a32d85d2f118a68b58d1f7a6095ff42ca}\label{classbarry_1_1_cell_seq_a32d85d2f118a68b58d1f7a6095ff42ca}} 
+\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!is\+\_\+blocked@{is\+\_\+blocked}}
+\index{is\+\_\+blocked@{is\+\_\+blocked}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
+\subsubsection{\texorpdfstring{is\+\_\+blocked()}{is\_blocked()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool \hyperlink{classbarry_1_1_cell_seq}{Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::is\+\_\+blocked (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{A,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{i,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 80 of file barry.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classbarry_1_1_cell_seq_a57dfbe0d6e42b3828cb8d0ba8ddc8640}\label{classbarry_1_1_cell_seq_a57dfbe0d6e42b3828cb8d0ba8ddc8640}} 
+\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!rule@{rule}}
+\index{rule@{rule}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
+\subsubsection{\texorpdfstring{rule}{rule}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type}$<$Array\+\_\+\+Type, Data\+\_\+\+Type$>$ \hyperlink{classbarry_1_1_cell_seq}{barry\+::\+Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::rule = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 54 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_cell_seq_ad8d6cd5a38746d02d98f4fc8b7624863}\label{classbarry_1_1_cell_seq_ad8d6cd5a38746d02d98f4fc8b7624863}} 
+\index{barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}!rule\+\_\+data@{rule\+\_\+data}}
+\index{rule\+\_\+data@{rule\+\_\+data}!barry\+::\+Cell\+Seq@{barry\+::\+Cell\+Seq}}
+\subsubsection{\texorpdfstring{rule\+\_\+data}{rule\_data}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+Data\+\_\+\+Type$\ast$ \hyperlink{classbarry_1_1_cell_seq}{barry\+::\+Cell\+Seq}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::rule\+\_\+data = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 55 of file barry.\+hpp.
 
 
 

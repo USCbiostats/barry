@@ -1,5 +1,5 @@
-\hypertarget{classbarry_1_1_power_set}{}\section{barry\+:\+:Power\+Set$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ Class Template Reference}
-\label{classbarry_1_1_power_set}\index{barry\+::\+Power\+Set$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$@{barry\+::\+Power\+Set$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}}
+\hypertarget{classbarry_1_1_power_set}{}\section{barry\+:\+:Power\+Set$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ Class Template Reference}
+\label{classbarry_1_1_power_set}\index{barry\+::\+Power\+Set$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$@{barry\+::\+Power\+Set$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$}}
 
 
 {\ttfamily \#include $<$barry.\+hpp$>$}
@@ -7,170 +7,226 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classbarry_1_1_power_set_ad9e3904c7f7052d724603bc28acd18d1}{Power\+Set} ()
+\hyperlink{classbarry_1_1_power_set_ab2fa4e40323bb9225225bb52b86ff345}{Power\+Set} ()
 \item 
-\hyperlink{classbarry_1_1_power_set_a730140941912ef1b3ae1b5b85437268c}{Power\+Set} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} N\+\_\+, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} M\+\_\+)
+\hyperlink{classbarry_1_1_power_set_a96a31964644ea81991fe103a2a8bfb1f}{Power\+Set} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} N\+\_\+, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} M\+\_\+)
 \item 
-\hyperlink{classbarry_1_1_power_set_a0fc9f4aeb2c780033f5909170f215c99}{$\sim$\+Power\+Set} ()
+\hyperlink{classbarry_1_1_power_set_a3b9c1162ec54be631e1f01d085177b8d}{$\sim$\+Power\+Set} ()
 \item 
-void \hyperlink{classbarry_1_1_power_set_a93e31ba8891642db6ecf0fca82c71f6a}{calc} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i=0u, B\+Array$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$a0=nullptr)
+void \hyperlink{classbarry_1_1_power_set_ab15a2b22478e72f351b8ac11392d22c6}{calc} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i=0u, Array\+\_\+\+Type $\ast$a0=nullptr)
 \item 
-void \hyperlink{classbarry_1_1_power_set_a8074f5a6d44b6b7f6bad56d15576eb9f}{reset} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} N\+\_\+, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} M\+\_\+)
+void \hyperlink{classbarry_1_1_power_set_aba11dd8802cd2eb529c7c30b55994248}{reset} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} N\+\_\+, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} M\+\_\+)
 \item 
-const std\+::vector$<$ \hyperlink{classbarry_1_1_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $>$ $\ast$ \hyperlink{classbarry_1_1_power_set_ab909404d85f177a3cd0b8cca1eaf4efd}{get\+\_\+data\+\_\+ptr} () const
+const std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$ \hyperlink{classbarry_1_1_power_set_a80b283b1ac115f1be049a09f1a69586a}{get\+\_\+data\+\_\+ptr} () const
 \item 
-std\+::vector$<$ \hyperlink{classbarry_1_1_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $>$ \hyperlink{classbarry_1_1_power_set_a273dae1795f3d663ef031c50bd218788}{get\+\_\+data} () const
+std\+::vector$<$ Array\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_power_set_a53ca37c9cb14abd6f61bc0127ac9d067}{get\+\_\+data} () const
 \end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Wrappers for the `\+Rules` member.}\par
+{\em These will add rules to the model, which are shared by the support and the actual counter function. }\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classbarry_1_1_power_set_a00ee318a40da91bcf0bff79bf71454ab}{add\+\_\+rule} (\hyperlink{classbarry_1_1_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \&rule)
+\item 
+void \hyperlink{classbarry_1_1_power_set_a6cb8fb8f09b4c190e2ac6c07daa1241e}{add\+\_\+rule} (\hyperlink{classbarry_1_1_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$rule)
+\item 
+void \hyperlink{classbarry_1_1_power_set_aae5eae12186fff037efa3884ac2b3dcc}{add\+\_\+rule} (\hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, Data\+\_\+\+Rule\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+\end{DoxyCompactItemize}
+\end{Indent}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \hyperlink{classbarry_1_1_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $>$ \hyperlink{classbarry_1_1_power_set_a0484531e1f473af904d8045d375dabd7}{data}
+std\+::vector$<$ Array\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_power_set_a90fecd17a9d1f36153c07bc929b1630f}{data}
 \item 
-\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set_aaa3bac8806b743aa84b18eb904b2f034}{N}
+\hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_power_set_ad5486f771bb3161b951100192ce1b2e5}{rules}
 \item 
-\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set_a33f837a6cdcbaec8d06a3ce3311ea4ca}{M}
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set_adea0f6434b17b3fc391475a11db00c2f}{N}
 \item 
-\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set_a5d318c7894867263313e2907c8821c70}{counter}
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set_ae64182a21f9969a2c9fdf73ab23a6c5e}{M}
+\item 
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set_a54ba0ae826c51b9bd34235bdbe172851}{counter}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\subsubsection*{template$<$typename Cell\+\_\+\+Type = bool, typename Data\+\_\+\+Type = bool$>$\newline
-class barry\+::\+Power\+Set$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
+\subsubsection*{template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$\newline
+class barry\+::\+Power\+Set$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$}
 
 
 
-Definition at line 15 of file barry.\+hpp.
+Definition at line 16 of file barry.\+hpp.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classbarry_1_1_power_set_ad9e3904c7f7052d724603bc28acd18d1}\label{classbarry_1_1_power_set_ad9e3904c7f7052d724603bc28acd18d1}} 
+\mbox{\Hypertarget{classbarry_1_1_power_set_ab2fa4e40323bb9225225bb52b86ff345}\label{classbarry_1_1_power_set_ab2fa4e40323bb9225225bb52b86ff345}} 
 \index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!Power\+Set@{Power\+Set}}
 \index{Power\+Set@{Power\+Set}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
 \subsubsection{\texorpdfstring{Power\+Set()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_power_set}{Power\+Set} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 25 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_power_set_a730140941912ef1b3ae1b5b85437268c}\label{classbarry_1_1_power_set_a730140941912ef1b3ae1b5b85437268c}} 
-\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!Power\+Set@{Power\+Set}}
-\index{Power\+Set@{Power\+Set}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
-\subsubsection{\texorpdfstring{Power\+Set()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_power_set}{Power\+Set} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{N\+\_\+,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 26 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_power_set_a0fc9f4aeb2c780033f5909170f215c99}\label{classbarry_1_1_power_set_a0fc9f4aeb2c780033f5909170f215c99}} 
-\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!````~Power\+Set@{$\sim$\+Power\+Set}}
-\index{````~Power\+Set@{$\sim$\+Power\+Set}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
-\subsubsection{\texorpdfstring{$\sim$\+Power\+Set()}{~PowerSet()}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::$\sim$\hyperlink{classbarry_1_1_power_set}{Power\+Set} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_power_set}{Power\+Set} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 27 of file barry.\+hpp.
 
+\mbox{\Hypertarget{classbarry_1_1_power_set_a96a31964644ea81991fe103a2a8bfb1f}\label{classbarry_1_1_power_set_a96a31964644ea81991fe103a2a8bfb1f}} 
+\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!Power\+Set@{Power\+Set}}
+\index{Power\+Set@{Power\+Set}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
+\subsubsection{\texorpdfstring{Power\+Set()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_power_set}{Power\+Set} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{N\+\_\+,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 28 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_power_set_a3b9c1162ec54be631e1f01d085177b8d}\label{classbarry_1_1_power_set_a3b9c1162ec54be631e1f01d085177b8d}} 
+\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!````~Power\+Set@{$\sim$\+Power\+Set}}
+\index{````~Power\+Set@{$\sim$\+Power\+Set}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
+\subsubsection{\texorpdfstring{$\sim$\+Power\+Set()}{~PowerSet()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::$\sim$\hyperlink{classbarry_1_1_power_set}{Power\+Set} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 29 of file barry.\+hpp.
+
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classbarry_1_1_power_set_a93e31ba8891642db6ecf0fca82c71f6a}\label{classbarry_1_1_power_set_a93e31ba8891642db6ecf0fca82c71f6a}} 
+\mbox{\Hypertarget{classbarry_1_1_power_set_a00ee318a40da91bcf0bff79bf71454ab}\label{classbarry_1_1_power_set_a00ee318a40da91bcf0bff79bf71454ab}} 
+\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!add\+\_\+rule@{add\+\_\+rule}}
+\index{add\+\_\+rule@{add\+\_\+rule}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
+\subsubsection{\texorpdfstring{add\+\_\+rule()}{add\_rule()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\hyperlink{classbarry_1_1_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \&}]{rule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 102 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_power_set_a6cb8fb8f09b4c190e2ac6c07daa1241e}\label{classbarry_1_1_power_set_a6cb8fb8f09b4c190e2ac6c07daa1241e}} 
+\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!add\+\_\+rule@{add\+\_\+rule}}
+\index{add\+\_\+rule@{add\+\_\+rule}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
+\subsubsection{\texorpdfstring{add\+\_\+rule()}{add\_rule()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\hyperlink{classbarry_1_1_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$}]{rule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 111 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_power_set_aae5eae12186fff037efa3884ac2b3dcc}\label{classbarry_1_1_power_set_aae5eae12186fff037efa3884ac2b3dcc}} 
+\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!add\+\_\+rule@{add\+\_\+rule}}
+\index{add\+\_\+rule@{add\+\_\+rule}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
+\subsubsection{\texorpdfstring{add\+\_\+rule()}{add\_rule()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{Data\+\_\+\+Rule\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 121 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_power_set_ab15a2b22478e72f351b8ac11392d22c6}\label{classbarry_1_1_power_set_ab15a2b22478e72f351b8ac11392d22c6}} 
 \index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!calc@{calc}}
 \index{calc@{calc}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
 \subsubsection{\texorpdfstring{calc()}{calc()}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{classbarry_1_1_power_set}{Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::calc (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{i = {\ttfamily 0u},  }\item[{\hyperlink{classbarry_1_1_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{a0 = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::calc (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{i = {\ttfamily 0u},  }\item[{Array\+\_\+\+Type $\ast$}]{a0 = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 44 of file barry.\+hpp.
+Definition at line 60 of file barry.\+hpp.
 
-\mbox{\Hypertarget{classbarry_1_1_power_set_a273dae1795f3d663ef031c50bd218788}\label{classbarry_1_1_power_set_a273dae1795f3d663ef031c50bd218788}} 
+\mbox{\Hypertarget{classbarry_1_1_power_set_a53ca37c9cb14abd6f61bc0127ac9d067}\label{classbarry_1_1_power_set_a53ca37c9cb14abd6f61bc0127ac9d067}} 
 \index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!get\+\_\+data@{get\+\_\+data}}
 \index{get\+\_\+data@{get\+\_\+data}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
 \subsubsection{\texorpdfstring{get\+\_\+data()}{get\_data()}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-std\+::vector$<$ \hyperlink{classbarry_1_1_b_array}{B\+Array}$<$Cell\+\_\+\+Type, Data\+\_\+\+Type$>$ $>$ \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ Array\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::get\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 36 of file barry.\+hpp.
+Definition at line 52 of file barry.\+hpp.
 
-\mbox{\Hypertarget{classbarry_1_1_power_set_ab909404d85f177a3cd0b8cca1eaf4efd}\label{classbarry_1_1_power_set_ab909404d85f177a3cd0b8cca1eaf4efd}} 
+\mbox{\Hypertarget{classbarry_1_1_power_set_a80b283b1ac115f1be049a09f1a69586a}\label{classbarry_1_1_power_set_a80b283b1ac115f1be049a09f1a69586a}} 
 \index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!get\+\_\+data\+\_\+ptr@{get\+\_\+data\+\_\+ptr}}
 \index{get\+\_\+data\+\_\+ptr@{get\+\_\+data\+\_\+ptr}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
 \subsubsection{\texorpdfstring{get\+\_\+data\+\_\+ptr()}{get\_data\_ptr()}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-const std\+::vector$<$ \hyperlink{classbarry_1_1_b_array}{B\+Array}$<$Cell\+\_\+\+Type, Data\+\_\+\+Type$>$ $>$$\ast$ \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+data\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+const std\+::vector$<$ Array\+\_\+\+Type $>$$\ast$ \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::get\+\_\+data\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 Getter functions 
 
-Definition at line 35 of file barry.\+hpp.
+Definition at line 51 of file barry.\+hpp.
 
-\mbox{\Hypertarget{classbarry_1_1_power_set_a8074f5a6d44b6b7f6bad56d15576eb9f}\label{classbarry_1_1_power_set_a8074f5a6d44b6b7f6bad56d15576eb9f}} 
+\mbox{\Hypertarget{classbarry_1_1_power_set_aba11dd8802cd2eb529c7c30b55994248}\label{classbarry_1_1_power_set_aba11dd8802cd2eb529c7c30b55994248}} 
 \index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!reset@{reset}}
 \index{reset@{reset}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
 \subsubsection{\texorpdfstring{reset()}{reset()}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{classbarry_1_1_power_set}{Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::reset (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{N\+\_\+,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \hyperlink{classbarry_1_1_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::reset (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{N\+\_\+,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 74 of file barry.\+hpp.
+Definition at line 90 of file barry.\+hpp.
 
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{classbarry_1_1_power_set_a5d318c7894867263313e2907c8821c70}\label{classbarry_1_1_power_set_a5d318c7894867263313e2907c8821c70}} 
+\mbox{\Hypertarget{classbarry_1_1_power_set_a54ba0ae826c51b9bd34235bdbe172851}\label{classbarry_1_1_power_set_a54ba0ae826c51b9bd34235bdbe172851}} 
 \index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!counter@{counter}}
 \index{counter@{counter}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
 \subsubsection{\texorpdfstring{counter}{counter}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counter}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::counter}
+
+
+
+Definition at line 22 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_power_set_a90fecd17a9d1f36153c07bc929b1630f}\label{classbarry_1_1_power_set_a90fecd17a9d1f36153c07bc929b1630f}} 
+\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!data@{data}}
+\index{data@{data}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ Array\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::data}
+
+
+
+Definition at line 19 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_power_set_ae64182a21f9969a2c9fdf73ab23a6c5e}\label{classbarry_1_1_power_set_ae64182a21f9969a2c9fdf73ab23a6c5e}} 
+\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!M@{M}}
+\index{M@{M}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
+\subsubsection{\texorpdfstring{M}{M}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::M}
+
+
+
+Definition at line 21 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_power_set_adea0f6434b17b3fc391475a11db00c2f}\label{classbarry_1_1_power_set_adea0f6434b17b3fc391475a11db00c2f}} 
+\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!N@{N}}
+\index{N@{N}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
+\subsubsection{\texorpdfstring{N}{N}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::N}
+
+
+
+Definition at line 21 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_power_set_ad5486f771bb3161b951100192ce1b2e5}\label{classbarry_1_1_power_set_ad5486f771bb3161b951100192ce1b2e5}} 
+\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!rules@{rules}}
+\index{rules@{rules}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
+\subsubsection{\texorpdfstring{rules}{rules}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\hyperlink{classbarry_1_1_rules}{Rules}$<$Array\+\_\+\+Type,Data\+\_\+\+Rule\+\_\+\+Type$>$ \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::rules}
 
 
 
 Definition at line 20 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_power_set_a0484531e1f473af904d8045d375dabd7}\label{classbarry_1_1_power_set_a0484531e1f473af904d8045d375dabd7}} 
-\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!data@{data}}
-\index{data@{data}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
-\subsubsection{\texorpdfstring{data}{data}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-std\+::vector$<$ \hyperlink{classbarry_1_1_b_array}{B\+Array}$<$Cell\+\_\+\+Type, Data\+\_\+\+Type$>$ $>$ \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::data}
-
-
-
-Definition at line 18 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_power_set_a33f837a6cdcbaec8d06a3ce3311ea4ca}\label{classbarry_1_1_power_set_a33f837a6cdcbaec8d06a3ce3311ea4ca}} 
-\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!M@{M}}
-\index{M@{M}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
-\subsubsection{\texorpdfstring{M}{M}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::M}
-
-
-
-Definition at line 19 of file barry.\+hpp.
-
-\mbox{\Hypertarget{classbarry_1_1_power_set_aaa3bac8806b743aa84b18eb904b2f034}\label{classbarry_1_1_power_set_aaa3bac8806b743aa84b18eb904b2f034}} 
-\index{barry\+::\+Power\+Set@{barry\+::\+Power\+Set}!N@{N}}
-\index{N@{N}!barry\+::\+Power\+Set@{barry\+::\+Power\+Set}}
-\subsubsection{\texorpdfstring{N}{N}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_power_set}{barry\+::\+Power\+Set}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::N}
-
-
-
-Definition at line 19 of file barry.\+hpp.
 
 
 
