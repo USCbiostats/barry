@@ -19,6 +19,7 @@ var typedefs_8hpp =
     [ "Counts_type", "typedefs_8hpp.html#aee40fa17c1fddb63dd1f2b1470ade95b", null ],
     [ "MapVec_type", "typedefs_8hpp.html#a02ed8dec96bc528c8bc3d8cb3c4674a5", null ],
     [ "Row_type", "typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951", null ],
+    [ "Rule_fun_type", "typedefs_8hpp.html#a2e147c9c0e8b65be614c98a5dd400d5c", null ],
     [ "uint", "typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14", null ],
     [ "vec_equal", "typedefs_8hpp.html#a0520b46efb182c4254e257ff5c5e7394", null ],
     [ "vec_equal_approx", "typedefs_8hpp.html#aec4a47b2d5c6f46872f300633cf1e938", null ],

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['statscounter',['StatsCounter',['../classbarry_1_1_stats_counter.html',1,'barry::StatsCounter&lt; Array_Type, Data_Type &gt;'],['../class_stats_counter.html',1,'StatsCounter&lt; Array_Type, Data_Type &gt;']]],
-  ['support',['Support',['../class_support.html',1,'Support&lt; Array_Type, Data_Type &gt;'],['../classbarry_1_1_support.html',1,'barry::Support&lt; Array_Type, Data_Type &gt;']]]
+  ['rule',['Rule',['../classbarry_1_1_rule.html',1,'barry::Rule&lt; Array_Type, Data_Type &gt;'],['../class_rule.html',1,'Rule&lt; Array_Type, Data_Type &gt;']]],
+  ['rules',['Rules',['../class_rules.html',1,'Rules&lt; Array_Type, Data_Type &gt;'],['../classbarry_1_1_rules.html',1,'barry::Rules&lt; Array_Type, Data_Type &gt;']]],
+  ['rules_3c_20array_5ftype_2c_20bool_20_3e',['Rules&lt; Array_Type, bool &gt;',['../classbarry_1_1_rules.html',1,'barry']]],
+  ['rules_3c_20array_5ftype_2c_20data_5frule_5ftype_20_3e',['Rules&lt; Array_Type, Data_Rule_Type &gt;',['../classbarry_1_1_rules.html',1,'barry::Rules&lt; Array_Type, Data_Rule_Type &gt;'],['../class_rules.html',1,'Rules&lt; Array_Type, Data_Rule_Type &gt;']]]
 ];

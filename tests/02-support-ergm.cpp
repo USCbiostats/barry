@@ -49,8 +49,10 @@ TEST_CASE("Computing support for networks", "[support]") {
   netcounters::counter_odegree15(support.counters);
   netcounters::counter_nodematch(support.counters,0u);
   
+  netcounters::rules_zerodiag(support.rules);
+  
   // Getting the full support
-  support.calc(0u, false); 
+  support.calc(); 
   
   // Generating the entries
   barry::Counts_type ans = support.get_counts();

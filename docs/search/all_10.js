@@ -1,7 +1,7 @@
 var searchData=
 [
   ['target',['target',['../classbarry_1_1_entries.html#a07de39535af23bc1f9e3918b32a39b18',1,'barry::Entries::target()'],['../class_entries.html#a02dad3917fa68044b9ea9c60b2909fd7',1,'Entries::target()']]],
-  ['target_5fstats',['target_stats',['../classbarry_1_1_model.html#a68a8443e506fb8d3f1800f42689d8ec5',1,'barry::Model::target_stats()'],['../class_model.html#ab0f4642a2d4602fabb6774914b7dbd39',1,'Model::target_stats()']]],
+  ['target_5fstats',['target_stats',['../classbarry_1_1_model.html#ab2a0fde37b6a6da5a5faffcd24ec4c27',1,'barry::Model::target_stats()'],['../class_model.html#a24ad6e57bff2297dcc7461609714f41b',1,'Model::target_stats()']]],
   ['toggle_5fcell',['toggle_cell',['../class_b_array.html#a2ab2b200b329abc718cfb3574f566cf6',1,'BArray']]],
   ['toggle_5flock',['toggle_lock',['../class_b_array.html#ac5079b33fc5300dd912cdf85bb51ac53',1,'BArray']]],
   ['transpose',['transpose',['../class_b_array.html#a0284f7f2148b7c1b474ebe01f6548b98',1,'BArray']]],

@@ -22,6 +22,10 @@ typedef \hyperlink{classbarry_1_1_support}{Support}$<$ \hyperlink{namespacebarry
 typedef \hyperlink{classbarry_1_1_stats_counter}{Stats\+Counter}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_ae26c399917113fe280b3f2859376b8b9}{Net\+Stats\+Counter}
 \item 
 typedef \hyperlink{classbarry_1_1_model}{Model}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a3ab1ee0750d4a5b0f92253874e055358}{Net\+Model}
+\item 
+typedef \hyperlink{classbarry_1_1_rule}{Rule}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, bool $>$ \hyperlink{namespacebarry_1_1counters_1_1network_afbd2c2a61931e69dd5f668c421e87a6f}{Net\+Rule}
+\item 
+typedef \hyperlink{classbarry_1_1_rules}{Rules}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, bool $>$ \hyperlink{namespacebarry_1_1counters_1_1network_adbdb20b3ce883777da2364984ea10c56}{Net\+Rules}
 \end{DoxyCompactItemize}
 \end{Indent}
 \subsection*{Functions}
@@ -74,6 +78,17 @@ void \hyperlink{namespacebarry_1_1counters_1_1network_af679a51acdd35805c7c40748a
 void \hyperlink{namespacebarry_1_1counters_1_1network_a8c7ef19041094ac55a17106940c7d244}{counter\+\_\+degree} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ d)
 \begin{DoxyCompactList}\small\item\em Counts number of vertices with a given out-\/degree. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
+\begin{Indent}\textbf{ Rules for network models}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em rules} & A pointer to a {\ttfamily Net\+Rules} object ({\ttfamily \hyperlink{classbarry_1_1_rules}{Rules}}$<${\ttfamily Network}, {\ttfamily bool}$>$). \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespacebarry_1_1counters_1_1network_a19680c70c20a093a84b6cc71a2597510}{rules\+\_\+zerodiag} (\hyperlink{namespacebarry_1_1counters_1_1network_adbdb20b3ce883777da2364984ea10c56}{Net\+Rules} $\ast$rules)
+\begin{DoxyCompactList}\small\item\em Number of edges. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
 
 
 \subsection{Typedef Documentation}
@@ -106,6 +121,26 @@ Definition at line 76 of file barry.\+hpp.
 
 
 Definition at line 79 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_afbd2c2a61931e69dd5f668c421e87a6f}\label{namespacebarry_1_1counters_1_1network_afbd2c2a61931e69dd5f668c421e87a6f}} 
+\index{barry\+::counters\+::network@{barry\+::counters\+::network}!Net\+Rule@{Net\+Rule}}
+\index{Net\+Rule@{Net\+Rule}!barry\+::counters\+::network@{barry\+::counters\+::network}}
+\subsubsection{\texorpdfstring{Net\+Rule}{NetRule}}
+{\footnotesize\ttfamily typedef \hyperlink{classbarry_1_1_rule}{Rule}$<$\hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network},bool$>$ \hyperlink{namespacebarry_1_1counters_1_1network_afbd2c2a61931e69dd5f668c421e87a6f}{barry\+::counters\+::network\+::\+Net\+Rule}}
+
+
+
+Definition at line 80 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_adbdb20b3ce883777da2364984ea10c56}\label{namespacebarry_1_1counters_1_1network_adbdb20b3ce883777da2364984ea10c56}} 
+\index{barry\+::counters\+::network@{barry\+::counters\+::network}!Net\+Rules@{Net\+Rules}}
+\index{Net\+Rules@{Net\+Rules}!barry\+::counters\+::network@{barry\+::counters\+::network}}
+\subsubsection{\texorpdfstring{Net\+Rules}{NetRules}}
+{\footnotesize\ttfamily typedef \hyperlink{classbarry_1_1_rules}{Rules}$<$\hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network},bool$>$ \hyperlink{namespacebarry_1_1counters_1_1network_adbdb20b3ce883777da2364984ea10c56}{barry\+::counters\+::network\+::\+Net\+Rules}}
+
+
+
+Definition at line 81 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_ae26c399917113fe280b3f2859376b8b9}\label{namespacebarry_1_1counters_1_1network_ae26c399917113fe280b3f2859376b8b9}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!Net\+Stats\+Counter@{Net\+Stats\+Counter}}
@@ -152,7 +187,7 @@ Sum of absolute attribute difference between ego and alter.
 
 
 
-Definition at line 390 of file barry.\+hpp.
+Definition at line 404 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a5262c1e8a14c9956041adead348a4890}\label{namespacebarry_1_1counters_1_1network_a5262c1e8a14c9956041adead348a4890}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+ctriads@{counter\+\_\+ctriads}}
@@ -162,7 +197,7 @@ Definition at line 390 of file barry.\+hpp.
 
 
 
-Definition at line 293 of file barry.\+hpp.
+Definition at line 307 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a8c7ef19041094ac55a17106940c7d244}\label{namespacebarry_1_1counters_1_1network_a8c7ef19041094ac55a17106940c7d244}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+degree@{counter\+\_\+degree}}
@@ -176,7 +211,7 @@ Counts number of vertices with a given out-\/degree.
 
 
 
-Definition at line 661 of file barry.\+hpp.
+Definition at line 675 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a313ba439c81c589759cbbc613d12e80b}\label{namespacebarry_1_1counters_1_1network_a313ba439c81c589759cbbc613d12e80b}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+density@{counter\+\_\+density}}
@@ -186,7 +221,7 @@ Definition at line 661 of file barry.\+hpp.
 
 
 
-Definition at line 332 of file barry.\+hpp.
+Definition at line 346 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_af8f024a17f6c518aef79c2cf670e49f5}\label{namespacebarry_1_1counters_1_1network_af8f024a17f6c518aef79c2cf670e49f5}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+diff@{counter\+\_\+diff}}
@@ -200,7 +235,7 @@ Sum of attribute difference between ego and alter to pow(alpha)
 
 
 
-Definition at line 432 of file barry.\+hpp.
+Definition at line 446 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a3c0a9e6c5697b3ec65827d405826bb33}\label{namespacebarry_1_1counters_1_1network_a3c0a9e6c5697b3ec65827d405826bb33}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+edges@{counter\+\_\+edges}}
@@ -214,7 +249,7 @@ Number of edges.
 
 
 
-Definition at line 99 of file barry.\+hpp.
+Definition at line 113 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_ab87617883960a1fc818048036fb13b83}\label{namespacebarry_1_1counters_1_1network_ab87617883960a1fc818048036fb13b83}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+idegree@{counter\+\_\+idegree}}
@@ -228,7 +263,7 @@ Counts number of vertices with a given in-\/degree.
 
 
 
-Definition at line 575 of file barry.\+hpp.
+Definition at line 589 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a148e6fbb549eea53ff6d744b0f683ed6}\label{namespacebarry_1_1counters_1_1network_a148e6fbb549eea53ff6d744b0f683ed6}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+idegree15@{counter\+\_\+idegree15}}
@@ -238,7 +273,7 @@ Definition at line 575 of file barry.\+hpp.
 
 
 
-Definition at line 348 of file barry.\+hpp.
+Definition at line 362 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a16449353394312feed59aa5444d17dad}\label{namespacebarry_1_1counters_1_1network_a16449353394312feed59aa5444d17dad}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+isolates@{counter\+\_\+isolates}}
@@ -252,7 +287,7 @@ Number of isolated vertices.
 
 
 
-Definition at line 113 of file barry.\+hpp.
+Definition at line 127 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a95eea8464d85c595efa305cdf9a5a82b}\label{namespacebarry_1_1counters_1_1network_a95eea8464d85c595efa305cdf9a5a82b}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+istar2@{counter\+\_\+istar2}}
@@ -262,7 +297,7 @@ Definition at line 113 of file barry.\+hpp.
 
 
 
-Definition at line 181 of file barry.\+hpp.
+Definition at line 195 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_afc4086d5788c8d5fa60ec529d9fa15dd}\label{namespacebarry_1_1counters_1_1network_afc4086d5788c8d5fa60ec529d9fa15dd}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+mutual@{counter\+\_\+mutual}}
@@ -276,7 +311,7 @@ Number of mutual ties.
 
 
 
-Definition at line 143 of file barry.\+hpp.
+Definition at line 157 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a7087c6419195bc768c1e8c7730757d2e}\label{namespacebarry_1_1counters_1_1network_a7087c6419195bc768c1e8c7730757d2e}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+nodecov@{counter\+\_\+nodecov}}
@@ -286,7 +321,7 @@ Definition at line 143 of file barry.\+hpp.
 
 
 
-Definition at line 529 of file barry.\+hpp.
+Definition at line 543 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_aef48e4ae85d30c2a949006faee2b5bae}\label{namespacebarry_1_1counters_1_1network_aef48e4ae85d30c2a949006faee2b5bae}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+nodeicov@{counter\+\_\+nodeicov}}
@@ -296,7 +331,7 @@ Definition at line 529 of file barry.\+hpp.
 
 
 
-Definition at line 491 of file barry.\+hpp.
+Definition at line 505 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_ab0a33b2990950574552ab909e6847f96}\label{namespacebarry_1_1counters_1_1network_ab0a33b2990950574552ab909e6847f96}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+nodematch@{counter\+\_\+nodematch}}
@@ -306,7 +341,7 @@ Definition at line 491 of file barry.\+hpp.
 
 
 
-Definition at line 549 of file barry.\+hpp.
+Definition at line 563 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a2804cd2dba633fdccc7a1ca6a15bdf47}\label{namespacebarry_1_1counters_1_1network_a2804cd2dba633fdccc7a1ca6a15bdf47}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+nodeocov@{counter\+\_\+nodeocov}}
@@ -316,7 +351,7 @@ Definition at line 549 of file barry.\+hpp.
 
 
 
-Definition at line 510 of file barry.\+hpp.
+Definition at line 524 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_af679a51acdd35805c7c40748af65c0f4}\label{namespacebarry_1_1counters_1_1network_af679a51acdd35805c7c40748af65c0f4}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+odegree@{counter\+\_\+odegree}}
@@ -330,7 +365,7 @@ Counts number of vertices with a given out-\/degree.
 
 
 
-Definition at line 617 of file barry.\+hpp.
+Definition at line 631 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a7a43854f3227f5f92d3ff580e99c7136}\label{namespacebarry_1_1counters_1_1network_a7a43854f3227f5f92d3ff580e99c7136}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+odegree15@{counter\+\_\+odegree15}}
@@ -340,7 +375,7 @@ Definition at line 617 of file barry.\+hpp.
 
 
 
-Definition at line 368 of file barry.\+hpp.
+Definition at line 382 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_af76d9df31e55422bdffdb9e56870a46f}\label{namespacebarry_1_1counters_1_1network_af76d9df31e55422bdffdb9e56870a46f}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+ostar2@{counter\+\_\+ostar2}}
@@ -350,7 +385,7 @@ Definition at line 368 of file barry.\+hpp.
 
 
 
-Definition at line 199 of file barry.\+hpp.
+Definition at line 213 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_ab3a9cd11d47c9c1d5652c28d139047c8}\label{namespacebarry_1_1counters_1_1network_ab3a9cd11d47c9c1d5652c28d139047c8}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+ttriads@{counter\+\_\+ttriads}}
@@ -360,7 +395,7 @@ Definition at line 199 of file barry.\+hpp.
 
 
 
-Definition at line 218 of file barry.\+hpp.
+Definition at line 232 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a7649cd035af193258a69058aea425941}\label{namespacebarry_1_1counters_1_1network_a7649cd035af193258a69058aea425941}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER@{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER}}
@@ -370,5 +405,19 @@ Definition at line 218 of file barry.\+hpp.
 
 
 
-Definition at line 474 of file barry.\+hpp.
+Definition at line 488 of file barry.\+hpp.
+
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a19680c70c20a093a84b6cc71a2597510}\label{namespacebarry_1_1counters_1_1network_a19680c70c20a093a84b6cc71a2597510}} 
+\index{barry\+::counters\+::network@{barry\+::counters\+::network}!rules\+\_\+zerodiag@{rules\+\_\+zerodiag}}
+\index{rules\+\_\+zerodiag@{rules\+\_\+zerodiag}!barry\+::counters\+::network@{barry\+::counters\+::network}}
+\subsubsection{\texorpdfstring{rules\+\_\+zerodiag()}{rules\_zerodiag()}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::rules\+\_\+zerodiag (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_adbdb20b3ce883777da2364984ea10c56}{Net\+Rules} $\ast$}]{rules }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Number of edges. 
+
+
+
+Definition at line 726 of file barry.\+hpp.
 
