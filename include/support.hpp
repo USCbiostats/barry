@@ -199,7 +199,7 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
     current_stats.resize(counters->size());
     
     // Resizing support
-    data.reserve(pow(2.0, N * (M - 1.0))); 
+    data.reserve(pow(2.0, coordinates_free.size())); 
     
     for (uint n = 0u; n < counters->size(); ++n)
       current_stats[n] = counters->operator[](n)->init(
