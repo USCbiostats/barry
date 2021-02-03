@@ -47,7 +47,8 @@ public:
   std::vector< double >                current_stats;
   std::vector< std::pair<uint,uint> >  coordinates_free;
   std::vector< std::pair<uint,uint> >  coordinates_locked;
-  std::vector< std::vector< double > > change_stats;
+  // std::vector< std::vector< double > > change_stats;
+  // std::vector< double > change_stats;
   
   /**@brief Constructor passing a reference Array.
    */
@@ -138,6 +139,8 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support() {
   
   // Computing the locations
+  coordinates_free.clear();
+  coordinates_locked.clear();
   rules->get_seq(&EmptyArray, &coordinates_free, &coordinates_locked);
   
   return;
@@ -179,6 +182,9 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
   // if (!diag && (coordinates_free[pos].first == coordinates_free[pos].second))
   //   return calc(pos + 1u, diag, array_bank, stats_bank);
   
+  std::vector< double > change_stats(counters->size());
+  // double change_stats[counters->size()];
+  
   // Initializing
   if (!initialized) {
     
@@ -191,7 +197,6 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
     EmptyArray.clear(true);
     EmptyArray.reserve();
     current_stats.resize(counters->size());
-    change_stats.resize(N*M, current_stats);
     
     // Resizing support
     data.reserve(pow(2.0, N * (M - 1.0))); 
@@ -230,12 +235,12 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
   // Counting
   // std::vector< double > change_stats(counters.size());
   for (uint n = 0u; n < counters->size(); ++n) {
-    change_stats[pos][n] = counters->operator[](n)->count(
+    change_stats[n] = counters->operator[](n)->count(
       &EmptyArray,
       coordinates_free[pos].first,
       coordinates_free[pos].second
       );
-    current_stats[n] += change_stats[pos][n];
+    current_stats[n] += change_stats[n];
   }
   
   // Adding to the overall count
@@ -260,7 +265,7 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
     );
   
   for (uint n = 0u; n < counters->size(); ++n) 
-    current_stats[n] -= change_stats[pos][n];
+    current_stats[n] -= change_stats[n];
   
   
   return;

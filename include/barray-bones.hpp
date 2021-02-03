@@ -139,10 +139,10 @@ public:
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
   void insert_cell(uint i, uint j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
-  void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists, bool locked);
+  void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists);
   
   void insert_cell_row_maj(uint i, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
-  void insert_cell_row_maj(uint i, Cell_Type v, bool check_bounds, bool check_exists, bool locked);
+  void insert_cell_row_maj(uint i, Cell_Type v, bool check_bounds, bool check_exists);
   
   void swap_cells(
       uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,
@@ -167,14 +167,7 @@ public:
   void clear(bool hard = true);
   void resize(uint N_, uint M_);
   void reserve();
-  
-  // /**@name Locked cells */
-  // ///@{
-  // bool is_locked(uint i, uint j, bool check_bounds = true) const;
-  // void lock_cell(uint i, uint j, bool check_bounds = true);
-  // void unlock_cell(uint i, uint j, bool check_bounds = true);
-  // ///@}
-  
+
   // Advances operators
   // void toggle_iterator
   

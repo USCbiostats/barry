@@ -107,8 +107,10 @@ List support (
   netcounters::counter_odegree15(dat.counters);
   netcounters::counter_nodematch(dat.counters, 0u);
   
+  netcounters::rules_zerodiag(dat.rules);
+  
   // Generating the data
-  dat.calc(0u, false); 
+  dat.calc(); 
   
   // Generating the entries
   barry::Counts_type ans = dat.get_counts();
@@ -194,6 +196,7 @@ ergm::summary_formula(
     density + idegree1.5 + odegree1.5 + nodematch("gender")
   ) - 
 counter(N, M, source - 1L, target - 1L, gender)
+barplot(counter(N, M, source - 1L, target - 1L, gender))
 
 # stop()
 set.seed(123)
@@ -229,6 +232,8 @@ ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
   times = 10,
   unit = "relative"
 ))
+
+
 stop()
 ans1 <- ergm::ergm.allstats(
   mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
