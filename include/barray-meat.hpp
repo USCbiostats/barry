@@ -56,7 +56,7 @@ inline BArray< Cell_Type,Data_Type >::BArray (
     if (!empty)
       throw std::logic_error("The value already exists. Use 'add = true'.");
       
-    this->insert_cell(source[i], target[i], false, false, false);
+    this->insert_cell(source[i], target[i], value[i], false, false);
   }
   
   return;
@@ -110,7 +110,7 @@ inline BArray< Cell_Type,Data_Type >::BArray (
     ROW(source[i]).emplace(
         std::pair<uint, Cell< Cell_Type> >(
             target[i],
-            Cell< Cell_Type >(value[i], false, visited)
+            Cell< Cell_Type >(value[i], visited)
       )
       );
     
@@ -139,7 +139,7 @@ inline BArray<Cell_Type,Data_Type>::BArray(const BArray<Cell_Type,Data_Type> & A
       continue;
     
     for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
-      this->insert_cell(i, row->first, row->second.value, false, false, row->second.locked);
+      this->insert_cell(i, row->first, row->second.value, false, false);
     
   }
   
@@ -171,7 +171,7 @@ inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
         continue;
       
       for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
-        this->insert_cell(i, row->first, row->second.value, false, false, row->second.locked);
+        this->insert_cell(i, row->first, row->second.value, false, false);
       
     }
     
@@ -447,9 +447,9 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
 
 template<typename Cell_Type, typename Data_Type>
 inline void BArray<Cell_Type, Data_Type>::insert_cell(
-    uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists, bool locked) {
+    uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists) {
   
-  Cell<Cell_Type> vc(v, locked, visited);
+  Cell<Cell_Type> vc(v, visited);
   
   return insert_cell(i, j, vc, check_bounds, check_exists);
 }
@@ -476,11 +476,10 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell_row_maj(
     uint i,
     Cell_Type v,
     bool check_bounds,
-    bool check_exists,
-    bool locked
+    bool check_exists
   ) {
   
-  Cell<Cell_Type> vc(v, locked, visited);
+  Cell<Cell_Type> vc(v, visited);
   
   return insert_cell(
       (int) i % (int) N,

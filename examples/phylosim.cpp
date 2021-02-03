@@ -58,6 +58,7 @@ int main() {
   /**All nodes will share these five states (0,0), (1,0), (0,1), (1,1), (1,1)
    * so the arrays are of two by to (two functions x two siblings)
    */
+  std::cout << "Creating arrays" << std::endl;
   phylocounters::PhyloArray n0(2,2);
   phylocounters::PhyloArray n1(2,2);
   phylocounters::PhyloArray n2(2,2);
@@ -69,12 +70,14 @@ int main() {
    * keygen_phylo function defined earlier. This function receives an array
    * and returns a vector.
    */
+  std::cout << "Preparing the model" << std::endl;
   phylocounters::PhyloModel model;
   model.set_keygen(keygen_phylo);
   
   // Activating the storage of powersets (because we'll need it!)
   model.store_psets();
   
+  std::cout << "Adding counters" << std::endl;
   // Adding terms (gains/losses for each)
   phylocounters::counter_gains(&model.counters, {0, 1}); 
   phylocounters::counter_loss(&model.counters, {0, 1});
@@ -87,6 +90,7 @@ int main() {
    * of the cleaning once the arrays are deleted.
    * Branch lengths are 1
    */
+  std::cout << "Adding nodes" << std::endl;
   n0.set_data(new phylocounters::NodeData({1u}, {false,false} ), true);
   n1.set_data(new phylocounters::NodeData({1u}, {true,false} ), true);
   n2.set_data(new phylocounters::NodeData({1u}, {false,true} ), true);
@@ -94,6 +98,8 @@ int main() {
   n4.set_data(new phylocounters::NodeData({1u}, {true,true} ), true);
   
   // Adding the data!
+  std::cout << "Adding the data" << std::endl;
+
   std::vector< unsigned int > idx(5u);
   idx[0u] = model.add_array(n0, false);
   idx[1u] = model.add_array(n1, false);

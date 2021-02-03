@@ -59,7 +59,7 @@ int rm_cell(SEXP x, int i, int j) {
 // [[Rcpp::export]]
 int insert_cell(SEXP x, int i, int j, double v) {
   Rcpp::XPtr< barry::BArray<double,double> > xptr(x);
-  xptr->insert_cell(i, j, v); 
+  xptr->insert_cell(i, j, v, false, false); 
   return 0;
 }
 
