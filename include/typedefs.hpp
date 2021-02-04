@@ -8,6 +8,14 @@
 #include <cmath>
 #include <map>
 
+#ifdef BARRAY_USE_UNORDERED_MAP
+template<typename Ta,typename Tb>
+using Map = std::unordered_map<Ta,Tb>;
+#else
+template<typename Ta,typename Tb>
+using Map = std::map<Ta,Tb>;
+#endif
+
 // Basic types
 typedef unsigned int uint;
 
@@ -42,10 +50,10 @@ typedef std::vector< std::pair< std::vector<double>, uint > > Counts_type;
 template <class Type_A > class Cell;
 
 template<typename Cell_Type>
-using Row_type = std::unordered_map< uint, Cell<Cell_Type> >;
+using Row_type = Map< uint, Cell<Cell_Type> >;
 
 template<typename Cell_Type>
-using Col_type = std::unordered_map< uint, Cell<Cell_Type>* >;
+using Col_type = Map< uint, Cell<Cell_Type>* >;
 
 template<typename Cell_Type>
 class Entries {
