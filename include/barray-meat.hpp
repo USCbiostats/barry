@@ -895,13 +895,13 @@ inline void BArray<Cell_Type, Data_Type>::resize(
 
 template<typename Cell_Type, typename Data_Type>
 inline void BArray< Cell_Type, Data_Type >::reserve() {
- 
+#ifdef BARRAY_USE_UNORDERED_MAP
   for (uint i = 0u; i < N; i++)
     ROW(i).reserve(M);
   
   for (uint i = 0u; i < M; i++)
     COL(i).reserve(N);
-  
+#endif
   return;
   
 }
