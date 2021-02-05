@@ -130,7 +130,7 @@ inline BArray<Cell_Type,Data_Type>::BArray(const BArray<Cell_Type,Data_Type> & A
   
   // Dimensions
   el_ij.resize(N);
-  el_ji.resize(N);
+  el_ji.resize(M);
   
   // Entries
   for (uint i = 0u; i < N; ++i) {
@@ -438,6 +438,7 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
     
     ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
     COL(j).emplace(i, &ROW(i)[j]);
+    NCells++;
     
   }
   

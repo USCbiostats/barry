@@ -39,7 +39,6 @@ public:
   Rules<Array_Type,Data_Rule_Type>            * rules;
 
   uint N, M;
-  bool initialized     = false;
   bool counter_deleted = false;
   bool rules_deleted   = false;
   
@@ -47,7 +46,7 @@ public:
   std::vector< double >                current_stats;
   std::vector< std::pair<uint,uint> >  coordinates_free;
   std::vector< std::pair<uint,uint> >  coordinates_locked;
-  // std::vector< std::vector< double > > change_stats;
+  std::vector< std::vector< double > > change_stats;
   // std::vector< double > change_stats;
   
   /**@brief Constructor passing a reference Array.
@@ -89,7 +88,10 @@ public:
       delete rules;
   };
   
-  void init_support();
+  void init_support(
+    std::vector< Array_Type > * array_bank = nullptr,
+    std::vector< std::vector< double > > * stats_bank = nullptr
+  );
   
   
   /**@brief Resets the support calculator
@@ -136,13 +138,48 @@ public:
 };
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support() {
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support(
+  std::vector< Array_Type > * array_bank,
+  std::vector< std::vector< double > > * stats_bank
+) {
   
   // Computing the locations
   coordinates_free.clear();
   coordinates_locked.clear();
   rules->get_seq(&EmptyArray, &coordinates_free, &coordinates_locked);
   
+  // Computing initial statistics
+  if (EmptyArray.nnozero() > 0u) {
+    for (uint i = 0u; i < coordinates_locked.size(); ++i) 
+      EmptyArray.rm_cell(coordinates_locked[i].first, coordinates_locked[i].second, false, true);
+  }
+
+  // Do we have any counter?
+  if (counters->size() == 0u)
+    throw std::logic_error("No counters added: Cannot compute the support without knowning what to count!");
+
+  // Initial count (including constrains)
+  StatsCounter<Array_Type,Data_Counter_Type> tmpcount(&EmptyArray);
+  tmpcount.set_counters(counters);
+  this->current_stats = tmpcount.count_all();
+  
+  EmptyArray.clear(true);
+  EmptyArray.reserve();
+  current_stats.resize(counters->size());
+  change_stats.resize(coordinates_free.size(), current_stats);
+  
+  // Resizing support
+  data.reserve(pow(2.0, coordinates_free.size())); 
+  
+  // Adding to the overall count
+  data.add(current_stats);
+  
+  if (array_bank != nullptr) 
+    array_bank->push_back(EmptyArray);
+  
+  if (stats_bank != nullptr)
+    stats_bank->push_back(current_stats);
+
   return;
 }
 
@@ -150,7 +187,6 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array() {
   
   data.clear();
-  initialized = false;
   
 }
 
@@ -158,7 +194,6 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array(const Array_Type * Array_) {
   
   data.clear();
-  initialized = false;
   EmptyArray = *Array_;
   N = Array_->nrow();
   M = Array_->ncol();
@@ -174,51 +209,9 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
   ) {
   
   // Did we reached the end??
-  if (pos >= coordinates_free.size()) {
+  if (pos >= coordinates_free.size())
     return;
-  }
-  
-  // // No self ties, go to the next step and return.
-  // if (!diag && (coordinates_free[pos].first == coordinates_free[pos].second))
-  //   return calc(pos + 1u, diag, array_bank, stats_bank);
-  
-  std::vector< double > change_stats(counters->size());
-  // double change_stats[counters->size()];
-  
-  // Initializing
-  if (!initialized) {
-    
-    // Do we have any counter?
-    if (counters->size() == 0u)
-      throw std::logic_error("No counters added: Cannot compute the support without knowning what to count!");
-    
-    // Initializing
-    initialized = true;
-    EmptyArray.clear(true);
-    EmptyArray.reserve();
-    current_stats.resize(counters->size());
-    
-    // Resizing support
-    data.reserve(pow(2.0, coordinates_free.size())); 
-    
-    for (uint n = 0u; n < counters->size(); ++n)
-      current_stats[n] = counters->operator[](n)->init(
-        &EmptyArray,
-        coordinates_free[pos].first, 
-        coordinates_free[pos].second
-      );
-    
-    // Adding to the overall count
-    data.add(current_stats);
-    
-    if (array_bank != nullptr) 
-      array_bank->push_back(EmptyArray);
-    
-    if (stats_bank != nullptr)
-      stats_bank->push_back(current_stats);
-    
-  }
-  
+      
   // We will pass it to the next step, if the iteration makes sense.
   calc_backend(pos + 1u, array_bank, stats_bank);
   
@@ -235,12 +228,12 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
   // Counting
   // std::vector< double > change_stats(counters.size());
   for (uint n = 0u; n < counters->size(); ++n) {
-    change_stats[n] = counters->operator[](n)->count(
+    change_stats[pos][n] = counters->operator[](n)->count(
       &EmptyArray,
       coordinates_free[pos].first,
       coordinates_free[pos].second
       );
-    current_stats[n] += change_stats[n];
+    current_stats[n] += change_stats[pos][n];
   }
   
   // Adding to the overall count
@@ -265,7 +258,7 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
     );
   
   for (uint n = 0u; n < counters->size(); ++n) 
-    current_stats[n] -= change_stats[n];
+    current_stats[n] -= change_stats[pos][n];
   
   
   return;
@@ -278,8 +271,14 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc(
     std::vector< std::vector< double > > * stats_bank
 ) {
 
-  this->init_support();
+  // Generating sequence
+  this->init_support(array_bank, stats_bank);
+
+  // Recursive function to count
   calc_backend(0u, array_bank, stats_bank);
+
+  change_stats.clear();
+
   return;
   
 }

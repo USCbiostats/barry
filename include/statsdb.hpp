@@ -99,7 +99,10 @@ inline void FreqTable<T>::reserve(
 template<typename T>
 inline void FreqTable<T>::print() const {
   for (auto i = data.begin(); i != data.end(); ++i) {
-    std::cout << i->first << ", " << i->second << std::endl;
+    for (auto j = i->first.begin(); j != i->first.end(); ++j)
+      std::cout << (*j) << ", ";
+    std::cout << i->second << std::endl;
+
   }
   return;
 }
