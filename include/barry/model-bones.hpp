@@ -3,6 +3,7 @@
 #include "barray-bones.hpp"
 #include "support.hpp"
 #include "statscounter.hpp"
+#include "rules-bones.hpp"
 
 #ifndef MODEL_BONES_HPP 
 #define MODEL_BONES_HPP 1
@@ -132,7 +133,7 @@ public:
   ///@[{
   CounterVector<Array_Type,Data_Counter_Type> counters;
   Rules<Array_Type,Data_Rule_Type>            rules;
-  Support<Array_Type,Data_Counter_Type>       support_fun;
+  Support<Array_Type,Data_Counter_Type,Data_Rule_Type>       support_fun;
   StatsCounter<Array_Type,Data_Counter_Type>  counter_fun;
   ///@}
   
@@ -175,7 +176,7 @@ public:
   void add_rule(Rule<Array_Type, Data_Rule_Type> & rule);
   void add_rule(Rule<Array_Type, Data_Rule_Type> * rule);
   void add_rule(
-      Rule_fun_type<Array_Type,Data_Rule_Type> count_fun_,
+      Rule_fun_type<Array_Type, Data_Rule_Type> count_fun_,
       Data_Rule_Type * data_ = nullptr,
       bool delete_data_ = false
   );

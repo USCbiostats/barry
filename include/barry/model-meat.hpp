@@ -6,7 +6,7 @@
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model() :
   stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
-  target_stats(0u), arrays2support(0u), keys2support(0u), counters() 
+  target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules() 
 {
   
   // Counters are shared

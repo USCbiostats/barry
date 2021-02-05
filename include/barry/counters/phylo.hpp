@@ -42,6 +42,7 @@ public:
 };
 
 typedef std::vector< uint > PhyloCounterData;
+typedef std::vector< std::pair< uint, uint > > PhyloRuleData;
 
 #define PHYLO_C_DATA_IDX(i) (data->operator[](i))
 // #define PHYLO_C_DATA_NUM(i) (data->numbers[i])
@@ -51,9 +52,11 @@ typedef std::vector< uint > PhyloCounterData;
 typedef BArray<bool, NodeData> PhyloArray;
 typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
 typedef CounterVector< PhyloArray, PhyloCounterData> PhyloCounterVector;
-typedef Support<PhyloArray, PhyloCounterData > PhyloSupport;
+typedef Rule<PhyloArray,PhyloRuleData> PhyloRule;
+typedef Rules<PhyloArray,PhyloRuleData> PhyloRules;
+typedef Support<PhyloArray, PhyloCounterData, PhyloRuleData> PhyloSupport;
 typedef StatsCounter<PhyloArray, PhyloCounterData> PhyloStatsCounter;
-typedef Model<PhyloArray, PhyloCounterData> PhyloModel;
+typedef Model<PhyloArray, PhyloCounterData, PhyloRuleData> PhyloModel;
 ///@}
 
 
