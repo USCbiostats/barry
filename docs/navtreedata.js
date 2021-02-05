@@ -35,8 +35,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_freq_table.html#ab5dd6677f52072c93d18b2b9a3369ae7",
-"classbarry_1_1_power_set.html#ae64182a21f9969a2c9fdf73ab23a6c5e",
+"class_freq_table.html#a919e08556ba3aa9535a64827315bb89a",
+"classbarry_1_1_rule.html",
 "typedefs_8hpp.html#a735e5ca6565905e84346e3ff62842a0a"
 ];
 

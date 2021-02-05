@@ -1,5 +1,5 @@
-\hypertarget{barry_8hpp}{}\section{include/barry.hpp File Reference}
-\label{barry_8hpp}\index{include/barry.\+hpp@{include/barry.\+hpp}}
+\hypertarget{barry_8hpp}{}\section{include/barry/barry.hpp File Reference}
+\label{barry_8hpp}\index{include/barry/barry.\+hpp@{include/barry/barry.\+hpp}}
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
 {\ttfamily \#include $<$functional$>$}\newline
@@ -85,16 +85,25 @@ class \hyperlink{classbarry_1_1counters_1_1phylo_1_1_node_data}{barry\+::counter
 \item 
  \hyperlink{namespacebarry_1_1counters_1_1phylo}{barry\+::counters\+::phylo}
 \end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{barry_8hpp_ae7fbc217bad33cff559b1fc41375a8ff}{C\+O\+U\+N\+T\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}(a)
+\item 
+\#define \hyperlink{barry_8hpp_aca4359c3356b25fb710d4dbc93d8d5a8}{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON}(a)
+\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Ta , typename Tb $>$ }\\using \hyperlink{namespacebarry_a979a04835a9855ff2054c383c569c89e}{barry\+::\+Map} = std\+::map$<$ Ta, Tb $>$
 \item 
 typedef unsigned int \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{barry\+::uint}
 \item 
 typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}{barry\+::\+Counts\+\_\+type}
 \item 
-{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_a8f67f2e1e26f3cb10d240b7e1a1d917c}{barry\+::\+Row\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $>$
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_a741876d7060484e80a9f2b9d128d2c8d}{barry\+::\+Row\+\_\+type} = \hyperlink{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $>$
 \item 
-{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_adc551002e63e38057d304f78d7756308}{barry\+::\+Col\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_ac328592ccff774bb3614f2cae43cffd7}{barry\+::\+Col\+\_\+type} = \hyperlink{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
 \item 
 {\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{barry\+::\+Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structvec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
 \item 
@@ -149,7 +158,7 @@ typedef \hyperlink{class_model}{Model}$<$ \hyperlink{phylo_8hpp_aa942fa3af91344d
 \item 
 {\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespacebarry_a0343fb4152724d5fa1ffa00d4b6182d9}{barry\+::vec\+\_\+inner\+\_\+prod} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
 \item 
-{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\bool \hyperlink{namespacebarry_a94a182c49127126893afd500945b98e9}{barry\+::rule\+\_\+fun\+\_\+default} (const Array\+\_\+\+Type $\ast$A, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, Data\+\_\+\+Type $\ast$)
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\bool \hyperlink{namespacebarry_afb5a6f58fa7969d3027468e393eecd51}{barry\+::rule\+\_\+fun\+\_\+default} (const Array\+\_\+\+Type $\ast$array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, Data\+\_\+\+Type $\ast$dat)
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\bool \hyperlink{namespacebarry_a1cb28b501bc7f88c0b3d68d51ad672e1}{barry\+::default\+\_\+rule} (const Array\+\_\+\+Type $\ast$A, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, Data\+\_\+\+Type $\ast$)
 \item 
@@ -275,3 +284,38 @@ const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_aa86651704b200b6bb125b289fb5
 \item 
 const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_a5b06fbd1208ff2094213da0791609950}{barry\+::\+E\+X\+I\+S\+T\+S\+::\+A\+S\+\_\+\+O\+NE} = 1
 \end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{barry_8hpp_ae7fbc217bad33cff559b1fc41375a8ff}\label{barry_8hpp_ae7fbc217bad33cff559b1fc41375a8ff}} 
+\index{barry.\+hpp@{barry.\+hpp}!C\+O\+U\+N\+T\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{C\+O\+U\+N\+T\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
+\index{C\+O\+U\+N\+T\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{C\+O\+U\+N\+T\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}!barry.\+hpp@{barry.\+hpp}}
+\subsubsection{\texorpdfstring{C\+O\+U\+N\+T\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}{COUNTER\_FUNCTION}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{template} <\textcolor{keyword}{typename} Array\_Type = barry::BArray<>, \textcolor{keyword}{typename} Data\_Type = \textcolor{keywordtype}{bool}> \(\backslash\)
+  inline double (a) (\textcolor{keyword}{const} Array\_Type * Array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, Data\_Type * 
+      \hyperlink{class_counter_a9ebfed99a67888f80c19cabc4098bdd0}{data})\(\backslash\)
+\end{DoxyCode}
+
+
+Definition at line 43 of file barry.\+hpp.
+
+\mbox{\Hypertarget{barry_8hpp_aca4359c3356b25fb710d4dbc93d8d5a8}\label{barry_8hpp_aca4359c3356b25fb710d4dbc93d8d5a8}} 
+\index{barry.\+hpp@{barry.\+hpp}!R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
+\index{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON}!barry.\+hpp@{barry.\+hpp}}
+\subsubsection{\texorpdfstring{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON}{RULE\_FUNCTION}}
+{\footnotesize\ttfamily \#define R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{template} <\textcolor{keyword}{typename} Array\_Type = barry::BArray<>, \textcolor{keyword}{typename} Data\_Type = \textcolor{keywordtype}{bool}> \(\backslash\)
+  inline bool (a) (\textcolor{keyword}{const} Array\_Type * Array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, Data\_Type * 
+      \hyperlink{class_counter_a9ebfed99a67888f80c19cabc4098bdd0}{data})\(\backslash\)
+\end{DoxyCode}
+
+
+Definition at line 46 of file barry.\+hpp.
+
