@@ -34,9 +34,9 @@ void \hyperlink{class_b_array_a87bad4dcad82009d5721d21808b7e469}{out\+\_\+of\+\_
 \item 
 Cell\+\_\+\+Type \hyperlink{class_b_array_a4096e4447f91ba52766587a08c62f1fa}{get\+\_\+cell} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, bool check\+\_\+bounds=true) const
 \item 
-const \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $\ast$ \hyperlink{class_b_array_a2c969ceb1d37eff9ebcac25741de1808}{get\+\_\+row} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, bool check\+\_\+bounds=true) const
+const \hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $\ast$ \hyperlink{class_b_array_a2c969ceb1d37eff9ebcac25741de1808}{get\+\_\+row} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, bool check\+\_\+bounds=true) const
 \item 
-const \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $\ast$ \hyperlink{class_b_array_a90bd31bc0b3fa59d11150cd4ea39b3b6}{get\+\_\+col} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, bool check\+\_\+bounds=true) const
+const \hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $\ast$ \hyperlink{class_b_array_a90bd31bc0b3fa59d11150cd4ea39b3b6}{get\+\_\+col} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, bool check\+\_\+bounds=true) const
 \item 
 \hyperlink{class_entries}{Entries}$<$ Cell\+\_\+\+Type $>$ \hyperlink{class_b_array_aee224325422d214624771a5b4d91b55e}{get\+\_\+entries} () const
 \item 
@@ -47,6 +47,8 @@ void \hyperlink{class_b_array_a6dd5ebff333b376c6fb569e48290935f}{clear} (bool ha
 void \hyperlink{class_b_array_aefe411fe1890273518bfbc3f8ca616ce}{resize} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+)
 \item 
 void \hyperlink{class_b_array_a5eacd388e3d0f638f2c35b6e0f0c490c}{reserve} ()
+\item 
+void \hyperlink{class_b_array_a9d150c44b23cf1e4af45f540508db1de}{print} () const
 \end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Queries}\par
 {\em {\ttfamily is\+\_\+empty} queries a single cell. {\ttfamily nrow}, {\ttfamily ncol}, and {\ttfamily nnozero} return the number of rows, columns, and non-\/zero cells respectively. 
@@ -89,11 +91,11 @@ void \hyperlink{class_b_array_aaead894ff275479db4f733793ce037db}{rm\+\_\+cell} (
 \item 
 void \hyperlink{class_b_array_a25f32967d46f1df46ee4b0eea593a66d}{insert\+\_\+cell} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, const \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ \&v, bool check\+\_\+bounds, bool check\+\_\+exists)
 \item 
-void \hyperlink{class_b_array_abf5b075767f20649090fbaaa115bc8ec}{insert\+\_\+cell} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, Cell\+\_\+\+Type v, bool check\+\_\+bounds, bool check\+\_\+exists, bool locked)
+void \hyperlink{class_b_array_a4790d707fcf6a5b552816258922ca25b}{insert\+\_\+cell} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, Cell\+\_\+\+Type v, bool check\+\_\+bounds, bool check\+\_\+exists)
 \item 
 void \hyperlink{class_b_array_a32ce549812fcac0af0a39c3ba0a22add}{insert\+\_\+cell\+\_\+row\+\_\+maj} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, const \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ \&v, bool check\+\_\+bounds, bool check\+\_\+exists)
 \item 
-void \hyperlink{class_b_array_a3aeb332f4f8b97d1f04f510ecea9e1eb}{insert\+\_\+cell\+\_\+row\+\_\+maj} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, Cell\+\_\+\+Type v, bool check\+\_\+bounds, bool check\+\_\+exists, bool locked)
+void \hyperlink{class_b_array_aec0c657e14fd003cc6d4428a816d28aa}{insert\+\_\+cell\+\_\+row\+\_\+maj} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, Cell\+\_\+\+Type v, bool check\+\_\+bounds, bool check\+\_\+exists)
 \item 
 void \hyperlink{class_b_array_afb7976f67770b850922c1a7e1d6b07cc}{swap\+\_\+cells} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i0, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j0, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i1, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j1, bool check\+\_\+bounds=true, int check\+\_\+exists=\hyperlink{namespace_c_h_e_c_k_a3acda1c74bfabb5b6b67e19d0ad2d52a}{C\+H\+E\+C\+K\+::\+B\+O\+TH}, int $\ast$report=nullptr)
 \item 
@@ -114,12 +116,6 @@ void \hyperlink{class_b_array_a411085fcb7530669c72d9847340f1bac}{zero\+\_\+row} 
 void \hyperlink{class_b_array_a0fa473027d00ec53ed08eaea03ac3ef7}{zero\+\_\+col} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, bool check\+\_\+bounds=true)
 \end{DoxyCompactItemize}
 \end{Indent}
-\begin{Indent}\textbf{ Locked cells}\par
-\begin{DoxyCompactItemize}
-\item 
-void \hyperlink{class_b_array_a9d150c44b23cf1e4af45f540508db1de}{print} () const
-\end{DoxyCompactItemize}
-\end{Indent}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -129,9 +125,9 @@ void \hyperlink{class_b_array_a9d150c44b23cf1e4af45f540508db1de}{print} () const
 \item 
 \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_b_array_a31fd64c6b54408ca98e07abc9c4241c5}{N\+Cells} = 0u
 \item 
-std\+::vector$<$ \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $>$ \hyperlink{class_b_array_a2161dc7c2046a57d3e663ac5c0d70431}{el\+\_\+ij}
+std\+::vector$<$ \hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $>$ \hyperlink{class_b_array_a2161dc7c2046a57d3e663ac5c0d70431}{el\+\_\+ij}
 \item 
-std\+::vector$<$ \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $>$ \hyperlink{class_b_array_aad8ce1aa5fddd3899164c1aa1dfede94}{el\+\_\+ji}
+std\+::vector$<$ \hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $>$ \hyperlink{class_b_array_aad8ce1aa5fddd3899164c1aa1dfede94}{el\+\_\+ji}
 \item 
 Data\+\_\+\+Type $\ast$ \hyperlink{class_b_array_a9576163b52124021575e50dbcca2f6b9}{data} = nullptr
 \item 
@@ -277,7 +273,7 @@ Definition at line 229 of file barray-\/meat.\+hpp.
 \index{get\+\_\+col@{get\+\_\+col}!B\+Array@{B\+Array}}
 \subsubsection{\texorpdfstring{get\+\_\+col()}{get\_col()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-const \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $\ast$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+col (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+const \hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $\ast$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+col (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -299,7 +295,7 @@ Definition at line 275 of file barray-\/meat.\+hpp.
 \index{get\+\_\+row@{get\+\_\+row}!B\+Array@{B\+Array}}
 \subsubsection{\texorpdfstring{get\+\_\+row()}{get\_row()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-const \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $\ast$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+row (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+const \hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $\ast$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+row (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -316,16 +312,16 @@ void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $
 
 Definition at line 402 of file barray-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_b_array_abf5b075767f20649090fbaaa115bc8ec}\label{class_b_array_abf5b075767f20649090fbaaa115bc8ec}} 
+\mbox{\Hypertarget{class_b_array_a4790d707fcf6a5b552816258922ca25b}\label{class_b_array_a4790d707fcf6a5b552816258922ca25b}} 
 \index{B\+Array@{B\+Array}!insert\+\_\+cell@{insert\+\_\+cell}}
 \index{insert\+\_\+cell@{insert\+\_\+cell}!B\+Array@{B\+Array}}
 \subsubsection{\texorpdfstring{insert\+\_\+cell()}{insert\_cell()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::insert\+\_\+cell (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j,  }\item[{Cell\+\_\+\+Type}]{v,  }\item[{bool}]{check\+\_\+bounds,  }\item[{bool}]{check\+\_\+exists,  }\item[{bool}]{locked }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::insert\+\_\+cell (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j,  }\item[{Cell\+\_\+\+Type}]{v,  }\item[{bool}]{check\+\_\+bounds,  }\item[{bool}]{check\+\_\+exists }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 449 of file barray-\/meat.\+hpp.
+Definition at line 450 of file barray-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a32ce549812fcac0af0a39c3ba0a22add}\label{class_b_array_a32ce549812fcac0af0a39c3ba0a22add}} 
 \index{B\+Array@{B\+Array}!insert\+\_\+cell\+\_\+row\+\_\+maj@{insert\+\_\+cell\+\_\+row\+\_\+maj}}
@@ -336,18 +332,18 @@ void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $
 
 
 
-Definition at line 458 of file barray-\/meat.\+hpp.
+Definition at line 459 of file barray-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_b_array_a3aeb332f4f8b97d1f04f510ecea9e1eb}\label{class_b_array_a3aeb332f4f8b97d1f04f510ecea9e1eb}} 
+\mbox{\Hypertarget{class_b_array_aec0c657e14fd003cc6d4428a816d28aa}\label{class_b_array_aec0c657e14fd003cc6d4428a816d28aa}} 
 \index{B\+Array@{B\+Array}!insert\+\_\+cell\+\_\+row\+\_\+maj@{insert\+\_\+cell\+\_\+row\+\_\+maj}}
 \index{insert\+\_\+cell\+\_\+row\+\_\+maj@{insert\+\_\+cell\+\_\+row\+\_\+maj}!B\+Array@{B\+Array}}
 \subsubsection{\texorpdfstring{insert\+\_\+cell\+\_\+row\+\_\+maj()}{insert\_cell\_row\_maj()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::insert\+\_\+cell\+\_\+row\+\_\+maj (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{Cell\+\_\+\+Type}]{v,  }\item[{bool}]{check\+\_\+bounds,  }\item[{bool}]{check\+\_\+exists,  }\item[{bool}]{locked }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::insert\+\_\+cell\+\_\+row\+\_\+maj (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{Cell\+\_\+\+Type}]{v,  }\item[{bool}]{check\+\_\+bounds,  }\item[{bool}]{check\+\_\+exists }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 475 of file barray-\/meat.\+hpp.
+Definition at line 476 of file barray-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a37ed3962c0ee5030b23cb6cde23a5cdf}\label{class_b_array_a37ed3962c0ee5030b23cb6cde23a5cdf}} 
 \index{B\+Array@{B\+Array}!is\+\_\+empty@{is\+\_\+empty}}
@@ -653,7 +649,7 @@ Definition at line 41 of file barray-\/bones.\+hpp.
 \index{el\+\_\+ij@{el\+\_\+ij}!B\+Array@{B\+Array}}
 \subsubsection{\texorpdfstring{el\+\_\+ij}{el\_ij}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type = bool, typename Data\+\_\+\+Type = bool$>$ \\
-std\+::vector$<$ \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $>$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::el\+\_\+ij}
+std\+::vector$<$ \hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $>$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::el\+\_\+ij}
 
 
 
@@ -664,7 +660,7 @@ Definition at line 38 of file barray-\/bones.\+hpp.
 \index{el\+\_\+ji@{el\+\_\+ji}!B\+Array@{B\+Array}}
 \subsubsection{\texorpdfstring{el\+\_\+ji}{el\_ji}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type = bool, typename Data\+\_\+\+Type = bool$>$ \\
-std\+::vector$<$ \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $>$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::el\+\_\+ji}
+std\+::vector$<$ \hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type}$<$ Cell\+\_\+\+Type $>$ $>$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::el\+\_\+ji}
 
 
 
@@ -718,6 +714,6 @@ Definition at line 51 of file barray-\/bones.\+hpp.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/\hyperlink{barray-bones_8hpp}{barray-\/bones.\+hpp}\item 
-include/\hyperlink{barray-meat_8hpp}{barray-\/meat.\+hpp}\item 
-include/\hyperlink{barry_8hpp}{barry.\+hpp}\end{DoxyCompactItemize}
+include/barry/\hyperlink{barray-bones_8hpp}{barray-\/bones.\+hpp}\item 
+include/barry/\hyperlink{barray-meat_8hpp}{barray-\/meat.\+hpp}\item 
+include/barry/\hyperlink{barry_8hpp}{barry.\+hpp}\end{DoxyCompactItemize}

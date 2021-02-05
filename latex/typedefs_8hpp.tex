@@ -1,12 +1,13 @@
-\hypertarget{typedefs_8hpp}{}\section{include/typedefs.hpp File Reference}
-\label{typedefs_8hpp}\index{include/typedefs.\+hpp@{include/typedefs.\+hpp}}
+\hypertarget{typedefs_8hpp}{}\section{include/barry/typedefs.hpp File Reference}
+\label{typedefs_8hpp}\index{include/barry/typedefs.\+hpp@{include/barry/typedefs.\+hpp}}
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
 {\ttfamily \#include $<$functional$>$}\newline
 {\ttfamily \#include $<$stdexcept$>$}\newline
 {\ttfamily \#include $<$cmath$>$}\newline
 {\ttfamily \#include $<$map$>$}\newline
-Include dependency graph for typedefs.\+hpp\+:\nopagebreak
+Include dependency graph for typedefs.\+hpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -65,13 +66,15 @@ class \hyperlink{class_counter}{Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
+{\footnotesize template$<$typename Ta , typename Tb $>$ }\\using \hyperlink{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map} = std\+::map$<$ Ta, Tb $>$
+\item 
 typedef unsigned int \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}
 \item 
 typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type}
 \item 
-{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $>$
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row\+\_\+type} = \hyperlink{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $>$
 \item 
-{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type} = std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type} = \hyperlink{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
 \item 
 {\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structvec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
 \item 
@@ -130,7 +133,7 @@ const int \hyperlink{namespace_e_x_i_s_t_s_a735e5ca6565905e84346e3ff62842a0a}{E\
 
 
 
-Definition at line 104 of file typedefs.\+hpp.
+Definition at line 112 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_ac3f14709e872fe684ba3cea262981ac3}\label{typedefs_8hpp_ac3f14709e872fe684ba3cea262981ac3}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}}
@@ -140,7 +143,7 @@ Definition at line 104 of file typedefs.\+hpp.
 
 
 
-Definition at line 103 of file typedefs.\+hpp.
+Definition at line 111 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_ac3f14709e872fe684ba3cea262981ac3}\label{barry_8hpp_ac3f14709e872fe684ba3cea262981ac3}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}}
@@ -170,7 +173,7 @@ Definition at line 3 of file barry.\+hpp.
 
 
 
-Definition at line 16 of file typedefs.\+hpp.
+Definition at line 24 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}\label{barry_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!C\+OL@{C\+OL}}
@@ -192,21 +195,21 @@ Definition at line 16 of file typedefs.\+hpp.
 
 
 
-Definition at line 15 of file typedefs.\+hpp.
+Definition at line 23 of file typedefs.\+hpp.
 
 
 
 \subsection{Typedef Documentation}
-\mbox{\Hypertarget{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}\label{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}} 
+\mbox{\Hypertarget{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}\label{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Col\+\_\+type@{Col\+\_\+type}}
 \index{Col\+\_\+type@{Col\+\_\+type}!typedefs.\+hpp@{typedefs.\+hpp}}
 \subsubsection{\texorpdfstring{Col\+\_\+type}{Col\_type}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type $>$ \\
-using \hyperlink{typedefs_8hpp_a00f3fedec1671706175b572e5c57ee0b}{Col\+\_\+type} =  std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$Cell\+\_\+\+Type$>$$\ast$ $>$}
+using \hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type} =  \hyperlink{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$Cell\+\_\+\+Type$>$$\ast$ $>$}
 
 
 
-Definition at line 48 of file typedefs.\+hpp.
+Definition at line 56 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}\label{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Counter\+\_\+fun\+\_\+type@{Counter\+\_\+fun\+\_\+type}}
@@ -226,7 +229,7 @@ using \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+f
 \end{DoxyParams}
 
 
-Definition at line 113 of file typedefs.\+hpp.
+Definition at line 121 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}\label{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Counts\+\_\+type@{Counts\+\_\+type}}
@@ -236,7 +239,18 @@ Definition at line 113 of file typedefs.\+hpp.
 
 
 
-Definition at line 41 of file typedefs.\+hpp.
+Definition at line 49 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}\label{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}} 
+\index{typedefs.\+hpp@{typedefs.\+hpp}!Map@{Map}}
+\index{Map@{Map}!typedefs.\+hpp@{typedefs.\+hpp}}
+\subsubsection{\texorpdfstring{Map}{Map}}
+{\footnotesize\ttfamily template$<$typename Ta , typename Tb $>$ \\
+using \hyperlink{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map} =  std\+::map$<$Ta,Tb$>$}
+
+
+
+Definition at line 16 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}\label{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Map\+Vec\+\_\+type@{Map\+Vec\+\_\+type}}
@@ -247,18 +261,18 @@ using \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+
 
 
 
-Definition at line 97 of file typedefs.\+hpp.
+Definition at line 105 of file typedefs.\+hpp.
 
-\mbox{\Hypertarget{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}\label{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}} 
+\mbox{\Hypertarget{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}\label{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Row\+\_\+type@{Row\+\_\+type}}
 \index{Row\+\_\+type@{Row\+\_\+type}!typedefs.\+hpp@{typedefs.\+hpp}}
 \subsubsection{\texorpdfstring{Row\+\_\+type}{Row\_type}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type $>$ \\
-using \hyperlink{typedefs_8hpp_a83d6ee40a2ba22844108bb8b82e9b951}{Row\+\_\+type} =  std\+::unordered\+\_\+map$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$Cell\+\_\+\+Type$>$ $>$}
+using \hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row\+\_\+type} =  \hyperlink{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$Cell\+\_\+\+Type$>$ $>$}
 
 
 
-Definition at line 45 of file typedefs.\+hpp.
+Definition at line 53 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}\label{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Rule\+\_\+fun\+\_\+type@{Rule\+\_\+fun\+\_\+type}}
@@ -269,7 +283,7 @@ using \hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\
 
 
 
-Definition at line 116 of file typedefs.\+hpp.
+Definition at line 124 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}\label{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!uint@{uint}}
@@ -279,7 +293,7 @@ Definition at line 116 of file typedefs.\+hpp.
 
 
 
-Definition at line 12 of file typedefs.\+hpp.
+Definition at line 20 of file typedefs.\+hpp.
 
 
 
@@ -305,7 +319,7 @@ Compares if -\/a-\/ and -\/b-\/ are equal.
 \end{DoxyReturn}
 
 
-Definition at line 124 of file typedefs.\+hpp.
+Definition at line 132 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_aec4a47b2d5c6f46872f300633cf1e938}\label{typedefs_8hpp_aec4a47b2d5c6f46872f300633cf1e938}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!vec\+\_\+equal\+\_\+approx@{vec\+\_\+equal\+\_\+approx}}
@@ -316,7 +330,7 @@ bool vec\+\_\+equal\+\_\+approx (\begin{DoxyParamCaption}\item[{const std\+::vec
 
 
 
-Definition at line 142 of file typedefs.\+hpp.
+Definition at line 150 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a843abed15fe9f1be82d863feef016c36}\label{typedefs_8hpp_a843abed15fe9f1be82d863feef016c36}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!vec\+\_\+inner\+\_\+prod@{vec\+\_\+inner\+\_\+prod}}
@@ -327,5 +341,5 @@ T vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{const std\+::vector$<
 
 
 
-Definition at line 162 of file typedefs.\+hpp.
+Definition at line 170 of file typedefs.\+hpp.
 

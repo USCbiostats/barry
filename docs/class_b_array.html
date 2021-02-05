@@ -130,9 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a87bad4dcad82009d5721d21808b7e469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4096e4447f91ba52766587a08c62f1fa"><td class="memItemLeft" align="right" valign="top">Cell_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true) const</td></tr>
 <tr class="separator:a4096e4447f91ba52766587a08c62f1fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c969ceb1d37eff9ebcac25741de1808"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951">Row_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2c969ceb1d37eff9ebcac25741de1808">get_row</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
+<tr class="memitem:a2c969ceb1d37eff9ebcac25741de1808"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a4deca4f3fb25a4da374818ab459b8b4a">Row_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2c969ceb1d37eff9ebcac25741de1808">get_row</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
 <tr class="separator:a2c969ceb1d37eff9ebcac25741de1808"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90bd31bc0b3fa59d11150cd4ea39b3b6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a00f3fedec1671706175b572e5c57ee0b">Col_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a90bd31bc0b3fa59d11150cd4ea39b3b6">get_col</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
+<tr class="memitem:a90bd31bc0b3fa59d11150cd4ea39b3b6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a3bb95a7612ee928fba42f33a96adb3eb">Col_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a90bd31bc0b3fa59d11150cd4ea39b3b6">get_col</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
 <tr class="separator:a90bd31bc0b3fa59d11150cd4ea39b3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee224325422d214624771a5b4d91b55e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entries.html">Entries</a>&lt; Cell_Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aee224325422d214624771a5b4d91b55e">get_entries</a> () const</td></tr>
 <tr class="separator:aee224325422d214624771a5b4d91b55e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,6 +144,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aefe411fe1890273518bfbc3f8ca616ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5eacd388e3d0f638f2c35b6e0f0c490c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a5eacd388e3d0f638f2c35b6e0f0c490c">reserve</a> ()</td></tr>
 <tr class="separator:a5eacd388e3d0f638f2c35b6e0f0c490c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d150c44b23cf1e4af45f540508db1de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9d150c44b23cf1e4af45f540508db1de">print</a> () const</td></tr>
+<tr class="separator:a9d150c44b23cf1e4af45f540508db1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Queries</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p><code>is_empty</code> queries a single cell. <code>nrow</code>, <code>ncol</code>, and <code>nnozero</code> return the number of rows, columns, and non-zero cells respectively. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -181,12 +183,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaead894ff275479db4f733793ce037db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25f32967d46f1df46ee4b0eea593a66d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a25f32967d46f1df46ee4b0eea593a66d">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, const <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds, bool check_exists)</td></tr>
 <tr class="separator:a25f32967d46f1df46ee4b0eea593a66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf5b075767f20649090fbaaa115bc8ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#abf5b075767f20649090fbaaa115bc8ec">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Cell_Type v, bool check_bounds, bool check_exists, bool locked)</td></tr>
-<tr class="separator:abf5b075767f20649090fbaaa115bc8ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4790d707fcf6a5b552816258922ca25b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a4790d707fcf6a5b552816258922ca25b">insert_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Cell_Type v, bool check_bounds, bool check_exists)</td></tr>
+<tr class="separator:a4790d707fcf6a5b552816258922ca25b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32ce549812fcac0af0a39c3ba0a22add"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a32ce549812fcac0af0a39c3ba0a22add">insert_cell_row_maj</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, const <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &amp;v, bool check_bounds, bool check_exists)</td></tr>
 <tr class="separator:a32ce549812fcac0af0a39c3ba0a22add"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3aeb332f4f8b97d1f04f510ecea9e1eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a3aeb332f4f8b97d1f04f510ecea9e1eb">insert_cell_row_maj</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, Cell_Type v, bool check_bounds, bool check_exists, bool locked)</td></tr>
-<tr class="separator:a3aeb332f4f8b97d1f04f510ecea9e1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec0c657e14fd003cc6d4428a816d28aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aec0c657e14fd003cc6d4428a816d28aa">insert_cell_row_maj</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, Cell_Type v, bool check_bounds, bool check_exists)</td></tr>
+<tr class="separator:aec0c657e14fd003cc6d4428a816d28aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb7976f67770b850922c1a7e1d6b07cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#afb7976f67770b850922c1a7e1d6b07cc">swap_cells</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i0, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j0, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i1, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j1, bool check_bounds=true, int check_exists=<a class="el" href="namespace_c_h_e_c_k.html#a3acda1c74bfabb5b6b67e19d0ad2d52a">CHECK::BOTH</a>, int *report=nullptr)</td></tr>
 <tr class="separator:afb7976f67770b850922c1a7e1d6b07cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ab2b200b329abc718cfb3574f566cf6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2ab2b200b329abc718cfb3574f566cf6">toggle_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true, int check_exists=<a class="el" href="namespace_e_x_i_s_t_s.html#a81eb362d951445c658942a433afddb97">EXISTS::UKNOWN</a>)</td></tr>
@@ -202,9 +204,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a411085fcb7530669c72d9847340f1bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fa473027d00ec53ed08eaea03ac3ef7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a0fa473027d00ec53ed08eaea03ac3ef7">zero_col</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true)</td></tr>
 <tr class="separator:a0fa473027d00ec53ed08eaea03ac3ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Locked cells</div></td></tr>
-<tr class="memitem:a9d150c44b23cf1e4af45f540508db1de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9d150c44b23cf1e4af45f540508db1de">print</a> () const</td></tr>
-<tr class="separator:a9d150c44b23cf1e4af45f540508db1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -214,9 +213,9 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a197359753fd1bc054a1a14f7641d3fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31fd64c6b54408ca98e07abc9c4241c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a31fd64c6b54408ca98e07abc9c4241c5">NCells</a> = 0u</td></tr>
 <tr class="separator:a31fd64c6b54408ca98e07abc9c4241c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2161dc7c2046a57d3e663ac5c0d70431"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951">Row_type</a>&lt; Cell_Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2161dc7c2046a57d3e663ac5c0d70431">el_ij</a></td></tr>
+<tr class="memitem:a2161dc7c2046a57d3e663ac5c0d70431"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a4deca4f3fb25a4da374818ab459b8b4a">Row_type</a>&lt; Cell_Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2161dc7c2046a57d3e663ac5c0d70431">el_ij</a></td></tr>
 <tr class="separator:a2161dc7c2046a57d3e663ac5c0d70431"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad8ce1aa5fddd3899164c1aa1dfede94"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a00f3fedec1671706175b572e5c57ee0b">Col_type</a>&lt; Cell_Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aad8ce1aa5fddd3899164c1aa1dfede94">el_ji</a></td></tr>
+<tr class="memitem:aad8ce1aa5fddd3899164c1aa1dfede94"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a3bb95a7612ee928fba42f33a96adb3eb">Col_type</a>&lt; Cell_Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aad8ce1aa5fddd3899164c1aa1dfede94">el_ji</a></td></tr>
 <tr class="separator:aad8ce1aa5fddd3899164c1aa1dfede94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9576163b52124021575e50dbcca2f6b9"><td class="memItemLeft" align="right" valign="top">Data_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9576163b52124021575e50dbcca2f6b9">data</a> = nullptr</td></tr>
 <tr class="separator:a9576163b52124021575e50dbcca2f6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -595,7 +594,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="typedefs_8hpp.html#a00f3fedec1671706175b572e5c57ee0b">Col_type</a>&lt; Cell_Type &gt; * <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::get_col </td>
+          <td class="memname">const <a class="el" href="typedefs_8hpp.html#a3bb95a7612ee928fba42f33a96adb3eb">Col_type</a>&lt; Cell_Type &gt; * <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::get_col </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
@@ -664,7 +663,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951">Row_type</a>&lt; Cell_Type &gt; * <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::get_row </td>
+          <td class="memname">const <a class="el" href="typedefs_8hpp.html#a4deca4f3fb25a4da374818ab459b8b4a">Row_type</a>&lt; Cell_Type &gt; * <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::get_row </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
           <td class="paramname"><em>i</em>, </td>
@@ -750,8 +749,8 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 
 </div>
 </div>
-<a id="abf5b075767f20649090fbaaa115bc8ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf5b075767f20649090fbaaa115bc8ec">&#9670;&nbsp;</a></span>insert_cell() <span class="overload">[2/2]</span></h2>
+<a id="a4790d707fcf6a5b552816258922ca25b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4790d707fcf6a5b552816258922ca25b">&#9670;&nbsp;</a></span>insert_cell() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -789,13 +788,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_exists</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>locked</em>&#160;</td>
+          <td class="paramname"><em>check_exists</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -810,7 +803,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00449">449</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00450">450</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -862,12 +855,12 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00458">458</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00459">459</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a3aeb332f4f8b97d1f04f510ecea9e1eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3aeb332f4f8b97d1f04f510ecea9e1eb">&#9670;&nbsp;</a></span>insert_cell_row_maj() <span class="overload">[2/2]</span></h2>
+<a id="aec0c657e14fd003cc6d4428a816d28aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec0c657e14fd003cc6d4428a816d28aa">&#9670;&nbsp;</a></span>insert_cell_row_maj() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -899,13 +892,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_exists</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>locked</em>&#160;</td>
+          <td class="paramname"><em>check_exists</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -920,7 +907,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00475">475</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat_8hpp_source.html#l00476">476</a> of file <a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1905,7 +1892,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a83d6ee40a2ba22844108bb8b82e9b951">Row_type</a>&lt; Cell_Type &gt; &gt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::el_ij</td>
+          <td class="memname">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a4deca4f3fb25a4da374818ab459b8b4a">Row_type</a>&lt; Cell_Type &gt; &gt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::el_ij</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1923,7 +1910,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a00f3fedec1671706175b572e5c57ee0b">Col_type</a>&lt; Cell_Type &gt; &gt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::el_ji</td>
+          <td class="memname">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a3bb95a7612ee928fba42f33a96adb3eb">Col_type</a>&lt; Cell_Type &gt; &gt; <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::el_ji</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2006,9 +1993,9 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>include/<a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a></li>
-<li>include/<a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a></li>
-<li>include/<a class="el" href="barry_8hpp_source.html">barry.hpp</a></li>
+<li>include/barry/<a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a></li>
+<li>include/barry/<a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a></li>
+<li>include/barry/<a class="el" href="barry_8hpp_source.html">barry.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -2016,7 +2003,7 @@ template&lt;typename Cell_Type = bool, typename Data_Type = bool&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_b_array.html">BArray</a></li>
-    <li class="footer">Generated on Fri Jan 29 2021 17:14:51 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Fri Feb 5 2021 11:27:13 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

@@ -11,8 +11,7 @@ Compute the support of sufficient statistics.
 
 
 
-Collaboration diagram for Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+:
-\nopagebreak
+Collaboration diagram for Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,7 +29,7 @@ Collaboration diagram for Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\
 \item 
 \hyperlink{class_support_a9c5f33ac43d962272b616948dec5d825}{$\sim$\+Support} ()
 \item 
-void \hyperlink{class_support_ae1fb3da18406ade3adc254e408d5f87b}{init\+\_\+support} ()
+void \hyperlink{class_support_a013872a55ffd6a0a931e124da8e8dc99}{init\+\_\+support} (std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$array\+\_\+bank=nullptr, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$stats\+\_\+bank=nullptr)
 \item 
 void \hyperlink{class_support_a4f2860fd2e8e30703b91633a92ed7a58}{reset\+\_\+array} ()
 \begin{DoxyCompactList}\small\item\em Resets the support calculator. \end{DoxyCompactList}\item 
@@ -70,8 +69,6 @@ Array\+\_\+\+Type \hyperlink{class_support_a3ec1b46e245b89ae007601caaf4958c9}{Em
 \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_support_a6c6f707fae03f409c556b6d4668617af}{N}
 \item 
 \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_support_ac0662129b0a12fe4eac69f6f2e733b05}{M}
-\item 
-bool \hyperlink{class_support_a7a290836975f9fd3e67d58f785ee613b}{initialized} = false
 \item 
 bool \hyperlink{class_support_a518268efc16cef68aa2211089c822c03}{counter\+\_\+deleted} = false
 \item 
@@ -164,7 +161,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 282 of file support.\+hpp.
+Definition at line 286 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_a00d511970c0bf833ef8bdd7580c670cc}\label{class_support_a00d511970c0bf833ef8bdd7580c670cc}} 
 \index{Support@{Support}!add\+\_\+counter@{add\+\_\+counter}}
@@ -175,7 +172,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 292 of file support.\+hpp.
+Definition at line 296 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_a3113a4586c541aa25db7b4a864b748a2}\label{class_support_a3113a4586c541aa25db7b4a864b748a2}} 
 \index{Support@{Support}!add\+\_\+rule@{add\+\_\+rule}}
@@ -186,7 +183,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 319 of file support.\+hpp.
+Definition at line 323 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_aa817cb5d6c48dda3ecfeef2c5897b537}\label{class_support_aa817cb5d6c48dda3ecfeef2c5897b537}} 
 \index{Support@{Support}!add\+\_\+rule@{add\+\_\+rule}}
@@ -197,7 +194,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 329 of file support.\+hpp.
+Definition at line 333 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_afa36b8c1348e28c51296379157f58081}\label{class_support_afa36b8c1348e28c51296379157f58081}} 
 \index{Support@{Support}!calc@{calc}}
@@ -223,7 +220,7 @@ Not to be used by the user. Sets the starting point in the array (column-\/major
 \end{DoxyParams}
 
 
-Definition at line 271 of file support.\+hpp.
+Definition at line 269 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_a5d93a94eaed9b1157fb934284883fd47}\label{class_support_a5d93a94eaed9b1157fb934284883fd47}} 
 \index{Support@{Support}!get\+\_\+counts@{get\+\_\+counts}}
@@ -234,7 +231,7 @@ Definition at line 271 of file support.\+hpp.
 
 
 
-Definition at line 356 of file support.\+hpp.
+Definition at line 360 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_abcb4dea3c5a1b140990821900432f90e}\label{class_support_abcb4dea3c5a1b140990821900432f90e}} 
 \index{Support@{Support}!get\+\_\+counts\+\_\+ptr@{get\+\_\+counts\+\_\+ptr}}
@@ -245,18 +242,18 @@ const \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+
 
 
 
-Definition at line 363 of file support.\+hpp.
+Definition at line 367 of file support.\+hpp.
 
-\mbox{\Hypertarget{class_support_ae1fb3da18406ade3adc254e408d5f87b}\label{class_support_ae1fb3da18406ade3adc254e408d5f87b}} 
+\mbox{\Hypertarget{class_support_a013872a55ffd6a0a931e124da8e8dc99}\label{class_support_a013872a55ffd6a0a931e124da8e8dc99}} 
 \index{Support@{Support}!init\+\_\+support@{init\+\_\+support}}
 \index{init\+\_\+support@{init\+\_\+support}!Support@{Support}}
 \subsubsection{\texorpdfstring{init\+\_\+support()}{init\_support()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
-void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::init\+\_\+support (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::init\+\_\+support (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$}]{array\+\_\+bank = {\ttfamily nullptr},  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{stats\+\_\+bank = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 138 of file support.\+hpp.
+Definition at line 141 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_af87b2e85ec72e394387946023508e7fd}\label{class_support_af87b2e85ec72e394387946023508e7fd}} 
 \index{Support@{Support}!print@{print}}
@@ -267,7 +264,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 370 of file support.\+hpp.
+Definition at line 374 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_a4f2860fd2e8e30703b91633a92ed7a58}\label{class_support_a4f2860fd2e8e30703b91633a92ed7a58}} 
 \index{Support@{Support}!reset\+\_\+array@{reset\+\_\+array}}
@@ -289,7 +286,7 @@ If needed, the counters of a support object can be reused.
 \end{DoxyParams}
 
 
-Definition at line 147 of file support.\+hpp.
+Definition at line 187 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_a6e39b22dfd1e0a0ceebf596c974f5326}\label{class_support_a6e39b22dfd1e0a0ceebf596c974f5326}} 
 \index{Support@{Support}!reset\+\_\+array@{reset\+\_\+array}}
@@ -300,7 +297,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 155 of file support.\+hpp.
+Definition at line 194 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_aa6070db8aa83e220b8c9a1d80dfb57c0}\label{class_support_aa6070db8aa83e220b8c9a1d80dfb57c0}} 
 \index{Support@{Support}!set\+\_\+counters@{set\+\_\+counters}}
@@ -311,7 +308,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 302 of file support.\+hpp.
+Definition at line 306 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_a66dc1a0e7097d547ea9c84df777ad477}\label{class_support_a66dc1a0e7097d547ea9c84df777ad477}} 
 \index{Support@{Support}!set\+\_\+rules@{set\+\_\+rules}}
@@ -322,7 +319,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 339 of file support.\+hpp.
+Definition at line 343 of file support.\+hpp.
 
 
 
@@ -336,7 +333,7 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_support}{Suppo
 
 
 
-Definition at line 50 of file support.\+hpp.
+Definition at line 49 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_a36f6685c1f22eeca1919dfbb0ff4cb54}\label{class_support_a36f6685c1f22eeca1919dfbb0ff4cb54}} 
 \index{Support@{Support}!coordinates\+\_\+free@{coordinates\+\_\+free}}
@@ -347,7 +344,7 @@ std\+::vector$<$ std\+::pair$<$\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d
 
 
 
-Definition at line 48 of file support.\+hpp.
+Definition at line 47 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_ab740de5d3497a4bf51cddb256f85cd72}\label{class_support_ab740de5d3497a4bf51cddb256f85cd72}} 
 \index{Support@{Support}!coordinates\+\_\+locked@{coordinates\+\_\+locked}}
@@ -358,7 +355,7 @@ std\+::vector$<$ std\+::pair$<$\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d
 
 
 
-Definition at line 49 of file support.\+hpp.
+Definition at line 48 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_a518268efc16cef68aa2211089c822c03}\label{class_support_a518268efc16cef68aa2211089c822c03}} 
 \index{Support@{Support}!counter\+\_\+deleted@{counter\+\_\+deleted}}
@@ -369,7 +366,7 @@ bool \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 43 of file support.\+hpp.
+Definition at line 42 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_af56e20c484c8f10a9cce504aaa6b0b1a}\label{class_support_af56e20c484c8f10a9cce504aaa6b0b1a}} 
 \index{Support@{Support}!counters@{counters}}
@@ -391,7 +388,7 @@ std\+::vector$<$ double $>$ \hyperlink{class_support}{Support}$<$ Array\+\_\+\+T
 
 
 
-Definition at line 47 of file support.\+hpp.
+Definition at line 46 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_a1b7bc59cfcdd9bbdc164c6265917b030}\label{class_support_a1b7bc59cfcdd9bbdc164c6265917b030}} 
 \index{Support@{Support}!data@{data}}
@@ -418,17 +415,6 @@ Reference array to generate the support.
 
 
 Definition at line 36 of file support.\+hpp.
-
-\mbox{\Hypertarget{class_support_a7a290836975f9fd3e67d58f785ee613b}\label{class_support_a7a290836975f9fd3e67d58f785ee613b}} 
-\index{Support@{Support}!initialized@{initialized}}
-\index{initialized@{initialized}!Support@{Support}}
-\subsubsection{\texorpdfstring{initialized}{initialized}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
-bool \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::initialized = false}
-
-
-
-Definition at line 42 of file support.\+hpp.
 
 \mbox{\Hypertarget{class_support_ac0662129b0a12fe4eac69f6f2e733b05}\label{class_support_ac0662129b0a12fe4eac69f6f2e733b05}} 
 \index{Support@{Support}!M@{M}}
@@ -472,10 +458,10 @@ bool \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 44 of file support.\+hpp.
+Definition at line 43 of file support.\+hpp.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/\hyperlink{support_8hpp}{support.\+hpp}\end{DoxyCompactItemize}
+include/barry/\hyperlink{support_8hpp}{support.\+hpp}\end{DoxyCompactItemize}

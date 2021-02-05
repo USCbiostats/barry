@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('class_cell.html','');});
   <tr><td class="entry"><a class="el" href="class_cell.html#a74cb069c7341de33354c396465818c2f">add</a>(int x)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a0da6d3d39069cc22486442cc51c7685c">add</a>(bool x)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_cell.html#a402912c21a4c87659c0576a4bfa3c48f">Cell</a>()</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#aa29177047f3c4a062e3c1854efa92353">Cell</a>(Cell_Type value_, bool locked_=false, bool visited_=false)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a6592b5fcfc80001c8de64a2e722ca715">Cell</a>(Cell_Type value_, bool visited_=false)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_cell.html#ac116d4235eadb134018324455a9bbdbf">Cell</a>(Cell &amp;arg)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_cell.html#ab745c6f11e7f43f06318b4bb733d9474">Cell</a>(const Cell &amp;arg)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_cell.html#abe27b0c411864d9fce33a1cffe918169">Cell</a>(Cell &amp;&amp;arg)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
@@ -114,19 +114,18 @@ $(document).ready(function(){initNavTree('class_cell.html','');});
   <tr><td class="entry"><a class="el" href="class_cell.html#aef4b64101b33e2349ceea132b962d137">Cell</a>()</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a5ecdaddaf4661a9a8fe6f0ed61595847">Cell</a>()</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_cell.html#aef4b64101b33e2349ceea132b962d137">Cell</a>()</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a8188629882a0c9acad81eff9f89e3d6e">locked</a></td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_cell.html#abe9b289bc80d4f5d0717ba9e69197c0b">operator Cell_Type</a>() const</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#acf4bbf136ed394887c35cfd4e78f50b9">operator=</a>(Cell &amp;other)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_cell.html#a9bb18ace78fd9010b461c853ccc2c0f7">operator=</a>(Cell &amp;&amp;other)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a5df1609bc0705830ec4dc6e177ddc955">value</a></td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_cell.html#a1f539a05953fa05d723c32e718f0eeb3">visited</a></td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a12667d768c7eab9e295b3476a5d60c0e">~Cell</a>()</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#abe9b289bc80d4f5d0717ba9e69197c0b">operator Cell_Type</a>() const</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_cell.html#acf4bbf136ed394887c35cfd4e78f50b9">operator=</a>(Cell &amp;other)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a9bb18ace78fd9010b461c853ccc2c0f7">operator=</a>(Cell &amp;&amp;other)</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_cell.html#a5df1609bc0705830ec4dc6e177ddc955">value</a></td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a1f539a05953fa05d723c32e718f0eeb3">visited</a></td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_cell.html#a12667d768c7eab9e295b3476a5d60c0e">~Cell</a>()</td><td class="entry"><a class="el" href="class_cell.html">Cell&lt; Cell_Type &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jan 29 2021 17:14:51 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Fri Feb 5 2021 11:27:13 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

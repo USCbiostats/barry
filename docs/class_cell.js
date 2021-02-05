@@ -1,7 +1,7 @@
 var class_cell =
 [
     [ "Cell", "class_cell.html#a402912c21a4c87659c0576a4bfa3c48f", null ],
-    [ "Cell", "class_cell.html#aa29177047f3c4a062e3c1854efa92353", null ],
+    [ "Cell", "class_cell.html#a6592b5fcfc80001c8de64a2e722ca715", null ],
     [ "~Cell", "class_cell.html#a12667d768c7eab9e295b3476a5d60c0e", null ],
     [ "Cell", "class_cell.html#ac116d4235eadb134018324455a9bbdbf", null ],
     [ "Cell", "class_cell.html#ab745c6f11e7f43f06318b4bb733d9474", null ],
@@ -22,7 +22,6 @@ var class_cell =
     [ "operator Cell_Type", "class_cell.html#abe9b289bc80d4f5d0717ba9e69197c0b", null ],
     [ "operator=", "class_cell.html#acf4bbf136ed394887c35cfd4e78f50b9", null ],
     [ "operator=", "class_cell.html#a9bb18ace78fd9010b461c853ccc2c0f7", null ],
-    [ "locked", "class_cell.html#a8188629882a0c9acad81eff9f89e3d6e", null ],
     [ "value", "class_cell.html#a5df1609bc0705830ec4dc6e177ddc955", null ],
     [ "visited", "class_cell.html#a1f539a05953fa05d723c32e718f0eeb3", null ]
 ];
