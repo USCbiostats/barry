@@ -6,16 +6,15 @@
 #ifndef BARRAY_RULES_BONES_HPP
 #define BARRAY_RULES_BONES_HPP 1
 
-
 template <typename Array_Type, typename Data_Type>
-inline bool rule_fun_default(const Array_Type * A, uint i, uint j, Data_Type *) {
+bool rule_fun_default(const Array_Type * array, uint i, uint j, Data_Type * dat) {
   return false;
 }
 
 /**@brief Sequence of cells indices.
  * 
  */
-template<typename Array_Type, typename Data_Type>
+template<typename Array_Type = BArray<>, typename Data_Type = bool>
 class Rule {
   
 private:

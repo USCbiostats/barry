@@ -39,4 +39,11 @@ namespace barry {
 
 namespace netcounters = barry::counters::network;
 namespace phylocounters = barry::counters::phylo;
+
+#define COUNTER_FUNCTION(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
+  inline double (a) (const Array_Type * Array, uint i, uint j, Data_Type * data)\
+
+#define RULE_FUNCTION(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
+  inline bool (a) (const Array_Type * Array, uint i, uint j, Data_Type * data)\
+
 #endif
