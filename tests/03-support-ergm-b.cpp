@@ -1,7 +1,7 @@
-#include <vector>
-#include "../include/barry.hpp"
-#include "catch.hpp"
-#include "tests.h"
+// #include <vector>
+// #include "../include/barry.hpp"
+// #include "catch.hpp"
+// #include "tests.h"
 
 TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   

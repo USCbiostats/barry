@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "../include/barry.hpp" 
+#include "../include/barry/barry.hpp"
 #include "catch.hpp"
 
 // Defining rule to lock the first cell

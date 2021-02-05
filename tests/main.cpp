@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <type_traits>
-#include "../include/barry.hpp"
+#include "../include/barry/barry.hpp"
 #include "tests.h"
 
 #define CATCH_CONFIG_MAIN
