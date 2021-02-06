@@ -166,6 +166,7 @@ public:
     Data_Counter_Type *                            data_        = nullptr,
     bool                                   delete_data_ = false
   );
+  void set_counters(CounterVector<Array_Type,Data_Counter_Type> * counters_);
   ///@}
   
   /**@name Wrappers for the `Rules` member. 
@@ -180,6 +181,8 @@ public:
       Data_Rule_Type * data_ = nullptr,
       bool delete_data_ = false
   );
+  
+  void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);
   ///@}
   
   /**@brief Adds an array to the support of not already included.

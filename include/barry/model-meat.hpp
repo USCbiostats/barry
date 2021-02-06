@@ -101,6 +101,17 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_counters(
+    CounterVector<Array_Type,Data_Counter_Type> * counters_
+) {
+  
+  this->counters = *counters_;
+  
+  return;
+  
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
     Rule<Array_Type, Data_Rule_Type> & rule
 ) {
@@ -134,6 +145,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
   
   return;
   
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_rules(
+    Rules<Array_Type,Data_Rule_Type> * rules_
+) {
+  this->rules = *rules_;
+  return;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>

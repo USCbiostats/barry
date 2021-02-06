@@ -56,12 +56,18 @@ int main() {
     double norm0 = model.normalizing_constants.at(0);
 
     phylocounters::PhyloModel model2;
-    // model2.counter_fun.set_counters
+    phylocounters::counter_gains(&model2.counters, {0,1,2});
+    phylocounters::counter_cogain(&model2.counters, 0, 1);
+    phylocounters::counter_cogain(&model2.counters, 1, 0);
     
-    model.likelihood_total({1, 1, 1, 1, 1});
-    double norm1 = model.normalizing_constants.at(0);
-    printf("Normalizing constant: %.4f\n", model.normalizing_constants.at(0));
+    model2.add_array(node0);
+    model2.print_stats(0);
+    
+    model2.likelihood_total({1, 1, 1, 1, 1});
+    double norm1 = model2.normalizing_constants.at(0);
+    printf("Normalizing constant: %.4f\n", model2.normalizing_constants.at(0));
 
+    printf("Probability of observing this data: %.8f\n", norm0/norm1);
 
     return 0;
 }
