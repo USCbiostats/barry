@@ -135,7 +135,7 @@ inline BArray<Cell_Type,Data_Type>::BArray(const BArray<Cell_Type,Data_Type> & A
   // Entries
   for (uint i = 0u; i < N; ++i) {
     
-    if (Array_.el_ij[i].size() == 0u)
+    if (Array_.nnozero() == 0u)
       continue;
     
     for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
@@ -167,7 +167,7 @@ inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
     // Entries
     for (uint i = 0u; i < N; ++i) {
       
-      if (Array_.el_ij[i].size() == 0u)
+      if (Array_.nnozero() == 0u)
         continue;
       
       for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
@@ -193,7 +193,7 @@ inline bool BArray<Cell_Type,Data_Type>::operator==(
 ) {
   
   // Dimension and number of cells used
-  if ((N != Array_.N) | (M != Array_.M) | (NCells != Array_.NCells))
+  if ((N != Array_.nrow()) | (M != Array_.ncol()) | (NCells != Array_.nnozero()))
     return false;
   
   // One holds, and the other doesn't.

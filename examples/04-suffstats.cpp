@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include "../include/barry.hpp"
+#include "../include/barry/barry.hpp"
 // #include "../include/lbarray-bones.hpp"
 using namespace Rcpp; 
 

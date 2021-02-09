@@ -49,7 +49,7 @@ typedef std::vector< std::pair< uint, uint > > PhyloRuleData;
 
 /**@name Convenient typedefs for Node objects. */
 ///@{
-typedef BArray<bool, NodeData> PhyloArray;
+typedef BArray<uint, NodeData> PhyloArray;
 typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
 typedef CounterVector< PhyloArray, PhyloCounterData> PhyloCounterVector;
 typedef Rule<PhyloArray,PhyloRuleData> PhyloRule;

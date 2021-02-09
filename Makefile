@@ -8,4 +8,8 @@ clean:
 phylo: examples/09-phylo-simulation.cpp
 	cd examples&& g++ -std=c++11 -Wall -pedantic 09-phylo-simulation.cpp -o phylosim && \
 		valgrind --leak-check=full ./phylosim
-
+prof:
+	cd examples/&& \
+		g++ -std=c++11 -Wall -g -O2 -Wpedantic phylo-suff-stats.cpp -o phylo-suff-stats && \
+		valgrind --tool=callgrind ./phylo-suff-stats
+.PHONY: prof	

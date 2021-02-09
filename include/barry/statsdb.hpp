@@ -48,7 +48,7 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
   // with a single count
   iter = data.find(x);
   if (iter == data.end()) {
-    data.emplace(std::make_pair(x, 1u));
+    data.insert(std::make_pair(x, 1u));
   } else // We increment the counter
     iter->second++;
   
