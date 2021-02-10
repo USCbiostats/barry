@@ -165,8 +165,8 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_counters(
 ) {
   
   this->counters = *counters_;
-  support_fun->set_counters(&counters);
-  counter_fun->set_counters(&counters);
+  support_fun.set_counters(&counters);
+  counter_fun.set_counters(&counters);
   
   return;
   
@@ -214,7 +214,7 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_rules(
 ) {
 
   this->rules = *rules_;
-  support_fun->set_rules(&rules);
+  support_fun.set_rules(&rules);
   return;
 
 }
