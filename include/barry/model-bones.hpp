@@ -1,12 +1,12 @@
 // #include <vector>
 // #include <unordered_map>
 #include "barray-bones.hpp"
-#include "support.hpp"
-#include "statscounter.hpp"
+#include "support-bones.hpp"
+#include "statscounter-bones.hpp"
 #include "rules-bones.hpp"
 
-#ifndef MODEL_BONES_HPP 
-#define MODEL_BONES_HPP 1
+#ifndef BARRY_MODEL_BONES_HPP 
+#define BARRY_MODEL_BONES_HPP 1
 
 inline double update_normalizing_constant(
   const std::vector< double > & params,
@@ -131,10 +131,10 @@ public:
    * @details Arguments are recycled to save memory and computation.
    */
   ///@[{
-  CounterVector<Array_Type,Data_Counter_Type> counters;
-  Rules<Array_Type,Data_Rule_Type>            rules;
-  Support<Array_Type,Data_Counter_Type,Data_Rule_Type>       support_fun;
-  StatsCounter<Array_Type,Data_Counter_Type>  counter_fun;
+  CounterVector<Array_Type,Data_Counter_Type>          counters;
+  Rules<Array_Type,Data_Rule_Type>                     rules;
+  Support<Array_Type,Data_Counter_Type,Data_Rule_Type> support_fun;
+  StatsCounter<Array_Type,Data_Counter_Type>           counter_fun;
   ///@}
   
   /**@brief Vector of the previously used parameters */
@@ -164,7 +164,7 @@ public:
     Counter_fun_type<Array_Type,Data_Counter_Type> count_fun_,
     Counter_fun_type<Array_Type,Data_Counter_Type> init_fun_    = nullptr,
     Data_Counter_Type *                            data_        = nullptr,
-    bool                                   delete_data_ = false
+    bool                                           delete_data_ = false
   );
   void set_counters(CounterVector<Array_Type,Data_Counter_Type> * counters_);
   ///@}
@@ -178,8 +178,8 @@ public:
   void add_rule(Rule<Array_Type, Data_Rule_Type> * rule);
   void add_rule(
       Rule_fun_type<Array_Type, Data_Rule_Type> count_fun_,
-      Data_Rule_Type * data_ = nullptr,
-      bool delete_data_ = false
+      Data_Rule_Type *                          data_        = nullptr,
+      bool                                      delete_data_ = false
   );
   
   void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);

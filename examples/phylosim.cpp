@@ -1,6 +1,6 @@
 #include <iostream>
 #include <ostream>
-#include "../include/barry.hpp"
+#include "../include/barry/barry.hpp"
 
 template<typename T>
 inline void print(const std::vector< T > & x) {

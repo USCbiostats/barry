@@ -14,17 +14,31 @@ namespace barry {
   
   //! Tree class and TreeIterator class
   #include "typedefs.hpp"
+
   #include "cell-bones.hpp"
+  #include "cell-meat.hpp"
+
   #include "barray-bones.hpp"
   #include "barray-meat.hpp"
   
   #include "counters-bones.hpp"
-  #include "statscounter.hpp"
-  #include "support.hpp"
+  #include "counters-meat.hpp"
+
+  #include "statscounter-bones.hpp"
+  #include "statscounter-meat.hpp"
+
+  #include "support-bones.hpp"
+  #include "support-meat.hpp"
+
   #include "block-bones.hpp"
-  #include "powerset.hpp"
+  #include "block-meat.hpp"
+
+  #include "powerset-bones.hpp"
+  #include "powerset-meat.hpp"
+
   #include "model-bones.hpp"
   #include "model-meat.hpp"
+  
   #include "rules-bones.hpp"
   #include "rules-meat.hpp"
   

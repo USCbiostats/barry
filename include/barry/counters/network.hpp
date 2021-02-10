@@ -1,6 +1,6 @@
 #include "../counters-bones.hpp"
-#include "../support.hpp"
-#include "../statscounter.hpp"
+#include "../support-bones.hpp"
+#include "../statscounter-bones.hpp"
 #include "../model-bones.hpp"
 
 #ifndef BARRAY_NETWORK_H

@@ -3,8 +3,8 @@
 
 #include "typedefs.hpp"
 
-#ifndef BARRAY_RULES_BONES_HPP
-#define BARRAY_RULES_BONES_HPP 1
+#ifndef BARRY_RULES_BONES_HPP
+#define BARRY_RULES_BONES_HPP 1
 
 template <typename Array_Type, typename Data_Type>
 bool rule_fun_default(const Array_Type * array, uint i, uint j, Data_Type * dat) {

@@ -1,21 +1,21 @@
 #include "model-bones.hpp"
 
-#ifndef MODEL_MEAT_HPP 
-#define MODEL_MEAT_HPP 1
+#ifndef BARRY_MODEL_MEAT_HPP 
+#define BARRY_MODEL_MEAT_HPP 1
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model() :
   stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
   target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules() 
-{
-  
+{  
+
   // Counters are shared
   support_fun.set_counters(&counters);
   counter_fun.set_counters(&counters);
   
   // Rules are shared
   support_fun.set_rules(&rules);
-  
+
   // Checking with the hasher function: Is this present?
   keygen = keygen_default<Array_Type>;
   
@@ -26,7 +26,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model() :
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(uint size_) :
   stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
-  target_stats(0u), arrays2support(0u), keys2support(0u), counters() 
+  target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules()
 {
   
   target_stats.reserve(size_);
@@ -86,7 +86,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
     Counter_fun_type<Array_Type,Data_Counter_Type> count_fun_,
     Counter_fun_type<Array_Type,Data_Counter_Type> init_fun_,
     Data_Counter_Type *                            data_,
-    bool                                   delete_data_
+    bool                                           delete_data_
 ) {
   
   counters.add_counter(
@@ -106,6 +106,8 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_counters(
 ) {
   
   this->counters = *counters_;
+  support_fun->set_counters(&counters);
+  counter_fun->set_counters(&counters);
   
   return;
   
@@ -133,8 +135,8 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
     Rule_fun_type<Array_Type,Data_Rule_Type> rule_fun_,
-    Data_Rule_Type *                            data_,
-    bool                                   delete_data_
+    Data_Rule_Type *                         data_,
+    bool                                     delete_data_
 ) {
   
   rules.add_rule(
@@ -151,8 +153,11 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_rules(
     Rules<Array_Type,Data_Rule_Type> * rules_
 ) {
+
   this->rules = *rules_;
+  support_fun->set_rules(&rules);
   return;
+
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>

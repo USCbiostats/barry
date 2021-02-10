@@ -1,8 +1,8 @@
 // #include <stdexcept>
 #include "barray-bones.hpp"
 
-#ifndef BARRAY_MEAT_HPP
-#define BARRAY_MEAT_HPP 
+#ifndef BARRY_BARRAY_MEAT_HPP
+#define BARRY_BARRAY_MEAT_HPP 
 
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayCell<Cell_Type,Data_Type>::operator=(bool add) {
@@ -268,6 +268,37 @@ BArray< Cell_Type, Data_Type>::get_col(uint i, bool check_bounds) const {
     out_of_range(0u, i);
   
   return &COL(i);
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline std::vector<Cell_Type>
+BArray< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const {
+
+  // Checking boundaries  
+  if (check_bounds) 
+    out_of_range(i, 0u);
+
+  std::vector< Cell_Type > ans(ncol(), Cell_default);
+  for (auto iter = ROW(i).begin(); iter != ROW(i).end(); ++iter) 
+    ans.at(iter->first) = iter->second;
+  
+
+  return ans;
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline std::vector<Cell_Type>
+BArray< Cell_Type,Data_Type >::get_col_vec(uint i, bool check_bounds) const {
+
+  // Checking boundaries  
+  if (check_bounds) 
+    out_of_range(i, 0u);
+
+  std::vector< Cell_Type > ans(nrow(), Cell_default);
+  for (auto iter = COL(i).begin(); iter != COL(i).end(); ++iter) 
+    ans.at(iter->first) = iter->second;
+  
+  return ans;
 }
 
 template<typename Cell_Type, typename Data_Type>

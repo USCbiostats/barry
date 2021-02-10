@@ -1,7 +1,8 @@
 #include "../counters-bones.hpp"
-#include "../support.hpp"
-#include "../statscounter.hpp"
+#include "../support-bones.hpp"
+#include "../statscounter-bones.hpp"
 #include "../model-bones.hpp"
+#include "../powerset-bones.hpp"
 
 #ifndef BARRAY_PHYLO_H
 #define BARRAY_PHYLO_H 1
@@ -57,6 +58,8 @@ typedef Rules<PhyloArray,PhyloRuleData> PhyloRules;
 typedef Support<PhyloArray, PhyloCounterData, PhyloRuleData> PhyloSupport;
 typedef StatsCounter<PhyloArray, PhyloCounterData> PhyloStatsCounter;
 typedef Model<PhyloArray, PhyloCounterData, PhyloRuleData> PhyloModel;
+typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
+
 ///@}
 
 
