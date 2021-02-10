@@ -4,6 +4,99 @@
 #define BARRY_COUNTERS_MEAT_HPP 1
 
 template <typename Array_Type, typename Data_Type>
+inline Counter<Array_Type,Data_Type>::Counter(
+  const Counter<Array_Type,Data_Type> & counter_
+) : count_fun(counter_.count_fun), init_fun(counter_.init_fun) {
+
+  if (counter_.delete_data) {
+    this->data = new Data_Type(*counter_.data);
+    delete_data = true;
+  } else {
+    this->data = counter_.data;
+    delete_data = false;
+  }
+
+  return;
+
+};
+
+template <typename Array_Type, typename Data_Type>
+Counter<Array_Type,Data_Type> Counter<Array_Type,Data_Type>::operator=(
+  const Counter<Array_Type,Data_Type> & counter_
+) {
+
+  if (this != &counter_) {
+
+    count_fun = counter_.count_fun;
+    init_fun  = counter_.init_fun;
+
+    if (counter_.delete_data) {
+      this->data = new Data_Type(*counter_.data);
+      delete_data = true;
+    } else {
+      this->data = counter_.data;
+      delete_data = false;
+    }
+
+  }
+
+  return *this;
+
+};
+
+template <typename Array_Type, typename Data_Type>
+inline CounterVector<Array_Type,Data_Type>::CounterVector(
+  const CounterVector<Array_Type,Data_Type> & counter_
+) {
+
+  // Checking which need to be deleted
+  std::vector< bool > tobedeleted(counter_.size(), false);
+  for (auto i = counter_.to_be_deleted.begin(); i != counter_.to_be_deleted.end(); ++i)
+    tobedeleted[*i] = true;
+
+  // Copy all counters, if a counter is tagged as 
+  // to be deleted, then copy the value
+  for (auto i = 0u; i != counter_.size(); ++i) {
+    if (tobedeleted[i]) {
+      this->add_counter(*counter_.data[i]);
+    } else {
+      this->add_counter(counter_.data[i]);
+    } 
+  }
+
+  return;
+
+};
+
+template <typename Array_Type, typename Data_Type>
+CounterVector<Array_Type,Data_Type> CounterVector<Array_Type,Data_Type>::operator=(
+  const CounterVector<Array_Type,Data_Type> & counter_
+) {
+
+  if (this != &counter_) {
+
+    // Checking which need to be deleted
+    std::vector< bool > tobedeleted(counter_.size(), false);
+    for (auto i = counter_.to_be_deleted.begin(); i != counter_.to_be_deleted.end(); ++i)
+      tobedeleted[*i] = true;
+
+    // Copy all counters, if a counter is tagged as 
+    // to be deleted, then copy the value
+    for (auto i = 0u; i != counter_.size(); ++i) {
+      if (tobedeleted[i]) {
+        this->add_counter(*counter_.data[i]);
+      } else {
+        this->add_counter(counter_.data[i]);
+      } 
+    }
+
+  }
+
+  return *this;
+
+};
+
+template <typename Array_Type, typename Data_Type>
 inline double Counter<Array_Type, Data_Type>::count(
     Array_Type * Array, uint i, uint j) {
   if (count_fun == nullptr)

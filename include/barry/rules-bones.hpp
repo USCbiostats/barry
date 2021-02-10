@@ -50,10 +50,17 @@ private:
 public:
   Rules() {};
 
+  Rules(const Rules<Array_Type,Data_Type> & rules_);
+  Rules<Array_Type,Data_Type> operator=(const Rules<Array_Type,Data_Type> & rules_);
+
   ~Rules() {
     this->clear();
     return;
   }
+
+  uint size() const {
+    return data.size();
+  };
   
   // Functions to add rules
   void add_rule(Rule<Array_Type, Data_Type> & rule);

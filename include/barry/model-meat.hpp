@@ -44,7 +44,66 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(uint size_) :
   
   return;
   
+};
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(
+  const Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model_) : 
+  stats(Model_.stats),
+  n_arrays_per_stats(Model_.n_arrays_per_stats),
+  pset_arrays(Model_.pset_arrays),
+  pset_stats(Model_.pset_stats),
+  target_stats(Model_.target_stats),
+  arrays2support(Model_.arrays2support),
+  keys2support(Model_.keys2support),
+  counters(Model_.counters),
+  rules(Model_.rules)
+  {
+  
+  // Counters are shared
+  support_fun.set_counters(&counters);
+  counter_fun.set_counters(&counters);
+  
+  // Rules are shared
+  support_fun.set_rules(&rules);
+
+  keygen = Model_.keygen;
+  
+  return;
+  
+};
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::operator=(
+  const Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model_
+) {
+  
+  // Clearing
+  if (this != &Model_) {
+    
+    stats              = Model_.stats;
+    n_arrays_per_stats = Model_.n_arrays_per_stats;
+    pset_arrays        = Model_.pset_arrays;
+    pset_stats         = Model_.pset_stats;
+    target_stats       = Model_.target_stats;
+    arrays2support     = Model_.arrays2support;
+    keys2support       = Model_.keys2support;
+    counters           = Model_.counters;
+    rules              = Model_.rule;
+    
+    // Counters are shared
+    support_fun.set_counters(&counters);
+    counter_fun.set_counters(&counters);
+    
+    // Rules are shared
+    support_fun.set_rules(&rules);
+    
+  }
+    
+  return *this;
+  
 }
+
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::store_psets() {

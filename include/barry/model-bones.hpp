@@ -148,6 +148,10 @@ public:
 
   Model();
   Model(uint size_);
+  Model(const Model<Array_Type, Data_Counter_Type, Data_Rule_Type> & Model_);
+  Model<Array_Type, Data_Counter_Type, Data_Rule_Type> & operator=(
+    const Model<Array_Type, Data_Counter_Type, Data_Rule_Type> & Model_
+    );
   ~Model() {};
   
   void store_psets();

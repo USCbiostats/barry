@@ -41,6 +41,9 @@ public:
     bool                                   delete_data_ = false
     ): count_fun(count_fun_), init_fun(init_fun_), data(data_), delete_data(delete_data_) {};
   
+  Counter(const Counter<Array_Type,Data_Type> & counter_);
+  Counter<Array_Type,Data_Type> operator=(const Counter<Array_Type,Data_Type> & counter_);
+
   ~Counter() {
     // delete data;
     if (delete_data)
@@ -76,6 +79,9 @@ public:
   ~CounterVector() {
     this->clear();
   }
+
+  CounterVector(const CounterVector<Array_Type,Data_Type> & counter_);
+  CounterVector<Array_Type,Data_Type> operator=(const CounterVector<Array_Type,Data_Type> & counter_);
   
   Counter<Array_Type,Data_Type> * operator[](uint idx);
   uint size() const {

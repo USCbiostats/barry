@@ -41,7 +41,7 @@ int main() {
     std::vector< double > blengths(3, 1.0);
 
     // Baseline parameters
-    std::vector< double > params = {0, 0, 0, 0, 0};
+    std::vector< double > params = {0.1, -.1, 0, 0, 0};
 
     // Iterating through the possible sets of nodes
     unsigned int i = 0u;
@@ -60,16 +60,16 @@ int main() {
         );
 
         // Generating the model
-        models.emplace_back(PhyloModel());
-        models_trunk.emplace_back(PhyloModel());
+        models.push_back(PhyloModel());
+        models_trunk.push_back(PhyloModel());
 
         counter_gains(&(models.at(i).counters), {0,1,2});
         counter_cogain(&(models.at(i).counters), 0, 1);
         counter_cogain(&(models.at(i).counters), 1, 2);
 
-        counter_gains(&models_trunk.at(i).counters, {0,1,2});
-        counter_cogain(&models_trunk.at(i).counters, 0, 1);
-        counter_cogain(&models_trunk.at(i).counters, 1, 2);
+        counter_gains(&(models_trunk.at(i).counters), {0,1,2});
+        counter_cogain(&(models_trunk.at(i).counters), 0, 1);
+        counter_cogain(&(models_trunk.at(i).counters), 1, 2);
 
         // Only one has the rules
         models.at(i).add_rule(rule);
@@ -84,7 +84,7 @@ int main() {
 
         // Printing the data
         double norm_num = models.at(i).normalizing_constants.at(0u);
-        double norm_denom = models_trunk.at(i).normalizing_constants.at(0u);
+        double norm_denom = models_trunk.at(i++).normalizing_constants.at(0u);
         printf("Probability of observing this data: %.8f\n", norm_num/norm_denom);
 
     }
