@@ -111,7 +111,8 @@ template <typename Array_Type, typename Counter_Type> class Counter;
 #define A_ROW(a) Array->el_ij[a]
 #define A_COL(a) Array->el_ji[a]
 
-/**@brief 
+/**
+ * @brief Counter function
  * @param Array_Type a BArray
  * @param unit, uint Focal cell
  * @param Data_Type Data associated with the function, for example, id of the attribute

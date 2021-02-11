@@ -24,7 +24,7 @@ public:
   std::vector< double > change_stats;
    
   // We will save the data here
-  CounterVector<Array_Type,Data_Type> * counters;
+  Counters<Array_Type,Data_Type> * counters;
   bool                                  counter_deleted  = false;
   
   /**
@@ -35,7 +35,7 @@ public:
    */
   StatsCounter(const Array_Type * Array_) :
     Array(Array_), EmptyArray(*Array_),
-    counters(new CounterVector<Array_Type,Data_Type>()) {
+    counters(new Counters<Array_Type,Data_Type>()) {
     
     // We are removing the entries without freeing the memory. This should
     // make the insertion faster.
@@ -49,7 +49,7 @@ public:
    */
   StatsCounter() :
     Array(nullptr), EmptyArray(0u,0u),
-    counters(new CounterVector<Array_Type,Data_Type>()) {};
+    counters(new Counters<Array_Type,Data_Type>()) {};
   ~StatsCounter();
   
   /**@brief Changes the reference array for the counting.
@@ -60,7 +60,7 @@ public:
   
   void add_counter(Counter<Array_Type,Data_Type> * f_);
   void add_counter(Counter<Array_Type,Data_Type> f_);
-  void set_counters(CounterVector<Array_Type,Data_Type> * counters_);
+  void set_counters(Counters<Array_Type,Data_Type> * counters_);
   
   /***
    * ! This function recurses through the entries of `Array` and at each step of

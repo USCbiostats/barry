@@ -51,6 +51,28 @@ inline Vec< double > tip_keygen(const PhyloArray & array) {
     return dat;
 }
 
+// Hasher
+inline Vec< double > tip_keygen_baseline(const PhyloArray & array) {
+    
+    // Baseline data: nrows and columns
+    Vec< double > dat = {
+        (double) array.nrow(), (double) array.ncol()
+    };
+    
+    // State of the parent
+    for (bool i : array.data->states) {
+        dat.push_back(i ? 1.0 : 0.0);
+    }
+
+    // // Free cells
+    // for (auto i = 0u; i < array.nrow(); ++i)
+    //     for (auto j = 0u; j < array.ncol(); ++j)
+    //         dat.push_back((double) array.get_cell(i, j, false));
+    
+    return dat;
+}
+
+
 int main() {
 
     // Defining input data
@@ -82,7 +104,7 @@ int main() {
 
     // Iterating through the possible sets of nodes
     PhyloModel tipmodel;
-    tipmodel.set_keygen(tip_keygen);
+    tipmodel.set_keygen(tip_keygen_baseline);
 
     PhyloModel tipmodel_restricted;
     tipmodel_restricted.set_keygen(tip_keygen);
@@ -121,8 +143,9 @@ int main() {
         // Printing the data
         double norm_num = tipmodel_restricted.normalizing_constants.at(l);
         double norm_denom = tipmodel.normalizing_constants.at(k);
-        // printf("(l, k): (%i, %i); ", l, k);
-        // printf("Pr(): %.8f\n", norm_num/norm_denom);
+        
+        printf("(l, k): (%i, %i); ", tipmodel_restricted.arrays2support.at(l), tipmodel.arrays2support.at(k));
+        printf("Pr(): %.8f\n", norm_num/norm_denom);
 
     }
 

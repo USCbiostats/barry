@@ -97,29 +97,47 @@ $(document).ready(function(){initNavTree('classbarry_1_1_rule.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Sequence of cells indices.  
+<p><a class="el" href="classbarry_1_1_rule.html" title="Rule for determining if a cell should be included in a sequence. ">Rule</a> for determining if a cell should be included in a sequence.  
  <a href="classbarry_1_1_rule.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="barry_8hpp_source.html">barry.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa9d79df22874f000c8f4dd46b58cc157"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_rule.html#aa9d79df22874f000c8f4dd46b58cc157">Rule</a> ()</td></tr>
-<tr class="separator:aa9d79df22874f000c8f4dd46b58cc157"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d63309b0ff8cd5d2c4827b9daf03b3a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_rule.html#a2d63309b0ff8cd5d2c4827b9daf03b3a">Rule</a> (<a class="el" href="namespacebarry.html#aefd7e6d4ba228e2ce1074d075c512178">Rule_fun_type</a>&lt; Array_Type, Data_Type &gt; fun_, Data_Type *dat_=nullptr, bool delete_dat_=false)</td></tr>
-<tr class="separator:a2d63309b0ff8cd5d2c4827b9daf03b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b56209f553a6fe5b841395eec8e3101"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_rule.html#a5b56209f553a6fe5b841395eec8e3101">~Rule</a> ()</td></tr>
 <tr class="separator:a5b56209f553a6fe5b841395eec8e3101"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a9a115c6951a5c8de699d4ff9f69060"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_rule.html#a0a9a115c6951a5c8de699d4ff9f69060">locked</a> (const Array_Type *a, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> i, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> j)</td></tr>
 <tr class="separator:a0a9a115c6951a5c8de699d4ff9f69060"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Construct a new Rule object</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Construct a new <a class="el" href="classbarry_1_1_rule.html" title="Rule for determining if a cell should be included in a sequence. ">Rule</a> object</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fun_</td><td>A function of type <code>Rule_fun_type</code>. </td></tr>
+    <tr><td class="paramname">dat_</td><td>Data pointer to be passed to <code>fun_</code> </td></tr>
+    <tr><td class="paramname">delete_dat_</td><td>When <code>true</code>, the <code><a class="el" href="classbarry_1_1_rule.html" title="Rule for determining if a cell should be included in a sequence. ">Rule</a></code> destructor will delete the pointer, if defined. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
+<tr class="memitem:aa9d79df22874f000c8f4dd46b58cc157"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_rule.html#aa9d79df22874f000c8f4dd46b58cc157">Rule</a> ()</td></tr>
+<tr class="separator:aa9d79df22874f000c8f4dd46b58cc157"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d63309b0ff8cd5d2c4827b9daf03b3a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_rule.html#a2d63309b0ff8cd5d2c4827b9daf03b3a">Rule</a> (<a class="el" href="namespacebarry.html#aefd7e6d4ba228e2ce1074d075c512178">Rule_fun_type</a>&lt; Array_Type, Data_Type &gt; fun_, Data_Type *dat_=nullptr, bool delete_dat_=false)</td></tr>
+<tr class="separator:a2d63309b0ff8cd5d2c4827b9daf03b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt;<br />
 class barry::Rule&lt; Array_Type, Data_Type &gt;</h3>
 
-<p>Sequence of cells indices. </p>
+<p><a class="el" href="classbarry_1_1_rule.html" title="Rule for determining if a cell should be included in a sequence. ">Rule</a> for determining if a cell should be included in a sequence. </p>
+<p><a class="el" href="classbarry_1_1_rules.html" title="Vector of objects of class Rule. ">Rules</a> can be used together with <code><a class="el" href="classbarry_1_1_support.html" title="Compute the support of sufficient statistics. ">Support</a></code> and <code><a class="el" href="classbarry_1_1_power_set.html">PowerSet</a></code> to determine which cells should be included when enumerating all possible realizations of a binary array. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Array_Type</td><td>An object of class <code><a class="el" href="classbarry_1_1_b_array.html">BArray</a></code>. </td></tr>
+    <tr><td class="paramname">Data_Type</td><td>Any type. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00018">18</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00023">23</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa9d79df22874f000c8f4dd46b58cc157"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa9d79df22874f000c8f4dd46b58cc157">&#9670;&nbsp;</a></span>Rule() <span class="overload">[1/2]</span></h2>
@@ -146,7 +164,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00026">26</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00042">42</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -192,7 +210,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00027">27</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00043">43</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -221,7 +239,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00033">33</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00050">50</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -268,7 +286,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00010">10</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00062">62</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -281,7 +299,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacebarry.html">barry</a></li><li class="navelem"><a class="el" href="classbarry_1_1_rule.html">Rule</a></li>
-    <li class="footer">Generated on Fri Feb 5 2021 11:27:13 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Wed Feb 10 2021 16:36:16 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

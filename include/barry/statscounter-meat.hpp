@@ -44,7 +44,7 @@ inline void StatsCounter<Array_Type,Data_Type>::add_counter(
 
 template <typename Array_Type, typename Data_Type>
 inline void StatsCounter<Array_Type,Data_Type>::set_counters(
-    CounterVector<Array_Type,Data_Type> * counters_
+    Counters<Array_Type,Data_Type> * counters_
 ) {
   
   // Cleaning up before replacing the memory

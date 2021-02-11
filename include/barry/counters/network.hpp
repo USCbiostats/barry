@@ -73,7 +73,7 @@ public:
 ///@{
 typedef BArray<bool, NetworkData> Network;
 typedef Counter<Network, NetCounterData > NetCounter;
-typedef CounterVector< Network, NetCounterData> NetCounterVector;
+typedef Counters< Network, NetCounterData> NetCounters;
 typedef Support<Network, NetCounterData > NetSupport;
 typedef StatsCounter<Network, NetCounterData> NetStatsCounter;
 typedef Model<Network, NetCounterData> NetModel;
@@ -105,12 +105,12 @@ typedef Rules<Network,bool> NetRules;
 ///@}
 
 /**@name Counters for network models
- * @param counters A pointer to a `NetCounterVector` object (`CounterVector`<`Network`, `NetCounterData`>).
+ * @param counters A pointer to a `NetCounters` object (`Counters`<`Network`, `NetCounterData`>).
  */
 ///@{
 // -----------------------------------------------------------------------------
 /**@brief Number of edges */
-inline void counter_edges(NetCounterVector * counters) {
+inline void counter_edges(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(count_edges) {
     return 1.0;
@@ -124,7 +124,7 @@ inline void counter_edges(NetCounterVector * counters) {
 
 // -----------------------------------------------------------------------------
 /**@brief Number of isolated vertices */
-inline void counter_isolates(NetCounterVector * counters) {
+inline void counter_isolates(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     if (i == j)
@@ -154,7 +154,7 @@ inline void counter_isolates(NetCounterVector * counters) {
 
 // -----------------------------------------------------------------------------
 /**@brief Number of mutual ties */
-inline void counter_mutual(NetCounterVector * counters) {
+inline void counter_mutual(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     // Is there any tie at ji? If not, then we have a new mutual!
@@ -192,7 +192,7 @@ inline void counter_mutual(NetCounterVector * counters) {
 
 
 // 2-istars --------------------------------------------------------------------
-inline void counter_istar2(NetCounterVector * counters) {
+inline void counter_istar2(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     // Need to check the receiving, if he/she is getting a new set of stars
@@ -210,7 +210,7 @@ inline void counter_istar2(NetCounterVector * counters) {
 }
 
 // 2-ostars --------------------------------------------------------------------
-inline void counter_ostar2(NetCounterVector * counters) {
+inline void counter_ostar2(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     // Need to check the receiving, if he/she is getting a new set of stars
@@ -229,7 +229,7 @@ inline void counter_ostar2(NetCounterVector * counters) {
 
 
 // ttriads ---------------------------------------------------------------------
-inline void counter_ttriads(NetCounterVector * counters) {
+inline void counter_ttriads(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     // Self ties do not count
@@ -304,7 +304,7 @@ inline void counter_ttriads(NetCounterVector * counters) {
 
 
 // Cycle triads --------------------------------------------------------------
-inline void counter_ctriads(NetCounterVector * counters) {
+inline void counter_ctriads(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     if (i == j)
@@ -343,7 +343,7 @@ inline void counter_ctriads(NetCounterVector * counters) {
 }
   
 // Density --------------------------------------------------------------
-inline void counter_density(NetCounterVector * counters) {
+inline void counter_density(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -359,7 +359,7 @@ inline void counter_density(NetCounterVector * counters) {
 }
 
 // idegree1.5  -------------------------------------------------------------
-inline void counter_idegree15(NetCounterVector * counters) {
+inline void counter_idegree15(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -379,7 +379,7 @@ inline void counter_idegree15(NetCounterVector * counters) {
 }
 
 // odegree1.5  -------------------------------------------------------------
-inline void counter_odegree15(NetCounterVector * counters) {
+inline void counter_odegree15(NetCounters * counters) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -402,7 +402,7 @@ inline void counter_odegree15(NetCounterVector * counters) {
 // -----------------------------------------------------------------------------
 /**@brief Sum of absolute attribute difference between ego and alter */
 inline void counter_absdiff(
-    NetCounterVector * counters,
+    NetCounters * counters,
     uint attr_id,
     double alpha = 1.0
   ) {
@@ -444,7 +444,7 @@ inline void counter_absdiff(
 // -----------------------------------------------------------------------------
 /**@brief Sum of attribute difference between ego and alter to pow(alpha)*/
 inline void counter_diff(
-    NetCounterVector * counters,
+    NetCounters * counters,
     uint attr_id,
     double alpha     = 1.0,
     double tail_head = true
@@ -502,7 +502,7 @@ NETWORK_COUNTER(init_single_attr) {
 
 // -----------------------------------------------------------------------------
 //*@brief Attribute sum over receiver nodes */
-inline void counter_nodeicov(NetCounterVector * counters, uint attr_id) {
+inline void counter_nodeicov(NetCounters * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -521,7 +521,7 @@ inline void counter_nodeicov(NetCounterVector * counters, uint attr_id) {
 
 // -----------------------------------------------------------------------------
 //*@brief Attribute sum over sender nodes */
-inline void counter_nodeocov(NetCounterVector * counters, uint attr_id) {
+inline void counter_nodeocov(NetCounters * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -540,7 +540,7 @@ inline void counter_nodeocov(NetCounterVector * counters, uint attr_id) {
 
 // -----------------------------------------------------------------------------
 //*@brief Attribute sum over receiver and sender nodes */
-inline void counter_nodecov(NetCounterVector * counters, uint attr_id) {
+inline void counter_nodecov(NetCounters * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -560,7 +560,7 @@ inline void counter_nodecov(NetCounterVector * counters, uint attr_id) {
 
 // -----------------------------------------------------------------------------
 //*@brief Number of homophililic ties */
-inline void counter_nodematch(NetCounterVector * counters, uint attr_id) {
+inline void counter_nodematch(NetCounters * counters, uint attr_id) {
   
   NETWORK_COUNTER_LAMBDA(tmp_count) {
     
@@ -587,7 +587,7 @@ inline void counter_nodematch(NetCounterVector * counters, uint attr_id) {
 // -----------------------------------------------------------------------------
 /**@brief Counts number of vertices with a given in-degree */
 inline void counter_idegree(
-    NetCounterVector * counters,
+    NetCounters * counters,
     std::vector< uint > d) {
 
   NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -629,7 +629,7 @@ inline void counter_idegree(
 // -----------------------------------------------------------------------------
 /**@brief Counts number of vertices with a given out-degree */
 inline void counter_odegree(
-    NetCounterVector * counters,
+    NetCounters * counters,
     std::vector<uint> d
     ) {
   
@@ -673,7 +673,7 @@ inline void counter_odegree(
 // -----------------------------------------------------------------------------
 /**@brief Counts number of vertices with a given out-degree */
 inline void counter_degree(
-    NetCounterVector * counters,
+    NetCounters * counters,
     std::vector<uint> d
 ) {
   

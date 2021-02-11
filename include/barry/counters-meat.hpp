@@ -45,8 +45,8 @@ Counter<Array_Type,Data_Type> Counter<Array_Type,Data_Type>::operator=(
 };
 
 template <typename Array_Type, typename Data_Type>
-inline CounterVector<Array_Type,Data_Type>::CounterVector(
-  const CounterVector<Array_Type,Data_Type> & counter_
+inline Counters<Array_Type,Data_Type>::Counters(
+  const Counters<Array_Type,Data_Type> & counter_
 ) {
 
   // Checking which need to be deleted
@@ -69,8 +69,8 @@ inline CounterVector<Array_Type,Data_Type>::CounterVector(
 };
 
 template <typename Array_Type, typename Data_Type>
-CounterVector<Array_Type,Data_Type> CounterVector<Array_Type,Data_Type>::operator=(
-  const CounterVector<Array_Type,Data_Type> & counter_
+Counters<Array_Type,Data_Type> Counters<Array_Type,Data_Type>::operator=(
+  const Counters<Array_Type,Data_Type> & counter_
 ) {
 
   if (this != &counter_) {
@@ -113,12 +113,12 @@ inline double Counter<Array_Type, Data_Type>::init(
 }
 
 template <typename Array_Type, typename Data_Type>
-inline Counter<Array_Type,Data_Type> * CounterVector<Array_Type,Data_Type>::operator[](uint idx) {
+inline Counter<Array_Type,Data_Type> * Counters<Array_Type,Data_Type>::operator[](uint idx) {
   return data[idx];
 }
 
 template <typename Array_Type, typename Data_Type>
-inline void CounterVector<Array_Type,Data_Type>::add_counter(
+inline void Counters<Array_Type,Data_Type>::add_counter(
   Counter<Array_Type, Data_Type> & counter
 ) {
   
@@ -129,7 +129,7 @@ inline void CounterVector<Array_Type,Data_Type>::add_counter(
 }
 
 template <typename Array_Type, typename Data_Type>
-inline void CounterVector<Array_Type,Data_Type>::add_counter(
+inline void Counters<Array_Type,Data_Type>::add_counter(
     Counter<Array_Type, Data_Type> * counter
 ) {
   
@@ -139,7 +139,7 @@ inline void CounterVector<Array_Type,Data_Type>::add_counter(
 }
 
 template <typename Array_Type, typename Data_Type>
-inline void CounterVector<Array_Type,Data_Type>::add_counter(
+inline void Counters<Array_Type,Data_Type>::add_counter(
     Counter_fun_type<Array_Type,Data_Type> count_fun_,
     Counter_fun_type<Array_Type,Data_Type> init_fun_,
     Data_Type *                            data_,
@@ -163,7 +163,7 @@ inline void CounterVector<Array_Type,Data_Type>::add_counter(
 }
 
 template <typename Array_Type, typename Data_Type>
-inline void CounterVector<Array_Type,Data_Type>::clear() {
+inline void Counters<Array_Type,Data_Type>::clear() {
   
   for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
     delete data[*iter];

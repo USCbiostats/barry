@@ -2,7 +2,7 @@
 \label{classbarry_1_1_rule}\index{barry\+::\+Rule$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$@{barry\+::\+Rule$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
 
 
-Sequence of cells indices.  
+\hyperlink{classbarry_1_1_rule}{Rule} for determining if a cell should be included in a sequence.  
 
 
 
@@ -12,25 +12,47 @@ Sequence of cells indices.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classbarry_1_1_rule_aa9d79df22874f000c8f4dd46b58cc157}{Rule} ()
-\item 
-\hyperlink{classbarry_1_1_rule_a2d63309b0ff8cd5d2c4827b9daf03b3a}{Rule} (\hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ fun\+\_\+, Data\+\_\+\+Type $\ast$dat\+\_\+=nullptr, bool delete\+\_\+dat\+\_\+=false)
-\item 
 \hyperlink{classbarry_1_1_rule_a5b56209f553a6fe5b841395eec8e3101}{$\sim$\+Rule} ()
 \item 
 bool \hyperlink{classbarry_1_1_rule_a0a9a115c6951a5c8de699d4ff9f69060}{locked} (const Array\+\_\+\+Type $\ast$a, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j)
 \end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Construct a new Rule object}\par
+{\em Construct a new \hyperlink{classbarry_1_1_rule}{Rule} object
+
+
+\begin{DoxyParams}{Parameters}
+{\em fun\+\_\+} & A function of type {\ttfamily Rule\+\_\+fun\+\_\+type}. \\
+\hline
+{\em dat\+\_\+} & Data pointer to be passed to {\ttfamily fun\+\_\+} \\
+\hline
+{\em delete\+\_\+dat\+\_\+} & When {\ttfamily true}, the {\ttfamily \hyperlink{classbarry_1_1_rule}{Rule}} destructor will delete the pointer, if defined. \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbarry_1_1_rule_aa9d79df22874f000c8f4dd46b58cc157}{Rule} ()
+\item 
+\hyperlink{classbarry_1_1_rule_a2d63309b0ff8cd5d2c4827b9daf03b3a}{Rule} (\hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ fun\+\_\+, Data\+\_\+\+Type $\ast$dat\+\_\+=nullptr, bool delete\+\_\+dat\+\_\+=false)
+\end{DoxyCompactItemize}
+\end{Indent}
 
 
 \subsection{Detailed Description}
 \subsubsection*{template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$\newline
 class barry\+::\+Rule$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
 
-Sequence of cells indices. 
+\hyperlink{classbarry_1_1_rule}{Rule} for determining if a cell should be included in a sequence. 
+
+\hyperlink{classbarry_1_1_rules}{Rules} can be used together with {\ttfamily \hyperlink{classbarry_1_1_support}{Support}} and {\ttfamily \hyperlink{classbarry_1_1_power_set}{Power\+Set}} to determine which cells should be included when enumerating all possible realizations of a binary array. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Array\+\_\+\+Type} & An object of class {\ttfamily \hyperlink{classbarry_1_1_b_array}{B\+Array}}. \\
+\hline
+{\em Data\+\_\+\+Type} & Any type. \\
+\hline
+\end{DoxyTemplParams}
 
 
-
-Definition at line 18 of file barry.\+hpp.
+Definition at line 23 of file barry.\+hpp.
 
 
 
@@ -44,7 +66,7 @@ Definition at line 18 of file barry.\+hpp.
 
 
 
-Definition at line 26 of file barry.\+hpp.
+Definition at line 42 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_rule_a2d63309b0ff8cd5d2c4827b9daf03b3a}\label{classbarry_1_1_rule_a2d63309b0ff8cd5d2c4827b9daf03b3a}} 
 \index{barry\+::\+Rule@{barry\+::\+Rule}!Rule@{Rule}}
@@ -55,7 +77,7 @@ Definition at line 26 of file barry.\+hpp.
 
 
 
-Definition at line 27 of file barry.\+hpp.
+Definition at line 43 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_rule_a5b56209f553a6fe5b841395eec8e3101}\label{classbarry_1_1_rule_a5b56209f553a6fe5b841395eec8e3101}} 
 \index{barry\+::\+Rule@{barry\+::\+Rule}!````~Rule@{$\sim$\+Rule}}
@@ -66,7 +88,7 @@ Definition at line 27 of file barry.\+hpp.
 
 
 
-Definition at line 33 of file barry.\+hpp.
+Definition at line 50 of file barry.\+hpp.
 
 
 
@@ -80,7 +102,7 @@ bool \hyperlink{classbarry_1_1_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Typ
 
 
 
-Definition at line 10 of file barry.\+hpp.
+Definition at line 62 of file barry.\+hpp.
 
 
 

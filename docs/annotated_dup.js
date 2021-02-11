@@ -7,7 +7,7 @@ var annotated_dup =
     [ "CellSeq", "class_cell_seq.html", "class_cell_seq" ],
     [ "ConstBArrayRowIter", "class_const_b_array_row_iter.html", "class_const_b_array_row_iter" ],
     [ "Counter", "class_counter.html", "class_counter" ],
-    [ "CounterVector", "class_counter_vector.html", "class_counter_vector" ],
+    [ "Counters", "class_counters.html", "class_counters" ],
     [ "Entries", "class_entries.html", "class_entries" ],
     [ "FreqTable", "class_freq_table.html", "class_freq_table" ],
     [ "Model", "class_model.html", "class_model" ],

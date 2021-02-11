@@ -52,14 +52,13 @@ typedef std::vector< std::pair< uint, uint > > PhyloRuleData;
 ///@{
 typedef BArray<uint, NodeData> PhyloArray;
 typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
-typedef CounterVector< PhyloArray, PhyloCounterData> PhyloCounterVector;
+typedef Counters< PhyloArray, PhyloCounterData> PhyloCounters;
 typedef Rule<PhyloArray,PhyloRuleData> PhyloRule;
 typedef Rules<PhyloArray,PhyloRuleData> PhyloRules;
 typedef Support<PhyloArray, PhyloCounterData, PhyloRuleData> PhyloSupport;
 typedef StatsCounter<PhyloArray, PhyloCounterData> PhyloStatsCounter;
 typedef Model<PhyloArray, PhyloCounterData, PhyloRuleData> PhyloModel;
 typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
-
 ///@}
 
 
@@ -78,15 +77,16 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
 #define PHYLO_COUNTER_LAMBDA(a) Counter_fun_type<PhyloArray, PhyloCounterData> a = \
   [](const PhyloArray * Array, uint i, uint j, PhyloCounterData * data)
 
-/**@name Counters for phylogenetic modeling.
- * @param counters A pointer to a `PhyloCounterVector` object (`CounterVector`<`PhyloArray`, `PhyloCounterData`>).
+/**
+ * @name Counters for phylogenetic modeling.
+ * @param counters A pointer to a `PhyloCounters` object (`Counters`<`PhyloArray`, `PhyloCounterData`>).
  */
 //@{
 // -----------------------------------------------------------------------------
 /**@brief Overall functional gains
  * @details Total number of gains (irrespective of the function).
  */
-inline void counter_overall_gains(PhyloCounterVector * counters) {
+inline void counter_overall_gains(PhyloCounters * counters) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     return 1.0;
@@ -99,7 +99,7 @@ inline void counter_overall_gains(PhyloCounterVector * counters) {
 
 // -----------------------------------------------------------------------------
 /**@brief Functional gains for a specific function (`nfun`). */
-inline void counter_gains(PhyloCounterVector * counters, std::vector<uint> nfun) {
+inline void counter_gains(PhyloCounters * counters, std::vector<uint> nfun) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     return (!Array->data->states[i]) && (i == PHYLO_C_DATA_IDX(0u)) ? 1.0 : 0.0;
@@ -119,7 +119,7 @@ inline void counter_gains(PhyloCounterVector * counters, std::vector<uint> nfun)
 
 // -----------------------------------------------------------------------------
 /**@brief Overall functional loss */
-inline void counter_overall_loss(PhyloCounterVector * counters, uint nfun) {
+inline void counter_overall_loss(PhyloCounters * counters, uint nfun) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     return -1.0;
@@ -142,7 +142,7 @@ inline void counter_overall_loss(PhyloCounterVector * counters, uint nfun) {
   
 // -----------------------------------------------------------------------------
 /**@brief Total count of losses for an specific function. */
-inline void counter_loss(PhyloCounterVector * counters, std::vector<uint> nfun) {
+inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     return (Array->data->states[i]) && (i == PHYLO_C_DATA_IDX(0u)) ? -1.0 : 0.0;
@@ -169,7 +169,7 @@ inline void counter_loss(PhyloCounterVector * counters, std::vector<uint> nfun) 
 /**@brief Total count of Sub-functionalization events.
  * @details It requires to specify data = {funA, funB}
  */
-inline void counter_subfun(PhyloCounterVector * counters, uint nfunA, uint nfunB) {
+inline void counter_subfun(PhyloCounters * counters, uint nfunA, uint nfunB) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     // Are we looking at either of the relevant functions?
@@ -230,7 +230,7 @@ inline void counter_subfun(PhyloCounterVector * counters, uint nfunA, uint nfunB
 /**@brief Co-evolution (joint gain or loss)
  * @details Needs to specify pairs of functions (`nfunA`, `nfunB`).
  */
-inline void counter_cogain(PhyloCounterVector * counters, uint nfunA, uint nfunB) {
+inline void counter_cogain(PhyloCounters * counters, uint nfunA, uint nfunB) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     
@@ -270,7 +270,7 @@ inline void counter_cogain(PhyloCounterVector * counters, uint nfunA, uint nfunB
 
 // -----------------------------------------------------------------------------
 /**@brief Longest branch mutates (either by gain or by loss) */
-inline void counter_longest(PhyloCounterVector * counters) {
+inline void counter_longest(PhyloCounters * counters) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     // Only relevant if the 
@@ -359,7 +359,7 @@ inline void counter_longest(PhyloCounterVector * counters) {
 /**@brief Total number of neofunctionalization events 
  * @details Needs to specify pairs of function.
  */
-inline void counter_neofun(PhyloCounterVector * counters, uint nfunA, uint nfunB) {
+inline void counter_neofun(PhyloCounters * counters, uint nfunA, uint nfunB) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     // Is the function in scope relevant?

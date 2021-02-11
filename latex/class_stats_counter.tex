@@ -7,7 +7,7 @@ Count stats for a single Array.
 
 
 
-{\ttfamily \#include $<$statscounter.\+hpp$>$}
+{\ttfamily \#include $<$statscounter-\/bones.\+hpp$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -24,7 +24,7 @@ void \hyperlink{class_stats_counter_a829e41243a7b18cf71337deeec9f7030}{add\+\_\+
 \item 
 void \hyperlink{class_stats_counter_ad175dcd2bd30d017881783de546ac333}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ f\+\_\+)
 \item 
-void \hyperlink{class_stats_counter_a6aae81ab39ef452aedd7743fa8221855}{set\+\_\+counters} (\hyperlink{class_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$counters\+\_\+)
+void \hyperlink{class_stats_counter_a1d66f7d7326cac60a46ee56a8eb0a497}{set\+\_\+counters} (\hyperlink{class_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$counters\+\_\+)
 \item 
 void \hyperlink{class_stats_counter_a19bd5936619e190c0d8918b4f343922e}{count\+\_\+init} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
 \item 
@@ -43,7 +43,7 @@ std\+::vector$<$ double $>$ \hyperlink{class_stats_counter_af98192f893280a2681a5
 \item 
 std\+::vector$<$ double $>$ \hyperlink{class_stats_counter_a42c926799d8cb0abc6f5a1cfbc073f69}{change\+\_\+stats}
 \item 
-\hyperlink{class_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$ \hyperlink{class_stats_counter_a3115a96cbc1b35483a240b1fdc84eab6}{counters}
+\hyperlink{class_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$ \hyperlink{class_stats_counter_a7b69009ccd24109d5c8d9b28b50c0ccf}{counters}
 \item 
 bool \hyperlink{class_stats_counter_a9306fc44d8b02a953da4237f8950a53a}{counter\+\_\+deleted} = false
 \end{DoxyCompactItemize}
@@ -57,7 +57,7 @@ Count stats for a single Array.
 
 Users can a list of functions that can be used with this. The baseline set of arguments is a pointer to a binary array and a dataset to add the counts to. 
 
-Definition at line 16 of file statscounter.\+hpp.
+Definition at line 16 of file statscounter-\/bones.\+hpp.
 
 
 
@@ -82,7 +82,7 @@ Creator of a {\ttfamily \hyperlink{class_stats_counter}{Stats\+Counter}}
 \end{DoxyParams}
 
 
-Definition at line 36 of file statscounter.\+hpp.
+Definition at line 36 of file statscounter-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a6cef1e5bb4914a49ba8dd0f63070f81c}\label{class_stats_counter_a6cef1e5bb4914a49ba8dd0f63070f81c}} 
 \index{Stats\+Counter@{Stats\+Counter}!Stats\+Counter@{Stats\+Counter}}
@@ -97,7 +97,7 @@ Can be created without setting the array.
 
 
 
-Definition at line 50 of file statscounter.\+hpp.
+Definition at line 50 of file statscounter-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a2824d86765d94e909e4b33396250b6c7}\label{class_stats_counter_a2824d86765d94e909e4b33396250b6c7}} 
 \index{Stats\+Counter@{Stats\+Counter}!````~Stats\+Counter@{$\sim$\+Stats\+Counter}}
@@ -108,7 +108,7 @@ Definition at line 50 of file statscounter.\+hpp.
 
 
 
-Definition at line 77 of file statscounter.\+hpp.
+Definition at line 7 of file statscounter-\/meat.\+hpp.
 
 
 
@@ -122,7 +122,7 @@ void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\
 
 
 
-Definition at line 95 of file statscounter.\+hpp.
+Definition at line 25 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_ad175dcd2bd30d017881783de546ac333}\label{class_stats_counter_ad175dcd2bd30d017881783de546ac333}} 
 \index{Stats\+Counter@{Stats\+Counter}!add\+\_\+counter@{add\+\_\+counter}}
@@ -133,7 +133,7 @@ void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\
 
 
 
-Definition at line 105 of file statscounter.\+hpp.
+Definition at line 35 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a83bd92031a1499109c98f238221cbd67}\label{class_stats_counter_a83bd92031a1499109c98f238221cbd67}} 
 \index{Stats\+Counter@{Stats\+Counter}!count\+\_\+all@{count\+\_\+all}}
@@ -144,7 +144,7 @@ std\+::vector$<$ double $>$ \hyperlink{class_stats_counter}{Stats\+Counter}$<$ A
 
 
 
-Definition at line 168 of file statscounter.\+hpp.
+Definition at line 98 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_ab81166f7cb67eeaecc469016d237019a}\label{class_stats_counter_ab81166f7cb67eeaecc469016d237019a}} 
 \index{Stats\+Counter@{Stats\+Counter}!count\+\_\+current@{count\+\_\+current}}
@@ -155,7 +155,7 @@ void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\
 
 
 
-Definition at line 151 of file statscounter.\+hpp.
+Definition at line 81 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a19bd5936619e190c0d8918b4f343922e}\label{class_stats_counter_a19bd5936619e190c0d8918b4f343922e}} 
 \index{Stats\+Counter@{Stats\+Counter}!count\+\_\+init@{count\+\_\+init}}
@@ -166,7 +166,7 @@ void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\
 
 
 
-Definition at line 131 of file statscounter.\+hpp.
+Definition at line 61 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a8dabc3a7a9931acbb76900a67d728f70}\label{class_stats_counter_a8dabc3a7a9931acbb76900a67d728f70}} 
 \index{Stats\+Counter@{Stats\+Counter}!reset\+\_\+array@{reset\+\_\+array}}
@@ -186,18 +186,18 @@ Changes the reference array for the counting.
 \end{DoxyParams}
 
 
-Definition at line 84 of file statscounter.\+hpp.
+Definition at line 14 of file statscounter-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_stats_counter_a6aae81ab39ef452aedd7743fa8221855}\label{class_stats_counter_a6aae81ab39ef452aedd7743fa8221855}} 
+\mbox{\Hypertarget{class_stats_counter_a1d66f7d7326cac60a46ee56a8eb0a497}\label{class_stats_counter_a1d66f7d7326cac60a46ee56a8eb0a497}} 
 \index{Stats\+Counter@{Stats\+Counter}!set\+\_\+counters@{set\+\_\+counters}}
 \index{set\+\_\+counters@{set\+\_\+counters}!Stats\+Counter@{Stats\+Counter}}
 \subsubsection{\texorpdfstring{set\+\_\+counters()}{set\_counters()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::set\+\_\+counters (\begin{DoxyParamCaption}\item[{\hyperlink{class_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{counters\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::set\+\_\+counters (\begin{DoxyParamCaption}\item[{\hyperlink{class_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{counters\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 116 of file statscounter.\+hpp.
+Definition at line 46 of file statscounter-\/meat.\+hpp.
 
 
 
@@ -211,7 +211,7 @@ const Array\+\_\+\+Type$\ast$ \hyperlink{class_stats_counter}{Stats\+Counter}$<$
 
 
 
-Definition at line 21 of file statscounter.\+hpp.
+Definition at line 21 of file statscounter-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a42c926799d8cb0abc6f5a1cfbc073f69}\label{class_stats_counter_a42c926799d8cb0abc6f5a1cfbc073f69}} 
 \index{Stats\+Counter@{Stats\+Counter}!change\+\_\+stats@{change\+\_\+stats}}
@@ -222,7 +222,7 @@ std\+::vector$<$ double $>$ \hyperlink{class_stats_counter}{Stats\+Counter}$<$ A
 
 
 
-Definition at line 24 of file statscounter.\+hpp.
+Definition at line 24 of file statscounter-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a9306fc44d8b02a953da4237f8950a53a}\label{class_stats_counter_a9306fc44d8b02a953da4237f8950a53a}} 
 \index{Stats\+Counter@{Stats\+Counter}!counter\+\_\+deleted@{counter\+\_\+deleted}}
@@ -233,18 +233,18 @@ bool \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\
 
 
 
-Definition at line 28 of file statscounter.\+hpp.
+Definition at line 28 of file statscounter-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_stats_counter_a3115a96cbc1b35483a240b1fdc84eab6}\label{class_stats_counter_a3115a96cbc1b35483a240b1fdc84eab6}} 
+\mbox{\Hypertarget{class_stats_counter_a7b69009ccd24109d5c8d9b28b50c0ccf}\label{class_stats_counter_a7b69009ccd24109d5c8d9b28b50c0ccf}} 
 \index{Stats\+Counter@{Stats\+Counter}!counters@{counters}}
 \index{counters@{counters}!Stats\+Counter@{Stats\+Counter}}
 \subsubsection{\texorpdfstring{counters}{counters}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$ \\
-\hyperlink{class_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$$\ast$ \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counters}
+\hyperlink{class_counters}{Counters}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$$\ast$ \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::counters}
 
 
 
-Definition at line 27 of file statscounter.\+hpp.
+Definition at line 27 of file statscounter-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_af98192f893280a2681a59f4b73051ca3}\label{class_stats_counter_af98192f893280a2681a59f4b73051ca3}} 
 \index{Stats\+Counter@{Stats\+Counter}!current\+\_\+stats@{current\+\_\+stats}}
@@ -255,7 +255,7 @@ std\+::vector$<$ double $>$ \hyperlink{class_stats_counter}{Stats\+Counter}$<$ A
 
 
 
-Definition at line 23 of file statscounter.\+hpp.
+Definition at line 23 of file statscounter-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_stats_counter_a026304bec607994865ba5bb4e18f9104}\label{class_stats_counter_a026304bec607994865ba5bb4e18f9104}} 
 \index{Stats\+Counter@{Stats\+Counter}!Empty\+Array@{Empty\+Array}}
@@ -266,10 +266,11 @@ Array\+\_\+\+Type \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+
 
 
 
-Definition at line 22 of file statscounter.\+hpp.
+Definition at line 22 of file statscounter-\/bones.\+hpp.
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/barry/\hyperlink{statscounter_8hpp}{statscounter.\+hpp}\end{DoxyCompactItemize}
+include/barry/\hyperlink{statscounter-bones_8hpp}{statscounter-\/bones.\+hpp}\item 
+include/barry/\hyperlink{statscounter-meat_8hpp}{statscounter-\/meat.\+hpp}\end{DoxyCompactItemize}

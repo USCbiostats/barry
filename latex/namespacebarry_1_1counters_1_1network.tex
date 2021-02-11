@@ -15,7 +15,7 @@ typedef \hyperlink{classbarry_1_1_b_array}{B\+Array}$<$ bool, \hyperlink{classba
 \item 
 typedef \hyperlink{classbarry_1_1_counter}{Counter}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a067bd9de04608fc2e1586324d3864a45}{Net\+Counter}
 \item 
-typedef \hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector}
+typedef \hyperlink{classbarry_1_1_counters}{Counters}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters}
 \item 
 typedef \hyperlink{classbarry_1_1_support}{Support}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data} $>$ \hyperlink{namespacebarry_1_1counters_1_1network_a4d30be7f465efd7d218f0264f8386b32}{Net\+Support}
 \item 
@@ -32,50 +32,50 @@ typedef \hyperlink{classbarry_1_1_rules}{Rules}$<$ \hyperlink{namespacebarry_1_1
 \begin{Indent}\textbf{ Counters for network models}\par
 {\em 
 \begin{DoxyParams}{Parameters}
-{\em counters} & A pointer to a {\ttfamily Net\+Counter\+Vector} object ({\ttfamily \hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}}$<${\ttfamily Network}, {\ttfamily \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data}}$>$). \\
+{\em counters} & A pointer to a {\ttfamily Net\+Counters} object ({\ttfamily \hyperlink{classbarry_1_1_counters}{Counters}}$<${\ttfamily Network}, {\ttfamily \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data}}$>$). \\
 \hline
 \end{DoxyParams}
 }\begin{DoxyCompactItemize}
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a3c0a9e6c5697b3ec65827d405826bb33}{counter\+\_\+edges} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_ace52a65ee587dfe7b5e815de70350581}{counter\+\_\+edges} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \begin{DoxyCompactList}\small\item\em Number of edges. \end{DoxyCompactList}\item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a16449353394312feed59aa5444d17dad}{counter\+\_\+isolates} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_abb12a5ddff5be1b860139a1a9bc3ff87}{counter\+\_\+isolates} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \begin{DoxyCompactList}\small\item\em Number of isolated vertices. \end{DoxyCompactList}\item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_afc4086d5788c8d5fa60ec529d9fa15dd}{counter\+\_\+mutual} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a668c4f3b6abba62e113ae7e382d4b63a}{counter\+\_\+mutual} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \begin{DoxyCompactList}\small\item\em Number of mutual ties. \end{DoxyCompactList}\item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a95eea8464d85c595efa305cdf9a5a82b}{counter\+\_\+istar2} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_ac1cf7a400dacb5fd40750ba4a0c00e81}{counter\+\_\+istar2} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_af76d9df31e55422bdffdb9e56870a46f}{counter\+\_\+ostar2} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_acbeff158b43d56c1fbf76f8c18891f9b}{counter\+\_\+ostar2} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_ab3a9cd11d47c9c1d5652c28d139047c8}{counter\+\_\+ttriads} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a5b6fdd52d0fca0ca994f6ba619123265}{counter\+\_\+ttriads} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a5262c1e8a14c9956041adead348a4890}{counter\+\_\+ctriads} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_af04b15d38a744b0e741005c44b581368}{counter\+\_\+ctriads} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a313ba439c81c589759cbbc613d12e80b}{counter\+\_\+density} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a91e3daed40ea0514e0ede00ab303a738}{counter\+\_\+density} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a148e6fbb549eea53ff6d744b0f683ed6}{counter\+\_\+idegree15} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a27ece7e2bbf1ca87810c5ffbdfcce9fc}{counter\+\_\+idegree15} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a7a43854f3227f5f92d3ff580e99c7136}{counter\+\_\+odegree15} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters)
+void \hyperlink{namespacebarry_1_1counters_1_1network_af4ab196a242dd233010b342712fe0449}{counter\+\_\+odegree15} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_acc210d80021cb5a79f1a9daf097e1c99}{counter\+\_\+absdiff} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id, double alpha=1.\+0)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a0150bbe24de4218a40c0880e55c73e9e}{counter\+\_\+absdiff} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id, double alpha=1.\+0)
 \begin{DoxyCompactList}\small\item\em Sum of absolute attribute difference between ego and alter. \end{DoxyCompactList}\item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_af8f024a17f6c518aef79c2cf670e49f5}{counter\+\_\+diff} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id, double alpha=1.\+0, double tail\+\_\+head=true)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a2050eea4ac26f5e10483622633081962}{counter\+\_\+diff} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id, double alpha=1.\+0, double tail\+\_\+head=true)
 \begin{DoxyCompactList}\small\item\em Sum of attribute difference between ego and alter to pow(alpha) \end{DoxyCompactList}\item 
 \hyperlink{namespacebarry_1_1counters_1_1network_a7649cd035af193258a69058aea425941}{N\+E\+T\+W\+O\+R\+K\+\_\+\+C\+O\+U\+N\+T\+ER} (init\+\_\+single\+\_\+attr)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_aef48e4ae85d30c2a949006faee2b5bae}{counter\+\_\+nodeicov} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a42073ab360a9f796126662927acc5470}{counter\+\_\+nodeicov} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a2804cd2dba633fdccc7a1ca6a15bdf47}{counter\+\_\+nodeocov} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a61b287d49772a5bfa3d11d42f70ec1d8}{counter\+\_\+nodeocov} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a7087c6419195bc768c1e8c7730757d2e}{counter\+\_\+nodecov} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a0f18e2af090591c3f47c95849ec324da}{counter\+\_\+nodecov} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_ab0a33b2990950574552ab909e6847f96}{counter\+\_\+nodematch} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a2333b5893d1ba684925be6855bc33868}{counter\+\_\+nodematch} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} attr\+\_\+id)
 \item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_ab87617883960a1fc818048036fb13b83}{counter\+\_\+idegree} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ d)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a460e9b4cd736d8ab02ebeb6f84e3e80d}{counter\+\_\+idegree} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters, std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ d)
 \begin{DoxyCompactList}\small\item\em Counts number of vertices with a given in-\/degree. \end{DoxyCompactList}\item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_af679a51acdd35805c7c40748af65c0f4}{counter\+\_\+odegree} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ d)
+void \hyperlink{namespacebarry_1_1counters_1_1network_adb3a690ba6de839767b66f8bda088e2e}{counter\+\_\+odegree} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters, std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ d)
 \begin{DoxyCompactList}\small\item\em Counts number of vertices with a given out-\/degree. \end{DoxyCompactList}\item 
-void \hyperlink{namespacebarry_1_1counters_1_1network_a8c7ef19041094ac55a17106940c7d244}{counter\+\_\+degree} (\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$counters, std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ d)
+void \hyperlink{namespacebarry_1_1counters_1_1network_a3d7953d9b68c547fc0d02cc1f6fadb23}{counter\+\_\+degree} (\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$counters, std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ d)
 \begin{DoxyCompactList}\small\item\em Counts number of vertices with a given out-\/degree. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Rules for network models}\par
@@ -102,11 +102,11 @@ void \hyperlink{namespacebarry_1_1counters_1_1network_a19680c70c20a093a84b6cc71a
 
 Definition at line 75 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}\label{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}} 
-\index{barry\+::counters\+::network@{barry\+::counters\+::network}!Net\+Counter\+Vector@{Net\+Counter\+Vector}}
-\index{Net\+Counter\+Vector@{Net\+Counter\+Vector}!barry\+::counters\+::network@{barry\+::counters\+::network}}
-\subsubsection{\texorpdfstring{Net\+Counter\+Vector}{NetCounterVector}}
-{\footnotesize\ttfamily typedef \hyperlink{classbarry_1_1_counter_vector}{Counter\+Vector}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data}$>$ \hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{barry\+::counters\+::network\+::\+Net\+Counter\+Vector}}
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}\label{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}} 
+\index{barry\+::counters\+::network@{barry\+::counters\+::network}!Net\+Counters@{Net\+Counters}}
+\index{Net\+Counters@{Net\+Counters}!barry\+::counters\+::network@{barry\+::counters\+::network}}
+\subsubsection{\texorpdfstring{Net\+Counters}{NetCounters}}
+{\footnotesize\ttfamily typedef \hyperlink{classbarry_1_1_counters}{Counters}$<$ \hyperlink{namespacebarry_1_1counters_1_1network_a4cb88d4572ded3b447ea269c9cd0b2c0}{Network}, \hyperlink{classbarry_1_1counters_1_1network_1_1_net_counter_data}{Net\+Counter\+Data}$>$ \hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{barry\+::counters\+::network\+::\+Net\+Counters}}
 
 
 
@@ -175,11 +175,11 @@ Definition at line 74 of file barry.\+hpp.
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_acc210d80021cb5a79f1a9daf097e1c99}\label{namespacebarry_1_1counters_1_1network_acc210d80021cb5a79f1a9daf097e1c99}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a0150bbe24de4218a40c0880e55c73e9e}\label{namespacebarry_1_1counters_1_1network_a0150bbe24de4218a40c0880e55c73e9e}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+absdiff@{counter\+\_\+absdiff}}
 \index{counter\+\_\+absdiff@{counter\+\_\+absdiff}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+absdiff()}{counter\_absdiff()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+absdiff (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id,  }\item[{double}]{alpha = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+absdiff (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id,  }\item[{double}]{alpha = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -189,21 +189,21 @@ Sum of absolute attribute difference between ego and alter.
 
 Definition at line 404 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a5262c1e8a14c9956041adead348a4890}\label{namespacebarry_1_1counters_1_1network_a5262c1e8a14c9956041adead348a4890}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_af04b15d38a744b0e741005c44b581368}\label{namespacebarry_1_1counters_1_1network_af04b15d38a744b0e741005c44b581368}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+ctriads@{counter\+\_\+ctriads}}
 \index{counter\+\_\+ctriads@{counter\+\_\+ctriads}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+ctriads()}{counter\_ctriads()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+ctriads (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+ctriads (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 307 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a8c7ef19041094ac55a17106940c7d244}\label{namespacebarry_1_1counters_1_1network_a8c7ef19041094ac55a17106940c7d244}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a3d7953d9b68c547fc0d02cc1f6fadb23}\label{namespacebarry_1_1counters_1_1network_a3d7953d9b68c547fc0d02cc1f6fadb23}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+degree@{counter\+\_\+degree}}
 \index{counter\+\_\+degree@{counter\+\_\+degree}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+degree()}{counter\_degree()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+degree (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+degree (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -213,21 +213,21 @@ Counts number of vertices with a given out-\/degree.
 
 Definition at line 675 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a313ba439c81c589759cbbc613d12e80b}\label{namespacebarry_1_1counters_1_1network_a313ba439c81c589759cbbc613d12e80b}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a91e3daed40ea0514e0ede00ab303a738}\label{namespacebarry_1_1counters_1_1network_a91e3daed40ea0514e0ede00ab303a738}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+density@{counter\+\_\+density}}
 \index{counter\+\_\+density@{counter\+\_\+density}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+density()}{counter\_density()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+density (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+density (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 346 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_af8f024a17f6c518aef79c2cf670e49f5}\label{namespacebarry_1_1counters_1_1network_af8f024a17f6c518aef79c2cf670e49f5}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a2050eea4ac26f5e10483622633081962}\label{namespacebarry_1_1counters_1_1network_a2050eea4ac26f5e10483622633081962}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+diff@{counter\+\_\+diff}}
 \index{counter\+\_\+diff@{counter\+\_\+diff}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+diff()}{counter\_diff()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+diff (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id,  }\item[{double}]{alpha = {\ttfamily 1.0},  }\item[{double}]{tail\+\_\+head = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+diff (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id,  }\item[{double}]{alpha = {\ttfamily 1.0},  }\item[{double}]{tail\+\_\+head = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -237,11 +237,11 @@ Sum of attribute difference between ego and alter to pow(alpha)
 
 Definition at line 446 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a3c0a9e6c5697b3ec65827d405826bb33}\label{namespacebarry_1_1counters_1_1network_a3c0a9e6c5697b3ec65827d405826bb33}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_ace52a65ee587dfe7b5e815de70350581}\label{namespacebarry_1_1counters_1_1network_ace52a65ee587dfe7b5e815de70350581}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+edges@{counter\+\_\+edges}}
 \index{counter\+\_\+edges@{counter\+\_\+edges}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+edges()}{counter\_edges()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+edges (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+edges (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -251,11 +251,11 @@ Number of edges.
 
 Definition at line 113 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_ab87617883960a1fc818048036fb13b83}\label{namespacebarry_1_1counters_1_1network_ab87617883960a1fc818048036fb13b83}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a460e9b4cd736d8ab02ebeb6f84e3e80d}\label{namespacebarry_1_1counters_1_1network_a460e9b4cd736d8ab02ebeb6f84e3e80d}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+idegree@{counter\+\_\+idegree}}
 \index{counter\+\_\+idegree@{counter\+\_\+idegree}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+idegree()}{counter\_idegree()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+idegree (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+idegree (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -265,21 +265,21 @@ Counts number of vertices with a given in-\/degree.
 
 Definition at line 589 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a148e6fbb549eea53ff6d744b0f683ed6}\label{namespacebarry_1_1counters_1_1network_a148e6fbb549eea53ff6d744b0f683ed6}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a27ece7e2bbf1ca87810c5ffbdfcce9fc}\label{namespacebarry_1_1counters_1_1network_a27ece7e2bbf1ca87810c5ffbdfcce9fc}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+idegree15@{counter\+\_\+idegree15}}
 \index{counter\+\_\+idegree15@{counter\+\_\+idegree15}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+idegree15()}{counter\_idegree15()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+idegree15 (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+idegree15 (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 362 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a16449353394312feed59aa5444d17dad}\label{namespacebarry_1_1counters_1_1network_a16449353394312feed59aa5444d17dad}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_abb12a5ddff5be1b860139a1a9bc3ff87}\label{namespacebarry_1_1counters_1_1network_abb12a5ddff5be1b860139a1a9bc3ff87}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+isolates@{counter\+\_\+isolates}}
 \index{counter\+\_\+isolates@{counter\+\_\+isolates}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+isolates()}{counter\_isolates()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+isolates (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+isolates (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -289,21 +289,21 @@ Number of isolated vertices.
 
 Definition at line 127 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a95eea8464d85c595efa305cdf9a5a82b}\label{namespacebarry_1_1counters_1_1network_a95eea8464d85c595efa305cdf9a5a82b}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_ac1cf7a400dacb5fd40750ba4a0c00e81}\label{namespacebarry_1_1counters_1_1network_ac1cf7a400dacb5fd40750ba4a0c00e81}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+istar2@{counter\+\_\+istar2}}
 \index{counter\+\_\+istar2@{counter\+\_\+istar2}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+istar2()}{counter\_istar2()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+istar2 (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+istar2 (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 195 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_afc4086d5788c8d5fa60ec529d9fa15dd}\label{namespacebarry_1_1counters_1_1network_afc4086d5788c8d5fa60ec529d9fa15dd}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a668c4f3b6abba62e113ae7e382d4b63a}\label{namespacebarry_1_1counters_1_1network_a668c4f3b6abba62e113ae7e382d4b63a}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+mutual@{counter\+\_\+mutual}}
 \index{counter\+\_\+mutual@{counter\+\_\+mutual}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+mutual()}{counter\_mutual()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+mutual (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+mutual (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -313,51 +313,51 @@ Number of mutual ties.
 
 Definition at line 157 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a7087c6419195bc768c1e8c7730757d2e}\label{namespacebarry_1_1counters_1_1network_a7087c6419195bc768c1e8c7730757d2e}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a0f18e2af090591c3f47c95849ec324da}\label{namespacebarry_1_1counters_1_1network_a0f18e2af090591c3f47c95849ec324da}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+nodecov@{counter\+\_\+nodecov}}
 \index{counter\+\_\+nodecov@{counter\+\_\+nodecov}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+nodecov()}{counter\_nodecov()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+nodecov (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+nodecov (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 543 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_aef48e4ae85d30c2a949006faee2b5bae}\label{namespacebarry_1_1counters_1_1network_aef48e4ae85d30c2a949006faee2b5bae}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a42073ab360a9f796126662927acc5470}\label{namespacebarry_1_1counters_1_1network_a42073ab360a9f796126662927acc5470}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+nodeicov@{counter\+\_\+nodeicov}}
 \index{counter\+\_\+nodeicov@{counter\+\_\+nodeicov}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+nodeicov()}{counter\_nodeicov()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+nodeicov (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+nodeicov (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 505 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_ab0a33b2990950574552ab909e6847f96}\label{namespacebarry_1_1counters_1_1network_ab0a33b2990950574552ab909e6847f96}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a2333b5893d1ba684925be6855bc33868}\label{namespacebarry_1_1counters_1_1network_a2333b5893d1ba684925be6855bc33868}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+nodematch@{counter\+\_\+nodematch}}
 \index{counter\+\_\+nodematch@{counter\+\_\+nodematch}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+nodematch()}{counter\_nodematch()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+nodematch (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+nodematch (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 563 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a2804cd2dba633fdccc7a1ca6a15bdf47}\label{namespacebarry_1_1counters_1_1network_a2804cd2dba633fdccc7a1ca6a15bdf47}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a61b287d49772a5bfa3d11d42f70ec1d8}\label{namespacebarry_1_1counters_1_1network_a61b287d49772a5bfa3d11d42f70ec1d8}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+nodeocov@{counter\+\_\+nodeocov}}
 \index{counter\+\_\+nodeocov@{counter\+\_\+nodeocov}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+nodeocov()}{counter\_nodeocov()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+nodeocov (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+nodeocov (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{attr\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 524 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_af679a51acdd35805c7c40748af65c0f4}\label{namespacebarry_1_1counters_1_1network_af679a51acdd35805c7c40748af65c0f4}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_adb3a690ba6de839767b66f8bda088e2e}\label{namespacebarry_1_1counters_1_1network_adb3a690ba6de839767b66f8bda088e2e}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+odegree@{counter\+\_\+odegree}}
 \index{counter\+\_\+odegree@{counter\+\_\+odegree}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+odegree()}{counter\_odegree()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+odegree (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+odegree (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -367,31 +367,31 @@ Counts number of vertices with a given out-\/degree.
 
 Definition at line 631 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a7a43854f3227f5f92d3ff580e99c7136}\label{namespacebarry_1_1counters_1_1network_a7a43854f3227f5f92d3ff580e99c7136}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_af4ab196a242dd233010b342712fe0449}\label{namespacebarry_1_1counters_1_1network_af4ab196a242dd233010b342712fe0449}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+odegree15@{counter\+\_\+odegree15}}
 \index{counter\+\_\+odegree15@{counter\+\_\+odegree15}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+odegree15()}{counter\_odegree15()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+odegree15 (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+odegree15 (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 382 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_af76d9df31e55422bdffdb9e56870a46f}\label{namespacebarry_1_1counters_1_1network_af76d9df31e55422bdffdb9e56870a46f}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_acbeff158b43d56c1fbf76f8c18891f9b}\label{namespacebarry_1_1counters_1_1network_acbeff158b43d56c1fbf76f8c18891f9b}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+ostar2@{counter\+\_\+ostar2}}
 \index{counter\+\_\+ostar2@{counter\+\_\+ostar2}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+ostar2()}{counter\_ostar2()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+ostar2 (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+ostar2 (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 213 of file barry.\+hpp.
 
-\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_ab3a9cd11d47c9c1d5652c28d139047c8}\label{namespacebarry_1_1counters_1_1network_ab3a9cd11d47c9c1d5652c28d139047c8}} 
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1network_a5b6fdd52d0fca0ca994f6ba619123265}\label{namespacebarry_1_1counters_1_1network_a5b6fdd52d0fca0ca994f6ba619123265}} 
 \index{barry\+::counters\+::network@{barry\+::counters\+::network}!counter\+\_\+ttriads@{counter\+\_\+ttriads}}
 \index{counter\+\_\+ttriads@{counter\+\_\+ttriads}!barry\+::counters\+::network@{barry\+::counters\+::network}}
 \subsubsection{\texorpdfstring{counter\+\_\+ttriads()}{counter\_ttriads()}}
-{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+ttriads (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_a3b3c590303d47840d1967372ae495d95}{Net\+Counter\+Vector} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void barry\+::counters\+::network\+::counter\+\_\+ttriads (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1network_aa72fdb34752ac24167a06ee196a8fff6}{Net\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

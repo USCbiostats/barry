@@ -2,7 +2,7 @@
 \label{class_rule}\index{Rule$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$@{Rule$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
 
 
-Sequence of cells indices.  
+\hyperlink{class_rule}{Rule} for determining if a cell should be included in a sequence.  
 
 
 
@@ -12,25 +12,47 @@ Sequence of cells indices.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_rule_aef92e54d53dc77b5cad2f819b5f8f4bf}{Rule} ()
-\item 
-\hyperlink{class_rule_ad0b81db664bed03f9a381f90ab617424}{Rule} (\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ fun\+\_\+, Data\+\_\+\+Type $\ast$dat\+\_\+=nullptr, bool delete\+\_\+dat\+\_\+=false)
-\item 
 \hyperlink{class_rule_a9f7e4ac4893005c7d4ecc2781f0f727d}{$\sim$\+Rule} ()
 \item 
 bool \hyperlink{class_rule_a0a9a115c6951a5c8de699d4ff9f69060}{locked} (const Array\+\_\+\+Type $\ast$a, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
 \end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Construct a new Rule object}\par
+{\em Construct a new \hyperlink{class_rule}{Rule} object
+
+
+\begin{DoxyParams}{Parameters}
+{\em fun\+\_\+} & A function of type {\ttfamily Rule\+\_\+fun\+\_\+type}. \\
+\hline
+{\em dat\+\_\+} & Data pointer to be passed to {\ttfamily fun\+\_\+} \\
+\hline
+{\em delete\+\_\+dat\+\_\+} & When {\ttfamily true}, the {\ttfamily \hyperlink{class_rule}{Rule}} destructor will delete the pointer, if defined. \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_rule_aef92e54d53dc77b5cad2f819b5f8f4bf}{Rule} ()
+\item 
+\hyperlink{class_rule_ad0b81db664bed03f9a381f90ab617424}{Rule} (\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ fun\+\_\+, Data\+\_\+\+Type $\ast$dat\+\_\+=nullptr, bool delete\+\_\+dat\+\_\+=false)
+\end{DoxyCompactItemize}
+\end{Indent}
 
 
 \subsection{Detailed Description}
 \subsubsection*{template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$\newline
 class Rule$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
 
-Sequence of cells indices. 
+\hyperlink{class_rule}{Rule} for determining if a cell should be included in a sequence. 
+
+\hyperlink{class_rules}{Rules} can be used together with {\ttfamily \hyperlink{class_support}{Support}} and {\ttfamily \hyperlink{class_power_set}{Power\+Set}} to determine which cells should be included when enumerating all possible realizations of a binary array. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Array\+\_\+\+Type} & An object of class {\ttfamily \hyperlink{class_b_array}{B\+Array}}. \\
+\hline
+{\em Data\+\_\+\+Type} & Any type. \\
+\hline
+\end{DoxyTemplParams}
 
 
-
-Definition at line 18 of file rules-\/bones.\+hpp.
+Definition at line 23 of file rules-\/bones.\+hpp.
 
 
 
@@ -44,7 +66,7 @@ Definition at line 18 of file rules-\/bones.\+hpp.
 
 
 
-Definition at line 26 of file rules-\/bones.\+hpp.
+Definition at line 42 of file rules-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_rule_ad0b81db664bed03f9a381f90ab617424}\label{class_rule_ad0b81db664bed03f9a381f90ab617424}} 
 \index{Rule@{Rule}!Rule@{Rule}}
@@ -55,7 +77,7 @@ Definition at line 26 of file rules-\/bones.\+hpp.
 
 
 
-Definition at line 27 of file rules-\/bones.\+hpp.
+Definition at line 43 of file rules-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_rule_a9f7e4ac4893005c7d4ecc2781f0f727d}\label{class_rule_a9f7e4ac4893005c7d4ecc2781f0f727d}} 
 \index{Rule@{Rule}!````~Rule@{$\sim$\+Rule}}
@@ -66,7 +88,7 @@ Definition at line 27 of file rules-\/bones.\+hpp.
 
 
 
-Definition at line 33 of file rules-\/bones.\+hpp.
+Definition at line 50 of file rules-\/bones.\+hpp.
 
 
 
@@ -80,7 +102,7 @@ bool \hyperlink{class_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::
 
 
 
-Definition at line 10 of file rules-\/meat.\+hpp.
+Definition at line 62 of file rules-\/meat.\+hpp.
 
 
 

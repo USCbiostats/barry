@@ -1,6 +1,6 @@
 var counters_bones_8hpp =
 [
     [ "Counter", "class_counter.html", "class_counter" ],
-    [ "CounterVector", "class_counter_vector.html", "class_counter_vector" ],
-    [ "BARRAY_COUNTERS_H", "barry_8hpp.html#a6c60a358a2b89973d5d4b9436374ef8b", null ]
+    [ "Counters", "class_counters.html", "class_counters" ],
+    [ "BARRY_COUNTERS_BONES_HPP", "barry_8hpp.html#a1c3b1727de4f4f5d73e9040b9dd136c1", null ]
 ];

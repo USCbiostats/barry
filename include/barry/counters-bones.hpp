@@ -57,14 +57,15 @@ public:
   double init(Array_Type * Array, uint i, uint j);
 };
 
-/**@brief Vector of counters.
+/**
+ * @brief Vector of counters.
  * 
  * Various functions hold more than one counter, so this class is a helper class
  * that allows managing multiple counters efficiently. The main data is a vector
  * to pointers of counters.
  */
 template <typename Array_Type = BArray<>, typename Data_Type = bool>
-class CounterVector {
+class Counters {
   
 private:
   std::vector< Counter<Array_Type,Data_Type >* > data = {};
@@ -73,15 +74,15 @@ private:
 public: 
   
   // Constructors
-  CounterVector() {};
+  Counters() {};
   
   // Destructor needs to deal with the pointers
-  ~CounterVector() {
+  ~Counters() {
     this->clear();
   }
 
-  CounterVector(const CounterVector<Array_Type,Data_Type> & counter_);
-  CounterVector<Array_Type,Data_Type> operator=(const CounterVector<Array_Type,Data_Type> & counter_);
+  Counters(const Counters<Array_Type,Data_Type> & counter_);
+  Counters<Array_Type,Data_Type> operator=(const Counters<Array_Type,Data_Type> & counter_);
   
   Counter<Array_Type,Data_Type> * operator[](uint idx);
   uint size() const {

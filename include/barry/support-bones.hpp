@@ -35,7 +35,7 @@ public:
    */
   Array_Type                                    EmptyArray;
   FreqTable<>                                   data;
-  CounterVector<Array_Type,Data_Counter_Type> * counters;
+  Counters<Array_Type,Data_Counter_Type> * counters;
   Rules<Array_Type,Data_Rule_Type>            * rules;
 
   uint N, M;
@@ -53,7 +53,7 @@ public:
    */
   Support(const Array_Type * Array_) :
     EmptyArray(*Array_),
-    counters(new CounterVector<Array_Type,Data_Counter_Type>()),
+    counters(new Counters<Array_Type,Data_Counter_Type>()),
     rules(new Rules<Array_Type,Data_Rule_Type>()),
     N(Array_->nrow()), M(Array_->ncol()) {
     // init_support();
@@ -65,7 +65,7 @@ public:
    */
   Support(uint N_, uint M_) :
     EmptyArray(N_, M_),
-    counters(new CounterVector<Array_Type,Data_Counter_Type>()),
+    counters(new Counters<Array_Type,Data_Counter_Type>()),
     rules(new Rules<Array_Type,Data_Rule_Type>()),
     N(N_), M(M_) {
     // init_support();
@@ -74,7 +74,7 @@ public:
   
   Support() :
     EmptyArray(0u, 0u),
-    counters(new CounterVector<Array_Type,Data_Counter_Type>()),
+    counters(new Counters<Array_Type,Data_Counter_Type>()),
     rules(new Rules<Array_Type,Data_Rule_Type>()),
     N(0u), M(0u) {
     // init_support();
@@ -105,7 +105,7 @@ public:
   
   void add_counter(Counter<Array_Type, Data_Counter_Type> * f_);
   void add_counter(Counter<Array_Type,Data_Counter_Type> f_);
-  void set_counters(CounterVector<Array_Type,Data_Counter_Type> * counters_);
+  void set_counters(Counters<Array_Type,Data_Counter_Type> * counters_);
   
   void add_rule(Rule<Array_Type, Data_Rule_Type> * f_);
   void add_rule(Rule<Array_Type,Data_Rule_Type> f_);

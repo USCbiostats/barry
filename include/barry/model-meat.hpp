@@ -161,7 +161,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_counters(
-    CounterVector<Array_Type,Data_Counter_Type> * counters_
+    Counters<Array_Type,Data_Counter_Type> * counters_
 ) {
   
   this->counters = *counters_;

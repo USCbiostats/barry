@@ -2,6 +2,11 @@
 \label{classbarry_1_1_rules}\index{barry\+::\+Rules$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$@{barry\+::\+Rules$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
 
 
+Vector of objects of class \hyperlink{classbarry_1_1_rule}{Rule}.  
+
+
+
+
 {\ttfamily \#include $<$barry.\+hpp$>$}
 
 \subsection*{Public Member Functions}
@@ -9,29 +14,53 @@
 \item 
 \hyperlink{classbarry_1_1_rules_ac9468cdfab55a3be6675ad1fddae2bc0}{Rules} ()
 \item 
+\hyperlink{classbarry_1_1_rules_a57f5ab44febba391b2a06d163d25b237}{Rules} (const \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&rules\+\_\+)
+\item 
+\hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_rules_ab87544febb8301772164570708bd708e}{operator=} (const \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&rules\+\_\+)
+\item 
 \hyperlink{classbarry_1_1_rules_a287ba2cf76f83ad982c05383b5726946}{$\sim$\+Rules} ()
+\item 
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_rules_a590fd2603dd686e91e33330529ab8e77}{size} () const
+\item 
+bool \hyperlink{classbarry_1_1_rules_a4e08a6b3d8b536cb1717c62192a91537}{locked} (const Array\+\_\+\+Type $\ast$a, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j)
+\begin{DoxyCompactList}\small\item\em Check whether a given cell is free or locked. \end{DoxyCompactList}\item 
+void \hyperlink{classbarry_1_1_rules_a135a15d3ff70d4350d76a15f8e85f7df}{clear} ()
+\item 
+void \hyperlink{classbarry_1_1_rules_a7b8f29955ec52f49808d7ea1cd4eaf5e}{get\+\_\+seq} (const Array\+\_\+\+Type $\ast$a, std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ $\ast$free, std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ $\ast$\hyperlink{classbarry_1_1_rules_a4e08a6b3d8b536cb1717c62192a91537}{locked}=nullptr)
+\begin{DoxyCompactList}\small\item\em Computes the sequence of free and locked cells in an \hyperlink{classbarry_1_1_b_array}{B\+Array}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Rule adding}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em rule} & \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
 \item 
 void \hyperlink{classbarry_1_1_rules_a60583152fddcb11178dcf3d02a924d7c}{add\+\_\+rule} (\hyperlink{classbarry_1_1_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&rule)
 \item 
 void \hyperlink{classbarry_1_1_rules_abd60b1d381ad0c8a772e4d81264bbe0a}{add\+\_\+rule} (\hyperlink{classbarry_1_1_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$rule)
 \item 
 void \hyperlink{classbarry_1_1_rules_abbc63747014445b538384bb500464bb5}{add\+\_\+rule} (\hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ rule\+\_\+, Data\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
-\item 
-bool \hyperlink{classbarry_1_1_rules_a4e08a6b3d8b536cb1717c62192a91537}{locked} (const Array\+\_\+\+Type $\ast$a, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} i, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} j)
-\item 
-void \hyperlink{classbarry_1_1_rules_a135a15d3ff70d4350d76a15f8e85f7df}{clear} ()
-\item 
-void \hyperlink{classbarry_1_1_rules_a7b8f29955ec52f49808d7ea1cd4eaf5e}{get\+\_\+seq} (const Array\+\_\+\+Type $\ast$a, std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ $\ast$free, std\+::vector$<$ std\+::pair$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} $>$ $>$ $\ast$\hyperlink{classbarry_1_1_rules_a4e08a6b3d8b536cb1717c62192a91537}{locked}=nullptr)
 \end{DoxyCompactItemize}
+\end{Indent}
 
 
 \subsection{Detailed Description}
 \subsubsection*{template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$\newline
 class barry\+::\+Rules$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}
 
+Vector of objects of class \hyperlink{classbarry_1_1_rule}{Rule}. 
 
 
-Definition at line 44 of file barry.\+hpp.
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Array\+\_\+\+Type} & An object of class {\ttfamily \hyperlink{classbarry_1_1_b_array}{B\+Array}} \\
+\hline
+{\em Data\+\_\+\+Type} & Any type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 67 of file barry.\+hpp.
 
 
 
@@ -39,13 +68,24 @@ Definition at line 44 of file barry.\+hpp.
 \mbox{\Hypertarget{classbarry_1_1_rules_ac9468cdfab55a3be6675ad1fddae2bc0}\label{classbarry_1_1_rules_ac9468cdfab55a3be6675ad1fddae2bc0}} 
 \index{barry\+::\+Rules@{barry\+::\+Rules}!Rules@{Rules}}
 \index{Rules@{Rules}!barry\+::\+Rules@{barry\+::\+Rules}}
-\subsubsection{\texorpdfstring{Rules()}{Rules()}}
+\subsubsection{\texorpdfstring{Rules()}{Rules()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$ \\
 \hyperlink{classbarry_1_1_rules}{barry\+::\+Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_rules}{Rules} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 51 of file barry.\+hpp.
+Definition at line 74 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_rules_a57f5ab44febba391b2a06d163d25b237}\label{classbarry_1_1_rules_a57f5ab44febba391b2a06d163d25b237}} 
+\index{barry\+::\+Rules@{barry\+::\+Rules}!Rules@{Rules}}
+\index{Rules@{Rules}!barry\+::\+Rules@{barry\+::\+Rules}}
+\subsubsection{\texorpdfstring{Rules()}{Rules()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$ \\
+\hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{classbarry_1_1_rules}{Rules} (\begin{DoxyParamCaption}\item[{const \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&}]{rules\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 10 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_rules_a287ba2cf76f83ad982c05383b5726946}\label{classbarry_1_1_rules_a287ba2cf76f83ad982c05383b5726946}} 
 \index{barry\+::\+Rules@{barry\+::\+Rules}!````~Rules@{$\sim$\+Rules}}
@@ -56,7 +96,7 @@ Definition at line 51 of file barry.\+hpp.
 
 
 
-Definition at line 53 of file barry.\+hpp.
+Definition at line 79 of file barry.\+hpp.
 
 
 
@@ -70,7 +110,7 @@ void \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+T
 
 
 
-Definition at line 15 of file barry.\+hpp.
+Definition at line 67 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_rules_abd60b1d381ad0c8a772e4d81264bbe0a}\label{classbarry_1_1_rules_abd60b1d381ad0c8a772e4d81264bbe0a}} 
 \index{barry\+::\+Rules@{barry\+::\+Rules}!add\+\_\+rule@{add\+\_\+rule}}
@@ -81,7 +121,7 @@ void \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+T
 
 
 
-Definition at line 26 of file barry.\+hpp.
+Definition at line 78 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_rules_abbc63747014445b538384bb500464bb5}\label{classbarry_1_1_rules_abbc63747014445b538384bb500464bb5}} 
 \index{barry\+::\+Rules@{barry\+::\+Rules}!add\+\_\+rule@{add\+\_\+rule}}
@@ -92,7 +132,7 @@ void \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+T
 
 
 
-Definition at line 36 of file barry.\+hpp.
+Definition at line 88 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_rules_a135a15d3ff70d4350d76a15f8e85f7df}\label{classbarry_1_1_rules_a135a15d3ff70d4350d76a15f8e85f7df}} 
 \index{barry\+::\+Rules@{barry\+::\+Rules}!clear@{clear}}
@@ -103,7 +143,7 @@ void \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+T
 
 
 
-Definition at line 73 of file barry.\+hpp.
+Definition at line 125 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_rules_a7b8f29955ec52f49808d7ea1cd4eaf5e}\label{classbarry_1_1_rules_a7b8f29955ec52f49808d7ea1cd4eaf5e}} 
 \index{barry\+::\+Rules@{barry\+::\+Rules}!get\+\_\+seq@{get\+\_\+seq}}
@@ -114,7 +154,23 @@ void \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+T
 
 
 
-Definition at line 85 of file barry.\+hpp.
+Computes the sequence of free and locked cells in an \hyperlink{classbarry_1_1_b_array}{B\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & An object of class {\ttfamily \hyperlink{classbarry_1_1_b_array}{B\+Array}}. \\
+\hline
+{\em free} & Pointer to a vector of pairs (i, j) listing the free cells. \\
+\hline
+{\em locked} & (optional) Pointer to a vector of pairs (i, j) listing the locked cells. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing. 
+\end{DoxyReturn}
+
+
+Definition at line 137 of file barry.\+hpp.
 
 \mbox{\Hypertarget{classbarry_1_1_rules_a4e08a6b3d8b536cb1717c62192a91537}\label{classbarry_1_1_rules_a4e08a6b3d8b536cb1717c62192a91537}} 
 \index{barry\+::\+Rules@{barry\+::\+Rules}!locked@{locked}}
@@ -125,7 +181,47 @@ bool \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+T
 
 
 
-Definition at line 58 of file barry.\+hpp.
+Check whether a given cell is free or locked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & A {\ttfamily \hyperlink{classbarry_1_1_b_array}{B\+Array}} object \\
+\hline
+{\em i} & row position \\
+\hline
+{\em j} & col position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the cell is locked 
+
+false If the cell is free 
+\end{DoxyReturn}
+
+
+Definition at line 110 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_rules_ab87544febb8301772164570708bd708e}\label{classbarry_1_1_rules_ab87544febb8301772164570708bd708e}} 
+\index{barry\+::\+Rules@{barry\+::\+Rules}!operator=@{operator=}}
+\index{operator=@{operator=}!barry\+::\+Rules@{barry\+::\+Rules}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$ \\
+\hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classbarry_1_1_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&}]{rules\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file barry.\+hpp.
+
+\mbox{\Hypertarget{classbarry_1_1_rules_a590fd2603dd686e91e33330529ab8e77}\label{classbarry_1_1_rules_a590fd2603dd686e91e33330529ab8e77}} 
+\index{barry\+::\+Rules@{barry\+::\+Rules}!size@{size}}
+\index{size@{size}!barry\+::\+Rules@{barry\+::\+Rules}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$ \\
+\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_rules}{barry\+::\+Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 84 of file barry.\+hpp.
 
 
 

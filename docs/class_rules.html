@@ -97,36 +97,63 @@ $(document).ready(function(){initNavTree('class_rules.html','');});
 </div><!--header-->
 <div class="contents">
 
+<p>Vector of objects of class <a class="el" href="class_rule.html" title="Rule for determining if a cell should be included in a sequence. ">Rule</a>.  
+ <a href="class_rules.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="rules-bones_8hpp_source.html">rules-bones.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa78e9abf82ed8a0e4320d570191c8968"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#aa78e9abf82ed8a0e4320d570191c8968">Rules</a> ()</td></tr>
 <tr class="separator:aa78e9abf82ed8a0e4320d570191c8968"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57f5ab44febba391b2a06d163d25b237"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#a57f5ab44febba391b2a06d163d25b237">Rules</a> (const <a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Type &gt; &amp;rules_)</td></tr>
+<tr class="separator:a57f5ab44febba391b2a06d163d25b237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87544febb8301772164570708bd708e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#ab87544febb8301772164570708bd708e">operator=</a> (const <a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Type &gt; &amp;rules_)</td></tr>
+<tr class="separator:ab87544febb8301772164570708bd708e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa76d96c2316bc4a2a26bf4ec7b8d9463"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#aa76d96c2316bc4a2a26bf4ec7b8d9463">~Rules</a> ()</td></tr>
 <tr class="separator:aa76d96c2316bc4a2a26bf4ec7b8d9463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f230f733e9936443af660bc890610ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#a2f230f733e9936443af660bc890610ef">size</a> () const</td></tr>
+<tr class="separator:a2f230f733e9936443af660bc890610ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e08a6b3d8b536cb1717c62192a91537"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#a4e08a6b3d8b536cb1717c62192a91537">locked</a> (const Array_Type *a, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j)</td></tr>
+<tr class="memdesc:a4e08a6b3d8b536cb1717c62192a91537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether a given cell is free or locked.  <a href="#a4e08a6b3d8b536cb1717c62192a91537">More...</a><br /></td></tr>
+<tr class="separator:a4e08a6b3d8b536cb1717c62192a91537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a135a15d3ff70d4350d76a15f8e85f7df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#a135a15d3ff70d4350d76a15f8e85f7df">clear</a> ()</td></tr>
+<tr class="separator:a135a15d3ff70d4350d76a15f8e85f7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b8f29955ec52f49808d7ea1cd4eaf5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#a7b8f29955ec52f49808d7ea1cd4eaf5e">get_seq</a> (const Array_Type *a, std::vector&lt; std::pair&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt; *free, std::vector&lt; std::pair&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt; *<a class="el" href="class_rules.html#a4e08a6b3d8b536cb1717c62192a91537">locked</a>=nullptr)</td></tr>
+<tr class="memdesc:a7b8f29955ec52f49808d7ea1cd4eaf5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the sequence of free and locked cells in an <a class="el" href="class_b_array.html" title="Baseline class for binary arrays. ">BArray</a>.  <a href="#a7b8f29955ec52f49808d7ea1cd4eaf5e">More...</a><br /></td></tr>
+<tr class="separator:a7b8f29955ec52f49808d7ea1cd4eaf5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Rule adding</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rule</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:a60583152fddcb11178dcf3d02a924d7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#a60583152fddcb11178dcf3d02a924d7c">add_rule</a> (<a class="el" href="class_rule.html">Rule</a>&lt; Array_Type, Data_Type &gt; &amp;rule)</td></tr>
 <tr class="separator:a60583152fddcb11178dcf3d02a924d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd60b1d381ad0c8a772e4d81264bbe0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#abd60b1d381ad0c8a772e4d81264bbe0a">add_rule</a> (<a class="el" href="class_rule.html">Rule</a>&lt; Array_Type, Data_Type &gt; *rule)</td></tr>
 <tr class="separator:abd60b1d381ad0c8a772e4d81264bbe0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbc63747014445b538384bb500464bb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#abbc63747014445b538384bb500464bb5">add_rule</a> (<a class="el" href="typedefs_8hpp.html#a2e147c9c0e8b65be614c98a5dd400d5c">Rule_fun_type</a>&lt; Array_Type, Data_Type &gt; rule_, Data_Type *data_=nullptr, bool delete_data_=false)</td></tr>
 <tr class="separator:abbc63747014445b538384bb500464bb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e08a6b3d8b536cb1717c62192a91537"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#a4e08a6b3d8b536cb1717c62192a91537">locked</a> (const Array_Type *a, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j)</td></tr>
-<tr class="separator:a4e08a6b3d8b536cb1717c62192a91537"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a135a15d3ff70d4350d76a15f8e85f7df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#a135a15d3ff70d4350d76a15f8e85f7df">clear</a> ()</td></tr>
-<tr class="separator:a135a15d3ff70d4350d76a15f8e85f7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b8f29955ec52f49808d7ea1cd4eaf5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rules.html#a7b8f29955ec52f49808d7ea1cd4eaf5e">get_seq</a> (const Array_Type *a, std::vector&lt; std::pair&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt; *free, std::vector&lt; std::pair&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt; *<a class="el" href="class_rules.html#a4e08a6b3d8b536cb1717c62192a91537">locked</a>=nullptr)</td></tr>
-<tr class="separator:a7b8f29955ec52f49808d7ea1cd4eaf5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Array_Type, typename Data_Type&gt;<br />
 class Rules&lt; Array_Type, Data_Type &gt;</h3>
 
+<p>Vector of objects of class <a class="el" href="class_rule.html" title="Rule for determining if a cell should be included in a sequence. ">Rule</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Array_Type</td><td>An object of class <code><a class="el" href="class_b_array.html" title="Baseline class for binary arrays. ">BArray</a></code> </td></tr>
+    <tr><td class="paramname">Data_Type</td><td>Any type. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="rules-bones_8hpp_source.html#l00044">44</a> of file <a class="el" href="rules-bones_8hpp_source.html">rules-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="rules-bones_8hpp_source.html#l00067">67</a> of file <a class="el" href="rules-bones_8hpp_source.html">rules-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa78e9abf82ed8a0e4320d570191c8968"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa78e9abf82ed8a0e4320d570191c8968">&#9670;&nbsp;</a></span>Rules()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa78e9abf82ed8a0e4320d570191c8968">&#9670;&nbsp;</a></span>Rules() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -150,7 +177,37 @@ template&lt;typename Array_Type, typename Data_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rules-bones_8hpp_source.html#l00051">51</a> of file <a class="el" href="rules-bones_8hpp_source.html">rules-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="rules-bones_8hpp_source.html#l00074">74</a> of file <a class="el" href="rules-bones_8hpp_source.html">rules-bones.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a57f5ab44febba391b2a06d163d25b237"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57f5ab44febba391b2a06d163d25b237">&#9670;&nbsp;</a></span>Rules() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type, typename Data_Type&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Type &gt;::<a class="el" href="class_rules.html">Rules</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Type &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rules_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00010">10</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -179,7 +236,7 @@ template&lt;typename Array_Type, typename Data_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rules-bones_8hpp_source.html#l00053">53</a> of file <a class="el" href="rules-bones_8hpp_source.html">rules-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="rules-bones_8hpp_source.html#l00079">79</a> of file <a class="el" href="rules-bones_8hpp_source.html">rules-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -210,7 +267,7 @@ template&lt;typename Array_Type, typename Data_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00015">15</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00067">67</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -240,7 +297,7 @@ template&lt;typename Array_Type, typename Data_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00026">26</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00078">78</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -286,7 +343,7 @@ template&lt;typename Array_Type, typename Data_Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00036">36</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00088">88</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -315,7 +372,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00073">73</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00125">125</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +418,18 @@ template&lt;typename Array_Type, typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00085">85</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
+<p>Computes the sequence of free and locked cells in an <a class="el" href="class_b_array.html" title="Baseline class for binary arrays. ">BArray</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>An object of class <code><a class="el" href="class_b_array.html" title="Baseline class for binary arrays. ">BArray</a></code>. </td></tr>
+    <tr><td class="paramname">free</td><td>Pointer to a vector of pairs (i, j) listing the free cells. </td></tr>
+    <tr><td class="paramname">locked</td><td>(optional) Pointer to a vector of pairs (i, j) listing the locked cells. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00137">137</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -407,7 +475,71 @@ template&lt;typename Array_Type, typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00058">58</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
+<p>Check whether a given cell is free or locked. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>A <code><a class="el" href="class_b_array.html" title="Baseline class for binary arrays. ">BArray</a></code> object </td></tr>
+    <tr><td class="paramname">i</td><td>row position </td></tr>
+    <tr><td class="paramname">j</td><td>col position </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true If the cell is locked </dd>
+<dd>
+false If the cell is free </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00110">110</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab87544febb8301772164570708bd708e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab87544febb8301772164570708bd708e">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type, typename Data_Type&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Type &gt; <a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Type &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Type &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rules_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="rules-meat_8hpp_source.html#l00034">34</a> of file <a class="el" href="rules-meat_8hpp_source.html">rules-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2f230f733e9936443af660bc890610ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f230f733e9936443af660bc890610ef">&#9670;&nbsp;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type, typename Data_Type&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Type &gt;::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="rules-bones_8hpp_source.html#l00084">84</a> of file <a class="el" href="rules-bones_8hpp_source.html">rules-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +553,7 @@ template&lt;typename Array_Type, typename Data_Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_rules.html">Rules</a></li>
-    <li class="footer">Generated on Fri Feb 5 2021 11:27:13 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Wed Feb 10 2021 16:36:16 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

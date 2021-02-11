@@ -62,8 +62,8 @@ inline std::vector< double > keygen_default(const Array_Type & Array_) {
 }
 
 
-/**@brief General framework for discrete exponential models.
- * 
+/**
+ * @brief General framework for discrete exponential models.
  * This class allows generating discrete exponential models in the form of a linear
  * exponential model:
  * \f[
@@ -81,6 +81,9 @@ inline std::vector< double > keygen_default(const Array_Type & Array_) {
  * vertex level features, i.e. a model that only counts edges, triangles, etc.
  * then the support needs to be fully computed only once.
  * 
+ * @tparam Array_Type Class of `BArray` object.
+ * @tparam Data_Counter_Type Any type.
+ * @tparam Data_Rule_Type Any type.
  */
 template <
   typename Array_Type = BArray<>,
@@ -99,7 +102,8 @@ public:
   std::vector< Counts_type >         stats;
   std::vector< uint >                n_arrays_per_stats;
   
-  /**@name Container space for the powerset (and its sufficient stats)
+  /**
+   * @name Container space for the powerset (and its sufficient stats)
    * @details This is useful in the case of using simulations or evaluating
    * functions that need to account for the full set of states.
    */
@@ -110,7 +114,8 @@ public:
   std::vector< std::vector<double> >                pset_probs;
   ///@}
   
-  /**@name Information about the arrays used in the model 
+  /**
+   * @name Information about the arrays used in the model 
    * @details `target_stats` holds the observed sufficient statistics for each
    * array in the dataset. `array_frequency` contains the frequency with which
    * each of the target stats (arrays) shows in the support. `array2support` 
@@ -122,7 +127,8 @@ public:
   std::vector< uint >                 arrays2support;
   ///@}
   
-  /**@brief Map of types of arrays to support sets
+  /**
+   * @brief Map of types of arrays to support sets
    * @details This is of the same length as the vector `stats`.
    */
   MapVec_type< double, uint > keys2support;
@@ -131,7 +137,7 @@ public:
    * @details Arguments are recycled to save memory and computation.
    */
   ///@[{
-  CounterVector<Array_Type,Data_Counter_Type>          counters;
+  Counters<Array_Type,Data_Counter_Type>          counters;
   Rules<Array_Type,Data_Rule_Type>                     rules;
   Support<Array_Type,Data_Counter_Type,Data_Rule_Type> support_fun;
   StatsCounter<Array_Type,Data_Counter_Type>           counter_fun;
@@ -157,7 +163,8 @@ public:
   void store_psets();
   void set_keygen(std::function<std::vector<double>(const Array_Type &)> keygen_);
   
-  /**@name Wrappers for the `CounterVector` member. 
+  /**
+   * @name Wrappers for the `Counters` member. 
    * @details These will add counters to the model, which are shared by the
    * support and the actual counter function.
    */
@@ -170,10 +177,11 @@ public:
     Data_Counter_Type *                            data_        = nullptr,
     bool                                           delete_data_ = false
   );
-  void set_counters(CounterVector<Array_Type,Data_Counter_Type> * counters_);
+  void set_counters(Counters<Array_Type,Data_Counter_Type> * counters_);
   ///@}
   
-  /**@name Wrappers for the `Rules` member. 
+  /**
+   * @name Wrappers for the `Rules` member. 
    * @details These will add rules to the model, which are shared by the
    * support and the actual counter function.
    */
@@ -189,9 +197,15 @@ public:
   void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);
   ///@}
   
-  /**@brief Adds an array to the support of not already included.
+
+  /**
+   * @brief Adds an array to the support of not already included.
+   * @param Array_ array to be added
+   * @param force_new If `false`, it will use `keygen` to obtain a double vector
+   * and create a hash of it. If the hash has been computed earlier, the support
+   * is recycled.
    * 
-   * @param Array_ 
+   * @return The number of the array.
    */
   uint add_array(const Array_Type & Array_, bool force_new = false);
   

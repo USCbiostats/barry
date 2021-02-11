@@ -5,7 +5,7 @@ var namespacebarry =
     [ "Cell", "classbarry_1_1_cell.html", "classbarry_1_1_cell" ],
     [ "CellSeq", "classbarry_1_1_cell_seq.html", "classbarry_1_1_cell_seq" ],
     [ "Counter", "classbarry_1_1_counter.html", "classbarry_1_1_counter" ],
-    [ "CounterVector", "classbarry_1_1_counter_vector.html", "classbarry_1_1_counter_vector" ],
+    [ "Counters", "classbarry_1_1_counters.html", "classbarry_1_1_counters" ],
     [ "Entries", "classbarry_1_1_entries.html", "classbarry_1_1_entries" ],
     [ "FreqTable", "classbarry_1_1_freq_table.html", "classbarry_1_1_freq_table" ],
     [ "Model", "classbarry_1_1_model.html", "classbarry_1_1_model" ],

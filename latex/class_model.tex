@@ -2,7 +2,7 @@
 \label{class_model}\index{Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$@{Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$}}
 
 
-General framework for discrete exponential models.  
+General framework for discrete exponential models. This class allows generating discrete exponential models in the form of a linear exponential model\+: \[ \frac{ \exp{\left(\theta^{\mbox{t}}c(A)\right)} }{ \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mbox{t}}c(A')\right)} } \].  
 
 
 
@@ -25,6 +25,10 @@ Collaboration diagram for Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\
 \item 
 \hyperlink{class_model_a46639bb435ca2992dac8858528a5362e}{Model} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} size\+\_\+)
 \item 
+\hyperlink{class_model_a047905a921baa9e51a4f07d337379375}{Model} (const \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \&Model\+\_\+)
+\item 
+\hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \& \hyperlink{class_model_a4944b5918dc4a9a59f72587da1e6bb3a}{operator=} (const \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \&Model\+\_\+)
+\item 
 \hyperlink{class_model_a0eba131af14e1ceefc7748323e9fb4bf}{$\sim$\+Model} ()
 \item 
 void \hyperlink{class_model_a06a6f52dfc6868908cf11e6663a93904}{store\+\_\+psets} ()
@@ -41,7 +45,7 @@ Array\+\_\+\+Type \hyperlink{class_model_a86484783c8091b509335fefd9f22d6ae}{samp
 \item 
 unsigned int \hyperlink{class_model_ac3a9ef28d8b6b1e4dfae85816b111080}{n\+\_\+arrays} () const
 \end{DoxyCompactItemize}
-\begin{Indent}\textbf{ Wrappers for the `\+Counter\+Vector` member.}\par
+\begin{Indent}\textbf{ Wrappers for the `\+Counters` member.}\par
 {\em These will add counters to the model, which are shared by the support and the actual counter function. }\begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_model_a1548bd4681944c3eb761a22a38ef5547}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ \&counter)
@@ -49,6 +53,8 @@ void \hyperlink{class_model_a1548bd4681944c3eb761a22a38ef5547}{add\+\_\+counter}
 void \hyperlink{class_model_a6c1f524daf08e10888a49318030616c4}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$counter)
 \item 
 void \hyperlink{class_model_a4e4a18943bda513a844dc11aa088a698}{add\+\_\+counter} (\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ init\+\_\+fun\+\_\+=nullptr, Data\+\_\+\+Counter\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+\item 
+void \hyperlink{class_model_aab2ba8c90b888cfa2143bccf42fcb89f}{set\+\_\+counters} (\hyperlink{class_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$counters\+\_\+)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Wrappers for the `\+Rules` member.}\par
@@ -59,6 +65,8 @@ void \hyperlink{class_model_af2c3f6300b90e6a2a4deaebaf2b0e732}{add\+\_\+rule} (\
 void \hyperlink{class_model_aba5b01457e2f624766a72ba15b8cb6be}{add\+\_\+rule} (\hyperlink{class_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$rule)
 \item 
 void \hyperlink{class_model_af3a1a343dfff4f40443bee4ddf76a0ba}{add\+\_\+rule} (\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, Data\+\_\+\+Rule\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+\item 
+void \hyperlink{class_model_a86a46cf6fdc7c6514b97263f9ee4130b}{set\+\_\+rules} (\hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$rules\+\_\+)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Likelihood functions.}\par
@@ -122,11 +130,11 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uin
 \begin{Indent}\textbf{ Functions to compute statistics}\par
 {\em Arguments are recycled to save memory and computation. }\begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_counter_vector}{Counter\+Vector}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ \hyperlink{class_model_aeabec424c8fa4f412a74ec6fd4622bac}{counters}
+\hyperlink{class_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ \hyperlink{class_model_a3189eb46eed19f865ca0aa3f6b191c78}{counters}
 \begin{DoxyCompactList}\small\item\em @\mbox{[}\{ \end{DoxyCompactList}\item 
 \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \hyperlink{class_model_a65b96a73f8dba8a00cc767753aaca22b}{rules}
 \item 
-\hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ \hyperlink{class_model_acf989d2fcbbb83cca1c76d4c95cf3104}{support\+\_\+fun}
+\hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \hyperlink{class_model_aa9806f4bf7d9c935f37a31e67bbfbee4}{support\+\_\+fun}
 \item 
 \hyperlink{class_stats_counter}{Stats\+Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ \hyperlink{class_model_a2bb5ec8af1a49bcb2da6c5f9f2374b15}{counter\+\_\+fun}
 \end{DoxyCompactItemize}
@@ -137,13 +145,22 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uin
 \subsubsection*{template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$\newline
 class Model$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$}
 
-General framework for discrete exponential models. 
+General framework for discrete exponential models. This class allows generating discrete exponential models in the form of a linear exponential model\+: \[ \frac{ \exp{\left(\theta^{\mbox{t}}c(A)\right)} }{ \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mbox{t}}c(A')\right)} } \]. 
 
-This class allows generating discrete exponential models in the form of a linear exponential model\+: \[ \frac{ \exp{\left(\theta^{\mbox{t}}c(A)\right)} }{ \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mbox{t}}c(A')\right)} } \]
+This implementation aims to reduce the number of times that the support needs to be computed. Models included here use more than a single array, and thus allow the function to recycle support sets as needed. For example, if we are looking at directed graphs all of the same size and without vertex level features, i.\+e. a model that only counts edges, triangles, etc. then the support needs to be fully computed only once.
 
-This implementation aims to reduce the number of times that the support needs to be computed. Models included here use more than a single array, and thus allow the function to recycle support sets as needed. For example, if we are looking at directed graphs all of the same size and without vertex level features, i.\+e. a model that only counts edges, triangles, etc. then the support needs to be fully computed only once. 
 
-Definition at line 88 of file model-\/bones.\+hpp.
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Array\+\_\+\+Type} & Class of {\ttfamily \hyperlink{class_b_array}{B\+Array}} object. \\
+\hline
+{\em Data\+\_\+\+Counter\+\_\+\+Type} & Any type. \\
+\hline
+{\em Data\+\_\+\+Rule\+\_\+\+Type} & Any type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 92 of file model-\/bones.\+hpp.
 
 
 
@@ -151,7 +168,7 @@ Definition at line 88 of file model-\/bones.\+hpp.
 \mbox{\Hypertarget{class_model_a29e6e0c37d9a892772c5ee95ce1e1043}\label{class_model_a29e6e0c37d9a892772c5ee95ce1e1043}} 
 \index{Model@{Model}!Model@{Model}}
 \index{Model@{Model}!Model@{Model}}
-\subsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\subsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
 \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{class_model}{Model} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -162,7 +179,7 @@ Definition at line 7 of file model-\/meat.\+hpp.
 \mbox{\Hypertarget{class_model_a46639bb435ca2992dac8858528a5362e}\label{class_model_a46639bb435ca2992dac8858528a5362e}} 
 \index{Model@{Model}!Model@{Model}}
 \index{Model@{Model}!Model@{Model}}
-\subsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\subsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
 \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{class_model}{Model} (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{size\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -170,16 +187,27 @@ Definition at line 7 of file model-\/meat.\+hpp.
 
 Definition at line 27 of file model-\/meat.\+hpp.
 
+\mbox{\Hypertarget{class_model_a047905a921baa9e51a4f07d337379375}\label{class_model_a047905a921baa9e51a4f07d337379375}} 
+\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\subsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+\hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{class_model}{Model} (\begin{DoxyParamCaption}\item[{const \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \&}]{Model\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 50 of file model-\/meat.\+hpp.
+
 \mbox{\Hypertarget{class_model_a0eba131af14e1ceefc7748323e9fb4bf}\label{class_model_a0eba131af14e1ceefc7748323e9fb4bf}} 
 \index{Model@{Model}!````~Model@{$\sim$\+Model}}
 \index{````~Model@{$\sim$\+Model}!Model@{Model}}
 \subsubsection{\texorpdfstring{$\sim$\+Model()}{~Model()}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::$\sim$\hyperlink{class_model}{Model} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 150 of file model-\/bones.\+hpp.
+Definition at line 161 of file model-\/bones.\+hpp.
 
 
 
@@ -197,12 +225,17 @@ Adds an array to the support of not already included.
 
 
 \begin{DoxyParams}{Parameters}
-{\em Array\+\_\+} & \\
+{\em Array\+\_\+} & array to be added \\
+\hline
+{\em force\+\_\+new} & If {\ttfamily false}, it will use {\ttfamily keygen} to obtain a double vector and create a hash of it. If the hash has been computed earlier, the support is recycled.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of the array. 
+\end{DoxyReturn}
 When computing with the powerset, we need to grow the corresponding vectors on the fly 
 
-Definition at line 140 of file model-\/meat.\+hpp.
+Definition at line 223 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a1548bd4681944c3eb761a22a38ef5547}\label{class_model_a1548bd4681944c3eb761a22a38ef5547}} 
 \index{Model@{Model}!add\+\_\+counter@{add\+\_\+counter}}
@@ -213,7 +246,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 66 of file model-\/meat.\+hpp.
+Definition at line 125 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a6c1f524daf08e10888a49318030616c4}\label{class_model_a6c1f524daf08e10888a49318030616c4}} 
 \index{Model@{Model}!add\+\_\+counter@{add\+\_\+counter}}
@@ -224,7 +257,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 75 of file model-\/meat.\+hpp.
+Definition at line 134 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a4e4a18943bda513a844dc11aa088a698}\label{class_model_a4e4a18943bda513a844dc11aa088a698}} 
 \index{Model@{Model}!add\+\_\+counter@{add\+\_\+counter}}
@@ -235,7 +268,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 85 of file model-\/meat.\+hpp.
+Definition at line 144 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_af2c3f6300b90e6a2a4deaebaf2b0e732}\label{class_model_af2c3f6300b90e6a2a4deaebaf2b0e732}} 
 \index{Model@{Model}!add\+\_\+rule@{add\+\_\+rule}}
@@ -246,7 +279,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 104 of file model-\/meat.\+hpp.
+Definition at line 176 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_aba5b01457e2f624766a72ba15b8cb6be}\label{class_model_aba5b01457e2f624766a72ba15b8cb6be}} 
 \index{Model@{Model}!add\+\_\+rule@{add\+\_\+rule}}
@@ -257,7 +290,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 113 of file model-\/meat.\+hpp.
+Definition at line 185 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_af3a1a343dfff4f40443bee4ddf76a0ba}\label{class_model_af3a1a343dfff4f40443bee4ddf76a0ba}} 
 \index{Model@{Model}!add\+\_\+rule@{add\+\_\+rule}}
@@ -268,7 +301,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 123 of file model-\/meat.\+hpp.
+Definition at line 195 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_ae75fe2213980b6b245e279c7836ab99b}\label{class_model_ae75fe2213980b6b245e279c7836ab99b}} 
 \index{Model@{Model}!likelihood@{likelihood}}
@@ -279,7 +312,7 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\
 
 
 
-Definition at line 223 of file model-\/meat.\+hpp.
+Definition at line 306 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a1a11a54860e22fbd152de4d7cfd30b89}\label{class_model_a1a11a54860e22fbd152de4d7cfd30b89}} 
 \index{Model@{Model}!likelihood@{likelihood}}
@@ -290,7 +323,7 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\
 
 
 
-Definition at line 256 of file model-\/meat.\+hpp.
+Definition at line 339 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a31d16ef478d772cedde0813575074a0f}\label{class_model_a31d16ef478d772cedde0813575074a0f}} 
 \index{Model@{Model}!likelihood\+\_\+total@{likelihood\+\_\+total}}
@@ -301,7 +334,7 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\
 
 
 
-Definition at line 276 of file model-\/meat.\+hpp.
+Definition at line 359 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_ac3a9ef28d8b6b1e4dfae85816b111080}\label{class_model_ac3a9ef28d8b6b1e4dfae85816b111080}} 
 \index{Model@{Model}!n\+\_\+arrays@{n\+\_\+arrays}}
@@ -312,7 +345,18 @@ Definition at line 276 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 331 of file model-\/meat.\+hpp.
+Definition at line 414 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_model_a4944b5918dc4a9a59f72587da1e6bb3a}\label{class_model_a4944b5918dc4a9a59f72587da1e6bb3a}} 
+\index{Model@{Model}!operator=@{operator=}}
+\index{operator=@{operator=}!Model@{Model}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+\hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \& \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \&}]{Model\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 77 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_ac00b5c6a1446ad00fdf1d92c9cb1df3c}\label{class_model_ac00b5c6a1446ad00fdf1d92c9cb1df3c}} 
 \index{Model@{Model}!print\+\_\+stats@{print\+\_\+stats}}
@@ -323,21 +367,32 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 316 of file model-\/meat.\+hpp.
+Definition at line 399 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a59e37db45e1751a6205db129a5c114c1}\label{class_model_a59e37db45e1751a6205db129a5c114c1}} 
 \index{Model@{Model}!sample@{sample}}
 \index{sample@{sample}!Model@{Model}}
 \subsubsection{\texorpdfstring{sample()}{sample()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 Array\+\_\+\+Type \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::sample (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+,  }\item[{const std\+::vector$<$ double $>$ \&}]{params = {\ttfamily \{\}} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_model_a86484783c8091b509335fefd9f22d6ae}\label{class_model_a86484783c8091b509335fefd9f22d6ae}} 
 \index{Model@{Model}!sample@{sample}}
 \index{sample@{sample}!Model@{Model}}
 \subsubsection{\texorpdfstring{sample()}{sample()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 Array\+\_\+\+Type \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::sample (\begin{DoxyParamCaption}\item[{const \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&}]{i,  }\item[{const std\+::vector$<$ double $>$ \&}]{params = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_model_aab2ba8c90b888cfa2143bccf42fcb89f}\label{class_model_aab2ba8c90b888cfa2143bccf42fcb89f}} 
+\index{Model@{Model}!set\+\_\+counters@{set\+\_\+counters}}
+\index{set\+\_\+counters@{set\+\_\+counters}!Model@{Model}}
+\subsubsection{\texorpdfstring{set\+\_\+counters()}{set\_counters()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::set\+\_\+counters (\begin{DoxyParamCaption}\item[{\hyperlink{class_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$}]{counters\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 163 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_add1847cdaf3f5bbde6c14efc2e4d16df}\label{class_model_add1847cdaf3f5bbde6c14efc2e4d16df}} 
 \index{Model@{Model}!set\+\_\+keygen@{set\+\_\+keygen}}
@@ -348,7 +403,18 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 58 of file model-\/meat.\+hpp.
+Definition at line 117 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_model_a86a46cf6fdc7c6514b97263f9ee4130b}\label{class_model_a86a46cf6fdc7c6514b97263f9ee4130b}} 
+\index{Model@{Model}!set\+\_\+rules@{set\+\_\+rules}}
+\index{set\+\_\+rules@{set\+\_\+rules}!Model@{Model}}
+\subsubsection{\texorpdfstring{set\+\_\+rules()}{set\_rules()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::set\+\_\+rules (\begin{DoxyParamCaption}\item[{\hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$}]{rules\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 212 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a06a6f52dfc6868908cf11e6663a93904}\label{class_model_a06a6f52dfc6868908cf11e6663a93904}} 
 \index{Model@{Model}!store\+\_\+psets@{store\+\_\+psets}}
@@ -359,7 +425,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 50 of file model-\/meat.\+hpp.
+Definition at line 109 of file model-\/meat.\+hpp.
 
 
 
@@ -368,41 +434,41 @@ Definition at line 50 of file model-\/meat.\+hpp.
 \index{Model@{Model}!array\+\_\+frequency@{array\+\_\+frequency}}
 \index{array\+\_\+frequency@{array\+\_\+frequency}!Model@{Model}}
 \subsubsection{\texorpdfstring{array\+\_\+frequency}{array\_frequency}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::array\+\_\+frequency}
 
 
 
-Definition at line 120 of file model-\/bones.\+hpp.
+Definition at line 126 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a038858e9cd8e396412c3867113a149e7}\label{class_model_a038858e9cd8e396412c3867113a149e7}} 
 \index{Model@{Model}!arrays2support@{arrays2support}}
 \index{arrays2support@{arrays2support}!Model@{Model}}
 \subsubsection{\texorpdfstring{arrays2support}{arrays2support}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::arrays2support}
 
 
 
-Definition at line 121 of file model-\/bones.\+hpp.
+Definition at line 127 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a2bb5ec8af1a49bcb2da6c5f9f2374b15}\label{class_model_a2bb5ec8af1a49bcb2da6c5f9f2374b15}} 
 \index{Model@{Model}!counter\+\_\+fun@{counter\+\_\+fun}}
 \index{counter\+\_\+fun@{counter\+\_\+fun}!Model@{Model}}
 \subsubsection{\texorpdfstring{counter\+\_\+fun}{counter\_fun}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 \hyperlink{class_stats_counter}{Stats\+Counter}$<$Array\+\_\+\+Type,Data\+\_\+\+Counter\+\_\+\+Type$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::counter\+\_\+fun}
 
 
 
-Definition at line 136 of file model-\/bones.\+hpp.
+Definition at line 143 of file model-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_model_aeabec424c8fa4f412a74ec6fd4622bac}\label{class_model_aeabec424c8fa4f412a74ec6fd4622bac}} 
+\mbox{\Hypertarget{class_model_a3189eb46eed19f865ca0aa3f6b191c78}\label{class_model_a3189eb46eed19f865ca0aa3f6b191c78}} 
 \index{Model@{Model}!counters@{counters}}
 \index{counters@{counters}!Model@{Model}}
 \subsubsection{\texorpdfstring{counters}{counters}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
-\hyperlink{class_counter_vector}{Counter\+Vector}$<$Array\+\_\+\+Type,Data\+\_\+\+Counter\+\_\+\+Type$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::counters}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
+\hyperlink{class_counters}{Counters}$<$Array\+\_\+\+Type,Data\+\_\+\+Counter\+\_\+\+Type$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::counters}
 
 
 
@@ -410,24 +476,24 @@ Definition at line 136 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 133 of file model-\/bones.\+hpp.
+Definition at line 140 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_ae9cd143269b07c9bde44855d1974f3f5}\label{class_model_ae9cd143269b07c9bde44855d1974f3f5}} 
 \index{Model@{Model}!first\+\_\+calc\+\_\+done@{first\+\_\+calc\+\_\+done}}
 \index{first\+\_\+calc\+\_\+done@{first\+\_\+calc\+\_\+done}!Model@{Model}}
 \subsubsection{\texorpdfstring{first\+\_\+calc\+\_\+done}{first\_calc\_done}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 bool \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::first\+\_\+calc\+\_\+done = false}
 
 
 
-Definition at line 142 of file model-\/bones.\+hpp.
+Definition at line 149 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a16561e15c0abbb080927382b30d43e35}\label{class_model_a16561e15c0abbb080927382b30d43e35}} 
 \index{Model@{Model}!keygen@{keygen}}
 \index{keygen@{keygen}!Model@{Model}}
 \subsubsection{\texorpdfstring{keygen}{keygen}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::function$<$std\+::vector$<$double$>$const Array\+\_\+\+Type \&)$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::keygen = nullptr}
 
 
@@ -436,13 +502,13 @@ Function to extract features of the array to be hash.
 
 
 
-Definition at line 146 of file model-\/bones.\+hpp.
+Definition at line 153 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a2a81190ac618b04479686411d02b3c5f}\label{class_model_a2a81190ac618b04479686411d02b3c5f}} 
 \index{Model@{Model}!keys2support@{keys2support}}
 \index{keys2support@{keys2support}!Model@{Model}}
 \subsubsection{\texorpdfstring{keys2support}{keys2support}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}$<$ double, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::keys2support}
 
 
@@ -451,35 +517,35 @@ Map of types of arrays to support sets.
 
 This is of the same length as the vector {\ttfamily stats}. 
 
-Definition at line 127 of file model-\/bones.\+hpp.
+Definition at line 134 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a410caeff58afe605520c878a0689abf5}\label{class_model_a410caeff58afe605520c878a0689abf5}} 
 \index{Model@{Model}!n\+\_\+arrays\+\_\+per\+\_\+stats@{n\+\_\+arrays\+\_\+per\+\_\+stats}}
 \index{n\+\_\+arrays\+\_\+per\+\_\+stats@{n\+\_\+arrays\+\_\+per\+\_\+stats}!Model@{Model}}
 \subsubsection{\texorpdfstring{n\+\_\+arrays\+\_\+per\+\_\+stats}{n\_arrays\_per\_stats}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::n\+\_\+arrays\+\_\+per\+\_\+stats}
 
 
 
-Definition at line 99 of file model-\/bones.\+hpp.
+Definition at line 103 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_aa4479d146005e89350dad6ba7bd8121a}\label{class_model_aa4479d146005e89350dad6ba7bd8121a}} 
 \index{Model@{Model}!normalizing\+\_\+constants@{normalizing\+\_\+constants}}
 \index{normalizing\+\_\+constants@{normalizing\+\_\+constants}!Model@{Model}}
 \subsubsection{\texorpdfstring{normalizing\+\_\+constants}{normalizing\_constants}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ double $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::normalizing\+\_\+constants}
 
 
 
-Definition at line 141 of file model-\/bones.\+hpp.
+Definition at line 148 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_add8183af946f2871480b6a6f9f1c8013}\label{class_model_add8183af946f2871480b6a6f9f1c8013}} 
 \index{Model@{Model}!params\+\_\+last@{params\+\_\+last}}
 \index{params\+\_\+last@{params\+\_\+last}!Model@{Model}}
 \subsubsection{\texorpdfstring{params\+\_\+last}{params\_last}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ std\+::vector$<$double$>$ $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::params\+\_\+last}
 
 
@@ -488,95 +554,95 @@ Vector of the previously used parameters.
 
 
 
-Definition at line 140 of file model-\/bones.\+hpp.
+Definition at line 147 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a875ac0dbc320797c843b6724b7736f77}\label{class_model_a875ac0dbc320797c843b6724b7736f77}} 
 \index{Model@{Model}!pset\+\_\+arrays@{pset\+\_\+arrays}}
 \index{pset\+\_\+arrays@{pset\+\_\+arrays}!Model@{Model}}
 \subsubsection{\texorpdfstring{pset\+\_\+arrays}{pset\_arrays}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ std\+::vector$<$ Array\+\_\+\+Type $>$ $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::pset\+\_\+arrays}
 
 
 
-Definition at line 107 of file model-\/bones.\+hpp.
+Definition at line 112 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a5dea24375889e55064f052fd8e8c4fe2}\label{class_model_a5dea24375889e55064f052fd8e8c4fe2}} 
 \index{Model@{Model}!pset\+\_\+probs@{pset\+\_\+probs}}
 \index{pset\+\_\+probs@{pset\+\_\+probs}!Model@{Model}}
 \subsubsection{\texorpdfstring{pset\+\_\+probs}{pset\_probs}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ std\+::vector$<$double$>$ $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::pset\+\_\+probs}
 
 
 
-Definition at line 109 of file model-\/bones.\+hpp.
+Definition at line 114 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a89fff457ecccc91a624e20cafbf3e765}\label{class_model_a89fff457ecccc91a624e20cafbf3e765}} 
 \index{Model@{Model}!pset\+\_\+stats@{pset\+\_\+stats}}
 \index{pset\+\_\+stats@{pset\+\_\+stats}!Model@{Model}}
 \subsubsection{\texorpdfstring{pset\+\_\+stats}{pset\_stats}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ std\+::vector$<$ std\+::vector$<$double$>$ $>$ $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::pset\+\_\+stats}
 
 
 
-Definition at line 108 of file model-\/bones.\+hpp.
+Definition at line 113 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a65b96a73f8dba8a00cc767753aaca22b}\label{class_model_a65b96a73f8dba8a00cc767753aaca22b}} 
 \index{Model@{Model}!rules@{rules}}
 \index{rules@{rules}!Model@{Model}}
 \subsubsection{\texorpdfstring{rules}{rules}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 \hyperlink{class_rules}{Rules}$<$Array\+\_\+\+Type,Data\+\_\+\+Rule\+\_\+\+Type$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::rules}
 
 
 
-Definition at line 134 of file model-\/bones.\+hpp.
+Definition at line 141 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_abd7e36250a681bd2ade69d087e8200e1}\label{class_model_abd7e36250a681bd2ade69d087e8200e1}} 
 \index{Model@{Model}!stats@{stats}}
 \index{stats@{stats}!Model@{Model}}
 \subsubsection{\texorpdfstring{stats}{stats}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type} $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::stats}
 
 
 
-Definition at line 98 of file model-\/bones.\+hpp.
+Definition at line 102 of file model-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_model_acf989d2fcbbb83cca1c76d4c95cf3104}\label{class_model_acf989d2fcbbb83cca1c76d4c95cf3104}} 
+\mbox{\Hypertarget{class_model_aa9806f4bf7d9c935f37a31e67bbfbee4}\label{class_model_aa9806f4bf7d9c935f37a31e67bbfbee4}} 
 \index{Model@{Model}!support\+\_\+fun@{support\+\_\+fun}}
 \index{support\+\_\+fun@{support\+\_\+fun}!Model@{Model}}
 \subsubsection{\texorpdfstring{support\+\_\+fun}{support\_fun}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
-\hyperlink{class_support}{Support}$<$Array\+\_\+\+Type,Data\+\_\+\+Counter\+\_\+\+Type$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::support\+\_\+fun}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
+\hyperlink{class_support}{Support}$<$Array\+\_\+\+Type,Data\+\_\+\+Counter\+\_\+\+Type,Data\+\_\+\+Rule\+\_\+\+Type$>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::support\+\_\+fun}
 
 
 
-Definition at line 135 of file model-\/bones.\+hpp.
+Definition at line 142 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a24ad6e57bff2297dcc7461609714f41b}\label{class_model_a24ad6e57bff2297dcc7461609714f41b}} 
 \index{Model@{Model}!target\+\_\+stats@{target\+\_\+stats}}
 \index{target\+\_\+stats@{target\+\_\+stats}!Model@{Model}}
 \subsubsection{\texorpdfstring{target\+\_\+stats}{target\_stats}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::target\+\_\+stats}
 
 
 
-Definition at line 119 of file model-\/bones.\+hpp.
+Definition at line 125 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_afd37924e6fcfdc30c9fc5ad56f1c4947}\label{class_model_afd37924e6fcfdc30c9fc5ad56f1c4947}} 
 \index{Model@{Model}!with\+\_\+pset@{with\+\_\+pset}}
 \index{with\+\_\+pset@{with\+\_\+pset}!Model@{Model}}
 \subsubsection{\texorpdfstring{with\+\_\+pset}{with\_pset}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
 bool \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::with\+\_\+pset = false}
 
 
 
-Definition at line 106 of file model-\/bones.\+hpp.
+Definition at line 111 of file model-\/bones.\+hpp.
 
 
 
