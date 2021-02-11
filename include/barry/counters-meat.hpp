@@ -18,7 +18,7 @@ inline Counter<Array_Type,Data_Type>::Counter(
 
   return;
 
-};
+}
 
 template <typename Array_Type, typename Data_Type>
 Counter<Array_Type,Data_Type> Counter<Array_Type,Data_Type>::operator=(
@@ -42,7 +42,7 @@ Counter<Array_Type,Data_Type> Counter<Array_Type,Data_Type>::operator=(
 
   return *this;
 
-};
+}
 
 template <typename Array_Type, typename Data_Type>
 inline Counters<Array_Type,Data_Type>::Counters(
@@ -66,7 +66,7 @@ inline Counters<Array_Type,Data_Type>::Counters(
 
   return;
 
-};
+}
 
 template <typename Array_Type, typename Data_Type>
 Counters<Array_Type,Data_Type> Counters<Array_Type,Data_Type>::operator=(
@@ -94,7 +94,7 @@ Counters<Array_Type,Data_Type> Counters<Array_Type,Data_Type>::operator=(
 
   return *this;
 
-};
+}
 
 template <typename Array_Type, typename Data_Type>
 inline double Counter<Array_Type, Data_Type>::count(

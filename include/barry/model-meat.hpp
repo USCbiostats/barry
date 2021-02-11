@@ -44,7 +44,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(uint size_) :
   
   return;
   
-};
+}
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(
@@ -71,7 +71,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(
   
   return;
   
-};
+}
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::operator=(

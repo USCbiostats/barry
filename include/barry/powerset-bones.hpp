@@ -34,8 +34,8 @@ public:
    * ! Creator and destructor functions
    */
   PowerSet() : 
-  EmptyArray(), data(0u), rules(new Rules<Array_Type,Data_Rule_Type>()), M(0u), N(0u) {};
-  PowerSet(uint N_, uint M_) : EmptyArray(N_, M_), data(0u), rules(new Rules<Array_Type,Data_Rule_Type>()), M(M_), N(N_) {};
+  EmptyArray(), data(0u), rules(new Rules<Array_Type,Data_Rule_Type>()), N(0u), M(0u) {};
+  PowerSet(uint N_, uint M_) : EmptyArray(N_, M_), data(0u), rules(new Rules<Array_Type,Data_Rule_Type>()), N(N_), M(M_) {};
   ~PowerSet();
   
   void init_support();

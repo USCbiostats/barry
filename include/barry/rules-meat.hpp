@@ -28,7 +28,7 @@ inline Rules<Array_Type,Data_Type>::Rules(
 
   return;
 
-};
+}
 
 template <typename Array_Type, typename Data_Type>
 Rules<Array_Type,Data_Type> Rules<Array_Type,Data_Type>::operator=(
@@ -56,7 +56,7 @@ Rules<Array_Type,Data_Type> Rules<Array_Type,Data_Type>::operator=(
 
   return *this;
 
-};
+}
 
 template<typename Array_Type, typename Data_Type>
 inline bool Rule<Array_Type,Data_Type>::locked(const Array_Type * a, uint i, uint j) {

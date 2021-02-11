@@ -210,7 +210,8 @@ public:
   uint add_array(const Array_Type & Array_, bool force_new = false);
   
   
-  /**@name Likelihood functions.
+  /**
+   * @name Likelihood functions.
    * @details Calculation of likelihood functions is done reusing normalizing
    * constants. Before recalculating the normalizing constant, the function 
    * checks whether `params` matches the last set vector of parameters used

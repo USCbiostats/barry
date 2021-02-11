@@ -1,3 +1,8 @@
+aphylo:
+	g++ -std=c++11 -Wall -pedantic -g aphylo2/phylo-suffstats2.cpp -o aphylo2/pss2 && \
+		valgrind --leak-check=full ./aphylo2/pss2
+
+
 phylo:
 	m; g++ -std=c++11 -Wall -pedantic -g phylosim.cpp -o phylosim && \
 		valgrind --leak-check=full ./phylosim

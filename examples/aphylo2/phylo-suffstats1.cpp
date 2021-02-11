@@ -2,76 +2,7 @@
 #include <string>
 #include <chrono>
 #include <random>
-#include "../include/barry/barry.hpp"
-
-// The same need to be locked
-RULE_FUNCTION(rule_blocked) {
-    if (Array->get_cell(i, j) == 9u)
-        return false;
-    return true;
-};
-
-using namespace phylocounters;
-
-template <typename T>
-using Vec = std::vector< T >;
-
-template<typename T1, typename T2>
-Vec< T1 > caster(const Vec< T2 > & vec) {
-
-    Vec< T1 > ans;
-    ans.reserve(vec.size());
-
-    for (auto &i : vec) {
-        ans.push_back(*i);
-    }
-
-    return ans;
-
-}
-
-// Hasher
-inline Vec< double > tip_keygen(const PhyloArray & array) {
-    
-    // Baseline data: nrows and columns
-    Vec< double > dat = {
-        (double) array.nrow(), (double) array.ncol()
-    };
-    
-    // State of the parent
-    for (bool i : array.data->states) {
-        dat.push_back(i ? 1.0 : 0.0);
-    }
-
-    // Free cells
-    for (auto i = 0u; i < array.nrow(); ++i)
-        for (auto j = 0u; j < array.ncol(); ++j)
-            dat.push_back((double) array.get_cell(i, j, false));
-    
-    return dat;
-}
-
-// Hasher
-inline Vec< double > tip_keygen_baseline(const PhyloArray & array) {
-    
-    // Baseline data: nrows and columns
-    Vec< double > dat = {
-        (double) array.nrow(), (double) array.ncol()
-    };
-    
-    // State of the parent
-    for (bool i : array.data->states) {
-        dat.push_back(i ? 1.0 : 0.0);
-    }
-
-    // // Free cells
-    // for (auto i = 0u; i < array.nrow(); ++i)
-    //     for (auto j = 0u; j < array.ncol(); ++j)
-    //         dat.push_back((double) array.get_cell(i, j, false));
-    
-    return dat;
-}
-
+#include "leaf.hpp"
 
 int main() {
 
@@ -82,9 +13,9 @@ int main() {
      * b  1  1    0  0
      * c  0  9    9  9
      */
-    Vec< uint > row = {0, 1, 0, 1, 2};
-    Vec< uint > col = {0, 0, 1, 1, 1};
-    Vec< uint > val = {1, 1, 9, 1, 9};
+    std::vector< uint > row = {0, 1, 0, 1, 2};
+    std::vector< uint > col = {0, 0, 1, 1, 1};
+    std::vector< uint > val = {1, 1, 9, 1, 9};
 
     // Stargint to measure time
     auto start = std::chrono::system_clock::now();
@@ -96,11 +27,11 @@ int main() {
     pset.calc();
 
     // Each node will have its own model.
-    Vec< PhyloArray > nodes(0u);
-    Vec< double > blengths(3, 1.0);
+    std::vector< PhyloArray > nodes(0u);
+    std::vector< double > blengths(3, 1.0);
 
     // Baseline parameters
-    Vec< double > params = {0.1, -.1, 0, 0, 0};
+    std::vector< double > params = {0.1, -.1, 0, 0, 0};
 
     // Iterating through the possible sets of nodes
     PhyloModel tipmodel;
@@ -120,7 +51,7 @@ int main() {
     unsigned int i = 0u;
     for (auto iter = pset.begin(); iter != pset.end(); ++iter) {
 
-        Vec< bool > states(blengths.size(), false);
+        std::vector< bool > states(blengths.size(), false);
         for (auto iter2 = iter->get_col(0u)->begin(); iter2 != iter->get_col(0u)->end(); ++iter2) {
             states.at(iter2->first) = true;
         }
@@ -164,7 +95,7 @@ int main() {
     for (auto i = 0u; i < 1000; ++i) {
 
         // Updating the parameter
-        Vec<double> par(params.size());
+        std::vector<double> par(params.size());
         for (auto j = 0u; j < par.size(); ++j)
             par.at(j) = dis(gen);
 
