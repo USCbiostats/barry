@@ -28,6 +28,9 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
   
   // Resizing support
   data.reserve(pow(2.0, coordinates_free.size())); 
+
+  // Adding the empty array to the set
+  data.push_back(EmptyArray);
   
   return;
 }

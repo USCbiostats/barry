@@ -402,6 +402,34 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood_tot
   
 }
 
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_normalizing_constant(
+    const std::vector<double> & params,
+    const uint & i,
+    bool as_log
+) {
+  
+  // Checking if the index exists
+  if (i >= arrays2support.size())
+    throw std::range_error("The requested support is out of range");
+  
+  // Checking if we have updated the normalizing constant or not
+  if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
+    
+    first_calc_done[arrays2support[i]] = true;
+    
+    normalizing_constants[arrays2support[i]] = update_normalizing_constant(
+      params, stats[arrays2support[i]]
+    );
+    
+    params_last[arrays2support[i]] = params;
+    
+  }
+  
+  return normalizing_constants[arrays2support[i]];
+  
+}
+
 template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::print_stats(uint i) const {
   

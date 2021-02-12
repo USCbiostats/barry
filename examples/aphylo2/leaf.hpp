@@ -269,7 +269,7 @@ Leafs::Leafs(
             std::vector< double > blen(iter.second.offspring.size(), 1.0);
             for (auto& s : states) {
                 
-                InnerNodes.at(narrays).push_back(rawdata.at(narrays));
+                InnerNodes.at(narrays).at(i) = rawdata.at(narrays);
                 InnerNodes.at(narrays).at(i).set_data(
                     new NodeData(blen, s),
                     true
@@ -297,26 +297,30 @@ void Leafs::tip_prob(std::vector< double > & par) {
     std::vector< double > probs;
     std::vector< unsigned int > ids;
     unsigned int i = 0;
+
     for (auto& iter : nodes) {
         
         // Counting the probability assuming equal likelihood of each 
         // state
         if (!iter.second.is_leaf()) {
 
-            probs.push_back(0.0);
+            double tmp = 0.0;
             ids.push_back(iter.first);
 
             // Iterating through the states
             for (unsigned int j = 0u; j < iter.second.idx_cons.size(); ++j) {
-                probs.at(i) += model_const.likelihood(
-                    par,
-                    iter.second.idx_cons.at(j)
-                    ) / model_full.likelihood(
-                    par,
-                    iter.second.idx_full.at(j)
-                    ) / iter.second.idx_full.size();
+
+                model_const.likelihood(par, iter.second.idx_cons.at(j));
+                model_full.likelihood(par, iter.second.idx_full.at(j));
+                
+                tmp += (( 
+                    model_const.get_normalizing_constant(par, iter.second.idx_cons.at(j)) /
+                    model_full.get_normalizing_constant(par, iter.second.idx_full.at(j))
+                    ) / iter.second.idx_full.size());
             }
-            model_const.print_stats(i);
+            // model_const.print_stats(i);
+
+            probs.push_back(tmp);
 
             ++i;
 

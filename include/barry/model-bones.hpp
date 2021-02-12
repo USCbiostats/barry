@@ -137,7 +137,7 @@ public:
    * @details Arguments are recycled to save memory and computation.
    */
   ///@[{
-  Counters<Array_Type,Data_Counter_Type>          counters;
+  Counters<Array_Type,Data_Counter_Type>               counters;
   Rules<Array_Type,Data_Rule_Type>                     rules;
   Support<Array_Type,Data_Counter_Type,Data_Rule_Type> support_fun;
   StatsCounter<Array_Type,Data_Counter_Type>           counter_fun;
@@ -239,6 +239,12 @@ public:
     bool as_log = false
   );
   ///@}
+
+  double get_normalizing_constant(
+    const std::vector< double > & params,
+    const uint & i,
+    bool as_log = false
+  );
   
   void print_stats(uint i) const;
   
