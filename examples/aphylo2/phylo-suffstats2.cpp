@@ -26,7 +26,6 @@ int main() {
     // Stargint to measure time
     auto start = std::chrono::system_clock::now();
 
-
     // Specifying the terms
     PhyloCounters counters;
     counter_gains(&counters, {0, 1, 2});

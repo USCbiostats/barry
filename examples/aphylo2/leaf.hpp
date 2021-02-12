@@ -74,6 +74,8 @@ public:
     std::vector< unsigned int > dat = {};
     Node * parent                   = nullptr;
     std::vector< Node* > offspring  = {};
+    std::vector< unsigned int > idx_cons;
+    std::vector< unsigned int > idx_full;
 
     Node(unsigned int id_) : id(id_) {};
     Node(unsigned int id_, std::vector< unsigned int > dat_) :
@@ -102,11 +104,11 @@ public:
     PhyloModel model_const;
     PhyloModel model_full;
     unsigned int nfuns;
-    barry::Map< unsigned int, Node > dat;
+    barry::Map< unsigned int, Node > nodes;
     InnerNodes_type InnerNodes;
     InnerNode_type rawdata;
-    std::vector< unsigned int > idx_const;
-    std::vector< unsigned int > idx_full;
+    // std::vector< unsigned int > idx_const;
+    // std::vector< unsigned int > idx_full;
 
     Leafs();
 
@@ -119,14 +121,13 @@ public:
 
     ~Leafs() {};
 
-
-
     double operator()(std::vector< double > & par, unsigned int & i);
-    void print() const;
+    void tip_prob(std::vector< double > & par);
+    void print();
 
 };
 
-Leafs::Leafs() : model_const(), model_full(), dat() {
+Leafs::Leafs() : model_const(), model_full(), nodes() {
     return;
 }
 
@@ -135,7 +136,7 @@ Leafs::Leafs(
     std::vector< unsigned int > & geneid,
     std::vector< unsigned int> & parent,
     PhyloCounters & counters
-) : model_const(), model_full(), dat() {
+) : model_const(), model_full(), nodes() {
 
     // Check the lengths
     if (annotations.size() == 0u)
@@ -158,6 +159,8 @@ Leafs::Leafs(
     model_const.set_counters(&counters);
     model_full.set_counters(&counters);
 
+    model_full.store_psets();
+
     // Grouping up the data by parents -----------------------------------------
     for (unsigned int i = 0u; i < geneid.size(); ++i) {
         
@@ -167,18 +170,18 @@ Leafs::Leafs(
             funs.at(j) = annotations.at(j).at(i);
 
         // Registered?
-        auto iter = dat.find(parent.at(i));
+        auto iter = nodes.find(parent.at(i));
         
-        if (iter == dat.end()) {
+        if (iter == nodes.end()) {
 
             // Adding parent
-            auto key_par = dat.insert({
+            auto key_par = nodes.insert({
                 parent.at(i),
                 Node({geneid.at(i)}) 
             });
 
             // Adding offspring
-            auto key_off = dat.insert({
+            auto key_off = nodes.insert({
                 geneid.at(i),
                 Node({geneid.at(i), funs})
                 });
@@ -195,7 +198,7 @@ Leafs::Leafs(
             // In this case, the parent exists, so we only need to assing the
             // offspring
             // Adding offspring
-            auto key_off = dat.insert({
+            auto key_off = nodes.insert({
                 geneid.at(i),
                 Node({geneid.at(i), funs})
                 });
@@ -233,7 +236,7 @@ Leafs::Leafs(
     unsigned int narrays = 0u;
 
     // Iterating throught the nodes
-    for (auto& iter : dat) {
+    for (auto& iter : nodes) {
 
         // Only parents get a node
         if (!iter.second.is_leaf()) {
@@ -264,19 +267,19 @@ Leafs::Leafs(
             InnerNodes.push_back(InnerNode_type(pset.data.size()));
             unsigned int i = 0u;
             std::vector< double > blen(iter.second.offspring.size(), 1.0);
-            for (auto& iter : states) {
+            for (auto& s : states) {
                 
                 InnerNodes.at(narrays).push_back(rawdata.at(narrays));
                 InnerNodes.at(narrays).at(i).set_data(
-                    new NodeData(blen, iter),
+                    new NodeData(blen, s),
                     true
                 );
 
                 // Once the array is ready, we can add it to the model
-                this->idx_const.push_back(
+                iter.second.idx_cons.push_back(
                     model_const.add_array(InnerNodes.at(narrays).at(i))
                     );
-                this->idx_full.push_back(
+                iter.second.idx_full.push_back(
                     model_full.add_array(InnerNodes.at(narrays).at(i))
                     );
 
@@ -289,16 +292,77 @@ Leafs::Leafs(
 
 }
 
-void Leafs::print() const {
-    for (auto& iter : this->dat) {
+void Leafs::tip_prob(std::vector< double > & par) {
+
+    std::vector< double > probs;
+    std::vector< unsigned int > ids;
+    unsigned int i = 0;
+    for (auto& iter : nodes) {
+        
+        // Counting the probability assuming equal likelihood of each 
+        // state
+        if (!iter.second.is_leaf()) {
+
+            probs.push_back(0.0);
+            ids.push_back(iter.first);
+
+            // Iterating through the states
+            for (unsigned int j = 0u; j < iter.second.idx_cons.size(); ++j) {
+                probs.at(i) += model_const.likelihood(
+                    par,
+                    iter.second.idx_cons.at(j)
+                    ) / model_full.likelihood(
+                    par,
+                    iter.second.idx_full.at(j)
+                    ) / iter.second.idx_full.size();
+            }
+            model_const.print_stats(i);
+
+            ++i;
+
+        }
+    }
+
+    
+
+    // Printing the probabilities
+    i = 0u;
+    for (auto& iter : probs) {
+        printf("Pr(%4i) = %.4f\n", ids[i++], iter);
+    }
+
+    return;
+}
+
+void Leafs::print() {
+
+    // Overall information
+    std::cout << "\n--- General information ----------" << std::endl;
+    std::cout << " Number of arrays (full)               : " << this->model_full.size() << std::endl;
+    std::cout << " Number of unique models (full)        : " << this->model_full.size_unique() << std::endl;
+    std::cout << " Number of arrays (constrained)        : " << this->model_const.size() << std::endl;
+    std::cout << " Number of unique models (constrained) : " << this->model_const.size_unique() << std::endl;
+
+    // Node information
+    std::cout << "\n--- Information about the genes ---" << std::endl;
+    for (auto& iter : this->nodes) {
         std::cout << " Gene id: " << iter.first;
         std::cout << " Parent id: " << iter.second.get_parent();
         std::cout << " offsprings: {";
         for (auto& o : iter.second.offspring) {
-            std::cout << o->id << ", ";
+            std::cout << o->id;
+            
+            if (o->id != (iter.second.offspring.at(iter.second.offspring.size() - 1u)->id))
+                std::cout << ", ";
+
         }
         std::cout << "}" << std::endl;
     }
+
+    std::cout << "\n--- Raw probabilities -------------" << std::endl;
+    std::vector< double > p(model_const.counters.size(), 0.0);
+    this->tip_prob(p);
+
     return;
 }
 

@@ -6,7 +6,7 @@
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model() :
   stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
-  target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules() 
+  target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules()
 {  
 
   // Counters are shared
@@ -57,7 +57,10 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(
   arrays2support(Model_.arrays2support),
   keys2support(Model_.keys2support),
   counters(Model_.counters),
-  rules(Model_.rules)
+  rules(Model_.rules),
+  params_last(Model_.params_last),
+  normalizing_constants(Model_.normalizing_constants),
+  first_calc_done(Model_.first_calc_done)
   {
   
   // Counters are shared
@@ -81,16 +84,19 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model<Array_Type,Dat
   // Clearing
   if (this != &Model_) {
     
-    stats              = Model_.stats;
-    n_arrays_per_stats = Model_.n_arrays_per_stats;
-    pset_arrays        = Model_.pset_arrays;
-    pset_stats         = Model_.pset_stats;
-    target_stats       = Model_.target_stats;
-    arrays2support     = Model_.arrays2support;
-    keys2support       = Model_.keys2support;
-    counters           = Model_.counters;
-    rules              = Model_.rule;
-    
+    stats                 = Model_.stats;
+    n_arrays_per_stats    = Model_.n_arrays_per_stats;
+    pset_arrays           = Model_.pset_arrays;
+    pset_stats            = Model_.pset_stats;
+    target_stats          = Model_.target_stats;
+    arrays2support        = Model_.arrays2support;
+    keys2support          = Model_.keys2support;
+    counters              = Model_.counters;
+    rules                 = Model_.rule;
+    params_last           = Model_.params_last;
+    normalizing_constants = Model_.normalizing_constants;
+    first_calc_done       = Model_.first_calc_done;
+
     // Counters are shared
     support_fun.set_counters(&counters);
     counter_fun.set_counters(&counters);
@@ -287,6 +293,7 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_array(
     // the normalizing constant has been updated or not.
     params_last.push_back(target_stats[0u]);
     normalizing_constants.push_back(0.0);
+    first_calc_done.push_back(false);
     
     return keys2support.size() - 1u;
     
@@ -314,9 +321,9 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
     throw std::range_error("The requested support is out of range");
   
   // Checking if we have updated the normalizing constant or not
-  if (!first_calc_done || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
+  if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
     
-    first_calc_done = true;
+    first_calc_done[arrays2support[i]] = true;
     
     normalizing_constants[arrays2support[i]] = update_normalizing_constant(
       params, stats[arrays2support[i]]
@@ -362,9 +369,9 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood_tot
 ) {
   
   for (uint i = 0u; i < params_last.size(); ++i) {
-    if (!first_calc_done || !vec_equal_approx(params, params_last[i]) ) {
+    if (!first_calc_done[i] || !vec_equal_approx(params, params_last[i]) ) {
       
-      first_calc_done = true;
+      first_calc_done[i] = true;
       normalizing_constants[i] = update_normalizing_constant(
         params, stats[i]
       );
@@ -411,10 +418,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::print_stats(uint
 }
 
 template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::n_arrays() const {
-  return this->stats.size();
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size() const {
+  return this->target_stats.size();
 }
-  
+
+template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size_unique() const {
+  return this->stats.size();
+} 
   
 // template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 // inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::sample(

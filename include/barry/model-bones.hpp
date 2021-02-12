@@ -122,7 +122,7 @@ public:
    * maps array indices (0, 1, ...) to the corresponding support.
    */
   ///@{
-  std::vector< std::vector< double >> target_stats;
+  std::vector< std::vector< double > > target_stats;
   std::vector< uint >                 array_frequency;
   std::vector< uint >                 arrays2support;
   ///@}
@@ -146,7 +146,7 @@ public:
   /**@brief Vector of the previously used parameters */
   std::vector< std::vector<double> > params_last;
   std::vector< double > normalizing_constants;
-  bool first_calc_done = false;
+  std::vector< bool > first_calc_done;
 
   /**@brief Function to extract features of the array to be hash
   */
@@ -245,8 +245,17 @@ public:
   Array_Type sample(const Array_Type & Array_, const std::vector<double> & params = {});
   Array_Type sample(const uint & i, const std::vector<double> & params = {});
   
-  unsigned int n_arrays() const;
-  
+  /**
+   * @brief Number of different supports included in the model
+   * 
+   * This will return the size of `stats`.
+   * 
+   * @return unsigned int 
+   */
+  ///@{
+  unsigned int size() const;
+  unsigned int size_unique() const;
+  ///@}
 };
 
 
