@@ -403,7 +403,7 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood_tot
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_normalizing_constant(
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_norm_const(
     const std::vector<double> & params,
     const uint & i,
     bool as_log

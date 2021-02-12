@@ -65,6 +65,7 @@ public:
   std::vector< Array_Type > get_data() const {return data;};
   typename std::vector< Array_Type >::iterator begin() {return data.begin();};
   typename std::vector< Array_Type >::iterator end() {return data.end();};
+  uint size() const {return data.size();};
   ///@}
   
 };

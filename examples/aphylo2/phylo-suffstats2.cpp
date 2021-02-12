@@ -15,13 +15,13 @@ int main() {
      */
 
     std::vector< std::vector< uint > > annotations = {
-        {0, 0, 1, 9},
-        {1, 1, 9, 0},
-        {1, 9, 0, 1}
+        {0, 0, 1, 9, 9, 9},
+        {1, 1, 9, 0, 9, 9},
+        {1, 9, 0, 1, 9, 9}
     };
 
-    std::vector< uint > geneid = {0, 1, 2, 3};
-    std::vector< uint > parent = {4, 4, 5, 5};
+    std::vector< uint > geneid = {0, 1, 2, 3, 4, 5};
+    std::vector< uint > parent = {4, 4, 5, 5, 6, 6};
 
     // Stargint to measure time
     auto start = std::chrono::system_clock::now();

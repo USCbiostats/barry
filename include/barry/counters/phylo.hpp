@@ -152,10 +152,10 @@ inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun) {
     return Array->data->states[PHYLO_C_DATA_IDX(0u)]? Array->M : 0.0;
   };
   
-  for (auto i = nfun.begin(); i != nfun.end(); ++i) {
+  for (auto& i : nfun) {
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({*i}),
+        new PhyloCounterData({i}),
         true
     );
   }

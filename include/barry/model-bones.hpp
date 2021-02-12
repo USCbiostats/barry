@@ -240,7 +240,7 @@ public:
   );
   ///@}
 
-  double get_normalizing_constant(
+  double get_norm_const(
     const std::vector< double > & params,
     const uint & i,
     bool as_log = false

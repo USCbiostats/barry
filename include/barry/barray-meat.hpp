@@ -945,9 +945,9 @@ inline void BArray< Cell_Type, Data_Type >::print() const {
     printf("[%3i,] ", i);
     for (uint j = 0u; j < M; ++j) {
       if (this->is_empty(i, j, false)) {
-        printf(" . ");
+        printf("    . ");
       } else {
-        printf(" 1 ");
+        printf(" %.2f ", (double) this->get_cell(i, j));
       }
     }
     printf("\n");
@@ -956,6 +956,7 @@ inline void BArray< Cell_Type, Data_Type >::print() const {
   
   return;
 }
+
 
 
 #endif

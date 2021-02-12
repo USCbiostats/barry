@@ -27,7 +27,7 @@ std::vector< T1 > caster(const std::vector< T2 > & vec) {
 }
 
 // Hasher
-inline std::vector< double > keygen_full(const PhyloArray & array) {
+inline std::vector< double > keygen_const(const PhyloArray & array) {
     
     // Baseline data: nrows and columns
     std::vector< double > dat = {
@@ -48,7 +48,7 @@ inline std::vector< double > keygen_full(const PhyloArray & array) {
 }
 
 // Hasher
-inline std::vector< double > keygen_const(const PhyloArray & array) {
+inline std::vector< double > keygen_full(const PhyloArray & array) {
     
     // Baseline data: nrows and columns
     std::vector< double > dat = {
@@ -71,15 +71,17 @@ inline std::vector< double > keygen_const(const PhyloArray & array) {
 class Node {
 public:
     unsigned int id;
-    std::vector< unsigned int > dat = {};
-    Node * parent                   = nullptr;
-    std::vector< Node* > offspring  = {};
+    PhyloArray array;
+    std::vector< unsigned int > annotations;
+    std::vector< PhyloArray *> arrays = {};
+    Node * parent                     = nullptr;
+    std::vector< Node* > offspring    = {};
     std::vector< unsigned int > idx_cons;
     std::vector< unsigned int > idx_full;
 
     Node(unsigned int id_) : id(id_) {};
-    Node(unsigned int id_, std::vector< unsigned int > dat_) :
-        id(id_), dat(dat_) {};
+    Node(unsigned int id_, std::vector< unsigned int > annotations_) :
+        id(id_), annotations(annotations_) {};
     ~Node() {};
 
     int get_parent() const {
@@ -106,7 +108,6 @@ public:
     unsigned int nfuns;
     barry::Map< unsigned int, Node > nodes;
     InnerNodes_type InnerNodes;
-    InnerNode_type rawdata;
     // std::vector< unsigned int > idx_const;
     // std::vector< unsigned int > idx_full;
 
@@ -242,7 +243,7 @@ Leafs::Leafs(
         if (!iter.second.is_leaf()) {
 
             // Creating the phyloarray, nfuns x noffspring
-            rawdata.push_back(PhyloArray(nfuns, iter.second.offspring.size()));
+            iter.second.array = PhyloArray(nfuns, iter.second.offspring.size());
 
             // Adding the data, first through functions
             for (unsigned int k = 0u; k < nfuns; ++k) {
@@ -252,7 +253,7 @@ Leafs::Leafs(
                 for (auto& o : iter.second.offspring) {
                     
                     if (annotations.at(k).at(o->id) != 0) {
-                        rawdata.at(narrays).insert_cell(
+                        iter.second.array.insert_cell(
                             k, j, annotations.at(k).at(o->id), false, false
                             );
                     }
@@ -263,19 +264,20 @@ Leafs::Leafs(
 
             }
 
-            // We then need to set the powerset            
-            InnerNodes.push_back(InnerNode_type(pset.data.size()));
+            // We then need to set the powerset           
+            InnerNodes.push_back(InnerNode_type(pset.size()));
             unsigned int i = 0u;
             std::vector< double > blen(iter.second.offspring.size(), 1.0);
             for (auto& s : states) {
                 
-                InnerNodes.at(narrays).at(i) = rawdata.at(narrays);
+                InnerNodes.at(narrays).at(i) = iter.second.array;
                 InnerNodes.at(narrays).at(i).set_data(
                     new NodeData(blen, s),
                     true
                 );
 
                 // Once the array is ready, we can add it to the model
+
                 iter.second.idx_cons.push_back(
                     model_const.add_array(InnerNodes.at(narrays).at(i))
                     );
@@ -314,11 +316,12 @@ void Leafs::tip_prob(std::vector< double > & par) {
                 model_full.likelihood(par, iter.second.idx_full.at(j));
                 
                 tmp += (( 
-                    model_const.get_normalizing_constant(par, iter.second.idx_cons.at(j)) /
-                    model_full.get_normalizing_constant(par, iter.second.idx_full.at(j))
+                    model_const.get_norm_const(par, iter.second.idx_cons.at(j)) /
+                    model_full.get_norm_const(par, iter.second.idx_full.at(j))
                     ) / iter.second.idx_full.size());
             }
-            // model_const.print_stats(i);
+            iter.second.array.print();
+            model_full.print_stats(i);
 
             probs.push_back(tmp);
 
@@ -326,8 +329,6 @@ void Leafs::tip_prob(std::vector< double > & par) {
 
         }
     }
-
-    
 
     // Printing the probabilities
     i = 0u;
@@ -364,7 +365,7 @@ void Leafs::print() {
     }
 
     std::cout << "\n--- Raw probabilities -------------" << std::endl;
-    std::vector< double > p(model_const.counters.size(), 0.0);
+    std::vector< double > p(model_const.counters.size(), 1);
     this->tip_prob(p);
 
     return;
