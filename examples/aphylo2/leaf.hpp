@@ -72,12 +72,19 @@ class Node {
 public:
     unsigned int id;
     PhyloArray array;
-    std::vector< unsigned int > annotations;
-    std::vector< PhyloArray *> arrays = {};
-    Node * parent                     = nullptr;
-    std::vector< Node* > offspring    = {};
-    std::vector< unsigned int > idx_cons;
-    std::vector< unsigned int > idx_full;
+    
+    std::vector< unsigned int > annotations;         ///< Observed annotations (only defined for leafs)
+    std::vector< PhyloArray >   arrays    = {};      ///< Arrays given all possible states
+    Node *                      parent    = nullptr; ///< Parent node
+    std::vector< Node* >        offspring = {};      ///< Offspring nodes
+    std::vector< unsigned int > idx_cons  = {};      ///< Id of the constrained support.
+    std::vector< unsigned int > idx_full  = {};
+    bool                        visited   = false;          
+
+    /**
+     * @brief The probability of observing each state 
+     */
+    std::vector< double >       probabilities; 
 
     Node(unsigned int id_) : id(id_) {};
     Node(unsigned int id_, std::vector< unsigned int > annotations_) :
@@ -97,19 +104,16 @@ public:
 
 };
 
-typedef std::vector< PhyloArray > InnerNode_type;
-typedef std::vector< InnerNode_type > InnerNodes_type ;
 
 class Leafs {
 public:
 
-    PhyloModel model_const;
-    PhyloModel model_full;
-    unsigned int nfuns;
+    PhyloModel                       model_const;
+    PhyloModel                       model_full;
+    unsigned int                     nfuns;
     barry::Map< unsigned int, Node > nodes;
-    InnerNodes_type InnerNodes;
-    // std::vector< unsigned int > idx_const;
-    // std::vector< unsigned int > idx_full;
+    std::vector< unsigned int >      sequence;
+    std::vector< bool >              visited;
 
     Leafs();
 
@@ -122,10 +126,12 @@ public:
 
     ~Leafs() {};
 
+    void init(PhyloCounters & counters);
+
     double operator()(std::vector< double > & par, unsigned int & i);
     void tip_prob(std::vector< double > & par);
     void print();
-
+    void calc_sequence(Node * n = nullptr);
 };
 
 Leafs::Leafs() : model_const(), model_full(), nodes() {
@@ -151,17 +157,6 @@ Leafs::Leafs(
             throw std::length_error("Not all the annotations have the same length");
     }
 
-    // Setting up the rules for the model
-    model_const.set_keygen(keygen_const);
-    model_full.set_keygen(keygen_full);
-
-    model_const.add_rule(rule_blocked<PhyloArray,PhyloRuleData>);
-
-    model_const.set_counters(&counters);
-    model_full.set_counters(&counters);
-
-    model_full.store_psets();
-
     // Grouping up the data by parents -----------------------------------------
     for (unsigned int i = 0u; i < geneid.size(); ++i) {
         
@@ -170,15 +165,15 @@ Leafs::Leafs(
         for (unsigned int j = 0u; j < nfuns; ++j)
             funs.at(j) = annotations.at(j).at(i);
 
-        // Registered?
+        // Does the parent already exists?
         auto iter = nodes.find(parent.at(i));
-        
+
         if (iter == nodes.end()) {
 
             // Adding parent
             auto key_par = nodes.insert({
                 parent.at(i),
-                Node({geneid.at(i)}) 
+                Node({parent.at(i)}) 
             });
 
             // Adding offspring
@@ -215,7 +210,24 @@ Leafs::Leafs(
 
     }
 
+    init(counters);
+
+    return;
+
+}
+
+void Leafs::init(PhyloCounters & counters) {
+
     // Generating the model data -----------------------------------------------
+    model_const.set_keygen(keygen_const);
+    model_full.set_keygen(keygen_full);
+
+    model_const.add_rule(rule_blocked<PhyloArray,PhyloRuleData>);
+
+    model_const.set_counters(&counters);
+    model_full.set_counters(&counters);
+
+    model_full.store_psets();
 
     // All combinations of the function
     PhyloPowerSet pset(nfuns, 1u);
@@ -244,6 +256,7 @@ Leafs::Leafs(
 
             // Creating the phyloarray, nfuns x noffspring
             iter.second.array = PhyloArray(nfuns, iter.second.offspring.size());
+            iter.second.probabilities.resize(pset.size(), 0.0);
 
             // Adding the data, first through functions
             for (unsigned int k = 0u; k < nfuns; ++k) {
@@ -252,26 +265,34 @@ Leafs::Leafs(
                 unsigned int j = 0;
                 for (auto& o : iter.second.offspring) {
                     
-                    if (annotations.at(k).at(o->id) != 0) {
+                    // If leaf, then it may have an annotation
+                    if (o->is_leaf()) {
+                        if (o->annotations.at(k) != 0) {
+                            iter.second.array.insert_cell(
+                                k, j, o->annotations.at(k), false, false
+                                );
+                        }
+                    } else {
+                        // Otherwise, we fill it with a 9.
                         iter.second.array.insert_cell(
-                            k, j, annotations.at(k).at(o->id), false, false
+                            k, j, 9u, false, false
                             );
+
                     }
-                    
-                    j++;
+
+                    ++j;
 
                 }
 
             }
 
             // We then need to set the powerset           
-            InnerNodes.push_back(InnerNode_type(pset.size()));
             unsigned int i = 0u;
             std::vector< double > blen(iter.second.offspring.size(), 1.0);
             for (auto& s : states) {
                 
-                InnerNodes.at(narrays).at(i) = iter.second.array;
-                InnerNodes.at(narrays).at(i).set_data(
+                iter.second.arrays.push_back(iter.second.array);
+                iter.second.arrays.at(i).set_data(
                     new NodeData(blen, s),
                     true
                 );
@@ -279,10 +300,10 @@ Leafs::Leafs(
                 // Once the array is ready, we can add it to the model
 
                 iter.second.idx_cons.push_back(
-                    model_const.add_array(InnerNodes.at(narrays).at(i))
+                    model_const.add_array(iter.second.arrays.at(i))
                     );
                 iter.second.idx_full.push_back(
-                    model_full.add_array(InnerNodes.at(narrays).at(i))
+                    model_full.add_array(iter.second.arrays.at(i++))
                     );
 
             }
@@ -292,6 +313,14 @@ Leafs::Leafs(
         }
     }
 
+    // Finally, setting this variable for later, we will need this for generating
+    // the pruning sequence.
+    visited.resize(nodes.size(), false);
+
+    // Computing the pruning sequence.
+    calc_sequence();
+
+    return;
 }
 
 void Leafs::tip_prob(std::vector< double > & par) {
@@ -369,6 +398,49 @@ void Leafs::print() {
     this->tip_prob(p);
 
     return;
+}
+
+void Leafs::calc_sequence(Node * n) {
+
+    if (sequence.size() == nodes.size())
+        return;
+
+    // First iteration
+    if (n == nullptr) {
+    
+        // pointing to something
+        n = &(nodes.begin()->second);
+
+    }
+
+    // Here before?
+    if (n->visited) 
+        return;
+
+    n->visited = true;
+
+    if (!n->is_leaf()) {
+
+        // iterating over its offspring, only if not there before
+        for (auto& it : n->offspring) {
+            if (!it->visited)
+                calc_sequence(it);
+        }
+
+    }
+
+    // Now, adding to the list and going to its parent
+    sequence.push_back(n->id);
+
+    if (n->parent == nullptr)
+        return;
+
+    // Go to the parent iff not visited
+    if (!n->parent->visited)
+        calc_sequence(n->parent);
+
+    return;
+
 }
 
 #endif
