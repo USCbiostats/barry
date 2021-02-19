@@ -23,9 +23,7 @@ int main() {
     std::vector< uint > geneid = {0, 1, 2, 3, 4, 5};
     std::vector< uint > parent = {4, 4, 5, 5, 6, 6};
 
-    // Stargint to measure time
-    auto start = std::chrono::system_clock::now();
-
+    
     // Specifying the terms
     PhyloCounters counters;
     counter_gains(&counters, {0, 1, 2});
@@ -37,8 +35,18 @@ int main() {
     Leafs dat(
         annotations, geneid, parent, counters
     );
-    double ans = dat.likelihood({.1, .1, .1, .1, .1, .1, .1, .1, .1});
+    
+    // Stargint to measure time
+    auto start = std::chrono::system_clock::now();
+    double ans = dat.likelihood({
+        // Main parameters
+        .1, .1, .1, .1, .1, .1, .1, .1, .1,
+        // Root probabilities
+        .1, .1, .1
+        });
+        
     auto end = std::chrono::system_clock::now();
+
     std::chrono::duration<double> diff = end-start;
 
     std::cout << "Total time: " << diff.count() << std::endl;

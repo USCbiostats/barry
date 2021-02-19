@@ -12,6 +12,7 @@ RULE_FUNCTION(rule_blocked) {
 
 using namespace phylocounters;
 
+
 template<typename T1, typename T2>
 std::vector< T1 > caster(const std::vector< T2 > & vec) {
 
@@ -59,11 +60,6 @@ inline std::vector< double > keygen_full(const PhyloArray & array) {
     for (bool i : array.data->states) {
         dat.push_back(i ? 1.0 : 0.0);
     }
-
-    // // Free cells
-    // for (auto i = 0u; i < array.nrow(); ++i)
-    //     for (auto j = 0u; j < array.ncol(); ++j)
-    //         dat.push_back((double) array.get_cell(i, j, false));
     
     return dat;
 }
@@ -252,8 +248,6 @@ void Leafs::init(PhyloCounters & counters) {
         i++;
     }
 
-    unsigned int narrays = 0u;
-
     // Iterating throught the nodes
     for (auto& iter : nodes) {
 
@@ -312,9 +306,6 @@ void Leafs::init(PhyloCounters & counters) {
                     );
 
             }
-
-            narrays++;
-
         }
     }
 
@@ -453,8 +444,13 @@ void Leafs::calc_sequence(Node * n) {
 
 }
 
-
 double Leafs::likelihood(const std::vector< double > & par) {
+
+    // Splitting the probabilities
+    std::vector< double > par0(par.begin(), par.end() - nfuns);
+    std::vector< double > par_root(par.end() - nfuns, par.end());
+
+    double ll = 0.0;
 
     // Following the prunning sequence
     for (auto& i : this->sequence) {
@@ -471,8 +467,8 @@ double Leafs::likelihood(const std::vector< double > & par) {
             for (unsigned int s = 0u; s < states.size(); ++s) {
 
                 // Update the normalizing constants
-                double numer = model_const.get_norm_const(par, nodes[i].idx_cons[s]);
-                double denom = model_full.get_norm_const(par, nodes[i].idx_full[s]);
+                double numer = model_const.get_norm_const(par0, nodes[i].idx_cons[s]);
+                double denom = model_full.get_norm_const(par0, nodes[i].idx_full[s]);
 
                 // Computing the probability at "leaf" level
                 nodes[i].probabilities[s] = numer/denom;
@@ -480,8 +476,8 @@ double Leafs::likelihood(const std::vector< double > & par) {
             }
 
         } else {
+
             // Iterating through states
-            
             for (unsigned int s = 0u; s < states.size(); ++s) {
 
                 // Starting the prob
@@ -507,7 +503,7 @@ double Leafs::likelihood(const std::vector< double > & par) {
 
                     // Multiplying by P(x|x_n)
                     off_mult *= model_full.likelihood(
-                        par,
+                        par0,
                         nodes[i].idx_full[s]
                         );
 
@@ -521,14 +517,27 @@ double Leafs::likelihood(const std::vector< double > & par) {
 
             }
 
-            
+            // All probabilities should be completed at this point
+            if (nodes[i].parent == nullptr) {
+                for (unsigned int s = 0u; s < states.size(); ++s) {
+                    double tmpll = 1.0;
+                    for (auto k = 0u; k < nfuns; ++k) {
+                        tmpll *= states[s][k] ? par_root[k] : (1 - par_root[k]);
+                    }
+
+                    ll += tmpll * nodes[i].probabilities[s];
+
+                }
+            }
+
+
 
         }
 
 
     }
 
-    return 0.0;
+    return ll;
 
 }
 
