@@ -12,18 +12,6 @@ Baseline class for binary arrays.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_b_array_a1bbfcc43ad43f30fd448b63e9ab5861f}{B\+Array} ()
-\item 
-\hyperlink{class_b_array_a411b65e1985396261ca9df2923a6f3c6}{B\+Array} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+)
-\item 
-\hyperlink{class_b_array_a098b6170a1ea4b2a8e0832d1163e9ed1}{B\+Array} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+, const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&source, const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&target, const std\+::vector$<$ Cell\+\_\+\+Type $>$ \&value, bool add=true)
-\begin{DoxyCompactList}\small\item\em Edgelist with data. \end{DoxyCompactList}\item 
-\hyperlink{class_b_array_aa5f13f86c045a1f9c39b9a7df4126c78}{B\+Array} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+, const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&source, const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&target, bool add=true)
-\item 
-\hyperlink{class_b_array_ac003699092c4f91c5b292320ca769f85}{B\+Array} (const \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \&Array\+\_\+)
-\item 
-\hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \& \hyperlink{class_b_array_aa6dba52877c92fa8eafc35faa5f7f304}{operator=} (const \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \&Array\+\_\+)
-\item 
 bool \hyperlink{class_b_array_a1e6e18162202b06e19f214097eb993bf}{operator==} (const \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \&Array\+\_\+)
 \item 
 \hyperlink{class_b_array_af39acdf29aa5999a7f5fd48141be384e}{$\sim$\+B\+Array} ()
@@ -43,7 +31,7 @@ std\+::vector$<$ Cell\+\_\+\+Type $>$ \hyperlink{class_b_array_aa2d5a133fc4adf34
 std\+::vector$<$ Cell\+\_\+\+Type $>$ \hyperlink{class_b_array_a2be45b966d99e2bdd3f9994ed70ff145}{get\+\_\+row\+\_\+vec} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, bool check\+\_\+bounds=true) const
 \item 
 \hyperlink{class_entries}{Entries}$<$ Cell\+\_\+\+Type $>$ \hyperlink{class_b_array_aee224325422d214624771a5b4d91b55e}{get\+\_\+entries} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Get the edgelist. \end{DoxyCompactList}\item 
 void \hyperlink{class_b_array_a0284f7f2148b7c1b474ebe01f6548b98}{transpose} ()
 \item 
 void \hyperlink{class_b_array_a6dd5ebff333b376c6fb569e48290935f}{clear} (bool hard=true)
@@ -54,6 +42,35 @@ void \hyperlink{class_b_array_a5eacd388e3d0f638f2c35b6e0f0c490c}{reserve} ()
 \item 
 void \hyperlink{class_b_array_a9d150c44b23cf1e4af45f540508db1de}{print} () const
 \end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Constructors}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em N\+\_\+} & Number of rows \\
+\hline
+{\em M\+\_\+} & Number of columns \\
+\hline
+{\em source} & An unsigned vector ranging from 0 to N\+\_\+ \\
+\hline
+{\em target} & An unsigned int vector ranging from 0 to M\+\_\+ \\
+\hline
+{\em target} & When {\ttfamily true} tries to add repeated observations. \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_b_array_a1bbfcc43ad43f30fd448b63e9ab5861f}{B\+Array} ()
+\begin{DoxyCompactList}\small\item\em Zero-\/size array. \end{DoxyCompactList}\item 
+\hyperlink{class_b_array_a411b65e1985396261ca9df2923a6f3c6}{B\+Array} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+)
+\begin{DoxyCompactList}\small\item\em Empty array. \end{DoxyCompactList}\item 
+\hyperlink{class_b_array_a098b6170a1ea4b2a8e0832d1163e9ed1}{B\+Array} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+, const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&source, const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&target, const std\+::vector$<$ Cell\+\_\+\+Type $>$ \&value, bool add=true)
+\begin{DoxyCompactList}\small\item\em Edgelist with data. \end{DoxyCompactList}\item 
+\hyperlink{class_b_array_aa5f13f86c045a1f9c39b9a7df4126c78}{B\+Array} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+, const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&source, const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&target, bool add=true)
+\begin{DoxyCompactList}\small\item\em Edgelist with no data (simpler) \end{DoxyCompactList}\item 
+\hyperlink{class_b_array_ac003699092c4f91c5b292320ca769f85}{B\+Array} (const \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \&Array\+\_\+)
+\item 
+\hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \& \hyperlink{class_b_array_aa6dba52877c92fa8eafc35faa5f7f304}{operator=} (const \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \&Array\+\_\+)
+\end{DoxyCompactItemize}
+\end{Indent}
 \begin{Indent}\textbf{ Queries}\par
 {\em {\ttfamily is\+\_\+empty} queries a single cell. {\ttfamily nrow}, {\ttfamily ncol}, and {\ttfamily nnozero} return the number of rows, columns, and non-\/zero cells respectively. 
 \begin{DoxyParams}{Parameters}
@@ -157,9 +174,18 @@ class B\+Array$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
 
 Baseline class for binary arrays. 
 
-{\ttfamily \hyperlink{class_b_array}{B\+Array}} class objects are arbitrary arrays in which non-\/empty cells hold data of type {\ttfamily Cell\+\_\+\+Type}. The non-\/empty cells are stored by row and indexed using {\ttfamily unordered\+\_\+map}s, i.\+e. {\ttfamily std\+::vector$<$ std\+::unordered\+\_\+map$<$unsigned int,Cell\+\_\+\+Type$>$ $>$}. 
+{\ttfamily \hyperlink{class_b_array}{B\+Array}} class objects are arbitrary arrays in which non-\/empty cells hold data of type {\ttfamily Cell\+\_\+\+Type}. The non-\/empty cells are stored by row and indexed using {\ttfamily unordered\+\_\+map}s, i.\+e. {\ttfamily std\+::vector$<$ std\+::unordered\+\_\+map$<$unsigned int,Cell\+\_\+\+Type$>$ $>$}.
 
-Definition at line 32 of file barray-\/bones.\+hpp.
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Cell\+\_\+\+Type} & Type of cell (any type). \\
+\hline
+{\em Data\+\_\+\+Type} & Data type of the array (bool default). \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 39 of file barray-\/bones.\+hpp.
 
 
 
@@ -173,7 +199,11 @@ Definition at line 32 of file barray-\/bones.\+hpp.
 
 
 
-Definition at line 54 of file barray-\/bones.\+hpp.
+Zero-\/size array. 
+
+
+
+Definition at line 73 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a411b65e1985396261ca9df2923a6f3c6}\label{class_b_array_a411b65e1985396261ca9df2923a6f3c6}} 
 \index{B\+Array@{B\+Array}!B\+Array@{B\+Array}}
@@ -184,7 +214,11 @@ Definition at line 54 of file barray-\/bones.\+hpp.
 
 
 
-Definition at line 55 of file barray-\/bones.\+hpp.
+Empty array. 
+
+
+
+Definition at line 76 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a098b6170a1ea4b2a8e0832d1163e9ed1}\label{class_b_array_a098b6170a1ea4b2a8e0832d1163e9ed1}} 
 \index{B\+Array@{B\+Array}!B\+Array@{B\+Array}}
@@ -197,19 +231,6 @@ Definition at line 55 of file barray-\/bones.\+hpp.
 
 Edgelist with data. 
 
-This function takes the following arguments 
-\begin{DoxyParams}{Parameters}
-{\em N\+\_\+} & Number of rows \\
-\hline
-{\em M\+\_\+} & Number of columns \\
-\hline
-{\em source} & An unsigned vector ranging from 0 to N\+\_\+ \\
-\hline
-{\em target} & An unsigned int vector ranging from 0 to M\+\_\+ \\
-\hline
-{\em target} & When {\ttfamily true} tries to add repeated observations. \\
-\hline
-\end{DoxyParams}
 
 
 Definition at line 25 of file barray-\/meat.\+hpp.
@@ -220,6 +241,10 @@ Definition at line 25 of file barray-\/meat.\+hpp.
 \subsubsection{\texorpdfstring{B\+Array()}{BArray()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
 \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_b_array}{B\+Array} (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{N\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{M\+\_\+,  }\item[{const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&}]{source,  }\item[{const std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \&}]{target,  }\item[{bool}]{add = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Edgelist with no data (simpler) 
 
 
 
@@ -301,6 +326,15 @@ Definition at line 291 of file barray-\/meat.\+hpp.
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
 \hyperlink{class_entries}{Entries}$<$ Cell\+\_\+\+Type $>$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+entries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Get the edgelist. 
+
+{\ttfamily \hyperlink{class_entries}{Entries}} is a class with three objects\+: Two {\ttfamily std\+::vector} with the row and column coordinates respectively, and one {\ttfamily std\+::vector} with the corresponding value of the cell.
+
+\begin{DoxyReturn}{Returns}
+Entries$<$\+Cell\+\_\+\+Type$>$ 
+\end{DoxyReturn}
 
 
 Definition at line 306 of file barray-\/meat.\+hpp.
@@ -534,7 +568,7 @@ void \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $
 
 
 
-Definition at line 93 of file barray-\/bones.\+hpp.
+Definition at line 108 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_afb7976f67770b850922c1a7e1d6b07cc}\label{class_b_array_afb7976f67770b850922c1a7e1d6b07cc}} 
 \index{B\+Array@{B\+Array}!swap\+\_\+cells@{swap\+\_\+cells}}
@@ -632,7 +666,7 @@ friend class \hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type,
 
 
 
-Definition at line 33 of file barray-\/bones.\+hpp.
+Definition at line 40 of file barray-\/bones.\+hpp.
 
 
 
@@ -646,7 +680,7 @@ Definition at line 33 of file barray-\/bones.\+hpp.
 
 
 
-Definition at line 43 of file barray-\/bones.\+hpp.
+Definition at line 50 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a9576163b52124021575e50dbcca2f6b9}\label{class_b_array_a9576163b52124021575e50dbcca2f6b9}} 
 \index{B\+Array@{B\+Array}!data@{data}}
@@ -657,7 +691,7 @@ Data\+\_\+\+Type$\ast$ \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, 
 
 
 
-Definition at line 40 of file barray-\/bones.\+hpp.
+Definition at line 47 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a1e932e3353905d77a2062560ee96b2fc}\label{class_b_array_a1e932e3353905d77a2062560ee96b2fc}} 
 \index{B\+Array@{B\+Array}!delete\+\_\+data@{delete\+\_\+data}}
@@ -668,7 +702,7 @@ bool \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $
 
 
 
-Definition at line 41 of file barray-\/bones.\+hpp.
+Definition at line 48 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a2161dc7c2046a57d3e663ac5c0d70431}\label{class_b_array_a2161dc7c2046a57d3e663ac5c0d70431}} 
 \index{B\+Array@{B\+Array}!el\+\_\+ij@{el\+\_\+ij}}
@@ -679,7 +713,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row
 
 
 
-Definition at line 38 of file barray-\/bones.\+hpp.
+Definition at line 45 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_aad8ce1aa5fddd3899164c1aa1dfede94}\label{class_b_array_aad8ce1aa5fddd3899164c1aa1dfede94}} 
 \index{B\+Array@{B\+Array}!el\+\_\+ji@{el\+\_\+ji}}
@@ -690,7 +724,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col
 
 
 
-Definition at line 39 of file barray-\/bones.\+hpp.
+Definition at line 46 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a197359753fd1bc054a1a14f7641d3fd1}\label{class_b_array_a197359753fd1bc054a1a14f7641d3fd1}} 
 \index{B\+Array@{B\+Array}!M@{M}}
@@ -701,7 +735,7 @@ Definition at line 39 of file barray-\/bones.\+hpp.
 
 
 
-Definition at line 36 of file barray-\/bones.\+hpp.
+Definition at line 43 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a4b34ec8636c989efe80bbe3f1cea217e}\label{class_b_array_a4b34ec8636c989efe80bbe3f1cea217e}} 
 \index{B\+Array@{B\+Array}!N@{N}}
@@ -712,7 +746,7 @@ Definition at line 36 of file barray-\/bones.\+hpp.
 
 
 
-Definition at line 35 of file barray-\/bones.\+hpp.
+Definition at line 42 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a31fd64c6b54408ca98e07abc9c4241c5}\label{class_b_array_a31fd64c6b54408ca98e07abc9c4241c5}} 
 \index{B\+Array@{B\+Array}!N\+Cells@{N\+Cells}}
@@ -723,7 +757,7 @@ Definition at line 35 of file barray-\/bones.\+hpp.
 
 
 
-Definition at line 37 of file barray-\/bones.\+hpp.
+Definition at line 44 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_ae0860bf21425397d1498f94da6518e85}\label{class_b_array_ae0860bf21425397d1498f94da6518e85}} 
 \index{B\+Array@{B\+Array}!visited@{visited}}
@@ -734,7 +768,7 @@ bool \hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $
 
 This is as a reference, if we need to iterate through the cells and we need to keep track which were visited, we use this as a reference. So that if cell.\+visited = true and visited = true, it means that we haven\textquotesingle{}t been here yet. Ideally, any routine using this-\/$>$visited should switch it at the beginning of the routine. 
 
-Definition at line 51 of file barray-\/bones.\+hpp.
+Definition at line 58 of file barray-\/bones.\+hpp.
 
 
 

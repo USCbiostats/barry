@@ -430,6 +430,20 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_norm_const
   
 }
 
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline const std::vector< Array_Type > * Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_pset(
+    const uint & i
+) {
+
+  if (i >= arrays2support.size())
+    throw std::range_error("The requested support is out of range");
+
+
+  return &pset_arrays[arrays2support[i]];
+
+}
+
 template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::print_stats(uint i) const {
   

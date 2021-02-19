@@ -136,14 +136,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a17a2205b52c03bb29eefb8fb126a01f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a17a2205b52c03bb29eefb8fb126a01f6">add_array</a> (const Array_Type &amp;Array_, bool force_new=false)</td></tr>
 <tr class="memdesc:a17a2205b52c03bb29eefb8fb126a01f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an array to the support of not already included.  <a href="#a17a2205b52c03bb29eefb8fb126a01f6">More...</a><br /></td></tr>
 <tr class="separator:a17a2205b52c03bb29eefb8fb126a01f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de55fd86cdca46936e455721754a2af"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a8de55fd86cdca46936e455721754a2af">get_norm_const</a> (const std::vector&lt; double &gt; &amp;params, const <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp;i, bool as_log=false)</td></tr>
+<tr class="separator:a8de55fd86cdca46936e455721754a2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac00b5c6a1446ad00fdf1d92c9cb1df3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ac00b5c6a1446ad00fdf1d92c9cb1df3c">print_stats</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i) const</td></tr>
 <tr class="separator:ac00b5c6a1446ad00fdf1d92c9cb1df3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59e37db45e1751a6205db129a5c114c1"><td class="memItemLeft" align="right" valign="top">Array_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a59e37db45e1751a6205db129a5c114c1">sample</a> (const Array_Type &amp;Array_, const std::vector&lt; double &gt; &amp;params={})</td></tr>
 <tr class="separator:a59e37db45e1751a6205db129a5c114c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86484783c8091b509335fefd9f22d6ae"><td class="memItemLeft" align="right" valign="top">Array_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a86484783c8091b509335fefd9f22d6ae">sample</a> (const <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp;i, const std::vector&lt; double &gt; &amp;params={})</td></tr>
 <tr class="separator:a86484783c8091b509335fefd9f22d6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3a9ef28d8b6b1e4dfae85816b111080"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ac3a9ef28d8b6b1e4dfae85816b111080">n_arrays</a> () const</td></tr>
-<tr class="separator:ac3a9ef28d8b6b1e4dfae85816b111080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Wrappers for the `Counters` member.</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>These will add counters to the model, which are shared by the support and the actual counter function. </p>
 </div></td></tr>
@@ -182,6 +182,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1a11a54860e22fbd152de4d7cfd30b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31d16ef478d772cedde0813575074a0f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a31d16ef478d772cedde0813575074a0f">likelihood_total</a> (const std::vector&lt; double &gt; &amp;params, bool as_log=false)</td></tr>
 <tr class="separator:a31d16ef478d772cedde0813575074a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ab3f157dbb542a48fe5bf412ff7d467fd"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ab3f157dbb542a48fe5bf412ff7d467fd">size</a> () const</td></tr>
+<tr class="memdesc:ab3f157dbb542a48fe5bf412ff7d467fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of different supports included in the model.  <a href="#ab3f157dbb542a48fe5bf412ff7d467fd">More...</a><br /></td></tr>
+<tr class="separator:ab3f157dbb542a48fe5bf412ff7d467fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b5edbe891b6da2319ea3fa6f1aba11d"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a4b5edbe891b6da2319ea3fa6f1aba11d">size_unique</a> () const</td></tr>
+<tr class="separator:a4b5edbe891b6da2319ea3fa6f1aba11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -197,8 +203,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:add8183af946f2871480b6a6f9f1c8013"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4479d146005e89350dad6ba7bd8121a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#aa4479d146005e89350dad6ba7bd8121a">normalizing_constants</a></td></tr>
 <tr class="separator:aa4479d146005e89350dad6ba7bd8121a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9cd143269b07c9bde44855d1974f3f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ae9cd143269b07c9bde44855d1974f3f5">first_calc_done</a> = false</td></tr>
-<tr class="separator:ae9cd143269b07c9bde44855d1974f3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942b2cdb7472878fa17c5068680441c6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a942b2cdb7472878fa17c5068680441c6">first_calc_done</a></td></tr>
+<tr class="separator:a942b2cdb7472878fa17c5068680441c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16561e15c0abbb080927382b30d43e35"><td class="memItemLeft" align="right" valign="top">std::function&lt; std::vector&lt; double &gt;const Array_Type &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a16561e15c0abbb080927382b30d43e35">keygen</a> = nullptr</td></tr>
 <tr class="memdesc:a16561e15c0abbb080927382b30d43e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to extract features of the array to be hash.  <a href="#a16561e15c0abbb080927382b30d43e35">More...</a><br /></td></tr>
 <tr class="separator:a16561e15c0abbb080927382b30d43e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -421,7 +427,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 <dl class="section return"><dt>Returns</dt><dd>The number of the array. </dd></dl>
 <p>When computing with the powerset, we need to grow the corresponding vectors on the fly </p>
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00223">223</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00229">229</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -451,7 +457,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00125">125</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00131">131</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -481,7 +487,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00134">134</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00140">140</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -533,7 +539,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00144">144</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00150">150</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -563,7 +569,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00176">176</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00182">182</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -593,7 +599,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00185">185</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00191">191</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -639,7 +645,53 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00195">195</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00201">201</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8de55fd86cdca46936e455721754a2af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de55fd86cdca46936e455721754a2af">&#9670;&nbsp;</a></span>get_norm_const()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rule_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::get_norm_const </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp;&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>as_log</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00406">406</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -685,7 +737,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00306">306</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00313">313</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -731,7 +783,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00339">339</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00346">346</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -771,36 +823,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00359">359</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ac3a9ef28d8b6b1e4dfae85816b111080"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3a9ef28d8b6b1e4dfae85816b111080">&#9670;&nbsp;</a></span>n_arrays()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rule_Type &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::n_arrays </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00414">414</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00366">366</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -830,7 +853,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00077">77</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00080">80</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -860,7 +883,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00399">399</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00434">434</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -950,7 +973,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00163">163</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00169">169</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -980,7 +1003,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00117">117</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00123">123</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1010,7 +1033,69 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00212">212</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00218">218</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab3f157dbb542a48fe5bf412ff7d467fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3f157dbb542a48fe5bf412ff7d467fd">&#9670;&nbsp;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rule_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of different supports included in the model. </p>
+<p>This will return the size of <code>stats</code>.</p>
+<dl class="section return"><dt>Returns</dt><dd>unsigned int </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00449">449</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4b5edbe891b6da2319ea3fa6f1aba11d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b5edbe891b6da2319ea3fa6f1aba11d">&#9670;&nbsp;</a></span>size_unique()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rule_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::size_unique </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00454">454</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1039,7 +1124,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00109">109</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00115">115</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1118,8 +1203,8 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 
 </div>
 </div>
-<a id="ae9cd143269b07c9bde44855d1974f3f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9cd143269b07c9bde44855d1974f3f5">&#9670;&nbsp;</a></span>first_calc_done</h2>
+<a id="a942b2cdb7472878fa17c5068680441c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a942b2cdb7472878fa17c5068680441c6">&#9670;&nbsp;</a></span>first_calc_done</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1127,7 +1212,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = bool, typename Data_Rule_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::first_calc_done = false</td>
+          <td class="memname">std::vector&lt; bool &gt; <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::first_calc_done</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1387,7 +1472,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_model.html">Model</a></li>
-    <li class="footer">Generated on Wed Feb 10 2021 16:36:16 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Thu Feb 18 2021 15:43:32 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

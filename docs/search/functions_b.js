@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['n_5farrays',['n_arrays',['../classbarry_1_1_model.html#ac3a9ef28d8b6b1e4dfae85816b111080',1,'barry::Model::n_arrays()'],['../class_model.html#ac3a9ef28d8b6b1e4dfae85816b111080',1,'Model::n_arrays()']]],
   ['ncol',['ncol',['../class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f',1,'BArray']]],
   ['netcounterdata',['NetCounterData',['../classbarry_1_1counters_1_1network_1_1_net_counter_data.html#a1fef852e8037b9334988e4df719d2e30',1,'barry::counters::network::NetCounterData::NetCounterData()'],['../classbarry_1_1counters_1_1network_1_1_net_counter_data.html#aec809349144f7b82fd0866ba89df1413',1,'barry::counters::network::NetCounterData::NetCounterData(const std::vector&lt; uint &gt; indices_, const std::vector&lt; double &gt; numbers_)'],['../class_net_counter_data.html#ac3a5083286ad4fad43e6b6d5db1f7caa',1,'NetCounterData::NetCounterData()'],['../class_net_counter_data.html#ac816e1f8892a4d6f500df387309c1b1b',1,'NetCounterData::NetCounterData(const std::vector&lt; uint &gt; indices_, const std::vector&lt; double &gt; numbers_)']]],
   ['network_5fcounter',['NETWORK_COUNTER',['../namespacebarry_1_1counters_1_1network.html#a7649cd035af193258a69058aea425941',1,'barry::counters::network::NETWORK_COUNTER()'],['../network_8hpp.html#ad6539320de604e7c6e31e9fb152f70bd',1,'NETWORK_COUNTER():&#160;network.hpp']]],

@@ -1,14 +1,19 @@
 \hypertarget{namespacebarry}{}\section{barry Namespace Reference}
 \label{namespacebarry}\index{barry@{barry}}
+
+
+barry\+: Your go-\/to motif accountant  
+
+
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
  \hyperlink{namespacebarry_1_1_c_h_e_c_k}{C\+H\+E\+CK}
-\item 
+\begin{DoxyCompactList}\small\item\em Integer constants used to specify which cell should be check. \end{DoxyCompactList}\item 
  \hyperlink{namespacebarry_1_1counters}{counters}
 \item 
  \hyperlink{namespacebarry_1_1_e_x_i_s_t_s}{E\+X\+I\+S\+TS}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Integer constants used to specify which cell should be check to exist or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,7 +28,7 @@ class \hyperlink{classbarry_1_1_counter}{Counter}
 class \hyperlink{classbarry_1_1_counters}{Counters}
 \begin{DoxyCompactList}\small\item\em Vector of counters. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_entries}{Entries}
-\item 
+\begin{DoxyCompactList}\small\item\em A wrapper class to store {\ttfamily source}, {\ttfamily target}, {\ttfamily val} from a {\ttfamily \hyperlink{classbarry_1_1_b_array}{B\+Array}} object. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_freq_table}{Freq\+Table}
 \begin{DoxyCompactList}\small\item\em Database of statistics. \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_model}{Model}
@@ -54,17 +59,17 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{
 {\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_ac328592ccff774bb3614f2cae43cffd7}{Col\+\_\+type} = \hyperlink{namespacebarry_a979a04835a9855ff2054c383c569c89e}{Map}$<$ \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{classbarry_1_1_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
 \item 
 {\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structbarry_1_1vec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
-\item 
-{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$
-\begin{DoxyCompactList}\small\item\em \hyperlink{classbarry_1_1_counter}{Counter} function. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type} = std\+::function$<$ bool(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$
 \end{DoxyCompactItemize}
-\subsection*{Functions}
+\textbf{ }\par
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_afbdb85734a7793890ea4268ea114858e}{vec\+\_\+equal} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
-\begin{DoxyCompactList}\small\item\em Compares if -\/a-\/ and -\/b-\/ are equal. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}{vec\+\_\+equal\+\_\+approx} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b, double eps=1e-\/10)
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\begin{DoxyCompactList}\small\item\em \hyperlink{classbarry_1_1_counter}{Counter} and rule functions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{Rule\+\_\+fun\+\_\+type} = std\+::function$<$ bool(const Array\+\_\+\+Type $\ast$, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\end{DoxyCompactItemize}
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespacebarry_a0343fb4152724d5fa1ffa00d4b6182d9}{vec\+\_\+inner\+\_\+prod} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
 \item 
@@ -84,7 +89,18 @@ double \hyperlink{namespacebarry_a1dcc0a46544cc9733ca8ee5619ef6d20}{likelihood\+
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type $>$ }\\std\+::vector$<$ double $>$ \hyperlink{namespacebarry_a22bfc7c4a1f5b5922edfd1101b8ffe3d}{keygen\+\_\+default} (const Array\+\_\+\+Type \&Array\+\_\+)
 \begin{DoxyCompactList}\small\item\em Array Hasher class (used for computing support) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_afbdb85734a7793890ea4268ea114858e}{vec\+\_\+equal} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Compares if -\/a-\/ and -\/b-\/ are equal. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}{vec\+\_\+equal\+\_\+approx} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b, double eps=1e-\/10)
+\end{DoxyCompactItemize}
 
+
+
+\subsection{Detailed Description}
+barry\+: Your go-\/to motif accountant 
 
 \subsection{Typedef Documentation}
 \mbox{\Hypertarget{namespacebarry_ac328592ccff774bb3614f2cae43cffd7}\label{namespacebarry_ac328592ccff774bb3614f2cae43cffd7}} 
@@ -96,7 +112,7 @@ using \hyperlink{namespacebarry_ac328592ccff774bb3614f2cae43cffd7}{barry\+::\+Co
 
 
 
-Definition at line 57 of file barry.\+hpp.
+Definition at line 64 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}\label{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}} 
 \index{barry@{barry}!Counter\+\_\+fun\+\_\+type@{Counter\+\_\+fun\+\_\+type}}
@@ -107,7 +123,7 @@ using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{barry\+::\+Co
 
 
 
-\hyperlink{classbarry_1_1_counter}{Counter} function. 
+\hyperlink{classbarry_1_1_counter}{Counter} and rule functions. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -118,9 +134,14 @@ using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{barry\+::\+Co
 {\em Data\+\_\+\+Type} & Data associated with the function, for example, id of the attribute in the Array. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Counter\+\_\+fun\+\_\+type} a double (the change statistic) 
+
+{\ttfamily Rule\+\_\+fun\+\_\+type} a bool. True if the cell is blocked. 
+\end{DoxyReturn}
 
 
-Definition at line 123 of file barry.\+hpp.
+Definition at line 138 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}\label{namespacebarry_a3e2d8c3b6cf602107559d4237d9f1315}} 
 \index{barry@{barry}!Counts\+\_\+type@{Counts\+\_\+type}}
@@ -130,7 +151,7 @@ Definition at line 123 of file barry.\+hpp.
 
 
 
-Definition at line 50 of file barry.\+hpp.
+Definition at line 57 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a979a04835a9855ff2054c383c569c89e}\label{namespacebarry_a979a04835a9855ff2054c383c569c89e}} 
 \index{barry@{barry}!Map@{Map}}
@@ -152,7 +173,7 @@ using \hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{barry\+::\+Ma
 
 
 
-Definition at line 106 of file barry.\+hpp.
+Definition at line 118 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a741876d7060484e80a9f2b9d128d2c8d}\label{namespacebarry_a741876d7060484e80a9f2b9d128d2c8d}} 
 \index{barry@{barry}!Row\+\_\+type@{Row\+\_\+type}}
@@ -163,7 +184,7 @@ using \hyperlink{namespacebarry_a741876d7060484e80a9f2b9d128d2c8d}{barry\+::\+Ro
 
 
 
-Definition at line 54 of file barry.\+hpp.
+Definition at line 61 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}\label{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}} 
 \index{barry@{barry}!Rule\+\_\+fun\+\_\+type@{Rule\+\_\+fun\+\_\+type}}
@@ -174,7 +195,7 @@ using \hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{barry\+::\+Ru
 
 
 
-Definition at line 126 of file barry.\+hpp.
+Definition at line 141 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}\label{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}} 
 \index{barry@{barry}!uint@{uint}}
@@ -300,7 +321,7 @@ Compares if -\/a-\/ and -\/b-\/ are equal.
 \end{DoxyReturn}
 
 
-Definition at line 134 of file barry.\+hpp.
+Definition at line 152 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}\label{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}} 
 \index{barry@{barry}!vec\+\_\+equal\+\_\+approx@{vec\+\_\+equal\+\_\+approx}}
@@ -311,7 +332,7 @@ bool barry\+::vec\+\_\+equal\+\_\+approx (\begin{DoxyParamCaption}\item[{const s
 
 
 
-Definition at line 152 of file barry.\+hpp.
+Definition at line 170 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_a0343fb4152724d5fa1ffa00d4b6182d9}\label{namespacebarry_a0343fb4152724d5fa1ffa00d4b6182d9}} 
 \index{barry@{barry}!vec\+\_\+inner\+\_\+prod@{vec\+\_\+inner\+\_\+prod}}
@@ -322,5 +343,5 @@ T barry\+::vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{const std\+:
 
 
 
-Definition at line 172 of file barry.\+hpp.
+Definition at line 190 of file barry.\+hpp.
 

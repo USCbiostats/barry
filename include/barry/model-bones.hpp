@@ -245,6 +245,10 @@ public:
     const uint & i,
     bool as_log = false
   );
+
+  const std::vector< Array_Type > * get_pset(
+    const uint & i
+    );
   
   void print_stats(uint i) const;
   

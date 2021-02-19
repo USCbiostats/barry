@@ -84,8 +84,9 @@ public:
     /**
      * @brief The probability of observing each state 
      */
-    std::vector< double >       probabilities; 
+    std::vector< double > probabilities; 
 
+    Node() {};
     Node(unsigned int id_) : id(id_) {};
     Node(unsigned int id_, std::vector< unsigned int > annotations_) :
         id(id_), annotations(annotations_) {};
@@ -108,12 +109,14 @@ public:
 class Leafs {
 public:
 
-    PhyloModel                       model_const;
-    PhyloModel                       model_full;
-    unsigned int                     nfuns;
-    barry::Map< unsigned int, Node > nodes;
-    std::vector< unsigned int >      sequence;
-    std::vector< bool >              visited;
+    PhyloModel                         model_const;
+    PhyloModel                         model_full;
+    unsigned int                       nfuns;
+    barry::Map< unsigned int, Node >   nodes;
+    std::vector< unsigned int >        sequence;
+    std::vector< bool >                visited;
+    std::vector< std::vector< bool > > states;
+    barry::MapVec_type< unsigned int > map_to_nodes;
 
     Leafs();
 
@@ -129,9 +132,10 @@ public:
     void init(PhyloCounters & counters);
 
     double operator()(std::vector< double > & par, unsigned int & i);
-    void tip_prob(std::vector< double > & par);
+    void tip_prob(const std::vector< double > & par);
     void print();
     void calc_sequence(Node * n = nullptr);
+    double likelihood(const std::vector< double > & par);
 };
 
 Leafs::Leafs() : model_const(), model_full(), nodes() {
@@ -233,7 +237,6 @@ void Leafs::init(PhyloCounters & counters) {
     PhyloPowerSet pset(nfuns, 1u);
     pset.calc();
 
-    std::vector< std::vector< bool > > states;
     states.reserve(pset.data.size());
     unsigned int i = 0u;
     for (auto& iter : pset.data) {
@@ -243,6 +246,9 @@ void Leafs::init(PhyloCounters & counters) {
         for (auto iter2 = iter.get_col(0u)->begin(); iter2 != iter.get_col(0u)->end(); ++iter2)
             states.at(i).at(iter2->first) = true;
         
+        // Adding to map so we can look at it later on
+        map_to_nodes.insert({iter.get_col_vec(0u), i});
+
         i++;
     }
 
@@ -298,7 +304,6 @@ void Leafs::init(PhyloCounters & counters) {
                 );
 
                 // Once the array is ready, we can add it to the model
-
                 iter.second.idx_cons.push_back(
                     model_const.add_array(iter.second.arrays.at(i))
                     );
@@ -320,10 +325,15 @@ void Leafs::init(PhyloCounters & counters) {
     // Computing the pruning sequence.
     calc_sequence();
 
+    // Resetting the sequence
+    for (auto& n: this->nodes) {
+        n.second.visited = false;
+    }
+
     return;
 }
 
-void Leafs::tip_prob(std::vector< double > & par) {
+void Leafs::tip_prob(const std::vector< double > & par) {
 
     std::vector< double > probs;
     std::vector< unsigned int > ids;
@@ -440,6 +450,85 @@ void Leafs::calc_sequence(Node * n) {
         calc_sequence(n->parent);
 
     return;
+
+}
+
+
+double Leafs::likelihood(const std::vector< double > & par) {
+
+    // Following the prunning sequence
+    for (auto& i : this->sequence) {
+
+        // We cannot compute probability at the leaf, we need to continue
+        if (this->nodes[i].is_leaf())
+            continue;
+
+        // If it is located right before a leaf, then the computations
+        // are a bit different
+        if (this->nodes[i].offspring.at(0u)->is_leaf()) {
+
+            // Iterating through the different parent states
+            for (unsigned int s = 0u; s < states.size(); ++s) {
+
+                // Update the normalizing constants
+                double numer = model_const.get_norm_const(par, nodes[i].idx_cons[s]);
+                double denom = model_full.get_norm_const(par, nodes[i].idx_full[s]);
+
+                // Computing the probability at "leaf" level
+                nodes[i].probabilities[s] = numer/denom;
+
+            }
+
+        } else {
+            // Iterating through states
+            
+            for (unsigned int s = 0u; s < states.size(); ++s) {
+
+                // Starting the prob
+                double totprob = 0.0;
+                
+                // Retrieving the sets of arrays
+                const std::vector< PhyloArray > * psets = model_full.get_pset(
+                    nodes[i].idx_full[s]
+                    );
+
+                // Summation over all possible values of X
+                for (auto x = psets->begin(); x != psets->end(); ++x) {
+
+                    // Extracting the possible values of each offspring
+                    double off_mult = 1.0;
+                    for (auto o = 0u; o < x->ncol(); ++o) {
+
+                        // First, getting what is the corresponding state
+                        unsigned int loc = nodes[i].offspring[o]->idx_full[map_to_nodes[x->get_col_vec(o)]];
+                        off_mult *= nodes[i].offspring[o]->probabilities[loc];
+
+                    }
+
+                    // Multiplying by P(x|x_n)
+                    off_mult *= model_full.likelihood(
+                        par,
+                        nodes[i].idx_full[s]
+                        );
+
+                    // Adding to the total probabilities
+                    totprob += off_mult;
+
+                }
+
+                // Setting the probability at the node
+                nodes[i].probabilities[s] = totprob;
+
+            }
+
+            
+
+        }
+
+
+    }
+
+    return 0.0;
 
 }
 

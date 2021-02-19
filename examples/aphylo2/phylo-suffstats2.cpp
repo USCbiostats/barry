@@ -37,7 +37,7 @@ int main() {
     Leafs dat(
         annotations, geneid, parent, counters
     );
-    
+    double ans = dat.likelihood({.1, .1, .1, .1, .1, .1, .1, .1, .1});
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> diff = end-start;
 

@@ -278,9 +278,9 @@ BArray< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const {
   if (check_bounds) 
     out_of_range(i, 0u);
 
-  std::vector< Cell_Type > ans(ncol(), Cell_default);
+  std::vector< Cell_Type > ans(ncol(), (Cell_Type) false);
   for (auto iter = ROW(i).begin(); iter != ROW(i).end(); ++iter) 
-    ans.at(iter->first) = iter->second;
+    ans.at(iter->first) = this->get_cell(i, iter->first, false);
   
 
   return ans;
@@ -294,9 +294,9 @@ BArray< Cell_Type,Data_Type >::get_col_vec(uint i, bool check_bounds) const {
   if (check_bounds) 
     out_of_range(i, 0u);
 
-  std::vector< Cell_Type > ans(nrow(), Cell_default);
+  std::vector< Cell_Type > ans(nrow(), (Cell_Type) false);
   for (auto iter = COL(i).begin(); iter != COL(i).end(); ++iter) 
-    ans.at(iter->first) = iter->second;
+    ans.at(iter->first) = this->get_cell(iter->first, i, false);
   
   return ans;
 }

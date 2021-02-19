@@ -4,7 +4,8 @@
 #ifndef BARRY_CELL_BONES_HPP 
 #define BARRY_CELL_BONES_HPP 1
 
-/**@brief Entries in BArray.
+/**
+ * @brief Entries in BArray.
  * For now, it only has two members:
  * - value: the content
  * - visited: boolean (just a convenient)

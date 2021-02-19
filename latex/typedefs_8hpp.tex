@@ -26,7 +26,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 class \hyperlink{class_cell}{Cell$<$ Cell\+\_\+\+Type $>$}
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_entries}{Entries} in \hyperlink{class_b_array}{B\+Array}. For now, it only has two members\+: \end{DoxyCompactList}\item 
 class \hyperlink{class_entries}{Entries$<$ Cell\+\_\+\+Type $>$}
-\item 
+\begin{DoxyCompactList}\small\item\em A wrapper class to store {\ttfamily source}, {\ttfamily target}, {\ttfamily val} from a {\ttfamily \hyperlink{class_b_array}{B\+Array}} object. \end{DoxyCompactList}\item 
 struct \hyperlink{structvec_hasher}{vec\+Hasher$<$ T $>$}
 \item 
 class \hyperlink{class_b_array}{B\+Array$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
@@ -37,9 +37,9 @@ class \hyperlink{class_counter}{Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $
 \begin{DoxyCompactItemize}
 \item 
  \hyperlink{namespace_c_h_e_c_k}{C\+H\+E\+CK}
-\item 
+\begin{DoxyCompactList}\small\item\em Integer constants used to specify which cell should be check. \end{DoxyCompactList}\item 
  \hyperlink{namespace_e_x_i_s_t_s}{E\+X\+I\+S\+TS}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Integer constants used to specify which cell should be check to exist or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -75,20 +75,28 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{
 {\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type} = \hyperlink{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{class_cell}{Cell}$<$ Cell\+\_\+\+Type $>$ $\ast$$>$
 \item 
 {\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structvec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
+\end{DoxyCompactItemize}
+\textbf{ }\par
+\begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
-\begin{DoxyCompactList}\small\item\em \hyperlink{class_counter}{Counter} function. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_counter}{Counter} and rule functions. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type} = std\+::function$<$ bool(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
 \end{DoxyCompactItemize}
+
 \subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{typedefs_8hpp_a843abed15fe9f1be82d863feef016c36}{vec\+\_\+inner\+\_\+prod} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
+\end{DoxyCompactItemize}
+\textbf{ }\par
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename T $>$ }\\bool \hyperlink{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}{vec\+\_\+equal} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
 \begin{DoxyCompactList}\small\item\em Compares if -\/a-\/ and -\/b-\/ are equal. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\bool \hyperlink{typedefs_8hpp_aec4a47b2d5c6f46872f300633cf1e938}{vec\+\_\+equal\+\_\+approx} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b, double eps=1e-\/10)
-\item 
-{\footnotesize template$<$typename T $>$ }\\T \hyperlink{typedefs_8hpp_a843abed15fe9f1be82d863feef016c36}{vec\+\_\+inner\+\_\+prod} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
 \end{DoxyCompactItemize}
+
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -131,7 +139,7 @@ const int \hyperlink{namespace_e_x_i_s_t_s_a735e5ca6565905e84346e3ff62842a0a}{E\
 
 
 
-Definition at line 112 of file typedefs.\+hpp.
+Definition at line 124 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_ac3f14709e872fe684ba3cea262981ac3}\label{typedefs_8hpp_ac3f14709e872fe684ba3cea262981ac3}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}}
@@ -141,7 +149,7 @@ Definition at line 112 of file typedefs.\+hpp.
 
 
 
-Definition at line 111 of file typedefs.\+hpp.
+Definition at line 123 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_ac3f14709e872fe684ba3cea262981ac3}\label{barry_8hpp_ac3f14709e872fe684ba3cea262981ac3}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!A\+\_\+\+R\+OW@{A\+\_\+\+R\+OW}}
@@ -207,7 +215,7 @@ using \hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type}
 
 
 
-Definition at line 56 of file typedefs.\+hpp.
+Definition at line 63 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}\label{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Counter\+\_\+fun\+\_\+type@{Counter\+\_\+fun\+\_\+type}}
@@ -218,7 +226,7 @@ using \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+f
 
 
 
-\hyperlink{class_counter}{Counter} function. 
+\hyperlink{class_counter}{Counter} and rule functions. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -229,9 +237,14 @@ using \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+f
 {\em Data\+\_\+\+Type} & Data associated with the function, for example, id of the attribute in the Array. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Counter\+\_\+fun\+\_\+type} a double (the change statistic) 
+
+{\ttfamily Rule\+\_\+fun\+\_\+type} a bool. True if the cell is blocked. 
+\end{DoxyReturn}
 
 
-Definition at line 122 of file typedefs.\+hpp.
+Definition at line 137 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}\label{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Counts\+\_\+type@{Counts\+\_\+type}}
@@ -241,7 +254,7 @@ Definition at line 122 of file typedefs.\+hpp.
 
 
 
-Definition at line 49 of file typedefs.\+hpp.
+Definition at line 56 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}\label{typedefs_8hpp_a1bb64c776ba5e9fc373665103b1a1772}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Map@{Map}}
@@ -263,7 +276,7 @@ using \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+
 
 
 
-Definition at line 105 of file typedefs.\+hpp.
+Definition at line 117 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}\label{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Row\+\_\+type@{Row\+\_\+type}}
@@ -274,7 +287,7 @@ using \hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row\+\_\+type}
 
 
 
-Definition at line 53 of file typedefs.\+hpp.
+Definition at line 60 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}\label{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!Rule\+\_\+fun\+\_\+type@{Rule\+\_\+fun\+\_\+type}}
@@ -285,7 +298,7 @@ using \hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\
 
 
 
-Definition at line 125 of file typedefs.\+hpp.
+Definition at line 140 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}\label{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!uint@{uint}}
@@ -321,7 +334,7 @@ Compares if -\/a-\/ and -\/b-\/ are equal.
 \end{DoxyReturn}
 
 
-Definition at line 133 of file typedefs.\+hpp.
+Definition at line 151 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_aec4a47b2d5c6f46872f300633cf1e938}\label{typedefs_8hpp_aec4a47b2d5c6f46872f300633cf1e938}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!vec\+\_\+equal\+\_\+approx@{vec\+\_\+equal\+\_\+approx}}
@@ -332,7 +345,7 @@ bool vec\+\_\+equal\+\_\+approx (\begin{DoxyParamCaption}\item[{const std\+::vec
 
 
 
-Definition at line 151 of file typedefs.\+hpp.
+Definition at line 169 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a843abed15fe9f1be82d863feef016c36}\label{typedefs_8hpp_a843abed15fe9f1be82d863feef016c36}} 
 \index{typedefs.\+hpp@{typedefs.\+hpp}!vec\+\_\+inner\+\_\+prod@{vec\+\_\+inner\+\_\+prod}}
@@ -343,5 +356,5 @@ T vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{const std\+::vector$<
 
 
 
-Definition at line 171 of file typedefs.\+hpp.
+Definition at line 189 of file typedefs.\+hpp.
 

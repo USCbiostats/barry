@@ -10,6 +10,9 @@
 #ifndef BARRY_HPP
 #define BARRY_HPP 
 
+/**
+ * @brief barry: Your go-to motif accountant
+ */
 namespace barry {
   
   //! Tree class and TreeIterator class

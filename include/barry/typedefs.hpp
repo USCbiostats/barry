@@ -24,14 +24,21 @@ typedef unsigned int uint;
 #define COL(a) this->el_ji[a]
 
 // Constants
+/**
+ * @brief Integer constants used to specify which cell
+ * should be check.
+ */
 namespace CHECK {
   const int BOTH = -1;
   const int NONE = 0;
   const int ONE  = 1;
   const int TWO  = 2;
-  
 }
 
+/**
+ * @brief Integer constants used to specify which cell
+ * should be check to exist or not.
+ */
 namespace EXISTS {
   const int BOTH = -1;
   const int NONE = 0;
@@ -55,6 +62,11 @@ using Row_type = Map< uint, Cell<Cell_Type> >;
 template<typename Cell_Type>
 using Col_type = Map< uint, Cell<Cell_Type>* >;
 
+/**
+ * @brief A wrapper class to store `source`, `target`, `val` from a `BArray` object.
+ * 
+ * @tparam Cell_Type Any type
+ */
 template<typename Cell_Type>
 class Entries {
 public:
@@ -112,23 +124,29 @@ template <typename Array_Type, typename Counter_Type> class Counter;
 #define A_COL(a) Array->el_ji[a]
 
 /**
- * @brief Counter function
+ * @brief Counter and rule functions
  * @param Array_Type a BArray
  * @param unit, uint Focal cell
  * @param Data_Type Data associated with the function, for example, id of the attribute
  *  in the Array.
+ * @return `Counter_fun_type` a double (the change statistic)
+ * @return `Rule_fun_type` a bool. True if the cell is blocked.
  */
+///@{
 template <typename Array_Type, typename Data_Type>
 using Counter_fun_type = std::function<double(const Array_Type *, uint, uint, Data_Type *)>;
 
 template <typename Array_Type, typename Data_Type>
 using Rule_fun_type = std::function<bool(const Array_Type *, uint, uint, Data_Type *)>;
+///@}
 
 // Misc ------------------------------------------------------------------------
-/**@brief Compares if -a- and -b- are equal
+/**
+ * @brief Compares if -a- and -b- are equal
  * @param a,b Two vectors of the same length
  * @return `true` if all elements are equal.
  */
+///@{
 template <typename T>
 inline bool vec_equal(
     const std::vector< T > & a,
@@ -165,10 +183,13 @@ inline bool vec_equal_approx(
   
   return false;
 }
-
+///@}
 
 template <typename T>
-inline T vec_inner_prod(const std::vector< T > & a, const std::vector< T > & b) {
+inline T vec_inner_prod(
+  const std::vector< T > & a,
+  const std::vector< T > & b
+  ) {
   
   if (a.size() != b.size())
     throw std::length_error("-a- and -b- should have the same length.");

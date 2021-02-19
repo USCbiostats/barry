@@ -13,6 +13,7 @@ var classbarry_1_1_power_set =
     [ "get_data_ptr", "classbarry_1_1_power_set.html#a80b283b1ac115f1be049a09f1a69586a", null ],
     [ "init_support", "classbarry_1_1_power_set.html#a8eefc9606c6339938a8d9adcd0d7e153", null ],
     [ "reset", "classbarry_1_1_power_set.html#aba11dd8802cd2eb529c7c30b55994248", null ],
+    [ "size", "classbarry_1_1_power_set.html#af8b336d7b958c44bb69cd24d7a462ed8", null ],
     [ "coordinates_free", "classbarry_1_1_power_set.html#a2bc42422f23546d55fef96f053c0c4ea", null ],
     [ "coordinates_locked", "classbarry_1_1_power_set.html#a46fa867445a84be388ee62602922980a", null ],
     [ "data", "classbarry_1_1_power_set.html#a90fecd17a9d1f36153c07bc929b1630f", null ],

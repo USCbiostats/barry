@@ -40,7 +40,7 @@ Include dependency graph for barry.\+hpp\+:\nopagebreak
 class \hyperlink{classbarry_1_1_cell}{barry\+::\+Cell$<$ Cell\+\_\+\+Type $>$}
 \begin{DoxyCompactList}\small\item\em \hyperlink{classbarry_1_1_entries}{Entries} in \hyperlink{classbarry_1_1_b_array}{B\+Array}. For now, it only has two members\+: \end{DoxyCompactList}\item 
 class \hyperlink{classbarry_1_1_entries}{barry\+::\+Entries$<$ Cell\+\_\+\+Type $>$}
-\item 
+\begin{DoxyCompactList}\small\item\em A wrapper class to store {\ttfamily source}, {\ttfamily target}, {\ttfamily val} from a {\ttfamily \hyperlink{classbarry_1_1_b_array}{B\+Array}} object. \end{DoxyCompactList}\item 
 struct \hyperlink{structbarry_1_1vec_hasher}{barry\+::vec\+Hasher$<$ T $>$}
 \item 
 class \hyperlink{classbarry_1_1_b_array}{barry\+::\+B\+Array$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
@@ -79,11 +79,11 @@ class \hyperlink{classbarry_1_1counters_1_1phylo_1_1_node_data}{barry\+::counter
 \begin{DoxyCompactItemize}
 \item 
  \hyperlink{namespacebarry}{barry}
-\item 
+\begin{DoxyCompactList}\small\item\em barry\+: Your go-\/to motif accountant \end{DoxyCompactList}\item 
  \hyperlink{namespacebarry_1_1_c_h_e_c_k}{barry\+::\+C\+H\+E\+CK}
-\item 
+\begin{DoxyCompactList}\small\item\em Integer constants used to specify which cell should be check. \end{DoxyCompactList}\item 
  \hyperlink{namespacebarry_1_1_e_x_i_s_t_s}{barry\+::\+E\+X\+I\+S\+TS}
-\item 
+\begin{DoxyCompactList}\small\item\em Integer constants used to specify which cell should be check to exist or not. \end{DoxyCompactList}\item 
  \hyperlink{namespacebarry_1_1counters}{barry\+::counters}
 \item 
  \hyperlink{namespacebarry_1_1counters_1_1network}{barry\+::counters\+::network}
@@ -116,14 +116,18 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \hyperlink{
 \item 
 {\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \hyperlink{namespacebarry_a2f0d3aab1d67e4c8eaeab9022e16139f}{barry\+::\+Map\+Vec\+\_\+type} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \hyperlink{structvec_hasher}{vec\+Hasher}$<$ Ta $>$ $>$
 \item 
-{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{barry\+::\+Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
-\begin{DoxyCompactList}\small\item\em \hyperlink{classbarry_1_1_counter}{Counter} function. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{barry\+::\+Rule\+\_\+fun\+\_\+type} = std\+::function$<$ bool(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
-\item 
 typedef std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ \hyperlink{namespacebarry_1_1counters_1_1phylo_a6ecc0d8ab76f8dc2db152221a8e9e95a}{barry\+::counters\+::phylo\+::\+Phylo\+Counter\+Data}
 \item 
 typedef std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ \hyperlink{namespacebarry_1_1counters_1_1phylo_a5da540950bcf3372bcedb17a5b23667c}{barry\+::counters\+::phylo\+::\+Phylo\+Rule\+Data}
 \end{DoxyCompactItemize}
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{barry\+::\+Counter\+\_\+fun\+\_\+type} = std\+::function$<$ double(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\begin{DoxyCompactList}\small\item\em \hyperlink{classbarry_1_1_counter}{Counter} and rule functions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \hyperlink{namespacebarry_aefd7e6d4ba228e2ce1074d075c512178}{barry\+::\+Rule\+\_\+fun\+\_\+type} = std\+::function$<$ bool(const Array\+\_\+\+Type $\ast$, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, Data\+\_\+\+Type $\ast$)$>$
+\end{DoxyCompactItemize}
+
 \begin{Indent}\textbf{ Convenient typedefs for network objects.}\par
 \begin{DoxyCompactItemize}
 \item 
@@ -169,10 +173,6 @@ typedef \hyperlink{class_power_set}{Power\+Set}$<$ \hyperlink{phylo_8hpp_a777255
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_afbdb85734a7793890ea4268ea114858e}{barry\+::vec\+\_\+equal} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
-\begin{DoxyCompactList}\small\item\em Compares if -\/a-\/ and -\/b-\/ are equal. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}{barry\+::vec\+\_\+equal\+\_\+approx} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b, double eps=1e-\/10)
-\item 
 {\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespacebarry_a0343fb4152724d5fa1ffa00d4b6182d9}{barry\+::vec\+\_\+inner\+\_\+prod} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\bool \hyperlink{namespacebarry_afb5a6f58fa7969d3027468e393eecd51}{barry\+::rule\+\_\+fun\+\_\+default} (const Array\+\_\+\+Type $\ast$array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j, Data\+\_\+\+Type $\ast$dat)
@@ -191,6 +191,14 @@ double \hyperlink{namespacebarry_a1dcc0a46544cc9733ca8ee5619ef6d20}{barry\+::lik
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type $>$ }\\std\+::vector$<$ double $>$ \hyperlink{namespacebarry_a22bfc7c4a1f5b5922edfd1101b8ffe3d}{barry\+::keygen\+\_\+default} (const Array\+\_\+\+Type \&Array\+\_\+)
 \begin{DoxyCompactList}\small\item\em Array Hasher class (used for computing support) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_afbdb85734a7793890ea4268ea114858e}{barry\+::vec\+\_\+equal} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Compares if -\/a-\/ and -\/b-\/ are equal. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{namespacebarry_a24c4bd4a99dd82edf66c2d3b645dca08}{barry\+::vec\+\_\+equal\+\_\+approx} (const std\+::vector$<$ T $>$ \&a, const std\+::vector$<$ T $>$ \&b, double eps=1e-\/10)
+\end{DoxyCompactItemize}
+
 \begin{Indent}\textbf{ Counters for network models}\par
 {\em 
 \begin{DoxyParams}{Parameters}
@@ -318,7 +326,7 @@ const int \hyperlink{namespacebarry_1_1_e_x_i_s_t_s_a5b06fbd1208ff2094213da07916
 \end{DoxyCode}
 
 
-Definition at line 59 of file barry.\+hpp.
+Definition at line 62 of file barry.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_a0dd594d2194ac0aa72b14cc42077331b}\label{barry_8hpp_a0dd594d2194ac0aa72b14cc42077331b}} 
 \index{barry.\+hpp@{barry.\+hpp}!C\+O\+U\+N\+T\+E\+R\+\_\+\+L\+A\+M\+B\+DA@{C\+O\+U\+N\+T\+E\+R\+\_\+\+L\+A\+M\+B\+DA}}
@@ -334,7 +342,7 @@ Definition at line 59 of file barry.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 62 of file barry.\+hpp.
+Definition at line 65 of file barry.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_aca4359c3356b25fb710d4dbc93d8d5a8}\label{barry_8hpp_aca4359c3356b25fb710d4dbc93d8d5a8}} 
 \index{barry.\+hpp@{barry.\+hpp}!R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
@@ -350,7 +358,7 @@ Definition at line 62 of file barry.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 66 of file barry.\+hpp.
+Definition at line 69 of file barry.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_a65e3788fca9f405ff460ff7cfbad63f3}\label{barry_8hpp_a65e3788fca9f405ff460ff7cfbad63f3}} 
 \index{barry.\+hpp@{barry.\+hpp}!R\+U\+L\+E\+\_\+\+L\+A\+M\+B\+DA@{R\+U\+L\+E\+\_\+\+L\+A\+M\+B\+DA}}
@@ -366,5 +374,5 @@ Definition at line 66 of file barry.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 69 of file barry.\+hpp.
+Definition at line 72 of file barry.\+hpp.
 

@@ -1,7 +1,6 @@
 var searchData=
 [
   ['n',['N',['../class_b_array.html#a4b34ec8636c989efe80bbe3f1cea217e',1,'BArray::N()'],['../classbarry_1_1_support.html#a776221deb92d113e5dee1cb100174ed4',1,'barry::Support::N()'],['../classbarry_1_1_power_set.html#adea0f6434b17b3fc391475a11db00c2f',1,'barry::PowerSet::N()'],['../class_power_set.html#ab3b65c1b9bce012f4aabe5acae093acd',1,'PowerSet::N()'],['../class_support.html#a6c6f707fae03f409c556b6d4668617af',1,'Support::N()']]],
-  ['n_5farrays',['n_arrays',['../classbarry_1_1_model.html#ac3a9ef28d8b6b1e4dfae85816b111080',1,'barry::Model::n_arrays()'],['../class_model.html#ac3a9ef28d8b6b1e4dfae85816b111080',1,'Model::n_arrays()']]],
   ['n_5farrays_5fper_5fstats',['n_arrays_per_stats',['../classbarry_1_1_model.html#a6e72cbb235cf592668c286931a488830',1,'barry::Model::n_arrays_per_stats()'],['../class_model.html#a410caeff58afe605520c878a0689abf5',1,'Model::n_arrays_per_stats()']]],
   ['ncells',['NCells',['../class_b_array.html#a31fd64c6b54408ca98e07abc9c4241c5',1,'BArray']]],
   ['ncol',['ncol',['../class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f',1,'BArray']]],

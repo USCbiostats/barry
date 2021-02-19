@@ -7,7 +7,8 @@
 #define BARRAY_BONES_HPP 1
 
 
-template <typename Cell_Type = bool, typename Data_Type = bool> class BArrayCell {
+template <typename Cell_Type = bool, typename Data_Type = bool>
+class BArrayCell {
 private:
   
   BArray<Cell_Type,Data_Type> * Array;
@@ -23,13 +24,19 @@ public:
   
 };
 
-//! Baseline class for binary arrays.
-/** `BArray` class objects are arbitrary arrays
- *  in which non-empty cells hold data of type `Cell_Type`. The non-empty cells
- *  are stored by row and indexed using `unordered_map`s, i.e.
- *  `std::vector< std::unordered_map<unsigned int,Cell_Type> >`.
+/**
+ * @brief Baseline class for binary arrays.
+ 
+ * `BArray` class objects are arbitrary arrays
+ * in which non-empty cells hold data of type `Cell_Type`. The non-empty cells
+ * are stored by row and indexed using `unordered_map`s, i.e.
+ * `std::vector< std::unordered_map<unsigned int,Cell_Type> >`.
+ *
+ * @tparam Cell_Type Type of cell (any type).
+ * @tparam Data_Type Data type of the array (bool default).
  */
-template <typename Cell_Type = bool, typename Data_Type = bool> class BArray {
+template <typename Cell_Type = bool, typename Data_Type = bool>
+class BArray {
   friend class BArrayCell<Cell_Type,Data_Type>;
 public:
   uint N;
@@ -50,19 +57,25 @@ public:
    */
   bool visited = false;
   
-  // Empty datum
-  BArray() : N(0u), M(0u), NCells(0u), el_ij(0u), el_ji(0u) {};
-  BArray (uint N_, uint M_) : N(N_), M(M_), NCells(0u), el_ij(N_), el_ji(M_) {};
-  // BArray(BArray & Array_);
-  
-  //! Edgelist with data
-  /** This function takes the following arguments
+
+  /**
+   * @name Constructors
+   * 
    * @param N_ Number of rows
    * @param M_ Number of columns
    * @param source An unsigned vector ranging from 0 to N_
    * @param target An unsigned int vector ranging from 0 to M_
    * @param target When `true` tries to add repeated observations.
    */
+  ///@{
+  
+  /** @brief Zero-size array */
+  BArray() : N(0u), M(0u), NCells(0u), el_ij(0u), el_ji(0u) {};
+  
+  /** @brief Empty array */
+  BArray (uint N_, uint M_) : N(N_), M(M_), NCells(0u), el_ij(N_), el_ji(M_) {};
+  
+  /** @brief Edgelist with data */
   BArray (
       uint N_, uint M_,
       const std::vector< uint > & source,
@@ -70,8 +83,8 @@ public:
       const std::vector< Cell_Type > & value,
       bool add = true
   );
-   
-  // Edgelist with no data (simpler)
+  
+  /** @brief Edgelist with no data (simpler) */
   BArray (
     uint N_, uint M_,
     const std::vector< uint > & source,
@@ -80,7 +93,9 @@ public:
   );
   
   BArray(const BArray<Cell_Type,Data_Type> & Array_);
+  
   BArray<Cell_Type,Data_Type> & operator=(const BArray<Cell_Type,Data_Type> & Array_);
+  ///@}
   
   bool operator==(const BArray<Cell_Type,Data_Type> & Array_);
 
@@ -107,11 +122,22 @@ public:
   Cell_Type get_cell(uint i, uint j, bool check_bounds = true) const; 
   const Row_type< Cell_Type > * get_row(uint i, bool check_bounds = true) const;
   const Col_type< Cell_Type > * get_col(uint i, bool check_bounds = true) const;
-  std::vector< Cell_Type > get_col_vec(uint i, bool check_bounds = true) const;
-  std::vector< Cell_Type > get_row_vec(uint i, bool check_bounds = true) const;
+  std::vector< Cell_Type >      get_col_vec(uint i, bool check_bounds = true) const;
+  std::vector< Cell_Type >      get_row_vec(uint i, bool check_bounds = true) const;
+
+  /**
+   * @brief Get the edgelist
+   * 
+   * `Entries` is a class with three objects: Two `std::vector` with the row and
+   * column coordinates respectively, and one `std::vector` with the corresponding
+   * value of the cell.
+   * 
+   * @return Entries<Cell_Type> 
+   */
   Entries<Cell_Type> get_entries() const;
 
-  /**@name Queries
+  /**
+   * @name Queries
    * @details `is_empty` queries a single cell. `nrow`, `ncol`, and `nnozero`
    * return the number of rows, columns, and non-zero cells respectively.
    * @param i,j Coordinates
@@ -132,8 +158,7 @@ public:
    * delete/add), or, in the case of `swap_cells`, check if either of both
    * cells exists/don't exist.
    */
-  /**@{*/
-  
+  ///@{  
   BArray<Cell_Type,Data_Type> & operator+=(const std::pair<uint, uint> & coords);
   BArray<Cell_Type,Data_Type> & operator-=(const std::pair<uint, uint> & coords);
   BArrayCell<Cell_Type,Data_Type> operator()(uint row, uint col);
@@ -154,7 +179,7 @@ public:
   
   void toggle_cell(uint i, uint j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
   void toggle_lock(uint i, uint j, bool check_bounds = true);
-  /**@}*/
+  ///@}
   
   /**@name Column/row wise interchange*/
   ///@{
