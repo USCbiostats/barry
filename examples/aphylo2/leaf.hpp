@@ -64,12 +64,19 @@ inline std::vector< double > keygen_full(const PhyloArray & array) {
     return dat;
 }
 
+/**
+ * @brief A single node for the model
+ * 
+ * Each node contains all the information to compute the conditional probability
+ * of the pruning algorithm at that node.
+ * 
+ */
 class Node {
 public:
     unsigned int id;
     PhyloArray array;
     
-    std::vector< unsigned int > annotations;         ///< Observed annotations (only defined for leafs)
+    std::vector< unsigned int > annotations;         ///< Observed annotations (only defined for APhyloModel)
     std::vector< PhyloArray >   arrays    = {};      ///< Arrays given all possible states
     Node *                      parent    = nullptr; ///< Parent node
     std::vector< Node* >        offspring = {};      ///< Offspring nodes
@@ -77,10 +84,7 @@ public:
     std::vector< unsigned int > idx_full  = {};
     bool                        visited   = false;          
 
-    /**
-     * @brief The probability of observing each state 
-     */
-    std::vector< double > probabilities; 
+    std::vector< double > probabilities; ///< The probability of observing each state 
 
     Node() {};
     Node(unsigned int id_) : id(id_) {};
@@ -101,8 +105,11 @@ public:
 
 };
 
-
-class Leafs {
+/**
+ * @brief Annotated Phylo Model
+ * 
+ */
+class APhyloModel {
 public:
 
     PhyloModel                         model_const;
@@ -114,16 +121,30 @@ public:
     std::vector< std::vector< bool > > states;
     barry::MapVec_type< unsigned int > map_to_nodes;
 
-    Leafs();
+    APhyloModel();
 
-    Leafs(
+    /**
+     * @brief Construct a new APhyloModel object
+     * 
+     * The model includes a total of `N + 1` nodes, the `+ 1` beign
+     * the root node.
+     * 
+     * @param annotations A vector of vectors with annotations. It should be of
+     * length `k` (number of functions). Each vector should be of length `N`
+     * (equal to the number of nodes, including interior). Possible values are
+     * 0, 1, and 9.
+     * @param geneid Id of the gene. It should be of length `N`.
+     * @param parent Id of the parent gene. Also of length `N`
+     * @param counters An object of class `PhyloCounters`.
+     */
+    APhyloModel(
         std::vector< std::vector<unsigned int> > & annotations,
         std::vector< unsigned int > & geneid,
         std::vector< unsigned int> & parent,
         PhyloCounters & counters
         );
 
-    ~Leafs() {};
+    ~APhyloModel() {};
 
     void init(PhyloCounters & counters);
 
@@ -134,11 +155,11 @@ public:
     double likelihood(const std::vector< double > & par);
 };
 
-Leafs::Leafs() : model_const(), model_full(), nodes() {
+APhyloModel::APhyloModel() : model_const(), model_full(), nodes() {
     return;
 }
 
-Leafs::Leafs(
+APhyloModel::APhyloModel(
     std::vector< std::vector<unsigned int> > & annotations,
     std::vector< unsigned int > & geneid,
     std::vector< unsigned int> & parent,
@@ -216,7 +237,7 @@ Leafs::Leafs(
 
 }
 
-void Leafs::init(PhyloCounters & counters) {
+void APhyloModel::init(PhyloCounters & counters) {
 
     // Generating the model data -----------------------------------------------
     model_const.set_keygen(keygen_const);
@@ -239,11 +260,11 @@ void Leafs::init(PhyloCounters & counters) {
 
         states.push_back(std::vector< bool >(nfuns, false));
 
-        for (auto iter2 = iter.get_col(0u)->begin(); iter2 != iter.get_col(0u)->end(); ++iter2)
+        for (auto iter2 = iter.get_col(0u, false)->begin(); iter2 != iter.get_col(0u, false)->end(); ++iter2)
             states.at(i).at(iter2->first) = true;
         
         // Adding to map so we can look at it later on
-        map_to_nodes.insert({iter.get_col_vec(0u), i});
+        map_to_nodes.insert({iter.get_col_vec(0u, false), i});
 
         i++;
     }
@@ -324,7 +345,7 @@ void Leafs::init(PhyloCounters & counters) {
     return;
 }
 
-void Leafs::tip_prob(const std::vector< double > & par) {
+void APhyloModel::tip_prob(const std::vector< double > & par) {
 
     std::vector< double > probs;
     std::vector< unsigned int > ids;
@@ -369,7 +390,7 @@ void Leafs::tip_prob(const std::vector< double > & par) {
     return;
 }
 
-void Leafs::print() {
+void APhyloModel::print() {
 
     // Overall information
     std::cout << "\n--- General information ----------" << std::endl;
@@ -401,7 +422,7 @@ void Leafs::print() {
     return;
 }
 
-void Leafs::calc_sequence(Node * n) {
+void APhyloModel::calc_sequence(Node * n) {
 
     if (sequence.size() == nodes.size())
         return;
@@ -444,11 +465,13 @@ void Leafs::calc_sequence(Node * n) {
 
 }
 
-double Leafs::likelihood(const std::vector< double > & par) {
+double APhyloModel::likelihood(const std::vector< double > & par) {
 
     // Splitting the probabilities
     std::vector< double > par0(par.begin(), par.end() - nfuns);
     std::vector< double > par_root(par.end() - nfuns, par.end());
+
+    std::vector< unsigned int > tmpstate(nfuns);
 
     double ll = 0.0;
 
@@ -496,7 +519,11 @@ double Leafs::likelihood(const std::vector< double > & par) {
                     for (auto o = 0u; o < x->ncol(); ++o) {
 
                         // First, getting what is the corresponding state
-                        unsigned int loc = nodes[i].offspring[o]->idx_full[map_to_nodes[x->get_col_vec(o)]];
+                        std::fill(tmpstate.begin(), tmpstate.end(), 0u);
+                        x->get_col_vec(&tmpstate, o, false);
+
+                        // Retrieving the location to the respective set of probabilities
+                        unsigned int loc = nodes[i].offspring[o]->idx_full[map_to_nodes[tmpstate]];
                         off_mult *= nodes[i].offspring[o]->probabilities[loc];
 
                     }

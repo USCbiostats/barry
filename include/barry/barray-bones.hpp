@@ -124,6 +124,8 @@ public:
   const Col_type< Cell_Type > * get_col(uint i, bool check_bounds = true) const;
   std::vector< Cell_Type >      get_col_vec(uint i, bool check_bounds = true) const;
   std::vector< Cell_Type >      get_row_vec(uint i, bool check_bounds = true) const;
+  void                          get_col_vec(std::vector< Cell_Type > * col, uint i, bool check_bounds = true) const;
+  void                          get_row_vec(std::vector< Cell_Type > * row, uint i, bool check_bounds = true) const;
 
   /**
    * @brief Get the edgelist

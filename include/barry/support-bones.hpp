@@ -111,7 +111,8 @@ public:
   void add_rule(Rule<Array_Type,Data_Rule_Type> f_);
   void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);
   
-  /**@brief Computes the entire support
+  /**
+   * @brief Computes the entire support
    * 
    * Not to be used by the user. Sets the starting point in the array
    * (column-major).

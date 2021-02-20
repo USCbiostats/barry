@@ -129,19 +129,26 @@ template<typename Cell_Type, typename Data_Type>
 inline BArray<Cell_Type,Data_Type>::BArray(const BArray<Cell_Type,Data_Type> & Array_) : N(Array_.N), M(Array_.M){
   
   // Dimensions
-  el_ij.resize(N);
-  el_ji.resize(M);
+  // el_ij.resize(N);
+  // el_ji.resize(M);
   
-  // Entries
+  std::copy(Array_.el_ij.begin(), Array_.el_ij.end(), std::back_inserter(el_ij));
+  std::copy(Array_.el_ji.begin(), Array_.el_ji.end(), std::back_inserter(el_ji));
+
+  // Taking care of the pointers
   for (uint i = 0u; i < N; ++i) {
-    
-    if (Array_.nnozero() == 0u)
+
+    if (ROW(i).size() == 0u)
       continue;
-    
-    for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
-      this->insert_cell(i, row->first, row->second.value, false, false);
-    
+
+    for (auto row = el_ij[i].begin(); row != el_ij[i].end(); ++row) {
+      COL(row->first)[i] = &ROW(i)[row->first];
+    }
+
   }
+
+  this->NCells  = Array_.NCells;
+  this->visited = Array_.visited;
   
   // Data
   if (Array_.data != nullptr) {
@@ -280,10 +287,26 @@ BArray< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const {
 
   std::vector< Cell_Type > ans(ncol(), (Cell_Type) false);
   for (auto iter = ROW(i).begin(); iter != ROW(i).end(); ++iter) 
-    ans.at(iter->first) = this->get_cell(i, iter->first, false);
+    ans.at(iter->first) = iter->second.value; //this->get_cell(i, iter->first, false);
   
 
   return ans;
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline void
+BArray< Cell_Type,Data_Type >::get_row_vec(
+  std::vector<Cell_Type> * row,
+  uint i, bool check_bounds
+  ) const {
+
+  // Checking boundaries  
+  if (check_bounds) 
+    out_of_range(i, 0u);
+
+  for (auto iter = ROW(i).begin(); iter != ROW(i).end(); ++iter) 
+    row->at(iter->first) = iter->second.value; // this->get_cell(i, iter->first, false);
+  
 }
 
 template<typename Cell_Type, typename Data_Type>
@@ -296,9 +319,24 @@ BArray< Cell_Type,Data_Type >::get_col_vec(uint i, bool check_bounds) const {
 
   std::vector< Cell_Type > ans(nrow(), (Cell_Type) false);
   for (auto iter = COL(i).begin(); iter != COL(i).end(); ++iter) 
-    ans.at(iter->first) = this->get_cell(iter->first, i, false);
+    ans.at(iter->first) = iter->second->value;//this->get_cell(iter->first, i, false);
   
   return ans;
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline void
+BArray< Cell_Type,Data_Type >::get_col_vec(
+  std::vector<Cell_Type> * col,
+  uint i, bool check_bounds) const {
+
+  // Checking boundaries  
+  if (check_bounds) 
+    out_of_range(i, 0u);
+
+  for (auto iter = COL(i).begin(); iter != COL(i).end(); ++iter) 
+    col->at(iter->first) = iter->second->value;//this->get_cell(iter->first, i, false);
+  
 }
 
 template<typename Cell_Type, typename Data_Type>

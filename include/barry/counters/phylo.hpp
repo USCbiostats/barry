@@ -30,7 +30,7 @@ public:
    */
   bool duplication = true;
   
-  NodeData() : blengths(0u), states(0u) {};
+  NodeData() {};
   
   NodeData(
     const std::vector< double > & blengths_,
