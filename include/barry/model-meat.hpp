@@ -363,6 +363,40 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
+    const std::vector<double> & params,
+    const std::vector<double> & target_,
+    const uint & i,
+    bool as_log
+) {
+  
+  // Checking if the index exists
+  if (i >= arrays2support.size())
+    throw std::range_error("The requested support is out of range");
+  
+  // Checking if we have updated the normalizing constant or not
+  if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
+    
+    first_calc_done[arrays2support[i]] = true;
+    
+    normalizing_constants[arrays2support[i]] = update_normalizing_constant(
+      params, stats[arrays2support[i]]
+    );
+    
+    params_last[arrays2support[i]] = params;
+    
+  }
+  
+  return likelihood_(
+    target_,
+    params,
+    normalizing_constants[arrays2support[i]],
+    as_log
+  );
+  
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood_total(
     const std::vector<double> & params,
     bool as_log
@@ -444,13 +478,29 @@ inline const std::vector< Array_Type > * Model<Array_Type,Data_Counter_Type,Data
 
 }
 
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline const std::vector< std::vector<double> > * Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_stats(
+    const uint & i
+) {
+
+  if (i >= arrays2support.size())
+    throw std::range_error("The requested support is out of range");
+
+  return &pset_stats[arrays2support[i]];
+
+}
+
 template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::print_stats(uint i) const {
   
-  for (uint l = 0u; l < stats[i].size(); ++l) {
-    std::cout << "counts " << stats[i][l].second << " motif: ";
-    for (unsigned int k = 0u; k < stats[i][l].first.size(); ++k) {
-      std::cout << stats[i][l].first[k] << ", ";
+  if (i >= arrays2support.size())
+    throw std::range_error("The requested support is out of range");
+
+  for (uint l = 0u; l < stats[arrays2support[i]].size(); ++l) {
+    printf("% 5i ", l);
+    std::cout << "counts " << stats[arrays2support[i]][l].second << " motif: ";
+    for (unsigned int k = 0u; k < stats[arrays2support[i]][l].first.size(); ++k) {
+      std::cout << stats[arrays2support[i]][l].first[k] << ", ";
     }
     std::cout << std::endl;
   }

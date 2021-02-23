@@ -234,6 +234,13 @@ public:
     bool as_log = false
     );
   
+  double likelihood(
+    const std::vector<double> & params,
+    const std::vector<double> & target_,
+    const uint & i,
+    bool as_log = false
+    );
+
   double likelihood_total(
     const std::vector<double> & params,
     bool as_log = false
@@ -247,6 +254,10 @@ public:
   );
 
   const std::vector< Array_Type > * get_pset(
+    const uint & i
+    );
+
+  const std::vector< std::vector< double > > * get_stats(
     const uint & i
     );
   

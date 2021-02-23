@@ -238,23 +238,26 @@ inline void counter_cogain(PhyloCounters * counters, uint nfunA, uint nfunB) {
     if ((i != (*data)[0u]) && (i != (*data)[1u]))
       return 0.0;
     
-    // Both parents should either be zero or one
-    if (!Array->data->states[0u] && Array->data->states[1u])
+    // None should have it
+    if (!Array->data->states[(*data)[0u]] && !Array->data->states[(*data)[1u]]) {
+
+      uint other = (i == (*data)[0u])? (*data)[1u] : (*data)[0u];
+
+      if (Array->get_cell(other, j) == 1u) {
+
+        return 1.0;
+
+      } else {
+
+        return 0.0;
+
+      }
+
+    } else {
+
       return 0.0;
-    
-    if (Array->data->states[1u] && !Array->data->states[0u])
-      return 0.0;
-    
-    // If both have it, then nothing is gained at this point
-    if (Array->data->states[0u]) 
-      return 0.0;
-    
-    uint other = (i == (*data)[0u])? (*data)[1u] : (*data)[0u];
-    if (!Array->is_empty(other, j)) {
-      return 1.0;
+
     }
-    
-    return 0.0;
 
   };
   

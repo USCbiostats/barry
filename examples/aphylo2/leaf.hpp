@@ -312,7 +312,7 @@ void APhyloModel::init(PhyloCounters & counters) {
             std::vector< double > blen(iter.second.offspring.size(), 1.0);
             for (auto& s : states) {
                 
-                iter.second.arrays.push_back(iter.second.array);
+                iter.second.arrays.push_back(PhyloArray(iter.second.array, true));
                 iter.second.arrays.at(i).set_data(
                     new NodeData(blen, s),
                     true
@@ -471,6 +471,11 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
     std::vector< double > par0(par.begin(), par.end() - nfuns);
     std::vector< double > par_root(par.end() - nfuns, par.end());
 
+    // Scaling root
+    for (auto& p : par_root) {
+        p = std::exp(p)/(exp(p) + 1);
+    }
+
     std::vector< unsigned int > tmpstate(nfuns);
 
     double ll = 0.0;
@@ -493,8 +498,13 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                 double numer = model_const.get_norm_const(par0, nodes[i].idx_cons[s]);
                 double denom = model_full.get_norm_const(par0, nodes[i].idx_full[s]);
 
+                // std::cout << "--------- Const ----- " << std::endl;
+                // model_const.print_stats(nodes[i].idx_cons[s]);
+                // std::cout << "--------- Full ------ " << std::endl;
+                // model_full.print_stats(nodes[i].idx_cons[s]);
+
                 // Computing the probability at "leaf" level
-                nodes[i].probabilities[s] = numer/denom;
+                nodes[i].probabilities[s] = numer/(denom + 1.0e-15);
 
             }
 
@@ -511,7 +521,12 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                     nodes[i].idx_full[s]
                     );
 
+                const std::vector< std::vector<double> > * psets_stats = model_full.get_stats(
+                    nodes[i].idx_full[s]
+                );
+
                 // Summation over all possible values of X
+                unsigned int nstate = 0u;
                 for (auto x = psets->begin(); x != psets->end(); ++x) {
 
                     // Extracting the possible values of each offspring
@@ -531,6 +546,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                     // Multiplying by P(x|x_n)
                     off_mult *= model_full.likelihood(
                         par0,
+                        psets_stats->at(nstate++),
                         nodes[i].idx_full[s]
                         );
 

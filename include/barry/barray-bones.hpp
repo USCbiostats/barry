@@ -92,7 +92,7 @@ public:
     bool add = true
   );
   
-  BArray(const BArray<Cell_Type,Data_Type> & Array_);
+  BArray(const BArray<Cell_Type,Data_Type> & Array_, bool copy_data = false);
   
   BArray<Cell_Type,Data_Type> & operator=(const BArray<Cell_Type,Data_Type> & Array_);
   ///@}

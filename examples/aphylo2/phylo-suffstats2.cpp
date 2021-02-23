@@ -44,6 +44,12 @@ int main() {
         .1, .1, .1
         };
 
+    par = {
+        27.5028843378887, 118.49940341424, 27.4595445668862, 39.6985832725241,
+        58.9044118882134, -0.599039831786341, -43.2677113061893, -30.6160416909189,
+        89.0051524467181, -13.9983478226013, -82.7948139476884, -139.317765694915
+    };
+
     // Stargint to measure time
     auto start = std::chrono::system_clock::now();
     double ans = dat.likelihood(par);
@@ -52,7 +58,7 @@ int main() {
     std::chrono::duration<double> diff = end-start;
 
     dat.print();
-    printf(      "Prob      : %.8f\n", ans);
+    printf(      "Prob      : %.8f\n", std::log(ans));
     std::cout << "Total time: " << diff.count() << std::endl;
 
     return 0;

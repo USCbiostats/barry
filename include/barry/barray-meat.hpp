@@ -126,7 +126,10 @@ inline BArray< Cell_Type,Data_Type >::BArray (
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline BArray<Cell_Type,Data_Type>::BArray(const BArray<Cell_Type,Data_Type> & Array_) : N(Array_.N), M(Array_.M){
+inline BArray<Cell_Type,Data_Type>::BArray(
+  const BArray<Cell_Type,Data_Type> & Array_,
+  bool copy_data
+  ) : N(Array_.N), M(Array_.M){
   
   // Dimensions
   // el_ij.resize(N);
@@ -152,8 +155,14 @@ inline BArray<Cell_Type,Data_Type>::BArray(const BArray<Cell_Type,Data_Type> & A
   
   // Data
   if (Array_.data != nullptr) {
-    data = Array_.data;
-    delete_data = false;
+
+    if (copy_data) {
+      data = new Data_Type(*Array_.data);
+      delete_data = true;
+    } else {
+      data = Array_.data;
+      delete_data = false;
+    }
   }
   
   return;
@@ -183,9 +192,15 @@ inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
     }
     
     // Data
+    if (data != nullptr) {
+      if (delete_data)
+        delete data;
+      data = nullptr;
+    }
+
     if (Array_.data != nullptr) {
-      data = Array_.data;
-      delete_data = false;
+      data = new Data_Type(*Array_.data);
+      delete_data = true;
     }
     
   }

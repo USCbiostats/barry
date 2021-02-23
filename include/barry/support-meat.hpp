@@ -25,21 +25,37 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support(
     throw std::logic_error("No counters added: Cannot compute the support without knowning what to count!");
 
   // Initial count (including constrains)
-  StatsCounter<Array_Type,Data_Counter_Type> tmpcount(&EmptyArray);
-  tmpcount.set_counters(counters);
-  this->current_stats = tmpcount.count_all();
-  
-  EmptyArray.clear(true);
-  EmptyArray.reserve();
-  current_stats.resize(counters->size());
+  if (coordinates_locked.size()) {
+
+    StatsCounter<Array_Type,Data_Counter_Type> tmpcount(&EmptyArray);
+    tmpcount.set_counters(counters);
+    current_stats = tmpcount.count_all();
+
+  } else {
+
+    current_stats.resize(counters->size(), 0.0);
+
+    // Initialize counters
+    for (uint n = 0u; n < counters->size(); ++n) {
+      current_stats[n] = counters->operator[](n)->init(
+        &EmptyArray,
+        coordinates_free[0u].first,
+        coordinates_free[0u].second
+        );
+    }
+
+  }
+
+  // Adding to the overall count
+  data.add(current_stats);
+
+  // EmptyArray.clear(true);
+  // EmptyArray.reserve();
   change_stats.resize(coordinates_free.size(), current_stats);
   
   // Resizing support
   data.reserve(pow(2.0, coordinates_free.size())); 
-  
-  // Adding to the overall count
-  data.add(current_stats);
-  
+    
   if (array_bank != nullptr) 
     array_bank->push_back(EmptyArray);
   
