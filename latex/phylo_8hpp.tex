@@ -81,13 +81,13 @@ typedef \hyperlink{class_power_set}{Power\+Set}$<$ \hyperlink{phylo_8hpp_a777255
 \end{DoxyParams}
 }\begin{DoxyCompactItemize}
 \item 
-void \hyperlink{phylo_8hpp_ac93c3a89b7b3c98f1a19b609c655531f}{counter\+\_\+overall\+\_\+gains} (\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$counters)
+void \hyperlink{phylo_8hpp_ae37d65879b49c4a568e5f80795b492a5}{counter\+\_\+overall\+\_\+gains} (\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$counters, bool duplication=true)
 \begin{DoxyCompactList}\small\item\em Overall functional gains. \end{DoxyCompactList}\item 
-void \hyperlink{phylo_8hpp_acd02968c5c1824fe996a7d7228fd252c}{counter\+\_\+gains} (\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ nfun)
+void \hyperlink{phylo_8hpp_af03875e668e9559a84896755e5108fc4}{counter\+\_\+gains} (\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ nfun, bool duplication=true)
 \begin{DoxyCompactList}\small\item\em Functional gains for a specific function ({\ttfamily nfun}). \end{DoxyCompactList}\item 
-void \hyperlink{phylo_8hpp_a86c26f51fddc6f74b924499f2ae1c88b}{counter\+\_\+overall\+\_\+loss} (\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} nfun)
+void \hyperlink{phylo_8hpp_adce790b84a0a7e875e543bec08194f2b}{counter\+\_\+overall\+\_\+loss} (\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$counters, bool duplication=true)
 \begin{DoxyCompactList}\small\item\em Overall functional loss. \end{DoxyCompactList}\item 
-void \hyperlink{phylo_8hpp_a599d11f3def60ded4d0d52574fdec28d}{counter\+\_\+loss} (\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ nfun)
+void \hyperlink{phylo_8hpp_ab295380f631d6ecbc6147ede9e7084d8}{counter\+\_\+loss} (\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$counters, std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ nfun, bool duplication=true)
 \begin{DoxyCompactList}\small\item\em Total count of losses for an specific function. \end{DoxyCompactList}\item 
 void \hyperlink{phylo_8hpp_a2f7e92f3b5b4e70f77001e188309ec0e}{counter\+\_\+subfun} (\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$counters, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} nfunA, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} nfunB)
 \begin{DoxyCompactList}\small\item\em Total count of Sub-\/functionalization events. \end{DoxyCompactList}\item 
@@ -131,7 +131,7 @@ Definition at line 8 of file phylo.\+hpp.
 
 
 
-Definition at line 48 of file phylo.\+hpp.
+Definition at line 49 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_ad858b176df779595ef7ac30a6ccc0a1d}\label{phylo_8hpp_ad858b176df779595ef7ac30a6ccc0a1d}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER@{P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER}}
@@ -150,7 +150,7 @@ Extension of a simple counter.
 
 It allows specifying extra arguments, in particular, the corresponding sets of rows to which this statistic may be relevant. This could be important in the case of, for example, counting correlation type statistics between function 1 and 2, and between function 1 and 3. 
 
-Definition at line 74 of file phylo.\+hpp.
+Definition at line 77 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{barry_8hpp_ad858b176df779595ef7ac30a6ccc0a1d}\label{barry_8hpp_ad858b176df779595ef7ac30a6ccc0a1d}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER@{P\+H\+Y\+L\+O\+\_\+\+C\+O\+U\+N\+T\+ER}}
@@ -189,7 +189,7 @@ Definition at line 74 of file phylo.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 77 of file phylo.\+hpp.
+Definition at line 80 of file phylo.\+hpp.
 
 
 
@@ -202,7 +202,7 @@ Definition at line 77 of file phylo.\+hpp.
 
 
 
-Definition at line 53 of file phylo.\+hpp.
+Definition at line 56 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a70f35d038e8044ff5761831220d07290}\label{phylo_8hpp_a70f35d038e8044ff5761831220d07290}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Counter@{Phylo\+Counter}}
@@ -212,7 +212,7 @@ Definition at line 53 of file phylo.\+hpp.
 
 
 
-Definition at line 54 of file phylo.\+hpp.
+Definition at line 57 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}\label{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Counter\+Data@{Phylo\+Counter\+Data}}
@@ -222,7 +222,7 @@ Definition at line 54 of file phylo.\+hpp.
 
 
 
-Definition at line 45 of file phylo.\+hpp.
+Definition at line 46 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}\label{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Counters@{Phylo\+Counters}}
@@ -232,7 +232,7 @@ Definition at line 45 of file phylo.\+hpp.
 
 
 
-Definition at line 55 of file phylo.\+hpp.
+Definition at line 58 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a0399db2b639f85cb2101594ff7f49ee4}\label{phylo_8hpp_a0399db2b639f85cb2101594ff7f49ee4}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Model@{Phylo\+Model}}
@@ -242,7 +242,7 @@ Definition at line 55 of file phylo.\+hpp.
 
 
 
-Definition at line 60 of file phylo.\+hpp.
+Definition at line 63 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}\label{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Power\+Set@{Phylo\+Power\+Set}}
@@ -252,7 +252,7 @@ Definition at line 60 of file phylo.\+hpp.
 
 
 
-Definition at line 61 of file phylo.\+hpp.
+Definition at line 64 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}\label{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Rule@{Phylo\+Rule}}
@@ -262,7 +262,7 @@ Definition at line 61 of file phylo.\+hpp.
 
 
 
-Definition at line 56 of file phylo.\+hpp.
+Definition at line 59 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}\label{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Rule\+Data@{Phylo\+Rule\+Data}}
@@ -272,7 +272,7 @@ Definition at line 56 of file phylo.\+hpp.
 
 
 
-Definition at line 46 of file phylo.\+hpp.
+Definition at line 47 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}\label{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Rules@{Phylo\+Rules}}
@@ -282,7 +282,7 @@ Definition at line 46 of file phylo.\+hpp.
 
 
 
-Definition at line 57 of file phylo.\+hpp.
+Definition at line 60 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}\label{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Stats\+Counter@{Phylo\+Stats\+Counter}}
@@ -292,7 +292,7 @@ Definition at line 57 of file phylo.\+hpp.
 
 
 
-Definition at line 59 of file phylo.\+hpp.
+Definition at line 62 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a5e2d2b7571e4b1348cb044373d04fb06}\label{phylo_8hpp_a5e2d2b7571e4b1348cb044373d04fb06}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!Phylo\+Support@{Phylo\+Support}}
@@ -302,7 +302,7 @@ Definition at line 59 of file phylo.\+hpp.
 
 
 
-Definition at line 58 of file phylo.\+hpp.
+Definition at line 61 of file phylo.\+hpp.
 
 
 
@@ -319,13 +319,13 @@ Co-\/evolution (joint gain or loss)
 
 Needs to specify pairs of functions ({\ttfamily nfunA}, {\ttfamily nfunB}). 
 
-Definition at line 233 of file phylo.\+hpp.
+Definition at line 291 of file phylo.\+hpp.
 
-\mbox{\Hypertarget{phylo_8hpp_acd02968c5c1824fe996a7d7228fd252c}\label{phylo_8hpp_acd02968c5c1824fe996a7d7228fd252c}} 
+\mbox{\Hypertarget{phylo_8hpp_af03875e668e9559a84896755e5108fc4}\label{phylo_8hpp_af03875e668e9559a84896755e5108fc4}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!counter\+\_\+gains@{counter\+\_\+gains}}
 \index{counter\+\_\+gains@{counter\+\_\+gains}!phylo.\+hpp@{phylo.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+gains()}{counter\_gains()}}
-{\footnotesize\ttfamily void counter\+\_\+gains (\begin{DoxyParamCaption}\item[{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$}]{nfun }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+gains (\begin{DoxyParamCaption}\item[{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$}]{nfun,  }\item[{bool}]{duplication = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -333,7 +333,7 @@ Functional gains for a specific function ({\ttfamily nfun}).
 
 
 
-Definition at line 102 of file phylo.\+hpp.
+Definition at line 120 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a41afc89ceafd9c70883b37ea20b0db8a}\label{phylo_8hpp_a41afc89ceafd9c70883b37ea20b0db8a}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!counter\+\_\+longest@{counter\+\_\+longest}}
@@ -347,13 +347,13 @@ Longest branch mutates (either by gain or by loss)
 
 
 
-Definition at line 273 of file phylo.\+hpp.
+Definition at line 334 of file phylo.\+hpp.
 
-\mbox{\Hypertarget{phylo_8hpp_a599d11f3def60ded4d0d52574fdec28d}\label{phylo_8hpp_a599d11f3def60ded4d0d52574fdec28d}} 
+\mbox{\Hypertarget{phylo_8hpp_ab295380f631d6ecbc6147ede9e7084d8}\label{phylo_8hpp_ab295380f631d6ecbc6147ede9e7084d8}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!counter\+\_\+loss@{counter\+\_\+loss}}
 \index{counter\+\_\+loss@{counter\+\_\+loss}!phylo.\+hpp@{phylo.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+loss()}{counter\_loss()}}
-{\footnotesize\ttfamily void counter\+\_\+loss (\begin{DoxyParamCaption}\item[{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$}]{nfun }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+loss (\begin{DoxyParamCaption}\item[{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$}]{counters,  }\item[{std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$}]{nfun,  }\item[{bool}]{duplication = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -361,7 +361,7 @@ Total count of losses for an specific function.
 
 
 
-Definition at line 145 of file phylo.\+hpp.
+Definition at line 188 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_aa29c2d3bf87ff7a683895bd050cbce71}\label{phylo_8hpp_aa29c2d3bf87ff7a683895bd050cbce71}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!counter\+\_\+neofun@{counter\+\_\+neofun}}
@@ -375,13 +375,13 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 362 of file phylo.\+hpp.
+Definition at line 423 of file phylo.\+hpp.
 
-\mbox{\Hypertarget{phylo_8hpp_ac93c3a89b7b3c98f1a19b609c655531f}\label{phylo_8hpp_ac93c3a89b7b3c98f1a19b609c655531f}} 
+\mbox{\Hypertarget{phylo_8hpp_ae37d65879b49c4a568e5f80795b492a5}\label{phylo_8hpp_ae37d65879b49c4a568e5f80795b492a5}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!counter\+\_\+overall\+\_\+gains@{counter\+\_\+overall\+\_\+gains}}
 \index{counter\+\_\+overall\+\_\+gains@{counter\+\_\+overall\+\_\+gains}!phylo.\+hpp@{phylo.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+overall\+\_\+gains()}{counter\_overall\_gains()}}
-{\footnotesize\ttfamily void counter\+\_\+overall\+\_\+gains (\begin{DoxyParamCaption}\item[{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$}]{counters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+overall\+\_\+gains (\begin{DoxyParamCaption}\item[{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$}]{counters,  }\item[{bool}]{duplication = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -389,13 +389,13 @@ Overall functional gains.
 
 Total number of gains (irrespective of the function). 
 
-Definition at line 89 of file phylo.\+hpp.
+Definition at line 93 of file phylo.\+hpp.
 
-\mbox{\Hypertarget{phylo_8hpp_a86c26f51fddc6f74b924499f2ae1c88b}\label{phylo_8hpp_a86c26f51fddc6f74b924499f2ae1c88b}} 
+\mbox{\Hypertarget{phylo_8hpp_adce790b84a0a7e875e543bec08194f2b}\label{phylo_8hpp_adce790b84a0a7e875e543bec08194f2b}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!counter\+\_\+overall\+\_\+loss@{counter\+\_\+overall\+\_\+loss}}
 \index{counter\+\_\+overall\+\_\+loss@{counter\+\_\+overall\+\_\+loss}!phylo.\+hpp@{phylo.\+hpp}}
 \subsubsection{\texorpdfstring{counter\+\_\+overall\+\_\+loss()}{counter\_overall\_loss()}}
-{\footnotesize\ttfamily void counter\+\_\+overall\+\_\+loss (\begin{DoxyParamCaption}\item[{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$}]{counters,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{nfun }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void counter\+\_\+overall\+\_\+loss (\begin{DoxyParamCaption}\item[{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters} $\ast$}]{counters,  }\item[{bool}]{duplication = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -403,7 +403,7 @@ Overall functional loss.
 
 
 
-Definition at line 122 of file phylo.\+hpp.
+Definition at line 149 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a2f7e92f3b5b4e70f77001e188309ec0e}\label{phylo_8hpp_a2f7e92f3b5b4e70f77001e188309ec0e}} 
 \index{phylo.\+hpp@{phylo.\+hpp}!counter\+\_\+subfun@{counter\+\_\+subfun}}
@@ -417,5 +417,5 @@ Total count of Sub-\/functionalization events.
 
 It requires to specify data = \{funA, funB\} 
 
-Definition at line 172 of file phylo.\+hpp.
+Definition at line 230 of file phylo.\+hpp.
 

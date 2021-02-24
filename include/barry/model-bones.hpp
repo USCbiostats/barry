@@ -95,7 +95,8 @@ public:
   
   /**
    * @name Random number generation
-   * @brief Random number generation*/
+   * @brief Random number generation
+   */
   ///@{
   std::mt19937 rengine;
   void set_seed(unsigned int s) {rengine.seed(s);return;};
@@ -137,10 +138,11 @@ public:
    */
   MapVec_type< double, uint > keys2support;
   
-  /**@name Functions to compute statistics
+  /**
+   * @name Functions to compute statistics
    * @details Arguments are recycled to save memory and computation.
    */
-  ///@[{
+  ///@{
   Counters<Array_Type,Data_Counter_Type>               counters;
   Rules<Array_Type,Data_Rule_Type>                     rules;
   Support<Array_Type,Data_Counter_Type,Data_Rule_Type> support_fun;
@@ -251,6 +253,15 @@ public:
   );
   ///@}
 
+  /**
+   * @name Extract elements by index 
+   * @param i Index relative to the array in the model.
+   * @param params A new vector of model parameters to compute the normalizing
+   * constant.
+   * @param as_log When `true` returns the logged version of the normalizing
+   * constant.
+   */
+  ///@{
   double get_norm_const(
     const std::vector< double > & params,
     const uint & i,
@@ -264,6 +275,7 @@ public:
   const std::vector< std::vector< double > > * get_stats(
     const uint & i
     );
+  ///@}
   
   void print_stats(uint i) const;
   
@@ -271,6 +283,8 @@ public:
   Array_Type sample(const uint & i, const std::vector<double> & params);
   
   /**
+   * @name Size of the model
+   * 
    * @brief Number of different supports included in the model
    * 
    * This will return the size of `stats`.

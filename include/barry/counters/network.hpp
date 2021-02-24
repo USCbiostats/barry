@@ -71,7 +71,7 @@ public:
 /**@name Convenient typedefs for network objects.
  */
 ///@{
-typedef BArray<bool, NetworkData> Network;
+typedef BArray<double, NetworkData> Network;
 typedef Counter<Network, NetCounterData > NetCounter;
 typedef Counters< Network, NetCounterData> NetCounters;
 typedef Support<Network, NetCounterData > NetSupport;

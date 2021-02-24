@@ -22,7 +22,10 @@ namespace barry {
   #include "cell-meat.hpp"
 
   #include "barray-bones.hpp"
+  #include "barraycell-bones.hpp"
   #include "barray-meat.hpp"
+  #include "barraycell-meat.hpp"
+  #include "barray-meat-operators.hpp"
   
   #include "counters-bones.hpp"
   #include "counters-meat.hpp"

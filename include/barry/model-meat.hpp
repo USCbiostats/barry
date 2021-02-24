@@ -460,7 +460,10 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_norm_const
     
   }
   
-  return normalizing_constants[arrays2support[i]];
+  return as_log ? 
+    std::log(normalizing_constants[arrays2support[i]]) :
+    normalizing_constants[arrays2support[i]]
+    ;
   
 }
 

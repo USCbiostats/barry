@@ -30,8 +30,7 @@ public:
   /**
    * @brief Creator of a `StatsCounter`
    * 
-   * @param data A const pointer to a `BArray`.
-   * @param Stats_ A pointer to a dataset of stats `StatsDB`.
+   * @param Array_ A const pointer to a `BArray`.
    */
   StatsCounter(const Array_Type * Array_) :
     Array(Array_), EmptyArray(*Array_),

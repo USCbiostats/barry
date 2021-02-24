@@ -31,22 +31,6 @@ Collaboration diagram for Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\
 \item 
 void \hyperlink{class_support_a013872a55ffd6a0a931e124da8e8dc99}{init\+\_\+support} (std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$array\+\_\+bank=nullptr, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$stats\+\_\+bank=nullptr)
 \item 
-void \hyperlink{class_support_a4f2860fd2e8e30703b91633a92ed7a58}{reset\+\_\+array} ()
-\begin{DoxyCompactList}\small\item\em Resets the support calculator. \end{DoxyCompactList}\item 
-void \hyperlink{class_support_a6e39b22dfd1e0a0ceebf596c974f5326}{reset\+\_\+array} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
-\item 
-void \hyperlink{class_support_a364df2c6295341f2801ebe0419d1d97c}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$f\+\_\+)
-\item 
-void \hyperlink{class_support_a00d511970c0bf833ef8bdd7580c670cc}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ f\+\_\+)
-\item 
-void \hyperlink{class_support_aef83474cda55c4ed52e313e8ed948b08}{set\+\_\+counters} (\hyperlink{class_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$counters\+\_\+)
-\item 
-void \hyperlink{class_support_a3113a4586c541aa25db7b4a864b748a2}{add\+\_\+rule} (\hyperlink{class_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$f\+\_\+)
-\item 
-void \hyperlink{class_support_aa817cb5d6c48dda3ecfeef2c5897b537}{add\+\_\+rule} (\hyperlink{class_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ f\+\_\+)
-\item 
-void \hyperlink{class_support_a66dc1a0e7097d547ea9c84df777ad477}{set\+\_\+rules} (\hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$rules\+\_\+)
-\item 
 void \hyperlink{class_support_afa36b8c1348e28c51296379157f58081}{calc} (std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$array\+\_\+bank=nullptr, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$stats\+\_\+bank=nullptr)
 \begin{DoxyCompactList}\small\item\em Computes the entire support. \end{DoxyCompactList}\item 
 \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type} \hyperlink{class_support_a5d93a94eaed9b1157fb934284883fd47}{get\+\_\+counts} () const
@@ -55,6 +39,55 @@ const \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+
 \item 
 void \hyperlink{class_support_af87b2e85ec72e394387946023508e7fd}{print} () const
 \end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Resets the support calculator}\par
+{\em If needed, the counters of a support object can be reused.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Array\+\_\+} & New array over which the support will be computed. \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_support_a4f2860fd2e8e30703b91633a92ed7a58}{reset\+\_\+array} ()
+\item 
+void \hyperlink{class_support_a6e39b22dfd1e0a0ceebf596c974f5326}{reset\+\_\+array} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Manage counters}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em f\+\_\+} & A counter to be added. \\
+\hline
+{\em counters\+\_\+} & A vector of counters to be added. \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_support_a364df2c6295341f2801ebe0419d1d97c}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$f\+\_\+)
+\item 
+void \hyperlink{class_support_a00d511970c0bf833ef8bdd7580c670cc}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ f\+\_\+)
+\item 
+void \hyperlink{class_support_aef83474cda55c4ed52e313e8ed948b08}{set\+\_\+counters} (\hyperlink{class_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$counters\+\_\+)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Manage rules}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em f\+\_\+} & A rule to be added. \\
+\hline
+{\em counters\+\_\+} & A vector of rules to be added. \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_support_a3113a4586c541aa25db7b4a864b748a2}{add\+\_\+rule} (\hyperlink{class_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$f\+\_\+)
+\item 
+void \hyperlink{class_support_aa817cb5d6c48dda3ecfeef2c5897b537}{add\+\_\+rule} (\hyperlink{class_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ f\+\_\+)
+\item 
+void \hyperlink{class_support_a66dc1a0e7097d547ea9c84df777ad477}{set\+\_\+rules} (\hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$rules\+\_\+)
+\end{DoxyCompactItemize}
+\end{Indent}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -161,7 +194,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 153 of file support-\/meat.\+hpp.
+Definition at line 169 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a00d511970c0bf833ef8bdd7580c670cc}\label{class_support_a00d511970c0bf833ef8bdd7580c670cc}} 
 \index{Support@{Support}!add\+\_\+counter@{add\+\_\+counter}}
@@ -172,7 +205,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 163 of file support-\/meat.\+hpp.
+Definition at line 179 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a3113a4586c541aa25db7b4a864b748a2}\label{class_support_a3113a4586c541aa25db7b4a864b748a2}} 
 \index{Support@{Support}!add\+\_\+rule@{add\+\_\+rule}}
@@ -183,7 +216,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 190 of file support-\/meat.\+hpp.
+Definition at line 206 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_aa817cb5d6c48dda3ecfeef2c5897b537}\label{class_support_aa817cb5d6c48dda3ecfeef2c5897b537}} 
 \index{Support@{Support}!add\+\_\+rule@{add\+\_\+rule}}
@@ -194,7 +227,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 200 of file support-\/meat.\+hpp.
+Definition at line 216 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_afa36b8c1348e28c51296379157f58081}\label{class_support_afa36b8c1348e28c51296379157f58081}} 
 \index{Support@{Support}!calc@{calc}}
@@ -211,8 +244,6 @@ Not to be used by the user. Sets the starting point in the array (column-\/major
 
 
 \begin{DoxyParams}{Parameters}
-{\em diag} & When {\ttfamily true}, includes the diagonal (i=j) in the counts.\\
-\hline
 {\em array\+\_\+bank} & If specified, the counter will add to the vector each possible state of the array, as it counts.\\
 \hline
 {\em stats\+\_\+bank} & If specified, the counter will add to the vector each possible set of statistics, as it counts. \\
@@ -220,7 +251,7 @@ Not to be used by the user. Sets the starting point in the array (column-\/major
 \end{DoxyParams}
 
 
-Definition at line 135 of file support-\/meat.\+hpp.
+Definition at line 151 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a5d93a94eaed9b1157fb934284883fd47}\label{class_support_a5d93a94eaed9b1157fb934284883fd47}} 
 \index{Support@{Support}!get\+\_\+counts@{get\+\_\+counts}}
@@ -231,7 +262,7 @@ Definition at line 135 of file support-\/meat.\+hpp.
 
 
 
-Definition at line 227 of file support-\/meat.\+hpp.
+Definition at line 243 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_abcb4dea3c5a1b140990821900432f90e}\label{class_support_abcb4dea3c5a1b140990821900432f90e}} 
 \index{Support@{Support}!get\+\_\+counts\+\_\+ptr@{get\+\_\+counts\+\_\+ptr}}
@@ -242,7 +273,7 @@ const \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+
 
 
 
-Definition at line 234 of file support-\/meat.\+hpp.
+Definition at line 250 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a013872a55ffd6a0a931e124da8e8dc99}\label{class_support_a013872a55ffd6a0a931e124da8e8dc99}} 
 \index{Support@{Support}!init\+\_\+support@{init\+\_\+support}}
@@ -264,7 +295,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 241 of file support-\/meat.\+hpp.
+Definition at line 257 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a4f2860fd2e8e30703b91633a92ed7a58}\label{class_support_a4f2860fd2e8e30703b91633a92ed7a58}} 
 \index{Support@{Support}!reset\+\_\+array@{reset\+\_\+array}}
@@ -275,18 +306,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Resets the support calculator. 
-
-If needed, the counters of a support object can be reused.
-
-
-\begin{DoxyParams}{Parameters}
-{\em Array\+\_\+} & New array over which the support will be computed. \\
-\hline
-\end{DoxyParams}
-
-
-Definition at line 53 of file support-\/meat.\+hpp.
+Definition at line 69 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a6e39b22dfd1e0a0ceebf596c974f5326}\label{class_support_a6e39b22dfd1e0a0ceebf596c974f5326}} 
 \index{Support@{Support}!reset\+\_\+array@{reset\+\_\+array}}
@@ -297,7 +317,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 60 of file support-\/meat.\+hpp.
+Definition at line 76 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_aef83474cda55c4ed52e313e8ed948b08}\label{class_support_aef83474cda55c4ed52e313e8ed948b08}} 
 \index{Support@{Support}!set\+\_\+counters@{set\+\_\+counters}}
@@ -308,7 +328,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 173 of file support-\/meat.\+hpp.
+Definition at line 189 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a66dc1a0e7097d547ea9c84df777ad477}\label{class_support_a66dc1a0e7097d547ea9c84df777ad477}} 
 \index{Support@{Support}!set\+\_\+rules@{set\+\_\+rules}}
@@ -319,7 +339,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 210 of file support-\/meat.\+hpp.
+Definition at line 226 of file support-\/meat.\+hpp.
 
 
 

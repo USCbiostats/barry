@@ -1,5 +1,5 @@
-#ifndef BARRAY_TYPEDEFS_HPP
-#define BARRAY_TYPEDEFS_HPP 
+#ifndef BARRY_TYPEDEFS_HPP
+#define BARRY_TYPEDEFS_HPP 1
 
 #include <vector>
 #include <unordered_map>

@@ -94,31 +94,47 @@ public:
   );
   
   
-  /**@brief Resets the support calculator
+  /**
+   * @name Resets the support calculator
    * 
    * If needed, the counters of a support object can be reused.
    * 
    * @param Array_ New array over which the support will be computed.
    */
+  ///@{
   void reset_array();
   void reset_array(const Array_Type * Array_);
+  ///@}
   
+  /**
+   * @name Manage counters 
+   * 
+   * @param f_ A counter to be added.
+   * @param counters_ A vector of counters to be added.
+   */
+  ///@{
   void add_counter(Counter<Array_Type, Data_Counter_Type> * f_);
   void add_counter(Counter<Array_Type,Data_Counter_Type> f_);
   void set_counters(Counters<Array_Type,Data_Counter_Type> * counters_);
+  ///@}
   
+  /**
+   * @name Manage rules 
+   * 
+   * @param f_ A rule to be added.
+   * @param counters_ A vector of rules to be added.
+   */
   void add_rule(Rule<Array_Type, Data_Rule_Type> * f_);
   void add_rule(Rule<Array_Type,Data_Rule_Type> f_);
   void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);
-  
+  ///@}
+
   /**
    * @brief Computes the entire support
    * 
    * Not to be used by the user. Sets the starting point in the array
    * (column-major).
-   * 
-   * @param diag When `true`, includes the diagonal (i=j) in the counts.
-   * 
+   *  
    * @param array_bank If specified, the counter will add to the vector each 
    * possible state of the array, as it counts.
    * 

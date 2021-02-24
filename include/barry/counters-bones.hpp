@@ -28,9 +28,10 @@ public:
   /**
    * @brief Creator passing a counter and an initializer
    * 
-   * @param count_fun The main counter function.
-   * @param init_fun The initializer function can also be used to check if the
+   * @param count_fun_ The main counter function.
+   * @param init_fun_ The initializer function can also be used to check if the
    *  `BArray` as the needed variables (see BArray::data).
+   * @param data_ Data to be used with the counter.
    * @param delete_data_ When `true`, the destructor will delete the pointer
    * in the main data.
    */
