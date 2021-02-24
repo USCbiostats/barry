@@ -7,7 +7,8 @@
 #ifndef BARRAY_PHYLO_H
 #define BARRAY_PHYLO_H 1
 
-/**@brief Data definition for the `PhyloArray` class.
+/**
+ * @brief Data definition for the `PhyloArray` class.
  * 
  * This holds basic information about a given node.
  * 
@@ -48,7 +49,9 @@ typedef std::vector< std::pair< uint, uint > > PhyloRuleData;
 #define PHYLO_C_DATA_IDX(i) (data->operator[](i))
 // #define PHYLO_C_DATA_NUM(i) (data->numbers[i])
 
-/**@name Convenient typedefs for Node objects. */
+/**
+ * @name Convenient typedefs for Node objects.
+ * */
 ///@{
 typedef BArray<uint, NodeData> PhyloArray;
 typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
@@ -83,32 +86,54 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
  */
 //@{
 // -----------------------------------------------------------------------------
-/**@brief Overall functional gains
+/**
+ * @brief Overall functional gains
  * @details Total number of gains (irrespective of the function).
  */
-inline void counter_overall_gains(PhyloCounters * counters) {
+inline void counter_overall_gains(PhyloCounters * counters, bool duplication = true) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
-    return 1.0;
+    if ((*data)[0u] == 1u & Array->data->duplication)
+      return 1.0;
+    else if ((*data)[0u] == 0u & !Array->data->duplication) {
+      return 1.0;
+    }
+
+    return 0.0;
+    
   };
   
-  counters->add_counter(tmp_count);
+  counters->add_counter(
+    tmp_count, nullptr,
+    new PhyloCounterData({duplication ? 1u : 0u}),
+    true
+  );
+
   return;
   
 }
 
 // -----------------------------------------------------------------------------
-/**@brief Functional gains for a specific function (`nfun`). */
-inline void counter_gains(PhyloCounters * counters, std::vector<uint> nfun) {
+/**
+ * @brief Functional gains for a specific function (`nfun`).
+ */
+inline void counter_gains(PhyloCounters * counters, std::vector<uint> nfun, bool duplication = true) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
+
+    if (Array->data->duplication & data->at(1u) == 0u)
+      return 0.0;
+    else if (!Array->data->duplication & data->at(1u) == 1u)
+      return 0.0;
+    
     return (!Array->data->states[i]) && (i == PHYLO_C_DATA_IDX(0u)) ? 1.0 : 0.0;
+
   };
   
   for (auto i = nfun.begin(); i != nfun.end(); ++i) {
     counters->add_counter(
         tmp_count, nullptr,
-        new PhyloCounterData({*i}),
+        new PhyloCounterData({*i, duplication ? 1u : 0u}),
         true
     );
   }
@@ -118,20 +143,36 @@ inline void counter_gains(PhyloCounters * counters, std::vector<uint> nfun) {
 }
 
 // -----------------------------------------------------------------------------
-/**@brief Overall functional loss */
-inline void counter_overall_loss(PhyloCounters * counters, uint nfun) {
+/**
+ * @brief Overall functional loss
+ */
+inline void counter_overall_loss(PhyloCounters * counters, bool duplication = true) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
-    return -1.0;
+    
+    if ((*data)[0u] == 1u & Array->data->duplication)
+      return -1.0;
+    else if ((*data)[0u] == 0u & !Array->data->duplication) {
+      return -1.0;
+    } else {
+      return 0.0;
+    }
   };
   
   PHYLO_COUNTER_LAMBDA(tmp_init) {
-    return Array->N * Array->M;
+
+    if ((*data)[0u] == 1u & Array->data->duplication)
+      return (double) (Array->N * Array->M);
+    else if ((*data)[0u] == 0u & !Array->data->duplication)
+      return (double) (Array->N * Array->M);
+    else 
+      return 0.0;
+
   };
   
   counters->add_counter(
       tmp_count, tmp_init,
-      new PhyloCounterData({nfun}),
+      new PhyloCounterData({duplication ? 1u : 0u}),
       true
   );
   
@@ -141,21 +182,37 @@ inline void counter_overall_loss(PhyloCounters * counters, uint nfun) {
 
   
 // -----------------------------------------------------------------------------
-/**@brief Total count of losses for an specific function. */
-inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun) {
+/**
+ * @brief Total count of losses for an specific function.
+ */
+inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun, bool duplication = true) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
-    return (Array->data->states[i]) && (i == PHYLO_C_DATA_IDX(0u)) ? -1.0 : 0.0;
+
+    if (data->at(0u) == 1u & !Array->data->duplication)
+      return 0.0;
+    else if (data->at(0u) == 0u & Array->data->duplication)
+      return 0.0;
+    else
+      return (Array->data->states[i]) && (i == PHYLO_C_DATA_IDX(0u)) ? -1.0 : 0.0;
+
   };
   
   PHYLO_COUNTER_LAMBDA(tmp_init) {
-    return Array->data->states[PHYLO_C_DATA_IDX(0u)]? Array->M : 0.0;
+
+    if (data->at(0u) == 1u & !Array->data->duplication)
+      return 0.0;
+    else if (data->at(0u) == 0u & Array->data->duplication)
+      return 0.0;
+    else
+      return Array->data->states[PHYLO_C_DATA_IDX(0u)]? Array->M : 0.0;
+
   };
   
   for (auto& i : nfun) {
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({i}),
+        new PhyloCounterData({i, duplication ? 1u : 0u}),
         true
     );
   }
@@ -166,7 +223,8 @@ inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun) {
 
 
 // -----------------------------------------------------------------------------
-/**@brief Total count of Sub-functionalization events.
+/**
+ * @brief Total count of Sub-functionalization events.
  * @details It requires to specify data = {funA, funB}
  */
 inline void counter_subfun(PhyloCounters * counters, uint nfunA, uint nfunB) {

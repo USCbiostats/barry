@@ -2,7 +2,7 @@
 #include <string>
 #include <chrono>
 #include <random>
-#include "leaf.hpp" 
+#include "aphylomodel.hpp" 
 
 int main() {
 
@@ -24,17 +24,16 @@ int main() {
     std::vector< uint > parent = {4, 4, 5, 5, 6, 6};
 
     
-    // Specifying the terms
-    PhyloCounters counters;
-    counter_gains(&counters, {0, 1, 2});
-    counter_loss(&counters, {0, 1, 2});
-    counter_cogain(&counters, 0, 1);
-    counter_cogain(&counters, 0, 2);
-    counter_cogain(&counters, 1, 2);
-
     APhyloModel dat(
-        annotations, geneid, parent, counters
+        annotations, geneid, parent
     );
+
+    // Specifying the terms
+    counter_gains(&dat.counters, {0, 1, 2});
+    counter_loss(&dat.counters, {0, 1, 2});
+    counter_cogain(&dat.counters, 0, 1);
+    counter_cogain(&dat.counters, 0, 2);
+    counter_cogain(&dat.counters, 1, 2);
     
     // Model parameters
     std::vector< double > par = {
@@ -50,16 +49,17 @@ int main() {
         89.0051524467181, -13.9983478226013, -82.7948139476884, -139.317765694915
     };
 
+    dat.init();
+
     // Stargint to measure time
     auto start = std::chrono::system_clock::now();
     double ans = dat.likelihood(par);
     auto end = std::chrono::system_clock::now();
 
-    std::chrono::duration<double> diff = end-start;
+    std::chrono::duration<double,std::milli> diff = end-start;
 
-    dat.print();
-    printf(      "Prob      : %.8f\n", std::log(ans));
-    std::cout << "Total time: " << diff.count() << std::endl;
+    printf(      "LogLike        : %.8f\n", std::log(ans));
+    std::cout << "Total time (ms): " << diff.count() << std::endl;
 
     return 0;
 }
