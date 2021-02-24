@@ -93,10 +93,14 @@ class Model {
 
 public:
   
-  /**@name Random number generation*/
+  /**
+   * @name Random number generation
+   * @brief Random number generation*/
   ///@{
-  
+  std::mt19937 rengine;
+  void set_seed(unsigned int s) {rengine.seed(s);return;};
   ///@}
+  
   
   /**@brief */
   std::vector< Counts_type >         stats;
@@ -264,7 +268,7 @@ public:
   void print_stats(uint i) const;
   
   Array_Type sample(const Array_Type & Array_, const std::vector<double> & params = {});
-  Array_Type sample(const uint & i, const std::vector<double> & params = {});
+  Array_Type sample(const uint & i, const std::vector<double> & params);
   
   /**
    * @brief Number of different supports included in the model

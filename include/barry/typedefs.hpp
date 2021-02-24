@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <cmath>
 #include <map>
+#include <random>
 
 #ifdef BARRAY_USE_UNORDERED_MAP
 template<typename Ta,typename Tb>

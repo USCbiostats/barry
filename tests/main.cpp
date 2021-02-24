@@ -3,11 +3,12 @@
 #include <vector>
 #include <iostream>
 #include <type_traits>
-#include "../include/barry/barry.hpp"
-#include "tests.h"
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
+
+#include "../include/barry/barry.hpp"
+#include "tests.h"
 
 #include "01-all-counts.cpp"
 #include "02-support-ergm.cpp"

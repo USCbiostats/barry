@@ -519,6 +519,42 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size_unique() co
   return this->stats.size();
 } 
   
+template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
+inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::sample(
+    const unsigned int & i,
+    const std::vector<double> & params
+) {
+
+    // Are we recording this?
+    if (!this->with_pset)
+        throw std::logic_error("Sampling is only available when store_pset() is active.");
+
+    if (i >= arrays2support.size())
+        throw std::range_error("The requested support is out of range");
+
+    // Getting the index
+    unsigned int a = arrays2support[i];
+    // if (pset_probs.at(a).size() == 0u) {
+    //   pset_probs.at(a).resize(pset_arrays.at(a).size(), 0u);
+    // }
+    
+    // Generating a random
+    std::uniform_real_distribution<> urand(0, 1);
+    double r = urand(rengine);
+    double cumprob = 0.0;
+
+    // Updating until reach above
+    unsigned int j = 0u;
+    while (cumprob < r) {
+
+        cumprob += this->likelihood(params, this->pset_stats[a][j], i, false);
+        ++j;
+    }
+
+    return this->pset_arrays[a][j-1u];   
+
+}
+
 // template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 // inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::sample(
 //   const Array_Type & Array_,

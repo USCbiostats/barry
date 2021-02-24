@@ -63,9 +63,9 @@ TEST_CASE("Computing support for networks", "[support]") {
 
   for (auto n = 0u; n < ans.size(); ++n) {
     
-    // Printing the first 10
-    if (n < 5)
-      print(ans[n].first);
+    // // Printing the first 10
+    // if (n < 5)
+    //   print(ans[n].first);
     
     double tmp0 = 0.0;
     double tmp1 = 0.0;

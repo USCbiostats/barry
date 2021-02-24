@@ -46,6 +46,7 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   net.set_data(new netcounters::NetworkData({0,0,1,0}), true);
   
   netcounters::NetModel model;
+  model.store_psets(); // Need this for sampling
   
   // Preparing model  
   
@@ -67,6 +68,21 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   // Adding the network to the model
   model.add_array(net);
   
+  model.set_seed(1231);
+  std::vector< double > p2 = {-1.0, 2.0, 0.0, 0.0, 0.0, 1.0*0, 0.0, 0.0, 0.0, 0.0, 0.0};
+  netcounters::Network net0 = model.sample(0, p2);
+  netcounters::Network net1 = model.sample(0, p2);
+  netcounters::Network net2 = model.sample(0, p2);
+
+  std::cout << "Printing networks" << std::endl;
+  std::cout << "Net 0" << std::endl;
+  net0.print();
+  std::cout << "Net 1" << std::endl;
+  net1.print();
+  std::cout << "Net 2" << std::endl;
+  net2.print();
+
+
   std::vector< double > logs0(2);
   std::vector< double > logs1(2);
   logs0[0u] = model.likelihood_total(p0, true); 
@@ -75,6 +91,8 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   logs1[1u] = model.likelihood(p1, net, true);
 
   std::vector< double > margin = {0.00001, 0.00001};
+
+  std::cout << "Printing logs: " << std::endl;
   print(logs0);
   print(logs1);
   print(logs_expected);
