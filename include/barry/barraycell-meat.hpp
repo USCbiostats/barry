@@ -54,4 +54,9 @@ inline void BArrayCell<Cell_Type,Data_Type>::operator/=(const Cell_Type & val) {
 
 }
 
+template<typename Cell_Type,typename Data_Type>
+inline BArrayCell<Cell_Type,Data_Type>::operator Cell_Type() const {
+    return Array->get_cell(row, col, true);
+}
+
 #endif

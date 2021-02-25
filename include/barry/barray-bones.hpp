@@ -200,7 +200,17 @@ public:
   BArray<Cell_Type,Data_Type>& operator/=(const Cell_Type & rhs);
   BArray<Cell_Type,Data_Type>& operator*=(const Cell_Type & rhs);
   ///@}
-    
+  
+  // /**
+  //  * @name Casting between types
+  //  */
+  // ///@{
+  // operator BArray<double,bool>() const;
+  // operator BArray<int,bool>() const;
+  // operator BArray<uint,bool>() const;
+  // operator BArray<bool,bool>() const;
+  // ///@}
+
 };
 
 #endif

@@ -543,7 +543,7 @@ inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::sample(
     
     // Generating a random
     std::uniform_real_distribution<> urand(0, 1);
-    double r = urand(rengine);
+    double r = urand(*rengine);
     double cumprob = 0.0;
 
     // Updating until reach above
@@ -557,65 +557,5 @@ inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::sample(
     return this->pset_arrays[a][j-1u];   
 
 }
-
-// template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-// inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::sample(
-//   const Array_Type & Array_,
-//   const std::vector<double> & params
-// ) {
-//   
-//   // Can we find the array in the data
-//   auto location = keys2support.find(keygen(Array_));
-//   
-//   if (location == keys2support.end())
-//     throw std::range_error("The requested array has not been analyzed.");
-//   
-//   unsigned int idx = arrays2support[location->second];
-//   
-//   // Checking normalizing constant
-//   bool new_params = !vec_equal_approx(params, params_last[idx]);
-//   if (!first_calc_done || new_params ) {
-//     
-//     first_calc_done = true;
-//     normalizing_constants[idx] = update_normalizing_constant(
-//       params, stats[idx]
-//     );
-//     
-//     params_last[idx] = params;
-//     
-//   }
-// 
-//   /**If this data hasn't been computed yet, then we need to compute the
-//    * likelihood for each array in the support in order to be able to
-//    * sample.*/
-//   if (pset_probs[idx].size() == 0) {
-//     
-//     pset_probs[idx].resize(pset_arrays[idx].size());    
-//     
-//     for (unsigned int i = 0u; i != pset_stats[idx].size(); ++i) {
-//       pset_probs[idx][i] = likelihood_(
-//         pset_stats[idx][i], stats[idx], normalizing_constants[idx], false
-//       );
-//     }
-// 
-//   } else if (new_params) { // We only need to re-compute likelihoods if not done before
-//     
-//     for (unsigned int i = 0u; i != pset_stats[idx].size(); ++i) {
-//       pset_probs[idx][i] = likelihood_(
-//         pset_stats[idx][i], stats[idx], normalizing_constants[idx], false
-//       );
-//     }
-//     
-//   }
-//   
-//   
-//   // Drawing a random sample
-//   double cumprob = 0.0;
-//   double p       = runif();
-//   
-//   
-//   
-// }
-
 
 #endif

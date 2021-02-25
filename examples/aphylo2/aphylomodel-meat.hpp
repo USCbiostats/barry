@@ -97,6 +97,9 @@ void APhyloModel::init() {
 
     model_full.store_psets();
 
+    model_const.set_rengine(&this->rengine, false);
+    model_full.set_rengine(&this->rengine, false);
+
     // All combinations of the function
     PhyloPowerSet pset(nfuns, 1u);
     pset.calc();

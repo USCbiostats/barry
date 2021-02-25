@@ -990,7 +990,7 @@ inline void BArray< Cell_Type, Data_Type >::print() const {
       if (this->is_empty(i, j, false)) {
         printf("    . ");
       } else {
-        printf(" %.2f ", (double) this->get_cell(i, j));
+        printf(" %.2f ", static_cast<double>(this->get_cell(i, j)));
       }
     }
     printf("\n");

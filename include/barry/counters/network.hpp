@@ -145,7 +145,7 @@ inline void counter_isolates(NetCounters * counters) {
   };
   
   NETWORK_COUNTER_LAMBDA(tmp_init) {
-    return (double) (Array->nrow());
+    return static_cast<double>(Array->nrow());
   };
   
   counters->add_counter(tmp_count, tmp_init);
@@ -201,7 +201,7 @@ inline void counter_istar2(NetCounters * counters) {
     if (A_COL(j).size() == 1u)
       return 0.0;
     
-    return ((double) A_COL(j).size() - 1.0);
+    return static_cast<double>(A_COL(j).size() - 1.0);
   };
   
   counters->add_counter(tmp_count);
@@ -219,7 +219,7 @@ inline void counter_ostar2(NetCounters * counters) {
     if (A_ROW(i).size() == 1u)
       return 0.0;
     
-    return ((double) A_ROW(i).size() - 1.0);
+    return static_cast<double>( A_ROW(i).size() - 1.0);
   };
   
   counters->add_counter(tmp_count);
@@ -368,7 +368,7 @@ inline void counter_idegree15(NetCounters * counters) {
       return 1.0;
     
     return 
-      pow((double) A_COL(j).size(), 1.5) - pow((double) A_COL(j).size() - 1, 1.5)
+      pow(static_cast<double> (A_COL(j).size()), 1.5) - pow(static_cast<double> (A_COL(j).size() - 1), 1.5)
       ;
     
   };
@@ -388,7 +388,7 @@ inline void counter_odegree15(NetCounters * counters) {
       return 1.0;
     
     return 
-      pow((double) A_ROW(i).size(), 1.5) - pow((double) A_ROW(i).size() - 1, 1.5)
+      pow(static_cast<double>(A_ROW(i).size()), 1.5) - pow(static_cast<double>(A_ROW(i).size() - 1), 1.5)
       ;
     
   };
@@ -610,7 +610,7 @@ inline void counter_idegree(
       throw std::logic_error("-odegree- counter is only valid for directed graphs");
     
     if (NET_C_DATA_IDX(0u) == 0u)
-      return (double) Array->nrow();
+      return static_cast<double>(Array->nrow());
     
     return 0.0;
   };
@@ -653,7 +653,7 @@ inline void counter_odegree(
       throw std::logic_error("-odegree- counter is only valid for directed graphs");
     
     if (NET_C_DATA_IDX(0u) == 0u)
-      return (double) Array->nrow();
+      return static_cast<double>(Array->nrow());
     
     return 0.0;
   };
@@ -697,7 +697,7 @@ inline void counter_degree(
       throw std::logic_error("-degree- counter is only valid for undirected graphs");
     
     if (NET_C_DATA_IDX(0u) == 0u)
-      return (double) Array->nrow();
+      return static_cast<double>(Array->nrow());
     
     return 0.0;
   };

@@ -112,6 +112,7 @@ public:
 class APhyloModel {
 public:
 
+    std::mt19937                       rengine;
     PhyloModel                         model_const;
     PhyloModel                         model_full;
     unsigned int                       nfuns;
@@ -154,7 +155,8 @@ public:
 
     std::vector< double > get_probabilities() const;
 
-    std::vector< std::vector< double > > simulate(
+    void set_seed(const unsigned int & s);
+    std::vector< std::vector< bool > > simulate(
         const std::vector< double > & par
         );
 };

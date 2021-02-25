@@ -21,6 +21,11 @@ public:
   void operator-=(const Cell_Type & val);
   void operator*=(const Cell_Type & val);
   void operator/=(const Cell_Type & val);
+
+  operator Cell_Type() const;
+  // {
+  //   return Array->get_cell(row, col, true);
+  // };
   
 };
 

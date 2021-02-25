@@ -58,7 +58,7 @@ inline double likelihood_(
  */
 template<typename Array_Type>
 inline std::vector< double > keygen_default(const Array_Type & Array_) {
-  return {(double) Array_.N, (double) Array_.M};
+  return {static_cast<double>(Array_.N), static_cast<double>(Array_.M)};
 }
 
 
@@ -98,8 +98,24 @@ public:
    * @brief Random number generation
    */
   ///@{
-  std::mt19937 rengine;
-  void set_seed(unsigned int s) {rengine.seed(s);return;};
+  std::mt19937 * rengine = nullptr;
+  bool rengine_deleted   = true;
+  void set_rengine(std::mt19937 * rengine_, bool delete_ = false) {
+
+    rengine = rengine_;
+    rengine_deleted = !delete_;
+    
+  };
+  void set_seed(unsigned int s) {
+
+    if (rengine == nullptr) {
+      rengine = new std::mt19937;
+      rengine_deleted = false;
+    }
+
+    rengine->seed(s);
+
+  };
   ///@}
   
   
@@ -164,7 +180,10 @@ public:
   Model<Array_Type, Data_Counter_Type, Data_Rule_Type> & operator=(
     const Model<Array_Type, Data_Counter_Type, Data_Rule_Type> & Model_
     );
-  ~Model() {};
+  ~Model() {
+    if (!rengine_deleted)
+      delete rengine;
+  };
   
   void store_psets();
   void set_keygen(std::function<std::vector<double>(const Array_Type &)> keygen_);

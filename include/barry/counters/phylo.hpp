@@ -162,9 +162,9 @@ inline void counter_overall_loss(PhyloCounters * counters, bool duplication = tr
   PHYLO_COUNTER_LAMBDA(tmp_init) {
 
     if ((*data)[0u] == 1u & Array->data->duplication)
-      return (double) (Array->N * Array->M);
+      return static_cast<double>((Array->N * Array->M));
     else if ((*data)[0u] == 0u & !Array->data->duplication)
-      return (double) (Array->N * Array->M);
+      return static_cast<double>((Array->N * Array->M));
     else 
       return 0.0;
 

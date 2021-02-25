@@ -61,5 +61,7 @@ int main() {
     printf(      "LogLike        : %.8f\n", std::log(ans));
     std::cout << "Total time (ms): " << diff.count() << std::endl;
 
+    auto simres = dat.simulate(par);
+
     return 0;
 }

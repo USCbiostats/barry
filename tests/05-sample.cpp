@@ -23,7 +23,7 @@ TEST_CASE("Sampling networks (with Model)", "[sampling w model]") {
     std::vector<double> par = {-2, 2*0};
     m.set_seed(133);
 
-    unsigned int nsamp = 5e4;
+    unsigned int nsamp = 1e4;
     std::vector< netcounters::Network > nets;
     nets.reserve(nsamp);
     netcounters::Network total(4u, 4u);
@@ -33,8 +33,12 @@ TEST_CASE("Sampling networks (with Model)", "[sampling w model]") {
     }
 
     // Observing the average
-    // barry::BArray<double,bool> total(4u, 4u);
+    std::cout << "The average per cell is:" << std::endl;
     (total/=(double) nsamp).print();
-    
+
+    std::cout << "The value of cell (1, 0): " << (double) total(1,0) << std::endl;
+    REQUIRE(std::abs(
+        static_cast<double>(total(1,0)) - 0.1192029
+    ) < .1);
 
 }

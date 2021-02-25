@@ -177,7 +177,7 @@ inline bool vec_equal_approx(
     throw std::length_error("-a- and -b- should have the same length.");
   
   unsigned int i = 0;
-  while (((double) std::abs(a[i] - b[i])) < eps) {
+  while (static_cast<double>(std::abs(a[i] - b[i])) < eps) {
     if (++i == a.size())
       return true;
   }
