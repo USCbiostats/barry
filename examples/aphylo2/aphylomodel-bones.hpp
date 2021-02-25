@@ -156,7 +156,7 @@ public:
     std::vector< double > get_probabilities() const;
 
     void set_seed(const unsigned int & s);
-    std::vector< std::vector< bool > > simulate(
+    std::vector< std::vector< unsigned int > > simulate(
         const std::vector< double > & par
         );
 };

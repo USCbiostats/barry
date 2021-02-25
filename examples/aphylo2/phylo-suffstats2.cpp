@@ -4,6 +4,17 @@
 #include <random>
 #include "aphylomodel.hpp" 
 
+template <class T>
+inline void print(std::vector< T > & x) {
+  std::cout << "[ " ;
+  for (auto i = x.begin(); i != x.end(); ++i)
+    std::cout << *i << " ";
+
+  std::cout << "]\n";
+
+  return;
+}
+
 int main() {
 
     // Defining input data
@@ -62,6 +73,13 @@ int main() {
     std::cout << "Total time (ms): " << diff.count() << std::endl;
 
     auto simres = dat.simulate(par);
+    print(simres[0u]);
+    print(simres[1u]);
+    print(simres[2u]);
+    print(simres[3u]);
+    print(simres[4u]);
+    print(simres[5u]);
+    print(simres[6u]);
 
     return 0;
 }

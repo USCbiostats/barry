@@ -9,7 +9,16 @@ void APhyloModel::set_seed(const unsigned int & s) {
     rengine.seed(s);
 }
 
-std::vector< std::vector< bool > > APhyloModel::simulate(
+template<typename Ta, typename Tb>
+inline std::vector< Ta > vector_caster(const std::vector< Tb > & x) {
+    std::vector< Ta > ans;
+    ans.reserve(x.size());
+    for (auto i = x.begin(); i != x.end(); ++i)
+        ans.push_back(static_cast< Ta >(*i));
+    return ans;
+}
+
+std::vector< std::vector< unsigned int > > APhyloModel::simulate(
     const std::vector< double > & par
     ) {
 
@@ -23,7 +32,7 @@ std::vector< std::vector< bool > > APhyloModel::simulate(
     }
 
     // Making room 
-    std::vector< std::vector< bool > > res(nodes.size());
+    std::vector< std::vector< unsigned int > > res(nodes.size());
 
     // Inverse sequence
     std::vector< unsigned int > preorder(this->sequence);
@@ -47,14 +56,27 @@ std::vector< std::vector< bool > > APhyloModel::simulate(
     }
     
     // We now know the state of the root
-    res[nodes[preorder[0u]].id] = states[idx];
+    res[nodes[preorder[0u]].id] =
+        vector_caster< unsigned int, bool>(states[idx]);
 
     // Going in the opposite direction
     for (auto& i : preorder) {
 
+        if (nodes[i].is_leaf())
+            continue;
+
+        // Getting the state of the node      
+        unsigned int n = this->map_to_nodes[res[nodes[i].id]];
+
         // Given the state of the current node, sample the state of the
         // offspring, all based on the current state
-        auto tmp = model_full.sample(nodes[i].idx_full[idx], par0);
+        auto tmp = model_full.sample(nodes[i].idx_full[n], par0);
+
+        // Iterating through the offspring to assign the state
+        unsigned int m;
+        for (unsigned int j = 0u; j < nodes[i].offspring.size(); ++j) {
+            res[nodes[i].offspring[j]->id] = tmp.get_col_vec(j);
+        }
 
     }
 
