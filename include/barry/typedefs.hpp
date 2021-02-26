@@ -9,13 +9,12 @@
 #include <map>
 #include <random>
 
-#ifdef BARRAY_USE_UNORDERED_MAP
-template<typename Ta,typename Tb>
-using Map = std::unordered_map<Ta,Tb>;
-#else
-template<typename Ta,typename Tb>
-using Map = std::map<Ta,Tb>;
-#endif
+
+
+// Configuration ---------------------------------------------------------------
+#include "barry-configuration.hpp"
+
+// -----------------------------------------------------------------------------
 
 // Basic types
 typedef unsigned int uint;

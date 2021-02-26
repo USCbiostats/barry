@@ -21,9 +21,13 @@ inline double update_normalizing_constant(
     for (unsigned int j = 0u; j < params.size(); ++j)
       tmp += support[n].first[j] * params[j];
     
-    res += exp(tmp) * support[n].second;
+    res += exp(tmp BARRY_SAFE_EXP) * support[n].second;
   }
   
+  // This will only evaluate if the option BARRY_CHECK_FINITE
+  // is defined
+  BARRY_ISFINITE(res)
+
   return res;
   
 }
@@ -44,10 +48,9 @@ inline double likelihood_(
   for (unsigned int j = 0u; j < target_stats.size(); ++j)
     numerator += target_stats[j] * params[j];
   if (!log_)
-    numerator = exp(numerator);
-  
-  if (log_)
-    return numerator - log(normalizing_constant);
+    numerator = exp(numerator BARRY_SAFE_EXP);
+  else
+    return numerator BARRY_SAFE_EXP - log(normalizing_constant);
   
   return numerator/normalizing_constant;
   

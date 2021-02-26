@@ -10,7 +10,8 @@ APhyloModel::APhyloModel() : model_const(), model_full(), nodes() {
 APhyloModel::APhyloModel(
     std::vector< std::vector<unsigned int> > & annotations,
     std::vector< unsigned int > & geneid,
-    std::vector< unsigned int> & parent
+    std::vector< int > &          parent,
+    std::vector< bool > &         duplication
 ) : model_const(), model_full(), nodes() {
 
     // Check the lengths
@@ -19,7 +20,7 @@ APhyloModel::APhyloModel(
 
     nfuns = annotations.at(0u).size();
 
-    unsigned int n = annotations.size();
+    // unsigned int n = annotations.size();
     for (auto& iter : annotations) {
         if (iter.size() != nfuns)
             throw std::length_error("Not all the annotations have the same length");
@@ -30,50 +31,79 @@ APhyloModel::APhyloModel(
 
         // Temp vector with the annotations
         std::vector< unsigned int > funs(annotations.at(i));
-        // for (unsigned int j = 0u; j < nfuns; ++j)
-        //     funs.at(j) = annotations.at(j).at(i);
 
-        // Does the parent already exists?
-        auto iter = nodes.find(parent.at(i));
-
-        if (iter == nodes.end()) {
+        if ((parent.at(i) > 0) && (nodes.find(parent.at(i)) == nodes.end())) {
 
             // Adding parent
             auto key_par = nodes.insert({
                 parent.at(i),
-                Node({parent.at(i)})
+                Node(parent.at(i), true)
             });
 
             // Adding offspring
-            auto key_off = nodes.insert({
-                geneid.at(i),
-                Node({geneid.at(i), funs})
-                });
+            if (nodes.find(geneid.at(i)) == nodes.end()) {
 
-            // Adding the offspring to the parent
-            key_par.first->second.offspring.push_back(
-                &key_off.first->second
-            );
+                auto key_off = nodes.insert({
+                    geneid.at(i),
+                    Node(geneid.at(i), funs, duplication.at(i))
+                    });
 
-            // Adding the parent to the offspring
-            key_off.first->second.parent = &key_par.first->second;
+                // Adding the offspring to the parent
+                key_par.first->second.offspring.push_back(
+                    &key_off.first->second
+                );
+
+                // Adding the parent to the offspring
+                key_off.first->second.parent = &key_par.first->second;
+
+            } else {
+
+                // We just need to make sure that we update it!
+                nodes[geneid.at(i)].duplication = duplication.at(i);
+                nodes[geneid.at(i)].annotations = funs;
+                nodes[geneid.at(i)].parent = &nodes[parent.at(i)];
+
+                nodes[parent.at(i)].offspring.push_back(
+                    &nodes[geneid.at(i)]
+                );
+
+            }
 
         } else {
             // In this case, the parent exists, so we only need to assing the
             // offspring
             // Adding offspring
-            auto key_off = nodes.insert({
-                geneid.at(i),
-                Node({geneid.at(i), funs})
-                });
 
-            // Adding the offspring to the parent
-            iter->second.offspring.push_back(
-                &key_off.first->second
-            );
+            // Does the offspring exist?
+            if (nodes.find(geneid.at(i)) == nodes.end()) {
 
-            // Adding the parent to the offspring
-            key_off.first->second.parent = &iter->second;
+                auto key_off = nodes.insert({
+                    geneid.at(i),
+                    Node(geneid.at(i), funs, duplication.at(i))
+                    });
+
+                // Adding the offspring to the parent
+                nodes[parent.at(i)].offspring.push_back(
+                    &key_off.first->second
+                );
+
+                // Adding the parent to the offspring
+                key_off.first->second.parent = &nodes[parent.at(i)];
+
+            } else {
+
+                // We just need to make sure that we update it!
+                nodes[geneid.at(i)].duplication = duplication.at(i);
+                nodes[geneid.at(i)].annotations = funs;
+
+                if (parent.at(i) > 0) {
+                    nodes[geneid.at(i)].parent = &nodes[parent.at(i)];
+                    nodes[parent.at(i)].offspring.push_back(
+                        &nodes[geneid.at(i)]
+                    );
+                }
+
+            }
         }
 
     }
@@ -257,6 +287,6 @@ std::vector< double > APhyloModel::get_probabilities() const {
 
     return res;
     
-};
+}
 
 #endif

@@ -228,6 +228,21 @@ inline BArray<Cell_Type,Data_Type>::~BArray() {
 }
 
 template<typename Cell_Type, typename Data_Type>
+inline void BArray<Cell_Type,Data_Type>::set_data(
+  Data_Type * data_, bool delete_data_
+) {  
+
+  if ((data != nullptr) && delete_data)
+    delete data;
+  
+  data        = data_;
+  delete_data = delete_data_;
+  
+  return;
+  
+}
+
+template<typename Cell_Type, typename Data_Type>
 inline void BArray< Cell_Type,Data_Type >::out_of_range(uint i, uint j) const {
   if (i >= N)
     throw std::range_error("The row is out of range.");
@@ -246,7 +261,6 @@ inline Cell_Type BArray< Cell_Type,Data_Type >::get_cell(
   if (check_bounds)
     out_of_range(i,j);
   
-
   if (ROW(i).size() == 0u)
     return (Cell_Type) 0.0;
   

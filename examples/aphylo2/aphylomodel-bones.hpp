@@ -77,30 +77,31 @@ inline std::vector< double > keygen_full(
  */
 class Node {
 public:
-    unsigned int id;
+    unsigned int                 id;
     phylocounters::PhyloArray array;
+    std::vector< unsigned int >              annotations;         ///< Observed annotations (only defined for APhyloModel)
+    bool                                     duplication;
 
-    std::vector< unsigned int > annotations;         ///< Observed annotations (only defined for APhyloModel)
-    std::vector< phylocounters::PhyloArray >   arrays    = {};      ///< Arrays given all possible states
-    Node *                      parent    = nullptr; ///< Parent node
-    std::vector< Node* >        offspring = {};      ///< Offspring nodes
-    std::vector< unsigned int > idx_cons  = {};      ///< Id of the constrained support.
-    std::vector< unsigned int > idx_full  = {};
-    bool                        visited   = false;
+    std::vector< phylocounters::PhyloArray > arrays    = {};      ///< Arrays given all possible states
+    Node *                                   parent    = nullptr; ///< Parent node
+    std::vector< Node* >                     offspring = {};      ///< Offspring nodes
+    std::vector< unsigned int >              idx_cons  = {};      ///< Id of the constrained support.
+    std::vector< unsigned int >              idx_full  = {};
+    bool                                     visited   = false;
 
     std::vector< double > probabilities; ///< The probability of observing each state
 
     Node() {};
-    Node(unsigned int id_) : id(id_) {};
-    Node(unsigned int id_, std::vector< unsigned int > annotations_) :
-        id(id_), annotations(annotations_) {};
+    Node(unsigned int id_, bool duplication_) : id(id_), duplication(duplication_) {};
+    Node(unsigned int id_, std::vector< unsigned int > annotations_, bool duplication_) :
+        id(id_), annotations(annotations_), duplication(duplication_) {};
     ~Node() {};
 
     int get_parent() const {
         if (parent == nullptr)
             return -1;
         else
-            return (int) parent->id;
+            return static_cast<int>(parent->id);
     };
 
     bool is_leaf() const {
@@ -145,8 +146,9 @@ public:
      */
     APhyloModel(
         std::vector< std::vector<unsigned int> > & annotations,
-        std::vector< unsigned int > & geneid,
-        std::vector< unsigned int> & parent
+        std::vector< unsigned int > &              geneid,
+        std::vector< int> &                        parent,
+        std::vector< bool > &                      duplication
         );
 
     ~APhyloModel() {};

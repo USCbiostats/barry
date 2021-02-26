@@ -93,9 +93,9 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
 inline void counter_overall_gains(PhyloCounters * counters, bool duplication = true) {
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
-    if ((*data)[0u] == 1u & Array->data->duplication)
+    if ((data->at(0u) == 1u) & Array->data->duplication)
       return 1.0;
-    else if ((*data)[0u] == 0u & !Array->data->duplication) {
+    else if ((data->at(0u) == 0u) & !Array->data->duplication) {
       return 1.0;
     }
 
@@ -121,9 +121,9 @@ inline void counter_gains(PhyloCounters * counters, std::vector<uint> nfun, bool
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
 
-    if (Array->data->duplication & data->at(1u) == 0u)
+    if (Array->data->duplication & (data->at(1u) == 0u))
       return 0.0;
-    else if (!Array->data->duplication & data->at(1u) == 1u)
+    else if (!Array->data->duplication & (data->at(1u) == 1u))
       return 0.0;
     
     return (!Array->data->states[i]) && (i == data->at(0u)) ? 1.0 : 0.0;
@@ -150,9 +150,9 @@ inline void counter_overall_loss(PhyloCounters * counters, bool duplication = tr
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     
-    if ((*data)[0u] == 1u & Array->data->duplication)
+    if ((data->at(0u) == 1u) & Array->data->duplication)
       return -1.0;
-    else if ((*data)[0u] == 0u & !Array->data->duplication) {
+    else if ((data->at(0u) == 0u) & !Array->data->duplication) {
       return -1.0;
     } else {
       return 0.0;
@@ -161,9 +161,9 @@ inline void counter_overall_loss(PhyloCounters * counters, bool duplication = tr
   
   PHYLO_COUNTER_LAMBDA(tmp_init) {
 
-    if ((*data)[0u] == 1u & Array->data->duplication)
+    if ((data->at(0u) == 1u) & Array->data->duplication)
       return static_cast<double>((Array->N * Array->M));
-    else if ((*data)[0u] == 0u & !Array->data->duplication)
+    else if ((data->at(0u) == 0u) & !Array->data->duplication)
       return static_cast<double>((Array->N * Array->M));
     else 
       return 0.0;
@@ -217,9 +217,9 @@ inline void counter_maxfuns(
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
 
-    if (Array->data->duplication & data->at(2u) == 0u)
+    if (Array->data->duplication & (data->at(2u) == 0u))
       return 0.0;
-    else if (!Array->data->duplication & data->at(2u) == 1u)
+    else if (!Array->data->duplication & (data->at(2u) == 1u))
       return 0.0;
     
     // Does the focal gene has nfun in [lb,ub]?
@@ -261,9 +261,9 @@ inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun, bool 
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
 
-    if (data->at(0u) == 1u & !Array->data->duplication)
+    if ((data->at(0u) == 1u) & !Array->data->duplication)
       return 0.0;
-    else if (data->at(0u) == 0u & Array->data->duplication)
+    else if ((data->at(0u) == 0u) & Array->data->duplication)
       return 0.0;
     else
       return (Array->data->states[i]) && (i == data->at(0u)) ? -1.0 : 0.0;
@@ -272,9 +272,9 @@ inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun, bool 
   
   PHYLO_COUNTER_LAMBDA(tmp_init) {
 
-    if (data->at(0u) == 1u & !Array->data->duplication)
+    if ((data->at(0u) == 1u) & !Array->data->duplication)
       return 0.0;
-    else if (data->at(0u) == 0u & Array->data->duplication)
+    else if ((data->at(0u) == 0u) & Array->data->duplication)
       return 0.0;
     else
       return Array->data->states[data->at(0u)]? Array->M : 0.0;
@@ -304,9 +304,9 @@ inline void counter_subfun(PhyloCounters * counters, uint nfunA, uint nfunB, boo
   PHYLO_COUNTER_LAMBDA(tmp_count) {
 
     // Is this node duplication?
-    if (data->at(2u) == 1u & !Array->data->duplication)
+    if ((data->at(2u) == 1u) & !Array->data->duplication)
       return 0.0;
-    else if (data->at(2u) == 0u & Array->data->duplication)  
+    else if ((data->at(2u) == 0u) & Array->data->duplication)  
       return 0.0;
 
     // Are we looking at either of the relevant functions?
@@ -372,9 +372,9 @@ inline void counter_cogain(PhyloCounters * counters, uint nfunA, uint nfunB, boo
   PHYLO_COUNTER_LAMBDA(tmp_count) {
     
         // Is this node duplication?
-    if (data->at(2u) == 1u & !Array->data->duplication)
+    if ((data->at(2u) == 1u) & !Array->data->duplication)
       return 0.0;
-    else if (data->at(2u) == 0u & Array->data->duplication)  
+    else if ((data->at(2u) == 0u) & Array->data->duplication)  
       return 0.0;
 
     // Is the function in scope relevant?
@@ -382,9 +382,9 @@ inline void counter_cogain(PhyloCounters * counters, uint nfunA, uint nfunB, boo
       return 0.0;
     
     // None should have it
-    if (!Array->data->states[(*data)[0u]] && !Array->data->states[(*data)[1u]]) {
+    if (!Array->data->states[data->at(0u)] && !Array->data->states[data->at(1u)]) {
 
-      uint other = (i == (*data)[0u])? (*data)[1u] : (*data)[0u];
+      uint other = (i == data->at(0u))? data->at(1u) : data->at(0u);
 
       if (Array->get_cell(other, j) == 1u) {
 
@@ -510,24 +510,24 @@ inline void counter_neofun(PhyloCounters * counters, uint nfunA, uint nfunB, boo
   PHYLO_COUNTER_LAMBDA(tmp_count) {
 
     // Is this node duplication?
-    if (data->at(2u) == 1u & !Array->data->duplication)
+    if ((data->at(2u) == 1u) & !Array->data->duplication)
       return 0.0;
-    else if (data->at(2u) == 0u & Array->data->duplication)  
+    else if ((data->at(2u) == 0u) & Array->data->duplication)  
       return 0.0;
 
     // Is the function in scope relevant?
-    if ((i != (*data)[0u]) && (i != (*data)[1u]))
+    if ((i != data->at(0u)) && (i != data->at(1u)))
       return 0.0;
     
     // Checking if the parent has both functions
-    if (!Array->data->states[(*data)[0u]] && !Array->data->states[(*data)[1u]]) {
+    if (!Array->data->states[data->at(0u)] && !Array->data->states[data->at(1u)]) {
       return 0.0;
-    } else if (Array->data->states[(*data)[0u]] && Array->data->states[(*data)[1u]]) {
+    } else if (Array->data->states[data->at(0u)] && Array->data->states[data->at(1u)]) {
       return 0.0;
     }
     
     // Figuring out which is the first (reference) function
-    uint other = (i == (*data)[0u])? (*data)[1u] : (*data)[0u];
+    uint other = (i == data->at(0u))? data->at(1u) : data->at(0u);
     double res = 0.0;
     
     if (Array->is_empty(other, j, false)) {

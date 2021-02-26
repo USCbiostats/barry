@@ -88,16 +88,7 @@ public:
   // since those are independent.
   // BArray(BArray & A);
   
-  void set_data(Data_Type * data_, bool delete_data_ = false) {
-    
-    if ((data != nullptr) && delete_data)
-      delete data;
-    
-    data        = data_;
-    delete_data = delete_data_;
-    
-    return;
-  }
+  void set_data(Data_Type * data_, bool delete_data_ = false);
   
   // Function to access the elements
   // bool check_cell
@@ -187,7 +178,7 @@ public:
   void print() const;
 
   /**
-   * @name Operators
+   * @name Arithmetic operators
    * 
    */
   ///@{

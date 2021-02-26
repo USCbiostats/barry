@@ -73,7 +73,6 @@ std::vector< std::vector< unsigned int > > APhyloModel::simulate(
         auto tmp = model_full.sample(nodes[i].idx_full[n], par0);
 
         // Iterating through the offspring to assign the state
-        unsigned int m;
         for (unsigned int j = 0u; j < nodes[i].offspring.size(); ++j) {
             res[nodes[i].offspring[j]->id] = tmp.get_col_vec(j, false);
         }
