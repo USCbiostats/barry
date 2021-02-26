@@ -17,11 +17,11 @@ APhyloModel::APhyloModel(
     if (annotations.size() == 0u)
         throw std::logic_error("Annotations is empty");
 
-    nfuns = annotations.size();
+    nfuns = annotations.at(0u).size();
 
-    unsigned int n = annotations.at(0u).size();
+    unsigned int n = annotations.size();
     for (auto& iter : annotations) {
-        if (iter.size() != n)
+        if (iter.size() != nfuns)
             throw std::length_error("Not all the annotations have the same length");
     }
 
@@ -29,9 +29,9 @@ APhyloModel::APhyloModel(
     for (unsigned int i = 0u; i < geneid.size(); ++i) {
 
         // Temp vector with the annotations
-        std::vector< unsigned int > funs(nfuns);
-        for (unsigned int j = 0u; j < nfuns; ++j)
-            funs.at(j) = annotations.at(j).at(i);
+        std::vector< unsigned int > funs(annotations.at(i));
+        // for (unsigned int j = 0u; j < nfuns; ++j)
+        //     funs.at(j) = annotations.at(j).at(i);
 
         // Does the parent already exists?
         auto iter = nodes.find(parent.at(i));
@@ -90,7 +90,9 @@ void APhyloModel::init() {
     model_const.set_keygen(keygen_const);
     model_full.set_keygen(keygen_full);
 
-    model_const.add_rule(rule_blocked<PhyloArray,PhyloRuleData>);
+    model_const.add_rule(
+            rule_blocked<phylocounters::PhyloArray,phylocounters::PhyloRuleData>
+            );
 
     model_const.set_counters(&counters);
     model_full.set_counters(&counters);
@@ -101,7 +103,7 @@ void APhyloModel::init() {
     model_full.set_rengine(&this->rengine, false);
 
     // All combinations of the function
-    PhyloPowerSet pset(nfuns, 1u);
+    phylocounters::PhyloPowerSet pset(nfuns, 1u);
     pset.calc();
 
     states.reserve(pset.data.size());
@@ -126,7 +128,7 @@ void APhyloModel::init() {
         if (!iter.second.is_leaf()) {
 
             // Creating the phyloarray, nfuns x noffspring
-            iter.second.array = PhyloArray(nfuns, iter.second.offspring.size());
+            iter.second.array = phylocounters::PhyloArray(nfuns, iter.second.offspring.size());
             iter.second.probabilities.resize(pset.size(), 0.0);
 
             // Adding the data, first through functions
@@ -162,9 +164,10 @@ void APhyloModel::init() {
             std::vector< double > blen(iter.second.offspring.size(), 1.0);
             for (auto& s : states) {
 
-                iter.second.arrays.push_back(PhyloArray(iter.second.array, true));
+                iter.second.arrays.push_back(
+                    phylocounters::PhyloArray(iter.second.array, true));
                 iter.second.arrays.at(i).set_data(
-                    new NodeData(blen, s),
+                    new phylocounters::NodeData(blen, s),
                     true
                 );
 

@@ -50,7 +50,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                 double totprob = 0.0;
 
                 // Retrieving the sets of arrays
-                const std::vector< PhyloArray > * psets = model_full.get_pset(
+                const std::vector< phylocounters::PhyloArray > * psets = model_full.get_pset(
                     nodes[i].idx_full[s]
                 );
 

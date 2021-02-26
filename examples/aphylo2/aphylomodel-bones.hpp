@@ -10,7 +10,7 @@ RULE_FUNCTION(rule_blocked) {
     return true;
 }
 
-using namespace phylocounters;
+// using namespace phylocounters;
 
 
 template<typename T1, typename T2>
@@ -28,7 +28,9 @@ std::vector< T1 > caster(const std::vector< T2 > & vec) {
 }
 
 // Hasher
-inline std::vector< double > keygen_const(const PhyloArray & array) {
+inline std::vector< double > keygen_const(
+    const phylocounters::PhyloArray & array
+    ) {
 
     // Baseline data: nrows and columns
     std::vector< double > dat = {
@@ -49,7 +51,9 @@ inline std::vector< double > keygen_const(const PhyloArray & array) {
 }
 
 // Hasher
-inline std::vector< double > keygen_full(const PhyloArray & array) {
+inline std::vector< double > keygen_full(
+    const phylocounters::PhyloArray & array
+    ) {
 
     // Baseline data: nrows and columns
     std::vector< double > dat = {
@@ -74,10 +78,10 @@ inline std::vector< double > keygen_full(const PhyloArray & array) {
 class Node {
 public:
     unsigned int id;
-    PhyloArray array;
+    phylocounters::PhyloArray array;
 
     std::vector< unsigned int > annotations;         ///< Observed annotations (only defined for APhyloModel)
-    std::vector< PhyloArray >   arrays    = {};      ///< Arrays given all possible states
+    std::vector< phylocounters::PhyloArray >   arrays    = {};      ///< Arrays given all possible states
     Node *                      parent    = nullptr; ///< Parent node
     std::vector< Node* >        offspring = {};      ///< Offspring nodes
     std::vector< unsigned int > idx_cons  = {};      ///< Id of the constrained support.
@@ -113,15 +117,15 @@ class APhyloModel {
 public:
 
     std::mt19937                       rengine;
-    PhyloModel                         model_const;
-    PhyloModel                         model_full;
+    phylocounters::PhyloModel          model_const;
+    phylocounters::PhyloModel          model_full;
     unsigned int                       nfuns;
     barry::Map< unsigned int, Node >   nodes;
     std::vector< unsigned int >        sequence;
     std::vector< bool >                visited;
     std::vector< std::vector< bool > > states;
     barry::MapVec_type< unsigned int > map_to_nodes;
-    PhyloCounters                      counters;
+    phylocounters::PhyloCounters       counters;
 
     APhyloModel();
 

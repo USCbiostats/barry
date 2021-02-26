@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <cmath>
 #include <map>
+#include <algorithm>
 
 #ifndef BARRY_HPP
 #define BARRY_HPP 

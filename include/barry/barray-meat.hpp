@@ -954,15 +954,16 @@ inline void BArray<Cell_Type, Data_Type>::resize(
       zero_col(j, false);
   
   // Resizing will invalidate pointers and values out of range
-  if (N_ != N) {
+  if (M_ != M) {
     el_ji.resize(M_);
-    N = N_;
-  }
-  
-  if (N_ != M) {
-    el_ij.resize(N_);
     M = M_;
   }
+  
+  if (N_ != N) {
+    el_ij.resize(N_);
+    N = N_;
+  }
+   
   
   return;
 
