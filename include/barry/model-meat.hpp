@@ -295,7 +295,7 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_array(
     normalizing_constants.push_back(0.0);
     first_calc_done.push_back(false);
     
-    return keys2support.size() - 1u;
+    return arrays2support.size() - 1u;
     
   }
   
@@ -305,7 +305,7 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_array(
   // Adding the corresponding map
   arrays2support.push_back(locator->second);
   
-  return locator->second;
+  return arrays2support.size() - 1u;
 
 }
 

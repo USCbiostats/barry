@@ -320,7 +320,7 @@ BArray< Cell_Type,Data_Type >::get_col_vec(uint i, bool check_bounds) const {
 
   // Checking boundaries  
   if (check_bounds) 
-    out_of_range(i, 0u);
+    out_of_range(0u, i);
 
   std::vector< Cell_Type > ans(nrow(), (Cell_Type) false);
   for (auto iter = COL(i).begin(); iter != COL(i).end(); ++iter) 
@@ -337,7 +337,7 @@ BArray< Cell_Type,Data_Type >::get_col_vec(
 
   // Checking boundaries  
   if (check_bounds) 
-    out_of_range(i, 0u);
+    out_of_range(0u, i);
 
   for (auto iter = COL(i).begin(); iter != COL(i).end(); ++iter) 
     col->at(iter->first) = iter->second->value;//this->get_cell(iter->first, i, false);

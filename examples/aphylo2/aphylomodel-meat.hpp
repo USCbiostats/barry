@@ -179,6 +179,8 @@ void APhyloModel::init() {
                     model_full.add_array(iter.second.arrays.at(i++))
                     );
 
+                // model_full.print_stats(0u);
+
             }
         }
     }

@@ -75,7 +75,7 @@ std::vector< std::vector< unsigned int > > APhyloModel::simulate(
         // Iterating through the offspring to assign the state
         unsigned int m;
         for (unsigned int j = 0u; j < nodes[i].offspring.size(); ++j) {
-            res[nodes[i].offspring[j]->id] = tmp.get_col_vec(j);
+            res[nodes[i].offspring[j]->id] = tmp.get_col_vec(j, false);
         }
 
     }
