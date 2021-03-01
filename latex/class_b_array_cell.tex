@@ -2,7 +2,7 @@
 \label{class_b_array_cell}\index{B\+Array\+Cell$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$@{B\+Array\+Cell$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}}
 
 
-{\ttfamily \#include $<$barray-\/bones.\+hpp$>$}
+{\ttfamily \#include $<$barraycell-\/bones.\+hpp$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -11,7 +11,17 @@
 \item 
 \hyperlink{class_b_array_cell_a6fbc56424caade490a72685cc35ad0e9}{$\sim$\+B\+Array\+Cell} ()
 \item 
-void \hyperlink{class_b_array_cell_a726de4e638ec37b1147d737809765953}{operator=} (bool add)
+void \hyperlink{class_b_array_cell_ad20091ef5961aed4241bd8d0b6d5dd0d}{operator=} (const Cell\+\_\+\+Type \&val)
+\item 
+void \hyperlink{class_b_array_cell_a2e5c7efcf17bf4acaf17900fb781827b}{operator+=} (const Cell\+\_\+\+Type \&val)
+\item 
+void \hyperlink{class_b_array_cell_a2f2d39b5e9dfe7d0ef62a42445c85439}{operator-\/=} (const Cell\+\_\+\+Type \&val)
+\item 
+void \hyperlink{class_b_array_cell_abc193e5d3dd8d04e5d4bb8d808fde35d}{operator$\ast$=} (const Cell\+\_\+\+Type \&val)
+\item 
+void \hyperlink{class_b_array_cell_aa5debb920d8ffc246e7d463ac8e26152}{operator/=} (const Cell\+\_\+\+Type \&val)
+\item 
+\hyperlink{class_b_array_cell_a698f664c230f91bf03a97966378e339b}{operator Cell\+\_\+\+Type} () const
 \end{DoxyCompactItemize}
 
 
@@ -21,7 +31,7 @@ class B\+Array\+Cell$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
 
 
 
-Definition at line 11 of file barray-\/bones.\+hpp.
+Definition at line 7 of file barraycell-\/bones.\+hpp.
 
 
 
@@ -35,7 +45,7 @@ Definition at line 11 of file barray-\/bones.\+hpp.
 
 
 
-Definition at line 20 of file barray-\/bones.\+hpp.
+Definition at line 16 of file barraycell-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_cell_a6fbc56424caade490a72685cc35ad0e9}\label{class_b_array_cell_a6fbc56424caade490a72685cc35ad0e9}} 
 \index{B\+Array\+Cell@{B\+Array\+Cell}!````~B\+Array\+Cell@{$\sim$\+B\+Array\+Cell}}
@@ -46,26 +56,80 @@ Definition at line 20 of file barray-\/bones.\+hpp.
 
 
 
-Definition at line 22 of file barray-\/bones.\+hpp.
+Definition at line 18 of file barraycell-\/bones.\+hpp.
 
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_b_array_cell_a726de4e638ec37b1147d737809765953}\label{class_b_array_cell_a726de4e638ec37b1147d737809765953}} 
+\mbox{\Hypertarget{class_b_array_cell_a698f664c230f91bf03a97966378e339b}\label{class_b_array_cell_a698f664c230f91bf03a97966378e339b}} 
+\index{B\+Array\+Cell@{B\+Array\+Cell}!operator Cell\+\_\+\+Type@{operator Cell\+\_\+\+Type}}
+\index{operator Cell\+\_\+\+Type@{operator Cell\+\_\+\+Type}!B\+Array\+Cell@{B\+Array\+Cell}}
+\subsubsection{\texorpdfstring{operator Cell\+\_\+\+Type()}{operator Cell\_Type()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator Cell\+\_\+\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 58 of file barraycell-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_cell_abc193e5d3dd8d04e5d4bb8d808fde35d}\label{class_b_array_cell_abc193e5d3dd8d04e5d4bb8d808fde35d}} 
+\index{B\+Array\+Cell@{B\+Array\+Cell}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!B\+Array\+Cell@{B\+Array\+Cell}}
+\subsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 40 of file barraycell-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_cell_a2e5c7efcf17bf4acaf17900fb781827b}\label{class_b_array_cell_a2e5c7efcf17bf4acaf17900fb781827b}} 
+\index{B\+Array\+Cell@{B\+Array\+Cell}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!B\+Array\+Cell@{B\+Array\+Cell}}
+\subsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 18 of file barraycell-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_cell_a2f2d39b5e9dfe7d0ef62a42445c85439}\label{class_b_array_cell_a2f2d39b5e9dfe7d0ef62a42445c85439}} 
+\index{B\+Array\+Cell@{B\+Array\+Cell}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!B\+Array\+Cell@{B\+Array\+Cell}}
+\subsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 29 of file barraycell-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_cell_aa5debb920d8ffc246e7d463ac8e26152}\label{class_b_array_cell_aa5debb920d8ffc246e7d463ac8e26152}} 
+\index{B\+Array\+Cell@{B\+Array\+Cell}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!B\+Array\+Cell@{B\+Array\+Cell}}
+\subsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator/= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 49 of file barraycell-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_cell_ad20091ef5961aed4241bd8d0b6d5dd0d}\label{class_b_array_cell_ad20091ef5961aed4241bd8d0b6d5dd0d}} 
 \index{B\+Array\+Cell@{B\+Array\+Cell}!operator=@{operator=}}
 \index{operator=@{operator=}!B\+Array\+Cell@{B\+Array\+Cell}}
 \subsubsection{\texorpdfstring{operator=()}{operator=()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{bool}]{add }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 8 of file barray-\/meat.\+hpp.
+Definition at line 7 of file barraycell-\/meat.\+hpp.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/barry/\hyperlink{barray-bones_8hpp}{barray-\/bones.\+hpp}\item 
-include/barry/\hyperlink{barray-meat_8hpp}{barray-\/meat.\+hpp}\item 
-include/barry/\hyperlink{barry_8hpp}{barry.\+hpp}\end{DoxyCompactItemize}
+include/barry/\hyperlink{barraycell-bones_8hpp}{barraycell-\/bones.\+hpp}\item 
+include/barry/\hyperlink{barraycell-meat_8hpp}{barraycell-\/meat.\+hpp}\end{DoxyCompactItemize}

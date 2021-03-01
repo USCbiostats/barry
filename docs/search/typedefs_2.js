@@ -7,5 +7,5 @@ var searchData=
   ['netrules',['NetRules',['../namespacebarry_1_1counters_1_1network.html#adbdb20b3ce883777da2364984ea10c56',1,'barry::counters::network::NetRules()'],['../network_8hpp.html#a6002c13f2cfcd506080a917d6464ab53',1,'NetRules():&#160;network.hpp']]],
   ['netstatscounter',['NetStatsCounter',['../namespacebarry_1_1counters_1_1network.html#ae26c399917113fe280b3f2859376b8b9',1,'barry::counters::network::NetStatsCounter()'],['../network_8hpp.html#a1c44fa47dcf1cca1ba35eea6e70950a3',1,'NetStatsCounter():&#160;network.hpp']]],
   ['netsupport',['NetSupport',['../namespacebarry_1_1counters_1_1network.html#a4d30be7f465efd7d218f0264f8386b32',1,'barry::counters::network::NetSupport()'],['../network_8hpp.html#a05f5e7afe62d1c07b46876b4fbec0f4c',1,'NetSupport():&#160;network.hpp']]],
-  ['network',['Network',['../namespacebarry_1_1counters_1_1network.html#a4cb88d4572ded3b447ea269c9cd0b2c0',1,'barry::counters::network::Network()'],['../network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370',1,'Network():&#160;network.hpp']]]
+  ['network',['Network',['../namespacebarry_1_1counters_1_1network.html#a440182967e1ba465e90a4b1d07e3a366',1,'barry::counters::network::Network()'],['../network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05',1,'Network():&#160;network.hpp']]]
 ];

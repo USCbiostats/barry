@@ -1,10 +1,8 @@
-#include "../../include/barry/barry.hpp"
-
 #ifndef APHYLOMODEL_BONES_HPP
 #define APHYLOMODEL_BONES_HPP 1
 
 // The same need to be locked
-RULE_FUNCTION(rule_blocked) {
+RULE_FUNCTION(rule_empty_free) {
     if (Array->get_cell(i, j) == 9u)
         return false;
     return true;
