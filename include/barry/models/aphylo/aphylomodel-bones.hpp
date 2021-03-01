@@ -121,7 +121,7 @@ public:
     std::mt19937                       rengine;
     phylocounters::PhyloModel          model_const;
     phylocounters::PhyloModel          model_full;
-    unsigned int                       nfuns;
+    unsigned int                       nfunctions;
     barry::Map< unsigned int, Node >   nodes;
     std::vector< unsigned int >        sequence;
     std::vector< bool >                visited;
@@ -173,6 +173,7 @@ public:
      * 
      */
     ///@{
+    unsigned int nfuns() const;
     unsigned int nnodes() const;
     unsigned int nleafs() const;
     unsigned int nterms() const;

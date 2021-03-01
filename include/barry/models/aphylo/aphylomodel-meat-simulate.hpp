@@ -25,8 +25,8 @@ std::vector< std::vector< unsigned int > > APhyloModel::simulate(
     INITIALIZED()
 
     // Splitting the probabilities
-    std::vector< double > par0(par.begin(), par.end() - nfuns);
-    std::vector< double > par_root(par.end() - nfuns, par.end());
+    std::vector< double > par0(par.begin(), par.end() - nfunctions);
+    std::vector< double > par_root(par.end() - nfunctions, par.end());
 
     // Scaling root
     for (auto& p : par_root) {
@@ -43,7 +43,7 @@ std::vector< std::vector< unsigned int > > APhyloModel::simulate(
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(states.size(), 1.0);
     for (unsigned int i = 0u; i < rootp.size(); ++i) {
-        for (unsigned int j = 0u; j < nfuns; ++j) {
+        for (unsigned int j = 0u; j < nfunctions; ++j) {
             rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);
         }
     }

@@ -525,7 +525,7 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size_unique() co
 template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::nterms() const {
 
-    return this->counters.size;
+    return this->counters.size();
 
 }
   

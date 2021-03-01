@@ -8,15 +8,15 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
     INITIALIZED()
 
     // Splitting the probabilities
-    std::vector< double > par0(par.begin(), par.end() - nfuns);
-    std::vector< double > par_root(par.end() - nfuns, par.end());
+    std::vector< double > par0(par.begin(), par.end() - nfunctions);
+    std::vector< double > par_root(par.end() - nfunctions, par.end());
 
     // Scaling root
     for (auto& p : par_root) {
         p = std::exp(p)/(std::exp(p) + 1);
     }
 
-    std::vector< unsigned int > tmpstate(nfuns);
+    std::vector< unsigned int > tmpstate(nfunctions);
 
     double ll = 0.0;
 
@@ -99,7 +99,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
             if (nodes[i].parent == nullptr) {
                 for (unsigned int s = 0u; s < states.size(); ++s) {
                     double tmpll = 1.0;
-                    for (auto k = 0u; k < nfuns; ++k) {
+                    for (auto k = 0u; k < nfunctions; ++k) {
                         tmpll *= states[s][k] ? par_root[k] : (1 - par_root[k]);
                     }
 
