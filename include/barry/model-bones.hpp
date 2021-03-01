@@ -311,11 +311,15 @@ public:
    * 
    * This will return the size of `stats`.
    * 
-   * @return unsigned int 
+   * @return `size()` returns the number of arrays in the model.
+   * @return `size_unique()` returns the number of unique arrays (according to
+   * the hasher) in the model.
+   * @return `nterms()` returns the number of terms in the model.
    */
   ///@{
   unsigned int size() const;
   unsigned int size_unique() const;
+  unsigned int nterms() const;
   ///@}
 };
 

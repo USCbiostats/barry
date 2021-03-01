@@ -113,13 +113,19 @@ const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \hyperlink{class_m
 This will return the size of {\ttfamily stats}.
 
 \begin{DoxyReturn}{Returns}
-unsigned int 
+{\ttfamily \hyperlink{class_model_ab3f157dbb542a48fe5bf412ff7d467fd}{size()}} returns the number of arrays in the model. 
+
+{\ttfamily \hyperlink{class_model_a4b5edbe891b6da2319ea3fa6f1aba11d}{size\+\_\+unique()}} returns the number of unique arrays (according to the hasher) in the model. 
+
+{\ttfamily \hyperlink{class_model_ad2a8b05a7d53289a8fc2e315739acdf9}{nterms()}} returns the number of terms in the model. 
 \end{DoxyReturn}
 }\begin{DoxyCompactItemize}
 \item 
 unsigned int \hyperlink{class_model_ab3f157dbb542a48fe5bf412ff7d467fd}{size} () const
 \item 
 unsigned int \hyperlink{class_model_a4b5edbe891b6da2319ea3fa6f1aba11d}{size\+\_\+unique} () const
+\item 
+unsigned int \hyperlink{class_model_ad2a8b05a7d53289a8fc2e315739acdf9}{nterms} () const
 \end{DoxyCompactItemize}
 \end{Indent}
 \subsection*{Public Attributes}
@@ -426,6 +432,17 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\
 
 Definition at line 400 of file model-\/meat.\+hpp.
 
+\mbox{\Hypertarget{class_model_ad2a8b05a7d53289a8fc2e315739acdf9}\label{class_model_ad2a8b05a7d53289a8fc2e315739acdf9}} 
+\index{Model@{Model}!nterms@{nterms}}
+\index{nterms@{nterms}!Model@{Model}}
+\subsubsection{\texorpdfstring{nterms()}{nterms()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::nterms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 526 of file model-\/meat.\+hpp.
+
 \mbox{\Hypertarget{class_model_a4944b5918dc4a9a59f72587da1e6bb3a}\label{class_model_a4944b5918dc4a9a59f72587da1e6bb3a}} 
 \index{Model@{Model}!operator=@{operator=}}
 \index{operator=@{operator=}!Model@{Model}}
@@ -464,7 +481,7 @@ Array\+\_\+\+Type \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 526 of file model-\/meat.\+hpp.
+Definition at line 533 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_aab2ba8c90b888cfa2143bccf42fcb89f}\label{class_model_aab2ba8c90b888cfa2143bccf42fcb89f}} 
 \index{Model@{Model}!set\+\_\+counters@{set\+\_\+counters}}

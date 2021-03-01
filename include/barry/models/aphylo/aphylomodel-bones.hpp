@@ -1,6 +1,9 @@
 #ifndef APHYLOMODEL_BONES_HPP
 #define APHYLOMODEL_BONES_HPP 1
 
+#define INITIALIZED() if (!this->initialized) \
+    throw std::logic_error("The model has not been initialized yet.");
+
 // The same need to be locked
 RULE_FUNCTION(rule_empty_free) {
     if (Array->get_cell(i, j) == 9u)
@@ -125,6 +128,7 @@ public:
     std::vector< std::vector< bool > > states;
     barry::MapVec_type< unsigned int > map_to_nodes;
     phylocounters::PhyloCounters       counters;
+    bool                               initialized = false;
 
     APhyloModel();
 
@@ -163,6 +167,17 @@ public:
     std::vector< std::vector< unsigned int > > simulate(
         const std::vector< double > & par
         );
+
+    /**
+     * @name Information about the model 
+     * 
+     */
+    ///@{
+    unsigned int nnodes() const;
+    unsigned int nleafs() const;
+    unsigned int nterms() const;
+    ///@}
+
 };
 
 #endif

@@ -22,6 +22,8 @@ std::vector< std::vector< unsigned int > > APhyloModel::simulate(
     const std::vector< double > & par
     ) {
 
+    INITIALIZED()
+
     // Splitting the probabilities
     std::vector< double > par0(par.begin(), par.end() - nfuns);
     std::vector< double > par_root(par.end() - nfuns, par.end());

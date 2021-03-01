@@ -227,6 +227,9 @@ void APhyloModel::init() {
         n.second.visited = false;
     }
 
+    // So that others now know it was initialized
+    initialized = true;
+
     return;
 }
 
@@ -287,6 +290,27 @@ std::vector< double > APhyloModel::get_probabilities() const {
 
     return res;
     
+}
+
+unsigned int APhyloModel::nnodes() const {
+    return this->nodes.size();
+}
+
+unsigned int APhyloModel::nleafs() const {
+
+    unsigned int n = 0u;
+    for (auto& iter : this->nodes)
+        if (iter.second.is_leaf())
+            n++;
+
+    return n;
+}
+
+unsigned int APhyloModel::nterms() const {
+
+    INITIALIZED()
+
+    return model_const.nterms();
 }
 
 #endif

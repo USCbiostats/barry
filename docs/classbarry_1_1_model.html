@@ -200,12 +200,18 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Size of the model</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Number of different supports included in the model</p>
 <p>This will return the size of <code>stats</code>.</p>
-<dl class="section return"><dt>Returns</dt><dd>unsigned int </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="classbarry_1_1_model.html#ab3f157dbb542a48fe5bf412ff7d467fd">size()</a></code> returns the number of arrays in the model. </dd>
+<dd>
+<code><a class="el" href="classbarry_1_1_model.html#a4b5edbe891b6da2319ea3fa6f1aba11d">size_unique()</a></code> returns the number of unique arrays (according to the hasher) in the model. </dd>
+<dd>
+<code><a class="el" href="classbarry_1_1_model.html#ad2a8b05a7d53289a8fc2e315739acdf9">nterms()</a></code> returns the number of terms in the model. </dd></dl>
 </div></td></tr>
 <tr class="memitem:ab3f157dbb542a48fe5bf412ff7d467fd"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_model.html#ab3f157dbb542a48fe5bf412ff7d467fd">size</a> () const</td></tr>
 <tr class="separator:ab3f157dbb542a48fe5bf412ff7d467fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b5edbe891b6da2319ea3fa6f1aba11d"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_model.html#a4b5edbe891b6da2319ea3fa6f1aba11d">size_unique</a> () const</td></tr>
 <tr class="separator:a4b5edbe891b6da2319ea3fa6f1aba11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a8b05a7d53289a8fc2e315739acdf9"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_model.html#ad2a8b05a7d53289a8fc2e315739acdf9">nterms</a> () const</td></tr>
+<tr class="separator:ad2a8b05a7d53289a8fc2e315739acdf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -969,6 +975,35 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 
 </div>
 </div>
+<a id="ad2a8b05a7d53289a8fc2e315739acdf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2a8b05a7d53289a8fc2e315739acdf9">&#9670;&nbsp;</a></span>nterms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rule_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> <a class="el" href="classbarry_1_1_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::nterms </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00526">526</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a4944b5918dc4a9a59f72587da1e6bb3a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4944b5918dc4a9a59f72587da1e6bb3a">&#9670;&nbsp;</a></span>operator=()</h2>
 
@@ -1095,7 +1130,7 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00526">526</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00533">533</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -1723,7 +1758,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacebarry.html">barry</a></li><li class="navelem"><a class="el" href="classbarry_1_1_model.html">Model</a></li>
-    <li class="footer">Generated on Mon Mar 1 2021 11:39:23 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Mon Mar 1 2021 13:14:58 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

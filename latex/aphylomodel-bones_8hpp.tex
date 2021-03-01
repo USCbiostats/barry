@@ -1,7 +1,6 @@
 \hypertarget{aphylomodel-bones_8hpp}{}\section{include/barry/models/aphylo/aphylomodel-\/bones.hpp File Reference}
 \label{aphylomodel-bones_8hpp}\index{include/barry/models/aphylo/aphylomodel-\/bones.\+hpp@{include/barry/models/aphylo/aphylomodel-\/bones.\+hpp}}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,6 +14,11 @@ class \hyperlink{class_node}{Node}
 \begin{DoxyCompactList}\small\item\em A single node for the model. \end{DoxyCompactList}\item 
 class \hyperlink{class_a_phylo_model}{A\+Phylo\+Model}
 \begin{DoxyCompactList}\small\item\em Annotated Phylo \hyperlink{class_model}{Model}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{aphylomodel-bones_8hpp_a08888c91f4cab1da64c8f8bf10b59c40}{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}()
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,6 +32,24 @@ std\+::vector$<$ double $>$ \hyperlink{aphylomodel-bones_8hpp_aa60134cca317d64e4
 \end{DoxyCompactItemize}
 
 
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{aphylomodel-bones_8hpp_a08888c91f4cab1da64c8f8bf10b59c40}\label{aphylomodel-bones_8hpp_a08888c91f4cab1da64c8f8bf10b59c40}} 
+\index{aphylomodel-\/bones.\+hpp@{aphylomodel-\/bones.\+hpp}!I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED@{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}}
+\index{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED@{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}!aphylomodel-\/bones.\+hpp@{aphylomodel-\/bones.\+hpp}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}{INITIALIZED}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} (!this->initialized) \(\backslash\)
+    throw std::logic\_error(\textcolor{stringliteral}{"The model has not been initialized yet."});
+\end{DoxyCode}
+
+
+Definition at line 4 of file aphylomodel-\/bones.\+hpp.
+
+
+
 \subsection{Function Documentation}
 \mbox{\Hypertarget{aphylomodel-bones_8hpp_a1f293b9028bf34b1aa8506c8f0af4413}\label{aphylomodel-bones_8hpp_a1f293b9028bf34b1aa8506c8f0af4413}} 
 \index{aphylomodel-\/bones.\+hpp@{aphylomodel-\/bones.\+hpp}!caster@{caster}}
@@ -38,7 +60,7 @@ std\+::vector$<$ T1 $>$ caster (\begin{DoxyParamCaption}\item[{const std\+::vect
 
 
 
-Definition at line 15 of file aphylomodel-\/bones.\+hpp.
+Definition at line 18 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{aphylomodel-bones_8hpp_a513c16e4b1a39f810501041e7b8fa448}\label{aphylomodel-bones_8hpp_a513c16e4b1a39f810501041e7b8fa448}} 
 \index{aphylomodel-\/bones.\+hpp@{aphylomodel-\/bones.\+hpp}!keygen\+\_\+const@{keygen\+\_\+const}}
@@ -48,7 +70,7 @@ Definition at line 15 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 29 of file aphylomodel-\/bones.\+hpp.
+Definition at line 32 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{aphylomodel-bones_8hpp_aa60134cca317d64e4b3d1707380d5d0d}\label{aphylomodel-bones_8hpp_aa60134cca317d64e4b3d1707380d5d0d}} 
 \index{aphylomodel-\/bones.\+hpp@{aphylomodel-\/bones.\+hpp}!keygen\+\_\+full@{keygen\+\_\+full}}
@@ -58,7 +80,7 @@ Definition at line 29 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 52 of file aphylomodel-\/bones.\+hpp.
+Definition at line 55 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{aphylomodel-bones_8hpp_a11c7dd7dca27f32547bb602f30ceb5e8}\label{aphylomodel-bones_8hpp_a11c7dd7dca27f32547bb602f30ceb5e8}} 
 \index{aphylomodel-\/bones.\+hpp@{aphylomodel-\/bones.\+hpp}!R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
@@ -68,5 +90,5 @@ Definition at line 52 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 5 of file aphylomodel-\/bones.\+hpp.
+Definition at line 8 of file aphylomodel-\/bones.\+hpp.
 
