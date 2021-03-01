@@ -23,7 +23,7 @@ var network_8hpp =
     [ "NetRules", "network_8hpp.html#a6002c13f2cfcd506080a917d6464ab53", null ],
     [ "NetStatsCounter", "network_8hpp.html#a1c44fa47dcf1cca1ba35eea6e70950a3", null ],
     [ "NetSupport", "network_8hpp.html#a05f5e7afe62d1c07b46876b4fbec0f4c", null ],
-    [ "Network", "network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370", null ],
+    [ "Network", "network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05", null ],
     [ "counter_absdiff", "network_8hpp.html#abb2a587d5466415665c11e9d7a168d8b", null ],
     [ "counter_ctriads", "network_8hpp.html#a8ea4bb27771e3fb61f807f4dff2a6e57", null ],
     [ "counter_degree", "network_8hpp.html#a80b0d366d78946638af8c25139f0d203", null ],

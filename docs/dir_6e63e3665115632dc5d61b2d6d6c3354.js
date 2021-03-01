@@ -1,9 +1,14 @@
 var dir_6e63e3665115632dc5d61b2d6d6c3354 =
 [
     [ "counters", "dir_b3150c389b0f5b078392750f1ae70361.html", "dir_b3150c389b0f5b078392750f1ae70361" ],
+    [ "models", "dir_488ec4010567cc6d95c62bdcb57a6d3e.html", "dir_488ec4010567cc6d95c62bdcb57a6d3e" ],
     [ "barray-bones.hpp", "barray-bones_8hpp.html", "barray-bones_8hpp" ],
     [ "barray-iterator.hpp", "barray-iterator_8hpp.html", "barray-iterator_8hpp" ],
+    [ "barray-meat-operators.hpp", "barray-meat-operators_8hpp.html", "barray-meat-operators_8hpp" ],
     [ "barray-meat.hpp", "barray-meat_8hpp.html", "barray-meat_8hpp" ],
+    [ "barraycell-bones.hpp", "barraycell-bones_8hpp.html", "barraycell-bones_8hpp" ],
+    [ "barraycell-meat.hpp", "barraycell-meat_8hpp.html", "barraycell-meat_8hpp" ],
+    [ "barry-configuration.hpp", "barry-configuration_8hpp.html", "barry-configuration_8hpp" ],
     [ "barry.hpp", "barry_8hpp.html", "barry_8hpp" ],
     [ "block-bones.hpp", "block-bones_8hpp.html", "block-bones_8hpp" ],
     [ "block-meat.hpp", "block-meat_8hpp.html", "block-meat_8hpp" ],
@@ -23,6 +28,5 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
     [ "statsdb.hpp", "statsdb_8hpp.html", "statsdb_8hpp" ],
     [ "support-bones.hpp", "support-bones_8hpp.html", "support-bones_8hpp" ],
     [ "support-meat.hpp", "support-meat_8hpp.html", "support-meat_8hpp" ],
-    [ "typedefs.hpp", "typedefs_8hpp.html", "typedefs_8hpp" ],
-    [ "vectors.hpp", "vectors_8hpp.html", "vectors_8hpp" ]
+    [ "typedefs.hpp", "typedefs_8hpp.html", "typedefs_8hpp" ]
 ];

@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "barry", "namespacebarry.html", "namespacebarry" ],
+    [ "APhyloModel", "class_a_phylo_model.html", "class_a_phylo_model" ],
     [ "BArray", "class_b_array.html", "class_b_array" ],
     [ "BArrayCell", "class_b_array_cell.html", "class_b_array_cell" ],
     [ "Cell", "class_cell.html", "class_cell" ],
@@ -13,6 +14,7 @@ var annotated_dup =
     [ "Model", "class_model.html", "class_model" ],
     [ "NetCounterData", "class_net_counter_data.html", "class_net_counter_data" ],
     [ "NetworkData", "class_network_data.html", "class_network_data" ],
+    [ "Node", "class_node.html", "class_node" ],
     [ "NodeData", "class_node_data.html", "class_node_data" ],
     [ "PowerSet", "class_power_set.html", "class_power_set" ],
     [ "Rule", "class_rule.html", "class_rule" ],

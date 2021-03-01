@@ -9,6 +9,8 @@ var searchData=
   ['get_5fdata_5fptr',['get_data_ptr',['../classbarry_1_1_freq_table.html#ab5dd6677f52072c93d18b2b9a3369ae7',1,'barry::FreqTable::get_data_ptr()'],['../classbarry_1_1_power_set.html#a80b283b1ac115f1be049a09f1a69586a',1,'barry::PowerSet::get_data_ptr()'],['../class_power_set.html#a99cf1aa56e63a16c023bf7057b0b9288',1,'PowerSet::get_data_ptr()'],['../class_freq_table.html#ab5dd6677f52072c93d18b2b9a3369ae7',1,'FreqTable::get_data_ptr()']]],
   ['get_5fentries',['get_entries',['../class_b_array.html#aee224325422d214624771a5b4d91b55e',1,'BArray']]],
   ['get_5fnorm_5fconst',['get_norm_const',['../classbarry_1_1_model.html#a8de55fd86cdca46936e455721754a2af',1,'barry::Model::get_norm_const()'],['../class_model.html#a8de55fd86cdca46936e455721754a2af',1,'Model::get_norm_const()']]],
+  ['get_5fparent',['get_parent',['../class_node.html#a661cb63a33e950b84c9c093c63d1ab63',1,'Node']]],
+  ['get_5fprobabilities',['get_probabilities',['../class_a_phylo_model.html#a3368d03919454f68f0cb5bd888f983a1',1,'APhyloModel']]],
   ['get_5fpset',['get_pset',['../classbarry_1_1_model.html#ad09221a8938765deec2c9d4d0fa8dec5',1,'barry::Model::get_pset()'],['../class_model.html#ad09221a8938765deec2c9d4d0fa8dec5',1,'Model::get_pset()']]],
   ['get_5frow',['get_row',['../class_b_array.html#a2c969ceb1d37eff9ebcac25741de1808',1,'BArray']]],
   ['get_5frow_5fvec',['get_row_vec',['../class_b_array.html#a2be45b966d99e2bdd3f9994ed70ff145',1,'BArray::get_row_vec(uint i, bool check_bounds=true) const'],['../class_b_array.html#a7b098128c6debca4409d15d1906bd2be',1,'BArray::get_row_vec(std::vector&lt; Cell_Type &gt; *row, uint i, bool check_bounds=true) const']]],

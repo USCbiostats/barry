@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['powerset',['PowerSet',['../classbarry_1_1_power_set.html',1,'barry::PowerSet&lt; Array_Type, Data_Rule_Type &gt;'],['../class_power_set.html',1,'PowerSet&lt; Array_Type, Data_Rule_Type &gt;']]]
+  ['netcounterdata',['NetCounterData',['../classbarry_1_1counters_1_1network_1_1_net_counter_data.html',1,'barry::counters::network::NetCounterData'],['../class_net_counter_data.html',1,'NetCounterData']]],
+  ['networkdata',['NetworkData',['../classbarry_1_1counters_1_1network_1_1_network_data.html',1,'barry::counters::network::NetworkData'],['../class_network_data.html',1,'NetworkData']]],
+  ['node',['Node',['../class_node.html',1,'']]],
+  ['nodedata',['NodeData',['../class_node_data.html',1,'NodeData'],['../classbarry_1_1counters_1_1phylo_1_1_node_data.html',1,'barry::counters::phylo::NodeData']]]
 ];

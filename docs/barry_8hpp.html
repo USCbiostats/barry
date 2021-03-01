@@ -106,11 +106,15 @@ $(document).ready(function(){initNavTree('barry_8hpp.html','');});
 <code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
 <code>#include &quot;<a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cell-bones_8hpp_source.html">cell-bones.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cell-meat_8hpp_source.html">cell-meat.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="barraycell-bones_8hpp_source.html">barraycell-bones.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="barray-meat_8hpp_source.html">barray-meat.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="barraycell-meat_8hpp_source.html">barraycell-meat.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="statscounter-bones_8hpp_source.html">statscounter-bones.hpp</a>&quot;</code><br />
@@ -132,28 +136,40 @@ Include dependency graph for barry.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="barry_8hpp__incl.png" border="0" usemap="#include_2barry_2barry_8hpp" alt=""/></div>
 <map name="include_2barry_2barry_8hpp" id="include_2barry_2barry_8hpp">
-<area shape="rect" id="node8" href="typedefs_8hpp.html" title="typedefs.hpp" alt="" coords="1219,528,1317,555"/>
-<area shape="rect" id="node10" href="cell-bones_8hpp.html" title="cell&#45;bones.hpp" alt="" coords="1693,453,1800,480"/>
-<area shape="rect" id="node11" href="cell-meat_8hpp.html" title="cell&#45;meat.hpp" alt="" coords="1745,379,1845,405"/>
-<area shape="rect" id="node12" href="barray-bones_8hpp.html" title="barray&#45;bones.hpp" alt="" coords="1004,379,1127,405"/>
-<area shape="rect" id="node13" href="barray-meat_8hpp.html" title="barray&#45;meat.hpp" alt="" coords="1007,229,1123,256"/>
-<area shape="rect" id="node14" href="counters-bones_8hpp.html" title="counters&#45;bones.hpp" alt="" coords="589,304,725,331"/>
-<area shape="rect" id="node15" href="counters-meat_8hpp.html" title="counters&#45;meat.hpp" alt="" coords="144,155,275,181"/>
-<area shape="rect" id="node16" href="statscounter-bones_8hpp.html" title="statscounter&#45;bones.hpp" alt="" coords="566,229,725,256"/>
-<area shape="rect" id="node18" href="statscounter-meat_8hpp.html" title="statscounter&#45;meat.hpp" alt="" coords="287,80,439,107"/>
-<area shape="rect" id="node19" href="support-bones_8hpp.html" title="support&#45;bones.hpp" alt="" coords="853,229,982,256"/>
-<area shape="rect" id="node20" href="rules-bones_8hpp.html" title="rules&#45;bones.hpp" alt="" coords="1356,304,1471,331"/>
-<area shape="rect" id="node21" href="support-meat_8hpp.html" title="support&#45;meat.hpp" alt="" coords="952,155,1075,181"/>
-<area shape="rect" id="node22" href="block-bones_8hpp.html" title="block&#45;bones.hpp" alt="" coords="1824,155,1941,181"/>
-<area shape="rect" id="node23" href="block-meat_8hpp.html" title="block&#45;meat.hpp" alt="" coords="1846,80,1957,107"/>
-<area shape="rect" id="node24" href="powerset-bones_8hpp.html" title="powerset&#45;bones.hpp" alt="" coords="1249,229,1388,256"/>
-<area shape="rect" id="node25" href="powerset-meat_8hpp.html" title="powerset&#45;meat.hpp" alt="" coords="1251,155,1384,181"/>
-<area shape="rect" id="node26" href="model-bones_8hpp.html" title="model&#45;bones.hpp" alt="" coords="603,155,725,181"/>
-<area shape="rect" id="node27" href="model-meat_8hpp.html" title="model&#45;meat.hpp" alt="" coords="684,80,799,107"/>
-<area shape="rect" id="node28" href="rules-meat_8hpp.html" title="rules&#45;meat.hpp" alt="" coords="1459,155,1567,181"/>
-<area shape="rect" id="node29" href="network_8hpp.html" title="counters/network.hpp" alt="" coords="513,80,660,107"/>
-<area shape="rect" id="node30" href="phylo_8hpp.html" title="counters/phylo.hpp" alt="" coords="874,80,1006,107"/>
-<area shape="rect" id="node17" href="statsdb_8hpp.html" title="statsdb.hpp" alt="" coords="749,304,840,331"/>
+<area shape="rect" id="node9" href="typedefs_8hpp.html" title="typedefs.hpp" alt="" coords="1007,528,1105,555"/>
+<area shape="rect" id="node12" href="cell-bones_8hpp.html" title="cell&#45;bones.hpp" alt="" coords="1816,453,1923,480"/>
+<area shape="rect" id="node13" href="cell-meat_8hpp.html" title="cell&#45;meat.hpp" alt="" coords="1817,379,1917,405"/>
+<area shape="rect" id="node14" href="barray-bones_8hpp.html" title="barray&#45;bones.hpp" alt="" coords="1256,379,1379,405"/>
+<area shape="rect" id="node15" href="barraycell-bones_8hpp.html" title="barraycell&#45;bones.hpp" alt="" coords="1958,453,2101,480"/>
+<area shape="rect" id="node16" href="barray-meat_8hpp.html" title="barray&#45;meat.hpp" alt="" coords="1703,155,1819,181"/>
+<area shape="rect" id="node17" href="barraycell-meat_8hpp.html" title="barraycell&#45;meat.hpp" alt="" coords="1992,229,2128,256"/>
+<area shape="rect" id="node18" href="barray-meat-operators_8hpp.html" title="barray&#45;meat&#45;operators.hpp" alt="" coords="1578,229,1753,256"/>
+<area shape="rect" id="node19" href="counters-bones_8hpp.html" title="counters&#45;bones.hpp" alt="" coords="1144,304,1280,331"/>
+<area shape="rect" id="node20" href="counters-meat_8hpp.html" title="counters&#45;meat.hpp" alt="" coords="1447,155,1577,181"/>
+<area shape="rect" id="node21" href="statscounter-bones_8hpp.html" title="statscounter&#45;bones.hpp" alt="" coords="797,229,955,256"/>
+<area shape="rect" id="node23" href="statscounter-meat_8hpp.html" title="statscounter&#45;meat.hpp" alt="" coords="616,80,768,107"/>
+<area shape="rect" id="node24" href="support-bones_8hpp.html" title="support&#45;bones.hpp" alt="" coords="979,229,1109,256"/>
+<area shape="rect" id="node25" href="rules-bones_8hpp.html" title="rules&#45;bones.hpp" alt="" coords="639,304,753,331"/>
+<area shape="rect" id="node26" href="support-meat_8hpp.html" title="support&#45;meat.hpp" alt="" coords="1249,155,1372,181"/>
+<area shape="rect" id="node27" href="block-bones_8hpp.html" title="block&#45;bones.hpp" alt="" coords="2143,155,2260,181"/>
+<area shape="rect" id="node28" href="block-meat_8hpp.html" title="block&#45;meat.hpp" alt="" coords="2098,80,2209,107"/>
+<area shape="rect" id="node29" href="powerset-bones_8hpp.html" title="powerset&#45;bones.hpp" alt="" coords="332,229,471,256"/>
+<area shape="rect" id="node30" href="powerset-meat_8hpp.html" title="powerset&#45;meat.hpp" alt="" coords="255,155,388,181"/>
+<area shape="rect" id="node31" href="model-bones_8hpp.html" title="model&#45;bones.hpp" alt="" coords="901,155,1022,181"/>
+<area shape="rect" id="node32" href="model-meat_8hpp.html" title="model&#45;meat.hpp" alt="" coords="949,80,1064,107"/>
+<area shape="rect" id="node33" href="rules-meat_8hpp.html" title="rules&#45;meat.hpp" alt="" coords="413,155,521,181"/>
+<area shape="rect" id="node34" href="network_8hpp.html" title="counters/network.hpp" alt="" coords="1139,80,1285,107"/>
+<area shape="rect" id="node35" href="phylo_8hpp.html" title="counters/phylo.hpp" alt="" coords="793,80,925,107"/>
+<area shape="rect" id="node11" href="barry-configuration_8hpp.html" title="barry&#45;configuration.hpp" alt="" coords="1095,603,1249,629"/>
+<area shape="rect" id="node22" href="statsdb_8hpp.html" title="statsdb.hpp" alt="" coords="928,304,1019,331"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="barry_8hpp__dep__incl.png" border="0" usemap="#include_2barry_2barry_8hppdep" alt=""/></div>
+<map name="include_2barry_2barry_8hppdep" id="include_2barry_2barry_8hppdep">
+<area shape="rect" id="node2" href="aphylomodel_8hpp.html" title="include/barry/models\l/aphylomodel.hpp" alt="" coords="11,80,154,121"/>
 </map>
 </div>
 </div>
@@ -176,6 +192,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_cell.html">barry::Cell&lt; Cell_Type &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classbarry_1_1_entries.html" title="A wrapper class to store source, target, val from a BArray object. ">Entries</a> in <a class="el" href="classbarry_1_1_b_array.html">BArray</a>. For now, it only has two members:  <a href="classbarry_1_1_cell.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_b_array_cell.html">barry::BArrayCell&lt; Cell_Type, Data_Type &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbarry_1_1_counter.html">barry::Counter&lt; Array_Type, Data_Type &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A counter function based on change statistics.  <a href="classbarry_1_1_counter.html#details">More...</a><br /></td></tr>
@@ -250,18 +268,15 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a979a04835a9855ff2054c383c569c89e"><td class="memTemplParams" colspan="2">template&lt;typename Ta , typename Tb &gt; </td></tr>
-<tr class="memitem:a979a04835a9855ff2054c383c569c89e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a979a04835a9855ff2054c383c569c89e">barry::Map</a> = std::map&lt; Ta, Tb &gt;</td></tr>
-<tr class="separator:a979a04835a9855ff2054c383c569c89e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11dfc53ddb4672278319aa04f1e09a6c"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">barry::uint</a></td></tr>
 <tr class="separator:a11dfc53ddb4672278319aa04f1e09a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e2d8c3b6cf602107559d4237d9f1315"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::pair&lt; std::vector&lt; double &gt;, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a3e2d8c3b6cf602107559d4237d9f1315">barry::Counts_type</a></td></tr>
 <tr class="separator:a3e2d8c3b6cf602107559d4237d9f1315"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a741876d7060484e80a9f2b9d128d2c8d"><td class="memTemplParams" colspan="2">template&lt;typename Cell_Type &gt; </td></tr>
-<tr class="memitem:a741876d7060484e80a9f2b9d128d2c8d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a741876d7060484e80a9f2b9d128d2c8d">barry::Row_type</a> = <a class="el" href="typedefs_8hpp.html#a1bb64c776ba5e9fc373665103b1a1772">Map</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &gt;</td></tr>
+<tr class="memitem:a741876d7060484e80a9f2b9d128d2c8d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a741876d7060484e80a9f2b9d128d2c8d">barry::Row_type</a> = <a class="el" href="barry-configuration_8hpp.html#a1bb64c776ba5e9fc373665103b1a1772">Map</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; &gt;</td></tr>
 <tr class="separator:a741876d7060484e80a9f2b9d128d2c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac328592ccff774bb3614f2cae43cffd7"><td class="memTemplParams" colspan="2">template&lt;typename Cell_Type &gt; </td></tr>
-<tr class="memitem:ac328592ccff774bb3614f2cae43cffd7"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#ac328592ccff774bb3614f2cae43cffd7">barry::Col_type</a> = <a class="el" href="typedefs_8hpp.html#a1bb64c776ba5e9fc373665103b1a1772">Map</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; *&gt;</td></tr>
+<tr class="memitem:ac328592ccff774bb3614f2cae43cffd7"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#ac328592ccff774bb3614f2cae43cffd7">barry::Col_type</a> = <a class="el" href="barry-configuration_8hpp.html#a1bb64c776ba5e9fc373665103b1a1772">Map</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt; *&gt;</td></tr>
 <tr class="separator:ac328592ccff774bb3614f2cae43cffd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f0d3aab1d67e4c8eaeab9022e16139f"><td class="memTemplParams" colspan="2">template&lt;typename Ta  = double, typename Tb  = uint&gt; </td></tr>
 <tr class="memitem:a2f0d3aab1d67e4c8eaeab9022e16139f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a2f0d3aab1d67e4c8eaeab9022e16139f">barry::MapVec_type</a> = std::unordered_map&lt; std::vector&lt; Ta &gt;, Tb, <a class="el" href="structvec_hasher.html">vecHasher</a>&lt; Ta &gt; &gt;</td></tr>
@@ -270,6 +285,17 @@ Typedefs</h2></td></tr>
 <tr class="separator:a6ecc0d8ab76f8dc2db152221a8e9e95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5da540950bcf3372bcedb17a5b23667c"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::pair&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a5da540950bcf3372bcedb17a5b23667c">barry::counters::phylo::PhyloRuleData</a></td></tr>
 <tr class="separator:a5da540950bcf3372bcedb17a5b23667c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Configuration MACROS</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These are mostly related to performance. The definitions follow:</p>
+<ul>
+<li><code>BARRY_USE_UNORDERED_MAP</code> If specified, then barry is compiled using <code>std::unordered_map</code>. Otherwise it will use <code>std::map</code> for the arrays.</li>
+<li><code>BARRY_USE_SAFE_EXP</code> When specified, it will multiply all likelihoods in <code><a class="el" href="class_model.html" title="General framework for discrete exponential models. This class allows generating discrete exponential ...">Model</a></code> by (1/-100)/(1/-100) so that numerical overflows are avoided.</li>
+<li><code>BARRY_CHECK_FINITE</code> When specified, it will introduce a macro </li>
+</ul>
+</div></td></tr>
+<tr class="memitem:a979a04835a9855ff2054c383c569c89e"><td class="memTemplParams" colspan="2">template&lt;typename Ta , typename Tb &gt; </td></tr>
+<tr class="memitem:a979a04835a9855ff2054c383c569c89e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a979a04835a9855ff2054c383c569c89e">barry::Map</a> = std::map&lt; Ta, Tb &gt;</td></tr>
+<tr class="separator:a979a04835a9855ff2054c383c569c89e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:abaaae3200da8e4b7faac3c04fe9c3081"><td class="memTemplParams" colspan="2">template&lt;typename Array_Type , typename Data_Type &gt; </td></tr>
 <tr class="memitem:abaaae3200da8e4b7faac3c04fe9c3081"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#abaaae3200da8e4b7faac3c04fe9c3081">barry::Counter_fun_type</a> = std::function&lt; double(const Array_Type *, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, Data_Type *)&gt;</td></tr>
@@ -279,21 +305,21 @@ Typedefs</h2></td></tr>
 <tr class="memitem:aefd7e6d4ba228e2ce1074d075c512178"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#aefd7e6d4ba228e2ce1074d075c512178">barry::Rule_fun_type</a> = std::function&lt; bool(const Array_Type *, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, Data_Type *)&gt;</td></tr>
 <tr class="separator:aefd7e6d4ba228e2ce1074d075c512178"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Convenient typedefs for network objects.</div></td></tr>
-<tr class="memitem:a4cb88d4572ded3b447ea269c9cd0b2c0"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_b_array.html">BArray</a>&lt; bool, <a class="el" href="class_network_data.html">NetworkData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a4cb88d4572ded3b447ea269c9cd0b2c0">barry::counters::network::Network</a></td></tr>
-<tr class="separator:a4cb88d4572ded3b447ea269c9cd0b2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a067bd9de04608fc2e1586324d3864a45"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_counter.html">Counter</a>&lt; <a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a067bd9de04608fc2e1586324d3864a45">barry::counters::network::NetCounter</a></td></tr>
+<tr class="memitem:a440182967e1ba465e90a4b1d07e3a366"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_b_array.html">BArray</a>&lt; double, <a class="el" href="class_network_data.html">NetworkData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a440182967e1ba465e90a4b1d07e3a366">barry::counters::network::Network</a></td></tr>
+<tr class="separator:a440182967e1ba465e90a4b1d07e3a366"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a067bd9de04608fc2e1586324d3864a45"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_counter.html">Counter</a>&lt; <a class="el" href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a067bd9de04608fc2e1586324d3864a45">barry::counters::network::NetCounter</a></td></tr>
 <tr class="separator:a067bd9de04608fc2e1586324d3864a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa72fdb34752ac24167a06ee196a8fff6"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_counters.html">Counters</a>&lt; <a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#aa72fdb34752ac24167a06ee196a8fff6">barry::counters::network::NetCounters</a></td></tr>
+<tr class="memitem:aa72fdb34752ac24167a06ee196a8fff6"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_counters.html">Counters</a>&lt; <a class="el" href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#aa72fdb34752ac24167a06ee196a8fff6">barry::counters::network::NetCounters</a></td></tr>
 <tr class="separator:aa72fdb34752ac24167a06ee196a8fff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d30be7f465efd7d218f0264f8386b32"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_support.html">Support</a>&lt; <a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a4d30be7f465efd7d218f0264f8386b32">barry::counters::network::NetSupport</a></td></tr>
+<tr class="memitem:a4d30be7f465efd7d218f0264f8386b32"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_support.html">Support</a>&lt; <a class="el" href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a4d30be7f465efd7d218f0264f8386b32">barry::counters::network::NetSupport</a></td></tr>
 <tr class="separator:a4d30be7f465efd7d218f0264f8386b32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae26c399917113fe280b3f2859376b8b9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_stats_counter.html">StatsCounter</a>&lt; <a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#ae26c399917113fe280b3f2859376b8b9">barry::counters::network::NetStatsCounter</a></td></tr>
+<tr class="memitem:ae26c399917113fe280b3f2859376b8b9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_stats_counter.html">StatsCounter</a>&lt; <a class="el" href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#ae26c399917113fe280b3f2859376b8b9">barry::counters::network::NetStatsCounter</a></td></tr>
 <tr class="separator:ae26c399917113fe280b3f2859376b8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ab1ee0750d4a5b0f92253874e055358"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_model.html">Model</a>&lt; <a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a3ab1ee0750d4a5b0f92253874e055358">barry::counters::network::NetModel</a></td></tr>
+<tr class="memitem:a3ab1ee0750d4a5b0f92253874e055358"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_model.html">Model</a>&lt; <a class="el" href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a>, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#a3ab1ee0750d4a5b0f92253874e055358">barry::counters::network::NetModel</a></td></tr>
 <tr class="separator:a3ab1ee0750d4a5b0f92253874e055358"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbd2c2a61931e69dd5f668c421e87a6f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_rule.html">Rule</a>&lt; <a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#afbd2c2a61931e69dd5f668c421e87a6f">barry::counters::network::NetRule</a></td></tr>
+<tr class="memitem:afbd2c2a61931e69dd5f668c421e87a6f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_rule.html">Rule</a>&lt; <a class="el" href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#afbd2c2a61931e69dd5f668c421e87a6f">barry::counters::network::NetRule</a></td></tr>
 <tr class="separator:afbd2c2a61931e69dd5f668c421e87a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbdb20b3ce883777da2364984ea10c56"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_rules.html">Rules</a>&lt; <a class="el" href="network_8hpp.html#a7bf32f21811fd9bf0ba81bb929335370">Network</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#adbdb20b3ce883777da2364984ea10c56">barry::counters::network::NetRules</a></td></tr>
+<tr class="memitem:adbdb20b3ce883777da2364984ea10c56"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_rules.html">Rules</a>&lt; <a class="el" href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1network.html#adbdb20b3ce883777da2364984ea10c56">barry::counters::network::NetRules</a></td></tr>
 <tr class="separator:adbdb20b3ce883777da2364984ea10c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Convenient typedefs for Node objects.</div></td></tr>
 <tr class="memitem:abd293bf65e494e903639fb5fb2c91604"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_b_array.html">BArray</a>&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="class_node_data.html">NodeData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#abd293bf65e494e903639fb5fb2c91604">barry::counters::phylo::PhyloArray</a></td></tr>
@@ -320,6 +346,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a0343fb4152724d5fa1ffa00d4b6182d9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a0343fb4152724d5fa1ffa00d4b6182d9"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a0343fb4152724d5fa1ffa00d4b6182d9">barry::vec_inner_prod</a> (const std::vector&lt; T &gt; &amp;a, const std::vector&lt; T &gt; &amp;b)</td></tr>
 <tr class="separator:a0343fb4152724d5fa1ffa00d4b6182d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ec765fc621c31c4ce712443cc4610c3"><td class="memTemplParams" colspan="2">template&lt;typename Cell_Type , typename Data_Type &gt; </td></tr>
+<tr class="memitem:a4ec765fc621c31c4ce712443cc4610c3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#a4ec765fc621c31c4ce712443cc4610c3">barry::checkdim_</a> (const <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; &amp;lhs, const <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; &amp;rhs)</td></tr>
+<tr class="separator:a4ec765fc621c31c4ce712443cc4610c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb5a6f58fa7969d3027468e393eecd51"><td class="memTemplParams" colspan="2">template&lt;typename Array_Type , typename Data_Type &gt; </td></tr>
 <tr class="memitem:afb5a6f58fa7969d3027468e393eecd51"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacebarry.html#afb5a6f58fa7969d3027468e393eecd51">barry::rule_fun_default</a> (const Array_Type *array, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type *dat)</td></tr>
 <tr class="separator:afb5a6f58fa7969d3027468e393eecd51"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -435,21 +464,24 @@ Functions</h2></td></tr>
 <tr class="memitem:a79ccde09af0d3d47b1a3162a16bc4597"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a79ccde09af0d3d47b1a3162a16bc4597">barry::counters::phylo::counter_overall_loss</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters, bool duplication=true)</td></tr>
 <tr class="memdesc:a79ccde09af0d3d47b1a3162a16bc4597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overall functional loss.  <a href="namespacebarry_1_1counters_1_1phylo.html#a79ccde09af0d3d47b1a3162a16bc4597">More...</a><br /></td></tr>
 <tr class="separator:a79ccde09af0d3d47b1a3162a16bc4597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80949b65fbe734d854742306065914bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a80949b65fbe734d854742306065914bf">barry::counters::phylo::counter_maxfuns</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> lb, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ub, bool duplication=true)</td></tr>
+<tr class="memdesc:a80949b65fbe734d854742306065914bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cap the number of functions per gene.  <a href="namespacebarry_1_1counters_1_1phylo.html#a80949b65fbe734d854742306065914bf">More...</a><br /></td></tr>
+<tr class="separator:a80949b65fbe734d854742306065914bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affbd49d13928ece0a2f100261375d2a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#affbd49d13928ece0a2f100261375d2a7">barry::counters::phylo::counter_loss</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; nfun, bool duplication=true)</td></tr>
 <tr class="memdesc:affbd49d13928ece0a2f100261375d2a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total count of losses for an specific function.  <a href="namespacebarry_1_1counters_1_1phylo.html#affbd49d13928ece0a2f100261375d2a7">More...</a><br /></td></tr>
 <tr class="separator:affbd49d13928ece0a2f100261375d2a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bc5928ddc9cd008f04de022ad9d784e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a1bc5928ddc9cd008f04de022ad9d784e">barry::counters::phylo::counter_subfun</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunB)</td></tr>
-<tr class="memdesc:a1bc5928ddc9cd008f04de022ad9d784e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total count of Sub-functionalization events.  <a href="namespacebarry_1_1counters_1_1phylo.html#a1bc5928ddc9cd008f04de022ad9d784e">More...</a><br /></td></tr>
-<tr class="separator:a1bc5928ddc9cd008f04de022ad9d784e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b614c5e464ad5a20740c77ab1f1c206"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a7b614c5e464ad5a20740c77ab1f1c206">barry::counters::phylo::counter_cogain</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunB)</td></tr>
-<tr class="memdesc:a7b614c5e464ad5a20740c77ab1f1c206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Co-evolution (joint gain or loss)  <a href="namespacebarry_1_1counters_1_1phylo.html#a7b614c5e464ad5a20740c77ab1f1c206">More...</a><br /></td></tr>
-<tr class="separator:a7b614c5e464ad5a20740c77ab1f1c206"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad36131d4405a758fa200fd29932f49ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#ad36131d4405a758fa200fd29932f49ea">barry::counters::phylo::counter_subfun</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunB, bool duplication=true)</td></tr>
+<tr class="memdesc:ad36131d4405a758fa200fd29932f49ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total count of Sub-functionalization events.  <a href="namespacebarry_1_1counters_1_1phylo.html#ad36131d4405a758fa200fd29932f49ea">More...</a><br /></td></tr>
+<tr class="separator:ad36131d4405a758fa200fd29932f49ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a002286f13261eb4633c6dc9e6fc1212b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a002286f13261eb4633c6dc9e6fc1212b">barry::counters::phylo::counter_cogain</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunB, bool duplication=true)</td></tr>
+<tr class="memdesc:a002286f13261eb4633c6dc9e6fc1212b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Co-evolution (joint gain or loss)  <a href="namespacebarry_1_1counters_1_1phylo.html#a002286f13261eb4633c6dc9e6fc1212b">More...</a><br /></td></tr>
+<tr class="separator:a002286f13261eb4633c6dc9e6fc1212b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4ace7c30011a6d7047a94fd0ddf2df2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#ae4ace7c30011a6d7047a94fd0ddf2df2">barry::counters::phylo::counter_longest</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters)</td></tr>
 <tr class="memdesc:ae4ace7c30011a6d7047a94fd0ddf2df2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longest branch mutates (either by gain or by loss)  <a href="namespacebarry_1_1counters_1_1phylo.html#ae4ace7c30011a6d7047a94fd0ddf2df2">More...</a><br /></td></tr>
 <tr class="separator:ae4ace7c30011a6d7047a94fd0ddf2df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54cb8c96750fcde91b0e7c95b54f5fc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a54cb8c96750fcde91b0e7c95b54f5fc5">barry::counters::phylo::counter_neofun</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunB)</td></tr>
-<tr class="memdesc:a54cb8c96750fcde91b0e7c95b54f5fc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of neofunctionalization events.  <a href="namespacebarry_1_1counters_1_1phylo.html#a54cb8c96750fcde91b0e7c95b54f5fc5">More...</a><br /></td></tr>
-<tr class="separator:a54cb8c96750fcde91b0e7c95b54f5fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cf48d44538ec0646783e29e89027838"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a4cf48d44538ec0646783e29e89027838">barry::counters::phylo::counter_neofun</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunB, bool duplication=true)</td></tr>
+<tr class="memdesc:a4cf48d44538ec0646783e29e89027838"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of neofunctionalization events.  <a href="namespacebarry_1_1counters_1_1phylo.html#a4cf48d44538ec0646783e29e89027838">More...</a><br /></td></tr>
+<tr class="separator:a4cf48d44538ec0646783e29e89027838"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -492,10 +524,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = barry::BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  inline double (a) (<span class="keyword">const</span> Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00021">typedefs.hpp:21</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = barry::BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  inline double (a) (<span class="keyword">const</span> Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00020">typedefs.hpp:20</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00020">counters-bones.hpp:20</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00062">62</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00066">66</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -514,10 +546,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = barry::BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  Counter_fun_type&lt;Array_Type, Data_Type&gt; a = \</div><div class="line">  [](<span class="keyword">const</span> Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00021">typedefs.hpp:21</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = barry::BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  Counter_fun_type&lt;Array_Type, Data_Type&gt; a = \</div><div class="line">  [](<span class="keyword">const</span> Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00020">typedefs.hpp:20</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00020">counters-bones.hpp:20</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00065">65</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00069">69</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -536,10 +568,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = barry::BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  inline bool (a) (<span class="keyword">const</span> Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00021">typedefs.hpp:21</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = barry::BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  inline bool (a) (<span class="keyword">const</span> Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)\</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00020">typedefs.hpp:20</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00020">counters-bones.hpp:20</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00069">69</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00073">73</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -558,10 +590,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = barry::BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  Rule_fun_type&lt;Array_Type, Data_Type&gt; a = \</div><div class="line">  [](<span class="keyword">const</span> Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00021">typedefs.hpp:21</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type = barry::BArray&lt;&gt;, <span class="keyword">typename</span> Data_Type = <span class="keywordtype">bool</span>&gt; \</div><div class="line">  Rule_fun_type&lt;Array_Type, Data_Type&gt; a = \</div><div class="line">  [](<span class="keyword">const</span> Array_Type * Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Data_Type * <a class="code" href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">data</a>)</div><div class="ttc" id="typedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00020">typedefs.hpp:20</a></div></div>
 <div class="ttc" id="class_counter_html_a9ebfed99a67888f80c19cabc4098bdd0"><div class="ttname"><a href="class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0">Counter::data</a></div><div class="ttdeci">Data_Type * data</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00020">counters-bones.hpp:20</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00072">72</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00076">76</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -571,7 +603,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barry_8hpp.html">barry.hpp</a></li>
-    <li class="footer">Generated on Wed Feb 24 2021 10:27:56 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Mon Mar 1 2021 11:39:23 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

@@ -263,8 +263,12 @@ Public Attributes</h2></td></tr>
 Random number generation</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp9e5d9cca94c03e04e66d088f8628d19b"></a>Random number generation </p>
 </td></tr>
-<tr class="memitem:afe20e82dca653b99e481d64b394299a2"><td class="memItemLeft" align="right" valign="top">std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#afe20e82dca653b99e481d64b394299a2">rengine</a></td></tr>
-<tr class="separator:afe20e82dca653b99e481d64b394299a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f890665302d545663698000cd13a73f"><td class="memItemLeft" align="right" valign="top">std::mt19937 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a0f890665302d545663698000cd13a73f">rengine</a> = nullptr</td></tr>
+<tr class="separator:a0f890665302d545663698000cd13a73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab541ac2a0bbac640e2b8cdd745f1a632"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ab541ac2a0bbac640e2b8cdd745f1a632">rengine_deleted</a> = true</td></tr>
+<tr class="separator:ab541ac2a0bbac640e2b8cdd745f1a632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1609f530936b0f575e8b0006c9c719c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a1609f530936b0f575e8b0006c9c719c5">set_rengine</a> (std::mt19937 *rengine_, bool delete_=false)</td></tr>
+<tr class="separator:a1609f530936b0f575e8b0006c9c719c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5baf09853382529460889f15076bc64a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a5baf09853382529460889f15076bc64a">set_seed</a> (unsigned int s)</td></tr>
 <tr class="separator:a5baf09853382529460889f15076bc64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -286,7 +290,7 @@ class Model&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00092">92</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00095">95</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a29e6e0c37d9a892772c5ee95ce1e1043"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a29e6e0c37d9a892772c5ee95ce1e1043">&#9670;&nbsp;</a></span>Model() <span class="overload">[1/3]</span></h2>
@@ -402,7 +406,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00167">167</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00186">186</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1156,6 +1160,46 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 
 </div>
 </div>
+<a id="a1609f530936b0f575e8b0006c9c719c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1609f530936b0f575e8b0006c9c719c5">&#9670;&nbsp;</a></span>set_rengine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = bool, typename Data_Rule_Type = bool&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::set_rengine </td>
+          <td>(</td>
+          <td class="paramtype">std::mt19937 *&#160;</td>
+          <td class="paramname"><em>rengine_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>delete_</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00106">106</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a86a46cf6fdc7c6514b97263f9ee4130b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a86a46cf6fdc7c6514b97263f9ee4130b">&#9670;&nbsp;</a></span>set_rules()</h2>
 
@@ -1212,7 +1256,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00102">102</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00112">112</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1318,7 +1362,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00131">131</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00150">150</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1336,7 +1380,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00132">132</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00151">151</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1354,7 +1398,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00149">149</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00168">168</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1372,7 +1416,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00146">146</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00165">165</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1390,7 +1434,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00155">155</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00174">174</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1410,7 +1454,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 
 <p>Function to extract features of the array to be hash. </p>
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00159">159</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00178">178</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1431,7 +1475,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 <p>Map of types of arrays to support sets. </p>
 <p>This is of the same length as the vector <code>stats</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00139">139</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00158">158</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1449,7 +1493,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00108">108</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00127">127</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1467,7 +1511,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00154">154</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00173">173</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1487,7 +1531,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 
 <p>Vector of the previously used parameters. </p>
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00153">153</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00172">172</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1505,7 +1549,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00117">117</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00136">136</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1567,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00119">119</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00138">138</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1541,12 +1585,12 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00118">118</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00137">137</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
-<a id="afe20e82dca653b99e481d64b394299a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe20e82dca653b99e481d64b394299a2">&#9670;&nbsp;</a></span>rengine</h2>
+<a id="a0f890665302d545663698000cd13a73f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f890665302d545663698000cd13a73f">&#9670;&nbsp;</a></span>rengine</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1554,12 +1598,30 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = bool, typename Data_Rule_Type = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::mt19937 <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::rengine</td>
+          <td class="memname">std::mt19937* <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::rengine = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00101">101</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00104">104</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab541ac2a0bbac640e2b8cdd745f1a632"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab541ac2a0bbac640e2b8cdd745f1a632">&#9670;&nbsp;</a></span>rengine_deleted</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = bool, typename Data_Rule_Type = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type &gt;::rengine_deleted = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00105">105</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1577,7 +1639,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00147">147</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00166">166</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1595,7 +1657,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00102">102</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00121">121</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1613,7 +1675,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00148">148</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00167">167</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1631,7 +1693,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00130">130</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00149">149</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1649,7 +1711,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00116">116</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00135">135</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1663,7 +1725,7 @@ template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_model.html">Model</a></li>
-    <li class="footer">Generated on Wed Feb 24 2021 10:27:56 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Mon Mar 1 2021 11:39:23 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

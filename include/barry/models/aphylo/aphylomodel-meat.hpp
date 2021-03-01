@@ -121,7 +121,7 @@ void APhyloModel::init() {
     model_full.set_keygen(keygen_full);
 
     model_const.add_rule(
-            rule_blocked<phylocounters::PhyloArray,phylocounters::PhyloRuleData>
+            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>
             );
 
     model_const.set_counters(&counters);

@@ -1,7 +1,8 @@
 var searchData=
 [
+  ['_7eaphylomodel',['~APhyloModel',['../class_a_phylo_model.html#ab8b8523e07df92859e5d4289341da72f',1,'APhyloModel']]],
   ['_7ebarray',['~BArray',['../class_b_array.html#af39acdf29aa5999a7f5fd48141be384e',1,'BArray']]],
-  ['_7ebarraycell',['~BArrayCell',['../class_b_array_cell.html#a6fbc56424caade490a72685cc35ad0e9',1,'BArrayCell']]],
+  ['_7ebarraycell',['~BArrayCell',['../class_b_array_cell.html#a6fbc56424caade490a72685cc35ad0e9',1,'BArrayCell::~BArrayCell()'],['../classbarry_1_1_b_array_cell.html#a6d5c31a74e666b22889e81ca1b40c66b',1,'barry::BArrayCell::~BArrayCell()']]],
   ['_7ecell',['~Cell',['../classbarry_1_1_cell.html#a2500924b447d4d881916749041974d81',1,'barry::Cell::~Cell()'],['../class_cell.html#a12667d768c7eab9e295b3476a5d60c0e',1,'Cell::~Cell()']]],
   ['_7ecellseq',['~CellSeq',['../classbarry_1_1_cell_seq.html#a8cb52b7bdcc9181df159a049c60d04f9',1,'barry::CellSeq::~CellSeq()'],['../class_cell_seq.html#aa52be587e92f0d246bd84980c3e8b540',1,'CellSeq::~CellSeq()']]],
   ['_7econstbarrayrowiter',['~ConstBArrayRowIter',['../class_const_b_array_row_iter.html#a5f32704679331be41e994d37294e3476',1,'ConstBArrayRowIter']]],
@@ -12,6 +13,7 @@ var searchData=
   ['_7emodel',['~Model',['../classbarry_1_1_model.html#a2b8617c8bb1b8c76bbaa0f596af0c132',1,'barry::Model::~Model()'],['../class_model.html#a0eba131af14e1ceefc7748323e9fb4bf',1,'Model::~Model()']]],
   ['_7enetcounterdata',['~NetCounterData',['../classbarry_1_1counters_1_1network_1_1_net_counter_data.html#ac2bfc760b63c81a8f6c316b338e95944',1,'barry::counters::network::NetCounterData::~NetCounterData()'],['../class_net_counter_data.html#a2e88fcc7f0296d791fe9f0facd24489f',1,'NetCounterData::~NetCounterData()']]],
   ['_7enetworkdata',['~NetworkData',['../classbarry_1_1counters_1_1network_1_1_network_data.html#a60bea8d32eea6cd2eca0de3a84257382',1,'barry::counters::network::NetworkData::~NetworkData()'],['../class_network_data.html#a4667137d76017d3c69a789ad6cf86931',1,'NetworkData::~NetworkData()']]],
+  ['_7enode',['~Node',['../class_node.html#aa0840c3cb5c7159be6d992adecd2097c',1,'Node']]],
   ['_7enodedata',['~NodeData',['../classbarry_1_1counters_1_1phylo_1_1_node_data.html#a80396a94a947fcb032dc28d3bd66bcdd',1,'barry::counters::phylo::NodeData::~NodeData()'],['../class_node_data.html#ad870d466c40b9be96ad79adccab79038',1,'NodeData::~NodeData()']]],
   ['_7epowerset',['~PowerSet',['../classbarry_1_1_power_set.html#a89a176c9517e81a066adffad3c46aba5',1,'barry::PowerSet::~PowerSet()'],['../class_power_set.html#a89a176c9517e81a066adffad3c46aba5',1,'PowerSet::~PowerSet()']]],
   ['_7erule',['~Rule',['../classbarry_1_1_rule.html#a5b56209f553a6fe5b841395eec8e3101',1,'barry::Rule::~Rule()'],['../class_rule.html#a9f7e4ac4893005c7d4ecc2781f0f727d',1,'Rule::~Rule()']]],
