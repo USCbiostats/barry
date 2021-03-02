@@ -73,7 +73,8 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                         x->get_col_vec(&tmpstate, o, false);
 
                         // Retrieving the location to the respective set of probabilities
-                        unsigned int loc = nodes[i].offspring[o]->idx_full[map_to_nodes[tmpstate]];
+                        unsigned int loc = map_to_nodes[tmpstate];
+                        printf("id: %i, noff: %i, loc: %i, o: %i\n", nodes[i].id, nodes[i].offspring.size(), loc, o);
                         off_mult *= nodes[i].offspring[o]->probabilities[loc];
 
                     }
