@@ -27,12 +27,12 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
   
   // Computing initial statistics
   if (EmptyArray.nnozero() > 0u) {
-    for (uint i = 0u; i < coordinates_locked.size(); ++i) 
-      EmptyArray.rm_cell(coordinates_locked[i].first, coordinates_locked[i].second, false, true);
+    for (uint i = 0u; i < coordinates_free.size(); ++i) 
+      EmptyArray.rm_cell(coordinates_free[i].first, coordinates_free[i].second, false, true);
   }
 
-  EmptyArray.clear(true);
-  EmptyArray.reserve();
+  // EmptyArray.clear(true);
+  // EmptyArray.reserve();
   
   // Resizing support
   data.reserve(pow(2.0, coordinates_free.size())); 

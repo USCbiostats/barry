@@ -37,9 +37,6 @@ double APhyloModel::likelihood_exact(const std::vector< double > & par) {
             );
     pset.calc();
 
-    // Reserving space
-    std::vector< double > probs(pset.size(), 0.0);
-
     // Inverse sequence
     std::vector< unsigned int > preorder(this->sequence);
     std::reverse(preorder.begin(), preorder.end());
@@ -88,9 +85,8 @@ double APhyloModel::likelihood_exact(const std::vector< double > & par) {
             for (unsigned int a = 0u; a < nfuns(); ++a) {
 
                 for (unsigned int o = 0u; o < node->offspring.size(); ++o) {
-                    transition(a, o) = static_cast<uint>(
-                        s->get_cell(a, node->offspring[o]->id)
-                        );
+                    if (s->get_cell(a, node->offspring[o]->id) == 1u)
+                        transition(a, o) = 1u;
                 }
 
             }

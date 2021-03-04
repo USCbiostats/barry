@@ -32,7 +32,7 @@ APhyloModel::APhyloModel(
         // Temp vector with the annotations
         std::vector< unsigned int > funs(annotations.at(i));
 
-        if ((parent.at(i) > 0) && (nodes.find(parent.at(i)) == nodes.end())) {
+        if ((parent.at(i) >= 0) && (nodes.find(parent.at(i)) == nodes.end())) {
 
             // Adding parent
             auto key_par = nodes.insert({
@@ -83,12 +83,14 @@ APhyloModel::APhyloModel(
                     });
 
                 // Adding the offspring to the parent
-                nodes[parent.at(i)].offspring.push_back(
-                    &key_off.first->second
-                );
+                if (parent.at(i) >= 0) {
+                    nodes[parent.at(i)].offspring.push_back(
+                        &key_off.first->second
+                    );
 
-                // Adding the parent to the offspring
-                key_off.first->second.parent = &nodes[parent.at(i)];
+                    // Adding the parent to the offspring
+                    key_off.first->second.parent = &nodes[parent.at(i)];
+                }
 
             } else {
 
@@ -96,7 +98,7 @@ APhyloModel::APhyloModel(
                 nodes[geneid.at(i)].duplication = duplication.at(i);
                 nodes[geneid.at(i)].annotations = funs;
 
-                if (parent.at(i) > 0) {
+                if (parent.at(i) >= 0) {
                     nodes[geneid.at(i)].parent = &nodes[parent.at(i)];
                     nodes[parent.at(i)].offspring.push_back(
                         &nodes[geneid.at(i)]
