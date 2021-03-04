@@ -259,6 +259,7 @@ public:
   double likelihood(
     const std::vector<double> & params,
     const Array_Type & Array_,
+    int i = -1,
     bool as_log = false
     );
   

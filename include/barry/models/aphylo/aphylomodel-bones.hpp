@@ -20,8 +20,8 @@ std::vector< T1 > caster(const std::vector< T2 > & vec) {
     std::vector< T1 > ans;
     ans.reserve(vec.size());
 
-    for (auto &i : vec) {
-        ans.push_back(*i);
+    for (auto& i : vec) {
+        ans.push_back(static_cast< T1 >(i));
     }
 
     return ans;

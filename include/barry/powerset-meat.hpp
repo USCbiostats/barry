@@ -4,6 +4,14 @@
 #define BARRY_POWERSET_MEAT_HPP 1
 
 template <typename Array_Type, typename Data_Rule_Type>
+inline PowerSet<Array_Type,Data_Rule_Type>::PowerSet(
+  const Array_Type & array
+) : EmptyArray(array), data(0u),
+    rules(new Rules<Array_Type,Data_Rule_Type>()), N(array.N), M(array.M) {
+
+}
+
+template <typename Array_Type, typename Data_Rule_Type>
 inline PowerSet<Array_Type,Data_Rule_Type>::~PowerSet() {
   if (!this->rules_deleted)
     delete rules;

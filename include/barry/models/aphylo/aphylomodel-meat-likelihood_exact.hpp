@@ -24,8 +24,17 @@ double APhyloModel::likelihood_exact(const std::vector< double > & par) {
     if (this->nfuns() > 2)
         throw std::overflow_error("Too many functions! Exact likelihood cannot be computed for such cases.");
 
-    // Computing all combinations
-    barry::PowerSet<> pset(this->nfuns(), this->nnodes());
+    // Computing all combinations ----------------------------------------------
+    phylocounters::PhyloArray base(nfuns(), nnodes());
+    for (auto& n : nodes) {
+        for (unsigned int i = 0u; i < nfuns(); ++i)
+            base(i, n.second.id) = n.second.annotations[i];
+    }
+
+    phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
+    pset.add_rule(
+            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>
+            );
     pset.calc();
 
     // Reserving space
@@ -36,32 +45,67 @@ double APhyloModel::likelihood_exact(const std::vector< double > & par) {
     std::reverse(preorder.begin(), preorder.end());
 
     double totprob = 0.0;
-    std::vector< double > nodeprobs(this->nnodes(), 0.0);
+    
+    // This vector says whether the probability has to be included in 
+    // the final likelihood or not.
     for (unsigned int p = 0u; p < pset.size(); ++p) {
         
         // ith state
-        barry::BArray<> s = pset[p];
+        const phylocounters::PhyloArray * s = &pset[p];
         
         // Following the sequence
         double prob = 1.0;
-        std::fill(nodeprobs.begin(), nodeprobs.end(), 0.0);
-        std::vector< bool > tmpstates(this->nfuns());
+        std::vector< unsigned int > tmpstates(this->nfuns());
+
+        Node * node;
         for (auto& i : preorder) {
 
-            // Is it the first node?
-            if (nodes[i].parent == nullptr) {
+            node = &nodes[i];
+            std::fill(tmpstates.begin(), tmpstates.end(), 0u);
+            s->get_col_vec(&tmpstates, node->id, false);
 
-                // Getting the state, and the corresponding index
-                tmpstates = s.get_col_vec(nodes[i].id);
-                unsigned int m = this->map_to_nodes[tmpstates];
+            // Root node first
+            if (node->parent == nullptr) {               
+                // Since it is the root, the first probability is computed using
+                // the root only
+                for (auto k = 0u; k < this->nfuns(); ++k) {
+                    prob *= tmpstates[k] == 1u ? par_root[k] : (1.0 - par_root[k]);
+                }
+
+            } else if (node->is_leaf())
+                continue;
+
+            // Computing the transition
+            phylocounters::PhyloArray transition(nfuns(), node->offspring.size());
+            std::vector< double > bl(node->offspring.size(), 1.0);
+            std::vector< bool > sl = caster<bool,unsigned int>(tmpstates);
+            transition.set_data(
+                new phylocounters::NodeData(bl, sl),
+                true
+            );
+
+            // Filling the array
+            for (unsigned int a = 0u; a < nfuns(); ++a) {
+
+                for (unsigned int o = 0u; o < node->offspring.size(); ++o) {
+                    transition(a, o) = static_cast<uint>(
+                        s->get_cell(a, node->offspring[o]->id)
+                        );
+                }
 
             }
 
+            prob *= this->model_full.likelihood(
+                par0, transition,
+                node->idx_full[this->map_to_nodes[tmpstates]],
+                false);
 
         }
+
+        totprob += prob;
     }
 
-    return 0.0;
+    return totprob;
 
 }
 #endif

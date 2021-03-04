@@ -346,17 +346,37 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
     const std::vector<double> & params,
     const Array_Type & Array_,
+    int i,
     bool as_log
 ) {
   
-  std::vector< double > key = keygen(Array_);
-  MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
-  if (locator == keys2support.end()) 
-    throw std::range_error("This type of array has not been included in the model.");
+  if (i < 0) {
+
+    std::vector< double > key = keygen(Array_);
+    MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
+    if (locator == keys2support.end()) 
+      throw std::range_error("This type of array has not been included in the model.");
+
+    i = locator->second;
+
+  } else {
+
+    if (i >= arrays2support.size())
+      throw std::range_error("This type of array has not been included in the model.");
+
+    i = arrays2support[i];
+
+  }
   
+  // Counting stats
+  StatsCounter< Array_Type, Data_Counter_Type> tmpstats(&Array_);
+  tmpstats.set_counters(&this->counters);
+  std::vector< double > counts = tmpstats.count_all();
+
   return likelihood(
     params,
-    locator->second,
+    counts,
+    static_cast< unsigned int >(i),
     as_log
   );
   
