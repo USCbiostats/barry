@@ -69,6 +69,18 @@ inline std::vector< double > keygen_full(
     return dat;
 }
 
+inline bool vec_diff(
+    const std::vector< unsigned int > & s,
+    const std::vector< unsigned int > & a
+) {
+
+    for (unsigned int i = 0u; i < a.size(); ++i)
+        if ((a.at(i) != 9u) && (a.at(i) != s.at(i)))
+            return true;
+
+    return false;
+}
+
 /**
  * @brief A single node for the model
  *
@@ -159,7 +171,9 @@ public:
 
     double operator()(std::vector< double > & par, unsigned int & i);
     void calc_sequence(Node * n = nullptr);
+
     double likelihood(const std::vector< double > & par);
+    double likelihood_exact(const std::vector< double > & par);
 
     std::vector< double > get_probabilities() const;
 
