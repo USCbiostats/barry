@@ -361,7 +361,7 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
 
   } else {
 
-    if (i >= arrays2support.size())
+    if (static_cast<uint>(i) >= arrays2support.size())
       throw std::range_error("This type of array has not been included in the model.");
 
     i = arrays2support[i];

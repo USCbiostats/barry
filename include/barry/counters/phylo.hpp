@@ -261,9 +261,9 @@ inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun, bool 
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
 
-    if ((data->at(0u) == 1u) & !Array->data->duplication)
+    if ((data->at(1u) == 1u) & !Array->data->duplication)
       return 0.0;
-    else if ((data->at(0u) == 0u) & Array->data->duplication)
+    else if ((data->at(1u) == 0u) & Array->data->duplication)
       return 0.0;
     else
       return (Array->data->states[i]) && (i == data->at(0u)) ? -1.0 : 0.0;
@@ -272,9 +272,9 @@ inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun, bool 
   
   PHYLO_COUNTER_LAMBDA(tmp_init) {
 
-    if ((data->at(0u) == 1u) & !Array->data->duplication)
+    if ((data->at(1u) == 1u) & !Array->data->duplication)
       return 0.0;
-    else if ((data->at(0u) == 0u) & Array->data->duplication)
+    else if ((data->at(1u) == 0u) & Array->data->duplication)
       return 0.0;
     else
       return Array->data->states[data->at(0u)]? Array->M : 0.0;
