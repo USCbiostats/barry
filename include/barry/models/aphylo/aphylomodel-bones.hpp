@@ -110,7 +110,7 @@ class APhyloModel {
 public:
 
     std::mt19937                       rengine;
-    phylocounters::PhyloModel          model_full;
+    phylocounters::PhyloModel          model;
     unsigned int                       nfunctions;
     barry::Map< unsigned int, Node >   nodes;
     std::vector< unsigned int >        sequence;
@@ -169,6 +169,7 @@ public:
     unsigned int nnodes() const;
     unsigned int nleafs() const;
     unsigned int nterms() const;
+    std::vector< std::vector<double> > observed_counts();
     ///@}
 
 };

@@ -35,11 +35,11 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
             double totprob = 0.0;
 
             // Retrieving the sets of arrays
-            const std::vector< phylocounters::PhyloArray > * psets = model_full.get_pset(
+            const std::vector< phylocounters::PhyloArray > * psets = model.get_pset(
                 nodes[i].idx_full[s]
             );
 
-            const std::vector< std::vector<double> > * psets_stats = model_full.get_stats(
+            const std::vector< std::vector<double> > * psets_stats = model.get_stats(
                 nodes[i].idx_full[s]
             );
 
@@ -89,7 +89,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                     
 
                 // Multiplying by P(x|x_n)
-                off_mult *= model_full.likelihood(
+                off_mult *= model.likelihood(
                     par0,
                     psets_stats->at(nstate++),
                     nodes[i].idx_full[s]

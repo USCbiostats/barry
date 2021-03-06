@@ -3,16 +3,16 @@
 #ifndef APHYLOMODEL_MEAT_HPP
 #define APHYLOMODEL_MEAT_HPP 1
 
-APhyloModel::APhyloModel() : model_full(), nodes() {
+inline APhyloModel::APhyloModel() : model(), nodes() {
     return;
 }
 
-APhyloModel::APhyloModel(
+inline APhyloModel::APhyloModel(
     std::vector< std::vector<unsigned int> > & annotations,
     std::vector< unsigned int > & geneid,
     std::vector< int > &          parent,
     std::vector< bool > &         duplication
-) : model_full(), nodes() {
+) : model(), nodes() {
 
     // Check the lengths
     if (annotations.size() == 0u)
@@ -116,13 +116,13 @@ APhyloModel::APhyloModel(
 
 }
 
-void APhyloModel::init() {
+inline void APhyloModel::init() {
 
     // Generating the model data -----------------------------------------------
-    model_full.set_keygen(keygen_full);
-    model_full.set_counters(&counters);
-    model_full.store_psets();
-    model_full.set_rengine(&this->rengine, false);
+    model.set_keygen(keygen_full);
+    model.set_counters(&counters);
+    model.store_psets();
+    model.set_rengine(&this->rengine, false);
 
     // All combinations of the function
     phylocounters::PhyloPowerSet pset(nfunctions, 1u);
@@ -151,6 +151,13 @@ void APhyloModel::init() {
 
             // Creating the phyloarray, nfunctions x noffspring
             iter.second.array = phylocounters::PhyloArray(nfunctions, iter.second.offspring.size());
+            std::vector< bool > tmp_state = caster<bool,uint>(iter.second.annotations);
+            std::vector< double > blen(iter.second.offspring.size(), 1.0);
+            iter.second.array.set_data(
+                new phylocounters::NodeData(blen, tmp_state, iter.second.duplication),
+                true
+            );
+
             iter.second.probabilities.resize(pset.size(), 0.0);
 
             // Adding the data, first through functions
@@ -183,7 +190,6 @@ void APhyloModel::init() {
 
             // We then need to set the powerset
             unsigned int i = 0u;
-            std::vector< double > blen(iter.second.offspring.size(), 1.0);
             for (auto& s : states) {
 
                 iter.second.arrays.push_back(
@@ -195,10 +201,10 @@ void APhyloModel::init() {
 
                 // Once the array is ready, we can add it to the model
                 iter.second.idx_full.push_back(
-                    model_full.add_array(iter.second.arrays.at(i++))
+                    model.add_array(iter.second.arrays.at(i++))
                     );
 
-                // model_full.print_stats(0u);
+                // model.print_stats(0u);
 
             }
         }
@@ -222,7 +228,7 @@ void APhyloModel::init() {
     return;
 }
 
-void APhyloModel::calc_sequence(Node * n) {
+inline void APhyloModel::calc_sequence(Node * n) {
 
     if (sequence.size() == nodes.size())
         return;
@@ -265,7 +271,7 @@ void APhyloModel::calc_sequence(Node * n) {
 
 }
 
-std::vector< double > APhyloModel::get_probabilities() const {
+inline std::vector< double > APhyloModel::get_probabilities() const {
 
     std::vector< double > res;
     res.reserve(
@@ -281,15 +287,15 @@ std::vector< double > APhyloModel::get_probabilities() const {
     
 }
 
-unsigned int APhyloModel::nfuns() const {
+inline unsigned int APhyloModel::nfuns() const {
     return this->nfunctions;
 }
 
-unsigned int APhyloModel::nnodes() const {
+inline unsigned int APhyloModel::nnodes() const {
     return this->nodes.size();
 }
 
-unsigned int APhyloModel::nleafs() const {
+inline unsigned int APhyloModel::nleafs() const {
 
     unsigned int n = 0u;
     for (auto& iter : this->nodes)
@@ -299,11 +305,38 @@ unsigned int APhyloModel::nleafs() const {
     return n;
 }
 
-unsigned int APhyloModel::nterms() const {
+inline unsigned int APhyloModel::nterms() const {
 
     INITIALIZED()
 
-    return model_full.nterms() + this->nfuns();
+    return model.nterms() + this->nfuns();
+}
+
+inline std::vector< std::vector<double> > APhyloModel::observed_counts() {
+
+    // Making room for the output
+    std::vector<std::vector<double>> ans;
+    ans.reserve(nnodes());
+
+    // Creating counter
+    phylocounters::PhyloStatsCounter tmpcount;
+    tmpcount.set_counters(&model.counters);
+
+    // Iterating through the nodes
+    for (auto& n : nodes) {
+
+        if (n.second.is_leaf()) {
+            ans.push_back({});
+            continue;
+        }
+
+        tmpcount.reset_array(&n.second.array);
+        ans.push_back(tmpcount.count_all());
+
+    }
+
+    return ans;
+
 }
 
 #endif
