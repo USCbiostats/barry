@@ -2,6 +2,7 @@ var class_power_set =
 [
     [ "PowerSet", "class_power_set.html#a095815ccc44c88e0da73d92c6b5cf5f3", null ],
     [ "PowerSet", "class_power_set.html#abf6ac4224da7ae4d187d0d63833615b1", null ],
+    [ "PowerSet", "class_power_set.html#acc20a68ff11aa1891d9a0676ed50808f", null ],
     [ "~PowerSet", "class_power_set.html#a89a176c9517e81a066adffad3c46aba5", null ],
     [ "add_rule", "class_power_set.html#a00ee318a40da91bcf0bff79bf71454ab", null ],
     [ "add_rule", "class_power_set.html#a6cb8fb8f09b4c190e2ac6c07daa1241e", null ],
@@ -12,6 +13,7 @@ var class_power_set =
     [ "get_data", "class_power_set.html#a4de44631d9a7967db4dd791d42166115", null ],
     [ "get_data_ptr", "class_power_set.html#a99cf1aa56e63a16c023bf7057b0b9288", null ],
     [ "init_support", "class_power_set.html#a8eefc9606c6339938a8d9adcd0d7e153", null ],
+    [ "operator[]", "class_power_set.html#acc822131a9fbfd5b87f85b675f293d39", null ],
     [ "reset", "class_power_set.html#aba11dd8802cd2eb529c7c30b55994248", null ],
     [ "size", "class_power_set.html#a80e7099e115369326e6c873a92d270f9", null ],
     [ "coordinates_free", "class_power_set.html#a99cfef97c3a457ea7be1b000b39f41d9", null ],

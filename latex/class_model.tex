@@ -81,7 +81,7 @@ void \hyperlink{class_model_a86a46cf6fdc7c6514b97263f9ee4130b}{set\+\_\+rules} (
 \item 
 double \hyperlink{class_model_ae75fe2213980b6b245e279c7836ab99b}{likelihood} (const std\+::vector$<$ double $>$ \&params, const \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&i, bool as\+\_\+log=false)
 \item 
-double \hyperlink{class_model_a1a11a54860e22fbd152de4d7cfd30b89}{likelihood} (const std\+::vector$<$ double $>$ \&params, const Array\+\_\+\+Type \&Array\+\_\+, bool as\+\_\+log=false)
+double \hyperlink{class_model_a147586ed14d850ebab2615c60aa29b80}{likelihood} (const std\+::vector$<$ double $>$ \&params, const Array\+\_\+\+Type \&Array\+\_\+, int i=-\/1, bool as\+\_\+log=false)
 \item 
 double \hyperlink{class_model_ab88f541fc010f0ee1a415c9cb6c292b7}{likelihood} (const std\+::vector$<$ double $>$ \&params, const std\+::vector$<$ double $>$ \&target\+\_\+, const \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \&i, bool as\+\_\+log=false)
 \item 
@@ -364,7 +364,7 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\
 
 
 
-Definition at line 440 of file model-\/meat.\+hpp.
+Definition at line 460 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_ad09221a8938765deec2c9d4d0fa8dec5}\label{class_model_ad09221a8938765deec2c9d4d0fa8dec5}} 
 \index{Model@{Model}!get\+\_\+pset@{get\+\_\+pset}}
@@ -375,7 +375,7 @@ const std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$ \hyperlink{class_model}{Mode
 
 
 
-Definition at line 472 of file model-\/meat.\+hpp.
+Definition at line 492 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_adde1cf74eb0ca7f771b7878af9766cdf}\label{class_model_adde1cf74eb0ca7f771b7878af9766cdf}} 
 \index{Model@{Model}!get\+\_\+stats@{get\+\_\+stats}}
@@ -386,7 +386,7 @@ const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \hyperlink{class_m
 
 
 
-Definition at line 485 of file model-\/meat.\+hpp.
+Definition at line 505 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_ae75fe2213980b6b245e279c7836ab99b}\label{class_model_ae75fe2213980b6b245e279c7836ab99b}} 
 \index{Model@{Model}!likelihood@{likelihood}}
@@ -399,12 +399,12 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\
 
 Definition at line 313 of file model-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_model_a1a11a54860e22fbd152de4d7cfd30b89}\label{class_model_a1a11a54860e22fbd152de4d7cfd30b89}} 
+\mbox{\Hypertarget{class_model_a147586ed14d850ebab2615c60aa29b80}\label{class_model_a147586ed14d850ebab2615c60aa29b80}} 
 \index{Model@{Model}!likelihood@{likelihood}}
 \index{likelihood@{likelihood}!Model@{Model}}
 \subsubsection{\texorpdfstring{likelihood()}{likelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
-double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::likelihood (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{params,  }\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+,  }\item[{bool}]{as\+\_\+log = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::likelihood (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{params,  }\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+,  }\item[{int}]{i = {\ttfamily -\/1},  }\item[{bool}]{as\+\_\+log = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -419,7 +419,7 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\
 
 
 
-Definition at line 366 of file model-\/meat.\+hpp.
+Definition at line 386 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a31d16ef478d772cedde0813575074a0f}\label{class_model_a31d16ef478d772cedde0813575074a0f}} 
 \index{Model@{Model}!likelihood\+\_\+total@{likelihood\+\_\+total}}
@@ -430,7 +430,7 @@ double \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\
 
 
 
-Definition at line 400 of file model-\/meat.\+hpp.
+Definition at line 420 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_ad2a8b05a7d53289a8fc2e315739acdf9}\label{class_model_ad2a8b05a7d53289a8fc2e315739acdf9}} 
 \index{Model@{Model}!nterms@{nterms}}
@@ -441,7 +441,7 @@ Definition at line 400 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 526 of file model-\/meat.\+hpp.
+Definition at line 546 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a4944b5918dc4a9a59f72587da1e6bb3a}\label{class_model_a4944b5918dc4a9a59f72587da1e6bb3a}} 
 \index{Model@{Model}!operator=@{operator=}}
@@ -463,7 +463,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 497 of file model-\/meat.\+hpp.
+Definition at line 517 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a59e37db45e1751a6205db129a5c114c1}\label{class_model_a59e37db45e1751a6205db129a5c114c1}} 
 \index{Model@{Model}!sample@{sample}}
@@ -481,7 +481,7 @@ Array\+\_\+\+Type \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 533 of file model-\/meat.\+hpp.
+Definition at line 553 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_aab2ba8c90b888cfa2143bccf42fcb89f}\label{class_model_aab2ba8c90b888cfa2143bccf42fcb89f}} 
 \index{Model@{Model}!set\+\_\+counters@{set\+\_\+counters}}
@@ -547,7 +547,7 @@ Definition at line 112 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 516 of file model-\/meat.\+hpp.
+Definition at line 536 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a4b5edbe891b6da2319ea3fa6f1aba11d}\label{class_model_a4b5edbe891b6da2319ea3fa6f1aba11d}} 
 \index{Model@{Model}!size\+\_\+unique@{size\+\_\+unique}}
@@ -558,7 +558,7 @@ Definition at line 516 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 521 of file model-\/meat.\+hpp.
+Definition at line 541 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a06a6f52dfc6868908cf11e6663a93904}\label{class_model_a06a6f52dfc6868908cf11e6663a93904}} 
 \index{Model@{Model}!store\+\_\+psets@{store\+\_\+psets}}

@@ -15,7 +15,7 @@ var class_model =
     [ "get_pset", "class_model.html#ad09221a8938765deec2c9d4d0fa8dec5", null ],
     [ "get_stats", "class_model.html#adde1cf74eb0ca7f771b7878af9766cdf", null ],
     [ "likelihood", "class_model.html#ae75fe2213980b6b245e279c7836ab99b", null ],
-    [ "likelihood", "class_model.html#a1a11a54860e22fbd152de4d7cfd30b89", null ],
+    [ "likelihood", "class_model.html#a147586ed14d850ebab2615c60aa29b80", null ],
     [ "likelihood", "class_model.html#ab88f541fc010f0ee1a415c9cb6c292b7", null ],
     [ "likelihood_total", "class_model.html#a31d16ef478d772cedde0813575074a0f", null ],
     [ "nterms", "class_model.html#ad2a8b05a7d53289a8fc2e315739acdf9", null ],

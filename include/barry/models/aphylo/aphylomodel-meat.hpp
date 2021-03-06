@@ -3,7 +3,7 @@
 #ifndef APHYLOMODEL_MEAT_HPP
 #define APHYLOMODEL_MEAT_HPP 1
 
-APhyloModel::APhyloModel() : model_const(), model_full(), nodes() {
+APhyloModel::APhyloModel() : model_full(), nodes() {
     return;
 }
 
@@ -12,7 +12,7 @@ APhyloModel::APhyloModel(
     std::vector< unsigned int > & geneid,
     std::vector< int > &          parent,
     std::vector< bool > &         duplication
-) : model_const(), model_full(), nodes() {
+) : model_full(), nodes() {
 
     // Check the lengths
     if (annotations.size() == 0u)
@@ -119,19 +119,9 @@ APhyloModel::APhyloModel(
 void APhyloModel::init() {
 
     // Generating the model data -----------------------------------------------
-    model_const.set_keygen(keygen_const);
     model_full.set_keygen(keygen_full);
-
-    model_const.add_rule(
-            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>
-            );
-
-    model_const.set_counters(&counters);
     model_full.set_counters(&counters);
-
     model_full.store_psets();
-
-    model_const.set_rengine(&this->rengine, false);
     model_full.set_rengine(&this->rengine, false);
 
     // All combinations of the function
@@ -199,14 +189,11 @@ void APhyloModel::init() {
                 iter.second.arrays.push_back(
                     phylocounters::PhyloArray(iter.second.array, true));
                 iter.second.arrays.at(i).set_data(
-                    new phylocounters::NodeData(blen, s),
+                    new phylocounters::NodeData(blen, s, iter.second.duplication),
                     true
                 );
 
                 // Once the array is ready, we can add it to the model
-                iter.second.idx_cons.push_back(
-                    model_const.add_array(iter.second.arrays.at(i))
-                    );
                 iter.second.idx_full.push_back(
                     model_full.add_array(iter.second.arrays.at(i++))
                     );
@@ -316,7 +303,7 @@ unsigned int APhyloModel::nterms() const {
 
     INITIALIZED()
 
-    return model_const.nterms() + this->nfuns();
+    return model_full.nterms() + this->nfuns();
 }
 
 #endif

@@ -29,29 +29,6 @@ std::vector< T1 > caster(const std::vector< T2 > & vec) {
 }
 
 // Hasher
-inline std::vector< double > keygen_const(
-    const phylocounters::PhyloArray & array
-    ) {
-
-    // Baseline data: nrows and columns
-    std::vector< double > dat = {
-        (double) array.nrow(), (double) array.ncol()
-    };
-
-    // State of the parent
-    for (bool i : array.data->states) {
-        dat.push_back(i ? 1.0 : 0.0);
-    }
-
-    // Free cells
-    for (auto i = 0u; i < array.nrow(); ++i)
-        for (auto j = 0u; j < array.ncol(); ++j)
-            dat.push_back((double) array.get_cell(i, j, false));
-
-    return dat;
-}
-
-// Hasher
 inline std::vector< double > keygen_full(
     const phylocounters::PhyloArray & array
     ) {
@@ -65,6 +42,9 @@ inline std::vector< double > keygen_full(
     for (bool i : array.data->states) {
         dat.push_back(i ? 1.0 : 0.0);
     }
+
+    // Type of the parent
+    dat.push_back(array.data->duplication ? 1.0 : 0.0);
 
     return dat;
 }
@@ -98,7 +78,6 @@ public:
     std::vector< phylocounters::PhyloArray > arrays    = {};      ///< Arrays given all possible states
     Node *                                   parent    = nullptr; ///< Parent node
     std::vector< Node* >                     offspring = {};      ///< Offspring nodes
-    std::vector< unsigned int >              idx_cons  = {};      ///< Id of the constrained support.
     std::vector< unsigned int >              idx_full  = {};
     bool                                     visited   = false;
 
@@ -131,7 +110,6 @@ class APhyloModel {
 public:
 
     std::mt19937                       rengine;
-    phylocounters::PhyloModel          model_const;
     phylocounters::PhyloModel          model_full;
     unsigned int                       nfunctions;
     barry::Map< unsigned int, Node >   nodes;

@@ -20,6 +20,8 @@ Collaboration diagram for Power\+Set$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\
 \item 
 \hyperlink{class_power_set_abf6ac4224da7ae4d187d0d63833615b1}{Power\+Set} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+)
 \item 
+\hyperlink{class_power_set_acc20a68ff11aa1891d9a0676ed50808f}{Power\+Set} (const Array\+\_\+\+Type \&array)
+\item 
 \hyperlink{class_power_set_a89a176c9517e81a066adffad3c46aba5}{$\sim$\+Power\+Set} ()
 \item 
 void \hyperlink{class_power_set_a8eefc9606c6339938a8d9adcd0d7e153}{init\+\_\+support} ()
@@ -50,6 +52,8 @@ std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \hyperlink{class_power_set_ab
 std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \hyperlink{class_power_set_ac734ed684aa314b722a05d423c607a38}{end} ()
 \item 
 \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_power_set_a80e7099e115369326e6c873a92d270f9}{size} () const
+\item 
+const Array\+\_\+\+Type \& \hyperlink{class_power_set_acc822131a9fbfd5b87f85b675f293d39}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int \&i) const
 \end{DoxyCompactItemize}
 
 \subsection*{Public Attributes}
@@ -87,7 +91,7 @@ Definition at line 16 of file powerset-\/bones.\+hpp.
 \mbox{\Hypertarget{class_power_set_a095815ccc44c88e0da73d92c6b5cf5f3}\label{class_power_set_a095815ccc44c88e0da73d92c6b5cf5f3}} 
 \index{Power\+Set@{Power\+Set}!Power\+Set@{Power\+Set}}
 \index{Power\+Set@{Power\+Set}!Power\+Set@{Power\+Set}}
-\subsubsection{\texorpdfstring{Power\+Set()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\subsubsection{\texorpdfstring{Power\+Set()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
 \hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{class_power_set}{Power\+Set} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -98,13 +102,24 @@ Definition at line 36 of file powerset-\/bones.\+hpp.
 \mbox{\Hypertarget{class_power_set_abf6ac4224da7ae4d187d0d63833615b1}\label{class_power_set_abf6ac4224da7ae4d187d0d63833615b1}} 
 \index{Power\+Set@{Power\+Set}!Power\+Set@{Power\+Set}}
 \index{Power\+Set@{Power\+Set}!Power\+Set@{Power\+Set}}
-\subsubsection{\texorpdfstring{Power\+Set()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\subsubsection{\texorpdfstring{Power\+Set()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
 \hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{class_power_set}{Power\+Set} (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{N\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 38 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_acc20a68ff11aa1891d9a0676ed50808f}\label{class_power_set_acc20a68ff11aa1891d9a0676ed50808f}} 
+\index{Power\+Set@{Power\+Set}!Power\+Set@{Power\+Set}}
+\index{Power\+Set@{Power\+Set}!Power\+Set@{Power\+Set}}
+\subsubsection{\texorpdfstring{Power\+Set()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+\hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{class_power_set}{Power\+Set} (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{array }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 7 of file powerset-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_a89a176c9517e81a066adffad3c46aba5}\label{class_power_set_a89a176c9517e81a066adffad3c46aba5}} 
 \index{Power\+Set@{Power\+Set}!````~Power\+Set@{$\sim$\+Power\+Set}}
@@ -115,7 +130,7 @@ Definition at line 38 of file powerset-\/bones.\+hpp.
 
 
 
-Definition at line 7 of file powerset-\/meat.\+hpp.
+Definition at line 15 of file powerset-\/meat.\+hpp.
 
 
 
@@ -129,7 +144,7 @@ void \hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+R
 
 
 
-Definition at line 102 of file powerset-\/meat.\+hpp.
+Definition at line 110 of file powerset-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_a6cb8fb8f09b4c190e2ac6c07daa1241e}\label{class_power_set_a6cb8fb8f09b4c190e2ac6c07daa1241e}} 
 \index{Power\+Set@{Power\+Set}!add\+\_\+rule@{add\+\_\+rule}}
@@ -140,7 +155,7 @@ void \hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+R
 
 
 
-Definition at line 111 of file powerset-\/meat.\+hpp.
+Definition at line 119 of file powerset-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_aae5eae12186fff037efa3884ac2b3dcc}\label{class_power_set_aae5eae12186fff037efa3884ac2b3dcc}} 
 \index{Power\+Set@{Power\+Set}!add\+\_\+rule@{add\+\_\+rule}}
@@ -151,7 +166,7 @@ void \hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+R
 
 
 
-Definition at line 121 of file powerset-\/meat.\+hpp.
+Definition at line 129 of file powerset-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_abed9d58db924366d8a38baf168131fc3}\label{class_power_set_abed9d58db924366d8a38baf168131fc3}} 
 \index{Power\+Set@{Power\+Set}!begin@{begin}}
@@ -162,7 +177,7 @@ std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \hyperlink{class_power_set}{P
 
 
 
-Definition at line 66 of file powerset-\/bones.\+hpp.
+Definition at line 70 of file powerset-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_ad3b707294498105b2cc1a04017cc96d2}\label{class_power_set_ad3b707294498105b2cc1a04017cc96d2}} 
 \index{Power\+Set@{Power\+Set}!calc@{calc}}
@@ -173,7 +188,7 @@ void \hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+R
 
 
 
-Definition at line 77 of file powerset-\/meat.\+hpp.
+Definition at line 85 of file powerset-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_ac734ed684aa314b722a05d423c607a38}\label{class_power_set_ac734ed684aa314b722a05d423c607a38}} 
 \index{Power\+Set@{Power\+Set}!end@{end}}
@@ -184,7 +199,7 @@ std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \hyperlink{class_power_set}{P
 
 
 
-Definition at line 67 of file powerset-\/bones.\+hpp.
+Definition at line 71 of file powerset-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_a4de44631d9a7967db4dd791d42166115}\label{class_power_set_a4de44631d9a7967db4dd791d42166115}} 
 \index{Power\+Set@{Power\+Set}!get\+\_\+data@{get\+\_\+data}}
@@ -195,7 +210,7 @@ std\+::vector$<$ Array\+\_\+\+Type $>$ \hyperlink{class_power_set}{Power\+Set}$<
 
 
 
-Definition at line 65 of file powerset-\/bones.\+hpp.
+Definition at line 69 of file powerset-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_a99cf1aa56e63a16c023bf7057b0b9288}\label{class_power_set_a99cf1aa56e63a16c023bf7057b0b9288}} 
 \index{Power\+Set@{Power\+Set}!get\+\_\+data\+\_\+ptr@{get\+\_\+data\+\_\+ptr}}
@@ -206,7 +221,7 @@ const std\+::vector$<$ Array\+\_\+\+Type $>$$\ast$ \hyperlink{class_power_set}{P
 
 Getter functions 
 
-Definition at line 64 of file powerset-\/bones.\+hpp.
+Definition at line 68 of file powerset-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_a8eefc9606c6339938a8d9adcd0d7e153}\label{class_power_set_a8eefc9606c6339938a8d9adcd0d7e153}} 
 \index{Power\+Set@{Power\+Set}!init\+\_\+support@{init\+\_\+support}}
@@ -217,7 +232,18 @@ void \hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+R
 
 
 
-Definition at line 13 of file powerset-\/meat.\+hpp.
+Definition at line 21 of file powerset-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_acc822131a9fbfd5b87f85b675f293d39}\label{class_power_set_acc822131a9fbfd5b87f85b675f293d39}} 
+\index{Power\+Set@{Power\+Set}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Power\+Set@{Power\+Set}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = B\+Array$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+const Array\+\_\+\+Type\& \hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 73 of file powerset-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_aba11dd8802cd2eb529c7c30b55994248}\label{class_power_set_aba11dd8802cd2eb529c7c30b55994248}} 
 \index{Power\+Set@{Power\+Set}!reset@{reset}}
@@ -228,7 +254,7 @@ void \hyperlink{class_power_set}{Power\+Set}$<$ Array\+\_\+\+Type, Data\+\_\+\+R
 
 
 
-Definition at line 90 of file powerset-\/meat.\+hpp.
+Definition at line 98 of file powerset-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_power_set_a80e7099e115369326e6c873a92d270f9}\label{class_power_set_a80e7099e115369326e6c873a92d270f9}} 
 \index{Power\+Set@{Power\+Set}!size@{size}}
@@ -239,7 +265,7 @@ Definition at line 90 of file powerset-\/meat.\+hpp.
 
 
 
-Definition at line 68 of file powerset-\/bones.\+hpp.
+Definition at line 72 of file powerset-\/bones.\+hpp.
 
 
 

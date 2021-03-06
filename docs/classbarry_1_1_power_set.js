@@ -2,6 +2,7 @@ var classbarry_1_1_power_set =
 [
     [ "PowerSet", "classbarry_1_1_power_set.html#ab2fa4e40323bb9225225bb52b86ff345", null ],
     [ "PowerSet", "classbarry_1_1_power_set.html#a96a31964644ea81991fe103a2a8bfb1f", null ],
+    [ "PowerSet", "classbarry_1_1_power_set.html#acc20a68ff11aa1891d9a0676ed50808f", null ],
     [ "~PowerSet", "classbarry_1_1_power_set.html#a89a176c9517e81a066adffad3c46aba5", null ],
     [ "add_rule", "classbarry_1_1_power_set.html#a00ee318a40da91bcf0bff79bf71454ab", null ],
     [ "add_rule", "classbarry_1_1_power_set.html#a6cb8fb8f09b4c190e2ac6c07daa1241e", null ],
@@ -12,6 +13,7 @@ var classbarry_1_1_power_set =
     [ "get_data", "classbarry_1_1_power_set.html#a53ca37c9cb14abd6f61bc0127ac9d067", null ],
     [ "get_data_ptr", "classbarry_1_1_power_set.html#a80b283b1ac115f1be049a09f1a69586a", null ],
     [ "init_support", "classbarry_1_1_power_set.html#a8eefc9606c6339938a8d9adcd0d7e153", null ],
+    [ "operator[]", "classbarry_1_1_power_set.html#a8da3f3a278b35999f232cb9f9312b0cc", null ],
     [ "reset", "classbarry_1_1_power_set.html#aba11dd8802cd2eb529c7c30b55994248", null ],
     [ "size", "classbarry_1_1_power_set.html#af8b336d7b958c44bb69cd24d7a462ed8", null ],
     [ "coordinates_free", "classbarry_1_1_power_set.html#a2bc42422f23546d55fef96f053c0c4ea", null ],
