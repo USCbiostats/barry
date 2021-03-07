@@ -55,6 +55,8 @@ inline APhyloModel::APhyloModel(
 
                 // Adding the parent to the offspring
                 key_off.first->second.parent = &key_par.first->second;
+                key_off.first->second.annotations = funs;
+                key_off.first->second.duplication = duplication.at(i);
 
             } else {
 
@@ -91,6 +93,9 @@ inline APhyloModel::APhyloModel(
                     // Adding the parent to the offspring
                     key_off.first->second.parent = &nodes[parent.at(i)];
                 }
+
+                key_off.first->second.annotations = funs;
+                key_off.first->second.duplication = duplication.at(i);
 
             } else {
 
@@ -330,12 +335,94 @@ inline std::vector< std::vector<double> > APhyloModel::observed_counts() {
             continue;
         }
 
-        tmpcount.reset_array(&n.second.array);
+        phylocounters::PhyloArray tmparray(nfuns(), n.second.offspring.size());
+
+        uint j = 0u;
+        for (auto& o : n.second.offspring) {
+            for (uint k = 0u; k < nfuns(); ++k) {
+                if (o->annotations.at(k) != 0) {
+                    tmparray.insert_cell(
+                        k, j, o->annotations.at(k), false, false
+                        );
+                }
+            }
+            ++j;
+        }
+
+        std::vector< bool > tmp_state = caster<bool,uint>(n.second.annotations);
+        std::vector< double > blen(n.second.offspring.size(), 1.0);
+        tmparray.set_data(
+            new phylocounters::NodeData(blen, tmp_state, n.second.duplication),
+            true
+        );
+
+        tmpcount.reset_array(&tmparray);
         ans.push_back(tmpcount.count_all());
 
     }
 
     return ans;
+
+}
+
+inline void APhyloModel::print_observed_counts() {
+
+    // Making room for the output
+    std::vector<std::vector<double>> ans;
+    ans.reserve(nnodes());
+
+    // Creating counter
+    phylocounters::PhyloStatsCounter tmpcount;
+    tmpcount.set_counters(&model.counters);
+
+    // Iterating through the nodes
+    for (auto& n : nodes) {
+
+        if (n.second.is_leaf()) {
+            ans.push_back({});
+            continue;
+        }
+
+        phylocounters::PhyloArray tmparray(nfuns(), n.second.offspring.size());
+
+        uint j = 0u;
+        for (auto& o : n.second.offspring) {
+            for (uint k = 0u; k < nfuns(); ++k) {
+                if (o->annotations.at(k) != 0) {
+                    tmparray.insert_cell(
+                        k, j, o->annotations.at(k), false, false
+                        );
+                }
+            }
+            ++j;
+        }
+
+        std::vector< bool > tmp_state = caster<bool,uint>(n.second.annotations);
+        std::vector< double > blen(n.second.offspring.size(), 1.0);
+        tmparray.set_data(
+            new phylocounters::NodeData(blen, tmp_state, n.second.duplication),
+            true
+        );
+
+        tmpcount.reset_array(&tmparray);
+        std::vector< double > counts = tmpcount.count_all();
+
+        // Printing
+        std::cout << "----------\n" <<
+            "nodeid: " << n.second.id << 
+            "; state : [";
+        for (uint f = 0u; f < nfuns(); ++f)
+            std::cout << tmparray.data->states[f] << ", ";
+        std::cout << "]; Array:" << std::endl;
+        tmparray.print();
+        std::cout << "Counts: ";
+        for (auto& c : counts)
+            std::cout << c << ", ";
+        std::cout << std::endl;
+
+    }
+
+    return;
 
 }
 

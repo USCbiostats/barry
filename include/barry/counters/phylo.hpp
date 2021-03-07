@@ -221,7 +221,7 @@ inline void counter_maxfuns(
 
         uint count = 0u;
         for (uint i = 0u; i < Array->nrow(); ++i) {
-          if (!Array->is_empty(i, j))
+          if (Array->get_cell(i, j) == 1u)
             ++count;
         }
 
@@ -242,19 +242,25 @@ inline void counter_maxfuns(
     else if (!Array->data->duplication & (data->at(2u) == 1u))
       return 0.0;
     
+    uint counts = 0u;
+    for (auto& k : Array->el_ij.at(j)) {
+      if (k.second.value == 1u)
+        counts++;
+    }
+
     // Does the focal gene has nfun in [lb,ub]?
     if (data->at(1u) == 0u) {
 
       return
-        Array->el_ji.at(j).size() <= data->at(0u) ?
+        counts <= data->at(0u) ?
         0.0 : -1.0;
 
     } else {
 
       // Right above the lb?
-      if (Array->el_ji.at(j).size() == data->at(0u))
+      if (counts == data->at(0u))
         return 1.0;
-      else if (Array->el_ji.at(j).size() == (data->at(1u) + 1u))
+      else if (counts == (data->at(1u) + 1u))
         return -1.0;
       else
         return 0.0;
@@ -343,7 +349,7 @@ inline void counter_subfun(PhyloCounters * counters, uint nfunA, uint nfunB, boo
     uint other = (i == data->at(0u))? data->at(1u) :data->at(0u);
     double res = 0.0;
     // There are 4 cases: (first x second) x (had the second function)
-    if (!Array->is_empty(other, j)) { 
+    if (Array->get_cell(other, j, false) == 1u) { 
       
       for (uint off = 0u; off < Array->M; ++off) {
         
@@ -351,7 +357,7 @@ inline void counter_subfun(PhyloCounters * counters, uint nfunA, uint nfunB, boo
         if (off == j)
           continue;
         
-        if (!(Array->is_empty(i, off)) && Array->is_empty(other, off))
+        if ((Array->get_cell(i, off, false) == 1u) && (Array->get_cell(other, off, false) == 0u))
           res -= 1.0;
         
       }
@@ -364,7 +370,7 @@ inline void counter_subfun(PhyloCounters * counters, uint nfunA, uint nfunB, boo
         if (off == j)
           continue;
         
-        if (Array->is_empty(i, off) && !(Array->is_empty(other, off)))
+        if ((Array->get_cell(i, off, false) == 0u) && (Array->get_cell(other, off, false) == 1u))
           res += 1.0;
         
       }

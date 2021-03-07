@@ -169,8 +169,10 @@ public:
     unsigned int nnodes() const;
     unsigned int nleafs() const;
     unsigned int nterms() const;
-    std::vector< std::vector<double> > observed_counts();
     ///@}
+
+    std::vector< std::vector<double> > observed_counts();
+    void print_observed_counts();
 
 };
 
