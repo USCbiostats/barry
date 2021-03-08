@@ -63,7 +63,7 @@ inline APhyloModel::APhyloModel(
                 // We just need to make sure that we update it!
                 nodes[geneid.at(i)].duplication = duplication.at(i);
                 nodes[geneid.at(i)].annotations = funs;
-                nodes[geneid.at(i)].parent = &nodes[parent.at(i)];
+                nodes[geneid.at(i)].parent      = &nodes[parent.at(i)];
 
                 nodes[parent.at(i)].offspring.push_back(
                     &nodes[geneid.at(i)]
@@ -408,9 +408,10 @@ inline void APhyloModel::print_observed_counts() {
         std::vector< double > counts = tmpcount.count_all();
 
         // Printing
+        auto dpl = n.second.duplication ? "duplication" : "speciation";
         std::cout << "----------\n" <<
-            "nodeid: " << n.second.id << 
-            "; state : [";
+            "nodeid: " << n.second.id << " (" << dpl <<
+            ")\nstate : [";
         for (uint f = 0u; f < nfuns(); ++f)
             std::cout << tmparray.data->states[f] << ", ";
         std::cout << "]; Array:" << std::endl;

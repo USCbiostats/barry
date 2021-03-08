@@ -157,6 +157,54 @@ inline void counter_gains(PhyloCounters * counters, std::vector<uint> nfun, bool
   
 }
 
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Functional gains for a specific function (`nfun`).
+ */
+inline void counter_gains_k_offspring(PhyloCounters * counters, std::vector<uint> nfun, uint k = 1u, bool duplication = true) {
+  
+  PHYLO_COUNTER_LAMBDA(tmp_init) {
+    PHYLO_CHECK_MISSING();
+    return 0.0;
+  };
+
+  PHYLO_COUNTER_LAMBDA(tmp_count) {
+
+    // Is this relevant?
+    if (i != data->at(0u))
+      return 0.0;
+
+    // Checking the type of event
+    if (Array->data->duplication & (data->at(2u) == 0u))
+      return 0.0;
+    else if (!Array->data->duplication & (data->at(2u) == 1u))
+      return 0.0;
+
+    // Making the counts
+    uint counts = 1u;
+    for (uint k = 0u; k < Array->ncol(); ++k)
+      if (k != j) {
+        if (Array->get_cell(i, k, false) == 1u)
+          ++counts;
+      }
+    
+    return (counts == data->at(2u)) ? 1.0 : 0.0;
+
+  };
+  
+  for (auto i = nfun.begin(); i != nfun.end(); ++i) {
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new PhyloCounterData({*i, k, duplication ? 1u : 0u}),
+        true
+    );
+  }
+  
+  return;
+  
+}
+
 // -----------------------------------------------------------------------------
 /**
  * @brief Overall functional loss
@@ -217,11 +265,12 @@ inline void counter_maxfuns(
     else {
 
       double ans = 0.0;
-      for (uint j = 0u; j < Array->ncol(); ++j) {
+      for (uint k = 0u; k < Array->ncol(); ++k) {
 
+        // How many functions the k-th offspring has
         uint count = 0u;
-        for (uint i = 0u; i < Array->nrow(); ++i) {
-          if (Array->get_cell(i, j) == 1u)
+        for (uint l = 0u; l < Array->nrow(); ++l) {
+          if (Array->get_cell(l, k, false) == 1u)
             ++count;
         }
 
@@ -242,30 +291,20 @@ inline void counter_maxfuns(
     else if (!Array->data->duplication & (data->at(2u) == 1u))
       return 0.0;
     
-    uint counts = 0u;
-    for (auto& k : Array->el_ij.at(j)) {
-      if (k.second.value == 1u)
-        counts++;
-    }
+    uint counts = 1u;
+    for (uint k = 0u; k < Array->nrow(); ++k)
+      if (k != j)
+        if (Array->get_cell(k, j, false) == 1u)
+          ++counts;
 
-    // Does the focal gene has nfun in [lb,ub]?
-    if (data->at(1u) == 0u) {
-
-      return
-        counts <= data->at(0u) ?
-        0.0 : -1.0;
-
-    } else {
-
-      // Right above the lb?
-      if (counts == data->at(0u))
-        return 1.0;
-      else if (counts == (data->at(1u) + 1u))
-        return -1.0;
-      else
-        return 0.0;
-
-    }
+    // Reached the lower bound
+    if (counts == data->at(0u))
+      return 1.0;
+      // Went outside of the upper bound
+    else if (counts == (data->at(1u) + 1u))
+      return -1.0;
+    else
+      return 0.0;
 
   };
 
@@ -316,6 +355,61 @@ inline void counter_loss(PhyloCounters * counters, std::vector<uint> nfun, bool 
         true
     );
   }
+  
+  return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Total number of changes. Use this statistic to account for "preservation"
+ */
+inline void counter_overall_changes(PhyloCounters * counters, bool duplication = true) {
+  
+  PHYLO_COUNTER_LAMBDA(tmp_count) {
+
+    if ((data->at(0u) == 0) & Array->data->duplication)
+      return 0.0;
+    else if ((data->at(0u) == 1) & !Array->data->duplication)
+      return 0.0;
+    else {
+
+      if (Array->data->states[i])
+        return -1.0;
+      else 
+        return 1.0;
+
+    }
+
+  };
+  
+  PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+    PHYLO_CHECK_MISSING();
+
+    if ((data->at(0u) == 0) & Array->data->duplication)
+      return 0.0;
+    else if ((data->at(0u) == 1) & !Array->data->duplication)
+      return 0.0;
+    else {
+
+      double counts = 0.0;
+      for (uint k = 0u; k < Array->ncol(); ++k)
+        if (Array->data->states[k])
+          counts += 1.0;
+
+      return counts;
+
+    }
+
+  };
+
+  counters->add_counter(
+      tmp_count, tmp_init,
+      new PhyloCounterData({duplication ? 1u : 0u}),
+      true
+  );
+  
   
   return;
   
@@ -535,7 +629,8 @@ inline void counter_longest(PhyloCounters * counters) {
 }
 
 //------------------------------------------------------------------------------
-/**@brief Total number of neofunctionalization events 
+/**
+ * @brief Total number of neofunctionalization events 
  * @details Needs to specify pairs of function.
  */
 inline void counter_neofun(PhyloCounters * counters, uint nfunA, uint nfunB, bool duplication = true) {
@@ -588,6 +683,71 @@ inline void counter_neofun(PhyloCounters * counters, uint nfunA, uint nfunB, boo
     }
     
     return res;
+  };
+  
+  PHYLO_COUNTER_LAMBDA(tmp_init) {
+    PHYLO_CHECK_MISSING();
+    return 0.0;
+  };
+
+  counters->add_counter(
+      tmp_count, tmp_init,
+      new PhyloCounterData({nfunA, nfunB, duplication ? 1u : 0u}),
+      true
+  );
+  
+  return;
+  
+}
+
+//------------------------------------------------------------------------------
+/**
+ * @brief Total number of neofunctionalization events 
+ * @details Needs to specify pairs of function.
+ */
+inline void counter_neofun_a2b(
+  PhyloCounters * counters, uint nfunA, uint nfunB, bool duplication = true) {
+  
+  PHYLO_COUNTER_LAMBDA(tmp_count) {
+
+    // Is this node duplication?
+    if ((data->at(2u) == 1u) & !Array->data->duplication)
+      return 0.0;
+    else if ((data->at(2u) == 0u) & Array->data->duplication)  
+      return 0.0;
+
+    const uint & funA = data->at(0u);
+    const uint & funB = data->at(1u);
+
+    // Is the function in scope relevant?
+    if (i != funB)
+      return 0.0;
+    
+    // Checking the parent has a but not b
+    if (!Array->data->states[funA] | Array->data->states[funB]) 
+      return 0.0;
+  
+    // Current gene shouldn't have function A
+    if (Array->get_cell(funA, j, false) == 1u)
+      return 0.0;
+    
+    // Any other offspring with the same?
+    uint counts = 0u;
+    for (uint k = 0u; k < Array->ncol(); ++k) {
+      if (k != j)
+        if (Array->get_cell(funA, k, false) == 0u)
+          if (Array->get_cell(funB, k, false) == 1u)
+            ++counts;
+    }
+
+    // Yes, this is the first neofun
+    if (counts == 0u)
+      return 1.0;
+    else if (counts == 1u) // There was a gene!
+      return -1.0;
+    
+    return 0.0;
+    
   };
   
   PHYLO_COUNTER_LAMBDA(tmp_init) {
