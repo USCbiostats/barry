@@ -181,15 +181,30 @@ inline void counter_gains_k_offspring(PhyloCounters * counters, std::vector<uint
     else if (!Array->data->duplication & (data->at(2u) == 1u))
       return 0.0;
 
+    // Is there any gain?
+    if (Array->data->states[i])
+      return 0.0;
+
     // Making the counts
-    uint counts = 1u;
+    int counts = 0;
     for (uint k = 0u; k < Array->ncol(); ++k)
       if (k != j) {
         if (Array->get_cell(i, k, false) == 1u)
           ++counts;
       }
+
+    // Three cases: base on the diff
+    int diff = static_cast<int>(data->at(1u)) - counts;
+    // (a) counts were 1 below k, then +1
+    if (diff == 1)
+      return 1.0;
+      // (b) counts were equal to k, then -1
+    else if (diff == 0) {
+      return -1.0;
+    } else 
+      // (c) Otherwise, nothing happens
+      return 0.0;
     
-    return (counts == data->at(2u)) ? 1.0 : 0.0;
 
   };
   
@@ -200,6 +215,105 @@ inline void counter_gains_k_offspring(PhyloCounters * counters, std::vector<uint
         true
     );
   }
+  
+  return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Keeps track of how many genes are changing (either 0, 1, or 2 if dealing
+ * with regular trees.)
+ */
+inline void counter_genes_changing(PhyloCounters * counters, bool duplication = true) {
+  
+  PHYLO_COUNTER_LAMBDA(tmp_init) {
+    PHYLO_CHECK_MISSING();
+
+    if (Array->data->duplication & (data->at(0u) == 0))
+      return 0.0;
+    else if (!Array->data->duplication & (data->at(0u) == 1))
+      return 0.0;
+
+    // At the beginning, all offspring are zero, so we need to
+    // find at least one state = true.
+
+    for (uint j0 = 0u; j0 < Array->nrow(); ++j0) {
+
+      if (Array->data->states[j0]) 
+        // Yup, we are loosing a function, so break
+        return static_cast<double>(Array->ncol());
+      
+    }
+
+    return 0.0;
+    
+
+  };
+
+  PHYLO_COUNTER_LAMBDA(tmp_count) {
+
+    // Checking the type of event
+    if (Array->data->duplication & (data->at(0u) == 0u))
+      return 0.0;
+    else if (!Array->data->duplication & (data->at(0u) == 1u))
+      return 0.0;
+
+    // Case 1: The parent had the function (then probably need to substract one)
+    if (Array->data->states[i]) {
+
+      // Need to check the other functions
+      for (uint k = 0u; k < Array->nrow(); ++k) {
+        if (k != i) {
+
+          // Nah, this gene was already different.
+          if (Array->data->states[k] && (Array->get_cell(k, j, false) == 0u))
+            return 0.0;
+          else if ((!Array->data->states[k]) && (Array->get_cell(k, j, false) == 1u))
+            return 0.0;
+        }
+
+      }
+
+      // Nope, this gene is now matching its parent, so we need to 
+      // take it out from the count of genes that have changed.
+      return -1.0;
+
+    } else if (!Array->data->states[i]) {
+    // Case 2: The parent didn't had the function. Probably need to increase
+    // by one.
+
+
+      // Need to check the other functions, where these the same?
+      // if these were the same, then we are facing a gene who is changing.
+      for (uint k = 0u; k < Array->nrow(); ++k) {
+        if (k != i) {
+
+          // Nah, this gene was already different.
+          if (Array->data->states[k] && (Array->get_cell(k, j, false) == 0u))
+            return 0.0;
+          else if ((!Array->data->states[k]) && (Array->get_cell(k, j, false) == 1u))
+            return 0.0;
+        }
+
+      }
+
+      // Nope, this gene is now matching its parent, so we need to 
+      // take it out from the count of genes that have changed.
+      return 1.0;
+
+    }
+
+    
+
+  };
+  
+  counters->add_counter(
+      tmp_count, tmp_init,
+      new PhyloCounterData({duplication ? 1u : 0u}),
+      true
+  );
+
   
   return;
   
@@ -368,9 +482,9 @@ inline void counter_overall_changes(PhyloCounters * counters, bool duplication =
   
   PHYLO_COUNTER_LAMBDA(tmp_count) {
 
-    if ((data->at(0u) == 0) & Array->data->duplication)
+    if ((data->at(0u) == 0u) & Array->data->duplication)
       return 0.0;
-    else if ((data->at(0u) == 1) & !Array->data->duplication)
+    else if ((data->at(0u) == 1u) & !Array->data->duplication)
       return 0.0;
     else {
 
@@ -387,16 +501,18 @@ inline void counter_overall_changes(PhyloCounters * counters, bool duplication =
 
     PHYLO_CHECK_MISSING();
 
-    if ((data->at(0u) == 0) & Array->data->duplication)
+    if ((data->at(0u) == 0u) & Array->data->duplication)
       return 0.0;
-    else if ((data->at(0u) == 1) & !Array->data->duplication)
+    else if ((data->at(0u) == 1u) & !Array->data->duplication)
       return 0.0;
     else {
 
+      // As many chances to change as offspring
+      double noff   = static_cast<double> (Array->ncol());
       double counts = 0.0;
       for (uint k = 0u; k < Array->ncol(); ++k)
         if (Array->data->states[k])
-          counts += 1.0;
+          counts += noff;
 
       return counts;
 
@@ -718,33 +834,85 @@ inline void counter_neofun_a2b(
 
     const uint & funA = data->at(0u);
     const uint & funB = data->at(1u);
-
-    // Is the function in scope relevant?
-    if (i != funB)
-      return 0.0;
     
-    // Checking the parent has a but not b
-    if (!Array->data->states[funA] | Array->data->states[funB]) 
+    // Checking the parent has funA but not funb
+    if ((!Array->data->states[funA]) | Array->data->states[funB]) 
       return 0.0;
   
-    // Current gene shouldn't have function A
-    if (Array->get_cell(funA, j, false) == 1u)
-      return 0.0;
-    
-    // Any other offspring with the same?
-    uint counts = 0u;
-    for (uint k = 0u; k < Array->ncol(); ++k) {
-      if (k != j)
-        if (Array->get_cell(funA, k, false) == 0u)
-          if (Array->get_cell(funB, k, false) == 1u)
-            ++counts;
-    }
+    uint other = (i == funA)? funB: funA;
+    // In this case we may be turning negative
+    if (Array->get_cell(other, j, false) == 1u) {
 
-    // Yes, this is the first neofun
-    if (counts == 0u)
-      return 1.0;
-    else if (counts == 1u) // There was a gene!
-      return -1.0;
+      // Then we are loosing the gene who is generating a new function.
+      // we need to check if there are any offspring who are preserving
+      if (i == funA) {
+
+        for (uint o = 0u; o < Array->ncol(); ++o) {
+
+          // Skip the focal gene
+          if (j == o)
+            continue;
+
+          if (Array->get_cell(funA, o, false) == 1u)
+            if (Array->get_cell(funB, o, false) == 0u)
+              return -1.0;
+
+        }
+
+      } else {
+
+        // We are loosing the gene that preserved the parents.
+        // Need to find a gene who is developing a novel fun
+        for (uint o = 0u; o < Array->ncol(); ++o) {
+
+          // Skip the focal gene
+          if (j == o)
+            continue;
+
+          if (Array->get_cell(funA, o, false) == 0u)
+            if (Array->get_cell(funB, o, false) == 1u)
+              return -1.0;
+
+        }
+
+
+      }
+
+    } else {
+      // In this case, this is turning into preserving the function.
+      // Need to find offspring who are mutating
+      if (i == funA) {
+
+        for (uint o = 0u; o < Array->ncol(); ++o) {
+
+          // Skip the focal gene
+          if (j == o)
+            continue;
+
+          if (Array->get_cell(funA, o, false) == 0u)
+            if (Array->get_cell(funB, o, false) == 1u)
+              return 1.0;
+
+        }
+
+      } else {
+        // Here, it is turning into generating the new function, so we
+        // need to find a gene that is preserving.
+        for (uint o = 0u; o < Array->ncol(); ++o) {
+
+          // Skip the focal gene
+          if (j == o)
+            continue;
+
+          if (Array->get_cell(funA, o, false) == 1u)
+            if (Array->get_cell(funB, o, false) == 0u)
+              return 1.0;
+
+        }        
+          
+      }
+
+    }
     
     return 0.0;
     
