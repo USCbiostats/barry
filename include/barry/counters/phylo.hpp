@@ -839,82 +839,47 @@ inline void counter_neofun_a2b(
     if ((!Array->data->states[funA]) | Array->data->states[funB]) 
       return 0.0;
   
-    uint other = (i == funA)? funB: funA;
-    // In this case we may be turning negative
-    if (Array->get_cell(other, j, false) == 1u) {
+    double res = 0.0;
 
-      // Then we are loosing the gene who is generating a new function.
-      // we need to check if there are any offspring who are preserving
-      if (i == funA) {
+    if (funA == i) {
 
-        for (uint o = 0u; o < Array->ncol(); ++o) {
-
-          // Skip the focal gene
-          if (j == o)
+      if (Array->get_cell(funB, j, true) == 1) {
+        for (uint k = 0u; k < Array->ncol(); ++k) {
+          if (k == j)
             continue;
-
-          if (Array->get_cell(funA, o, false) == 1u)
-            if (Array->get_cell(funB, o, false) == 0u)
-              return -1.0;
-
+          if ((Array->get_cell(funA, k, true) == 1u) && (Array->get_cell(funB, k, true) == 0u))
+            res -= 1.0;
         }
-
       } else {
-
-        // We are loosing the gene that preserved the parents.
-        // Need to find a gene who is developing a novel fun
-        for (uint o = 0u; o < Array->ncol(); ++o) {
-
-          // Skip the focal gene
-          if (j == o)
+        for (uint k = 0u; k < Array->ncol(); ++k) {
+          if (k == j)
             continue;
-
-          if (Array->get_cell(funA, o, false) == 0u)
-            if (Array->get_cell(funB, o, false) == 1u)
-              return -1.0;
-
+          if ((Array->get_cell(funA, k, true) == 0u) && (Array->get_cell(funB, k, true) == 1u))
+            res += 1.0;
         }
-
-
       }
 
     } else {
-      // In this case, this is turning into preserving the function.
-      // Need to find offspring who are mutating
-      if (i == funA) {
 
-        for (uint o = 0u; o < Array->ncol(); ++o) {
-
-          // Skip the focal gene
-          if (j == o)
+      if (Array->get_cell(funB, j, true) == 1) {
+        for (uint k = 0u; k < Array->ncol(); ++k) {
+          if (k == j)
             continue;
-
-          if (Array->get_cell(funA, o, false) == 0u)
-            if (Array->get_cell(funB, o, false) == 1u)
-              return 1.0;
-
+          if ((Array->get_cell(funA, k, true) == 0u) && (Array->get_cell(funB, k, true) == 1u))
+            res -= 1.0;
         }
-
       } else {
-        // Here, it is turning into generating the new function, so we
-        // need to find a gene that is preserving.
-        for (uint o = 0u; o < Array->ncol(); ++o) {
-
-          // Skip the focal gene
-          if (j == o)
+        for (uint k = 0u; k < Array->ncol(); ++k) {
+          if (k == j)
             continue;
-
-          if (Array->get_cell(funA, o, false) == 1u)
-            if (Array->get_cell(funB, o, false) == 0u)
-              return 1.0;
-
-        }        
-          
+          if ((Array->get_cell(funA, k, true) == 1u) && (Array->get_cell(funB, k, true) == 0u))
+            res += 1.0;
+        }
       }
 
     }
-    
-    return 0.0;
+
+    return res;
     
   };
   
