@@ -36,11 +36,11 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
 
             // Retrieving the sets of arrays
             const std::vector< phylocounters::PhyloArray > * psets = model.get_pset(
-                nodes[i].idx_full[s]
+                nodes[i].narray[s]
             );
 
             const std::vector< std::vector<double> > * psets_stats = model.get_stats(
-                nodes[i].idx_full[s]
+                nodes[i].narray[s]
             );
 
             // Summation over all possible values of X
@@ -75,7 +75,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
 
                     // Retrieving the location to the respective set of probabilities
                     unsigned int loc = map_to_nodes[tmpstate];
-                    off_mult *= nodes[i].offspring[o]->probabilities[loc];
+                    off_mult *= nodes[i].offspring[o]->subtree_prob[loc];
 
                 }
 
@@ -92,7 +92,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                 off_mult *= model.likelihood(
                     par0,
                     psets_stats->at(nstate++),
-                    nodes[i].idx_full[s]
+                    nodes[i].narray[s]
                 );
 
                 // Adding to the total probabilities
@@ -101,7 +101,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
             }
 
             // Setting the probability at the node
-            nodes[i].probabilities[s] = totprob;
+            nodes[i].subtree_prob[s] = totprob;
 
         }
 
@@ -113,7 +113,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                     tmpll *= states[s][k] ? par_root[k] : (1 - par_root[k]);
                 }
 
-                ll += tmpll * nodes[i].probabilities[s];
+                ll += tmpll * nodes[i].subtree_prob[s];
 
             }
         }

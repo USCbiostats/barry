@@ -9,5 +9,6 @@
 #include "aphylo/aphylomodel-meat-likelihood.hpp"
 #include "aphylo/aphylomodel-meat-likelihood_exact.hpp"
 #include "aphylo/aphylomodel-meat-simulate.hpp"
+#include "aphylo/aphylomodel-meat-predict.hpp"
 
 #endif

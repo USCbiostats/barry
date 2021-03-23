@@ -156,14 +156,14 @@ inline void APhyloModel::init() {
 
             // Creating the phyloarray, nfunctions x noffspring
             iter.second.array = phylocounters::PhyloArray(nfunctions, iter.second.offspring.size());
-            std::vector< bool > tmp_state = caster<bool,uint>(iter.second.annotations);
+            std::vector< bool > tmp_state =vector_caster<bool,uint>(iter.second.annotations);
             std::vector< double > blen(iter.second.offspring.size(), 1.0);
             iter.second.array.set_data(
                 new phylocounters::NodeData(blen, tmp_state, iter.second.duplication),
                 true
             );
 
-            iter.second.probabilities.resize(pset.size(), 0.0);
+            iter.second.subtree_prob.resize(pset.size(), 0.0);
 
             // Adding the data, first through functions
             for (unsigned int k = 0u; k < nfunctions; ++k) {
@@ -205,7 +205,7 @@ inline void APhyloModel::init() {
                 );
 
                 // Once the array is ready, we can add it to the model
-                iter.second.idx_full.push_back(
+                iter.second.narray.push_back(
                     model.add_array(iter.second.arrays.at(i++))
                     );
 
@@ -284,7 +284,7 @@ inline std::vector< double > APhyloModel::get_probabilities() const {
         );
     
     for (auto& i : sequence) {
-        for (auto& p : this->nodes.at(i).probabilities)
+        for (auto& p : this->nodes.at(i).subtree_prob)
             res.push_back(p);
     }
 
@@ -349,7 +349,7 @@ inline std::vector< std::vector<double> > APhyloModel::observed_counts() {
             ++j;
         }
 
-        std::vector< bool > tmp_state = caster<bool,uint>(n.second.annotations);
+        std::vector< bool > tmp_state =vector_caster<bool,uint>(n.second.annotations);
         std::vector< double > blen(n.second.offspring.size(), 1.0);
         tmparray.set_data(
             new phylocounters::NodeData(blen, tmp_state, n.second.duplication),
@@ -397,7 +397,7 @@ inline void APhyloModel::print_observed_counts() {
             ++j;
         }
 
-        std::vector< bool > tmp_state = caster<bool,uint>(n.second.annotations);
+        std::vector< bool > tmp_state =vector_caster<bool,uint>(n.second.annotations);
         std::vector< double > blen(n.second.offspring.size(), 1.0);
         tmparray.set_data(
             new phylocounters::NodeData(blen, tmp_state, n.second.duplication),

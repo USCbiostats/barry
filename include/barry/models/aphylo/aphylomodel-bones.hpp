@@ -1,6 +1,20 @@
 #ifndef APHYLOMODEL_BONES_HPP
 #define APHYLOMODEL_BONES_HPP 1
 
+// #include <vector>
+// #include <algorithm>
+// #include <random>
+// #include <stdexcept>
+
+template<typename Ta, typename Tb>
+inline std::vector< Ta > vector_caster(const std::vector< Tb > & x) {
+    std::vector< Ta > ans;
+    ans.reserve(x.size());
+    for (auto i = x.begin(); i != x.end(); ++i)
+        ans.push_back(static_cast< Ta >(*i));
+    return ans;
+}
+
 #define INITIALIZED() if (!this->initialized) \
     throw std::logic_error("The model has not been initialized yet.");
 
@@ -11,22 +25,7 @@ RULE_FUNCTION(rule_empty_free) {
     return true;
 }
 
-// using namespace phylocounters;
 
-
-template<typename T1, typename T2>
-std::vector< T1 > caster(const std::vector< T2 > & vec) {
-
-    std::vector< T1 > ans;
-    ans.reserve(vec.size());
-
-    for (auto& i : vec) {
-        ans.push_back(static_cast< T1 >(i));
-    }
-
-    return ans;
-
-}
 
 // Hasher
 inline std::vector< double > keygen_full(
@@ -78,11 +77,12 @@ public:
     std::vector< phylocounters::PhyloArray > arrays    = {};      ///< Arrays given all possible states
     Node *                                   parent    = nullptr; ///< Parent node
     std::vector< Node* >                     offspring = {};      ///< Offspring nodes
-    std::vector< unsigned int >              idx_full  = {};
+    std::vector< unsigned int >              narray    = {};      ///< ID of the array in the model
     bool                                     visited   = false;
 
-    std::vector< double > probabilities; ///< The probability of observing each state
-
+    std::vector< double >                    subtree_prob;        ///< Induced subtree probabilities
+    std::vector< double >                    probability;         ///< The probability of observing each state
+    
     Node() {};
     Node(unsigned int id_, bool duplication_) : id(id_), duplication(duplication_) {};
     Node(unsigned int id_, std::vector< unsigned int > annotations_, bool duplication_) :
@@ -173,6 +173,14 @@ public:
 
     std::vector< std::vector<double> > observed_counts();
     void print_observed_counts();
+
+    /**
+     * @brief Calculate the conditional probability
+     * 
+     * @param p Vector of parameters
+     * @return std::vector< double > Returns the posterior probability
+     */
+    std::vector< std::vector< double > > predict(const std::vector< double > & p);
 
 };
 

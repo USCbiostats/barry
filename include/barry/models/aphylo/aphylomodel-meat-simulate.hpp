@@ -5,20 +5,11 @@
 #ifndef APHYLOMODEL_MEAT_SIMULATE_HPP
 #define APHYLOMODEL_MEAT_SIMULATE_HPP 1
 
-void APhyloModel::set_seed(const unsigned int & s) {
+inline void APhyloModel::set_seed(const unsigned int & s) {
     rengine.seed(s);
 }
 
-template<typename Ta, typename Tb>
-inline std::vector< Ta > vector_caster(const std::vector< Tb > & x) {
-    std::vector< Ta > ans;
-    ans.reserve(x.size());
-    for (auto i = x.begin(); i != x.end(); ++i)
-        ans.push_back(static_cast< Ta >(*i));
-    return ans;
-}
-
-std::vector< std::vector< unsigned int > > APhyloModel::simulate(
+inline std::vector< std::vector< unsigned int > > APhyloModel::simulate(
     const std::vector< double > & par
     ) {
 
@@ -72,7 +63,7 @@ std::vector< std::vector< unsigned int > > APhyloModel::simulate(
 
         // Given the state of the current node, sample the state of the
         // offspring, all based on the current state
-        auto tmp = model.sample(nodes[i].idx_full[n], par0);
+        auto tmp = model.sample(nodes[i].narray[n], par0);
 
         // Iterating through the offspring to assign the state
         for (unsigned int j = 0u; j < nodes[i].offspring.size(); ++j) {
