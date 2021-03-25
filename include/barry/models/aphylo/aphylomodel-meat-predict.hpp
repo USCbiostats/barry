@@ -38,6 +38,7 @@ inline std::vector< std::vector<double> > APhyloModel::predict(
     std::vector< double > tmp_prob(nfuns(), 0.0);
     unsigned int root_id = preorder[0u];
     Node * tmp_node = &nodes[root_id];
+    tmp_node->probability.resize(states.size(), 0.0);
     double tmp_likelihood = likelihood(par);
     for (unsigned int s = 0u; s < states.size(); ++s) {
 
@@ -60,61 +61,95 @@ inline std::vector< std::vector<double> > APhyloModel::predict(
         // Going in the opposite direction
     for (auto& i : preorder) {
 
+        Node & node = nodes[i];
+
         // We just started from the root
-        if (nodes[i].parent == nullptr)
+        if (node.parent == nullptr)
             continue;
 
+        // Reserving space
+        node.probability.resize(states.size(), 0.0);
+
         std::vector< double > zerovec(nfuns(), 0.0);
-        res[nodes[i].id] = zerovec;
+        res[node.id] = zerovec;
 
-        // Iterating through the parent state
-        for (unsigned int s = 0u; s < states.size(); ++s) {
+        // Need to identify what is the position of the node with respect to
+        // its siblings
+        unsigned int n_pos = 0u;
+        for (unsigned int n = 0u; n < node.parent->offspring.size(); ++n) {
 
-            // Resetting the prob vec
-            std::fill(tmp_prob.begin(), tmp_prob.end(), 0.0);
-
-            // All the ways in which we can go from x_pk to x_nk, we first
-            // need to find its location in the model (loc):
-            unsigned int loc = nodes[i].parent->narray[s];
+            if (node.parent->offspring.at(n)->id == node.id)
+                break;
             
-            // Iterating through the possible staes of the parent
-            for (unsigned int sp = 0u; sp < states.size(); ++sp) {
+            ++n_pos;
+        }
 
-                // tmp_prob[]
+        // Iterating through the offspring state P(x_n^p | D)
+        std::fill(node.probability.begin(), node.probability.end(), 0.0);
+        for (unsigned int s = 0u; s < states.size(); ++s) {         
 
-            }
+            // Iterating throught the parent state
+            for (unsigned int s_p = 0u; s_p < states.size(); ++s_p) {
 
-            // Retrieving the corresponding arrays and stats that will be
-            // use to marginalize
-            auto p_arrays = model.get_pset(loc);
-            auto p_stats  = model.get_stats(loc);
-            for (unsigned int a = 0u; a < p_arrays->size(); ++a) {
-
-                // Iterating through offspring
-                for (unsigned int o = 0u; o < p_arrays->size(); ++o) {
+                // All the ways in which we can go from x_pk to x_nk, we first
+                // need to find its location in the model (loc):
+                unsigned int loc = node.parent->narray[s_p];
                 
-                    // Iterating through function
-                    for (unsigned int f = 0u; f < nfuns(); ++f) {
+                // Retrieving the corresponding arrays and stats that will be
+                // use to marginalize
+                auto p_arrays = model.get_pset(loc);
+                auto p_stats  = model.get_stats(loc);
 
-                        if (p_arrays->at(a).get_cell(f, o, false) != 0u) {
-                            tmp_prob[f] += model.likelihood(par0, p_stats->at(a), loc);
+                double prob = 0.0;
+
+                // Iterating through all the cases in which x_p -> x_nk^p
+                for (unsigned int a = 0u; a < p_arrays->size(); ++a) {
+                
+                    // Should we include this?
+                    bool includeit = true;
+                    for (unsigned int k = 0u; k < nfuns(); ++k)
+                        if (p_arrays->at(a).get_cell(k, n_pos, false) != static_cast<unsigned int>(states[s][k])) {
+                            
+                            // If it does not match, then jump to the next state
+                            includeit = false;
+                            break;
+                            
                         }
+                    
 
-                    }
+                    // If not to be included, then we go to the next
+                    if (!includeit)
+                        continue;
+
+                    // Computing the likelihood 
+                    prob += model.likelihood(par0, p_stats->at(a), loc);
+                    
                 }
 
-            }
-
-            for (unsigned int f = 0u; f < nfuns(); ++f) {
-                res[nodes[i].id][f] += nodes[i].parent->subtree_prob[s] * 
-                    nodes[i].parent->subtree_prob[s];
+                // Finalizing
+                node.probability[s] += node.parent->probability[s_p] * prob;
             }
             
             
 
         }
 
+        // Computing marginal probabilities. For this we need to integrate out
+        // function by function.
+        std::fill(tmp_prob.begin(), tmp_prob.end(), 0.0);
+        for (unsigned int s = 0u; s < states.size(); ++s) {
+        
+            for (unsigned int k = 0u; k < nfuns(); ++k) {
 
+                // If the state is true, then include it, otherwise, don't
+                if (states[s][k])
+                    tmp_prob[k] += node.probability[k];
+
+            }
+                        
+        }
+
+        res[node.id] = tmp_prob;
 
     }
 
