@@ -11,7 +11,8 @@ Annotated Phylo \hyperlink{class_model}{Model}.
 
 
 
-Collaboration diagram for A\+Phylo\+Model\+:\nopagebreak
+Collaboration diagram for A\+Phylo\+Model\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -42,7 +43,13 @@ std\+::vector$<$ double $>$ \hyperlink{class_a_phylo_model_a3368d03919454f68f0cb
 void \hyperlink{class_a_phylo_model_a5f3faed4bad372764c056d1686508d6e}{set\+\_\+seed} (const unsigned int \&s)
 \item 
 std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \hyperlink{class_a_phylo_model_ac75bb5a2f14d104733e2c194ae210986}{simulate} (const std\+::vector$<$ double $>$ \&par)
-\end{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_a_phylo_model_ac101dec16afb5d1c957fa1ccdca45c63}{observed\+\_\+counts} ()
+\item 
+void \hyperlink{class_a_phylo_model_a25623ae340bb6912a0427279b779c450}{print\+\_\+observed\+\_\+counts} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_a_phylo_model_a5818916d43989b8a8dfa42b1fbde8e5c}{predict} (const std\+::vector$<$ double $>$ \&p, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$res\+\_\+prob=nullptr)
+\begin{DoxyCompactList}\small\item\em Calculate the conditional probability. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Information about the model}\par
 \begin{DoxyCompactItemize}
 \item 
@@ -60,9 +67,7 @@ unsigned int \hyperlink{class_a_phylo_model_ada9ba3e2df8586216573fa27566d92cb}{n
 \item 
 std\+::mt19937 \hyperlink{class_a_phylo_model_a3f7a406330ca376840dcea3324e69448}{rengine}
 \item 
-\hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model} \hyperlink{class_a_phylo_model_ad91e946cad1e96aa444b586921d1ebe6}{model\+\_\+const}
-\item 
-\hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model} \hyperlink{class_a_phylo_model_a79c9e748c657487a60497265348f8a14}{model\+\_\+full}
+\hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model} \hyperlink{class_a_phylo_model_a8594c24aab4b3fe46cd2e4976c2031d9}{model}
 \item 
 unsigned int \hyperlink{class_a_phylo_model_aceefd34597d56589a10162c937d8200f}{nfunctions}
 \item 
@@ -85,7 +90,7 @@ bool \hyperlink{class_a_phylo_model_a298c38ef857994159589a6c0f7578150}{initializ
 \subsection{Detailed Description}
 Annotated Phylo \hyperlink{class_model}{Model}. 
 
-Definition at line 130 of file aphylomodel-\/bones.\+hpp.
+Definition at line 109 of file aphylomodel-\/bones.\+hpp.
 
 
 
@@ -94,7 +99,7 @@ Definition at line 130 of file aphylomodel-\/bones.\+hpp.
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{A\+Phylo\+Model()}{APhyloModel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily A\+Phylo\+Model\+::\+A\+Phylo\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily A\+Phylo\+Model\+::\+A\+Phylo\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -104,7 +109,7 @@ Definition at line 6 of file aphylomodel-\/meat.\+hpp.
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{A\+Phylo\+Model()}{APhyloModel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily A\+Phylo\+Model\+::\+A\+Phylo\+Model (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \&}]{annotations,  }\item[{std\+::vector$<$ unsigned int $>$ \&}]{geneid,  }\item[{std\+::vector$<$ int $>$ \&}]{parent,  }\item[{std\+::vector$<$ bool $>$ \&}]{duplication }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily A\+Phylo\+Model\+::\+A\+Phylo\+Model (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \&}]{annotations,  }\item[{std\+::vector$<$ unsigned int $>$ \&}]{geneid,  }\item[{std\+::vector$<$ int $>$ \&}]{parent,  }\item[{std\+::vector$<$ bool $>$ \&}]{duplication }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -135,7 +140,7 @@ Definition at line 10 of file aphylomodel-\/meat.\+hpp.
 
 
 
-Definition at line 168 of file aphylomodel-\/bones.\+hpp.
+Definition at line 146 of file aphylomodel-\/bones.\+hpp.
 
 
 
@@ -144,31 +149,31 @@ Definition at line 168 of file aphylomodel-\/bones.\+hpp.
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!calc\+\_\+sequence@{calc\+\_\+sequence}}
 \index{calc\+\_\+sequence@{calc\+\_\+sequence}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{calc\+\_\+sequence()}{calc\_sequence()}}
-{\footnotesize\ttfamily void A\+Phylo\+Model\+::calc\+\_\+sequence (\begin{DoxyParamCaption}\item[{\hyperlink{class_node}{Node} $\ast$}]{n = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void A\+Phylo\+Model\+::calc\+\_\+sequence (\begin{DoxyParamCaption}\item[{\hyperlink{class_node}{Node} $\ast$}]{n = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 238 of file aphylomodel-\/meat.\+hpp.
+Definition at line 236 of file aphylomodel-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_a3368d03919454f68f0cb5bd888f983a1}\label{class_a_phylo_model_a3368d03919454f68f0cb5bd888f983a1}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!get\+\_\+probabilities@{get\+\_\+probabilities}}
 \index{get\+\_\+probabilities@{get\+\_\+probabilities}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{get\+\_\+probabilities()}{get\_probabilities()}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$ A\+Phylo\+Model\+::get\+\_\+probabilities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ A\+Phylo\+Model\+::get\+\_\+probabilities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 281 of file aphylomodel-\/meat.\+hpp.
+Definition at line 279 of file aphylomodel-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_a45a7af583f9619bce5d88b15303a73e6}\label{class_a_phylo_model_a45a7af583f9619bce5d88b15303a73e6}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!init@{init}}
 \index{init@{init}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{init()}{init()}}
-{\footnotesize\ttfamily void A\+Phylo\+Model\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void A\+Phylo\+Model\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 119 of file aphylomodel-\/meat.\+hpp.
+Definition at line 124 of file aphylomodel-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_a66fced3b89fe385862318621855fa605}\label{class_a_phylo_model_a66fced3b89fe385862318621855fa605}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!likelihood@{likelihood}}
@@ -194,41 +199,51 @@ Definition at line 7 of file aphylomodel-\/meat-\/likelihood\+\_\+exact.\+hpp.
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!nfuns@{nfuns}}
 \index{nfuns@{nfuns}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{nfuns()}{nfuns()}}
-{\footnotesize\ttfamily unsigned int A\+Phylo\+Model\+::nfuns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily unsigned int A\+Phylo\+Model\+::nfuns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 297 of file aphylomodel-\/meat.\+hpp.
+Definition at line 295 of file aphylomodel-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_adfb761d08367323cd94e917a5249bd86}\label{class_a_phylo_model_adfb761d08367323cd94e917a5249bd86}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!nleafs@{nleafs}}
 \index{nleafs@{nleafs}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{nleafs()}{nleafs()}}
-{\footnotesize\ttfamily unsigned int A\+Phylo\+Model\+::nleafs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily unsigned int A\+Phylo\+Model\+::nleafs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 305 of file aphylomodel-\/meat.\+hpp.
+Definition at line 303 of file aphylomodel-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_a5a13086298e421d18ed60e6ecfced009}\label{class_a_phylo_model_a5a13086298e421d18ed60e6ecfced009}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!nnodes@{nnodes}}
 \index{nnodes@{nnodes}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{nnodes()}{nnodes()}}
-{\footnotesize\ttfamily unsigned int A\+Phylo\+Model\+::nnodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily unsigned int A\+Phylo\+Model\+::nnodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 301 of file aphylomodel-\/meat.\+hpp.
+Definition at line 299 of file aphylomodel-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_ada9ba3e2df8586216573fa27566d92cb}\label{class_a_phylo_model_ada9ba3e2df8586216573fa27566d92cb}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!nterms@{nterms}}
 \index{nterms@{nterms}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{nterms()}{nterms()}}
-{\footnotesize\ttfamily unsigned int A\+Phylo\+Model\+::nterms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily unsigned int A\+Phylo\+Model\+::nterms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 315 of file aphylomodel-\/meat.\+hpp.
+Definition at line 313 of file aphylomodel-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_a_phylo_model_ac101dec16afb5d1c957fa1ccdca45c63}\label{class_a_phylo_model_ac101dec16afb5d1c957fa1ccdca45c63}} 
+\index{A\+Phylo\+Model@{A\+Phylo\+Model}!observed\+\_\+counts@{observed\+\_\+counts}}
+\index{observed\+\_\+counts@{observed\+\_\+counts}!A\+Phylo\+Model@{A\+Phylo\+Model}}
+\subsubsection{\texorpdfstring{observed\+\_\+counts()}{observed\_counts()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ A\+Phylo\+Model\+::observed\+\_\+counts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 320 of file aphylomodel-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_a9b3390c29ea7a3283e68e9a059b94138}\label{class_a_phylo_model_a9b3390c29ea7a3283e68e9a059b94138}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!operator()@{operator()}}
@@ -236,11 +251,43 @@ Definition at line 315 of file aphylomodel-\/meat.\+hpp.
 \subsubsection{\texorpdfstring{operator()()}{operator()()}}
 {\footnotesize\ttfamily double A\+Phylo\+Model\+::operator() (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{par,  }\item[{unsigned int \&}]{i }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{class_a_phylo_model_a5818916d43989b8a8dfa42b1fbde8e5c}\label{class_a_phylo_model_a5818916d43989b8a8dfa42b1fbde8e5c}} 
+\index{A\+Phylo\+Model@{A\+Phylo\+Model}!predict@{predict}}
+\index{predict@{predict}!A\+Phylo\+Model@{A\+Phylo\+Model}}
+\subsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ A\+Phylo\+Model\+::predict (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{p,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{res\+\_\+prob = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the conditional probability. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Vector of parameters \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$ double $>$ Returns the posterior probability 
+\end{DoxyReturn}
+
+
+Definition at line 7 of file aphylomodel-\/meat-\/predict.\+hpp.
+
+\mbox{\Hypertarget{class_a_phylo_model_a25623ae340bb6912a0427279b779c450}\label{class_a_phylo_model_a25623ae340bb6912a0427279b779c450}} 
+\index{A\+Phylo\+Model@{A\+Phylo\+Model}!print\+\_\+observed\+\_\+counts@{print\+\_\+observed\+\_\+counts}}
+\index{print\+\_\+observed\+\_\+counts@{print\+\_\+observed\+\_\+counts}!A\+Phylo\+Model@{A\+Phylo\+Model}}
+\subsubsection{\texorpdfstring{print\+\_\+observed\+\_\+counts()}{print\_observed\_counts()}}
+{\footnotesize\ttfamily void A\+Phylo\+Model\+::print\+\_\+observed\+\_\+counts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 368 of file aphylomodel-\/meat.\+hpp.
+
 \mbox{\Hypertarget{class_a_phylo_model_a5f3faed4bad372764c056d1686508d6e}\label{class_a_phylo_model_a5f3faed4bad372764c056d1686508d6e}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!set\+\_\+seed@{set\+\_\+seed}}
 \index{set\+\_\+seed@{set\+\_\+seed}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{set\+\_\+seed()}{set\_seed()}}
-{\footnotesize\ttfamily void A\+Phylo\+Model\+::set\+\_\+seed (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{s }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void A\+Phylo\+Model\+::set\+\_\+seed (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -250,11 +297,11 @@ Definition at line 8 of file aphylomodel-\/meat-\/simulate.\+hpp.
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!simulate@{simulate}}
 \index{simulate@{simulate}!A\+Phylo\+Model@{A\+Phylo\+Model}}
 \subsubsection{\texorpdfstring{simulate()}{simulate()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ A\+Phylo\+Model\+::simulate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ A\+Phylo\+Model\+::simulate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 21 of file aphylomodel-\/meat-\/simulate.\+hpp.
+Definition at line 12 of file aphylomodel-\/meat-\/simulate.\+hpp.
 
 
 
@@ -267,7 +314,7 @@ Definition at line 21 of file aphylomodel-\/meat-\/simulate.\+hpp.
 
 
 
-Definition at line 142 of file aphylomodel-\/bones.\+hpp.
+Definition at line 120 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_a298c38ef857994159589a6c0f7578150}\label{class_a_phylo_model_a298c38ef857994159589a6c0f7578150}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!initialized@{initialized}}
@@ -277,7 +324,7 @@ Definition at line 142 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 143 of file aphylomodel-\/bones.\+hpp.
+Definition at line 121 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_ae041cf2aa3630fab0a050e176c9317f9}\label{class_a_phylo_model_ae041cf2aa3630fab0a050e176c9317f9}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!map\+\_\+to\+\_\+nodes@{map\+\_\+to\+\_\+nodes}}
@@ -287,27 +334,17 @@ Definition at line 143 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 141 of file aphylomodel-\/bones.\+hpp.
+Definition at line 119 of file aphylomodel-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_a_phylo_model_ad91e946cad1e96aa444b586921d1ebe6}\label{class_a_phylo_model_ad91e946cad1e96aa444b586921d1ebe6}} 
-\index{A\+Phylo\+Model@{A\+Phylo\+Model}!model\+\_\+const@{model\+\_\+const}}
-\index{model\+\_\+const@{model\+\_\+const}!A\+Phylo\+Model@{A\+Phylo\+Model}}
-\subsubsection{\texorpdfstring{model\+\_\+const}{model\_const}}
-{\footnotesize\ttfamily \hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model} A\+Phylo\+Model\+::model\+\_\+const}
-
-
-
-Definition at line 134 of file aphylomodel-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_a_phylo_model_a79c9e748c657487a60497265348f8a14}\label{class_a_phylo_model_a79c9e748c657487a60497265348f8a14}} 
-\index{A\+Phylo\+Model@{A\+Phylo\+Model}!model\+\_\+full@{model\+\_\+full}}
-\index{model\+\_\+full@{model\+\_\+full}!A\+Phylo\+Model@{A\+Phylo\+Model}}
-\subsubsection{\texorpdfstring{model\+\_\+full}{model\_full}}
-{\footnotesize\ttfamily \hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model} A\+Phylo\+Model\+::model\+\_\+full}
+\mbox{\Hypertarget{class_a_phylo_model_a8594c24aab4b3fe46cd2e4976c2031d9}\label{class_a_phylo_model_a8594c24aab4b3fe46cd2e4976c2031d9}} 
+\index{A\+Phylo\+Model@{A\+Phylo\+Model}!model@{model}}
+\index{model@{model}!A\+Phylo\+Model@{A\+Phylo\+Model}}
+\subsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily \hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model} A\+Phylo\+Model\+::model}
 
 
 
-Definition at line 135 of file aphylomodel-\/bones.\+hpp.
+Definition at line 113 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_aceefd34597d56589a10162c937d8200f}\label{class_a_phylo_model_aceefd34597d56589a10162c937d8200f}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!nfunctions@{nfunctions}}
@@ -317,7 +354,7 @@ Definition at line 135 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 136 of file aphylomodel-\/bones.\+hpp.
+Definition at line 114 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_af48d7223972ea6f74d2780b316db730e}\label{class_a_phylo_model_af48d7223972ea6f74d2780b316db730e}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!nodes@{nodes}}
@@ -327,7 +364,7 @@ Definition at line 136 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 137 of file aphylomodel-\/bones.\+hpp.
+Definition at line 115 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_a3f7a406330ca376840dcea3324e69448}\label{class_a_phylo_model_a3f7a406330ca376840dcea3324e69448}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!rengine@{rengine}}
@@ -337,7 +374,7 @@ Definition at line 137 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 133 of file aphylomodel-\/bones.\+hpp.
+Definition at line 112 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_a5f15ec301385244387c9be5290f5ee28}\label{class_a_phylo_model_a5f15ec301385244387c9be5290f5ee28}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!sequence@{sequence}}
@@ -347,7 +384,7 @@ Definition at line 133 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 138 of file aphylomodel-\/bones.\+hpp.
+Definition at line 116 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_aa6a0a51491c065588bb3504d9b84540c}\label{class_a_phylo_model_aa6a0a51491c065588bb3504d9b84540c}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!states@{states}}
@@ -357,7 +394,7 @@ Definition at line 138 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 140 of file aphylomodel-\/bones.\+hpp.
+Definition at line 118 of file aphylomodel-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_a_phylo_model_ac98b6767ff0c32b30caf23dbf6810578}\label{class_a_phylo_model_ac98b6767ff0c32b30caf23dbf6810578}} 
 \index{A\+Phylo\+Model@{A\+Phylo\+Model}!visited@{visited}}
@@ -367,7 +404,7 @@ Definition at line 140 of file aphylomodel-\/bones.\+hpp.
 
 
 
-Definition at line 139 of file aphylomodel-\/bones.\+hpp.
+Definition at line 117 of file aphylomodel-\/bones.\+hpp.
 
 
 
@@ -376,5 +413,6 @@ The documentation for this class was generated from the following files\+:\begin
 include/barry/models/aphylo/\hyperlink{aphylomodel-bones_8hpp}{aphylomodel-\/bones.\+hpp}\item 
 include/barry/models/aphylo/\hyperlink{aphylomodel-meat-likelihood_8hpp}{aphylomodel-\/meat-\/likelihood.\+hpp}\item 
 include/barry/models/aphylo/\hyperlink{aphylomodel-meat-likelihood__exact_8hpp}{aphylomodel-\/meat-\/likelihood\+\_\+exact.\+hpp}\item 
+include/barry/models/aphylo/\hyperlink{aphylomodel-meat-predict_8hpp}{aphylomodel-\/meat-\/predict.\+hpp}\item 
 include/barry/models/aphylo/\hyperlink{aphylomodel-meat-simulate_8hpp}{aphylomodel-\/meat-\/simulate.\+hpp}\item 
 include/barry/models/aphylo/\hyperlink{aphylomodel-meat_8hpp}{aphylomodel-\/meat.\+hpp}\end{DoxyCompactItemize}

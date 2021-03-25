@@ -140,6 +140,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5f3faed4bad372764c056d1686508d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac75bb5a2f14d104733e2c194ae210986"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; unsigned int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#ac75bb5a2f14d104733e2c194ae210986">simulate</a> (const std::vector&lt; double &gt; &amp;par)</td></tr>
 <tr class="separator:ac75bb5a2f14d104733e2c194ae210986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac101dec16afb5d1c957fa1ccdca45c63"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#ac101dec16afb5d1c957fa1ccdca45c63">observed_counts</a> ()</td></tr>
+<tr class="separator:ac101dec16afb5d1c957fa1ccdca45c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25623ae340bb6912a0427279b779c450"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#a25623ae340bb6912a0427279b779c450">print_observed_counts</a> ()</td></tr>
+<tr class="separator:a25623ae340bb6912a0427279b779c450"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5818916d43989b8a8dfa42b1fbde8e5c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#a5818916d43989b8a8dfa42b1fbde8e5c">predict</a> (const std::vector&lt; double &gt; &amp;p, std::vector&lt; std::vector&lt; double &gt; &gt; *res_prob=nullptr)</td></tr>
+<tr class="memdesc:a5818916d43989b8a8dfa42b1fbde8e5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the conditional probability.  <a href="#a5818916d43989b8a8dfa42b1fbde8e5c">More...</a><br /></td></tr>
+<tr class="separator:a5818916d43989b8a8dfa42b1fbde8e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Information about the model</div></td></tr>
 <tr class="memitem:ad50c485128331dcfc3e24ef3765d36ef"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#ad50c485128331dcfc3e24ef3765d36ef">nfuns</a> () const</td></tr>
 <tr class="separator:ad50c485128331dcfc3e24ef3765d36ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,10 +161,8 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a3f7a406330ca376840dcea3324e69448"><td class="memItemLeft" align="right" valign="top">std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#a3f7a406330ca376840dcea3324e69448">rengine</a></td></tr>
 <tr class="separator:a3f7a406330ca376840dcea3324e69448"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad91e946cad1e96aa444b586921d1ebe6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#ad32b4186e3bab93119df225fddc3c609">phylocounters::PhyloModel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#ad91e946cad1e96aa444b586921d1ebe6">model_const</a></td></tr>
-<tr class="separator:ad91e946cad1e96aa444b586921d1ebe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79c9e748c657487a60497265348f8a14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#ad32b4186e3bab93119df225fddc3c609">phylocounters::PhyloModel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#a79c9e748c657487a60497265348f8a14">model_full</a></td></tr>
-<tr class="separator:a79c9e748c657487a60497265348f8a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8594c24aab4b3fe46cd2e4976c2031d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#ad32b4186e3bab93119df225fddc3c609">phylocounters::PhyloModel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#a8594c24aab4b3fe46cd2e4976c2031d9">model</a></td></tr>
+<tr class="separator:a8594c24aab4b3fe46cd2e4976c2031d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceefd34597d56589a10162c937d8200f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#aceefd34597d56589a10162c937d8200f">nfunctions</a></td></tr>
 <tr class="separator:aceefd34597d56589a10162c937d8200f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af48d7223972ea6f74d2780b316db730e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacebarry.html#a979a04835a9855ff2054c383c569c89e">barry::Map</a>&lt; unsigned int, <a class="el" href="class_node.html">Node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_phylo_model.html#af48d7223972ea6f74d2780b316db730e">nodes</a></td></tr>
@@ -178,13 +183,16 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Annotated Phylo <a class="el" href="class_model.html" title="General framework for discrete exponential models. This class allows generating discrete exponential ...">Model</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00130">130</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00109">109</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5055699d05235bbefb283298d9dee75d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5055699d05235bbefb283298d9dee75d">&#9670;&nbsp;</a></span>APhyloModel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">APhyloModel::APhyloModel </td>
@@ -193,6 +201,11 @@ Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00006">6</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
@@ -204,6 +217,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">APhyloModel::APhyloModel </td>
@@ -235,6 +251,11 @@ Public Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Construct a new <a class="el" href="class_a_phylo_model.html" title="Annotated Phylo Model. ">APhyloModel</a> object. </p>
@@ -276,7 +297,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00168">168</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00146">146</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -286,6 +307,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void APhyloModel::calc_sequence </td>
@@ -295,9 +319,14 @@ Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00238">238</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00236">236</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -306,6 +335,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; double &gt; APhyloModel::get_probabilities </td>
@@ -314,9 +346,14 @@ Public Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00281">281</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00279">279</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -325,6 +362,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void APhyloModel::init </td>
@@ -333,9 +373,14 @@ Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00119">119</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00124">124</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -384,6 +429,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">unsigned int APhyloModel::nfuns </td>
@@ -392,9 +440,14 @@ Public Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00297">297</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00295">295</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -403,6 +456,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">unsigned int APhyloModel::nleafs </td>
@@ -411,9 +467,14 @@ Public Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00305">305</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00303">303</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -422,6 +483,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">unsigned int APhyloModel::nnodes </td>
@@ -430,9 +494,14 @@ Public Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00301">301</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00299">299</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -441,6 +510,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">unsigned int APhyloModel::nterms </td>
@@ -449,9 +521,41 @@ Public Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00315">315</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00313">313</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac101dec16afb5d1c957fa1ccdca45c63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac101dec16afb5d1c957fa1ccdca45c63">&#9670;&nbsp;</a></span>observed_counts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; APhyloModel::observed_counts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00320">320</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -483,11 +587,88 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a5818916d43989b8a8dfa42b1fbde8e5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5818916d43989b8a8dfa42b1fbde8e5c">&#9670;&nbsp;</a></span>predict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; APhyloModel::predict </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; double &gt; &gt; *&#160;</td>
+          <td class="paramname"><em>res_prob</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate the conditional probability. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Vector of parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt; double &gt; Returns the posterior probability </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat-predict_8hpp_source.html#l00007">7</a> of file <a class="el" href="aphylomodel-meat-predict_8hpp_source.html">aphylomodel-meat-predict.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a25623ae340bb6912a0427279b779c450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25623ae340bb6912a0427279b779c450">&#9670;&nbsp;</a></span>print_observed_counts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void APhyloModel::print_observed_counts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat_8hpp_source.html#l00368">368</a> of file <a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a5f3faed4bad372764c056d1686508d6e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5f3faed4bad372764c056d1686508d6e">&#9670;&nbsp;</a></span>set_seed()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void APhyloModel::set_seed </td>
@@ -497,6 +678,11 @@ Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="aphylomodel-meat-simulate_8hpp_source.html#l00008">8</a> of file <a class="el" href="aphylomodel-meat-simulate_8hpp_source.html">aphylomodel-meat-simulate.hpp</a>.</p>
@@ -508,6 +694,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; std::vector&lt; unsigned int &gt; &gt; APhyloModel::simulate </td>
@@ -517,9 +706,14 @@ Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-meat-simulate_8hpp_source.html#l00021">21</a> of file <a class="el" href="aphylomodel-meat-simulate_8hpp_source.html">aphylomodel-meat-simulate.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-meat-simulate_8hpp_source.html#l00012">12</a> of file <a class="el" href="aphylomodel-meat-simulate_8hpp_source.html">aphylomodel-meat-simulate.hpp</a>.</p>
 
 </div>
 </div>
@@ -536,7 +730,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00142">142</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00120">120</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -552,7 +746,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00143">143</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00121">121</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -568,39 +762,23 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00141">141</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00119">119</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad91e946cad1e96aa444b586921d1ebe6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad91e946cad1e96aa444b586921d1ebe6">&#9670;&nbsp;</a></span>model_const</h2>
+<a id="a8594c24aab4b3fe46cd2e4976c2031d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8594c24aab4b3fe46cd2e4976c2031d9">&#9670;&nbsp;</a></span>model</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#ad32b4186e3bab93119df225fddc3c609">phylocounters::PhyloModel</a> APhyloModel::model_const</td>
+          <td class="memname"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#ad32b4186e3bab93119df225fddc3c609">phylocounters::PhyloModel</a> APhyloModel::model</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00134">134</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a79c9e748c657487a60497265348f8a14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79c9e748c657487a60497265348f8a14">&#9670;&nbsp;</a></span>model_full</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#ad32b4186e3bab93119df225fddc3c609">phylocounters::PhyloModel</a> APhyloModel::model_full</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00135">135</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00113">113</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -616,7 +794,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00136">136</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00114">114</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -632,7 +810,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00137">137</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00115">115</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -648,7 +826,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00133">133</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00112">112</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -664,7 +842,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00138">138</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00116">116</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -680,7 +858,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00140">140</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00118">118</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -696,7 +874,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00139">139</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aphylomodel-bones_8hpp_source.html#l00117">117</a> of file <a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -704,6 +882,7 @@ Public Attributes</h2></td></tr>
 <li>include/barry/models/aphylo/<a class="el" href="aphylomodel-bones_8hpp_source.html">aphylomodel-bones.hpp</a></li>
 <li>include/barry/models/aphylo/<a class="el" href="aphylomodel-meat-likelihood_8hpp_source.html">aphylomodel-meat-likelihood.hpp</a></li>
 <li>include/barry/models/aphylo/<a class="el" href="aphylomodel-meat-likelihood__exact_8hpp_source.html">aphylomodel-meat-likelihood_exact.hpp</a></li>
+<li>include/barry/models/aphylo/<a class="el" href="aphylomodel-meat-predict_8hpp_source.html">aphylomodel-meat-predict.hpp</a></li>
 <li>include/barry/models/aphylo/<a class="el" href="aphylomodel-meat-simulate_8hpp_source.html">aphylomodel-meat-simulate.hpp</a></li>
 <li>include/barry/models/aphylo/<a class="el" href="aphylomodel-meat_8hpp_source.html">aphylomodel-meat.hpp</a></li>
 </ul>
@@ -713,7 +892,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_a_phylo_model.html">APhyloModel</a></li>
-    <li class="footer">Generated on Fri Mar 5 2021 12:43:44 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Wed Mar 24 2021 17:06:23 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

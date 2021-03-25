@@ -180,7 +180,10 @@ public:
      * @param p Vector of parameters
      * @return std::vector< double > Returns the posterior probability
      */
-    std::vector< std::vector< double > > predict(const std::vector< double > & p);
+    std::vector< std::vector< double > > predict(
+        const std::vector< double > & p,
+        std::vector< std::vector< double > > * res_prob = nullptr
+        );
 
 };
 

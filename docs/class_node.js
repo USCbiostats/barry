@@ -11,10 +11,10 @@ var class_node =
     [ "arrays", "class_node.html#a269d78db10090d106c697d7c73bac9c7", null ],
     [ "duplication", "class_node.html#a3129939e8a58c055cb5ad8db8be6b10a", null ],
     [ "id", "class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9", null ],
-    [ "idx_cons", "class_node.html#a95fa1b71d6c1a8cf155520c6d974d540", null ],
-    [ "idx_full", "class_node.html#a33e1dede84aea9685dfad5c0b3baeea7", null ],
+    [ "narray", "class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac", null ],
     [ "offspring", "class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7", null ],
     [ "parent", "class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85", null ],
-    [ "probabilities", "class_node.html#a479513290e6e83b8715f3075dd289ff4", null ],
+    [ "probability", "class_node.html#a867d5e07f62da01392a817042c77735f", null ],
+    [ "subtree_prob", "class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d", null ],
     [ "visited", "class_node.html#aa1bdec4e775fc578632e6a2dced9e251", null ]
 ];

@@ -5,7 +5,8 @@
 
 
 inline std::vector< std::vector<double> > APhyloModel::predict(
-    const std::vector< double > & par
+    const std::vector< double > & par,
+    std::vector< std::vector< double > > * res_prob
     ) {
 
     INITIALIZED()

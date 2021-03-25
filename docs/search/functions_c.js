@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['observed_5fcounts',['observed_counts',['../class_a_phylo_model.html#ac101dec16afb5d1c957fa1ccdca45c63',1,'APhyloModel']]],
   ['operator_20cell_5ftype',['operator Cell_Type',['../class_b_array_cell.html#a698f664c230f91bf03a97966378e339b',1,'BArrayCell::operator Cell_Type()'],['../classbarry_1_1_cell.html#a90bea0b3306e1780747ca1ef6f389e91',1,'barry::Cell::operator Cell_Type()'],['../classbarry_1_1_b_array_cell.html#a698f664c230f91bf03a97966378e339b',1,'barry::BArrayCell::operator Cell_Type()'],['../class_cell.html#abe9b289bc80d4f5d0717ba9e69197c0b',1,'Cell::operator Cell_Type()']]],
   ['operator_28_29',['operator()',['../class_b_array.html#a8ddd0f172972420dce2cfce014126dba',1,'BArray::operator()()'],['../structbarry_1_1vec_hasher.html#ada8dea483f4fc12f469e161b2fd09225',1,'barry::vecHasher::operator()()'],['../class_a_phylo_model.html#a9b3390c29ea7a3283e68e9a059b94138',1,'APhyloModel::operator()()'],['../structvec_hasher.html#ae8127d9b7d302fe59bd64e7067e7ba61',1,'vecHasher::operator()()']]],
   ['operator_2a_3d',['operator*=',['../class_b_array.html#a614ae954b9094ff4934f0d81002f8ddb',1,'BArray::operator*=()'],['../class_b_array_cell.html#abc193e5d3dd8d04e5d4bb8d808fde35d',1,'BArrayCell::operator*=()'],['../classbarry_1_1_b_array_cell.html#abc193e5d3dd8d04e5d4bb8d808fde35d',1,'barry::BArrayCell::operator*=()']]],
