@@ -121,7 +121,7 @@ inline APhyloModel::APhyloModel(
 
 }
 
-inline void APhyloModel::update_node(Node & n) {
+inline void APhyloModel::init_node(Node & n) {
 
     // Creating the phyloarray, nfunctions x noffspring
     n.array = phylocounters::PhyloArray(nfunctions, n.offspring.size());
@@ -216,7 +216,7 @@ inline void APhyloModel::init() {
 
         // Only parents get a node
         if (!iter.second.is_leaf()) 
-            this->update_node(iter.second);
+            this->init_node(iter.second);
             
     }
 
@@ -234,6 +234,29 @@ inline void APhyloModel::init() {
 
     // So that others now know it was initialized
     initialized = true;
+
+    return;
+}
+
+inline void APhyloModel::update_annotations(
+    unsigned int nodeid,
+    std::vector< unsigned int > newann
+) {
+
+    // This can only be done if it has been initialized
+    INITIALIZED()
+
+    // Is this node present?
+    if (nodes.find(nodeid) == nodes.end())
+        throw std::length_error("The requested node is not present.");
+
+    if (nodes[nodeid].annotations.size() != newann.size())
+        throw std::length_error("Incorrect length of the new annotations.");
+
+    // Resetting the annotations, and updating the stats from the
+    // parent node
+    nodes[nodeid].annotations = newann;
+    init_node(*nodes[nodeid].parent);
 
     return;
 }

@@ -147,7 +147,7 @@ public:
 
     void init();
 
-    double operator()(std::vector< double > & par, unsigned int & i);
+    // Node * operator()(unsigned int & nodeid);
     void calc_sequence(Node * n = nullptr);
 
     double likelihood(const std::vector< double > & par);
@@ -185,7 +185,12 @@ public:
         std::vector< std::vector< double > > * res_prob = nullptr
         );
 
-    void update_node(Node & n);
+    void init_node(Node & n);
+    void update_annotations(
+        unsigned int nodeid,
+        std::vector< unsigned int > newann
+    );
+    
 
 };
 
