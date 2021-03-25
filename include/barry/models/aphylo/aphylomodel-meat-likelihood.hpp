@@ -28,6 +28,9 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
         if (this->nodes[i].is_leaf())
             continue;
 
+        // Since we are using this a lot...
+        Node & node = nodes[i];
+
         // Iterating through states
         for (unsigned int s = 0u; s < states.size(); ++s) {
 
@@ -36,11 +39,11 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
 
             // Retrieving the sets of arrays
             const std::vector< phylocounters::PhyloArray > * psets = model.get_pset(
-                nodes[i].narray[s]
+                node.narray[s]
             );
 
             const std::vector< std::vector<double> > * psets_stats = model.get_stats(
-                nodes[i].narray[s]
+                node.narray[s]
             );
 
             // Summation over all possible values of X
@@ -52,7 +55,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                 for (auto o = 0u; o < x->ncol(); ++o) {
 
                     // Setting the node
-                    n_off = nodes[i].offspring[o];
+                    n_off = node.offspring[o];
 
                     // First, getting what is the corresponding state
                     std::fill(tmpstate.begin(), tmpstate.end(), 0u);
@@ -75,7 +78,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
 
                     // Retrieving the location to the respective set of probabilities
                     unsigned int loc = map_to_nodes[tmpstate];
-                    off_mult *= nodes[i].offspring[o]->subtree_prob[loc];
+                    off_mult *= node.offspring[o]->subtree_prob[loc];
 
                 }
 
@@ -92,7 +95,7 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
                 off_mult *= model.likelihood(
                     par0,
                     psets_stats->at(nstate++),
-                    nodes[i].narray[s]
+                    node.narray[s]
                 );
 
                 // Adding to the total probabilities
@@ -101,19 +104,19 @@ double APhyloModel::likelihood(const std::vector< double > & par) {
             }
 
             // Setting the probability at the node
-            nodes[i].subtree_prob[s] = totprob;
+            node.subtree_prob[s] = totprob;
 
         }
 
         // All probabilities should be completed at this point
-        if (nodes[i].parent == nullptr) {
+        if (node.parent == nullptr) {
             for (unsigned int s = 0u; s < states.size(); ++s) {
                 double tmpll = 1.0;
                 for (auto k = 0u; k < nfunctions; ++k) {
                     tmpll *= states[s][k] ? par_root[k] : (1 - par_root[k]);
                 }
 
-                ll += tmpll * nodes[i].subtree_prob[s];
+                ll += tmpll * node.subtree_prob[s];
 
             }
         }

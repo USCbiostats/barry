@@ -144,7 +144,7 @@ inline std::vector< std::vector<double> > APhyloModel::predict(
 
                 // If the state is true, then include it, otherwise, don't
                 if (states[s][k])
-                    tmp_prob[k] += node.probability[k];
+                    tmp_prob[k] += node.probability[s];
 
             }
                         
@@ -153,6 +153,15 @@ inline std::vector< std::vector<double> > APhyloModel::predict(
         res[node.id] = tmp_prob;
 
     }
+
+    // If the user requires the probability matrix per state
+    if (res_prob != nullptr) {
+        res_prob->resize(nnodes());
+        for (auto& i : sequence) {
+            res_prob->at(nodes[i].id) = nodes[i].probability;
+        }
+    }
+        
 
     return res;
 

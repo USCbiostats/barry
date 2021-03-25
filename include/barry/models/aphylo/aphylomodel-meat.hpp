@@ -121,6 +121,69 @@ inline APhyloModel::APhyloModel(
 
 }
 
+inline void APhyloModel::update_node(Node & n) {
+
+    // Creating the phyloarray, nfunctions x noffspring
+    n.array = phylocounters::PhyloArray(nfunctions, n.offspring.size());
+    std::vector< bool > tmp_state = vector_caster<bool,uint>(n.annotations);
+    std::vector< double > blen(n.offspring.size(), 1.0);
+    n.array.set_data(
+        new phylocounters::NodeData(blen, tmp_state, n.duplication),
+        true
+    );
+
+    n.subtree_prob.resize(states.size(), 0.0);
+
+    // Adding the data, first through functions
+    for (unsigned int k = 0u; k < nfunctions; ++k) {
+
+        // Then through the offspring
+        unsigned int j = 0;
+        for (auto& o : n.offspring) {
+
+            // If leaf, then it may have an annotation
+            if (o->is_leaf()) {
+                if (o->annotations.at(k) != 0) {
+                    n.array.insert_cell(
+                        k, j, o->annotations.at(k), false, false
+                        );
+                }
+            } else {
+                // Otherwise, we fill it with a 9.
+                n.array.insert_cell(
+                    k, j, 9u, false, false
+                    );
+
+            }
+
+            ++j;
+
+        }
+
+    }
+
+    // We then need to set the powerset
+    if (n.arrays.size() != states.size()) {
+        n.arrays.resize(states.size());
+        n.narray.resize(states.size());
+    }
+    
+    for (unsigned int s = 0u; s < states.size(); ++s) {
+
+        n.arrays[s] = phylocounters::PhyloArray(n.array, true);
+        n.arrays[s].set_data(
+            new phylocounters::NodeData(blen, states[s], n.duplication),
+            true
+        );
+
+        // Once the array is ready, we can add it to the model
+        n.narray[s] = model.add_array(n.arrays[s]);
+
+    }
+
+    return;
+}
+
 inline void APhyloModel::init() {
 
     // Generating the model data -----------------------------------------------
@@ -152,67 +215,9 @@ inline void APhyloModel::init() {
     for (auto& iter : nodes) {
 
         // Only parents get a node
-        if (!iter.second.is_leaf()) {
-
-            // Creating the phyloarray, nfunctions x noffspring
-            iter.second.array = phylocounters::PhyloArray(nfunctions, iter.second.offspring.size());
-            std::vector< bool > tmp_state =vector_caster<bool,uint>(iter.second.annotations);
-            std::vector< double > blen(iter.second.offspring.size(), 1.0);
-            iter.second.array.set_data(
-                new phylocounters::NodeData(blen, tmp_state, iter.second.duplication),
-                true
-            );
-
-            iter.second.subtree_prob.resize(pset.size(), 0.0);
-
-            // Adding the data, first through functions
-            for (unsigned int k = 0u; k < nfunctions; ++k) {
-
-                // Then through the offspring
-                unsigned int j = 0;
-                for (auto& o : iter.second.offspring) {
-
-                    // If leaf, then it may have an annotation
-                    if (o->is_leaf()) {
-                        if (o->annotations.at(k) != 0) {
-                            iter.second.array.insert_cell(
-                                k, j, o->annotations.at(k), false, false
-                                );
-                        }
-                    } else {
-                        // Otherwise, we fill it with a 9.
-                        iter.second.array.insert_cell(
-                            k, j, 9u, false, false
-                            );
-
-                    }
-
-                    ++j;
-
-                }
-
-            }
-
-            // We then need to set the powerset
-            unsigned int i = 0u;
-            for (auto& s : states) {
-
-                iter.second.arrays.push_back(
-                    phylocounters::PhyloArray(iter.second.array, true));
-                iter.second.arrays.at(i).set_data(
-                    new phylocounters::NodeData(blen, s, iter.second.duplication),
-                    true
-                );
-
-                // Once the array is ready, we can add it to the model
-                iter.second.narray.push_back(
-                    model.add_array(iter.second.arrays.at(i++))
-                    );
-
-                // model.print_stats(0u);
-
-            }
-        }
+        if (!iter.second.is_leaf()) 
+            this->update_node(iter.second);
+            
     }
 
     // Finally, setting this variable for later, we will need this for generating

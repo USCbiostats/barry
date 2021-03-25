@@ -185,6 +185,8 @@ public:
         std::vector< std::vector< double > > * res_prob = nullptr
         );
 
+    void update_node(Node & n);
+
 };
 
 #endif
