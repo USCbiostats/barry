@@ -4,7 +4,7 @@
 #include "../../barry.hpp"
 #include "aphylomodel-bones.hpp" 
 
-double APhyloModel::likelihood_exact(const std::vector< double > & par) {
+inline double APhyloModel::likelihood_exact(const std::vector< double > & par) {
 
     INITIALIZED()
 

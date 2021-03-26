@@ -3,7 +3,7 @@
 
 #include "aphylomodel-bones.hpp"
 
-double APhyloModel::likelihood(const std::vector< double > & par) {
+inline double APhyloModel::likelihood(const std::vector< double > & par) {
 
     INITIALIZED()
 

@@ -302,9 +302,10 @@ inline void counter_genes_changing(PhyloCounters * counters, bool duplication = 
       // take it out from the count of genes that have changed.
       return 1.0;
 
-    }
+    } else
+      throw std::logic_error("Reach the end of -counter_genes_changing-. This shouldn't happen!");
 
-    
+    return 0.0;
 
   };
   
