@@ -1,7 +1,7 @@
-#include "aphylomodel-bones.hpp"
+#include "geese-bones.hpp"
 
-#ifndef APHYLOMODEL_MEAT_HPP
-#define APHYLOMODEL_MEAT_HPP 1
+#ifndef GEESE_MEAT_HPP
+#define GEESE_MEAT_HPP 1
 
 inline APhyloModel::APhyloModel() : model(), nodes() {
     return;

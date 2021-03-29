@@ -1,4 +1,4 @@
-#include "../include/barry/models/aphylomodel.hpp"
+#include "../include/barry/models/geese.hpp"
 
 TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
 
@@ -33,7 +33,7 @@ TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
     std::vector<double> params = {1, 1, -1, -10, -10};
 
     double ans0a = model.likelihood(params);
-    double ans1a = model.likelihood_exact(params);
+    double ans1a = model.likelihood_exhaust(params);
     
     REQUIRE(std::abs(ans0a - ans1a) < .0000001);
 

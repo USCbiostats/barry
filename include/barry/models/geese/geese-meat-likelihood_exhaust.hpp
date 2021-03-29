@@ -1,10 +1,10 @@
 
-#ifndef APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP
-#define APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP 1
+#ifndef GEESE_MEAT_LIKELIHOOD_EXACT_HPP
+#define GEESE_MEAT_LIKELIHOOD_EXACT_HPP 1
 #include "../../barry.hpp"
-#include "aphylomodel-bones.hpp" 
+#include "geese-bones.hpp" 
 
-inline double APhyloModel::likelihood_exact(const std::vector< double > & par) {
+inline double APhyloModel::likelihood_exhaust(const std::vector< double > & par) {
 
     INITIALIZED()
 

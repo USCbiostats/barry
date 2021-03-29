@@ -1,7 +1,7 @@
-#include "aphylomodel-bones.hpp"
+#include "geese-bones.hpp"
 
-#ifndef APHYLOMODEL_MEAT_PREDICT_HPP
-#define APHYLOMODEL_MEAT_PREDICT_HPP 1
+#ifndef GEESE_MEAT_PREDICT_HPP
+#define GEESE_MEAT_PREDICT_HPP 1
 
 
 inline std::vector< std::vector<double> > APhyloModel::predict(

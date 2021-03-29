@@ -1,9 +1,9 @@
-#include "aphylomodel-bones.hpp"
+#include "geese-bones.hpp"
 // #include <algorithm>
 // #include <random>
 
-#ifndef APHYLOMODEL_MEAT_SIMULATE_HPP
-#define APHYLOMODEL_MEAT_SIMULATE_HPP 1
+#ifndef GEESE_MEAT_SIMULATE_HPP
+#define GEESE_MEAT_SIMULATE_HPP 1
 
 inline void APhyloModel::set_seed(const unsigned int & s) {
     rengine.seed(s);

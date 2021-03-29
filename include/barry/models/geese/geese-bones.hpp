@@ -1,5 +1,5 @@
-#ifndef APHYLOMODEL_BONES_HPP
-#define APHYLOMODEL_BONES_HPP 1
+#ifndef GEESE_BONES_HPP
+#define GEESE_BONES_HPP 1
 
 // #include <vector>
 // #include <algorithm>
@@ -151,7 +151,7 @@ public:
     void calc_sequence(Node * n = nullptr);
 
     double likelihood(const std::vector< double > & par);
-    double likelihood_exact(const std::vector< double > & par);
+    double likelihood_exhaust(const std::vector< double > & par);
 
     std::vector< double > get_probabilities() const;
 
