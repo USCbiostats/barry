@@ -9,7 +9,7 @@ inline unsigned int Flock::add_data(
 ) {
 
     // Generating the Geese object
-    dat.push_back(Geese(annotations, geneid, parent, duplication))
+    dat.push_back(Geese(annotations, geneid, parent, duplication));
     unsigned int i = dat.size() - 1;
 
     // We proceede depending on whether the support has already been initialized
@@ -24,7 +24,7 @@ inline unsigned int Flock::add_data(
 
 inline phylocounters::PhyloCounters * Flock::counters_ptr() {
     if (dat.size() == 0u)
-        throw std::logical_error("The flock has no data yet.");
+        throw std::logic_error("The flock has no data yet.");
 
     return &(dat[0u].counters);
 }

@@ -110,7 +110,7 @@ class Geese {
 public:
 
     std::mt19937                       rengine;
-    phylocounters::PhyloModel *        model;
+    phylocounters::PhyloModel *        support;
     unsigned int                       nfunctions;
     barry::Map< unsigned int, Node >   nodes;
     std::vector< unsigned int >        sequence;
@@ -119,7 +119,7 @@ public:
     barry::MapVec_type< unsigned int > map_to_nodes;
     phylocounters::PhyloCounters       counters;
     bool                               initialized = false;
-    bool                               delete_model = false;
+    bool                               delete_support = false;
 
     Geese();
 
@@ -148,8 +148,8 @@ public:
 
     void init();
 
-    void inherit_support(Geese & model_, bool delete_model_ = false);
-    void set_support(phylocounters::PhyloModel * model_, delete_model_ = false);
+    void inherit_support(Geese & model_, bool delete_support_ = false);
+    void set_support(phylocounters::PhyloModel * model_, bool delete_support_ = false);
 
     // Node * operator()(unsigned int & nodeid);
     void calc_sequence(Node * n = nullptr);

@@ -11,4 +11,7 @@
 #include "geese/geese-meat-simulate.hpp"
 #include "geese/geese-meat-predict.hpp"
 
+#include "geese/flock-bones.hpp"
+#include "geese/flock-meet.hpp"
+
 #endif

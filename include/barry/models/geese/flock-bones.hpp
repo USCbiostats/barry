@@ -21,6 +21,8 @@ public:
     // void add_geese(Geese x);
     phylocounters::PhyloCounters * counters_ptr();
 
+    double likelihood_joint(const std::vector< double > & par);
+
 };
 
 #endif

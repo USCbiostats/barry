@@ -3,7 +3,7 @@
 #ifndef GEESE_MEAT_HPP
 #define GEESE_MEAT_HPP 1
 
-inline Geese::Geese() : model(nullptr), nodes() {
+inline Geese::Geese() : support(nullptr), nodes() {
     return;
 }
 
@@ -12,7 +12,7 @@ inline Geese::Geese(
     std::vector< unsigned int > & geneid,
     std::vector< int > &          parent,
     std::vector< bool > &         duplication
-) : model(nullptr), nodes() {
+) : support(nullptr), nodes() {
 
     // Check the lengths
     if (annotations.size() == 0u)
@@ -185,24 +185,23 @@ inline void Geese::init_node(Node & n) {
 }
 
 inline Geese::~Geese() {
-    if (delete_model)
-        delete model;
+    if (delete_support)
+        delete support;
     return;
 }
 
 inline void Geese::init() {
 
     // Initializing the model, if it is null
-    if (this->model == nullptr) {
-        model = new phylocounters::PhyloModel();
-        this->delete_model = true;
-    }
+    if (this->support == nullptr) {
 
-    // Generating the model data -----------------------------------------------
-    support->set_keygen(keygen_full);
-    support->set_counters(&counters);
-    support->store_psets();
-    support->set_rengine(&this->rengine, false);
+        // Generating the model data -------------------------------------------
+        this->set_support(
+            new phylocounters::PhyloModel(),
+            true
+        );
+
+    }
 
     // All combinations of the function
     phylocounters::PhyloPowerSet pset(nfunctions, 1u);
@@ -250,24 +249,31 @@ inline void Geese::init() {
     return;
 }
 
-inline void Geese::inherit_support(Geese & model_, bool delete_model_) {
+inline void Geese::inherit_support(Geese & model_, bool delete_support_) {
     
-    if (this->model != nullptr)
-        throw std::logic_error("There is already a model in this Geese. Cannot set a model after one is present.");
+    if (this->support != nullptr)
+        throw std::logic_error("There is already a -support- in this Geese. Cannot set a -support- after one is present.");
 
-    this->model = model_.model;
-    this->delete_model = delete_model_;
+    this->support = model_.support;
+    this->delete_support = delete_support_;
     return;
 
 }
 
-inline void Geese::set_support(phylocounters::PhyloModel * model_, bool delete_model_) {
+inline void Geese::set_support(phylocounters::PhyloModel * support_, bool delete_support_) {
 
-    if (this->model != nullptr)
-        throw std::logic_error("There is already a model in this Geese. Cannot set a model after one is present.");
+    if (this->support != nullptr)
+        throw std::logic_error("There is already a -support- in this Geese. Cannot set a -support- after one is present.");
 
-    this->model = model_;
-    this->delete_model = delete_model_;
+    this->support = support_;
+    this->delete_support = delete_support_;
+
+    // Setting the keygen, counters, psets, and rand engine.
+    support->set_keygen(keygen_full);
+    support->set_counters(&counters);
+    support->store_psets();
+    support->set_rengine(&this->rengine, false);
+
     return;
 
 }
