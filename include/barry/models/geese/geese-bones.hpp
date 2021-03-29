@@ -71,7 +71,7 @@ class Node {
 public:
     unsigned int                 id;
     phylocounters::PhyloArray array;
-    std::vector< unsigned int >              annotations;         ///< Observed annotations (only defined for APhyloModel)
+    std::vector< unsigned int >              annotations;         ///< Observed annotations (only defined for Geese)
     bool                                     duplication;
 
     std::vector< phylocounters::PhyloArray > arrays    = {};      ///< Arrays given all possible states
@@ -106,11 +106,11 @@ public:
  * @brief Annotated Phylo Model
  *
  */
-class APhyloModel {
+class Geese {
 public:
 
     std::mt19937                       rengine;
-    phylocounters::PhyloModel          model;
+    phylocounters::PhyloModel *        model;
     unsigned int                       nfunctions;
     barry::Map< unsigned int, Node >   nodes;
     std::vector< unsigned int >        sequence;
@@ -119,11 +119,12 @@ public:
     barry::MapVec_type< unsigned int > map_to_nodes;
     phylocounters::PhyloCounters       counters;
     bool                               initialized = false;
+    bool                               delete_model = false;
 
-    APhyloModel();
+    Geese();
 
     /**
-     * @brief Construct a new APhyloModel object
+     * @brief Construct a new Geese object
      *
      * The model includes a total of `N + 1` nodes, the `+ 1` beign
      * the root node.
@@ -136,16 +137,19 @@ public:
      * @param parent Id of the parent gene. Also of length `N`
      * @param counters An object of class `PhyloCounters`.
      */
-    APhyloModel(
+    Geese(
         std::vector< std::vector<unsigned int> > & annotations,
         std::vector< unsigned int > &              geneid,
         std::vector< int> &                        parent,
         std::vector< bool > &                      duplication
         );
 
-    ~APhyloModel() {};
+    ~Geese();
 
     void init();
+
+    void inherit_support(Geese & model_, bool delete_model_ = false);
+    void set_support(phylocounters::PhyloModel * model_, delete_model_ = false);
 
     // Node * operator()(unsigned int & nodeid);
     void calc_sequence(Node * n = nullptr);

@@ -3,16 +3,16 @@
 #ifndef GEESE_MEAT_HPP
 #define GEESE_MEAT_HPP 1
 
-inline APhyloModel::APhyloModel() : model(), nodes() {
+inline Geese::Geese() : model(nullptr), nodes() {
     return;
 }
 
-inline APhyloModel::APhyloModel(
+inline Geese::Geese(
     std::vector< std::vector<unsigned int> > & annotations,
     std::vector< unsigned int > & geneid,
     std::vector< int > &          parent,
     std::vector< bool > &         duplication
-) : model(), nodes() {
+) : model(nullptr), nodes() {
 
     // Check the lengths
     if (annotations.size() == 0u)
@@ -121,7 +121,7 @@ inline APhyloModel::APhyloModel(
 
 }
 
-inline void APhyloModel::init_node(Node & n) {
+inline void Geese::init_node(Node & n) {
 
     // Creating the phyloarray, nfunctions x noffspring
     n.array = phylocounters::PhyloArray(nfunctions, n.offspring.size());
@@ -177,20 +177,32 @@ inline void APhyloModel::init_node(Node & n) {
         );
 
         // Once the array is ready, we can add it to the model
-        n.narray[s] = model.add_array(n.arrays[s]);
+        n.narray[s] = support->add_array(n.arrays[s]);
 
     }
 
     return;
 }
 
-inline void APhyloModel::init() {
+inline Geese::~Geese() {
+    if (delete_model)
+        delete model;
+    return;
+}
+
+inline void Geese::init() {
+
+    // Initializing the model, if it is null
+    if (this->model == nullptr) {
+        model = new phylocounters::PhyloModel();
+        this->delete_model = true;
+    }
 
     // Generating the model data -----------------------------------------------
-    model.set_keygen(keygen_full);
-    model.set_counters(&counters);
-    model.store_psets();
-    model.set_rengine(&this->rengine, false);
+    support->set_keygen(keygen_full);
+    support->set_counters(&counters);
+    support->store_psets();
+    support->set_rengine(&this->rengine, false);
 
     // All combinations of the function
     phylocounters::PhyloPowerSet pset(nfunctions, 1u);
@@ -238,7 +250,29 @@ inline void APhyloModel::init() {
     return;
 }
 
-inline void APhyloModel::update_annotations(
+inline void Geese::inherit_support(Geese & model_, bool delete_model_) {
+    
+    if (this->model != nullptr)
+        throw std::logic_error("There is already a model in this Geese. Cannot set a model after one is present.");
+
+    this->model = model_.model;
+    this->delete_model = delete_model_;
+    return;
+
+}
+
+inline void Geese::set_support(phylocounters::PhyloModel * model_, bool delete_model_) {
+
+    if (this->model != nullptr)
+        throw std::logic_error("There is already a model in this Geese. Cannot set a model after one is present.");
+
+    this->model = model_;
+    this->delete_model = delete_model_;
+    return;
+
+}
+
+inline void Geese::update_annotations(
     unsigned int nodeid,
     std::vector< unsigned int > newann
 ) {
@@ -261,7 +295,7 @@ inline void APhyloModel::update_annotations(
     return;
 }
 
-inline void APhyloModel::calc_sequence(Node * n) {
+inline void Geese::calc_sequence(Node * n) {
 
     if (sequence.size() == nodes.size())
         return;
@@ -304,7 +338,7 @@ inline void APhyloModel::calc_sequence(Node * n) {
 
 }
 
-inline std::vector< double > APhyloModel::get_probabilities() const {
+inline std::vector< double > Geese::get_probabilities() const {
 
     std::vector< double > res;
     res.reserve(
@@ -320,15 +354,15 @@ inline std::vector< double > APhyloModel::get_probabilities() const {
     
 }
 
-inline unsigned int APhyloModel::nfuns() const {
+inline unsigned int Geese::nfuns() const {
     return this->nfunctions;
 }
 
-inline unsigned int APhyloModel::nnodes() const {
+inline unsigned int Geese::nnodes() const {
     return this->nodes.size();
 }
 
-inline unsigned int APhyloModel::nleafs() const {
+inline unsigned int Geese::nleafs() const {
 
     unsigned int n = 0u;
     for (auto& iter : this->nodes)
@@ -338,14 +372,14 @@ inline unsigned int APhyloModel::nleafs() const {
     return n;
 }
 
-inline unsigned int APhyloModel::nterms() const {
+inline unsigned int Geese::nterms() const {
 
     INITIALIZED()
 
-    return model.nterms() + this->nfuns();
+    return support->nterms() + this->nfuns();
 }
 
-inline std::vector< std::vector<double> > APhyloModel::observed_counts() {
+inline std::vector< std::vector<double> > Geese::observed_counts() {
 
     // Making room for the output
     std::vector<std::vector<double>> ans;
@@ -353,7 +387,7 @@ inline std::vector< std::vector<double> > APhyloModel::observed_counts() {
 
     // Creating counter
     phylocounters::PhyloStatsCounter tmpcount;
-    tmpcount.set_counters(&model.counters);
+    tmpcount.set_counters(&support->counters);
 
     // Iterating through the nodes
     for (auto& n : nodes) {
@@ -393,7 +427,7 @@ inline std::vector< std::vector<double> > APhyloModel::observed_counts() {
 
 }
 
-inline void APhyloModel::print_observed_counts() {
+inline void Geese::print_observed_counts() {
 
     // Making room for the output
     std::vector<std::vector<double>> ans;
@@ -401,7 +435,7 @@ inline void APhyloModel::print_observed_counts() {
 
     // Creating counter
     phylocounters::PhyloStatsCounter tmpcount;
-    tmpcount.set_counters(&model.counters);
+    tmpcount.set_counters(&support->counters);
 
     // Iterating through the nodes
     for (auto& n : nodes) {

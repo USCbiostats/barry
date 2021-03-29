@@ -3,7 +3,7 @@
 
 #include "geese-bones.hpp"
 
-inline double APhyloModel::likelihood(const std::vector< double > & par) {
+inline double Geese::likelihood(const std::vector< double > & par) {
 
     INITIALIZED()
 
@@ -38,11 +38,11 @@ inline double APhyloModel::likelihood(const std::vector< double > & par) {
             double totprob = 0.0;
 
             // Retrieving the sets of arrays
-            const std::vector< phylocounters::PhyloArray > * psets = model.get_pset(
+            const std::vector< phylocounters::PhyloArray > * psets = support->get_pset(
                 node.narray[s]
             );
 
-            const std::vector< std::vector<double> > * psets_stats = model.get_stats(
+            const std::vector< std::vector<double> > * psets_stats = support->get_stats(
                 node.narray[s]
             );
 
@@ -92,7 +92,7 @@ inline double APhyloModel::likelihood(const std::vector< double > & par) {
                     
 
                 // Multiplying by P(x|x_n)
-                off_mult *= model.likelihood(
+                off_mult *= support->likelihood(
                     par0,
                     psets_stats->at(nstate++),
                     node.narray[s]

@@ -4,7 +4,7 @@
 #define GEESE_MEAT_PREDICT_HPP 1
 
 
-inline std::vector< std::vector<double> > APhyloModel::predict(
+inline std::vector< std::vector<double> > Geese::predict(
     const std::vector< double > & par,
     std::vector< std::vector< double > > * res_prob
     ) {
@@ -98,8 +98,8 @@ inline std::vector< std::vector<double> > APhyloModel::predict(
                 
                 // Retrieving the corresponding arrays and stats that will be
                 // use to marginalize
-                auto p_arrays = model.get_pset(loc);
-                auto p_stats  = model.get_stats(loc);
+                auto p_arrays = support->get_pset(loc);
+                auto p_stats  = support->get_stats(loc);
 
                 double prob = 0.0;
 
@@ -123,7 +123,7 @@ inline std::vector< std::vector<double> > APhyloModel::predict(
                         continue;
 
                     // Computing the likelihood 
-                    prob += model.likelihood(par0, p_stats->at(a), loc);
+                    prob += support->likelihood(par0, p_stats->at(a), loc);
                     
                 }
 

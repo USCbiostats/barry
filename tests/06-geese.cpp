@@ -20,7 +20,7 @@ TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
 
     std::vector< bool > duplication(geneid.size(), true);
 
-    APhyloModel model(ann, geneid, parent, duplication);
+    Geese model(ann, geneid, parent, duplication);
 
     // Adding terms
     phylocounters::counter_gains(&model.counters, {0, 1});
@@ -40,7 +40,7 @@ TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
     // Updating an annotation --------------------------------------------------
     ann[3u][1u] = 9u;
     ann[4u][1u] = 0u;
-    APhyloModel model2(ann, geneid, parent, duplication);
+    Geese model2(ann, geneid, parent, duplication);
 
     // Adding terms
     phylocounters::counter_gains(&model2.counters, {0, 1});

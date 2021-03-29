@@ -1,10 +1,10 @@
 
-#ifndef GEESE_MEAT_LIKELIHOOD_EXACT_HPP
-#define GEESE_MEAT_LIKELIHOOD_EXACT_HPP 1
+#ifndef APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP
+#define APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP 1
 #include "../../barry.hpp"
 #include "geese-bones.hpp" 
 
-inline double APhyloModel::likelihood_exhaust(const std::vector< double > & par) {
+inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
 
     INITIALIZED()
 
@@ -91,7 +91,7 @@ inline double APhyloModel::likelihood_exhaust(const std::vector< double > & par)
 
             }
 
-            prob *= this->model.likelihood(
+            prob *= this->support->likelihood(
                 par0, transition,
                 node->narray[this->map_to_nodes[tmpstates]],
                 false);

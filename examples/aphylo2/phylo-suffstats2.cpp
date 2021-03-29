@@ -42,7 +42,7 @@ int main() {
     std::vector< uint > parent = {4, 4, 5, 5, 6, 6};
 
     
-    APhyloModel dat(
+    Geese dat(
         annotations, geneid, parent
     );
 
@@ -93,7 +93,7 @@ int main() {
     ann2.resize(7u, {9, 9, 9});
     std::vector< uint > geneid2 = {0u, 1u, 2u, 3u, 4u, 5u};
     std::vector< uint > parent2 = {6u, 4u, 4u, 5u, 5u, 6u};
-    APhyloModel model2(ann2, geneid2, parent2);
+    Geese model2(ann2, geneid2, parent2);
 
     // Adding terms
     phylocounters::counter_cogain(&model2.counters, 0, 1);

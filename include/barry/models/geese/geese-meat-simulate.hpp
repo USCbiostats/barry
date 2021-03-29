@@ -5,11 +5,11 @@
 #ifndef GEESE_MEAT_SIMULATE_HPP
 #define GEESE_MEAT_SIMULATE_HPP 1
 
-inline void APhyloModel::set_seed(const unsigned int & s) {
+inline void Geese::set_seed(const unsigned int & s) {
     rengine.seed(s);
 }
 
-inline std::vector< std::vector< unsigned int > > APhyloModel::simulate(
+inline std::vector< std::vector< unsigned int > > Geese::simulate(
     const std::vector< double > & par
     ) {
 
@@ -63,7 +63,7 @@ inline std::vector< std::vector< unsigned int > > APhyloModel::simulate(
 
         // Given the state of the current node, sample the state of the
         // offspring, all based on the current state
-        auto tmp = model.sample(nodes[i].narray[n], par0);
+        auto tmp = support->sample(nodes[i].narray[n], par0);
 
         // Iterating through the offspring to assign the state
         for (unsigned int j = 0u; j < nodes[i].offspring.size(); ++j) {
