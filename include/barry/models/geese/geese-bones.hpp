@@ -109,18 +109,25 @@ public:
 class Geese {
 public:
 
-    std::mt19937 *                     rengine = nullptr;
+    // Common components
+    std::mt19937 *                     rengine  = nullptr;
+    phylocounters::PhyloCounters *     counters = nullptr;
     phylocounters::PhyloModel *        support;
+    std::vector< std::vector< bool > > states;
+
+    // Data
     unsigned int                       nfunctions;
     barry::Map< unsigned int, Node >   nodes;
-    std::vector< unsigned int >        sequence;
-    std::vector< bool >                visited;
-    std::vector< std::vector< bool > > states;
     barry::MapVec_type< unsigned int > map_to_nodes;
-    phylocounters::PhyloCounters       counters;
-    bool                               initialized = false;
-    bool                               delete_support = false;
-    bool                               delete_rengine = false;
+
+    // Tree-traversal sequence
+    std::vector< unsigned int >        sequence;  
+
+    // Admin-related objects
+    bool initialized     = false;
+    bool delete_rengine  = false;
+    bool delete_counters = false;
+    bool delete_support  = false;
 
     Geese();
 
@@ -136,7 +143,6 @@ public:
      * 0, 1, and 9.
      * @param geneid Id of the gene. It should be of length `N`.
      * @param parent Id of the parent gene. Also of length `N`
-     * @param counters An object of class `PhyloCounters`.
      */
     Geese(
         std::vector< std::vector<unsigned int> > & annotations,
@@ -194,8 +200,7 @@ public:
     void update_annotations(
         unsigned int nodeid,
         std::vector< unsigned int > newann
-    );
-    
+    );  
 
 };
 

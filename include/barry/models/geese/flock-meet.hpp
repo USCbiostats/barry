@@ -14,25 +14,32 @@ inline unsigned int Flock::add_data(
 
     // We proceede depending on whether the support has already been initialized
     if (i == 0u) {
-        dat[i].set_support(new phylocounters::PhyloModel(), true);
+
+        this->dat[i].set_support(new phylocounters::PhyloModel(), true);
+        this->counters = this->dat[i].counters;
+        this->rengine  = this->dat[i].rengine;
+        this->support  = this->dat[i].support;
+
     } else
         dat[i].inherit_support(dat[0u], false);
     
-    // Copying random number generation
-    if (i != 0u) {
-        dat[i].rengine = dat[0u].rengine;
-        dat[i].delete_rengine = false;
-    }
-
     return i;
 
+}
+
+inline void Flock::init() {
+
+    // Initializing the models.
+    for (auto& d : dat) 
+        d.init();
+    
 }
 
 inline phylocounters::PhyloCounters * Flock::counters_ptr() {
     if (dat.size() == 0u)
         throw std::logic_error("The flock has no data yet.");
 
-    return &(dat[0u].counters);
+    return dat[0u].counters;
 }
 
 inline double Flock::likelihood_joint(const std::vector< double > & par, bool as_log) {

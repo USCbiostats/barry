@@ -7,6 +7,11 @@ class Flock {
 public:
 
     std::vector< Geese > dat;
+    
+    // Common components
+    std::mt19937 *                 rengine  = nullptr;
+    phylocounters::PhyloCounters * counters = nullptr;
+    phylocounters::PhyloModel *    support  = nullptr;
 
     Flock() {};
     ~Flock() {};
@@ -17,6 +22,8 @@ public:
         std::vector< int > &                       parent,
         std::vector< bool > &                      duplication
     );
+
+    void init();
     
     // void add_geese(Geese x);
     phylocounters::PhyloCounters * counters_ptr();

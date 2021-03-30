@@ -4,6 +4,11 @@
 #define GEESE_MEAT_HPP 1
 
 inline Geese::Geese() : support(nullptr), nodes() {
+
+    // In order to start...
+    this->counters = new phylocounters::PhyloCounters();
+    this->delete_counters = true;
+
     return;
 }
 
@@ -13,6 +18,10 @@ inline Geese::Geese(
     std::vector< int > &          parent,
     std::vector< bool > &         duplication
 ) : support(nullptr), nodes() {
+
+    // In order to start...
+    this->counters = new phylocounters::PhyloCounters();
+    this->delete_counters = true;
 
     // Check the lengths
     if (annotations.size() == 0u)
@@ -115,8 +124,6 @@ inline Geese::Geese(
 
     }
 
-    // init(counters);
-
     return;
 
 }
@@ -188,6 +195,8 @@ inline Geese::~Geese() {
 
     if (delete_support)
         delete support;
+    if (delete_counters)
+        delete counters;
     if (delete_rengine)
         delete rengine;
 
@@ -197,15 +206,8 @@ inline Geese::~Geese() {
 inline void Geese::init() {
 
     // Initializing the model, if it is null
-    if (this->support == nullptr) {
-
-        // Generating the model data -------------------------------------------
-        this->set_support(
-            new phylocounters::PhyloModel(),
-            true
-        );
-
-    }
+    if (this->support == nullptr) 
+        this->set_support(new phylocounters::PhyloModel(), true);
 
     // Checking rseed, this is relevant when dealing with a flock. In the case of
     // flock, both support and rengine are shared.
@@ -244,10 +246,6 @@ inline void Geese::init() {
             
     }
 
-    // Finally, setting this variable for later, we will need this for generating
-    // the pruning sequence.
-    visited.resize(nodes.size(), false);
-
     // Computing the pruning sequence.
     calc_sequence();
 
@@ -269,6 +267,22 @@ inline void Geese::inherit_support(Geese & model_, bool delete_support_) {
 
     this->support = model_.support;
     this->delete_support = delete_support_;
+
+    // Checking counters
+    if (this->delete_counters) {
+        delete this->counters;
+        this->delete_counters = false;
+    }
+    
+    this->counters = model_.counters;
+
+    // And random number generation
+    if (this->delete_rengine) {
+        delete this->rengine;
+        this->delete_rengine = false;
+    }
+    
+    this->rengine = model_.rengine;
     
     return;
 
@@ -279,12 +293,12 @@ inline void Geese::set_support(phylocounters::PhyloModel * support_, bool delete
     if (this->support != nullptr)
         throw std::logic_error("There is already a -support- in this Geese. Cannot set a -support- after one is present.");
 
-    this->support = support_;
+    this->support        = support_;
     this->delete_support = delete_support_;
 
     // Setting the keygen, counters, psets, and rand engine.
     support->set_keygen(keygen_full);
-    support->set_counters(&counters);
+    support->set_counters(counters);
     support->store_psets();
     support->set_rengine(this->rengine, false);
 
@@ -407,7 +421,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts() {
 
     // Creating counter
     phylocounters::PhyloStatsCounter tmpcount;
-    tmpcount.set_counters(&support->counters);
+    tmpcount.set_counters(counters);
 
     // Iterating through the nodes
     for (auto& n : nodes) {
@@ -455,7 +469,7 @@ inline void Geese::print_observed_counts() {
 
     // Creating counter
     phylocounters::PhyloStatsCounter tmpcount;
-    tmpcount.set_counters(&support->counters);
+    tmpcount.set_counters(counters);
 
     // Iterating through the nodes
     for (auto& n : nodes) {
