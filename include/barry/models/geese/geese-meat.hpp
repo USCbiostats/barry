@@ -185,8 +185,12 @@ inline void Geese::init_node(Node & n) {
 }
 
 inline Geese::~Geese() {
+
     if (delete_support)
         delete support;
+    if (delete_rengine)
+        delete rengine;
+
     return;
 }
 
@@ -200,6 +204,15 @@ inline void Geese::init() {
             new phylocounters::PhyloModel(),
             true
         );
+
+    }
+
+    // Checking rseed, this is relevant when dealing with a flock. In the case of
+    // flock, both support and rengine are shared.
+    if (this->rengine == nullptr) {
+
+        this->rengine = new std::mt19937;
+        this->delete_rengine = true;
 
     }
 
@@ -256,6 +269,7 @@ inline void Geese::inherit_support(Geese & model_, bool delete_support_) {
 
     this->support = model_.support;
     this->delete_support = delete_support_;
+    
     return;
 
 }
@@ -272,7 +286,7 @@ inline void Geese::set_support(phylocounters::PhyloModel * support_, bool delete
     support->set_keygen(keygen_full);
     support->set_counters(&counters);
     support->store_psets();
-    support->set_rengine(&this->rengine, false);
+    support->set_rengine(this->rengine, false);
 
     return;
 

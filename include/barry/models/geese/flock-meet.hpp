@@ -18,6 +18,12 @@ inline unsigned int Flock::add_data(
     } else
         dat[i].inherit_support(dat[0u], false);
     
+    // Copying random number generation
+    if (i != 0u) {
+        dat[i].rengine = dat[0u].rengine;
+        dat[i].delete_rengine = false;
+    }
+
     return i;
 
 }
@@ -27,5 +33,22 @@ inline phylocounters::PhyloCounters * Flock::counters_ptr() {
         throw std::logic_error("The flock has no data yet.");
 
     return &(dat[0u].counters);
+}
+
+inline double Flock::likelihood_joint(const std::vector< double > & par, bool as_log) {
+
+    double ans = as_log ? 1.0: 0.0;
+    if (as_log) {
+        for (auto& d : this->dat) {
+            ans += std::log(d.likelihood(par));
+        }
+    } else {
+        for (auto& d : this->dat) {
+            ans *= d.likelihood(par);
+        }
+    }
+    
+    return ans;
+
 }
 #endif

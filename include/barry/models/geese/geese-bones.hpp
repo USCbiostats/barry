@@ -109,7 +109,7 @@ public:
 class Geese {
 public:
 
-    std::mt19937                       rengine;
+    std::mt19937 *                     rengine = nullptr;
     phylocounters::PhyloModel *        support;
     unsigned int                       nfunctions;
     barry::Map< unsigned int, Node >   nodes;
@@ -120,6 +120,7 @@ public:
     phylocounters::PhyloCounters       counters;
     bool                               initialized = false;
     bool                               delete_support = false;
+    bool                               delete_rengine = false;
 
     Geese();
 
