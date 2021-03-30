@@ -6,8 +6,10 @@
 inline Geese::Geese() : support(nullptr), nodes() {
 
     // In order to start...
-    this->counters = new phylocounters::PhyloCounters();
+    this->counters        = new phylocounters::PhyloCounters();
     this->delete_counters = true;
+    this->rengine         = new std::mt19937;
+    this->delete_rengine  = true;
 
     return;
 }
@@ -20,8 +22,10 @@ inline Geese::Geese(
 ) : support(nullptr), nodes() {
 
     // In order to start...
-    this->counters = new phylocounters::PhyloCounters();
+    this->counters        = new phylocounters::PhyloCounters();
     this->delete_counters = true;
+    this->rengine         = new std::mt19937;
+    this->delete_rengine  = true;
 
     // Check the lengths
     if (annotations.size() == 0u)
