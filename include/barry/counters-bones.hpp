@@ -54,8 +54,8 @@ public:
   /***
    * ! Main functions.
    */
-  double count(Array_Type * Array, uint i, uint j);
-  double init(Array_Type * Array, uint i, uint j);
+  double count(Array_Type & Array, uint i, uint j);
+  double init(Array_Type & Array, uint i, uint j);
 };
 
 /**
@@ -91,7 +91,7 @@ public:
    * @param idx Id of the counter
    * @return Counter<Array_Type,Data_Type>* 
    */
-  Counter<Array_Type,Data_Type> * operator[](uint idx);
+  Counter<Array_Type,Data_Type> & operator[](uint idx);
 
   /**
    * @brief Number of counters in the set.

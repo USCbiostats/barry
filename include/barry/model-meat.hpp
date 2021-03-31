@@ -247,7 +247,7 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_array(
     arrays2support.push_back(stats.size()); // Map of the array id to the support
     
     // Computing support using the counters included in the model
-    support_fun.reset_array(&Array_);
+    support_fun.reset_array(Array_);
     
     /** When computing with the powerset, we need to grow the corresponding
       * vectors on the fly */

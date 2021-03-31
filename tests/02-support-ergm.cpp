@@ -33,7 +33,7 @@ TEST_CASE("Computing support for networks", "[support]") {
   
   netcounters::Network net(4, 4);
   net.data = new netcounters::NetworkData({0,0,1,0});
-  netcounters::NetSupport support(&net); 
+  netcounters::NetSupport support(net); 
   
   // Preparing model  
   

@@ -19,7 +19,7 @@ COUNTER_FUNCTION(n_ones) {
 
 // Zeros
 COUNTER_FUNCTION(n_zeros_init) {
-    return Array->nrow() * Array->ncol();
+    return Array.nrow() * Array.ncol();
 }
 
 COUNTER_FUNCTION(n_zeros) {
@@ -30,7 +30,7 @@ COUNTER_FUNCTION(n_zeros) {
 COUNTER_FUNCTION(n_mutual) {
     return (double) (
         (i != j) &
-        (!Array->is_empty(j, i))
+        (!Array.is_empty(j, i))
     );
 }
 
@@ -45,7 +45,7 @@ TEST_CASE("Constrained support", "[const-support]") {
 
     dat.print();
 
-    barry::Support<> sup(&dat);
+    barry::Support<> sup(dat);
     
     // Rules
     barry::Rule<> rule1(myrule<>);
