@@ -23,7 +23,7 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
   // Computing the locations
   coordinates_free.clear();
   coordinates_locked.clear();
-  rules->get_seq(&EmptyArray, &coordinates_free, &coordinates_locked);
+  rules->get_seq(EmptyArray, &coordinates_free, &coordinates_locked);
   
   // Computing initial statistics
   if (EmptyArray.nnozero() > 0u) {

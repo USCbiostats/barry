@@ -98,7 +98,7 @@ Counters<Array_Type,Data_Type> Counters<Array_Type,Data_Type>::operator=(
 
 template <typename Array_Type, typename Data_Type>
 inline double Counter<Array_Type, Data_Type>::count(
-    Array_Type * Array, uint i, uint j) {
+    Array_Type & Array, uint i, uint j) {
   if (count_fun == nullptr)
     return 0.0;
   return count_fun(Array, i, j, data);
@@ -106,15 +106,15 @@ inline double Counter<Array_Type, Data_Type>::count(
 
 template <typename Array_Type, typename Data_Type>
 inline double Counter<Array_Type, Data_Type>::init(
-    Array_Type * Array, uint i, uint j) {
+    Array_Type & Array, uint i, uint j) {
   if (init_fun == nullptr)
     return 0.0;
   return init_fun(Array, i, j, data);
 }
 
 template <typename Array_Type, typename Data_Type>
-inline Counter<Array_Type,Data_Type> * Counters<Array_Type,Data_Type>::operator[](uint idx) {
-  return data[idx];
+inline Counter<Array_Type,Data_Type> & Counters<Array_Type,Data_Type>::operator[](uint idx) {
+  return *data[idx];
 }
 
 template <typename Array_Type, typename Data_Type>

@@ -12,7 +12,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support(
   // Computing the locations
   coordinates_free.clear();
   coordinates_locked.clear();
-  rules->get_seq(&EmptyArray, &coordinates_free, &coordinates_locked);
+  rules->get_seq(EmptyArray, &coordinates_free, &coordinates_locked);
   
   // Computing initial statistics
   if (EmptyArray.nnozero() > 0u) {
@@ -37,8 +37,8 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support(
 
     // Initialize counters
     for (uint n = 0u; n < counters->size(); ++n) {
-      current_stats[n] = counters->operator[](n)->init(
-        &EmptyArray,
+      current_stats[n] = counters->operator[](n).init(
+        EmptyArray,
         coordinates_free[0u].first,
         coordinates_free[0u].second
         );
@@ -73,12 +73,12 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array(
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array(const Array_Type * Array_) {
+inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array(const Array_Type & Array_) {
   
   data.clear();
-  EmptyArray = *Array_;
-  N = Array_->nrow();
-  M = Array_->ncol();
+  EmptyArray = Array_;
+  N = Array_.nrow();
+  M = Array_.ncol();
   // init_support();
   
 }
@@ -110,8 +110,8 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
   // Counting
   // std::vector< double > change_stats(counters.size());
   for (uint n = 0u; n < counters->size(); ++n) {
-    change_stats[pos][n] = counters->operator[](n)->count(
-      &EmptyArray,
+    change_stats[pos][n] = counters->operator[](n).count(
+      EmptyArray,
       coordinates_free[pos].first,
       coordinates_free[pos].second
       );

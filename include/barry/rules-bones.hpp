@@ -53,7 +53,7 @@ public:
     return;
   }
   
-  bool locked(const Array_Type * a, uint i, uint j);
+  bool locked(const Array_Type & a, uint i, uint j);
   
 };
 
@@ -110,7 +110,7 @@ public:
    * @return false If the cell is free
    */
 
-  bool locked(const Array_Type * a, uint i, uint j);
+  bool locked(const Array_Type & a, uint i, uint j);
   
   void clear();
   
@@ -124,7 +124,7 @@ public:
    * @return Nothing.
    */
   void get_seq(
-    const Array_Type * a,
+    const Array_Type & a,
     std::vector< std::pair<uint,uint> > * free,
     std::vector< std::pair<uint,uint> > * locked = nullptr
   );

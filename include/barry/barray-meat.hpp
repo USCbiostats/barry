@@ -359,6 +359,26 @@ BArray< Cell_Type,Data_Type >::get_col_vec(
 }
 
 template<typename Cell_Type, typename Data_Type>
+inline const Row_type< Cell_Type > & BArray<Cell_Type, Data_Type>::row(uint i, bool check_bounds) const {
+
+  if (check_bounds)
+    out_of_range(i, 0u);
+
+  return this->el_ij[i];
+
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline const Col_type< Cell_Type > & BArray<Cell_Type, Data_Type>::col(uint i, bool check_bounds) const {
+
+  if (check_bounds)
+    out_of_range(0u, i);
+
+  return this->el_ji[i];
+  
+}
+
+template<typename Cell_Type, typename Data_Type>
 inline Entries<Cell_Type>
 BArray<Cell_Type, Data_Type>::get_entries() const {
   

@@ -33,10 +33,10 @@ public:
   
   /**@brief Reference array to generate the support.
    */
-  Array_Type                                    EmptyArray;
-  FreqTable<>                                   data;
+  Array_Type                               EmptyArray;
+  FreqTable<>                              data;
   Counters<Array_Type,Data_Counter_Type> * counters;
-  Rules<Array_Type,Data_Rule_Type>            * rules;
+  Rules<Array_Type,Data_Rule_Type> *       rules;
 
   uint N, M;
   bool counter_deleted = false;
@@ -51,11 +51,11 @@ public:
   
   /**@brief Constructor passing a reference Array.
    */
-  Support(const Array_Type * Array_) :
-    EmptyArray(*Array_),
+  Support(const Array_Type & Array_) :
+    EmptyArray(Array_),
     counters(new Counters<Array_Type,Data_Counter_Type>()),
     rules(new Rules<Array_Type,Data_Rule_Type>()),
-    N(Array_->nrow()), M(Array_->ncol()) {
+    N(Array_.nrow()), M(Array_.ncol()) {
     // init_support();
     return;
     
@@ -103,7 +103,7 @@ public:
    */
   ///@{
   void reset_array();
-  void reset_array(const Array_Type * Array_);
+  void reset_array(const Array_Type & Array_);
   ///@}
   
   /**

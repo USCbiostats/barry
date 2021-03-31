@@ -72,7 +72,7 @@ inline void StatsCounter<Array_Type, Data_Type>::count_init(
   current_stats.resize(counters->size(), 0.0);
   change_stats.resize(counters->size(), 0.0);
   for (uint n = 0u; n < counters->size(); ++n) 
-    current_stats[n] = counters->operator[](n)->init(&EmptyArray, i, j);
+    current_stats[n] = counters->operator[](n).init(EmptyArray, i, j);
   
   return;
 }
@@ -86,7 +86,7 @@ inline void StatsCounter<Array_Type, Data_Type>::count_current(
   // Iterating through the functions, and updating the set of
   // statistics.
   for (uint n = 0u; n < counters->size(); ++n) {
-    change_stats[n]   = counters->operator[](n)->count(&EmptyArray, i, j);
+    change_stats[n]   = counters->operator[](n).count(EmptyArray, i, j);
     current_stats[n] += change_stats[n];
   }
 
@@ -104,20 +104,22 @@ inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
   EmptyArray.clear(false);
   
   // Start iterating through the data
-  for (uint row = 0; row < Array->N; ++row) {
+  for (uint i = 0; i < Array->N; ++i) {
     
+    auto row = Array->row(i);
+
     // Any element?
-    if (A_ROW(row).size() == 0u)
+    if (row.size() == 0u)
       continue;
     
     // If there's one, then update the statistic, by iterating
-    for (auto col = A_ROW(row).begin(); col != A_ROW(row).end(); ++col) {
+    for (auto col = row.begin(); col != row.end(); ++col) {
       
       // Adding a cell
-      EmptyArray.insert_cell(row, col->first, col->second, false, false);
+      EmptyArray.insert_cell(i, col->first, col->second, false, false);
 
       // Computing the change statistics
-      count_current(row, col->first);
+      count_current(i, col->first);
      
     } 
     
