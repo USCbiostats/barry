@@ -109,11 +109,22 @@ public:
 class Geese {
 public:
 
-    // Common components
+    /**
+     * @name Shared objects within a `Geese`
+     * @details
+     * Since users may start adding counters before initializing the PhyloModel
+     * object, the object `counter` is initialized first.
+     * 
+     * While the member `support` has an `rengine`, since `Geese` can sample trees,
+     * we have the option to keep it separate.
+     * 
+     */
+    ///@{
     std::mt19937 *                     rengine  = nullptr;
     phylocounters::PhyloCounters *     counters = nullptr;
-    phylocounters::PhyloModel *        support;
+    phylocounters::PhyloModel *        support  = nullptr;
     std::vector< std::vector< bool > > states;
+    ///@}
 
     // Data
     unsigned int                       nfunctions;
@@ -151,12 +162,13 @@ public:
         std::vector< bool > &                      duplication
         );
 
+    Geese(const Geese & model_, bool copy_data = true);
+
     ~Geese();
 
     void init();
 
-    void inherit_support(Geese & model_, bool delete_support_ = false);
-    void set_support(phylocounters::PhyloModel * model_, bool delete_support_ = false);
+    void inherit_support(const Geese & model_, bool delete_support_ = false);
 
     // Node * operator()(unsigned int & nodeid);
     void calc_sequence(Node * n = nullptr);

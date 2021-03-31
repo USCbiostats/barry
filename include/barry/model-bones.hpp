@@ -102,18 +102,21 @@ public:
    */
   ///@{
   std::mt19937 * rengine = nullptr;
-  bool rengine_deleted   = true;
+  bool delete_rengine    = false;
   void set_rengine(std::mt19937 * rengine_, bool delete_ = false) {
 
+    if (delete_rengine)
+      delete rengine;
+
     rengine = rengine_;
-    rengine_deleted = !delete_;
+    delete_rengine = delete_;
     
   };
   void set_seed(unsigned int s) {
 
     if (rengine == nullptr) {
       rengine = new std::mt19937;
-      rengine_deleted = false;
+      delete_rengine = true;
     }
 
     rengine->seed(s);
@@ -184,7 +187,7 @@ public:
     const Model<Array_Type, Data_Counter_Type, Data_Rule_Type> & Model_
     );
   ~Model() {
-    if (!rengine_deleted)
+    if (delete_rengine)
       delete rengine;
   };
   

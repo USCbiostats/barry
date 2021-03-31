@@ -113,8 +113,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model<Array_Type,Dat
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::store_psets() {
-  if (with_pset)
-    throw std::logic_error("Powerset storage alreay activated.");
+  // if (with_pset)
+  //   throw std::logic_error("Powerset storage alreay activated.");
   with_pset = true;
   return;
 }

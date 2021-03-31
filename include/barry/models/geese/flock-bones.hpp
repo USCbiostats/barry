@@ -9,9 +9,8 @@ public:
     std::vector< Geese > dat;
     
     // Common components
-    std::mt19937 *                 rengine  = nullptr;
-    phylocounters::PhyloCounters * counters = nullptr;
-    phylocounters::PhyloModel *    support  = nullptr;
+    std::mt19937              rengine;
+    phylocounters::PhyloModel support = phylocounters::PhyloModel();
 
     Flock() {};
     ~Flock() {};
