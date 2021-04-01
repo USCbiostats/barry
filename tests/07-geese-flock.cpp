@@ -47,6 +47,21 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     double ans1 = aflock.likelihood_joint(params, true);
     REQUIRE(std::abs(ans0 - ans1) < .0000001);
 
+    // Checking the likelihood sequence -----------------------------------------
+    std::vector< std::vector<uint> > ann2 = {
+        {9, 9},
+        {9, 9},
+        {9, 9}, // Now both are missing, before {9, 0}
+        {1, 1},
+        {0, 9}
+    };
 
+    Geese model2(ann2, geneid, parent, duplication);
+
+    // Adding terms
+    phylocounters::counter_gains(model2.counters, {0, 1});
+    phylocounters::counter_maxfuns(model2.counters, 2, 2);
+
+    model2.init();
 
 }

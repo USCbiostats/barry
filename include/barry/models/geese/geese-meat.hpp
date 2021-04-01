@@ -236,7 +236,7 @@ inline void Geese::calc_likelihood_sequence() {
     std::vector< bool > includeit(nodes.size(), false);
     for (auto& i : sequence) {
 
-        Node & n = node[i];
+        Node & n = nodes[i];
 
         // We will count this at the end
         if (n.is_leaf()) {
