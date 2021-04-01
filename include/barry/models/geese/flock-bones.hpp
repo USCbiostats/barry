@@ -3,6 +3,12 @@
 
 class Geese;
 
+/**
+ * @brief A Flock is a group of Geese
+ * @details This object buils a model with multiple trees (Geese objects),
+ * with all of these using the same PhyloModel object.
+ * 
+ */
 class Flock {
 public:
 

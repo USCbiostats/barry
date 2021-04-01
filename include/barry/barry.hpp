@@ -7,6 +7,7 @@
 #include <cmath>
 #include <map>
 #include <algorithm>
+#include <utility>
 
 #ifndef BARRY_HPP
 #define BARRY_HPP 

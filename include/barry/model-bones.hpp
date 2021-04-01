@@ -108,10 +108,11 @@ public:
     if (delete_rengine)
       delete rengine;
 
-    rengine = rengine_;
+    rengine        = rengine_;
     delete_rengine = delete_;
     
   };
+
   void set_seed(unsigned int s) {
 
     if (rengine == nullptr) {

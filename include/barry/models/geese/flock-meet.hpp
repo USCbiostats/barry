@@ -33,11 +33,20 @@ inline void Flock::init() {
     // For some strange reason, pointing to support during
     // the add_data function changes addresses once its out.
     for (auto& a : dat) {
+        if (a.delete_support)
+            delete a.support;
+
         a.support         = &support;
         a.delete_support  = false;
 
+        if (a.delete_rengine)
+            delete a.rengine;
+
         a.rengine         = &rengine;
         a.delete_rengine  = false;
+
+        if (a.delete_counters)
+            delete a.counters;
 
         a.counters        = &support.counters;
         a.delete_counters = false;

@@ -3,138 +3,6 @@
 #ifndef GEESE_MEAT_HPP
 #define GEESE_MEAT_HPP 1
 
-inline Geese::Geese() {
-
-    // In order to start...
-    this->counters        = new phylocounters::PhyloCounters();
-    this->delete_counters = true;
-    this->rengine         = new std::mt19937;
-    this->delete_rengine  = true;
-
-    return;
-}
-
-inline Geese::Geese(
-    std::vector< std::vector<unsigned int> > & annotations,
-    std::vector< unsigned int > & geneid,
-    std::vector< int > &          parent,
-    std::vector< bool > &         duplication
-) {
-
-    // In order to start...
-    this->counters        = new phylocounters::PhyloCounters();
-    this->delete_counters = true;
-    this->rengine         = new std::mt19937;
-    this->delete_rengine  = true;
-
-    // Check the lengths
-    if (annotations.size() == 0u)
-        throw std::logic_error("Annotations is empty");
-
-    nfunctions = annotations.at(0u).size();
-
-    // unsigned int n = annotations.size();
-    for (auto& iter : annotations) {
-        if (iter.size() != nfunctions)
-            throw std::length_error("Not all the annotations have the same length");
-    }
-
-    // Grouping up the data by parents -----------------------------------------
-    for (unsigned int i = 0u; i < geneid.size(); ++i) {
-
-        // Temp vector with the annotations
-        std::vector< unsigned int > funs(annotations.at(i));
-
-        if ((parent.at(i) >= 0) && (nodes.find(parent.at(i)) == nodes.end())) {
-
-            // Adding parent
-            auto key_par = nodes.insert({
-                parent.at(i),
-                Node(parent.at(i), true)
-            });
-
-            // Adding offspring
-            if (nodes.find(geneid.at(i)) == nodes.end()) {
-
-                auto key_off = nodes.insert({
-                    geneid.at(i),
-                    Node(geneid.at(i), funs, duplication.at(i))
-                    });
-
-                // Adding the offspring to the parent
-                key_par.first->second.offspring.push_back(
-                    &key_off.first->second
-                );
-
-                // Adding the parent to the offspring
-                key_off.first->second.parent = &key_par.first->second;
-                key_off.first->second.annotations = funs;
-                key_off.first->second.duplication = duplication.at(i);
-
-            } else {
-
-                // We just need to make sure that we update it!
-                nodes[geneid.at(i)].duplication = duplication.at(i);
-                nodes[geneid.at(i)].annotations = funs;
-                nodes[geneid.at(i)].parent      = &nodes[parent.at(i)];
-
-                nodes[parent.at(i)].offspring.push_back(
-                    &nodes[geneid.at(i)]
-                );
-
-            }
-
-        } else {
-            // In this case, the parent exists, so we only need to assing the
-            // offspring
-            // Adding offspring
-
-            // Does the offspring exist?
-            if (nodes.find(geneid.at(i)) == nodes.end()) {
-
-                auto key_off = nodes.insert({
-                    geneid.at(i),
-                    Node(geneid.at(i), funs, duplication.at(i))
-                    });
-
-                // Adding the offspring to the parent
-                if (parent.at(i) >= 0) {
-                    nodes[parent.at(i)].offspring.push_back(
-                        &key_off.first->second
-                    );
-
-                    // Adding the parent to the offspring
-                    key_off.first->second.parent = &nodes[parent.at(i)];
-                }
-
-                key_off.first->second.annotations = funs;
-                key_off.first->second.duplication = duplication.at(i);
-
-            } else {
-
-                // We just need to make sure that we update it!
-                nodes[geneid.at(i)].duplication = duplication.at(i);
-                nodes[geneid.at(i)].annotations = funs;
-
-                if (parent.at(i) >= 0) {
-                    nodes[geneid.at(i)].parent = &nodes[parent.at(i)];
-                    nodes[parent.at(i)].offspring.push_back(
-                        &nodes[geneid.at(i)]
-                    );
-                }
-
-            }
-        }
-
-    }
-
-    // Computing the pruning sequence.
-    calc_sequence();
-
-    return;
-
-}
-
 inline void Geese::init_node(Node & n) {
 
     // Creating the phyloarray, nfunctions x noffspring
@@ -196,79 +64,6 @@ inline void Geese::init_node(Node & n) {
     }
 
     return;
-}
-
-inline Geese::Geese(const Geese & model_, bool copy_data) : 
-    states(model_.states),
-    nfunctions(model_.nfunctions),
-    nodes(model_.nodes),
-    map_to_nodes(model_.map_to_nodes),
-    sequence(model_.sequence),
-    initialized(model_.initialized) {
-
-    
-    // Replicating -------------------------------------------------------------
-    if (copy_data) {
-
-        if (model_.rengine != nullptr) {
-            rengine = new std::mt19937(*(model_.rengine));
-            delete_rengine = true;
-        }
-
-        if (model_.counters != nullptr) {
-            counters = new phylocounters::PhyloCounters(*(model_.counters));
-            delete_counters = true;
-        }
-
-        if (model_.support != nullptr) {
-            support = new phylocounters::PhyloModel(*(model_.support));
-            delete_support = true;
-        }
-
-    } else {
-        
-        if (model_.rengine != nullptr) {
-            rengine = model_.rengine;
-            delete_rengine = false;
-        }
-
-        if (model_.counters != nullptr) {
-            counters = model_.counters;
-            delete_counters = false;
-        }
-
-        if (model_.support != nullptr) {
-            support = model_.support;
-            delete_support = false;
-        }
-
-    }
-
-    // Dealing with the nodes is a bit different -------------------------------
-    auto revseq = this->sequence;
-    std::reverse(revseq.begin(), revseq.end());
-
-    for (auto& i : revseq) {
-
-        // Leaf do not have offspring
-        if (this->nodes[i].is_leaf())
-            continue;
-
-        // Clearing offspring
-        this->nodes[i].offspring.clear();
-
-        // I cannot directly access the node since, if non existent, it will 
-        // create an entry with it (alegedly).
-        auto n = model_.nodes.find(i);
-
-        for (const auto& off : n->second.offspring) {
-            this->nodes[i].offspring.push_back(&this->nodes[off->id]);
-        }
-
-    }
-
-    return;
-  
 }
 
 inline Geese::~Geese() {
@@ -431,6 +226,43 @@ inline void Geese::calc_sequence(Node * n) {
         calc_sequence(n->parent);
 
     return;
+
+}
+
+inline void Geese::calc_likelihood_sequence() {
+
+    // The criteria, if none of its decendants is annotated, then we can remove
+    // the node from the model
+    std::vector< bool > includeit(nodes.size(), false);
+    for (auto& i : sequence) {
+
+        Node & n = node[i];
+
+        // We will count this at the end
+        if (n.is_leaf()) {
+
+            for (unsigned int k = 0u; k < nfuns(); ++k) {
+                if (n.annotations[k] != 9u) {
+                    includeit[i] = true;
+                    likelihood_sequence.push_back(i);
+                    break;
+                }
+            }
+
+        } else {
+
+            // Checking, am I including any of my offspring?
+            for (auto& o : n.offspring) {
+                if (includeit[o->id]) {
+                    includeit[i] = true;
+                    likelihood_sequence.push_back(i);
+                    break;
+                }
+            }
+
+        }
+
+    }
 
 }
 
