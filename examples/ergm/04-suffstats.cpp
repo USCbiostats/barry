@@ -1,8 +1,11 @@
+#include <random>
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include "../../include/barry/barry.hpp"
 #include <Rcpp.h>
-#include "../include/barry/barry.hpp"
 // #include "../include/lbarray-bones.hpp"
 using namespace Rcpp; 
-
 
 typedef std::vector< unsigned int > vuint;
  
@@ -93,7 +96,7 @@ List support (
   netcounters::Network net(N,M);
   net.data = new netcounters::NetworkData(gender);
   
-  netcounters::NetSupport dat(&net);
+  netcounters::NetSupport dat(net);
   
   netcounters::counter_edges(dat.counters);
   netcounters::counter_mutual(dat.counters);

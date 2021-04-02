@@ -18,10 +18,7 @@ public:
   Cell(Cell_Type value_, bool visited_ = false) :
     value(value_), visited(visited_) {};
   ~Cell() {};
-  
-  // Copy by-reference constructor
-  Cell(Cell<Cell_Type>& arg) : value(arg.value), visited(arg.visited) {};
-  
+   
   // This is an explicit declaration since in other cases it seems
   // to try to use the move operator, which I do not intent to use.
   Cell(const Cell<Cell_Type>& arg) : value(arg.value), visited(arg.visited) {};
@@ -30,12 +27,12 @@ public:
   Cell<Cell_Type>& operator=(Cell<Cell_Type>& other);
   
   // Move constructor
-  Cell(Cell<Cell_Type>&& arg):
+  Cell(Cell<Cell_Type>&& arg) noexcept:
     value(std::move(arg.value)),
     visited(std::move(arg.visited)) {} ;
   
   // Move assign operator
-  Cell<Cell_Type>& operator=(Cell<Cell_Type>&& other);
+  Cell<Cell_Type>& operator=(Cell<Cell_Type>&& other) noexcept;
   
   void add(Cell_Type x);
   

@@ -100,10 +100,12 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
   // Once we have returned, everything will be back as it used to be, so we
   // treat the data as if nothing has changed.
   
+  const std::pair<uint,uint> & cfree = coordinates_free[pos];
+
   // Toggle the cell (we will toggle it back after calling the counter)
   EmptyArray.insert_cell(
-    coordinates_free[pos].first,
-    coordinates_free[pos].second,
+    cfree.first,
+    cfree.second,
     EmptyArray.Cell_default , false, false
     );
 
@@ -112,8 +114,8 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
   for (uint n = 0u; n < counters->size(); ++n) {
     change_stats[pos][n] = counters->operator[](n).count(
       EmptyArray,
-      coordinates_free[pos].first,
-      coordinates_free[pos].second
+      cfree.first,
+      cfree.second
       );
     current_stats[n] += change_stats[pos][n];
   }
@@ -134,8 +136,8 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
   
   // We need to restore the state of the cell
   EmptyArray.rm_cell(
-    coordinates_free[pos].first,
-    coordinates_free[pos].second,
+    cfree.first,
+    cfree.second,
     false, false
     );
   

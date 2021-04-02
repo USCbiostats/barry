@@ -50,7 +50,7 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
   if (iter == data.end()) {
     data.insert(std::make_pair(x, 1u));
   } else // We increment the counter
-    iter->second++;
+    ++(iter->second);
   
   return; 
 }

@@ -21,7 +21,7 @@ public:
   const Array_Type * Array;
   Array_Type EmptyArray;
   std::vector< double > current_stats;
-  std::vector< double > change_stats;
+  // std::vector< double > change_stats;
    
   // We will save the data here
   Counters<Array_Type,Data_Type> * counters;

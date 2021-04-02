@@ -75,9 +75,17 @@ public:
     bool add = true
   );
   
+  /** @brief Copy constructor */
   BArray(const BArray<Cell_Type,Data_Type> & Array_, bool copy_data = false);
   
+  /** @brief Assignment constructor */
   BArray<Cell_Type,Data_Type> & operator=(const BArray<Cell_Type,Data_Type> & Array_);
+
+  /** @brief Move operator */
+  BArray(BArray<Cell_Type,Data_Type> && x) noexcept;
+
+  /** @brief Move assignment */
+  BArray<Cell_Type,Data_Type> & operator=(BArray<Cell_Type,Data_Type> && x) noexcept;
   ///@}
   
   bool operator==(const BArray<Cell_Type,Data_Type> & Array_);

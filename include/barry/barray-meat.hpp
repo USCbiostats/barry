@@ -20,36 +20,36 @@ inline BArray< Cell_Type,Data_Type >::BArray (
     bool add
 ) {
   
-  if (source.size() != target.size())
-    throw std::length_error("-source- and -target- don't match on length.");
-  if (source.size() != value.size())
-    throw std::length_error("-sorce- and -value- don't match on length.");
-  
-  // Initializing
-  N = N_;
-  M = M_;
+    if (source.size() != target.size())
+        throw std::length_error("-source- and -target- don't match on length.");
+    if (source.size() != value.size())
+        throw std::length_error("-sorce- and -value- don't match on length.");
+    
+    // Initializing
+    N = N_;
+    M = M_;
 
-  el_ij.resize(N);
-  el_ji.resize(M);
-  
-  
-  // Writing the data
-  for (uint i = 0u; i < source.size(); ++i) {
+    el_ij.resize(N);
+    el_ji.resize(M);
     
-    // Checking range
-    bool empty = this->is_empty(source[i], target[i], true);
-    if (add && !empty) {
-      ROW(source[i])[target[i]].add(value[i]);
-      continue;
-    } 
     
-    if (!empty)
-      throw std::logic_error("The value already exists. Use 'add = true'.");
+    // Writing the data
+    for (uint i = 0u; i < source.size(); ++i) {
       
-    this->insert_cell(source[i], target[i], value[i], false, false);
-  }
-  
-  return;
+        // Checking range
+        bool empty = this->is_empty(source[i], target[i], true);
+        if (add && !empty) {
+            ROW(source[i])[target[i]].add(value[i]);
+            continue;
+        } 
+        
+        if (!empty)
+            throw std::logic_error("The value already exists. Use 'add = true'.");
+          
+        this->insert_cell(source[i], target[i], value[i], false, false);
+    }
+    
+    return;
   
 }
 
@@ -62,140 +62,219 @@ inline BArray< Cell_Type,Data_Type >::BArray (
     bool add
 ) {
   
-  std::vector< Cell_Type > value(source.size(), (Cell_Type) 1.0);
+    std::vector< Cell_Type > value(source.size(), (Cell_Type) 1.0);
 
-  if (source.size() != target.size())
-    throw std::length_error("-source- and -target- don't match on length.");
-  if (source.size() != value.size())
-    throw std::length_error("-sorce- and -value- don't match on length.");
-  
-  // Initializing
-  N = N_;
-  M = M_;
-  
-  el_ij.resize(N);
-  el_ji.resize(M);
-  
-  
-  // Writing the data
-  for (uint i = 0u; i < source.size(); ++i) {
+    if (source.size() != target.size())
+      throw std::length_error("-source- and -target- don't match on length.");
+    if (source.size() != value.size())
+      throw std::length_error("-sorce- and -value- don't match on length.");
     
-    // Checking range
-    if ((source[i] >= N_) | (target[i] >= M_))
-      throw std::range_error("Either source or target point to an element outside of the range by (N,M).");
+    // Initializing
+    N = N_;
+    M = M_;
     
-    // Checking if it exists
-    auto search = ROW(source[i]).find(target[i]);
-    if (search != ROW(source[i]).end()) {
-      if (!add)
-        throw std::logic_error("The value already exists. Use 'add = true'.");
+    el_ij.resize(N);
+    el_ji.resize(M);
+    
+    
+    // Writing the data
+    for (uint i = 0u; i < source.size(); ++i) {
       
-      // Increasing the value (this will automatically update the
-      // other value)
-      ROW(source[i])[target[i]].add(value[i]);
-      continue;
+        // Checking range
+        if ((source[i] >= N_) | (target[i] >= M_))
+            throw std::range_error("Either source or target point to an element outside of the range by (N,M).");
+        
+        // Checking if it exists
+        auto search = ROW(source[i]).find(target[i]);
+        if (search != ROW(source[i]).end()) {
+            if (!add)
+                throw std::logic_error("The value already exists. Use 'add = true'.");
+          
+            // Increasing the value (this will automatically update the
+            // other value)
+            ROW(source[i])[target[i]].add(value[i]);
+            continue;
+        }
+        
+        // Adding the value and creating a pointer to it
+        ROW(source[i]).emplace(
+            std::pair<uint, Cell< Cell_Type> >(
+                target[i],
+                Cell< Cell_Type >(value[i], visited)
+            )
+        );
+        
+        COL(target[i]).emplace(
+            source[i],
+            &ROW(source[i])[target[i]]
+        );
+
+        NCells++;
+
     }
     
-    // Adding the value and creating a pointer to it
-    ROW(source[i]).emplace(
-        std::pair<uint, Cell< Cell_Type> >(
-            target[i],
-            Cell< Cell_Type >(value[i], visited)
-      )
-      );
-    
-    COL(target[i]).emplace(
-        source[i],
-        &ROW(source[i])[target[i]]
-    );
-    NCells++;
-  }
-  
-  return;
+    return;
   
 }
 
 template<typename Cell_Type, typename Data_Type>
 inline BArray<Cell_Type,Data_Type>::BArray(
-  const BArray<Cell_Type,Data_Type> & Array_,
-  bool copy_data
-  ) : N(Array_.N), M(Array_.M){
+    const BArray<Cell_Type,Data_Type> & Array_,
+    bool copy_data
+) : N(Array_.N), M(Array_.M){
   
-  // Dimensions
-  // el_ij.resize(N);
-  // el_ji.resize(M);
-  
-  std::copy(Array_.el_ij.begin(), Array_.el_ij.end(), std::back_inserter(el_ij));
-  std::copy(Array_.el_ji.begin(), Array_.el_ji.end(), std::back_inserter(el_ji));
+    // Dimensions
+    // el_ij.resize(N);
+    // el_ji.resize(M);
+    
+    std::copy(Array_.el_ij.begin(), Array_.el_ij.end(), std::back_inserter(el_ij));
+    std::copy(Array_.el_ji.begin(), Array_.el_ji.end(), std::back_inserter(el_ji));
 
-  // Taking care of the pointers
-  for (uint i = 0u; i < N; ++i) {
+    // Taking care of the pointers
+    for (uint i = 0u; i < N; ++i) {
 
-    if (ROW(i).size() == 0u)
-      continue;
+        for (auto& r: row(i, false))
+            COL(r.first)[i] = &ROW(i)[r.first];
 
-    for (auto row = el_ij[i].begin(); row != el_ij[i].end(); ++row) {
-      COL(row->first)[i] = &ROW(i)[row->first];
     }
 
-  }
+    this->NCells  = Array_.NCells;
+    this->visited = Array_.visited;
+    
+    // Data
+    if (Array_.data != nullptr) {
 
-  this->NCells  = Array_.NCells;
-  this->visited = Array_.visited;
-  
-  // Data
-  if (Array_.data != nullptr) {
+        if (copy_data) {
 
-    if (copy_data) {
-      data = new Data_Type(*Array_.data);
-      delete_data = true;
-    } else {
-      data = Array_.data;
-      delete_data = false;
+            data = new Data_Type(*Array_.data);
+            delete_data = true;
+
+        } else {
+
+            data = Array_.data;
+            delete_data = false;
+
+        }
+
     }
-  }
-  
-  return;
+    
+    return;
   
 }
 
 template<typename Cell_Type, typename Data_Type>
 inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
-  const BArray<Cell_Type,Data_Type> & Array_
+    const BArray<Cell_Type,Data_Type> & Array_
 ) {
   
-  // Clearing
-  if (this != &Array_) {
-    
+    // Clearing
+    if (this != &Array_) {
+      
+        this->clear(true);
+        this->resize(Array_.N, Array_.M);
+        
+        // Entries
+        for (uint i = 0u; i < N; ++i) {
+          
+            if (Array_.nnozero() == nnozero())
+                break;
+            
+            for (auto& r : Array_.row(i, false)) 
+                this->insert_cell(i, r.first, r.second.value, false, false);
+          
+        }
+      
+        // Data
+        if (data != nullptr) {
+            if (delete_data)
+                delete data;
+            data = nullptr;
+        }
+
+        if (Array_.data != nullptr) {
+            data = new Data_Type(*Array_.data);
+            delete_data = true;
+        }
+      
+    }
+      
+    return *this;
+  
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline BArray<Cell_Type,Data_Type>::BArray(
+    BArray<Cell_Type,Data_Type> && x
+  ) noexcept :
+  N(0u), M(0u), NCells(0u),
+  data(nullptr),
+  delete_data(x.delete_data)
+  {
+
     this->clear(true);
-    this->resize(Array_.N, Array_.M);
+    this->resize(x.N, x.M);
     
     // Entries
     for (uint i = 0u; i < N; ++i) {
       
-      if (Array_.nnozero() == 0u)
-        continue;
+        if (x.nnozero() == nnozero())
+            break;
+        
+        for (auto& r : x.row(i, false)) 
+            this->insert_cell(i, r.first, r.second.value, false, false);
       
-      for (auto row = Array_.el_ij[i].begin(); row != Array_.el_ij[i].end(); ++row) 
-        this->insert_cell(i, row->first, row->second.value, false, false);
-      
-    }
-    
-    // Data
-    if (data != nullptr) {
-      if (delete_data)
-        delete data;
-      data = nullptr;
     }
 
-    if (Array_.data != nullptr) {
-      data = new Data_Type(*Array_.data);
-      delete_data = true;
+    // Managing data
+    if (x.data != nullptr) {
+
+        if (x.delete_data) {
+            data = new Data_Type(*x.data);
+            delete_data = true;
+        } else
+            data = x.data;
+
     }
-    
-  }
-    
-  return *this;
+
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
+    BArray<Cell_Type,Data_Type> && x
+) noexcept {
+  
+    // Clearing
+    if (this != &x) {
+      
+        this->clear(true);
+        this->resize(x.N, x.M);
+        
+        // Entries
+        for (uint i = 0u; i < N; ++i) {
+          
+            if (x.nnozero() == nnozero())
+                break;
+            
+            for (auto& r : x.row(i, false)) 
+                this->insert_cell(i, r.first, r.second.value, false, false);
+          
+        }
+      
+        // Data
+        if (data != nullptr) {
+            if (delete_data)
+                delete data;
+            data = nullptr;
+        }
+
+        if (x.data != nullptr) {
+            data = new Data_Type(*x.data);
+            delete_data = true;
+        }
+      
+    }
+      
+    return *this;
   
 }
 
@@ -761,22 +840,22 @@ inline void BArray<Cell_Type, Data_Type>::swap_rows(
   
   // Delete the thing
   if (move0)
-    for (auto iter = ROW(i1).begin(); iter != ROW(i1).end(); ++iter)
-      COL(iter->first).erase(i0);
+    for (auto& i: row(i1, false))
+      COL(i.first).erase(i0);
   
   if (move1)
-    for (auto iter = ROW(i0).begin(); iter != ROW(i0).end(); ++iter)
-      COL(iter->first).erase(i1);
+    for (auto& i: row(i0, false))
+      COL(i.first).erase(i1);
   
   // Now, point to the thing, if it has something to point at. Recall that
   // the indices swapped.
   if (move1)
-    for (auto iter = ROW(i0).begin(); iter != ROW(i0).end(); ++iter)
-      COL(iter->first)[i0] = &ROW(i0)[iter->first];
+    for (auto& i: row(i0, false))
+      COL(i.first)[i0] = &ROW(i0)[i.first];
   
   if (move0)
-    for (auto iter = ROW(i1).begin(); iter != ROW(i1).end(); ++iter)
-      COL(iter->first)[i1] = &ROW(i1)[iter->first];
+    for (auto& i: row(i1, false))
+      COL(i.first)[i1] = &ROW(i1)[i.first];
   
   return;
 }

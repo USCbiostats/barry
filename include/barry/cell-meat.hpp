@@ -4,18 +4,18 @@
 #define BARRY_CELL_MEAT_HPP 1
 
 template <typename Cell_Type>
-Cell<Cell_Type>& Cell<Cell_Type>::operator=(Cell& other) {
+Cell<Cell_Type>& Cell<Cell_Type>::operator=(Cell<Cell_Type>& other) {
     this->value   = other.value;
     this->visited = other.visited;
     return *this;
 }
 
 template <typename Cell_Type>
-Cell<Cell_Type>& Cell<Cell_Type>::operator=(Cell<Cell_Type>&& other) {
+Cell<Cell_Type>& Cell<Cell_Type>::operator=(Cell<Cell_Type>&& other) noexcept {
     this->value   = std::move(other.value);
     this->visited = std::move(other.visited);
     return *this;
-  }
+}
 
 /***
  * Specializations
