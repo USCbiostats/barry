@@ -146,7 +146,7 @@ public:
     void calc_sequence(Node * n = nullptr);
     void calc_likelihood_sequence();
 
-    double likelihood(const std::vector< double > & par);
+    double likelihood(const std::vector< double > & par, bool use_likelihood_sequence = true);
     double likelihood_exhaust(const std::vector< double > & par);
 
     std::vector< double > get_probabilities() const;

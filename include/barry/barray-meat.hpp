@@ -384,8 +384,8 @@ BArray< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const {
     out_of_range(i, 0u);
 
   std::vector< Cell_Type > ans(ncol(), (Cell_Type) false);
-  for (auto iter = ROW(i).begin(); iter != ROW(i).end(); ++iter) 
-    ans.at(iter->first) = iter->second.value; //this->get_cell(i, iter->first, false);
+  for (const auto & iter : row(i, false)) 
+    ans[iter.first] = iter.second.value; //this->get_cell(i, iter->first, false);
   
 
   return ans;
@@ -394,7 +394,7 @@ BArray< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const {
 template<typename Cell_Type, typename Data_Type>
 inline void
 BArray< Cell_Type,Data_Type >::get_row_vec(
-  std::vector<Cell_Type> * row,
+  std::vector<Cell_Type> * x,
   uint i, bool check_bounds
   ) const {
 
@@ -402,8 +402,8 @@ BArray< Cell_Type,Data_Type >::get_row_vec(
   if (check_bounds) 
     out_of_range(i, 0u);
 
-  for (auto iter = ROW(i).begin(); iter != ROW(i).end(); ++iter) 
-    row->at(iter->first) = iter->second.value; // this->get_cell(i, iter->first, false);
+  for (const auto & iter : row(i, false)) 
+    x->at(iter.first) = iter.second.value; // this->get_cell(i, iter->first, false);
   
 }
 
@@ -416,8 +416,8 @@ BArray< Cell_Type,Data_Type >::get_col_vec(uint i, bool check_bounds) const {
     out_of_range(0u, i);
 
   std::vector< Cell_Type > ans(nrow(), (Cell_Type) false);
-  for (auto iter = COL(i).begin(); iter != COL(i).end(); ++iter) 
-    ans.at(iter->first) = iter->second->value;//this->get_cell(iter->first, i, false);
+  for (const auto iter : col(i, false)) 
+    ans[iter.first] = iter.second->value;//this->get_cell(iter->first, i, false);
   
   return ans;
 }
@@ -425,15 +425,15 @@ BArray< Cell_Type,Data_Type >::get_col_vec(uint i, bool check_bounds) const {
 template<typename Cell_Type, typename Data_Type>
 inline void
 BArray< Cell_Type,Data_Type >::get_col_vec(
-  std::vector<Cell_Type> * col,
+  std::vector<Cell_Type> * x,
   uint i, bool check_bounds) const {
 
   // Checking boundaries  
   if (check_bounds) 
     out_of_range(0u, i);
 
-  for (auto iter = COL(i).begin(); iter != COL(i).end(); ++iter) 
-    col->at(iter->first) = iter->second->value;//this->get_cell(iter->first, i, false);
+  for (const auto & iter : col(i, false)) 
+    x->at(iter.first) = iter.second->value;//this->get_cell(iter->first, i, false);
   
 }
 

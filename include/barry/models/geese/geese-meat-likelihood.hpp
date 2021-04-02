@@ -3,7 +3,10 @@
 
 #include "geese-bones.hpp"
 
-inline double Geese::likelihood(const std::vector< double > & par) {
+inline double Geese::likelihood(
+    const std::vector< double > & par,
+    bool use_likelihood_sequence
+    ) {
 
     INITIALIZED()
 
@@ -22,7 +25,14 @@ inline double Geese::likelihood(const std::vector< double > & par) {
     Node * n_off;
 
     // Following the prunning sequence
-    for (auto& i : this->sequence) {
+    std::vector< unsigned int > * preseq;
+    if (use_likelihood_sequence)
+        preseq = &this->likelihood_sequence;
+    else
+        preseq = &this->sequence;
+
+
+    for (auto& i : *preseq) {
 
         // We cannot compute probability at the leaf, we need to continue
         if (this->nodes[i].is_leaf())

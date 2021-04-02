@@ -14,7 +14,9 @@ inline void Geese::init_node(Node & n) {
         true
     );
 
-    n.subtree_prob.resize(states.size(), 0.0);
+    // We initialize all with a zero since, if excluded from the pruning process,
+    // We need to set it to one (as the result of the full integration).
+    n.subtree_prob.resize(states.size(), 1.0);
 
     // Adding the data, first through functions
     for (unsigned int k = 0u; k < nfunctions; ++k) {

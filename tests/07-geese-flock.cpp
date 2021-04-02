@@ -45,7 +45,7 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     aflock.init();
 
     double ans1 = aflock.likelihood_joint(params, true);
-    REQUIRE(std::abs(ans0 - ans1) < .0000001);
+    REQUIRE(std::abs(ans0 - ans1) < .00000001);
 
     // Checking the likelihood sequence -----------------------------------------
     std::vector< std::vector<uint> > ann2 = {
@@ -63,5 +63,10 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     phylocounters::counter_maxfuns(model2.counters, 2, 2);
 
     model2.init();
+
+    ans0 = model2.likelihood(params, true);
+    ans1 = model2.likelihood(params, false);
+
+    REQUIRE(std::abs(ans0 - ans1) < .00000001);
 
 }

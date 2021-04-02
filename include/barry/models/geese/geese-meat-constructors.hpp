@@ -142,6 +142,7 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
     nodes(model_.nodes),
     map_to_nodes(model_.map_to_nodes),
     sequence(model_.sequence),
+    likelihood_sequence(model_.likelihood_sequence),
     initialized(model_.initialized) {
 
     
@@ -219,6 +220,7 @@ inline Geese::Geese(Geese && x) noexcept :
     nodes(std::move(x.nodes)),
     map_to_nodes(std::move(x.map_to_nodes)),
     sequence(std::move(x.sequence)),
+    likelihood_sequence(std::move(x.likelihood_sequence)),
     initialized(x.initialized)
 {
 
