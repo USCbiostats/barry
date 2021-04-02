@@ -33,7 +33,11 @@ public:
     // void add_geese(Geese x);
     phylocounters::PhyloCounters * counters_ptr();
 
-    double likelihood_joint(const std::vector< double > & par, bool as_log = false);
+    double likelihood_joint(
+        const std::vector< double > & par,
+        bool as_log = false,
+        bool use_likelihood_sequence = true
+        );
 
 };
 

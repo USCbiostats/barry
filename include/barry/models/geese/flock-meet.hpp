@@ -65,16 +65,20 @@ inline phylocounters::PhyloCounters * Flock::counters_ptr() {
     return &this->support.counters;
 }
 
-inline double Flock::likelihood_joint(const std::vector< double > & par, bool as_log) {
+inline double Flock::likelihood_joint(
+    const std::vector< double > & par,
+    bool as_log,
+    bool use_likelihood_sequence
+    ) {
 
     double ans = as_log ? 0.0: 1.0;
     if (as_log) {
         for (auto& d : this->dat) {
-            ans += std::log(d.likelihood(par));
+            ans += std::log(d.likelihood(par, use_likelihood_sequence));
         }
     } else {
         for (auto& d : this->dat) {
-            ans *= d.likelihood(par);
+            ans *= d.likelihood(par, use_likelihood_sequence);
         }
     }
     

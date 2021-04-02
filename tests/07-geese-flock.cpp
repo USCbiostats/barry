@@ -48,15 +48,23 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     REQUIRE(std::abs(ans0 - ans1) < .00000001);
 
     // Checking the likelihood sequence -----------------------------------------
-    std::vector< std::vector<uint> > ann2 = {
+    geneid = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+    parent = {-1, 0,0, 1, 1, 2, 2, 5, 5};
+    ann    = {
         {9, 9},
         {9, 9},
-        {9, 9}, // Now both are missing, before {9, 0}
-        {1, 1},
-        {0, 9}
+        {9, 9},
+        {0, 1},
+        {1, 9},
+        {9, 9},
+        {0, 1},
+        {9, 9},
+        {9, 9}
     };
 
-    Geese model2(ann2, geneid, parent, duplication);
+    std::vector<bool> duplication2(geneid.size(), true);
+    
+    Geese model2(ann, geneid, parent, duplication2);
 
     // Adding terms
     phylocounters::counter_gains(model2.counters, {0, 1});
@@ -68,5 +76,22 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     ans1 = model2.likelihood(params, false);
 
     REQUIRE(std::abs(ans0 - ans1) < .00000001);
+
+    // Measuring time
+    auto start = std::chrono::system_clock::now();
+    for (uint i = 0u; i < 1000; ++i)
+        model2.likelihood(params, true);
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<double> diff0 = end-start;
+
+    start = std::chrono::system_clock::now();
+    for (uint i = 0u; i < 1000; ++i)
+        model2.likelihood(params, false);
+    end = std::chrono::system_clock::now();
+    std::chrono::duration<double> diff1 = end-start;
+
+    std::cout << "Total time (full seq): " << diff1.count() << std::endl;
+    std::cout << "Total time (trun seq): " << diff0.count() << std::endl;
+    
 
 }
