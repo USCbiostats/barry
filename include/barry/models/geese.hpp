@@ -2,7 +2,7 @@
 #ifndef GEESE_HPP
 #define GEESE_HPP 1
 
-#include "../barry.hpp"
+// #include "../barry.hpp"
 
 #include "geese/geese-node-bones.hpp"
 #include "geese/geese-bones.hpp"

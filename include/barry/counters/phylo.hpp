@@ -898,6 +898,94 @@ inline void counter_neofun_a2b(
   return;
   
 }
-//@}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Function co-opting
+ * @details Function co-opting of functions A and B happens when, for example,
+ * function B is gained as a new featured leveraging what function A already does;
+ * without losing function A. The sufficient statistic is defined as follows:
+ * \f[
+ * x_{pa}(1 - x_{pb})\sum_{i<j}{x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p +
+ * x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p
+ * \f]
+ * This algorithm implements the change statistic.
+ */
+inline void counter_co_opt(
+  PhyloCounters * counters,
+  uint nfunA,
+  uint nfunB, 
+  bool duplication = true) {
   
+  PHYLO_COUNTER_LAMBDA(tmp_count) { 
+
+    // Checking whether this is for duplication or not
+    if ((data->at(2u) == 0u) & Array.data->duplication)
+      return 0.0;
+    else if ((data->at(2u) == 1u) & !Array.data->duplication)
+      return 0.0;
+    else {
+
+      const unsigned int funA = data->at(0u);
+      const unsigned int funB = data->at(1u);
+
+      // If the change is out of scope, then nothing to do
+      if ((i != funA) & (i != funB))
+        return 0.0;
+
+      // If the parent does not have the initial state, then it makes no sense
+      if (!Array.data->states[funA] | Array.data->states[funB])
+        return 0.0;
+
+      // Checking whether function A or function B changed
+      if (i == funA) {
+
+        // What was the state of the other function? If B is present, then
+        // nothing changes.
+        if (Array(i, j) == 0u) 
+          return 0.0;
+
+      } else {
+
+          return 1.0;        
+
+      }
+
+    }
+
+  };
+  
+  PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+    PHYLO_CHECK_MISSING();
+    if (data->size() != 3u)
+      throw std::length_error("The counter data should be of length 2.");
+
+    if (data->at(0u) == data->at(1u))
+      throw std::logic_error("Functions A and B should be different from each other.");
+
+    if (data->at(0u) >= Array.nrow())
+      throw std::length_error("Function A in counter out of range.");
+
+    if (data->at(1u) >= Array.nrow())
+      throw std::length_error("Function B in counter out of range.");
+
+    return 0.0;
+
+  };
+
+  counters->add_counter(
+      tmp_count, tmp_init,
+      new PhyloCounterData({duplication ? 1u : 0u}),
+      true
+  );
+  
+  
+  return;
+  
+}
+
+
+//@}
+
 #endif

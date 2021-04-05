@@ -546,10 +546,19 @@ inline BArray<Cell_Type, Data_Type> & BArray<Cell_Type, Data_Type>::operator-=(
 
 template<typename Cell_Type, typename Data_Type>
 inline BArrayCell<Cell_Type,Data_Type> BArray<Cell_Type,Data_Type>::operator()(  
-  uint row, uint col
+  uint i, uint j, bool check_bounds
 ) {
   
-  return BArrayCell<Cell_Type,Data_Type>(this, row, col);
+  return BArrayCell<Cell_Type,Data_Type>(this, i, j, check_bounds);
+  
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline const BArrayCell_const<Cell_Type,Data_Type> BArray<Cell_Type,Data_Type>::operator()(  
+  uint i, uint j, bool check_bounds
+) const {
+  
+  return BArrayCell_const<Cell_Type,Data_Type>(this, i, j, check_bounds);
   
 }
 

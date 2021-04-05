@@ -136,7 +136,8 @@ public:
   uint nnozero() const;
   ///@}
 
-  /**@name Cell-wise insertion/deletion
+  /**
+   * @name Cell-wise insertion/deletion
    * @param i,j Row,column
    * @param check_bounds When `true` and out of range, the function throws an
    * error.
@@ -147,7 +148,8 @@ public:
   ///@{  
   BArray<Cell_Type,Data_Type> & operator+=(const std::pair<uint, uint> & coords);
   BArray<Cell_Type,Data_Type> & operator-=(const std::pair<uint, uint> & coords);
-  BArrayCell<Cell_Type,Data_Type> operator()(uint row, uint col);
+  BArrayCell<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true);
+  const BArrayCell_const<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true) const;
   
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
