@@ -10,8 +10,6 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
     [ "barraycell-meat.hpp", "barraycell-meat_8hpp.html", "barraycell-meat_8hpp" ],
     [ "barry-configuration.hpp", "barry-configuration_8hpp.html", "barry-configuration_8hpp" ],
     [ "barry.hpp", "barry_8hpp.html", "barry_8hpp" ],
-    [ "block-bones.hpp", "block-bones_8hpp.html", "block-bones_8hpp" ],
-    [ "block-meat.hpp", "block-meat_8hpp.html", "block-meat_8hpp" ],
     [ "cell-bones.hpp", "cell-bones_8hpp.html", "cell-bones_8hpp" ],
     [ "cell-meat.hpp", "cell-meat_8hpp.html", "cell-meat_8hpp" ],
     [ "col-bones.hpp", "col-bones_8hpp.html", null ],

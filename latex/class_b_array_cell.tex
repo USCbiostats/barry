@@ -7,7 +7,7 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_b_array_cell_a0ebc5e7ef22511ee4a04d737b1fe056c}{B\+Array\+Cell} (\hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$Array\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} row\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} col\+\_\+)
+\hyperlink{class_b_array_cell_a1e93556da4b5f6a372e6c65ac1044830}{B\+Array\+Cell} (\hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$Array\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j\+\_\+, bool check\+\_\+bounds=true)
 \item 
 \hyperlink{class_b_array_cell_a6fbc56424caade490a72685cc35ad0e9}{$\sim$\+B\+Array\+Cell} ()
 \item 
@@ -22,6 +22,8 @@ void \hyperlink{class_b_array_cell_abc193e5d3dd8d04e5d4bb8d808fde35d}{operator$\
 void \hyperlink{class_b_array_cell_aa5debb920d8ffc246e7d463ac8e26152}{operator/=} (const Cell\+\_\+\+Type \&val)
 \item 
 \hyperlink{class_b_array_cell_a698f664c230f91bf03a97966378e339b}{operator Cell\+\_\+\+Type} () const
+\item 
+bool \hyperlink{class_b_array_cell_a8d28c5b68b442ddf94cb99d8bc2f9cb9}{operator==} (const Cell\+\_\+\+Type \&val) const
 \end{DoxyCompactItemize}
 
 
@@ -36,12 +38,12 @@ Definition at line 7 of file barraycell-\/bones.\+hpp.
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_b_array_cell_a0ebc5e7ef22511ee4a04d737b1fe056c}\label{class_b_array_cell_a0ebc5e7ef22511ee4a04d737b1fe056c}} 
+\mbox{\Hypertarget{class_b_array_cell_a1e93556da4b5f6a372e6c65ac1044830}\label{class_b_array_cell_a1e93556da4b5f6a372e6c65ac1044830}} 
 \index{B\+Array\+Cell@{B\+Array\+Cell}!B\+Array\+Cell@{B\+Array\+Cell}}
 \index{B\+Array\+Cell@{B\+Array\+Cell}!B\+Array\+Cell@{B\+Array\+Cell}}
 \subsubsection{\texorpdfstring{B\+Array\+Cell()}{BArrayCell()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type = bool, typename Data\+\_\+\+Type = bool$>$ \\
-\hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_b_array_cell}{B\+Array\+Cell} (\begin{DoxyParamCaption}\item[{\hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{Array\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{row\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{col\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_b_array_cell}{B\+Array\+Cell} (\begin{DoxyParamCaption}\item[{\hyperlink{class_b_array}{B\+Array}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{Array\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j\+\_\+,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -56,7 +58,7 @@ Definition at line 16 of file barraycell-\/bones.\+hpp.
 
 
 
-Definition at line 18 of file barraycell-\/bones.\+hpp.
+Definition at line 28 of file barraycell-\/bones.\+hpp.
 
 
 
@@ -126,6 +128,17 @@ void \hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\
 
 
 Definition at line 7 of file barraycell-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_cell_a8d28c5b68b442ddf94cb99d8bc2f9cb9}\label{class_b_array_cell_a8d28c5b68b442ddf94cb99d8bc2f9cb9}} 
+\index{B\+Array\+Cell@{B\+Array\+Cell}!operator==@{operator==}}
+\index{operator==@{operator==}!B\+Array\+Cell@{B\+Array\+Cell}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool \hyperlink{class_b_array_cell}{B\+Array\+Cell}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator== (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 63 of file barraycell-\/meat.\+hpp.
 
 
 

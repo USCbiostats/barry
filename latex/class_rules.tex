@@ -22,11 +22,11 @@ Vector of objects of class \hyperlink{class_rule}{Rule}.
 \item 
 \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_rules_a2f230f733e9936443af660bc890610ef}{size} () const
 \item 
-bool \hyperlink{class_rules_a4e08a6b3d8b536cb1717c62192a91537}{locked} (const Array\+\_\+\+Type $\ast$a, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
+bool \hyperlink{class_rules_a51540e67c97559216cf84f8a7e230ea7}{locked} (const Array\+\_\+\+Type \&a, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
 \begin{DoxyCompactList}\small\item\em Check whether a given cell is free or locked. \end{DoxyCompactList}\item 
 void \hyperlink{class_rules_a135a15d3ff70d4350d76a15f8e85f7df}{clear} ()
 \item 
-void \hyperlink{class_rules_a7b8f29955ec52f49808d7ea1cd4eaf5e}{get\+\_\+seq} (const Array\+\_\+\+Type $\ast$a, std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$free, std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$\hyperlink{class_rules_a4e08a6b3d8b536cb1717c62192a91537}{locked}=nullptr)
+void \hyperlink{class_rules_afc2e6ddd9cf384f9e70896ad6e581ed4}{get\+\_\+seq} (const Array\+\_\+\+Type \&a, std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$free, std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$\hyperlink{class_rules_a51540e67c97559216cf84f8a7e230ea7}{locked}=nullptr)
 \begin{DoxyCompactList}\small\item\em Computes the sequence of free and locked cells in an \hyperlink{class_b_array}{B\+Array}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Rule adding}\par
 {\em 
@@ -40,7 +40,7 @@ void \hyperlink{class_rules_a60583152fddcb11178dcf3d02a924d7c}{add\+\_\+rule} (\
 \item 
 void \hyperlink{class_rules_abd60b1d381ad0c8a772e4d81264bbe0a}{add\+\_\+rule} (\hyperlink{class_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$rule)
 \item 
-void \hyperlink{class_rules_abbc63747014445b538384bb500464bb5}{add\+\_\+rule} (\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ rule\+\_\+, Data\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+void \hyperlink{class_rules_abbc63747014445b538384bb500464bb5}{add\+\_\+rule} (\hyperlink{typedefs_8hpp_a99982bdca40c23ca6f901c8e66da78a1}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ rule\+\_\+, Data\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
 \end{DoxyCompactItemize}
 \end{Indent}
 
@@ -110,7 +110,7 @@ void \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+
 
 
 
-Definition at line 67 of file rules-\/meat.\+hpp.
+Definition at line 68 of file rules-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_rules_abd60b1d381ad0c8a772e4d81264bbe0a}\label{class_rules_abd60b1d381ad0c8a772e4d81264bbe0a}} 
 \index{Rules@{Rules}!add\+\_\+rule@{add\+\_\+rule}}
@@ -121,18 +121,18 @@ void \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+
 
 
 
-Definition at line 78 of file rules-\/meat.\+hpp.
+Definition at line 79 of file rules-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_rules_abbc63747014445b538384bb500464bb5}\label{class_rules_abbc63747014445b538384bb500464bb5}} 
 \index{Rules@{Rules}!add\+\_\+rule@{add\+\_\+rule}}
 \index{add\+\_\+rule@{add\+\_\+rule}!Rules@{Rules}}
 \subsubsection{\texorpdfstring{add\+\_\+rule()}{add\_rule()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$ \\
-void \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{rule\+\_\+,  }\item[{Data\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a99982bdca40c23ca6f901c8e66da78a1}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{rule\+\_\+,  }\item[{Data\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 88 of file rules-\/meat.\+hpp.
+Definition at line 89 of file rules-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_rules_a135a15d3ff70d4350d76a15f8e85f7df}\label{class_rules_a135a15d3ff70d4350d76a15f8e85f7df}} 
 \index{Rules@{Rules}!clear@{clear}}
@@ -143,14 +143,14 @@ void \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+
 
 
 
-Definition at line 125 of file rules-\/meat.\+hpp.
+Definition at line 127 of file rules-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_rules_a7b8f29955ec52f49808d7ea1cd4eaf5e}\label{class_rules_a7b8f29955ec52f49808d7ea1cd4eaf5e}} 
+\mbox{\Hypertarget{class_rules_afc2e6ddd9cf384f9e70896ad6e581ed4}\label{class_rules_afc2e6ddd9cf384f9e70896ad6e581ed4}} 
 \index{Rules@{Rules}!get\+\_\+seq@{get\+\_\+seq}}
 \index{get\+\_\+seq@{get\+\_\+seq}!Rules@{Rules}}
 \subsubsection{\texorpdfstring{get\+\_\+seq()}{get\_seq()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type $>$ \\
-void \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+seq (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{a,  }\item[{std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$}]{free,  }\item[{std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$}]{locked = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::get\+\_\+seq (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{a,  }\item[{std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$}]{free,  }\item[{std\+::vector$<$ std\+::pair$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $>$ $>$ $\ast$}]{locked = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -170,14 +170,14 @@ Nothing.
 \end{DoxyReturn}
 
 
-Definition at line 137 of file rules-\/meat.\+hpp.
+Definition at line 139 of file rules-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_rules_a4e08a6b3d8b536cb1717c62192a91537}\label{class_rules_a4e08a6b3d8b536cb1717c62192a91537}} 
+\mbox{\Hypertarget{class_rules_a51540e67c97559216cf84f8a7e230ea7}\label{class_rules_a51540e67c97559216cf84f8a7e230ea7}} 
 \index{Rules@{Rules}!locked@{locked}}
 \index{locked@{locked}!Rules@{Rules}}
 \subsubsection{\texorpdfstring{locked()}{locked()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type $>$ \\
-bool \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::locked (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{a,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+bool \hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::locked (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{a,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -199,7 +199,7 @@ false If the cell is free
 \end{DoxyReturn}
 
 
-Definition at line 110 of file rules-\/meat.\+hpp.
+Definition at line 111 of file rules-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_rules_ab87544febb8301772164570708bd708e}\label{class_rules_ab87544febb8301772164570708bd708e}} 
 \index{Rules@{Rules}!operator=@{operator=}}
@@ -210,7 +210,7 @@ Definition at line 110 of file rules-\/meat.\+hpp.
 
 
 
-Definition at line 34 of file rules-\/meat.\+hpp.
+Definition at line 35 of file rules-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_rules_a2f230f733e9936443af660bc890610ef}\label{class_rules_a2f230f733e9936443af660bc890610ef}} 
 \index{Rules@{Rules}!size@{size}}

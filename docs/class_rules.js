@@ -7,8 +7,8 @@ var class_rules =
     [ "add_rule", "class_rules.html#abd60b1d381ad0c8a772e4d81264bbe0a", null ],
     [ "add_rule", "class_rules.html#abbc63747014445b538384bb500464bb5", null ],
     [ "clear", "class_rules.html#a135a15d3ff70d4350d76a15f8e85f7df", null ],
-    [ "get_seq", "class_rules.html#a7b8f29955ec52f49808d7ea1cd4eaf5e", null ],
-    [ "locked", "class_rules.html#a4e08a6b3d8b536cb1717c62192a91537", null ],
+    [ "get_seq", "class_rules.html#afc2e6ddd9cf384f9e70896ad6e581ed4", null ],
+    [ "locked", "class_rules.html#a51540e67c97559216cf84f8a7e230ea7", null ],
     [ "operator=", "class_rules.html#ab87544febb8301772164570708bd708e", null ],
     [ "size", "class_rules.html#a2f230f733e9936443af660bc890610ef", null ]
 ];

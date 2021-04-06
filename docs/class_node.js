@@ -3,6 +3,8 @@ var class_node =
     [ "Node", "class_node.html#ad7a34779cad45d997bfd6d3d8043c75f", null ],
     [ "Node", "class_node.html#affbe0c59bdcfd5e8068d50b49742cff6", null ],
     [ "Node", "class_node.html#a05edab5d06fba5a71443399343645553", null ],
+    [ "Node", "class_node.html#a7541702bb12f9dae3f6cbf83bddaed2a", null ],
+    [ "Node", "class_node.html#ac9e4a04860b442c2034e24aa058db129", null ],
     [ "~Node", "class_node.html#aa0840c3cb5c7159be6d992adecd2097c", null ],
     [ "get_parent", "class_node.html#a661cb63a33e950b84c9c093c63d1ab63", null ],
     [ "is_leaf", "class_node.html#af7cc2d0f435e3bee4388a0e9ab42adb8", null ],

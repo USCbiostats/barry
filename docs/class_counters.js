@@ -8,6 +8,6 @@ var class_counters =
     [ "add_counter", "class_counters.html#a4ee47504f9c76892c6028619e6b138ee", null ],
     [ "clear", "class_counters.html#ae4635c154970a13ce88d2e982fe7dab3", null ],
     [ "operator=", "class_counters.html#a0edeb22b0b1640f7ada1ef47a30ac486", null ],
-    [ "operator[]", "class_counters.html#a9c3ff72b5e24a299e3c1aecad0ea5eb2", null ],
+    [ "operator[]", "class_counters.html#a031002f578171aaa615d08b1a2f9be40", null ],
     [ "size", "class_counters.html#af213b17c55496b565ad6ce7a9b0a56e1", null ]
 ];

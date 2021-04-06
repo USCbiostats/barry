@@ -50,7 +50,7 @@ void \hyperlink{class_model_a1548bd4681944c3eb761a22a38ef5547}{add\+\_\+counter}
 \item 
 void \hyperlink{class_model_a6c1f524daf08e10888a49318030616c4}{add\+\_\+counter} (\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$counter)
 \item 
-void \hyperlink{class_model_a4e4a18943bda513a844dc11aa088a698}{add\+\_\+counter} (\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ init\+\_\+fun\+\_\+=nullptr, Data\+\_\+\+Counter\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+void \hyperlink{class_model_a4e4a18943bda513a844dc11aa088a698}{add\+\_\+counter} (\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, \hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ init\+\_\+fun\+\_\+=nullptr, Data\+\_\+\+Counter\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
 \item 
 void \hyperlink{class_model_aab2ba8c90b888cfa2143bccf42fcb89f}{set\+\_\+counters} (\hyperlink{class_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$counters\+\_\+)
 \end{DoxyCompactItemize}
@@ -62,7 +62,7 @@ void \hyperlink{class_model_af2c3f6300b90e6a2a4deaebaf2b0e732}{add\+\_\+rule} (\
 \item 
 void \hyperlink{class_model_aba5b01457e2f624766a72ba15b8cb6be}{add\+\_\+rule} (\hyperlink{class_rule}{Rule}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$rule)
 \item 
-void \hyperlink{class_model_af3a1a343dfff4f40443bee4ddf76a0ba}{add\+\_\+rule} (\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, Data\+\_\+\+Rule\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+void \hyperlink{class_model_af3a1a343dfff4f40443bee4ddf76a0ba}{add\+\_\+rule} (\hyperlink{typedefs_8hpp_a99982bdca40c23ca6f901c8e66da78a1}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, Data\+\_\+\+Rule\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
 \item 
 void \hyperlink{class_model_a86a46cf6fdc7c6514b97263f9ee4130b}{set\+\_\+rules} (\hyperlink{class_rules}{Rules}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$rules\+\_\+)
 \end{DoxyCompactItemize}
@@ -185,7 +185,7 @@ Random number generation \begin{DoxyCompactItemize}
 \item 
 std\+::mt19937 $\ast$ \hyperlink{class_model_a0f890665302d545663698000cd13a73f}{rengine} = nullptr
 \item 
-bool \hyperlink{class_model_ab541ac2a0bbac640e2b8cdd745f1a632}{rengine\+\_\+deleted} = true
+bool \hyperlink{class_model_a5f883390d3a6f6ef7e19a0a4ea38bab7}{delete\+\_\+rengine} = false
 \item 
 void \hyperlink{class_model_a1609f530936b0f575e8b0006c9c719c5}{set\+\_\+rengine} (std\+::mt19937 $\ast$rengine\+\_\+, bool delete\+\_\+=false)
 \item 
@@ -259,7 +259,7 @@ Definition at line 50 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 186 of file model-\/bones.\+hpp.
+Definition at line 190 of file model-\/bones.\+hpp.
 
 
 
@@ -316,7 +316,7 @@ Definition at line 140 of file model-\/meat.\+hpp.
 \index{add\+\_\+counter@{add\+\_\+counter}!Model@{Model}}
 \subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
-void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$}]{init\+\_\+fun\+\_\+ = {\ttfamily nullptr},  }\item[{Data\+\_\+\+Counter\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$}]{init\+\_\+fun\+\_\+ = {\ttfamily nullptr},  }\item[{Data\+\_\+\+Counter\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -349,7 +349,7 @@ Definition at line 191 of file model-\/meat.\+hpp.
 \index{add\+\_\+rule@{add\+\_\+rule}!Model@{Model}}
 \subsubsection{\texorpdfstring{add\+\_\+rule()}{add\_rule()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
-void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a2e147c9c0e8b65be614c98a5dd400d5c}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{Data\+\_\+\+Rule\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a99982bdca40c23ca6f901c8e66da78a1}{Rule\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{Data\+\_\+\+Rule\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -536,7 +536,7 @@ void \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 112 of file model-\/bones.\+hpp.
+Definition at line 116 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_ab3f157dbb542a48fe5bf412ff7d467fd}\label{class_model_ab3f157dbb542a48fe5bf412ff7d467fd}} 
 \index{Model@{Model}!size@{size}}
@@ -583,7 +583,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uin
 
 
 
-Definition at line 150 of file model-\/bones.\+hpp.
+Definition at line 154 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a038858e9cd8e396412c3867113a149e7}\label{class_model_a038858e9cd8e396412c3867113a149e7}} 
 \index{Model@{Model}!arrays2support@{arrays2support}}
@@ -594,7 +594,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uin
 
 
 
-Definition at line 151 of file model-\/bones.\+hpp.
+Definition at line 155 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a2bb5ec8af1a49bcb2da6c5f9f2374b15}\label{class_model_a2bb5ec8af1a49bcb2da6c5f9f2374b15}} 
 \index{Model@{Model}!counter\+\_\+fun@{counter\+\_\+fun}}
@@ -605,7 +605,7 @@ Definition at line 151 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 168 of file model-\/bones.\+hpp.
+Definition at line 172 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a3189eb46eed19f865ca0aa3f6b191c78}\label{class_model_a3189eb46eed19f865ca0aa3f6b191c78}} 
 \index{Model@{Model}!counters@{counters}}
@@ -616,7 +616,18 @@ Definition at line 168 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 165 of file model-\/bones.\+hpp.
+Definition at line 169 of file model-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_model_a5f883390d3a6f6ef7e19a0a4ea38bab7}\label{class_model_a5f883390d3a6f6ef7e19a0a4ea38bab7}} 
+\index{Model@{Model}!delete\+\_\+rengine@{delete\+\_\+rengine}}
+\index{delete\+\_\+rengine@{delete\+\_\+rengine}!Model@{Model}}
+\subsubsection{\texorpdfstring{delete\+\_\+rengine}{delete\_rengine}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
+bool \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::delete\+\_\+rengine = false}
+
+
+
+Definition at line 105 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a942b2cdb7472878fa17c5068680441c6}\label{class_model_a942b2cdb7472878fa17c5068680441c6}} 
 \index{Model@{Model}!first\+\_\+calc\+\_\+done@{first\+\_\+calc\+\_\+done}}
@@ -627,7 +638,7 @@ std\+::vector$<$ bool $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, D
 
 
 
-Definition at line 174 of file model-\/bones.\+hpp.
+Definition at line 178 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a16561e15c0abbb080927382b30d43e35}\label{class_model_a16561e15c0abbb080927382b30d43e35}} 
 \index{Model@{Model}!keygen@{keygen}}
@@ -642,7 +653,7 @@ Function to extract features of the array to be hash.
 
 
 
-Definition at line 178 of file model-\/bones.\+hpp.
+Definition at line 182 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a2a81190ac618b04479686411d02b3c5f}\label{class_model_a2a81190ac618b04479686411d02b3c5f}} 
 \index{Model@{Model}!keys2support@{keys2support}}
@@ -657,7 +668,7 @@ Map of types of arrays to support sets.
 
 This is of the same length as the vector {\ttfamily stats}. 
 
-Definition at line 158 of file model-\/bones.\+hpp.
+Definition at line 162 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a410caeff58afe605520c878a0689abf5}\label{class_model_a410caeff58afe605520c878a0689abf5}} 
 \index{Model@{Model}!n\+\_\+arrays\+\_\+per\+\_\+stats@{n\+\_\+arrays\+\_\+per\+\_\+stats}}
@@ -668,7 +679,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uin
 
 
 
-Definition at line 127 of file model-\/bones.\+hpp.
+Definition at line 131 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_aa4479d146005e89350dad6ba7bd8121a}\label{class_model_aa4479d146005e89350dad6ba7bd8121a}} 
 \index{Model@{Model}!normalizing\+\_\+constants@{normalizing\+\_\+constants}}
@@ -679,7 +690,7 @@ std\+::vector$<$ double $>$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type,
 
 
 
-Definition at line 173 of file model-\/bones.\+hpp.
+Definition at line 177 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_add8183af946f2871480b6a6f9f1c8013}\label{class_model_add8183af946f2871480b6a6f9f1c8013}} 
 \index{Model@{Model}!params\+\_\+last@{params\+\_\+last}}
@@ -694,7 +705,7 @@ Vector of the previously used parameters.
 
 
 
-Definition at line 172 of file model-\/bones.\+hpp.
+Definition at line 176 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a875ac0dbc320797c843b6724b7736f77}\label{class_model_a875ac0dbc320797c843b6724b7736f77}} 
 \index{Model@{Model}!pset\+\_\+arrays@{pset\+\_\+arrays}}
@@ -705,7 +716,7 @@ std\+::vector$<$ std\+::vector$<$ Array\+\_\+\+Type $>$ $>$ \hyperlink{class_mod
 
 
 
-Definition at line 136 of file model-\/bones.\+hpp.
+Definition at line 140 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a5dea24375889e55064f052fd8e8c4fe2}\label{class_model_a5dea24375889e55064f052fd8e8c4fe2}} 
 \index{Model@{Model}!pset\+\_\+probs@{pset\+\_\+probs}}
@@ -716,7 +727,7 @@ std\+::vector$<$ std\+::vector$<$double$>$ $>$ \hyperlink{class_model}{Model}$<$
 
 
 
-Definition at line 138 of file model-\/bones.\+hpp.
+Definition at line 142 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a89fff457ecccc91a624e20cafbf3e765}\label{class_model_a89fff457ecccc91a624e20cafbf3e765}} 
 \index{Model@{Model}!pset\+\_\+stats@{pset\+\_\+stats}}
@@ -727,7 +738,7 @@ std\+::vector$<$ std\+::vector$<$ std\+::vector$<$double$>$ $>$ $>$ \hyperlink{c
 
 
 
-Definition at line 137 of file model-\/bones.\+hpp.
+Definition at line 141 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a0f890665302d545663698000cd13a73f}\label{class_model_a0f890665302d545663698000cd13a73f}} 
 \index{Model@{Model}!rengine@{rengine}}
@@ -740,17 +751,6 @@ std\+::mt19937$\ast$ \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+
 
 Definition at line 104 of file model-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_model_ab541ac2a0bbac640e2b8cdd745f1a632}\label{class_model_ab541ac2a0bbac640e2b8cdd745f1a632}} 
-\index{Model@{Model}!rengine\+\_\+deleted@{rengine\+\_\+deleted}}
-\index{rengine\+\_\+deleted@{rengine\+\_\+deleted}!Model@{Model}}
-\subsubsection{\texorpdfstring{rengine\+\_\+deleted}{rengine\_deleted}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
-bool \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::rengine\+\_\+deleted = true}
-
-
-
-Definition at line 105 of file model-\/bones.\+hpp.
-
 \mbox{\Hypertarget{class_model_a65b96a73f8dba8a00cc767753aaca22b}\label{class_model_a65b96a73f8dba8a00cc767753aaca22b}} 
 \index{Model@{Model}!rules@{rules}}
 \index{rules@{rules}!Model@{Model}}
@@ -760,7 +760,7 @@ Definition at line 105 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 166 of file model-\/bones.\+hpp.
+Definition at line 170 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_abd7e36250a681bd2ade69d087e8200e1}\label{class_model_abd7e36250a681bd2ade69d087e8200e1}} 
 \index{Model@{Model}!stats@{stats}}
@@ -771,7 +771,7 @@ std\+::vector$<$ \hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Cou
 
 
 
-Definition at line 121 of file model-\/bones.\+hpp.
+Definition at line 125 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_aa9806f4bf7d9c935f37a31e67bbfbee4}\label{class_model_aa9806f4bf7d9c935f37a31e67bbfbee4}} 
 \index{Model@{Model}!support\+\_\+fun@{support\+\_\+fun}}
@@ -782,7 +782,7 @@ Definition at line 121 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 167 of file model-\/bones.\+hpp.
+Definition at line 171 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a24ad6e57bff2297dcc7461609714f41b}\label{class_model_a24ad6e57bff2297dcc7461609714f41b}} 
 \index{Model@{Model}!target\+\_\+stats@{target\+\_\+stats}}
@@ -793,7 +793,7 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_model}{Model}$
 
 
 
-Definition at line 149 of file model-\/bones.\+hpp.
+Definition at line 153 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_afd37924e6fcfdc30c9fc5ad56f1c4947}\label{class_model_afd37924e6fcfdc30c9fc5ad56f1c4947}} 
 \index{Model@{Model}!with\+\_\+pset@{with\+\_\+pset}}
@@ -804,7 +804,7 @@ bool \hyperlink{class_model}{Model}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\
 
 
 
-Definition at line 135 of file model-\/bones.\+hpp.
+Definition at line 139 of file model-\/bones.\+hpp.
 
 
 

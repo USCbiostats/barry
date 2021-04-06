@@ -45,7 +45,8 @@ public:
   ~NetworkData() {};
 };
 
-/**@brief Data class used to store arbitrary uint or double vectors */
+/**
+ * @brief Data class used to store arbitrary uint or double vectors */
 class NetCounterData {
 public:
   

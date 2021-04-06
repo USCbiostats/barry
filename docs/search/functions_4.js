@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['end',['end',['../classbarry_1_1_power_set.html#a1fb01ffc52e39a831058c480e981da9e',1,'barry::PowerSet::end()'],['../class_power_set.html#ac734ed684aa314b722a05d423c607a38',1,'PowerSet::end()']]],
-  ['entries',['Entries',['../classbarry_1_1_entries.html#aa51d37ad8e5f441fd64c954dfab9ad04',1,'barry::Entries::Entries()'],['../classbarry_1_1_entries.html#a22dda1d0afd4fbe4b658e55ca1b61f16',1,'barry::Entries::Entries(uint n)'],['../class_entries.html#a9e6cba5965f285beb3c0356c79f592d2',1,'Entries::Entries()'],['../class_entries.html#a03249234a765e3363ae89dba76b3ff9f',1,'Entries::Entries(uint n)']]]
+  ['flock',['Flock',['../class_flock.html#a2a0a514c368e21f718ad7358ed42f3b7',1,'Flock']]],
+  ['freqtable',['FreqTable',['../classbarry_1_1_freq_table.html#aea4b22f8097950c3d78e81ab2ed38ae1',1,'barry::FreqTable::FreqTable()'],['../class_freq_table.html#a2fdea53e35f9a301d7d1bbf6b7da5f41',1,'FreqTable::FreqTable()']]]
 ];

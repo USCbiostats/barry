@@ -21,7 +21,7 @@ Collaboration diagram for Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_support_aacc2852ede9e8d1294b8f2ea5625d525}{Support} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
+\hyperlink{class_support_ac1b6d8e393837d03ac8a54e30db10aff}{Support} (const Array\+\_\+\+Type \&Array\+\_\+)
 \begin{DoxyCompactList}\small\item\em Constructor passing a reference Array. \end{DoxyCompactList}\item 
 \hyperlink{class_support_a1f6a7ae36567effe999602df879321cd}{Support} (\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} N\+\_\+, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} M\+\_\+)
 \begin{DoxyCompactList}\small\item\em Constructor specifying the dimensions of the array (empty). \end{DoxyCompactList}\item 
@@ -51,7 +51,7 @@ void \hyperlink{class_support_af87b2e85ec72e394387946023508e7fd}{print} () const
 \item 
 void \hyperlink{class_support_a4f2860fd2e8e30703b91633a92ed7a58}{reset\+\_\+array} ()
 \item 
-void \hyperlink{class_support_a6e39b22dfd1e0a0ceebf596c974f5326}{reset\+\_\+array} (const Array\+\_\+\+Type $\ast$Array\+\_\+)
+void \hyperlink{class_support_afb7ca8dbf350d233e677322d567dc98c}{reset\+\_\+array} (const Array\+\_\+\+Type \&Array\+\_\+)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Manage counters}\par
@@ -125,17 +125,17 @@ Compute the support of sufficient statistics.
 
 Given an array and a set of counters, this object iterates throughout the support set of the Array while at the same time computing the support of the sufficient statitics. 
 
-Definition at line 23 of file support-\/bones.\+hpp.
+Definition at line 24 of file support-\/bones.\+hpp.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_support_aacc2852ede9e8d1294b8f2ea5625d525}\label{class_support_aacc2852ede9e8d1294b8f2ea5625d525}} 
+\mbox{\Hypertarget{class_support_ac1b6d8e393837d03ac8a54e30db10aff}\label{class_support_ac1b6d8e393837d03ac8a54e30db10aff}} 
 \index{Support@{Support}!Support@{Support}}
 \index{Support@{Support}!Support@{Support}}
 \subsubsection{\texorpdfstring{Support()}{Support()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type = bool, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$ \\
-\hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{class_support}{Support} (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\hyperlink{class_support}{Support} (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -143,7 +143,7 @@ Constructor passing a reference Array.
 
 
 
-Definition at line 54 of file support-\/bones.\+hpp.
+Definition at line 55 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a1f6a7ae36567effe999602df879321cd}\label{class_support_a1f6a7ae36567effe999602df879321cd}} 
 \index{Support@{Support}!Support@{Support}}
@@ -158,7 +158,7 @@ Constructor specifying the dimensions of the array (empty).
 
 
 
-Definition at line 66 of file support-\/bones.\+hpp.
+Definition at line 63 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a489bf1d96a2ae1e8494eb94d8d366e3f}\label{class_support_a489bf1d96a2ae1e8494eb94d8d366e3f}} 
 \index{Support@{Support}!Support@{Support}}
@@ -169,7 +169,7 @@ Definition at line 66 of file support-\/bones.\+hpp.
 
 
 
-Definition at line 75 of file support-\/bones.\+hpp.
+Definition at line 69 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a9c5f33ac43d962272b616948dec5d825}\label{class_support_a9c5f33ac43d962272b616948dec5d825}} 
 \index{Support@{Support}!````~Support@{$\sim$\+Support}}
@@ -180,7 +180,7 @@ Definition at line 75 of file support-\/bones.\+hpp.
 
 
 
-Definition at line 84 of file support-\/bones.\+hpp.
+Definition at line 75 of file support-\/bones.\+hpp.
 
 
 
@@ -194,7 +194,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 169 of file support-\/meat.\+hpp.
+Definition at line 171 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a00d511970c0bf833ef8bdd7580c670cc}\label{class_support_a00d511970c0bf833ef8bdd7580c670cc}} 
 \index{Support@{Support}!add\+\_\+counter@{add\+\_\+counter}}
@@ -205,7 +205,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 179 of file support-\/meat.\+hpp.
+Definition at line 181 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a3113a4586c541aa25db7b4a864b748a2}\label{class_support_a3113a4586c541aa25db7b4a864b748a2}} 
 \index{Support@{Support}!add\+\_\+rule@{add\+\_\+rule}}
@@ -216,7 +216,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 206 of file support-\/meat.\+hpp.
+Definition at line 208 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_aa817cb5d6c48dda3ecfeef2c5897b537}\label{class_support_aa817cb5d6c48dda3ecfeef2c5897b537}} 
 \index{Support@{Support}!add\+\_\+rule@{add\+\_\+rule}}
@@ -227,7 +227,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 216 of file support-\/meat.\+hpp.
+Definition at line 218 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_afa36b8c1348e28c51296379157f58081}\label{class_support_afa36b8c1348e28c51296379157f58081}} 
 \index{Support@{Support}!calc@{calc}}
@@ -251,7 +251,7 @@ Not to be used by the user. Sets the starting point in the array (column-\/major
 \end{DoxyParams}
 
 
-Definition at line 151 of file support-\/meat.\+hpp.
+Definition at line 153 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a5d93a94eaed9b1157fb934284883fd47}\label{class_support_a5d93a94eaed9b1157fb934284883fd47}} 
 \index{Support@{Support}!get\+\_\+counts@{get\+\_\+counts}}
@@ -262,7 +262,7 @@ Definition at line 151 of file support-\/meat.\+hpp.
 
 
 
-Definition at line 243 of file support-\/meat.\+hpp.
+Definition at line 245 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_abcb4dea3c5a1b140990821900432f90e}\label{class_support_abcb4dea3c5a1b140990821900432f90e}} 
 \index{Support@{Support}!get\+\_\+counts\+\_\+ptr@{get\+\_\+counts\+\_\+ptr}}
@@ -273,7 +273,7 @@ const \hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+
 
 
 
-Definition at line 250 of file support-\/meat.\+hpp.
+Definition at line 252 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a013872a55ffd6a0a931e124da8e8dc99}\label{class_support_a013872a55ffd6a0a931e124da8e8dc99}} 
 \index{Support@{Support}!init\+\_\+support@{init\+\_\+support}}
@@ -295,7 +295,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 257 of file support-\/meat.\+hpp.
+Definition at line 259 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a4f2860fd2e8e30703b91633a92ed7a58}\label{class_support_a4f2860fd2e8e30703b91633a92ed7a58}} 
 \index{Support@{Support}!reset\+\_\+array@{reset\+\_\+array}}
@@ -308,12 +308,12 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 Definition at line 69 of file support-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_support_a6e39b22dfd1e0a0ceebf596c974f5326}\label{class_support_a6e39b22dfd1e0a0ceebf596c974f5326}} 
+\mbox{\Hypertarget{class_support_afb7ca8dbf350d233e677322d567dc98c}\label{class_support_afb7ca8dbf350d233e677322d567dc98c}} 
 \index{Support@{Support}!reset\+\_\+array@{reset\+\_\+array}}
 \index{reset\+\_\+array@{reset\+\_\+array}!Support@{Support}}
 \subsubsection{\texorpdfstring{reset\+\_\+array()}{reset\_array()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
-void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::reset\+\_\+array (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type $\ast$}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::reset\+\_\+array (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -328,7 +328,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 189 of file support-\/meat.\+hpp.
+Definition at line 191 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a66dc1a0e7097d547ea9c84df777ad477}\label{class_support_a66dc1a0e7097d547ea9c84df777ad477}} 
 \index{Support@{Support}!set\+\_\+rules@{set\+\_\+rules}}
@@ -339,7 +339,7 @@ void \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 226 of file support-\/meat.\+hpp.
+Definition at line 228 of file support-\/meat.\+hpp.
 
 
 
@@ -353,7 +353,7 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{class_support}{Suppo
 
 
 
-Definition at line 49 of file support-\/bones.\+hpp.
+Definition at line 51 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a36f6685c1f22eeca1919dfbb0ff4cb54}\label{class_support_a36f6685c1f22eeca1919dfbb0ff4cb54}} 
 \index{Support@{Support}!coordinates\+\_\+free@{coordinates\+\_\+free}}
@@ -364,7 +364,7 @@ std\+::vector$<$ std\+::pair$<$\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d
 
 
 
-Definition at line 47 of file support-\/bones.\+hpp.
+Definition at line 49 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_ab740de5d3497a4bf51cddb256f85cd72}\label{class_support_ab740de5d3497a4bf51cddb256f85cd72}} 
 \index{Support@{Support}!coordinates\+\_\+locked@{coordinates\+\_\+locked}}
@@ -375,7 +375,7 @@ std\+::vector$<$ std\+::pair$<$\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d
 
 
 
-Definition at line 48 of file support-\/bones.\+hpp.
+Definition at line 50 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a518268efc16cef68aa2211089c822c03}\label{class_support_a518268efc16cef68aa2211089c822c03}} 
 \index{Support@{Support}!counter\+\_\+deleted@{counter\+\_\+deleted}}
@@ -386,7 +386,7 @@ bool \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 42 of file support-\/bones.\+hpp.
+Definition at line 44 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_abf25e6063ecc63fbceda7d58a8610560}\label{class_support_abf25e6063ecc63fbceda7d58a8610560}} 
 \index{Support@{Support}!counters@{counters}}
@@ -397,7 +397,7 @@ Definition at line 42 of file support-\/bones.\+hpp.
 
 
 
-Definition at line 38 of file support-\/bones.\+hpp.
+Definition at line 40 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_aec5901ad006e5ebe29c7605e7bcc702c}\label{class_support_aec5901ad006e5ebe29c7605e7bcc702c}} 
 \index{Support@{Support}!current\+\_\+stats@{current\+\_\+stats}}
@@ -408,7 +408,7 @@ std\+::vector$<$ double $>$ \hyperlink{class_support}{Support}$<$ Array\+\_\+\+T
 
 
 
-Definition at line 46 of file support-\/bones.\+hpp.
+Definition at line 48 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a1b7bc59cfcdd9bbdc164c6265917b030}\label{class_support_a1b7bc59cfcdd9bbdc164c6265917b030}} 
 \index{Support@{Support}!data@{data}}
@@ -419,7 +419,7 @@ Definition at line 46 of file support-\/bones.\+hpp.
 
 
 
-Definition at line 37 of file support-\/bones.\+hpp.
+Definition at line 39 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a3ec1b46e245b89ae007601caaf4958c9}\label{class_support_a3ec1b46e245b89ae007601caaf4958c9}} 
 \index{Support@{Support}!Empty\+Array@{Empty\+Array}}
@@ -434,7 +434,7 @@ Reference array to generate the support.
 
 
 
-Definition at line 36 of file support-\/bones.\+hpp.
+Definition at line 38 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_ac0662129b0a12fe4eac69f6f2e733b05}\label{class_support_ac0662129b0a12fe4eac69f6f2e733b05}} 
 \index{Support@{Support}!M@{M}}
@@ -445,7 +445,7 @@ Definition at line 36 of file support-\/bones.\+hpp.
 
 
 
-Definition at line 41 of file support-\/bones.\+hpp.
+Definition at line 43 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a6c6f707fae03f409c556b6d4668617af}\label{class_support_a6c6f707fae03f409c556b6d4668617af}} 
 \index{Support@{Support}!N@{N}}
@@ -456,7 +456,7 @@ Definition at line 41 of file support-\/bones.\+hpp.
 
 
 
-Definition at line 41 of file support-\/bones.\+hpp.
+Definition at line 43 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a6fc8b2206c3755acbd26d9439e100f3d}\label{class_support_a6fc8b2206c3755acbd26d9439e100f3d}} 
 \index{Support@{Support}!rules@{rules}}
@@ -467,7 +467,7 @@ Definition at line 41 of file support-\/bones.\+hpp.
 
 
 
-Definition at line 39 of file support-\/bones.\+hpp.
+Definition at line 41 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_aab64eca42c25f48f7688eae0bbe9f1ef}\label{class_support_aab64eca42c25f48f7688eae0bbe9f1ef}} 
 \index{Support@{Support}!rules\+\_\+deleted@{rules\+\_\+deleted}}
@@ -478,7 +478,7 @@ bool \hyperlink{class_support}{Support}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counte
 
 
 
-Definition at line 43 of file support-\/bones.\+hpp.
+Definition at line 45 of file support-\/bones.\+hpp.
 
 
 

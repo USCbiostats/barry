@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['target',['target',['../classbarry_1_1_entries.html#a07de39535af23bc1f9e3918b32a39b18',1,'barry::Entries::target()'],['../class_entries.html#a02dad3917fa68044b9ea9c60b2909fd7',1,'Entries::target()']]],
-  ['target_5fstats',['target_stats',['../classbarry_1_1_model.html#ab2a0fde37b6a6da5a5faffcd24ec4c27',1,'barry::Model::target_stats()'],['../class_model.html#a24ad6e57bff2297dcc7461609714f41b',1,'Model::target_stats()']]],
-  ['two',['TWO',['../namespacebarry_1_1_c_h_e_c_k.html#a6aa56c3d8a8260d90867278d21ace4d2',1,'barry::CHECK::TWO()'],['../namespacebarry_1_1_e_x_i_s_t_s.html#ac6cc1f304cbfc3576d15294cef82c868',1,'barry::EXISTS::TWO()'],['../namespace_c_h_e_c_k.html#a2b112aaec4c59311376a5a60f291aa48',1,'CHECK::TWO()'],['../namespace_e_x_i_s_t_s.html#ad76d02e8eb6d20715d333b72394b0648',1,'EXISTS::TWO()']]]
+  ['sequence',['sequence',['../class_geese.html#ab815e9b33ce2cfb5757f86083f357152',1,'Geese']]],
+  ['source',['source',['../classbarry_1_1_entries.html#a5992282ca5f39dbbbd4195d7176b6295',1,'barry::Entries::source()'],['../class_entries.html#a6a7c589df4cd6ea98386466440dfdc98',1,'Entries::source()']]],
+  ['states',['states',['../classbarry_1_1counters_1_1phylo_1_1_node_data.html#a9a88332b03b6c78f386a1fafac660052',1,'barry::counters::phylo::NodeData::states()'],['../class_node_data.html#a33caaadde6afe892624501bdb0edaea6',1,'NodeData::states()'],['../class_geese.html#a84bddd2c7e0221b4ec0e1217575584b4',1,'Geese::states()']]],
+  ['stats',['stats',['../classbarry_1_1_model.html#a09fa1641ee40f23bad698a7c78db4b87',1,'barry::Model::stats()'],['../class_model.html#abd7e36250a681bd2ade69d087e8200e1',1,'Model::stats()']]],
+  ['subtree_5fprob',['subtree_prob',['../class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d',1,'Node']]],
+  ['support',['support',['../class_flock.html#a20d75da0d423252055af84194e88f901',1,'Flock::support()'],['../class_geese.html#a71f91e3f8bea1c285c4cf1f3b84f26de',1,'Geese::support()']]],
+  ['support_5ffun',['support_fun',['../classbarry_1_1_model.html#afd005aae0fdd12a8c68d1fd8823b3727',1,'barry::Model::support_fun()'],['../class_model.html#aa9806f4bf7d9c935f37a31e67bbfbee4',1,'Model::support_fun()']]]
 ];

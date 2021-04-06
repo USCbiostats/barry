@@ -22,6 +22,7 @@ var phylo_8hpp =
     [ "PhyloRules", "phylo_8hpp.html#a297f8535006c6b28acc097dddae016c3", null ],
     [ "PhyloStatsCounter", "phylo_8hpp.html#aca4644373aecf9b296ac8ac730470952", null ],
     [ "PhyloSupport", "phylo_8hpp.html#a5e2d2b7571e4b1348cb044373d04fb06", null ],
+    [ "counter_co_opt", "phylo_8hpp.html#ae193c319ae2fd5edb3a6551e44ada0be", null ],
     [ "counter_cogain", "phylo_8hpp.html#a6dda7c62f8b75ccb9fbb5d06a67810ff", null ],
     [ "counter_gains", "phylo_8hpp.html#af03875e668e9559a84896755e5108fc4", null ],
     [ "counter_gains_k_offspring", "phylo_8hpp.html#a0403ee027de1992d33cae8cf40ad7ef3", null ],

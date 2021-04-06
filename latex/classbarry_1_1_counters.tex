@@ -20,7 +20,7 @@ Vector of counters.
 \item 
 \hyperlink{classbarry_1_1_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{classbarry_1_1_counters_a0edeb22b0b1640f7ada1ef47a30ac486}{operator=} (const \hyperlink{classbarry_1_1_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&counter\+\_\+)
 \item 
-\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$ \hyperlink{classbarry_1_1_counters_a9c3ff72b5e24a299e3c1aecad0ea5eb2}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} idx)
+\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \& \hyperlink{classbarry_1_1_counters_a031002f578171aaa615d08b1a2f9be40}{operator\mbox{[}$\,$\mbox{]}} (\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} idx)
 \begin{DoxyCompactList}\small\item\em Returns a pointer to a particular counter. \end{DoxyCompactList}\item 
 \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} \hyperlink{classbarry_1_1_counters_aa70f3d91d0f69ff8f4887930efaa0411}{size} () const
 \begin{DoxyCompactList}\small\item\em Number of counters in the set. \end{DoxyCompactList}\item 
@@ -28,7 +28,7 @@ void \hyperlink{classbarry_1_1_counters_a5b5dafc7a3e0eedae400457f69937613}{add\+
 \item 
 void \hyperlink{classbarry_1_1_counters_a74f054aa9ea64103c2d9f79f115777d4}{add\+\_\+counter} (\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$counter)
 \item 
-void \hyperlink{classbarry_1_1_counters_a4ee47504f9c76892c6028619e6b138ee}{add\+\_\+counter} (\hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, \hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ init\+\_\+fun\+\_\+=nullptr, Data\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+void \hyperlink{classbarry_1_1_counters_a4ee47504f9c76892c6028619e6b138ee}{add\+\_\+counter} (\hyperlink{namespacebarry_a89b0a03ea2e7f83f2ae89be70a798337}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, \hyperlink{namespacebarry_a89b0a03ea2e7f83f2ae89be70a798337}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ init\+\_\+fun\+\_\+=nullptr, Data\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
 \item 
 void \hyperlink{classbarry_1_1_counters_ae4635c154970a13ce88d2e982fe7dab3}{clear} ()
 \end{DoxyCompactItemize}
@@ -110,7 +110,7 @@ Definition at line 132 of file barry.\+hpp.
 \index{add\+\_\+counter@{add\+\_\+counter}!barry\+::\+Counters@{barry\+::\+Counters}}
 \subsubsection{\texorpdfstring{add\+\_\+counter()}{add\_counter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$ \\
-void \hyperlink{classbarry_1_1_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{\hyperlink{namespacebarry_abaaae3200da8e4b7faac3c04fe9c3081}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{init\+\_\+fun\+\_\+ = {\ttfamily nullptr},  }\item[{Data\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \hyperlink{classbarry_1_1_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a89b0a03ea2e7f83f2ae89be70a798337}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{\hyperlink{namespacebarry_a89b0a03ea2e7f83f2ae89be70a798337}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{init\+\_\+fun\+\_\+ = {\ttfamily nullptr},  }\item[{Data\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -138,12 +138,12 @@ Definition at line 166 of file barry.\+hpp.
 
 Definition at line 72 of file barry.\+hpp.
 
-\mbox{\Hypertarget{classbarry_1_1_counters_a9c3ff72b5e24a299e3c1aecad0ea5eb2}\label{classbarry_1_1_counters_a9c3ff72b5e24a299e3c1aecad0ea5eb2}} 
+\mbox{\Hypertarget{classbarry_1_1_counters_a031002f578171aaa615d08b1a2f9be40}\label{classbarry_1_1_counters_a031002f578171aaa615d08b1a2f9be40}} 
 \index{barry\+::\+Counters@{barry\+::\+Counters}!operator\mbox{[}\mbox{]}@{operator[]}}
 \index{operator\mbox{[}\mbox{]}@{operator[]}!barry\+::\+Counters@{barry\+::\+Counters}}
 \subsubsection{\texorpdfstring{operator[]()}{operator[]()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$ \hyperlink{classbarry_1_1_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\hyperlink{classbarry_1_1_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \& \hyperlink{classbarry_1_1_counters}{Counters}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

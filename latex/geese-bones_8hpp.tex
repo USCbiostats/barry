@@ -1,0 +1,93 @@
+\hypertarget{geese-bones_8hpp}{}\section{include/barry/models/geese/geese-\/bones.hpp File Reference}
+\label{geese-bones_8hpp}\index{include/barry/models/geese/geese-\/bones.\+hpp@{include/barry/models/geese/geese-\/bones.\+hpp}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{geese-bones_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_geese}{Geese}
+\begin{DoxyCompactList}\small\item\em Annotated Phylo \hyperlink{class_model}{Model}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{geese-bones_8hpp_a08888c91f4cab1da64c8f8bf10b59c40}{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}()
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Ta , typename Tb $>$ }\\std\+::vector$<$ Ta $>$ \hyperlink{geese-bones_8hpp_a13c91ee42db6c3b986acbbac4ee58cb0}{vector\+\_\+caster} (const std\+::vector$<$ Tb $>$ \&x)
+\item 
+\hyperlink{geese-bones_8hpp_a11c7dd7dca27f32547bb602f30ceb5e8}{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON} (rule\+\_\+empty\+\_\+free)
+\item 
+std\+::vector$<$ double $>$ \hyperlink{geese-bones_8hpp_aa60134cca317d64e4b3d1707380d5d0d}{keygen\+\_\+full} (const \hyperlink{namespacebarry_1_1counters_1_1phylo_abd293bf65e494e903639fb5fb2c91604}{phylocounters\+::\+Phylo\+Array} \&array)
+\item 
+bool \hyperlink{geese-bones_8hpp_ac4e3e3e3920b3bbde57ac1ed395e9983}{vec\+\_\+diff} (const std\+::vector$<$ unsigned int $>$ \&s, const std\+::vector$<$ unsigned int $>$ \&a)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{geese-bones_8hpp_a08888c91f4cab1da64c8f8bf10b59c40}\label{geese-bones_8hpp_a08888c91f4cab1da64c8f8bf10b59c40}} 
+\index{geese-\/bones.\+hpp@{geese-\/bones.\+hpp}!I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED@{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}}
+\index{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED@{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}!geese-\/bones.\+hpp@{geese-\/bones.\+hpp}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}{INITIALIZED}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} (!this->initialized) \(\backslash\)
+    throw std::logic\_error(\textcolor{stringliteral}{"The model has not been initialized yet."});
+\end{DoxyCode}
+
+
+Definition at line 18 of file geese-\/bones.\+hpp.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{geese-bones_8hpp_aa60134cca317d64e4b3d1707380d5d0d}\label{geese-bones_8hpp_aa60134cca317d64e4b3d1707380d5d0d}} 
+\index{geese-\/bones.\+hpp@{geese-\/bones.\+hpp}!keygen\+\_\+full@{keygen\+\_\+full}}
+\index{keygen\+\_\+full@{keygen\+\_\+full}!geese-\/bones.\+hpp@{geese-\/bones.\+hpp}}
+\subsubsection{\texorpdfstring{keygen\+\_\+full()}{keygen\_full()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ keygen\+\_\+full (\begin{DoxyParamCaption}\item[{const \hyperlink{namespacebarry_1_1counters_1_1phylo_abd293bf65e494e903639fb5fb2c91604}{phylocounters\+::\+Phylo\+Array} \&}]{array }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 31 of file geese-\/bones.\+hpp.
+
+\mbox{\Hypertarget{geese-bones_8hpp_a11c7dd7dca27f32547bb602f30ceb5e8}\label{geese-bones_8hpp_a11c7dd7dca27f32547bb602f30ceb5e8}} 
+\index{geese-\/bones.\+hpp@{geese-\/bones.\+hpp}!R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
+\index{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON}!geese-\/bones.\+hpp@{geese-\/bones.\+hpp}}
+\subsubsection{\texorpdfstring{R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N()}{RULE\_FUNCTION()}}
+{\footnotesize\ttfamily R\+U\+L\+E\+\_\+\+F\+U\+N\+C\+T\+I\+ON (\begin{DoxyParamCaption}\item[{rule\+\_\+empty\+\_\+free}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file geese-\/bones.\+hpp.
+
+\mbox{\Hypertarget{geese-bones_8hpp_ac4e3e3e3920b3bbde57ac1ed395e9983}\label{geese-bones_8hpp_ac4e3e3e3920b3bbde57ac1ed395e9983}} 
+\index{geese-\/bones.\+hpp@{geese-\/bones.\+hpp}!vec\+\_\+diff@{vec\+\_\+diff}}
+\index{vec\+\_\+diff@{vec\+\_\+diff}!geese-\/bones.\+hpp@{geese-\/bones.\+hpp}}
+\subsubsection{\texorpdfstring{vec\+\_\+diff()}{vec\_diff()}}
+{\footnotesize\ttfamily bool vec\+\_\+diff (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ unsigned int $>$ \&}]{s,  }\item[{const std\+::vector$<$ unsigned int $>$ \&}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 51 of file geese-\/bones.\+hpp.
+
+\mbox{\Hypertarget{geese-bones_8hpp_a13c91ee42db6c3b986acbbac4ee58cb0}\label{geese-bones_8hpp_a13c91ee42db6c3b986acbbac4ee58cb0}} 
+\index{geese-\/bones.\+hpp@{geese-\/bones.\+hpp}!vector\+\_\+caster@{vector\+\_\+caster}}
+\index{vector\+\_\+caster@{vector\+\_\+caster}!geese-\/bones.\+hpp@{geese-\/bones.\+hpp}}
+\subsubsection{\texorpdfstring{vector\+\_\+caster()}{vector\_caster()}}
+{\footnotesize\ttfamily template$<$typename Ta , typename Tb $>$ \\
+std\+::vector$<$ Ta $>$ vector\+\_\+caster (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Tb $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 10 of file geese-\/bones.\+hpp.
+

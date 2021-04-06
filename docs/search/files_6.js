@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['rules_2dbones_2ehpp',['rules-bones.hpp',['../rules-bones_8hpp.html',1,'']]],
-  ['rules_2dmeat_2ehpp',['rules-meat.hpp',['../rules-meat_8hpp.html',1,'']]]
+  ['phylo_2ehpp',['phylo.hpp',['../phylo_8hpp.html',1,'']]],
+  ['powerset_2dbones_2ehpp',['powerset-bones.hpp',['../powerset-bones_8hpp.html',1,'']]],
+  ['powerset_2dmeat_2ehpp',['powerset-meat.hpp',['../powerset-meat_8hpp.html',1,'']]]
 ];

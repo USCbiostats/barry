@@ -664,27 +664,27 @@ inline void counter_cogain(PhyloCounters * counters, uint nfunA, uint nfunB, boo
 inline void counter_longest(PhyloCounters * counters) {
   
     PHYLO_COUNTER_LAMBDA(tmp_count) {
-      // Only relevant if the 
-      double res = 0.0;
-      if (Array.data->states[i]) {
+        // Only relevant if the 
+        double res = 0.0;
+        if (Array.data->states[i]) {
+            
+            for (auto off = data->begin(); off != data->end(); ++off)
+            if (*off == j) {
+                res -= 1.0;
+                break;
+            }
+            
+        } else {
+            
+            for (auto off = data->begin(); off != data->end(); ++off)
+            if (*off == j) {
+                res += 1.0;
+                break;
+            }
+            
+        }
         
-        for (auto off = data->begin(); off != data->end(); ++off)
-          if (*off == j) {
-            res -= 1.0;
-            break;
-          }
-          
-      } else {
-        
-        for (auto off = data->begin(); off != data->end(); ++off)
-          if (*off == j) {
-            res += 1.0;
-            break;
-          }
-          
-      }
-      
-      return res;
+        return res;
     };
     
     PHYLO_COUNTER_LAMBDA(tmp_init) {
@@ -847,37 +847,53 @@ inline void counter_neofun_a2b(
         if (funA == i) {
 
             if (Array.get_cell(funB, j, true) == 1) {
-              for (uint k = 0u; k < Array.ncol(); ++k) {
-                if (k == j)
-                  continue;
-                if ((Array(funA, k, false) == 1u) && (Array(funB, k, false) == 0u))
-                  res -= 1.0;
-              }
-            } else {
+
                 for (uint k = 0u; k < Array.ncol(); ++k) {
+
+                    if (k == j)
+                        continue;
+                    if ((Array(funA, k, false) == 1u) && (Array(funB, k, false) == 0u))
+                        res -= 1.0;
+
+                }
+
+            } else {
+
+                for (uint k = 0u; k < Array.ncol(); ++k) {
+
                     if (k == j)
                         continue;
                     if ((Array(funA, k, false) == 0u) && (Array(funB, k, false) == 1u))
                         res += 1.0;
+
                 }
+
             }
 
         } else {
 
             if (Array.get_cell(funB, j, true) == 1) {
+
                 for (uint k = 0u; k < Array.ncol(); ++k) {
+
                     if (k == j)
                         continue;
                     if ((Array(funA, k, false) == 0u) && (Array(funB, k, false) == 1u))
                         res -= 1.0;
+
                 }
+
             } else {
+
                 for (uint k = 0u; k < Array.ncol(); ++k) {
+
                     if (k == j)
                         continue;
                     if ((Array(funA, k, false) == 1u) && (Array(funB, k, false) == 0u))
                         res += 1.0;
+
                 }
+                
             }
 
         }

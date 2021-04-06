@@ -8,8 +8,6 @@ var searchData=
   ['barry_5fbarray_5fmeat_5foperators_5fhpp',['BARRY_BARRAY_MEAT_OPERATORS_HPP',['../barry_8hpp.html#a987a146b1dce88f254dca87a3702590c',1,'barry.hpp']]],
   ['barry_5fbarraycell_5fbones_5fhpp',['BARRY_BARRAYCELL_BONES_HPP',['../barry_8hpp.html#aac01276a67c50c6144eb5e7e843a5a9c',1,'barry.hpp']]],
   ['barry_5fbarraycell_5fmeat_5fhpp',['BARRY_BARRAYCELL_MEAT_HPP',['../barry_8hpp.html#adac9141c345e053df3523f9a2669eff1',1,'barry.hpp']]],
-  ['barry_5fblock_5fbones_5fhpp',['BARRY_BLOCK_BONES_HPP',['../barry_8hpp.html#ae8f9d4181425b0f42e8ff4de2449b553',1,'barry.hpp']]],
-  ['barry_5fblock_5fmeat_5fhpp',['BARRY_BLOCK_MEAT_HPP',['../barry_8hpp.html#ad32bbe588fc2f7e5cfbfa9a737eb67a4',1,'BARRY_BLOCK_MEAT_HPP():&#160;barry.hpp'],['../block-meat_8hpp.html#ad32bbe588fc2f7e5cfbfa9a737eb67a4',1,'BARRY_BLOCK_MEAT_HPP():&#160;block-meat.hpp']]],
   ['barry_5fcell_5fbones_5fhpp',['BARRY_CELL_BONES_HPP',['../barry_8hpp.html#a62da4761a2306f5a0502e2f9b90dadfa',1,'barry.hpp']]],
   ['barry_5fcell_5fmeat_5fhpp',['BARRY_CELL_MEAT_HPP',['../barry_8hpp.html#ab43f8a3228434dd98e6f64370587d522',1,'barry.hpp']]],
   ['barry_5fconfiguration_5fhpp',['BARRY_CONFIGURATION_HPP',['../barry_8hpp.html#a62a616299801c1da9d3639e85fdeff04',1,'barry.hpp']]],
@@ -25,6 +23,7 @@ var searchData=
   ['barry_5fsafe_5fexp',['BARRY_SAFE_EXP',['../barry-configuration_8hpp.html#aa8fd3df3585111e6734d97092df83f57',1,'BARRY_SAFE_EXP():&#160;barry.hpp'],['../barry_8hpp.html#aa8fd3df3585111e6734d97092df83f57',1,'BARRY_SAFE_EXP():&#160;barry.hpp']]],
   ['barry_5fstatscounter_5fbones_5fhpp',['BARRY_STATSCOUNTER_BONES_HPP',['../barry_8hpp.html#a3ec35b2fbfd0547472cb9f02b2ac22ce',1,'barry.hpp']]],
   ['barry_5fstatscounter_5fmeat_5fhpp',['BARRY_STATSCOUNTER_MEAT_HPP',['../barry_8hpp.html#a4a8dc06bf06846180a818d1f83c951f6',1,'barry.hpp']]],
+  ['barry_5fstatsdb_5fhpp',['BARRY_STATSDB_HPP',['../barry_8hpp.html#a8d2c520b82276be68910d653226866fe',1,'barry.hpp']]],
   ['barry_5fsupport_5fbones_5fhpp',['BARRY_SUPPORT_BONES_HPP',['../barry_8hpp.html#a4ef55d4ca7e1db0cbf51b74d830ac287',1,'barry.hpp']]],
   ['barry_5fsupport_5fmeat_5fhpp',['BARRY_SUPPORT_MEAT_HPP',['../barry_8hpp.html#a1e1a05136f3cb63f283b317a8c7f7e7c',1,'BARRY_SUPPORT_MEAT_HPP():&#160;barry.hpp'],['../support-meat_8hpp.html#a1e1a05136f3cb63f283b317a8c7f7e7c',1,'BARRY_SUPPORT_MEAT_HPP():&#160;support-meat.hpp']]],
   ['barry_5ftypedefs_5fhpp',['BARRY_TYPEDEFS_HPP',['../barry_8hpp.html#a68ca8ae9bef31d3628a76d2dd884f724',1,'barry.hpp']]]

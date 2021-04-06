@@ -12,26 +12,41 @@ A counter function based on change statistics.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_counter_a56c2f4ad875497dea97934cd3ddebc81}{Counter} ()
-\item 
-\hyperlink{class_counter_ad2a63c2b9b6c593d292dfd47e2f7a780}{Counter} (\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, \hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ init\+\_\+fun\+\_\+=nullptr, Data\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
-\begin{DoxyCompactList}\small\item\em Creator passing a counter and an initializer. \end{DoxyCompactList}\item 
-\hyperlink{class_counter_a89aa39dd007b8aa1bcde97519d516806}{Counter} (const \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&counter\+\_\+)
-\item 
 \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{class_counter_a058b8f695d6b6493c5d03aee8c01a86c}{operator=} (const \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&counter\+\_\+)
 \item 
 \hyperlink{class_counter_a66594b4ffbbf337241b032c1f039b3c0}{$\sim$\+Counter} ()
 \item 
-double \hyperlink{class_counter_afe1d23e72c3bdca9b2481f36ebde1d95}{count} (Array\+\_\+\+Type $\ast$Array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
+double \hyperlink{class_counter_a7b99fc45147d89c1b2db987e6b11f1f0}{count} (Array\+\_\+\+Type \&Array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
 \item 
-double \hyperlink{class_counter_ae0451979ddc51a5fbf00de78c37d3216}{init} (Array\+\_\+\+Type $\ast$Array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
+double \hyperlink{class_counter_a835aa75876bc43a84ecbde4fd6a03fd5}{init} (Array\+\_\+\+Type \&Array, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i, \hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j)
 \end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Creator passing a counter and an initializer}\par
+{\em 
+\begin{DoxyParams}{Parameters}
+{\em count\+\_\+fun\+\_\+} & The main counter function. \\
+\hline
+{\em init\+\_\+fun\+\_\+} & The initializer function can also be used to check if the {\ttfamily \hyperlink{class_b_array}{B\+Array}} as the needed variables (see \hyperlink{class_b_array_a9576163b52124021575e50dbcca2f6b9}{B\+Array\+::data}). \\
+\hline
+{\em data\+\_\+} & Data to be used with the counter. \\
+\hline
+{\em delete\+\_\+data\+\_\+} & When {\ttfamily true}, the destructor will delete the pointer in the main data. \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_counter_a56c2f4ad875497dea97934cd3ddebc81}{Counter} ()
+\item 
+\hyperlink{class_counter_ad2a63c2b9b6c593d292dfd47e2f7a780}{Counter} (\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, \hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ init\+\_\+fun\+\_\+=nullptr, Data\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+\item 
+\hyperlink{class_counter_a89aa39dd007b8aa1bcde97519d516806}{Counter} (const \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&counter\+\_\+)
+\end{DoxyCompactItemize}
+\end{Indent}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{class_counter_a804d287379ef9b4204a0838edcce3b71}{count\+\_\+fun}
+\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{class_counter_a804d287379ef9b4204a0838edcce3b71}{count\+\_\+fun}
 \item 
-\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{class_counter_abb4e0b67e6489d438918495651baa5a8}{init\+\_\+fun}
+\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \hyperlink{class_counter_abb4e0b67e6489d438918495651baa5a8}{init\+\_\+fun}
 \item 
 Data\+\_\+\+Type $\ast$ \hyperlink{class_counter_a9ebfed99a67888f80c19cabc4098bdd0}{data} = nullptr
 \item 
@@ -61,33 +76,18 @@ Definition at line 15 of file counters-\/bones.\+hpp.
 
 
 
-Definition at line 26 of file counters-\/bones.\+hpp.
+Definition at line 34 of file counters-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_counter_ad2a63c2b9b6c593d292dfd47e2f7a780}\label{class_counter_ad2a63c2b9b6c593d292dfd47e2f7a780}} 
 \index{Counter@{Counter}!Counter@{Counter}}
 \index{Counter@{Counter}!Counter@{Counter}}
 \subsubsection{\texorpdfstring{Counter()}{Counter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$ \\
-\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_counter}{Counter} (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{init\+\_\+fun\+\_\+ = {\ttfamily nullptr},  }\item[{Data\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\hyperlink{class_counter}{Counter} (\begin{DoxyParamCaption}\item[{\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}]{init\+\_\+fun\+\_\+ = {\ttfamily nullptr},  }\item[{Data\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Creator passing a counter and an initializer. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em count\+\_\+fun\+\_\+} & The main counter function. \\
-\hline
-{\em init\+\_\+fun\+\_\+} & The initializer function can also be used to check if the {\ttfamily \hyperlink{class_b_array}{B\+Array}} as the needed variables (see \hyperlink{class_b_array_a9576163b52124021575e50dbcca2f6b9}{B\+Array\+::data}). \\
-\hline
-{\em data\+\_\+} & Data to be used with the counter. \\
-\hline
-{\em delete\+\_\+data\+\_\+} & When {\ttfamily true}, the destructor will delete the pointer in the main data. \\
-\hline
-\end{DoxyParams}
-
-
-Definition at line 38 of file counters-\/bones.\+hpp.
+Definition at line 36 of file counters-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_counter_a89aa39dd007b8aa1bcde97519d516806}\label{class_counter_a89aa39dd007b8aa1bcde97519d516806}} 
 \index{Counter@{Counter}!Counter@{Counter}}
@@ -114,23 +114,23 @@ Definition at line 48 of file counters-\/bones.\+hpp.
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{class_counter_afe1d23e72c3bdca9b2481f36ebde1d95}\label{class_counter_afe1d23e72c3bdca9b2481f36ebde1d95}} 
+\mbox{\Hypertarget{class_counter_a7b99fc45147d89c1b2db987e6b11f1f0}\label{class_counter_a7b99fc45147d89c1b2db987e6b11f1f0}} 
 \index{Counter@{Counter}!count@{count}}
 \index{count@{count}!Counter@{Counter}}
 \subsubsection{\texorpdfstring{count()}{count()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-double \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::count (\begin{DoxyParamCaption}\item[{Array\+\_\+\+Type $\ast$}]{Array,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+double \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::count (\begin{DoxyParamCaption}\item[{Array\+\_\+\+Type \&}]{Array,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 100 of file counters-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_counter_ae0451979ddc51a5fbf00de78c37d3216}\label{class_counter_ae0451979ddc51a5fbf00de78c37d3216}} 
+\mbox{\Hypertarget{class_counter_a835aa75876bc43a84ecbde4fd6a03fd5}\label{class_counter_a835aa75876bc43a84ecbde4fd6a03fd5}} 
 \index{Counter@{Counter}!init@{init}}
 \index{init@{init}!Counter@{Counter}}
 \subsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-double \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::init (\begin{DoxyParamCaption}\item[{Array\+\_\+\+Type $\ast$}]{Array,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+double \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::init (\begin{DoxyParamCaption}\item[{Array\+\_\+\+Type \&}]{Array,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{i,  }\item[{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -155,7 +155,7 @@ Definition at line 24 of file counters-\/meat.\+hpp.
 \index{count\+\_\+fun@{count\+\_\+fun}!Counter@{Counter}}
 \subsubsection{\texorpdfstring{count\+\_\+fun}{count\_fun}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$ \\
-\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::count\+\_\+fun}
+\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::count\+\_\+fun}
 
 
 
@@ -188,7 +188,7 @@ Definition at line 21 of file counters-\/bones.\+hpp.
 \index{init\+\_\+fun@{init\+\_\+fun}!Counter@{Counter}}
 \subsubsection{\texorpdfstring{init\+\_\+fun}{init\_fun}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type = B\+Array$<$$>$, typename Data\+\_\+\+Type = bool$>$ \\
-\hyperlink{typedefs_8hpp_ac0160f52f564dea3ac033b374cffbfe7}{Counter\+\_\+fun\+\_\+type}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::init\+\_\+fun}
+\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\+\_\+fun\+\_\+type}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \hyperlink{class_counter}{Counter}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::init\+\_\+fun}
 
 
 

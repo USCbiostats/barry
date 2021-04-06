@@ -1,6 +1,6 @@
 var classbarry_1_1_support =
 [
-    [ "Support", "classbarry_1_1_support.html#ab34144acc225be907c1403b06573b016", null ],
+    [ "Support", "classbarry_1_1_support.html#a094ac08cd4cd58c9b2dd5043cf2cdd13", null ],
     [ "Support", "classbarry_1_1_support.html#a0deea9b8e83fd418dfad59fb4cfb2ad5", null ],
     [ "Support", "classbarry_1_1_support.html#a08a48546e91c5259a26be4cde31ef902", null ],
     [ "~Support", "classbarry_1_1_support.html#a4ea99cc1691b04b76a333e851aab4b64", null ],
@@ -14,7 +14,7 @@ var classbarry_1_1_support =
     [ "init_support", "classbarry_1_1_support.html#a013872a55ffd6a0a931e124da8e8dc99", null ],
     [ "print", "classbarry_1_1_support.html#af87b2e85ec72e394387946023508e7fd", null ],
     [ "reset_array", "classbarry_1_1_support.html#a4f2860fd2e8e30703b91633a92ed7a58", null ],
-    [ "reset_array", "classbarry_1_1_support.html#a6e39b22dfd1e0a0ceebf596c974f5326", null ],
+    [ "reset_array", "classbarry_1_1_support.html#afb7ca8dbf350d233e677322d567dc98c", null ],
     [ "set_counters", "classbarry_1_1_support.html#aef83474cda55c4ed52e313e8ed948b08", null ],
     [ "set_rules", "classbarry_1_1_support.html#a66dc1a0e7097d547ea9c84df777ad477", null ],
     [ "change_stats", "classbarry_1_1_support.html#a37c139514065d10807cd574ca748744b", null ],

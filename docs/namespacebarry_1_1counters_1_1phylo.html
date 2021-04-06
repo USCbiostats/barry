@@ -178,6 +178,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3394895262bbf1fd603193ef21b9ddb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a3394895262bbf1fd603193ef21b9ddb8">counter_neofun_a2b</a> (<a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a4e401ffe66d04091343dcffaf915f8c3">PhyloCounters</a> *counters, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> nfunA, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> nfunB, bool duplication=true)</td></tr>
 <tr class="memdesc:a3394895262bbf1fd603193ef21b9ddb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of neofunctionalization events.  <a href="#a3394895262bbf1fd603193ef21b9ddb8">More...</a><br /></td></tr>
 <tr class="separator:a3394895262bbf1fd603193ef21b9ddb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adca76f02679f5f1bad46c9fa0ed68553"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#adca76f02679f5f1bad46c9fa0ed68553">counter_co_opt</a> (<a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a4e401ffe66d04091343dcffaf915f8c3">PhyloCounters</a> *counters, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> nfunA, <a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a> nfunB, bool duplication=true)</td></tr>
+<tr class="memdesc:adca76f02679f5f1bad46c9fa0ed68553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function co-opting.  <a href="#adca76f02679f5f1bad46c9fa0ed68553">More...</a><br /></td></tr>
+<tr class="separator:adca76f02679f5f1bad46c9fa0ed68553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="abd293bf65e494e903639fb5fb2c91604"></a>
@@ -357,6 +360,62 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="adca76f02679f5f1bad46c9fa0ed68553"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adca76f02679f5f1bad46c9fa0ed68553">&#9670;&nbsp;</a></span>counter_co_opt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void barry::counters::phylo::counter_co_opt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html#a4e401ffe66d04091343dcffaf915f8c3">PhyloCounters</a> *&#160;</td>
+          <td class="paramname"><em>counters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a>&#160;</td>
+          <td class="paramname"><em>nfunA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacebarry.html#a11dfc53ddb4672278319aa04f1e09a6c">uint</a>&#160;</td>
+          <td class="paramname"><em>nfunB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>duplication</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Function co-opting. </p>
+<p>Function co-opting of functions A and B happens when, for example, function B is gained as a new featured leveraging what function A already does; without losing function A. The sufficient statistic is defined as follows: </p><p class="formulaDsp">
+\[ x_{pa}(1 - x_{pb})\sum_{i&lt;j}{x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p + x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p \]
+</p>
+<p> This algorithm implements the change statistic. </p>
+
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00916">916</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a002286f13261eb4633c6dc9e6fc1212b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a002286f13261eb4633c6dc9e6fc1212b">&#9670;&nbsp;</a></span>counter_cogain()</h2>
 
@@ -406,7 +465,7 @@ Functions</h2></td></tr>
 <p>Co-evolution (joint gain or loss) </p>
 <p>Needs to specify pairs of functions (<code>nfunA</code>, <code>nfunB</code>). </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00613">613</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00618">618</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -452,7 +511,7 @@ Functions</h2></td></tr>
 
 <p>Functional gains for a specific function (<code>nfun</code>). </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00130">130</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00132">132</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -504,7 +563,7 @@ Functions</h2></td></tr>
 
 <p>Functional gains for a specific function (<code>nfun</code>). </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00165">165</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00167">167</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -544,7 +603,7 @@ Functions</h2></td></tr>
 
 <p>Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with regular trees.) </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00228">228</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00230">230</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -574,7 +633,7 @@ Functions</h2></td></tr>
 
 <p>Longest branch mutates (either by gain or by loss) </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00667">667</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00664">664</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -620,7 +679,7 @@ Functions</h2></td></tr>
 
 <p>Total count of losses for an specific function. </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00439">439</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00444">444</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -672,7 +731,7 @@ Functions</h2></td></tr>
 
 <p>Cap the number of functions per gene. </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00366">366</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00371">371</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -725,7 +784,7 @@ Functions</h2></td></tr>
 <p>Total number of neofunctionalization events. </p>
 <p>Needs to specify pairs of function. </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00752">752</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00750">750</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -778,7 +837,7 @@ Functions</h2></td></tr>
 <p>Total number of neofunctionalization events. </p>
 <p>Needs to specify pairs of function. </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00824">824</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00823">823</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -818,7 +877,7 @@ Functions</h2></td></tr>
 
 <p>Total number of changes. Use this statistic to account for "preservation". </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00481">481</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00486">486</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -859,7 +918,7 @@ Functions</h2></td></tr>
 <p>Overall functional gains. </p>
 <p>Total number of gains (irrespective of the function). </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00098">98</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00099">99</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -899,7 +958,7 @@ Functions</h2></td></tr>
 
 <p>Overall functional loss. </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00326">326</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00330">330</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -952,7 +1011,7 @@ Functions</h2></td></tr>
 <p>Total count of Sub-functionalization events. </p>
 <p>It requires to specify data = {funA, funB} </p>
 
-<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00540">540</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barry_8hpp_source.html#l00545">545</a> of file <a class="el" href="barry_8hpp_source.html">barry.hpp</a>.</p>
 
 </div>
 </div>
@@ -962,7 +1021,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacebarry.html">barry</a></li><li class="navelem"><a class="el" href="namespacebarry_1_1counters.html">counters</a></li><li class="navelem"><a class="el" href="namespacebarry_1_1counters_1_1phylo.html">phylo</a></li>
-    <li class="footer">Generated on Wed Mar 24 2021 17:06:23 for barry: Your go-to motif accountant by
+    <li class="footer">Generated on Tue Apr 6 2021 11:01:43 for barry: Your go-to motif accountant by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

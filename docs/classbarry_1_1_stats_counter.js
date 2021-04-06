@@ -11,7 +11,6 @@ var classbarry_1_1_stats_counter =
     [ "reset_array", "classbarry_1_1_stats_counter.html#a8dabc3a7a9931acbb76900a67d728f70", null ],
     [ "set_counters", "classbarry_1_1_stats_counter.html#a1d66f7d7326cac60a46ee56a8eb0a497", null ],
     [ "Array", "classbarry_1_1_stats_counter.html#a4a963a5edf23d0527e1ef87c52c04a97", null ],
-    [ "change_stats", "classbarry_1_1_stats_counter.html#a90b8fddb02b2628cc8d71986f8cdf0ed", null ],
     [ "counter_deleted", "classbarry_1_1_stats_counter.html#a0e9924b44520a91c7384a464fa9711b7", null ],
     [ "counters", "classbarry_1_1_stats_counter.html#a7100901cfe8f02c96b76b381fa06f94c", null ],
     [ "current_stats", "classbarry_1_1_stats_counter.html#ad99718884cffbeca3cb98d574f6956a1", null ],

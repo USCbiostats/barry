@@ -1,6 +1,6 @@
 var class_support =
 [
-    [ "Support", "class_support.html#aacc2852ede9e8d1294b8f2ea5625d525", null ],
+    [ "Support", "class_support.html#ac1b6d8e393837d03ac8a54e30db10aff", null ],
     [ "Support", "class_support.html#a1f6a7ae36567effe999602df879321cd", null ],
     [ "Support", "class_support.html#a489bf1d96a2ae1e8494eb94d8d366e3f", null ],
     [ "~Support", "class_support.html#a9c5f33ac43d962272b616948dec5d825", null ],
@@ -14,7 +14,7 @@ var class_support =
     [ "init_support", "class_support.html#a013872a55ffd6a0a931e124da8e8dc99", null ],
     [ "print", "class_support.html#af87b2e85ec72e394387946023508e7fd", null ],
     [ "reset_array", "class_support.html#a4f2860fd2e8e30703b91633a92ed7a58", null ],
-    [ "reset_array", "class_support.html#a6e39b22dfd1e0a0ceebf596c974f5326", null ],
+    [ "reset_array", "class_support.html#afb7ca8dbf350d233e677322d567dc98c", null ],
     [ "set_counters", "class_support.html#aef83474cda55c4ed52e313e8ed948b08", null ],
     [ "set_rules", "class_support.html#a66dc1a0e7097d547ea9c84df777ad477", null ],
     [ "change_stats", "class_support.html#a500e5cc6eae028e6323c94641a070843", null ],

@@ -68,7 +68,9 @@ void \hyperlink{namespacebarry_1_1counters_1_1phylo_ae4ace7c30011a6d7047a94fd0dd
 void \hyperlink{namespacebarry_1_1counters_1_1phylo_a4cf48d44538ec0646783e29e89027838}{counter\+\_\+neofun} (\hyperlink{namespacebarry_1_1counters_1_1phylo_a4e401ffe66d04091343dcffaf915f8c3}{Phylo\+Counters} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} nfunA, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} nfunB, bool duplication=true)
 \begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events. \end{DoxyCompactList}\item 
 void \hyperlink{namespacebarry_1_1counters_1_1phylo_a3394895262bbf1fd603193ef21b9ddb8}{counter\+\_\+neofun\+\_\+a2b} (\hyperlink{namespacebarry_1_1counters_1_1phylo_a4e401ffe66d04091343dcffaf915f8c3}{Phylo\+Counters} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} nfunA, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} nfunB, bool duplication=true)
-\begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events. \end{DoxyCompactList}\item 
+void \hyperlink{namespacebarry_1_1counters_1_1phylo_adca76f02679f5f1bad46c9fa0ed68553}{counter\+\_\+co\+\_\+opt} (\hyperlink{namespacebarry_1_1counters_1_1phylo_a4e401ffe66d04091343dcffaf915f8c3}{Phylo\+Counters} $\ast$counters, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} nfunA, \hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint} nfunB, bool duplication=true)
+\begin{DoxyCompactList}\small\item\em Function co-\/opting. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 
 
@@ -186,6 +188,20 @@ Definition at line 61 of file barry.\+hpp.
 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_adca76f02679f5f1bad46c9fa0ed68553}\label{namespacebarry_1_1counters_1_1phylo_adca76f02679f5f1bad46c9fa0ed68553}} 
+\index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+co\+\_\+opt@{counter\+\_\+co\+\_\+opt}}
+\index{counter\+\_\+co\+\_\+opt@{counter\+\_\+co\+\_\+opt}!barry\+::counters\+::phylo@{barry\+::counters\+::phylo}}
+\subsubsection{\texorpdfstring{counter\+\_\+co\+\_\+opt()}{counter\_co\_opt()}}
+{\footnotesize\ttfamily void barry\+::counters\+::phylo\+::counter\+\_\+co\+\_\+opt (\begin{DoxyParamCaption}\item[{\hyperlink{namespacebarry_1_1counters_1_1phylo_a4e401ffe66d04091343dcffaf915f8c3}{Phylo\+Counters} $\ast$}]{counters,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{nfunA,  }\item[{\hyperlink{namespacebarry_a11dfc53ddb4672278319aa04f1e09a6c}{uint}}]{nfunB,  }\item[{bool}]{duplication = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function co-\/opting. 
+
+Function co-\/opting of functions A and B happens when, for example, function B is gained as a new featured leveraging what function A already does; without losing function A. The sufficient statistic is defined as follows\+: \[ x_{pa}(1 - x_{pb})\sum_{i<j}{x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p + x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p \] This algorithm implements the change statistic. 
+
+Definition at line 916 of file barry.\+hpp.
+
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_a002286f13261eb4633c6dc9e6fc1212b}\label{namespacebarry_1_1counters_1_1phylo_a002286f13261eb4633c6dc9e6fc1212b}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+cogain@{counter\+\_\+cogain}}
 \index{counter\+\_\+cogain@{counter\+\_\+cogain}!barry\+::counters\+::phylo@{barry\+::counters\+::phylo}}
@@ -198,7 +214,7 @@ Co-\/evolution (joint gain or loss)
 
 Needs to specify pairs of functions ({\ttfamily nfunA}, {\ttfamily nfunB}). 
 
-Definition at line 613 of file barry.\+hpp.
+Definition at line 618 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_afc1215e596c2f5a5e3b6f39273427a9a}\label{namespacebarry_1_1counters_1_1phylo_afc1215e596c2f5a5e3b6f39273427a9a}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+gains@{counter\+\_\+gains}}
@@ -212,7 +228,7 @@ Functional gains for a specific function ({\ttfamily nfun}).
 
 
 
-Definition at line 130 of file barry.\+hpp.
+Definition at line 132 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_a1a2118168c3e375edf94fc6b53969a6b}\label{namespacebarry_1_1counters_1_1phylo_a1a2118168c3e375edf94fc6b53969a6b}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+gains\+\_\+k\+\_\+offspring@{counter\+\_\+gains\+\_\+k\+\_\+offspring}}
@@ -226,7 +242,7 @@ Functional gains for a specific function ({\ttfamily nfun}).
 
 
 
-Definition at line 165 of file barry.\+hpp.
+Definition at line 167 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_a680cd7516f66f06eb8a27d8b252b53ed}\label{namespacebarry_1_1counters_1_1phylo_a680cd7516f66f06eb8a27d8b252b53ed}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+genes\+\_\+changing@{counter\+\_\+genes\+\_\+changing}}
@@ -240,7 +256,7 @@ Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with re
 
 
 
-Definition at line 228 of file barry.\+hpp.
+Definition at line 230 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_ae4ace7c30011a6d7047a94fd0ddf2df2}\label{namespacebarry_1_1counters_1_1phylo_ae4ace7c30011a6d7047a94fd0ddf2df2}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+longest@{counter\+\_\+longest}}
@@ -254,7 +270,7 @@ Longest branch mutates (either by gain or by loss)
 
 
 
-Definition at line 667 of file barry.\+hpp.
+Definition at line 664 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_affbd49d13928ece0a2f100261375d2a7}\label{namespacebarry_1_1counters_1_1phylo_affbd49d13928ece0a2f100261375d2a7}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+loss@{counter\+\_\+loss}}
@@ -268,7 +284,7 @@ Total count of losses for an specific function.
 
 
 
-Definition at line 439 of file barry.\+hpp.
+Definition at line 444 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_a80949b65fbe734d854742306065914bf}\label{namespacebarry_1_1counters_1_1phylo_a80949b65fbe734d854742306065914bf}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+maxfuns@{counter\+\_\+maxfuns}}
@@ -282,7 +298,7 @@ Cap the number of functions per gene.
 
 
 
-Definition at line 366 of file barry.\+hpp.
+Definition at line 371 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_a4cf48d44538ec0646783e29e89027838}\label{namespacebarry_1_1counters_1_1phylo_a4cf48d44538ec0646783e29e89027838}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+neofun@{counter\+\_\+neofun}}
@@ -296,7 +312,7 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 752 of file barry.\+hpp.
+Definition at line 750 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_a3394895262bbf1fd603193ef21b9ddb8}\label{namespacebarry_1_1counters_1_1phylo_a3394895262bbf1fd603193ef21b9ddb8}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+neofun\+\_\+a2b@{counter\+\_\+neofun\+\_\+a2b}}
@@ -310,7 +326,7 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 824 of file barry.\+hpp.
+Definition at line 823 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_abeaaaa150b98e55f7bc242810fa1230a}\label{namespacebarry_1_1counters_1_1phylo_abeaaaa150b98e55f7bc242810fa1230a}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+overall\+\_\+changes@{counter\+\_\+overall\+\_\+changes}}
@@ -324,7 +340,7 @@ Total number of changes. Use this statistic to account for \char`\"{}preservatio
 
 
 
-Definition at line 481 of file barry.\+hpp.
+Definition at line 486 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_ae1e599324d656660ce8730b77efcbcce}\label{namespacebarry_1_1counters_1_1phylo_ae1e599324d656660ce8730b77efcbcce}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+overall\+\_\+gains@{counter\+\_\+overall\+\_\+gains}}
@@ -338,7 +354,7 @@ Overall functional gains.
 
 Total number of gains (irrespective of the function). 
 
-Definition at line 98 of file barry.\+hpp.
+Definition at line 99 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_a79ccde09af0d3d47b1a3162a16bc4597}\label{namespacebarry_1_1counters_1_1phylo_a79ccde09af0d3d47b1a3162a16bc4597}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+overall\+\_\+loss@{counter\+\_\+overall\+\_\+loss}}
@@ -352,7 +368,7 @@ Overall functional loss.
 
 
 
-Definition at line 326 of file barry.\+hpp.
+Definition at line 330 of file barry.\+hpp.
 
 \mbox{\Hypertarget{namespacebarry_1_1counters_1_1phylo_ad36131d4405a758fa200fd29932f49ea}\label{namespacebarry_1_1counters_1_1phylo_ad36131d4405a758fa200fd29932f49ea}} 
 \index{barry\+::counters\+::phylo@{barry\+::counters\+::phylo}!counter\+\_\+subfun@{counter\+\_\+subfun}}
@@ -366,5 +382,5 @@ Total count of Sub-\/functionalization events.
 
 It requires to specify data = \{funA, funB\} 
 
-Definition at line 540 of file barry.\+hpp.
+Definition at line 545 of file barry.\+hpp.
 

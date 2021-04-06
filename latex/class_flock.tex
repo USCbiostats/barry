@@ -1,0 +1,159 @@
+\hypertarget{class_flock}{}\section{Flock Class Reference}
+\label{class_flock}\index{Flock@{Flock}}
+
+
+A \hyperlink{class_flock}{Flock} is a group of \hyperlink{class_geese}{Geese}.  
+
+
+
+
+{\ttfamily \#include $<$flock-\/bones.\+hpp$>$}
+
+
+
+Collaboration diagram for Flock\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_flock__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_flock_a2a0a514c368e21f718ad7358ed42f3b7}{Flock} ()
+\item 
+\hyperlink{class_flock_ab5ed0567a8721dd114763267f9fa3bdf}{$\sim$\+Flock} ()
+\item 
+unsigned int \hyperlink{class_flock_a17f2726d36ca5727b14c71d1e1dbabe9}{add\+\_\+data} (std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \&annotations, std\+::vector$<$ unsigned int $>$ \&geneid, std\+::vector$<$ int $>$ \&parent, std\+::vector$<$ bool $>$ \&duplication)
+\item 
+void \hyperlink{class_flock_a99f3c0a3aacc8af28c13207dd81d7164}{init} ()
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_a4e401ffe66d04091343dcffaf915f8c3}{phylocounters\+::\+Phylo\+Counters} $\ast$ \hyperlink{class_flock_a1e7aec0dc05f41da6f0caa80a202daa0}{counters\+\_\+ptr} ()
+\item 
+double \hyperlink{class_flock_a701dce27fdc0a20e63caec1e1fd3def7}{likelihood\+\_\+joint} (const std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=false, bool use\+\_\+likelihood\+\_\+sequence=true)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{class_geese}{Geese} $>$ \hyperlink{class_flock_af493163235db2dcb44b8c5e615f52bdb}{dat}
+\item 
+std\+::mt19937 \hyperlink{class_flock_a0e3ce6d007f667eea9f036cddb6789b6}{rengine}
+\item 
+\hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model} \hyperlink{class_flock_a20d75da0d423252055af84194e88f901}{support} = \hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model}()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{class_flock}{Flock} is a group of \hyperlink{class_geese}{Geese}. 
+
+This object buils a model with multiple trees (\hyperlink{class_geese}{Geese} objects), with all of these using the same Phylo\+Model object. 
+
+Definition at line 12 of file flock-\/bones.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_flock_a2a0a514c368e21f718ad7358ed42f3b7}\label{class_flock_a2a0a514c368e21f718ad7358ed42f3b7}} 
+\index{Flock@{Flock}!Flock@{Flock}}
+\index{Flock@{Flock}!Flock@{Flock}}
+\subsubsection{\texorpdfstring{Flock()}{Flock()}}
+{\footnotesize\ttfamily Flock\+::\+Flock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 21 of file flock-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_flock_ab5ed0567a8721dd114763267f9fa3bdf}\label{class_flock_ab5ed0567a8721dd114763267f9fa3bdf}} 
+\index{Flock@{Flock}!````~Flock@{$\sim$\+Flock}}
+\index{````~Flock@{$\sim$\+Flock}!Flock@{Flock}}
+\subsubsection{\texorpdfstring{$\sim$\+Flock()}{~Flock()}}
+{\footnotesize\ttfamily Flock\+::$\sim$\+Flock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 22 of file flock-\/bones.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_flock_a17f2726d36ca5727b14c71d1e1dbabe9}\label{class_flock_a17f2726d36ca5727b14c71d1e1dbabe9}} 
+\index{Flock@{Flock}!add\+\_\+data@{add\+\_\+data}}
+\index{add\+\_\+data@{add\+\_\+data}!Flock@{Flock}}
+\subsubsection{\texorpdfstring{add\+\_\+data()}{add\_data()}}
+{\footnotesize\ttfamily unsigned int Flock\+::add\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \&}]{annotations,  }\item[{std\+::vector$<$ unsigned int $>$ \&}]{geneid,  }\item[{std\+::vector$<$ int $>$ \&}]{parent,  }\item[{std\+::vector$<$ bool $>$ \&}]{duplication }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 6 of file flock-\/meet.\+hpp.
+
+\mbox{\Hypertarget{class_flock_a1e7aec0dc05f41da6f0caa80a202daa0}\label{class_flock_a1e7aec0dc05f41da6f0caa80a202daa0}} 
+\index{Flock@{Flock}!counters\+\_\+ptr@{counters\+\_\+ptr}}
+\index{counters\+\_\+ptr@{counters\+\_\+ptr}!Flock@{Flock}}
+\subsubsection{\texorpdfstring{counters\+\_\+ptr()}{counters\_ptr()}}
+{\footnotesize\ttfamily \hyperlink{namespacebarry_1_1counters_1_1phylo_a4e401ffe66d04091343dcffaf915f8c3}{phylocounters\+::\+Phylo\+Counters} $\ast$ Flock\+::counters\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 61 of file flock-\/meet.\+hpp.
+
+\mbox{\Hypertarget{class_flock_a99f3c0a3aacc8af28c13207dd81d7164}\label{class_flock_a99f3c0a3aacc8af28c13207dd81d7164}} 
+\index{Flock@{Flock}!init@{init}}
+\index{init@{init}!Flock@{Flock}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Flock\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 29 of file flock-\/meet.\+hpp.
+
+\mbox{\Hypertarget{class_flock_a701dce27fdc0a20e63caec1e1fd3def7}\label{class_flock_a701dce27fdc0a20e63caec1e1fd3def7}} 
+\index{Flock@{Flock}!likelihood\+\_\+joint@{likelihood\+\_\+joint}}
+\index{likelihood\+\_\+joint@{likelihood\+\_\+joint}!Flock@{Flock}}
+\subsubsection{\texorpdfstring{likelihood\+\_\+joint()}{likelihood\_joint()}}
+{\footnotesize\ttfamily double Flock\+::likelihood\+\_\+joint (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily false},  }\item[{bool}]{use\+\_\+likelihood\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 68 of file flock-\/meet.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_flock_af493163235db2dcb44b8c5e615f52bdb}\label{class_flock_af493163235db2dcb44b8c5e615f52bdb}} 
+\index{Flock@{Flock}!dat@{dat}}
+\index{dat@{dat}!Flock@{Flock}}
+\subsubsection{\texorpdfstring{dat}{dat}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{class_geese}{Geese} $>$ Flock\+::dat}
+
+
+
+Definition at line 15 of file flock-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_flock_a0e3ce6d007f667eea9f036cddb6789b6}\label{class_flock_a0e3ce6d007f667eea9f036cddb6789b6}} 
+\index{Flock@{Flock}!rengine@{rengine}}
+\index{rengine@{rengine}!Flock@{Flock}}
+\subsubsection{\texorpdfstring{rengine}{rengine}}
+{\footnotesize\ttfamily std\+::mt19937 Flock\+::rengine}
+
+
+
+Definition at line 18 of file flock-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_flock_a20d75da0d423252055af84194e88f901}\label{class_flock_a20d75da0d423252055af84194e88f901}} 
+\index{Flock@{Flock}!support@{support}}
+\index{support@{support}!Flock@{Flock}}
+\subsubsection{\texorpdfstring{support}{support}}
+{\footnotesize\ttfamily \hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model} Flock\+::support = \hyperlink{namespacebarry_1_1counters_1_1phylo_ad32b4186e3bab93119df225fddc3c609}{phylocounters\+::\+Phylo\+Model}()}
+
+
+
+Definition at line 19 of file flock-\/bones.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/barry/models/geese/\hyperlink{flock-bones_8hpp}{flock-\/bones.\+hpp}\item 
+include/barry/models/geese/\hyperlink{flock-meet_8hpp}{flock-\/meet.\+hpp}\end{DoxyCompactItemize}
