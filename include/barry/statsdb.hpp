@@ -3,8 +3,8 @@
 // #include <unordered_map>
 #include "typedefs.hpp"
 
-#ifndef LBARRAY_STATSDB_HPP 
-#define LBARRAY_STATSDB_HPP 1
+#ifndef BARRY_STATSDB_HPP 
+#define BARRY_STATSDB_HPP 1
  
 /**@brief Database of statistics.
  * 

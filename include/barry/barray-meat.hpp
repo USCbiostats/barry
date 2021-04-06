@@ -644,50 +644,59 @@ inline void BArray<Cell_Type, Data_Type>::insert_cell(
 
 template<typename Cell_Type, typename Data_Type>
 inline void BArray<Cell_Type, Data_Type>::insert_cell(
-    uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists) {
-  
-  Cell<Cell_Type> vc(v, visited);
-  
-  return insert_cell(i, j, vc, check_bounds, check_exists);
-}
-
-template<typename Cell_Type, typename Data_Type>
-inline void BArray<Cell_Type, Data_Type>::insert_cell_row_maj(
-    uint i, 
-    const Cell<Cell_Type> & v,
-    bool check_bounds,
-    bool check_exists
-  ) {
-  
-  return insert_cell(
-      (int) i % (int) N,
-      std::floor((int) i / (int) N),
-      v,
-      check_bounds,
-      check_exists
-  );
-}
-
-template<typename Cell_Type, typename Data_Type>
-inline void BArray<Cell_Type, Data_Type>::insert_cell_row_maj(
     uint i,
-    Cell_Type v,
+    uint j,
+    Cell< Cell_Type> && v,
     bool check_bounds,
     bool check_exists
-  ) {
+  ) { 
   
-  Cell<Cell_Type> vc(v, visited);
+  if (check_bounds)
+    out_of_range(i,j); 
   
-  return insert_cell(
-      (int) i % (int) N,
-      std::floor((int) i / (int) N),
-      vc,
-      check_bounds,
-      check_exists
-  );
+  if (check_exists) {
+    
+    // Checking if nothing here, then we move along
+    if (ROW(i).size() == 0u) {
+      
+      ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
+      COL(j).emplace(i, &ROW(i)[j]);
+      NCells++;
+      return;
+      
+    }
+    
+    // In this case, the row exists, but we are checking that the value is empty  
+    if (ROW(i).find(j) == ROW(i).end()) {
+      
+      ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v)); 
+      COL(j).emplace(i, &ROW(i)[j]);
+      NCells++;
+      
+    } else {
+      throw std::logic_error("The cell already exists.");
+    }
+    
+    
+  } else {
+    
+    ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
+    COL(j).emplace(i, &ROW(i)[j]);
+    NCells++;
+    
+  }
+  
+  return;
+  
 }
 
+template<typename Cell_Type, typename Data_Type>
+inline void BArray<Cell_Type, Data_Type>::insert_cell(
+    uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists) {
+    
+  return insert_cell(i, j, Cell<Cell_Type>(v, visited), check_bounds, check_exists);
 
+}
 
 template<typename Cell_Type, typename Data_Type>
 inline void BArray<Cell_Type, Data_Type>::swap_cells(

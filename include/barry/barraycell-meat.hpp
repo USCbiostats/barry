@@ -79,4 +79,24 @@ inline bool BArrayCell_const<Cell_Type,Data_Type>::operator!=(const Cell_Type & 
   return !(this->operator==(val));
 }
 
+template<typename Cell_Type,typename Data_Type>
+inline bool BArrayCell_const<Cell_Type,Data_Type>::operator<(const Cell_Type & val) const {
+  return Array->get_cell(i, j, false) < static_cast<Cell_Type>(val);    
+}
+
+template<typename Cell_Type,typename Data_Type>
+inline bool BArrayCell_const<Cell_Type,Data_Type>::operator>(const Cell_Type & val) const {
+  return Array->get_cell(i, j, false) > static_cast<Cell_Type>(val);    
+}
+
+template<typename Cell_Type,typename Data_Type>
+inline bool BArrayCell_const<Cell_Type,Data_Type>::operator<=(const Cell_Type & val) const {
+  return Array->get_cell(i, j, false) <= static_cast<Cell_Type>(val);    
+}
+
+template<typename Cell_Type,typename Data_Type>
+inline bool BArrayCell_const<Cell_Type,Data_Type>::operator>=(const Cell_Type & val) const {
+  return Array->get_cell(i, j, false) >= static_cast<Cell_Type>(val);    
+}
+
 #endif

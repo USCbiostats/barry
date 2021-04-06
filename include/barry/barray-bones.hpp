@@ -21,6 +21,7 @@
 template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArray {
   friend class BArrayCell<Cell_Type,Data_Type>;
+  friend class BArrayCell_const<Cell_Type,Data_Type>;
 public:
   uint N;
   uint M;
@@ -154,10 +155,8 @@ public:
   void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
   
   void insert_cell(uint i, uint j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
+  void insert_cell(uint i, uint j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
   void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists);
-  
-  void insert_cell_row_maj(uint i, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
-  void insert_cell_row_maj(uint i, Cell_Type v, bool check_bounds, bool check_exists);
   
   void swap_cells(
       uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,

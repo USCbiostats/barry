@@ -28,11 +28,10 @@ inline unsigned int Flock::add_data(
 
 inline void Flock::init() {
 
-    
-
     // For some strange reason, pointing to support during
     // the add_data function changes addresses once its out.
     for (auto& a : dat) {
+
         if (a.delete_support)
             delete a.support;
 
@@ -50,6 +49,7 @@ inline void Flock::init() {
 
         a.counters        = &support.counters;
         a.delete_counters = false;
+        
     }
 
     // Initializing the models.

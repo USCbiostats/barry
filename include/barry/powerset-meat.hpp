@@ -52,12 +52,15 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend(uint pos) {
       
   // We will pass it to the next step, if the iteration makes sense.
   calc_backend(pos + 1u);
+
+  const std::pair<uint,uint> & coords = coordinates_free[pos];
     
   // Toggle the cell (we will toggle it back after calling the counter)
   EmptyArray.insert_cell(
-    coordinates_free[pos].first,
-    coordinates_free[pos].second,
-    EmptyArray.Cell_default , false, false
+    coords.first,
+    coords.second,
+    EmptyArray.Cell_default.value,
+    false, false
     );
 
   data.push_back(EmptyArray);
@@ -68,8 +71,8 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend(uint pos) {
   
   // We need to restore the state of the cell
   EmptyArray.rm_cell(
-    coordinates_free[pos].first,
-    coordinates_free[pos].second,
+    coords.first,
+    coords.second,
     false, false
     );  
   

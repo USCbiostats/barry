@@ -22,23 +22,23 @@ Cell<Cell_Type>& Cell<Cell_Type>::operator=(Cell<Cell_Type>&& other) noexcept {
  */
 
 template <> inline void Cell<double>::add(double x) {
-  value += x;
-  return;
+    value += x;
+    return;
 }
 
 template <> inline void Cell<unsigned int>::add(unsigned int x) {
-  value += x;
-  return;
+    value += x;
+    return;
 }
 
 template <> inline void Cell<int>::add(int x) {
-  value += x;
-  return;
+    value += x;
+    return;
 }
 
 template <> inline void Cell<bool>::add(bool x) {
-  value = true;
-  return;
+    value = true;
+    return;
 }
 
 template<> inline Cell< double >::Cell() : value(1.0), visited(false) {}
