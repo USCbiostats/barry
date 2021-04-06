@@ -72,8 +72,8 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
 
     model2.init();
 
-    ans0 = model2.likelihood(params, true);
-    ans1 = model2.likelihood(params, false);
+    ans0 = model2.likelihood(params, true, true);
+    ans1 = model2.likelihood(params, true, false);
 
     REQUIRE(std::abs(ans0 - ans1) < .00000001);
 

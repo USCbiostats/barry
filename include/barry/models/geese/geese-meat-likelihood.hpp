@@ -5,6 +5,7 @@
 
 inline double Geese::likelihood(
     const std::vector< double > & par,
+    bool as_log,
     bool use_likelihood_sequence
     ) {
 
@@ -133,7 +134,7 @@ inline double Geese::likelihood(
 
     }
 
-    return ll;
+    return as_log ? std::log(ll) : ll;
 
 }
 #endif

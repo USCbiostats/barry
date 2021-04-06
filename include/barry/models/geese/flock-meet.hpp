@@ -93,12 +93,12 @@ inline double Flock::likelihood_joint(
     if (as_log) {
 
         for (auto& d : this->dat) 
-            ans += std::log(d.likelihood(par, use_likelihood_sequence));
+            ans += d.likelihood(par, as_log, use_likelihood_sequence);
 
     } else {
 
         for (auto& d : this->dat) 
-            ans *= d.likelihood(par, use_likelihood_sequence);
+            ans *= d.likelihood(par, as_log, use_likelihood_sequence);
             
     }
     
