@@ -8,10 +8,10 @@
   
 /**
  * @brief Database of statistics.
-  * 
-  * This is mostly used in `Support`.
-  * 
-  */
+ * 
+ * This is mostly used in `Support`.
+ * 
+ */
 template<typename T = double> 
 class FreqTable {
 private:

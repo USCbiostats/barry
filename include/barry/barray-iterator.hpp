@@ -9,26 +9,27 @@
 template<typename Cell_Type, typename Data_Type>
 class ConstBArrayRowIter {
 public:
-  
-  uint current_row, current_col;
-  typename Row_type<Cell_Type>::const_iterator iter;
-  const BArray<Cell_Type,Data_Type> * Array;
-  
-  ConstBArrayRowIter(const BArray<Cell_Type,Data_Type> * Array_) : Array(Array_) {
     
-    // Finding the first entry of the iterator
-    for (uint i = 0u; i < Array->N; ++i)
-      if (A_ROW(i).size() != 0u) {
-        iter = A_ROW(i).begin();
-        break;
-      }
+    uint current_row, current_col;
+    typename Row_type<Cell_Type>::const_iterator iter;
+    const BArray<Cell_Type,Data_Type> * Array;
     
-    return;
-  };
-  ~ConstBArrayRowIter() {};
-  
-  // operat
+    ConstBArrayRowIter(const BArray<Cell_Type,Data_Type> * Array_) : Array(Array_) {
+        
+        // Finding the first entry of the iterator
+        for (uint i = 0u; i < Array->N; ++i)
+            if (A_ROW(i).size() != 0u) {
+                iter = A_ROW(i).begin();
+                break;
+            }
+        
+        return;
+
+    };
+    ~ConstBArrayRowIter() {};
     
+    // operat
+      
 };
 
 #endif
