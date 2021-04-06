@@ -305,8 +305,8 @@ inline unsigned int Geese::nleafs() const {
 inline unsigned int Geese::nterms() const {
 
     INITIALIZED()
-
     return support->nterms() + this->nfuns();
+
 }
 
 inline std::vector< std::vector<double> > Geese::observed_counts() {

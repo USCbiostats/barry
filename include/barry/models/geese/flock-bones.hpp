@@ -13,6 +13,8 @@ class Flock {
 public:
 
     std::vector< Geese > dat;
+    unsigned int         nfunctions  = 0u;
+    bool                 initialized = false;
     
     // Common components
     std::mt19937              rengine;
@@ -28,6 +30,8 @@ public:
         std::vector< bool > &                      duplication
     );
 
+    void set_seed(const unsigned int & s);
+
     void init();
     
     // void add_geese(Geese x);
@@ -37,7 +41,19 @@ public:
         const std::vector< double > & par,
         bool as_log = false,
         bool use_likelihood_sequence = true
-        );
+    );
+
+    /**
+     * @name Information about the model 
+     * 
+     */
+    ///@{
+    unsigned int nfuns() const;
+    unsigned int ntrees() const;
+    std::vector< unsigned int > nnodes() const;
+    std::vector< unsigned int > nleafs() const;
+    unsigned int nterms() const;
+    ///@}
 
 };
 

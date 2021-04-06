@@ -893,7 +893,7 @@ inline void counter_neofun_a2b(
                         res += 1.0;
 
                 }
-                
+
             }
 
         }
@@ -953,7 +953,7 @@ inline void counter_co_opt(
                 return 0.0;
 
             // If the parent does not have the initial state, then it makes no sense
-            if (!Array.data->states[funA] | Array.data->states[funB])
+            if ((!Array.data->states[funA]) | Array.data->states[funB])
                 return 0.0;
 
             // Checking whether function A or function B changed
