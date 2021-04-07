@@ -924,8 +924,7 @@ inline void counter_neofun_a2b(
  * function B is gained as a new featured leveraging what function A already does;
  * without losing function A. The sufficient statistic is defined as follows:
  * \f[
- * x_{pa}(1 - x_{pb})\sum_{i<j}{x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p +
- * x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p
+ * x_{pa}(1 - x_{pb})\sum_{i<j}\left[x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p + x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p\right]
  * \f]
  * This algorithm implements the change statistic.
  */

@@ -50,7 +50,7 @@ inline Geese::Geese(
             // Adding parent
             auto key_par = nodes.insert({
                 parent.at(i),
-                Node(parent.at(i), true)
+                Node(parent.at(i), i, true)
             });
 
             // Adding offspring
@@ -58,7 +58,7 @@ inline Geese::Geese(
 
                 auto key_off = nodes.insert({
                     geneid.at(i),
-                    Node(geneid.at(i), funs, duplication.at(i))
+                    Node(geneid.at(i), i, funs, duplication.at(i))
                     });
 
                 // Adding the offspring to the parent
@@ -94,7 +94,7 @@ inline Geese::Geese(
 
                 auto key_off = nodes.insert({
                     geneid.at(i),
-                    Node(geneid.at(i), funs, duplication.at(i))
+                    Node(geneid.at(i), i, funs, duplication.at(i))
                     });
 
                 // Adding the offspring to the parent

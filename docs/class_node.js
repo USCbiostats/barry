@@ -1,8 +1,8 @@
 var class_node =
 [
     [ "Node", "class_node.html#ad7a34779cad45d997bfd6d3d8043c75f", null ],
-    [ "Node", "class_node.html#affbe0c59bdcfd5e8068d50b49742cff6", null ],
-    [ "Node", "class_node.html#a05edab5d06fba5a71443399343645553", null ],
+    [ "Node", "class_node.html#a9983fdcbdddeae8862fbd266536f5cff", null ],
+    [ "Node", "class_node.html#a0c9bb1827ebcdb298c05e9b9bf04aac8", null ],
     [ "Node", "class_node.html#a7541702bb12f9dae3f6cbf83bddaed2a", null ],
     [ "Node", "class_node.html#ac9e4a04860b442c2034e24aa058db129", null ],
     [ "~Node", "class_node.html#aa0840c3cb5c7159be6d992adecd2097c", null ],
@@ -15,6 +15,7 @@ var class_node =
     [ "id", "class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9", null ],
     [ "narray", "class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac", null ],
     [ "offspring", "class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7", null ],
+    [ "ord", "class_node.html#ac58501488a47ad56989463668d062e8f", null ],
     [ "parent", "class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85", null ],
     [ "probability", "class_node.html#a867d5e07f62da01392a817042c77735f", null ],
     [ "subtree_prob", "class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d", null ],

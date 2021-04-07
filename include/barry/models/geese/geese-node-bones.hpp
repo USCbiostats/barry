@@ -10,7 +10,10 @@
  */
 class Node {
 public:
-    unsigned int                 id;
+
+    unsigned int id; ///< Id of the node (as specified in the input)
+    unsigned int ord; ///< Order in which the node was created
+
     phylocounters::PhyloArray array;
     std::vector< unsigned int >              annotations;         ///< Observed annotations (only defined for Geese)
     bool                                     duplication;
@@ -31,8 +34,8 @@ public:
     ///@{
     
     Node() {};
-    Node(unsigned int id_, bool duplication_);
-    Node(unsigned int id_, std::vector< unsigned int > annotations_, bool duplication_);
+    Node(unsigned int id_, unsigned int ord_, bool duplication_);
+    Node(unsigned int id_, unsigned int ord_, std::vector< unsigned int > annotations_, bool duplication_);
     
     // Move constructor
     Node(Node && x) noexcept;
@@ -49,21 +52,21 @@ public:
 
 };
 
-inline Node::Node(unsigned int id_, bool duplication_)
-    : id(id_), duplication(duplication_) {
+inline Node::Node(unsigned int id_, unsigned int ord_, bool duplication_)
+    : id(id_), ord(ord_), duplication(duplication_) {
 
     return;
 }
 
 inline Node::Node(
     unsigned int id_,
+    unsigned int ord_,
     std::vector< unsigned int > annotations_,
-    bool duplication_) :
-    id(id_), annotations(annotations_), duplication(duplication_) {
-}
+    bool duplication_
+    ) : id(id_), ord(ord_), annotations(annotations_), duplication(duplication_) {}
 
 inline Node::Node(Node && x) noexcept :
-    id(x.id), array(std::move(x.array)), annotations(std::move(x.annotations)),
+    id(x.id), ord(x.ord), array(std::move(x.array)), annotations(std::move(x.annotations)),
     duplication(x.duplication), arrays(std::move(x.arrays)),
     parent(std::move(x.parent)),
     offspring(std::move(x.offspring)),
@@ -77,7 +80,7 @@ inline Node::Node(Node && x) noexcept :
 }
 
 inline Node::Node(const Node & x) :
-    id(x.id), array(x.array), annotations(x.annotations),
+    id(x.id), ord(x.ord), array(x.array), annotations(x.annotations),
     duplication(x.duplication), arrays(x.arrays),
     parent(x.parent),
     offspring(x.offspring),
