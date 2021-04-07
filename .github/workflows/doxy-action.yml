@@ -28,6 +28,9 @@ jobs:
           working-directory: '.'
           doxyfile-path: './Doxyfile'
           enable-latex: true
+
+      - name: Moving latex
+        run: mv latex docs/
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

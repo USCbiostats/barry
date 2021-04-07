@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.com/USCbiostats/barry.svg?branch=master)](https://travis-ci.com/USCbiostats/barry) [![Integrative Methods of Analysis for Genetic Epidemiology](https://raw.githubusercontent.com/USCbiostats/badges/master/tommy-image-badge.svg)](https://image.usc.edu)
+[![C/C++ CI](https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml) [![Integrative Methods of Analysis for Genetic Epidemiology](https://raw.githubusercontent.com/USCbiostats/badges/master/tommy-image-badge.svg)](https://image.usc.edu)
 
-<h1>Barry: your to-go motif accountant<img src="logo.svg" style="max-width:300px;width:50%;"></h1>
+<h1>Barry: your to-go motif accountant<img src="logo.svg" style="max-width:200px;width:50%;"></h1>
 
 
 This repository contains a C++ template library that essentially counts sufficient statistics

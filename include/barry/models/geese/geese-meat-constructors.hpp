@@ -69,8 +69,6 @@ inline Geese::Geese(
 
                 // Adding the parent to the offspring
                 key_off.first->second.parent = &key_par.first->second;
-                // key_off.first->second.annotations = funs;
-                // key_off.first->second.duplication = duplication.at(i);
 
             } else { // Case 1b: i does exists (we saw it earlier)
 
@@ -109,9 +107,6 @@ inline Geese::Geese(
 
                 }
 
-                // key_off.first->second.annotations = funs;
-                // key_off.first->second.duplication = duplication.at(i);
-
             } else { // Case 2b: i does exists (and so does its parent)
 
                 // We just need to make sure that we update it!
@@ -143,6 +138,10 @@ inline Geese::Geese(
     // Computing the pruning sequence.
     calc_sequence();
     calc_likelihood_sequence();
+
+    // Are the sequences OK?
+    if (this->sequence.size() != this->nnodes())
+        throw std::logic_error("The pruning sequence's length is different from nnodes(). This should not happen! (contact the developers).");
 
     return;
 
