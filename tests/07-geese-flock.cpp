@@ -31,6 +31,8 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     // Tryingout likelihood
     std::vector<double> params = {1, 1, -1, -10, -10};
 
+    auto simex = model.simulate(params);
+
     double ans0 = std::log(model.likelihood(params)) * 2.0;
     
     // Generating a flock ------------------------------------------------------

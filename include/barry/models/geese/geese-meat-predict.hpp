@@ -57,7 +57,7 @@ inline std::vector< std::vector<double> > Geese::predict(
     }
 
     // Storing the final prob
-    res[nodes[preorder[0u]].id] = tmp_prob;
+    res[nodes[preorder[0u]].ord] = tmp_prob;
     
         // Going in the opposite direction
     for (auto& i : preorder) {
@@ -72,7 +72,7 @@ inline std::vector< std::vector<double> > Geese::predict(
         node.probability.resize(states.size(), 0.0);
 
         std::vector< double > zerovec(nfuns(), 0.0);
-        res[node.id] = zerovec;
+        res[node.ord] = zerovec;
 
         // Need to identify what is the position of the node with respect to
         // its siblings
@@ -150,7 +150,7 @@ inline std::vector< std::vector<double> > Geese::predict(
                         
         }
 
-        res[node.id] = tmp_prob;
+        res[node.ord] = tmp_prob;
 
     }
 

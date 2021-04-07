@@ -49,7 +49,7 @@ inline std::vector< std::vector< unsigned int > > Geese::simulate(
     }
     
     // We now know the state of the root
-    res[nodes[preorder[0u]].id] =
+    res[nodes[preorder[0u]].ord] =
         vector_caster< unsigned int, bool>(states[idx]);
 
     // Going in the opposite direction
@@ -59,7 +59,7 @@ inline std::vector< std::vector< unsigned int > > Geese::simulate(
             continue;
 
         // Getting the state of the node      
-        unsigned int n = this->map_to_nodes[res[nodes[i].id]];
+        unsigned int n = map_to_nodes[res[nodes[i].ord]];
 
         // Given the state of the current node, sample the state of the
         // offspring, all based on the current state
@@ -67,7 +67,7 @@ inline std::vector< std::vector< unsigned int > > Geese::simulate(
 
         // Iterating through the offspring to assign the state
         for (unsigned int j = 0u; j < nodes[i].offspring.size(); ++j) {
-            res[nodes[i].offspring[j]->id] = tmp.get_col_vec(j, false);
+            res[nodes[i].offspring[j]->ord] = tmp.get_col_vec(j, false);
         }
 
     }

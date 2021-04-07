@@ -43,17 +43,18 @@ inline Geese::Geese(
     for (unsigned int i = 0u; i < geneid.size(); ++i) {
 
         // Temp vector with the annotations
-        std::vector< unsigned int > funs(annotations.at(i));
+        std::vector< unsigned int > & funs(annotations.at(i));
 
+        // Case 1: Not the root node, and the parent does not exists
         if ((parent.at(i) >= 0) && (nodes.find(parent.at(i)) == nodes.end())) {
 
             // Adding parent
             auto key_par = nodes.insert({
                 parent.at(i),
-                Node(parent.at(i), i, true)
+                Node(parent.at(i), UINT_MAX, true)
             });
 
-            // Adding offspring
+            // Case 1a: i does not exists
             if (nodes.find(geneid.at(i)) == nodes.end()) {
 
                 auto key_off = nodes.insert({
@@ -68,15 +69,16 @@ inline Geese::Geese(
 
                 // Adding the parent to the offspring
                 key_off.first->second.parent = &key_par.first->second;
-                key_off.first->second.annotations = funs;
-                key_off.first->second.duplication = duplication.at(i);
+                // key_off.first->second.annotations = funs;
+                // key_off.first->second.duplication = duplication.at(i);
 
-            } else {
+            } else { // Case 1b: i does exists (we saw it earlier)
 
                 // We just need to make sure that we update it!
                 nodes[geneid.at(i)].duplication = duplication.at(i);
                 nodes[geneid.at(i)].annotations = funs;
                 nodes[geneid.at(i)].parent      = &nodes[parent.at(i)];
+                nodes[geneid.at(i)].ord         = i;
 
                 nodes[parent.at(i)].offspring.push_back(
                     &nodes[geneid.at(i)]
@@ -84,49 +86,59 @@ inline Geese::Geese(
 
             }
 
-        } else {
-            // In this case, the parent exists, so we only need to assing the
-            // offspring
-            // Adding offspring
+        } else { // Case 2: Either this is the root, or the parent does exists
 
-            // Does the offspring exist?
+            // Case 2a: i does not exists (but its parent does)
             if (nodes.find(geneid.at(i)) == nodes.end()) {
 
+                // Adding i
                 auto key_off = nodes.insert({
                     geneid.at(i),
                     Node(geneid.at(i), i, funs, duplication.at(i))
                     });
 
-                // Adding the offspring to the parent
+                // We only do this if this is not the root
                 if (parent.at(i) >= 0) {
+
                     nodes[parent.at(i)].offspring.push_back(
                         &key_off.first->second
                     );
 
                     // Adding the parent to the offspring
                     key_off.first->second.parent = &nodes[parent.at(i)];
+
                 }
 
-                key_off.first->second.annotations = funs;
-                key_off.first->second.duplication = duplication.at(i);
+                // key_off.first->second.annotations = funs;
+                // key_off.first->second.duplication = duplication.at(i);
 
-            } else {
+            } else { // Case 2b: i does exists (and so does its parent)
 
                 // We just need to make sure that we update it!
                 nodes[geneid.at(i)].duplication = duplication.at(i);
                 nodes[geneid.at(i)].annotations = funs;
+                nodes[geneid.at(i)].ord         = i;
 
                 if (parent.at(i) >= 0) {
+
                     nodes[geneid.at(i)].parent = &nodes[parent.at(i)];
                     nodes[parent.at(i)].offspring.push_back(
                         &nodes[geneid.at(i)]
                     );
+
                 }
 
             }
         }
 
     }
+
+    // Verifying that all have the variable ord
+    for (auto& n : nodes) {
+        if (n.second.ord == UINT_MAX)
+            throw std::logic_error("One of the nodes was passed along.");
+    }
+
 
     // Computing the pruning sequence.
     calc_sequence();

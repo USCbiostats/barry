@@ -33,7 +33,7 @@ public:
      */
     ///@{
     
-    Node() {};
+    Node() : ord(UINT_MAX) {};
     Node(unsigned int id_, unsigned int ord_, bool duplication_);
     Node(unsigned int id_, unsigned int ord_, std::vector< unsigned int > annotations_, bool duplication_);
     
