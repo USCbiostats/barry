@@ -1,0 +1,107 @@
+\label{index_md_README}%
+\Hypertarget{index_md_README}%
+ \href{https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml}{\texttt{ }} \href{https://image.usc.edu}{\texttt{ }}
+
+\doxysection*{Barry\+: your to-\/go motif accountant}
+
+This repository contains a C++ template library that essentially counts sufficient statistics on binary arrays. The idea of the library is that this can be used together to build exponential family models as those in Exponential Random Graph Models (ERGMs), but as a generalization that also deals with non square arrays.
+
+\doxysection*{Examples}
+
+\doxysubsection*{Counting statistics in a graph}
+
+In the following code we create an array of size 5x5 of class {\ttfamily Network} (available in the namespace \href{https://uscbiostats.github.io/barry/namespacebarry_1_1counters_1_1network.html}{\texttt{ netcounters}}), add/remove ties, print the graph, and count common statistics used in ERGMs\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}../include/barry.hpp"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{typedef} std::vector< unsigned int > vuint;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int} main() \{}
+\DoxyCodeLine{  \textcolor{comment}{// Creating network of size six with five ties}}
+\DoxyCodeLine{  \mbox{\hyperlink{network_8hpp_ad0e1efde7782396b9f93c16ce892af05}{netcounters::Network}} net(}
+\DoxyCodeLine{      6, 6,}
+\DoxyCodeLine{      \{0, 0, 4, 4, 2, 0, 1\},}
+\DoxyCodeLine{      \{1, 2, 0, 2, 4, 0, 1\}}
+\DoxyCodeLine{  );}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  \textcolor{comment}{// How does this looks like?}}
+\DoxyCodeLine{  std::cout << \textcolor{stringliteral}{"{}Current view"{}} << std::endl;}
+\DoxyCodeLine{  net.print();}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  \textcolor{comment}{// Adding extra ties}}
+\DoxyCodeLine{  net += \{1, 0\};}
+\DoxyCodeLine{  net(2, 0) = \textcolor{keyword}{true};}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  \textcolor{comment}{// And removing a couple}}
+\DoxyCodeLine{  net(0, 0) = \textcolor{keyword}{false};}
+\DoxyCodeLine{  net -\/= \{1, 1\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  std::cout << \textcolor{stringliteral}{"{}New view"{}} << std::endl;  }
+\DoxyCodeLine{  net.print();}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  \textcolor{comment}{// Initializing the data. The program deals with freing the memory}}
+\DoxyCodeLine{  net.set\_data(\textcolor{keyword}{new} netcounters::NetworkData, \textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{// Creating counter object for the network and adding stats to count}}
+\DoxyCodeLine{  \mbox{\hyperlink{network_8hpp_a1c44fa47dcf1cca1ba35eea6e70950a3}{netcounters::NetStatsCounter}} counter(\&net);}
+\DoxyCodeLine{  \mbox{\hyperlink{network_8hpp_abd98b97f5b4e45972e132051b12891c8}{netcounters::counter\_edges}}(counter.counters);}
+\DoxyCodeLine{  \mbox{\hyperlink{network_8hpp_a870a0b3698622948d0bfc668e08752a2}{netcounters::counter\_ttriads}}(counter.counters);}
+\DoxyCodeLine{  \mbox{\hyperlink{network_8hpp_ab4c23f807f01c7a9736bb6b9b34820c7}{netcounters::counter\_isolates}}(counter.counters);}
+\DoxyCodeLine{  \mbox{\hyperlink{network_8hpp_a8ea4bb27771e3fb61f807f4dff2a6e57}{netcounters::counter\_ctriads}}(counter.counters);}
+\DoxyCodeLine{  \mbox{\hyperlink{network_8hpp_a78f7e03b92269082ada763e1a936abf3}{netcounters::counter\_mutual}}(counter.counters);}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  \textcolor{comment}{// Counting and printing the results}}
+\DoxyCodeLine{  std::vector< double > counts = counter.count\_all();}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  std::cout <<}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}Edges             : "{}} << counts[0] << std::endl <<}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}Transitive triads : "{}} << counts[1] << std::endl <<}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}Isolates          : "{}} << counts[2] << std::endl <<}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}C triads          : "{}} << counts[3] << std::endl <<}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}Mutuals           : "{}} << counts[4] << std::endl;}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Compiling this program using g++
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{g++ -\/std=c++11 -\/Wall -\/pedantic 08-\/counts.cpp -\/o counts \&\& ./counts}
+
+\end{DoxyCode}
+
+
+Yields the following output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Current view}
+\DoxyCodeLine{[  0,]  1  1  1  .  .  . }
+\DoxyCodeLine{[  1,]  .  1  .  .  .  . }
+\DoxyCodeLine{[  2,]  .  .  .  .  1  . }
+\DoxyCodeLine{[  3,]  .  .  .  .  .  . }
+\DoxyCodeLine{[  4,]  1  .  1  .  .  . }
+\DoxyCodeLine{[  5,]  .  .  .  .  .  . }
+\DoxyCodeLine{New view}
+\DoxyCodeLine{[  0,]  .  1  1  .  .  . }
+\DoxyCodeLine{[  1,]  1  .  .  .  .  . }
+\DoxyCodeLine{[  2,]  1  .  .  .  1  . }
+\DoxyCodeLine{[  3,]  .  .  .  .  .  . }
+\DoxyCodeLine{[  4,]  1  .  1  .  .  . }
+\DoxyCodeLine{[  5,]  .  .  .  .  .  . }
+\DoxyCodeLine{Edges             : 7}
+\DoxyCodeLine{Transitive triads : 3}
+\DoxyCodeLine{Isolates          : 2}
+\DoxyCodeLine{C triads          : 1}
+\DoxyCodeLine{Mutuals           : 3}
+
+\end{DoxyCode}
+ 

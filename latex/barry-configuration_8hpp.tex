@@ -1,0 +1,64 @@
+\hypertarget{barry-configuration_8hpp}{}\doxysection{include/barry/barry-\/configuration.hpp File Reference}
+\label{barry-configuration_8hpp}\index{include/barry/barry-\/configuration.hpp@{include/barry/barry-\/configuration.hpp}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{barry-configuration_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Configuration MACROS}
+\label{_amgrpd443768f87814e03628cca78cd22f6d5}%
+ These are mostly related to performance. The definitions follow\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily BARRY\+\_\+\+USE\+\_\+\+UNORDERED\+\_\+\+MAP} If specified, then barry is compiled using {\ttfamily std\+::unordered\+\_\+map}. Otherwise it will use {\ttfamily std\+::map} for the arrays.
+\item {\ttfamily BARRY\+\_\+\+USE\+\_\+\+SAFE\+\_\+\+EXP} When specified, it will multiply all likelihoods in {\ttfamily \mbox{\hyperlink{class_model}{Model}}} by (1/-\/100)/(1/-\/100) so that numerical overflows are avoided.
+\item {\ttfamily BARRY\+\_\+\+CHECK\+\_\+\+FINITE} When specified, it will introduce a macro 
+\end{DoxyItemize}\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{barry-configuration_8hpp_aa8fd3df3585111e6734d97092df83f57}{BARRY\+\_\+\+SAFE\+\_\+\+EXP}}~-\/100.\+0
+\item 
+\#define \mbox{\hyperlink{barry-configuration_8hpp_aa3c8e71d6d426f5207d478054c790a13}{BARRY\+\_\+\+ISFINITE}}(a)
+\item 
+{\footnotesize template$<$typename Ta , typename Tb $>$ }\\using \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}} = std\+::map$<$ Ta, Tb $>$
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{barry-configuration_8hpp_aa3c8e71d6d426f5207d478054c790a13}\label{barry-configuration_8hpp_aa3c8e71d6d426f5207d478054c790a13}} 
+\index{barry-\/configuration.hpp@{barry-\/configuration.hpp}!BARRY\_ISFINITE@{BARRY\_ISFINITE}}
+\index{BARRY\_ISFINITE@{BARRY\_ISFINITE}!barry-\/configuration.hpp@{barry-\/configuration.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRY\_ISFINITE}{BARRY\_ISFINITE}}
+{\footnotesize\ttfamily \#define BARRY\+\_\+\+ISFINITE(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file barry-\/configuration.\+hpp.
+
+\mbox{\Hypertarget{barry-configuration_8hpp_aa8fd3df3585111e6734d97092df83f57}\label{barry-configuration_8hpp_aa8fd3df3585111e6734d97092df83f57}} 
+\index{barry-\/configuration.hpp@{barry-\/configuration.hpp}!BARRY\_SAFE\_EXP@{BARRY\_SAFE\_EXP}}
+\index{BARRY\_SAFE\_EXP@{BARRY\_SAFE\_EXP}!barry-\/configuration.hpp@{barry-\/configuration.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRY\_SAFE\_EXP}{BARRY\_SAFE\_EXP}}
+{\footnotesize\ttfamily \#define BARRY\+\_\+\+SAFE\+\_\+\+EXP~-\/100.\+0}
+
+
+
+Definition at line 28 of file barry-\/configuration.\+hpp.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}\label{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}} 
+\index{barry-\/configuration.hpp@{barry-\/configuration.hpp}!Map@{Map}}
+\index{Map@{Map}!barry-\/configuration.hpp@{barry-\/configuration.hpp}}
+\doxysubsubsection{\texorpdfstring{Map}{Map}}
+{\footnotesize\ttfamily template$<$typename Ta , typename Tb $>$ \\
+using \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}} =  std\+::map$<$Ta,Tb$>$}
+
+
+
+Definition at line 22 of file barry-\/configuration.\+hpp.
+

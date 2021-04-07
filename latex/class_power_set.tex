@@ -1,0 +1,385 @@
+\hypertarget{class_power_set}{}\doxysection{Power\+Set$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ Class Template Reference}
+\label{class_power_set}\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+
+
+Powerset of a binary array.  
+
+
+
+
+{\ttfamily \#include $<$powerset-\/bones.\+hpp$>$}
+
+
+
+Collaboration diagram for Power\+Set$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{class_power_set__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_power_set_a8eefc9606c6339938a8d9adcd0d7e153}{init\+\_\+support}} ()
+\item 
+void \mbox{\hyperlink{class_power_set_ad3b707294498105b2cc1a04017cc96d2}{calc}} ()
+\item 
+void \mbox{\hyperlink{class_power_set_aba11dd8802cd2eb529c7c30b55994248}{reset}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} N\+\_\+, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} M\+\_\+)
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Construct and destroy a Power\+Set object}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_power_set_a095815ccc44c88e0da73d92c6b5cf5f3}{Power\+Set}} ()
+\item 
+\mbox{\hyperlink{class_power_set_abf6ac4224da7ae4d187d0d63833615b1}{Power\+Set}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} N\+\_\+, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} M\+\_\+)
+\item 
+\mbox{\hyperlink{class_power_set_acc20a68ff11aa1891d9a0676ed50808f}{Power\+Set}} (const Array\+\_\+\+Type \&array)
+\item 
+\mbox{\hyperlink{class_power_set_a89a176c9517e81a066adffad3c46aba5}{$\sim$\+Power\+Set}} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Wrappers for the $<$tt$>$Rules$<$/tt$>$ member.}\par
+{\em These will add rules to the model, which are shared by the support and the actual counter function. }\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_power_set_a00ee318a40da91bcf0bff79bf71454ab}{add\+\_\+rule}} (\mbox{\hyperlink{class_rule}{Rule}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \&rule)
+\item 
+void \mbox{\hyperlink{class_power_set_a6cb8fb8f09b4c190e2ac6c07daa1241e}{add\+\_\+rule}} (\mbox{\hyperlink{class_rule}{Rule}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$rule)
+\item 
+void \mbox{\hyperlink{class_power_set_aae5eae12186fff037efa3884ac2b3dcc}{add\+\_\+rule}} (\mbox{\hyperlink{typedefs_8hpp_a99982bdca40c23ca6f901c8e66da78a1}{Rule\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ count\+\_\+fun\+\_\+, Data\+\_\+\+Rule\+\_\+\+Type $\ast$data\+\_\+=nullptr, bool delete\+\_\+data\+\_\+=false)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Getter functions}\par
+\begin{DoxyCompactItemize}
+\item 
+const std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_power_set_a99cf1aa56e63a16c023bf7057b0b9288}{get\+\_\+data\+\_\+ptr}} () const
+\item 
+std\+::vector$<$ Array\+\_\+\+Type $>$ \mbox{\hyperlink{class_power_set_a4de44631d9a7967db4dd791d42166115}{get\+\_\+data}} () const
+\item 
+std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \mbox{\hyperlink{class_power_set_abed9d58db924366d8a38baf168131fc3}{begin}} ()
+\item 
+std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \mbox{\hyperlink{class_power_set_ac734ed684aa314b722a05d423c607a38}{end}} ()
+\item 
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_power_set_a80e7099e115369326e6c873a92d270f9}{size}} () const
+\item 
+const Array\+\_\+\+Type \& \mbox{\hyperlink{class_power_set_acc822131a9fbfd5b87f85b675f293d39}{operator\mbox{[}$\,$\mbox{]}}} (const unsigned int \&i) const
+\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Array\+\_\+\+Type \mbox{\hyperlink{class_power_set_a367db2c97e0301dd0dd78e5e4b458d34}{Empty\+Array}}
+\item 
+std\+::vector$<$ Array\+\_\+\+Type $>$ \mbox{\hyperlink{class_power_set_af456c157d157692ba5890c549c51af75}{data}}
+\item 
+\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_power_set_afa542ecc31858c8644d1e76078eb1713}{rules}}
+\item 
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_power_set_ab3b65c1b9bce012f4aabe5acae093acd}{N}}
+\item 
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_power_set_a91d328d5ace1ed6a8587a66af905ae98}{M}}
+\item 
+bool \mbox{\hyperlink{class_power_set_a08b6baf1e244e023d997ddaecbc2116f}{rules\+\_\+deleted}} = false
+\item 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $>$ \mbox{\hyperlink{class_power_set_a99cfef97c3a457ea7be1b000b39f41d9}{coordinates\+\_\+free}}
+\item 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $>$ \mbox{\hyperlink{class_power_set_ac5cdec06502e8bd20e36fca3abbb9a3e}{coordinates\+\_\+locked}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Array\+\_\+\+Type = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type = bool$>$\newline
+class Power\+Set$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$}
+
+Powerset of a binary array. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Array\+\_\+\+Type} & \\
+\hline
+{\em Data\+\_\+\+Rule\+\_\+\+Type} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 17 of file powerset-\/bones.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_power_set_a095815ccc44c88e0da73d92c6b5cf5f3}\label{class_power_set_a095815ccc44c88e0da73d92c6b5cf5f3}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!PowerSet@{PowerSet}}
+\index{PowerSet@{PowerSet}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{PowerSet()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_power_set}{Power\+Set}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 39 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_abf6ac4224da7ae4d187d0d63833615b1}\label{class_power_set_abf6ac4224da7ae4d187d0d63833615b1}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!PowerSet@{PowerSet}}
+\index{PowerSet@{PowerSet}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{PowerSet()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_power_set}{Power\+Set}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{N\+\_\+,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 41 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_acc20a68ff11aa1891d9a0676ed50808f}\label{class_power_set_acc20a68ff11aa1891d9a0676ed50808f}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!PowerSet@{PowerSet}}
+\index{PowerSet@{PowerSet}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{PowerSet()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_power_set}{Power\+Set}} (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{array }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 7 of file powerset-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_a89a176c9517e81a066adffad3c46aba5}\label{class_power_set_a89a176c9517e81a066adffad3c46aba5}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!````~PowerSet@{$\sim$PowerSet}}
+\index{````~PowerSet@{$\sim$PowerSet}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$PowerSet()}{~PowerSet()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::$\sim$\mbox{\hyperlink{class_power_set}{Power\+Set}}\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 15 of file powerset-\/meat.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_power_set_a00ee318a40da91bcf0bff79bf71454ab}\label{class_power_set_a00ee318a40da91bcf0bff79bf71454ab}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!add\_rule@{add\_rule}}
+\index{add\_rule@{add\_rule}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{add\_rule()}{add\_rule()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_rule}{Rule}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \&}]{rule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 113 of file powerset-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_a6cb8fb8f09b4c190e2ac6c07daa1241e}\label{class_power_set_a6cb8fb8f09b4c190e2ac6c07daa1241e}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!add\_rule@{add\_rule}}
+\index{add\_rule@{add\_rule}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{add\_rule()}{add\_rule()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_rule}{Rule}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$}]{rule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 122 of file powerset-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_aae5eae12186fff037efa3884ac2b3dcc}\label{class_power_set_aae5eae12186fff037efa3884ac2b3dcc}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!add\_rule@{add\_rule}}
+\index{add\_rule@{add\_rule}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{add\_rule()}{add\_rule()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::add\+\_\+rule (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a99982bdca40c23ca6f901c8e66da78a1}{Rule\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$}]{count\+\_\+fun\+\_\+,  }\item[{Data\+\_\+\+Rule\+\_\+\+Type $\ast$}]{data\+\_\+ = {\ttfamily nullptr},  }\item[{bool}]{delete\+\_\+data\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 132 of file powerset-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_abed9d58db924366d8a38baf168131fc3}\label{class_power_set_abed9d58db924366d8a38baf168131fc3}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!begin@{begin}}
+\index{begin@{begin}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 73 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_ad3b707294498105b2cc1a04017cc96d2}\label{class_power_set_ad3b707294498105b2cc1a04017cc96d2}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!calc@{calc}}
+\index{calc@{calc}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{calc()}{calc()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::calc\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 88 of file powerset-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_ac734ed684aa314b722a05d423c607a38}\label{class_power_set_ac734ed684aa314b722a05d423c607a38}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!end@{end}}
+\index{end@{end}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 74 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_a4de44631d9a7967db4dd791d42166115}\label{class_power_set_a4de44631d9a7967db4dd791d42166115}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!get\_data@{get\_data}}
+\index{get\_data@{get\_data}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_data()}{get\_data()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ Array\+\_\+\+Type $>$ \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::get\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 72 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_a99cf1aa56e63a16c023bf7057b0b9288}\label{class_power_set_a99cf1aa56e63a16c023bf7057b0b9288}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!get\_data\_ptr@{get\_data\_ptr}}
+\index{get\_data\_ptr@{get\_data\_ptr}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_data\_ptr()}{get\_data\_ptr()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+const std\+::vector$<$ Array\+\_\+\+Type $>$$\ast$ \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::get\+\_\+data\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 71 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_a8eefc9606c6339938a8d9adcd0d7e153}\label{class_power_set_a8eefc9606c6339938a8d9adcd0d7e153}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!init\_support@{init\_support}}
+\index{init\_support@{init\_support}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{init\_support()}{init\_support()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::init\+\_\+support\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 21 of file powerset-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_acc822131a9fbfd5b87f85b675f293d39}\label{class_power_set_acc822131a9fbfd5b87f85b675f293d39}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+const Array\+\_\+\+Type\& \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 76 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_aba11dd8802cd2eb529c7c30b55994248}\label{class_power_set_aba11dd8802cd2eb529c7c30b55994248}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!reset@{reset}}
+\index{reset@{reset}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{N\+\_\+,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{M\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 101 of file powerset-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_a80e7099e115369326e6c873a92d270f9}\label{class_power_set_a80e7099e115369326e6c873a92d270f9}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!size@{size}}
+\index{size@{size}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 75 of file powerset-\/bones.\+hpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_power_set_a99cfef97c3a457ea7be1b000b39f41d9}\label{class_power_set_a99cfef97c3a457ea7be1b000b39f41d9}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!coordinates\_free@{coordinates\_free}}
+\index{coordinates\_free@{coordinates\_free}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{coordinates\_free}{coordinates\_free}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ std\+::pair$<$\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}},\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}$>$ $>$ \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::coordinates\+\_\+free}
+
+
+
+Definition at line 31 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_ac5cdec06502e8bd20e36fca3abbb9a3e}\label{class_power_set_ac5cdec06502e8bd20e36fca3abbb9a3e}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!coordinates\_locked@{coordinates\_locked}}
+\index{coordinates\_locked@{coordinates\_locked}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{coordinates\_locked}{coordinates\_locked}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ std\+::pair$<$\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}},\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}$>$ $>$ \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::coordinates\+\_\+locked}
+
+
+
+Definition at line 32 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_af456c157d157692ba5890c549c51af75}\label{class_power_set_af456c157d157692ba5890c549c51af75}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!data@{data}}
+\index{data@{data}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ Array\+\_\+\+Type $>$ \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::data}
+
+
+
+Definition at line 24 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_a367db2c97e0301dd0dd78e5e4b458d34}\label{class_power_set_a367db2c97e0301dd0dd78e5e4b458d34}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!EmptyArray@{EmptyArray}}
+\index{EmptyArray@{EmptyArray}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{EmptyArray}{EmptyArray}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+Array\+\_\+\+Type \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::Empty\+Array}
+
+
+
+Definition at line 23 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_a91d328d5ace1ed6a8587a66af905ae98}\label{class_power_set_a91d328d5ace1ed6a8587a66af905ae98}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!M@{M}}
+\index{M@{M}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{M}{M}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::M}
+
+
+
+Definition at line 27 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_ab3b65c1b9bce012f4aabe5acae093acd}\label{class_power_set_ab3b65c1b9bce012f4aabe5acae093acd}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!N@{N}}
+\index{N@{N}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{N}{N}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::N}
+
+
+
+Definition at line 27 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_afa542ecc31858c8644d1e76078eb1713}\label{class_power_set_afa542ecc31858c8644d1e76078eb1713}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!rules@{rules}}
+\index{rules@{rules}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{rules}{rules}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{class_rules}{Rules}}$<$Array\+\_\+\+Type,Data\+\_\+\+Rule\+\_\+\+Type$>$$\ast$ \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::rules}
+
+
+
+Definition at line 25 of file powerset-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_power_set_a08b6baf1e244e023d997ddaecbc2116f}\label{class_power_set_a08b6baf1e244e023d997ddaecbc2116f}} 
+\index{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}!rules\_deleted@{rules\_deleted}}
+\index{rules\_deleted@{rules\_deleted}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{rules\_deleted}{rules\_deleted}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
+bool \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$\+::rules\+\_\+deleted = false}
+
+
+
+Definition at line 28 of file powerset-\/bones.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/barry/\mbox{\hyperlink{powerset-bones_8hpp}{powerset-\/bones.\+hpp}}\item 
+include/barry/\mbox{\hyperlink{powerset-meat_8hpp}{powerset-\/meat.\+hpp}}\end{DoxyCompactItemize}
