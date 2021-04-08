@@ -130,8 +130,15 @@ inline Geese::Geese(
 
     // Verifying that all have the variable ord
     for (auto& n : nodes) {
-        if (n.second.ord == UINT_MAX)
-            throw std::logic_error("One of the nodes was passed along.");
+        if (n.second.ord == UINT_MAX) {
+
+            const char *fmt = "Node id %i was not included in geneid.";
+            int sz = std::snprintf(nullptr, 0, fmt, n.second.id);
+            std::vector<char> buf(sz + 1);
+            std::snprintf(&buf[0], buf.size(), fmt, n.second.id);
+            throw std::logic_error(&buf[0]);
+
+        }
     }
 
 
