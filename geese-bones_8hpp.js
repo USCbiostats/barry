@@ -1,6 +1,5 @@
 var geese_bones_8hpp =
 [
-    [ "Geese", "class_geese.html", "class_geese" ],
     [ "INITIALIZED", "geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40", null ],
     [ "keygen_full", "geese-bones_8hpp.html#aa60134cca317d64e4b3d1707380d5d0d", null ],
     [ "RULE_FUNCTION", "geese-bones_8hpp.html#a11c7dd7dca27f32547bb602f30ceb5e8", null ],

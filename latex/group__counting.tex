@@ -1,0 +1,23 @@
+\hypertarget{group__counting}{}\doxysection{Counting}
+\label{group__counting}\index{Counting@{Counting}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_network_data}{Network\+Data}}
+\begin{DoxyCompactList}\small\item\em Data class for Networks. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_node_data}{Node\+Data}}
+\begin{DoxyCompactList}\small\item\em Data definition for the {\ttfamily Phylo\+Array} class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_counter}{Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
+\begin{DoxyCompactList}\small\item\em A counter function based on change statistics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+{\ttfamily barry} includes a flexible way to generate counters based on change statistics. Since most of the time we are counting many motifs in a graph, change statistics make a reasonable (and efficient) way to make such counts.
+
+In particular, let the motif be defined as $s(y)$, with $y$ as the binary array. The change statistic when adding cell $y_{ij}$, i.\+e. when the cell moves from being emty to have a one, is defined as
+
+\[ \delta(y_{ij}) = s^+_{ij}(y) - s^-_{ij}(y), \]
+
+where $s^+_{ij}(y)$ and $s^-_{ij}(y)$ represent the motif statistic with and without the ij-\/cell. For example, in the case of networks, the change statistic for the number of edges is always 1.
+
+To count statistics in an array, the \mbox{[}\mbox{\hyperlink{class_counter}{Counter}}\mbox{]} class will empty the array, initialize the counters, and then start counting while adding at each step a single cell, until matching the original array. 

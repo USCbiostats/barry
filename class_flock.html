@@ -22,7 +22,7 @@
     jax: ["input/TeX","output/HTML-CSS"],
 });
 </script>
-<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<script type="text/javascript" async="async" src="mathjax/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="barry.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('class_flock.html',''); initResizable()
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_flock-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Flock Class Reference</div>  </div>
+<div class="title">Flock Class Reference<div class="ingroups"><a class="el" href="group__stat-models.html">Statistical Models</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -113,14 +113,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab5ed0567a8721dd114763267f9fa3bdf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#ab5ed0567a8721dd114763267f9fa3bdf">~Flock</a> ()</td></tr>
 <tr class="separator:ab5ed0567a8721dd114763267f9fa3bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17f2726d36ca5727b14c71d1e1dbabe9"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a17f2726d36ca5727b14c71d1e1dbabe9">add_data</a> (std::vector&lt; std::vector&lt; unsigned int &gt; &gt; &amp;annotations, std::vector&lt; unsigned int &gt; &amp;geneid, std::vector&lt; int &gt; &amp;parent, std::vector&lt; bool &gt; &amp;duplication)</td></tr>
+<tr class="memdesc:a17f2726d36ca5727b14c71d1e1dbabe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a tree to the flock.  <a href="class_flock.html#a17f2726d36ca5727b14c71d1e1dbabe9">More...</a><br /></td></tr>
 <tr class="separator:a17f2726d36ca5727b14c71d1e1dbabe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfa9efc24a1ff2f0f31206570da51259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#acfa9efc24a1ff2f0f31206570da51259">set_seed</a> (const unsigned int &amp;s)</td></tr>
+<tr class="memdesc:acfa9efc24a1ff2f0f31206570da51259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the seed of the model.  <a href="class_flock.html#acfa9efc24a1ff2f0f31206570da51259">More...</a><br /></td></tr>
 <tr class="separator:acfa9efc24a1ff2f0f31206570da51259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99f3c0a3aacc8af28c13207dd81d7164"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a99f3c0a3aacc8af28c13207dd81d7164">init</a> ()</td></tr>
 <tr class="separator:a99f3c0a3aacc8af28c13207dd81d7164"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e7aec0dc05f41da6f0caa80a202daa0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">phylocounters::PhyloCounters</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a1e7aec0dc05f41da6f0caa80a202daa0">counters_ptr</a> ()</td></tr>
 <tr class="separator:a1e7aec0dc05f41da6f0caa80a202daa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a701dce27fdc0a20e63caec1e1fd3def7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a701dce27fdc0a20e63caec1e1fd3def7">likelihood_joint</a> (const std::vector&lt; double &gt; &amp;par, bool as_log=false, bool use_likelihood_sequence=true)</td></tr>
+<tr class="memdesc:a701dce27fdc0a20e63caec1e1fd3def7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the joint likelihood of the model.  <a href="class_flock.html#a701dce27fdc0a20e63caec1e1fd3def7">More...</a><br /></td></tr>
 <tr class="separator:a701dce27fdc0a20e63caec1e1fd3def7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Information about the model</div></td></tr>
 <tr class="memitem:a7c8a9c91c384069c7b0633396f46410a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a7c8a9c91c384069c7b0633396f46410a">nfuns</a> () const noexcept</td></tr>
@@ -149,9 +152,9 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <a class="el" href="class_flock.html" title="A Flock is a group of Geese.">Flock</a> is a group of <a class="el" href="class_geese.html" title="Annotated Phylo Model.">Geese</a>. </p>
-<p>This object buils a model with multiple trees (<a class="el" href="class_geese.html" title="Annotated Phylo Model.">Geese</a> objects), with all of these using the same PhyloModel object. </p>
+<p>This object buils a model with multiple trees (<a class="el" href="class_geese.html" title="Annotated Phylo Model.">Geese</a> objects), with all of these using the same PhyloModel object. Available counters (terms) can be found in counter-phylo. </p>
 
-<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00012">12</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00014">14</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2a0a514c368e21f718ad7358ed42f3b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a0a514c368e21f718ad7358ed42f3b7">&#9670;&nbsp;</a></span>Flock()</h2>
@@ -176,7 +179,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00023">23</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00025">25</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -203,7 +206,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00024">24</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00026">26</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -253,6 +256,18 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Add a tree to the flock. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">annotations</td><td>see <a class="el" href="class_geese.html#a4766bb548b2a33e16019c52026f455f5">Geese::Geese</a>. </td></tr>
+    <tr><td class="paramname">geneid</td><td>see <a class="el" href="class_geese.html" title="Annotated Phylo Model.">Geese</a>. </td></tr>
+    <tr><td class="paramname">parent</td><td>see <a class="el" href="class_geese.html" title="Annotated Phylo Model.">Geese</a>. </td></tr>
+    <tr><td class="paramname">duplication</td><td>see <a class="el" href="class_geese.html" title="Annotated Phylo Model.">Geese</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>unsigned int The number of tree in the model (starting from zero). </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="flock-meet_8hpp_source.html#l00006">6</a> of file <a class="el" href="flock-meet_8hpp_source.html">flock-meet.hpp</a>.</p>
 
@@ -351,6 +366,17 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns the joint likelihood of the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">par</td><td>Vector of model parameters. </td></tr>
+    <tr><td class="paramname">as_log</td><td>When <code>true</code> it will return the value as log. </td></tr>
+    <tr><td class="paramname">use_likelihood_sequence</td><td>When <code>true</code> (default) will compute the likelihood using the reduced sequence, which is faster. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>double </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="flock-meet_8hpp_source.html#l00084">84</a> of file <a class="el" href="flock-meet_8hpp_source.html">flock-meet.hpp</a>.</p>
 
@@ -515,6 +541,14 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the seed of the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Passed to the <code>rengine.seed()</code> member object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="flock-meet_8hpp_source.html#l00037">37</a> of file <a class="el" href="flock-meet_8hpp_source.html">flock-meet.hpp</a>.</p>
 
 </div>
@@ -532,7 +566,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00015">15</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00017">17</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -548,7 +582,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00017">17</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00019">19</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -564,7 +598,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00016">16</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00018">18</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -580,7 +614,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00020">20</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00022">22</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -596,7 +630,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00021">21</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-bones_8hpp_source.html#l00023">23</a> of file <a class="el" href="flock-bones_8hpp_source.html">flock-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -610,7 +644,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_flock.html">Flock</a></li>
-    <li class="footer">Generated on Thu Apr 8 2021 06:13:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Apr 8 2021 23:33:47 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -19,7 +19,6 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
     [ "cell-meat.hpp", "cell-meat_8hpp.html", null ],
     [ "col-bones.hpp", "col-bones_8hpp.html", null ],
     [ "counters-bones.hpp", "counters-bones_8hpp.html", [
-      [ "Counter", "class_counter.html", "class_counter" ],
       [ "Counters", "class_counters.html", "class_counters" ]
     ] ],
     [ "counters-meat.hpp", "counters-meat_8hpp.html", null ],

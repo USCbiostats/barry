@@ -22,7 +22,7 @@
     jax: ["input/TeX","output/HTML-CSS"],
 });
 </script>
-<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<script type="text/javascript" async="async" src="mathjax/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="barry.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('network_8hpp.html',''); initResizable(
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">network.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -155,6 +155,7 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:aa75d9c31d709148061626dc54a07723a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#aa75d9c31d709148061626dc54a07723a">NET_C_DATA_IDX</a>(i)&#160;&#160;&#160;(data-&gt;indices[i])</td></tr>
 <tr class="separator:aa75d9c31d709148061626dc54a07723a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5ead8d8915b0536a4d5a6c3ef5001fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#ad5ead8d8915b0536a4d5a6c3ef5001fb">NET_C_DATA_NUM</a>(i)&#160;&#160;&#160;(data-&gt;numbers[i])</td></tr>
@@ -192,62 +193,54 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Counters for network models</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">counters</td><td>A pointer to a <code>NetCounters</code> object (<code><a class="el" href="class_counters.html" title="Vector of counters.">Counters</a></code>&lt;<code>Network</code>, <code><a class="el" href="class_net_counter_data.html" title="Data class used to store arbitrary uint or double vectors.">NetCounterData</a></code>&gt;). </td></tr>
-  </table>
-  </dd>
-</dl>
-</div></td></tr>
-<tr class="memitem:abd98b97f5b4e45972e132051b12891c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#abd98b97f5b4e45972e132051b12891c8">counter_edges</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="memdesc:abd98b97f5b4e45972e132051b12891c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of edges.  <a href="network_8hpp.html#abd98b97f5b4e45972e132051b12891c8">More...</a><br /></td></tr>
-<tr class="separator:abd98b97f5b4e45972e132051b12891c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4c23f807f01c7a9736bb6b9b34820c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#ab4c23f807f01c7a9736bb6b9b34820c7">counter_isolates</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="memdesc:ab4c23f807f01c7a9736bb6b9b34820c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of isolated vertices.  <a href="network_8hpp.html#ab4c23f807f01c7a9736bb6b9b34820c7">More...</a><br /></td></tr>
-<tr class="separator:ab4c23f807f01c7a9736bb6b9b34820c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78f7e03b92269082ada763e1a936abf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a78f7e03b92269082ada763e1a936abf3">counter_mutual</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="memdesc:a78f7e03b92269082ada763e1a936abf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of mutual ties.  <a href="network_8hpp.html#a78f7e03b92269082ada763e1a936abf3">More...</a><br /></td></tr>
-<tr class="separator:a78f7e03b92269082ada763e1a936abf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67aaf405e70e270a24a0a9c9b756a4e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a67aaf405e70e270a24a0a9c9b756a4e4">counter_istar2</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="separator:a67aaf405e70e270a24a0a9c9b756a4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9ed666c0bd676440fb866ef09a0dc06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#ae9ed666c0bd676440fb866ef09a0dc06">counter_ostar2</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="separator:ae9ed666c0bd676440fb866ef09a0dc06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a870a0b3698622948d0bfc668e08752a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a870a0b3698622948d0bfc668e08752a2">counter_ttriads</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="separator:a870a0b3698622948d0bfc668e08752a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ea4bb27771e3fb61f807f4dff2a6e57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a8ea4bb27771e3fb61f807f4dff2a6e57">counter_ctriads</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="separator:a8ea4bb27771e3fb61f807f4dff2a6e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6819b97e2e586cd1d7173f023109e10c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a6819b97e2e586cd1d7173f023109e10c">counter_density</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="separator:a6819b97e2e586cd1d7173f023109e10c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58770be688fb8b546ab0a41b3832b737"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a58770be688fb8b546ab0a41b3832b737">counter_idegree15</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="separator:a58770be688fb8b546ab0a41b3832b737"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e123d9b8d286f58a0c65ad2ae84ea6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a1e123d9b8d286f58a0c65ad2ae84ea6f">counter_odegree15</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
-<tr class="separator:a1e123d9b8d286f58a0c65ad2ae84ea6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb2a587d5466415665c11e9d7a168d8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#abb2a587d5466415665c11e9d7a168d8b">counter_absdiff</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id, double alpha=1.0)</td></tr>
-<tr class="memdesc:abb2a587d5466415665c11e9d7a168d8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum of absolute attribute difference between ego and alter.  <a href="network_8hpp.html#abb2a587d5466415665c11e9d7a168d8b">More...</a><br /></td></tr>
-<tr class="separator:abb2a587d5466415665c11e9d7a168d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0b3bd005db24cc26419b9816369de13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#ac0b3bd005db24cc26419b9816369de13">counter_diff</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id, double alpha=1.0, double tail_head=true)</td></tr>
-<tr class="memdesc:ac0b3bd005db24cc26419b9816369de13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum of attribute difference between ego and alter to pow(alpha)  <a href="network_8hpp.html#ac0b3bd005db24cc26419b9816369de13">More...</a><br /></td></tr>
-<tr class="separator:ac0b3bd005db24cc26419b9816369de13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6539320de604e7c6e31e9fb152f70bd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#ad6539320de604e7c6e31e9fb152f70bd">NETWORK_COUNTER</a> (init_single_attr)</td></tr>
-<tr class="separator:ad6539320de604e7c6e31e9fb152f70bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1b63dda3626a30ae371370a98dee89f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#ae1b63dda3626a30ae371370a98dee89f">counter_nodeicov</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
-<tr class="separator:ae1b63dda3626a30ae371370a98dee89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a5650b7182dc19a0f301a8bead98603"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a1a5650b7182dc19a0f301a8bead98603">counter_nodeocov</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
-<tr class="separator:a1a5650b7182dc19a0f301a8bead98603"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63ea0cb7683f346dfe976ca31cb22f17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a63ea0cb7683f346dfe976ca31cb22f17">counter_nodecov</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
-<tr class="separator:a63ea0cb7683f346dfe976ca31cb22f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac84d48419068a4359f041ea38d68c96d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#ac84d48419068a4359f041ea38d68c96d">counter_nodematch</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
-<tr class="separator:ac84d48419068a4359f041ea38d68c96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e62ef3e10ba18e498dee72dce20c3fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a4e62ef3e10ba18e498dee72dce20c3fa">counter_idegree</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; d)</td></tr>
-<tr class="memdesc:a4e62ef3e10ba18e498dee72dce20c3fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts number of vertices with a given in-degree.  <a href="network_8hpp.html#a4e62ef3e10ba18e498dee72dce20c3fa">More...</a><br /></td></tr>
-<tr class="separator:a4e62ef3e10ba18e498dee72dce20c3fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36553e6453f939b96d6fb1b57d07ce16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a36553e6453f939b96d6fb1b57d07ce16">counter_odegree</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; d)</td></tr>
-<tr class="memdesc:a36553e6453f939b96d6fb1b57d07ce16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts number of vertices with a given out-degree.  <a href="network_8hpp.html#a36553e6453f939b96d6fb1b57d07ce16">More...</a><br /></td></tr>
-<tr class="separator:a36553e6453f939b96d6fb1b57d07ce16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80b0d366d78946638af8c25139f0d203"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a80b0d366d78946638af8c25139f0d203">counter_degree</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; d)</td></tr>
-<tr class="memdesc:a80b0d366d78946638af8c25139f0d203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts number of vertices with a given out-degree.  <a href="network_8hpp.html#a80b0d366d78946638af8c25139f0d203">More...</a><br /></td></tr>
-<tr class="separator:a80b0d366d78946638af8c25139f0d203"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd98b97f5b4e45972e132051b12891c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gabd98b97f5b4e45972e132051b12891c8">counter_edges</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="memdesc:gabd98b97f5b4e45972e132051b12891c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of edges.  <a href="group__counters-network.html#gabd98b97f5b4e45972e132051b12891c8">More...</a><br /></td></tr>
+<tr class="separator:gabd98b97f5b4e45972e132051b12891c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4c23f807f01c7a9736bb6b9b34820c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gab4c23f807f01c7a9736bb6b9b34820c7">counter_isolates</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="memdesc:gab4c23f807f01c7a9736bb6b9b34820c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of isolated vertices.  <a href="group__counters-network.html#gab4c23f807f01c7a9736bb6b9b34820c7">More...</a><br /></td></tr>
+<tr class="separator:gab4c23f807f01c7a9736bb6b9b34820c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga78f7e03b92269082ada763e1a936abf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga78f7e03b92269082ada763e1a936abf3">counter_mutual</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="memdesc:ga78f7e03b92269082ada763e1a936abf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of mutual ties.  <a href="group__counters-network.html#ga78f7e03b92269082ada763e1a936abf3">More...</a><br /></td></tr>
+<tr class="separator:ga78f7e03b92269082ada763e1a936abf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga67aaf405e70e270a24a0a9c9b756a4e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga67aaf405e70e270a24a0a9c9b756a4e4">counter_istar2</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="separator:ga67aaf405e70e270a24a0a9c9b756a4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae9ed666c0bd676440fb866ef09a0dc06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gae9ed666c0bd676440fb866ef09a0dc06">counter_ostar2</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="separator:gae9ed666c0bd676440fb866ef09a0dc06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga870a0b3698622948d0bfc668e08752a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga870a0b3698622948d0bfc668e08752a2">counter_ttriads</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="separator:ga870a0b3698622948d0bfc668e08752a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8ea4bb27771e3fb61f807f4dff2a6e57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga8ea4bb27771e3fb61f807f4dff2a6e57">counter_ctriads</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="separator:ga8ea4bb27771e3fb61f807f4dff2a6e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6819b97e2e586cd1d7173f023109e10c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga6819b97e2e586cd1d7173f023109e10c">counter_density</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="separator:ga6819b97e2e586cd1d7173f023109e10c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga58770be688fb8b546ab0a41b3832b737"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga58770be688fb8b546ab0a41b3832b737">counter_idegree15</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="separator:ga58770be688fb8b546ab0a41b3832b737"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e123d9b8d286f58a0c65ad2ae84ea6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga1e123d9b8d286f58a0c65ad2ae84ea6f">counter_odegree15</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters)</td></tr>
+<tr class="separator:ga1e123d9b8d286f58a0c65ad2ae84ea6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabb2a587d5466415665c11e9d7a168d8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gabb2a587d5466415665c11e9d7a168d8b">counter_absdiff</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id, double alpha=1.0)</td></tr>
+<tr class="memdesc:gabb2a587d5466415665c11e9d7a168d8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum of absolute attribute difference between ego and alter.  <a href="group__counters-network.html#gabb2a587d5466415665c11e9d7a168d8b">More...</a><br /></td></tr>
+<tr class="separator:gabb2a587d5466415665c11e9d7a168d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0b3bd005db24cc26419b9816369de13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gac0b3bd005db24cc26419b9816369de13">counter_diff</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id, double alpha=1.0, double tail_head=true)</td></tr>
+<tr class="memdesc:gac0b3bd005db24cc26419b9816369de13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sum of attribute difference between ego and alter to pow(alpha)  <a href="group__counters-network.html#gac0b3bd005db24cc26419b9816369de13">More...</a><br /></td></tr>
+<tr class="separator:gac0b3bd005db24cc26419b9816369de13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6539320de604e7c6e31e9fb152f70bd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gad6539320de604e7c6e31e9fb152f70bd">NETWORK_COUNTER</a> (init_single_attr)</td></tr>
+<tr class="separator:gad6539320de604e7c6e31e9fb152f70bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae1b63dda3626a30ae371370a98dee89f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gae1b63dda3626a30ae371370a98dee89f">counter_nodeicov</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
+<tr class="separator:gae1b63dda3626a30ae371370a98dee89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a5650b7182dc19a0f301a8bead98603"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga1a5650b7182dc19a0f301a8bead98603">counter_nodeocov</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
+<tr class="separator:ga1a5650b7182dc19a0f301a8bead98603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63ea0cb7683f346dfe976ca31cb22f17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga63ea0cb7683f346dfe976ca31cb22f17">counter_nodecov</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
+<tr class="separator:ga63ea0cb7683f346dfe976ca31cb22f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac84d48419068a4359f041ea38d68c96d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gac84d48419068a4359f041ea38d68c96d">counter_nodematch</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> attr_id)</td></tr>
+<tr class="separator:gac84d48419068a4359f041ea38d68c96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e62ef3e10ba18e498dee72dce20c3fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga4e62ef3e10ba18e498dee72dce20c3fa">counter_idegree</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; d)</td></tr>
+<tr class="memdesc:ga4e62ef3e10ba18e498dee72dce20c3fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts number of vertices with a given in-degree.  <a href="group__counters-network.html#ga4e62ef3e10ba18e498dee72dce20c3fa">More...</a><br /></td></tr>
+<tr class="separator:ga4e62ef3e10ba18e498dee72dce20c3fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga36553e6453f939b96d6fb1b57d07ce16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga36553e6453f939b96d6fb1b57d07ce16">counter_odegree</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; d)</td></tr>
+<tr class="memdesc:ga36553e6453f939b96d6fb1b57d07ce16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts number of vertices with a given out-degree.  <a href="group__counters-network.html#ga36553e6453f939b96d6fb1b57d07ce16">More...</a><br /></td></tr>
+<tr class="separator:ga36553e6453f939b96d6fb1b57d07ce16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga80b0d366d78946638af8c25139f0d203"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga80b0d366d78946638af8c25139f0d203">counter_degree</a> (<a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *counters, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; d)</td></tr>
+<tr class="memdesc:ga80b0d366d78946638af8c25139f0d203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts number of vertices with a given out-degree.  <a href="group__counters-network.html#ga80b0d366d78946638af8c25139f0d203">More...</a><br /></td></tr>
+<tr class="separator:ga80b0d366d78946638af8c25139f0d203"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Rules for network models</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -277,7 +270,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00068">68</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00079">79</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -297,7 +290,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00069">69</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00080">80</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -319,11 +312,11 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">inline</span> double (a) \</div>
 <div class="line">(<span class="keyword">const</span> <a class="code" href="class_b_array.html">Network</a> &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, <a class="code" href="class_net_counter_data.html">NetCounterData</a> * data)</div>
 <div class="ttc" id="aclass_b_array_html"><div class="ttname"><a href="class_b_array.html">BArray</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barray-bones_8hpp_source.html#l00022">barray-bones.hpp:22</a></div></div>
-<div class="ttc" id="aclass_net_counter_data_html"><div class="ttname"><a href="class_net_counter_data.html">NetCounterData</a></div><div class="ttdoc">Data class used to store arbitrary uint or double vectors.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00050">network.hpp:50</a></div></div>
+<div class="ttc" id="aclass_net_counter_data_html"><div class="ttname"><a href="class_net_counter_data.html">NetCounterData</a></div><div class="ttdoc">Data class used to store arbitrary uint or double vectors.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00061">network.hpp:61</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00019">typedefs.hpp:19</a></div></div>
 </div><!-- fragment --><p>Function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00089">89</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00101">101</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -342,12 +335,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <a class="code" href="typedefs_8hpp.html#a1e12ad6cdda3588f5b2157a5ad3177d2">Counter_fun_type&lt;Network, NetCounterData&gt;</a> a = \</div>
-<div class="line">  [](<span class="keyword">const</span> <a class="code" href="class_b_array.html">Network</a> &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, <a class="code" href="class_net_counter_data.html">NetCounterData</a> * data)</div>
+<b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="typedefs_8hpp.html#a1e12ad6cdda3588f5b2157a5ad3177d2">Counter_fun_type&lt;Network, NetCounterData&gt;</a> a = \</div>
+<div class="line">    [](<span class="keyword">const</span> <a class="code" href="class_b_array.html">Network</a> &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, <a class="code" href="class_net_counter_data.html">NetCounterData</a> * data)</div>
 <div class="ttc" id="atypedefs_8hpp_html_a1e12ad6cdda3588f5b2157a5ad3177d2"><div class="ttname"><a href="typedefs_8hpp.html#a1e12ad6cdda3588f5b2157a5ad3177d2">Counter_fun_type</a></div><div class="ttdeci">std::function&lt; double(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Counter_fun_type</div><div class="ttdoc">Counter and rule functions.</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00136">typedefs.hpp:136</a></div></div>
 </div><!-- fragment --><p>Lambda function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00092">92</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00104">104</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -370,7 +363,7 @@ Functions</h2></td></tr>
 <div class="line">(<span class="keyword">const</span> <a class="code" href="class_b_array.html">Network</a> &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, <span class="keywordtype">bool</span> * data)</div>
 </div><!-- fragment --><p>Function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00101">101</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00113">113</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -394,7 +387,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="atypedefs_8hpp_html_a99982bdca40c23ca6f901c8e66da78a1"><div class="ttname"><a href="typedefs_8hpp.html#a99982bdca40c23ca6f901c8e66da78a1">Rule_fun_type</a></div><div class="ttdeci">std::function&lt; bool(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Rule_fun_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00139">typedefs.hpp:139</a></div></div>
 </div><!-- fragment --><p>Lambda function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00104">104</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00116">116</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -411,7 +404,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00076">76</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00088">88</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -427,7 +420,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00077">77</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00089">89</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -443,7 +436,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00080">80</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00092">92</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -459,7 +452,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00081">81</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00093">93</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -475,7 +468,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00082">82</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00094">94</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -491,7 +484,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00079">79</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00091">91</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -507,7 +500,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00078">78</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00090">90</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -523,687 +516,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00075">75</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00087">87</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="abb2a587d5466415665c11e9d7a168d8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb2a587d5466415665c11e9d7a168d8b">&#9670;&nbsp;</a></span>counter_absdiff()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_absdiff </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>attr_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>alpha</em> = <code>1.0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sum of absolute attribute difference between ego and alter. </p>
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00405">405</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a8ea4bb27771e3fb61f807f4dff2a6e57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ea4bb27771e3fb61f807f4dff2a6e57">&#9670;&nbsp;</a></span>counter_ctriads()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_ctriads </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00308">308</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a80b0d366d78946638af8c25139f0d203"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80b0d366d78946638af8c25139f0d203">&#9670;&nbsp;</a></span>counter_degree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_degree </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt;&#160;</td>
-          <td class="paramname"><em>d</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Counts number of vertices with a given out-degree. </p>
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00676">676</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a6819b97e2e586cd1d7173f023109e10c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6819b97e2e586cd1d7173f023109e10c">&#9670;&nbsp;</a></span>counter_density()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_density </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00347">347</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ac0b3bd005db24cc26419b9816369de13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0b3bd005db24cc26419b9816369de13">&#9670;&nbsp;</a></span>counter_diff()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_diff </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>attr_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>alpha</em> = <code>1.0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>tail_head</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sum of attribute difference between ego and alter to pow(alpha) </p>
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00447">447</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="abd98b97f5b4e45972e132051b12891c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd98b97f5b4e45972e132051b12891c8">&#9670;&nbsp;</a></span>counter_edges()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_edges </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of edges. </p>
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00114">114</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a4e62ef3e10ba18e498dee72dce20c3fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e62ef3e10ba18e498dee72dce20c3fa">&#9670;&nbsp;</a></span>counter_idegree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_idegree </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt;&#160;</td>
-          <td class="paramname"><em>d</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Counts number of vertices with a given in-degree. </p>
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00590">590</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a58770be688fb8b546ab0a41b3832b737"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58770be688fb8b546ab0a41b3832b737">&#9670;&nbsp;</a></span>counter_idegree15()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_idegree15 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00363">363</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ab4c23f807f01c7a9736bb6b9b34820c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4c23f807f01c7a9736bb6b9b34820c7">&#9670;&nbsp;</a></span>counter_isolates()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_isolates </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of isolated vertices. </p>
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00128">128</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a67aaf405e70e270a24a0a9c9b756a4e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67aaf405e70e270a24a0a9c9b756a4e4">&#9670;&nbsp;</a></span>counter_istar2()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_istar2 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00196">196</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a78f7e03b92269082ada763e1a936abf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78f7e03b92269082ada763e1a936abf3">&#9670;&nbsp;</a></span>counter_mutual()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_mutual </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of mutual ties. </p>
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00158">158</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a63ea0cb7683f346dfe976ca31cb22f17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63ea0cb7683f346dfe976ca31cb22f17">&#9670;&nbsp;</a></span>counter_nodecov()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_nodecov </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>attr_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00544">544</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ae1b63dda3626a30ae371370a98dee89f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1b63dda3626a30ae371370a98dee89f">&#9670;&nbsp;</a></span>counter_nodeicov()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_nodeicov </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>attr_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00506">506</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ac84d48419068a4359f041ea38d68c96d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac84d48419068a4359f041ea38d68c96d">&#9670;&nbsp;</a></span>counter_nodematch()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_nodematch </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>attr_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00564">564</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a1a5650b7182dc19a0f301a8bead98603"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a5650b7182dc19a0f301a8bead98603">&#9670;&nbsp;</a></span>counter_nodeocov()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_nodeocov </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>attr_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00525">525</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a36553e6453f939b96d6fb1b57d07ce16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36553e6453f939b96d6fb1b57d07ce16">&#9670;&nbsp;</a></span>counter_odegree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_odegree </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt;&#160;</td>
-          <td class="paramname"><em>d</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Counts number of vertices with a given out-degree. </p>
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00632">632</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a1e123d9b8d286f58a0c65ad2ae84ea6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e123d9b8d286f58a0c65ad2ae84ea6f">&#9670;&nbsp;</a></span>counter_odegree15()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_odegree15 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00383">383</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ae9ed666c0bd676440fb866ef09a0dc06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9ed666c0bd676440fb866ef09a0dc06">&#9670;&nbsp;</a></span>counter_ostar2()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_ostar2 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00214">214</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a870a0b3698622948d0bfc668e08752a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a870a0b3698622948d0bfc668e08752a2">&#9670;&nbsp;</a></span>counter_ttriads()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void counter_ttriads </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a> *&#160;</td>
-          <td class="paramname"><em>counters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00233">233</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ad6539320de604e7c6e31e9fb152f70bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6539320de604e7c6e31e9fb152f70bd">&#9670;&nbsp;</a></span>NETWORK_COUNTER()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">NETWORK_COUNTER </td>
-          <td>(</td>
-          <td class="paramtype">init_single_attr&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00489">489</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
-
-</div>
-</div>
 <a id="a4e3e163311d588f1516116e081d406f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e3e163311d588f1516116e081d406f5">&#9670;&nbsp;</a></span>rules_zerodiag()</h2>
 
@@ -1230,7 +547,7 @@ Functions</h2></td></tr>
 
 <p>Number of edges. </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00727">727</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00742">742</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -1240,7 +557,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="network_8hpp.html">network.hpp</a></li>
-    <li class="footer">Generated on Thu Apr 8 2021 06:13:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Apr 8 2021 23:33:47 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

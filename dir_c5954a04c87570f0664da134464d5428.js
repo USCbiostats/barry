@@ -1,8 +1,6 @@
 var dir_c5954a04c87570f0664da134464d5428 =
 [
-    [ "flock-bones.hpp", "flock-bones_8hpp.html", [
-      [ "Flock", "class_flock.html", "class_flock" ]
-    ] ],
+    [ "flock-bones.hpp", "flock-bones_8hpp.html", null ],
     [ "flock-meet.hpp", "flock-meet_8hpp.html", null ],
     [ "geese-bones.hpp", "geese-bones_8hpp.html", "geese-bones_8hpp" ],
     [ "geese-meat-constructors.hpp", "geese-meat-constructors_8hpp.html", "geese-meat-constructors_8hpp" ],

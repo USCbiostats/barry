@@ -17,15 +17,15 @@ A \mbox{\hyperlink{class_flock}{Flock}} is a group of \mbox{\hyperlink{class_gee
 \mbox{\hyperlink{class_flock_ab5ed0567a8721dd114763267f9fa3bdf}{$\sim$\+Flock}} ()
 \item 
 unsigned int \mbox{\hyperlink{class_flock_a17f2726d36ca5727b14c71d1e1dbabe9}{add\+\_\+data}} (std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \&annotations, std\+::vector$<$ unsigned int $>$ \&geneid, std\+::vector$<$ int $>$ \&parent, std\+::vector$<$ bool $>$ \&duplication)
-\item 
+\begin{DoxyCompactList}\small\item\em Add a tree to the flock. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_flock_acfa9efc24a1ff2f0f31206570da51259}{set\+\_\+seed}} (const unsigned int \&s)
-\item 
+\begin{DoxyCompactList}\small\item\em Set the seed of the model. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_flock_a99f3c0a3aacc8af28c13207dd81d7164}{init}} ()
 \item 
 \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}} $\ast$ \mbox{\hyperlink{class_flock_a1e7aec0dc05f41da6f0caa80a202daa0}{counters\+\_\+ptr}} ()
 \item 
 double \mbox{\hyperlink{class_flock_a701dce27fdc0a20e63caec1e1fd3def7}{likelihood\+\_\+joint}} (const std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=false, bool use\+\_\+likelihood\+\_\+sequence=true)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the joint likelihood of the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Information about the model}\par
 \begin{DoxyCompactItemize}
 \item 
@@ -58,9 +58,9 @@ std\+::mt19937 \mbox{\hyperlink{class_flock_a0e3ce6d007f667eea9f036cddb6789b6}{r
 \doxysubsection{Detailed Description}
 A \mbox{\hyperlink{class_flock}{Flock}} is a group of \mbox{\hyperlink{class_geese}{Geese}}. 
 
-This object buils a model with multiple trees (\mbox{\hyperlink{class_geese}{Geese}} objects), with all of these using the same Phylo\+Model object. 
+This object buils a model with multiple trees (\mbox{\hyperlink{class_geese}{Geese}} objects), with all of these using the same Phylo\+Model object. Available counters (terms) can be found in counter-\/phylo. 
 
-Definition at line 12 of file flock-\/bones.\+hpp.
+Definition at line 14 of file flock-\/bones.\+hpp.
 
 
 
@@ -73,7 +73,7 @@ Definition at line 12 of file flock-\/bones.\+hpp.
 
 
 
-Definition at line 23 of file flock-\/bones.\+hpp.
+Definition at line 25 of file flock-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_flock_ab5ed0567a8721dd114763267f9fa3bdf}\label{class_flock_ab5ed0567a8721dd114763267f9fa3bdf}} 
 \index{Flock@{Flock}!````~Flock@{$\sim$Flock}}
@@ -83,7 +83,7 @@ Definition at line 23 of file flock-\/bones.\+hpp.
 
 
 
-Definition at line 24 of file flock-\/bones.\+hpp.
+Definition at line 26 of file flock-\/bones.\+hpp.
 
 
 
@@ -94,6 +94,24 @@ Definition at line 24 of file flock-\/bones.\+hpp.
 \doxysubsubsection{\texorpdfstring{add\_data()}{add\_data()}}
 {\footnotesize\ttfamily unsigned int Flock\+::add\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \&}]{annotations,  }\item[{std\+::vector$<$ unsigned int $>$ \&}]{geneid,  }\item[{std\+::vector$<$ int $>$ \&}]{parent,  }\item[{std\+::vector$<$ bool $>$ \&}]{duplication }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Add a tree to the flock. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em annotations} & see \mbox{\hyperlink{class_geese_a4766bb548b2a33e16019c52026f455f5}{Geese\+::\+Geese}}. \\
+\hline
+{\em geneid} & see \mbox{\hyperlink{class_geese}{Geese}}. \\
+\hline
+{\em parent} & see \mbox{\hyperlink{class_geese}{Geese}}. \\
+\hline
+{\em duplication} & see \mbox{\hyperlink{class_geese}{Geese}}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned int The number of tree in the model (starting from zero). 
+\end{DoxyReturn}
 
 
 Definition at line 6 of file flock-\/meet.\+hpp.
@@ -124,6 +142,22 @@ Definition at line 41 of file flock-\/meet.\+hpp.
 \doxysubsubsection{\texorpdfstring{likelihood\_joint()}{likelihood\_joint()}}
 {\footnotesize\ttfamily double Flock\+::likelihood\+\_\+joint (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily false},  }\item[{bool}]{use\+\_\+likelihood\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns the joint likelihood of the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em par} & Vector of model parameters. \\
+\hline
+{\em as\+\_\+log} & When {\ttfamily true} it will return the value as log. \\
+\hline
+{\em use\+\_\+likelihood\+\_\+sequence} & When {\ttfamily true} (default) will compute the likelihood using the reduced sequence, which is faster. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
 
 
 Definition at line 84 of file flock-\/meet.\+hpp.
@@ -186,6 +220,15 @@ Definition at line 115 of file flock-\/meet.\+hpp.
 
 
 
+Set the seed of the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Passed to the {\ttfamily rengine.\+seed()} member object. \\
+\hline
+\end{DoxyParams}
+
+
 Definition at line 37 of file flock-\/meet.\+hpp.
 
 
@@ -199,7 +242,7 @@ Definition at line 37 of file flock-\/meet.\+hpp.
 
 
 
-Definition at line 15 of file flock-\/bones.\+hpp.
+Definition at line 17 of file flock-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_flock_aad9b90040d349a23b33e09292bb964db}\label{class_flock_aad9b90040d349a23b33e09292bb964db}} 
 \index{Flock@{Flock}!initialized@{initialized}}
@@ -209,7 +252,7 @@ Definition at line 15 of file flock-\/bones.\+hpp.
 
 
 
-Definition at line 17 of file flock-\/bones.\+hpp.
+Definition at line 19 of file flock-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_flock_a77220682e593e9d455f56a5607981ff2}\label{class_flock_a77220682e593e9d455f56a5607981ff2}} 
 \index{Flock@{Flock}!nfunctions@{nfunctions}}
@@ -219,7 +262,7 @@ Definition at line 17 of file flock-\/bones.\+hpp.
 
 
 
-Definition at line 16 of file flock-\/bones.\+hpp.
+Definition at line 18 of file flock-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_flock_a0e3ce6d007f667eea9f036cddb6789b6}\label{class_flock_a0e3ce6d007f667eea9f036cddb6789b6}} 
 \index{Flock@{Flock}!rengine@{rengine}}
@@ -229,7 +272,7 @@ Definition at line 16 of file flock-\/bones.\+hpp.
 
 
 
-Definition at line 20 of file flock-\/bones.\+hpp.
+Definition at line 22 of file flock-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_flock_a20d75da0d423252055af84194e88f901}\label{class_flock_a20d75da0d423252055af84194e88f901}} 
 \index{Flock@{Flock}!support@{support}}
@@ -239,7 +282,7 @@ Definition at line 20 of file flock-\/bones.\+hpp.
 
 
 
-Definition at line 21 of file flock-\/bones.\+hpp.
+Definition at line 23 of file flock-\/bones.\+hpp.
 
 
 

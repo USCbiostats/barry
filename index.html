@@ -22,7 +22,7 @@
     jax: ["input/TeX","output/HTML-CSS"],
 });
 </script>
-<script type="text/javascript" async="async" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+<script type="text/javascript" async="async" src="mathjax/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="barry.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -96,8 +96,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">barry: Your go-to motif accountant Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml"><img src="https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml/badge.svg" alt="C/C++ CI" style="pointer-events: none;" class="inline"/></a> <a href="https://image.usc.edu"><img src="https://raw.githubusercontent.com/USCbiostats/badges/master/tommy-image-badge.svg" alt="Integrative Methods of Analysis for Genetic Epidemiology" style="pointer-events: none;" class="inline"/></a></p>
-<h1>Barry: your to-go motif accountant<img src="logo.svg" alt="" style="pointer-events: none; max-width:200px;width:50%;" class="inline"/></h1>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml"><img src="https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml/badge.svg" alt="C/C++ CI" style="pointer-events: none;" class="inline"/></a> <a href="https://USCbiostats.github.io/barry"><img src="https://github.com/USCbiostats/barry/actions/workflows/doxy-action.yml/badge.svg" alt="Doxygen docs" style="pointer-events: none;" class="inline"/></a> <a href="https://image.usc.edu"><img src="https://raw.githubusercontent.com/USCbiostats/badges/master/tommy-image-badge.svg" alt="Integrative Methods of Analysis for Genetic Epidemiology" style="pointer-events: none;" class="inline"/></a></p>
+<h1>Barry: your to-go motif accountant<img src="logo.svg" alt="" style="pointer-events: none; max-width:200px;width:50%;" align="right" class="inline"/></h1>
 <p>This repository contains a C++ template library that essentially counts sufficient statistics on binary arrays. The idea of the library is that this can be used together to build exponential family models as those in Exponential Random Graph Models (ERGMs), but as a generalization that also deals with non square arrays.</p>
 <h1>Examples</h1>
 <h2>Counting statistics in a graph</h2>
@@ -136,11 +136,11 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Creating counter object for the network and adding stats to count</span></div>
 <div class="line">  <a class="code" href="network_8hpp.html#a1c44fa47dcf1cca1ba35eea6e70950a3">netcounters::NetStatsCounter</a> counter(&amp;net);</div>
-<div class="line">  <a class="code" href="network_8hpp.html#abd98b97f5b4e45972e132051b12891c8">netcounters::counter_edges</a>(counter.counters);</div>
-<div class="line">  <a class="code" href="network_8hpp.html#a870a0b3698622948d0bfc668e08752a2">netcounters::counter_ttriads</a>(counter.counters);</div>
-<div class="line">  <a class="code" href="network_8hpp.html#ab4c23f807f01c7a9736bb6b9b34820c7">netcounters::counter_isolates</a>(counter.counters);</div>
-<div class="line">  <a class="code" href="network_8hpp.html#a8ea4bb27771e3fb61f807f4dff2a6e57">netcounters::counter_ctriads</a>(counter.counters);</div>
-<div class="line">  <a class="code" href="network_8hpp.html#a78f7e03b92269082ada763e1a936abf3">netcounters::counter_mutual</a>(counter.counters);</div>
+<div class="line">  <a class="code" href="group__counters-network.html#gabd98b97f5b4e45972e132051b12891c8">netcounters::counter_edges</a>(counter.counters);</div>
+<div class="line">  <a class="code" href="group__counters-network.html#ga870a0b3698622948d0bfc668e08752a2">netcounters::counter_ttriads</a>(counter.counters);</div>
+<div class="line">  <a class="code" href="group__counters-network.html#gab4c23f807f01c7a9736bb6b9b34820c7">netcounters::counter_isolates</a>(counter.counters);</div>
+<div class="line">  <a class="code" href="group__counters-network.html#ga8ea4bb27771e3fb61f807f4dff2a6e57">netcounters::counter_ctriads</a>(counter.counters);</div>
+<div class="line">  <a class="code" href="group__counters-network.html#ga78f7e03b92269082ada763e1a936abf3">netcounters::counter_mutual</a>(counter.counters);</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// Counting and printing the results</span></div>
 <div class="line">  std::vector&lt; double &gt; counts = counter.count_all();</div>
@@ -154,13 +154,13 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">  </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="anetwork_8hpp_html_a1c44fa47dcf1cca1ba35eea6e70950a3"><div class="ttname"><a href="network_8hpp.html#a1c44fa47dcf1cca1ba35eea6e70950a3">NetStatsCounter</a></div><div class="ttdeci">StatsCounter&lt; Network, NetCounterData &gt; NetStatsCounter</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00079">network.hpp:79</a></div></div>
-<div class="ttc" id="anetwork_8hpp_html_a78f7e03b92269082ada763e1a936abf3"><div class="ttname"><a href="network_8hpp.html#a78f7e03b92269082ada763e1a936abf3">counter_mutual</a></div><div class="ttdeci">void counter_mutual(NetCounters *counters)</div><div class="ttdoc">Number of mutual ties.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00158">network.hpp:158</a></div></div>
-<div class="ttc" id="anetwork_8hpp_html_a870a0b3698622948d0bfc668e08752a2"><div class="ttname"><a href="network_8hpp.html#a870a0b3698622948d0bfc668e08752a2">counter_ttriads</a></div><div class="ttdeci">void counter_ttriads(NetCounters *counters)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00233">network.hpp:233</a></div></div>
-<div class="ttc" id="anetwork_8hpp_html_a8ea4bb27771e3fb61f807f4dff2a6e57"><div class="ttname"><a href="network_8hpp.html#a8ea4bb27771e3fb61f807f4dff2a6e57">counter_ctriads</a></div><div class="ttdeci">void counter_ctriads(NetCounters *counters)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00308">network.hpp:308</a></div></div>
-<div class="ttc" id="anetwork_8hpp_html_ab4c23f807f01c7a9736bb6b9b34820c7"><div class="ttname"><a href="network_8hpp.html#ab4c23f807f01c7a9736bb6b9b34820c7">counter_isolates</a></div><div class="ttdeci">void counter_isolates(NetCounters *counters)</div><div class="ttdoc">Number of isolated vertices.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00128">network.hpp:128</a></div></div>
-<div class="ttc" id="anetwork_8hpp_html_abd98b97f5b4e45972e132051b12891c8"><div class="ttname"><a href="network_8hpp.html#abd98b97f5b4e45972e132051b12891c8">counter_edges</a></div><div class="ttdeci">void counter_edges(NetCounters *counters)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00114">network.hpp:114</a></div></div>
-<div class="ttc" id="anetwork_8hpp_html_ad0e1efde7782396b9f93c16ce892af05"><div class="ttname"><a href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a></div><div class="ttdeci">BArray&lt; double, NetworkData &gt; Network</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00075">network.hpp:75</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga78f7e03b92269082ada763e1a936abf3"><div class="ttname"><a href="group__counters-network.html#ga78f7e03b92269082ada763e1a936abf3">counter_mutual</a></div><div class="ttdeci">void counter_mutual(NetCounters *counters)</div><div class="ttdoc">Number of mutual ties.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00172">network.hpp:172</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga870a0b3698622948d0bfc668e08752a2"><div class="ttname"><a href="group__counters-network.html#ga870a0b3698622948d0bfc668e08752a2">counter_ttriads</a></div><div class="ttdeci">void counter_ttriads(NetCounters *counters)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00247">network.hpp:247</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga8ea4bb27771e3fb61f807f4dff2a6e57"><div class="ttname"><a href="group__counters-network.html#ga8ea4bb27771e3fb61f807f4dff2a6e57">counter_ctriads</a></div><div class="ttdeci">void counter_ctriads(NetCounters *counters)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00322">network.hpp:322</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_gab4c23f807f01c7a9736bb6b9b34820c7"><div class="ttname"><a href="group__counters-network.html#gab4c23f807f01c7a9736bb6b9b34820c7">counter_isolates</a></div><div class="ttdeci">void counter_isolates(NetCounters *counters)</div><div class="ttdoc">Number of isolated vertices.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00142">network.hpp:142</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_gabd98b97f5b4e45972e132051b12891c8"><div class="ttname"><a href="group__counters-network.html#gabd98b97f5b4e45972e132051b12891c8">counter_edges</a></div><div class="ttdeci">void counter_edges(NetCounters *counters)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00128">network.hpp:128</a></div></div>
+<div class="ttc" id="anetwork_8hpp_html_a1c44fa47dcf1cca1ba35eea6e70950a3"><div class="ttname"><a href="network_8hpp.html#a1c44fa47dcf1cca1ba35eea6e70950a3">NetStatsCounter</a></div><div class="ttdeci">StatsCounter&lt; Network, NetCounterData &gt; NetStatsCounter</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00091">network.hpp:91</a></div></div>
+<div class="ttc" id="anetwork_8hpp_html_ad0e1efde7782396b9f93c16ce892af05"><div class="ttname"><a href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a></div><div class="ttdeci">BArray&lt; double, NetworkData &gt; Network</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00087">network.hpp:87</a></div></div>
 </div><!-- fragment --><p>Compiling this program using g++</p>
 <div class="fragment"><div class="line">g++ -std=c++11 -Wall -pedantic 08-counts.cpp -o counts &amp;&amp; ./counts</div>
 </div><!-- fragment --><p>Yields the following output:</p>
@@ -183,13 +183,15 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">Isolates          : 2</div>
 <div class="line">C triads          : 1</div>
 <div class="line">Mutuals           : 3</div>
-</div><!-- fragment --> </div></div><!-- PageDoc -->
+</div><!-- fragment --><h2>Code of Conduct</h2>
+<p>Please note that the <code>barry</code> project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Apr 8 2021 06:13:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Apr 8 2021 23:33:47 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
