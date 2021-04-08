@@ -15,7 +15,7 @@ var class_power_set =
     [ "init_support", "class_power_set.html#a8eefc9606c6339938a8d9adcd0d7e153", null ],
     [ "operator[]", "class_power_set.html#acc822131a9fbfd5b87f85b675f293d39", null ],
     [ "reset", "class_power_set.html#aba11dd8802cd2eb529c7c30b55994248", null ],
-    [ "size", "class_power_set.html#a80e7099e115369326e6c873a92d270f9", null ],
+    [ "size", "class_power_set.html#a9a92b7c43517e11f3245a7ae89a578ef", null ],
     [ "coordinates_free", "class_power_set.html#a99cfef97c3a457ea7be1b000b39f41d9", null ],
     [ "coordinates_locked", "class_power_set.html#ac5cdec06502e8bd20e36fca3abbb9a3e", null ],
     [ "data", "class_power_set.html#af456c157d157692ba5890c549c51af75", null ],

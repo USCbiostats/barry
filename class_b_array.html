@@ -205,12 +205,12 @@ Public Member Functions</h2></td></tr>
 </div></td></tr>
 <tr class="memitem:a37ed3962c0ee5030b23cb6cde23a5cdf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a37ed3962c0ee5030b23cb6cde23a5cdf">is_empty</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true) const</td></tr>
 <tr class="separator:a37ed3962c0ee5030b23cb6cde23a5cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac829edf4a9921bd6b3f56afbcbb2f37f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">nrow</a> () const</td></tr>
-<tr class="separator:ac829edf4a9921bd6b3f56afbcbb2f37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac669bd57e3cbf4c60bf2b4a459dcdc4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f">ncol</a> () const</td></tr>
-<tr class="separator:ac669bd57e3cbf4c60bf2b4a459dcdc4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9910b6f42e37d3b0a12cafb70b78775f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a9910b6f42e37d3b0a12cafb70b78775f">nnozero</a> () const</td></tr>
-<tr class="separator:a9910b6f42e37d3b0a12cafb70b78775f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6532bbcff89fa7df589de57969b0c5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a> () const noexcept</td></tr>
+<tr class="separator:ad6532bbcff89fa7df589de57969b0c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6be0b6344b5dd30d6759f09a82cbff6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a> () const noexcept</td></tr>
+<tr class="separator:ac6be0b6344b5dd30d6759f09a82cbff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afef755759c2618dbdc3d216642d1b8cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#afef755759c2618dbdc3d216642d1b8cb">nnozero</a> () const noexcept</td></tr>
+<tr class="separator:afef755759c2618dbdc3d216642d1b8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Cell-wise insertion/deletion</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1055,13 +1055,16 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 
 </div>
 </div>
-<a id="ac669bd57e3cbf4c60bf2b4a459dcdc4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac669bd57e3cbf4c60bf2b4a459dcdc4f">&#9670;&nbsp;</a></span>ncol()</h2>
+<a id="ac6be0b6344b5dd30d6759f09a82cbff6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6be0b6344b5dd30d6759f09a82cbff6">&#9670;&nbsp;</a></span>ncol()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::ncol </td>
@@ -1070,17 +1073,25 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a9910b6f42e37d3b0a12cafb70b78775f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9910b6f42e37d3b0a12cafb70b78775f">&#9670;&nbsp;</a></span>nnozero()</h2>
+<a id="afef755759c2618dbdc3d216642d1b8cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afef755759c2618dbdc3d216642d1b8cb">&#9670;&nbsp;</a></span>nnozero()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::nnozero </td>
@@ -1089,17 +1100,25 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ac829edf4a9921bd6b3f56afbcbb2f37f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac829edf4a9921bd6b3f56afbcbb2f37f">&#9670;&nbsp;</a></span>nrow()</h2>
+<a id="ad6532bbcff89fa7df589de57969b0c5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6532bbcff89fa7df589de57969b0c5a">&#9670;&nbsp;</a></span>nrow()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::nrow </td>
@@ -1108,6 +1127,11 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -2139,7 +2163,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_b_array.html">BArray</a></li>
-    <li class="footer">Generated on Thu Apr 8 2021 00:08:15 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Apr 8 2021 06:13:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

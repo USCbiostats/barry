@@ -8,5 +8,6 @@ var class_freq_table =
     [ "get_data", "class_freq_table.html#a7b99496d1c2f4193654752856b30d1a5", null ],
     [ "get_data_ptr", "class_freq_table.html#ab5dd6677f52072c93d18b2b9a3369ae7", null ],
     [ "print", "class_freq_table.html#a4fe8f5e3b5bf64a1cbaf99deb96298d4", null ],
-    [ "reserve", "class_freq_table.html#a0bdced25f7c0bee38e073c4654578d19", null ]
+    [ "reserve", "class_freq_table.html#a0bdced25f7c0bee38e073c4654578d19", null ],
+    [ "size", "class_freq_table.html#af1f26bddaded94f0d5acb68f3a94fb86", null ]
 ];

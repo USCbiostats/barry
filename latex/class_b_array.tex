@@ -105,11 +105,11 @@ void \mbox{\hyperlink{class_b_array_a9d150c44b23cf1e4af45f540508db1de}{print}} (
 \item 
 bool \mbox{\hyperlink{class_b_array_a37ed3962c0ee5030b23cb6cde23a5cdf}{is\+\_\+empty}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} j, bool check\+\_\+bounds=true) const
 \item 
-\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_ac829edf4a9921bd6b3f56afbcbb2f37f}{nrow}} () const
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_ad6532bbcff89fa7df589de57969b0c5a}{nrow}} () const noexcept
 \item 
-\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_ac669bd57e3cbf4c60bf2b4a459dcdc4f}{ncol}} () const
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_ac6be0b6344b5dd30d6759f09a82cbff6}{ncol}} () const noexcept
 \item 
-\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_a9910b6f42e37d3b0a12cafb70b78775f}{nnozero}} () const
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_afef755759c2618dbdc3d216642d1b8cb}{nnozero}} () const noexcept
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Cell-\/wise insertion/deletion}\par
@@ -421,26 +421,26 @@ void \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+T
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
 bool \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::is\+\_\+empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{i,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{j,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{class_b_array_ac669bd57e3cbf4c60bf2b4a459dcdc4f}\label{class_b_array_ac669bd57e3cbf4c60bf2b4a459dcdc4f}} 
+\mbox{\Hypertarget{class_b_array_ac6be0b6344b5dd30d6759f09a82cbff6}\label{class_b_array_ac6be0b6344b5dd30d6759f09a82cbff6}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!ncol@{ncol}}
 \index{ncol@{ncol}!BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{ncol()}{ncol()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::ncol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::ncol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
 
-\mbox{\Hypertarget{class_b_array_a9910b6f42e37d3b0a12cafb70b78775f}\label{class_b_array_a9910b6f42e37d3b0a12cafb70b78775f}} 
+\mbox{\Hypertarget{class_b_array_afef755759c2618dbdc3d216642d1b8cb}\label{class_b_array_afef755759c2618dbdc3d216642d1b8cb}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!nnozero@{nnozero}}
 \index{nnozero@{nnozero}!BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{nnozero()}{nnozero()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::nnozero (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::nnozero (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
 
-\mbox{\Hypertarget{class_b_array_ac829edf4a9921bd6b3f56afbcbb2f37f}\label{class_b_array_ac829edf4a9921bd6b3f56afbcbb2f37f}} 
+\mbox{\Hypertarget{class_b_array_ad6532bbcff89fa7df589de57969b0c5a}\label{class_b_array_ad6532bbcff89fa7df589de57969b0c5a}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!nrow@{nrow}}
 \index{nrow@{nrow}!BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{nrow()}{nrow()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::nrow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::nrow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
 
 \mbox{\Hypertarget{class_b_array_ae509989759e1eae0da9115e405e6d4a3}\label{class_b_array_ae509989759e1eae0da9115e405e6d4a3}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!operator()@{operator()}}

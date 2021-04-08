@@ -9,5 +9,5 @@ var class_counters =
     [ "clear", "class_counters.html#ae4635c154970a13ce88d2e982fe7dab3", null ],
     [ "operator=", "class_counters.html#a0edeb22b0b1640f7ada1ef47a30ac486", null ],
     [ "operator[]", "class_counters.html#a031002f578171aaa615d08b1a2f9be40", null ],
-    [ "size", "class_counters.html#af213b17c55496b565ad6ce7a9b0a56e1", null ]
+    [ "size", "class_counters.html#ad7980fd3757652e20b90ce1064e333c2", null ]
 ];

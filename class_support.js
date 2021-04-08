@@ -8,7 +8,7 @@ var class_support =
     [ "add_counter", "class_support.html#a00d511970c0bf833ef8bdd7580c670cc", null ],
     [ "add_rule", "class_support.html#a3113a4586c541aa25db7b4a864b748a2", null ],
     [ "add_rule", "class_support.html#aa817cb5d6c48dda3ecfeef2c5897b537", null ],
-    [ "calc", "class_support.html#afa36b8c1348e28c51296379157f58081", null ],
+    [ "calc", "class_support.html#a48ba2ccb197b73eb721a5f443dce2020", null ],
     [ "get_counts", "class_support.html#a5d93a94eaed9b1157fb934284883fd47", null ],
     [ "get_counts_ptr", "class_support.html#abcb4dea3c5a1b140990821900432f90e", null ],
     [ "init_support", "class_support.html#a013872a55ffd6a0a931e124da8e8dc99", null ],
@@ -26,6 +26,7 @@ var class_support =
     [ "data", "class_support.html#a1b7bc59cfcdd9bbdc164c6265917b030", null ],
     [ "EmptyArray", "class_support.html#a3ec1b46e245b89ae007601caaf4958c9", null ],
     [ "M", "class_support.html#ac0662129b0a12fe4eac69f6f2e733b05", null ],
+    [ "max_num_elements", "class_support.html#a10ac0bd000d6eef3225986e8f157b01d", null ],
     [ "N", "class_support.html#a6c6f707fae03f409c556b6d4668617af", null ],
     [ "rules", "class_support.html#a6fc8b2206c3755acbd26d9439e100f3d", null ],
     [ "rules_deleted", "class_support.html#aab64eca42c25f48f7688eae0bbe9f1ef", null ]

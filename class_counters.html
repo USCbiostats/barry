@@ -118,9 +118,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a031002f578171aaa615d08b1a2f9be40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#a031002f578171aaa615d08b1a2f9be40">operator[]</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> idx)</td></tr>
 <tr class="memdesc:a031002f578171aaa615d08b1a2f9be40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to a particular counter.  <a href="class_counters.html#a031002f578171aaa615d08b1a2f9be40">More...</a><br /></td></tr>
 <tr class="separator:a031002f578171aaa615d08b1a2f9be40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af213b17c55496b565ad6ce7a9b0a56e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#af213b17c55496b565ad6ce7a9b0a56e1">size</a> () const</td></tr>
-<tr class="memdesc:af213b17c55496b565ad6ce7a9b0a56e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of counters in the set.  <a href="class_counters.html#af213b17c55496b565ad6ce7a9b0a56e1">More...</a><br /></td></tr>
-<tr class="separator:af213b17c55496b565ad6ce7a9b0a56e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7980fd3757652e20b90ce1064e333c2"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#ad7980fd3757652e20b90ce1064e333c2">size</a> () const noexcept</td></tr>
+<tr class="memdesc:ad7980fd3757652e20b90ce1064e333c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of counters in the set.  <a href="class_counters.html#ad7980fd3757652e20b90ce1064e333c2">More...</a><br /></td></tr>
+<tr class="separator:ad7980fd3757652e20b90ce1064e333c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b5dafc7a3e0eedae400457f69937613"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#a5b5dafc7a3e0eedae400457f69937613">add_counter</a> (<a class="el" href="class_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; &amp;counter)</td></tr>
 <tr class="separator:a5b5dafc7a3e0eedae400457f69937613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74f054aa9ea64103c2d9f79f115777d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#a74f054aa9ea64103c2d9f79f115777d4">add_counter</a> (<a class="el" href="class_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; *counter)</td></tr>
@@ -427,8 +427,8 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 
 </div>
 </div>
-<a id="af213b17c55496b565ad6ce7a9b0a56e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af213b17c55496b565ad6ce7a9b0a56e1">&#9670;&nbsp;</a></span>size()</h2>
+<a id="ad7980fd3757652e20b90ce1064e333c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7980fd3757652e20b90ce1064e333c2">&#9670;&nbsp;</a></span>size()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -439,7 +439,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt;::size </td>
+          <td class="memname">std::size_t <a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt;::size </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -447,7 +447,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -469,7 +469,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_counters.html">Counters</a></li>
-    <li class="footer">Generated on Thu Apr 8 2021 00:08:15 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Apr 8 2021 06:13:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -108,10 +108,10 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; rhs</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;) {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span> (lhs.<a class="code" href="class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f">ncol</a>() != rhs.<a class="code" href="class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f">ncol</a>())</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span> (lhs.<a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>() != rhs.<a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>())</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Number of columns do not match.&quot;</span>);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span> (lhs.<a class="code" href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">nrow</a>() != rhs.<a class="code" href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">nrow</a>())</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span> (lhs.<a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>() != rhs.<a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>())</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Number of rows do not match.&quot;</span>);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span>;</div>
@@ -125,8 +125,8 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// Must be compatible</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a>(*<span class="keyword">this</span>, rhs);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f">ncol</a>(); ++j) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) += rhs.<a class="code" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a>(i, j);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
@@ -139,8 +139,8 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;) {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f">ncol</a>(); ++j) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) += rhs;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
@@ -156,8 +156,8 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Must be compatible</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a>(*<span class="keyword">this</span>, rhs);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f">ncol</a>(); ++j) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) -= rhs.<a class="code" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a>(i, j);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
@@ -170,8 +170,8 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;) {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f">ncol</a>(); ++j) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) -= rhs;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
@@ -184,7 +184,7 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;) {</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).size() == 0u)</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">continue</span>;</div>
@@ -202,7 +202,7 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;) {</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).size() == 0u)</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">continue</span>;</div>
@@ -224,19 +224,19 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="ttc" id="aclass_b_array_html_a4096e4447f91ba52766587a08c62f1fa"><div class="ttname"><a href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">BArray::get_cell</a></div><div class="ttdeci">Cell_Type get_cell(uint i, uint j, bool check_bounds=true) const</div></div>
 <div class="ttc" id="aclass_b_array_html_a9d4b4f6bba8199a7ead8682a31a31bb1"><div class="ttname"><a href="class_b_array.html#a9d4b4f6bba8199a7ead8682a31a31bb1">BArray::operator*=</a></div><div class="ttdeci">BArray&lt; Cell_Type, Data_Type &gt; &amp; operator*=(const Cell_Type &amp;rhs)</div></div>
 <div class="ttc" id="aclass_b_array_html_aa9e32697fb3aac4fe7a191f906e7fac2"><div class="ttname"><a href="class_b_array.html#aa9e32697fb3aac4fe7a191f906e7fac2">BArray::operator/=</a></div><div class="ttdeci">BArray&lt; Cell_Type, Data_Type &gt; &amp; operator/=(const Cell_Type &amp;rhs)</div></div>
-<div class="ttc" id="aclass_b_array_html_ac669bd57e3cbf4c60bf2b4a459dcdc4f"><div class="ttname"><a href="class_b_array.html#ac669bd57e3cbf4c60bf2b4a459dcdc4f">BArray::ncol</a></div><div class="ttdeci">uint ncol() const</div></div>
-<div class="ttc" id="aclass_b_array_html_ac829edf4a9921bd6b3f56afbcbb2f37f"><div class="ttname"><a href="class_b_array.html#ac829edf4a9921bd6b3f56afbcbb2f37f">BArray::nrow</a></div><div class="ttdeci">uint nrow() const</div></div>
+<div class="ttc" id="aclass_b_array_html_ac6be0b6344b5dd30d6759f09a82cbff6"><div class="ttname"><a href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">BArray::ncol</a></div><div class="ttdeci">uint ncol() const noexcept</div></div>
+<div class="ttc" id="aclass_b_array_html_ad6532bbcff89fa7df589de57969b0c5a"><div class="ttname"><a href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">BArray::nrow</a></div><div class="ttdeci">uint nrow() const noexcept</div></div>
 <div class="ttc" id="aclass_b_array_html_ae509989759e1eae0da9115e405e6d4a3"><div class="ttname"><a href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">BArray::operator()</a></div><div class="ttdeci">BArrayCell&lt; Cell_Type, Data_Type &gt; operator()(uint i, uint j, bool check_bounds=true)</div></div>
 <div class="ttc" id="aclass_b_array_html_af73a5405538c57c6a02f84ce97e06cea"><div class="ttname"><a href="class_b_array.html#af73a5405538c57c6a02f84ce97e06cea">BArray::operator+=</a></div><div class="ttdeci">BArray&lt; Cell_Type, Data_Type &gt; &amp; operator+=(const std::pair&lt; uint, uint &gt; &amp;coords)</div></div>
-<div class="ttc" id="atypedefs_8hpp_html_a391c25765afb3eb7b8288b21dd2eb16b"><div class="ttname"><a href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a></div><div class="ttdeci">#define ROW(a)</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00024">typedefs.hpp:24</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00021">typedefs.hpp:21</a></div></div>
+<div class="ttc" id="atypedefs_8hpp_html_a391c25765afb3eb7b8288b21dd2eb16b"><div class="ttname"><a href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a></div><div class="ttdeci">#define ROW(a)</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00022">typedefs.hpp:22</a></div></div>
+<div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00019">typedefs.hpp:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barray-meat-operators_8hpp.html">barray-meat-operators.hpp</a></li>
-    <li class="footer">Generated on Thu Apr 8 2021 00:08:15 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Apr 8 2021 06:13:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

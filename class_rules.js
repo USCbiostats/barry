@@ -10,5 +10,5 @@ var class_rules =
     [ "get_seq", "class_rules.html#afc2e6ddd9cf384f9e70896ad6e581ed4", null ],
     [ "locked", "class_rules.html#a51540e67c97559216cf84f8a7e230ea7", null ],
     [ "operator=", "class_rules.html#ab87544febb8301772164570708bd708e", null ],
-    [ "size", "class_rules.html#a2f230f733e9936443af660bc890610ef", null ]
+    [ "size", "class_rules.html#a8b75d7e0af10e5d354fe325712e2df90", null ]
 ];
