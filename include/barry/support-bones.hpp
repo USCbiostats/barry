@@ -43,6 +43,7 @@ public:
     uint N, M;
     bool counter_deleted = false;
     bool rules_deleted   = false;
+    uint max_num_elements = BARRY_MAX_NUM_ELEMENTS;
     
     // Temp variables to reduce memory allocation
     std::vector< double >                current_stats;
@@ -135,7 +136,8 @@ public:
      */
     void calc(
         std::vector< Array_Type > * array_bank = nullptr,
-        std::vector< std::vector< double > > * stats_bank = nullptr
+        std::vector< std::vector< double > > * stats_bank = nullptr,
+        unsigned int max_num_elements_ = 0u
     );
     
     Counts_type           get_counts() const;

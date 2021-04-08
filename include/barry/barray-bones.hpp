@@ -133,9 +133,9 @@ public:
      */
     ///@{
     bool is_empty(uint i, uint j, bool check_bounds = true) const;
-    uint nrow() const;
-    uint ncol() const;
-    uint nnozero() const;
+    uint nrow() const noexcept;
+    uint ncol() const noexcept;
+    uint nnozero() const noexcept;
     ///@}
 
     /**

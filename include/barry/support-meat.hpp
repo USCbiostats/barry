@@ -49,8 +49,6 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support(
     // Adding to the overall count
     data.add(current_stats);
 
-    // EmptyArray.clear(true);
-    // EmptyArray.reserve();
     change_stats.resize(coordinates_free.size(), current_stats);
     
     // Resizing support
@@ -121,6 +119,7 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
     }
     
     // Adding to the overall count
+    BARRY_CHECK_SUPPORT(data, max_num_elements)
     data.add(current_stats);
     
     // Need to save?
@@ -132,7 +131,7 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
     
     // Again, we only pass it to the next level iff the next level is not
     // passed the last step.
-    calc_backend(pos + 1, array_bank, stats_bank);
+    calc_backend(pos + 1u, array_bank, stats_bank);
     
     // We need to restore the state of the cell
     EmptyArray.rm_cell(
@@ -152,8 +151,12 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
 inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc(
         std::vector< Array_Type > *            array_bank,
-        std::vector< std::vector< double > > * stats_bank
+        std::vector< std::vector< double > > * stats_bank,
+        unsigned int max_num_elements_
 ) {
+
+    if (max_num_elements_ != 0u)
+        this->max_num_elements = max_num_elements_;
 
     // Generating sequence
     this->init_support(array_bank, stats_bank);
@@ -162,6 +165,10 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc(
     calc_backend(0u, array_bank, stats_bank);
 
     change_stats.clear();
+
+    if (max_num_elements_ != 0u)
+        this->max_num_elements = BARRY_MAX_NUM_ELEMENTS;
+
 
     return;
     

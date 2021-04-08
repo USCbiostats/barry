@@ -161,9 +161,9 @@ public:
      * 
      */
     ///@{
-    unsigned int nfuns() const;
-    unsigned int nnodes() const;
-    unsigned int nleafs() const;
+    unsigned int nfuns() const noexcept;
+    unsigned int nnodes() const noexcept;
+    unsigned int nleafs() const noexcept;
     unsigned int nterms() const;
     ///@}
 

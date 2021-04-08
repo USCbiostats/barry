@@ -37,6 +37,7 @@ public:
     void clear();
     void reserve(unsigned int n);
     void print() const;
+    size_t size() const noexcept;
     // void rehash();
     
     
@@ -106,6 +107,13 @@ inline void FreqTable<T>::print() const {
 
     }
     return;
+}
+
+template<typename T>
+inline size_t FreqTable<T>::size() const noexcept {
+
+    return this->data.size();
+
 }
 
 #endif

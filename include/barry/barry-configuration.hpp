@@ -1,6 +1,10 @@
 #ifndef BARRY_CONFIGURATION_HPP
 #define BARRY_CONFIGURATION_HPP
 
+#ifndef BARRY_MAX_NUM_ELEMENTS
+    #define BARRY_MAX_NUM_ELEMENTS static_cast< unsigned int >(UINT_MAX/2u)
+#endif
+
 /**
   * @name Configuration MACROS
   * @details These are mostly related to performance. The definitions follow:
@@ -28,11 +32,18 @@
     #define BARRY_SAFE_EXP -100.0
 #endif
 
-#ifdef BARRY_CHECK_FINITE
-    #define BARRY_ISFINITE(a) {if (!std::isfinite( (a) )) \
-        throw std::overflow_error("The likelihood function has overflowed.");}
+#ifdef BARRY_USE_ISFINITE
+    #define BARRY_ISFINITE(a) if (!std::isfinite( (a) )) \
+        throw std::overflow_error("The likelihood function has overflowed.");
 #else
     #define BARRY_ISFINITE(a) 
+#endif
+
+#ifdef BARRAY_USE_CHECK_SUPPORT
+    #define BARRY_CHECK_SUPPORT(x, maxs) if ((x).size() > (maxs)) \
+        throw std::length_error("The support has exceeded its maximum size.");
+#else
+    #define BARRY_CHECK_SUPPORT(x, maxs)
 #endif
 ///@}
 

@@ -48,10 +48,10 @@ public:
      * 
      */
     ///@{
-    unsigned int nfuns() const;
-    unsigned int ntrees() const;
-    std::vector< unsigned int > nnodes() const;
-    std::vector< unsigned int > nleafs() const;
+    unsigned int nfuns() const noexcept;
+    unsigned int ntrees() const noexcept;
+    std::vector< unsigned int > nnodes() const noexcept;
+    std::vector< unsigned int > nleafs() const noexcept;
     unsigned int nterms() const;
     ///@}
 

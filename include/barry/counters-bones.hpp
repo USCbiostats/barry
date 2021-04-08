@@ -98,7 +98,7 @@ public:
      * 
      * @return uint 
      */
-    uint size() const {
+    std::size_t size() const noexcept {
         return data.size();
         };
     

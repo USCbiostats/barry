@@ -81,7 +81,7 @@ public:
         return;
     }
 
-    uint size() const {
+    uint size() const noexcept {
         return data.size();
     };
     

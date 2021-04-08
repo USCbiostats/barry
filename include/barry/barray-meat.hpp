@@ -499,17 +499,17 @@ inline bool BArray<Cell_Type,Data_Type>::is_empty(
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline uint BArray<Cell_Type, Data_Type>::nrow() const {
+inline uint BArray<Cell_Type, Data_Type>::nrow() const noexcept {
     return N;
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline uint BArray<Cell_Type, Data_Type>::ncol() const {
+inline uint BArray<Cell_Type, Data_Type>::ncol() const noexcept {
     return M;
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline uint BArray<Cell_Type, Data_Type>::nnozero() const {
+inline uint BArray<Cell_Type, Data_Type>::nnozero() const noexcept {
     return NCells;
 }
 
@@ -1122,7 +1122,7 @@ inline void BArray< Cell_Type, Data_Type >::print() const {
             if (this->is_empty(i, j, false))
                 printf("    . ");
             else 
-                printf(" %.2f ", static_cast<double>(this->get_cell(i, j)));
+                printf(" %.2f ", static_cast<double>(this->get_cell(i, j, false)));
             
         }
         printf("\n");

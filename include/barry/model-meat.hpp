@@ -112,7 +112,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model<Array_Type,Dat
 
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::store_psets() {
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::store_psets() noexcept {
     // if (with_pset)
     //   throw std::logic_error("Powerset storage alreay activated.");
     with_pset = true;
@@ -533,17 +533,17 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::print_stats(uint
 }
 
 template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size() const {
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size() const noexcept {
     return this->target_stats.size();
 }
 
 template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size_unique() const {
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size_unique() const noexcept {
     return this->stats.size();
 } 
 
 template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::nterms() const {
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::nterms() const noexcept {
 
     return this->counters.size();
 

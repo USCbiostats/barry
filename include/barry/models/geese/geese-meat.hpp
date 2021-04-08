@@ -284,15 +284,15 @@ inline std::vector< double > Geese::get_probabilities() const {
     
 }
 
-inline unsigned int Geese::nfuns() const {
+inline unsigned int Geese::nfuns() const noexcept {
     return this->nfunctions;
 }
 
-inline unsigned int Geese::nnodes() const {
+inline unsigned int Geese::nnodes() const noexcept {
     return this->nodes.size();
 }
 
-inline unsigned int Geese::nleafs() const {
+inline unsigned int Geese::nleafs() const noexcept {
 
     unsigned int n = 0u;
     for (auto& iter : this->nodes)

@@ -106,19 +106,19 @@ inline double Flock::likelihood_joint(
 
 }
 
-inline unsigned int Flock::nfuns() const {
+inline unsigned int Flock::nfuns() const noexcept {
 
     return this->nfunctions;
 
 }
 
-inline unsigned int Flock::ntrees() const {
+inline unsigned int Flock::ntrees() const noexcept {
 
     return this->dat.size();
 
 }
 
-inline std::vector< unsigned int > Flock::nnodes() const {
+inline std::vector< unsigned int > Flock::nnodes() const noexcept {
 
     std::vector< unsigned int > res;
     res.reserve(this->ntrees());
@@ -129,7 +129,7 @@ inline std::vector< unsigned int > Flock::nnodes() const {
     return res;
 }
 
-inline std::vector< unsigned int > Flock::nleafs() const {
+inline std::vector< unsigned int > Flock::nleafs() const noexcept {
 
     std::vector< unsigned int > res;
     res.reserve(this->ntrees());

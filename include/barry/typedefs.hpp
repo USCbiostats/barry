@@ -10,8 +10,6 @@
 #include <random>
 #include <climits>
 
-
-
 // Configuration ---------------------------------------------------------------
 #include "barry-configuration.hpp"
 

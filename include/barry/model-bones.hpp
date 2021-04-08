@@ -192,7 +192,7 @@ public:
             delete rengine;
     };
     
-    void store_psets();
+    void store_psets() noexcept;
     void set_keygen(std::function<std::vector<double>(const Array_Type &)> keygen_);
     
     /**
@@ -322,9 +322,9 @@ public:
       * @return `nterms()` returns the number of terms in the model.
       */
     ///@{
-    unsigned int size() const;
-    unsigned int size_unique() const;
-    unsigned int nterms() const;
+    unsigned int size() const noexcept;
+    unsigned int size_unique() const noexcept;
+    unsigned int nterms() const noexcept;
     ///@}
 };
 

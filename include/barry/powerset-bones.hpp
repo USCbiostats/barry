@@ -72,7 +72,7 @@ public:
     std::vector< Array_Type > get_data() const {return data;};
     typename std::vector< Array_Type >::iterator begin() {return data.begin();};
     typename std::vector< Array_Type >::iterator end() {return data.end();};
-    uint size() const {return data.size();};
+    std::size_t size() const noexcept {return data.size();};
     const Array_Type& operator[](const unsigned int & i) const {return data.at(i);};
     ///@}
     
