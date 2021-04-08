@@ -58,12 +58,6 @@ namespace barry {
     
 }
 
-/**
- * @defgroup stat-models Statistical Models
- * @brief Statistical models available in `barry`.
- */
-
-
 namespace netcounters = barry::counters::network;
 namespace phylocounters = barry::counters::phylo;
 
