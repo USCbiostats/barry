@@ -1,6 +1,6 @@
 .PHONY: docs tests clean phylo
 docs:
-	doxygen Doxyfile
+	cp -R mathjax docs/. && doxygen Doxyfile
 tests:
 	cd tests && $(MAKE) 
 clean:
