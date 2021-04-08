@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI - Doxygen
+name: Doxygen docs
 
 # Controls when the action will run. 
 on:
@@ -29,8 +29,8 @@ jobs:
           doxyfile-path: './Doxyfile'
           enable-latex: true
 
-      - name: Moving latex
-        run: mv latex docs/
+      - name: Moving latex and Mathjax
+        run: mv latex docs/ && cp -R mathjax docs/
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

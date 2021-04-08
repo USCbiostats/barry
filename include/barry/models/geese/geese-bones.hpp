@@ -61,7 +61,10 @@ inline bool vec_diff(
 }
 
 /**
+ * @ingroup stat-models
  * @brief Annotated Phylo Model
+ * @details A list of available terms for this model can be found in the
+ * \ref counters-phylo section.
  *
  */
 class Geese {

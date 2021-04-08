@@ -8,6 +8,11 @@
 #ifndef BARRY_MODEL_BONES_HPP 
 #define BARRY_MODEL_BONES_HPP 1
 
+/**
+ * @defgroup stat-models Statistical Models
+ * @brief Statistical models available in `barry`.
+ */
+
 inline double update_normalizing_constant(
     const std::vector< double > & params,
     const Counts_type & support
@@ -56,9 +61,10 @@ inline double likelihood_(
     
 }
 
-/**@brief Array Hasher class (used for computing support)
-  * 
-  */
+/**
+ * @brief Array Hasher class (used for computing support)
+ * 
+ */
 template<typename Array_Type>
 inline std::vector< double > keygen_default(const Array_Type & Array_) {
     return {static_cast<double>(Array_.N), static_cast<double>(Array_.M)};
@@ -66,6 +72,7 @@ inline std::vector< double > keygen_default(const Array_Type & Array_) {
 
 
 /**
+  * @ingroup stat-models
   * @brief General framework for discrete exponential models.
   * This class allows generating discrete exponential models in the form of a linear
   * exponential model:

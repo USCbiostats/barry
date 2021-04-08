@@ -8,6 +8,13 @@
 #define BARRAY_PHYLO_H 1
 
 /**
+ * @ingroup counting
+ * @details Details about the available counters for `PhyloArray`
+ * objects can be found in the \ref counters-phylo section.
+ */
+///@{
+
+/**
  * @brief Data definition for the `PhyloArray` class.
  * 
  * This holds basic information about a given node.
@@ -87,10 +94,11 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
     throw std::logic_error("The counter data is nullptr.")
 
 /**
- * @name Counters for phylogenetic modeling.
+ * @weakgroup counters-phylo Phylo counters
+ * @brief Counters for phylogenetic modeling
  * @param counters A pointer to a `PhyloCounters` object (`Counters`<`PhyloArray`, `PhyloCounterData`>).
  */
-//@{
+///@{
 // -----------------------------------------------------------------------------
 /**
  * @brief Overall functional gains
@@ -1021,6 +1029,7 @@ inline void counter_co_opt(
     return;
   
 }
-//@}
+///@}
+///@}
 
 #endif

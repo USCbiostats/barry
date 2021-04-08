@@ -3,9 +3,32 @@
 
 #ifndef BARRY_COUNTERS_BONES_HPP
 #define BARRY_COUNTERS_BONES_HPP 1
-  
 
 /**
+ * @defgroup counting
+ * @details `barry` includes a flexible way to generate counters based on change
+ * statistics. Since most of the time we are counting many motifs in a graph,
+ * change statistics make a reasonable (and efficient) way to make such counts.
+ * 
+ * In particular, let the motif be defined as \f$s(y)\f$, with \f$y\f$ as the
+ * binary array. The change statistic when adding cell \f$y_{ij}\f$, i.e. when
+ * the cell moves from being emty to have a one, is defined as
+ * 
+ * \f[
+ * \delta(y_{ij}) = s^+_{ij}(y) - s^-_{ij}(y),
+ * \f]
+ * 
+ * where \f$s^+_{ij}(y)\f$ and \f$s^-_{ij}(y)\f$ represent the motif statistic
+ * with and without the ij-cell. For example, in the case of networks, the change
+ * statistic for the number of edges is always 1. 
+ * 
+ * To count statistics in an array, the [Counter] class will empty the array, 
+ * initialize the counters, and then start counting while adding at each step
+ * a single cell, until matching the original array. 
+ */
+
+/**
+  * @ingroup counting
   * @brief A counter function based on change statistics.
   * 
   * This class is used by `CountStats` and `StatsCounter` as a way to count
