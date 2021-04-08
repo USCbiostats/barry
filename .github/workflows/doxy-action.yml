@@ -29,8 +29,9 @@ jobs:
           doxyfile-path: './Doxyfile'
           enable-latex: true
 
-      - name: Moving latex and Mathjax
-        run: mv latex docs/ && cp -R mathjax docs/
+      - name: Mathjax
+        #        run: mv latex docs/
+        run: mv mathjax docs/
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
