@@ -144,7 +144,7 @@ inline Geese::Geese(
 
     // Computing the pruning sequence.
     calc_sequence();
-    calc_likelihood_sequence();
+    calc_reduced_sequence();
 
     // Are the sequences OK?
     if (this->sequence.size() != this->nnodes())
@@ -160,7 +160,7 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
     nodes(model_.nodes),
     map_to_nodes(model_.map_to_nodes),
     sequence(model_.sequence),
-    likelihood_sequence(model_.likelihood_sequence),
+    reduced_sequence(model_.reduced_sequence),
     initialized(model_.initialized) {
 
     
@@ -238,7 +238,7 @@ inline Geese::Geese(Geese && x) noexcept :
     nodes(std::move(x.nodes)),
     map_to_nodes(std::move(x.map_to_nodes)),
     sequence(std::move(x.sequence)),
-    likelihood_sequence(std::move(x.likelihood_sequence)),
+    reduced_sequence(std::move(x.reduced_sequence)),
     initialized(x.initialized)
 {
 

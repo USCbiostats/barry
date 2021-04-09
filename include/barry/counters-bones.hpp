@@ -28,7 +28,7 @@
  */
 
 /**
-  * @ingroup counting
+  * @ingroup counting Implementation of motif counting
   * @brief A counter function based on change statistics.
   * 
   * This class is used by `CountStats` and `StatsCounter` as a way to count

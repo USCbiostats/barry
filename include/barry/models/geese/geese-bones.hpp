@@ -89,12 +89,12 @@ public:
 
     // Data
     unsigned int                       nfunctions;
-    barry::Map< unsigned int, Node >   nodes;
+    std::map< unsigned int, Node >     nodes;
     barry::MapVec_type< unsigned int > map_to_nodes;
 
     // Tree-traversal sequence
     std::vector< unsigned int > sequence;
-    std::vector< unsigned int > likelihood_sequence;  
+    std::vector< unsigned int > reduced_sequence;  
 
     // Admin-related objects
     bool initialized     = false;
@@ -147,9 +147,14 @@ public:
 
     // Node * operator()(unsigned int & nodeid);
     void calc_sequence(Node * n = nullptr);
-    void calc_likelihood_sequence();
+    void calc_reduced_sequence();
 
-    double likelihood(const std::vector< double > & par, bool as_log = false, bool use_likelihood_sequence = true);
+    double likelihood(
+        const std::vector< double > & par,
+        bool as_log = false,
+        bool use_reduced_sequence = true
+        );
+
     double likelihood_exhaust(const std::vector< double > & par);
 
     std::vector< double > get_probabilities() const;
@@ -176,12 +181,21 @@ public:
     /**
      * @brief Calculate the conditional probability
      * 
-     * @param p Vector of parameters
+     * @param p Vector of parameters.
+     * @param res_prob Vector indicating each nodes' state probability.
+     * 
+     * @details When `res_prob` is specified, the function will attach
+     * the member vector `probabilities` from the `Node`s objects. This
+     * contains the probability that the ith node has either of the
+     * possible states.
+     * 
      * @return std::vector< double > Returns the posterior probability
      */
     std::vector< std::vector< double > > predict(
         const std::vector< double > & p,
-        std::vector< std::vector< double > > * res_prob = nullptr
+        std::vector< std::vector< double > > * res_prob = nullptr,
+        bool use_reduced_sequence = true,
+        bool only_annotated       = false
         );
 
     void init_node(Node & n);

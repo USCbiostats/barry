@@ -58,14 +58,14 @@ public:
      * 
      * @param par Vector of model parameters.
      * @param as_log When `true` it will return the value as log.
-     * @param use_likelihood_sequence When `true` (default) will compute the
+     * @param use_reduced_sequence When `true` (default) will compute the
      * likelihood using the reduced sequence, which is faster.
      * @return double 
      */
     double likelihood_joint(
         const std::vector< double > & par,
         bool as_log = false,
-        bool use_likelihood_sequence = true
+        bool use_reduced_sequence = true
     );
 
     /**
