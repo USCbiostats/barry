@@ -36,8 +36,6 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a8
 \item 
 void \mbox{\hyperlink{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}{print\+\_\+observed\+\_\+counts}} ()
 \item 
-std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_ab65a1774e2ae48c009a69ff9211240a3}{predict}} (const std\+::vector$<$ double $>$ \&p, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$res\+\_\+prob=nullptr, bool use\+\_\+reduced\+\_\+sequence=true, bool only\+\_\+annotated=false)
-\begin{DoxyCompactList}\small\item\em Calculate the conditional probability. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_geese_a3855898a556e2ac1d30529d3bc35f13a}{init\+\_\+node}} (\mbox{\hyperlink{class_node}{Node}} \&n)
 \item 
 void \mbox{\hyperlink{class_geese_a5d3f0a97dd5d37b6f6cfd79c41629a1a}{update\+\_\+annotations}} (unsigned int nodeid, std\+::vector$<$ unsigned int $>$ newann)
@@ -79,6 +77,36 @@ unsigned int \mbox{\hyperlink{class_geese_aa0249f7b6163c0b18d55fae140074d07}{nno
 unsigned int \mbox{\hyperlink{class_geese_adf173ab52a4ed973131989ce0560e7a6}{nleafs}} () const noexcept
 \item 
 unsigned int \mbox{\hyperlink{class_geese_a0bfdc90924ef14433df93dd866a28126}{nterms}} () const
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Geese prediction}\par
+{\em Calculate the conditional probability
+
+
+\begin{DoxyParams}{Parameters}
+{\em par} & Vector of parameters (terms + root). \\
+\hline
+{\em res\+\_\+prob} & Vector indicating each nodes\textquotesingle{} state probability. \\
+\hline
+{\em leave\+\_\+one\+\_\+out} & When {\ttfamily true}, it will compute the predictions using leave-\/one-\/out, thus the prediction will be repeated nleaf times. \\
+\hline
+{\em only\+\_\+annotated} & When {\ttfamily true}, it will make the predictions only on the induced sub-\/tree with annotated leafs. \\
+\hline
+{\em use\+\_\+reduced\+\_\+sequence} & Passed to the {\ttfamily likelihood} method. \\
+\hline
+{\em preorder} & For the tree traversal.\\
+\hline
+\end{DoxyParams}
+When {\ttfamily res\+\_\+prob} is specified, the function will attach the member vector {\ttfamily probabilities} from the {\ttfamily \mbox{\hyperlink{class_node}{Node}}}s objects. This contains the probability that the ith node has either of the possible states.
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$ double $>$ Returns the posterior probability 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a10442dde49613332080792a6090d46fa}{predict}} (const std\+::vector$<$ double $>$ \&par, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$res\+\_\+prob=nullptr, bool leave\+\_\+one\+\_\+out=false, bool only\+\_\+annotated=false, bool use\+\_\+reduced\+\_\+sequence=true)
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a167c2562599432adbf2ed50f6ccc45cb}{predict\+\_\+backend}} (const std\+::vector$<$ double $>$ \&par, bool use\+\_\+reduced\+\_\+sequence, const std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&preorder)
 \end{DoxyCompactItemize}
 \end{Indent}
 \doxysubsection*{Public Attributes}
@@ -323,31 +351,25 @@ Definition at line 318 of file geese-\/meat.\+hpp.
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_geese}{Geese}}\& Geese\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_geese}{Geese}} \&\&}]{model\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}, {\ttfamily [noexcept]}}
 
-\mbox{\Hypertarget{class_geese_ab65a1774e2ae48c009a69ff9211240a3}\label{class_geese_ab65a1774e2ae48c009a69ff9211240a3}} 
+\mbox{\Hypertarget{class_geese_a10442dde49613332080792a6090d46fa}\label{class_geese_a10442dde49613332080792a6090d46fa}} 
 \index{Geese@{Geese}!predict@{predict}}
 \index{predict@{predict}!Geese@{Geese}}
 \doxysubsubsection{\texorpdfstring{predict()}{predict()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{p,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{res\+\_\+prob = {\ttfamily nullptr},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true},  }\item[{bool}]{only\+\_\+annotated = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{res\+\_\+prob = {\ttfamily nullptr},  }\item[{bool}]{leave\+\_\+one\+\_\+out = {\ttfamily false},  }\item[{bool}]{only\+\_\+annotated = {\ttfamily false},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Calculate the conditional probability. 
+Definition at line 165 of file geese-\/meat-\/predict.\+hpp.
+
+\mbox{\Hypertarget{class_geese_a167c2562599432adbf2ed50f6ccc45cb}\label{class_geese_a167c2562599432adbf2ed50f6ccc45cb}} 
+\index{Geese@{Geese}!predict\_backend@{predict\_backend}}
+\index{predict\_backend@{predict\_backend}!Geese@{Geese}}
+\doxysubsubsection{\texorpdfstring{predict\_backend()}{predict\_backend()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict\+\_\+backend (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&}]{preorder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
-\begin{DoxyParams}{Parameters}
-{\em p} & Vector of parameters. \\
-\hline
-{\em res\+\_\+prob} & Vector indicating each nodes\textquotesingle{} state probability.\\
-\hline
-\end{DoxyParams}
-When {\ttfamily res\+\_\+prob} is specified, the function will attach the member vector {\ttfamily probabilities} from the {\ttfamily \mbox{\hyperlink{class_node}{Node}}}s objects. This contains the probability that the ith node has either of the possible states.
 
-\begin{DoxyReturn}{Returns}
-std\+::vector$<$ double $>$ Returns the posterior probability 
-\end{DoxyReturn}
-
-
-Definition at line 7 of file geese-\/meat-\/predict.\+hpp.
+Definition at line 6 of file geese-\/meat-\/predict.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}\label{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}} 
 \index{Geese@{Geese}!print\_observed\_counts@{print\_observed\_counts}}

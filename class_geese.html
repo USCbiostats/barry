@@ -132,9 +132,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a82def7c8a870aa1b3ec069099c01fe02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b63231475f73a59b94bb4443c8aa7b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8">print_observed_counts</a> ()</td></tr>
 <tr class="separator:a3b63231475f73a59b94bb4443c8aa7b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab65a1774e2ae48c009a69ff9211240a3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#ab65a1774e2ae48c009a69ff9211240a3">predict</a> (const std::vector&lt; double &gt; &amp;p, std::vector&lt; std::vector&lt; double &gt; &gt; *res_prob=nullptr, bool use_reduced_sequence=true, bool only_annotated=false)</td></tr>
-<tr class="memdesc:ab65a1774e2ae48c009a69ff9211240a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the conditional probability.  <a href="class_geese.html#ab65a1774e2ae48c009a69ff9211240a3">More...</a><br /></td></tr>
-<tr class="separator:ab65a1774e2ae48c009a69ff9211240a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3855898a556e2ac1d30529d3bc35f13a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a3855898a556e2ac1d30529d3bc35f13a">init_node</a> (<a class="el" href="class_node.html">Node</a> &amp;n)</td></tr>
 <tr class="separator:a3855898a556e2ac1d30529d3bc35f13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d3f0a97dd5d37b6f6cfd79c41629a1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a">update_annotations</a> (unsigned int nodeid, std::vector&lt; unsigned int &gt; newann)</td></tr>
@@ -171,6 +168,26 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adf173ab52a4ed973131989ce0560e7a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bfdc90924ef14433df93dd866a28126"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a0bfdc90924ef14433df93dd866a28126">nterms</a> () const</td></tr>
 <tr class="separator:a0bfdc90924ef14433df93dd866a28126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Geese prediction</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Calculate the conditional probability</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">par</td><td>Vector of parameters (terms + root). </td></tr>
+    <tr><td class="paramname">res_prob</td><td>Vector indicating each nodes' state probability. </td></tr>
+    <tr><td class="paramname">leave_one_out</td><td>When <code>true</code>, it will compute the predictions using leave-one-out, thus the prediction will be repeated nleaf times. </td></tr>
+    <tr><td class="paramname">only_annotated</td><td>When <code>true</code>, it will make the predictions only on the induced sub-tree with annotated leafs. </td></tr>
+    <tr><td class="paramname">use_reduced_sequence</td><td>Passed to the <code>likelihood</code> method. </td></tr>
+    <tr><td class="paramname">preorder</td><td>For the tree traversal.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>When <code>res_prob</code> is specified, the function will attach the member vector <code>probabilities</code> from the <code><a class="el" href="class_node.html" title="A single node for the model.">Node</a></code>s objects. This contains the probability that the ith node has either of the possible states.</p>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt; double &gt; Returns the posterior probability </dd></dl>
+</div></td></tr>
+<tr class="memitem:a10442dde49613332080792a6090d46fa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a10442dde49613332080792a6090d46fa">predict</a> (const std::vector&lt; double &gt; &amp;par, std::vector&lt; std::vector&lt; double &gt; &gt; *res_prob=nullptr, bool leave_one_out=false, bool only_annotated=false, bool use_reduced_sequence=true)</td></tr>
+<tr class="separator:a10442dde49613332080792a6090d46fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a167c2562599432adbf2ed50f6ccc45cb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a167c2562599432adbf2ed50f6ccc45cb">predict_backend</a> (const std::vector&lt; double &gt; &amp;par, bool use_reduced_sequence, const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;preorder)</td></tr>
+<tr class="separator:a167c2562599432adbf2ed50f6ccc45cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -816,8 +833,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab65a1774e2ae48c009a69ff9211240a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab65a1774e2ae48c009a69ff9211240a3">&#9670;&nbsp;</a></span>predict()</h2>
+<a id="a10442dde49613332080792a6090d46fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10442dde49613332080792a6090d46fa">&#9670;&nbsp;</a></span>predict()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -829,7 +846,7 @@ Public Attributes</h2></td></tr>
           <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; Geese::predict </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
+          <td class="paramname"><em>par</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -841,13 +858,19 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>use_reduced_sequence</em> = <code>true</code>, </td>
+          <td class="paramname"><em>leave_one_out</em> = <code>false</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>only_annotated</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>only_annotated</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>use_reduced_sequence</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -862,18 +885,51 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Calculate the conditional probability. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p</td><td>Vector of parameters. </td></tr>
-    <tr><td class="paramname">res_prob</td><td>Vector indicating each nodes' state probability.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>When <code>res_prob</code> is specified, the function will attach the member vector <code>probabilities</code> from the <code><a class="el" href="class_node.html" title="A single node for the model.">Node</a></code>s objects. This contains the probability that the ith node has either of the possible states.</p>
-<dl class="section return"><dt>Returns</dt><dd>std::vector&lt; double &gt; Returns the posterior probability </dd></dl>
+<p class="definition">Definition at line <a class="el" href="geese-meat-predict_8hpp_source.html#l00165">165</a> of file <a class="el" href="geese-meat-predict_8hpp_source.html">geese-meat-predict.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="geese-meat-predict_8hpp_source.html#l00007">7</a> of file <a class="el" href="geese-meat-predict_8hpp_source.html">geese-meat-predict.hpp</a>.</p>
+</div>
+</div>
+<a id="a167c2562599432adbf2ed50f6ccc45cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a167c2562599432adbf2ed50f6ccc45cb">&#9670;&nbsp;</a></span>predict_backend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; Geese::predict_backend </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>par</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>use_reduced_sequence</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>preorder</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="geese-meat-predict_8hpp_source.html#l00006">6</a> of file <a class="el" href="geese-meat-predict_8hpp_source.html">geese-meat-predict.hpp</a>.</p>
 
 </div>
 </div>
@@ -1222,7 +1278,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_geese.html">Geese</a></li>
-    <li class="footer">Generated on Fri Apr 9 2021 18:38:55 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Apr 9 2021 23:16:15 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

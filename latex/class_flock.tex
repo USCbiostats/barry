@@ -25,7 +25,9 @@ void \mbox{\hyperlink{class_flock_a99f3c0a3aacc8af28c13207dd81d7164}{init}} ()
 \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}} $\ast$ \mbox{\hyperlink{class_flock_a1e7aec0dc05f41da6f0caa80a202daa0}{counters\+\_\+ptr}} ()
 \item 
 double \mbox{\hyperlink{class_flock_a275193d11c7ce3b8ec5dc18c8fab3e2e}{likelihood\+\_\+joint}} (const std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=false, bool use\+\_\+reduced\+\_\+sequence=true)
-\begin{DoxyCompactList}\small\item\em Returns the joint likelihood of the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the joint likelihood of the model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_geese}{Geese}} $\ast$ \mbox{\hyperlink{class_flock_acf48c1e56d5bf03f9b240114fa1e18ff}{operator()}} (unsigned int i, bool check\+\_\+bounds=true)
+\begin{DoxyCompactList}\small\item\em Access the i-\/th geese element. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Information about the model}\par
 \begin{DoxyCompactItemize}
 \item 
@@ -211,6 +213,30 @@ Definition at line 144 of file flock-\/meet.\+hpp.
 
 
 Definition at line 115 of file flock-\/meet.\+hpp.
+
+\mbox{\Hypertarget{class_flock_acf48c1e56d5bf03f9b240114fa1e18ff}\label{class_flock_acf48c1e56d5bf03f9b240114fa1e18ff}} 
+\index{Flock@{Flock}!operator()@{operator()}}
+\index{operator()@{operator()}!Flock@{Flock}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_geese}{Geese}} $\ast$ Flock\+::operator() (\begin{DoxyParamCaption}\item[{unsigned int}]{i,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access the i-\/th geese element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Element to access \\
+\hline
+{\em check\+\_\+bounds} & When true, it will check bounds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Geese$\ast$ 
+\end{DoxyReturn}
+
+
+Definition at line 151 of file flock-\/meet.\+hpp.
 
 \mbox{\Hypertarget{class_flock_acfa9efc24a1ff2f0f31206570da51259}\label{class_flock_acfa9efc24a1ff2f0f31206570da51259}} 
 \index{Flock@{Flock}!set\_seed@{set\_seed}}

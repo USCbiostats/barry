@@ -11,6 +11,7 @@ var class_flock =
     [ "nnodes", "class_flock.html#a5da445d2bdc0ceaf508acb9c64401d2c", null ],
     [ "nterms", "class_flock.html#a06498d9641893889d1387ff6fe70bcea", null ],
     [ "ntrees", "class_flock.html#a1c10e21ab3091fe8dbfa9ae5ec38fd4d", null ],
+    [ "operator()", "class_flock.html#acf48c1e56d5bf03f9b240114fa1e18ff", null ],
     [ "set_seed", "class_flock.html#acfa9efc24a1ff2f0f31206570da51259", null ],
     [ "dat", "class_flock.html#af493163235db2dcb44b8c5e615f52bdb", null ],
     [ "initialized", "class_flock.html#aad9b90040d349a23b33e09292bb964db", null ],

@@ -22,12 +22,13 @@ var searchData=
   ['powerset_274',['PowerSet',['../class_power_set.html',1,'PowerSet&lt; Array_Type, Data_Rule_Type &gt;'],['../class_power_set.html#acc20a68ff11aa1891d9a0676ed50808f',1,'PowerSet::PowerSet(const Array_Type &amp;array)'],['../class_power_set.html#abf6ac4224da7ae4d187d0d63833615b1',1,'PowerSet::PowerSet(uint N_, uint M_)'],['../class_power_set.html#a095815ccc44c88e0da73d92c6b5cf5f3',1,'PowerSet::PowerSet()']]],
   ['powerset_2dbones_2ehpp_275',['powerset-bones.hpp',['../powerset-bones_8hpp.html',1,'']]],
   ['powerset_2dmeat_2ehpp_276',['powerset-meat.hpp',['../powerset-meat_8hpp.html',1,'']]],
-  ['predict_277',['predict',['../class_geese.html#ab65a1774e2ae48c009a69ff9211240a3',1,'Geese']]],
-  ['print_278',['print',['../class_support.html#af87b2e85ec72e394387946023508e7fd',1,'Support::print()'],['../class_freq_table.html#a4fe8f5e3b5bf64a1cbaf99deb96298d4',1,'FreqTable::print()'],['../class_b_array.html#a9d150c44b23cf1e4af45f540508db1de',1,'BArray::print()']]],
-  ['print_5fobserved_5fcounts_279',['print_observed_counts',['../class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8',1,'Geese']]],
-  ['print_5fstats_280',['print_stats',['../class_model.html#ac00b5c6a1446ad00fdf1d92c9cb1df3c',1,'Model']]],
-  ['probability_281',['probability',['../class_node.html#a867d5e07f62da01392a817042c77735f',1,'Node']]],
-  ['pset_5farrays_282',['pset_arrays',['../class_model.html#a875ac0dbc320797c843b6724b7736f77',1,'Model']]],
-  ['pset_5fprobs_283',['pset_probs',['../class_model.html#a5dea24375889e55064f052fd8e8c4fe2',1,'Model']]],
-  ['pset_5fstats_284',['pset_stats',['../class_model.html#a89fff457ecccc91a624e20cafbf3e765',1,'Model']]]
+  ['predict_277',['predict',['../class_geese.html#a10442dde49613332080792a6090d46fa',1,'Geese']]],
+  ['predict_5fbackend_278',['predict_backend',['../class_geese.html#a167c2562599432adbf2ed50f6ccc45cb',1,'Geese']]],
+  ['print_279',['print',['../class_support.html#af87b2e85ec72e394387946023508e7fd',1,'Support::print()'],['../class_freq_table.html#a4fe8f5e3b5bf64a1cbaf99deb96298d4',1,'FreqTable::print()'],['../class_b_array.html#a9d150c44b23cf1e4af45f540508db1de',1,'BArray::print()']]],
+  ['print_5fobserved_5fcounts_280',['print_observed_counts',['../class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8',1,'Geese']]],
+  ['print_5fstats_281',['print_stats',['../class_model.html#ac00b5c6a1446ad00fdf1d92c9cb1df3c',1,'Model']]],
+  ['probability_282',['probability',['../class_node.html#a867d5e07f62da01392a817042c77735f',1,'Node']]],
+  ['pset_5farrays_283',['pset_arrays',['../class_model.html#a875ac0dbc320797c843b6724b7736f77',1,'Model']]],
+  ['pset_5fprobs_284',['pset_probs',['../class_model.html#a5dea24375889e55064f052fd8e8c4fe2',1,'Model']]],
+  ['pset_5fstats_285',['pset_stats',['../class_model.html#a89fff457ecccc91a624e20cafbf3e765',1,'Model']]]
 ];
