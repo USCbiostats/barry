@@ -28,5 +28,6 @@ var phylo_8hpp =
     [ "counter_overall_changes", "group__counters-phylo.html#ga902c1b33b64e022b1a92f577d96eddf6", null ],
     [ "counter_overall_gains", "group__counters-phylo.html#gae37d65879b49c4a568e5f80795b492a5", null ],
     [ "counter_overall_loss", "group__counters-phylo.html#gadce790b84a0a7e875e543bec08194f2b", null ],
-    [ "counter_subfun", "group__counters-phylo.html#ga84cd89f379bfc60e36bad06eeb7063af", null ]
+    [ "counter_subfun", "group__counters-phylo.html#ga84cd89f379bfc60e36bad06eeb7063af", null ],
+    [ "get_last_name", "phylo_8hpp.html#add31e0ba346cdf08524d6da73500f846", null ]
 ];

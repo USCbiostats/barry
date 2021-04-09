@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['offspring_698',['offspring',['../class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7',1,'Node']]],
-  ['one_699',['ONE',['../namespace_c_h_e_c_k.html#acf8ecf93ddfb75456112712630f8f722',1,'CHECK::ONE()'],['../namespace_e_x_i_s_t_s.html#a4c3717397d716d2bbd69d8239b3de033',1,'EXISTS::ONE()']]],
-  ['ord_700',['ord',['../class_node.html#ac58501488a47ad56989463668d062e8f',1,'Node']]]
+  ['params_5flast_705',['params_last',['../class_model.html#add8183af946f2871480b6a6f9f1c8013',1,'Model']]],
+  ['parent_706',['parent',['../class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85',1,'Node']]],
+  ['probability_707',['probability',['../class_node.html#a867d5e07f62da01392a817042c77735f',1,'Node']]],
+  ['pset_5farrays_708',['pset_arrays',['../class_model.html#a875ac0dbc320797c843b6724b7736f77',1,'Model']]],
+  ['pset_5fprobs_709',['pset_probs',['../class_model.html#a5dea24375889e55064f052fd8e8c4fe2',1,'Model']]],
+  ['pset_5fstats_710',['pset_stats',['../class_model.html#a89fff457ecccc91a624e20cafbf3e765',1,'Model']]]
 ];

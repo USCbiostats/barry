@@ -179,10 +179,10 @@ $(document).ready(function(){initNavTree('flock-meet_8hpp_source.html',''); init
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_flock.html#a701dce27fdc0a20e63caec1e1fd3def7">   84</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="class_flock.html#a701dce27fdc0a20e63caec1e1fd3def7">Flock::likelihood_joint</a>(</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_flock.html#a275193d11c7ce3b8ec5dc18c8fab3e2e">   84</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="class_flock.html#a275193d11c7ce3b8ec5dc18c8fab3e2e">Flock::likelihood_joint</a>(</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">const</span> std::vector&lt; double &gt; &amp; par,</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">bool</span> as_log,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">bool</span> use_likelihood_sequence</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">bool</span> use_reduced_sequence</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;) {</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a>()</div>
@@ -191,12 +191,12 @@ $(document).ready(function(){initNavTree('flock-meet_8hpp_source.html',''); init
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> (as_log) {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>) </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            ans += d.likelihood(par, as_log, use_likelihood_sequence);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            ans += d.likelihood(par, as_log, use_reduced_sequence);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>) </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            ans *= d.likelihood(par, as_log, use_likelihood_sequence);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            ans *= d.likelihood(par, as_log, use_reduced_sequence);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            </div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
@@ -253,9 +253,9 @@ $(document).ready(function(){initNavTree('flock-meet_8hpp_source.html',''); init
 <div class="ttc" id="aclass_flock_html_a1c10e21ab3091fe8dbfa9ae5ec38fd4d"><div class="ttname"><a href="class_flock.html#a1c10e21ab3091fe8dbfa9ae5ec38fd4d">Flock::ntrees</a></div><div class="ttdeci">unsigned int ntrees() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meet_8hpp_source.html#l00115">flock-meet.hpp:115</a></div></div>
 <div class="ttc" id="aclass_flock_html_a1e7aec0dc05f41da6f0caa80a202daa0"><div class="ttname"><a href="class_flock.html#a1e7aec0dc05f41da6f0caa80a202daa0">Flock::counters_ptr</a></div><div class="ttdeci">phylocounters::PhyloCounters * counters_ptr()</div><div class="ttdef"><b>Definition:</b> <a href="flock-meet_8hpp_source.html#l00075">flock-meet.hpp:75</a></div></div>
 <div class="ttc" id="aclass_flock_html_a20d75da0d423252055af84194e88f901"><div class="ttname"><a href="class_flock.html#a20d75da0d423252055af84194e88f901">Flock::support</a></div><div class="ttdeci">phylocounters::PhyloModel support</div><div class="ttdef"><b>Definition:</b> <a href="flock-bones_8hpp_source.html#l00023">flock-bones.hpp:23</a></div></div>
+<div class="ttc" id="aclass_flock_html_a275193d11c7ce3b8ec5dc18c8fab3e2e"><div class="ttname"><a href="class_flock.html#a275193d11c7ce3b8ec5dc18c8fab3e2e">Flock::likelihood_joint</a></div><div class="ttdeci">double likelihood_joint(const std::vector&lt; double &gt; &amp;par, bool as_log=false, bool use_reduced_sequence=true)</div><div class="ttdoc">Returns the joint likelihood of the model.</div><div class="ttdef"><b>Definition:</b> <a href="flock-meet_8hpp_source.html#l00084">flock-meet.hpp:84</a></div></div>
 <div class="ttc" id="aclass_flock_html_a5da445d2bdc0ceaf508acb9c64401d2c"><div class="ttname"><a href="class_flock.html#a5da445d2bdc0ceaf508acb9c64401d2c">Flock::nnodes</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; nnodes() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meet_8hpp_source.html#l00121">flock-meet.hpp:121</a></div></div>
 <div class="ttc" id="aclass_flock_html_a69ae35c5188dc9337aaf0385e7faebd1"><div class="ttname"><a href="class_flock.html#a69ae35c5188dc9337aaf0385e7faebd1">Flock::nleafs</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; nleafs() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meet_8hpp_source.html#l00132">flock-meet.hpp:132</a></div></div>
-<div class="ttc" id="aclass_flock_html_a701dce27fdc0a20e63caec1e1fd3def7"><div class="ttname"><a href="class_flock.html#a701dce27fdc0a20e63caec1e1fd3def7">Flock::likelihood_joint</a></div><div class="ttdeci">double likelihood_joint(const std::vector&lt; double &gt; &amp;par, bool as_log=false, bool use_likelihood_sequence=true)</div><div class="ttdoc">Returns the joint likelihood of the model.</div><div class="ttdef"><b>Definition:</b> <a href="flock-meet_8hpp_source.html#l00084">flock-meet.hpp:84</a></div></div>
 <div class="ttc" id="aclass_flock_html_a77220682e593e9d455f56a5607981ff2"><div class="ttname"><a href="class_flock.html#a77220682e593e9d455f56a5607981ff2">Flock::nfunctions</a></div><div class="ttdeci">unsigned int nfunctions</div><div class="ttdef"><b>Definition:</b> <a href="flock-bones_8hpp_source.html#l00018">flock-bones.hpp:18</a></div></div>
 <div class="ttc" id="aclass_flock_html_a7c8a9c91c384069c7b0633396f46410a"><div class="ttname"><a href="class_flock.html#a7c8a9c91c384069c7b0633396f46410a">Flock::nfuns</a></div><div class="ttdeci">unsigned int nfuns() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meet_8hpp_source.html#l00109">flock-meet.hpp:109</a></div></div>
 <div class="ttc" id="aclass_flock_html_a99f3c0a3aacc8af28c13207dd81d7164"><div class="ttname"><a href="class_flock.html#a99f3c0a3aacc8af28c13207dd81d7164">Flock::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="flock-meet_8hpp_source.html#l00041">flock-meet.hpp:41</a></div></div>
@@ -273,7 +273,7 @@ $(document).ready(function(){initNavTree('flock-meet_8hpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="flock-meet_8hpp.html">flock-meet.hpp</a></li>
-    <li class="footer">Generated on Thu Apr 8 2021 23:33:47 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Apr 9 2021 18:32:31 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

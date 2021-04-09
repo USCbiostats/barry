@@ -18,7 +18,7 @@ var group__counting =
     ] ],
     [ "Counter", "class_counter.html", [
       [ "Counter", "class_counter.html#a56c2f4ad875497dea97934cd3ddebc81", null ],
-      [ "Counter", "class_counter.html#ad2a63c2b9b6c593d292dfd47e2f7a780", null ],
+      [ "Counter", "class_counter.html#a299a760cff92d0f35ecad88df5ea9e61", null ],
       [ "Counter", "class_counter.html#a89aa39dd007b8aa1bcde97519d516806", null ],
       [ "~Counter", "class_counter.html#a66594b4ffbbf337241b032c1f039b3c0", null ],
       [ "count", "class_counter.html#a7b99fc45147d89c1b2db987e6b11f1f0", null ],
@@ -27,6 +27,8 @@ var group__counting =
       [ "count_fun", "class_counter.html#a804d287379ef9b4204a0838edcce3b71", null ],
       [ "data", "class_counter.html#a9ebfed99a67888f80c19cabc4098bdd0", null ],
       [ "delete_data", "class_counter.html#a5190fbe81aac2426ac36c0a088e242e7", null ],
-      [ "init_fun", "class_counter.html#abb4e0b67e6489d438918495651baa5a8", null ]
+      [ "desc", "class_counter.html#a05249e31739f30c98efd6daa44c1e299", null ],
+      [ "init_fun", "class_counter.html#abb4e0b67e6489d438918495651baa5a8", null ],
+      [ "name", "class_counter.html#aebf838d0d2bd0b44233f17f2f7cb8142", null ]
     ] ]
 ];

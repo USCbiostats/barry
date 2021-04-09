@@ -5,7 +5,7 @@ var class_flock =
     [ "add_data", "class_flock.html#a17f2726d36ca5727b14c71d1e1dbabe9", null ],
     [ "counters_ptr", "class_flock.html#a1e7aec0dc05f41da6f0caa80a202daa0", null ],
     [ "init", "class_flock.html#a99f3c0a3aacc8af28c13207dd81d7164", null ],
-    [ "likelihood_joint", "class_flock.html#a701dce27fdc0a20e63caec1e1fd3def7", null ],
+    [ "likelihood_joint", "class_flock.html#a275193d11c7ce3b8ec5dc18c8fab3e2e", null ],
     [ "nfuns", "class_flock.html#a7c8a9c91c384069c7b0633396f46410a", null ],
     [ "nleafs", "class_flock.html#a69ae35c5188dc9337aaf0385e7faebd1", null ],
     [ "nnodes", "class_flock.html#a5da445d2bdc0ceaf508acb9c64401d2c", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"class_model.html#a16561e15c0abbb080927382b30d43e35":[0,1,0,37],
+"class_model.html#a17a2205b52c03bb29eefb8fb126a01f6":[0,1,0,4],
 "class_model.html#a1fbba05e0d87fe9ac4aeee46f220bbaa":[0,1,0,29],
 "class_model.html#a24ad6e57bff2297dcc7461609714f41b":[0,1,0,49],
 "class_model.html#a291c91ccdcf9154f0a08d10e33ef4071":[0,1,0,18],
@@ -196,8 +198,8 @@ var NAVTREEINDEX1 =
 "functions_d.html":[2,2,0,3],
 "functions_e.html":[2,2,0,4],
 "functions_f.html":[2,2,0,5],
-"functions_func.html":[2,2,1],
 "functions_func.html":[2,2,1,0],
+"functions_func.html":[2,2,1],
 "functions_func_b.html":[2,2,1,1],
 "functions_func_c.html":[2,2,1,2],
 "functions_func_e.html":[2,2,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "geese-meat-likelihood_8hpp_source.html":[3,0,0,0,1,0,4],
 "geese-meat-likelihood__exhaust_8hpp.html":[3,0,0,0,1,0,5],
 "geese-meat-likelihood__exhaust_8hpp_source.html":[3,0,0,0,1,0,5],
-"geese-meat-predict_8hpp.html":[3,0,0,0,1,0,6],
-"geese-meat-predict_8hpp_source.html":[3,0,0,0,1,0,6],
-"geese-meat-simulate_8hpp.html":[3,0,0,0,1,0,7]
+"geese-meat-predict_8hpp.html":[3,0,0,0,1,0,6]
 };

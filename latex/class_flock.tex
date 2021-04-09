@@ -24,7 +24,7 @@ void \mbox{\hyperlink{class_flock_a99f3c0a3aacc8af28c13207dd81d7164}{init}} ()
 \item 
 \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}} $\ast$ \mbox{\hyperlink{class_flock_a1e7aec0dc05f41da6f0caa80a202daa0}{counters\+\_\+ptr}} ()
 \item 
-double \mbox{\hyperlink{class_flock_a701dce27fdc0a20e63caec1e1fd3def7}{likelihood\+\_\+joint}} (const std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=false, bool use\+\_\+likelihood\+\_\+sequence=true)
+double \mbox{\hyperlink{class_flock_a275193d11c7ce3b8ec5dc18c8fab3e2e}{likelihood\+\_\+joint}} (const std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=false, bool use\+\_\+reduced\+\_\+sequence=true)
 \begin{DoxyCompactList}\small\item\em Returns the joint likelihood of the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Information about the model}\par
 \begin{DoxyCompactItemize}
@@ -136,11 +136,11 @@ Definition at line 75 of file flock-\/meet.\+hpp.
 
 Definition at line 41 of file flock-\/meet.\+hpp.
 
-\mbox{\Hypertarget{class_flock_a701dce27fdc0a20e63caec1e1fd3def7}\label{class_flock_a701dce27fdc0a20e63caec1e1fd3def7}} 
+\mbox{\Hypertarget{class_flock_a275193d11c7ce3b8ec5dc18c8fab3e2e}\label{class_flock_a275193d11c7ce3b8ec5dc18c8fab3e2e}} 
 \index{Flock@{Flock}!likelihood\_joint@{likelihood\_joint}}
 \index{likelihood\_joint@{likelihood\_joint}!Flock@{Flock}}
 \doxysubsubsection{\texorpdfstring{likelihood\_joint()}{likelihood\_joint()}}
-{\footnotesize\ttfamily double Flock\+::likelihood\+\_\+joint (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily false},  }\item[{bool}]{use\+\_\+likelihood\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily double Flock\+::likelihood\+\_\+joint (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily false},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -152,7 +152,7 @@ Returns the joint likelihood of the model.
 \hline
 {\em as\+\_\+log} & When {\ttfamily true} it will return the value as log. \\
 \hline
-{\em use\+\_\+likelihood\+\_\+sequence} & When {\ttfamily true} (default) will compute the likelihood using the reduced sequence, which is faster. \\
+{\em use\+\_\+reduced\+\_\+sequence} & When {\ttfamily true} (default) will compute the likelihood using the reduced sequence, which is faster. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

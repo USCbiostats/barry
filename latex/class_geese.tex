@@ -20,9 +20,9 @@ void \mbox{\hyperlink{class_geese_aa95abe540b9977592bcc88e77619d070}{inherit\+\_
 \item 
 void \mbox{\hyperlink{class_geese_aa71af5fe38d785cc184c904fc9308dc1}{calc\+\_\+sequence}} (\mbox{\hyperlink{class_node}{Node}} $\ast$n=nullptr)
 \item 
-void \mbox{\hyperlink{class_geese_a1abfd10b18e87a638ef386c919417500}{calc\+\_\+likelihood\+\_\+sequence}} ()
+void \mbox{\hyperlink{class_geese_a0a460414624fd1b7013ce3b1a09150d1}{calc\+\_\+reduced\+\_\+sequence}} ()
 \item 
-double \mbox{\hyperlink{class_geese_ac6e787d5b916ca7288adfda7a9b87e56}{likelihood}} (const std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=false, bool use\+\_\+likelihood\+\_\+sequence=true)
+double \mbox{\hyperlink{class_geese_a6eb9e15bdf70319857e4ad90baefdece}{likelihood}} (const std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=false, bool use\+\_\+reduced\+\_\+sequence=true)
 \item 
 double \mbox{\hyperlink{class_geese_af2d4bac42cc7c8287fb6853d50882115}{likelihood\+\_\+exhaust}} (const std\+::vector$<$ double $>$ \&par)
 \item 
@@ -36,7 +36,7 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a8
 \item 
 void \mbox{\hyperlink{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}{print\+\_\+observed\+\_\+counts}} ()
 \item 
-std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a36018dcd49e5f761d888fa518a728b08}{predict}} (const std\+::vector$<$ double $>$ \&p, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$res\+\_\+prob=nullptr)
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_ab65a1774e2ae48c009a69ff9211240a3}{predict}} (const std\+::vector$<$ double $>$ \&p, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$res\+\_\+prob=nullptr, bool use\+\_\+reduced\+\_\+sequence=true, bool only\+\_\+annotated=false)
 \begin{DoxyCompactList}\small\item\em Calculate the conditional probability. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_geese_a3855898a556e2ac1d30529d3bc35f13a}{init\+\_\+node}} (\mbox{\hyperlink{class_node}{Node}} \&n)
 \item 
@@ -86,13 +86,13 @@ unsigned int \mbox{\hyperlink{class_geese_a0bfdc90924ef14433df93dd866a28126}{nte
 \item 
 unsigned int \mbox{\hyperlink{class_geese_a0483807174fe427f5bd2ccbb22ac3ad6}{nfunctions}}
 \item 
-\mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{barry\+::\+Map}}$<$ unsigned int, \mbox{\hyperlink{class_node}{Node}} $>$ \mbox{\hyperlink{class_geese_aa574cf418c542fea64f630a3202e314f}{nodes}}
+std\+::map$<$ unsigned int, \mbox{\hyperlink{class_node}{Node}} $>$ \mbox{\hyperlink{class_geese_ab00af142f1f0e13b5c9d0cb7c8d41ee5}{nodes}}
 \item 
 \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{barry\+::\+Map\+Vec\+\_\+type}}$<$ unsigned int $>$ \mbox{\hyperlink{class_geese_a25f8324ae2c43b8a940a8e934c768a7c}{map\+\_\+to\+\_\+nodes}}
 \item 
 std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{class_geese_ab815e9b33ce2cfb5757f86083f357152}{sequence}}
 \item 
-std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{class_geese_a07298ddbdad40b6ae33649f64b12fe00}{likelihood\+\_\+sequence}}
+std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{class_geese_aabcf5e284f7277109567a84ba615f97e}{reduced\+\_\+sequence}}
 \item 
 bool \mbox{\hyperlink{class_geese_aa3c3181a20e367fe13e92180c83f84c0}{initialized}} = false
 \item 
@@ -181,11 +181,11 @@ Definition at line 71 of file geese-\/meat.\+hpp.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_geese_a1abfd10b18e87a638ef386c919417500}\label{class_geese_a1abfd10b18e87a638ef386c919417500}} 
-\index{Geese@{Geese}!calc\_likelihood\_sequence@{calc\_likelihood\_sequence}}
-\index{calc\_likelihood\_sequence@{calc\_likelihood\_sequence}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{calc\_likelihood\_sequence()}{calc\_likelihood\_sequence()}}
-{\footnotesize\ttfamily void Geese\+::calc\+\_\+likelihood\+\_\+sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_geese_a0a460414624fd1b7013ce3b1a09150d1}\label{class_geese_a0a460414624fd1b7013ce3b1a09150d1}} 
+\index{Geese@{Geese}!calc\_reduced\_sequence@{calc\_reduced\_sequence}}
+\index{calc\_reduced\_sequence@{calc\_reduced\_sequence}!Geese@{Geese}}
+\doxysubsubsection{\texorpdfstring{calc\_reduced\_sequence()}{calc\_reduced\_sequence()}}
+{\footnotesize\ttfamily void Geese\+::calc\+\_\+reduced\+\_\+sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -209,7 +209,7 @@ Definition at line 191 of file geese-\/meat.\+hpp.
 
 
 
-Definition at line 271 of file geese-\/meat.\+hpp.
+Definition at line 277 of file geese-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_geese_aa95abe540b9977592bcc88e77619d070}\label{class_geese_aa95abe540b9977592bcc88e77619d070}} 
 \index{Geese@{Geese}!inherit\_support@{inherit\_support}}
@@ -241,11 +241,11 @@ Definition at line 83 of file geese-\/meat.\+hpp.
 
 Definition at line 6 of file geese-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_ac6e787d5b916ca7288adfda7a9b87e56}\label{class_geese_ac6e787d5b916ca7288adfda7a9b87e56}} 
+\mbox{\Hypertarget{class_geese_a6eb9e15bdf70319857e4ad90baefdece}\label{class_geese_a6eb9e15bdf70319857e4ad90baefdece}} 
 \index{Geese@{Geese}!likelihood@{likelihood}}
 \index{likelihood@{likelihood}!Geese@{Geese}}
 \doxysubsubsection{\texorpdfstring{likelihood()}{likelihood()}}
-{\footnotesize\ttfamily double Geese\+::likelihood (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily false},  }\item[{bool}]{use\+\_\+likelihood\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily double Geese\+::likelihood (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily false},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -269,7 +269,7 @@ Definition at line 7 of file geese-\/meat-\/likelihood\+\_\+exhaust.\+hpp.
 
 
 
-Definition at line 287 of file geese-\/meat.\+hpp.
+Definition at line 293 of file geese-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_geese_adf173ab52a4ed973131989ce0560e7a6}\label{class_geese_adf173ab52a4ed973131989ce0560e7a6}} 
 \index{Geese@{Geese}!nleafs@{nleafs}}
@@ -279,7 +279,7 @@ Definition at line 287 of file geese-\/meat.\+hpp.
 
 
 
-Definition at line 295 of file geese-\/meat.\+hpp.
+Definition at line 301 of file geese-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_geese_aa0249f7b6163c0b18d55fae140074d07}\label{class_geese_aa0249f7b6163c0b18d55fae140074d07}} 
 \index{Geese@{Geese}!nnodes@{nnodes}}
@@ -289,7 +289,7 @@ Definition at line 295 of file geese-\/meat.\+hpp.
 
 
 
-Definition at line 291 of file geese-\/meat.\+hpp.
+Definition at line 297 of file geese-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a0bfdc90924ef14433df93dd866a28126}\label{class_geese_a0bfdc90924ef14433df93dd866a28126}} 
 \index{Geese@{Geese}!nterms@{nterms}}
@@ -299,7 +299,7 @@ Definition at line 291 of file geese-\/meat.\+hpp.
 
 
 
-Definition at line 305 of file geese-\/meat.\+hpp.
+Definition at line 311 of file geese-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a82def7c8a870aa1b3ec069099c01fe02}\label{class_geese_a82def7c8a870aa1b3ec069099c01fe02}} 
 \index{Geese@{Geese}!observed\_counts@{observed\_counts}}
@@ -309,7 +309,7 @@ Definition at line 305 of file geese-\/meat.\+hpp.
 
 
 
-Definition at line 312 of file geese-\/meat.\+hpp.
+Definition at line 318 of file geese-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a857663144d377cd5ee69960267865eaa}\label{class_geese_a857663144d377cd5ee69960267865eaa}} 
 \index{Geese@{Geese}!operator=@{operator=}}
@@ -323,11 +323,11 @@ Definition at line 312 of file geese-\/meat.\+hpp.
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_geese}{Geese}}\& Geese\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_geese}{Geese}} \&\&}]{model\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}, {\ttfamily [noexcept]}}
 
-\mbox{\Hypertarget{class_geese_a36018dcd49e5f761d888fa518a728b08}\label{class_geese_a36018dcd49e5f761d888fa518a728b08}} 
+\mbox{\Hypertarget{class_geese_ab65a1774e2ae48c009a69ff9211240a3}\label{class_geese_ab65a1774e2ae48c009a69ff9211240a3}} 
 \index{Geese@{Geese}!predict@{predict}}
 \index{predict@{predict}!Geese@{Geese}}
 \doxysubsubsection{\texorpdfstring{predict()}{predict()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{p,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{res\+\_\+prob = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{p,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{res\+\_\+prob = {\ttfamily nullptr},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true},  }\item[{bool}]{only\+\_\+annotated = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -335,9 +335,13 @@ Calculate the conditional probability.
 
 
 \begin{DoxyParams}{Parameters}
-{\em p} & Vector of parameters \\
+{\em p} & Vector of parameters. \\
+\hline
+{\em res\+\_\+prob} & Vector indicating each nodes\textquotesingle{} state probability.\\
 \hline
 \end{DoxyParams}
+When {\ttfamily res\+\_\+prob} is specified, the function will attach the member vector {\ttfamily probabilities} from the {\ttfamily \mbox{\hyperlink{class_node}{Node}}}s objects. This contains the probability that the ith node has either of the possible states.
+
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$ double $>$ Returns the posterior probability 
 \end{DoxyReturn}
@@ -353,7 +357,7 @@ Definition at line 7 of file geese-\/meat-\/predict.\+hpp.
 
 
 
-Definition at line 360 of file geese-\/meat.\+hpp.
+Definition at line 366 of file geese-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_geese_aa5d623d5e242a29090bf5a01bfeeeb9f}\label{class_geese_aa5d623d5e242a29090bf5a01bfeeeb9f}} 
 \index{Geese@{Geese}!set\_seed@{set\_seed}}
@@ -438,16 +442,6 @@ Definition at line 103 of file geese-\/bones.\+hpp.
 
 Definition at line 100 of file geese-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a07298ddbdad40b6ae33649f64b12fe00}\label{class_geese_a07298ddbdad40b6ae33649f64b12fe00}} 
-\index{Geese@{Geese}!likelihood\_sequence@{likelihood\_sequence}}
-\index{likelihood\_sequence@{likelihood\_sequence}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{likelihood\_sequence}{likelihood\_sequence}}
-{\footnotesize\ttfamily std\+::vector$<$ unsigned int $>$ Geese\+::likelihood\+\_\+sequence}
-
-
-
-Definition at line 97 of file geese-\/bones.\+hpp.
-
 \mbox{\Hypertarget{class_geese_a25f8324ae2c43b8a940a8e934c768a7c}\label{class_geese_a25f8324ae2c43b8a940a8e934c768a7c}} 
 \index{Geese@{Geese}!map\_to\_nodes@{map\_to\_nodes}}
 \index{map\_to\_nodes@{map\_to\_nodes}!Geese@{Geese}}
@@ -468,15 +462,25 @@ Definition at line 93 of file geese-\/bones.\+hpp.
 
 Definition at line 91 of file geese-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_geese_aa574cf418c542fea64f630a3202e314f}\label{class_geese_aa574cf418c542fea64f630a3202e314f}} 
+\mbox{\Hypertarget{class_geese_ab00af142f1f0e13b5c9d0cb7c8d41ee5}\label{class_geese_ab00af142f1f0e13b5c9d0cb7c8d41ee5}} 
 \index{Geese@{Geese}!nodes@{nodes}}
 \index{nodes@{nodes}!Geese@{Geese}}
 \doxysubsubsection{\texorpdfstring{nodes}{nodes}}
-{\footnotesize\ttfamily \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{barry\+::\+Map}}$<$ unsigned int, \mbox{\hyperlink{class_node}{Node}} $>$ Geese\+::nodes}
+{\footnotesize\ttfamily std\+::map$<$ unsigned int, \mbox{\hyperlink{class_node}{Node}} $>$ Geese\+::nodes}
 
 
 
 Definition at line 92 of file geese-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_geese_aabcf5e284f7277109567a84ba615f97e}\label{class_geese_aabcf5e284f7277109567a84ba615f97e}} 
+\index{Geese@{Geese}!reduced\_sequence@{reduced\_sequence}}
+\index{reduced\_sequence@{reduced\_sequence}!Geese@{Geese}}
+\doxysubsubsection{\texorpdfstring{reduced\_sequence}{reduced\_sequence}}
+{\footnotesize\ttfamily std\+::vector$<$ unsigned int $>$ Geese\+::reduced\+\_\+sequence}
+
+
+
+Definition at line 97 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a182ea45cab39d2c3ae6164d7f0bad30a}\label{class_geese_a182ea45cab39d2c3ae6164d7f0bad30a}} 
 \index{Geese@{Geese}!rengine@{rengine}}

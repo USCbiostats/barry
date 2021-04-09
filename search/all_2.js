@@ -1,7 +1,7 @@
 var searchData=
 [
   ['calc_45',['calc',['../class_power_set.html#ad3b707294498105b2cc1a04017cc96d2',1,'PowerSet::calc()'],['../class_support.html#a48ba2ccb197b73eb721a5f443dce2020',1,'Support::calc()']]],
-  ['calc_5flikelihood_5fsequence_46',['calc_likelihood_sequence',['../class_geese.html#a1abfd10b18e87a638ef386c919417500',1,'Geese']]],
+  ['calc_5freduced_5fsequence_46',['calc_reduced_sequence',['../class_geese.html#a0a460414624fd1b7013ce3b1a09150d1',1,'Geese']]],
   ['calc_5fsequence_47',['calc_sequence',['../class_geese.html#aa71af5fe38d785cc184c904fc9308dc1',1,'Geese']]],
   ['cell_48',['Cell',['../class_cell.html#af8d7c17bb9f08816638f9be6a7c0f48b',1,'Cell::Cell()'],['../class_cell.html#ac62b1de6ddbfef8e8eafbe795d9d34f3',1,'Cell::Cell()'],['../class_cell.html#ae10523cbfbd9d07677267eb6fb15ba3b',1,'Cell::Cell()'],['../class_cell.html#ad6a47fdac801426e94328239890394fe',1,'Cell::Cell(Cell&lt; Cell_Type &gt; &amp;&amp;arg) noexcept'],['../class_cell.html#a667a3060f565f033a62038500e81342d',1,'Cell::Cell(const Cell&lt; Cell_Type &gt; &amp;arg)'],['../class_cell.html#a6592b5fcfc80001c8de64a2e722ca715',1,'Cell::Cell(Cell_Type value_, bool visited_=false)'],['../class_cell.html#a402912c21a4c87659c0576a4bfa3c48f',1,'Cell::Cell()'],['../class_cell.html',1,'Cell&lt; Cell_Type &gt;']]],
   ['cell_2dbones_2ehpp_49',['cell-bones.hpp',['../cell-bones_8hpp.html',1,'']]],
@@ -24,7 +24,7 @@ var searchData=
   ['count_5fcurrent_66',['count_current',['../class_stats_counter.html#ab81166f7cb67eeaecc469016d237019a',1,'StatsCounter']]],
   ['count_5ffun_67',['count_fun',['../class_counter.html#a804d287379ef9b4204a0838edcce3b71',1,'Counter']]],
   ['count_5finit_68',['count_init',['../class_stats_counter.html#a19bd5936619e190c0d8918b4f343922e',1,'StatsCounter']]],
-  ['counter_69',['Counter',['../class_counter.html#ad2a63c2b9b6c593d292dfd47e2f7a780',1,'Counter::Counter(Counter_fun_type&lt; Array_Type, Data_Type &gt; count_fun_, Counter_fun_type&lt; Array_Type, Data_Type &gt; init_fun_=nullptr, Data_Type *data_=nullptr, bool delete_data_=false)'],['../class_counter.html#a89aa39dd007b8aa1bcde97519d516806',1,'Counter::Counter(const Counter&lt; Array_Type, Data_Type &gt; &amp;counter_)'],['../class_counter.html#a56c2f4ad875497dea97934cd3ddebc81',1,'Counter::Counter()'],['../class_counter.html',1,'Counter&lt; Array_Type, Data_Type &gt;']]],
+  ['counter_69',['Counter',['../class_counter.html#a299a760cff92d0f35ecad88df5ea9e61',1,'Counter::Counter(Counter_fun_type&lt; Array_Type, Data_Type &gt; count_fun_, Counter_fun_type&lt; Array_Type, Data_Type &gt; init_fun_=nullptr, Data_Type *data_=nullptr, bool delete_data_=false, std::string name_=&quot;&quot;, std::string desc_=&quot;&quot;)'],['../class_counter.html#a89aa39dd007b8aa1bcde97519d516806',1,'Counter::Counter(const Counter&lt; Array_Type, Data_Type &gt; &amp;counter_)'],['../class_counter.html#a56c2f4ad875497dea97934cd3ddebc81',1,'Counter::Counter()'],['../class_counter.html',1,'Counter&lt; Array_Type, Data_Type &gt;']]],
   ['counter_5fabsdiff_70',['counter_absdiff',['../group__counters-network.html#gabb2a587d5466415665c11e9d7a168d8b',1,'network.hpp']]],
   ['counter_5fco_5fopt_71',['counter_co_opt',['../group__counters-phylo.html#gae193c319ae2fd5edb3a6551e44ada0be',1,'phylo.hpp']]],
   ['counter_5fcogain_72',['counter_cogain',['../group__counters-phylo.html#ga6dda7c62f8b75ccb9fbb5d06a67810ff',1,'phylo.hpp']]],
