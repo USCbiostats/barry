@@ -3,49 +3,38 @@
 #ifndef GEESE_MEAT_PREDICT_HPP
 #define GEESE_MEAT_PREDICT_HPP 1
 
-
-inline std::vector< std::vector<double> > Geese::predict(
+inline std::vector< std::vector<double> > Geese::predict_backend(
     const std::vector< double > & par,
-    std::vector< std::vector< double > > * res_prob,
     bool use_reduced_sequence,
-    bool only_annotated
-    ) {
-
-    INITIALIZED()
+    const std::vector< uint > & preorder
+)
+{
 
     // Splitting the probabilities
-    std::vector< double > par0(par.begin(), par.end() - nfunctions);
+    std::vector< double > par_terms(par.begin(), par.end() - nfunctions);
     std::vector< double > par_root(par.end() - nfunctions, par.end());
 
     // Scaling root
     for (auto& p : par_root)
         p = std::exp(p)/(std::exp(p) + 1);
 
-    // Making room 
-    std::vector< std::vector<double> > res(nnodes());
-
-    // Inverse sequence
-    std::vector< unsigned int > preorder;
-    if (only_annotated)
-        preorder = this->reduced_sequence;
-    else
-        preorder = this->sequence;
-
-    std::reverse(preorder.begin(), preorder.end());
-
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(this->states.size(), 1.0);
-    for (unsigned int i = 0u; i < rootp.size(); ++i) {
+    for (unsigned int i = 0u; i < rootp.size(); ++i)
+    {
 
         for (unsigned int j = 0u; j < nfuns(); ++j)
             rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);
         
     }
 
+    // Making room 
+    std::vector< std::vector<double> > res(nnodes());
+
     // Step 1: Computing the probability at the root node
     std::vector< double > tmp_prob(nfuns(), 0.0);
     unsigned int root_id = preorder[0u];
-    Node * tmp_node = &nodes[root_id];
+    Node * tmp_node      = &nodes[root_id];
     tmp_node->probability.resize(states.size(), 0.0);
     double tmp_likelihood = likelihood(par, false, use_reduced_sequence);
 
@@ -68,7 +57,8 @@ inline std::vector< std::vector<double> > Geese::predict(
     res[nodes[preorder[0u]].ord] = tmp_prob;
     
         // Going in the opposite direction
-    for (auto& i : preorder) {
+    for (auto& i : preorder)
+    {
 
         Node & node = nodes[i];
 
@@ -85,9 +75,10 @@ inline std::vector< std::vector<double> > Geese::predict(
         // Need to identify what is the position of the node with respect to
         // its siblings
         unsigned int n_pos = 0u;
-        for (unsigned int n = 0u; n < node.parent->offspring.size(); ++n) {
+        for (unsigned int n = 0u; n < node.parent->offspring.size(); ++n)
+        {
 
-            if (node.parent->offspring.at(n)->id == node.id)
+            if (node.parent->offspring[n]->id == node.id)
                 break;
             
             ++n_pos;
@@ -95,10 +86,12 @@ inline std::vector< std::vector<double> > Geese::predict(
 
         // Iterating through the offspring state P(x_n^p | D)
         std::fill(node.probability.begin(), node.probability.end(), 0.0);
-        for (unsigned int s = 0u; s < states.size(); ++s) {         
+        for (unsigned int s = 0u; s < states.size(); ++s)
+        {         
 
             // Iterating throught the parent state
-            for (unsigned int s_p = 0u; s_p < states.size(); ++s_p) {
+            for (unsigned int s_p = 0u; s_p < states.size(); ++s_p)
+            {
 
                 // All the ways in which we can go from x_pk to x_nk, we first
                 // need to find its location in the model (loc):
@@ -112,12 +105,16 @@ inline std::vector< std::vector<double> > Geese::predict(
                 double prob = 0.0;
 
                 // Iterating through all the cases in which x_p -> x_nk^p
-                for (unsigned int a = 0u; a < p_arrays->size(); ++a) {
+                for (unsigned int a = 0u; a < p_arrays->size(); ++a)
+                {
                 
+                    const auto & A = p_arrays->operator[](a);
+
                     // Should we include this?
                     bool includeit = true;
                     for (unsigned int k = 0u; k < nfuns(); ++k)
-                        if (p_arrays->at(a).get_cell(k, n_pos, false) != static_cast<unsigned int>(states[s][k])) {
+                        if (A(k, n_pos, false) != static_cast<unsigned int>(states[s][k]))
+                        {
                             
                             // If it does not match, then jump to the next state
                             includeit = false;
@@ -131,16 +128,15 @@ inline std::vector< std::vector<double> > Geese::predict(
                         continue;
 
                     // Computing the likelihood 
-                    prob += support->likelihood(par0, p_stats->at(a), loc);
+                    prob += support->likelihood(par_terms, p_stats->at(a), loc);
                     
                 }
 
                 // Finalizing
                 node.probability[s] += node.parent->probability[s_p] * prob;
+
             }
             
-            
-
         }
 
         // Computing marginal probabilities. For this we need to integrate out
@@ -161,16 +157,101 @@ inline std::vector< std::vector<double> > Geese::predict(
         res[node.ord] = tmp_prob;
 
     }
+        
+    return res;
+
+}
+
+inline std::vector< std::vector<double> > Geese::predict(
+    const std::vector< double > & par,
+    std::vector< std::vector< double > > * res_prob,
+    bool leave_one_out,
+    bool only_annotated,
+    bool use_reduced_sequence
+)
+{
+
+    INITIALIZED()
+
+    // Inverse sequence
+    std::vector< unsigned int > preorder;
+    if (only_annotated)
+        preorder = this->reduced_sequence;
+    else
+        preorder = this->sequence;
+
+    std::reverse(preorder.begin(), preorder.end());
+
+    // Full prediction (first run, right now I am doing this
+    // twice. Need to fix in the future)
+    std::vector< std::vector<double> > res = predict_backend(
+        par, use_reduced_sequence, preorder
+        );
 
     // If the user requires the probability matrix per state
-    if (res_prob != nullptr) {
-        res_prob->resize(nnodes());
-        for (auto& i : sequence) {
-            res_prob->at(nodes[i].id) = nodes[i].probability;
-        }
-    }
-        
+    if (res_prob != nullptr)
+    {
 
+        res_prob->resize(nnodes());
+        for (auto& i : sequence)
+            res_prob->at(nodes[i].ord) = nodes[i].probability;
+
+    }
+
+
+    // In this case, we need to update the predictions, mostly of the annotated
+    // leaf nodes. Because of 
+    if (leave_one_out)
+    {
+
+        std::vector< unsigned int > default_empty(nfuns(), 9u);
+        for (auto& n : nodes)
+        {
+
+            if (n.second.is_leaf()) {
+
+                Node & ntmp = n.second;
+
+                // We only make the changes if it is not all missing
+                bool use_it = false;
+                for (auto& n_state : ntmp.annotations)
+                    if (n_state != 9u)
+                    {
+
+                        use_it = true;
+                        break;
+
+                    }
+                
+
+                if (!use_it)
+                    continue;
+
+                // Recording the original annotation
+                auto old_ann = ntmp.annotations;
+
+                // Removing the entire gene
+                update_annotations(ntmp.id, default_empty);
+
+                // Making the prediction
+                res[ntmp.ord] = (
+                    predict_backend(par, use_reduced_sequence, preorder)
+                )[ntmp.ord];
+
+                // Restoring the gene
+                update_annotations(ntmp.id, old_ann);
+
+                if (res_prob != nullptr)
+                    res_prob->operator[](ntmp.ord) = ntmp.probability;
+
+
+            }
+
+        }
+
+    }
+
+    
     return res;
 
 }

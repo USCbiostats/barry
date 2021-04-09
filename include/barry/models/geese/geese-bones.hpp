@@ -179,10 +179,17 @@ public:
     void print_observed_counts();
 
     /**
+     * @name Geese prediction
      * @brief Calculate the conditional probability
      * 
-     * @param p Vector of parameters.
+     * @param par Vector of parameters (terms + root).
      * @param res_prob Vector indicating each nodes' state probability.
+     * @param leave_one_out When `true`, it will compute the predictions using
+     * leave-one-out, thus the prediction will be repeated nleaf times.
+     * @param only_annotated When `true`, it will make the predictions only
+     * on the induced sub-tree with annotated leafs.
+     * @param use_reduced_sequence  Passed to the `likelihood` method.
+     * @param preorder For the tree traversal.
      * 
      * @details When `res_prob` is specified, the function will attach
      * the member vector `probabilities` from the `Node`s objects. This
@@ -191,12 +198,21 @@ public:
      * 
      * @return std::vector< double > Returns the posterior probability
      */
+    ///@{
     std::vector< std::vector< double > > predict(
-        const std::vector< double > & p,
+        const std::vector< double > & par,
         std::vector< std::vector< double > > * res_prob = nullptr,
-        bool use_reduced_sequence = true,
-        bool only_annotated       = false
+        bool leave_one_out        = false,
+        bool only_annotated       = false,
+        bool use_reduced_sequence = true
         );
+    
+    std::vector< std::vector<double> > predict_backend(
+        const std::vector< double > & par,
+        bool use_reduced_sequence,
+        const std::vector< uint > & preorder
+        );
+    ///@}
 
     void init_node(Node & n);
     void update_annotations(

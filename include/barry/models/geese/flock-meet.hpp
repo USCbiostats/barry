@@ -148,4 +148,14 @@ inline unsigned int Flock::nterms() const {
 
 }
 
+inline Geese* Flock::operator()(unsigned int i, bool check_bounds)
+{
+
+    if (check_bounds && i >= ntrees())
+        throw std::logic_error("Geese not found in the flock (out of range).");
+
+    return &dat[i];
+
+}
+
 #endif

@@ -79,6 +79,15 @@ public:
     unsigned int nterms() const;
     ///@}
 
+    /**
+     * @brief Access the i-th geese element
+     * 
+     * @param i Element to access
+     * @param check_bounds When true, it will check bounds.
+     * @return Geese*
+     */
+    Geese * operator()(unsigned int i, bool check_bounds = true);
+
 };
 
 #endif
