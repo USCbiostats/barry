@@ -231,7 +231,7 @@ inline void Geese::calc_sequence(Node * n) {
 
 }
 
-inline void Geese::calc_likelihood_sequence() {
+inline void Geese::calc_reduced_sequence() {
 
     // The criteria, if none of its decendants is annotated, then we can remove
     // the node from the model
@@ -241,26 +241,32 @@ inline void Geese::calc_likelihood_sequence() {
         Node & n = nodes[i];
 
         // We will count this at the end
-        if (n.is_leaf()) {
+        if (n.is_leaf())
+        {
 
-            for (unsigned int k = 0u; k < nfuns(); ++k) {
-                if (n.annotations[k] != 9u) {
+            for (unsigned int k = 0u; k < nfuns(); ++k)
+                if (n.annotations[k] != 9u)
+                {
+
                     includeit[i] = true;
-                    likelihood_sequence.push_back(i);
+                    reduced_sequence.push_back(i);
                     break;
+
                 }
-            }
 
         } else {
 
             // Checking, am I including any of my offspring?
-            for (auto& o : n.offspring) {
-                if (includeit[o->id]) {
+            for (auto& o : n.offspring) 
+
+                if (includeit[o->id])
+                {
+                    
                     includeit[i] = true;
-                    likelihood_sequence.push_back(i);
+                    reduced_sequence.push_back(i);
                     break;
+
                 }
-            }
 
         }
 

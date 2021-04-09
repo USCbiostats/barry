@@ -6,7 +6,9 @@
 
 inline std::vector< std::vector<double> > Geese::predict(
     const std::vector< double > & par,
-    std::vector< std::vector< double > > * res_prob
+    std::vector< std::vector< double > > * res_prob,
+    bool use_reduced_sequence,
+    bool only_annotated
     ) {
 
     INITIALIZED()
@@ -16,23 +18,28 @@ inline std::vector< std::vector<double> > Geese::predict(
     std::vector< double > par_root(par.end() - nfunctions, par.end());
 
     // Scaling root
-    for (auto& p : par_root) {
+    for (auto& p : par_root)
         p = std::exp(p)/(std::exp(p) + 1);
-    }
 
     // Making room 
     std::vector< std::vector<double> > res(nnodes());
 
     // Inverse sequence
-    std::vector< unsigned int > preorder(this->sequence);
+    std::vector< unsigned int > preorder;
+    if (only_annotated)
+        preorder = this->reduced_sequence;
+    else
+        preorder = this->sequence;
+
     std::reverse(preorder.begin(), preorder.end());
 
     // Generating probabilities at the root-level (root state)
-    std::vector< double > rootp(states.size(), 1.0);
+    std::vector< double > rootp(this->states.size(), 1.0);
     for (unsigned int i = 0u; i < rootp.size(); ++i) {
-        for (unsigned int j = 0u; j < nfuns(); ++j) {
+
+        for (unsigned int j = 0u; j < nfuns(); ++j)
             rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);
-        }
+        
     }
 
     // Step 1: Computing the probability at the root node
@@ -40,7 +47,8 @@ inline std::vector< std::vector<double> > Geese::predict(
     unsigned int root_id = preorder[0u];
     Node * tmp_node = &nodes[root_id];
     tmp_node->probability.resize(states.size(), 0.0);
-    double tmp_likelihood = likelihood(par);
+    double tmp_likelihood = likelihood(par, false, use_reduced_sequence);
+
     for (unsigned int s = 0u; s < states.size(); ++s) {
 
         // Overall state probability P(x_s | D)

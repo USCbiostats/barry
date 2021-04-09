@@ -6,7 +6,7 @@
 inline double Geese::likelihood(
     const std::vector< double > & par,
     bool as_log,
-    bool use_likelihood_sequence
+    bool use_reduced_sequence
     ) {
 
     INITIALIZED()
@@ -27,8 +27,8 @@ inline double Geese::likelihood(
 
     // Following the prunning sequence
     std::vector< unsigned int > * preseq;
-    if (use_likelihood_sequence)
-        preseq = &this->likelihood_sequence;
+    if (use_reduced_sequence)
+        preseq = &this->reduced_sequence;
     else
         preseq = &this->sequence;
 
