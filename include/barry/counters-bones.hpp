@@ -42,6 +42,8 @@ public:
     Counter_fun_type<Array_Type,Data_Type> init_fun;
     Data_Type * data = nullptr;
     bool delete_data = false;
+    std::string  name = "";
+    std::string  desc = "";
 
     /**
      * @name Creator passing a counter and an initializer
@@ -60,8 +62,11 @@ public:
         Counter_fun_type<Array_Type,Data_Type> count_fun_,
         Counter_fun_type<Array_Type,Data_Type> init_fun_    = nullptr,
         Data_Type *                            data_        = nullptr,
-        bool                                   delete_data_ = false
-        ): count_fun(count_fun_), init_fun(init_fun_), data(data_), delete_data(delete_data_) {};
+        bool                                   delete_data_ = false,
+        std::string                            name_        = "",   
+        std::string                            desc_        = ""
+        ): count_fun(count_fun_), init_fun(init_fun_), data(data_),
+            delete_data(delete_data_), name(name_), desc(desc_) {};
     
     Counter(const Counter<Array_Type,Data_Type> & counter_);
     ///@}
@@ -132,7 +137,9 @@ public:
         Counter_fun_type<Array_Type,Data_Type> count_fun_,
         Counter_fun_type<Array_Type,Data_Type> init_fun_    = nullptr,
         Data_Type *                            data_        = nullptr,
-        bool                                   delete_data_ = false
+        bool                                   delete_data_ = false,
+        std::string                            name_        = "",   
+        std::string                            desc_        = ""
     );
     void clear();
     

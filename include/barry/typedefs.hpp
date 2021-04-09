@@ -9,6 +9,7 @@
 #include <map>
 #include <random>
 #include <climits>
+#include <string>
 
 // Configuration ---------------------------------------------------------------
 #include "barry-configuration.hpp"
