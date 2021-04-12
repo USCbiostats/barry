@@ -55,8 +55,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_model.html#a1548bd4681944c3eb761a22a38ef5547",
-"geese-meat-likelihood__exhaust_8hpp.html"
+"class_geese.html#a71f91e3f8bea1c285c4cf1f3b84f26de",
+"functions_func_o.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -3,6 +3,8 @@ var annotated_dup =
     [ "BArray", "class_b_array.html", "class_b_array" ],
     [ "BArrayCell", "class_b_array_cell.html", "class_b_array_cell" ],
     [ "BArrayCell_const", "class_b_array_cell__const.html", "class_b_array_cell__const" ],
+    [ "BArrayCol", "class_b_array_col.html", "class_b_array_col" ],
+    [ "BArrayCol_const", "class_b_array_col__const.html", "class_b_array_col__const" ],
     [ "Cell", "class_cell.html", "class_cell" ],
     [ "ConstBArrayRowIter", "class_const_b_array_row_iter.html", "class_const_b_array_row_iter" ],
     [ "Counter", "class_counter.html", "class_counter" ],

@@ -188,23 +188,36 @@ $(document).ready(function(){initNavTree('statsdb_8hpp_source.html',''); initRes
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_freq_table.html#a4fe8f5e3b5bf64a1cbaf99deb96298d4">  102</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_freq_table.html#a4fe8f5e3b5bf64a1cbaf99deb96298d4">FreqTable&lt;T&gt;::print</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = data.begin(); i != data.end(); ++i) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> j = i-&gt;first.begin(); j != i-&gt;first.end(); ++j)</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            std::cout &lt;&lt; (*j) &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        std::cout &lt;&lt; i-&gt;second &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_freq_table.html#af1f26bddaded94f0d5acb68f3a94fb86">  113</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_freq_table.html#af1f26bddaded94f0d5acb68f3a94fb86">FreqTable&lt;T&gt;::size</a>() const noexcept {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> grand_total = 0u;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    printf(<span class="stringliteral">&quot;%7s | %s\n&quot;</span>, <span class="stringliteral">&quot;Counts&quot;</span>, <span class="stringliteral">&quot;Stats&quot;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = data.begin(); i != data.end(); ++i)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        printf(<span class="stringliteral">&quot;%7i | &quot;</span>, i-&gt;second);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; j : i-&gt;first)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            printf(<span class="stringliteral">&quot; %.2f&quot;</span>, j);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> this-&gt;data.size();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        grand_total += i-&gt;second;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    printf(<span class="stringliteral">&quot;Grand total: %i\n&quot;</span>, grand_total);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="class_freq_table.html#af1f26bddaded94f0d5acb68f3a94fb86">  126</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_freq_table.html#af1f26bddaded94f0d5acb68f3a94fb86">FreqTable&lt;T&gt;::size</a>() const noexcept {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> this-&gt;data.size();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_freq_table_html"><div class="ttname"><a href="class_freq_table.html">FreqTable</a></div><div class="ttdoc">Database of statistics.</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00016">statsdb.hpp:16</a></div></div>
 <div class="ttc" id="aclass_freq_table_html_a0bdced25f7c0bee38e073c4654578d19"><div class="ttname"><a href="class_freq_table.html#a0bdced25f7c0bee38e073c4654578d19">FreqTable::reserve</a></div><div class="ttdeci">void reserve(unsigned int n)</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00089">statsdb.hpp:89</a></div></div>
 <div class="ttc" id="aclass_freq_table_html_a1898e62605d8753e170189936d403e05"><div class="ttname"><a href="class_freq_table.html#a1898e62605d8753e170189936d403e05">FreqTable::as_vector</a></div><div class="ttdeci">Counts_type as_vector() const</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00061">statsdb.hpp:61</a></div></div>
@@ -215,9 +228,10 @@ $(document).ready(function(){initNavTree('statsdb_8hpp_source.html',''); initRes
 <div class="ttc" id="aclass_freq_table_html_a7ed627807a61c484243636137609abcd"><div class="ttname"><a href="class_freq_table.html#a7ed627807a61c484243636137609abcd">FreqTable::~FreqTable</a></div><div class="ttdeci">~FreqTable()</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00029">statsdb.hpp:29</a></div></div>
 <div class="ttc" id="aclass_freq_table_html_a919e08556ba3aa9535a64827315bb89a"><div class="ttname"><a href="class_freq_table.html#a919e08556ba3aa9535a64827315bb89a">FreqTable::add</a></div><div class="ttdeci">void add(const std::vector&lt; T &gt; &amp;x)</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00047">statsdb.hpp:47</a></div></div>
 <div class="ttc" id="aclass_freq_table_html_ab5dd6677f52072c93d18b2b9a3369ae7"><div class="ttname"><a href="class_freq_table.html#ab5dd6677f52072c93d18b2b9a3369ae7">FreqTable::get_data_ptr</a></div><div class="ttdeci">const MapVec_type&lt; T, uint &gt; * get_data_ptr() const</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00078">statsdb.hpp:78</a></div></div>
-<div class="ttc" id="aclass_freq_table_html_af1f26bddaded94f0d5acb68f3a94fb86"><div class="ttname"><a href="class_freq_table.html#af1f26bddaded94f0d5acb68f3a94fb86">FreqTable::size</a></div><div class="ttdeci">size_t size() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00113">statsdb.hpp:113</a></div></div>
+<div class="ttc" id="aclass_freq_table_html_af1f26bddaded94f0d5acb68f3a94fb86"><div class="ttname"><a href="class_freq_table.html#af1f26bddaded94f0d5acb68f3a94fb86">FreqTable::size</a></div><div class="ttdeci">size_t size() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00126">statsdb.hpp:126</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html"><div class="ttname"><a href="typedefs_8hpp.html">typedefs.hpp</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a02ed8dec96bc528c8bc3d8cb3c4674a5"><div class="ttname"><a href="typedefs_8hpp.html#a02ed8dec96bc528c8bc3d8cb3c4674a5">MapVec_type</a></div><div class="ttdeci">std::unordered_map&lt; std::vector&lt; Ta &gt;, Tb, vecHasher&lt; Ta &gt; &gt; MapVec_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00115">typedefs.hpp:115</a></div></div>
+<div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00020">typedefs.hpp:20</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_aee40fa17c1fddb63dd1f2b1470ade95b"><div class="ttname"><a href="typedefs_8hpp.html#aee40fa17c1fddb63dd1f2b1470ade95b">Counts_type</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; std::vector&lt; double &gt;, uint &gt; &gt; Counts_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00054">typedefs.hpp:54</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -225,7 +239,7 @@ $(document).ready(function(){initNavTree('statsdb_8hpp_source.html',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="statsdb_8hpp.html">statsdb.hpp</a></li>
-    <li class="footer">Generated on Mon Apr 12 2021 07:12:30 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Apr 12 2021 23:30:34 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

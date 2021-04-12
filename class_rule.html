@@ -109,8 +109,11 @@ $(document).ready(function(){initNavTree('class_rule.html',''); initResizable();
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9f7e4ac4893005c7d4ecc2781f0f727d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#a9f7e4ac4893005c7d4ecc2781f0f727d">~Rule</a> ()</td></tr>
 <tr class="separator:a9f7e4ac4893005c7d4ecc2781f0f727d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc6742a89bbc5a29384e26dfd7a9488f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#acc6742a89bbc5a29384e26dfd7a9488f">locked</a> (const Array_Type &amp;a, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j)</td></tr>
-<tr class="separator:acc6742a89bbc5a29384e26dfd7a9488f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1337b2eb773a9858e346444b293ae536"><td class="memItemLeft" align="right" valign="top">Data_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#a1337b2eb773a9858e346444b293ae536">D</a> ()</td></tr>
+<tr class="memdesc:a1337b2eb773a9858e346444b293ae536"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read/Write access to the data.  <a href="class_rule.html#a1337b2eb773a9858e346444b293ae536">More...</a><br /></td></tr>
+<tr class="separator:a1337b2eb773a9858e346444b293ae536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4fd1f5c9da9e400c12822d5c0272f45"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#aa4fd1f5c9da9e400c12822d5c0272f45">operator()</a> (const Array_Type &amp;a, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j)</td></tr>
+<tr class="separator:aa4fd1f5c9da9e400c12822d5c0272f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Construct a new Rule object</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Construct a new <a class="el" href="class_rule.html" title="Rule for determining if a cell should be included in a sequence.">Rule</a> object</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -247,8 +250,29 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="acc6742a89bbc5a29384e26dfd7a9488f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc6742a89bbc5a29384e26dfd7a9488f">&#9670;&nbsp;</a></span>locked()</h2>
+<a id="a1337b2eb773a9858e346444b293ae536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1337b2eb773a9858e346444b293ae536">&#9670;&nbsp;</a></span>D()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Data_Type* <a class="el" href="class_rule.html">Rule</a>&lt; Array_Type, Data_Type &gt;::D </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read/Write access to the data. </p>
+
+</div>
+</div>
+<a id="aa4fd1f5c9da9e400c12822d5c0272f45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4fd1f5c9da9e400c12822d5c0272f45">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -259,7 +283,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_rule.html">Rule</a>&lt; Array_Type, Data_Type &gt;::locked </td>
+          <td class="memname">bool <a class="el" href="class_rule.html">Rule</a>&lt; Array_Type, Data_Type &gt;::operator() </td>
           <td>(</td>
           <td class="paramtype">const Array_Type &amp;&#160;</td>
           <td class="paramname"><em>a</em>, </td>
@@ -303,7 +327,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_rule.html">Rule</a></li>
-    <li class="footer">Generated on Mon Apr 12 2021 07:12:30 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Apr 12 2021 23:30:35 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

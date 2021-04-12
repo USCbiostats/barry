@@ -158,7 +158,7 @@ $(document).ready(function(){initNavTree('rules-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_rule.html#acc6742a89bbc5a29384e26dfd7a9488f">   63</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_rule.html#acc6742a89bbc5a29384e26dfd7a9488f">Rule&lt;Array_Type,Data_Type&gt;::locked</a>(<span class="keyword">const</span> Array_Type &amp; a, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_rule.html#aa4fd1f5c9da9e400c12822d5c0272f45">   63</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_rule.html#aa4fd1f5c9da9e400c12822d5c0272f45">Rule&lt;Array_Type,Data_Type&gt;::operator()</a>(<span class="keyword">const</span> Array_Type &amp; a, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j) {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> fun(a, i, j, dat);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
@@ -171,9 +171,9 @@ $(document).ready(function(){initNavTree('rules-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    data.push_back(<span class="keyword">new</span> <a class="code" href="class_rule.html">Rule&lt;Array_Type, Data_Type&gt;</a>(rule));</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_rules.html#a57f5ab44febba391b2a06d163d25b237">   76</a></span>&#160;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_rules.html#ab87544febb8301772164570708bd708e">   77</a></span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_rules.html#a57f5ab44febba391b2a06d163d25b237">   78</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
 <div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_rules.html#abd60b1d381ad0c8a772e4d81264bbe0a">   79</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_rules.html#a60583152fddcb11178dcf3d02a924d7c">Rules&lt;Array_Type,Data_Type&gt;::add_rule</a>(</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="class_rule.html">Rule&lt;Array_Type, Data_Type&gt;</a> * rule</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;) {</div>
@@ -189,11 +189,11 @@ $(document).ready(function(){initNavTree('rules-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        Data_Type *                         data_,</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">bool</span>                                delete_data_</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;) {</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_rules.html#a60583152fddcb11178dcf3d02a924d7c">   94</a></span>&#160;    </div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_rules.html#abd60b1d381ad0c8a772e4d81264bbe0a">   95</a></span>&#160;    <span class="comment">/* We still need to delete the counter since we are using the &#39;new&#39; operator.</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_rules.html#abbc63747014445b538384bb500464bb5">   96</a></span>&#160;<span class="comment">      * Yet, the actual data may not need to be deleted.</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">      */</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    to_be_deleted.push_back(data.size());</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">/* We still need to delete the counter since we are using the &#39;new&#39; operator.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_rules.html#a60583152fddcb11178dcf3d02a924d7c">   96</a></span>&#160;<span class="comment">      * Yet, the actual data may not need to be deleted.</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_rules.html#abd60b1d381ad0c8a772e4d81264bbe0a">   97</a></span>&#160;<span class="comment">      */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="class_rules.html#abbc63747014445b538384bb500464bb5">   98</a></span>&#160;    to_be_deleted.push_back(data.size());</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    data.push_back(<span class="keyword">new</span> <a class="code" href="class_rule.html">Rule&lt;Array_Type,Data_Type&gt;</a>(</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            rule_,</div>
@@ -206,24 +206,24 @@ $(document).ready(function(){initNavTree('rules-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_rules.html#a51540e67c97559216cf84f8a7e230ea7">  111</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_rules.html#a51540e67c97559216cf84f8a7e230ea7">Rules&lt;Array_Type,Data_Type&gt;::locked</a>(</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_rules.html#afc9dff8f02625fde4af2eeb9d661580c">  111</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_rules.html#afc9dff8f02625fde4af2eeb9d661580c">Rules&lt;Array_Type,Data_Type&gt;::operator()</a>(</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">const</span> Array_Type &amp; a, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j</div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_rules.html#a51540e67c97559216cf84f8a7e230ea7">  113</a></span>&#160;) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;) {</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_rules.html#a135a15d3ff70d4350d76a15f8e85f7df">  115</a></span>&#160;    <span class="keywordflow">if</span> (data.size()==0u)</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_rules.html#afc9dff8f02625fde4af2eeb9d661580c">  115</a></span>&#160;    <span class="keywordflow">if</span> (data.size()==0u)</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="class_rules.html#a135a15d3ff70d4350d76a15f8e85f7df">  117</a></span>&#160;    </div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = data.begin(); iter != data.end(); ++iter)</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">if</span> ((*iter)-&gt;locked(a, i, j))</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">if</span> ((*iter)-&gt;operator()(a, i, j))</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    </div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    </div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="class_rules.html#afc2e6ddd9cf384f9e70896ad6e581ed4">  126</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
 <div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="class_rules.html#a135a15d3ff70d4350d76a15f8e85f7df">  127</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_rules.html#a135a15d3ff70d4350d76a15f8e85f7df">Rules&lt;Array_Type,Data_Type&gt;::clear</a>() {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="class_rules.html#afc2e6ddd9cf384f9e70896ad6e581ed4">  128</a></span>&#160;    </div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keyword">delete</span> data[*iter];</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    </div>
@@ -250,7 +250,7 @@ $(document).ready(function(){initNavTree('rules-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    </div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; N; ++i) {</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; K; ++j) {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">if</span> (!this-&gt;locked(a, i, j))</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">if</span> (!this-&gt;<span class="keyword">operator</span>()(a, i, j))</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                free-&gt;push_back({i, j});</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (locked != <span class="keyword">nullptr</span>)</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                locked-&gt;push_back({i,j});</div>
@@ -265,15 +265,15 @@ $(document).ready(function(){initNavTree('rules-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_rule_html"><div class="ttname"><a href="class_rule.html">Rule</a></div><div class="ttdoc">Rule for determining if a cell should be included in a sequence.</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00023">rules-bones.hpp:23</a></div></div>
-<div class="ttc" id="aclass_rule_html_acc6742a89bbc5a29384e26dfd7a9488f"><div class="ttname"><a href="class_rule.html#acc6742a89bbc5a29384e26dfd7a9488f">Rule::locked</a></div><div class="ttdeci">bool locked(const Array_Type &amp;a, uint i, uint j)</div><div class="ttdef"><b>Definition:</b> <a href="rules-meat_8hpp_source.html#l00063">rules-meat.hpp:63</a></div></div>
-<div class="ttc" id="aclass_rules_html"><div class="ttname"><a href="class_rules.html">Rules</a></div><div class="ttdoc">Vector of objects of class Rule.</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00067">rules-bones.hpp:67</a></div></div>
+<div class="ttc" id="aclass_rule_html_aa4fd1f5c9da9e400c12822d5c0272f45"><div class="ttname"><a href="class_rule.html#aa4fd1f5c9da9e400c12822d5c0272f45">Rule::operator()</a></div><div class="ttdeci">bool operator()(const Array_Type &amp;a, uint i, uint j)</div><div class="ttdef"><b>Definition:</b> <a href="rules-meat_8hpp_source.html#l00063">rules-meat.hpp:63</a></div></div>
+<div class="ttc" id="aclass_rules_html"><div class="ttname"><a href="class_rules.html">Rules</a></div><div class="ttdoc">Vector of objects of class Rule.</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00069">rules-bones.hpp:69</a></div></div>
 <div class="ttc" id="aclass_rules_html_a135a15d3ff70d4350d76a15f8e85f7df"><div class="ttname"><a href="class_rules.html#a135a15d3ff70d4350d76a15f8e85f7df">Rules::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="rules-meat_8hpp_source.html#l00127">rules-meat.hpp:127</a></div></div>
-<div class="ttc" id="aclass_rules_html_a51540e67c97559216cf84f8a7e230ea7"><div class="ttname"><a href="class_rules.html#a51540e67c97559216cf84f8a7e230ea7">Rules::locked</a></div><div class="ttdeci">bool locked(const Array_Type &amp;a, uint i, uint j)</div><div class="ttdoc">Check whether a given cell is free or locked.</div><div class="ttdef"><b>Definition:</b> <a href="rules-meat_8hpp_source.html#l00111">rules-meat.hpp:111</a></div></div>
 <div class="ttc" id="aclass_rules_html_a60583152fddcb11178dcf3d02a924d7c"><div class="ttname"><a href="class_rules.html#a60583152fddcb11178dcf3d02a924d7c">Rules::add_rule</a></div><div class="ttdeci">void add_rule(Rule&lt; Array_Type, Data_Type &gt; &amp;rule)</div><div class="ttdef"><b>Definition:</b> <a href="rules-meat_8hpp_source.html#l00068">rules-meat.hpp:68</a></div></div>
-<div class="ttc" id="aclass_rules_html_a8b75d7e0af10e5d354fe325712e2df90"><div class="ttname"><a href="class_rules.html#a8b75d7e0af10e5d354fe325712e2df90">Rules::size</a></div><div class="ttdeci">uint size() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00084">rules-bones.hpp:84</a></div></div>
-<div class="ttc" id="aclass_rules_html_aa78e9abf82ed8a0e4320d570191c8968"><div class="ttname"><a href="class_rules.html#aa78e9abf82ed8a0e4320d570191c8968">Rules::Rules</a></div><div class="ttdeci">Rules()</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00074">rules-bones.hpp:74</a></div></div>
+<div class="ttc" id="aclass_rules_html_a8b75d7e0af10e5d354fe325712e2df90"><div class="ttname"><a href="class_rules.html#a8b75d7e0af10e5d354fe325712e2df90">Rules::size</a></div><div class="ttdeci">uint size() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00086">rules-bones.hpp:86</a></div></div>
+<div class="ttc" id="aclass_rules_html_aa78e9abf82ed8a0e4320d570191c8968"><div class="ttname"><a href="class_rules.html#aa78e9abf82ed8a0e4320d570191c8968">Rules::Rules</a></div><div class="ttdeci">Rules()</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00076">rules-bones.hpp:76</a></div></div>
 <div class="ttc" id="aclass_rules_html_ab87544febb8301772164570708bd708e"><div class="ttname"><a href="class_rules.html#ab87544febb8301772164570708bd708e">Rules::operator=</a></div><div class="ttdeci">Rules&lt; Array_Type, Data_Type &gt; operator=(const Rules&lt; Array_Type, Data_Type &gt; &amp;rules_)</div><div class="ttdef"><b>Definition:</b> <a href="rules-meat_8hpp_source.html#l00035">rules-meat.hpp:35</a></div></div>
 <div class="ttc" id="aclass_rules_html_afc2e6ddd9cf384f9e70896ad6e581ed4"><div class="ttname"><a href="class_rules.html#afc2e6ddd9cf384f9e70896ad6e581ed4">Rules::get_seq</a></div><div class="ttdeci">void get_seq(const Array_Type &amp;a, std::vector&lt; std::pair&lt; uint, uint &gt; &gt; *free, std::vector&lt; std::pair&lt; uint, uint &gt; &gt; *locked=nullptr)</div><div class="ttdoc">Computes the sequence of free and locked cells in an BArray.</div><div class="ttdef"><b>Definition:</b> <a href="rules-meat_8hpp_source.html#l00139">rules-meat.hpp:139</a></div></div>
+<div class="ttc" id="aclass_rules_html_afc9dff8f02625fde4af2eeb9d661580c"><div class="ttname"><a href="class_rules.html#afc9dff8f02625fde4af2eeb9d661580c">Rules::operator()</a></div><div class="ttdeci">bool operator()(const Array_Type &amp;a, uint i, uint j)</div><div class="ttdoc">Check whether a given cell is free or locked.</div><div class="ttdef"><b>Definition:</b> <a href="rules-meat_8hpp_source.html#l00111">rules-meat.hpp:111</a></div></div>
 <div class="ttc" id="arules-bones_8hpp_html"><div class="ttname"><a href="rules-bones_8hpp.html">rules-bones.hpp</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00020">typedefs.hpp:20</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a99982bdca40c23ca6f901c8e66da78a1"><div class="ttname"><a href="typedefs_8hpp.html#a99982bdca40c23ca6f901c8e66da78a1">Rule_fun_type</a></div><div class="ttdeci">std::function&lt; bool(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Rule_fun_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00136">typedefs.hpp:136</a></div></div>
@@ -283,7 +283,7 @@ $(document).ready(function(){initNavTree('rules-meat_8hpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="rules-meat_8hpp.html">rules-meat.hpp</a></li>
-    <li class="footer">Generated on Mon Apr 12 2021 07:12:30 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Apr 12 2021 23:30:34 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
