@@ -1,19 +1,14 @@
 var searchData=
 [
-  ['sample_603',['sample',['../class_model.html#a7fb66a67707f610b70ee05b814373f49',1,'Model::sample(const uint &amp;i, const std::vector&lt; double &gt; &amp;params)'],['../class_model.html#a59e37db45e1751a6205db129a5c114c1',1,'Model::sample(const Array_Type &amp;Array_, const std::vector&lt; double &gt; &amp;params={})']]],
-  ['set_5fcounters_604',['set_counters',['../class_model.html#aab2ba8c90b888cfa2143bccf42fcb89f',1,'Model::set_counters()'],['../class_stats_counter.html#a1d66f7d7326cac60a46ee56a8eb0a497',1,'StatsCounter::set_counters()'],['../class_support.html#aef83474cda55c4ed52e313e8ed948b08',1,'Support::set_counters()']]],
-  ['set_5fdata_605',['set_data',['../class_b_array.html#accf44b49caa7746a462a3ac9b6024cfc',1,'BArray']]],
-  ['set_5fkeygen_606',['set_keygen',['../class_model.html#add1847cdaf3f5bbde6c14efc2e4d16df',1,'Model']]],
-  ['set_5frengine_607',['set_rengine',['../class_model.html#a1609f530936b0f575e8b0006c9c719c5',1,'Model']]],
-  ['set_5frules_608',['set_rules',['../class_model.html#a86a46cf6fdc7c6514b97263f9ee4130b',1,'Model::set_rules()'],['../class_support.html#a66dc1a0e7097d547ea9c84df777ad477',1,'Support::set_rules()']]],
-  ['set_5fseed_609',['set_seed',['../class_model.html#a5baf09853382529460889f15076bc64a',1,'Model::set_seed()'],['../class_flock.html#acfa9efc24a1ff2f0f31206570da51259',1,'Flock::set_seed()'],['../class_geese.html#aa5d623d5e242a29090bf5a01bfeeeb9f',1,'Geese::set_seed(const unsigned int &amp;s)']]],
-  ['simulate_610',['simulate',['../class_geese.html#a675662efdded0d24c146946aa15ed481',1,'Geese']]],
-  ['size_611',['size',['../class_counters.html#ad7980fd3757652e20b90ce1064e333c2',1,'Counters::size()'],['../class_freq_table.html#af1f26bddaded94f0d5acb68f3a94fb86',1,'FreqTable::size()'],['../class_rules.html#a8b75d7e0af10e5d354fe325712e2df90',1,'Rules::size()'],['../class_power_set.html#a9a92b7c43517e11f3245a7ae89a578ef',1,'PowerSet::size()'],['../class_model.html#a7f5ea996a617dca518debcebc1df7318',1,'Model::size() const noexcept']]],
-  ['size_5funique_612',['size_unique',['../class_model.html#a1fbba05e0d87fe9ac4aeee46f220bbaa',1,'Model']]],
-  ['statscounter_613',['StatsCounter',['../class_stats_counter.html#aad1531e93d2d217c5cfd6b389ccf6fba',1,'StatsCounter::StatsCounter(const Array_Type *Array_)'],['../class_stats_counter.html#a6cef1e5bb4914a49ba8dd0f63070f81c',1,'StatsCounter::StatsCounter()']]],
-  ['store_5fpsets_614',['store_psets',['../class_model.html#abd0e8099474f0426fa37f7e94d80f525',1,'Model']]],
-  ['support_615',['Support',['../class_support.html#ac1b6d8e393837d03ac8a54e30db10aff',1,'Support::Support(const Array_Type &amp;Array_)'],['../class_support.html#a1f6a7ae36567effe999602df879321cd',1,'Support::Support(uint N_, uint M_)'],['../class_support.html#a489bf1d96a2ae1e8494eb94d8d366e3f',1,'Support::Support()']]],
-  ['swap_5fcells_616',['swap_cells',['../class_b_array.html#afb7976f67770b850922c1a7e1d6b07cc',1,'BArray']]],
-  ['swap_5fcols_617',['swap_cols',['../class_b_array.html#ae94f7e61ca5985244968d9daf2859229',1,'BArray']]],
-  ['swap_5frows_618',['swap_rows',['../class_b_array.html#a742773803481c18e2865b2b2a1e68949',1,'BArray']]]
+  ['reserve_591',['reserve',['../class_freq_table.html#a0bdced25f7c0bee38e073c4654578d19',1,'FreqTable::reserve()'],['../class_b_array.html#a5eacd388e3d0f638f2c35b6e0f0c490c',1,'BArray::reserve()']]],
+  ['reset_592',['reset',['../class_power_set.html#aba11dd8802cd2eb529c7c30b55994248',1,'PowerSet']]],
+  ['reset_5farray_593',['reset_array',['../class_stats_counter.html#a8dabc3a7a9931acbb76900a67d728f70',1,'StatsCounter::reset_array()'],['../class_support.html#a4f2860fd2e8e30703b91633a92ed7a58',1,'Support::reset_array()'],['../class_support.html#afb7ca8dbf350d233e677322d567dc98c',1,'Support::reset_array(const Array_Type &amp;Array_)']]],
+  ['resize_594',['resize',['../class_b_array.html#aefe411fe1890273518bfbc3f8ca616ce',1,'BArray::resize()'],['../class_entries.html#a8b539e4c53aab5d6ce8305af346b7089',1,'Entries::resize()']]],
+  ['rm_5fcell_595',['rm_cell',['../class_b_array.html#aaead894ff275479db4f733793ce037db',1,'BArray']]],
+  ['row_596',['row',['../class_b_array.html#aaac3760787307c1b9ecf2b442cab935e',1,'BArray']]],
+  ['rule_597',['Rule',['../class_rule.html#aef92e54d53dc77b5cad2f819b5f8f4bf',1,'Rule::Rule()'],['../class_rule.html#ad0b81db664bed03f9a381f90ab617424',1,'Rule::Rule(Rule_fun_type&lt; Array_Type, Data_Type &gt; fun_, Data_Type *dat_=nullptr, bool delete_dat_=false)']]],
+  ['rule_5ffun_5fdefault_598',['rule_fun_default',['../rules-bones_8hpp.html#aaeb0527576529579dd4cb51cb3ba73e0',1,'rules-bones.hpp']]],
+  ['rule_5ffunction_599',['RULE_FUNCTION',['../geese-bones_8hpp.html#a11c7dd7dca27f32547bb602f30ceb5e8',1,'geese-bones.hpp']]],
+  ['rules_600',['Rules',['../class_rules.html#aa78e9abf82ed8a0e4320d570191c8968',1,'Rules::Rules()'],['../class_rules.html#a57f5ab44febba391b2a06d163d25b237',1,'Rules::Rules(const Rules&lt; Array_Type, Data_Type &gt; &amp;rules_)']]],
+  ['rules_5fzerodiag_601',['rules_zerodiag',['../network_8hpp.html#a4e3e163311d588f1516116e081d406f5',1,'network.hpp']]]
 ];

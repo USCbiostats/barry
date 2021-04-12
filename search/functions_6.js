@@ -1,10 +1,21 @@
 var searchData=
 [
-  ['inherit_5fsupport_541',['inherit_support',['../class_geese.html#aa95abe540b9977592bcc88e77619d070',1,'Geese']]],
-  ['init_542',['init',['../class_counter.html#a835aa75876bc43a84ecbde4fd6a03fd5',1,'Counter::init()'],['../class_flock.html#a99f3c0a3aacc8af28c13207dd81d7164',1,'Flock::init()'],['../class_geese.html#ad830d504a390c6126c916e24dc16e69d',1,'Geese::init()']]],
-  ['init_5fnode_543',['init_node',['../class_geese.html#a3855898a556e2ac1d30529d3bc35f13a',1,'Geese']]],
-  ['init_5fsupport_544',['init_support',['../class_power_set.html#a8eefc9606c6339938a8d9adcd0d7e153',1,'PowerSet::init_support()'],['../class_support.html#a013872a55ffd6a0a931e124da8e8dc99',1,'Support::init_support()']]],
-  ['insert_5fcell_545',['insert_cell',['../class_b_array.html#a25f32967d46f1df46ee4b0eea593a66d',1,'BArray::insert_cell(uint i, uint j, const Cell&lt; Cell_Type &gt; &amp;v, bool check_bounds, bool check_exists)'],['../class_b_array.html#ae641614eac41721ec6a0a9150ea95a0b',1,'BArray::insert_cell(uint i, uint j, Cell&lt; Cell_Type &gt; &amp;&amp;v, bool check_bounds, bool check_exists)'],['../class_b_array.html#a4790d707fcf6a5b552816258922ca25b',1,'BArray::insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists)']]],
-  ['is_5fempty_546',['is_empty',['../class_b_array.html#a37ed3962c0ee5030b23cb6cde23a5cdf',1,'BArray']]],
-  ['is_5fleaf_547',['is_leaf',['../class_node.html#af95aad82ea29953c3eaed6b761c4b13e',1,'Node']]]
+  ['geese_522',['Geese',['../class_geese.html#a9ffb63eefb64afb9a5c2b25006e9ab52',1,'Geese::Geese(std::vector&lt; std::vector&lt; unsigned int &gt; &gt; &amp;annotations, std::vector&lt; unsigned int &gt; &amp;geneid, std::vector&lt; int &gt; &amp;parent, std::vector&lt; bool &gt; &amp;duplication)'],['../class_geese.html#acb709c40f1b4d3c7fd8fb06c4ea2627c',1,'Geese::Geese(const Geese &amp;model_, bool copy_data=true)'],['../class_geese.html#a3f80a16330da3af4a5cf250cbf79a6a4',1,'Geese::Geese(Geese &amp;&amp;x) noexcept'],['../class_geese.html#a4766bb548b2a33e16019c52026f455f5',1,'Geese::Geese()']]],
+  ['get_5fcell_523',['get_cell',['../class_b_array.html#a4096e4447f91ba52766587a08c62f1fa',1,'BArray']]],
+  ['get_5fcol_524',['get_col',['../class_b_array.html#a1432139cff7a25ed362164ef8d2a30b2',1,'BArray']]],
+  ['get_5fcol_5fvec_525',['get_col_vec',['../class_b_array.html#aa2d5a133fc4adf3417f1fdc2ef5aae26',1,'BArray::get_col_vec(uint i, bool check_bounds=true) const'],['../class_b_array.html#af62b305d538a3a79887bf6a685138651',1,'BArray::get_col_vec(std::vector&lt; Cell_Type &gt; *x, uint i, bool check_bounds=true) const']]],
+  ['get_5fcounts_526',['get_counts',['../class_support.html#a5d93a94eaed9b1157fb934284883fd47',1,'Support']]],
+  ['get_5fcounts_5fptr_527',['get_counts_ptr',['../class_support.html#abcb4dea3c5a1b140990821900432f90e',1,'Support']]],
+  ['get_5fdata_528',['get_data',['../class_power_set.html#a4de44631d9a7967db4dd791d42166115',1,'PowerSet::get_data()'],['../class_freq_table.html#a7b99496d1c2f4193654752856b30d1a5',1,'FreqTable::get_data()']]],
+  ['get_5fdata_5fptr_529',['get_data_ptr',['../class_power_set.html#a99cf1aa56e63a16c023bf7057b0b9288',1,'PowerSet::get_data_ptr()'],['../class_freq_table.html#ab5dd6677f52072c93d18b2b9a3369ae7',1,'FreqTable::get_data_ptr()']]],
+  ['get_5fentries_530',['get_entries',['../class_b_array.html#aca2a1b7b9fb02703ded3006fcb2d3c37',1,'BArray']]],
+  ['get_5flast_5fname_531',['get_last_name',['../phylo_8hpp.html#add31e0ba346cdf08524d6da73500f846',1,'phylo.hpp']]],
+  ['get_5fnorm_5fconst_532',['get_norm_const',['../class_model.html#a8de55fd86cdca46936e455721754a2af',1,'Model']]],
+  ['get_5fparent_533',['get_parent',['../class_node.html#a661cb63a33e950b84c9c093c63d1ab63',1,'Node']]],
+  ['get_5fprobabilities_534',['get_probabilities',['../class_geese.html#a5c9cf28a69270fe4d3f48984fe2c5723',1,'Geese']]],
+  ['get_5fpset_535',['get_pset',['../class_model.html#ad09221a8938765deec2c9d4d0fa8dec5',1,'Model']]],
+  ['get_5frow_536',['get_row',['../class_b_array.html#a65502ec9d50fad49f2713daca6c2d6ca',1,'BArray']]],
+  ['get_5frow_5fvec_537',['get_row_vec',['../class_b_array.html#a2be45b966d99e2bdd3f9994ed70ff145',1,'BArray::get_row_vec(uint i, bool check_bounds=true) const'],['../class_b_array.html#a974b0841e51dac12b88bc5c2cfc9bef7',1,'BArray::get_row_vec(std::vector&lt; Cell_Type &gt; *x, uint i, bool check_bounds=true) const']]],
+  ['get_5fseq_538',['get_seq',['../class_rules.html#afc2e6ddd9cf384f9e70896ad6e581ed4',1,'Rules']]],
+  ['get_5fstats_539',['get_stats',['../class_model.html#adde1cf74eb0ca7f771b7878af9766cdf',1,'Model']]]
 ];

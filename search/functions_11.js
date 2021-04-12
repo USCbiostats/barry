@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['vec_5fdiff_624',['vec_diff',['../geese-bones_8hpp.html#ac4e3e3e3920b3bbde57ac1ed395e9983',1,'geese-bones.hpp']]],
-  ['vec_5fequal_625',['vec_equal',['../typedefs_8hpp.html#a0520b46efb182c4254e257ff5c5e7394',1,'typedefs.hpp']]],
-  ['vec_5fequal_5fapprox_626',['vec_equal_approx',['../typedefs_8hpp.html#aec4a47b2d5c6f46872f300633cf1e938',1,'typedefs.hpp']]],
-  ['vec_5finner_5fprod_627',['vec_inner_prod',['../typedefs_8hpp.html#a843abed15fe9f1be82d863feef016c36',1,'typedefs.hpp']]],
-  ['vector_5fcaster_628',['vector_caster',['../geese-bones_8hpp.html#a13c91ee42db6c3b986acbbac4ee58cb0',1,'geese-bones.hpp']]]
+  ['update_5fannotations_621',['update_annotations',['../class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a',1,'Geese']]],
+  ['update_5fnormalizing_5fconstant_622',['update_normalizing_constant',['../model-bones_8hpp.html#a557368a4713ccf9ee1867c1bd17d58ba',1,'model-bones.hpp']]]
 ];

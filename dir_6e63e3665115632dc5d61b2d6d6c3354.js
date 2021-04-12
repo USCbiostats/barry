@@ -5,7 +5,7 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
     [ "barray-bones.hpp", "barray-bones_8hpp.html", "barray-bones_8hpp" ],
     [ "barray-iterator.hpp", "barray-iterator_8hpp.html", "barray-iterator_8hpp" ],
     [ "barray-meat-operators.hpp", "barray-meat-operators_8hpp.html", "barray-meat-operators_8hpp" ],
-    [ "barray-meat.hpp", "barray-meat_8hpp.html", null ],
+    [ "barray-meat.hpp", "barray-meat_8hpp.html", "barray-meat_8hpp" ],
     [ "barraycell-bones.hpp", "barraycell-bones_8hpp.html", [
       [ "BArrayCell", "class_b_array_cell.html", "class_b_array_cell" ],
       [ "BArrayCell_const", "class_b_array_cell__const.html", "class_b_array_cell__const" ]

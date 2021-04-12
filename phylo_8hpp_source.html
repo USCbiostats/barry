@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">   88</a></span>&#160;<span class="preprocessor">#define PHYLO_COUNTER_LAMBDA(a) Counter_fun_type&lt;PhyloArray, PhyloCounterData&gt; a = \</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">    [](const PhyloArray &amp; Array, uint i, uint j, PhyloCounterData * data)</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">   91</a></span>&#160;<span class="preprocessor">#define PHYLO_CHECK_MISSING() if (Array.data == nullptr) \</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">   91</a></span>&#160;<span class="preprocessor">#define PHYLO_CHECK_MISSING() if (Array.D() == nullptr) \</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">    throw std::logic_error(&quot;The array data is nullptr.&quot;</span>); \</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    if (data == nullptr) \</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    throw std::logic_error(&quot;The counter data is nullptr.&quot;)</div>
@@ -174,9 +174,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    {</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;          <span class="keywordflow">return</span> 1.0;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;          <span class="keywordflow">return</span> 1.0;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        </div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
@@ -211,12 +211,12 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    {</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;duplication &amp; (data-&gt;at(1u) == 0u))</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (data-&gt;at(1u) == 0u))</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.data-&gt;duplication &amp; (data-&gt;at(1u) == 1u))</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (data-&gt;at(1u) == 1u))</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">return</span> (!Array.data-&gt;states[i]) &amp;&amp; (i == data-&gt;at(0u)) ? 1.0 : 0.0;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">return</span> (!Array.D()-&gt;states[i]) &amp;&amp; (i == data-&gt;at(0u)) ? 1.0 : 0.0;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    };</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    </div>
@@ -258,13 +258,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="comment">// Checking the type of event</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;duplication &amp; (data-&gt;at(2u) == 0u))</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (data-&gt;at(2u) == 0u))</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.data-&gt;duplication &amp; (data-&gt;at(2u) == 1u))</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (data-&gt;at(2u) == 1u))</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="comment">// Is there any gain?</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;states[i])</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[i])</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="comment">// Making the counts</span></div>
@@ -314,9 +314,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        </div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;duplication &amp; (data-&gt;at(0u) == 0))</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (data-&gt;at(0u) == 0))</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.data-&gt;duplication &amp; (data-&gt;at(0u) == 1))</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (data-&gt;at(0u) == 1))</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="comment">// At the beginning, all offspring are zero, so we need to</span></div>
@@ -325,7 +325,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j0 = 0u; j0 &lt; Array.nrow(); ++j0)</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        {</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordflow">if</span> (Array.data-&gt;states[j0]) </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordflow">if</span> (Array.D()-&gt;states[j0]) </div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                <span class="comment">// Yup, we are loosing a function, so break</span></div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            </div>
@@ -340,13 +340,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    {</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="comment">// Checking the type of event</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;duplication &amp; (data-&gt;at(0u) == 0u))</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (data-&gt;at(0u) == 0u))</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.data-&gt;duplication &amp; (data-&gt;at(0u) == 1u))</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (data-&gt;at(0u) == 1u))</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="comment">// Case 1: The parent had the function (then probably need to substract one)</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;states[i]) {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[i]) {</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <span class="comment">// Need to check the other functions</span></div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.nrow(); ++k)</div>
@@ -356,9 +356,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                {</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                    <span class="comment">// Nah, this gene was already different.</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    <span class="keywordflow">if</span> (Array.data-&gt;states[k] &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 0u))</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    <span class="keywordflow">if</span> (Array.D()-&gt;states[k] &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 0u))</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                        <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!Array.data-&gt;states[k]) &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 1u))</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!Array.D()-&gt;states[k]) &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                        <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                }</div>
@@ -370,7 +370,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <span class="keywordflow">return</span> -1.0;</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        }</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.data-&gt;states[i])</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;states[i])</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        {</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="comment">// Case 2: The parent didn&#39;t had the function. Probably need to increase</span></div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="comment">// by one.</span></div>
@@ -384,9 +384,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                  <span class="keywordflow">if</span> (k != i)</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                  {</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                      <span class="comment">// Nah, this gene was already different.</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                      <span class="keywordflow">if</span> (Array.data-&gt;states[k] &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 0u))</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                      <span class="keywordflow">if</span> (Array.D()-&gt;states[k] &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 0u))</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                          <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!Array.data-&gt;states[k]) &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 1u))</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!Array.D()-&gt;states[k]) &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                          <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                  }</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                  </div>
@@ -426,9 +426,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    {</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            <span class="keywordflow">return</span> -1.0;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            <span class="keywordflow">return</span> -1.0;</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        <span class="keywordflow">else</span> </div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
@@ -440,10 +440,10 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;      <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;      <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; Array.data-&gt;duplication)</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>((Array.N * Array.ncol()));</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; !Array.data-&gt;duplication)</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>((Array.N * Array.ncol()));</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;      <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>((Array.nrow() * Array.ncol()));</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>((Array.nrow() * Array.ncol()));</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;      <span class="keywordflow">else</span> </div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;          <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
@@ -507,9 +507,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    {</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160; </div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;duplication &amp; (data-&gt;at(2u) == 0u))</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (data-&gt;at(2u) == 0u))</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.data-&gt;duplication &amp; (data-&gt;at(2u) == 1u))</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (data-&gt;at(2u) == 1u))</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        </div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> counts = 1u;</div>
@@ -550,12 +550,12 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    {</div>
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(1u) == 1u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(1u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(1u) == 0u) &amp; Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(1u) == 0u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;            <span class="keywordflow">return</span> (Array.data-&gt;states[i]) &amp;&amp; (i == data-&gt;at(0u)) ? -1.0 : 0.0;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;            <span class="keywordflow">return</span> (Array.D()-&gt;states[i]) &amp;&amp; (i == data-&gt;at(0u)) ? -1.0 : 0.0;</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    };</div>
 <div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    </div>
@@ -564,12 +564,12 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
 <div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;        <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160; </div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(1u) == 1u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(1u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(1u) == 0u) &amp; Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(1u) == 0u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;            <span class="keywordflow">return</span> Array.data-&gt;states[data-&gt;at(0u)]? Array.ncol() : 0.0;</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;            <span class="keywordflow">return</span> Array.D()-&gt;states[data-&gt;at(0u)]? Array.ncol() : 0.0;</div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160; </div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    };</div>
 <div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    </div>
@@ -594,13 +594,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    {</div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160; </div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;      <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;      <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;      <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160; </div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;states[i])</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[i])</div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;          <span class="keywordflow">return</span> -1.0;</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        <span class="keywordflow">else</span> </div>
 <div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;          <span class="keywordflow">return</span> 1.0;</div>
@@ -614,9 +614,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160; </div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        {</div>
@@ -625,7 +625,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;            <span class="keywordtype">double</span> noff   = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span> (Array.ncol());</div>
 <div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            <span class="keywordtype">double</span> counts = 0.0;</div>
 <div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.ncol(); ++k)</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;                <span class="keywordflow">if</span> (Array.data-&gt;states[k])</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;                <span class="keywordflow">if</span> (Array.D()-&gt;states[k])</div>
 <div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;                    counts += noff;</div>
 <div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160; </div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            <span class="keywordflow">return</span> counts;</div>
@@ -657,9 +657,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    {</div>
 <div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160; </div>
 <div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;        <span class="comment">// Is this node duplication?</span></div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.data-&gt;duplication)  </div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)  </div>
 <div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160; </div>
 <div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;        <span class="comment">// Are we looking at either of the relevant functions?</span></div>
@@ -667,7 +667,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;        </div>
 <div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;        <span class="comment">// Are A and B existant? if not, no change</span></div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;        <span class="keywordflow">if</span> (!Array.data-&gt;states[data-&gt;at(0u)] | !Array.data-&gt;states[data-&gt;at(1u)])</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[data-&gt;at(0u)] | !Array.D()-&gt;states[data-&gt;at(1u)])</div>
 <div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;        </div>
 <div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        <span class="comment">// Figuring out which is the first (reference) function</span></div>
@@ -743,9 +743,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;        <span class="keyword">auto</span> d2 = data-&gt;at(2u);</div>
 <div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;      </div>
 <div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;        <span class="comment">// Is this node duplication?</span></div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        <span class="keywordflow">if</span> ((d2 == 1u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        <span class="keywordflow">if</span> ((d2 == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((d2 == 0u) &amp; Array.data-&gt;duplication)  </div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((d2 == 0u) &amp; Array.D()-&gt;duplication)  </div>
 <div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160; </div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        <span class="comment">// Is the function in scope relevant?</span></div>
@@ -753,7 +753,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        </div>
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        <span class="comment">// None should have it</span></div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        <span class="keywordflow">if</span> (!Array.data-&gt;states[d0] &amp;&amp; !Array.data-&gt;states[d1])</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[d0] &amp;&amp; !Array.D()-&gt;states[d1])</div>
 <div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;        {</div>
 <div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160; </div>
 <div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> other = (i == d0)? d1 : d0;</div>
@@ -796,7 +796,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160; </div>
 <div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;        <span class="comment">// Only relevant if the </span></div>
 <div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;states[i])</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[i])</div>
 <div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;        {</div>
 <div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;            </div>
 <div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; off : *data)</div>
@@ -830,7 +830,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160; </div>
 <div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;        <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;        </div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;        <span class="keywordflow">if</span> (Array.data-&gt;blengths.size() != Array.ncol())</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;blengths.size() != Array.ncol())</div>
 <div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;            <span class="keywordflow">throw</span> std::logic_error(</div>
 <div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;                <span class="stringliteral">&quot;longest should be initialized with a vec of size Array.ncol().&quot;</span></div>
 <div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;            );</div>
@@ -843,7 +843,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ii = 1u; ii &lt; Array.ncol(); ++ii)</div>
 <div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;        {</div>
 <div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;            </div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;            diff = Array.data-&gt;blengths[longest_idx] - Array.data-&gt;blengths[ii];</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;            diff = Array.D()-&gt;blengths[longest_idx] - Array.D()-&gt;blengths[ii];</div>
 <div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;            <span class="keywordflow">if</span> (diff &gt; 0.0)</div>
 <div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (diff &lt; 0.0)</div>
@@ -867,9 +867,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;        <span class="comment">// Starting the counter, since all in zero, then this will be equal to</span></div>
 <div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;        <span class="comment">// the number of functions in 1 x number of longest branches</span></div>
 <div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ii = 0u; ii &lt; Array.N; ++ii) {</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ii = 0u; ii &lt; Array.nrow(); ++ii) {</div>
 <div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;            </div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;            <span class="keywordflow">if</span> (Array.data-&gt;states[ii])</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;            <span class="keywordflow">if</span> (Array.D()-&gt;states[ii])</div>
 <div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                res += (1.0 * data-&gt;size());</div>
 <div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160; </div>
 <div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;        }</div>
@@ -898,9 +898,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    {</div>
 <div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160; </div>
 <div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;        <span class="comment">// Is this node duplication?</span></div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.data-&gt;duplication)  </div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)  </div>
 <div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160; </div>
 <div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;        <span class="comment">// Is the function in scope relevant?</span></div>
@@ -908,9 +908,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;        </div>
 <div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;        <span class="comment">// Checking if the parent has both functions</span></div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;        <span class="keywordflow">if</span> (!Array.data-&gt;states[data-&gt;at(0u)] &amp;&amp; !Array.data-&gt;states[data-&gt;at(1u)]) </div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[data-&gt;at(0u)] &amp;&amp; !Array.D()-&gt;states[data-&gt;at(1u)]) </div>
 <div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Array.data-&gt;states[data-&gt;at(0u)] &amp;&amp; Array.data-&gt;states[data-&gt;at(1u)])</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Array.D()-&gt;states[data-&gt;at(0u)] &amp;&amp; Array.D()-&gt;states[data-&gt;at(1u)])</div>
 <div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;        </div>
 <div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;        <span class="comment">// Figuring out which is the first (reference) function</span></div>
@@ -982,16 +982,16 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;    {</div>
 <div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160; </div>
 <div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;        <span class="comment">// Is this node duplication?</span></div>
-<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.data-&gt;duplication)  </div>
+<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)  </div>
 <div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160; </div>
 <div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;        <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; funA = data-&gt;at(0u);</div>
 <div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;        <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; funB = data-&gt;at(1u);</div>
 <div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;        </div>
 <div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;        <span class="comment">// Checking the parent has funA but not funb</span></div>
-<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;        <span class="keywordflow">if</span> ((!Array.data-&gt;states[funA]) | Array.data-&gt;states[funB]) </div>
+<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;        <span class="keywordflow">if</span> ((!Array.D()-&gt;states[funA]) | Array.D()-&gt;states[funB]) </div>
 <div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;      </div>
 <div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
@@ -1092,9 +1092,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;    { </div>
 <div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160; </div>
 <div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160;        <span class="comment">// Checking whether this is for duplication or not</span></div>
-<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.data-&gt;duplication)</div>
+<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.data-&gt;duplication)</div>
+<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;        <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160; </div>
@@ -1106,7 +1106,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160; </div>
 <div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;            <span class="comment">// If the parent does not have the initial state, then it makes no sense</span></div>
-<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;            <span class="keywordflow">if</span> ((!Array.data-&gt;states[funA]) | Array.data-&gt;states[funB])</div>
+<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;            <span class="keywordflow">if</span> ((!Array.D()-&gt;states[funA]) | Array.D()-&gt;states[funB])</div>
 <div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160; </div>
 <div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;            <span class="comment">// Checking whether function A or function B changed</span></div>
@@ -1231,7 +1231,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
-    <li class="footer">Generated on Mon Apr 12 2021 04:36:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Apr 12 2021 07:12:30 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

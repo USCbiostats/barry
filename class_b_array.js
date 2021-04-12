@@ -9,6 +9,9 @@ var class_b_array =
     [ "~BArray", "class_b_array.html#af39acdf29aa5999a7f5fd48141be384e", null ],
     [ "clear", "class_b_array.html#a6dd5ebff333b376c6fb569e48290935f", null ],
     [ "col", "class_b_array.html#a085d464590ab56520efa01c2c4959b3c", null ],
+    [ "D", "class_b_array.html#a6c7c1577b33435e4a35215c530e79e59", null ],
+    [ "D", "class_b_array.html#a5aca11e93b4169df851724b83e2869d2", null ],
+    [ "default_val", "class_b_array.html#a1e4efac293adb1462c8921a07691fee5", null ],
     [ "get_cell", "class_b_array.html#a4096e4447f91ba52766587a08c62f1fa", null ],
     [ "get_col", "class_b_array.html#a1432139cff7a25ed362164ef8d2a30b2", null ],
     [ "get_col_vec", "class_b_array.html#af62b305d538a3a79887bf6a685138651", null ],
@@ -54,12 +57,5 @@ var class_b_array =
     [ "zero_row", "class_b_array.html#a411085fcb7530669c72d9847340f1bac", null ],
     [ "BArrayCell< Cell_Type, Data_Type >", "class_b_array.html#a2cd2ece8a4fc1027d3151b1ec33151cb", null ],
     [ "BArrayCell_const< Cell_Type, Data_Type >", "class_b_array.html#a8657a495751a2f5a01a94632a37c0af2", null ],
-    [ "data", "class_b_array.html#a9576163b52124021575e50dbcca2f6b9", null ],
-    [ "delete_data", "class_b_array.html#a1e932e3353905d77a2062560ee96b2fc", null ],
-    [ "el_ij", "class_b_array.html#a2161dc7c2046a57d3e663ac5c0d70431", null ],
-    [ "el_ji", "class_b_array.html#aad8ce1aa5fddd3899164c1aa1dfede94", null ],
-    [ "M", "class_b_array.html#a197359753fd1bc054a1a14f7641d3fd1", null ],
-    [ "N", "class_b_array.html#a4b34ec8636c989efe80bbe3f1cea217e", null ],
-    [ "NCells", "class_b_array.html#a31fd64c6b54408ca98e07abc9c4241c5", null ],
     [ "visited", "class_b_array.html#ae0860bf21425397d1498f94da6518e85", null ]
 ];

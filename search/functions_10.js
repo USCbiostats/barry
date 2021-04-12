@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['update_5fannotations_622',['update_annotations',['../class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a',1,'Geese']]],
-  ['update_5fnormalizing_5fconstant_623',['update_normalizing_constant',['../model-bones_8hpp.html#a557368a4713ccf9ee1867c1bd17d58ba',1,'model-bones.hpp']]]
+  ['toggle_5fcell_618',['toggle_cell',['../class_b_array.html#a2ab2b200b329abc718cfb3574f566cf6',1,'BArray']]],
+  ['toggle_5flock_619',['toggle_lock',['../class_b_array.html#ac5079b33fc5300dd912cdf85bb51ac53',1,'BArray']]],
+  ['transpose_620',['transpose',['../class_b_array.html#a0284f7f2148b7c1b474ebe01f6548b98',1,'BArray']]]
 ];

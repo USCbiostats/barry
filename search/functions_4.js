@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['flock_521',['Flock',['../class_flock.html#a2a0a514c368e21f718ad7358ed42f3b7',1,'Flock']]],
-  ['freqtable_522',['FreqTable',['../class_freq_table.html#a2fdea53e35f9a301d7d1bbf6b7da5f41',1,'FreqTable']]]
+  ['end_518',['end',['../class_power_set.html#ac734ed684aa314b722a05d423c607a38',1,'PowerSet']]],
+  ['entries_519',['Entries',['../class_entries.html#a9e6cba5965f285beb3c0356c79f592d2',1,'Entries::Entries()'],['../class_entries.html#a03249234a765e3363ae89dba76b3ff9f',1,'Entries::Entries(uint n)']]]
 ];

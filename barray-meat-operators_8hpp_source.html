@@ -102,122 +102,129 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef BARRY_BARRAY_MEAT_OPERATORS_HPP</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define BARRY_BARRAY_MEAT_OPERATORS_HPP 1</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">    8</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a>(</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; lhs,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; rhs</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span> (lhs.<a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>() != rhs.<a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>())</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Number of columns do not match.&quot;</span>);</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">    7</a></span>&#160;<span class="preprocessor">#define ROW(a) this-&gt;el_ij[a]</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="barray-meat-operators_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605">    8</a></span>&#160;<span class="preprocessor">#define COL(a) this-&gt;el_ji[a]</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">   11</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a>(</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; lhs,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; rhs</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;) {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span> (lhs.<a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>() != rhs.<a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>())</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Number of rows do not match.&quot;</span>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span> (lhs.<a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>() != rhs.<a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>())</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Number of columns do not match.&quot;</span>);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span> (lhs.<a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>() != rhs.<a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>())</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Number of rows do not match.&quot;</span>);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#af73a5405538c57c6a02f84ce97e06cea">BArray&lt;Cell_Type, Data_Type&gt;::operator+=</a>(</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; rhs</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// Must be compatible</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a>(*<span class="keyword">this</span>, rhs);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) += rhs.<a class="code" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a>(i, j);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#af73a5405538c57c6a02f84ce97e06cea">BArray&lt;Cell_Type, Data_Type&gt;::operator+=</a>(</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; rhs</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Must be compatible</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a>(*<span class="keyword">this</span>, rhs);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) += rhs.<a class="code" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a>(i, j);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#af73a5405538c57c6a02f84ce97e06cea">BArray&lt;Cell_Type, Data_Type&gt;::operator+=</a>(</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) += rhs;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#af73a5405538c57c6a02f84ce97e06cea">BArray&lt;Cell_Type, Data_Type&gt;::operator+=</a>(</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) += rhs;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#a0e671d3f34a73753950bed54b9cc542f">BArray&lt;Cell_Type, Data_Type&gt;::operator-=</a>(</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; rhs</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Must be compatible</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a>(*<span class="keyword">this</span>, rhs);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) -= rhs.<a class="code" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a>(i, j);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#a0e671d3f34a73753950bed54b9cc542f">BArray&lt;Cell_Type, Data_Type&gt;::operator-=</a>(</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; rhs</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// Must be compatible</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a>(*<span class="keyword">this</span>, rhs);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) -= rhs.<a class="code" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a>(i, j);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#a0e671d3f34a73753950bed54b9cc542f">BArray&lt;Cell_Type, Data_Type&gt;::operator-=</a>(</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) -= rhs;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#a0e671d3f34a73753950bed54b9cc542f">BArray&lt;Cell_Type, Data_Type&gt;::operator-=</a>(</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j = 0u; j &lt; <a class="code" href="class_b_array.html#ac6be0b6344b5dd30d6759f09a82cbff6">ncol</a>(); ++j) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, j) -= rhs;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#a9d4b4f6bba8199a7ead8682a31a31bb1">BArray&lt;Cell_Type, Data_Type&gt;::operator*=</a>(</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).size() == 0u)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#a9d4b4f6bba8199a7ead8682a31a31bb1">BArray&lt;Cell_Type, Data_Type&gt;::operator*=</a>(</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a> = <a class="code" href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).begin(); <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a> != <a class="code" href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).end(); ++<a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a>) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a>-&gt;first) *= rhs;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).size() == 0u)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a> = <a class="code" href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).begin(); <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a> != <a class="code" href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).end(); ++<a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a>) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a>-&gt;first) *= rhs;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#aa9e32697fb3aac4fe7a191f906e7fac2">BArray&lt;Cell_Type, Data_Type&gt;::operator/=</a>(</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).size() == 0u)</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cell_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">inline</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type, Data_Type&gt;</a>&amp; <a class="code" href="class_b_array.html#aa9e32697fb3aac4fe7a191f906e7fac2">BArray&lt;Cell_Type, Data_Type&gt;::operator/=</a>(</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keyword">const</span> Cell_Type&amp; rhs</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; <a class="code" href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">nrow</a>(); ++i) {</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a> = <a class="code" href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).begin(); <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a> != <a class="code" href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).end(); ++<a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a>) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a>-&gt;first) /= rhs;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).size() == 0u)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a> = <a class="code" href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).begin(); <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a> != <a class="code" href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i).end(); ++<a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a>) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            this-&gt;<a class="code" href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">operator()</a>(i, <a class="code" href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">col</a>-&gt;first) /= rhs;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#undef ROW</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#undef COL</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-bones_8hpp_html"><div class="ttname"><a href="barray-bones_8hpp.html">barray-bones.hpp</a></div></div>
-<div class="ttc" id="abarray-meat-operators_8hpp_html_a38550eb5bfae32d431d2d838ccd779aa"><div class="ttname"><a href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a></div><div class="ttdeci">void checkdim_(const BArray&lt; Cell_Type, Data_Type &gt; &amp;lhs, const BArray&lt; Cell_Type, Data_Type &gt; &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat-operators_8hpp_source.html#l00008">barray-meat-operators.hpp:8</a></div></div>
+<div class="ttc" id="abarray-meat-operators_8hpp_html_a38550eb5bfae32d431d2d838ccd779aa"><div class="ttname"><a href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a></div><div class="ttdeci">void checkdim_(const BArray&lt; Cell_Type, Data_Type &gt; &amp;lhs, const BArray&lt; Cell_Type, Data_Type &gt; &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat-operators_8hpp_source.html#l00011">barray-meat-operators.hpp:11</a></div></div>
+<div class="ttc" id="abarray-meat-operators_8hpp_html_a391c25765afb3eb7b8288b21dd2eb16b"><div class="ttname"><a href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a></div><div class="ttdeci">#define ROW(a)</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat-operators_8hpp_source.html#l00007">barray-meat-operators.hpp:7</a></div></div>
 <div class="ttc" id="aclass_b_array_html"><div class="ttname"><a href="class_b_array.html">BArray&lt; Cell_Type, Data_Type &gt;</a></div></div>
 <div class="ttc" id="aclass_b_array_html_a085d464590ab56520efa01c2c4959b3c"><div class="ttname"><a href="class_b_array.html#a085d464590ab56520efa01c2c4959b3c">BArray::col</a></div><div class="ttdeci">const Col_type&lt; Cell_Type &gt; &amp; col(uint i, bool check_bounds=true) const</div></div>
 <div class="ttc" id="aclass_b_array_html_a0e671d3f34a73753950bed54b9cc542f"><div class="ttname"><a href="class_b_array.html#a0e671d3f34a73753950bed54b9cc542f">BArray::operator-=</a></div><div class="ttdeci">BArray&lt; Cell_Type, Data_Type &gt; &amp; operator-=(const std::pair&lt; uint, uint &gt; &amp;coords)</div></div>
@@ -228,7 +235,6 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div class="ttc" id="aclass_b_array_html_ad6532bbcff89fa7df589de57969b0c5a"><div class="ttname"><a href="class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a">BArray::nrow</a></div><div class="ttdeci">uint nrow() const noexcept</div></div>
 <div class="ttc" id="aclass_b_array_html_ae509989759e1eae0da9115e405e6d4a3"><div class="ttname"><a href="class_b_array.html#ae509989759e1eae0da9115e405e6d4a3">BArray::operator()</a></div><div class="ttdeci">BArrayCell&lt; Cell_Type, Data_Type &gt; operator()(uint i, uint j, bool check_bounds=true)</div></div>
 <div class="ttc" id="aclass_b_array_html_af73a5405538c57c6a02f84ce97e06cea"><div class="ttname"><a href="class_b_array.html#af73a5405538c57c6a02f84ce97e06cea">BArray::operator+=</a></div><div class="ttdeci">BArray&lt; Cell_Type, Data_Type &gt; &amp; operator+=(const std::pair&lt; uint, uint &gt; &amp;coords)</div></div>
-<div class="ttc" id="atypedefs_8hpp_html_a391c25765afb3eb7b8288b21dd2eb16b"><div class="ttname"><a href="typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a></div><div class="ttdeci">#define ROW(a)</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00023">typedefs.hpp:23</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00020">typedefs.hpp:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -236,7 +242,7 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barray-meat-operators_8hpp.html">barray-meat-operators.hpp</a></li>
-    <li class="footer">Generated on Mon Apr 12 2021 04:36:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Apr 12 2021 07:12:30 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -2,10 +2,6 @@ var typedefs_8hpp =
 [
     [ "Entries", "class_entries.html", "class_entries" ],
     [ "vecHasher", "structvec_hasher.html", "structvec_hasher" ],
-    [ "A_COL", "typedefs_8hpp.html#ac4ed0c1525d352c76a5f22fae625c9e8", null ],
-    [ "A_ROW", "typedefs_8hpp.html#ac3f14709e872fe684ba3cea262981ac3", null ],
-    [ "COL", "typedefs_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605", null ],
-    [ "ROW", "typedefs_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b", null ],
     [ "Col_type", "typedefs_8hpp.html#a3bb95a7612ee928fba42f33a96adb3eb", null ],
     [ "Counter_fun_type", "typedefs_8hpp.html#a1e12ad6cdda3588f5b2157a5ad3177d2", null ],
     [ "Counts_type", "typedefs_8hpp.html#aee40fa17c1fddb63dd1f2b1470ade95b", null ],

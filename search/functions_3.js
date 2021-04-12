@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['end_519',['end',['../class_power_set.html#ac734ed684aa314b722a05d423c607a38',1,'PowerSet']]],
-  ['entries_520',['Entries',['../class_entries.html#a9e6cba5965f285beb3c0356c79f592d2',1,'Entries::Entries()'],['../class_entries.html#a03249234a765e3363ae89dba76b3ff9f',1,'Entries::Entries(uint n)']]]
+  ['d_516',['D',['../class_b_array.html#a6c7c1577b33435e4a35215c530e79e59',1,'BArray::D()'],['../class_b_array.html#a5aca11e93b4169df851724b83e2869d2',1,'BArray::D() const']]],
+  ['default_5fval_517',['default_val',['../class_b_array.html#a1e4efac293adb1462c8921a07691fee5',1,'BArray']]]
 ];

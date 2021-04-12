@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_power_set.html#acc20a68ff11aa1891d9a0676ed50808f">    7</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_power_set.html#a095815ccc44c88e0da73d92c6b5cf5f3">PowerSet&lt;Array_Type,Data_Rule_Type&gt;::PowerSet</a>(</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">const</span> Array_Type &amp; array</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;) : EmptyArray(array), data(0u),</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        rules(new <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Type&gt;()), N(array.N), M(array.M) {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        rules(new <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Type&gt;()), N(array.nrow()), M(array.ncol()) {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    EmptyArray.insert_cell(</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        coords.first,</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        coords.second,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        EmptyArray.Cell_default.value,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        EmptyArray.default_val().value,</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">false</span>, <span class="keyword">false</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        );</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
@@ -255,14 +255,14 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="ttc" id="aclass_rules_html"><div class="ttname"><a href="class_rules.html">Rules</a></div><div class="ttdoc">Vector of objects of class Rule.</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00067">rules-bones.hpp:67</a></div></div>
 <div class="ttc" id="apowerset-bones_8hpp_html"><div class="ttname"><a href="powerset-bones_8hpp.html">powerset-bones.hpp</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00020">typedefs.hpp:20</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_a99982bdca40c23ca6f901c8e66da78a1"><div class="ttname"><a href="typedefs_8hpp.html#a99982bdca40c23ca6f901c8e66da78a1">Rule_fun_type</a></div><div class="ttdeci">std::function&lt; bool(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Rule_fun_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00140">typedefs.hpp:140</a></div></div>
+<div class="ttc" id="atypedefs_8hpp_html_a99982bdca40c23ca6f901c8e66da78a1"><div class="ttname"><a href="typedefs_8hpp.html#a99982bdca40c23ca6f901c8e66da78a1">Rule_fun_type</a></div><div class="ttdeci">std::function&lt; bool(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Rule_fun_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00136">typedefs.hpp:136</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="powerset-meat_8hpp.html">powerset-meat.hpp</a></li>
-    <li class="footer">Generated on Mon Apr 12 2021 04:36:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Apr 12 2021 07:12:30 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
