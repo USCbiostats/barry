@@ -2,6 +2,8 @@
 // #include "../include/barry.hpp"
 // #include "catch.hpp"
 
+using namespace barry::counters::network;
+
 TEST_CASE("Network counts work", "[counts]") {
   
   // Reading large network
@@ -43,37 +45,37 @@ TEST_CASE("Network counts work", "[counts]") {
     };
   
   std::cout << "Creating the network...";
-  netcounters::Network net(20, 20, source, target);
+  Network net(20, 20, source, target);
   std::cout << "done." << std::endl;
   
   std::cout << "Preparating the model...";
   std::vector< std::vector< double > > vattrs(2);
   vattrs[0] = gender;
   vattrs[1] = age;
-  net.set_data(new netcounters::NetworkData(vattrs), true);
+  net.set_data(new NetworkData(vattrs), true);
   
-  netcounters::NetStatsCounter counter(&net); 
+  NetStatsCounter counter(&net); 
 
-  netcounters::counter_edges(counter.counters);
-  netcounters::counter_mutual(counter.counters);
-  netcounters::counter_isolates(counter.counters);
-  netcounters::counter_istar2(counter.counters);
-  netcounters::counter_ostar2(counter.counters);
-  netcounters::counter_ttriads(counter.counters);
-  netcounters::counter_ctriads(counter.counters);
-  netcounters::counter_density(counter.counters);
-  netcounters::counter_idegree15(counter.counters);
-  netcounters::counter_odegree15(counter.counters);
-  netcounters::counter_nodematch(counter.counters, 0u);
-  netcounters::counter_nodeicov(counter.counters, 0u);
-  netcounters::counter_nodeocov(counter.counters, 0u);
-  netcounters::counter_nodecov(counter.counters, 0u);
-  netcounters::counter_absdiff(counter.counters, 1u, 1.0);
-  netcounters::counter_diff(counter.counters, 1u, 1.0);
-  netcounters::counter_diff(counter.counters, 1u, 2.0);
-  netcounters::counter_diff(counter.counters, 1u, 3.0);
-  netcounters::counter_idegree(counter.counters, {1u,2u,3u,4u});
-  netcounters::counter_odegree(counter.counters, {1u,2u,3u,4u});
+  counter_edges(counter.counters);
+  counter_mutual(counter.counters);
+  counter_isolates(counter.counters);
+  counter_istar2(counter.counters);
+  counter_ostar2(counter.counters);
+  counter_ttriads(counter.counters);
+  counter_ctriads(counter.counters);
+  counter_density(counter.counters);
+  counter_idegree15(counter.counters);
+  counter_odegree15(counter.counters);
+  counter_nodematch(counter.counters, 0u);
+  counter_nodeicov(counter.counters, 0u);
+  counter_nodeocov(counter.counters, 0u);
+  counter_nodecov(counter.counters, 0u);
+  counter_absdiff(counter.counters, 1u, 1.0);
+  counter_diff(counter.counters, 1u, 1.0);
+  counter_diff(counter.counters, 1u, 2.0);
+  counter_diff(counter.counters, 1u, 3.0);
+  counter_idegree(counter.counters, {1u,2u,3u,4u});
+  counter_odegree(counter.counters, {1u,2u,3u,4u});
   std::cout << "done." << std::endl;
   
   std::cout << "Starting the count...";

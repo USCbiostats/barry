@@ -82,6 +82,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 break;
             
             ++n_pos;
+            
         }
 
         // Iterating through the offspring state P(x_n^p | D)
