@@ -30,7 +30,7 @@ double get_cell(SEXP x, int i, int j) {
 NumericVector get_row(SEXP x, int i) {
   
   Rcpp::XPtr< barry::BArray<double,double> > xptr(x);
-  NumericVector ans(xptr->M, 0);
+  NumericVector ans(xptr->ncol(), 0);
   const barry::Row_type<double> * m = xptr->get_row(i);
   
   for (auto row = m->begin(); row != m->end(); ++row)
@@ -44,7 +44,7 @@ NumericVector get_row(SEXP x, int i) {
 NumericVector get_col(SEXP x, int i) {
   
   Rcpp::XPtr< barry::BArray<double,double> > xptr(x);
-  NumericVector ans(xptr->N, 0);
+  NumericVector ans(xptr->nrow(), 0);
   const barry::Col_type< double > * m = xptr->get_col(i);
   
   for (auto row = m->begin(); row != m->end(); ++row) {

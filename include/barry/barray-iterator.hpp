@@ -17,7 +17,7 @@ public:
     ConstBArrayRowIter(const BArray<Cell_Type,Data_Type> * Array_) : Array(Array_) {
         
         // Finding the first entry of the iterator
-        for (uint i = 0u; i < Array->N; ++i)
+        for (uint i = 0u; i < Array->nrow(); ++i)
             if (A_ROW(i).size() != 0u) {
                 iter = A_ROW(i).begin();
                 break;

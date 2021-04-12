@@ -38,12 +38,12 @@ inline std::vector< double > keygen_full(
     };
 
     // State of the parent
-    for (bool i : array.data->states) {
+    for (bool i : array.D()->states) {
         dat.push_back(i ? 1.0 : 0.0);
     }
 
     // Type of the parent
-    dat.push_back(array.data->duplication ? 1.0 : 0.0);
+    dat.push_back(array.D()->duplication ? 1.0 : 0.0);
 
     return dat;
 }

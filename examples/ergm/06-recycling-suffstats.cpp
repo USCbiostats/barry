@@ -46,12 +46,11 @@ List counter(
   for (unsigned int i = 0u; i < N.size(); ++i) {
     
     netcounters::Network Array((uint) N[i], (uint) M[i], source[i], target[i]);
-    Array.data = new netcounters::NetworkData(gender[i]);
+    Array.set_data(new netcounters::NetworkData(gender[i]), true);
     
     dat.reset_array(&Array);
     
     ans[i] = dat.count_all();
-    delete Array.data;
   }
  
   return wrap(ans);
@@ -96,7 +95,7 @@ List support (
   for (unsigned int i = 0u; i < N.size(); ++i) {
     
     netcounters::Network net(N[i],M[i]);
-    net.data = new netcounters::NetworkData(gender[i]);
+    net.set_data(new netcounters::NetworkData(gender[i]), true);
     
     // Need to pass the data every time
     dat.reset_array(&net);
@@ -115,7 +114,6 @@ List support (
       );
     }
     
-    delete net.data;
     res[i] = clone(res_tmp);
     
   }

@@ -411,7 +411,7 @@ inline void Geese::print_observed_counts() {
             "nodeid: " << n.second.id << " (" << dpl <<
             ")\nstate : [";
         for (uint f = 0u; f < nfuns(); ++f)
-            std::cout << tmparray.data->states[f] << ", ";
+            std::cout << tmparray.D()->states[f] << ", ";
         std::cout << "]; Array:" << std::endl;
         tmparray.print();
         std::cout << "Counts: ";

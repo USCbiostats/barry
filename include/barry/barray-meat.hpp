@@ -4,6 +4,8 @@
 #ifndef BARRY_BARRAY_MEAT_HPP
 #define BARRY_BARRAY_MEAT_HPP 
 
+#define ROW(a) this->el_ij[a]
+#define COL(a) this->el_ji[a]
 
 
 template<typename Cell_Type, typename Data_Type>
@@ -322,6 +324,16 @@ inline void BArray<Cell_Type,Data_Type>::set_data(
 }
 
 template<typename Cell_Type, typename Data_Type>
+inline Data_Type * BArray<Cell_Type,Data_Type>::D() {
+    return this->data;
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline const Data_Type * BArray<Cell_Type,Data_Type>::D() const {
+    return this->data;
+}
+
+template<typename Cell_Type, typename Data_Type>
 inline void BArray< Cell_Type,Data_Type >::out_of_range(uint i, uint j) const {
     if (i >= N)
         throw std::range_error("The row is out of range.");
@@ -511,6 +523,11 @@ inline uint BArray<Cell_Type, Data_Type>::ncol() const noexcept {
 template<typename Cell_Type, typename Data_Type>
 inline uint BArray<Cell_Type, Data_Type>::nnozero() const noexcept {
     return NCells;
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline Cell<Cell_Type> BArray<Cell_Type,Data_Type>::default_val() const {
+    return this->Cell_default;
 }
 
 template<typename Cell_Type, typename Data_Type>
@@ -1132,7 +1149,8 @@ inline void BArray< Cell_Type, Data_Type >::print() const {
     return;
 }
 
-
+#undef ROW
+#undef COL
 
 #endif
 

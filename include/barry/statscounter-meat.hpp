@@ -105,9 +105,9 @@ inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
     EmptyArray.clear(false);
     
     // Start iterating through the data
-    for (uint i = 0; i < Array->N; ++i) {
+    for (uint i = 0; i < Array->nrow(); ++i) {
         
-        const auto & row = Array->row(i);
+        const auto & row = Array->row(i, false);
 
         // Any element?
         if (row.size() == 0u)

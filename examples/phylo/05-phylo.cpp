@@ -17,7 +17,7 @@ List counter_phylo(
   // Initializing the node 
   phylocounters::PhyloArray tree(nfun, noffspring);
   phylocounters::NodeData data(as<Vec<double>>(blenghts), as<Vec<bool>>(x)); 
-  tree.data = &data;
+  tree.set_data(&data, false);
   
   // Setting counters, one per function
   phylocounters::PhyloSupport support(&tree);

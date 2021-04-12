@@ -23,9 +23,9 @@ inline std::vector< double > keygen_phylo(
     const phylocounters::PhyloArray & Array_
   ) {
   return {
-    (double) Array_.N, (double) Array_.M,
-    (double) Array_.data->states[0],
-    (double) Array_.data->states[1]
+    (double) Array_.nrow(), (double) Array_.ncol(),
+    (double) Array.D()->states[0],
+    (double) Array.D()->states[1]
     };
 }
 

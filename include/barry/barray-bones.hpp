@@ -22,7 +22,7 @@ template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArray {
     friend class BArrayCell<Cell_Type,Data_Type>;
     friend class BArrayCell_const<Cell_Type,Data_Type>;
-public:
+private:
     uint N;
     uint M;
     uint NCells = 0u;
@@ -32,6 +32,8 @@ public:
     bool delete_data = false;
 
     static Cell< Cell_Type > Cell_default;
+
+public:
     
     /** 
      * This is as a reference, if we need to iterate through the cells and we need
@@ -98,7 +100,17 @@ public:
     // since those are independent.
     // BArray(BArray & A);
     
+    /**
+     * @brief Set the data object
+     * 
+     * @param data_ 
+     * @param delete_data_ 
+     */
+    ///@{
     void set_data(Data_Type * data_, bool delete_data_ = false);
+    Data_Type * D();
+    const Data_Type * D() const;
+    ///@}
     
     // Function to access the elements
     // bool check_cell
@@ -136,6 +148,7 @@ public:
     uint nrow() const noexcept;
     uint ncol() const noexcept;
     uint nnozero() const noexcept;
+    Cell<Cell_Type> default_val() const;
     ///@}
 
     /**

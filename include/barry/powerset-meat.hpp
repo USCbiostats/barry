@@ -7,7 +7,7 @@ template <typename Array_Type, typename Data_Rule_Type>
 inline PowerSet<Array_Type,Data_Rule_Type>::PowerSet(
     const Array_Type & array
 ) : EmptyArray(array), data(0u),
-        rules(new Rules<Array_Type,Data_Rule_Type>()), N(array.N), M(array.M) {
+        rules(new Rules<Array_Type,Data_Rule_Type>()), N(array.nrow()), M(array.ncol()) {
 
 }
 
@@ -59,7 +59,7 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend(uint pos) {
     EmptyArray.insert_cell(
         coords.first,
         coords.second,
-        EmptyArray.Cell_default.value,
+        EmptyArray.default_val().value,
         false, false
         );
 

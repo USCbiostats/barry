@@ -67,7 +67,7 @@ inline double likelihood_(
  */
 template<typename Array_Type>
 inline std::vector< double > keygen_default(const Array_Type & Array_) {
-    return {static_cast<double>(Array_.N), static_cast<double>(Array_.M)};
+    return {static_cast<double>(Array_.nrow()), static_cast<double>(Array_.ncol())};
 }
 
 

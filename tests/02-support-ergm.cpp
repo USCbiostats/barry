@@ -32,7 +32,7 @@ TEST_CASE("Computing support for networks", "[support]") {
   std::vector< double > logs_expected = {65.31523, 51.38268};
   
   netcounters::Network net(4, 4);
-  net.data = new netcounters::NetworkData({0,0,1,0});
+  net.set_data(new netcounters::NetworkData({0,0,1,0}), true);
   netcounters::NetSupport support(net); 
   
   // Preparing model  
@@ -86,7 +86,6 @@ TEST_CASE("Computing support for networks", "[support]") {
   logs[1u] = log(logs[1u]);
   
   
-  delete net.data;
   std::vector< double > margin = {0.00001, 0.00001};
   std::cout << nnets << " networks." << std::endl;
   print(logs);

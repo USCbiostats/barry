@@ -4,6 +4,9 @@
 #ifndef BARRY_BARRAY_MEAT_OPERATORS_HPP
 #define BARRY_BARRAY_MEAT_OPERATORS_HPP 1
 
+#define ROW(a) this->el_ij[a]
+#define COL(a) this->el_ji[a]
+
 template<typename Cell_Type, typename Data_Type>
 inline void checkdim_(
     const BArray<Cell_Type, Data_Type>& lhs,
@@ -116,5 +119,8 @@ inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator/=(
 
     return *this;
 }
+
+#undef ROW
+#undef COL
 
 #endif

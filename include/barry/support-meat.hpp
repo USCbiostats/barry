@@ -103,7 +103,7 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
     // Toggle the cell (we will toggle it back after calling the counter)
     EmptyArray.insert_cell(
         cfree.first, cfree.second,
-        EmptyArray.Cell_default.value,
+        EmptyArray.default_val().value,
         false, false
         );
 
