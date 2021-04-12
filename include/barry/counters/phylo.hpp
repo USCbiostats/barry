@@ -65,9 +65,9 @@ typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
 typedef Counters< PhyloArray, PhyloCounterData> PhyloCounters;
 typedef Rule<PhyloArray,PhyloRuleData> PhyloRule;
 typedef Rules<PhyloArray,PhyloRuleData> PhyloRules;
-typedef Support<PhyloArray, PhyloCounterData, PhyloRuleData> PhyloSupport;
+typedef Support<PhyloArray, PhyloCounterData, PhyloRuleData, uint > PhyloSupport;
 typedef StatsCounter<PhyloArray, PhyloCounterData> PhyloStatsCounter;
-typedef Model<PhyloArray, PhyloCounterData, PhyloRuleData> PhyloModel;
+typedef Model<PhyloArray, PhyloCounterData, PhyloRuleData, uint > PhyloModel;
 typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
 ///@}
 

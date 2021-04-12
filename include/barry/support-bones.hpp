@@ -15,11 +15,22 @@
  * Given an array and a set of counters, this object iterates throughout the
  * support set of the Array while at the same time computing the support of
  * the sufficient statitics.
+ * 
+ * The members `rule` and `rule_dyn` allow constraining the support. The first
+ * will establish which cells of the array will be used to iterate, for example,
+ * in the case of social networks, self-loops are not allowed, so the entire
+ * diagonal would be fixed to zero, reducing the size of the support.
+ * 
+ * In the case of `rule_dyn`, the function will stablish dynamically whether
+ * the current state will be included in the counts or not. For example, this
+ * set of rules can be used to constrain the support to networks that have a
+ * prescribed degree sequence. 
  */ 
 template <
-    typename Array_Type = BArray<>,
-    typename Data_Counter_Type = bool,
-    typename Data_Rule_Type = bool
+    typename Array_Type         = BArray<>,
+    typename Data_Counter_Type  = bool,
+    typename Data_Rule_Type     = bool,
+    typename Data_Rule_Dyn_Type = bool
     >
 class Support {
     
@@ -35,14 +46,16 @@ public:
     /**
      * @brief Reference array to generate the support.
      */
-    Array_Type                               EmptyArray;
-    FreqTable<>                              data;
-    Counters<Array_Type,Data_Counter_Type> * counters;
-    Rules<Array_Type,Data_Rule_Type> *       rules;
+    Array_Type                               EmptyArray; ///< Temp array used to iterate through the support.
+    FreqTable<>                              data;       ///< Table with the support.
+    Counters<Array_Type,Data_Counter_Type> * counters;   ///< Vector of couter functions.
+    Rules<Array_Type,Data_Rule_Type> *       rules;      ///< Vector of static rules (cells to iterate).
+    Rules<Array_Type,Data_Rule_Dyn_Type> *   rules_dyn;  ///< Vector of dynamic rules (to include/exclude a realizaton).
 
     uint N, M;
-    bool counter_deleted = false;
-    bool rules_deleted   = false;
+    bool delete_counters  = true;
+    bool delete_rules     = true;
+    bool delete_rules_dyn = true;
     uint max_num_elements = BARRY_MAX_NUM_ELEMENTS;
     
     // Temp variables to reduce memory allocation
@@ -57,6 +70,7 @@ public:
         EmptyArray(Array_),
         counters(new Counters<Array_Type,Data_Counter_Type>()),
         rules(new Rules<Array_Type,Data_Rule_Type>()),
+        rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
         N(Array_.nrow()), M(Array_.ncol()) {};
     
     /**@brief Constructor specifying the dimensions of the array (empty).
@@ -65,19 +79,25 @@ public:
         EmptyArray(N_, M_),
         counters(new Counters<Array_Type,Data_Counter_Type>()),
         rules(new Rules<Array_Type,Data_Rule_Type>()),
+        rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
         N(N_), M(M_) {};
     
     Support() :
         EmptyArray(0u, 0u),
         counters(new Counters<Array_Type,Data_Counter_Type>()),
         rules(new Rules<Array_Type,Data_Rule_Type>()),
+        rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
         N(0u), M(0u) {};
     
     ~Support() {
-        if (!counter_deleted)
+        
+        if (delete_counters)
             delete counters;
-        if (!rules_deleted)
+        if (delete_rules)
             delete rules;
+        if (delete_rules_dyn)
+            delete rules_dyn;
+
     };
     
     void init_support(
@@ -119,6 +139,9 @@ public:
     void add_rule(Rule<Array_Type, Data_Rule_Type> * f_);
     void add_rule(Rule<Array_Type,Data_Rule_Type> f_);
     void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);
+    void add_rule_dyn(Rule<Array_Type, Data_Rule_Dyn_Type> * f_);
+    void add_rule_dyn(Rule<Array_Type,Data_Rule_Dyn_Type> f_);
+    void set_rules_dyn(Rules<Array_Type,Data_Rule_Dyn_Type> * rules_);
     ///@}
 
     /**
@@ -142,6 +165,7 @@ public:
     
     Counts_type           get_counts() const;
     const MapVec_type<> * get_counts_ptr() const;
+    const std::vector< double > & get_current_stats() const; ///< List current statistics.
     void print() const;
     
 };

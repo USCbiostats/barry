@@ -31,25 +31,27 @@ TEST_CASE("Computing support for networks", "[support]") {
   std::vector< double > p1 = {0.34609, 0.81370, 0.79881, 0.96398, 0.48765, 0.13675, 0.47716, 0.11797, 0.13809, 0.69155, 0.07703};
   std::vector< double > logs_expected = {65.31523, 51.38268};
   
-  netcounters::Network net(4, 4);
-  net.set_data(new netcounters::NetworkData({0,0,1,0}), true);
-  netcounters::NetSupport support(net); 
+  using namespace barry::counters::network;
+
+  Network net(4, 4);
+  net.set_data(new NetworkData({0,0,1,0}), true);
+  NetSupport support(net); 
   
   // Preparing model  
   
-  netcounters::counter_edges(support.counters);
-  netcounters::counter_mutual(support.counters);
-  netcounters::counter_isolates(support.counters);
-  netcounters::counter_istar2(support.counters);
-  netcounters::counter_ostar2(support.counters);
-  netcounters::counter_ttriads(support.counters);
-  netcounters::counter_ctriads(support.counters);
-  netcounters::counter_density(support.counters);
-  netcounters::counter_idegree15(support.counters);
-  netcounters::counter_odegree15(support.counters);
-  netcounters::counter_nodematch(support.counters,0u);
+  counter_edges(support.counters);
+  counter_mutual(support.counters);
+  counter_isolates(support.counters);
+  counter_istar2(support.counters);
+  counter_ostar2(support.counters);
+  counter_ttriads(support.counters);
+  counter_ctriads(support.counters);
+  counter_density(support.counters);
+  counter_idegree15(support.counters);
+  counter_odegree15(support.counters);
+  counter_nodematch(support.counters,0u);
   
-  netcounters::rules_zerodiag(support.rules);
+  rules_zerodiag(support.rules);
   
   // Getting the full support
   support.calc(); 

@@ -100,13 +100,26 @@ inline void FreqTable<T>::reserve(
 
 template<typename T>
 inline void FreqTable<T>::print() const {
-    for (auto i = data.begin(); i != data.end(); ++i) {
-        for (auto j = i->first.begin(); j != i->first.end(); ++j)
-            std::cout << (*j) << ", ";
-        std::cout << i->second << std::endl;
+
+    uint grand_total = 0u;
+    printf("%7s | %s\n", "Counts", "Stats");
+    for (auto i = data.begin(); i != data.end(); ++i)
+    {
+
+        printf("%7i | ", i->second);
+
+        for (const auto& j : i->first)
+            printf(" %.2f", j);
+        printf("\n");
+
+        grand_total += i->second;
 
     }
+
+    printf("Grand total: %i\n", grand_total);
+
     return;
+
 }
 
 template<typename T>

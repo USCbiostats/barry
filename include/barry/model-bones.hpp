@@ -96,9 +96,11 @@ inline std::vector< double > keygen_default(const Array_Type & Array_) {
   * @tparam Data_Rule_Type Any type.
   */
 template <
-    typename Array_Type = BArray<>,
-    typename Data_Counter_Type = bool,
-    typename Data_Rule_Type = bool>
+    typename Array_Type         = BArray<>,
+    typename Data_Counter_Type  = bool,
+    typename Data_Rule_Type     = bool,
+    typename Data_Rule_Dyn_Type = bool
+    >
 class Model {
 
 public:
@@ -173,10 +175,11 @@ public:
       * @details Arguments are recycled to save memory and computation.
       */
     ///@{
-    Counters<Array_Type,Data_Counter_Type>               counters;
-    Rules<Array_Type,Data_Rule_Type>                     rules;
-    Support<Array_Type,Data_Counter_Type,Data_Rule_Type> support_fun;
-    StatsCounter<Array_Type,Data_Counter_Type>           counter_fun;
+    Counters<Array_Type,Data_Counter_Type>                                  counters;
+    Rules<Array_Type,Data_Rule_Type>                                        rules;
+    Rules<Array_Type,Data_Rule_Dyn_Type>                                    rules_dyn;
+    Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> support_fun;
+    StatsCounter<Array_Type,Data_Counter_Type>                              counter_fun;
     ///@}
     
     /**@brief Vector of the previously used parameters */
@@ -190,9 +193,9 @@ public:
 
     Model();
     Model(uint size_);
-    Model(const Model<Array_Type, Data_Counter_Type, Data_Rule_Type> & Model_);
-    Model<Array_Type, Data_Counter_Type, Data_Rule_Type> & operator=(
-        const Model<Array_Type, Data_Counter_Type, Data_Rule_Type> & Model_
+    Model(const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_);
+    Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & operator=(
+        const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_
     );
     ~Model() {
         if (delete_rengine)
@@ -234,6 +237,16 @@ public:
     );
     
     void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);
+
+    void add_rule_dyn(Rule<Array_Type, Data_Rule_Dyn_Type> & rule);
+    void add_rule_dyn(Rule<Array_Type, Data_Rule_Dyn_Type> * rule);
+    void add_rule_dyn(
+        Rule_fun_type<Array_Type, Data_Rule_Dyn_Type> count_fun_,
+        Data_Rule_Dyn_Type *                          data_        = nullptr,
+        bool                                      delete_data_ = false
+    );
+    
+    void set_rules_dyn(Rules<Array_Type,Data_Rule_Dyn_Type> * rules_);
     ///@}
     
 

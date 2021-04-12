@@ -52,8 +52,10 @@ public:
             delete dat;
         return;
     }
+
+    Data_Type * D(); ///< Read/Write access to the data.
     
-    bool locked(const Array_Type & a, uint i, uint j);
+    bool operator()(const Array_Type & a, uint i, uint j);
     
 };
 
@@ -110,7 +112,7 @@ public:
      * @return false If the cell is free
      */
 
-    bool locked(const Array_Type & a, uint i, uint j);
+    bool operator()(const Array_Type & a, uint i, uint j);
     
     void clear();
     

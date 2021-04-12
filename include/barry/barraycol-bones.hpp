@@ -1,0 +1,72 @@
+#include "typedefs.hpp"
+
+#ifndef BARRY_BARRAYCOL_BONES_HPP
+#define BARRY_BARRAYCOL_BONES_HPP 1
+
+template <typename Cell_Type = bool, typename Data_Type = bool>
+class BArrayCol {
+private:
+  
+    BArray<Cell_Type,Data_Type> * Array;
+    std::vector< Cell<Cell_Type> > iter_vec;
+    uint i;
+  
+public:
+  
+    BArrayCol(BArray<Cell_Type,Data_Type> * Array_, uint i_, bool check_bounds = true) : 
+    Array(Array_), i(i_) {
+        if (check_bounds) {
+
+            if (i >= Array->ncol())
+                throw std::length_error("Col out of range.");
+
+        }
+    };
+
+    ~BArrayCol(){};
+    void operator=(const Cell_Type & val);
+    void operator+=(const Cell_Type & val);
+    void operator-=(const Cell_Type & val);
+    void operator*=(const Cell_Type & val);
+    void operator/=(const Cell_Type & val);
+
+    operator Cell_Type() const;
+    bool operator==(const Cell_Type & val) const;
+
+    Col_type<Cell_Type>::iterator begin() noexcept;
+    Col_type<Cell_Type>::iterator end() noexcept;
+  
+};
+
+template <typename Cell_Type = bool, typename Data_Type = bool>
+class BArrayCol_const {
+private:
+  
+    const BArray<Cell_Type,Data_Type> * Array;
+    uint i;
+  
+public:
+  
+    BArrayCol(const BArray<Cell_Type,Data_Type> * Array_, uint i_, bool check_bounds = true) : 
+    Array(Array_), i(i_) {
+        if (check_bounds) {
+
+            if (i >= Array->ncol())
+                throw std::length_error("Col out of range.");
+
+        }
+    };
+
+    ~BArrayCol_const(){};
+    
+    // operator std::vector< Cell_Type() > const;
+    bool operator==(const Cell_Type & val) const;
+    bool operator!=(const Cell_Type & val) const;
+    bool operator<(const Cell_Type & val) const;
+    bool operator>(const Cell_Type & val) const;
+    bool operator<=(const Cell_Type & val) const;
+    bool operator>=(const Cell_Type & val) const;
+  
+};
+
+#endif

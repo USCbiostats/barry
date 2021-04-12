@@ -3,8 +3,8 @@
 #ifndef BARRY_SUPPORT_MEAT
 #define BARRY_SUPPORT_MEAT_HPP 1
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::init_support(
     std::vector< Array_Type > * array_bank,
     std::vector< std::vector< double > > * stats_bank
 ) {
@@ -35,43 +35,49 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type>::init_support(
 
         current_stats.resize(counters->size(), 0.0);
 
+        const auto & cordfree = coordinates_free[0u];
+
         // Initialize counters
-        for (uint n = 0u; n < counters->size(); ++n) {
+        for (uint n = 0u; n < counters->size(); ++n)
+        {
+
             current_stats[n] = counters->operator[](n).init(
-                EmptyArray,
-                coordinates_free[0u].first,
-                coordinates_free[0u].second
+                EmptyArray, cordfree.first, cordfree.second
                 );
+
         }
 
     }
 
+    // Resizing support
+    if (coordinates_free.size() > 9u)
+        data.reserve(pow(2.0, static_cast<double>(coordinates_free.size() - 4u))); 
+
     // Adding to the overall count
-    data.add(current_stats);
+    bool include_it = !rules_dyn->operator()(EmptyArray, 0u, 0u);
+    if (include_it)
+        data.add(current_stats);
 
     change_stats.resize(coordinates_free.size(), current_stats);
-    
-    // Resizing support
-    data.reserve(pow(2.0, coordinates_free.size())); 
         
-    if (array_bank != nullptr) 
+    if (include_it && (array_bank != nullptr)) 
         array_bank->push_back(EmptyArray);
     
-    if (stats_bank != nullptr)
+    if (include_it && (stats_bank != nullptr))
         stats_bank->push_back(current_stats);
 
     return;
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array() {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::reset_array() {
     
     data.clear();
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array(const Array_Type & Array_) {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::reset_array(const Array_Type & Array_) {
     
     data.clear();
     EmptyArray = Array_;
@@ -81,8 +87,8 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::reset_array(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::calc_backend(
         uint                                   pos,
         std::vector< Array_Type > *            array_bank,
         std::vector< std::vector< double > > * stats_bank
@@ -120,14 +126,34 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
     
     // Adding to the overall count
     BARRY_CHECK_SUPPORT(data, max_num_elements)
-    data.add(current_stats);
-    
-    // Need to save?
-    if (array_bank != nullptr)
-        array_bank->push_back(EmptyArray);
-    
-    if (stats_bank != nullptr)
-        stats_bank->push_back(current_stats);
+    if (rules_dyn->size() > 0u)
+    {
+        if (!rules_dyn->operator()(EmptyArray, cfree.first, cfree.second))
+        {
+
+            data.add(current_stats);
+
+            // Need to save?
+            if (array_bank != nullptr)
+                array_bank->push_back(EmptyArray);
+            
+            if (stats_bank != nullptr)
+                stats_bank->push_back(current_stats);
+
+        }
+            
+
+    } else {
+
+        data.add(current_stats);
+        // Need to save?
+        if (array_bank != nullptr)
+            array_bank->push_back(EmptyArray);
+        
+        if (stats_bank != nullptr)
+            stats_bank->push_back(current_stats);
+
+    }
     
     // Again, we only pass it to the next level iff the next level is not
     // passed the last step.
@@ -148,8 +174,8 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc_backend
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::calc(
         std::vector< Array_Type > *            array_bank,
         std::vector< std::vector< double > > * stats_bank,
         unsigned int max_num_elements_
@@ -174,8 +200,8 @@ inline void Support<Array_Type, Data_Counter_Type, Data_Rule_Type>::calc(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_counter(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::add_counter(
         Counter<Array_Type, Data_Counter_Type> * f_
     ) {
     
@@ -184,8 +210,8 @@ inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_counter(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_counter(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::add_counter(
         Counter<Array_Type,Data_Counter_Type> f_
 ) {
     
@@ -194,15 +220,15 @@ inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_counter(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_counters(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::set_counters(
         Counters<Array_Type,Data_Counter_Type> * counters_
 ) {
     
     // Cleaning up before replacing the memory
-    if (!counter_deleted)
+    if (delete_counters)
         delete counters;
-    counter_deleted = true;
+    delete_counters = false;
     counters = counters_;
     
     return;
@@ -211,8 +237,8 @@ inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_counters(
 
 /////////////////////////////
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_rule(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule(
         Rule<Array_Type, Data_Rule_Type> * f_
 ) {
     
@@ -221,8 +247,8 @@ inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_rule(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_rule(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule(
         Rule<Array_Type,Data_Rule_Type> f_
 ) {
     
@@ -231,16 +257,51 @@ inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::add_rule(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_rules(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::set_rules(
         Rules<Array_Type,Data_Rule_Type> * rules_
 ) {
     
     // Cleaning up before replacing the memory
-    if (!rules_deleted)
+    if (delete_rules)
         delete rules;
-    rules_deleted = true;
+    delete_rules = false;
     rules = rules_;
+    
+    return;
+    
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule_dyn(
+        Rule<Array_Type, Data_Rule_Dyn_Type> * f_
+) {
+    
+    rules_dyn->add_rule(f_);
+    return;
+    
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule_dyn(
+        Rule<Array_Type,Data_Rule_Dyn_Type> f_
+) {
+    
+    rules_dyn->add_rule(f_);
+    return;
+    
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::set_rules_dyn(
+        Rules<Array_Type,Data_Rule_Dyn_Type> * rules_
+) {
+    
+    // Cleaning up before replacing the memory
+    if (delete_rules_dyn)
+        delete rules_dyn;
+    delete_rules_dyn = false;
+    rules_dyn = rules_;
     
     return;
     
@@ -248,22 +309,34 @@ inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_rules(
 
 //////////////////////////
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline Counts_type Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::get_counts() const {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Counts_type Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::get_counts() const {
     
     return data.as_vector(); 
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline const MapVec_type<> * Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::get_counts_ptr() const {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline const MapVec_type<> * Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::get_counts_ptr() const {
     
     return data.get_data_ptr();
       
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type>::print() const {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline const std::vector< double > & Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::get_current_stats() const {
+    return this->current_stats;
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::print() const {
+
+    // Starting from the name of the stats
+    std::cout << "Position of variables:" << std::endl;
+    for (uint i = 0u; i < counters->size(); ++i) {
+        std::cout << "[" << i << "] " << counters->operator[](i).name << std::endl;
+    }
+
     data.print();
 }
 

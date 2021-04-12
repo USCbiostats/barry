@@ -81,13 +81,13 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
 
     // Measuring time
     auto start = std::chrono::system_clock::now();
-    for (uint i = 0u; i < 1000; ++i)
+    for (uint i = 0u; i < 500; ++i)
         model2.likelihood(params, true);
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> diff0 = end-start;
 
     start = std::chrono::system_clock::now();
-    for (uint i = 0u; i < 1000; ++i)
+    for (uint i = 0u; i < 500; ++i)
         model2.likelihood(params, false);
     end = std::chrono::system_clock::now();
     std::chrono::duration<double> diff1 = end-start;

@@ -3,10 +3,10 @@
 #ifndef BARRY_MODEL_MEAT_HPP 
 #define BARRY_MODEL_MEAT_HPP 1
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model() :
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Model() :
     stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
-    target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules()
+    target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules(), rules_dyn()
 {  
 
     // Counters are shared
@@ -23,10 +23,10 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model() :
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(uint size_) :
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Model(uint size_) :
     stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
-    target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules()
+    target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules(), rules_dyn()
 {
     
     target_stats.reserve(size_);
@@ -46,9 +46,9 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(uint size_) :
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(
-    const Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model_) : 
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Model(
+    const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_) : 
     stats(Model_.stats),
     n_arrays_per_stats(Model_.n_arrays_per_stats),
     pset_arrays(Model_.pset_arrays),
@@ -58,6 +58,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(
     keys2support(Model_.keys2support),
     counters(Model_.counters),
     rules(Model_.rules),
+    rules_dyn(Model_.rules_dyn),
     params_last(Model_.params_last),
     normalizing_constants(Model_.normalizing_constants),
     first_calc_done(Model_.first_calc_done)
@@ -76,9 +77,10 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::Model(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::operator=(
-    const Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model_
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> &
+    Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::operator=(
+    const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_
 ) {
     
     // Clearing
@@ -92,7 +94,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model<Array_Type,Dat
         arrays2support        = Model_.arrays2support;
         keys2support          = Model_.keys2support;
         counters              = Model_.counters;
-        rules                 = Model_.rule;
+        rules                 = Model_.rules;
+        rules_dyn             = Model_.rules_dyn;
         params_last           = Model_.params_last;
         normalizing_constants = Model_.normalizing_constants;
         first_calc_done       = Model_.first_calc_done;
@@ -111,24 +114,24 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type> & Model<Array_Type,Dat
 }
 
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::store_psets() noexcept {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::store_psets() noexcept {
     // if (with_pset)
     //   throw std::logic_error("Powerset storage alreay activated.");
     with_pset = true;
     return;
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::set_keygen(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::set_keygen(
         std::function<std::vector<double>(const Array_Type &)> keygen_
 ) {
     keygen = keygen_;
     return;
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_counter(
         Counter<Array_Type, Data_Counter_Type> & counter
 ) {
     
@@ -136,8 +139,8 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
     return;
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_counter(
         Counter<Array_Type, Data_Counter_Type> * counter
 ) {
     
@@ -146,8 +149,8 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_counter(
     Counter_fun_type<Array_Type,Data_Counter_Type> count_fun_,
     Counter_fun_type<Array_Type,Data_Counter_Type> init_fun_,
     Data_Counter_Type *                            data_,
@@ -165,8 +168,8 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_counter(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_counters(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::set_counters(
     Counters<Array_Type,Data_Counter_Type> * counters_
 ) {
     
@@ -178,27 +181,29 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_counters(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
-    Rule<Array_Type, Data_Rule_Type> & rule
+////////////////////////////////////////////////////////////////////////////////
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule(
+    Rule<Array_Type, Data_Rule_Type> & rules
 ) {
     
-    rules.add_rule(rule);
+    rules.add_rule(rules);
     return;
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
-    Rule<Array_Type, Data_Rule_Type> * rule
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule(
+    Rule<Array_Type, Data_Rule_Type> * rules
 ) {
     
-    rules.add_rule(rule);
+    rules.add_rule(rules);
     return;
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule(
     Rule_fun_type<Array_Type,Data_Rule_Type> rule_fun_,
     Data_Rule_Type *                         data_,
     bool                                     delete_data_
@@ -214,8 +219,8 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_rule(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_rules(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::set_rules(
     Rules<Array_Type,Data_Rule_Type> * rules_
 ) {
 
@@ -225,8 +230,60 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type>::set_rules(
 
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_array(
+////////////////////////////////////////////////////////////////////////////////
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule_dyn(
+    Rule<Array_Type, Data_Rule_Dyn_Type> & rules
+) {
+    
+    rules_dyn.add_rule(rules);
+    return;
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule_dyn(
+    Rule<Array_Type, Data_Rule_Dyn_Type> * rules
+) {
+    
+    rules_dyn.add_rule(rules);
+    return;
+    
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule_dyn(
+    Rule_fun_type<Array_Type,Data_Rule_Dyn_Type> rule_fun_,
+    Data_Rule_Dyn_Type *                         data_,
+    bool                                     delete_data_
+) {
+    
+    rules_dyn.add_rule(
+        rule_fun_,
+        data_,
+        delete_data_
+    );
+    
+    return;
+    
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::set_rules_dyn(
+    Rules<Array_Type,Data_Rule_Dyn_Type> * rules_
+) {
+
+    this->rules_dyn = *rules_;
+    support_fun.set_rules_dyn(&rules_dyn);
+    return;
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_array(
     const Array_Type & Array_,
     bool force_new
 ) {
@@ -309,8 +366,8 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::add_array(
 
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::likelihood(
     const std::vector<double> & params,
     const uint & i,
     bool as_log
@@ -342,8 +399,8 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::likelihood(
     const std::vector<double> & params,
     const Array_Type & Array_,
     int i,
@@ -382,8 +439,8 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::likelihood(
     const std::vector<double> & params,
     const std::vector<double> & target_,
     const uint & i,
@@ -416,8 +473,8 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood(
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood_total(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::likelihood_total(
     const std::vector<double> & params,
     bool as_log
 ) {
@@ -456,8 +513,8 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::likelihood_tot
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_norm_const(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_norm_const(
     const std::vector<double> & params,
     const uint & i,
     bool as_log
@@ -488,8 +545,8 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_norm_const
 }
 
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline const std::vector< Array_Type > * Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_pset(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline const std::vector< Array_Type > * Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_pset(
     const uint & i
 ) {
 
@@ -501,8 +558,8 @@ inline const std::vector< Array_Type > * Model<Array_Type,Data_Counter_Type,Data
 
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline const std::vector< std::vector<double> > * Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::get_stats(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline const std::vector< std::vector<double> > * Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_stats(
     const uint & i
 ) {
 
@@ -513,8 +570,8 @@ inline const std::vector< std::vector<double> > * Model<Array_Type,Data_Counter_
 
 }
 
-template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::print_stats(uint i) const {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::print_stats(uint i) const {
     
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
@@ -532,25 +589,25 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::print_stats(uint
     
 }
 
-template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size() const noexcept {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::size() const noexcept {
     return this->target_stats.size();
 }
 
-template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::size_unique() const noexcept {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::size_unique() const noexcept {
     return this->stats.size();
 } 
 
-template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::nterms() const noexcept {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::nterms() const noexcept {
 
     return this->counters.size();
 
 }
     
-template<typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type>
-inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type>::sample(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::sample(
     const unsigned int & i,
     const std::vector<double> & params
 ) {

@@ -60,7 +60,7 @@ Rules<Array_Type,Data_Type> Rules<Array_Type,Data_Type>::operator=(
 }
 
 template<typename Array_Type, typename Data_Type>
-inline bool Rule<Array_Type,Data_Type>::locked(const Array_Type & a, uint i, uint j) {
+inline bool Rule<Array_Type,Data_Type>::operator()(const Array_Type & a, uint i, uint j) {
     return fun(a, i, j, dat);
 }
 
@@ -108,7 +108,7 @@ inline void Rules<Array_Type,Data_Type>::add_rule(
 }
 
 template <typename Array_Type, typename Data_Type>
-inline bool Rules<Array_Type,Data_Type>::locked(
+inline bool Rules<Array_Type,Data_Type>::operator()(
     const Array_Type & a, uint i, uint j
 ) {
     
@@ -116,7 +116,7 @@ inline bool Rules<Array_Type,Data_Type>::locked(
         return false;
     
     for (auto iter = data.begin(); iter != data.end(); ++iter)
-        if ((*iter)->locked(a, i, j))
+        if ((*iter)->operator()(a, i, j))
             return true;
     
     return false;
@@ -152,7 +152,7 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
     
     for (uint i = 0u; i < N; ++i) {
         for (uint j = 0u; j < K; ++j) {
-            if (!this->locked(a, i, j))
+            if (!this->operator()(a, i, j))
                 free->push_back({i, j});
             else if (locked != nullptr)
                 locked->push_back({i,j});

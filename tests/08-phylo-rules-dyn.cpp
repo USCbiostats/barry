@@ -1,0 +1,72 @@
+#include "../include/barry/barry.hpp"
+// #include "../include/barry/models/geese.hpp"
+
+using namespace barry::counters::phylo;
+
+// Rule definition --Notice this has to be initialized with the
+// counter itself.
+class RuleDynD {
+public:
+    const std::vector< double > * counts;
+    uint pos;
+    uint max_changes;
+    RuleDynD(const std::vector< double > * counts_, uint pos_, uint max_changes_) :
+        counts(counts_), pos(pos_), max_changes(max_changes_) {};
+    
+    ~RuleDynD() {};
+};
+
+bool check_max_gains(const PhyloArray & A, uint i, uint j, RuleDynD * d)
+{
+
+    // The count must be included iff the number of changes
+    // is less than the max allowed
+    return d->max_changes < (d->counts->operator[](d->pos));
+
+};
+
+TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
+
+    
+
+    PhyloArray d(3, 2);
+    d.set_data(new NodeData({1.0, 1.0, 1.0}, {true, false, false}), true);
+
+    std::cout << "---- Support with reduced pset ---" << std::endl;
+    // Generating the support
+    barry::Support<PhyloArray,PhyloCounterData,PhyloRuleData,RuleDynD> S(d);
+    counter_overall_changes(S.counters);
+    
+    // Creating a rule, we start with the data
+    RuleDynD rd(&(S.get_current_stats()), 0, 2u);
+    
+    barry::Rule<PhyloArray,RuleDynD> reduce_gains(check_max_gains, &rd, false); 
+    S.add_rule_dyn(reduce_gains);
+    S.calc();
+    S.print();
+
+    std::cout << "---- Support with full pset ------" << std::endl;
+    barry::Support<PhyloArray,PhyloCounterData,PhyloRuleData,RuleDynD> S2(d);
+    counter_overall_changes(S2.counters);
+    S2.calc();
+    S2.print();
+
+    // Computing differences
+    unsigned int matches = 0u;
+    const auto& s = S.data.get_data();
+    for (const auto& s2 : S2.data.get_data()) {
+
+        // Can we find it?
+        auto iter = s.find(s2.first);
+        if (iter == s.end()) 
+            continue;
+
+        // If we found it, is this matching?
+        if ((*iter).second == s2.second)
+            ++matches;
+
+    }
+
+    REQUIRE(matches == S.data.size());
+
+}

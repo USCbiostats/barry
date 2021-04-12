@@ -84,6 +84,7 @@ public:
       */
     double count(Array_Type & Array, uint i, uint j);
     double init(Array_Type & Array, uint i, uint j);
+    
 };
 
 /**

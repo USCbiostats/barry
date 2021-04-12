@@ -17,3 +17,4 @@
 #include "05-sample.cpp"
 #include "06-geese.cpp"
 #include "07-geese-flock.cpp"
+#include "08-phylo-rules-dyn.cpp"
