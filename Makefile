@@ -3,6 +3,8 @@ docs:
 	cp -R mathjax docs/. && doxygen Doxyfile
 tests:
 	cd tests && $(MAKE) 
+coverage:
+	cd tests && $(MAKE) coverage
 clean:
 	cd tests && $(MAKE) clean
 phylo: examples/09-phylo-simulation.cpp
