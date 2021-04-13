@@ -16,6 +16,6 @@ clean:
 	rm main.o; rm *.gcov; rm *gcno; rm *gcda
 coverage: main
 	./main.o && gcov -r main.cpp && \
-		rm gcov-files/catch*.hpp.gcov && \
+		rm catch*.hpp.gcov && \
 		mv *.hpp.gcov gcov-files/ && $(MAKE) clean
 .PHONY: clean check checkv
