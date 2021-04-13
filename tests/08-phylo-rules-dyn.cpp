@@ -23,7 +23,7 @@ bool check_max_gains(const PhyloArray & A, uint i, uint j, RuleDynD * d)
     // is less than the max allowed
     return d->max_changes < (d->counts->operator[](d->pos));
 
-};
+}
 
 TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
 
