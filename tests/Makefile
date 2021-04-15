@@ -3,19 +3,26 @@ BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
        cell-*.gcov powerset-*.gcov support-*.gcov \
        statscounter*.gcov statsdb*.gcov
 
-check: main
-	./main.o && \
-	$(MAKE) clean
-main: main.cpp
-	g++ -std=c++11 -Wall -pedantic -fprofile-arcs -ftest-coverage\
-	       	main.cpp -g -o main.o
-checkv: main
-	$(MAKE) main;\
-       	valgrind --leak-check=full --track-origins=yes ./main.o #valgrind --tool=cachegrind ./main
+CPPFLAGS= -std=c++11 -Wall -pedantic
+
+check: main.o
+	./main.o
+
+main.o: main.cpp
+	g++ $(CPPFLAGS) -O3 main.cpp -g -o main.o
+
+checkv: mainv.o
+	valgrind --leak-check=full --track-origins=yes ./mainv.o #valgrind --tool=cachegrind ./main
+
+mainv.o: main.cpp
+	g++ $(CPPFLAGS) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -o mainv.o
+
 clean:
 	rm main.o; rm *.gcov; rm *gcno; rm *gcda
-coverage: main
+
+coverage: mainv.o
 	./main.o && gcov -r main.cpp && \
 		rm catch*.hpp.gcov && \
 		mv *.hpp.gcov gcov-files/ && $(MAKE) clean
+
 .PHONY: clean check checkv
