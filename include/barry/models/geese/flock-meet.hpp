@@ -1,7 +1,7 @@
 #ifndef GEESE_FLOCK_MEET_HPP 
 #define GEESE_FLOCK_MEET_HPP 1
 
-#include "flock-bones.hpp"
+// #include "flock-bones.hpp"
 
 inline unsigned int Flock::add_data(
     std::vector< std::vector<unsigned int> > & annotations,

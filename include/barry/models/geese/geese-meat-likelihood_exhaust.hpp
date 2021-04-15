@@ -1,8 +1,8 @@
 
 #ifndef APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP
 #define APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP 1
-#include "../../barry.hpp"
-#include "geese-bones.hpp" 
+// #include "../../barry.hpp"
+// #include "geese-bones.hpp" 
 
 inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
 
