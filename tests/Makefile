@@ -18,10 +18,10 @@ mainv.o: main.cpp
 	g++ $(CPPFLAGS) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -o mainv.o
 
 clean:
-	rm main.o; rm *.gcov; rm *gcno; rm *gcda
+	rm main*.o; rm *.gcov; rm *gcno; rm *gcda
 
 coverage: mainv.o
-	./main.o && gcov -r main.cpp && \
+	./mainv.o && gcov -r main.cpp && \
 		rm catch*.hpp.gcov && \
 		mv *.hpp.gcov gcov-files/ && $(MAKE) clean
 
