@@ -1,16 +1,6 @@
 #ifndef BARRY_TYPEDEFS_HPP
 #define BARRY_TYPEDEFS_HPP 1
 
-#include <vector>
-#include <unordered_map>
-#include <functional>
-#include <stdexcept>
-#include <cmath>
-#include <map>
-#include <random>
-#include <climits>
-#include <string>
-
 // Configuration ---------------------------------------------------------------
 #include "barry-configuration.hpp"
 

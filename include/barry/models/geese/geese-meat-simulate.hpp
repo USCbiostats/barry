@@ -1,7 +1,3 @@
-#include "geese-bones.hpp"
-// #include <algorithm>
-// #include <random>
-
 #ifndef GEESE_MEAT_SIMULATE_HPP
 #define GEESE_MEAT_SIMULATE_HPP 1
 
