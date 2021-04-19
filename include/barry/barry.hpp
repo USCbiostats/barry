@@ -11,6 +11,10 @@
 #include <climits>
 #include <string>
 
+#ifdef BARRY_USE_OMP
+#include <omp.h>
+#endif
+
 #ifndef BARRY_HPP
 #define BARRY_HPP 
 

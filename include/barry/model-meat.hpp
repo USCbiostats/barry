@@ -194,10 +194,10 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule(
-    Rule<Array_Type, Data_Rule_Type> * rules
+    Rule<Array_Type, Data_Rule_Type> * rule
 ) {
     
-    rules.add_rule(rules);
+    rules.add_rule(rule);
     return;
     
 }

@@ -52,9 +52,7 @@ public:
 
 typedef std::vector< uint > PhyloCounterData;
 typedef std::vector< std::pair< uint, uint > > PhyloRuleData;
-
-#define PHYLO_C_DATA_IDX(i) (data.operator[](i))
-// #define PHYLO_C_DATA_NUM(i) (data->numbers[i])
+class PhyloRuleDynData;
 
 /**
  * @name Convenient typedefs for Node objects.
@@ -63,11 +61,16 @@ typedef std::vector< std::pair< uint, uint > > PhyloRuleData;
 typedef BArray<uint, NodeData> PhyloArray;
 typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
 typedef Counters< PhyloArray, PhyloCounterData> PhyloCounters;
+
 typedef Rule<PhyloArray,PhyloRuleData> PhyloRule;
 typedef Rules<PhyloArray,PhyloRuleData> PhyloRules;
-typedef Support<PhyloArray, PhyloCounterData, PhyloRuleData, uint > PhyloSupport;
+
+typedef Rule<PhyloArray,PhyloRuleDynData> PhyloRuleDyn;
+typedef Rules<PhyloArray,PhyloRuleDynData> PhyloRulesDyn;
+
+typedef Support<PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData > PhyloSupport;
 typedef StatsCounter<PhyloArray, PhyloCounterData> PhyloStatsCounter;
-typedef Model<PhyloArray, PhyloCounterData, PhyloRuleData, uint > PhyloModel;
+typedef Model<PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData > PhyloModel;
 typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
 ///@}
 
@@ -82,16 +85,16 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
  * 
  * 
  */
-#define PHYLO_COUNTER(a) inline double (a) (const PhyloArray & Array, uint i, \
-    uint j, PhyloCounterData * data)
-
 #define PHYLO_COUNTER_LAMBDA(a) Counter_fun_type<PhyloArray, PhyloCounterData> a = \
     [](const PhyloArray & Array, uint i, uint j, PhyloCounterData * data)
+
+#define PHYLO_RULE_DYN_LAMBDA(a) Rule_fun_type<PhyloArray, PhyloRuleDynData> a = \
+    [](const PhyloArray & Array, uint i, uint j, PhyloRuleDynData * data)
 
 #define PHYLO_CHECK_MISSING() if (Array.D() == nullptr) \
     throw std::logic_error("The array data is nullptr."); \
     if (data == nullptr) \
-    throw std::logic_error("The counter data is nullptr.")
+    throw std::logic_error("The counter/rule data is nullptr.")
 
 inline std::string get_last_name(bool d) {return ((d)? " at duplication" : "");}
 
@@ -1175,6 +1178,72 @@ inline void counter_co_opt(
   
 }
 ///@}
+
+/**
+ * @weakgroup rules-phylo Phylo rules
+ * @brief Rules for phylogenetic modeling
+ * @param rules A pointer to a `PhyloRules` object (`Rules`<`PhyloArray`, `PhyloRuleData`>).
+ */
+///@{
+
+class PhyloRuleDynData {
+public:
+    const std::vector< double > * counts;
+    uint pos;
+    uint lb;
+    uint ub;
+    bool duplication;
+    PhyloRuleDynData(
+        const std::vector< double > * counts_,
+        uint pos_,
+        uint lb_,
+        uint ub_,
+        bool duplication_
+        ) :
+        counts(counts_), pos(pos_), lb(lb_), ub(ub_), duplication(duplication_) {};
+    
+    ~PhyloRuleDynData() {};
+};
+
+/**
+ * @brief Overall functional gains
+ * @details Total number of gains (irrespective of the function).
+ */
+inline void rule_dyn_limit_changes(
+    PhyloRulesDyn * rules,
+    uint pos,
+    uint lb,
+    uint ub,
+    bool duplication = true
+)
+{
+  
+    PHYLO_RULE_DYN_LAMBDA(tmp_rule)
+    {
+
+        if (data->duplication != Array.D()->duplication)
+            return true;
+        
+        if (data->counts->operator[](data->pos) < data->lb)
+            return false;
+        else if (data->counts->operator[](data->pos) > data->ub)
+            return false;
+        else
+            return true;
+      
+    };
+    
+    rules->add_rule(
+        tmp_rule,
+        new PhyloRuleDynData(nullptr, pos, lb, ub, duplication),
+        true //,
+        //"Overall gains" + get_last_name(duplication)
+    );
+
+    return;
+  
+}
+
 ///@}
 
 #endif

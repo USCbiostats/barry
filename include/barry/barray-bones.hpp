@@ -107,9 +107,9 @@ public:
      * @param delete_data_ 
      */
     ///@{
-    virtual void set_data(Data_Type * data_, bool delete_data_ = false);
-    virtual Data_Type * D();
-    virtual const Data_Type * D() const;
+    void set_data(Data_Type * data_, bool delete_data_ = false);
+    Data_Type * D();
+    const Data_Type * D() const;
     ///@}
     
     // Function to access the elements
