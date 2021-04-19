@@ -1,0 +1,187 @@
+\hypertarget{class_b_array_dense}{}\doxysection{BArray\+Dense$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ Class Template Reference}
+\label{class_b_array_dense}\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+
+
+Dense bi-\/dimensional array.  
+
+
+
+
+{\ttfamily \#include $<$barraydense-\/bones.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_array_dense_ae399b8f3741f52478edfe88a2e986c75}{BArray\+Dense}} ()
+\item 
+\mbox{\hyperlink{class_b_array_dense_a86b7511076b740bf7e0a1eabf4cf4fe2}{BArray\+Dense}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} N\+\_\+, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} M\+\_\+, std\+::vector$<$ Cell\+\_\+\+Type $>$ elements\+\_\+=\{\})
+\item 
+\mbox{\hyperlink{class_b_array_dense_a6c11b9468b30cfe6f77cecc06bfe31c7}{$\sim$\+BArray\+Dense}} ()
+\item 
+void \mbox{\hyperlink{class_b_array_dense_a131767f97e1cbbf99650b2ab06a8f4c4}{fill}} (const Cell\+\_\+\+Type \&d)
+\item 
+const std\+::vector$<$ Cell\+\_\+\+Type $>$ \& \mbox{\hyperlink{class_b_array_dense_ade384adcc1c407f52df29568565eba0f}{elements\+\_\+raw}} () const noexcept
+\item 
+const std\+::vector$<$ Cell\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_b_array_dense_a19612196f27699ed8c8e107243cc123b}{elements\+\_\+ptr}} () const noexcept
+\item 
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_dense_aec8c0cf7730763fee4eddbd29bb2ec07}{nrow}} () const noexcept
+\item 
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_dense_a7beefb4d28ec3436911940254a002a75}{ncol}} () const noexcept
+\item 
+Cell\+\_\+\+Type \mbox{\hyperlink{class_b_array_dense_a042babb3e8ef1c7ca9700cea54f7ad41}{operator()}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} j, bool check\+\_\+bounds=true) const
+\item 
+Cell\+\_\+\+Type \mbox{\hyperlink{class_b_array_dense_ad77e5370af1719fe31ceefcd17f1c24b}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i) const
+\item 
+void \mbox{\hyperlink{class_b_array_dense_a448a8caa6ed96177ed4e2a5a985dc4e5}{print}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Cell\+\_\+\+Type = bool, typename Data\+\_\+\+Type = bool$>$\newline
+class BArray\+Dense$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
+
+Dense bi-\/dimensional array. 
+
+elements is stored in a std\+::vector, in col-\/major order.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Cell\+\_\+\+Type} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 13 of file barraydense-\/bones.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_b_array_dense_ae399b8f3741f52478edfe88a2e986c75}\label{class_b_array_dense_ae399b8f3741f52478edfe88a2e986c75}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!BArrayDense@{BArrayDense}}
+\index{BArrayDense@{BArrayDense}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{BArrayDense()}{BArrayDense()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 43 of file barraydense-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_dense_a86b7511076b740bf7e0a1eabf4cf4fe2}\label{class_b_array_dense_a86b7511076b740bf7e0a1eabf4cf4fe2}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!BArrayDense@{BArrayDense}}
+\index{BArrayDense@{BArrayDense}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{BArrayDense()}{BArrayDense()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{N\+\_\+,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{M\+\_\+,  }\item[{std\+::vector$<$ Cell\+\_\+\+Type $>$}]{elements\+\_\+ = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 55 of file barraydense-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_dense_a6c11b9468b30cfe6f77cecc06bfe31c7}\label{class_b_array_dense_a6c11b9468b30cfe6f77cecc06bfe31c7}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!````~BArrayDense@{$\sim$BArrayDense}}
+\index{````~BArrayDense@{$\sim$BArrayDense}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$BArrayDense()}{~BArrayDense()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::$\sim$\mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 26 of file barraydense-\/bones.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_b_array_dense_a19612196f27699ed8c8e107243cc123b}\label{class_b_array_dense_a19612196f27699ed8c8e107243cc123b}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!elements\_ptr@{elements\_ptr}}
+\index{elements\_ptr@{elements\_ptr}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{elements\_ptr()}{elements\_ptr()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+const std\+::vector$<$ Cell\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::elements\+\_\+ptr\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 85 of file barraydense-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_dense_ade384adcc1c407f52df29568565eba0f}\label{class_b_array_dense_ade384adcc1c407f52df29568565eba0f}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!elements\_raw@{elements\_raw}}
+\index{elements\_raw@{elements\_raw}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{elements\_raw()}{elements\_raw()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+const std\+::vector$<$ Cell\+\_\+\+Type $>$ \& \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::elements\+\_\+raw\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 78 of file barraydense-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_dense_a131767f97e1cbbf99650b2ab06a8f4c4}\label{class_b_array_dense_a131767f97e1cbbf99650b2ab06a8f4c4}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!fill@{fill}}
+\index{fill@{fill}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{fill()}{fill()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::fill (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 70 of file barraydense-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_dense_a7beefb4d28ec3436911940254a002a75}\label{class_b_array_dense_a7beefb4d28ec3436911940254a002a75}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!ncol@{ncol}}
+\index{ncol@{ncol}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{ncol()}{ncol()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::ncol\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 97 of file barraydense-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_dense_aec8c0cf7730763fee4eddbd29bb2ec07}\label{class_b_array_dense_aec8c0cf7730763fee4eddbd29bb2ec07}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!nrow@{nrow}}
+\index{nrow@{nrow}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{nrow()}{nrow()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::nrow\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 91 of file barraydense-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_dense_a042babb3e8ef1c7ca9700cea54f7ad41}\label{class_b_array_dense_a042babb3e8ef1c7ca9700cea54f7ad41}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+Cell\+\_\+\+Type \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator() (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{i,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{j,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 103 of file barraydense-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_dense_ad77e5370af1719fe31ceefcd17f1c24b}\label{class_b_array_dense_ad77e5370af1719fe31ceefcd17f1c24b}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+Cell\+\_\+\+Type \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 122 of file barraydense-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_dense_a448a8caa6ed96177ed4e2a5a985dc4e5}\label{class_b_array_dense_a448a8caa6ed96177ed4e2a5a985dc4e5}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!print@{print}}
+\index{print@{print}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::print\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 128 of file barraydense-\/bones.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/barry/\mbox{\hyperlink{barraydense-bones_8hpp}{barraydense-\/bones.\+hpp}}\end{DoxyCompactItemize}

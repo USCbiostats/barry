@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['reduced_5fsequence_730',['reduced_sequence',['../class_geese.html#aabcf5e284f7277109567a84ba615f97e',1,'Geese']]],
-  ['rengine_731',['rengine',['../class_model.html#aaccc1686d1d58f4fff36fb45b4e18422',1,'Model::rengine()'],['../class_flock.html#a0e3ce6d007f667eea9f036cddb6789b6',1,'Flock::rengine()'],['../class_geese.html#a182ea45cab39d2c3ae6164d7f0bad30a',1,'Geese::rengine()']]],
-  ['rules_732',['rules',['../class_model.html#a9b30eff171922c08f8986f2c22d928d9',1,'Model::rules()'],['../class_power_set.html#afa542ecc31858c8644d1e76078eb1713',1,'PowerSet::rules()'],['../class_support.html#a2367f11c0a24c56de9c76c10f9fdf5f4',1,'Support::rules()']]],
-  ['rules_5fdeleted_733',['rules_deleted',['../class_power_set.html#a08b6baf1e244e023d997ddaecbc2116f',1,'PowerSet']]],
-  ['rules_5fdyn_734',['rules_dyn',['../class_model.html#abc3c0f58ce26abd23a8f53190f26f4c7',1,'Model::rules_dyn()'],['../class_support.html#a260bfdf3e077747283de269c876513d0',1,'Support::rules_dyn()']]]
+  ['params_5flast_753',['params_last',['../class_model.html#a9b5a93723c718d4d9f710c5340c7ef0f',1,'Model']]],
+  ['parent_754',['parent',['../class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85',1,'Node']]],
+  ['pos_755',['pos',['../class_phylo_rule_dyn_data.html#a6c653f20ca848b0da97adca9790ad86e',1,'PhyloRuleDynData']]],
+  ['probability_756',['probability',['../class_node.html#a867d5e07f62da01392a817042c77735f',1,'Node']]],
+  ['pset_5farrays_757',['pset_arrays',['../class_model.html#ab39eb3f5a95b9f142af51df3b30e76d7',1,'Model']]],
+  ['pset_5fprobs_758',['pset_probs',['../class_model.html#af67b0d6d0c8c4d2d7e898b50692d4f9a',1,'Model']]],
+  ['pset_5fstats_759',['pset_stats',['../class_model.html#a43ea80e5ec9088b34e09958084cbb374',1,'Model']]]
 ];
