@@ -39,19 +39,19 @@ TEST_CASE("Computing support for networks", "[support]") {
   
   // Preparing model  
   
-  counter_edges(support.counters);
-  counter_mutual(support.counters);
-  counter_isolates(support.counters);
-  counter_istar2(support.counters);
-  counter_ostar2(support.counters);
-  counter_ttriads(support.counters);
-  counter_ctriads(support.counters);
-  counter_density(support.counters);
-  counter_idegree15(support.counters);
-  counter_odegree15(support.counters);
-  counter_nodematch(support.counters,0u);
+  counter_edges(support.get_counters());
+  counter_mutual(support.get_counters());
+  counter_isolates(support.get_counters());
+  counter_istar2(support.get_counters());
+  counter_ostar2(support.get_counters());
+  counter_ttriads(support.get_counters());
+  counter_ctriads(support.get_counters());
+  counter_density(support.get_counters());
+  counter_idegree15(support.get_counters());
+  counter_odegree15(support.get_counters());
+  counter_nodematch(support.get_counters(),0u);
   
-  rules_zerodiag(support.rules);
+  rules_zerodiag(support.get_rules());
   
   // Getting the full support
   support.calc(); 

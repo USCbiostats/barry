@@ -95,7 +95,7 @@ inline void Geese::init() {
 
     // Checking rseed, this is relevant when dealing with a flock. In the case of
     // flock, both support and rengine are shared.
-    if (this->support->rengine == nullptr) 
+    if (this->support->get_rengine() == nullptr) 
         this->support->set_rengine(this->rengine, false);
 
     // All combinations of the function
@@ -424,5 +424,22 @@ inline void Geese::print_observed_counts() {
     return;
 
 }
+
+inline std::mt19937 * Geese::get_rengine() {
+    return this->rengine;
+}
+
+inline phylocounters::PhyloCounters * Geese::get_counters() {
+    return this->counters;
+}
+
+inline phylocounters::PhyloModel * Geese::get_support() {
+    return this->support;
+}
+
+inline std::vector< std::vector< bool > > Geese::get_states() {
+    return this->states;
+}
+
 
 #endif

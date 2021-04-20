@@ -1207,10 +1207,15 @@ public:
 
 /**
  * @brief Overall functional gains
- * @details Total number of gains (irrespective of the function).
+ * @param support Support of a model.
+ * @param pos Position of the focal statistic.
+ * @param lb Lower bound
+ * @param ub Upper bound
+ * @details 
+ * @return (void) adds a rule limiting the support of the model.
  */
-inline void rule_dyn_limit_changes(
-    PhyloRulesDyn * rules,
+inline void rule_dyn_min_max(
+    PhyloSupport * support,
     uint pos,
     uint lb,
     uint ub,
@@ -1233,11 +1238,13 @@ inline void rule_dyn_limit_changes(
       
     };
     
-    rules->add_rule(
+    support->get_rules_dyn()->add_rule(
         tmp_rule,
-        new PhyloRuleDynData(nullptr, pos, lb, ub, duplication),
-        true //,
-        //"Overall gains" + get_last_name(duplication)
+        new PhyloRuleDynData(
+            &support->get_current_stats(),
+            pos, lb, ub, duplication
+            ),
+        true 
     );
 
     return;

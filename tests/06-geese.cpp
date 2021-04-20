@@ -24,8 +24,8 @@ TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
     Geese model(ann, geneid, parent, duplication);
 
     // Adding terms
-    counter_gains(model.counters, {0, 1});
-    counter_maxfuns(model.counters, 2, 2);
+    counter_gains(model.get_counters(), {0, 1});
+    counter_maxfuns(model.get_counters(), 2, 2);
 
     model.init();
     model.set_seed(100);
@@ -44,8 +44,8 @@ TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
     Geese model2(ann, geneid, parent, duplication);
 
     // Adding terms
-    counter_gains(model2.counters, {0, 1});
-    counter_maxfuns(model2.counters, 2, 2);
+    counter_gains(model2.get_counters(), {0, 1});
+    counter_maxfuns(model2.get_counters(), 2, 2);
 
     model2.init();
     model2.set_seed(100);

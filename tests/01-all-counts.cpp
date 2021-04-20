@@ -56,26 +56,26 @@ TEST_CASE("Network counts work", "[counts]") {
   
   NetStatsCounter counter(&net); 
 
-  counter_edges(counter.counters);
-  counter_mutual(counter.counters);
-  counter_isolates(counter.counters);
-  counter_istar2(counter.counters);
-  counter_ostar2(counter.counters);
-  counter_ttriads(counter.counters);
-  counter_ctriads(counter.counters);
-  counter_density(counter.counters);
-  counter_idegree15(counter.counters);
-  counter_odegree15(counter.counters);
-  counter_nodematch(counter.counters, 0u);
-  counter_nodeicov(counter.counters, 0u);
-  counter_nodeocov(counter.counters, 0u);
-  counter_nodecov(counter.counters, 0u);
-  counter_absdiff(counter.counters, 1u, 1.0);
-  counter_diff(counter.counters, 1u, 1.0);
-  counter_diff(counter.counters, 1u, 2.0);
-  counter_diff(counter.counters, 1u, 3.0);
-  counter_idegree(counter.counters, {1u,2u,3u,4u});
-  counter_odegree(counter.counters, {1u,2u,3u,4u});
+  counter_edges(counter.get_counters());
+  counter_mutual(counter.get_counters());
+  counter_isolates(counter.get_counters());
+  counter_istar2(counter.get_counters());
+  counter_ostar2(counter.get_counters());
+  counter_ttriads(counter.get_counters());
+  counter_ctriads(counter.get_counters());
+  counter_density(counter.get_counters());
+  counter_idegree15(counter.get_counters());
+  counter_odegree15(counter.get_counters());
+  counter_nodematch(counter.get_counters(), 0u);
+  counter_nodeicov(counter.get_counters(), 0u);
+  counter_nodeocov(counter.get_counters(), 0u);
+  counter_nodecov(counter.get_counters(), 0u);
+  counter_absdiff(counter.get_counters(), 1u, 1.0);
+  counter_diff(counter.get_counters(), 1u, 1.0);
+  counter_diff(counter.get_counters(), 1u, 2.0);
+  counter_diff(counter.get_counters(), 1u, 3.0);
+  counter_idegree(counter.get_counters(), {1u,2u,3u,4u});
+  counter_odegree(counter.get_counters(), {1u,2u,3u,4u});
   std::cout << "done." << std::endl;
   
   std::cout << "Starting the count...";

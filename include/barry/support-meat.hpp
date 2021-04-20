@@ -340,4 +340,24 @@ inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_T
     data.print();
 }
 
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline const FreqTable<> & Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::get_data() const {
+    return this->data;
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Counters<Array_Type,Data_Counter_Type> * Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::get_counters() {
+    return this->counters;
+}   
+    
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Rules<Array_Type,Data_Rule_Type> * Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::get_rules() {
+    return this->rules;
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Rules<Array_Type,Data_Rule_Dyn_Type> * Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::get_rules_dyn() {
+    return this->rules_dyn;
+}
+
 #endif

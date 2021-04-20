@@ -35,7 +35,7 @@ TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
     std::cout << "---- Support with reduced pset ---" << std::endl;
     // Generating the support
     barry::Support<PhyloArray,PhyloCounterData,PhyloRuleData,RuleDynD> S(d);
-    counter_overall_changes(S.counters);
+    counter_overall_changes(S.get_counters());
     
     // Creating a rule, we start with the data
     RuleDynD rd(&(S.get_current_stats()), 0, 2u);
@@ -47,14 +47,14 @@ TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
 
     std::cout << "---- Support with full pset ------" << std::endl;
     barry::Support<PhyloArray,PhyloCounterData,PhyloRuleData,RuleDynD> S2(d);
-    counter_overall_changes(S2.counters);
+    counter_overall_changes(S2.get_counters());
     S2.calc();
     S2.print();
 
     // Computing differences
     unsigned int matches = 0u;
-    const auto& s = S.data.get_data();
-    for (const auto& s2 : S2.data.get_data()) {
+    const auto& s = S.get_data().get_data();
+    for (const auto& s2 : S2.get_data().get_data()) {
 
         // Can we find it?
         auto iter = s.find(s2.first);
@@ -67,6 +67,6 @@ TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
 
     }
 
-    REQUIRE(matches == S.data.size());
+    REQUIRE(matches == S.get_data().size());
 
 }

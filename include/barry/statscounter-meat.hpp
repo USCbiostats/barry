@@ -131,4 +131,10 @@ inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
     
 }
 
+template <typename Array_Type, typename Data_Type>
+inline Counters<Array_Type,Data_Type> * StatsCounter<Array_Type, Data_Type>::get_counters() {
+    return this->counters;
+}
+
+
 #endif

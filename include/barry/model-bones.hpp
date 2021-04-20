@@ -103,8 +103,7 @@ template <
     >
 class Model {
 
-public:
-    
+private:
     /**
       * @name Random number generation
       * @brief Random number generation
@@ -112,33 +111,11 @@ public:
     ///@{
     std::mt19937 * rengine = nullptr;
     bool delete_rengine    = false;
-    void set_rengine(std::mt19937 * rengine_, bool delete_ = false) {
 
-        if (delete_rengine)
-            delete rengine;
-
-        rengine        = rengine_;
-        delete_rengine = delete_;
-        
-    };
-
-    void set_seed(unsigned int s) {
-
-        if (rengine == nullptr) {
-            rengine = new std::mt19937;
-            delete_rengine = true;
-        }
-
-        rengine->seed(s);
-
-    };
-    ///@}
-    
-    
     /**@brief */
     std::vector< Counts_type >         stats;
     std::vector< uint >                n_arrays_per_stats;
-    
+
     /**
       * @name Container space for the powerset (and its sufficient stats)
       * @details This is useful in the case of using simulations or evaluating
@@ -150,7 +127,7 @@ public:
     std::vector< std::vector< std::vector<double> > > pset_stats;
     std::vector< std::vector<double> >                pset_probs;
     ///@}
-    
+
     /**
       * @name Information about the arrays used in the model 
       * @details `target_stats` holds the observed sufficient statistics for each
@@ -163,7 +140,7 @@ public:
     std::vector< uint >                 array_frequency;
     std::vector< uint >                 arrays2support;
     ///@}
-    
+
     /**
       * @brief Map of types of arrays to support sets
       * @details This is of the same length as the vector `stats`.
@@ -191,6 +168,30 @@ public:
     */
     std::function<std::vector<double>(const Array_Type &)> keygen = nullptr;  
 
+public:
+    
+    void set_rengine(std::mt19937 * rengine_, bool delete_ = false) {
+
+        if (delete_rengine)
+            delete rengine;
+
+        rengine        = rengine_;
+        delete_rengine = delete_;
+        
+    };
+
+    void set_seed(unsigned int s) {
+
+        if (rengine == nullptr) {
+            rengine = new std::mt19937;
+            delete_rengine = true;
+        }
+
+        rengine->seed(s);
+
+    };
+    ///@}
+        
     Model();
     Model(uint size_);
     Model(const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_);
@@ -346,6 +347,13 @@ public:
     unsigned int size_unique() const noexcept;
     unsigned int nterms() const noexcept;
     ///@}
+
+    const std::mt19937 * get_rengine() const;
+
+    Counters<Array_Type,Data_Counter_Type> & get_counters();
+    Rules<Array_Type,Data_Rule_Type>       & get_rules();
+    Rules<Array_Type,Data_Rule_Dyn_Type>   & get_rules_dyn();
+
 };
 
 

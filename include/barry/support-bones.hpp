@@ -40,9 +40,7 @@ private:
         std::vector< Array_Type > * array_bank = nullptr,
         std::vector< std::vector< double > > * stats_bank = nullptr
     );
-    
-public:
-    
+
     /**
      * @brief Reference array to generate the support.
      */
@@ -51,7 +49,9 @@ public:
     Counters<Array_Type,Data_Counter_Type> * counters;   ///< Vector of couter functions.
     Rules<Array_Type,Data_Rule_Type> *       rules;      ///< Vector of static rules (cells to iterate).
     Rules<Array_Type,Data_Rule_Dyn_Type> *   rules_dyn;  ///< Vector of dynamic rules (to include/exclude a realizaton).
-
+    
+public:
+    
     uint N, M;
     bool delete_counters  = true;
     bool delete_rules     = true;
@@ -168,6 +168,10 @@ public:
     const std::vector< double > & get_current_stats() const; ///< List current statistics.
     void print() const;
     
+    const FreqTable<> &                      get_data() const;
+    Counters<Array_Type,Data_Counter_Type> * get_counters();   ///< Vector of couter functions.
+    Rules<Array_Type,Data_Rule_Type> *       get_rules();      ///< Vector of static rules (cells to iterate).
+    Rules<Array_Type,Data_Rule_Dyn_Type> *   get_rules_dyn();  ///< Vector of dynamic rules (to include/exclude a realizaton).
 };
 
 

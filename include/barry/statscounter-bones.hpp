@@ -14,18 +14,20 @@
  */ 
 template <typename Array_Type = BArray<>, typename Data_Type = bool>
 class StatsCounter {
-    
-public:
-    
+
+private:
+
     // Should receive an array
-    const Array_Type * Array;
-    Array_Type EmptyArray;
-    std::vector< double > current_stats;
+    const Array_Type *               Array;
+    Array_Type                       EmptyArray;
+    std::vector< double >            current_stats;
       
     // We will save the data here
     Counters<Array_Type,Data_Type> * counters;
     bool                             counter_deleted  = false;
-    
+
+public:
+        
     /**
      * @brief Creator of a `StatsCounter`
      * 
@@ -69,6 +71,8 @@ public:
     void count_init(uint i, uint j);
     void count_current(uint i, uint j);
     std::vector< double > count_all();
+
+    Counters<Array_Type,Data_Type> * get_counters();
     
 };
 

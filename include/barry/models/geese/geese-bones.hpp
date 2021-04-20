@@ -60,6 +60,8 @@ inline bool vec_diff(
     return false;
 }
 
+class Flock;
+
 /**
  * @ingroup stat-models
  * @brief Annotated Phylo Model
@@ -68,7 +70,8 @@ inline bool vec_diff(
  *
  */
 class Geese {
-public:
+    friend Flock;
+private:
 
     /**
      * @name Shared objects within a `Geese`
@@ -86,6 +89,8 @@ public:
     phylocounters::PhyloModel *        support  = nullptr;
     std::vector< std::vector< bool > > states;
     ///@}
+
+public:
 
     // Data
     unsigned int                       nfunctions;
@@ -218,7 +223,12 @@ public:
     void update_annotations(
         unsigned int nodeid,
         std::vector< unsigned int > newann
-    );  
+    );
+
+    std::mt19937 *                     get_rengine();
+    phylocounters::PhyloCounters *     get_counters();
+    phylocounters::PhyloModel *        get_support();
+    std::vector< std::vector< bool > > get_states();
 
 };
 
