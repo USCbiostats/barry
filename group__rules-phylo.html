@@ -110,9 +110,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaa6bf3924c45815d74f295920a6573717"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rules-phylo.html#gaa6bf3924c45815d74f295920a6573717">rule_dyn_limit_changes</a> (<a class="el" href="phylo_8hpp.html#a6c0e95789675ee382f2a42a7da14fcf9">PhyloRulesDyn</a> *rules, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> pos, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> lb, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ub, bool duplication=true)</td></tr>
-<tr class="memdesc:gaa6bf3924c45815d74f295920a6573717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overall functional gains.  <a href="group__rules-phylo.html#gaa6bf3924c45815d74f295920a6573717">More...</a><br /></td></tr>
-<tr class="separator:gaa6bf3924c45815d74f295920a6573717"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae8bc29d623e0ebdb1ee77aaf088e2881"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rules-phylo.html#gae8bc29d623e0ebdb1ee77aaf088e2881">rule_dyn_min_max</a> (<a class="el" href="phylo_8hpp.html#a7261d5284bec3ec15fe7b038399a9c5a">PhyloSupport</a> *support, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> pos, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> lb, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ub, bool duplication=true)</td></tr>
+<tr class="memdesc:gae8bc29d623e0ebdb1ee77aaf088e2881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overall functional gains.  <a href="group__rules-phylo.html#gae8bc29d623e0ebdb1ee77aaf088e2881">More...</a><br /></td></tr>
+<tr class="separator:gae8bc29d623e0ebdb1ee77aaf088e2881"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p><a class="el" href="class_rules.html" title="Vector of objects of class Rule.">Rules</a> for phylogenetic modeling. </p>
@@ -123,8 +123,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gaa6bf3924c45815d74f295920a6573717"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa6bf3924c45815d74f295920a6573717">&#9670;&nbsp;</a></span>rule_dyn_limit_changes()</h2>
+<a id="gae8bc29d623e0ebdb1ee77aaf088e2881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae8bc29d623e0ebdb1ee77aaf088e2881">&#9670;&nbsp;</a></span>rule_dyn_min_max()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -133,10 +133,10 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void rule_dyn_limit_changes </td>
+          <td class="memname">void rule_dyn_min_max </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a6c0e95789675ee382f2a42a7da14fcf9">PhyloRulesDyn</a> *&#160;</td>
-          <td class="paramname"><em>rules</em>, </td>
+          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a7261d5284bec3ec15fe7b038399a9c5a">PhyloSupport</a> *&#160;</td>
+          <td class="paramname"><em>support</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -176,9 +176,18 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Overall functional gains. </p>
-<p>Total number of gains (irrespective of the function). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">support</td><td><a class="el" href="class_support.html" title="Compute the support of sufficient statistics.">Support</a> of a model. </td></tr>
+    <tr><td class="paramname">pos</td><td>Position of the focal statistic. </td></tr>
+    <tr><td class="paramname">lb</td><td>Lower bound </td></tr>
+    <tr><td class="paramname">ub</td><td>Upper bound</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>(void) adds a rule limiting the support of the model. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01212">1212</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01217">1217</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -187,7 +196,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Apr 19 2021 20:37:45 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Apr 20 2021 22:38:41 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

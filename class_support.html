@@ -105,17 +105,6 @@ $(document).ready(function(){initNavTree('class_support.html',''); initResizable
  <a href="class_support.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for Support&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_support__coll__graph.png" border="0" usemap="#a_support_3_01_array___type_00_01_data___counter___type_00_01_data___rule___type_00_01_data___rule___dyn___type_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="a_support_3_01_array___type_00_01_data___counter___type_00_01_data___rule___type_00_01_data___rule___dyn___type_01_4_coll__map" id="a_support_3_01_array___type_00_01_data___counter___type_00_01_data___rule___type_00_01_data___rule___dyn___type_01_4_coll__map">
-<area shape="rect" title="Compute the support of sufficient statistics." alt="" coords="177,124,332,195"/>
-<area shape="rect" href="class_counters.html" title=" " alt="" coords="5,5,149,47"/>
-<area shape="rect" href="class_rules.html" title=" " alt="" coords="173,13,336,39"/>
-<area shape="rect" href="class_freq_table.html" title="Database of statistics." alt="" coords="361,13,471,39"/>
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -143,6 +132,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1690453d91ed7939b7fa250b224e8fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f4f98b01bb0a9424a425d38cd0e83d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a62f4f98b01bb0a9424a425d38cd0e83d">print</a> () const</td></tr>
 <tr class="separator:a62f4f98b01bb0a9424a425d38cd0e83d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea248c2251be2cdcc1f3e0262fb7d2b6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_freq_table.html">FreqTable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#aea248c2251be2cdcc1f3e0262fb7d2b6">get_data</a> () const</td></tr>
+<tr class="separator:aea248c2251be2cdcc1f3e0262fb7d2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f2237792f9688bf86ae89454048db9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Counter_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a9f2237792f9688bf86ae89454048db9a">get_counters</a> ()</td></tr>
+<tr class="memdesc:a9f2237792f9688bf86ae89454048db9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of couter functions.  <a href="class_support.html#a9f2237792f9688bf86ae89454048db9a">More...</a><br /></td></tr>
+<tr class="separator:a9f2237792f9688bf86ae89454048db9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a368a9c7797e1a76c3ee150070e66c212"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Rule_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a368a9c7797e1a76c3ee150070e66c212">get_rules</a> ()</td></tr>
+<tr class="memdesc:a368a9c7797e1a76c3ee150070e66c212"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of static rules (cells to iterate).  <a href="class_support.html#a368a9c7797e1a76c3ee150070e66c212">More...</a><br /></td></tr>
+<tr class="separator:a368a9c7797e1a76c3ee150070e66c212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53daafcd49daac43c6e8841a8a17a05a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Rule_Dyn_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a53daafcd49daac43c6e8841a8a17a05a">get_rules_dyn</a> ()</td></tr>
+<tr class="memdesc:a53daafcd49daac43c6e8841a8a17a05a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of dynamic rules (to include/exclude a realizaton).  <a href="class_support.html#a53daafcd49daac43c6e8841a8a17a05a">More...</a><br /></td></tr>
+<tr class="separator:a53daafcd49daac43c6e8841a8a17a05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Resets the support calculator</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>If needed, the counters of a support object can be reused.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -195,21 +195,6 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a8a0951a7315fca8ef6ecdc8265b9a983"><td class="memItemLeft" align="right" valign="top">Array_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a8a0951a7315fca8ef6ecdc8265b9a983">EmptyArray</a></td></tr>
-<tr class="memdesc:a8a0951a7315fca8ef6ecdc8265b9a983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference array to generate the support.  <a href="class_support.html#a8a0951a7315fca8ef6ecdc8265b9a983">More...</a><br /></td></tr>
-<tr class="separator:a8a0951a7315fca8ef6ecdc8265b9a983"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51eaba9ab5ed9fa206a160a0ac8d62de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_freq_table.html">FreqTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a51eaba9ab5ed9fa206a160a0ac8d62de">data</a></td></tr>
-<tr class="memdesc:a51eaba9ab5ed9fa206a160a0ac8d62de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table with the support.  <a href="class_support.html#a51eaba9ab5ed9fa206a160a0ac8d62de">More...</a><br /></td></tr>
-<tr class="separator:a51eaba9ab5ed9fa206a160a0ac8d62de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a089c3e1213deae033d030a88b134e74f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Counter_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a089c3e1213deae033d030a88b134e74f">counters</a></td></tr>
-<tr class="memdesc:a089c3e1213deae033d030a88b134e74f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of couter functions.  <a href="class_support.html#a089c3e1213deae033d030a88b134e74f">More...</a><br /></td></tr>
-<tr class="separator:a089c3e1213deae033d030a88b134e74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2367f11c0a24c56de9c76c10f9fdf5f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Rule_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a2367f11c0a24c56de9c76c10f9fdf5f4">rules</a></td></tr>
-<tr class="memdesc:a2367f11c0a24c56de9c76c10f9fdf5f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of static rules (cells to iterate).  <a href="class_support.html#a2367f11c0a24c56de9c76c10f9fdf5f4">More...</a><br /></td></tr>
-<tr class="separator:a2367f11c0a24c56de9c76c10f9fdf5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a260bfdf3e077747283de269c876513d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Rule_Dyn_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a260bfdf3e077747283de269c876513d0">rules_dyn</a></td></tr>
-<tr class="memdesc:a260bfdf3e077747283de269c876513d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of dynamic rules (to include/exclude a realizaton).  <a href="class_support.html#a260bfdf3e077747283de269c876513d0">More...</a><br /></td></tr>
-<tr class="separator:a260bfdf3e077747283de269c876513d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33d391397682bc93e8a3f0e052d6e341"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a33d391397682bc93e8a3f0e052d6e341">N</a></td></tr>
 <tr class="separator:a33d391397682bc93e8a3f0e052d6e341"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0996a88d823b533f55c734b7bf526f4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a0996a88d823b533f55c734b7bf526f4a">M</a></td></tr>
@@ -611,6 +596,34 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 
 </div>
 </div>
+<a id="a9f2237792f9688bf86ae89454048db9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f2237792f9688bf86ae89454048db9a">&#9670;&nbsp;</a></span>get_counters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rule_Type , typename Data_Rule_Dyn_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Counter_Type &gt; * <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_counters</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vector of couter functions. </p>
+
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00349">349</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a07c4c70dbf52f19d0a6f53e46cb1024c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a07c4c70dbf52f19d0a6f53e46cb1024c">&#9670;&nbsp;</a></span>get_counts()</h2>
 
@@ -688,6 +701,88 @@ template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rul
 <p>List current statistics. </p>
 
 <p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00327">327</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aea248c2251be2cdcc1f3e0262fb7d2b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea248c2251be2cdcc1f3e0262fb7d2b6">&#9670;&nbsp;</a></span>get_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rule_Type , typename Data_Rule_Dyn_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_freq_table.html">FreqTable</a> &amp; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00344">344</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a368a9c7797e1a76c3ee150070e66c212"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a368a9c7797e1a76c3ee150070e66c212">&#9670;&nbsp;</a></span>get_rules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rule_Type , typename Data_Rule_Dyn_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Rule_Type &gt; * <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_rules</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vector of static rules (cells to iterate). </p>
+
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00354">354</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a53daafcd49daac43c6e8841a8a17a05a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53daafcd49daac43c6e8841a8a17a05a">&#9670;&nbsp;</a></span>get_rules_dyn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Counter_Type , typename Data_Rule_Type , typename Data_Rule_Dyn_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Rule_Dyn_Type &gt; * <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_rules_dyn</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vector of dynamic rules (to include/exclude a realizaton). </p>
+
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00359">359</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -958,26 +1053,6 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 
 </div>
 </div>
-<a id="a089c3e1213deae033d030a88b134e74f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a089c3e1213deae033d030a88b134e74f">&#9670;&nbsp;</a></span>counters</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_counters.html">Counters</a>&lt;Array_Type,Data_Counter_Type&gt;* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::counters</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Vector of couter functions. </p>
-
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00051">51</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
-
-</div>
-</div>
 <a id="a259923d608585376992618f66087efc4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a259923d608585376992618f66087efc4">&#9670;&nbsp;</a></span>current_stats</h2>
 
@@ -993,26 +1068,6 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00062">62</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a51eaba9ab5ed9fa206a160a0ac8d62de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51eaba9ab5ed9fa206a160a0ac8d62de">&#9670;&nbsp;</a></span>data</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_freq_table.html">FreqTable</a> <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::data</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Table with the support. </p>
-
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00050">50</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1070,27 +1125,6 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 
 </div>
 </div>
-<a id="a8a0951a7315fca8ef6ecdc8265b9a983"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a0951a7315fca8ef6ecdc8265b9a983">&#9670;&nbsp;</a></span>EmptyArray</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">Array_Type <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::EmptyArray</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Reference array to generate the support. </p>
-<p>Temp array used to iterate through the support. </p>
-
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00049">49</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
-
-</div>
-</div>
 <a id="a0996a88d823b533f55c734b7bf526f4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0996a88d823b533f55c734b7bf526f4a">&#9670;&nbsp;</a></span>M</h2>
 
@@ -1145,46 +1179,6 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 
 </div>
 </div>
-<a id="a2367f11c0a24c56de9c76c10f9fdf5f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2367f11c0a24c56de9c76c10f9fdf5f4">&#9670;&nbsp;</a></span>rules</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Type&gt;* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::rules</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Vector of static rules (cells to iterate). </p>
-
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00052">52</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a260bfdf3e077747283de269c876513d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a260bfdf3e077747283de269c876513d0">&#9670;&nbsp;</a></span>rules_dyn</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Dyn_Type&gt;* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::rules_dyn</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Vector of dynamic rules (to include/exclude a realizaton). </p>
-
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00053">53</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/barry/<a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a></li>
 <li>include/barry/<a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a></li>
@@ -1195,7 +1189,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_support.html">Support</a></li>
-    <li class="footer">Generated on Mon Apr 19 2021 20:37:45 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Apr 20 2021 22:38:41 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

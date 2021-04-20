@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['with_5fpset_381',['with_pset',['../class_model.html#a8218c8591c4e2a9787dec2b418281548',1,'Model']]]
+  ['zero_5fcol_367',['zero_col',['../class_b_array.html#a0fa473027d00ec53ed08eaea03ac3ef7',1,'BArray']]],
+  ['zero_5frow_368',['zero_row',['../class_b_array.html#a411085fcb7530669c72d9847340f1bac',1,'BArray']]]
 ];

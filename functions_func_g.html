@@ -107,6 +107,13 @@ $(document).ready(function(){initNavTree('functions_func_g.html',''); initResiza
 <li>get_col_vec()
 : <a class="el" href="class_b_array.html#aa2d5a133fc4adf3417f1fdc2ef5aae26">BArray&lt; Cell_Type, Data_Type &gt;</a>
 </li>
+<li>get_counters()
+: <a class="el" href="class_flock.html#a2c9dc10df8a08e020a6d191dfd92dbe9">Flock</a>
+, <a class="el" href="class_geese.html#abb975286a0ab1fd438e5bb4427398993">Geese</a>
+, <a class="el" href="class_model.html#adb8326c668909a4f8c05cac164138d1a">Model&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
+, <a class="el" href="class_stats_counter.html#a5dbf54f099752b2ac273b98fa699e4b6">StatsCounter&lt; Array_Type, Data_Type &gt;</a>
+, <a class="el" href="class_support.html#a9f2237792f9688bf86ae89454048db9a">Support&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
+</li>
 <li>get_counts()
 : <a class="el" href="class_support.html#a07c4c70dbf52f19d0a6f53e46cb1024c">Support&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
 </li>
@@ -119,6 +126,7 @@ $(document).ready(function(){initNavTree('functions_func_g.html',''); initResiza
 <li>get_data()
 : <a class="el" href="class_freq_table.html#a7b99496d1c2f4193654752856b30d1a5">FreqTable&lt; T &gt;</a>
 , <a class="el" href="class_power_set.html#a4de44631d9a7967db4dd791d42166115">PowerSet&lt; Array_Type, Data_Rule_Type &gt;</a>
+, <a class="el" href="class_support.html#aea248c2251be2cdcc1f3e0262fb7d2b6">Support&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
 </li>
 <li>get_data_ptr()
 : <a class="el" href="class_freq_table.html#ab5dd6677f52072c93d18b2b9a3369ae7">FreqTable&lt; T &gt;</a>
@@ -139,17 +147,35 @@ $(document).ready(function(){initNavTree('functions_func_g.html',''); initResiza
 <li>get_pset()
 : <a class="el" href="class_model.html#a9a39fe4b96a9f71292bfc545a4475e21">Model&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
 </li>
+<li>get_rengine()
+: <a class="el" href="class_geese.html#addb8366d2d098403a0e0ac9e321afeeb">Geese</a>
+, <a class="el" href="class_model.html#a02cac4f649946705bfb4d69bc3a3576f">Model&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
+</li>
 <li>get_row()
 : <a class="el" href="class_b_array.html#a65502ec9d50fad49f2713daca6c2d6ca">BArray&lt; Cell_Type, Data_Type &gt;</a>
 </li>
 <li>get_row_vec()
-: <a class="el" href="class_b_array.html#a2be45b966d99e2bdd3f9994ed70ff145">BArray&lt; Cell_Type, Data_Type &gt;</a>
+: <a class="el" href="class_b_array.html#a974b0841e51dac12b88bc5c2cfc9bef7">BArray&lt; Cell_Type, Data_Type &gt;</a>
+</li>
+<li>get_rules()
+: <a class="el" href="class_model.html#abf686ab1876a8c1cb8c46a91e9e46b6c">Model&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
+, <a class="el" href="class_support.html#a368a9c7797e1a76c3ee150070e66c212">Support&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
+</li>
+<li>get_rules_dyn()
+: <a class="el" href="class_model.html#a3e32b0ae64bc900ec161168c426b53f8">Model&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
+, <a class="el" href="class_support.html#a53daafcd49daac43c6e8841a8a17a05a">Support&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
 </li>
 <li>get_seq()
 : <a class="el" href="class_rules.html#afc2e6ddd9cf384f9e70896ad6e581ed4">Rules&lt; Array_Type, Data_Type &gt;</a>
 </li>
+<li>get_states()
+: <a class="el" href="class_geese.html#a853a4d1415b3556697d9d9daf64ccd3e">Geese</a>
+</li>
 <li>get_stats()
 : <a class="el" href="class_model.html#afcca9bcc2e07f75756899f757e203abc">Model&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</a>
+</li>
+<li>get_support()
+: <a class="el" href="class_geese.html#a0cf299773fa651b203b03e0998a7d1c8">Geese</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -157,7 +183,7 @@ $(document).ready(function(){initNavTree('functions_func_g.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Apr 19 2021 20:37:45 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Apr 20 2021 22:38:41 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

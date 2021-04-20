@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['keygen_735',['keygen',['../class_model.html#aaf7838f58b8b7cdb2aa3459a302f78db',1,'Model']]],
-  ['keys2support_736',['keys2support',['../class_model.html#ab7b044c6c046dec2f56b68074cbf0ef3',1,'Model']]]
+  ['m_720',['M',['../class_power_set.html#a91d328d5ace1ed6a8587a66af905ae98',1,'PowerSet::M()'],['../class_support.html#a0996a88d823b533f55c734b7bf526f4a',1,'Support::M()']]],
+  ['map_5fto_5fnodes_721',['map_to_nodes',['../class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c',1,'Geese']]],
+  ['max_5fnum_5felements_722',['max_num_elements',['../class_support.html#ae191c14de35f91695704173d04945633',1,'Support']]]
 ];

@@ -7,7 +7,11 @@ var class_geese =
     [ "~Geese", "class_geese.html#a8b665d6faea65caacbb00feea98d53b0", null ],
     [ "calc_reduced_sequence", "class_geese.html#a0a460414624fd1b7013ce3b1a09150d1", null ],
     [ "calc_sequence", "class_geese.html#aa71af5fe38d785cc184c904fc9308dc1", null ],
+    [ "get_counters", "class_geese.html#abb975286a0ab1fd438e5bb4427398993", null ],
     [ "get_probabilities", "class_geese.html#a5c9cf28a69270fe4d3f48984fe2c5723", null ],
+    [ "get_rengine", "class_geese.html#addb8366d2d098403a0e0ac9e321afeeb", null ],
+    [ "get_states", "class_geese.html#a853a4d1415b3556697d9d9daf64ccd3e", null ],
+    [ "get_support", "class_geese.html#a0cf299773fa651b203b03e0998a7d1c8", null ],
     [ "inherit_support", "class_geese.html#aa95abe540b9977592bcc88e77619d070", null ],
     [ "init", "class_geese.html#ad830d504a390c6126c916e24dc16e69d", null ],
     [ "init_node", "class_geese.html#a3855898a556e2ac1d30529d3bc35f13a", null ],
@@ -26,7 +30,6 @@ var class_geese =
     [ "set_seed", "class_geese.html#aa5d623d5e242a29090bf5a01bfeeeb9f", null ],
     [ "simulate", "class_geese.html#a675662efdded0d24c146946aa15ed481", null ],
     [ "update_annotations", "class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a", null ],
-    [ "counters", "class_geese.html#a4ff7c4927b192966e7765c6e6d1220d9", null ],
     [ "delete_counters", "class_geese.html#a2ee3f287368411747c46227568f5d03c", null ],
     [ "delete_rengine", "class_geese.html#a1e614555901572392026f85ff1a6b3c8", null ],
     [ "delete_support", "class_geese.html#a914996ac39160fb46e1ce6d70609a36a", null ],
@@ -35,8 +38,5 @@ var class_geese =
     [ "nfunctions", "class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6", null ],
     [ "nodes", "class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5", null ],
     [ "reduced_sequence", "class_geese.html#aabcf5e284f7277109567a84ba615f97e", null ],
-    [ "rengine", "class_geese.html#a182ea45cab39d2c3ae6164d7f0bad30a", null ],
-    [ "sequence", "class_geese.html#ab815e9b33ce2cfb5757f86083f357152", null ],
-    [ "states", "class_geese.html#a84bddd2c7e0221b4ec0e1217575584b4", null ],
-    [ "support", "class_geese.html#a71f91e3f8bea1c285c4cf1f3b84f26de", null ]
+    [ "sequence", "class_geese.html#ab815e9b33ce2cfb5757f86083f357152", null ]
 ];

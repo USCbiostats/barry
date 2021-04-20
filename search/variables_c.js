@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['params_5flast_753',['params_last',['../class_model.html#a9b5a93723c718d4d9f710c5340c7ef0f',1,'Model']]],
-  ['parent_754',['parent',['../class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85',1,'Node']]],
-  ['pos_755',['pos',['../class_phylo_rule_dyn_data.html#a6c653f20ca848b0da97adca9790ad86e',1,'PhyloRuleDynData']]],
-  ['probability_756',['probability',['../class_node.html#a867d5e07f62da01392a817042c77735f',1,'Node']]],
-  ['pset_5farrays_757',['pset_arrays',['../class_model.html#ab39eb3f5a95b9f142af51df3b30e76d7',1,'Model']]],
-  ['pset_5fprobs_758',['pset_probs',['../class_model.html#af67b0d6d0c8c4d2d7e898b50692d4f9a',1,'Model']]],
-  ['pset_5fstats_759',['pset_stats',['../class_model.html#a43ea80e5ec9088b34e09958084cbb374',1,'Model']]]
+  ['sequence_740',['sequence',['../class_geese.html#ab815e9b33ce2cfb5757f86083f357152',1,'Geese']]],
+  ['source_741',['source',['../class_entries.html#a6a7c589df4cd6ea98386466440dfdc98',1,'Entries']]],
+  ['states_742',['states',['../class_node_data.html#a33caaadde6afe892624501bdb0edaea6',1,'NodeData']]],
+  ['subtree_5fprob_743',['subtree_prob',['../class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d',1,'Node']]],
+  ['support_744',['support',['../class_flock.html#a20d75da0d423252055af84194e88f901',1,'Flock']]]
 ];

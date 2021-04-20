@@ -9,16 +9,6 @@ Compute the support of sufficient statistics.
 
 {\ttfamily \#include $<$support-\/bones.\+hpp$>$}
 
-
-
-Collaboration diagram for Support$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_support__coll__graph}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,7 +31,15 @@ const \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec
 const std\+::vector$<$ double $>$ \& \mbox{\hyperlink{class_support_a1690453d91ed7939b7fa250b224e8fc8}{get\+\_\+current\+\_\+stats}} () const
 \begin{DoxyCompactList}\small\item\em List current statistics. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_support_a62f4f98b01bb0a9424a425d38cd0e83d}{print}} () const
-\end{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{class_freq_table}{Freq\+Table}} \& \mbox{\hyperlink{class_support_aea248c2251be2cdcc1f3e0262fb7d2b6}{get\+\_\+data}} () const
+\item 
+\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_support_a9f2237792f9688bf86ae89454048db9a}{get\+\_\+counters}} ()
+\begin{DoxyCompactList}\small\item\em Vector of couter functions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_support_a368a9c7797e1a76c3ee150070e66c212}{get\+\_\+rules}} ()
+\begin{DoxyCompactList}\small\item\em Vector of static rules (cells to iterate). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_support_a53daafcd49daac43c6e8841a8a17a05a}{get\+\_\+rules\+\_\+dyn}} ()
+\begin{DoxyCompactList}\small\item\em Vector of dynamic rules (to include/exclude a realizaton). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Resets the support calculator}\par
 {\em If needed, the counters of a support object can be reused.
 
@@ -100,16 +98,6 @@ void \mbox{\hyperlink{class_support_a9e296aa740b9aad3e7feef3981002c9e}{set\+\_\+
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-Array\+\_\+\+Type \mbox{\hyperlink{class_support_a8a0951a7315fca8ef6ecdc8265b9a983}{Empty\+Array}}
-\begin{DoxyCompactList}\small\item\em Reference array to generate the support. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_freq_table}{Freq\+Table}} \mbox{\hyperlink{class_support_a51eaba9ab5ed9fa206a160a0ac8d62de}{data}}
-\begin{DoxyCompactList}\small\item\em Table with the support. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_support_a089c3e1213deae033d030a88b134e74f}{counters}}
-\begin{DoxyCompactList}\small\item\em Vector of couter functions. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_support_a2367f11c0a24c56de9c76c10f9fdf5f4}{rules}}
-\begin{DoxyCompactList}\small\item\em Vector of static rules (cells to iterate). \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_support_a260bfdf3e077747283de269c876513d0}{rules\+\_\+dyn}}
-\begin{DoxyCompactList}\small\item\em Vector of dynamic rules (to include/exclude a realizaton). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_support_a33d391397682bc93e8a3f0e052d6e341}{N}}
 \item 
 \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_support_a0996a88d823b533f55c734b7bf526f4a}{M}}
@@ -294,6 +282,21 @@ Not to be used by the user. Sets the starting point in the array (column-\/major
 
 Definition at line 178 of file support-\/meat.\+hpp.
 
+\mbox{\Hypertarget{class_support_a9f2237792f9688bf86ae89454048db9a}\label{class_support_a9f2237792f9688bf86ae89454048db9a}} 
+\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_counters@{get\_counters}}
+\index{get\_counters@{get\_counters}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_counters()}{get\_counters()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+counters\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Vector of couter functions. 
+
+
+
+Definition at line 349 of file support-\/meat.\+hpp.
+
 \mbox{\Hypertarget{class_support_a07c4c70dbf52f19d0a6f53e46cb1024c}\label{class_support_a07c4c70dbf52f19d0a6f53e46cb1024c}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_counts@{get\_counts}}
 \index{get\_counts@{get\_counts}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
@@ -330,6 +333,47 @@ List current statistics.
 
 
 Definition at line 327 of file support-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_support_aea248c2251be2cdcc1f3e0262fb7d2b6}\label{class_support_aea248c2251be2cdcc1f3e0262fb7d2b6}} 
+\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_data@{get\_data}}
+\index{get\_data@{get\_data}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_data()}{get\_data()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \\
+const \mbox{\hyperlink{class_freq_table}{Freq\+Table}} \& \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+data\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 344 of file support-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_support_a368a9c7797e1a76c3ee150070e66c212}\label{class_support_a368a9c7797e1a76c3ee150070e66c212}} 
+\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_rules@{get\_rules}}
+\index{get\_rules@{get\_rules}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_rules()}{get\_rules()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+rules\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Vector of static rules (cells to iterate). 
+
+
+
+Definition at line 354 of file support-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_support_a53daafcd49daac43c6e8841a8a17a05a}\label{class_support_a53daafcd49daac43c6e8841a8a17a05a}} 
+\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_rules\_dyn@{get\_rules\_dyn}}
+\index{get\_rules\_dyn@{get\_rules\_dyn}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_rules\_dyn()}{get\_rules\_dyn()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+rules\+\_\+dyn\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Vector of dynamic rules (to include/exclude a realizaton). 
+
+
+
+Definition at line 359 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a4815c1e806cc785ad66320ea6364d087}\label{class_support_a4815c1e806cc785ad66320ea6364d087}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!init\_support@{init\_support}}
@@ -444,21 +488,6 @@ std\+::vector$<$ std\+::pair$<$\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2
 
 Definition at line 64 of file support-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_support_a089c3e1213deae033d030a88b134e74f}\label{class_support_a089c3e1213deae033d030a88b134e74f}} 
-\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!counters@{counters}}
-\index{counters@{counters}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{counters}{counters}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{class_counters}{Counters}}$<$Array\+\_\+\+Type,Data\+\_\+\+Counter\+\_\+\+Type$>$$\ast$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::counters}
-
-
-
-Vector of couter functions. 
-
-
-
-Definition at line 51 of file support-\/bones.\+hpp.
-
 \mbox{\Hypertarget{class_support_a259923d608585376992618f66087efc4}\label{class_support_a259923d608585376992618f66087efc4}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!current\_stats@{current\_stats}}
 \index{current\_stats@{current\_stats}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
@@ -469,21 +498,6 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+
 
 
 Definition at line 62 of file support-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_support_a51eaba9ab5ed9fa206a160a0ac8d62de}\label{class_support_a51eaba9ab5ed9fa206a160a0ac8d62de}} 
-\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!data@{data}}
-\index{data@{data}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{data}{data}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{class_freq_table}{Freq\+Table}} \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::data}
-
-
-
-Table with the support. 
-
-
-
-Definition at line 50 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_a97091e3705c3d816ea02d078bca42f71}\label{class_support_a97091e3705c3d816ea02d078bca42f71}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!delete\_counters@{delete\_counters}}
@@ -518,21 +532,6 @@ bool \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\
 
 Definition at line 58 of file support-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_support_a8a0951a7315fca8ef6ecdc8265b9a983}\label{class_support_a8a0951a7315fca8ef6ecdc8265b9a983}} 
-\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!EmptyArray@{EmptyArray}}
-\index{EmptyArray@{EmptyArray}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{EmptyArray}{EmptyArray}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-Array\+\_\+\+Type \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::Empty\+Array}
-
-
-
-Reference array to generate the support. 
-
-Temp array used to iterate through the support. 
-
-Definition at line 49 of file support-\/bones.\+hpp.
-
 \mbox{\Hypertarget{class_support_a0996a88d823b533f55c734b7bf526f4a}\label{class_support_a0996a88d823b533f55c734b7bf526f4a}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!M@{M}}
 \index{M@{M}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
@@ -565,36 +564,6 @@ Definition at line 59 of file support-\/bones.\+hpp.
 
 
 Definition at line 55 of file support-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_support_a2367f11c0a24c56de9c76c10f9fdf5f4}\label{class_support_a2367f11c0a24c56de9c76c10f9fdf5f4}} 
-\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!rules@{rules}}
-\index{rules@{rules}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{rules}{rules}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{class_rules}{Rules}}$<$Array\+\_\+\+Type,Data\+\_\+\+Rule\+\_\+\+Type$>$$\ast$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::rules}
-
-
-
-Vector of static rules (cells to iterate). 
-
-
-
-Definition at line 52 of file support-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_support_a260bfdf3e077747283de269c876513d0}\label{class_support_a260bfdf3e077747283de269c876513d0}} 
-\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!rules\_dyn@{rules\_dyn}}
-\index{rules\_dyn@{rules\_dyn}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{rules\_dyn}{rules\_dyn}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{class_rules}{Rules}}$<$Array\+\_\+\+Type,Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type$>$$\ast$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::rules\+\_\+dyn}
-
-
-
-Vector of dynamic rules (to include/exclude a realizaton). 
-
-
-
-Definition at line 53 of file support-\/bones.\+hpp.
 
 
 

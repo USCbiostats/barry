@@ -39,6 +39,14 @@ void \mbox{\hyperlink{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}{print\+\_\+
 void \mbox{\hyperlink{class_geese_a3855898a556e2ac1d30529d3bc35f13a}{init\+\_\+node}} (\mbox{\hyperlink{class_node}{Node}} \&n)
 \item 
 void \mbox{\hyperlink{class_geese_a5d3f0a97dd5d37b6f6cfd79c41629a1a}{update\+\_\+annotations}} (unsigned int nodeid, std\+::vector$<$ unsigned int $>$ newann)
+\item 
+std\+::mt19937 $\ast$ \mbox{\hyperlink{class_geese_addb8366d2d098403a0e0ac9e321afeeb}{get\+\_\+rengine}} ()
+\item 
+\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}} $\ast$ \mbox{\hyperlink{class_geese_abb975286a0ab1fd438e5bb4427398993}{get\+\_\+counters}} ()
+\item 
+\mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{phylocounters\+::\+Phylo\+Model}} $\ast$ \mbox{\hyperlink{class_geese_a0cf299773fa651b203b03e0998a7d1c8}{get\+\_\+support}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ \mbox{\hyperlink{class_geese_a853a4d1415b3556697d9d9daf64ccd3e}{get\+\_\+states}} ()
 \end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Construct a new Geese object}\par
 {\em The model includes a total of {\ttfamily N + 1} nodes, the {\ttfamily + 1} beign the root node.
@@ -130,20 +138,6 @@ bool \mbox{\hyperlink{class_geese_a2ee3f287368411747c46227568f5d03c}{delete\+\_\
 \item 
 bool \mbox{\hyperlink{class_geese_a914996ac39160fb46e1ce6d70609a36a}{delete\+\_\+support}} = false
 \end{DoxyCompactItemize}
-\begin{Indent}\textbf{ Shared objects within a $<$tt$>$Geese$<$/tt$>$}\par
-{\em Since users may start adding counters before initializing the Phylo\+Model object, the object {\ttfamily counter} is initialized first.
-
-While the member {\ttfamily support} has an {\ttfamily rengine}, since {\ttfamily \mbox{\hyperlink{class_geese}{Geese}}} can sample trees, we have the option to keep it separate. }\begin{DoxyCompactItemize}
-\item 
-std\+::mt19937 $\ast$ \mbox{\hyperlink{class_geese_a182ea45cab39d2c3ae6164d7f0bad30a}{rengine}} = nullptr
-\item 
-\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}} $\ast$ \mbox{\hyperlink{class_geese_a4ff7c4927b192966e7765c6e6d1220d9}{counters}} = nullptr
-\item 
-\mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{phylocounters\+::\+Phylo\+Model}} $\ast$ \mbox{\hyperlink{class_geese_a71f91e3f8bea1c285c4cf1f3b84f26de}{support}} = nullptr
-\item 
-std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ \mbox{\hyperlink{class_geese_a84bddd2c7e0221b4ec0e1217575584b4}{states}}
-\end{DoxyCompactItemize}
-\end{Indent}
 
 
 \doxysubsection{Detailed Description}
@@ -151,7 +145,7 @@ Annotated Phylo \mbox{\hyperlink{class_model}{Model}}.
 
 A list of available terms for this model can be found in the \mbox{\hyperlink{group__counters-phylo}{Phylo counters}} section. 
 
-Definition at line 70 of file geese-\/bones.\+hpp.
+Definition at line 72 of file geese-\/bones.\+hpp.
 
 
 
@@ -229,6 +223,16 @@ Definition at line 234 of file geese-\/meat.\+hpp.
 
 Definition at line 191 of file geese-\/meat.\+hpp.
 
+\mbox{\Hypertarget{class_geese_abb975286a0ab1fd438e5bb4427398993}\label{class_geese_abb975286a0ab1fd438e5bb4427398993}} 
+\index{Geese@{Geese}!get\_counters@{get\_counters}}
+\index{get\_counters@{get\_counters}!Geese@{Geese}}
+\doxysubsubsection{\texorpdfstring{get\_counters()}{get\_counters()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}} $\ast$ Geese\+::get\+\_\+counters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 432 of file geese-\/meat.\+hpp.
+
 \mbox{\Hypertarget{class_geese_a5c9cf28a69270fe4d3f48984fe2c5723}\label{class_geese_a5c9cf28a69270fe4d3f48984fe2c5723}} 
 \index{Geese@{Geese}!get\_probabilities@{get\_probabilities}}
 \index{get\_probabilities@{get\_probabilities}!Geese@{Geese}}
@@ -238,6 +242,36 @@ Definition at line 191 of file geese-\/meat.\+hpp.
 
 
 Definition at line 277 of file geese-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_geese_addb8366d2d098403a0e0ac9e321afeeb}\label{class_geese_addb8366d2d098403a0e0ac9e321afeeb}} 
+\index{Geese@{Geese}!get\_rengine@{get\_rengine}}
+\index{get\_rengine@{get\_rengine}!Geese@{Geese}}
+\doxysubsubsection{\texorpdfstring{get\_rengine()}{get\_rengine()}}
+{\footnotesize\ttfamily std\+::mt19937 $\ast$ Geese\+::get\+\_\+rengine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 428 of file geese-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_geese_a853a4d1415b3556697d9d9daf64ccd3e}\label{class_geese_a853a4d1415b3556697d9d9daf64ccd3e}} 
+\index{Geese@{Geese}!get\_states@{get\_states}}
+\index{get\_states@{get\_states}!Geese@{Geese}}
+\doxysubsubsection{\texorpdfstring{get\_states()}{get\_states()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ Geese\+::get\+\_\+states (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 440 of file geese-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_geese_a0cf299773fa651b203b03e0998a7d1c8}\label{class_geese_a0cf299773fa651b203b03e0998a7d1c8}} 
+\index{Geese@{Geese}!get\_support@{get\_support}}
+\index{get\_support@{get\_support}!Geese@{Geese}}
+\doxysubsubsection{\texorpdfstring{get\_support()}{get\_support()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{phylocounters\+::\+Phylo\+Model}} $\ast$ Geese\+::get\+\_\+support (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 436 of file geese-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_geese_aa95abe540b9977592bcc88e77619d070}\label{class_geese_aa95abe540b9977592bcc88e77619d070}} 
 \index{Geese@{Geese}!inherit\_support@{inherit\_support}}
@@ -414,16 +448,6 @@ Definition at line 168 of file geese-\/meat.\+hpp.
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_geese_a4ff7c4927b192966e7765c6e6d1220d9}\label{class_geese_a4ff7c4927b192966e7765c6e6d1220d9}} 
-\index{Geese@{Geese}!counters@{counters}}
-\index{counters@{counters}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{counters}{counters}}
-{\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}}$\ast$ Geese\+::counters = nullptr}
-
-
-
-Definition at line 85 of file geese-\/bones.\+hpp.
-
 \mbox{\Hypertarget{class_geese_a2ee3f287368411747c46227568f5d03c}\label{class_geese_a2ee3f287368411747c46227568f5d03c}} 
 \index{Geese@{Geese}!delete\_counters@{delete\_counters}}
 \index{delete\_counters@{delete\_counters}!Geese@{Geese}}
@@ -432,7 +456,7 @@ Definition at line 85 of file geese-\/bones.\+hpp.
 
 
 
-Definition at line 102 of file geese-\/bones.\+hpp.
+Definition at line 107 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a1e614555901572392026f85ff1a6b3c8}\label{class_geese_a1e614555901572392026f85ff1a6b3c8}} 
 \index{Geese@{Geese}!delete\_rengine@{delete\_rengine}}
@@ -442,7 +466,7 @@ Definition at line 102 of file geese-\/bones.\+hpp.
 
 
 
-Definition at line 101 of file geese-\/bones.\+hpp.
+Definition at line 106 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a914996ac39160fb46e1ce6d70609a36a}\label{class_geese_a914996ac39160fb46e1ce6d70609a36a}} 
 \index{Geese@{Geese}!delete\_support@{delete\_support}}
@@ -452,7 +476,7 @@ Definition at line 101 of file geese-\/bones.\+hpp.
 
 
 
-Definition at line 103 of file geese-\/bones.\+hpp.
+Definition at line 108 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_aa3c3181a20e367fe13e92180c83f84c0}\label{class_geese_aa3c3181a20e367fe13e92180c83f84c0}} 
 \index{Geese@{Geese}!initialized@{initialized}}
@@ -462,7 +486,7 @@ Definition at line 103 of file geese-\/bones.\+hpp.
 
 
 
-Definition at line 100 of file geese-\/bones.\+hpp.
+Definition at line 105 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a25f8324ae2c43b8a940a8e934c768a7c}\label{class_geese_a25f8324ae2c43b8a940a8e934c768a7c}} 
 \index{Geese@{Geese}!map\_to\_nodes@{map\_to\_nodes}}
@@ -472,7 +496,7 @@ Definition at line 100 of file geese-\/bones.\+hpp.
 
 
 
-Definition at line 93 of file geese-\/bones.\+hpp.
+Definition at line 98 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a0483807174fe427f5bd2ccbb22ac3ad6}\label{class_geese_a0483807174fe427f5bd2ccbb22ac3ad6}} 
 \index{Geese@{Geese}!nfunctions@{nfunctions}}
@@ -482,7 +506,7 @@ Definition at line 93 of file geese-\/bones.\+hpp.
 
 
 
-Definition at line 91 of file geese-\/bones.\+hpp.
+Definition at line 96 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_ab00af142f1f0e13b5c9d0cb7c8d41ee5}\label{class_geese_ab00af142f1f0e13b5c9d0cb7c8d41ee5}} 
 \index{Geese@{Geese}!nodes@{nodes}}
@@ -492,7 +516,7 @@ Definition at line 91 of file geese-\/bones.\+hpp.
 
 
 
-Definition at line 92 of file geese-\/bones.\+hpp.
+Definition at line 97 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_aabcf5e284f7277109567a84ba615f97e}\label{class_geese_aabcf5e284f7277109567a84ba615f97e}} 
 \index{Geese@{Geese}!reduced\_sequence@{reduced\_sequence}}
@@ -502,17 +526,7 @@ Definition at line 92 of file geese-\/bones.\+hpp.
 
 
 
-Definition at line 97 of file geese-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_geese_a182ea45cab39d2c3ae6164d7f0bad30a}\label{class_geese_a182ea45cab39d2c3ae6164d7f0bad30a}} 
-\index{Geese@{Geese}!rengine@{rengine}}
-\index{rengine@{rengine}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{rengine}{rengine}}
-{\footnotesize\ttfamily std\+::mt19937$\ast$ Geese\+::rengine = nullptr}
-
-
-
-Definition at line 84 of file geese-\/bones.\+hpp.
+Definition at line 102 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_ab815e9b33ce2cfb5757f86083f357152}\label{class_geese_ab815e9b33ce2cfb5757f86083f357152}} 
 \index{Geese@{Geese}!sequence@{sequence}}
@@ -522,27 +536,7 @@ Definition at line 84 of file geese-\/bones.\+hpp.
 
 
 
-Definition at line 96 of file geese-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_geese_a84bddd2c7e0221b4ec0e1217575584b4}\label{class_geese_a84bddd2c7e0221b4ec0e1217575584b4}} 
-\index{Geese@{Geese}!states@{states}}
-\index{states@{states}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{states}{states}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ Geese\+::states}
-
-
-
-Definition at line 87 of file geese-\/bones.\+hpp.
-
-\mbox{\Hypertarget{class_geese_a71f91e3f8bea1c285c4cf1f3b84f26de}\label{class_geese_a71f91e3f8bea1c285c4cf1f3b84f26de}} 
-\index{Geese@{Geese}!support@{support}}
-\index{support@{support}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{support}{support}}
-{\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{phylocounters\+::\+Phylo\+Model}}$\ast$ Geese\+::support = nullptr}
-
-
-
-Definition at line 86 of file geese-\/bones.\+hpp.
+Definition at line 101 of file geese-\/bones.\+hpp.
 
 
 
