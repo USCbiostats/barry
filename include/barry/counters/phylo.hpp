@@ -1214,7 +1214,7 @@ public:
  * @details 
  * @return (void) adds a rule limiting the support of the model.
  */
-inline void rule_dyn_min_max(
+inline void rule_dyn_limit_changes(
     PhyloSupport * support,
     uint pos,
     uint lb,

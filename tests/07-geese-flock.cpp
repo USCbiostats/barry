@@ -2,6 +2,8 @@
 
 TEST_CASE("Flock likelihood", "[flock-likelihood]") {
 
+    using namespace phylocounters;
+
     // More interesting experiment
     std::vector< std::vector<uint> > ann = {
         {9, 9},
@@ -22,8 +24,8 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     Geese model(ann, geneid, parent, duplication);
 
     // Adding terms
-    phylocounters::counter_gains(model.get_counters(), {0, 1});
-    phylocounters::counter_maxfuns(model.get_counters(), 2, 2);
+    counter_gains(model.get_counters(), {0, 1});
+    counter_maxfuns(model.get_counters(), 2, 2);
 
     model.init();
     model.set_seed(100);
@@ -41,8 +43,8 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     aflock.add_data(ann, geneid, parent, duplication);
 
     // Adding terms
-    phylocounters::counter_gains(&aflock.get_counters(), {0, 1});
-    phylocounters::counter_maxfuns(&aflock.get_counters(), 2, 2);
+    counter_gains(&aflock.get_counters(), {0, 1});
+    counter_maxfuns(&aflock.get_counters(), 2, 2);
 
     aflock.init();
 
@@ -69,8 +71,8 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     Geese model2(ann, geneid, parent, duplication2);
 
     // Adding terms
-    phylocounters::counter_gains(model2.get_counters(), {0, 1});
-    phylocounters::counter_maxfuns(model2.get_counters(), 2, 2);
+    counter_gains(model2.get_counters(), {0, 1});
+    counter_maxfuns(model2.get_counters(), 2, 2);
 
     model2.init();
 

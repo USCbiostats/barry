@@ -68,10 +68,11 @@ public:
         ): count_fun(count_fun_), init_fun(init_fun_), data(data_),
             delete_data(delete_data_), name(name_), desc(desc_) {};
     
-    Counter(const Counter<Array_Type,Data_Type> & counter_);
+    Counter(const Counter<Array_Type,Data_Type> & counter_); ///< Copy constructor
+    Counter(Counter<Array_Type,Data_Type> && counter_) noexcept; ///< Move constructor
+    Counter<Array_Type,Data_Type> operator=(const Counter<Array_Type,Data_Type> & counter_); ///< Copy assignment
+    Counter<Array_Type,Data_Type>& operator=(Counter<Array_Type,Data_Type> && counter_) noexcept; ///< Move assignment
     ///@}
-
-    Counter<Array_Type,Data_Type> operator=(const Counter<Array_Type,Data_Type> & counter_);
 
     ~Counter() {
         // delete data;
@@ -98,21 +99,48 @@ template <typename Array_Type = BArray<>, typename Data_Type = bool>
 class Counters {
     
 private:
-    std::vector< Counter<Array_Type,Data_Type >* > data = {};
+    std::vector< Counter<Array_Type,Data_Type >* > *        data = nullptr;
     std::vector< uint >                            to_be_deleted = {};
+    bool                                             delete_data = false;
     
 public: 
     
     // Constructors
-    Counters() {};
+    Counters();
     
     // Destructor needs to deal with the pointers
     ~Counters() {
         this->clear();
     }
 
+    /**
+     * @brief Copy constructor
+     * @param counter_ 
+     */
     Counters(const Counters<Array_Type,Data_Type> & counter_);
+    
+    /**
+     * @brief Move constructor
+     * 
+     * @param counters_ 
+     */
+    Counters(Counters<Array_Type,Data_Type> && counters_) noexcept;
+
+    /**
+     * @brief Copy assignment constructor
+     * 
+     * @param counter_ 
+     * @return Counters<Array_Type,Data_Type> 
+     */
     Counters<Array_Type,Data_Type> operator=(const Counters<Array_Type,Data_Type> & counter_);
+
+    /**
+     * @brief Move assignment constructor
+     * 
+     * @param counter_ 
+     * @return Counters<Array_Type,Data_Type>& 
+     */
+    Counters<Array_Type,Data_Type> & operator=(Counters<Array_Type,Data_Type> && counter_) noexcept;
     
     /**
      * @brief Returns a pointer to a particular counter.
@@ -128,7 +156,7 @@ public:
      * @return uint 
      */
     std::size_t size() const noexcept {
-        return data.size();
+        return data->size();
         };
     
     // Functions to add counters
