@@ -152,7 +152,7 @@ private:
       * @details Arguments are recycled to save memory and computation.
       */
     ///@{
-    Counters<Array_Type,Data_Counter_Type>                                  counters;
+    Counters<Array_Type,Data_Counter_Type> *                                counters = nullptr;
     Rules<Array_Type,Data_Rule_Type>                                        rules;
     Rules<Array_Type,Data_Rule_Dyn_Type>                                    rules_dyn;
     Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> support_fun;
@@ -167,6 +167,8 @@ private:
     /**@brief Function to extract features of the array to be hash
     */
     std::function<std::vector<double>(const Array_Type &)> keygen = nullptr;  
+
+    bool delete_counters = false;
 
 public:
     
@@ -199,6 +201,8 @@ public:
         const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_
     );
     ~Model() {
+        if (delete_counters)
+            delete counters;
         if (delete_rengine)
             delete rengine;
     };
@@ -350,7 +354,7 @@ public:
 
     const std::mt19937 * get_rengine() const;
 
-    Counters<Array_Type,Data_Counter_Type> & get_counters();
+    Counters<Array_Type,Data_Counter_Type> * get_counters();
     Rules<Array_Type,Data_Rule_Type>       & get_rules();
     Rules<Array_Type,Data_Rule_Dyn_Type>   & get_rules_dyn();
 

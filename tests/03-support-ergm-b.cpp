@@ -50,17 +50,17 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   
   // Preparing model  
   
-  netcounters::counter_edges(&model.get_counters());
-  netcounters::counter_mutual(&model.get_counters());
-  netcounters::counter_isolates(&model.get_counters());
-  netcounters::counter_istar2(&model.get_counters());
-  netcounters::counter_ostar2(&model.get_counters());
-  netcounters::counter_ttriads(&model.get_counters());
-  netcounters::counter_ctriads(&model.get_counters());
-  netcounters::counter_density(&model.get_counters());
-  netcounters::counter_idegree15(&model.get_counters());
-  netcounters::counter_odegree15(&model.get_counters());
-  netcounters::counter_nodematch(&model.get_counters(), 0u);
+  netcounters::counter_edges(model.get_counters());
+  netcounters::counter_mutual(model.get_counters());
+  netcounters::counter_isolates(model.get_counters());
+  netcounters::counter_istar2(model.get_counters());
+  netcounters::counter_ostar2(model.get_counters());
+  netcounters::counter_ttriads(model.get_counters());
+  netcounters::counter_ctriads(model.get_counters());
+  netcounters::counter_density(model.get_counters());
+  netcounters::counter_idegree15(model.get_counters());
+  netcounters::counter_odegree15(model.get_counters());
+  netcounters::counter_nodematch(model.get_counters(), 0u);
   
   // Adding rules
   netcounters::rules_zerodiag(&model.get_rules());

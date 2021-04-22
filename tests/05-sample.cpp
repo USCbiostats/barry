@@ -9,8 +9,8 @@ TEST_CASE("Sampling networks (with Model)", "[sampling w model]") {
     NetModel m;
     m.store_psets();
 
-    counter_edges(&m.get_counters());
-    counter_mutual(&m.get_counters());
+    counter_edges(m.get_counters());
+    counter_mutual(m.get_counters());
 
     // Adding rules
     rules_zerodiag(&m.get_rules());

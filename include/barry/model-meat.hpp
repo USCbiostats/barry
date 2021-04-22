@@ -6,12 +6,15 @@
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Model() :
     stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
-    target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules(), rules_dyn()
+    target_stats(0u), arrays2support(0u), keys2support(0u),
+    counters(new Counters<Array_Type,Data_Counter_Type>()),
+    delete_counters(true),
+    rules(), rules_dyn()
 {  
 
     // Counters are shared
-    support_fun.set_counters(&counters);
-    counter_fun.set_counters(&counters);
+    support_fun.set_counters(counters);
+    counter_fun.set_counters(counters);
     
     // Rules are shared
     support_fun.set_rules(&rules);
@@ -26,15 +29,18 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Model(uint size_) :
     stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
-    target_stats(0u), arrays2support(0u), keys2support(0u), counters(), rules(), rules_dyn()
+    target_stats(0u), arrays2support(0u), keys2support(0u), 
+    counters(new Counters<Array_Type,Data_Counter_Type>()),
+    delete_counters(true),
+    rules(), rules_dyn()
 {
     
     target_stats.reserve(size_);
     arrays2support.reserve(size_);
 
     // Counters are shared
-    support_fun.set_counters(&counters);
-    counter_fun.set_counters(&counters);
+    support_fun.set_counters(counters);
+    counter_fun.set_counters(counters);
     
     // Rules are shared
     support_fun.set_rules(&rules);
@@ -56,7 +62,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     target_stats(Model_.target_stats),
     arrays2support(Model_.arrays2support),
     keys2support(Model_.keys2support),
-    counters(Model_.counters),
+    counters(new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters))),
+    delete_counters(true),
     rules(Model_.rules),
     rules_dyn(Model_.rules_dyn),
     params_last(Model_.params_last),
@@ -65,8 +72,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     {
     
     // Counters are shared
-    support_fun.set_counters(&counters);
-    counter_fun.set_counters(&counters);
+    support_fun.set_counters(counters);
+    counter_fun.set_counters(counters);
     
     // Rules are shared
     support_fun.set_rules(&rules);
@@ -85,6 +92,9 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> &
     
     // Clearing
     if (this != &Model_) {
+
+        if (delete_counters)
+            delete counters;
         
         stats                 = Model_.stats;
         n_arrays_per_stats    = Model_.n_arrays_per_stats;
@@ -93,7 +103,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> &
         target_stats          = Model_.target_stats;
         arrays2support        = Model_.arrays2support;
         keys2support          = Model_.keys2support;
-        counters              = Model_.counters;
+        counters              = new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters));
+        delete_counters       = true;
         rules                 = Model_.rules;
         rules_dyn             = Model_.rules_dyn;
         params_last           = Model_.params_last;
@@ -101,8 +112,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> &
         first_calc_done       = Model_.first_calc_done;
 
         // Counters are shared
-        support_fun.set_counters(&counters);
-        counter_fun.set_counters(&counters);
+        support_fun.set_counters(counters);
+        counter_fun.set_counters(counters);
         
         // Rules are shared
         support_fun.set_rules(&rules);
@@ -135,7 +146,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
         Counter<Array_Type, Data_Counter_Type> & counter
 ) {
     
-    counters.add_counter(counter);
+    counters->add_counter(counter);
     return;
 }
 
@@ -144,7 +155,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
         Counter<Array_Type, Data_Counter_Type> * counter
 ) {
     
-    counters.add_counter(counter);
+    counters->add_counter(counter);
     return;
     
 }
@@ -157,7 +168,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
     bool                                           delete_data_
 ) {
     
-    counters.add_counter(
+    counters->add_counter(
         count_fun_,
         init_fun_,
         data_,
@@ -172,10 +183,15 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::set_counters(
     Counters<Array_Type,Data_Counter_Type> * counters_
 ) {
+
+    if (delete_counters) {
+        delete counters;
+        delete_counters = false;
+    }
     
-    this->counters = *counters_;
-    support_fun.set_counters(&counters);
-    counter_fun.set_counters(&counters);
+    this->counters = counters_;
+    support_fun.set_counters(counters);
+    counter_fun.set_counters(counters);
     
     return;
     
@@ -427,7 +443,7 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
     
     // Counting stats
     StatsCounter< Array_Type, Data_Counter_Type> tmpstats(&Array_);
-    tmpstats.set_counters(&this->counters);
+    tmpstats.set_counters(this->counters);
     std::vector< double > counts = tmpstats.count_all();
 
     return likelihood(
@@ -602,7 +618,7 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::nterms() const noexcept {
 
-    return this->counters.size();
+    return this->counters->size();
 
 }
     
@@ -648,7 +664,7 @@ inline const std::mt19937 * Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Da
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline Counters<Array_Type,Data_Counter_Type> & Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_counters() {
+inline Counters<Array_Type,Data_Counter_Type> * Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_counters() {
     return this->counters;
 }
 

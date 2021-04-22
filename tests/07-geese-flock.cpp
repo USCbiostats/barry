@@ -43,8 +43,8 @@ TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     aflock.add_data(ann, geneid, parent, duplication);
 
     // Adding terms
-    counter_gains(&aflock.get_counters(), {0, 1});
-    counter_maxfuns(&aflock.get_counters(), 2, 2);
+    counter_gains(aflock.get_counters(), {0, 1});
+    counter_maxfuns(aflock.get_counters(), 2, 2);
 
     aflock.init();
 
