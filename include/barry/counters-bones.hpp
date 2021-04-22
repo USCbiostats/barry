@@ -100,8 +100,9 @@ class Counters {
     
 private:
     std::vector< Counter<Array_Type,Data_Type >* > *        data = nullptr;
-    std::vector< uint >                            to_be_deleted = {};
+    std::vector< uint > *                          to_be_deleted = nullptr;
     bool                                             delete_data = false;
+    bool                                    delete_to_be_deleted = false;
     
 public: 
     

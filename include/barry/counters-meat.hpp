@@ -4,12 +4,6 @@
 #define BARRY_COUNTERS_MEAT_HPP 1
 
 template <typename Array_Type, typename Data_Type>
-inline Counters<Array_Type,Data_Type>::Counters() {
-    this->data = new std::vector<Counter<Array_Type,Data_Type>*>(0u);
-    this->delete_data = true;
-}
-
-template <typename Array_Type, typename Data_Type>
 inline Counter<Array_Type,Data_Type>::Counter(
     const Counter<Array_Type,Data_Type> & counter_
 ) : count_fun(counter_.count_fun), init_fun(counter_.init_fun) {
@@ -18,12 +12,12 @@ inline Counter<Array_Type,Data_Type>::Counter(
     {
 
         this->data = new Data_Type(*counter_.data);
-        delete_data = true;
+        this->delete_data = true;
         
     } else {
 
         this->data = counter_.data;
-        delete_data = false;
+        this->delete_data = false;
 
     }
 
@@ -42,13 +36,13 @@ inline Counter<Array_Type,Data_Type>::Counter(
     count_fun(std::move(counter_.count_fun)),
     init_fun(std::move(counter_.init_fun)),
     data(std::move(counter_.data)),
-    delete_data(counter_.delete_data),
+    delete_data(std::move(counter_.delete_data)),
     name(std::move(counter_.name)),
     desc(std::move(counter_.desc))
 {
 
-    counter_.delete_data = false;
     counter_.data = nullptr;
+    counter_.delete_data = false;
 
 } ///< Move constructor
 
@@ -60,19 +54,19 @@ inline Counter<Array_Type,Data_Type> Counter<Array_Type,Data_Type>::operator=(
 
     if (this != &counter_) {
 
-        count_fun = counter_.count_fun;
-        init_fun  = counter_.init_fun;
+        this->count_fun = counter_.count_fun;
+        this->init_fun = counter_.init_fun;
 
-        if (counter_.delete_data)
+        if (counter_.delete_data) 
         {
+
             this->data = new Data_Type(*counter_.data);
-            delete_data = true;
-        } 
-        else
-        {
+            this->delete_data = true;
+            
+        } else {
 
             this->data = counter_.data;
-            delete_data = false;
+            this->delete_data = false;
 
         }
 
@@ -96,8 +90,9 @@ inline Counter<Array_Type,Data_Type> & Counter<Array_Type,Data_Type>::operator=(
         if (delete_data)
             delete data;
         
-        this->data           = counter_.data;
-        this->delete_data    = std::move(counter_.delete_data);
+        this->data        = std::move(counter_.data);
+        this->delete_data = std::move(counter_.delete_data);
+
         counter_.data        = nullptr;
         counter_.delete_data = false;
 
@@ -140,6 +135,19 @@ inline double Counter<Array_Type, Data_Type>::init(
 
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// Counters
+////////////////////////////////////////////////////////////////////////////////
+
+template <typename Array_Type, typename Data_Type>
+inline Counters<Array_Type,Data_Type>::Counters() {
+    this->data = new std::vector<Counter<Array_Type,Data_Type>*>(0u);
+    this->to_be_deleted = new std::vector< uint >(0u);
+    this->delete_data = true;
+    this->delete_to_be_deleted = true;
+}
+
+
 template <typename Array_Type, typename Data_Type>
 inline Counter<Array_Type,Data_Type> &
 Counters<Array_Type,Data_Type>::operator[](uint idx) {
@@ -153,13 +161,14 @@ inline Counters<Array_Type,Data_Type>::Counters(
     const Counters<Array_Type,Data_Type> & counter_
 ) :
     data(new std::vector< Counter<Array_Type,Data_Type>* >(0u)),
-    to_be_deleted(0u),
-    delete_data(true)
+    to_be_deleted(new std::vector< uint >(0u)),
+    delete_data(true),
+    delete_to_be_deleted(true)
 {
 
     // Checking which need to be deleted
     std::vector< bool > tbd(counter_.size(), false);
-    for (auto& i : counter_.to_be_deleted)
+    for (auto& i : *(counter_.to_be_deleted))
         tbd[i] = true;
 
     // Copy all counters, if a counter is tagged as 
@@ -184,12 +193,15 @@ inline Counters<Array_Type,Data_Type>::Counters(
     ) noexcept :
     data(std::move(counters_.data)),
     to_be_deleted(std::move(counters_.to_be_deleted)),
-    delete_data(counters_.delete_data)
+    delete_data(std::move(counters_.delete_data)),
+    delete_to_be_deleted(std::move(counters_.delete_to_be_deleted))
 {
 
     // Taking care of memory
     counters_.data = nullptr;
+    counters_.to_be_deleted = nullptr;
     counters_.delete_data = false;
+    counters_.delete_to_be_deleted = false;
 
 }
 
@@ -202,15 +214,17 @@ Counters<Array_Type,Data_Type> Counters<Array_Type,Data_Type>::operator=(
 
         // Checking which need to be deleted
         std::vector< bool > tbd(counter_.size(), false);
-        for (auto i : counter_.to_be_deleted)
+        for (auto i : *(counter_.to_be_deleted))
             tbd[i] = true;
 
         // Removing the data currently stored in the 
         this->clear();
-        this->to_be_deleted.resize(0u);
+        
 
         data = new std::vector< Counter<Array_Type,Data_Type>* >(0u);
+        to_be_deleted = new std::vector< uint >(0u);
         delete_data = true;
+        delete_to_be_deleted = true;
 
         // Copy all counters, if a counter is tagged as 
         // to be deleted, then copy the value
@@ -243,11 +257,14 @@ inline Counters<Array_Type,Data_Type> & Counters<Array_Type,Data_Type>::operator
         this->clear();
 
         data          = std::move(counters_.data);
-        delete_data   = counters_.delete_data;
         to_be_deleted = std::move(counters_.to_be_deleted);
+        delete_data   = std::move(counters_.delete_data);
+        delete_to_be_deleted   = std::move(counters_.delete_to_be_deleted);
 
         counters_.data = nullptr;
+        counters_.to_be_deleted = nullptr;
         counters_.delete_data = false;
+        counters_.delete_to_be_deleted = false;
 
     }
 
@@ -261,7 +278,7 @@ inline void Counters<Array_Type,Data_Type>::add_counter(
 )
 {
     
-    to_be_deleted.push_back(data->size());
+    to_be_deleted->push_back(data->size());
     data->push_back(new Counter<Array_Type, Data_Type>(counter));
     
     return;
@@ -292,7 +309,7 @@ inline void Counters<Array_Type,Data_Type>::add_counter(
     /* We still need to delete the counter since we are using the 'new' operator.
       * Yet, the actual data may not need to be deleted.
       */
-    to_be_deleted.push_back(data->size());
+    to_be_deleted->push_back(data->size());
     
     data->push_back(new Counter<Array_Type,Data_Type>(
         count_fun_,
@@ -311,15 +328,17 @@ template <typename Array_Type, typename Data_Type>
 inline void Counters<Array_Type,Data_Type>::clear()
 {
     
-    for (auto& i : to_be_deleted)
+    for (auto& i : (*to_be_deleted))
         delete data->operator[](i);
     
-    to_be_deleted.clear();
-
     if (delete_data)
         delete data;
 
-    data = nullptr;
+    if (delete_to_be_deleted)
+        delete to_be_deleted;
+
+    data          = nullptr;
+    to_be_deleted = nullptr;
     
     return;
     
