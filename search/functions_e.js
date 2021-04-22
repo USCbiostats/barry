@@ -7,7 +7,7 @@ var searchData=
   ['rm_5fcell_624',['rm_cell',['../class_b_array.html#aaead894ff275479db4f733793ce037db',1,'BArray']]],
   ['row_625',['row',['../class_b_array.html#aaac3760787307c1b9ecf2b442cab935e',1,'BArray']]],
   ['rule_626',['Rule',['../class_rule.html#aef92e54d53dc77b5cad2f819b5f8f4bf',1,'Rule::Rule()'],['../class_rule.html#ad0b81db664bed03f9a381f90ab617424',1,'Rule::Rule(Rule_fun_type&lt; Array_Type, Data_Type &gt; fun_, Data_Type *dat_=nullptr, bool delete_dat_=false)']]],
-  ['rule_5fdyn_5fmin_5fmax_627',['rule_dyn_min_max',['../group__rules-phylo.html#gae8bc29d623e0ebdb1ee77aaf088e2881',1,'phylo.hpp']]],
+  ['rule_5fdyn_5flimit_5fchanges_627',['rule_dyn_limit_changes',['../group__rules-phylo.html#ga2858fa9742c6713d93055c16fd30745f',1,'phylo.hpp']]],
   ['rule_5ffun_5fdefault_628',['rule_fun_default',['../rules-bones_8hpp.html#aaeb0527576529579dd4cb51cb3ba73e0',1,'rules-bones.hpp']]],
   ['rule_5ffunction_629',['RULE_FUNCTION',['../geese-bones_8hpp.html#a11c7dd7dca27f32547bb602f30ceb5e8',1,'geese-bones.hpp']]],
   ['rules_630',['Rules',['../class_rules.html#aa78e9abf82ed8a0e4320d570191c8968',1,'Rules::Rules()'],['../class_rules.html#a57f5ab44febba391b2a06d163d25b237',1,'Rules::Rules(const Rules&lt; Array_Type, Data_Type &gt; &amp;rules_)']]],

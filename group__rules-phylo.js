@@ -9,5 +9,5 @@ var group__rules_phylo =
       [ "pos", "class_phylo_rule_dyn_data.html#a6c653f20ca848b0da97adca9790ad86e", null ],
       [ "ub", "class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346", null ]
     ] ],
-    [ "rule_dyn_min_max", "group__rules-phylo.html#gae8bc29d623e0ebdb1ee77aaf088e2881", null ]
+    [ "rule_dyn_limit_changes", "group__rules-phylo.html#ga2858fa9742c6713d93055c16fd30745f", null ]
 ];

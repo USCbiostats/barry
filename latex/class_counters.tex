@@ -17,9 +17,13 @@ Vector of counters.
 \mbox{\hyperlink{class_counters_a6ce3fa5d32d646efb5d83fa1feaf5e95}{$\sim$\+Counters}} ()
 \item 
 \mbox{\hyperlink{class_counters_a178c0267c1f52a36e10e9d257a21a224}{Counters}} (const \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&counter\+\_\+)
-\item 
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_counters_abb3b7a01d7c51931a5f3b25959340784}{Counters}} (\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&\&counters\+\_\+) noexcept
+\begin{DoxyCompactList}\small\item\em Move constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \mbox{\hyperlink{class_counters_a0edeb22b0b1640f7ada1ef47a30ac486}{operator=}} (const \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&counter\+\_\+)
-\item 
+\begin{DoxyCompactList}\small\item\em Copy assignment constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \& \mbox{\hyperlink{class_counters_a7a86bd98fa6fe65e48c382152c3a94fa}{operator=}} (\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&\&counter\+\_\+) noexcept
+\begin{DoxyCompactList}\small\item\em Move assignment constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_counter}{Counter}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \& \mbox{\hyperlink{class_counters_a031002f578171aaa615d08b1a2f9be40}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} idx)
 \begin{DoxyCompactList}\small\item\em Returns a pointer to a particular counter. \end{DoxyCompactList}\item 
 std\+::size\+\_\+t \mbox{\hyperlink{class_counters_ad7980fd3757652e20b90ce1064e333c2}{size}} () const noexcept
@@ -42,7 +46,7 @@ Vector of counters.
 
 Various functions hold more than one counter, so this class is a helper class that allows managing multiple counters efficiently. The main data is a vector to pointers of counters. 
 
-Definition at line 98 of file counters-\/bones.\+hpp.
+Definition at line 99 of file counters-\/bones.\+hpp.
 
 
 
@@ -50,13 +54,13 @@ Definition at line 98 of file counters-\/bones.\+hpp.
 \mbox{\Hypertarget{class_counters_a98e4efd06b3d878609911e392a8f42ce}\label{class_counters_a98e4efd06b3d878609911e392a8f42ce}} 
 \index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!Counters@{Counters}}
 \index{Counters@{Counters}!Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{Counters()}{Counters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_counters}{Counters}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\doxysubsubsection{\texorpdfstring{Counters()}{Counters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_counters}{Counters}}\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 107 of file counters-\/bones.\+hpp.
+Definition at line 143 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_counters_a6ce3fa5d32d646efb5d83fa1feaf5e95}\label{class_counters_a6ce3fa5d32d646efb5d83fa1feaf5e95}} 
 \index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!````~Counters@{$\sim$Counters}}
@@ -67,18 +71,47 @@ Definition at line 107 of file counters-\/bones.\+hpp.
 
 
 
-Definition at line 110 of file counters-\/bones.\+hpp.
+Definition at line 113 of file counters-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_counters_a178c0267c1f52a36e10e9d257a21a224}\label{class_counters_a178c0267c1f52a36e10e9d257a21a224}} 
 \index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!Counters@{Counters}}
 \index{Counters@{Counters}!Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{Counters()}{Counters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{Counters()}{Counters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
 \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_counters}{Counters}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&}]{counter\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 67 of file counters-\/meat.\+hpp.
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em counter\+\_\+} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 160 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_counters_abb3b7a01d7c51931a5f3b25959340784}\label{class_counters_abb3b7a01d7c51931a5f3b25959340784}} 
+\index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!Counters@{Counters}}
+\index{Counters@{Counters}!Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{Counters()}{Counters()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_counters}{Counters}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&\&}]{counters\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Move constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em counters\+\_\+} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 191 of file counters-\/meat.\+hpp.
 
 
 
@@ -92,7 +125,7 @@ void \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 157 of file counters-\/meat.\+hpp.
+Definition at line 276 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_counters_a74f054aa9ea64103c2d9f79f115777d4}\label{class_counters_a74f054aa9ea64103c2d9f79f115777d4}} 
 \index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!add\_counter@{add\_counter}}
@@ -103,7 +136,7 @@ void \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 169 of file counters-\/meat.\+hpp.
+Definition at line 288 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_counters_aa45e9cee9d8e791c5f2cb4f6a7f8db7c}\label{class_counters_aa45e9cee9d8e791c5f2cb4f6a7f8db7c}} 
 \index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!add\_counter@{add\_counter}}
@@ -114,7 +147,7 @@ void \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 180 of file counters-\/meat.\+hpp.
+Definition at line 299 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_counters_ae4635c154970a13ce88d2e982fe7dab3}\label{class_counters_ae4635c154970a13ce88d2e982fe7dab3}} 
 \index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!clear@{clear}}
@@ -125,18 +158,53 @@ void \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\
 
 
 
-Definition at line 209 of file counters-\/meat.\+hpp.
+Definition at line 328 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_counters_a0edeb22b0b1640f7ada1ef47a30ac486}\label{class_counters_a0edeb22b0b1640f7ada1ef47a30ac486}} 
 \index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!operator=@{operator=}}
 \index{operator=@{operator=}!Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
 \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&}]{counter\+\_\+ }\end{DoxyParamCaption})}
 
 
 
-Definition at line 94 of file counters-\/meat.\+hpp.
+Copy assignment constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em counter\+\_\+} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Counters$<$\+Array\+\_\+\+Type,\+Data\+\_\+\+Type$>$ 
+\end{DoxyReturn}
+
+
+Definition at line 209 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_counters_a7a86bd98fa6fe65e48c382152c3a94fa}\label{class_counters_a7a86bd98fa6fe65e48c382152c3a94fa}} 
+\index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \& \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&\&}]{counter\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Move assignment constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em counter\+\_\+} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Counters$<$\+Array\+\_\+\+Type,\+Data\+\_\+\+Type$>$\& 
+\end{DoxyReturn}
+
+
+Definition at line 248 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_counters_a031002f578171aaa615d08b1a2f9be40}\label{class_counters_a031002f578171aaa615d08b1a2f9be40}} 
 \index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
@@ -159,7 +227,7 @@ Counter$<$\+Array\+\_\+\+Type,\+Data\+\_\+\+Type$>$$\ast$
 \end{DoxyReturn}
 
 
-Definition at line 150 of file counters-\/meat.\+hpp.
+Definition at line 153 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_counters_ad7980fd3757652e20b90ce1064e333c2}\label{class_counters_ad7980fd3757652e20b90ce1064e333c2}} 
 \index{Counters$<$ Array\_Type, Data\_Type $>$@{Counters$<$ Array\_Type, Data\_Type $>$}!size@{size}}
@@ -177,7 +245,7 @@ uint
 \end{DoxyReturn}
 
 
-Definition at line 130 of file counters-\/bones.\+hpp.
+Definition at line 159 of file counters-\/bones.\+hpp.
 
 
 

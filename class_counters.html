@@ -112,9 +112,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6ce3fa5d32d646efb5d83fa1feaf5e95"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#a6ce3fa5d32d646efb5d83fa1feaf5e95">~Counters</a> ()</td></tr>
 <tr class="separator:a6ce3fa5d32d646efb5d83fa1feaf5e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a178c0267c1f52a36e10e9d257a21a224"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#a178c0267c1f52a36e10e9d257a21a224">Counters</a> (const <a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt; &amp;counter_)</td></tr>
+<tr class="memdesc:a178c0267c1f52a36e10e9d257a21a224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="class_counters.html#a178c0267c1f52a36e10e9d257a21a224">More...</a><br /></td></tr>
 <tr class="separator:a178c0267c1f52a36e10e9d257a21a224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb3b7a01d7c51931a5f3b25959340784"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#abb3b7a01d7c51931a5f3b25959340784">Counters</a> (<a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt; &amp;&amp;counters_) noexcept</td></tr>
+<tr class="memdesc:abb3b7a01d7c51931a5f3b25959340784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="class_counters.html#abb3b7a01d7c51931a5f3b25959340784">More...</a><br /></td></tr>
+<tr class="separator:abb3b7a01d7c51931a5f3b25959340784"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0edeb22b0b1640f7ada1ef47a30ac486"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#a0edeb22b0b1640f7ada1ef47a30ac486">operator=</a> (const <a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt; &amp;counter_)</td></tr>
+<tr class="memdesc:a0edeb22b0b1640f7ada1ef47a30ac486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment constructor.  <a href="class_counters.html#a0edeb22b0b1640f7ada1ef47a30ac486">More...</a><br /></td></tr>
 <tr class="separator:a0edeb22b0b1640f7ada1ef47a30ac486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a86bd98fa6fe65e48c382152c3a94fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#a7a86bd98fa6fe65e48c382152c3a94fa">operator=</a> (<a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt; &amp;&amp;counter_) noexcept</td></tr>
+<tr class="memdesc:a7a86bd98fa6fe65e48c382152c3a94fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment constructor.  <a href="class_counters.html#a7a86bd98fa6fe65e48c382152c3a94fa">More...</a><br /></td></tr>
+<tr class="separator:a7a86bd98fa6fe65e48c382152c3a94fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a031002f578171aaa615d08b1a2f9be40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counter.html">Counter</a>&lt; Array_Type, Data_Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_counters.html#a031002f578171aaa615d08b1a2f9be40">operator[]</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> idx)</td></tr>
 <tr class="memdesc:a031002f578171aaa615d08b1a2f9be40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to a particular counter.  <a href="class_counters.html#a031002f578171aaa615d08b1a2f9be40">More...</a><br /></td></tr>
 <tr class="separator:a031002f578171aaa615d08b1a2f9be40"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,24 +145,21 @@ class Counters&lt; Array_Type, Data_Type &gt;</h3>
 <p>Vector of counters. </p>
 <p>Various functions hold more than one counter, so this class is a helper class that allows managing multiple counters efficiently. The main data is a vector to pointers of counters. </p>
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00098">98</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00099">99</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a98e4efd06b3d878609911e392a8f42ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98e4efd06b3d878609911e392a8f42ce">&#9670;&nbsp;</a></span>Counters() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a98e4efd06b3d878609911e392a8f42ce">&#9670;&nbsp;</a></span>Counters() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt;::<a class="el" href="class_counters.html">Counters</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt;::<a class="el" href="class_counters.html">Counters</a></td>
         </tr>
       </table>
   </td>
@@ -164,7 +169,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00107">107</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00143">143</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -193,12 +198,12 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00110">110</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00113">113</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>
 <a id="a178c0267c1f52a36e10e9d257a21a224"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a178c0267c1f52a36e10e9d257a21a224">&#9670;&nbsp;</a></span>Counters() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a178c0267c1f52a36e10e9d257a21a224">&#9670;&nbsp;</a></span>Counters() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,7 +228,53 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00067">67</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
+<p>Copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">counter_</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00160">160</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="abb3b7a01d7c51931a5f3b25959340784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb3b7a01d7c51931a5f3b25959340784">&#9670;&nbsp;</a></span>Counters() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt;::<a class="el" href="class_counters.html">Counters</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>counters_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Move constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">counters_</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00191">191</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -254,7 +305,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00157">157</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00276">276</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -284,7 +335,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00169">169</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00288">288</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -348,7 +399,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00180">180</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00299">299</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -374,12 +425,12 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00209">209</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00328">328</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
 
 </div>
 </div>
 <a id="a0edeb22b0b1640f7ada1ef47a30ac486"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0edeb22b0b1640f7ada1ef47a30ac486">&#9670;&nbsp;</a></span>operator=()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0edeb22b0b1640f7ada1ef47a30ac486">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -396,7 +447,55 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00094">94</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
+<p>Copy assignment constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">counter_</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Counters&lt;Array_Type,Data_Type&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00209">209</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a7a86bd98fa6fe65e48c382152c3a94fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a86bd98fa6fe65e48c382152c3a94fa">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt; &amp; <a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Type &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>counter_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Move assignment constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">counter_</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Counters&lt;Array_Type,Data_Type&gt;&amp; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00248">248</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -435,7 +534,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Counter&lt;Array_Type,Data_Type&gt;* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00150">150</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-meat_8hpp_source.html#l00153">153</a> of file <a class="el" href="counters-meat_8hpp_source.html">counters-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -467,7 +566,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <p>Number of counters in the set. </p>
 <dl class="section return"><dt>Returns</dt><dd>uint </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00130">130</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters-bones_8hpp_source.html#l00159">159</a> of file <a class="el" href="counters-bones_8hpp_source.html">counters-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -481,7 +580,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_counters.html">Counters</a></li>
-    <li class="footer">Generated on Tue Apr 20 2021 22:38:41 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Apr 22 2021 19:47:26 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -12,7 +12,7 @@ var searchData=
   ['row_301',['row',['../class_b_array.html#aaac3760787307c1b9ecf2b442cab935e',1,'BArray']]],
   ['row_5ftype_302',['Row_type',['../typedefs_8hpp.html#a4deca4f3fb25a4da374818ab459b8b4a',1,'typedefs.hpp']]],
   ['rule_303',['Rule',['../class_rule.html#aef92e54d53dc77b5cad2f819b5f8f4bf',1,'Rule::Rule()'],['../class_rule.html#ad0b81db664bed03f9a381f90ab617424',1,'Rule::Rule(Rule_fun_type&lt; Array_Type, Data_Type &gt; fun_, Data_Type *dat_=nullptr, bool delete_dat_=false)'],['../class_rule.html',1,'Rule&lt; Array_Type, Data_Type &gt;']]],
-  ['rule_5fdyn_5fmin_5fmax_304',['rule_dyn_min_max',['../group__rules-phylo.html#gae8bc29d623e0ebdb1ee77aaf088e2881',1,'phylo.hpp']]],
+  ['rule_5fdyn_5flimit_5fchanges_304',['rule_dyn_limit_changes',['../group__rules-phylo.html#ga2858fa9742c6713d93055c16fd30745f',1,'phylo.hpp']]],
   ['rule_5ffun_5fdefault_305',['rule_fun_default',['../rules-bones_8hpp.html#aaeb0527576529579dd4cb51cb3ba73e0',1,'rules-bones.hpp']]],
   ['rule_5ffun_5ftype_306',['Rule_fun_type',['../typedefs_8hpp.html#a99982bdca40c23ca6f901c8e66da78a1',1,'typedefs.hpp']]],
   ['rule_5ffunction_307',['RULE_FUNCTION',['../barry_8hpp.html#aca4359c3356b25fb710d4dbc93d8d5a8',1,'RULE_FUNCTION():&#160;barry.hpp'],['../geese-bones_8hpp.html#a11c7dd7dca27f32547bb602f30ceb5e8',1,'RULE_FUNCTION(rule_empty_free):&#160;geese-bones.hpp']]],

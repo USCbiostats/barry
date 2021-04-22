@@ -31,5 +31,5 @@ var phylo_8hpp =
     [ "counter_overall_loss", "group__counters-phylo.html#gadce790b84a0a7e875e543bec08194f2b", null ],
     [ "counter_subfun", "group__counters-phylo.html#ga84cd89f379bfc60e36bad06eeb7063af", null ],
     [ "get_last_name", "phylo_8hpp.html#add31e0ba346cdf08524d6da73500f846", null ],
-    [ "rule_dyn_min_max", "group__rules-phylo.html#gae8bc29d623e0ebdb1ee77aaf088e2881", null ]
+    [ "rule_dyn_limit_changes", "group__rules-phylo.html#ga2858fa9742c6713d93055c16fd30745f", null ]
 ];
