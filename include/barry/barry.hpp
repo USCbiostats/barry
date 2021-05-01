@@ -18,6 +18,8 @@
 #ifndef BARRY_HPP
 #define BARRY_HPP 
 
+#define BARRY_VERSION 0.1
+
 /**
   * @brief barry: Your go-to motif accountant
   */

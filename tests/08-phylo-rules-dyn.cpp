@@ -34,16 +34,20 @@ TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
 
     std::cout << "---- Support with reduced pset ---" << std::endl;
     // Generating the support
-    barry::Support<PhyloArray,PhyloCounterData,PhyloRuleData,RuleDynD> S(d);
+    barry::Support<PhyloArray,PhyloCounterData,PhyloRuleData,PhyloRuleDynData> S(d);
     counter_overall_changes(S.get_counters());
     
     // Creating a rule, we start with the data
-    RuleDynD rd(&(S.get_current_stats()), 0, 2u);
+    RuleDynD rd(S.get_current_stats(), 0, 2u);
     
-    barry::Rule<PhyloArray,RuleDynD> reduce_gains(check_max_gains, &rd, false); 
-    S.add_rule_dyn(reduce_gains);
+    // barry::Rule<PhyloArray,RuleDynD> reduce_gains(check_max_gains, &rd, false); 
+    // S.add_rule_dyn(reduce_gains);
+    
+    rule_dyn_limit_changes(&S, 0, 0, 2);
     S.calc();
     S.print();
+
+    
 
     std::cout << "---- Support with full pset ------" << std::endl;
     barry::Support<PhyloArray,PhyloCounterData,PhyloRuleData,RuleDynD> S2(d);

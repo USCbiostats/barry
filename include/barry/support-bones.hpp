@@ -59,7 +59,7 @@ public:
     uint max_num_elements = BARRY_MAX_NUM_ELEMENTS;
     
     // Temp variables to reduce memory allocation
-    std::vector< double >                current_stats;
+    std::vector< double >                current_stats = {};
     std::vector< std::pair<uint,uint> >  coordinates_free;
     std::vector< std::pair<uint,uint> >  coordinates_locked;
     std::vector< std::vector< double > > change_stats;
@@ -165,7 +165,7 @@ public:
     
     Counts_type           get_counts() const;
     const MapVec_type<> * get_counts_ptr() const;
-    const std::vector< double > & get_current_stats() const; ///< List current statistics.
+    std::vector< double > * get_current_stats(); ///< List current statistics.
     void print() const;
     
     const FreqTable<> &                      get_data() const;

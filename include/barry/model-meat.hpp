@@ -8,8 +8,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
     target_stats(0u), arrays2support(0u), keys2support(0u),
     counters(new Counters<Array_Type,Data_Counter_Type>()),
-    delete_counters(true),
-    rules(), rules_dyn()
+    rules(), rules_dyn(), delete_counters(true)
 {  
 
     // Counters are shared
@@ -31,8 +30,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
     target_stats(0u), arrays2support(0u), keys2support(0u), 
     counters(new Counters<Array_Type,Data_Counter_Type>()),
-    delete_counters(true),
-    rules(), rules_dyn()
+    rules(), rules_dyn(), delete_counters(true)
 {
     
     target_stats.reserve(size_);
@@ -63,12 +61,12 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     arrays2support(Model_.arrays2support),
     keys2support(Model_.keys2support),
     counters(new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters))),
-    delete_counters(true),
     rules(Model_.rules),
     rules_dyn(Model_.rules_dyn),
     params_last(Model_.params_last),
     normalizing_constants(Model_.normalizing_constants),
-    first_calc_done(Model_.first_calc_done)
+    first_calc_done(Model_.first_calc_done),
+    delete_counters(true)
     {
     
     // Counters are shared
@@ -664,18 +662,27 @@ inline const std::mt19937 * Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Da
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline Counters<Array_Type,Data_Counter_Type> * Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_counters() {
+inline Counters<Array_Type,Data_Counter_Type> *
+Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_counters() {
     return this->counters;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline Rules<Array_Type,Data_Rule_Type> & Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_rules() {
+inline Rules<Array_Type,Data_Rule_Type> &
+Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_rules() {
     return this->rules;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline Rules<Array_Type,Data_Rule_Dyn_Type> & Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_rules_dyn() {
+inline Rules<Array_Type,Data_Rule_Dyn_Type> &
+Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_rules_dyn() {
     return this->rules_dyn;
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> *
+Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_support() {
+    return &this->support_fun;
 }
 
 #endif

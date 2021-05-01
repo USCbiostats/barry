@@ -227,7 +227,7 @@ public:
 
     std::mt19937 *                     get_rengine();
     phylocounters::PhyloCounters *     get_counters();
-    phylocounters::PhyloModel *        get_support();
+    phylocounters::PhyloSupport *      get_support();
     std::vector< std::vector< bool > > get_states();
 
 };

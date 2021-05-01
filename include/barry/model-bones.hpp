@@ -357,6 +357,7 @@ public:
     Counters<Array_Type,Data_Counter_Type> * get_counters();
     Rules<Array_Type,Data_Rule_Type>       & get_rules();
     Rules<Array_Type,Data_Rule_Dyn_Type>   & get_rules_dyn();
+    Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> * get_support();
 
 };
 

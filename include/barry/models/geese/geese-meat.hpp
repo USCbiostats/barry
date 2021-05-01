@@ -433,8 +433,8 @@ inline phylocounters::PhyloCounters * Geese::get_counters() {
     return this->counters;
 }
 
-inline phylocounters::PhyloModel * Geese::get_support() {
-    return this->support;
+inline phylocounters::PhyloSupport * Geese::get_support() {
+    return this->support->get_support();
 }
 
 inline std::vector< std::vector< bool > > Geese::get_states() {

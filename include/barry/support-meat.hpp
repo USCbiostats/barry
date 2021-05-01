@@ -324,8 +324,8 @@ inline const MapVec_type<> * Support<Array_Type,Data_Counter_Type, Data_Rule_Typ
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline const std::vector< double > & Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::get_current_stats() const {
-    return this->current_stats;
+inline std::vector< double > * Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::get_current_stats() {
+    return &this->current_stats;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>

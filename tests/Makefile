@@ -1,3 +1,4 @@
+VPATH = ../include/barry
 BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
        counters-*.gcov model-*.gcov rules-*.gcov \
        cell-*.gcov powerset-*.gcov support-*.gcov \
@@ -5,10 +6,11 @@ BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
 
 CPPFLAGS= -std=c++11 -Wall -pedantic
 
-check: main.o
+check: main.o 
 	./main.o
 
-main.o: main.cpp
+.PHONY: *.hpp
+main.o: main.cpp *.hpp
 	g++ $(CPPFLAGS) -O3 main.cpp -g -o main.o
 
 checkv: mainv.o

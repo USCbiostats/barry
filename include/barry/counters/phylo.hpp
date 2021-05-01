@@ -1241,7 +1241,7 @@ inline void rule_dyn_limit_changes(
     support->get_rules_dyn()->add_rule(
         tmp_rule,
         new PhyloRuleDynData(
-            &support->get_current_stats(),
+            support->get_current_stats(),
             pos, lb, ub, duplication
             ),
         true 
