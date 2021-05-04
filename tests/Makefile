@@ -20,7 +20,7 @@ mainv.o: main.cpp
 	g++ $(CPPFLAGS) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -o mainv.o
 
 clean:
-	rm main*.o; rm *.gcov; rm *gcno; rm *gcda
+	rm -f main*.o; rm -f *.gcov; rm -f *gcno; rm -f *gcda
 
 coverage: mainv.o
 	./mainv.o && gcov -r main.cpp && \

@@ -59,7 +59,7 @@ public:
     uint max_num_elements = BARRY_MAX_NUM_ELEMENTS;
     
     // Temp variables to reduce memory allocation
-    std::vector< double >                current_stats = {};
+    std::vector< double >                current_stats;
     std::vector< std::pair<uint,uint> >  coordinates_free;
     std::vector< std::pair<uint,uint> >  coordinates_locked;
     std::vector< std::vector< double > > change_stats;
@@ -71,7 +71,7 @@ public:
         counters(new Counters<Array_Type,Data_Counter_Type>()),
         rules(new Rules<Array_Type,Data_Rule_Type>()),
         rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
-        N(Array_.nrow()), M(Array_.ncol()) {};
+        N(Array_.nrow()), M(Array_.ncol()), current_stats() {};
     
     /**@brief Constructor specifying the dimensions of the array (empty).
       */
@@ -80,14 +80,14 @@ public:
         counters(new Counters<Array_Type,Data_Counter_Type>()),
         rules(new Rules<Array_Type,Data_Rule_Type>()),
         rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
-        N(N_), M(M_) {};
+        N(N_), M(M_), current_stats() {};
     
     Support() :
         EmptyArray(0u, 0u),
         counters(new Counters<Array_Type,Data_Counter_Type>()),
         rules(new Rules<Array_Type,Data_Rule_Type>()),
         rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
-        N(0u), M(0u) {};
+        N(0u), M(0u), current_stats() {};
     
     ~Support() {
         

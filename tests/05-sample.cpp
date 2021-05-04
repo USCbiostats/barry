@@ -13,7 +13,7 @@ TEST_CASE("Sampling networks (with Model)", "[sampling w model]") {
     counter_mutual(m.get_counters());
 
     // Adding rules
-    rules_zerodiag(&m.get_rules());
+    rules_zerodiag(m.get_rules());
 
     // Adding an array
     Network net(4, 4);

@@ -8,7 +8,11 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
     target_stats(0u), arrays2support(0u), keys2support(0u),
     counters(new Counters<Array_Type,Data_Counter_Type>()),
-    rules(), rules_dyn(), delete_counters(true)
+    rules(new Rules<Array_Type,Data_Rule_Type>()),
+    rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
+    support_fun(), counter_fun(), delete_counters(true),
+    delete_rules(true),
+    delete_rules_dyn(true)
 {  
 
     // Counters are shared
@@ -16,7 +20,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     counter_fun.set_counters(counters);
     
     // Rules are shared
-    support_fun.set_rules(&rules);
+    support_fun.set_rules(rules);
+    support_fun.set_rules_dyn(rules_dyn);
 
     // Checking with the hasher function: Is this present?
     keygen = keygen_default<Array_Type>;
@@ -30,7 +35,11 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
     target_stats(0u), arrays2support(0u), keys2support(0u), 
     counters(new Counters<Array_Type,Data_Counter_Type>()),
-    rules(), rules_dyn(), delete_counters(true)
+    rules(new Rules<Array_Type,Data_Rule_Type>()),
+    rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
+    support_fun(), counter_fun(), delete_counters(true),
+    delete_rules(true),
+    delete_rules_dyn(true)
 {
     
     target_stats.reserve(size_);
@@ -41,7 +50,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     counter_fun.set_counters(counters);
     
     // Rules are shared
-    support_fun.set_rules(&rules);
+    support_fun.set_rules(rules);
+    support_fun.set_rules_dyn(rules_dyn);
     
     // Checking with the hasher function: Is this present?
     keygen = keygen_default<Array_Type>;
@@ -61,12 +71,16 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     arrays2support(Model_.arrays2support),
     keys2support(Model_.keys2support),
     counters(new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters))),
-    rules(Model_.rules),
-    rules_dyn(Model_.rules_dyn),
+    rules(new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules))),
+    rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn))),
+    support_fun(),
+    counter_fun(),
     params_last(Model_.params_last),
     normalizing_constants(Model_.normalizing_constants),
     first_calc_done(Model_.first_calc_done),
-    delete_counters(true)
+    delete_counters(true),
+    delete_rules(true),
+    delete_rules_dyn(true)
     {
     
     // Counters are shared
@@ -74,7 +88,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Mo
     counter_fun.set_counters(counters);
     
     // Rules are shared
-    support_fun.set_rules(&rules);
+    support_fun.set_rules(rules);
+    support_fun.set_rules_dyn(rules_dyn);
 
     keygen = Model_.keygen;
     
@@ -93,6 +108,12 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> &
 
         if (delete_counters)
             delete counters;
+
+        if (delete_rules)
+            delete rules;
+        
+        if (delete_rules_dyn)
+            delete rules_dyn;
         
         stats                 = Model_.stats;
         n_arrays_per_stats    = Model_.n_arrays_per_stats;
@@ -102,9 +123,11 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> &
         arrays2support        = Model_.arrays2support;
         keys2support          = Model_.keys2support;
         counters              = new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters));
+        rules                 = new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules));
+        rules_dyn             = new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn));
         delete_counters       = true;
-        rules                 = Model_.rules;
-        rules_dyn             = Model_.rules_dyn;
+        delete_rules          = true;
+        delete_rules_dyn      = true;
         params_last           = Model_.params_last;
         normalizing_constants = Model_.normalizing_constants;
         first_calc_done       = Model_.first_calc_done;
@@ -114,7 +137,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> &
         counter_fun.set_counters(counters);
         
         // Rules are shared
-        support_fun.set_rules(&rules);
+        support_fun.set_rules(rules);
+        support_fun.set_rules_dyn(rules_dyn);
         
     }
         
@@ -202,7 +226,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
     Rule<Array_Type, Data_Rule_Type> & rules
 ) {
     
-    rules.add_rule(rules);
+    rules->add_rule(rules);
     return;
 }
 
@@ -211,7 +235,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
     Rule<Array_Type, Data_Rule_Type> * rule
 ) {
     
-    rules.add_rule(rule);
+    rules->add_rule(rule);
     return;
     
 }
@@ -223,7 +247,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
     bool                                     delete_data_
 ) {
     
-    rules.add_rule(
+    rules->add_rule(
         rule_fun_,
         data_,
         delete_data_
@@ -238,8 +262,13 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
     Rules<Array_Type,Data_Rule_Type> * rules_
 ) {
 
-    this->rules = *rules_;
-    support_fun.set_rules(&rules);
+    if (delete_rules)
+        delete rules;
+
+    this->rules = rules_;
+    this->delete_rules = false;
+
+    support_fun.set_rules(rules);
     return;
 
 }
@@ -248,19 +277,19 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule_dyn(
-    Rule<Array_Type, Data_Rule_Dyn_Type> & rules
+    Rule<Array_Type, Data_Rule_Dyn_Type> & rules_
 ) {
     
-    rules_dyn.add_rule(rules);
+    rules_dyn->add_rule(rules_);
     return;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::add_rule_dyn(
-    Rule<Array_Type, Data_Rule_Dyn_Type> * rules
+    Rule<Array_Type, Data_Rule_Dyn_Type> * rules_
 ) {
     
-    rules_dyn.add_rule(rules);
+    rules_dyn->add_rule(rules_);
     return;
     
 }
@@ -272,7 +301,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
     bool                                     delete_data_
 ) {
     
-    rules_dyn.add_rule(
+    rules_dyn->add_rule(
         rule_fun_,
         data_,
         delete_data_
@@ -287,8 +316,12 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
     Rules<Array_Type,Data_Rule_Dyn_Type> * rules_
 ) {
 
-    this->rules_dyn = *rules_;
-    support_fun.set_rules_dyn(&rules_dyn);
+    if (delete_rules_dyn)
+        delete rules_dyn;
+
+    this->rules_dyn = rules_;
+    this->delete_rules_dyn = false;
+    support_fun.set_rules_dyn(rules_dyn);
     return;
 
 }
@@ -668,13 +701,13 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_count
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline Rules<Array_Type,Data_Rule_Type> &
+inline Rules<Array_Type,Data_Rule_Type> *
 Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_rules() {
     return this->rules;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline Rules<Array_Type,Data_Rule_Dyn_Type> &
+inline Rules<Array_Type,Data_Rule_Dyn_Type> *
 Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::get_rules_dyn() {
     return this->rules_dyn;
 }
