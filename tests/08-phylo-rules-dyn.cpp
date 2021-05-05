@@ -21,7 +21,7 @@ bool check_max_gains(const PhyloArray & A, uint i, uint j, RuleDynD * d)
 
     // The count must be included iff the number of changes
     // is less than the max allowed
-    return d->max_changes < (d->counts->operator[](d->pos));
+    return d->max_changes > (d->counts->operator[](d->pos));
 
 }
 

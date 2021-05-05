@@ -54,7 +54,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
         data.reserve(pow(2.0, static_cast<double>(coordinates_free.size() - 4u))); 
 
     // Adding to the overall count
-    bool include_it = !rules_dyn->operator()(EmptyArray, 0u, 0u);
+    bool include_it = rules_dyn->operator()(EmptyArray, 0u, 0u);
     if (include_it)
         data.add(current_stats);
 
@@ -128,7 +128,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
     BARRY_CHECK_SUPPORT(data, max_num_elements)
     if (rules_dyn->size() > 0u)
     {
-        if (!rules_dyn->operator()(EmptyArray, cfree.first, cfree.second))
+        if (rules_dyn->operator()(EmptyArray, cfree.first, cfree.second))
         {
 
             data.add(current_stats);
