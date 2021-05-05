@@ -72,8 +72,7 @@ inline Geese::~Geese() {
 
     if (delete_support)
         delete support;
-    if (delete_counters)
-        delete counters;
+
     if (delete_rengine)
         delete rengine;
 
@@ -88,7 +87,6 @@ inline void Geese::init() {
         this->support = new phylocounters::PhyloModel();
         this->delete_support = true;
         this->support->set_keygen(keygen_full);
-        this->support->set_counters(this->counters);
         this->support->store_psets();
 
     }
@@ -144,14 +142,6 @@ inline void Geese::inherit_support(const Geese & model_, bool delete_support_) {
 
     this->support = model_.support;
     this->delete_support = delete_support_;
-
-    // Checking counters
-    if (this->delete_counters) {
-        delete this->counters;
-        this->delete_counters = false;
-    }
-    
-    this->counters = model_.counters;
 
     // And random number generation
     if (this->delete_rengine) {
@@ -323,7 +313,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts() {
 
     // Creating counter
     phylocounters::PhyloStatsCounter tmpcount;
-    tmpcount.set_counters(counters);
+    tmpcount.set_counters(this->support->get_counters());
 
     // Iterating through the nodes
     for (auto& n : nodes) {
@@ -371,7 +361,7 @@ inline void Geese::print_observed_counts() {
 
     // Creating counter
     phylocounters::PhyloStatsCounter tmpcount;
-    tmpcount.set_counters(counters);
+    tmpcount.set_counters(this->support->get_counters());
 
     // Iterating through the nodes
     for (auto& n : nodes) {
@@ -430,7 +420,7 @@ inline std::mt19937 * Geese::get_rengine() {
 }
 
 inline phylocounters::PhyloCounters * Geese::get_counters() {
-    return this->counters;
+    return this->support->get_counters();
 }
 
 inline phylocounters::PhyloSupport * Geese::get_support() {

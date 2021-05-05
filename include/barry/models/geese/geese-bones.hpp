@@ -85,7 +85,6 @@ private:
      */
     ///@{
     std::mt19937 *                     rengine  = nullptr;
-    phylocounters::PhyloCounters *     counters = nullptr;
     phylocounters::PhyloModel *        support  = nullptr;
     std::vector< std::vector< bool > > states;
     ///@}
@@ -104,7 +103,6 @@ public:
     // Admin-related objects
     bool initialized     = false;
     bool delete_rengine  = false;
-    bool delete_counters = false;
     bool delete_support  = false;
 
     /**

@@ -18,4 +18,4 @@
 #include "06-geese.cpp"
 #include "07-geese-flock.cpp"
 #include "08-phylo-rules-dyn.cpp"
-// #include "09-geese-with-rules.cpp"
+#include "09-geese-with-rules.cpp"

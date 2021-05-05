@@ -55,12 +55,6 @@ inline void Flock::init() {
 
         a.rengine         = &rengine;
         a.delete_rengine  = false;
-
-        if (a.delete_counters)
-            delete a.counters;
-
-        a.counters        = support.get_counters();
-        a.delete_counters = false;
         
     }
 
