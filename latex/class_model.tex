@@ -42,9 +42,11 @@ const std\+::mt19937 $\ast$ \mbox{\hyperlink{class_model_a02cac4f649946705bfb4d6
 \item 
 \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model_a2345f3e51002d81bd60cb0b14f006dbd}{get\+\_\+counters}} ()
 \item 
-\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \& \mbox{\hyperlink{class_model_abf686ab1876a8c1cb8c46a91e9e46b6c}{get\+\_\+rules}} ()
+\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model_a8796a5e54c0ba505129db2bc1e452d0d}{get\+\_\+rules}} ()
 \item 
-\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \& \mbox{\hyperlink{class_model_a3e32b0ae64bc900ec161168c426b53f8}{get\+\_\+rules\+\_\+dyn}} ()
+\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model_aff4c85b28ba08c67b6d3308cf94fc30a}{get\+\_\+rules\+\_\+dyn}} ()
+\item 
+\mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model_ad7172ae040b6f7b96a039b6870b16b8a}{get\+\_\+support}} ()
 \end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Wrappers for the $<$tt$>$Counters$<$/tt$>$ member.}\par
 {\em These will add counters to the model, which are shared by the support and the actual counter function. }\begin{DoxyCompactItemize}
@@ -187,7 +189,7 @@ Definition at line 7 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 30 of file model-\/meat.\+hpp.
+Definition at line 34 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a43b71b392309bd71ed7c49f783b8815b}\label{class_model_a43b71b392309bd71ed7c49f783b8815b}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!Model@{Model}}
@@ -198,7 +200,7 @@ Definition at line 30 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 56 of file model-\/meat.\+hpp.
+Definition at line 64 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_aa9122e81cbe406bc84e98a95983c0a5d}\label{class_model_aa9122e81cbe406bc84e98a95983c0a5d}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!````~Model@{$\sim$Model}}
@@ -209,7 +211,7 @@ Definition at line 56 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 203 of file model-\/bones.\+hpp.
+Definition at line 205 of file model-\/bones.\+hpp.
 
 
 
@@ -237,7 +239,7 @@ The number of the array.
 \end{DoxyReturn}
 When computing with the powerset, we need to grow the corresponding vectors on the fly
 
-Definition at line 302 of file model-\/meat.\+hpp.
+Definition at line 333 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a2326ca9975e29d3cf1902b6e60c613b9}\label{class_model_a2326ca9975e29d3cf1902b6e60c613b9}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_counter@{add\_counter}}
@@ -248,7 +250,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 145 of file model-\/meat.\+hpp.
+Definition at line 167 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_aaa60b9d0bd48d7bedab2d3f410c89e77}\label{class_model_aaa60b9d0bd48d7bedab2d3f410c89e77}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_counter@{add\_counter}}
@@ -259,7 +261,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 154 of file model-\/meat.\+hpp.
+Definition at line 176 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_add0f1260296a7b9a56df81a7997f9afc}\label{class_model_add0f1260296a7b9a56df81a7997f9afc}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_counter@{add\_counter}}
@@ -270,7 +272,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 164 of file model-\/meat.\+hpp.
+Definition at line 186 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_af9b85db739f6947861fe123136c11c07}\label{class_model_af9b85db739f6947861fe123136c11c07}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_rule@{add\_rule}}
@@ -281,7 +283,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 203 of file model-\/meat.\+hpp.
+Definition at line 225 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a9e74ed2e29c0c2a14af5f80022628633}\label{class_model_a9e74ed2e29c0c2a14af5f80022628633}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_rule@{add\_rule}}
@@ -292,7 +294,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 212 of file model-\/meat.\+hpp.
+Definition at line 234 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a3310000e2bf3bb1f5e02fafa84dca7e7}\label{class_model_a3310000e2bf3bb1f5e02fafa84dca7e7}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_rule@{add\_rule}}
@@ -303,7 +305,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 222 of file model-\/meat.\+hpp.
+Definition at line 244 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a37a168110eee4743dc5b1af5b67c7f6a}\label{class_model_a37a168110eee4743dc5b1af5b67c7f6a}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_rule\_dyn@{add\_rule\_dyn}}
@@ -314,7 +316,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 252 of file model-\/meat.\+hpp.
+Definition at line 279 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a16bdfebe17039c3bee9036695ae15b3d}\label{class_model_a16bdfebe17039c3bee9036695ae15b3d}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_rule\_dyn@{add\_rule\_dyn}}
@@ -325,7 +327,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 261 of file model-\/meat.\+hpp.
+Definition at line 288 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_ad73751c54d16bfc1992794ed2bfc2718}\label{class_model_ad73751c54d16bfc1992794ed2bfc2718}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_rule\_dyn@{add\_rule\_dyn}}
@@ -336,7 +338,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 271 of file model-\/meat.\+hpp.
+Definition at line 298 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a2345f3e51002d81bd60cb0b14f006dbd}\label{class_model_a2345f3e51002d81bd60cb0b14f006dbd}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_counters@{get\_counters}}
@@ -347,7 +349,7 @@ Definition at line 271 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 667 of file model-\/meat.\+hpp.
+Definition at line 702 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a9e1685f87f57bca1432ef77dcb86b3b6}\label{class_model_a9e1685f87f57bca1432ef77dcb86b3b6}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_norm\_const@{get\_norm\_const}}
@@ -358,7 +360,7 @@ double \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+C
 
 
 
-Definition at line 533 of file model-\/meat.\+hpp.
+Definition at line 567 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a9a39fe4b96a9f71292bfc545a4475e21}\label{class_model_a9a39fe4b96a9f71292bfc545a4475e21}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_pset@{get\_pset}}
@@ -369,7 +371,7 @@ const std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model
 
 
 
-Definition at line 565 of file model-\/meat.\+hpp.
+Definition at line 599 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a02cac4f649946705bfb4d69bc3a3576f}\label{class_model_a02cac4f649946705bfb4d69bc3a3576f}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_rengine@{get\_rengine}}
@@ -380,29 +382,29 @@ const std\+::mt19937 $\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+
 
 
 
-Definition at line 662 of file model-\/meat.\+hpp.
+Definition at line 696 of file model-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_model_abf686ab1876a8c1cb8c46a91e9e46b6c}\label{class_model_abf686ab1876a8c1cb8c46a91e9e46b6c}} 
+\mbox{\Hypertarget{class_model_a8796a5e54c0ba505129db2bc1e452d0d}\label{class_model_a8796a5e54c0ba505129db2bc1e452d0d}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_rules@{get\_rules}}
 \index{get\_rules@{get\_rules}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{get\_rules()}{get\_rules()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \\
-\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ \& \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+rules\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+rules\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 672 of file model-\/meat.\+hpp.
+Definition at line 708 of file model-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_model_a3e32b0ae64bc900ec161168c426b53f8}\label{class_model_a3e32b0ae64bc900ec161168c426b53f8}} 
+\mbox{\Hypertarget{class_model_aff4c85b28ba08c67b6d3308cf94fc30a}\label{class_model_aff4c85b28ba08c67b6d3308cf94fc30a}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_rules\_dyn@{get\_rules\_dyn}}
 \index{get\_rules\_dyn@{get\_rules\_dyn}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{get\_rules\_dyn()}{get\_rules\_dyn()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \\
-\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \& \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+rules\+\_\+dyn\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+rules\+\_\+dyn\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 677 of file model-\/meat.\+hpp.
+Definition at line 714 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_afcca9bcc2e07f75756899f757e203abc}\label{class_model_afcca9bcc2e07f75756899f757e203abc}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_stats@{get\_stats}}
@@ -413,7 +415,18 @@ const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \mbox{\hyperlink{c
 
 
 
-Definition at line 578 of file model-\/meat.\+hpp.
+Definition at line 612 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_model_ad7172ae040b6f7b96a039b6870b16b8a}\label{class_model_ad7172ae040b6f7b96a039b6870b16b8a}} 
+\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_support@{get\_support}}
+\index{get\_support@{get\_support}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_support()}{get\_support()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+support\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 720 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a42cc1109ccaf9b016a1c1787cd356c0b}\label{class_model_a42cc1109ccaf9b016a1c1787cd356c0b}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!likelihood@{likelihood}}
@@ -424,7 +437,7 @@ double \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+C
 
 
 
-Definition at line 419 of file model-\/meat.\+hpp.
+Definition at line 453 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a64f75d5e8fda31a27e3bf2aeb95a81da}\label{class_model_a64f75d5e8fda31a27e3bf2aeb95a81da}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!likelihood@{likelihood}}
@@ -435,7 +448,7 @@ double \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+C
 
 
 
-Definition at line 459 of file model-\/meat.\+hpp.
+Definition at line 493 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a6b7ca648f1b2f04967e0d3473ae13eab}\label{class_model_a6b7ca648f1b2f04967e0d3473ae13eab}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!likelihood@{likelihood}}
@@ -446,7 +459,7 @@ double \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+C
 
 
 
-Definition at line 386 of file model-\/meat.\+hpp.
+Definition at line 420 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a849c382c401986612056d6fdf043deb4}\label{class_model_a849c382c401986612056d6fdf043deb4}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!likelihood\_total@{likelihood\_total}}
@@ -457,7 +470,7 @@ double \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+C
 
 
 
-Definition at line 493 of file model-\/meat.\+hpp.
+Definition at line 527 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a397d25c301bb8601cc74ce5d8fbf102b}\label{class_model_a397d25c301bb8601cc74ce5d8fbf102b}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!nterms@{nterms}}
@@ -468,7 +481,7 @@ Definition at line 493 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 619 of file model-\/meat.\+hpp.
+Definition at line 653 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a4cf7b0d8d1c1d5996e09b3dbf7599cd6}\label{class_model_a4cf7b0d8d1c1d5996e09b3dbf7599cd6}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!operator=@{operator=}}
@@ -479,7 +492,7 @@ Definition at line 619 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 89 of file model-\/meat.\+hpp.
+Definition at line 102 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_acd6c7c2599ae49a5a3818b2b699c652c}\label{class_model_acd6c7c2599ae49a5a3818b2b699c652c}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!print\_stats@{print\_stats}}
@@ -490,7 +503,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 590 of file model-\/meat.\+hpp.
+Definition at line 624 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a2adac6eb2d37bd67d5f0222374ce193d}\label{class_model_a2adac6eb2d37bd67d5f0222374ce193d}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!sample@{sample}}
@@ -508,7 +521,7 @@ Array\+\_\+\+Type \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Da
 
 
 
-Definition at line 626 of file model-\/meat.\+hpp.
+Definition at line 660 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a93632a05117d5b862d082885015c9363}\label{class_model_a93632a05117d5b862d082885015c9363}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!set\_counters@{set\_counters}}
@@ -519,7 +532,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 183 of file model-\/meat.\+hpp.
+Definition at line 205 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a879c5c5caf9aa858d08dcaa1be6cebb9}\label{class_model_a879c5c5caf9aa858d08dcaa1be6cebb9}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!set\_keygen@{set\_keygen}}
@@ -530,7 +543,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 137 of file model-\/meat.\+hpp.
+Definition at line 159 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_af86cd3bfb4b3c929a263090950435a3c}\label{class_model_af86cd3bfb4b3c929a263090950435a3c}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!set\_rengine@{set\_rengine}}
@@ -541,7 +554,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 175 of file model-\/bones.\+hpp.
+Definition at line 177 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a696fd8dc85423d35fee3b9718877abb4}\label{class_model_a696fd8dc85423d35fee3b9718877abb4}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!set\_rules@{set\_rules}}
@@ -552,7 +565,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 239 of file model-\/meat.\+hpp.
+Definition at line 261 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_ab200cf9d28983471fa8264fc90071bad}\label{class_model_ab200cf9d28983471fa8264fc90071bad}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!set\_rules\_dyn@{set\_rules\_dyn}}
@@ -563,7 +576,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 288 of file model-\/meat.\+hpp.
+Definition at line 315 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a616ea1628570afcd5701a4e923e6dc1c}\label{class_model_a616ea1628570afcd5701a4e923e6dc1c}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!set\_seed@{set\_seed}}
@@ -574,7 +587,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 185 of file model-\/bones.\+hpp.
+Definition at line 187 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_aa853cdd425525a20b8744f530190fb9c}\label{class_model_aa853cdd425525a20b8744f530190fb9c}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!size@{size}}
@@ -585,7 +598,7 @@ Definition at line 185 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 609 of file model-\/meat.\+hpp.
+Definition at line 643 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_aa51d7dbf3bc990a84bd4ba7b0861eeaa}\label{class_model_aa51d7dbf3bc990a84bd4ba7b0861eeaa}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!size\_unique@{size\_unique}}
@@ -596,7 +609,7 @@ Definition at line 609 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 614 of file model-\/meat.\+hpp.
+Definition at line 648 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_model_a3e8c4587b259d60fcf7c70c7e3f55082}\label{class_model_a3e8c4587b259d60fcf7c70c7e3f55082}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!store\_psets@{store\_psets}}
@@ -607,7 +620,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 129 of file model-\/meat.\+hpp.
+Definition at line 151 of file model-\/meat.\+hpp.
 
 
 

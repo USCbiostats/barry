@@ -14,7 +14,7 @@ var class_support =
     [ "get_counters", "class_support.html#a9f2237792f9688bf86ae89454048db9a", null ],
     [ "get_counts", "class_support.html#a07c4c70dbf52f19d0a6f53e46cb1024c", null ],
     [ "get_counts_ptr", "class_support.html#af942b8638a6b4e7a24e3f43939ab7f9f", null ],
-    [ "get_current_stats", "class_support.html#a1690453d91ed7939b7fa250b224e8fc8", null ],
+    [ "get_current_stats", "class_support.html#afc4fca55ca37dc97ed692687c38c7ce2", null ],
     [ "get_data", "class_support.html#aea248c2251be2cdcc1f3e0262fb7d2b6", null ],
     [ "get_rules", "class_support.html#a368a9c7797e1a76c3ee150070e66c212", null ],
     [ "get_rules_dyn", "class_support.html#a53daafcd49daac43c6e8841a8a17a05a", null ],
