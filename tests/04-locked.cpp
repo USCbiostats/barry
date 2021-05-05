@@ -5,9 +5,9 @@
 
 // Defining rule to lock the first cell
 RULE_FUNCTION(myrule) {
-    if (i == 0 & j == 0u)
-        return true;
-    return false;
+
+    return i != 0 || j != 0u;
+
 }
 
 // Defining a change statistics ------------------------------------------------

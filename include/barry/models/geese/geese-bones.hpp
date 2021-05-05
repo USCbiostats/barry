@@ -20,9 +20,9 @@ inline std::vector< Ta > vector_caster(const std::vector< Tb > & x) {
 
 // The same need to be locked
 RULE_FUNCTION(rule_empty_free) {
-    if (Array.get_cell(i, j) == 9u)
-        return false;
-    return true;
+
+    return Array.get_cell(i, j) == 9u;
+    
 }
 
 

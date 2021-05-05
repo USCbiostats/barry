@@ -742,7 +742,7 @@ inline void counter_degree(
 inline void rules_zerodiag(NetRules * rules) {
     
     NETWORK_RULE_LAMBDA(no_self_tie) {
-        return i == j;
+        return i != j;
     };
     
     rules->add_rule(no_self_tie);

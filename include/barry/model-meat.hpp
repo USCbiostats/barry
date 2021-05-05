@@ -371,8 +371,11 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
                 
             } catch (const std::exception& e) {
                 
-                std::cout << "A problem ocurred while trying to add the array (and recording the powerset)." <<
-                    "with error: " << e.what();
+                printf(
+                    "A problem ocurred while trying to add the array (and recording the powerset). "
+                );
+                printf("with error %s\n", e.what());
+                    // "with error: " << e.what();
                 throw std::logic_error("");
                 
             }
@@ -383,8 +386,8 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
                 support_fun.calc();
             } catch (const std::exception& e) {
                 
-                std::cout << "A problem ocurred while trying to add the array." <<
-                    "with error: " << e.what();
+                printf("A problem ocurred while trying to add the array. ");
+                printf("with error: %s", e.what());
                 throw std::logic_error("");
                 
             }
@@ -625,11 +628,11 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
 
     for (uint l = 0u; l < stats[arrays2support[i]].size(); ++l) {
         printf("% 5i ", l);
-        std::cout << "counts " << stats[arrays2support[i]][l].second << " motif: ";
+        printf("counts: %i motif: ", stats[arrays2support[i]][l].second);
         for (unsigned int k = 0u; k < stats[arrays2support[i]][l].first.size(); ++k) {
-            std::cout << stats[arrays2support[i]][l].first[k] << ", ";
+            printf("%.2f, ", stats[arrays2support[i]][l].first[k]);
         }
-        std::cout << std::endl;
+        printf("\n");
     }
     
     return;

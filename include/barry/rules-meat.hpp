@@ -113,13 +113,13 @@ inline bool Rules<Array_Type,Data_Type>::operator()(
 ) {
     
     if (data.size()==0u)
-        return false;
+        return true;
     
     for (auto iter = data.begin(); iter != data.end(); ++iter)
-        if ((*iter)->operator()(a, i, j))
-            return true;
+        if (!(*iter)->operator()(a, i, j))
+            return false;
     
-    return false;
+    return true;
     
 }
 
@@ -152,7 +152,7 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
     
     for (uint i = 0u; i < N; ++i) {
         for (uint j = 0u; j < K; ++j) {
-            if (!this->operator()(a, i, j))
+            if (this->operator()(a, i, j))
                 free->push_back({i, j});
             else if (locked != nullptr)
                 locked->push_back({i,j});
