@@ -39,5 +39,6 @@ var class_model =
     [ "set_seed", "class_model.html#a616ea1628570afcd5701a4e923e6dc1c", null ],
     [ "size", "class_model.html#aa853cdd425525a20b8744f530190fb9c", null ],
     [ "size_unique", "class_model.html#aa51d7dbf3bc990a84bd4ba7b0861eeaa", null ],
-    [ "store_psets", "class_model.html#a3e8c4587b259d60fcf7c70c7e3f55082", null ]
+    [ "store_psets", "class_model.html#a3e8c4587b259d60fcf7c70c7e3f55082", null ],
+    [ "support_size", "class_model.html#a64b07157941b89a7bfafeae8637b76be", null ]
 ];

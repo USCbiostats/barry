@@ -190,21 +190,21 @@ $(document).ready(function(){initNavTree('statsdb_8hpp_source.html',''); initRes
 <div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_freq_table.html#a4fe8f5e3b5bf64a1cbaf99deb96298d4">  102</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_freq_table.html#a4fe8f5e3b5bf64a1cbaf99deb96298d4">FreqTable&lt;T&gt;::print</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> grand_total = 0u;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    printf(<span class="stringliteral">&quot;%7s | %s\n&quot;</span>, <span class="stringliteral">&quot;Counts&quot;</span>, <span class="stringliteral">&quot;Stats&quot;</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%7s | %s\n&quot;</span>, <span class="stringliteral">&quot;Counts&quot;</span>, <span class="stringliteral">&quot;Stats&quot;</span>);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = data.begin(); i != data.end(); ++i)</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        printf(<span class="stringliteral">&quot;%7i | &quot;</span>, i-&gt;second);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%7i | &quot;</span>, i-&gt;second);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; j : i-&gt;first)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            printf(<span class="stringliteral">&quot; %.2f&quot;</span>, j);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot; %.2f&quot;</span>, j);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        grand_total += i-&gt;second;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    printf(<span class="stringliteral">&quot;Grand total: %i\n&quot;</span>, grand_total);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Grand total: %i\n&quot;</span>, grand_total);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
@@ -218,6 +218,7 @@ $(document).ready(function(){initNavTree('statsdb_8hpp_source.html',''); initRes
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="abarry-configuration_8hpp_html_a2bd7dd8168e4165684de9dba0ae08469"><div class="ttname"><a href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a></div><div class="ttdeci">#define printf_barry</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00049">barry-configuration.hpp:49</a></div></div>
 <div class="ttc" id="aclass_freq_table_html"><div class="ttname"><a href="class_freq_table.html">FreqTable</a></div><div class="ttdoc">Database of statistics.</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00016">statsdb.hpp:16</a></div></div>
 <div class="ttc" id="aclass_freq_table_html_a0bdced25f7c0bee38e073c4654578d19"><div class="ttname"><a href="class_freq_table.html#a0bdced25f7c0bee38e073c4654578d19">FreqTable::reserve</a></div><div class="ttdeci">void reserve(unsigned int n)</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00089">statsdb.hpp:89</a></div></div>
 <div class="ttc" id="aclass_freq_table_html_a1898e62605d8753e170189936d403e05"><div class="ttname"><a href="class_freq_table.html#a1898e62605d8753e170189936d403e05">FreqTable::as_vector</a></div><div class="ttdeci">Counts_type as_vector() const</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00061">statsdb.hpp:61</a></div></div>
@@ -239,7 +240,7 @@ $(document).ready(function(){initNavTree('statsdb_8hpp_source.html',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="statsdb_8hpp.html">statsdb.hpp</a></li>
-    <li class="footer">Generated on Wed May 5 2021 22:29:52 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu May 6 2021 00:13:18 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

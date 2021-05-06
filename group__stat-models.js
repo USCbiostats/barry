@@ -40,7 +40,8 @@ var group__stat_models =
       [ "set_seed", "class_model.html#a616ea1628570afcd5701a4e923e6dc1c", null ],
       [ "size", "class_model.html#aa853cdd425525a20b8744f530190fb9c", null ],
       [ "size_unique", "class_model.html#aa51d7dbf3bc990a84bd4ba7b0861eeaa", null ],
-      [ "store_psets", "class_model.html#a3e8c4587b259d60fcf7c70c7e3f55082", null ]
+      [ "store_psets", "class_model.html#a3e8c4587b259d60fcf7c70c7e3f55082", null ],
+      [ "support_size", "class_model.html#a64b07157941b89a7bfafeae8637b76be", null ]
     ] ],
     [ "Flock", "class_flock.html", [
       [ "Flock", "class_flock.html#a2a0a514c368e21f718ad7358ed42f3b7", null ],
@@ -57,6 +58,7 @@ var group__stat_models =
       [ "ntrees", "class_flock.html#a1c10e21ab3091fe8dbfa9ae5ec38fd4d", null ],
       [ "operator()", "class_flock.html#acf48c1e56d5bf03f9b240114fa1e18ff", null ],
       [ "set_seed", "class_flock.html#acfa9efc24a1ff2f0f31206570da51259", null ],
+      [ "support_size", "class_flock.html#aec9956b6d0bc303b4348e116027605d2", null ],
       [ "dat", "class_flock.html#af493163235db2dcb44b8c5e615f52bdb", null ],
       [ "initialized", "class_flock.html#aad9b90040d349a23b33e09292bb964db", null ],
       [ "nfunctions", "class_flock.html#a77220682e593e9d455f56a5607981ff2", null ],
@@ -93,6 +95,7 @@ var group__stat_models =
       [ "print_observed_counts", "class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8", null ],
       [ "set_seed", "class_geese.html#aa5d623d5e242a29090bf5a01bfeeeb9f", null ],
       [ "simulate", "class_geese.html#a675662efdded0d24c146946aa15ed481", null ],
+      [ "support_size", "class_geese.html#a4716f07b6ffb2b0f171a9130fbb38f1a", null ],
       [ "update_annotations", "class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a", null ],
       [ "delete_rengine", "class_geese.html#a1e614555901572392026f85ff1a6b3c8", null ],
       [ "delete_support", "class_geese.html#a914996ac39160fb46e1ce6d70609a36a", null ],

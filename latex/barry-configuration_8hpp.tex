@@ -8,11 +8,6 @@ This graph shows which files directly or indirectly include this file\+:
 \includegraphics[width=350pt]{barry-configuration_8hpp__dep__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{barry-configuration_8hpp_a4e96e4fea282b750197f31432abe3d97}{BARRY\+\_\+\+MAX\+\_\+\+NUM\+\_\+\+ELEMENTS}}~static\+\_\+cast$<$ unsigned int $>$(UINT\+\_\+\+MAX/2u)
-\end{DoxyCompactItemize}
 \doxysubsection*{Configuration MACROS}
 \label{_amgrpd443768f87814e03628cca78cd22f6d5}%
  These are mostly related to performance. The definitions follow\+:
@@ -21,7 +16,8 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyItemize}
 \item {\ttfamily BARRY\+\_\+\+USE\+\_\+\+UNORDERED\+\_\+\+MAP} If specified, then barry is compiled using {\ttfamily std\+::unordered\+\_\+map}. Otherwise it will use {\ttfamily std\+::map} for the arrays.
 \item {\ttfamily BARRY\+\_\+\+USE\+\_\+\+SAFE\+\_\+\+EXP} When specified, it will multiply all likelihoods in {\ttfamily \mbox{\hyperlink{class_model}{Model}}} by (1/-\/100)/(1/-\/100) so that numerical overflows are avoided.
-\item {\ttfamily BARRY\+\_\+\+CHECK\+\_\+\+FINITE} When specified, it will introduce a macro 
+\item {\ttfamily BARRY\+\_\+\+USE\+\_\+\+ISFINITE} When specified, it will introduce a macro that checks whether the likelihood is finite or not.
+\item {\ttfamily printf\+\_\+barry} If not specified, will be defined as {\ttfamily printf}. 
 \end{DoxyItemize}\begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{barry-configuration_8hpp_aa8fd3df3585111e6734d97092df83f57}{BARRY\+\_\+\+SAFE\+\_\+\+EXP}}~-\/100.\+0
@@ -29,6 +25,10 @@ This graph shows which files directly or indirectly include this file\+:
 \#define \mbox{\hyperlink{barry-configuration_8hpp_aa3c8e71d6d426f5207d478054c790a13}{BARRY\+\_\+\+ISFINITE}}(a)
 \item 
 \#define \mbox{\hyperlink{barry-configuration_8hpp_a5b878dc4fbdf4acdc12646565c2b3b56}{BARRY\+\_\+\+CHECK\+\_\+\+SUPPORT}}(x,  maxs)
+\item 
+\#define \mbox{\hyperlink{barry-configuration_8hpp_a2bd7dd8168e4165684de9dba0ae08469}{printf\+\_\+barry}}~printf
+\item 
+\#define \mbox{\hyperlink{barry-configuration_8hpp_a4e96e4fea282b750197f31432abe3d97}{BARRY\+\_\+\+MAX\+\_\+\+NUM\+\_\+\+ELEMENTS}}~static\+\_\+cast$<$ unsigned int $>$(UINT\+\_\+\+MAX/2u)
 \item 
 {\footnotesize template$<$typename Ta , typename Tb $>$ }\\using \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}} = std\+::map$<$ Ta, Tb $>$
 \end{DoxyCompactItemize}
@@ -43,7 +43,7 @@ This graph shows which files directly or indirectly include this file\+:
 
 
 
-Definition at line 46 of file barry-\/configuration.\+hpp.
+Definition at line 45 of file barry-\/configuration.\+hpp.
 
 \mbox{\Hypertarget{barry-configuration_8hpp_aa3c8e71d6d426f5207d478054c790a13}\label{barry-configuration_8hpp_aa3c8e71d6d426f5207d478054c790a13}} 
 \index{barry-\/configuration.hpp@{barry-\/configuration.hpp}!BARRY\_ISFINITE@{BARRY\_ISFINITE}}
@@ -53,7 +53,7 @@ Definition at line 46 of file barry-\/configuration.\+hpp.
 
 
 
-Definition at line 39 of file barry-\/configuration.\+hpp.
+Definition at line 38 of file barry-\/configuration.\+hpp.
 
 \mbox{\Hypertarget{barry-configuration_8hpp_a4e96e4fea282b750197f31432abe3d97}\label{barry-configuration_8hpp_a4e96e4fea282b750197f31432abe3d97}} 
 \index{barry-\/configuration.hpp@{barry-\/configuration.hpp}!BARRY\_MAX\_NUM\_ELEMENTS@{BARRY\_MAX\_NUM\_ELEMENTS}}
@@ -63,7 +63,7 @@ Definition at line 39 of file barry-\/configuration.\+hpp.
 
 
 
-Definition at line 5 of file barry-\/configuration.\+hpp.
+Definition at line 53 of file barry-\/configuration.\+hpp.
 
 \mbox{\Hypertarget{barry-configuration_8hpp_aa8fd3df3585111e6734d97092df83f57}\label{barry-configuration_8hpp_aa8fd3df3585111e6734d97092df83f57}} 
 \index{barry-\/configuration.hpp@{barry-\/configuration.hpp}!BARRY\_SAFE\_EXP@{BARRY\_SAFE\_EXP}}
@@ -73,7 +73,17 @@ Definition at line 5 of file barry-\/configuration.\+hpp.
 
 
 
-Definition at line 32 of file barry-\/configuration.\+hpp.
+Definition at line 31 of file barry-\/configuration.\+hpp.
+
+\mbox{\Hypertarget{barry-configuration_8hpp_a2bd7dd8168e4165684de9dba0ae08469}\label{barry-configuration_8hpp_a2bd7dd8168e4165684de9dba0ae08469}} 
+\index{barry-\/configuration.hpp@{barry-\/configuration.hpp}!printf\_barry@{printf\_barry}}
+\index{printf\_barry@{printf\_barry}!barry-\/configuration.hpp@{barry-\/configuration.hpp}}
+\doxysubsubsection{\texorpdfstring{printf\_barry}{printf\_barry}}
+{\footnotesize\ttfamily \#define printf\+\_\+barry~printf}
+
+
+
+Definition at line 49 of file barry-\/configuration.\+hpp.
 
 
 
@@ -87,5 +97,5 @@ using \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a177
 
 
 
-Definition at line 26 of file barry-\/configuration.\+hpp.
+Definition at line 25 of file barry-\/configuration.\+hpp.
 

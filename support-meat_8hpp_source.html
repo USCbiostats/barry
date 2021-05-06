@@ -428,9 +428,9 @@ $(document).ready(function(){initNavTree('support-meat_8hpp_source.html',''); in
 <div class="line"><a name="l00332"></a><span class="lineno"><a class="line" href="class_support.html#a62f4f98b01bb0a9424a425d38cd0e83d">  332</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_support.html#a62f4f98b01bb0a9424a425d38cd0e83d">Support&lt;Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type&gt;::print</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="comment">// Starting from the name of the stats</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    printf(<span class="stringliteral">&quot;Position of variables:\n&quot;</span>);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Position of variables:\n&quot;</span>);</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; counters-&gt;size(); ++i) {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        printf(<span class="stringliteral">&quot;[% 2i] %s\n&quot;</span>, i, counters-&gt;operator[](i).name.c_str());</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;[% 2i] %s\n&quot;</span>, i, counters-&gt;operator[](i).name.c_str());</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    }</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    data.print();</div>
@@ -457,8 +457,9 @@ $(document).ready(function(){initNavTree('support-meat_8hpp_source.html',''); in
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;}</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="abarry-configuration_8hpp_html_a4e96e4fea282b750197f31432abe3d97"><div class="ttname"><a href="barry-configuration_8hpp.html#a4e96e4fea282b750197f31432abe3d97">BARRY_MAX_NUM_ELEMENTS</a></div><div class="ttdeci">#define BARRY_MAX_NUM_ELEMENTS</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00005">barry-configuration.hpp:5</a></div></div>
-<div class="ttc" id="abarry-configuration_8hpp_html_a5b878dc4fbdf4acdc12646565c2b3b56"><div class="ttname"><a href="barry-configuration_8hpp.html#a5b878dc4fbdf4acdc12646565c2b3b56">BARRY_CHECK_SUPPORT</a></div><div class="ttdeci">#define BARRY_CHECK_SUPPORT(x, maxs)</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00046">barry-configuration.hpp:46</a></div></div>
+<div class="ttc" id="abarry-configuration_8hpp_html_a2bd7dd8168e4165684de9dba0ae08469"><div class="ttname"><a href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a></div><div class="ttdeci">#define printf_barry</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00049">barry-configuration.hpp:49</a></div></div>
+<div class="ttc" id="abarry-configuration_8hpp_html_a4e96e4fea282b750197f31432abe3d97"><div class="ttname"><a href="barry-configuration_8hpp.html#a4e96e4fea282b750197f31432abe3d97">BARRY_MAX_NUM_ELEMENTS</a></div><div class="ttdeci">#define BARRY_MAX_NUM_ELEMENTS</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00053">barry-configuration.hpp:53</a></div></div>
+<div class="ttc" id="abarry-configuration_8hpp_html_a5b878dc4fbdf4acdc12646565c2b3b56"><div class="ttname"><a href="barry-configuration_8hpp.html#a5b878dc4fbdf4acdc12646565c2b3b56">BARRY_CHECK_SUPPORT</a></div><div class="ttdeci">#define BARRY_CHECK_SUPPORT(x, maxs)</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00045">barry-configuration.hpp:45</a></div></div>
 <div class="ttc" id="aclass_counter_html"><div class="ttname"><a href="class_counter.html">Counter</a></div><div class="ttdoc">A counter function based on change statistics.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00038">counters-bones.hpp:38</a></div></div>
 <div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00099">counters-bones.hpp:99</a></div></div>
 <div class="ttc" id="aclass_freq_table_html"><div class="ttname"><a href="class_freq_table.html">FreqTable</a></div><div class="ttdoc">Database of statistics.</div><div class="ttdef"><b>Definition:</b> <a href="statsdb_8hpp_source.html#l00016">statsdb.hpp:16</a></div></div>
@@ -495,7 +496,7 @@ $(document).ready(function(){initNavTree('support-meat_8hpp_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="support-meat_8hpp.html">support-meat.hpp</a></li>
-    <li class="footer">Generated on Wed May 5 2021 22:29:52 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu May 6 2021 00:13:18 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

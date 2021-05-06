@@ -3,7 +3,9 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
     [ "counters", "dir_b3150c389b0f5b078392750f1ae70361.html", "dir_b3150c389b0f5b078392750f1ae70361" ],
     [ "models", "dir_488ec4010567cc6d95c62bdcb57a6d3e.html", "dir_488ec4010567cc6d95c62bdcb57a6d3e" ],
     [ "barray-bones.hpp", "barray-bones_8hpp.html", "barray-bones_8hpp" ],
-    [ "barray-iterator.hpp", "barray-iterator_8hpp.html", "barray-iterator_8hpp" ],
+    [ "barray-iterator.hpp", "barray-iterator_8hpp.html", [
+      [ "ConstBArrayRowIter", "class_const_b_array_row_iter.html", "class_const_b_array_row_iter" ]
+    ] ],
     [ "barray-meat-operators.hpp", "barray-meat-operators_8hpp.html", "barray-meat-operators_8hpp" ],
     [ "barray-meat.hpp", "barray-meat_8hpp.html", "barray-meat_8hpp" ],
     [ "barraycell-bones.hpp", "barraycell-bones_8hpp.html", [

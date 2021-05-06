@@ -29,6 +29,7 @@ var class_geese =
     [ "print_observed_counts", "class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8", null ],
     [ "set_seed", "class_geese.html#aa5d623d5e242a29090bf5a01bfeeeb9f", null ],
     [ "simulate", "class_geese.html#a675662efdded0d24c146946aa15ed481", null ],
+    [ "support_size", "class_geese.html#a4716f07b6ffb2b0f171a9130fbb38f1a", null ],
     [ "update_annotations", "class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a", null ],
     [ "delete_rengine", "class_geese.html#a1e614555901572392026f85ff1a6b3c8", null ],
     [ "delete_support", "class_geese.html#a914996ac39160fb46e1ce6d70609a36a", null ],
