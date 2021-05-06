@@ -78,6 +78,7 @@ public:
     std::vector< unsigned int > nnodes() const noexcept;
     std::vector< unsigned int > nleafs() const noexcept;
     unsigned int nterms() const;
+    unsigned int support_size() const noexcept;
     ///@}
 
     /**

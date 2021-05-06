@@ -176,6 +176,7 @@ public:
     unsigned int nnodes() const noexcept;
     unsigned int nleafs() const noexcept;
     unsigned int nterms() const;
+    unsigned int support_size() const noexcept;
     ///@}
 
     std::vector< std::vector<double> > observed_counts();

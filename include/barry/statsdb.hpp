@@ -102,21 +102,21 @@ template<typename T>
 inline void FreqTable<T>::print() const {
 
     uint grand_total = 0u;
-    printf("%7s | %s\n", "Counts", "Stats");
+    printf_barry("%7s | %s\n", "Counts", "Stats");
     for (auto i = data.begin(); i != data.end(); ++i)
     {
 
-        printf("%7i | ", i->second);
+        printf_barry("%7i | ", i->second);
 
         for (const auto& j : i->first)
-            printf(" %.2f", j);
-        printf("\n");
+            printf_barry(" %.2f", j);
+        printf_barry("\n");
 
         grand_total += i->second;
 
     }
 
-    printf("Grand total: %i\n", grand_total);
+    printf_barry("Grand total: %i\n", grand_total);
 
     return;
 

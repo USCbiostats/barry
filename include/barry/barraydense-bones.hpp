@@ -1,6 +1,6 @@
-#include<vector>
-#include <stdexcept>
-#include "typedefs.hpp"
+// #include<vector>
+// #include <stdexcept>
+// #include "typedefs.hpp"
 
 /**
  * @brief Dense bi-dimensional array
@@ -128,15 +128,15 @@ template<typename Cell_Type,typename Data_Type>
 inline void BArrayDense<Cell_Type,Data_Type>::print() const {
 
     if (N*M == 0u)
-        printf("< empty dense array >\n");
+        printf_barry("< empty dense array >\n");
 
     for (uint i = 0u; i < N; ++i)
     {
-        printf("[%3i,]", i);
+        printf_barry("[%3i,]", i);
         for (uint j = 0u; j < M; ++j)
-            printf(" %.2f ", elements[j*N + i]);
+            printf_barry(" %.2f ", elements[j*N + i]);
 
-        printf("\n");
+        printf_barry("\n");
     }
 
 }

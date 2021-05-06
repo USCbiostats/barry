@@ -1,10 +1,6 @@
 #ifndef BARRY_CONFIGURATION_HPP
 #define BARRY_CONFIGURATION_HPP
 
-#ifndef BARRY_MAX_NUM_ELEMENTS
-    #define BARRY_MAX_NUM_ELEMENTS static_cast< unsigned int >(UINT_MAX/2u)
-#endif
-
 /**
   * @name Configuration MACROS
   * @details These are mostly related to performance. The definitions follow:
@@ -15,7 +11,10 @@
   * - `BARRY_USE_SAFE_EXP` When specified, it will multiply all likelihoods
   *   in `Model` by (1/-100)/(1/-100) so that numerical overflows are avoided.
   * 
-  * - `BARRY_CHECK_FINITE` When specified, it will introduce a macro
+  * - `BARRY_USE_ISFINITE` When specified, it will introduce a macro that 
+  *   checks whether the likelihood is finite or not.
+  * 
+  * - `printf_barry` If not specified, will be defined as `printf`.
   */
 ///@{
 #ifdef BARRY_USE_UNORDERED_MAP
@@ -45,6 +44,15 @@
 #else
     #define BARRY_CHECK_SUPPORT(x, maxs)
 #endif
+
+#ifndef printf_barry
+    #define printf_barry printf
+#endif
+
+#ifndef BARRY_MAX_NUM_ELEMENTS
+    #define BARRY_MAX_NUM_ELEMENTS static_cast< unsigned int >(UINT_MAX/2u)
+#endif
+
 ///@}
 
 #endif

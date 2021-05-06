@@ -332,9 +332,9 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::print() const {
 
     // Starting from the name of the stats
-    printf("Position of variables:\n");
+    printf_barry("Position of variables:\n");
     for (uint i = 0u; i < counters->size(); ++i) {
-        printf("[% 2i] %s\n", i, counters->operator[](i).name.c_str());
+        printf_barry("[% 2i] %s\n", i, counters->operator[](i).name.c_str());
     }
 
     data.print();

@@ -305,6 +305,15 @@ inline unsigned int Geese::nterms() const {
 
 }
 
+inline unsigned int Geese::support_size() const noexcept {
+
+    if (support == nullptr)
+        return 0u;
+
+    return support->support_size();
+    
+}
+
 inline std::vector< std::vector<double> > Geese::observed_counts() {
 
     // Making room for the output
@@ -397,17 +406,17 @@ inline void Geese::print_observed_counts() {
 
         // Printing
         auto dpl = n.second.duplication ? "duplication" : "speciation";
-        std::cout << "----------\n" <<
-            "nodeid: " << n.second.id << " (" << dpl <<
-            ")\nstate : [";
+        printf_barry("----------\n");
+        printf_barry("nodeid: % 3i (%s)\nstate: [", n.second.id, dpl);
         for (uint f = 0u; f < nfuns(); ++f)
-            std::cout << tmparray.D()->states[f] << ", ";
-        std::cout << "]; Array:" << std::endl;
+            printf_barry("%i, ", (tmparray.D()->states[f] ? 1 : 0));
+
+        printf_barry("]; Array:");
         tmparray.print();
-        std::cout << "Counts: ";
+        printf_barry("Counts: ");
         for (auto& c : counts)
-            std::cout << c << ", ";
-        std::cout << std::endl;
+            printf_barry("%.2f, ", c);
+        printf_barry("\n");
 
     }
 

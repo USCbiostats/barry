@@ -1134,15 +1134,15 @@ template<typename Cell_Type, typename Data_Type>
 inline void BArray< Cell_Type, Data_Type >::print() const {
   
     for (uint i = 0u; i < N; ++i) {
-        printf("[%3i,] ", i);
+        printf_barry("[%3i,] ", i);
         for (uint j = 0u; j < M; ++j) {
             if (this->is_empty(i, j, false))
-                printf("    . ");
+                printf_barry("    . ");
             else 
-                printf(" %.2f ", static_cast<double>(this->get_cell(i, j, false)));
+                printf_barry(" %.2f ", static_cast<double>(this->get_cell(i, j, false)));
             
         }
-        printf("\n");
+        printf_barry("\n");
     }
     
     

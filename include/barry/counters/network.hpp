@@ -178,12 +178,12 @@ inline void counter_mutual(NetCounters * counters) {
         if (i == j)
             return 0.0;
         
-        // printf("Checking if it is empty or not at (%i, %i)... ", i, j);
+        // printf_barry("Checking if it is empty or not at (%i, %i)... ", i, j);
         if (!Array.is_empty(j, i, false)) {
-            // printf("Yes, mutual.\n");
+            // printf_barry("Yes, mutual.\n");
             return 1.0;
         }
-        // printf("No, no mutual.\n");
+        // printf_barry("No, no mutual.\n");
         
         return 0.0;
     };

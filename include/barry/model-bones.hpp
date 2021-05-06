@@ -112,9 +112,8 @@ private:
     std::mt19937 * rengine = nullptr;
     bool delete_rengine    = false;
 
-    /**@brief */
-    std::vector< Counts_type >         stats;
-    std::vector< uint >                n_arrays_per_stats;
+    std::vector< Counts_type >         stats;              ///< Sufficient statistics of the model (support)
+    std::vector< uint >                n_arrays_per_stats; ///< Number of arrays included per support.
 
     /**
       * @name Container space for the powerset (and its sufficient stats)
@@ -123,9 +122,9 @@ private:
       */
     ///@{
     bool with_pset = false;
-    std::vector< std::vector< Array_Type > >          pset_arrays;
-    std::vector< std::vector< std::vector<double> > > pset_stats;
-    std::vector< std::vector<double> >                pset_probs;
+    std::vector< std::vector< Array_Type > >          pset_arrays; ///< Arrays of the support(s)
+    std::vector< std::vector< std::vector<double> > > pset_stats;  ///< Statistics of the support(s)
+    std::vector< std::vector<double> >                pset_probs;  ///< Probabilities of the support(s)
     ///@}
 
     /**
@@ -359,6 +358,7 @@ public:
     unsigned int size() const noexcept;
     unsigned int size_unique() const noexcept;
     unsigned int nterms() const noexcept;
+    unsigned int support_size() const noexcept;
     ///@}
 
     const std::mt19937 * get_rengine() const;

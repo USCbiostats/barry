@@ -1,7 +1,7 @@
 // #include <vector>
 // #include <unordered_map>
-#include "typedefs.hpp"
-#include "barray-bones.hpp"
+// #include "typedefs.hpp"
+// #include "barray-bones.hpp"
 
 #ifndef BARRAY_ITERATOR_HPP 
 #define BARRAY_ITERATOR_HPP 1

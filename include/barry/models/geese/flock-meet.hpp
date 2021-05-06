@@ -146,6 +146,12 @@ inline unsigned int Flock::nterms() const {
 
 }
 
+inline unsigned int Flock::support_size() const noexcept {
+
+    return this->support.support_size();
+
+}
+
 inline Geese* Flock::operator()(unsigned int i, bool check_bounds)
 {
 
