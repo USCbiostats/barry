@@ -17,6 +17,24 @@ Cell<Cell_Type>& Cell<Cell_Type>::operator=(Cell<Cell_Type>&& other) noexcept {
     return *this;
 }
 
+template<typename Cell_Type>
+bool Cell<Cell_Type>::operator==(const Cell<Cell_Type>& rhs ) const {
+
+    if (this == *rhs)
+        return true;
+    
+    return this->value == rhs.value;
+
+}
+
+template<typename Cell_Type>
+bool Cell<Cell_Type>::operator!=(const Cell<Cell_Type>& rhs ) const {
+
+    return !this->operator==(rhs);
+    
+}
+
+
 /***
  * Specializations
  */

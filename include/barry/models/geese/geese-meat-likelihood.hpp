@@ -49,11 +49,11 @@ inline double Geese::likelihood(
             double totprob = 0.0;
 
             // Retrieving the sets of arrays
-            const std::vector< phylocounters::PhyloArray > * psets = support->get_pset(
+            const std::vector< phylocounters::PhyloArray > * psets = model->get_pset(
                 node.narray[s]
             );
 
-            const std::vector< std::vector<double> > * psets_stats = support->get_stats(
+            const std::vector< std::vector<double> > * psets_stats = model->get_stats(
                 node.narray[s]
             );
 
@@ -103,7 +103,7 @@ inline double Geese::likelihood(
                     
 
                 // Multiplying by P(x|x_n)
-                off_mult *= support->likelihood(
+                off_mult *= model->likelihood(
                     par0,
                     psets_stats->at(nstate++),
                     node.narray[s]

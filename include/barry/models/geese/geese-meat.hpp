@@ -61,7 +61,7 @@ inline void Geese::init_node(Node & n) {
         );
 
         // Once the array is ready, we can add it to the model
-        n.narray[s] = support->add_array(n.arrays[s]);
+        n.narray[s] = model->add_array(n.arrays[s]);
 
     }
 
@@ -71,7 +71,7 @@ inline void Geese::init_node(Node & n) {
 inline Geese::~Geese() {
 
     if (delete_support)
-        delete support;
+        delete model;
 
     if (delete_rengine)
         delete rengine;
@@ -82,19 +82,19 @@ inline Geese::~Geese() {
 inline void Geese::init() {
 
     // Initializing the model, if it is null
-    if (this->support == nullptr) {
+    if (this->model == nullptr) {
 
-        this->support = new phylocounters::PhyloModel();
+        this->model = new phylocounters::PhyloModel();
         this->delete_support = true;
-        this->support->set_keygen(keygen_full);
-        this->support->store_psets();
+        this->model->set_keygen(keygen_full);
+        this->model->store_psets();
 
     }
 
     // Checking rseed, this is relevant when dealing with a flock. In the case of
-    // flock, both support and rengine are shared.
-    if (this->support->get_rengine() == nullptr) 
-        this->support->set_rengine(this->rengine, false);
+    // flock, both model and rengine are shared.
+    if (this->model->get_rengine() == nullptr) 
+        this->model->set_rengine(this->rengine, false);
 
     // All combinations of the function
     phylocounters::PhyloPowerSet pset(nfunctions, 1u);
@@ -137,10 +137,10 @@ inline void Geese::init() {
 
 inline void Geese::inherit_support(const Geese & model_, bool delete_support_) {
     
-    if (this->support != nullptr)
-        throw std::logic_error("There is already a -support- in this Geese. Cannot set a -support- after one is present.");
+    if (this->model != nullptr)
+        throw std::logic_error("There is already a -model- in this Geese. Cannot set a -model- after one is present.");
 
-    this->support = model_.support;
+    this->model = model_.model;
     this->delete_support = delete_support_;
 
     // And random number generation
@@ -301,17 +301,41 @@ inline unsigned int Geese::nleafs() const noexcept {
 inline unsigned int Geese::nterms() const {
 
     INITIALIZED()
-    return support->nterms() + this->nfuns();
+    return model->nterms() + this->nfuns();
 
 }
 
 inline unsigned int Geese::support_size() const noexcept {
 
-    if (support == nullptr)
+    if (model == nullptr)
         return 0u;
 
-    return support->support_size();
+    return model->support_size();
     
+}
+
+inline unsigned int Geese::parse_polytomies(bool verb) const noexcept {
+
+    unsigned int largest = 0u;
+    for (const auto& n : this->nodes)
+    {
+
+        unsigned int noff = n.second.noffspring();
+        if (noff > 2u)
+        {
+
+            if (verb)
+                printf_barry("Node id: %i has polytomy size %i\n", n.second.id, noff);
+                
+            if (noff > largest)
+                largest = noff;
+
+        }
+
+    }
+
+    return largest;
+
 }
 
 inline std::vector< std::vector<double> > Geese::observed_counts() {
@@ -322,7 +346,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts() {
 
     // Creating counter
     phylocounters::PhyloStatsCounter tmpcount;
-    tmpcount.set_counters(this->support->get_counters());
+    tmpcount.set_counters(this->model->get_counters());
 
     // Iterating through the nodes
     for (auto& n : nodes) {
@@ -370,7 +394,7 @@ inline void Geese::print_observed_counts() {
 
     // Creating counter
     phylocounters::PhyloStatsCounter tmpcount;
-    tmpcount.set_counters(this->support->get_counters());
+    tmpcount.set_counters(this->model->get_counters());
 
     // Iterating through the nodes
     for (auto& n : nodes) {
@@ -429,11 +453,15 @@ inline std::mt19937 * Geese::get_rengine() {
 }
 
 inline phylocounters::PhyloCounters * Geese::get_counters() {
-    return this->support->get_counters();
+    return this->model->get_counters();
+}
+
+inline phylocounters::PhyloModel * Geese::get_model() {
+    return this->model;
 }
 
 inline phylocounters::PhyloSupport * Geese::get_support() {
-    return this->support->get_support();
+    return this->model->get_support();
 }
 
 inline std::vector< std::vector< bool > > Geese::get_states() {

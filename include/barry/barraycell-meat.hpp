@@ -1,7 +1,7 @@
-#include "barraycell-bones.hpp"
+#include "barraydensecell-bones.hpp"
 
-#ifndef BARRY_BARRAYCELL_MEAT_HPP
-#define BARRY_BARRAYCELL_MEAT_HPP 1
+#ifndef BARRY_BARRAYDENSECELL_MEAT_HPP
+#define BARRY_BARRAYDENSECELL_MEAT_HPP 1
 
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayCell<Cell_Type,Data_Type>::operator=(const Cell_Type & val) {

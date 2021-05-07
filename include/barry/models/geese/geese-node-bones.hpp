@@ -48,6 +48,7 @@ public:
 
     int get_parent() const;
 
+    unsigned int noffspring() const noexcept;
     bool is_leaf() const noexcept;
 
 };
@@ -98,6 +99,11 @@ inline int Node::get_parent() const {
             return -1;
     else
         return static_cast<int>(parent->id);
+}
+inline unsigned int Node::noffspring() const noexcept {
+
+    return this->offspring.size();
+
 }
 
 inline bool Node::is_leaf() const noexcept {

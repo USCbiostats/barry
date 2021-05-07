@@ -8,11 +8,11 @@ inline Geese::Geese() {
     // In order to start...
     this->rengine         = new std::mt19937;
     this->delete_rengine  = true;
-    this->support         = new phylocounters::PhyloModel();
+    this->model         = new phylocounters::PhyloModel();
     this->delete_support  = true;
 
-    this->support->set_keygen(keygen_full);
-    this->support->store_psets();
+    this->model->set_keygen(keygen_full);
+    this->model->store_psets();
 
     return;
 }
@@ -27,11 +27,11 @@ inline Geese::Geese(
     // In order to start...
     this->rengine         = new std::mt19937;
     this->delete_rengine  = true;
-    this->support         = new phylocounters::PhyloModel();
+    this->model         = new phylocounters::PhyloModel();
     this->delete_support  = true;
 
-    this->support->set_keygen(keygen_full);
-    this->support->store_psets();
+    this->model->set_keygen(keygen_full);
+    this->model->store_psets();
 
     // Check the lengths
     if (annotations.size() == 0u)
@@ -178,8 +178,8 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
             delete_rengine = true;
         }
 
-        if (model_.support != nullptr) {
-            support = new phylocounters::PhyloModel(*(model_.support));
+        if (model_.model != nullptr) {
+            model = new phylocounters::PhyloModel(*(model_.model));
             delete_support = true;
         }
 
@@ -190,16 +190,16 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
             delete_rengine = false;
         }
 
-        if (model_.support != nullptr) {
-            support = model_.support;
+        if (model_.model != nullptr) {
+            model = model_.model;
             delete_support = false;
         }
 
     }
 
     // These should not be necesary as they are already initialized.
-    // this->support->set_keygen(keygen_full);
-    // this->support->store_psets();
+    // this->model->set_keygen(keygen_full);
+    // this->model->store_psets();
 
     // Dealing with the nodes is a bit different -------------------------------
     auto revseq = this->sequence;
@@ -231,7 +231,7 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
 // Constructor move
 inline Geese::Geese(Geese && x) noexcept :
     rengine(nullptr),
-    support(nullptr),
+    model(nullptr),
     states(std::move(x.states)),
     nfunctions(x.nfunctions),
     nodes(std::move(x.nodes)),
@@ -255,19 +255,19 @@ inline Geese::Geese(Geese && x) noexcept :
 
     if (x.delete_support) {
 
-        support = new phylocounters::PhyloModel(*x.support);
+        model = new phylocounters::PhyloModel(*x.model);
         delete_support = true;
 
     } else {
 
-        support = x.support;
+        model = x.model;
         delete_support = false;
         
     }
 
-    // Figuring out if support needs to be updated
-    if ((support != nullptr) && (x.delete_support | x.delete_rengine))
-        support->set_rengine(rengine, false);
+    // Figuring out if model needs to be updated
+    if ((model != nullptr) && (x.delete_support | x.delete_rengine))
+        model->set_rengine(rengine, false);
 
     return;
 

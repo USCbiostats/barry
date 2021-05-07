@@ -91,7 +91,7 @@ inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
 
             }
 
-            prob *= this->support->likelihood(
+            prob *= this->model->likelihood(
                 par0, transition,
                 node->narray[this->map_to_nodes[tmpstates]],
                 false);

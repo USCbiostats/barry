@@ -39,6 +39,9 @@ public:
     // Casting operator (implicit and explicit)
     // int x = Cell<int>(1); // returns 1
     operator Cell_Type() const {return this->value;};
+
+    bool operator==(const Cell<Cell_Type>& rhs ) const;
+    bool operator!=(const Cell<Cell_Type>& rhs ) const;
   
 };
 

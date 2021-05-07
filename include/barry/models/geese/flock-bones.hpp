@@ -20,7 +20,7 @@ public:
     
     // Common components
     std::mt19937              rengine;
-    phylocounters::PhyloModel support = phylocounters::PhyloModel();
+    phylocounters::PhyloModel model = phylocounters::PhyloModel();
 
     Flock() {};
     ~Flock() {};

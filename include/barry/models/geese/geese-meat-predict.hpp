@@ -100,8 +100,8 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 
                 // Retrieving the corresponding arrays and stats that will be
                 // use to marginalize
-                auto p_arrays = support->get_pset(loc);
-                auto p_stats  = support->get_stats(loc);
+                auto p_arrays = model->get_pset(loc);
+                auto p_stats  = model->get_stats(loc);
 
                 double prob = 0.0;
 
@@ -129,7 +129,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                         continue;
 
                     // Computing the likelihood 
-                    prob += support->likelihood(par_terms, p_stats->at(a), loc);
+                    prob += model->likelihood(par_terms, p_stats->at(a), loc);
                     
                 }
 

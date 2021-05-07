@@ -59,7 +59,7 @@ inline std::vector< std::vector< unsigned int > > Geese::simulate(
 
         // Given the state of the current node, sample the state of the
         // offspring, all based on the current state
-        auto tmp = support->sample(nodes[i].narray[n], par0);
+        auto tmp = model->sample(nodes[i].narray[n], par0);
 
         // Iterating through the offspring to assign the state
         for (unsigned int j = 0u; j < nodes[i].offspring.size(); ++j) {

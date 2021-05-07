@@ -13,9 +13,9 @@ inline unsigned int Flock::add_data(
     // Setting up the model
     if (dat.size() == 0u) {
 
-        support.set_rengine(&this->rengine, false);
-        support.set_keygen(keygen_full);
-        support.store_psets();
+        model.set_rengine(&this->rengine, false);
+        model.set_keygen(keygen_full);
+        model.store_psets();
 
     } else {
 
@@ -40,14 +40,14 @@ inline void Flock::set_seed(const unsigned int & s) {
 
 inline void Flock::init() {
 
-    // For some strange reason, pointing to support during
+    // For some strange reason, pointing to model during
     // the add_data function changes addresses once its out.
     for (auto& a : dat) {
 
         if (a.delete_support)
-            delete a.support;
+            delete a.model;
 
-        a.support         = &support;
+        a.model         = &model;
         a.delete_support  = false;
 
         if (a.delete_rengine)
@@ -71,12 +71,12 @@ inline phylocounters::PhyloCounters * Flock::get_counters() {
     if (dat.size() == 0u)
         throw std::logic_error("The flock has no data yet.");
 
-    return this->support.get_counters();
+    return this->model.get_counters();
 
 }
 
 inline phylocounters::PhyloSupport *  Flock::get_support() {
-    return this->support.get_support();
+    return this->model.get_support();
 }
 
 inline double Flock::likelihood_joint(
@@ -142,13 +142,13 @@ inline std::vector< unsigned int > Flock::nleafs() const noexcept {
 inline unsigned int Flock::nterms() const {
 
     INITIALIZED()
-    return support.nterms() + this->nfuns();
+    return model.nterms() + this->nfuns();
 
 }
 
 inline unsigned int Flock::support_size() const noexcept {
 
-    return this->support.support_size();
+    return this->model.support_size();
 
 }
 

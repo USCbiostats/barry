@@ -116,7 +116,6 @@ public:
     // bool check_cell
     void out_of_range(uint i, uint j) const;
     Cell_Type get_cell(uint i, uint j, bool check_bounds = true) const; 
-    const Row_type< Cell_Type > * get_row(uint i, bool check_bounds = true) const;
     const Col_type< Cell_Type > * get_col(uint i, bool check_bounds = true) const;
     std::vector< Cell_Type >      get_col_vec(uint i, bool check_bounds = true) const;
     std::vector< Cell_Type >      get_row_vec(uint i, bool check_bounds = true) const;
