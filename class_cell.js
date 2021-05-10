@@ -13,8 +13,10 @@ var class_cell =
     [ "add", "class_cell.html#a5d791171eaf7a34761cb858400acc26d", null ],
     [ "add", "class_cell.html#a578667c750aa397de93ac079bbb5763d", null ],
     [ "operator Cell_Type", "class_cell.html#abe9b289bc80d4f5d0717ba9e69197c0b", null ],
+    [ "operator!=", "class_cell.html#a3485dfb79ac41f1ec1b9f3d773890cbe", null ],
     [ "operator=", "class_cell.html#a9ea03f80e1b160ca43b1db5b5792e482", null ],
     [ "operator=", "class_cell.html#a6cfdc588dba9ca10a11693d644ac0c60", null ],
+    [ "operator==", "class_cell.html#ad0ef21913c029711911172215e988ce8", null ],
     [ "value", "class_cell.html#a5df1609bc0705830ec4dc6e177ddc955", null ],
     [ "visited", "class_cell.html#a1f539a05953fa05d723c32e718f0eeb3", null ]
 ];

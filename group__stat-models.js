@@ -61,9 +61,9 @@ var group__stat_models =
       [ "support_size", "class_flock.html#aec9956b6d0bc303b4348e116027605d2", null ],
       [ "dat", "class_flock.html#af493163235db2dcb44b8c5e615f52bdb", null ],
       [ "initialized", "class_flock.html#aad9b90040d349a23b33e09292bb964db", null ],
+      [ "model", "class_flock.html#a9f0bdc92f4e69c1d9e88dd80bce61e9b", null ],
       [ "nfunctions", "class_flock.html#a77220682e593e9d455f56a5607981ff2", null ],
-      [ "rengine", "class_flock.html#a0e3ce6d007f667eea9f036cddb6789b6", null ],
-      [ "support", "class_flock.html#a20d75da0d423252055af84194e88f901", null ]
+      [ "rengine", "class_flock.html#a0e3ce6d007f667eea9f036cddb6789b6", null ]
     ] ],
     [ "Geese", "class_geese.html", [
       [ "Geese", "class_geese.html#a4766bb548b2a33e16019c52026f455f5", null ],
@@ -74,6 +74,7 @@ var group__stat_models =
       [ "calc_reduced_sequence", "class_geese.html#a0a460414624fd1b7013ce3b1a09150d1", null ],
       [ "calc_sequence", "class_geese.html#aa71af5fe38d785cc184c904fc9308dc1", null ],
       [ "get_counters", "class_geese.html#abb975286a0ab1fd438e5bb4427398993", null ],
+      [ "get_model", "class_geese.html#ad0c172270f676443a47a5f818f5920b0", null ],
       [ "get_probabilities", "class_geese.html#a5c9cf28a69270fe4d3f48984fe2c5723", null ],
       [ "get_rengine", "class_geese.html#addb8366d2d098403a0e0ac9e321afeeb", null ],
       [ "get_states", "class_geese.html#a853a4d1415b3556697d9d9daf64ccd3e", null ],
@@ -90,6 +91,7 @@ var group__stat_models =
       [ "observed_counts", "class_geese.html#a82def7c8a870aa1b3ec069099c01fe02", null ],
       [ "operator=", "class_geese.html#a857663144d377cd5ee69960267865eaa", null ],
       [ "operator=", "class_geese.html#a5a56d129d383ca8648e6ddf9b845b05a", null ],
+      [ "parse_polytomies", "class_geese.html#a6e66ba14dc87a271da1da3a0e5eea4c2", null ],
       [ "predict", "class_geese.html#a10442dde49613332080792a6090d46fa", null ],
       [ "predict_backend", "class_geese.html#a167c2562599432adbf2ed50f6ccc45cb", null ],
       [ "print_observed_counts", "class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8", null ],

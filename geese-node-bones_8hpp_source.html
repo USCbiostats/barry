@@ -133,68 +133,74 @@ $(document).ready(function(){initNavTree('geese-node-bones_8hpp_source.html','')
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_node.html#a661cb63a33e950b84c9c093c63d1ab63">get_parent</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">is_leaf</a>() const noexcept;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_node.html#a9983fdcbdddeae8862fbd266536f5cff">   55</a></span>&#160;inline <a class="code" href="class_node.html">Node</a>::<a class="code" href="class_node.html">Node</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> id_, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ord_, <span class="keywordtype">bool</span> duplication_)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    : <span class="keywordtype">id</span>(id_), <a class="code" href="class_node.html#ac58501488a47ad56989463668d062e8f">ord</a>(ord_), <a class="code" href="class_node.html#a3129939e8a58c055cb5ad8db8be6b10a">duplication</a>(duplication_) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_node.html#a0c9bb1827ebcdb298c05e9b9bf04aac8">   61</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_node.html#ad7a34779cad45d997bfd6d3d8043c75f">Node::Node</a>(</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> id_,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ord_,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::vector&lt; unsigned int &gt; annotations_,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">bool</span> duplication_</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    ) : <a class="code" href="class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9">id</a>(id_), <a class="code" href="class_node.html#ac58501488a47ad56989463668d062e8f">ord</a>(ord_), <a class="code" href="class_node.html#aea43a76094980788d1debd3e18ed8070">annotations</a>(annotations_), <a class="code" href="class_node.html#a3129939e8a58c055cb5ad8db8be6b10a">duplication</a>(duplication_) {}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_node.html#a7541702bb12f9dae3f6cbf83bddaed2a">   68</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_node.html#ad7a34779cad45d997bfd6d3d8043c75f">Node::Node</a>(<a class="code" href="class_node.html">Node</a> &amp;&amp; x) noexcept :</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    id(x.id), ord(x.ord), array(std::move(x.array)), annotations(std::move(x.annotations)),</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    duplication(x.duplication), arrays(std::move(x.arrays)),</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    parent(std::move(x.parent)),</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    offspring(std::move(x.offspring)),</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    narray(std::move(x.narray)),</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    visited(x.visited),</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    subtree_prob(std::move(x.subtree_prob)),</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    probability(std::move(x.probability)) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_node.html#ac9e4a04860b442c2034e24aa058db129">   82</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_node.html#ad7a34779cad45d997bfd6d3d8043c75f">Node::Node</a>(<span class="keyword">const</span> <a class="code" href="class_node.html">Node</a> &amp; x) :</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    id(x.id), ord(x.ord), array(x.array), annotations(x.annotations),</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    duplication(x.duplication), arrays(x.arrays),</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    parent(x.parent),</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    offspring(x.offspring),</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    narray(x.narray),</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    visited(x.visited),</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    subtree_prob(x.subtree_prob),</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    probability(x.probability) {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_node.html#a661cb63a33e950b84c9c093c63d1ab63">   96</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="class_node.html#a661cb63a33e950b84c9c093c63d1ab63">Node::get_parent</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">parent</a> == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">parent</a>-&gt;<a class="code" href="class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9">id</a>);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">  103</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">Node::is_leaf</a>() const noexcept {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>.size() == 0u;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_node.html#adebf92c47c8da4bf439173d44ad98abb">noffspring</a>() const noexcept;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">is_leaf</a>() const noexcept;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_node.html#a9983fdcbdddeae8862fbd266536f5cff">   56</a></span>&#160;inline <a class="code" href="class_node.html">Node</a>::<a class="code" href="class_node.html">Node</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> id_, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ord_, <span class="keywordtype">bool</span> duplication_)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    : <span class="keywordtype">id</span>(id_), <a class="code" href="class_node.html#ac58501488a47ad56989463668d062e8f">ord</a>(ord_), <a class="code" href="class_node.html#a3129939e8a58c055cb5ad8db8be6b10a">duplication</a>(duplication_) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_node.html#a0c9bb1827ebcdb298c05e9b9bf04aac8">   62</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_node.html#ad7a34779cad45d997bfd6d3d8043c75f">Node::Node</a>(</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> id_,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ord_,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::vector&lt; unsigned int &gt; annotations_,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">bool</span> duplication_</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    ) : <a class="code" href="class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9">id</a>(id_), <a class="code" href="class_node.html#ac58501488a47ad56989463668d062e8f">ord</a>(ord_), <a class="code" href="class_node.html#aea43a76094980788d1debd3e18ed8070">annotations</a>(annotations_), <a class="code" href="class_node.html#a3129939e8a58c055cb5ad8db8be6b10a">duplication</a>(duplication_) {}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_node.html#a7541702bb12f9dae3f6cbf83bddaed2a">   69</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_node.html#ad7a34779cad45d997bfd6d3d8043c75f">Node::Node</a>(<a class="code" href="class_node.html">Node</a> &amp;&amp; x) noexcept :</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    id(x.id), ord(x.ord), array(std::move(x.array)), annotations(std::move(x.annotations)),</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    duplication(x.duplication), arrays(std::move(x.arrays)),</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    parent(std::move(x.parent)),</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    offspring(std::move(x.offspring)),</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    narray(std::move(x.narray)),</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    visited(x.visited),</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    subtree_prob(std::move(x.subtree_prob)),</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    probability(std::move(x.probability)) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_node.html#ac9e4a04860b442c2034e24aa058db129">   83</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_node.html#ad7a34779cad45d997bfd6d3d8043c75f">Node::Node</a>(<span class="keyword">const</span> <a class="code" href="class_node.html">Node</a> &amp; x) :</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    id(x.id), ord(x.ord), array(x.array), annotations(x.annotations),</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    duplication(x.duplication), arrays(x.arrays),</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    parent(x.parent),</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    offspring(x.offspring),</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    narray(x.narray),</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    visited(x.visited),</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    subtree_prob(x.subtree_prob),</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    probability(x.probability) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_node.html#a661cb63a33e950b84c9c093c63d1ab63">   97</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="class_node.html#a661cb63a33e950b84c9c093c63d1ab63">Node::get_parent</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">parent</a> == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">parent</a>-&gt;<a class="code" href="class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9">id</a>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_node.html#adebf92c47c8da4bf439173d44ad98abb">  103</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_node.html#adebf92c47c8da4bf439173d44ad98abb">Node::noffspring</a>() const noexcept {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">return</span> this-&gt;offspring.size();</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">  109</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">Node::is_leaf</a>() const noexcept {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>.size() == 0u;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_node_html"><div class="ttname"><a href="class_node.html">Node</a></div><div class="ttdoc">A single node for the model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00011">geese-node-bones.hpp:11</a></div></div>
 <div class="ttc" id="aclass_node_html_a269d78db10090d106c697d7c73bac9c7"><div class="ttname"><a href="class_node.html#a269d78db10090d106c697d7c73bac9c7">Node::arrays</a></div><div class="ttdeci">std::vector&lt; phylocounters::PhyloArray &gt; arrays</div><div class="ttdoc">Arrays given all possible states.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00021">geese-node-bones.hpp:21</a></div></div>
 <div class="ttc" id="aclass_node_html_a3129939e8a58c055cb5ad8db8be6b10a"><div class="ttname"><a href="class_node.html#a3129939e8a58c055cb5ad8db8be6b10a">Node::duplication</a></div><div class="ttdeci">bool duplication</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00019">geese-node-bones.hpp:19</a></div></div>
 <div class="ttc" id="aclass_node_html_a4e7e9c69da2575cad9c5fb7865dd42c7"><div class="ttname"><a href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">Node::offspring</a></div><div class="ttdeci">std::vector&lt; Node * &gt; offspring</div><div class="ttdoc">Offspring nodes.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00023">geese-node-bones.hpp:23</a></div></div>
-<div class="ttc" id="aclass_node_html_a661cb63a33e950b84c9c093c63d1ab63"><div class="ttname"><a href="class_node.html#a661cb63a33e950b84c9c093c63d1ab63">Node::get_parent</a></div><div class="ttdeci">int get_parent() const</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00096">geese-node-bones.hpp:96</a></div></div>
+<div class="ttc" id="aclass_node_html_a661cb63a33e950b84c9c093c63d1ab63"><div class="ttname"><a href="class_node.html#a661cb63a33e950b84c9c093c63d1ab63">Node::get_parent</a></div><div class="ttdeci">int get_parent() const</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00097">geese-node-bones.hpp:97</a></div></div>
 <div class="ttc" id="aclass_node_html_a867d5e07f62da01392a817042c77735f"><div class="ttname"><a href="class_node.html#a867d5e07f62da01392a817042c77735f">Node::probability</a></div><div class="ttdeci">std::vector&lt; double &gt; probability</div><div class="ttdoc">The probability of observing each state.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00028">geese-node-bones.hpp:28</a></div></div>
 <div class="ttc" id="aclass_node_html_a86d6575dd1ad7ab0cb02c6e6202b0608"><div class="ttname"><a href="class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608">Node::array</a></div><div class="ttdeci">phylocounters::PhyloArray array</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00017">geese-node-bones.hpp:17</a></div></div>
 <div class="ttc" id="aclass_node_html_a9abaf3f1f5e9c5e383125946b04a15ac"><div class="ttname"><a href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">Node::narray</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; narray</div><div class="ttdoc">ID of the array in the model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00024">geese-node-bones.hpp:24</a></div></div>
@@ -204,8 +210,9 @@ $(document).ready(function(){initNavTree('geese-node-bones_8hpp_source.html','')
 <div class="ttc" id="aclass_node_html_ad7a34779cad45d997bfd6d3d8043c75f"><div class="ttname"><a href="class_node.html#ad7a34779cad45d997bfd6d3d8043c75f">Node::Node</a></div><div class="ttdeci">Node()</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00036">geese-node-bones.hpp:36</a></div></div>
 <div class="ttc" id="aclass_node_html_ad8184598cdea70e4bbdfd76f2b0f9e85"><div class="ttname"><a href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">Node::parent</a></div><div class="ttdeci">Node * parent</div><div class="ttdoc">Parent node.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00022">geese-node-bones.hpp:22</a></div></div>
 <div class="ttc" id="aclass_node_html_adb90577d9d796c4ccbccf41ce2efc6c9"><div class="ttname"><a href="class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9">Node::id</a></div><div class="ttdeci">unsigned int id</div><div class="ttdoc">Id of the node (as specified in the input)</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00014">geese-node-bones.hpp:14</a></div></div>
+<div class="ttc" id="aclass_node_html_adebf92c47c8da4bf439173d44ad98abb"><div class="ttname"><a href="class_node.html#adebf92c47c8da4bf439173d44ad98abb">Node::noffspring</a></div><div class="ttdeci">unsigned int noffspring() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00103">geese-node-bones.hpp:103</a></div></div>
 <div class="ttc" id="aclass_node_html_aea43a76094980788d1debd3e18ed8070"><div class="ttname"><a href="class_node.html#aea43a76094980788d1debd3e18ed8070">Node::annotations</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; annotations</div><div class="ttdoc">Observed annotations (only defined for Geese)</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00018">geese-node-bones.hpp:18</a></div></div>
-<div class="ttc" id="aclass_node_html_af95aad82ea29953c3eaed6b761c4b13e"><div class="ttname"><a href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">Node::is_leaf</a></div><div class="ttdeci">bool is_leaf() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00103">geese-node-bones.hpp:103</a></div></div>
+<div class="ttc" id="aclass_node_html_af95aad82ea29953c3eaed6b761c4b13e"><div class="ttname"><a href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">Node::is_leaf</a></div><div class="ttdeci">bool is_leaf() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00109">geese-node-bones.hpp:109</a></div></div>
 <div class="ttc" id="aclass_node_html_afb0c9a29d8b65c33e9cec846e7d5811d"><div class="ttname"><a href="class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d">Node::subtree_prob</a></div><div class="ttdeci">std::vector&lt; double &gt; subtree_prob</div><div class="ttdoc">Induced subtree probabilities.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00027">geese-node-bones.hpp:27</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a777255ae3149368254234a1bddecb601"><div class="ttname"><a href="phylo_8hpp.html#a777255ae3149368254234a1bddecb601">PhyloArray</a></div><div class="ttdeci">BArray&lt; uint, NodeData &gt; PhyloArray</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00061">phylo.hpp:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -214,7 +221,7 @@ $(document).ready(function(){initNavTree('geese-node-bones_8hpp_source.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-node-bones_8hpp.html">geese-node-bones.hpp</a></li>
-    <li class="footer">Generated on Thu May 6 2021 00:13:18 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon May 10 2021 17:42:52 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

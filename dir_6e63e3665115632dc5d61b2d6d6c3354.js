@@ -13,14 +13,20 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
       [ "BArrayCell_const", "class_b_array_cell__const.html", "class_b_array_cell__const" ]
     ] ],
     [ "barraycell-meat.hpp", "barraycell-meat_8hpp.html", null ],
-    [ "barraycol-bones.hpp", "barraycol-bones_8hpp.html", [
-      [ "BArrayCol", "class_b_array_col.html", "class_b_array_col" ],
-      [ "BArrayCol_const", "class_b_array_col__const.html", "class_b_array_col__const" ]
-    ] ],
-    [ "barraycol-meat.hpp", "barraycol-meat_8hpp.html", "barraycol-meat_8hpp" ],
     [ "barraydense-bones.hpp", "barraydense-bones_8hpp.html", [
       [ "BArrayDense", "class_b_array_dense.html", "class_b_array_dense" ]
     ] ],
+    [ "barraydense-meet.hpp", "barraydense-meet_8hpp.html", "barraydense-meet_8hpp" ],
+    [ "barraydensecell-bones.hpp", "barraydensecell-bones_8hpp.html", [
+      [ "BArrayDenseCell", "class_b_array_dense_cell.html", "class_b_array_dense_cell" ],
+      [ "BArrayDenseCell_const", "class_b_array_dense_cell__const.html", "class_b_array_dense_cell__const" ]
+    ] ],
+    [ "barraydensecell-meat.hpp", "barraydensecell-meat_8hpp.html", "barraydensecell-meat_8hpp" ],
+    [ "barrayvector-bones.hpp", "barrayvector-bones_8hpp.html", [
+      [ "BArrayVector", "class_b_array_vector.html", "class_b_array_vector" ],
+      [ "BArrayVector_const", "class_b_array_vector__const.html", "class_b_array_vector__const" ]
+    ] ],
+    [ "barrayvector-meat.hpp", "barrayvector-meat_8hpp.html", "barrayvector-meat_8hpp" ],
     [ "barry-configuration.hpp", "barry-configuration_8hpp.html", "barry-configuration_8hpp" ],
     [ "barry.hpp", "barry_8hpp.html", "barry_8hpp" ],
     [ "cell-bones.hpp", "cell-bones_8hpp.html", [

@@ -17,7 +17,7 @@ var class_flock =
     [ "support_size", "class_flock.html#aec9956b6d0bc303b4348e116027605d2", null ],
     [ "dat", "class_flock.html#af493163235db2dcb44b8c5e615f52bdb", null ],
     [ "initialized", "class_flock.html#aad9b90040d349a23b33e09292bb964db", null ],
+    [ "model", "class_flock.html#a9f0bdc92f4e69c1d9e88dd80bce61e9b", null ],
     [ "nfunctions", "class_flock.html#a77220682e593e9d455f56a5607981ff2", null ],
-    [ "rengine", "class_flock.html#a0e3ce6d007f667eea9f036cddb6789b6", null ],
-    [ "support", "class_flock.html#a20d75da0d423252055af84194e88f901", null ]
+    [ "rengine", "class_flock.html#a0e3ce6d007f667eea9f036cddb6789b6", null ]
 ];

@@ -8,6 +8,7 @@ var class_node =
     [ "~Node", "class_node.html#aa0840c3cb5c7159be6d992adecd2097c", null ],
     [ "get_parent", "class_node.html#a661cb63a33e950b84c9c093c63d1ab63", null ],
     [ "is_leaf", "class_node.html#af95aad82ea29953c3eaed6b761c4b13e", null ],
+    [ "noffspring", "class_node.html#adebf92c47c8da4bf439173d44ad98abb", null ],
     [ "annotations", "class_node.html#aea43a76094980788d1debd3e18ed8070", null ],
     [ "array", "class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608", null ],
     [ "arrays", "class_node.html#a269d78db10090d106c697d7c73bac9c7", null ],

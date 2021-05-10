@@ -117,10 +117,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a87bad4dcad82009d5721d21808b7e469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4096e4447f91ba52766587a08c62f1fa"><td class="memItemLeft" align="right" valign="top">Cell_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a4096e4447f91ba52766587a08c62f1fa">get_cell</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, bool check_bounds=true) const</td></tr>
 <tr class="separator:a4096e4447f91ba52766587a08c62f1fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65502ec9d50fad49f2713daca6c2d6ca"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a4deca4f3fb25a4da374818ab459b8b4a">Row_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a65502ec9d50fad49f2713daca6c2d6ca">get_row</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
-<tr class="separator:a65502ec9d50fad49f2713daca6c2d6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1432139cff7a25ed362164ef8d2a30b2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="typedefs_8hpp.html#a3bb95a7612ee928fba42f33a96adb3eb">Col_type</a>&lt; Cell_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a1432139cff7a25ed362164ef8d2a30b2">get_col</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
-<tr class="separator:a1432139cff7a25ed362164ef8d2a30b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2d5a133fc4adf3417f1fdc2ef5aae26"><td class="memItemLeft" align="right" valign="top">std::vector&lt; Cell_Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#aa2d5a133fc4adf3417f1fdc2ef5aae26">get_col_vec</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
 <tr class="separator:aa2d5a133fc4adf3417f1fdc2ef5aae26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2be45b966d99e2bdd3f9994ed70ff145"><td class="memItemLeft" align="right" valign="top">std::vector&lt; Cell_Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a2be45b966d99e2bdd3f9994ed70ff145">get_row_vec</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, bool check_bounds=true) const</td></tr>
@@ -696,36 +692,6 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 
 </div>
 </div>
-<a id="a1432139cff7a25ed362164ef8d2a30b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1432139cff7a25ed362164ef8d2a30b2">&#9670;&nbsp;</a></span>get_col()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="typedefs_8hpp.html#a3bb95a7612ee928fba42f33a96adb3eb">Col_type</a>&lt; Cell_Type &gt;* <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::get_col </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>i</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_bounds</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="af62b305d538a3a79887bf6a685138651"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af62b305d538a3a79887bf6a685138651">&#9670;&nbsp;</a></span>get_col_vec() <span class="overload">[1/2]</span></h2>
 
@@ -812,36 +778,6 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <p>Get the edgelist. </p>
 <p><code><a class="el" href="class_entries.html" title="A wrapper class to store source, target, val from a BArray object.">Entries</a></code> is a class with three objects: Two <code>std::vector</code> with the row and column coordinates respectively, and one <code>std::vector</code> with the corresponding value of the cell.</p>
 <dl class="section return"><dt>Returns</dt><dd>Entries&lt;Cell_Type&gt; </dd></dl>
-
-</div>
-</div>
-<a id="a65502ec9d50fad49f2713daca6c2d6ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65502ec9d50fad49f2713daca6c2d6ca">&#9670;&nbsp;</a></span>get_row()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="typedefs_8hpp.html#a4deca4f3fb25a4da374818ab459b8b4a">Row_type</a>&lt; Cell_Type &gt;* <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::get_row </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>i</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>check_bounds</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -2056,7 +1992,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_b_array.html">BArray</a></li>
-    <li class="footer">Generated on Thu May 6 2021 00:13:19 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon May 10 2021 17:42:52 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

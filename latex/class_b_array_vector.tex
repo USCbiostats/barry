@@ -1,0 +1,242 @@
+\hypertarget{class_b_array_vector}{}\doxysection{BArray\+Vector$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ Class Template Reference}
+\label{class_b_array_vector}\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+
+
+Row or column of a {\ttfamily \mbox{\hyperlink{class_b_array}{BArray}}}  
+
+
+
+
+{\ttfamily \#include $<$barrayvector-\/bones.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_array_vector_a56f27c99ab6c74ac1f665ed69abff0ef}{BArray\+Vector}} (\mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$Array\+\_\+, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&dim\+\_\+ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&i\+\_\+, bool check\+\_\+bounds=true)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_array_vector_abad4f8e22e4279afea5fe2c1b72698cf}{$\sim$\+BArray\+Vector}} ()
+\item 
+bool \mbox{\hyperlink{class_b_array_vector_a49db44323d58d8d9f1f5e0c96ff5ce93}{is\+\_\+row}} () const noexcept
+\item 
+bool \mbox{\hyperlink{class_b_array_vector_ad822cf56f9e41631e2c0c44a1538efeb}{is\+\_\+col}} () const noexcept
+\item 
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_vector_a62b4f5e9c030323c431bb799289076df}{size}} () const noexcept
+\item 
+std\+::vector$<$ Cell\+\_\+\+Type $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_b_array_vector_ac41c8bf35b91d569cd86a7750c202604}{begin}} () noexcept
+\item 
+std\+::vector$<$ Cell\+\_\+\+Type $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_b_array_vector_aed19a35baf8b35224cfaa28d90786ac7}{end}} () noexcept
+\item 
+void \mbox{\hyperlink{class_b_array_vector_ad424b06bbd4487149a5e1ee3ad01ba13}{operator=}} (const Cell\+\_\+\+Type \&val)
+\item 
+void \mbox{\hyperlink{class_b_array_vector_a264df3e73dc4eeeef47ffd6310f15231}{operator+=}} (const Cell\+\_\+\+Type \&val)
+\item 
+void \mbox{\hyperlink{class_b_array_vector_af4d6187bb256eea85b0c393c49dce5a9}{operator-\/=}} (const Cell\+\_\+\+Type \&val)
+\item 
+void \mbox{\hyperlink{class_b_array_vector_aadf51469e9e8882fb916a27b308d9761}{operator$\ast$=}} (const Cell\+\_\+\+Type \&val)
+\item 
+void \mbox{\hyperlink{class_b_array_vector_a831f9c063fc541921b635fbffba24eff}{operator/=}} (const Cell\+\_\+\+Type \&val)
+\item 
+\mbox{\hyperlink{class_b_array_vector_abc6f5ae12227e25deb65d368ddf6464c}{operator std\+::vector$<$ Cell\+\_\+\+Type $>$}} () const
+\item 
+bool \mbox{\hyperlink{class_b_array_vector_a2170ba905270556070d5b6697e65da90}{operator==}} (const Cell\+\_\+\+Type \&val) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Cell\+\_\+\+Type = bool, typename Data\+\_\+\+Type = bool$>$\newline
+class BArray\+Vector$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$}
+
+Row or column of a {\ttfamily \mbox{\hyperlink{class_b_array}{BArray}}} 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Cell\+\_\+\+Type} & \\
+\hline
+{\em Data\+\_\+\+Type} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 13 of file barrayvector-\/bones.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_b_array_vector_a56f27c99ab6c74ac1f665ed69abff0ef}\label{class_b_array_vector_a56f27c99ab6c74ac1f665ed69abff0ef}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!BArrayVector@{BArrayVector}}
+\index{BArrayVector@{BArrayVector}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{BArrayVector()}{BArrayVector()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{Array\+\_\+,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&dim\+\_\+ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&}]{i\+\_\+,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Array\+\_\+} & Pointer to a {\ttfamily \mbox{\hyperlink{class_b_array}{BArray}}} object \\
+\hline
+{\em dim\+\_\+} & Dimension. 0 means row and 1 means column. \\
+\hline
+{\em i\+\_\+} & Element to point. \\
+\hline
+{\em check\+\_\+bounds} & When {\ttfamily true}, check boundaries. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file barrayvector-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_abad4f8e22e4279afea5fe2c1b72698cf}\label{class_b_array_vector_abad4f8e22e4279afea5fe2c1b72698cf}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!````~BArrayVector@{$\sim$BArrayVector}}
+\index{````~BArrayVector@{$\sim$BArrayVector}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$BArrayVector()}{~BArrayVector()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::$\sim$\mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 55 of file barrayvector-\/bones.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_b_array_vector_ac41c8bf35b91d569cd86a7750c202604}\label{class_b_array_vector_ac41c8bf35b91d569cd86a7750c202604}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!begin@{begin}}
+\index{begin@{begin}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+std\+::vector$<$ Cell\+\_\+\+Type $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::begin\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 52 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_aed19a35baf8b35224cfaa28d90786ac7}\label{class_b_array_vector_aed19a35baf8b35224cfaa28d90786ac7}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!end@{end}}
+\index{end@{end}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+std\+::vector$<$ Cell\+\_\+\+Type $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::end\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 66 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_ad822cf56f9e41631e2c0c44a1538efeb}\label{class_b_array_vector_ad822cf56f9e41631e2c0c44a1538efeb}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!is\_col@{is\_col}}
+\index{is\_col@{is\_col}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{is\_col()}{is\_col()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::is\+\_\+col\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 36 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_a49db44323d58d8d9f1f5e0c96ff5ce93}\label{class_b_array_vector_a49db44323d58d8d9f1f5e0c96ff5ce93}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!is\_row@{is\_row}}
+\index{is\_row@{is\_row}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{is\_row()}{is\_row()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::is\+\_\+row\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 31 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_abc6f5ae12227e25deb65d368ddf6464c}\label{class_b_array_vector_abc6f5ae12227e25deb65d368ddf6464c}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!operator std::vector$<$ Cell\_Type $>$@{operator std::vector$<$ Cell\_Type $>$}}
+\index{operator std::vector$<$ Cell\_Type $>$@{operator std::vector$<$ Cell\_Type $>$}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator std::vector$<$ Cell\_Type $>$()}{operator std::vector< Cell\_Type >()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator std\+::vector$<$ Cell\+\_\+\+Type $>$\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 177 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_aadf51469e9e8882fb916a27b308d9761}\label{class_b_array_vector_aadf51469e9e8882fb916a27b308d9761}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 135 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_a264df3e73dc4eeeef47ffd6310f15231}\label{class_b_array_vector_a264df3e73dc4eeeef47ffd6310f15231}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 93 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_af4d6187bb256eea85b0c393c49dce5a9}\label{class_b_array_vector_af4d6187bb256eea85b0c393c49dce5a9}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 114 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_a831f9c063fc541921b635fbffba24eff}\label{class_b_array_vector_a831f9c063fc541921b635fbffba24eff}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator/= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 156 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_ad424b06bbd4487149a5e1ee3ad01ba13}\label{class_b_array_vector_ad424b06bbd4487149a5e1ee3ad01ba13}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+void \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 71 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_a2170ba905270556070d5b6697e65da90}\label{class_b_array_vector_a2170ba905270556070d5b6697e65da90}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+bool \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::operator== (\begin{DoxyParamCaption}\item[{const Cell\+\_\+\+Type \&}]{val }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 187 of file barrayvector-\/meat.\+hpp.
+
+\mbox{\Hypertarget{class_b_array_vector_a62b4f5e9c030323c431bb799289076df}\label{class_b_array_vector_a62b4f5e9c030323c431bb799289076df}} 
+\index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!size@{size}}
+\index{size@{size}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::size\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 41 of file barrayvector-\/meat.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/barry/\mbox{\hyperlink{barrayvector-bones_8hpp}{barrayvector-\/bones.\+hpp}}\item 
+include/barry/\mbox{\hyperlink{barrayvector-meat_8hpp}{barrayvector-\/meat.\+hpp}}\end{DoxyCompactItemize}
