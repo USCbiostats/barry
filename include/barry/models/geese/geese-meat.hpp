@@ -105,9 +105,10 @@ inline void Geese::init() {
     for (auto& iter : pset.data) {
 
         states.push_back(std::vector< bool >(nfunctions, false));
-        // auto tmpcol = iter.get_col_vec(0u, false);
-        for (auto iter2 = iter.get_col(0u, false)->begin(); iter2 != iter.get_col(0u, false)->end(); ++iter2)
-            states.at(i).at(iter2->first) = true;
+        
+        for (auto j = 0u; j < nfunctions; ++j)
+            if (!iter.is_empty(j, 0u, false))
+                states.at(i).at(j) = true;
 
         // Adding to map so we can look at it later on
         map_to_nodes.insert({iter.get_col_vec(0u, false), i});

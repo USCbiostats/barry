@@ -366,17 +366,6 @@ inline Cell_Type BArray< Cell_Type,Data_Type >::get_cell(
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline const Col_type<Cell_Type> *
-BArray< Cell_Type, Data_Type>::get_col(uint i, bool check_bounds) const {
-    
-    // Checking boundaries  
-    if (check_bounds) 
-        out_of_range(0u, i);
-    
-    return &COL(i);
-}
-
-template<typename Cell_Type, typename Data_Type>
 inline std::vector<Cell_Type>
 BArray< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const {
 

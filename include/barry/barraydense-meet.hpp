@@ -327,17 +327,6 @@ inline Cell_Type BArrayDense< Cell_Type,Data_Type >::get_cell(
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline const Col_type<Cell_Type> *
-BArrayDense< Cell_Type, Data_Type>::get_col(uint i, bool check_bounds) const {
-    
-    // Checking boundaries  
-    if (check_bounds) 
-        out_of_range(0u, i);
-    
-    return &COL(i);
-}
-
-template<typename Cell_Type, typename Data_Type>
 inline std::vector<Cell_Type>
 BArrayDense< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const {
 
@@ -346,10 +335,9 @@ BArrayDense< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const
         out_of_range(i, 0u);
 
     std::vector< Cell_Type > ans(ncol(), (Cell_Type) false);
-    for (const auto & iter : row(i, false)) 
-        ans[iter.first] = iter.second.value; //this->get_cell(i, iter->first, false);
+    for (uint j = 0u; j < M; ++j) 
+        ans[j] = el[POS(i, j)];
     
-
     return ans;
 }
 
@@ -364,8 +352,8 @@ BArrayDense< Cell_Type,Data_Type >::get_row_vec(
     if (check_bounds) 
         out_of_range(i, 0u);
 
-    for (const auto & iter : row(i, false)) 
-        x->at(iter.first) = iter.second.value; // this->get_cell(i, iter->first, false);
+    for (uint j = 0u; j < M; ++j) 
+        x->at(j) = el[POS(i, j)];
     
 }
 
@@ -378,8 +366,8 @@ BArrayDense< Cell_Type,Data_Type >::get_col_vec(uint i, bool check_bounds) const
         out_of_range(0u, i);
 
     std::vector< Cell_Type > ans(nrow(), (Cell_Type) false);
-    for (const auto iter : col(i, false)) 
-        ans[iter.first] = iter.second->value;//this->get_cell(iter->first, i, false);
+    for (uint j = 0u; j < N; ++j) 
+        ans[j] = el[POS(j, i)];
     
     return ans;
 }
@@ -394,8 +382,8 @@ BArrayDense< Cell_Type,Data_Type >::get_col_vec(
     if (check_bounds) 
         out_of_range(0u, i);
 
-    for (const auto & iter : col(i, false)) 
-        x->at(iter.first) = iter.second->value;//this->get_cell(iter->first, i, false);
+    for (uint j = 0u; j < N; ++j) 
+        x->at(j) = el[POS(j, i)];//this->get_cell(iter->first, i, false);
     
 }
 
@@ -512,20 +500,20 @@ inline BArrayDense<Cell_Type, Data_Type> & BArrayDense<Cell_Type, Data_Type>::op
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline BArrayCell<Cell_Type,Data_Type> BArrayDense<Cell_Type,Data_Type>::operator()(  
+inline BArrayDenseCell<Cell_Type,Data_Type> BArrayDense<Cell_Type,Data_Type>::operator()(  
     uint i, uint j, bool check_bounds
 ) {
     
-    return BArrayCell<Cell_Type,Data_Type>(this, i, j, check_bounds);
+    return BArrayDenseCell<Cell_Type,Data_Type>(this, i, j, check_bounds);
     
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline const BArrayCell_const<Cell_Type,Data_Type> BArrayDense<Cell_Type,Data_Type>::operator()(  
+inline const BArrayDenseCell_const<Cell_Type,Data_Type> BArrayDense<Cell_Type,Data_Type>::operator()(  
     uint i, uint j, bool check_bounds
 ) const {
     
-    return BArrayCell_const<Cell_Type,Data_Type>(this, i, j, check_bounds);
+    return BArrayDenseCell_const<Cell_Type,Data_Type>(this, i, j, check_bounds);
     
 }
 
