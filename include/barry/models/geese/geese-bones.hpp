@@ -34,7 +34,7 @@ inline std::vector< double > keygen_full(
 
     // Baseline data: nrows and columns
     std::vector< double > dat = {
-        (double) array.nrow(), (double) array.ncol()
+        static_cast<double>(array.nrow()), static_cast<double>(array.ncol())
     };
 
     // State of the parent
@@ -144,7 +144,7 @@ public:
 
     ~Geese();
 
-    void init();
+    void init(bool verb = true);
 
     void inherit_support(const Geese & model_, bool delete_support_ = false);
 

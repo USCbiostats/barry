@@ -48,7 +48,7 @@ public:
      */
     void set_seed(const unsigned int & s);
 
-    void init();
+    void init(bool verb = true);
     
     // void add_geese(Geese x);
     phylocounters::PhyloCounters * get_counters();

@@ -79,7 +79,7 @@ inline Geese::~Geese() {
     return;
 }
 
-inline void Geese::init() {
+inline void Geese::init(bool verb) {
 
     // Initializing the model, if it is null
     if (this->model == nullptr) {
@@ -116,13 +116,45 @@ inline void Geese::init() {
         i++;
     }
 
+    if (verb)
+        printf_barry("Initializing nodes in Geese (this could take a while)...\n");
+
+    double width   = 73.0;
+    int n_internal = this->nnodes() - this->nleafs();
+    int n_steps    = (n_internal > width) ?
+        static_cast<int>(floor(static_cast<double>(n_internal) / width)) : n_internal;
+    int step_size  = static_cast<int>(n_internal / n_steps);
+    int n_bars     = static_cast<int>(std::max(1.0, floor(width / static_cast<double>(n_steps))));
+
     // Iterating throught the nodes
+    int node_i = 0;
     for (auto& iter : nodes) {
 
         // Only parents get a node
-        if (!iter.second.is_leaf()) 
-            this->init_node(iter.second);
-            
+        if (!iter.second.is_leaf())
+        {
+            this->init_node(iter.second); 
+
+            if (verb & !(node_i++ % step_size))
+            {
+                for (int j = 0; j < n_bars; ++j)
+                    printf_barry("|");
+            }
+
+        }
+        
+    }
+
+    // Adding the extra bars, if needed
+    if (verb)
+    {
+
+        int reminder = static_cast<int>(width) - n_bars * n_steps;
+        for (int j = 0; j < reminder; ++j)
+            printf_barry("|");
+        
+        printf_barry(" done.\n");
+
     }
 
     // Resetting the sequence
@@ -436,7 +468,7 @@ inline void Geese::print_observed_counts() {
         for (uint f = 0u; f < nfuns(); ++f)
             printf_barry("%i, ", (tmparray.D()->states[f] ? 1 : 0));
 
-        printf_barry("]; Array:");
+        printf_barry("]; Array:\n");
         tmparray.print();
         printf_barry("Counts: ");
         for (auto& c : counts)

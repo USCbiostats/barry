@@ -27,4 +27,11 @@ coverage: mainv.o
 		rm catch*.hpp.gcov && \
 		mv *.hpp.gcov gcov-files/ && $(MAKE) clean
 
+.PHONY: callgrind
+cachegrind: main.calgrind.out
+
+main.cachegrind.out: main.o
+	valgrind --tool=callgrind --callgrind-out-file=main.callgrind.out ./main && \
+		kcachegrind main.callgrind.out &
+
 .PHONY: clean check checkv

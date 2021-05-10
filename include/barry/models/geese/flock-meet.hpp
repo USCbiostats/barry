@@ -38,7 +38,7 @@ inline void Flock::set_seed(const unsigned int & s) {
     this->rengine.seed(s);
 }
 
-inline void Flock::init() {
+inline void Flock::init(bool verb) {
 
     // For some strange reason, pointing to model during
     // the add_data function changes addresses once its out.
@@ -60,7 +60,7 @@ inline void Flock::init() {
 
     // Initializing the models.
     for (auto& d : dat) 
-        d.init();
+        d.init(verb);
 
     this->initialized = true;
     
