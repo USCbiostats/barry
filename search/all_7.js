@@ -3,7 +3,7 @@ var searchData=
   ['id_184',['id',['../class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9',1,'Node']]],
   ['indices_185',['indices',['../class_net_counter_data.html#ae2f47af99f3fa785d3faac089ab90d83',1,'NetCounterData']]],
   ['inherit_5fsupport_186',['inherit_support',['../class_geese.html#aa95abe540b9977592bcc88e77619d070',1,'Geese']]],
-  ['init_187',['init',['../class_counter.html#a835aa75876bc43a84ecbde4fd6a03fd5',1,'Counter::init()'],['../class_flock.html#a99f3c0a3aacc8af28c13207dd81d7164',1,'Flock::init()'],['../class_geese.html#ad830d504a390c6126c916e24dc16e69d',1,'Geese::init()']]],
+  ['init_187',['init',['../class_counter.html#a835aa75876bc43a84ecbde4fd6a03fd5',1,'Counter::init()'],['../class_flock.html#a21a1c69a18863533964330bfbfae0e03',1,'Flock::init()'],['../class_geese.html#a6833c149a7a8cf87375f1f3f64d512c3',1,'Geese::init()']]],
   ['init_5ffun_188',['init_fun',['../class_counter.html#abb4e0b67e6489d438918495651baa5a8',1,'Counter']]],
   ['init_5fnode_189',['init_node',['../class_geese.html#a3855898a556e2ac1d30529d3bc35f13a',1,'Geese']]],
   ['init_5fsupport_190',['init_support',['../class_power_set.html#a8eefc9606c6339938a8d9adcd0d7e153',1,'PowerSet::init_support()'],['../class_support.html#a4815c1e806cc785ad66320ea6364d087',1,'Support::init_support()']]],
