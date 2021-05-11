@@ -217,12 +217,8 @@ inline void Geese::calc_sequence(Node * n) {
         return;
 
     // First iteration
-    if (n == nullptr) {
-
-        // pointing to something
+    if (n == nullptr)
         n = &(nodes.begin()->second);
-
-    }
 
     // Here before?
     if (n->visited)
@@ -271,7 +267,7 @@ inline void Geese::calc_reduced_sequence() {
                 if (n.annotations[k] != 9u)
                 {
 
-                    includeit[i] = true;
+                    includeit[n.ord] = true;
                     reduced_sequence.push_back(i);
                     break;
 
@@ -282,10 +278,10 @@ inline void Geese::calc_reduced_sequence() {
             // Checking, am I including any of my offspring?
             for (auto& o : n.offspring) 
 
-                if (includeit[o->id])
+                if (includeit[o->ord])
                 {
                     
-                    includeit[i] = true;
+                    includeit[n.ord] = true;
                     reduced_sequence.push_back(i);
                     break;
 

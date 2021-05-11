@@ -597,7 +597,7 @@ inline void counter_overall_changes(
             // As many chances to change as offspring
             double noff   = static_cast<double> (Array.ncol());
             double counts = 0.0;
-            for (uint k = 0u; k < Array.ncol(); ++k)
+            for (uint k = 0u; k < Array.nrow(); ++k)
                 if (Array.D()->states[k])
                     counts += noff;
 
