@@ -567,16 +567,16 @@ inline void counter_overall_changes(
     PHYLO_COUNTER_LAMBDA(tmp_count)
     {
 
-      if ((data->at(0u) == 0u) & Array.D()->duplication)
-        return 0.0;
-      else if ((data->at(0u) == 1u) & !Array.D()->duplication)
-        return 0.0;
-      else {
+        if ((data->at(0u) == 0u) & Array.D()->duplication)
+            return 0.0;
+        else if ((data->at(0u) == 1u) & !Array.D()->duplication)
+            return 0.0;
+        else {
 
         if (Array.D()->states[i])
-          return -1.0;
+            return -1.0;
         else 
-          return 1.0;
+            return 1.0;
 
       }
 
@@ -594,6 +594,7 @@ inline void counter_overall_changes(
         else
         {
 
+            // Since we start with all the array at zero,
             // As many chances to change as offspring
             double noff   = static_cast<double> (Array.ncol());
             double counts = 0.0;

@@ -666,6 +666,18 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
     return tot;
 
 }
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline std::vector< std::string > Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::colnames() const {
+
+    std::vector< std::string > ans;
+    ans.reserve(this->nterms());
+    for (uint i = 0u; i < nterms(); ++i)
+        ans.push_back(counters->operator[](i).name);
+    
+    return ans;
+
+}
     
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::sample(

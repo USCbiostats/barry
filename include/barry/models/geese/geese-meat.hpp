@@ -343,6 +343,12 @@ inline unsigned int Geese::support_size() const noexcept {
     
 }
 
+inline std::vector< std::string > Geese::colnames() const {
+
+    return this->model->colnames();
+
+}
+
 inline unsigned int Geese::parse_polytomies(bool verb) const noexcept {
 
     unsigned int largest = 0u;

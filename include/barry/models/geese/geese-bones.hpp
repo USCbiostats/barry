@@ -178,6 +178,7 @@ public:
     unsigned int nleafs() const noexcept;            ///< Number of leaf
     unsigned int nterms() const;                     ///< Number of terms included
     unsigned int support_size() const noexcept;      ///< Number of unique sets of sufficient stats.
+    std::vector< std::string > colnames() const;     ///< Names of the terms in the model.
     unsigned int parse_polytomies(bool verb = true) const noexcept;  ///< Check polytomies and return the largest.
     ///@}
 

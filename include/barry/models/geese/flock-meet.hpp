@@ -47,8 +47,8 @@ inline void Flock::init(bool verb) {
         if (a.delete_support)
             delete a.model;
 
-        a.model         = &model;
-        a.delete_support  = false;
+        a.model          = &model;
+        a.delete_support = false;
 
         if (a.delete_rengine)
             delete a.rengine;
@@ -149,6 +149,31 @@ inline unsigned int Flock::nterms() const {
 inline unsigned int Flock::support_size() const noexcept {
 
     return this->model.support_size();
+
+}
+
+inline std::vector< std::string > Flock::colnames() const {
+
+    return this->model.colnames();
+
+}
+
+inline unsigned int Flock::parse_polytomies(bool verb) const noexcept {
+
+    unsigned int ans = 0;
+    int i = 0;
+    for (const auto & d : dat) {
+
+        if (verb)
+            printf_barry("Checking tree %i\n", i);
+
+        unsigned int tmp = d.parse_polytomies(verb);
+
+        if (tmp > ans)
+            ans = tmp;
+    }
+
+    return ans;
 
 }
 

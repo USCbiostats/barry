@@ -359,6 +359,7 @@ public:
     unsigned int size_unique() const noexcept;
     unsigned int nterms() const noexcept;
     unsigned int support_size() const noexcept;
+    std::vector< std::string > colnames() const;
     ///@}
 
     const std::mt19937 * get_rengine() const;
