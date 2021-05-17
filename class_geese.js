@@ -7,6 +7,7 @@ var class_geese =
     [ "~Geese", "class_geese.html#a8b665d6faea65caacbb00feea98d53b0", null ],
     [ "calc_reduced_sequence", "class_geese.html#a0a460414624fd1b7013ce3b1a09150d1", null ],
     [ "calc_sequence", "class_geese.html#aa71af5fe38d785cc184c904fc9308dc1", null ],
+    [ "colnames", "class_geese.html#a4d9127f67eea16500650cca49be58018", null ],
     [ "get_counters", "class_geese.html#abb975286a0ab1fd438e5bb4427398993", null ],
     [ "get_model", "class_geese.html#ad0c172270f676443a47a5f818f5920b0", null ],
     [ "get_probabilities", "class_geese.html#a5c9cf28a69270fe4d3f48984fe2c5723", null ],
