@@ -4,7 +4,11 @@
 // #include "../../barry.hpp"
 // #include "geese-bones.hpp" 
 
-inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
+inline double Geese::predict_exhaust(
+    const std::vector< double > & par,
+    bool only_annotated,
+    bool use_reduced_sequence
+) {
 
     INITIALIZED()
 
@@ -22,7 +26,7 @@ inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
         throw std::overflow_error("Too many nodes! Exhaust calculation of likelihood cannot be done for such cases.");
 
     if (this->nfuns() > 2)
-        throw std::overflow_error("Too many functions! Exhaust calculation of likelihood cannot be done for such cases.");
+        throw std::overflow_error("Too many functions! Exhaust calculation of prediction cannot be done for such cases.");
 
     // Computing all combinations ----------------------------------------------
     phylocounters::PhyloArray base(nfuns(), nnodes());

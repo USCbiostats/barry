@@ -219,6 +219,12 @@ public:
         bool use_reduced_sequence,
         const std::vector< uint > & preorder
         );
+
+    std::vector< std::vector< double > > predict_exhausts(
+        const std::vector< double > & par,
+        bool only_annotated       = false,
+        bool use_reduced_sequence = true
+        );
     ///@}
 
     void init_node(Node & n);
