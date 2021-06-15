@@ -98,6 +98,7 @@ var group__stat_models =
       [ "parse_polytomies", "class_geese.html#a6e66ba14dc87a271da1da3a0e5eea4c2", null ],
       [ "predict", "class_geese.html#a10442dde49613332080792a6090d46fa", null ],
       [ "predict_backend", "class_geese.html#a167c2562599432adbf2ed50f6ccc45cb", null ],
+      [ "predict_exhaust", "class_geese.html#af5a98c1076d7db25a5e84627e62001ea", null ],
       [ "print_observed_counts", "class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8", null ],
       [ "set_seed", "class_geese.html#aa5d623d5e242a29090bf5a01bfeeeb9f", null ],
       [ "simulate", "class_geese.html#a675662efdded0d24c146946aa15ed481", null ],
