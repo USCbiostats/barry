@@ -49,7 +49,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
             this->update_annotations(n.second.id, s->get_col_vec(n.second.ord));
 
         double prob = this->likelihood(par, false, use_reduced_sequence);
-        std::cout << "Prob: " << prob << std::endl;
+        
         // Adding to the overall probability
         for (auto & n: nodes)
             for (unsigned int j = 0u; j < nfuns(); ++j)
