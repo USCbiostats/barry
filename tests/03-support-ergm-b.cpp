@@ -90,7 +90,7 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   logs1[0u] = model.likelihood(p0, net, 0, true); 
   logs1[1u] = model.likelihood(p1, net, 0, true);
 
-  std::vector< double > margin = {0.00001, 0.00001};
+  std::vector< double > margin = {std::fabs(logs_expected[0u] * .001), std::fabs(logs_expected[1u] * .001)};
 
   std::cout << "Printing logs: " << std::endl;
   print(logs0);

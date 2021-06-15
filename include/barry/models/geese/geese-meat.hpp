@@ -206,9 +206,15 @@ inline void Geese::update_annotations(
     // Resetting the annotations, and updating the stats from the
     // parent node
     nodes[nodeid].annotations = newann;
+
+    // This only makes sense (for now) if it is a tip 
+    if (!nodes[nodeid].is_leaf())
+        return;
+
     init_node(*nodes[nodeid].parent);
 
     return;
+
 }
 
 inline void Geese::calc_sequence(Node * n) {

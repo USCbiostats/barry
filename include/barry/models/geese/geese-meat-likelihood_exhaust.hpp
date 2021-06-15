@@ -1,6 +1,6 @@
 
-#ifndef APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP
-#define APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP 1
+#ifndef GEESE_MEAT_LIKELIHOOD_EXHAUST_HPP
+#define GEESE_MEAT_LIKELIHOOD_EXHAUST_HPP 1
 // #include "../../barry.hpp"
 // #include "geese-bones.hpp" 
 
@@ -28,7 +28,7 @@ inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
     phylocounters::PhyloArray base(nfuns(), nnodes());
     for (auto& n : nodes) {
         for (unsigned int i = 0u; i < nfuns(); ++i)
-            base(i, n.second.id) = n.second.annotations[i];
+            base(i, n.second.ord) = n.second.annotations[i];
     }
 
     phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
@@ -59,7 +59,7 @@ inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
 
             node = &nodes[i];
             std::fill(tmpstates.begin(), tmpstates.end(), 0u);
-            s->get_col_vec(&tmpstates, node->id, false);
+            s->get_col_vec(&tmpstates, node->ord, false);
 
             // Root node first
             if (node->parent == nullptr) {               

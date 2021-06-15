@@ -46,6 +46,10 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
         // Marginalizing the probabilities P(x_sf | D)
         for (unsigned int f = 0u; f < nfuns(); ++f) {
+
+            // Since the probability, the expected value, is for
+            // observing an x = 1, then we need to make sure that we
+            // are multiplying by the corresponding state
             if (states[s][f])
                 tmp_prob[f] += tmp_node->probability[s];
         }

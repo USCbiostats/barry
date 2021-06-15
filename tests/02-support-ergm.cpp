@@ -88,7 +88,7 @@ TEST_CASE("Computing support for networks", "[support]") {
   logs[1u] = log(logs[1u]);
   
   
-  std::vector< double > margin = {0.00001, 0.00001};
+  std::vector< double > margin = {std::fabs(logs_expected[0u] * .001), std::fabs(logs_expected[1u] * .001)};
   std::cout << nnets << " networks." << std::endl;
   print(logs);
   print(logs_expected);

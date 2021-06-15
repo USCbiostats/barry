@@ -25,7 +25,7 @@ inline std::vector< T > vabsdiff(std::vector< T > & a, std::vector< T > & b) {
     throw std::length_error("-a- and -b- should be of th same length.");
   
   for (auto i = 0u; i < a.size(); ++i)
-    ans[i] = abs(a[i] - b[i]);
+    ans[i] = std::fabs(a[i] - b[i]);
     
   return ans;
 }

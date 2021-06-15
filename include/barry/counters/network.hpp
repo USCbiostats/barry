@@ -424,7 +424,7 @@ inline void counter_absdiff(
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
         
-        return std::pow(std::abs(
+        return std::pow(std::fabs(
                 Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][i] - 
                     Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][j]
         ), NET_C_DATA_NUM(0u));

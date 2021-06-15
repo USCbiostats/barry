@@ -1,25 +1,16 @@
 
-#ifndef APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP
-#define APHYLOMODEL_MEAT_LIKELIHOOD_EXACT_HPP 1
+#ifndef GEESE_MEAT_PREDICT_EXHAUST_HPP
+#define GEESE_MEAT_PREDICT_EXHAUST_HPP 1
 // #include "../../barry.hpp"
 // #include "geese-bones.hpp" 
 
-inline double Geese::predict_exhaust(
+inline std::vector< std::vector<double> > Geese::predict_exhaust(
     const std::vector< double > & par,
     bool only_annotated,
     bool use_reduced_sequence
 ) {
 
     INITIALIZED()
-
-    // Splitting the probabilities
-    std::vector< double > par0(par.begin(), par.end() - nfunctions);
-    std::vector< double > par_root(par.end() - nfunctions, par.end());
-
-    // Scaling root
-    for (auto& p : par_root) {
-        p = std::exp(p)/(std::exp(p) + 1);
-    }
 
     // This is only worthwhile if the number of nodes is small
     if (this->nnodes() > 6)
@@ -29,10 +20,11 @@ inline double Geese::predict_exhaust(
         throw std::overflow_error("Too many functions! Exhaust calculation of prediction cannot be done for such cases.");
 
     // Computing all combinations ----------------------------------------------
+    // The base PhyloArray will store the original set of annotations.
     phylocounters::PhyloArray base(nfuns(), nnodes());
     for (auto& n : nodes) {
         for (unsigned int i = 0u; i < nfuns(); ++i)
-            base(i, n.second.id) = n.second.annotations[i];
+            base(i, n.second.ord) = n.second.annotations[i];
     }
 
     phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
@@ -41,11 +33,8 @@ inline double Geese::predict_exhaust(
             );
     pset.calc();
 
-    // Inverse sequence
-    std::vector< unsigned int > preorder(this->sequence);
-    std::reverse(preorder.begin(), preorder.end());
-
-    double totprob = 0.0;
+    // Making space for the expected values
+    std::vector< double > expected(nnodes() * nfuns(), 0.0);
     
     // This vector says whether the probability has to be included in 
     // the final likelihood or not.
@@ -53,59 +42,36 @@ inline double Geese::predict_exhaust(
         
         // ith state
         const phylocounters::PhyloArray * s = &pset[p];
+
+        // We now need to update the annotations to match those in the
+        // powerset.
+        for (auto & n: nodes)
+            this->update_annotations(n.second.id, s->get_col_vec(n.second.ord));
+
+        double prob = this->likelihood(par, false, use_reduced_sequence);
+        std::cout << "Prob: " << prob << std::endl;
+        // Adding to the overall probability
+        for (auto & n: nodes)
+            for (unsigned int j = 0u; j < nfuns(); ++j)
+                expected[n.second.ord +  j * nnodes()] += n.second.annotations[j] * prob;
         
-        // Following the sequence
-        double prob = 1.0;
-        std::vector< unsigned int > tmpstates(this->nfuns());
-
-        Node * node;
-        for (auto& i : preorder) {
-
-            node = &nodes[i];
-            std::fill(tmpstates.begin(), tmpstates.end(), 0u);
-            s->get_col_vec(&tmpstates, node->id, false);
-
-            // Root node first
-            if (node->parent == nullptr) {               
-                // Since it is the root, the first probability is computed using
-                // the root only
-                for (auto k = 0u; k < this->nfuns(); ++k) {
-                    prob *= tmpstates[k] == 1u ? par_root[k] : (1.0 - par_root[k]);
-                }
-
-            } else if (node->is_leaf())
-                continue;
-
-            // Computing the transition
-            phylocounters::PhyloArray transition(nfuns(), node->offspring.size());
-            std::vector< double > bl(node->offspring.size(), 1.0);
-            std::vector< bool > sl =vector_caster<bool,unsigned int>(tmpstates);
-            transition.set_data(
-                new phylocounters::NodeData(bl, sl, node->duplication),
-                true
-            );
-
-            // Filling the array
-            for (unsigned int a = 0u; a < nfuns(); ++a) {
-
-                for (unsigned int o = 0u; o < node->offspring.size(); ++o) {
-                    if (s->get_cell(a, node->offspring[o]->id) == 1u)
-                        transition(a, o) = 1u;
-                }
-
-            }
-
-            prob *= this->model->likelihood(
-                par0, transition,
-                node->narray[this->map_to_nodes[tmpstates]],
-                false);
-
-        }
-
-        totprob += prob;
     }
 
-    return totprob;
+    // Returning to the original set of annotations
+    for (auto & n: nodes)
+        this->update_annotations(n.second.id, base.get_col_vec(n.second.ord));
+
+    // Coercing expected to a list vector
+    std::vector< std::vector< double > > res(nnodes());
+    std::vector< double > zerovec(nfuns(), 0.0);
+    for (auto & n: nodes)
+    {
+        res[n.second.ord] = zerovec;
+        for (unsigned int i = 0u; i < nfuns(); ++i)
+            res[n.second.ord][i] = expected[n.second.ord +  i * nnodes()];
+    }
+
+    return res;
 
 }
 #endif

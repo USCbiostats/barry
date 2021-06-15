@@ -220,7 +220,7 @@ public:
         const std::vector< uint > & preorder
         );
 
-    std::vector< std::vector< double > > predict_exhausts(
+    std::vector< std::vector< double > > predict_exhaust(
         const std::vector< double > & par,
         bool only_annotated       = false,
         bool use_reduced_sequence = true
