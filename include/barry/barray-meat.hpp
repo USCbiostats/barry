@@ -1109,8 +1109,13 @@ inline void BArray< Cell_Type, Data_Type >::reserve() {
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline void BArray< Cell_Type, Data_Type >::print() const {
+inline void BArray< Cell_Type, Data_Type >::print(const char * fmt, ...) const {
   
+    std::va_list args;
+    va_start(args, fmt);
+    vprintf(fmt, args);
+    va_end(args);
+
     for (uint i = 0u; i < N; ++i) {
         printf_barry("[%3i,] ", i);
         for (uint j = 0u; j < M; ++j) {

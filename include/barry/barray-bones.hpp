@@ -198,7 +198,7 @@ public:
     // void toggle_iterator
     
     // Misc
-    void print() const;
+    void print(const char * fmt = nullptr, ...) const;
 
     /**
      * @name Arithmetic operators

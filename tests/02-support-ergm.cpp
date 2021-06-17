@@ -88,11 +88,11 @@ TEST_CASE("Computing support for networks", "[support]") {
   logs[1u] = log(logs[1u]);
   
   
-  std::vector< double > margin = {std::fabs(logs_expected[0u] * .001), std::fabs(logs_expected[1u] * .001)};
+  // std::vector< double > margin = {std::fabs(logs_expected[0u] * .001), std::fabs(logs_expected[1u] * .001)};
   std::cout << nnets << " networks." << std::endl;
   print(logs);
   print(logs_expected);
-  REQUIRE(vabsdiff(logs, logs_expected) < margin);
+  REQUIRE_THAT(logs, Catch::Approx(logs_expected).epsilon(0.001));
   
 }
 
