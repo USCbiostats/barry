@@ -12,10 +12,7 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
         {1, 1},
         {0, 9}
     };
-    // ann.resize(3u, {9, 9});
-
-    // std::vector< uint > geneid = {0, 1, 2, 3, 4};
-    // std::vector< int >  parent = {4, 3, 3, 4, -1};
+    
     std::vector< uint > geneid = {0, 1, 2, 3, 4};
     std::vector< int >  parent = {-1, 0, 0, 1, 1};
 
@@ -31,11 +28,11 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     model.set_seed(100);
 
     // Model parameters to test
-    std::vector<double> params = {1, -1, -.5, -5, -5};
+    std::vector<double> params = {-1, 1, -.5, -5, -5};
 
-    std::vector<std::vector<double>> ans0a = model.predict(params, nullptr, true);
+    std::vector<std::vector<double>> ans0a = model.predict(params, nullptr, false);
     // std::vector<std::vector<double>> ans1a = model.predict_exhaust(params);
-    std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 3000000);
+    std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 1000000);
     
     printf_barry("predict():\n");
     for (auto & a : ans0a) {
