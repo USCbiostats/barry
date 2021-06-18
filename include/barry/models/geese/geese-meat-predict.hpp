@@ -113,6 +113,8 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 double prob = 0.0;
 
                 // Iterating through all the cases in which x_p -> x_nk^p
+                // This will also depend on the siblings. So we need to do it
+                // differntly if we have sib information
                 for (unsigned int a = 0u; a < p_arrays->size(); ++a)
                 {
                 
@@ -122,7 +124,6 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                     bool includeit = true;
                     for (unsigned int k = 0u; k < nfuns(); ++k)
                     {
-
                         if (A(k, n_pos, false) != static_cast<unsigned int>(states[s][k]))
                         {
                             
@@ -131,6 +132,47 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                             break;
                             
                         }
+                    }
+
+                    // Checking the siblings (if we are still including it)
+                    if (includeit)
+                    {
+
+                        unsigned int noff = 0u;
+                        for (auto s : node.parent->offspring)
+                        {
+                            // If other than the current, then we check it out
+                            if (noff != n_pos)
+                            {
+
+                                for (unsigned int k = 0u; k < nfuns(); ++k)
+                                {
+
+                                    // Missings do not affect
+                                    if (s->annotations[k] == 9u)
+                                        continue;
+
+                                    if (A(k, noff, false) != s->annotations[k])
+                                    {
+                                        
+                                        // If it does not match, then jump to the next state
+                                        includeit = false;
+                                        break;
+                                        
+                                    }
+                                }
+
+                                // This means that a sibling has one annotation that
+                                // does not matches the data in A(), so we shouldn't
+                                // include it (break and then continue)
+                                if (!includeit)
+                                    break;
+
+                            }
+
+                            ++noff;
+                        }
+
 
                     }
 
