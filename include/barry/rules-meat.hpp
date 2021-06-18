@@ -150,13 +150,27 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
     free->empty();
     free->reserve(N*K);
     
-    for (uint i = 0u; i < N; ++i) {
-        for (uint j = 0u; j < K; ++j) {
-            if (this->operator()(a, i, j))
-                free->push_back({i, j});
-            else if (locked != nullptr)
-                locked->push_back({i,j});
+    for (uint i = 0u; i < N; ++i)
+    {
+
+        for (uint j = 0u; j < K; ++j)
+        {
+
+            // Locked cells are skipped
+            if (!this->operator()(a, i, j))
+            {
+
+                if (locked != nullptr)
+                    locked->push_back({i,j});
+
+                continue;
+
+            }
+
+            free->push_back({i, j});
+                
         }
+
     }
     
     free->shrink_to_fit();

@@ -13,6 +13,7 @@
 #include "geese/geese-meat-simulate.hpp"
 #include "geese/geese-meat-predict.hpp"
 #include "geese/geese-meat-predict_exhaust.hpp"
+#include "geese/geese-meat-predict_sim.hpp"
 
 #include "geese/flock-bones.hpp"
 #include "geese/flock-meet.hpp"

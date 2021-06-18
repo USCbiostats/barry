@@ -9,8 +9,8 @@ CPPFLAGS= -std=c++11 -Wall -pedantic
 check: main.o 
 	./main.o
 
-.PHONY: *.hpp
-main.o: main.cpp *.hpp
+.PHONY: %.cpp
+main.o: %.cpp
 	g++ $(CPPFLAGS) -O3 main.cpp -g -o main.o
 
 checkv: mainv.o

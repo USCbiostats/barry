@@ -15,9 +15,20 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
     rules->get_seq(EmptyArray, &coordinates_free, &coordinates_locked);
     
     // Computing initial statistics
-    if (EmptyArray.nnozero() > 0u) {
-        for (uint i = 0u; i < coordinates_free.size(); ++i) 
+    if (EmptyArray.nnozero() > 0u)
+    {
+        for (uint i = 0u; i < coordinates_free.size(); ++i)
             EmptyArray.rm_cell(coordinates_free[i].first, coordinates_free[i].second, false, true);
+    }
+
+    // Looked coordinates should still be removed if these are
+    // equivalent to zero
+    for (auto & coord: coordinates_locked)
+    {
+
+        if (static_cast<int>(EmptyArray(coord.first, coord.second, false)) == 0)
+            EmptyArray.rm_cell(coord.first, coord.second, false, true);
+
     }
 
     // Do we have any counter?

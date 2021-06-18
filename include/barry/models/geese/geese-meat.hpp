@@ -19,24 +19,23 @@ inline void Geese::init_node(Node & n) {
     n.subtree_prob.resize(states.size(), 1.0);
 
     // Adding the data, first through functions
-    for (unsigned int k = 0u; k < nfunctions; ++k) {
+    for (unsigned int k = 0u; k < nfunctions; ++k)
+    {
 
         // Then through the offspring
         unsigned int j = 0;
         for (auto& o : n.offspring) {
 
             // If leaf, then it may have an annotation
-            if (o->is_leaf()) {
-                if (o->annotations.at(k) != 0) {
-                    n.array.insert_cell(
-                        k, j, o->annotations.at(k), false, false
-                        );
-                }
+            if (o->is_leaf())
+            {
+
+                if (o->annotations[k] != 0)
+                    n.array.insert_cell(k, j, o->annotations[k], false, false);
+
             } else {
                 // Otherwise, we fill it with a 9.
-                n.array.insert_cell(
-                    k, j, 9u, false, false
-                    );
+                n.array.insert_cell(k, j, 9u, false, false);
 
             }
 
@@ -47,12 +46,16 @@ inline void Geese::init_node(Node & n) {
     }
 
     // We then need to set the powerset
-    if (n.arrays.size() != states.size()) {
+    if (n.arrays.size() != states.size())
+    {
+
         n.arrays.resize(states.size());
         n.narray.resize(states.size());
+
     }
     
-    for (unsigned int s = 0u; s < states.size(); ++s) {
+    for (unsigned int s = 0u; s < states.size(); ++s)
+    {
 
         n.arrays[s] = phylocounters::PhyloArray(n.array, true);
         n.arrays[s].set_data(
@@ -66,6 +69,7 @@ inline void Geese::init_node(Node & n) {
     }
 
     return;
+
 }
 
 inline Geese::~Geese() {
@@ -77,12 +81,14 @@ inline Geese::~Geese() {
         delete rengine;
 
     return;
+
 }
 
 inline void Geese::init(bool verb) {
 
     // Initializing the model, if it is null
-    if (this->model == nullptr) {
+    if (this->model == nullptr)
+    {
 
         this->model = new phylocounters::PhyloModel();
         this->delete_support = true;
@@ -102,18 +108,24 @@ inline void Geese::init(bool verb) {
 
     states.reserve(pset.data.size());
     unsigned int i = 0u;
-    for (auto& iter : pset.data) {
+    for (auto& iter : pset.data)
+    {
 
         states.push_back(std::vector< bool >(nfunctions, false));
         
         for (auto j = 0u; j < nfunctions; ++j)
+        {
+
             if (!iter.is_empty(j, 0u, false))
-                states.at(i).at(j) = true;
+                states[i][j] = true;
+
+        }
 
         // Adding to map so we can look at it later on
         map_to_nodes.insert({iter.get_col_vec(0u, false), i});
 
         i++;
+
     }
 
     if (verb)
@@ -158,14 +170,14 @@ inline void Geese::init(bool verb) {
     }
 
     // Resetting the sequence
-    for (auto& n: this->nodes) {
+    for (auto& n: this->nodes)
         n.second.visited = false;
-    }
 
     // So that others now know it was initialized
     initialized = true;
 
     return;
+
 }
 
 inline void Geese::inherit_support(const Geese & model_, bool delete_support_) {
@@ -177,9 +189,12 @@ inline void Geese::inherit_support(const Geese & model_, bool delete_support_) {
     this->delete_support = delete_support_;
 
     // And random number generation
-    if (this->delete_rengine) {
+    if (this->delete_rengine)
+    {
+
         delete this->rengine;
         this->delete_rengine = false;
+
     }
     
     this->rengine = model_.rengine;
@@ -505,8 +520,31 @@ inline phylocounters::PhyloSupport * Geese::get_support() {
     return this->model->get_support();
 }
 
-inline std::vector< std::vector< bool > > Geese::get_states() {
+inline std::vector< std::vector< bool > > Geese::get_states() const {
     return this->states;
+}
+
+inline std::vector< unsigned int > Geese::get_annotated_nodes() const {
+
+    std::vector< unsigned int > ids(0u);
+    for (auto & n : nodes)
+    {
+
+        // Counting non-9 annotations
+        for (unsigned int f = 0u; f < nfuns(); ++f)
+        {
+            // If it has one non-9, then add it to the list
+            // and continue to the next node.
+            if (n.second.annotations[f] != 9u) {
+                ids.push_back(n.second.id);
+                break;
+            }
+        }
+
+    }
+
+    return ids;
+
 }
 
 

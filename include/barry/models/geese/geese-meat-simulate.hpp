@@ -29,18 +29,19 @@ inline std::vector< std::vector< unsigned int > > Geese::simulate(
 
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(states.size(), 1.0);
-    for (unsigned int i = 0u; i < rootp.size(); ++i) {
-        for (unsigned int j = 0u; j < nfunctions; ++j) {
+    for (unsigned int i = 0u; i < rootp.size(); ++i)
+    {
+        for (unsigned int j = 0u; j < nfuns(); ++j)
             rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);
-        }
     }
 
     // Preparing the random number generator
     std::uniform_real_distribution<> urand(0, 1);
-    double r = urand(*rengine);
+    double r         = urand(*rengine);
     unsigned int idx = 0u;
     double cumprob = rootp[idx];
-    while ((idx < rootp.size()) && (cumprob < r)) {
+    while ((idx < rootp.size()) && (cumprob < r))
+    {
         cumprob += rootp[++idx];
     }
     
@@ -49,22 +50,25 @@ inline std::vector< std::vector< unsigned int > > Geese::simulate(
         vector_caster< unsigned int, bool>(states[idx]);
 
     // Going in the opposite direction
-    for (auto& i : preorder) {
+    for (auto& i : preorder)
+    {
 
         if (nodes[i].is_leaf())
             continue;
 
+        const Node & n = nodes[i];
+
         // Getting the state of the node      
-        unsigned int n = map_to_nodes[res[nodes[i].ord]];
+        unsigned int l = map_to_nodes[res[n.ord]];
 
         // Given the state of the current node, sample the state of the
         // offspring, all based on the current state
-        auto tmp = model->sample(nodes[i].narray[n], par0);
+        auto z = n.narray;
+        auto tmp = model->sample(n.narray[l], par0);
 
         // Iterating through the offspring to assign the state
-        for (unsigned int j = 0u; j < nodes[i].offspring.size(); ++j) {
-            res[nodes[i].offspring[j]->ord] = tmp.get_col_vec(j, false);
-        }
+        for (unsigned int j = 0u; j < n.offspring.size(); ++j)
+            res[n.offspring[j]->ord] = tmp.get_col_vec(j, false);
 
     }
 

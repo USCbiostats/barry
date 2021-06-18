@@ -84,8 +84,8 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
         throw std::overflow_error("Too many functions! Exhaust calculation of prediction cannot be done for such cases.");
 
     // Processing the probabilities --------------------------------------------
-    std::vector< double > par_terms(par.begin(), par.end() - nfunctions);
-    std::vector< double > par_root(par.end() - nfunctions, par.end());
+    std::vector< double > par_terms(par.begin(), par.end() - nfuns());
+    std::vector< double > par_root(par.end() - nfuns(), par.end());
 
     // Scaling root
     for (auto& p : par_root)
@@ -97,8 +97,8 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
     for (auto& n : nodes)
     {
 
-        for (unsigned int i = 0u; i < nfuns(); ++i)
-            base(i, n.second.ord) = n.second.annotations[i];
+        for (unsigned int f = 0u; f < nfuns(); ++f)
+            base(f, n.second.ord) = n.second.annotations[f];
 
     }
 
@@ -109,11 +109,11 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
     pset.calc();
     
     // Generating the sequence preorder sequence -------------------------------
-    std::vector< unsigned int > preorder;
-    if (only_annotated)
-        preorder = this->reduced_sequence;
-    else
-        preorder = this->sequence;
+    std::vector< unsigned int > preorder(this->sequence);
+    // if (only_annotated)
+    //     preorder = this->reduced_sequence;
+    // else
+    //     preorder = this->sequence;
 
     std::reverse(preorder.begin(), preorder.end());
     
@@ -127,7 +127,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
         
         // ith state
         const phylocounters::PhyloArray * s = &pset[p];
-        s->print("Start pset %02i\n", p);
+        
         // Computing the likelihood of the state s        
         double current_prob = 1.0;
         for (auto & o: preorder)
@@ -177,7 +177,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
                 ++loc;
 
             }
-            tmparray.print("Array of node %02i\n", n.ord);
+            
             // Computing the likelihood
             current_prob *= model->likelihood(par_terms, tmparray, -1, false);
 

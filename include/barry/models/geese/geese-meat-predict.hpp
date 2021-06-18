@@ -11,8 +11,8 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 {
 
     // Splitting the probabilities
-    std::vector< double > par_terms(par.begin(), par.end() - nfunctions);
-    std::vector< double > par_root(par.end() - nfunctions, par.end());
+    std::vector< double > par_terms(par.begin(), par.end() - nfuns());
+    std::vector< double > par_root(par.end() - nfuns(), par.end());
 
     // Scaling root
     for (auto& p : par_root)
@@ -20,11 +20,11 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(this->states.size(), 1.0);
-    for (unsigned int i = 0u; i < rootp.size(); ++i)
+    for (unsigned int s = 0u; s < rootp.size(); ++s)
     {
 
-        for (unsigned int j = 0u; j < nfuns(); ++j)
-            rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);
+        for (unsigned int f = 0u; f < nfuns(); ++f)
+            rootp[s] *= states[s][f] ? par_root[f] : (1.0 - par_root[f]);
         
     }
 
@@ -38,20 +38,23 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
     tmp_node->probability.resize(states.size(), 0.0);
     double tmp_likelihood = likelihood(par, false, use_reduced_sequence);
 
-    for (unsigned int s = 0u; s < states.size(); ++s) {
+    for (unsigned int s = 0u; s < states.size(); ++s)
+    {
 
         // Overall state probability P(x_s | D)
         tmp_node->probability[s] = tmp_node->subtree_prob[s] * rootp[s] /
             tmp_likelihood;
 
         // Marginalizing the probabilities P(x_sf | D)
-        for (unsigned int f = 0u; f < nfuns(); ++f) {
+        for (unsigned int f = 0u; f < nfuns(); ++f)
+        {
 
             // Since the probability, the expected value, is for
             // observing an x = 1, then we need to make sure that we
             // are multiplying by the corresponding state
             if (states[s][f])
                 tmp_prob[f] += tmp_node->probability[s];
+
         }
         
 
@@ -118,6 +121,8 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                     // Should we include this?
                     bool includeit = true;
                     for (unsigned int k = 0u; k < nfuns(); ++k)
+                    {
+
                         if (A(k, n_pos, false) != static_cast<unsigned int>(states[s][k]))
                         {
                             
@@ -126,7 +131,8 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                             break;
                             
                         }
-                    
+
+                    }
 
                     // If not to be included, then we go to the next
                     if (!includeit)
@@ -147,9 +153,11 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         // Computing marginal probabilities. For this we need to integrate out
         // function by function.
         std::fill(tmp_prob.begin(), tmp_prob.end(), 0.0);
-        for (unsigned int s = 0u; s < states.size(); ++s) {
+        for (unsigned int s = 0u; s < states.size(); ++s)
+        {
         
-            for (unsigned int k = 0u; k < nfuns(); ++k) {
+            for (unsigned int k = 0u; k < nfuns(); ++k)
+            {
 
                 // If the state is true, then include it, otherwise, don't
                 if (states[s][k])

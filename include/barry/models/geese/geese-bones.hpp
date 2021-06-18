@@ -8,11 +8,15 @@
 
 template<typename Ta, typename Tb>
 inline std::vector< Ta > vector_caster(const std::vector< Tb > & x) {
+
     std::vector< Ta > ans;
     ans.reserve(x.size());
+
     for (auto i = x.begin(); i != x.end(); ++i)
         ans.push_back(static_cast< Ta >(*i));
+
     return ans;
+    
 }
 
 #define INITIALIZED() if (!this->initialized) \
@@ -224,6 +228,12 @@ public:
         const std::vector< double > & par,
         bool only_annotated       = false
         );
+
+    std::vector< std::vector< double > > predict_sim(
+        const std::vector< double > & par,
+        bool only_annotated       = false,
+        unsigned int nsims        = 10000u
+        );
     ///@}
 
     void init_node(Node & n);
@@ -232,11 +242,34 @@ public:
         std::vector< unsigned int > newann
     );
 
+    /**
+     * @name Non-const pointers to shared objects in `Geese`
+     * 
+     * @details These functions provide direct access to some member
+     * objects that are shared by the nodes within `Geese`.
+     * 
+     * @return `get_rengine()` returns the Pseudo-RNG engine used.
+     * @return `get_counters()` returns the vector of counters used.
+     * @return `get_model()` returns the `Model` object used.
+     * @return `get_support()` returns the computed support of the model.
+     */
+    ///@{
     std::mt19937 *                     get_rengine();
     phylocounters::PhyloCounters *     get_counters();
     phylocounters::PhyloModel *        get_model();
     phylocounters::PhyloSupport *      get_support();
-    std::vector< std::vector< bool > > get_states();
+    ///@}
+    
+    /**
+     * @brief Powerset of a gene's possible states
+     * @details This list of vectors is used throughout `Geese`. It lists
+     * all possible combinations of functional states for any gene. Thus,
+     * for `P` functions, there will be `2^P` possible combinations.
+     * 
+     * @return std::vector< std::vector< bool > > of length `2^P`.
+     */
+    std::vector< std::vector< bool > > get_states() const;  
+    std::vector< unsigned int >        get_annotated_nodes() const; ///< Returns the ids of the nodes with at least one annotation
 
 };
 

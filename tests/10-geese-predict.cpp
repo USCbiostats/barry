@@ -25,18 +25,40 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
 
     // Adding terms
     counter_gains(model.get_counters(), {0, 1});
-    counter_maxfuns(model.get_counters(), 2, 2);
+    counter_overall_changes(model.get_counters());
 
     model.init();
     model.set_seed(100);
 
-    // Tryingout likelihood
-    std::vector<double> params = {1, 1, -1, -10, -10};
+    // Model parameters to test
+    std::vector<double> params = {1, -1, -.5, -5, -5};
 
-    std::vector<std::vector<double>> ans0a = model.predict(params);
-    std::vector<std::vector<double>> ans1a = model.predict_exhaust(params);
+    std::vector<std::vector<double>> ans0a = model.predict(params, nullptr, true);
+    // std::vector<std::vector<double>> ans1a = model.predict_exhaust(params);
+    std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 3000000);
     
-    // auto simres = model.simulate()
+    printf_barry("predict():\n");
+    for (auto & a : ans0a) {
+        for (auto & v : a) {
+            printf_barry("%.6f, ", v);
+        }
+        printf_barry("\n");
+    }
+    // printf_barry("Verus predict_exhaust():\n");
+    // for (auto & a : ans1a) {
+    //     for (auto & v : a) {
+    //         printf_barry("%.6f, ", v);
+    //     }
+    //     printf_barry("\n");
+    // }
+
+    printf_barry("Verus predict_sim():\n");
+    for (auto & a : ans2a) {
+        for (auto & v : a) {
+            printf_barry("%.6f, ", v);
+        }
+        printf_barry("\n");
+    }
 
     // Casting as vectors
     std::vector< double > ans0a_vec(0u);
@@ -44,11 +66,17 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
         for (auto & j: i)
             ans0a_vec.push_back(j);
 
-    std::vector< double > ans1a_vec(0u);
-    for (auto & i : ans1a)
-        for (auto & j: i)
-            ans1a_vec.push_back(j);
+    // std::vector< double > ans1a_vec(0u);
+    // for (auto & i : ans1a)
+    //     for (auto & j: i)
+    //         ans1a_vec.push_back(j);
 
-    REQUIRE_THAT(ans0a_vec, Catch::Approx(ans1a_vec).epsilon(0.001));
+    std::vector< double > ans2a_vec(0u);
+    for (auto & i : ans2a)
+        for (auto & j: i)
+            ans2a_vec.push_back(j);
+
+    // REQUIRE_THAT(ans0a_vec, Catch::Approx(ans1a_vec).epsilon(0.001));
+    REQUIRE_THAT(ans0a_vec, Catch::Approx(ans2a_vec).margin(0.05));
 
 }

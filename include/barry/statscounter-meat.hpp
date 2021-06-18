@@ -115,6 +115,10 @@ inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
         
         // If there's one, then update the statistic, by iterating
         for (auto& col: row) {
+
+            // We only insert if it is different from zero
+            if (static_cast<int>(col.second.value) == 0)
+                continue;
             
             // Adding a cell
             EmptyArray.insert_cell(i, col.first, col.second, false, false);
