@@ -1,77 +1,9 @@
 
 #ifndef GEESE_MEAT_PREDICT_EXHAUST_HPP
 #define GEESE_MEAT_PREDICT_EXHAUST_HPP 1
-// #include "../../barry.hpp"
-// #include "geese-bones.hpp" 
-
-/*
-
-    // Creating the phyloarray, nfunctions x noffspring
-    n.array = phylocounters::PhyloArray(nfunctions, n.offspring.size());
-    std::vector< bool > tmp_state = vector_caster<bool,uint>(n.annotations);
-    std::vector< double > blen(n.offspring.size(), 1.0);
-    n.array.set_data(
-        new phylocounters::NodeData(blen, tmp_state, n.duplication),
-        true
-    );
-
-    // We initialize all with a zero since, if excluded from the pruning process,
-    // We need to set it to one (as the result of the full integration).
-    n.subtree_prob.resize(states.size(), 1.0);
-
-    // Adding the data, first through functions
-    for (unsigned int k = 0u; k < nfunctions; ++k) {
-
-        // Then through the offspring
-        unsigned int j = 0;
-        for (auto& o : n.offspring) {
-
-            // If leaf, then it may have an annotation
-            if (o->is_leaf()) {
-                if (o->annotations.at(k) != 0) {
-                    n.array.insert_cell(
-                        k, j, o->annotations.at(k), false, false
-                        );
-                }
-            } else {
-                // Otherwise, we fill it with a 9.
-                n.array.insert_cell(
-                    k, j, 9u, false, false
-                    );
-
-            }
-
-            ++j;
-
-        }
-
-    }
-
-    // We then need to set the powerset
-    if (n.arrays.size() != states.size()) {
-        n.arrays.resize(states.size());
-        n.narray.resize(states.size());
-    }
-    
-    for (unsigned int s = 0u; s < states.size(); ++s) {
-
-        n.arrays[s] = phylocounters::PhyloArray(n.array, true);
-        n.arrays[s].set_data(
-            new phylocounters::NodeData(blen, states[s], n.duplication),
-            true
-        );
-
-        // Once the array is ready, we can add it to the model
-        n.narray[s] = model->add_array(n.arrays[s]);
-
-    }
-
-    return;
-*/
 
 inline std::vector< std::vector<double> > Geese::predict_exhaust(
-    const std::vector< double > & par,
-    bool only_annotated
+    const std::vector< double > & par
 ) {
 
     INITIALIZED()
@@ -83,6 +15,41 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
     if (this->nfuns() > 2)
         throw std::overflow_error("Too many functions! Exhaust calculation of prediction cannot be done for such cases.");
 
+
+    // Generating the sequence preorder sequence -------------------------------
+    std::vector< unsigned int > preorder(this->sequence);
+    std::reverse(preorder.begin(), preorder.end());
+
+    std::vector< std::vector< double > > res = predict_exhaust_backend(
+        par, preorder
+        );
+
+    // Looping to do LOO
+    std::vector< unsigned int > annotated_ids = this->get_annotated_nodes();
+    std::vector< unsigned int > missing_vec(nfuns(), 9u);
+    for (auto & i : annotated_ids) {
+
+        Node & n = nodes[i];
+
+        auto old_ann = n.annotations;
+        update_annotations(i, missing_vec);
+
+        res[n.ord] = predict_exhaust_backend(par, preorder)[n.ord];
+
+        update_annotations(i, old_ann);
+
+    }
+
+    return res;
+
+}
+
+inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
+
+    const std::vector< double > & par,
+    const std::vector< unsigned int > & preorder
+) {
+
     // Processing the probabilities --------------------------------------------
     std::vector< double > par_terms(par.begin(), par.end() - nfuns());
     std::vector< double > par_root(par.end() - nfuns(), par.end());
@@ -90,6 +57,8 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
     // Scaling root
     for (auto& p : par_root)
         p = std::exp(p)/(std::exp(p) + 1);
+
+    double baseline_likelihood = this->likelihood(par);
 
     // Computing all combinations ----------------------------------------------
     // The base PhyloArray will store the original set of annotations.
@@ -107,15 +76,6 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
             rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>
             );
     pset.calc();
-    
-    // Generating the sequence preorder sequence -------------------------------
-    std::vector< unsigned int > preorder(this->sequence);
-    // if (only_annotated)
-    //     preorder = this->reduced_sequence;
-    // else
-    //     preorder = this->sequence;
-
-    std::reverse(preorder.begin(), preorder.end());
     
     // Making space for the expected values
     std::vector< double > expected(nnodes() * nfuns(), 0.0);
@@ -187,7 +147,8 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
         // Adding to the overall probability
         for (auto & n: nodes)
             for (unsigned int j = 0u; j < nfuns(); ++j)
-                expected[n.second.ord +  j * nnodes()] += s->operator()(j, n.second.ord) * current_prob;
+                expected[n.second.ord +  j * nnodes()] += s->operator()(j, n.second.ord) * current_prob/
+                    baseline_likelihood;
         
     }
 

@@ -224,9 +224,13 @@ public:
         const std::vector< uint > & preorder
         );
 
-    std::vector< std::vector< double > > predict_exhaust(
+    std::vector< std::vector< double > > predict_exhaust_backend(
         const std::vector< double > & par,
-        bool only_annotated       = false
+        const std::vector< uint > & preorder
+        );
+
+    std::vector< std::vector< double > > predict_exhaust(
+        const std::vector< double > & par
         );
 
     std::vector< std::vector< double > > predict_sim(

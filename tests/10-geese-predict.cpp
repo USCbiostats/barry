@@ -30,26 +30,26 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     // Model parameters to test
     std::vector<double> params = {-1, 1, -.5, -5, -5};
 
-    std::vector<std::vector<double>> ans0a = model.predict(params, nullptr, false);
-    // std::vector<std::vector<double>> ans1a = model.predict_exhaust(params);
-    std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 1000000);
+    std::vector<std::vector<double>> ans0a = model.predict_exhaust(params);
+    std::vector<std::vector<double>> ans1a = model.predict(params, nullptr, false);
+    std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 100000);
     
-    printf_barry("predict():\n");
+    printf_barry("predict_exhaust():\n");
     for (auto & a : ans0a) {
         for (auto & v : a) {
             printf_barry("%.6f, ", v);
         }
         printf_barry("\n");
     }
-    // printf_barry("Verus predict_exhaust():\n");
-    // for (auto & a : ans1a) {
-    //     for (auto & v : a) {
-    //         printf_barry("%.6f, ", v);
-    //     }
-    //     printf_barry("\n");
-    // }
+    printf_barry("Versus predict():\n");
+    for (auto & a : ans1a) {
+        for (auto & v : a) {
+            printf_barry("%.6f, ", v);
+        }
+        printf_barry("\n");
+    }
 
-    printf_barry("Verus predict_sim():\n");
+    printf_barry("Versus predict_sim():\n");
     for (auto & a : ans2a) {
         for (auto & v : a) {
             printf_barry("%.6f, ", v);
@@ -63,17 +63,17 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
         for (auto & j: i)
             ans0a_vec.push_back(j);
 
-    // std::vector< double > ans1a_vec(0u);
-    // for (auto & i : ans1a)
-    //     for (auto & j: i)
-    //         ans1a_vec.push_back(j);
+    std::vector< double > ans1a_vec(0u);
+    for (auto & i : ans1a)
+        for (auto & j: i)
+            ans1a_vec.push_back(j);
 
     std::vector< double > ans2a_vec(0u);
     for (auto & i : ans2a)
         for (auto & j: i)
             ans2a_vec.push_back(j);
 
-    // REQUIRE_THAT(ans0a_vec, Catch::Approx(ans1a_vec).epsilon(0.001));
-    REQUIRE_THAT(ans0a_vec, Catch::Approx(ans2a_vec).margin(0.05));
+    REQUIRE_THAT(ans0a_vec, Catch::Approx(ans2a_vec).margin(0.025));
+    REQUIRE_THAT(ans0a_vec, Catch::Approx(ans1a_vec).margin(0.025));
 
 }
