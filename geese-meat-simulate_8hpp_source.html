@@ -127,64 +127,73 @@ $(document).ready(function(){initNavTree('geese-meat-simulate_8hpp_source.html',
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Generating probabilities at the root-level (root state)</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::vector&lt; double &gt; rootp(states.size(), 1.0);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0u; i &lt; rootp.size(); ++i) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0u; j &lt; <a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>; ++j) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0u; i &lt; rootp.size(); ++i)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0u; j &lt; <a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(); ++j)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// Preparing the random number generator</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::uniform_real_distribution&lt;&gt; urand(0, 1);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">double</span> r = urand(*rengine);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">double</span> r         = urand(*rengine);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx = 0u;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">double</span> cumprob = rootp[idx];</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">while</span> ((idx &lt; rootp.size()) &amp;&amp; (cumprob &lt; r)) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        cumprob += rootp[++idx];</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// We now know the state of the root</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    res[<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[preorder[0u]].ord] =</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        vector_caster&lt; unsigned int, bool&gt;(states[idx]);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Going in the opposite direction</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; i : preorder) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[i].is_leaf())</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// Getting the state of the node      </span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> n = <a class="code" href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">map_to_nodes</a>[res[<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[i].ord]];</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// Given the state of the current node, sample the state of the</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">// offspring, all based on the current state</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">auto</span> tmp = model-&gt;sample(<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[i].narray[n], par0);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">while</span> ((idx &lt; rootp.size()) &amp;&amp; (cumprob &lt; r))</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        cumprob += rootp[++idx];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// We now know the state of the root</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    res[<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[preorder[0u]].ord] =</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        vector_caster&lt; unsigned int, bool&gt;(states[idx]);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// Going in the opposite direction</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; i : preorder)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[i].is_leaf())</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_node.html">Node</a> &amp; n = <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[i];</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">// Getting the state of the node      </span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> l = <a class="code" href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">map_to_nodes</a>[res[n.<a class="code" href="class_node.html#ac58501488a47ad56989463668d062e8f">ord</a>]];</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">// Iterating through the offspring to assign the state</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0u; j &lt; <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[i].offspring.size(); ++j) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            res[<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[i].offspring[j]-&gt;ord] = tmp.get_col_vec(j, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">// Given the state of the current node, sample the state of the</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// offspring, all based on the current state</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">auto</span> z = n.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">auto</span> tmp = model-&gt;sample(n.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>[l], par0);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">// Iterating through the offspring to assign the state</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0u; j &lt; n.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>.size(); ++j)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            res[n.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>[j]-&gt;ord] = tmp.get_col_vec(j, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_geese_html_a0483807174fe427f5bd2ccbb22ac3ad6"><div class="ttname"><a href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">Geese::nfunctions</a></div><div class="ttdeci">unsigned int nfunctions</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00095">geese-bones.hpp:95</a></div></div>
-<div class="ttc" id="aclass_geese_html_a25f8324ae2c43b8a940a8e934c768a7c"><div class="ttname"><a href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">Geese::map_to_nodes</a></div><div class="ttdeci">barry::MapVec_type&lt; unsigned int &gt; map_to_nodes</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00097">geese-bones.hpp:97</a></div></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_geese_html_a0483807174fe427f5bd2ccbb22ac3ad6"><div class="ttname"><a href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">Geese::nfunctions</a></div><div class="ttdeci">unsigned int nfunctions</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00099">geese-bones.hpp:99</a></div></div>
+<div class="ttc" id="aclass_geese_html_a25f8324ae2c43b8a940a8e934c768a7c"><div class="ttname"><a href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">Geese::map_to_nodes</a></div><div class="ttdeci">barry::MapVec_type&lt; unsigned int &gt; map_to_nodes</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00101">geese-bones.hpp:101</a></div></div>
 <div class="ttc" id="aclass_geese_html_a675662efdded0d24c146946aa15ed481"><div class="ttname"><a href="class_geese.html#a675662efdded0d24c146946aa15ed481">Geese::simulate</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; unsigned int &gt; &gt; simulate(const std::vector&lt; double &gt; &amp;par)</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat-simulate_8hpp_source.html#l00008">geese-meat-simulate.hpp:8</a></div></div>
 <div class="ttc" id="aclass_geese_html_aa5d623d5e242a29090bf5a01bfeeeb9f"><div class="ttname"><a href="class_geese.html#aa5d623d5e242a29090bf5a01bfeeeb9f">Geese::set_seed</a></div><div class="ttdeci">void set_seed(const unsigned int &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat-simulate_8hpp_source.html#l00004">geese-meat-simulate.hpp:4</a></div></div>
-<div class="ttc" id="aclass_geese_html_ab00af142f1f0e13b5c9d0cb7c8d41ee5"><div class="ttname"><a href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">Geese::nodes</a></div><div class="ttdeci">std::map&lt; unsigned int, Node &gt; nodes</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00096">geese-bones.hpp:96</a></div></div>
-<div class="ttc" id="aclass_geese_html_ab815e9b33ce2cfb5757f86083f357152"><div class="ttname"><a href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">Geese::sequence</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; sequence</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00100">geese-bones.hpp:100</a></div></div>
-<div class="ttc" id="ageese-bones_8hpp_html_a08888c91f4cab1da64c8f8bf10b59c40"><div class="ttname"><a href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a></div><div class="ttdeci">#define INITIALIZED()</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00018">geese-bones.hpp:18</a></div></div>
+<div class="ttc" id="aclass_geese_html_ab00af142f1f0e13b5c9d0cb7c8d41ee5"><div class="ttname"><a href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">Geese::nodes</a></div><div class="ttdeci">std::map&lt; unsigned int, Node &gt; nodes</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00100">geese-bones.hpp:100</a></div></div>
+<div class="ttc" id="aclass_geese_html_ab815e9b33ce2cfb5757f86083f357152"><div class="ttname"><a href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">Geese::sequence</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; sequence</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00104">geese-bones.hpp:104</a></div></div>
+<div class="ttc" id="aclass_geese_html_ac3e067871732f3eba27626f94bcd44b4"><div class="ttname"><a href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">Geese::nfuns</a></div><div class="ttdeci">unsigned int nfuns() const noexcept</div><div class="ttdoc">Number of functions analyzed.</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat_8hpp_source.html#l00333">geese-meat.hpp:333</a></div></div>
+<div class="ttc" id="aclass_node_html"><div class="ttname"><a href="class_node.html">Node</a></div><div class="ttdoc">A single node for the model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00011">geese-node-bones.hpp:11</a></div></div>
+<div class="ttc" id="aclass_node_html_a4e7e9c69da2575cad9c5fb7865dd42c7"><div class="ttname"><a href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">Node::offspring</a></div><div class="ttdeci">std::vector&lt; Node * &gt; offspring</div><div class="ttdoc">Offspring nodes.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00023">geese-node-bones.hpp:23</a></div></div>
+<div class="ttc" id="aclass_node_html_a9abaf3f1f5e9c5e383125946b04a15ac"><div class="ttname"><a href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">Node::narray</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; narray</div><div class="ttdoc">ID of the array in the model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00024">geese-node-bones.hpp:24</a></div></div>
+<div class="ttc" id="aclass_node_html_ac58501488a47ad56989463668d062e8f"><div class="ttname"><a href="class_node.html#ac58501488a47ad56989463668d062e8f">Node::ord</a></div><div class="ttdeci">unsigned int ord</div><div class="ttdoc">Order in which the node was created.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00015">geese-node-bones.hpp:15</a></div></div>
+<div class="ttc" id="ageese-bones_8hpp_html_a08888c91f4cab1da64c8f8bf10b59c40"><div class="ttname"><a href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a></div><div class="ttdeci">#define INITIALIZED()</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00022">geese-bones.hpp:22</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-meat-simulate_8hpp.html">geese-meat-simulate.hpp</a></li>
-    <li class="footer">Generated on Tue Jun 15 2021 23:33:33 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jun 22 2021 00:18:40 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

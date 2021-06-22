@@ -136,16 +136,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3855898a556e2ac1d30529d3bc35f13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d3f0a97dd5d37b6f6cfd79c41629a1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a">update_annotations</a> (unsigned int nodeid, std::vector&lt; unsigned int &gt; newann)</td></tr>
 <tr class="separator:a5d3f0a97dd5d37b6f6cfd79c41629a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addb8366d2d098403a0e0ac9e321afeeb"><td class="memItemLeft" align="right" valign="top">std::mt19937 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#addb8366d2d098403a0e0ac9e321afeeb">get_rengine</a> ()</td></tr>
-<tr class="separator:addb8366d2d098403a0e0ac9e321afeeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb975286a0ab1fd438e5bb4427398993"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">phylocounters::PhyloCounters</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#abb975286a0ab1fd438e5bb4427398993">get_counters</a> ()</td></tr>
-<tr class="separator:abb975286a0ab1fd438e5bb4427398993"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0c172270f676443a47a5f818f5920b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#ad0c172270f676443a47a5f818f5920b0">get_model</a> ()</td></tr>
-<tr class="separator:ad0c172270f676443a47a5f818f5920b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9c93f40cb142891c294ed541622dab6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a7261d5284bec3ec15fe7b038399a9c5a">phylocounters::PhyloSupport</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#ae9c93f40cb142891c294ed541622dab6">get_support</a> ()</td></tr>
-<tr class="separator:ae9c93f40cb142891c294ed541622dab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a853a4d1415b3556697d9d9daf64ccd3e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a853a4d1415b3556697d9d9daf64ccd3e">get_states</a> ()</td></tr>
-<tr class="separator:a853a4d1415b3556697d9d9daf64ccd3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08873639292543015324d3c3768e900f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a08873639292543015324d3c3768e900f">get_states</a> () const</td></tr>
+<tr class="memdesc:a08873639292543015324d3c3768e900f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Powerset of a gene's possible states.  <a href="class_geese.html#a08873639292543015324d3c3768e900f">More...</a><br /></td></tr>
+<tr class="separator:a08873639292543015324d3c3768e900f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e39cec2fede50e1c59bf7886dd13f7a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a7e39cec2fede50e1c59bf7886dd13f7a">get_annotated_nodes</a> () const</td></tr>
+<tr class="memdesc:a7e39cec2fede50e1c59bf7886dd13f7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ids of the nodes with at least one annotation.  <a href="class_geese.html#a7e39cec2fede50e1c59bf7886dd13f7a">More...</a><br /></td></tr>
+<tr class="separator:a7e39cec2fede50e1c59bf7886dd13f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Construct a new Geese object</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>The model includes a total of <code>N + 1</code> nodes, the <code>+ 1</code> beign the root node.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -218,8 +214,30 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a10442dde49613332080792a6090d46fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a167c2562599432adbf2ed50f6ccc45cb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a167c2562599432adbf2ed50f6ccc45cb">predict_backend</a> (const std::vector&lt; double &gt; &amp;par, bool use_reduced_sequence, const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;preorder)</td></tr>
 <tr class="separator:a167c2562599432adbf2ed50f6ccc45cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5a98c1076d7db25a5e84627e62001ea"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#af5a98c1076d7db25a5e84627e62001ea">predict_exhaust</a> (const std::vector&lt; double &gt; &amp;par, bool only_annotated=false, bool use_reduced_sequence=true)</td></tr>
-<tr class="separator:af5a98c1076d7db25a5e84627e62001ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadbb2397434048485757eaed2b4a33b8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#aadbb2397434048485757eaed2b4a33b8">predict_exhaust_backend</a> (const std::vector&lt; double &gt; &amp;par, const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;preorder)</td></tr>
+<tr class="separator:aadbb2397434048485757eaed2b4a33b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceb9a8b7f9e830cfa5cd358c27727229"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#aceb9a8b7f9e830cfa5cd358c27727229">predict_exhaust</a> (const std::vector&lt; double &gt; &amp;par)</td></tr>
+<tr class="separator:aceb9a8b7f9e830cfa5cd358c27727229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ad890607169531c1763f51870005918"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#a8ad890607169531c1763f51870005918">predict_sim</a> (const std::vector&lt; double &gt; &amp;par, bool only_annotated=false, unsigned int nsims=10000u)</td></tr>
+<tr class="separator:a8ad890607169531c1763f51870005918"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Non-const pointers to shared objects in &lt;tt&gt;Geese&lt;/tt&gt;</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These functions provide direct access to some member objects that are shared by the nodes within <code><a class="el" href="class_geese.html" title="Annotated Phylo Model.">Geese</a></code>.</p>
+<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="class_geese.html#addb8366d2d098403a0e0ac9e321afeeb">get_rengine()</a></code> returns the Pseudo-RNG engine used. </dd>
+<dd>
+<code><a class="el" href="class_geese.html#abb975286a0ab1fd438e5bb4427398993">get_counters()</a></code> returns the vector of counters used. </dd>
+<dd>
+<code><a class="el" href="class_geese.html#ad0c172270f676443a47a5f818f5920b0">get_model()</a></code> returns the <code><a class="el" href="class_model.html" title="General framework for discrete exponential models. This class allows generating discrete exponential ...">Model</a></code> object used. </dd>
+<dd>
+<code><a class="el" href="class_geese.html#ae9c93f40cb142891c294ed541622dab6">get_support()</a></code> returns the computed support of the model. </dd></dl>
+</div></td></tr>
+<tr class="memitem:addb8366d2d098403a0e0ac9e321afeeb"><td class="memItemLeft" align="right" valign="top">std::mt19937 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#addb8366d2d098403a0e0ac9e321afeeb">get_rengine</a> ()</td></tr>
+<tr class="separator:addb8366d2d098403a0e0ac9e321afeeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb975286a0ab1fd438e5bb4427398993"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">phylocounters::PhyloCounters</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#abb975286a0ab1fd438e5bb4427398993">get_counters</a> ()</td></tr>
+<tr class="separator:abb975286a0ab1fd438e5bb4427398993"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0c172270f676443a47a5f818f5920b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#ad0c172270f676443a47a5f818f5920b0">get_model</a> ()</td></tr>
+<tr class="separator:ad0c172270f676443a47a5f818f5920b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9c93f40cb142891c294ed541622dab6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="phylo_8hpp.html#a7261d5284bec3ec15fe7b038399a9c5a">phylocounters::PhyloSupport</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_geese.html#ae9c93f40cb142891c294ed541622dab6">get_support</a> ()</td></tr>
+<tr class="separator:ae9c93f40cb142891c294ed541622dab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -244,7 +262,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Annotated Phylo <a class="el" href="class_model.html" title="General framework for discrete exponential models. This class allows generating discrete exponential ...">Model</a>. </p>
 <p>A list of available terms for this model can be found in the <a class="el" href="group__counters-phylo.html">Phylo counters</a> section. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00072">72</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00076">76</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4766bb548b2a33e16019c52026f455f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4766bb548b2a33e16019c52026f455f5">&#9670;&nbsp;</a></span>Geese() <span class="overload">[1/4]</span></h2>
@@ -412,7 +430,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00071">71</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00075">75</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -440,7 +458,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00259">259</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00274">274</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -468,7 +486,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00220">220</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00235">235</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -497,7 +515,36 @@ Public Attributes</h2></td></tr>
 
 <p>Names of the terms in the model. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00352">352</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00367">367</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a7e39cec2fede50e1c59bf7886dd13f7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e39cec2fede50e1c59bf7886dd13f7a">&#9670;&nbsp;</a></span>get_annotated_nodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; unsigned int &gt; Geese::get_annotated_nodes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the ids of the nodes with at least one annotation. </p>
+
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00527">527</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -524,7 +571,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00496">496</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00511">511</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -551,7 +598,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00500">500</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00515">515</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -578,7 +625,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00302">302</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00317">317</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -605,12 +652,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00492">492</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00507">507</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a853a4d1415b3556697d9d9daf64ccd3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a853a4d1415b3556697d9d9daf64ccd3e">&#9670;&nbsp;</a></span>get_states()</h2>
+<a id="a08873639292543015324d3c3768e900f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08873639292543015324d3c3768e900f">&#9670;&nbsp;</a></span>get_states()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -622,7 +669,7 @@ Public Attributes</h2></td></tr>
           <td class="memname">std::vector&lt; std::vector&lt; bool &gt; &gt; Geese::get_states </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -632,7 +679,11 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00508">508</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p>Powerset of a gene's possible states. </p>
+<p>This list of vectors is used throughout <code><a class="el" href="class_geese.html" title="Annotated Phylo Model.">Geese</a></code>. It lists all possible combinations of functional states for any gene. Thus, for <code>P</code> functions, there will be <code>2^P</code> possible combinations.</p>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt; std::vector&lt; bool &gt; &gt; of length <code>2^P</code>. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00523">523</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -659,7 +710,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00504">504</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00519">519</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -697,7 +748,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00171">171</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00183">183</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -725,7 +776,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00082">82</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00087">87</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -854,7 +905,7 @@ Public Attributes</h2></td></tr>
 
 <p>Number of functions analyzed. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00318">318</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00333">333</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -883,7 +934,7 @@ Public Attributes</h2></td></tr>
 
 <p>Number of leaf. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00326">326</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00341">341</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -912,7 +963,7 @@ Public Attributes</h2></td></tr>
 
 <p>Number of nodes (interior + leaf) </p>
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00322">322</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00337">337</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -941,7 +992,7 @@ Public Attributes</h2></td></tr>
 
 <p>Number of terms included. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00336">336</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00351">351</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -968,7 +1019,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00382">382</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00397">397</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1050,7 +1101,7 @@ Public Attributes</h2></td></tr>
 
 <p>Check polytomies and return the largest. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00358">358</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00373">373</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1106,7 +1157,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat-predict_8hpp_source.html#l00170">170</a> of file <a class="el" href="geese-meat-predict_8hpp_source.html">geese-meat-predict.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat-predict_8hpp_source.html#l00220">220</a> of file <a class="el" href="geese-meat-predict_8hpp_source.html">geese-meat-predict.hpp</a>.</p>
 
 </div>
 </div>
@@ -1154,8 +1205,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af5a98c1076d7db25a5e84627e62001ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5a98c1076d7db25a5e84627e62001ea">&#9670;&nbsp;</a></span>predict_exhaust()</h2>
+<a id="aceb9a8b7f9e830cfa5cd358c27727229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceb9a8b7f9e830cfa5cd358c27727229">&#9670;&nbsp;</a></span>predict_exhaust()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1167,19 +1218,41 @@ Public Attributes</h2></td></tr>
           <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; Geese::predict_exhaust </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>par</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="geese-meat-predict__exhaust_8hpp_source.html#l00005">5</a> of file <a class="el" href="geese-meat-predict__exhaust_8hpp_source.html">geese-meat-predict_exhaust.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aadbb2397434048485757eaed2b4a33b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadbb2397434048485757eaed2b4a33b8">&#9670;&nbsp;</a></span>predict_exhaust_backend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; Geese::predict_exhaust_backend </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
           <td class="paramname"><em>par</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>only_annotated</em> = <code>false</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>use_reduced_sequence</em> = <code>true</code>&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>preorder</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1194,7 +1267,51 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat-predict__exhaust_8hpp_source.html#l00007">7</a> of file <a class="el" href="geese-meat-predict__exhaust_8hpp_source.html">geese-meat-predict_exhaust.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat-predict__exhaust_8hpp_source.html#l00047">47</a> of file <a class="el" href="geese-meat-predict__exhaust_8hpp_source.html">geese-meat-predict_exhaust.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8ad890607169531c1763f51870005918"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ad890607169531c1763f51870005918">&#9670;&nbsp;</a></span>predict_sim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt; Geese::predict_sim </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>par</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>only_annotated</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>nsims</em> = <code>10000u</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="geese-meat-predict__sim_8hpp_source.html#l00006">6</a> of file <a class="el" href="geese-meat-predict__sim_8hpp_source.html">geese-meat-predict_sim.hpp</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1338,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00430">430</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00445">445</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1306,7 +1423,7 @@ Public Attributes</h2></td></tr>
 
 <p>Number of unique sets of sufficient stats. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00343">343</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00358">358</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1344,7 +1461,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00191">191</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-meat_8hpp_source.html#l00206">206</a> of file <a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1361,7 +1478,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00105">105</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00109">109</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1377,7 +1494,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00106">106</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00110">110</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1393,7 +1510,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00104">104</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00108">108</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1409,7 +1526,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00097">97</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00101">101</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1425,7 +1542,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00095">95</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00099">99</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1441,7 +1558,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00096">96</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00100">100</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1457,7 +1574,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00101">101</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00105">105</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1473,7 +1590,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00100">100</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-bones_8hpp_source.html#l00104">104</a> of file <a class="el" href="geese-bones_8hpp_source.html">geese-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1484,6 +1601,7 @@ Public Attributes</h2></td></tr>
 <li>include/barry/models/geese/<a class="el" href="geese-meat-likelihood__exhaust_8hpp_source.html">geese-meat-likelihood_exhaust.hpp</a></li>
 <li>include/barry/models/geese/<a class="el" href="geese-meat-predict_8hpp_source.html">geese-meat-predict.hpp</a></li>
 <li>include/barry/models/geese/<a class="el" href="geese-meat-predict__exhaust_8hpp_source.html">geese-meat-predict_exhaust.hpp</a></li>
+<li>include/barry/models/geese/<a class="el" href="geese-meat-predict__sim_8hpp_source.html">geese-meat-predict_sim.hpp</a></li>
 <li>include/barry/models/geese/<a class="el" href="geese-meat-simulate_8hpp_source.html">geese-meat-simulate.hpp</a></li>
 <li>include/barry/models/geese/<a class="el" href="geese-meat_8hpp_source.html">geese-meat.hpp</a></li>
 </ul>
@@ -1493,7 +1611,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_geese.html">Geese</a></li>
-    <li class="footer">Generated on Tue Jun 15 2021 23:33:33 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jun 22 2021 00:18:40 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

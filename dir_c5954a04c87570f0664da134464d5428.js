@@ -8,6 +8,7 @@ var dir_c5954a04c87570f0664da134464d5428 =
     [ "geese-meat-likelihood_exhaust.hpp", "geese-meat-likelihood__exhaust_8hpp.html", null ],
     [ "geese-meat-predict.hpp", "geese-meat-predict_8hpp.html", null ],
     [ "geese-meat-predict_exhaust.hpp", "geese-meat-predict__exhaust_8hpp.html", null ],
+    [ "geese-meat-predict_sim.hpp", "geese-meat-predict__sim_8hpp.html", null ],
     [ "geese-meat-simulate.hpp", "geese-meat-simulate_8hpp.html", null ],
     [ "geese-meat.hpp", "geese-meat_8hpp.html", null ],
     [ "geese-node-bones.hpp", "geese-node-bones_8hpp.html", [

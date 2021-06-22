@@ -39,7 +39,7 @@ var class_b_array =
     [ "operator=", "class_b_array.html#ab9a2aaa119761e66463a09ad6c0baf1f", null ],
     [ "operator==", "class_b_array.html#a1e6e18162202b06e19f214097eb993bf", null ],
     [ "out_of_range", "class_b_array.html#a87bad4dcad82009d5721d21808b7e469", null ],
-    [ "print", "class_b_array.html#a9d150c44b23cf1e4af45f540508db1de", null ],
+    [ "print", "class_b_array.html#a046bd53282a7368f2eecd1690ddd5fda", null ],
     [ "reserve", "class_b_array.html#a5eacd388e3d0f638f2c35b6e0f0c490c", null ],
     [ "resize", "class_b_array.html#aefe411fe1890273518bfbc3f8ca616ce", null ],
     [ "rm_cell", "class_b_array.html#aaead894ff275479db4f733793ce037db", null ],
