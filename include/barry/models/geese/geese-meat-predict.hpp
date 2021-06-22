@@ -29,7 +29,8 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
     }
 
     // Making room 
-    std::vector< std::vector<double> > res(nnodes());
+    std::vector< std::vector<double> > res(
+        nnodes(), std::vector<double>(nfuns()));
 
     // Step 1: Computing the probability at the root node
     std::vector< double > tmp_prob(nfuns(), 0.0);
@@ -62,154 +63,129 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Storing the final prob
     res[nodes[preorder[0u]].ord] = tmp_prob;
+
+    // In wat comes next, we need to store all the possible combination
+    // values at the event level. We have (# Internal nodes) events, and
+    // each one of them has (# offspring possible states)
+    std::vector< std::vector< double > > predictions(nnodes());
     
         // Going in the opposite direction
     for (auto& i : preorder)
     {
+
+        printf_barry("Looking at node %i\n", i);
 
         Node & node = nodes[i];
 
         // We just started from the root
         if (node.parent == nullptr)
             continue;
+        else if (node.is_leaf())
+            continue;
 
         // Reserving space
-        node.probability.resize(states.size(), 0.0);
+        for (const auto & off : node.offspring)
+            predictions[off->ord].resize(nfuns(), 0.0);
 
-        std::vector< double > zerovec(nfuns(), 0.0);
-        res[node.ord] = zerovec;
-
-        // Need to identify what is the position of the node with respect to
-        // its siblings
-        unsigned int n_pos = 0u;
-        for (unsigned int n = 0u; n < node.parent->offspring.size(); ++n)
+        // We start by computing the "Everything below"
+        // Since at this point only matters the state of the offspring,
+        // we just grab the first of narray.
+        const auto & pset = model->get_pset(node.narray[0u]);
+        std::vector< double > Prob_Xoff_given_D(pset->size(), 1.0);
+        for (unsigned int p = 0u; p < pset->size(); ++p)
         {
 
-            if (node.parent->offspring[n]->id == node.id)
-                break;
-            
-            ++n_pos;
-            
-        }
+            const auto & pset_p = pset->operator[](p);
 
-        // Iterating through the offspring state P(x_n^p | D)
-        std::fill(node.probability.begin(), node.probability.end(), 0.0);
-        for (unsigned int s = 0u; s < states.size(); ++s)
-        {         
-
-            // Iterating throught the parent state
-            for (unsigned int s_p = 0u; s_p < states.size(); ++s_p)
+            // Everything below Xoff
+            for (unsigned int off = 0u; off < node.offspring.size(); ++off)
             {
 
-                // All the ways in which we can go from x_pk to x_nk, we first
-                // need to find its location in the model (loc):
-                unsigned int loc = node.parent->narray[s_p];
-                
-                // Retrieving the corresponding arrays and stats that will be
-                // use to marginalize
-                auto p_arrays = model->get_pset(loc);
-                auto p_stats  = model->get_stats(loc);
+                // Below leafs, the everything below is 1.
+                if (node.offspring[off]->is_leaf())
+                    continue;
 
-                double prob = 0.0;
+                // Getting the offspring state, and how it maps
+                const auto & off_state = pset_p.get_col_vec(off);
+                unsigned int loc = this->map_to_nodes[off_state];
 
-                // Iterating through all the cases in which x_p -> x_nk^p
-                // This will also depend on the siblings. So we need to do it
-                // differntly if we have sib information
-                for (unsigned int a = 0u; a < p_arrays->size(); ++a)
-                {
-                
-                    const auto & A = p_arrays->operator[](a);
-
-                    // Should we include this?
-                    bool includeit = true;
-                    for (unsigned int k = 0u; k < nfuns(); ++k)
-                    {
-                        if (A(k, n_pos, false) != static_cast<unsigned int>(states[s][k]))
-                        {
-                            
-                            // If it does not match, then jump to the next state
-                            includeit = false;
-                            break;
-                            
-                        }
-                    }
-
-                    // Checking the siblings (if we are still including it)
-                    if (includeit)
-                    {
-
-                        unsigned int noff = 0u;
-                        for (auto s : node.parent->offspring)
-                        {
-                            // If other than the current, then we check it out
-                            if (noff != n_pos)
-                            {
-
-                                for (unsigned int k = 0u; k < nfuns(); ++k)
-                                {
-
-                                    // Missings do not affect
-                                    if (s->annotations[k] == 9u)
-                                        continue;
-
-                                    if (A(k, noff, false) != s->annotations[k])
-                                    {
-                                        
-                                        // If it does not match, then jump to the next state
-                                        includeit = false;
-                                        break;
-                                        
-                                    }
-                                }
-
-                                // This means that a sibling has one annotation that
-                                // does not matches the data in A(), so we shouldn't
-                                // include it (break and then continue)
-                                if (!includeit)
-                                    break;
-
-                            }
-
-                            ++noff;
-                        }
-
-
-                    }
-
-                    // If not to be included, then we go to the next
-                    if (!includeit)
-                        continue;
-
-                    // Computing the likelihood 
-                    prob += model->likelihood(par_terms, p_stats->at(a), loc);
-                    
-                }
-
-                // Finalizing
-                node.probability[s] += node.parent->probability[s_p] * prob;
+                Prob_Xoff_given_D[p] *= node.offspring[off]->subtree_prob[loc];
 
             }
             
         }
 
-        // Computing marginal probabilities. For this we need to integrate out
-        // function by function.
-        std::fill(tmp_prob.begin(), tmp_prob.end(), 0.0);
+        // We now procede to compute everything above. For this, we don't
+        // need to iterate through the offspring, but rather the parent's 
+        // possible states
+        std::vector< double > Prob_Everything_Above(pset->size(), 0.0);
         for (unsigned int s = 0u; s < states.size(); ++s)
         {
+
+            // Retrieving the corresponding state of the parent
+            unsigned int narray_s = node.narray[s];
+            const auto & pset_s   = model->get_pset(narray_s);
+            const auto & stats_s  = model->get_stats(narray_s);
+
+            for (unsigned int p = 0u; p < pset_s->size(); ++p)
+            {
+
+                double tmp_prob = 1.0;
+
+                // Comnputing transitional prob
+                tmp_prob *= model->likelihood(
+                    par_terms, stats_s->at(p), narray_s
+                    );
+
+                // Times the likelihood of observing the parent
+                // in that state
+                tmp_prob *= node.probability[s];
+
+                // Divided by the induced sub tree probability
+                tmp_prob /= node.subtree_prob[s];
+
+                Prob_Everything_Above[p] += tmp_prob;
+                
+            }
+
+        }
+
+        // Now, computing the final steps, i.e., multiplying
+        // everything above times everything below, and marginalizing
+        // the values at the gene level
+        for (unsigned int p = 0u; p < pset->size(); ++p)
+        {
+
+            const auto & pset_p = pset->operator[](p);
+            Prob_Xoff_given_D[p] *= Prob_Everything_Above[p];
+
+            for (unsigned int off = 0u; off < node.offspring.size(); ++off)
+            {
+
+                // Figuring out the state of the offspring
+                unsigned int off_s = this->map_to_nodes[pset_p.get_col_vec(off)];
+                node.offspring[off]->probability[off_s] += Prob_Xoff_given_D[p];
+
+            }
+
+        }
+
+        // Finally, we can marginalize the values at the 
+        // gene function level.
+        for (const auto & off : node.offspring)
+        {
+            for (unsigned int s = 0u; s < states.size(); ++s)
+            {
+
+                for (unsigned int f = 0u; f < nfuns(); ++f)
+                    if (states[s][f])
+                        res[off->ord][f] += off->probability[s];
+
+            }
+                
+                
+        }
         
-            for (unsigned int k = 0u; k < nfuns(); ++k)
-            {
-
-                // If the state is true, then include it, otherwise, don't
-                if (states[s][k])
-                    tmp_prob[k] += node.probability[s];
-
-            }
-                        
-        }
-
-        res[node.ord] = tmp_prob;
 
     }
         
