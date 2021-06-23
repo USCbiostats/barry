@@ -83,7 +83,7 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
     // probabilities
     for (unsigned int i = 0u; i < nnodes(); ++i)
     {
-        printf_barry("We used %i counts for node %i.\n", counts[i], i);
+        // printf_barry("We used %i counts for node %i.\n", counts[i], i);
         for (unsigned int f = 0u; f < nfuns(); ++f)
             res_vec[i][f] /= (static_cast< double >(counts[i]) + 1e-10);
     }

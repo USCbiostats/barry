@@ -63,101 +63,106 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Storing the final prob
     res[nodes[preorder[0u]].ord] = tmp_prob;
-
-    // In wat comes next, we need to store all the possible combination
-    // values at the event level. We have (# Internal nodes) events, and
-    // each one of them has (# offspring possible states)
-    std::vector< std::vector< double > > predictions(nnodes());
     
-        // Going in the opposite direction
+    // Going in the opposite direction
     for (auto& i : preorder)
     {
 
-        printf_barry("Looking at node %i\n", i);
+        // printf_barry("Looking at node %i\n", i);
 
         Node & node = nodes[i];
 
         // We just started from the root
-        if (node.parent == nullptr)
-            continue;
-        else if (node.is_leaf())
+        if (node.is_leaf())
             continue;
 
         // Reserving space
-        for (const auto & off : node.offspring)
-            predictions[off->ord].resize(nfuns(), 0.0);
+        for (auto & off : node.offspring)
+        {
+            off->probability.resize(this->states.size(), 0.0);
+            std::fill(off->probability.begin(), off->probability.end(), 0.0);
+        }
 
         // We start by computing the "Everything below"
         // Since at this point only matters the state of the offspring,
         // we just grab the first of narray.
         const auto & pset = model->get_pset(node.narray[0u]);
-        std::vector< double > Prob_Xoff_given_D(pset->size(), 1.0);
+        std::vector< double > Prob_Xoff_given_D(pset->size(), 0.0);
+        std::vector< unsigned int > pset_final;
         for (unsigned int p = 0u; p < pset->size(); ++p)
         {
 
             const auto & pset_p = pset->operator[](p);
 
             // Everything below Xoff
+            double everything_below = 1.0;
+            bool in_the_set = true;
             for (unsigned int off = 0u; off < node.offspring.size(); ++off)
             {
 
                 // Below leafs, the everything below is 1.
                 if (node.offspring[off]->is_leaf())
+                {
+                    const auto & off_ann = node.offspring[off]->annotations;
+                    for (unsigned int f = 0u; f < nfuns(); ++f)
+                    {
+                        if ((off_ann[f] != 9u) && (off_ann[f] != pset_p(f, off)))
+                        {
+                            in_the_set = false;
+                            break;
+                        }
+                            
+                    }
+
+                    if (!in_the_set)
+                        break;
+
                     continue;
+                }
 
                 // Getting the offspring state, and how it maps
                 const auto & off_state = pset_p.get_col_vec(off);
                 unsigned int loc = this->map_to_nodes[off_state];
 
-                Prob_Xoff_given_D[p] *= node.offspring[off]->subtree_prob[loc];
+                everything_below *= node.offspring[off]->subtree_prob[loc];
 
             }
+
+            // If an offspring annotation is not in the set, then the likelihood
+            // of observing that state is zero.
+            if (!in_the_set)
+                continue;
+
+            // Generating a copy of the array
+            phylocounters::PhyloArray tmp_array(pset_p, true);
+
+            // Iterating now throughout the states of the parent
+            double everything_above = 0.0;
+            for (unsigned int s = 0u; s < states.size(); ++s)
+            {
+
+                // Updating state accordingly
+                tmp_array.D()->states = states[s];
+
+                // Identifying the loc
+                unsigned int loc = node.narray[s];
+
+                everything_above +=
+                    (model->likelihood(par_terms, tmp_array, loc) * 
+                    node.probability[s] / node.subtree_prob[s]);
+
+            }
+
+            Prob_Xoff_given_D[p] = everything_above * everything_below;
+            pset_final.push_back(p);
             
         }
 
-        // We now procede to compute everything above. For this, we don't
-        // need to iterate through the offspring, but rather the parent's 
-        // possible states
-        std::vector< double > Prob_Everything_Above(pset->size(), 0.0);
-        for (unsigned int s = 0u; s < states.size(); ++s)
-        {
-
-            // Retrieving the corresponding state of the parent
-            unsigned int narray_s = node.narray[s];
-            const auto & pset_s   = model->get_pset(narray_s);
-            const auto & stats_s  = model->get_stats(narray_s);
-
-            for (unsigned int p = 0u; p < pset_s->size(); ++p)
-            {
-
-                double tmp_prob = 1.0;
-
-                // Comnputing transitional prob
-                tmp_prob *= model->likelihood(
-                    par_terms, stats_s->at(p), narray_s
-                    );
-
-                // Times the likelihood of observing the parent
-                // in that state
-                tmp_prob *= node.probability[s];
-
-                // Divided by the induced sub tree probability
-                tmp_prob /= node.subtree_prob[s];
-
-                Prob_Everything_Above[p] += tmp_prob;
-                
-            }
-
-        }
-
-        // Now, computing the final steps, i.e., multiplying
-        // everything above times everything below, and marginalizing
-        // the values at the gene level
-        for (unsigned int p = 0u; p < pset->size(); ++p)
+        // Marginalizing at the state level
+        for (const auto & p: pset_final)
         {
 
             const auto & pset_p = pset->operator[](p);
-            Prob_Xoff_given_D[p] *= Prob_Everything_Above[p];
 
             for (unsigned int off = 0u; off < node.offspring.size(); ++off)
             {
@@ -165,6 +170,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 // Figuring out the state of the offspring
                 unsigned int off_s = this->map_to_nodes[pset_p.get_col_vec(off)];
                 node.offspring[off]->probability[off_s] += Prob_Xoff_given_D[p];
+
 
             }
 
@@ -184,8 +190,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             }
                 
                 
-        }
-        
+        }      
 
     }
         

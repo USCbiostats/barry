@@ -15,6 +15,13 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     
     std::vector< uint > geneid = {0, 1, 2, 3, 4};
     std::vector< int >  parent = {-1, 0, 0, 1, 1};
+    /**
+     * 0__1__3
+     * |  |
+     * |  |__4
+     * |
+     * |__2
+     */
 
     std::vector< bool > duplication(geneid.size(), true);
 
@@ -31,7 +38,7 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     std::vector<double> params = {1, -1, -.5, -5, -5};
 
     std::vector<std::vector<double>> ans0a = model.predict_exhaust(params);
-    std::vector<std::vector<double>> ans1a = model.predict(params, nullptr, false);
+    std::vector<std::vector<double>> ans1a = model.predict(params, nullptr, true);
     std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 100000);
     
     printf_barry("predict_exhaust():\n");
