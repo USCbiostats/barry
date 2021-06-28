@@ -123,7 +123,8 @@ template<typename Cell_Type, typename Data_Type>
 inline BArray<Cell_Type,Data_Type>::BArray(
     const BArray<Cell_Type,Data_Type> & Array_,
     bool copy_data
-) : N(Array_.N), M(Array_.M){
+) : N(Array_.N), M(Array_.M)
+{
   
     // Dimensions
     // el_ij.resize(N);
@@ -133,7 +134,8 @@ inline BArray<Cell_Type,Data_Type>::BArray(
     std::copy(Array_.el_ji.begin(), Array_.el_ji.end(), std::back_inserter(el_ji));
 
     // Taking care of the pointers
-    for (uint i = 0u; i < N; ++i) {
+    for (uint i = 0u; i < N; ++i)
+    {
 
         for (auto& r: row(i, false))
             COL(r.first)[i] = &ROW(i)[r.first];
@@ -144,11 +146,13 @@ inline BArray<Cell_Type,Data_Type>::BArray(
     this->visited = Array_.visited;
     
     // Data
-    if (Array_.data != nullptr) {
+    if (Array_.data != nullptr)
+    {
 
-        if (copy_data) {
+        if (copy_data)
+        {
 
-            data = new Data_Type(*Array_.data);
+            data = new Data_Type(* Array_.data );
             delete_data = true;
 
         } else {
@@ -170,13 +174,15 @@ inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
 ) {
   
     // Clearing
-    if (this != &Array_) {
+    if (this != &Array_)
+    {
       
         this->clear(true);
         this->resize(Array_.N, Array_.M);
         
         // Entries
-        for (uint i = 0u; i < N; ++i) {
+        for (uint i = 0u; i < N; ++i)
+        {
           
             if (Array_.nnozero() == nnozero())
                 break;
@@ -187,15 +193,23 @@ inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
         }
       
         // Data
-        if (data != nullptr) {
+        if (data != nullptr)
+        {
+
             if (delete_data)
                 delete data;
+                
             data = nullptr;
+            delete_data = false;
+
         }
 
-        if (Array_.data != nullptr) {
+        if (Array_.data != nullptr)
+        {
+
             data = new Data_Type(*Array_.data);
             delete_data = true;
+
         }
       
     }
@@ -228,13 +242,20 @@ inline BArray<Cell_Type,Data_Type>::BArray(
     }
 
     // Managing data
-    if (x.data != nullptr) {
+    if (x.data != nullptr)
+    {
 
-        if (x.delete_data) {
+        if (x.delete_data)
+        {
+
             data = new Data_Type(*x.data);
             delete_data = true;
+
         } else
+        {
             data = x.data;
+            delete_data = false;
+        }
 
     }
 
@@ -263,15 +284,22 @@ inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
         }
       
         // Data
-        if (data != nullptr) {
+        if (data != nullptr)
+        {
+
             if (delete_data)
                 delete data;
             data = nullptr;
+            delete_data = false;
+
         }
 
-        if (x.data != nullptr) {
+        if (x.data != nullptr)
+        {
+
             data = new Data_Type(*x.data);
             delete_data = true;
+
         }
       
     }

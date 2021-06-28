@@ -134,21 +134,30 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 continue;
 
             // Generating a copy of the array
-            phylocounters::PhyloArray tmp_array(pset_p, true);
+            // phylocounters::PhyloArray tmp_array(pset_p, true);
+            // phylocounters::NodeData tmp_data(*pset_p.D());
 
             // Iterating now throughout the states of the parent
             double everything_above = 0.0;
             for (unsigned int s = 0u; s < states.size(); ++s)
             {
 
-                // Updating state accordingly
-                tmp_array.D()->states = states[s];
+                // // Updating state accordingly
+                // tmp_array.set_data(
+                //     new phylocounters::NodeData(tmp_data.blengths, states[s], tmp_data.duplication),
+                //     true
+                // );
+                    // D()->states = states[s];
 
                 // Identifying the loc
                 unsigned int loc = node.narray[s];
 
                 everything_above +=
-                    (model->likelihood(par_terms, tmp_array, loc) * 
+                    (model->likelihood(
+                        par_terms,
+                        model->get_stats(loc)->operator[](p),
+                        loc
+                        ) * //tmp_array, loc) * 
                     node.probability[s] / node.subtree_prob[s]);
 
             }

@@ -38,7 +38,7 @@ public:
      */
     bool duplication = true;
     
-    NodeData() {};
+    // NodeData() : blengths(0u), states(0u) {};
     
     NodeData(
         const std::vector< double > & blengths_,
@@ -371,6 +371,124 @@ inline void counter_genes_changing(
         new PhyloCounterData({duplication ? 1u : 0u}),
         true,
         "Num. of genes changing" + get_last_name(duplication)
+    );
+
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Keeps track of how many genes are changing (either 0, 1, or 2 if dealing
+ * with regular trees.)
+ */
+inline void counter_prop_genes_changing(
+    PhyloCounters * counters, bool duplication = true
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        PHYLO_CHECK_MISSING();
+
+        if (Array.D()->duplication & (data->at(0u) == 0))
+            return 0.0;
+        else if (!Array.D()->duplication & (data->at(0u) == 1))
+            return 0.0;
+
+        // At the beginning, all offspring are zero, so we need to
+        // find at least one state = true.
+
+        for (uint j0 = 0u; j0 < Array.nrow(); ++j0)
+        {
+
+            if (Array.D()->states[j0]) 
+                // Yup, we are loosing a function, so break
+                return 1.0; // static_cast<double>(Array.ncol());
+            
+        }
+
+        return 0.0;
+      
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Checking the type of event
+        if (Array.D()->duplication & (data->at(0u) == 0u))
+            return 0.0;
+        else if (!Array.D()->duplication & (data->at(0u) == 1u))
+            return 0.0;
+
+        // Case 1: The parent had the function (then probably need to substract one)
+        if (Array.D()->states[i]) {
+
+            // Need to check the other functions
+            for (uint k = 0u; k < Array.nrow(); ++k)
+            {
+
+                if (k != i)
+                {
+
+                    // Nah, this gene was already different.
+                    if (Array.D()->states[k] && (Array(k, j, false) == 0u))
+                        return 0.0;
+                    else if ((!Array.D()->states[k]) && (Array(k, j, false) == 1u))
+                        return 0.0;
+
+                }
+
+            }
+
+            // Nope, this gene is now matching its parent, so we need to 
+            // take it out from the count of genes that have changed.
+            return -1.0/static_cast<double>(Array.ncol());
+
+        }
+        else if (!Array.D()->states[i])
+        {
+            // Case 2: The parent didn't had the function. Probably need to increase
+            // by one.
+
+
+              // Need to check the other functions, where these the same?
+              // if these were the same, then we are facing a gene who is changing.
+              for (uint k = 0u; k < Array.nrow(); ++k)
+              {
+
+                  if (k != i)
+                  {
+                      // Nah, this gene was already different.
+                      if (Array.D()->states[k] && (Array(k, j, false) == 0u))
+                          return 0.0;
+                      else if ((!Array.D()->states[k]) && (Array(k, j, false) == 1u))
+                          return 0.0;
+                  }
+                  
+              }
+
+              // Nope, this gene is now matching its parent, so we need to 
+              // take it out from the count of genes that have changed.
+              return 1.0/static_cast<double>(Array.ncol());
+
+        } else
+            throw std::logic_error(
+                "Reach the end of -counter_prop_genes_changing-. This shouldn't happen!"
+                );
+
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new PhyloCounterData({duplication ? 1u : 0u}),
+        true,
+        "Proportion of genes changing" + get_last_name(duplication)
     );
 
     
