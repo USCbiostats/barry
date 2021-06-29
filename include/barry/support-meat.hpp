@@ -126,19 +126,23 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
 
     // Counting
     // std::vector< double > change_stats(counters.size());
-    for (uint n = 0u; n < counters->size(); ++n) {
+    for (uint n = 0u; n < counters->size(); ++n)
+    {
+
         change_stats[pos][n] = counters->operator[](n).count(
             EmptyArray,
             cfree.first,
             cfree.second
             );
         current_stats[n] += change_stats[pos][n];
+
     }
     
     // Adding to the overall count
     BARRY_CHECK_SUPPORT(data, max_num_elements)
     if (rules_dyn->size() > 0u)
     {
+        
         if (rules_dyn->operator()(EmptyArray, cfree.first, cfree.second))
         {
 

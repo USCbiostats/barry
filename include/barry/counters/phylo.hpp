@@ -46,7 +46,7 @@ public:
         bool duplication_ = true
     ) : blengths(blengths_), states(states_), duplication(duplication_) {};
     
-    ~NodeData() {};
+    // ~NodeData() {};
   
 };
 

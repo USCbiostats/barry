@@ -110,6 +110,7 @@ public:
     void set_data(Data_Type * data_, bool delete_data_ = false);
     Data_Type * D();
     const Data_Type * D() const;
+    void flush_data();
     ///@}
     
     // Function to access the elements

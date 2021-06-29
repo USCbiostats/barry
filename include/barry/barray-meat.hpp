@@ -352,13 +352,30 @@ inline void BArray<Cell_Type,Data_Type>::set_data(
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline Data_Type * BArray<Cell_Type,Data_Type>::D() {
+inline Data_Type * BArray<Cell_Type,Data_Type>::D()
+{
     return this->data;
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline const Data_Type * BArray<Cell_Type,Data_Type>::D() const {
+inline const Data_Type * BArray<Cell_Type,Data_Type>::D() const
+{
     return this->data;
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline void BArray<Cell_Type,Data_Type>::flush_data()
+{
+
+    if (delete_data)
+    {
+        delete data;
+        delete_data = false;
+    }
+
+    data = nullptr;
+
+    return;
 }
 
 template<typename Cell_Type, typename Data_Type>

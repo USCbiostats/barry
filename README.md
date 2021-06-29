@@ -104,6 +104,10 @@ C triads          : 1
 Mutuals           : 3
 ```
 
+## Efficient memory usage
+
+One of the key features of `barry` is that it will handle memory efficiently.
+
 ## Code of Conduct
 
 Please note that the `barry` project is released with a

@@ -343,7 +343,8 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
     // the support
     std::vector< double > key = keygen(Array_);
     MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
-    if (force_new | (locator == keys2support.end())) {
+    if (force_new | (locator == keys2support.end()))
+    {
         
         // Adding to the map
         keys2support[key] = stats.size();
@@ -355,14 +356,16 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
         
         /** When computing with the powerset, we need to grow the corresponding
             * vectors on the fly */
-        if (with_pset) {
+        if (with_pset)
+        {
             
             // Making space for storing the support
             pset_arrays.resize(pset_arrays.size() + 1u);
             pset_stats.resize(pset_stats.size() + 1u);
             pset_probs.resize(pset_probs.size() + 1u);
             
-            try {
+            try
+            {
                 
                 support_fun.calc(
                     &(pset_arrays[pset_arrays.size() - 1u]),
@@ -382,8 +385,11 @@ inline uint Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type
             
         } else {
             
-            try {
+            try
+            {
+
                 support_fun.calc();
+
             } catch (const std::exception& e) {
                 
                 printf_barry("A problem ocurred while trying to add the array. ");
@@ -426,6 +432,10 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
     // Checking if the index exists
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
+
+    // Checking if this actually has a change of happening
+    if (this->stats[arrays2support[i]].size() == 0u)
+        return as_log ? std::numeric_limits<double>::infinity() : 0.0;
     
     // Checking if we have updated the normalizing constant or not
     if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
@@ -474,6 +484,10 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
         i = arrays2support[i];
 
     }
+
+    // Checking if this actually has a change of happening
+    if (this->stats[arrays2support[i]].size() == 0u)
+        return as_log ? std::numeric_limits<double>::infinity() : 0.0;
     
     // Counting stats
     StatsCounter< Array_Type, Data_Counter_Type> tmpstats(&Array_);
@@ -500,6 +514,10 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
     // Checking if the index exists
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
+
+    // Checking if this actually has a change of happening
+    if (this->stats[arrays2support[i]].size() == 0u)
+        return as_log ? std::numeric_limits<double>::infinity() : 0.0;
     
     // Checking if we have updated the normalizing constant or not
     if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
