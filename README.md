@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/USCbiostats/barry/branch/master/graph/badge.svg?token=qGBTD4GJDL)](https://codecov.io/gh/USCbiostats/barry)
 [![Integrative Methods of Analysis for Genetic Epidemiology](https://raw.githubusercontent.com/USCbiostats/badges/master/tommy-image-badge.svg)](https://image.usc.edu)
 
-<h1>Barry: your to-go motif accountant<img src="logo.svg" style="max-width:200px;width:50%;" align="right"></h1>
+<h1>Barry: your to-go motif accountant<img src="design/logo.svg" style="max-width:200px;width:50%;" align="right"></h1>
 
 [This repository](https://github.com/USCbiostats/barry) contains a C++ template
 library that essentially counts sufficient statistics on binary arrays. The idea

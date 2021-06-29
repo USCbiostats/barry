@@ -245,17 +245,9 @@ inline BArray<Cell_Type,Data_Type>::BArray(
     if (x.data != nullptr)
     {
 
-        if (x.delete_data)
-        {
-
-            data = new Data_Type(*x.data);
-            delete_data = true;
-
-        } else
-        {
-            data = x.data;
-            delete_data = false;
-        }
+        data = x.data;
+        x.data = nullptr;
+        x.delete_data = false;
 
     }
 
@@ -297,10 +289,13 @@ inline BArray<Cell_Type,Data_Type> & BArray<Cell_Type,Data_Type>::operator=(
         if (x.data != nullptr)
         {
 
-            data = new Data_Type(*x.data);
+            data = x.data;
             delete_data = true;
 
         }
+
+        x.data = nullptr;
+        x.delete_data = false;
       
     }
       

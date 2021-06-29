@@ -144,6 +144,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
                 // Updating state accordingly
                 unsigned int loc = node.narray[s];
+
                 tmp_data->states = states[s];
 
                 everything_above +=
