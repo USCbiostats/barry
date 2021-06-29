@@ -3,7 +3,7 @@
   \item {$\sim$BArray}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{31}
   \item {$\sim$BArrayCell}
-    \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{41}
+    \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{42}
   \item {$\sim$BArrayCell\_const}
     \subitem {BArrayCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{44}
@@ -48,8 +48,6 @@
     \subitem {NetworkData}, \hyperpage{128}
   \item {$\sim$Node}
     \subitem {Node}, \hyperpage{131}
-  \item {$\sim$NodeData}
-    \subitem {NodeData}, \hyperpage{135}
   \item {$\sim$PhyloRuleDynData}
     \subitem {PhyloRuleDynData}, \hyperpage{137}
   \item {$\sim$PowerSet}
@@ -127,37 +125,38 @@
     \subitem {col}, \hyperpage{31}
     \subitem {D}, \hyperpage{32}
     \subitem {default\_val}, \hyperpage{32}
+    \subitem {flush\_data}, \hyperpage{32}
     \subitem {get\_cell}, \hyperpage{32}
-    \subitem {get\_col\_vec}, \hyperpage{32}
+    \subitem {get\_col\_vec}, \hyperpage{32, 33}
     \subitem {get\_entries}, \hyperpage{33}
     \subitem {get\_row\_vec}, \hyperpage{33}
     \subitem {insert\_cell}, \hyperpage{33, 34}
     \subitem {is\_empty}, \hyperpage{34}
     \subitem {ncol}, \hyperpage{34}
     \subitem {nnozero}, \hyperpage{34}
-    \subitem {nrow}, \hyperpage{34}
+    \subitem {nrow}, \hyperpage{35}
     \subitem {operator$\ast$=}, \hyperpage{35}
     \subitem {operator()}, \hyperpage{35}
-    \subitem {operator+=}, \hyperpage{35}
+    \subitem {operator+=}, \hyperpage{35, 36}
     \subitem {operator-\/=}, \hyperpage{36}
     \subitem {operator/=}, \hyperpage{36}
-    \subitem {operator=}, \hyperpage{36}
+    \subitem {operator=}, \hyperpage{36, 37}
     \subitem {operator==}, \hyperpage{37}
     \subitem {out\_of\_range}, \hyperpage{37}
     \subitem {print}, \hyperpage{37}
     \subitem {reserve}, \hyperpage{37}
     \subitem {resize}, \hyperpage{37}
-    \subitem {rm\_cell}, \hyperpage{37}
+    \subitem {rm\_cell}, \hyperpage{38}
     \subitem {row}, \hyperpage{38}
     \subitem {set\_data}, \hyperpage{38}
     \subitem {swap\_cells}, \hyperpage{38}
-    \subitem {swap\_cols}, \hyperpage{38}
+    \subitem {swap\_cols}, \hyperpage{39}
     \subitem {swap\_rows}, \hyperpage{39}
     \subitem {toggle\_cell}, \hyperpage{39}
     \subitem {toggle\_lock}, \hyperpage{39}
     \subitem {transpose}, \hyperpage{39}
     \subitem {visited}, \hyperpage{40}
-    \subitem {zero\_col}, \hyperpage{39}
+    \subitem {zero\_col}, \hyperpage{40}
     \subitem {zero\_row}, \hyperpage{40}
   \item {barray-\/bones.hpp}
     \subitem {BARRAY\_BONES\_HPP}, \hyperpage{168}
@@ -174,17 +173,17 @@
   \item {BArrayCell}
     \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{41}
   \item {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{41}
-    \subitem {$\sim$BArrayCell}, \hyperpage{41}
+    \subitem {$\sim$BArrayCell}, \hyperpage{42}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{40}
     \subitem {BArrayCell}, \hyperpage{41}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{60}
+		\hyperpage{61}
     \subitem {operator Cell\_Type}, \hyperpage{42}
     \subitem {operator$\ast$=}, \hyperpage{42}
     \subitem {operator+=}, \hyperpage{42}
     \subitem {operator-\/=}, \hyperpage{42}
-    \subitem {operator/=}, \hyperpage{42}
-    \subitem {operator=}, \hyperpage{42}
+    \subitem {operator/=}, \hyperpage{43}
+    \subitem {operator=}, \hyperpage{43}
     \subitem {operator==}, \hyperpage{43}
   \item {BArrayCell\_const}
     \subitem {BArrayCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
@@ -195,47 +194,47 @@
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{40}
     \subitem {BArrayCell\_const}, \hyperpage{44}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{60}
+		\hyperpage{61}
     \subitem {operator Cell\_Type}, \hyperpage{44}
-    \subitem {operator!=}, \hyperpage{44}
-    \subitem {operator$<$}, \hyperpage{44}
+    \subitem {operator!=}, \hyperpage{45}
+    \subitem {operator$<$}, \hyperpage{45}
     \subitem {operator$<$=}, \hyperpage{45}
     \subitem {operator$>$}, \hyperpage{45}
-    \subitem {operator$>$=}, \hyperpage{45}
+    \subitem {operator$>$=}, \hyperpage{46}
     \subitem {operator==}, \hyperpage{45}
   \item {BArrayDense}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{48--50}
+		\hyperpage{49, 50}
   \item {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{46}
     \subitem {$\sim$BArrayDense}, \hyperpage{50}
-    \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{60}
+    \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{61}
     \subitem {BArrayCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{60}
-    \subitem {BArrayDense}, \hyperpage{48--50}
+		\hyperpage{61}
+    \subitem {BArrayDense}, \hyperpage{49, 50}
     \subitem {clear}, \hyperpage{50}
-    \subitem {col}, \hyperpage{50}
+    \subitem {col}, \hyperpage{51}
     \subitem {D}, \hyperpage{51}
     \subitem {default\_val}, \hyperpage{51}
     \subitem {get\_cell}, \hyperpage{51}
-    \subitem {get\_col\_vec}, \hyperpage{51, 52}
+    \subitem {get\_col\_vec}, \hyperpage{52}
     \subitem {get\_entries}, \hyperpage{52}
-    \subitem {get\_row\_vec}, \hyperpage{52}
+    \subitem {get\_row\_vec}, \hyperpage{52, 53}
     \subitem {insert\_cell}, \hyperpage{53}
-    \subitem {is\_empty}, \hyperpage{53}
+    \subitem {is\_empty}, \hyperpage{54}
     \subitem {ncol}, \hyperpage{54}
     \subitem {nnozero}, \hyperpage{54}
     \subitem {nrow}, \hyperpage{54}
     \subitem {operator$\ast$=}, \hyperpage{55}
-    \subitem {operator()}, \hyperpage{54}
+    \subitem {operator()}, \hyperpage{54, 55}
     \subitem {operator+=}, \hyperpage{55}
-    \subitem {operator-\/=}, \hyperpage{55, 56}
+    \subitem {operator-\/=}, \hyperpage{56}
     \subitem {operator/=}, \hyperpage{56}
-    \subitem {operator=}, \hyperpage{56}
+    \subitem {operator=}, \hyperpage{56, 57}
     \subitem {operator==}, \hyperpage{57}
     \subitem {out\_of\_range}, \hyperpage{57}
     \subitem {print}, \hyperpage{57}
     \subitem {reserve}, \hyperpage{57}
-    \subitem {resize}, \hyperpage{57}
+    \subitem {resize}, \hyperpage{58}
     \subitem {rm\_cell}, \hyperpage{58}
     \subitem {row}, \hyperpage{58}
     \subitem {set\_data}, \hyperpage{58}
@@ -243,7 +242,7 @@
     \subitem {swap\_cols}, \hyperpage{59}
     \subitem {swap\_rows}, \hyperpage{59}
     \subitem {toggle\_cell}, \hyperpage{59}
-    \subitem {toggle\_lock}, \hyperpage{59}
+    \subitem {toggle\_lock}, \hyperpage{60}
     \subitem {transpose}, \hyperpage{60}
     \subitem {visited}, \hyperpage{61}
     \subitem {zero\_col}, \hyperpage{60}
@@ -261,44 +260,44 @@
     \subitem {$\sim$BArrayDenseCell}, \hyperpage{62}
     \subitem {BArrayDenseCell}, \hyperpage{62}
     \subitem {operator Cell\_Type}, \hyperpage{62}
-    \subitem {operator$\ast$=}, \hyperpage{62}
+    \subitem {operator$\ast$=}, \hyperpage{63}
     \subitem {operator+=}, \hyperpage{63}
     \subitem {operator-\/=}, \hyperpage{63}
     \subitem {operator/=}, \hyperpage{63}
     \subitem {operator=}, \hyperpage{63}
-    \subitem {operator==}, \hyperpage{63}
+    \subitem {operator==}, \hyperpage{64}
   \item {barraydensecell-\/meat.hpp}
     \subitem {BARRY\_BARRAYDENSECELL\_MEAT\_HPP}, \hyperpage{179}
     \subitem {POS}, \hyperpage{179}
   \item {BArrayDenseCell\_const}
     \subitem {BArrayDenseCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{64}
+		\hyperpage{65}
   \item {BArrayDenseCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{64}
     \subitem {$\sim$BArrayDenseCell\_const}, \hyperpage{65}
-    \subitem {BArrayDenseCell\_const}, \hyperpage{64}
+    \subitem {BArrayDenseCell\_const}, \hyperpage{65}
     \subitem {operator Cell\_Type}, \hyperpage{65}
     \subitem {operator!=}, \hyperpage{65}
     \subitem {operator$<$}, \hyperpage{65}
-    \subitem {operator$<$=}, \hyperpage{65}
+    \subitem {operator$<$=}, \hyperpage{66}
     \subitem {operator$>$}, \hyperpage{66}
     \subitem {operator$>$=}, \hyperpage{66}
     \subitem {operator==}, \hyperpage{66}
   \item {BArrayVector}
     \subitem {BArrayVector$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{67}
-  \item {BArrayVector$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{66}
+  \item {BArrayVector$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{67}
     \subitem {$\sim$BArrayVector}, \hyperpage{68}
     \subitem {BArrayVector}, \hyperpage{67}
     \subitem {begin}, \hyperpage{68}
     \subitem {end}, \hyperpage{68}
     \subitem {is\_col}, \hyperpage{68}
-    \subitem {is\_row}, \hyperpage{68}
+    \subitem {is\_row}, \hyperpage{69}
     \subitem {operator std::vector$<$ Cell\_Type $>$}, \hyperpage{69}
     \subitem {operator$\ast$=}, \hyperpage{69}
     \subitem {operator+=}, \hyperpage{69}
     \subitem {operator-\/=}, \hyperpage{69}
-    \subitem {operator/=}, \hyperpage{69}
+    \subitem {operator/=}, \hyperpage{70}
     \subitem {operator=}, \hyperpage{70}
     \subitem {operator==}, \hyperpage{70}
     \subitem {size}, \hyperpage{70}
@@ -308,7 +307,7 @@
     \subitem {BArrayVector\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{71}
   \item {BArrayVector\_const$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{70}
+		\hyperpage{71}
     \subitem {$\sim$BArrayVector\_const}, \hyperpage{71}
     \subitem {BArrayVector\_const}, \hyperpage{71}
     \subitem {begin}, \hyperpage{72}
@@ -371,7 +370,7 @@
     \subitem {PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}, 
 		\hyperpage{141}
   \item {blengths}
-    \subitem {NodeData}, \hyperpage{136}
+    \subitem {NodeData}, \hyperpage{135}
   \item {BOTH}
     \subitem {CHECK}, \hyperpage{24}
     \subitem {EXISTS}, \hyperpage{25}
@@ -423,7 +422,7 @@
   \item {col}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{31}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{50}
+		\hyperpage{51}
   \item {Col\_type}
     \subitem {typedefs.hpp}, \hyperpage{225}
   \item {colnames}
@@ -676,6 +675,8 @@
     \subitem {rengine}, \hyperpage{98}
     \subitem {set\_seed}, \hyperpage{97}
     \subitem {support\_size}, \hyperpage{97}
+  \item {flush\_data}
+    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{32}
   \item {FreqTable}
     \subitem {FreqTable$<$ T $>$}, \hyperpage{99}
   \item {FreqTable$<$ T $>$}, \hyperpage{98}
@@ -748,9 +749,9 @@
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{51}
   \item {get\_col\_vec}
-    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{32}
+    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{32, 33}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{51, 52}
+		\hyperpage{52}
   \item {get\_counters}
     \subitem {Flock}, \hyperpage{94}
     \subitem {Geese}, \hyperpage{105}
@@ -804,7 +805,7 @@
   \item {get\_row\_vec}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{33}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{52}
+		\hyperpage{52, 53}
   \item {get\_rules}
     \subitem {Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}, 
 		\hyperpage{120}
@@ -920,12 +921,12 @@
   \item {is\_empty}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{34}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{53}
+		\hyperpage{54}
   \item {is\_leaf}
     \subitem {Node}, \hyperpage{132}
   \item {is\_row}
     \subitem {BArrayVector$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{68}
+		\hyperpage{69}
     \subitem {BArrayVector\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{72}
   \item {iter}
@@ -942,7 +943,7 @@
   \indexspace
 
   \item {lb}
-    \subitem {PhyloRuleDynData}, \hyperpage{138}
+    \subitem {PhyloRuleDynData}, \hyperpage{137}
   \item {likelihood}
     \subitem {Geese}, \hyperpage{107}
     \subitem {Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}, 
@@ -1142,8 +1143,7 @@
     \subitem {subtree\_prob}, \hyperpage{134}
     \subitem {visited}, \hyperpage{134}
   \item {NodeData}, \hyperpage{135}
-    \subitem {$\sim$NodeData}, \hyperpage{135}
-    \subitem {blengths}, \hyperpage{136}
+    \subitem {blengths}, \hyperpage{135}
     \subitem {duplication}, \hyperpage{136}
     \subitem {NodeData}, \hyperpage{135}
     \subitem {states}, \hyperpage{136}
@@ -1155,7 +1155,7 @@
     \subitem {CHECK}, \hyperpage{24}
     \subitem {EXISTS}, \hyperpage{26}
   \item {nrow}
-    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{34}
+    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{35}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{54}
   \item {nterms}
@@ -1193,7 +1193,7 @@
 		\hyperpage{72}
   \item {operator!=}
     \subitem {BArrayCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{44}
+		\hyperpage{45}
     \subitem {BArrayDenseCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{65}
     \subitem {BArrayVector\_const$<$ Cell\_Type, Data\_Type $>$}, 
@@ -1201,7 +1201,7 @@
     \subitem {Cell$<$ Cell\_Type $>$}, \hyperpage{77}
   \item {operator$<$}
     \subitem {BArrayCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{44}
+		\hyperpage{45}
     \subitem {BArrayDenseCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{65}
     \subitem {BArrayVector\_const$<$ Cell\_Type, Data\_Type $>$}, 
@@ -1210,7 +1210,7 @@
     \subitem {BArrayCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{45}
     \subitem {BArrayDenseCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{65}
+		\hyperpage{66}
     \subitem {BArrayVector\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{73}
   \item {operator$>$}
@@ -1222,7 +1222,7 @@
 		\hyperpage{73}
   \item {operator$>$=}
     \subitem {BArrayCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{45}
+		\hyperpage{46}
     \subitem {BArrayDenseCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{66}
     \subitem {BArrayVector\_const$<$ Cell\_Type, Data\_Type $>$}, 
@@ -1233,19 +1233,19 @@
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{55}
     \subitem {BArrayDenseCell$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{62}
+		\hyperpage{63}
     \subitem {BArrayVector$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{69}
   \item {operator()}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{35}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{54}
+		\hyperpage{54, 55}
     \subitem {Flock}, \hyperpage{96}
     \subitem {Rule$<$ Array\_Type, Data\_Type $>$}, \hyperpage{146}
     \subitem {Rules$<$ Array\_Type, Data\_Type $>$}, \hyperpage{149}
     \subitem {vecHasher$<$ T $>$}, \hyperpage{166}
   \item {operator+=}
-    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{35}
+    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{35, 36}
     \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{42}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{55}
@@ -1257,25 +1257,25 @@
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{36}
     \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{42}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{55, 56}
+		\hyperpage{56}
     \subitem {BArrayDenseCell$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{63}
     \subitem {BArrayVector$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{69}
   \item {operator/=}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{36}
-    \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{42}
+    \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{43}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{56}
     \subitem {BArrayDenseCell$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{63}
     \subitem {BArrayVector$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{69}
+		\hyperpage{70}
   \item {operator=}
-    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{36}
-    \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{42}
+    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{36, 37}
+    \subitem {BArrayCell$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{43}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{56}
+		\hyperpage{56, 57}
     \subitem {BArrayDenseCell$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{63}
     \subitem {BArrayVector$<$ Cell\_Type, Data\_Type $>$}, 
@@ -1296,7 +1296,7 @@
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{57}
     \subitem {BArrayDenseCell$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{63}
+		\hyperpage{64}
     \subitem {BArrayDenseCell\_const$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{66}
     \subitem {BArrayVector$<$ Cell\_Type, Data\_Type $>$}, 
@@ -1386,7 +1386,7 @@
     \subitem {$\sim$PhyloRuleDynData}, \hyperpage{137}
     \subitem {counts}, \hyperpage{137}
     \subitem {duplication}, \hyperpage{137}
-    \subitem {lb}, \hyperpage{138}
+    \subitem {lb}, \hyperpage{137}
     \subitem {PhyloRuleDynData}, \hyperpage{137}
     \subitem {pos}, \hyperpage{138}
     \subitem {ub}, \hyperpage{138}
@@ -1478,10 +1478,10 @@
   \item {resize}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{37}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{57}
+		\hyperpage{58}
     \subitem {Entries$<$ Cell\_Type $>$}, \hyperpage{91}
   \item {rm\_cell}
-    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{37}
+    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{38}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{58}
   \item {ROW}
@@ -1661,7 +1661,7 @@
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{59}
   \item {swap\_cols}
-    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{38}
+    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{39}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{59}
   \item {swap\_rows}
@@ -1680,7 +1680,7 @@
   \item {toggle\_lock}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{39}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
-		\hyperpage{59}
+		\hyperpage{60}
   \item {transpose}
     \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{39}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
@@ -1745,7 +1745,7 @@
   \item {ZERO\_CELL}
     \subitem {barraydense-\/meet.hpp}, \hyperpage{177}
   \item {zero\_col}
-    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{39}
+    \subitem {BArray$<$ Cell\_Type, Data\_Type $>$}, \hyperpage{40}
     \subitem {BArrayDense$<$ Cell\_Type, Data\_Type $>$}, 
 		\hyperpage{60}
   \item {zero\_row}

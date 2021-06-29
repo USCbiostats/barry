@@ -12,6 +12,7 @@ var class_b_array =
     [ "D", "class_b_array.html#a6c7c1577b33435e4a35215c530e79e59", null ],
     [ "D", "class_b_array.html#a5aca11e93b4169df851724b83e2869d2", null ],
     [ "default_val", "class_b_array.html#a1e4efac293adb1462c8921a07691fee5", null ],
+    [ "flush_data", "class_b_array.html#a004b19f21bf67587e262b14b210155b5", null ],
     [ "get_cell", "class_b_array.html#a4096e4447f91ba52766587a08c62f1fa", null ],
     [ "get_col_vec", "class_b_array.html#af62b305d538a3a79887bf6a685138651", null ],
     [ "get_col_vec", "class_b_array.html#aa2d5a133fc4adf3417f1fdc2ef5aae26", null ],
