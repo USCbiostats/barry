@@ -728,7 +728,68 @@ inline void counter_degree(
     
     return;  
 }
+
+// // -----------------------------------------------------------------------------
+// /**@brief Counts errors of commission */
+// inline void counter_css_partially_false_recip(
+//         NetCounters * counters,
+//         uint netsize
+//     ) {
     
+//     NETWORK_COUNTER_LAMBDA(tmp_count) {
+        
+
+//         // Getting the network size
+//         uint n = data->indices[0u];
+
+//         // True network
+//         if ((i < n) && (j < n))
+//         {
+
+//             // Need to check across vertices
+//             double ans = 0.0;
+//             for (uint i_ = 0u; i_ < n; ++i_)
+//             {
+//                 uint n_ = n
+//                 ans += 
+//             }
+
+//         } else {
+
+//         }
+
+//         return std::pow(std::fabs(
+//                 Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][i] - 
+//                     Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][j]
+//         ), NET_C_DATA_NUM(0u));
+        
+//     };
+    
+//     NETWORK_COUNTER_LAMBDA(tmp_init) {
+        
+//         if (Array.D() == nullptr)
+//             throw std::logic_error("The array data has not been initialized");
+        
+//         if (Array.D()->vertex_attr.size() == 0u)
+//             throw std::range_error("No attributes in the Array.");
+        
+//         if ((NET_C_DATA_IDX(0u) != 0u) && (Array.D()->vertex_attr.size() <= (NET_C_DATA_IDX(0u) - 1u)))
+//             throw std::range_error("Attribute index out of range.");
+        
+//         return 0.0;
+        
+//     };
+    
+//     counters->add_counter(
+//             tmp_count, tmp_init,
+//             new NetCounterData({attr_id}, {alpha}),
+//             true
+//         );
+    
+//     return;
+    
+// }
+
 ///@}
 
 

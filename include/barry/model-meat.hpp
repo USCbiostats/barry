@@ -435,7 +435,7 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
 
     // Checking if this actually has a change of happening
     if (this->stats[arrays2support[i]].size() == 0u)
-        return as_log ? std::numeric_limits<double>::infinity() : 0.0;
+        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     // Checking if we have updated the normalizing constant or not
     if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
@@ -487,7 +487,7 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
 
     // Checking if this actually has a change of happening
     if (this->stats[arrays2support[i]].size() == 0u)
-        return as_log ? std::numeric_limits<double>::infinity() : 0.0;
+        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     // Counting stats
     StatsCounter< Array_Type, Data_Counter_Type> tmpstats(&Array_);
@@ -517,7 +517,7 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
 
     // Checking if this actually has a change of happening
     if (this->stats[arrays2support[i]].size() == 0u)
-        return as_log ? std::numeric_limits<double>::infinity() : 0.0;
+        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     // Checking if we have updated the normalizing constant or not
     if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {

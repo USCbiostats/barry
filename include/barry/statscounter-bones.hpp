@@ -34,7 +34,7 @@ public:
      * @param Array_ A const pointer to a `BArray`.
      */
     StatsCounter(const Array_Type * Array_) :
-        Array(Array_), EmptyArray(*Array_, true),
+        Array(Array_), EmptyArray(*Array_),
         counters(new Counters<Array_Type,Data_Type>()) {
         
         // We are removing the entries without freeing the memory. This should
