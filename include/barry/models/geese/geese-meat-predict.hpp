@@ -134,8 +134,16 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 continue;
 
             // Generating a copy of the array
-            phylocounters::PhyloArray tmp_array(pset_p, true);
-            phylocounters::NodeData * tmp_data = tmp_array.D();
+            phylocounters::PhyloArray tmp_array(nfuns(), pset_p.ncol());
+            tmp_array += pset_p;
+
+            phylocounters::NodeData tmp_data(
+                std::vector<double>(1.0, pset_p.ncol()),
+                std::vector<bool>(true, nfuns()),
+                node.duplication
+                );
+
+            tmp_array.set_data(&tmp_data, false);
 
             // Iterating now throughout the states of the parent
             double everything_above = 0.0;
@@ -145,7 +153,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 // Updating state accordingly
                 unsigned int loc = node.narray[s];
 
-                tmp_data->states = states[s];
+                tmp_data.states = states[s];
 
                 everything_above +=
                     (model->likelihood(par_terms, tmp_array, loc) * 
