@@ -200,7 +200,7 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                }</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="comment">// Multiplying by P(x|x_n)</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="comment">// Multiplying by P(x|x_n), the transition probability</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                off_mult *= model-&gt;likelihood(</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                    par0,</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    psets_stats-&gt;at(nstate++),</div>
@@ -232,10 +232,17 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">return</span> as_log ? std::log(ll) : ll;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">// In the case that the sequence is empty, then it means</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="comment">// that we are looking at a completely unnanotated tree,</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="comment">// thus the likelihood should be one</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">if</span> (preseq-&gt;size() == 0u)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">return</span> as_log ? -std::numeric_limits&lt;double&gt;::infinity() : 1.0;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">return</span> as_log ? std::log(ll) : ll;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_geese_html_a0483807174fe427f5bd2ccbb22ac3ad6"><div class="ttname"><a href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">Geese::nfunctions</a></div><div class="ttdeci">unsigned int nfunctions</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00099">geese-bones.hpp:99</a></div></div>
 <div class="ttc" id="aclass_geese_html_a25f8324ae2c43b8a940a8e934c768a7c"><div class="ttname"><a href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">Geese::map_to_nodes</a></div><div class="ttdeci">barry::MapVec_type&lt; unsigned int &gt; map_to_nodes</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00101">geese-bones.hpp:101</a></div></div>
 <div class="ttc" id="aclass_geese_html_a6eb9e15bdf70319857e4ad90baefdece"><div class="ttname"><a href="class_geese.html#a6eb9e15bdf70319857e4ad90baefdece">Geese::likelihood</a></div><div class="ttdeci">double likelihood(const std::vector&lt; double &gt; &amp;par, bool as_log=false, bool use_reduced_sequence=true)</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat-likelihood_8hpp_source.html#l00006">geese-meat-likelihood.hpp:6</a></div></div>
@@ -258,7 +265,7 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-meat-likelihood_8hpp.html">geese-meat-likelihood.hpp</a></li>
-    <li class="footer">Generated on Wed Jun 30 2021 21:42:43 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 1 2021 00:08:16 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
