@@ -107,6 +107,14 @@ Mutuals           : 3
 ## Efficient memory usage
 
 One of the key features of `barry` is that it will handle memory efficiently.
+In the case of pooled-data models, the statistical models modules avoid double
+support when possible by keeping track of what datasets (networks, for instance)
+share the same support.
+
+<div align="center">
+<img src="design/ergm-computing.svg">
+</div>
+
 
 ## Code of Conduct
 
