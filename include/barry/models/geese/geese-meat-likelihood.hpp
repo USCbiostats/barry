@@ -102,7 +102,7 @@ inline double Geese::likelihood(
                 }
                     
 
-                // Multiplying by P(x|x_n)
+                // Multiplying by P(x|x_n), the transition probability
                 off_mult *= model->likelihood(
                     par0,
                     psets_stats->at(nstate++),
@@ -133,6 +133,13 @@ inline double Geese::likelihood(
         }
 
     }
+
+    // In the case that the sequence is empty, then it means
+    // that we are looking at a completely unnanotated tree,
+    // thus the likelihood should be one
+    if (preseq->size() == 0u)
+        return as_log ? -std::numeric_limits<double>::infinity() : 1.0;
+
 
     return as_log ? std::log(ll) : ll;
 
