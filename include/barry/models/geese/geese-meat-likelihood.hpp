@@ -53,7 +53,7 @@ inline double Geese::likelihood(
                 node.narray[s]
             );
 
-            const std::vector< std::vector<double> > * psets_stats = model->get_stats(
+            const std::vector< std::vector<double> > * psets_stats = model->get_pset_stats(
                 node.narray[s]
             );
 

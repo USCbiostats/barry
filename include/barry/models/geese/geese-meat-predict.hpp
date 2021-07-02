@@ -64,17 +64,211 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
     // Storing the final prob
     res[nodes[preorder[0u]].ord] = tmp_prob;
 
-    // for (auto & i : preorder)
-    // {
+    for (auto & i : preorder)
+    {
 
-    //     // Leafs have nothing to do here
-    //     Node & parent = nodes[i];
-    //     if (parent.is_leaf())
-    //         continue;
+        // Leafs have nothing to do here
+        Node & parent = nodes[i];
+        if (parent.is_leaf())
+            continue;
 
-    //     // Creating space
-    //     MapVec_type< double, uint > 
-    // }
+        // Creating space. The map is done as a function only of the state
+        // of the offspring. This is because we need to iterate through all
+        // the sates of `parent.offspring`.
+        MapVec_type< double, uint > map2probs;
+        std::vector< double > everything_below;
+        std::vector< double > everything_above;
+
+        // Iterating through the parent states
+        for (unsigned int s = 0u; s < states.size(); ++s)
+        {
+
+            // Retrieving powerset of stats and arrays
+            const auto & pset_arrays = model->get_pset(parent.narray[s]);
+            const auto & pset_target = model->get_pset_stats(parent.narray[s]);
+
+            unsigned int current_size = everything_above.size();
+
+            for (unsigned int p = 0u; p < pset_arrays.size(); ++p)
+            {
+
+                // Corresponding graph and target stats
+                const PhyloArray          & array_p  = pset_arrays->at(p);
+                const std::vector<double> & target_p = pset_target->at(p);
+
+                // We need to find to which set it corresponds
+                // An empty graph that excludes the state of the parent
+                phylocounters::PhyloArray tmp_array(parent.array, true);
+                tmp_array.clear();
+                tmp_array += array_p;
+                tmp_array.D()->states = std::vector< bool >(nfuns(), true);
+
+                // Identifying the key
+                std::vector< double > key = model->gen_key(tmp_array);
+                auto location = map2probs[ key ];
+                bool already_added = (location == map2probs.end()) ? false : true;
+
+                // Adding to the map, we only do this during the first run,
+                // afterwards, we need to actually look for the array.
+                bool in_the_set = true; /// < True if the array belongs to the set
+                
+                // Everything below just need to be computed only once
+                // and thus, if already added, no need to go through all of this!
+                double everything_below_p = 1.0;
+                if (!already_added)
+                {
+
+                    for (unsigned int off = 0u; off < parent.offspring.size(); ++off)
+                    {
+
+                        // Below leafs, the everything below is 1.
+                        if (parent.offspring[off]->is_leaf())
+                        {
+
+                            // But we can only includ it if the current state actually
+                            // matches the leaf data (otherwise the prob is 0)
+                            const auto & off_ann = parent.offspring[off]->annotations;
+                            for (unsigned int f = 0u; f < nfuns(); ++f)
+                            {
+
+                                if ((off_ann[f] != 9u) && (off_ann[f] != array_p(f, off)))
+                                {
+                                    in_the_set = false;
+                                    break;
+                                }
+                                    
+                            }
+
+                            if (!in_the_set)
+                                break;
+
+                            continue;
+
+                        } else {
+
+                            // Getting the offspring state, and how it maps, only
+                            // if it is not an offspring
+                            const auto & off_state = pset_p.get_col_vec(off);
+                            unsigned int loc = this->map_to_nodes[off_state];
+
+                            everything_below_p *= parent.offspring[off]->subtree_prob[loc];
+
+                        }                        
+
+                    }
+
+                    // If it is not in the set, then continue to the next array
+                    if (!in_the_set)
+                        continue;
+
+                }
+
+                // If it is the first state of the parent, or we have not
+                // added this to the set, then we need to add it
+                if (s == 0u | !already_added)
+                {
+
+                    map2probs[ key ] = everything_below.size();
+                    everything_below.push_back(everything_below_p);
+
+                    // The first run, we only need to grow the list
+                    everything_above.push_back(
+                        model->likelihood(
+                            par_terms, target_p, parent.narray[s], false
+                        ) *  parent.probability[s] / parent.subtree_prob[s]
+                    );
+
+                } else {
+
+                    // Trying to locate the set (it could be that it does not
+                    // exists)
+                    auto & loc = map2probs[ key ];
+
+                    // Case in which it does not exists
+                    if (loc == map2probs.end())
+                    {
+
+                        map2probs[key] = everything_below.size();
+                        everything_below.push_back(everything_below_p);
+
+                        everything_above.push_back(
+                            model->likelihood(
+                                par_terms, target_p, parent.narray[s], false
+                            ) *  parent.probability[s] / parent.subtree_prob[s]
+                        );
+
+                    } else {
+                        // Otherwise, it does exists and only above needs to be
+                        // added
+
+                        everything_above[ loc.second ] += model->likelihood(
+                            par_terms, target_p, parent.narray[s], false
+                        ) *  parent.probability[s] / parent.subtree_prob[s];
+
+                    }
+                    
+                }
+
+            } // end for psets
+            
+        } // end for states
+
+        // Marginalizing at the state level
+        for (unsigned int p = 0u; p < everything_above.size(); ++p)
+        {
+
+            const auto & pset_p = pset->operator[](p);
+
+            for (unsigned int off = 0u; off < node.offspring.size(); ++off)
+            {
+
+                // Figuring out the state of the offspring
+                unsigned int off_s = this->map_to_nodes[pset_p.get_col_vec(off)];
+                node.offspring[off]->probability[off_s] += Prob_Xoff_given_D[p];
+
+
+            }
+
+        }
+
+        // Finally, we can marginalize the values at the 
+        // gene function level.
+        for (const auto & off : parent.offspring)
+        {
+            for (unsigned int s = 0u; s < states.size(); ++s)
+            {
+
+                for (unsigned int f = 0u; f < nfuns(); ++f)
+                    if (states[s][f]) 
+                        res[off->ord][f] += off->probability[s];
+
+            }
+
+            // Checking that probabilities add up to one
+            for (unsigned int f = 0u; f < nfuns(); ++f)
+            {
+                if ((res[off->ord][f] > 1.00001) || (res[off->ord][f] < -.0000009))
+                {
+                    auto msg = "[geese] Out-of-range probability for node.id " +
+                        std::to_string(off->id) + " for function " +
+                        std::to_string(f) + ": " +
+                        std::to_string(res[off->ord][f]);
+
+                    throw std::logic_error(msg);
+                    
+                } 
+
+                if (res[off->ord][f] > 1.0)
+                    res[off->ord][f] = 1.0;
+                else if (res[off->ord][f] < 0.0)
+                    res[off->ord][f] = 0.0;
+
+            }
+   
+
+        }
+
+    } // end for over preorder
 
     
     // Going in the opposite direction

@@ -281,7 +281,7 @@ public:
         const uint & i
     );
 
-    const std::vector< std::vector< double > > * get_stats(
+    const std::vector< std::vector< double > > * get_pset_stats(
         const uint & i
     );
     ///@}

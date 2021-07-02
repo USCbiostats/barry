@@ -710,7 +710,7 @@ MODEL_TEMPLATE(const std::vector< Array_Type > *, get_pset)(
 
 }
 
-MODEL_TEMPLATE(const std::vector< std::vector< double > > *, get_stats)(
+MODEL_TEMPLATE(const std::vector< std::vector< double > > *, get_pset_stats)(
     const uint & i
 ) {
 
