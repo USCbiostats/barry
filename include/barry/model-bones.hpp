@@ -56,18 +56,11 @@ inline double likelihood_(
         numerator += target_stats[j] * params[j];
 
     if (!log_)
-        numerator = exp(numerator);
+        numerator = exp(numerator BARRY_SAFE_EXP);
     else
         return numerator BARRY_SAFE_EXP - log(normalizing_constant);
 
-    double tmp_ans = numerator/normalizing_constant;
-
-    if (tmp_ans > 1.0)
-    {
-        printf_barry("oooo\n");
-    }
-    
-    return tmp_ans;
+    return numerator/normalizing_constant;
     
 }
 

@@ -494,20 +494,12 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
     tmpstats.set_counters(this->counters);
     std::vector< double > counts = tmpstats.count_all();
 
-    double tmp_ans = likelihood(
+    return likelihood(
         params,
         counts,
         static_cast< unsigned int >(i),
         as_log
     );
-
-    if (tmp_ans > 1.0)
-    {
-        printf_barry("oooo\n");
-    }
-
-
-    return tmp_ans;
     
 }
 
