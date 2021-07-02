@@ -285,19 +285,19 @@ $(document).ready(function(){initNavTree('counters-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
 <div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="class_counters.html#abb3b7a01d7c51931a5f3b25959340784">  191</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_counters.html#a98e4efd06b3d878609911e392a8f42ce">Counters&lt;Array_Type,Data_Type&gt;::Counters</a>(</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="class_counters.html">Counters&lt;Array_Type,Data_Type&gt;</a> &amp;&amp; counters_</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="class_counters.html">Counters&lt;Array_Type,Data_Type&gt;</a> &amp;&amp; <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    ) noexcept :</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    data(std::move(counters_.data)),</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    to_be_deleted(std::move(counters_.to_be_deleted)),</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    delete_data(std::move(counters_.delete_data)),</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    delete_to_be_deleted(std::move(counters_.delete_to_be_deleted))</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    data(std::move(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.data)),</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    to_be_deleted(std::move(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.to_be_deleted)),</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    delete_data(std::move(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.delete_data)),</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    delete_to_be_deleted(std::move(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.delete_to_be_deleted))</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;{</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="comment">// Taking care of memory</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    counters_.data = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    counters_.to_be_deleted = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    counters_.delete_data = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    counters_.delete_to_be_deleted = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.data = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.to_be_deleted = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.delete_data = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.delete_to_be_deleted = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
@@ -342,25 +342,25 @@ $(document).ready(function(){initNavTree('counters-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Type&gt;</div>
 <div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="class_counters.html#a7a86bd98fa6fe65e48c382152c3a94fa">  248</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_counters.html">Counters&lt;Array_Type,Data_Type&gt;</a> &amp; <a class="code" href="class_counters.html#a0edeb22b0b1640f7ada1ef47a30ac486">Counters&lt;Array_Type,Data_Type&gt;::operator=</a>(</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <a class="code" href="class_counters.html">Counters&lt;Array_Type,Data_Type&gt;</a> &amp;&amp; counters_</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <a class="code" href="class_counters.html">Counters&lt;Array_Type,Data_Type&gt;</a> &amp;&amp; <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    ) noexcept </div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;{</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;counters_)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>)</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    {        </div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="comment">// Removing the data currently stored in the </span></div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        this-&gt;clear();</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        data          = std::move(counters_.data);</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        to_be_deleted = std::move(counters_.to_be_deleted);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        delete_data   = std::move(counters_.delete_data);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        delete_to_be_deleted   = std::move(counters_.delete_to_be_deleted);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        data          = std::move(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.data);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        to_be_deleted = std::move(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.to_be_deleted);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        delete_data   = std::move(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.delete_data);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        delete_to_be_deleted   = std::move(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.delete_to_be_deleted);</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        counters_.data = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        counters_.to_be_deleted = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        counters_.delete_data = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        counters_.delete_to_be_deleted = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.data = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.to_be_deleted = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.delete_data = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>.delete_to_be_deleted = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
@@ -460,6 +460,7 @@ $(document).ready(function(){initNavTree('counters-meat_8hpp_source.html',''); i
 <div class="ttc" id="aclass_counters_html_ad7980fd3757652e20b90ce1064e333c2"><div class="ttname"><a href="class_counters.html#ad7980fd3757652e20b90ce1064e333c2">Counters::size</a></div><div class="ttdeci">std::size_t size() const noexcept</div><div class="ttdoc">Number of counters in the set.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00159">counters-bones.hpp:159</a></div></div>
 <div class="ttc" id="aclass_counters_html_ae4635c154970a13ce88d2e982fe7dab3"><div class="ttname"><a href="class_counters.html#ae4635c154970a13ce88d2e982fe7dab3">Counters::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00328">counters-meat.hpp:328</a></div></div>
 <div class="ttc" id="acounters-bones_8hpp_html"><div class="ttname"><a href="counters-bones_8hpp.html">counters-bones.hpp</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_aa79c6fa1f7864a8258e8f2c0a68b6d35"><div class="ttname"><a href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div><div class="ttdeci">Data_Counter_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00241">support-meat.hpp:242</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a1e12ad6cdda3588f5b2157a5ad3177d2"><div class="ttname"><a href="typedefs_8hpp.html#a1e12ad6cdda3588f5b2157a5ad3177d2">Counter_fun_type</a></div><div class="ttdeci">std::function&lt; double(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Counter_fun_type</div><div class="ttdoc">Counter and rule functions.</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00123">typedefs.hpp:123</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00010">typedefs.hpp:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -468,7 +469,7 @@ $(document).ready(function(){initNavTree('counters-meat_8hpp_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="counters-meat_8hpp.html">counters-meat.hpp</a></li>
-    <li class="footer">Generated on Fri Jul 2 2021 07:34:31 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jul 2 2021 18:33:49 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

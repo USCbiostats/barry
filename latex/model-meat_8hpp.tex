@@ -8,13 +8,71 @@ This graph shows which files directly or indirectly include this file\+:
 \includegraphics[width=193pt]{model-meat_8hpp__dep__incl}
 \end{center}
 \end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{model-meat_8hpp_a24ddbed8965ed12e96bdb37abf4c317c}{MODEL\+\_\+\+TYPE}}()
+\item 
+\#define \mbox{\hyperlink{model-meat_8hpp_a122c313b8f98e5d915b2d362342aaa42}{MODEL\+\_\+\+TEMPLATE\+\_\+\+ARGS}}()
+\item 
+\#define \mbox{\hyperlink{model-meat_8hpp_af3f082842116f298fabd101d2727d773}{MODEL\+\_\+\+TEMPLATE}}(a,  b)~    template \mbox{\hyperlink{model-meat_8hpp_a122c313b8f98e5d915b2d362342aaa42}{MODEL\+\_\+\+TEMPLATE\+\_\+\+ARGS}}() inline a \mbox{\hyperlink{model-meat_8hpp_a24ddbed8965ed12e96bdb37abf4c317c}{MODEL\+\_\+\+TYPE}}()\+::b
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 double \mbox{\hyperlink{model-meat_8hpp_a557368a4713ccf9ee1867c1bd17d58ba}{update\+\_\+normalizing\+\_\+constant}} (const std\+::vector$<$ double $>$ \&params, const \mbox{\hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type}} \&support)
 \item 
 double \mbox{\hyperlink{model-meat_8hpp_a30867af87b732210c25b5148a8909454}{likelihood\+\_\+}} (const std\+::vector$<$ double $>$ \&target\+\_\+stats, const std\+::vector$<$ double $>$ \&params, const double normalizing\+\_\+constant, bool log\+\_\+=false)
+\item 
+\mbox{\hyperlink{model-meat_8hpp_a16e011aa4221e3c5ff8fad077800c101}{MODEL\+\_\+\+TEMPLATE}} (, \mbox{\hyperlink{class_model}{Model}})()
+\item 
+\mbox{\hyperlink{model-meat_8hpp_a260825c37355e3dc0a5eaa60c3656127}{MODEL\+\_\+\+TEMPLATE}} (, \mbox{\hyperlink{class_model}{Model}})(const \mbox{\hyperlink{model-meat_8hpp_a24ddbed8965ed12e96bdb37abf4c317c}{MODEL\+\_\+\+TYPE}}() \&Model\+\_\+)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{model-meat_8hpp_af3f082842116f298fabd101d2727d773}\label{model-meat_8hpp_af3f082842116f298fabd101d2727d773}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
+\index{MODEL\_TEMPLATE@{MODEL\_TEMPLATE}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{MODEL\_TEMPLATE}{MODEL\_TEMPLATE}}
+{\footnotesize\ttfamily \#define MODEL\+\_\+\+TEMPLATE(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~    template \mbox{\hyperlink{model-meat_8hpp_a122c313b8f98e5d915b2d362342aaa42}{MODEL\+\_\+\+TEMPLATE\+\_\+\+ARGS}}() inline a \mbox{\hyperlink{model-meat_8hpp_a24ddbed8965ed12e96bdb37abf4c317c}{MODEL\+\_\+\+TYPE}}()\+::b}
+
+
+
+Definition at line 75 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{model-meat_8hpp_a122c313b8f98e5d915b2d362342aaa42}\label{model-meat_8hpp_a122c313b8f98e5d915b2d362342aaa42}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE\_ARGS@{MODEL\_TEMPLATE\_ARGS}}
+\index{MODEL\_TEMPLATE\_ARGS@{MODEL\_TEMPLATE\_ARGS}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{MODEL\_TEMPLATE\_ARGS}{MODEL\_TEMPLATE\_ARGS}}
+{\footnotesize\ttfamily \#define MODEL\+\_\+\+TEMPLATE\+\_\+\+ARGS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    <\textcolor{keyword}{typename} Array\_Type, \textcolor{keyword}{typename} Data\_Counter\_Type,\(\backslash\)}
+\DoxyCodeLine{    typename Data\_Rule\_Type, \textcolor{keyword}{typename} Data\_Rule\_Dyn\_Type>}
+
+\end{DoxyCode}
+
+
+Definition at line 72 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{model-meat_8hpp_a24ddbed8965ed12e96bdb37abf4c317c}\label{model-meat_8hpp_a24ddbed8965ed12e96bdb37abf4c317c}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TYPE@{MODEL\_TYPE}}
+\index{MODEL\_TYPE@{MODEL\_TYPE}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{MODEL\_TYPE}{MODEL\_TYPE}}
+{\footnotesize\ttfamily \#define MODEL\+\_\+\+TYPE(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \mbox{\hyperlink{class_model}{Model}}<Array\_Type,Data\_Counter\_Type,Data\_Rule\_Type,\(\backslash\)}
+\DoxyCodeLine{    Data\_Rule\_Dyn\_Type>}
+
+\end{DoxyCode}
+
+
+Definition at line 69 of file model-\/meat.\+hpp.
+
 
 
 \doxysubsection{Function Documentation}
@@ -27,6 +85,26 @@ double \mbox{\hyperlink{model-meat_8hpp_a30867af87b732210c25b5148a8909454}{likel
 
 
 Definition at line 37 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{model-meat_8hpp_a16e011aa4221e3c5ff8fad077800c101}\label{model-meat_8hpp_a16e011aa4221e3c5ff8fad077800c101}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
+\index{MODEL\_TEMPLATE@{MODEL\_TEMPLATE}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{MODEL\_TEMPLATE()}{MODEL\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily MODEL\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model}{Model}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 79 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{model-meat_8hpp_a260825c37355e3dc0a5eaa60c3656127}\label{model-meat_8hpp_a260825c37355e3dc0a5eaa60c3656127}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
+\index{MODEL\_TEMPLATE@{MODEL\_TEMPLATE}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{MODEL\_TEMPLATE()}{MODEL\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily MODEL\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model}{Model}}}]{ }\end{DoxyParamCaption}) const \&}
+
+
+
+Definition at line 134 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a557368a4713ccf9ee1867c1bd17d58ba}\label{model-meat_8hpp_a557368a4713ccf9ee1867c1bd17d58ba}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!update\_normalizing\_constant@{update\_normalizing\_constant}}

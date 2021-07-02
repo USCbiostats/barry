@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span> (!empty)</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;The value already exists. Use &#39;add = true&#39;.&quot;</span>);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;          </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        this-&gt;insert_cell(source[i], target[i], value[i], <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        this-&gt;<a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(source[i], target[i], value[i], <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
@@ -268,7 +268,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="class_b_array_dense.html#acfcec094ebc2f443a81b874b4f457cb0">  170</a></span>&#160;                <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            </div>
 <div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="class_b_array_dense.html#a14af5016ccab7c0ae5dacd0c22d98360">  172</a></span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; r : Array_.<a class="code" href="class_b_array_dense.html#a8e53334b31c62599506222f3f4ed7dae">row</a>(i, <span class="keyword">false</span>)) </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                this-&gt;insert_cell(i, r.first, r.second.value, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                this-&gt;<a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i, r.first, r.second.value, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;          </div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      </div>
@@ -571,7 +571,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="keyword">const</span> std::pair&lt;uint,uint&gt; &amp; coords</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;) {</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    </div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    this-&gt;insert_cell(</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    this-&gt;<a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            coords.first,</div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            coords.second,</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            this-&gt;Cell_default,</div>
@@ -587,7 +587,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    <span class="keyword">const</span> std::pair&lt;uint,uint&gt; &amp; coords</div>
 <div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;) {</div>
 <div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    </div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    this-&gt;rm_cell(</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    this-&gt;<a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            coords.first,</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            coords.second,</div>
 <div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            <span class="keyword">true</span>, <span class="keyword">true</span></div>
@@ -747,7 +747,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00649"></a><span class="lineno"><a class="line" href="class_b_array_dense.html#acfcec094ebc2f443a81b874b4f457cb0">  649</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_b_array_dense.html#a4660a1606bd0ba4f33eea4edf9d9bd58">BArrayDense&lt;Cell_Type, Data_Type&gt;::insert_cell</a>(</div>
 <div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j, Cell_Type v, <span class="keywordtype">bool</span> check_bounds, <span class="keywordtype">bool</span> check_exists) {</div>
 <div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;        </div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    <span class="keywordflow">return</span> insert_cell(i, j, <a class="code" href="class_cell.html">Cell&lt;Cell_Type&gt;</a>(v, visited), check_bounds, check_exists);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i, j, <a class="code" href="class_cell.html">Cell&lt;Cell_Type&gt;</a>(v, visited), check_bounds, check_exists);</div>
 <div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160; </div>
 <div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;}</div>
 <div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160; </div>
@@ -780,13 +780,13 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;        <span class="comment">// invalid. We use pointers instead as this way we access the Heap memory,</span></div>
 <div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        <span class="comment">// which should be faster to access.</span></div>
 <div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        <a class="code" href="class_cell.html">Cell&lt;Cell_Type&gt;</a> c0(std::move(<a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i0)[j0]));</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;        rm_cell(i0, j0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;        <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(i0, j0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;        <a class="code" href="class_cell.html">Cell&lt;Cell_Type&gt;</a> c1(std::move(<a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i1)[j1]));</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        rm_cell(i1, j1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(i1, j1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        </div>
 <div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;        <span class="comment">// Inserting the cells by reference, these will be deleted afterwards</span></div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        insert_cell(i0, j0, c1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        insert_cell(i1, j1, c0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i0, j0, c1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i1, j1, c0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        </div>
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;        </div>
@@ -824,28 +824,28 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;            <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;        </div>
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;        <a class="code" href="class_cell.html">Cell&lt;Cell_Type&gt;</a> c0(std::move(<a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i0)[j0]));</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        rm_cell(i0, j0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(i0, j0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;        <a class="code" href="class_cell.html">Cell&lt;Cell_Type&gt;</a> c1(std::move(<a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i1)[j1]));</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;        rm_cell(i1, j1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;        <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(i1, j1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        </div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        insert_cell(i0, j0, c1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        insert_cell(i1, j1, c0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i0, j0, c1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i1, j1, c0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;        </div>
 <div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!check0 &amp; check1) { <span class="comment">// If only the second exists</span></div>
 <div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;        </div>
 <div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;        <span class="keywordflow">if</span> (report != <span class="keyword">nullptr</span>) </div>
 <div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;            (*report) = <a class="code" href="namespace_e_x_i_s_t_s.html#ad76d02e8eb6d20715d333b72394b0648">EXISTS::TWO</a>;</div>
 <div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        </div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;        insert_cell(i0, j0, <a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i1)[j1], <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;        rm_cell(i1, j1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;        <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i0, j0, <a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i1)[j1], <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;        <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(i1, j1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;        </div>
 <div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (check0 &amp; !check1) {</div>
 <div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;        </div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;        <span class="keywordflow">if</span> (report != <span class="keyword">nullptr</span>) </div>
 <div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;            (*report) = <a class="code" href="namespace_e_x_i_s_t_s.html#a4c3717397d716d2bbd69d8239b3de033">EXISTS::ONE</a>;</div>
 <div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;        </div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;        insert_cell(i1, j1, <a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i0)[j0], <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;        rm_cell(i0, j0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;        <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i1, j1, <a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i0)[j0], <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;        <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(i0, j0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;        </div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    }</div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    </div>
@@ -866,18 +866,18 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    <span class="keywordflow">if</span> (check_exists == <a class="code" href="namespace_e_x_i_s_t_s.html#a81eb362d951445c658942a433afddb97">EXISTS::UKNOWN</a>) {</div>
 <div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;        </div>
 <div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;        <span class="keywordflow">if</span> (is_empty(i, j, <span class="keyword">false</span>)) {</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;            insert_cell(i, j, <a class="code" href="class_b_array_dense.html">BArrayDense&lt;Cell_Type, Data_Type&gt;::Cell_default</a>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;            <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i, j, <a class="code" href="class_b_array_dense.html">BArrayDense&lt;Cell_Type, Data_Type&gt;::Cell_default</a>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;            <a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i)[j].visited = visited;</div>
 <div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;        } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;            rm_cell(i, j, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;            <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(i, j, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;        </div>
 <div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (check_exists == <a class="code" href="namespace_e_x_i_s_t_s.html#a735e5ca6565905e84346e3ff62842a0a">EXISTS::AS_ONE</a>) {</div>
 <div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;        </div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;        rm_cell(i, j, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;        <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(i, j, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;        </div>
 <div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (check_exists == <a class="code" href="namespace_e_x_i_s_t_s.html#a03d550dd049f50f852b8fb4caa48238a">EXISTS::AS_ZERO</a>) {</div>
 <div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;        </div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;        insert_cell(i, j, <a class="code" href="class_b_array_dense.html">BArrayDense&lt;Cell_Type,Data_Type&gt;::Cell_default</a>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;        <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(i, j, <a class="code" href="class_b_array_dense.html">BArrayDense&lt;Cell_Type,Data_Type&gt;::Cell_default</a>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;        <a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i)[j].visited = visited;</div>
 <div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;        </div>
 <div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;    }</div>
@@ -966,8 +966,8 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;        <span class="keywordflow">if</span> (col_tmp.size() != 0u) {</div>
 <div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;          </div>
 <div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = col_tmp.begin(); iter != col_tmp.end(); ++iter) {</div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;                insert_cell(iter-&gt;first, j0, *iter-&gt;second, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;                rm_cell(iter-&gt;first, j1);</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;                <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(iter-&gt;first, j0, *iter-&gt;second, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;                <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(iter-&gt;first, j1);</div>
 <div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;            }</div>
 <div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;          </div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;        }</div>
@@ -976,7 +976,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;      </div>
 <div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;        <span class="comment">// 1 is empty, so we just add new cells and remove the other ones</span></div>
 <div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = <a class="code" href="barraydense-meet_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605">COL</a>(j0).begin(); iter != <a class="code" href="barraydense-meet_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605">COL</a>(j0).begin(); ++iter)</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;            insert_cell(iter-&gt;first, j1, *iter-&gt;second, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;            <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(iter-&gt;first, j1, *iter-&gt;second, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        </div>
 <div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;        <span class="comment">// Setting the column to be zero</span></div>
 <div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;        <a class="code" href="barraydense-meet_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605">COL</a>(j0).empty();</div>
@@ -987,7 +987,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = <a class="code" href="barraydense-meet_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605">COL</a>(j1).begin(); iter != <a class="code" href="barraydense-meet_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605">COL</a>(j1).begin(); ++iter) {</div>
 <div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;          </div>
 <div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;            <span class="comment">// Swapping values (col-wise)</span></div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;            insert_cell(iter-&gt;first, j0, *iter-&gt;second, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;            <a class="code" href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a>(iter-&gt;first, j0, *iter-&gt;second, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160; </div>
 <div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;        }</div>
 <div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;        </div>
@@ -1013,7 +1013,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;    <span class="comment">// Else, remove all elements</span></div>
 <div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;    <span class="keyword">auto</span> row0 = <a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(i);</div>
 <div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> row = row0.begin(); row != row0.end(); ++row) </div>
-<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;        rm_cell(i, row-&gt;first, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;        <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(i, row-&gt;first, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;    </div>
 <div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;  </div>
@@ -1035,7 +1035,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;    <span class="comment">// Else, remove all elements</span></div>
 <div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;    <span class="keyword">auto</span> col0 = <a class="code" href="barraydense-meet_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605">COL</a>(j);</div>
 <div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> col = col0.begin(); col != col0.end(); ++col) </div>
-<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;        rm_cell(col-&gt;first, j, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;        <a class="code" href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a>(col-&gt;first, j, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;    </div>
 <div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;  </div>
@@ -1251,6 +1251,8 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div class="ttc" id="anamespace_e_x_i_s_t_s_html_a735e5ca6565905e84346e3ff62842a0a"><div class="ttname"><a href="namespace_e_x_i_s_t_s.html#a735e5ca6565905e84346e3ff62842a0a">EXISTS::AS_ONE</a></div><div class="ttdeci">const int AS_ONE</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00038">typedefs.hpp:38</a></div></div>
 <div class="ttc" id="anamespace_e_x_i_s_t_s_html_a81eb362d951445c658942a433afddb97"><div class="ttname"><a href="namespace_e_x_i_s_t_s.html#a81eb362d951445c658942a433afddb97">EXISTS::UKNOWN</a></div><div class="ttdeci">const int UKNOWN</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00036">typedefs.hpp:36</a></div></div>
 <div class="ttc" id="anamespace_e_x_i_s_t_s_html_ad76d02e8eb6d20715d333b72394b0648"><div class="ttname"><a href="namespace_e_x_i_s_t_s.html#ad76d02e8eb6d20715d333b72394b0648">EXISTS::TWO</a></div><div class="ttdeci">const int TWO</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00034">typedefs.hpp:34</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a9d46a2276a9724f89649e4097c776aac"><div class="ttname"><a href="support-meat_8hpp.html#a9d46a2276a9724f89649e4097c776aac">insert_cell</a></div><div class="ttdeci">EmptyArray insert_cell(cfree.first, cfree.second, EmptyArray.default_val().value, false, false)</div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_adbea6a38c6fb67cd1c434ccb7e3459d0"><div class="ttname"><a href="support-meat_8hpp.html#adbea6a38c6fb67cd1c434ccb7e3459d0">rm_cell</a></div><div class="ttdeci">EmptyArray rm_cell(cfree.first, cfree.second, false, false)</div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a3bb95a7612ee928fba42f33a96adb3eb"><div class="ttname"><a href="typedefs_8hpp.html#a3bb95a7612ee928fba42f33a96adb3eb">Col_type</a></div><div class="ttdeci">Map&lt; uint, Cell&lt; Cell_Type &gt; * &gt; Col_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00051">typedefs.hpp:51</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a4deca4f3fb25a4da374818ab459b8b4a"><div class="ttname"><a href="typedefs_8hpp.html#a4deca4f3fb25a4da374818ab459b8b4a">Row_type</a></div><div class="ttdeci">Map&lt; uint, Cell&lt; Cell_Type &gt; &gt; Row_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00048">typedefs.hpp:48</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00010">typedefs.hpp:10</a></div></div>
@@ -1260,7 +1262,7 @@ $(document).ready(function(){initNavTree('barraydense-meet_8hpp_source.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barraydense-meet_8hpp.html">barraydense-meet.hpp</a></li>
-    <li class="footer">Generated on Fri Jul 2 2021 07:34:31 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jul 2 2021 18:33:49 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
