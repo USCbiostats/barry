@@ -119,7 +119,7 @@ double \mbox{\hyperlink{class_model_a9e1685f87f57bca1432ef77dcb86b3b6}{get\+\_\+
 \item 
 const std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model_a3b8e6ed2cc916e02759a730fdcdaecfd}{get\+\_\+pset}} (const \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&i)
 \item 
-const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \mbox{\hyperlink{class_model_a152b29aac7d48800c76f713db7d0dee9}{get\+\_\+stats}} (const \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&i)
+const std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \mbox{\hyperlink{class_model_a2dd1551af539117400ddbfe42ac25ebe}{get\+\_\+pset\+\_\+stats}} (const \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&i)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Size of the model}\par
@@ -329,6 +329,13 @@ double \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+C
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
 const std\+::vector$<$ Array\+\_\+\+Type $>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+pset (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&}]{i }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{class_model_a2dd1551af539117400ddbfe42ac25ebe}\label{class_model_a2dd1551af539117400ddbfe42ac25ebe}} 
+\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_pset\_stats@{get\_pset\_stats}}
+\index{get\_pset\_stats@{get\_pset\_stats}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_pset\_stats()}{get\_pset\_stats()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+const std\+::vector$<$ std\+::vector$<$ double $>$ $>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+pset\+\_\+stats (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&}]{i }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{class_model_ab98a5c50c97fca438b0dc959fe9d5448}\label{class_model_ab98a5c50c97fca438b0dc959fe9d5448}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_rengine@{get\_rengine}}
 \index{get\_rengine@{get\_rengine}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
@@ -349,13 +356,6 @@ const std\+::mt19937$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\
 \doxysubsubsection{\texorpdfstring{get\_rules\_dyn()}{get\_rules\_dyn()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
 \mbox{\hyperlink{class_rules}{Rules}}$<$Array\+\_\+\+Type,Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type$>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+rules\+\_\+dyn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_model_a152b29aac7d48800c76f713db7d0dee9}\label{class_model_a152b29aac7d48800c76f713db7d0dee9}} 
-\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_stats@{get\_stats}}
-\index{get\_stats@{get\_stats}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{get\_stats()}{get\_stats()}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-const std\+::vector$<$ std\+::vector$<$ double $>$ $>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+stats (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&}]{i }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_model_abedfdf782647e5401f832d0121fdab5c}\label{class_model_abedfdf782647e5401f832d0121fdab5c}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_support@{get\_support}}
