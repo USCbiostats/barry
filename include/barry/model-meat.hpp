@@ -3,6 +3,69 @@
 #ifndef BARRY_MODEL_MEAT_HPP 
 #define BARRY_MODEL_MEAT_HPP 1
 
+/**
+ * @defgroup stat-models Statistical Models
+ * @brief Statistical models available in `barry`.
+ */
+
+inline double update_normalizing_constant(
+    const std::vector< double > & params,
+    const Counts_type & support
+) {
+    
+    double res = 0.0;
+    double tmp;
+    for (unsigned int n = 0u; n < support.size(); ++n)
+    {
+        
+        tmp = 0.0;
+        for (unsigned int j = 0u; j < params.size(); ++j)
+            tmp += support[n].first[j] * params[j];
+        
+        res += exp(tmp BARRY_SAFE_EXP) * support[n].second;
+
+    }
+    
+    // This will only evaluate if the option BARRY_CHECK_FINITE
+    // is defined
+    BARRY_ISFINITE(res)
+
+    return res;
+    
+}
+
+inline double likelihood_(
+        const std::vector< double > & target_stats,
+        const std::vector< double > & params,
+        const double normalizing_constant,
+        bool log_ = false
+) {
+    
+    if (target_stats.size() != params.size())
+        throw std::length_error("-target_stats- and -params- should have the same length.");
+        
+    double numerator = 0.0;
+    
+    // Computing the numerator
+    for (unsigned int j = 0u; j < target_stats.size(); ++j)
+        numerator += target_stats[j] * params[j];
+
+    if (!log_)
+        numerator = exp(numerator BARRY_SAFE_EXP);
+    else
+        return numerator BARRY_SAFE_EXP - log(normalizing_constant);
+
+    double ans = numerator/normalizing_constant;
+
+    if (ans > 1.0)
+    {
+        printf_barry("ooo\n");
+    }
+
+    return ans;
+    
+}
+
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>::Model() :
     stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
@@ -467,6 +530,9 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
     bool as_log
 ) {
     
+    // Key of the support set to use
+    int loc;
+
     if (i < 0) {
 
         std::vector< double > key = keygen(Array_);
@@ -474,30 +540,47 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
         if (locator == keys2support.end()) 
             throw std::range_error("This type of array has not been included in the model.");
 
-        i = locator->second;
+        loc = locator->second;
 
     } else {
 
         if (static_cast<uint>(i) >= arrays2support.size())
             throw std::range_error("This type of array has not been included in the model.");
 
-        // i = arrays2support[i];
+        loc = arrays2support[i];
 
     }
 
     // Checking if this actually has a change of happening
-    if (this->stats[arrays2support[i]].size() == 0u)
+    if (this->stats[loc].size() == 0u)
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     // Counting stats
     StatsCounter< Array_Type, Data_Counter_Type> tmpstats(&Array_);
     tmpstats.set_counters(this->counters);
-    std::vector< double > counts = tmpstats.count_all();
+    std::vector< double > target_ = tmpstats.count_all();
 
-    return likelihood(
+    // Checking if we have updated the normalizing constant or not
+    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
+        
+        first_calc_done[loc] = true;
+        
+        normalizing_constants[loc] = update_normalizing_constant(
+            params, stats[loc]
+        );
+        
+        params_last[loc] = params;
+        
+    }
+
+    // Checking if passes the rules
+    if (!support_fun.eval_rules_dyn(target_, 0u, 0u))
+        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+    
+    return likelihood_(
+        target_,
         params,
-        counts,
-        static_cast< unsigned int >(i),
+        normalizing_constants[loc],
         as_log
     );
     
@@ -515,27 +598,33 @@ inline double Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Ty
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
+    uint loc = arrays2support[i];
+
+    // Checking if passes the rules
+    if (!support_fun.eval_rules_dyn(target_, 0u, 0u))
+        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+
     // Checking if this actually has a change of happening
-    if (this->stats[arrays2support[i]].size() == 0u)
+    if (this->stats[loc].size() == 0u)
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
+    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
         
-        first_calc_done[arrays2support[i]] = true;
+        first_calc_done[loc] = true;
         
-        normalizing_constants[arrays2support[i]] = update_normalizing_constant(
-            params, stats[arrays2support[i]]
+        normalizing_constants[loc] = update_normalizing_constant(
+            params, stats[loc]
         );
         
-        params_last[arrays2support[i]] = params;
+        params_last[loc] = params;
         
     }
     
     return likelihood_(
         target_,
         params,
-        normalizing_constants[arrays2support[i]],
+        normalizing_constants[loc],
         as_log
     );
     

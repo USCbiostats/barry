@@ -322,6 +322,27 @@ inline void Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_T
     
 }
 
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline bool Support<Array_Type,Data_Counter_Type, Data_Rule_Type,Data_Rule_Dyn_Type>::eval_rules_dyn(
+    const std::vector< double > & counts,
+    const uint & i, const uint & j
+) {
+
+    if (rules_dyn->size() == 0u)
+        return true;
+
+    // Swapping pointers for a while
+    std::vector< double > tmpstats = current_stats;
+    current_stats = counts;
+
+    bool rule_res = rules_dyn->operator()(EmptyArray, i, j);
+    current_stats = tmpstats;
+
+    return rule_res;
+
+
+}
+
 //////////////////////////
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>

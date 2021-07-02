@@ -8,61 +8,6 @@
 #ifndef BARRY_MODEL_BONES_HPP 
 #define BARRY_MODEL_BONES_HPP 1
 
-/**
- * @defgroup stat-models Statistical Models
- * @brief Statistical models available in `barry`.
- */
-
-inline double update_normalizing_constant(
-    const std::vector< double > & params,
-    const Counts_type & support
-) {
-    
-    double res = 0.0;
-    double tmp;
-    for (unsigned int n = 0u; n < support.size(); ++n)
-    {
-        
-        tmp = 0.0;
-        for (unsigned int j = 0u; j < params.size(); ++j)
-            tmp += support[n].first[j] * params[j];
-        
-        res += exp(tmp BARRY_SAFE_EXP) * support[n].second;
-
-    }
-    
-    // This will only evaluate if the option BARRY_CHECK_FINITE
-    // is defined
-    BARRY_ISFINITE(res)
-
-    return res;
-    
-}
-
-inline double likelihood_(
-        const std::vector< double > & target_stats,
-        const std::vector< double > & params,
-        const double normalizing_constant,
-        bool log_ = false
-) {
-    
-    if (target_stats.size() != params.size())
-        throw std::length_error("-target_stats- and -params- should have the same length.");
-    
-    double numerator = 0.0;
-    
-    // Computing the numerator
-    for (unsigned int j = 0u; j < target_stats.size(); ++j)
-        numerator += target_stats[j] * params[j];
-
-    if (!log_)
-        numerator = exp(numerator BARRY_SAFE_EXP);
-    else
-        return numerator BARRY_SAFE_EXP - log(normalizing_constant);
-
-    return numerator/normalizing_constant;
-    
-}
 
 /**
  * @brief Array Hasher class (used for computing support)
