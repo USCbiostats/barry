@@ -11,6 +11,7 @@ var class_support =
     [ "add_rule_dyn", "class_support.html#a71e963ffbb78d36ea75f96afc6a477e3", null ],
     [ "add_rule_dyn", "class_support.html#a1e29c5a5a603a704cf08ca7094dff9d7", null ],
     [ "calc", "class_support.html#aaebf5a9e6057636f3c099ff1bfeb53f3", null ],
+    [ "eval_rules_dyn", "class_support.html#a8ff93720b9c545c2738406e10d38541d", null ],
     [ "get_counters", "class_support.html#a9f2237792f9688bf86ae89454048db9a", null ],
     [ "get_counts", "class_support.html#a07c4c70dbf52f19d0a6f53e46cb1024c", null ],
     [ "get_counts_ptr", "class_support.html#af942b8638a6b4e7a24e3f43939ab7f9f", null ],
