@@ -20,13 +20,15 @@ inline double update_normalizing_constant(
     
     double res = 0.0;
     double tmp;
-    for (unsigned int n = 0u; n < support.size(); ++n) {
+    for (unsigned int n = 0u; n < support.size(); ++n)
+    {
         
         tmp = 0.0;
         for (unsigned int j = 0u; j < params.size(); ++j)
             tmp += support[n].first[j] * params[j];
         
         res += exp(tmp BARRY_SAFE_EXP) * support[n].second;
+
     }
     
     // This will only evaluate if the option BARRY_CHECK_FINITE
@@ -47,17 +49,25 @@ inline double likelihood_(
     if (target_stats.size() != params.size())
         throw std::length_error("-target_stats- and -params- should have the same length.");
     
-    double numerator=0.0;
+    double numerator = 0.0;
     
     // Computing the numerator
     for (unsigned int j = 0u; j < target_stats.size(); ++j)
         numerator += target_stats[j] * params[j];
+
     if (!log_)
-        numerator = exp(numerator BARRY_SAFE_EXP);
+        numerator = exp(numerator);
     else
         return numerator BARRY_SAFE_EXP - log(normalizing_constant);
+
+    double tmp_ans = numerator/normalizing_constant;
+
+    if (tmp_ans > 1.0)
+    {
+        printf_barry("oooo\n");
+    }
     
-    return numerator/normalizing_constant;
+    return tmp_ans;
     
 }
 

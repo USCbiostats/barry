@@ -103,6 +103,9 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 // Below leafs, the everything below is 1.
                 if (node.offspring[off]->is_leaf())
                 {
+
+                    // But we can only includ it if the current state actually
+                    // matches the leaf data (otherwise the prob is 0)
                     const auto & off_ann = node.offspring[off]->annotations;
                     for (unsigned int f = 0u; f < nfuns(); ++f)
                     {
@@ -118,20 +121,30 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                         break;
 
                     continue;
+
+                } else {
+
+                    // Getting the offspring state, and how it maps, only
+                    // if it is not an offspring
+                    const auto & off_state = pset_p.get_col_vec(off);
+                    unsigned int loc = this->map_to_nodes[off_state];
+
+                    everything_below *= node.offspring[off]->subtree_prob[loc];
+
                 }
 
-                // Getting the offspring state, and how it maps
-                const auto & off_state = pset_p.get_col_vec(off);
-                unsigned int loc = this->map_to_nodes[off_state];
-
-                everything_below *= node.offspring[off]->subtree_prob[loc];
+                
 
             }
 
             // If an offspring annotation is not in the set, then the likelihood
             // of observing that state is zero.
             if (!in_the_set)
+            {
+                Prob_Xoff_given_D[p] = 0.0;
                 continue;
+
+            }
 
             // Generating a copy of the array
             phylocounters::PhyloArray tmp_array(nfuns(), pset_p.ncol());
@@ -169,6 +182,11 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             
         }
 
+        // // Checking that things addup to one
+        // double sum_probs = 0.0;
+        // for (auto & prob_p : Prob_Xoff_given_D)
+        //     sum_probs += prob_p;
+
         // Marginalizing at the state level
         for (const auto & p: pset_final)
         {
@@ -195,8 +213,29 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             {
 
                 for (unsigned int f = 0u; f < nfuns(); ++f)
-                    if (states[s][f])
+                    if (states[s][f]) 
                         res[off->ord][f] += off->probability[s];
+
+            }
+
+            // Checking that probabilities add up to one
+            for (unsigned int f = 0u; f < nfuns(); ++f)
+            {
+                if ((res[off->ord][f] > 1.00001) || (res[off->ord][f] < -.0000009))
+                {
+                    auto msg = "[geese] Out-of-range probability for node.id " +
+                        std::to_string(off->id) + " for function " +
+                        std::to_string(f) + ": " +
+                        std::to_string(res[off->ord][f]);
+
+                    throw std::logic_error(msg);
+                    
+                } 
+
+                if (res[off->ord][f] > 1.0)
+                    res[off->ord][f] = 1.0;
+                else if (res[off->ord][f] < 0.0)
+                    res[off->ord][f] = 0.0;
 
             }
                 
