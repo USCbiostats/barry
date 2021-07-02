@@ -63,6 +63,19 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Storing the final prob
     res[nodes[preorder[0u]].ord] = tmp_prob;
+
+    // for (auto & i : preorder)
+    // {
+
+    //     // Leafs have nothing to do here
+    //     Node & parent = nodes[i];
+    //     if (parent.is_leaf())
+    //         continue;
+
+    //     // Creating space
+    //     MapVec_type< double, uint > 
+    // }
+
     
     // Going in the opposite direction
     for (auto& i : preorder)

@@ -165,6 +165,7 @@ public:
     
     void store_psets() noexcept;
     void set_keygen(std::function<std::vector<double>(const Array_Type &)> keygen_);
+    std::vector< double > gen_key(const Array_Type & Array_);
     
     /**
       * @name Wrappers for the `Counters` member. 
