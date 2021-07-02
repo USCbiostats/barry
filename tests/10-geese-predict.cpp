@@ -16,11 +16,11 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     std::vector< uint > geneid = {0, 1, 2, 3, 4};
     std::vector< int >  parent = {-1, 0, 0, 1, 1};
     /**
-     * 0__1__3
+     * 0__1 (9, 9)__3 (1, 1)
      * |  |
-     * |  |__4
+     * |  |__4 (0, 9)
      * |
-     * |__2
+     * |__2 (9, 0)
      */
 
     std::vector< bool > duplication(geneid.size(), true);
