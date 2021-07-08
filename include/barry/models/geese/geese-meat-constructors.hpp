@@ -46,13 +46,15 @@ inline Geese::Geese(
     }
 
     // Grouping up the data by parents -----------------------------------------
-    for (unsigned int i = 0u; i < geneid.size(); ++i) {
+    for (unsigned int i = 0u; i < geneid.size(); ++i)
+    {
 
         // Temp vector with the annotations
         std::vector< unsigned int > & funs(annotations.at(i));
 
         // Case 1: Not the root node, and the parent does not exists
-        if ((parent.at(i) >= 0) && (nodes.find(parent.at(i)) == nodes.end())) {
+        if ((parent.at(i) >= 0) && (nodes.find(parent.at(i)) == nodes.end()))
+        {
 
             // Adding parent
             auto key_par = nodes.insert({
@@ -138,27 +140,52 @@ inline Geese::Geese(
     for (auto& n : nodes)
     {
 
+        Node & node = n.second;
+
         // Checking variable
-        if (n.second.ord == UINT_MAX)
+        if (node.ord == UINT_MAX)
         {
 
             const char *fmt = "Node id %i was not included in geneid.";
-            int sz = std::snprintf(nullptr, 0, fmt, n.second.id);
+            int sz = std::snprintf(nullptr, 0, fmt, node.id);
             std::vector<char> buf(sz + 1);
-            std::snprintf(&buf[0], buf.size(), fmt, n.second.id);
+            std::snprintf(&buf[0], buf.size(), fmt, node.id);
             throw std::logic_error(&buf[0]);
 
         }
 
         // Checking duplication
-        if (n.second.duplication != duplication[n.second.ord])
+        if (node.duplication != duplication[node.ord])
         {
 
             const char *fmt = "Node id %i's duplication was not properly recorded.";
-            int sz = std::snprintf(nullptr, 0, fmt, n.second.id);
+            int sz = std::snprintf(nullptr, 0, fmt, node.id);
             std::vector<char> buf(sz + 1);
-            std::snprintf(&buf[0], buf.size(), fmt, n.second.id);
+            std::snprintf(&buf[0], buf.size(), fmt, node.id);
             throw std::logic_error(&buf[0]);
+
+        }
+
+        // Counting the type of annotations
+        if (node.is_leaf())
+        {
+
+            for (const auto & a : node.annotations)
+            {
+
+                if (a == 1u)
+                    this->n_ones++;
+                else if (a == 0u)
+                    this->n_zeros++;
+
+            }
+
+        } else {
+
+            if (node.duplication)
+                this->n_dupl_events++;
+            else
+                this->n_spec_events++;
 
         }
 
@@ -179,6 +206,10 @@ inline Geese::Geese(
 
 inline Geese::Geese(const Geese & model_, bool copy_data) : 
     states(model_.states),
+    n_zeros(model_.n_zeros),
+    n_ones(model_.n_ones),
+    n_dupl_events(model_.n_dupl_events),
+    n_spec_events(model_.n_spec_events),
     nfunctions(model_.nfunctions),
     nodes(model_.nodes),
     map_to_nodes(model_.map_to_nodes),
@@ -250,6 +281,10 @@ inline Geese::Geese(Geese && x) noexcept :
     rengine(nullptr),
     model(nullptr),
     states(std::move(x.states)),
+    n_zeros(std::move(x.n_zeros)),
+    n_ones(std::move(x.n_ones)),
+    n_dupl_events(std::move(x.n_dupl_events)),
+    n_spec_events(std::move(x.n_spec_events)),
     nfunctions(x.nfunctions),
     nodes(std::move(x.nodes)),
     map_to_nodes(std::move(x.map_to_nodes)),

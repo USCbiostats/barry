@@ -721,7 +721,8 @@ MODEL_TEMPLATE(const std::vector< std::vector< double > > *, get_pset_stats)(
 
 }
 
-MODEL_TEMPLATE(void, print_stats)(uint i) const {
+MODEL_TEMPLATE(void, print_stats)(uint i) const
+{
     
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
@@ -737,6 +738,39 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const {
     
     return;
     
+}
+
+MODEL_TEMPLATE(void, print)() const
+{
+
+    // Relevant information:
+    // - Number of arrays involved
+    // - Size of the support
+    // - Terms involved
+
+    uint min_v = std::numeric_limits<uint>::infinity();
+    uint max_v = 0u;
+
+    for (const auto & stat : this->stats)
+    {
+        if (stat.size() > max_v)
+            max_v = stat.size();
+        
+        if (stat.size() < min_v)
+            min_v = stat.size();
+
+    }  
+
+    printf_barry("Num. of Arrays     : %i\n", this->size());
+    printf_barry("Support size       : %i\n", this->size_unique());
+    printf_barry("Support size range : [%i, %i]\n", min_v, max_v);
+    printf_barry("Model terms (%i)   :\n", this->nterms());
+        
+    for (auto & cn : this->colnames())
+        printf_barry(" - %s\n", cn.c_str());
+
+    return;
+
 }
 
 MODEL_TEMPLATE(uint, size)() const noexcept

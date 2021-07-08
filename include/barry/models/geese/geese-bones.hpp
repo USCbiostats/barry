@@ -95,6 +95,10 @@ private:
     std::mt19937 *                     rengine = nullptr;
     phylocounters::PhyloModel *        model   = nullptr;
     std::vector< std::vector< bool > > states;
+    unsigned int n_zeros       = 0u; ///< Number of zeros
+    unsigned int n_ones        = 0u; ///< Number of ones
+    unsigned int n_dupl_events = 0u; ///< Number of duplication events
+    unsigned int n_spec_events = 0u; ///< Number of speciation events
     ///@}
 
 public:
@@ -186,12 +190,18 @@ public:
     unsigned int nleafs() const noexcept;            ///< Number of leaf
     unsigned int nterms() const;                     ///< Number of terms included
     unsigned int support_size() const noexcept;      ///< Number of unique sets of sufficient stats.
+    std::vector< unsigned int > nannotations() const noexcept;      ///< Number of annotations.
     std::vector< std::string > colnames() const;     ///< Names of the terms in the model.
     unsigned int parse_polytomies(bool verb = true) const noexcept;  ///< Check polytomies and return the largest.
     ///@}
 
     std::vector< std::vector<double> > observed_counts();
     void print_observed_counts();
+
+    /**
+     * @brief Prints information about the GEESE
+     */
+    void print() const;
 
     /**
      * @name Geese prediction

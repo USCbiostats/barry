@@ -17,7 +17,7 @@ checkv: mainv.o
 	valgrind --leak-check=full --track-origins=yes ./mainv.o #valgrind --tool=cachegrind ./main
 
 mainv.o: main.cpp
-	g++ $(CPPFLAGS) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -o mainv.o
+	g++ $(CPPFLAGS) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o mainv.o
 
 clean:
 	rm -f main*.o; rm -f *.gcov; rm -f *gcno; rm -f *gcda

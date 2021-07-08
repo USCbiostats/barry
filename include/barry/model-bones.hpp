@@ -84,8 +84,8 @@ private:
       */
     ///@{
     std::vector< std::vector< double > > target_stats;
-    std::vector< uint >                 array_frequency;
-    std::vector< uint >                 arrays2support;
+    std::vector< uint >                  array_frequency;
+    std::vector< uint >                  arrays2support;
     ///@}
 
     /**
@@ -287,6 +287,11 @@ public:
     ///@}
     
     void print_stats(uint i) const;
+
+    /**
+     * @brief Prints information about the model
+     */
+    void print() const;
     
     Array_Type sample(const Array_Type & Array_, const std::vector<double> & params = {});
     Array_Type sample(const uint & i, const std::vector<double> & params);

@@ -181,6 +181,39 @@ inline unsigned int Flock::parse_polytomies(bool verb) const noexcept {
 
 }
 
+inline void Flock::print() const 
+{
+
+    // Information relevant to print:
+    // - Number of phylogenies
+    // - Number of functions
+    // - Total number of annotations.
+
+    // Computing total number of annotations and events
+    unsigned int nzeros = 0u;
+    unsigned int nones  = 0u;
+    unsigned int ndpl   = 0u;
+    unsigned int nspe   = 0u;
+    for (const auto & tree : this->dat)
+    {
+        nzeros += tree.n_zeros;
+        nones  += tree.n_ones;
+        ndpl   += tree.n_dupl_events;
+        nspe   += tree.n_spec_events;
+        
+    }
+
+    printf_barry("FLOCK (GROUP OF GEESE)\nINFO ABOUT THE PHYLOGENIES\n");
+    printf_barry("# of phylogenies         : %i\n", ntrees());
+    printf_barry("# of functions           : %i\n", nfuns());
+    printf_barry("# of ann. [zeros; ones]  : [%i; %i]\n", nzeros, nones);
+    printf_barry("# of events [dupl; spec] : [%i; %i]\n", ndpl, nspe);
+    printf_barry("Largest polytomy         : %i\n", parse_polytomies(false));
+    printf_barry("\nINFO ABOUT THE SUPPORT\n");
+    return this->model.print();
+
+}
+
 inline Geese* Flock::operator()(unsigned int i, bool check_bounds)
 {
 

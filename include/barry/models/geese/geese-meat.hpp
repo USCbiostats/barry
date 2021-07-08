@@ -348,14 +348,16 @@ inline unsigned int Geese::nleafs() const noexcept {
     return n;
 }
 
-inline unsigned int Geese::nterms() const {
+inline unsigned int Geese::nterms() const
+{
 
     INITIALIZED()
     return model->nterms() + this->nfuns();
 
 }
 
-inline unsigned int Geese::support_size() const noexcept {
+inline unsigned int Geese::support_size() const noexcept
+{
 
     if (model == nullptr)
         return 0u;
@@ -364,7 +366,14 @@ inline unsigned int Geese::support_size() const noexcept {
     
 }
 
-inline std::vector< std::string > Geese::colnames() const {
+inline std::vector< unsigned int > Geese::nannotations() const noexcept
+{
+    std::vector< unsigned int > ans = {this->n_zeros, this->n_ones};
+    return ans;
+}
+
+inline std::vector< std::string > Geese::colnames() const
+{
 
     return this->model->colnames();
 
@@ -383,10 +392,10 @@ inline unsigned int Geese::parse_polytomies(bool verb) const noexcept {
             if (verb)
                 printf_barry("Node id: %i has polytomy size %i\n", n.second.id, noff);
                 
-            if (noff > largest)
-                largest = noff;
-
         }
+
+        if (noff > largest)
+            largest = noff;
 
     }
 
@@ -504,11 +513,31 @@ inline void Geese::print_observed_counts() {
 
 }
 
-inline std::mt19937 * Geese::get_rengine() {
+inline void Geese::print() const
+{
+
+    // Information about the tree:
+    // - Number of functions
+    // - Number of nodes and leafs
+    // - Number of annotated leafs (0/1)
+    printf_barry("GEESE\nINFO ABOUT PHYLOGENY\n");
+    printf_barry("# of functions           : %i\n", this->nfuns());
+    printf_barry("# of nodes [int; leaf]   : [%i; %i]\n", this->nnodes(), this->nleafs());
+    printf_barry("# of ann. [zeros; ones]  : [%i; %i]\n", this->n_zeros, this->n_ones);
+    printf_barry("# of events [dupl; spec] : [%i; %i]\n", this->n_dupl_events, this->n_spec_events);
+    printf_barry("Largest polytomy         : %i\n", parse_polytomies(false));
+    printf_barry("\nINFO ABOUT THE SUPPORT\n");
+    this->model->print();
+
+}
+
+inline std::mt19937 * Geese::get_rengine()
+{
     return this->rengine;
 }
 
-inline phylocounters::PhyloCounters * Geese::get_counters() {
+inline phylocounters::PhyloCounters * Geese::get_counters()
+{
     return this->model->get_counters();
 }
 

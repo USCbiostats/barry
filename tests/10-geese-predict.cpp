@@ -61,7 +61,12 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
 
     std::vector<std::vector<double>> ans0a = model.predict_exhaust(params);
     std::vector<std::vector<double>> ans1a = model.predict(params, nullptr, true);
+
+    #ifdef BARRY_VALGRIND
+    std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 1);
+    #else
     std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 50000);
+    #endif
     
     printf_barry("predict_exhaust():\n");
     for (auto & a : ans0a) {
@@ -102,7 +107,9 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
         for (auto & j: i)
             ans2a_vec.push_back(j);
 
+    #ifndef BARRY_VALGRIND
     REQUIRE_THAT(ans0a_vec, Catch::Approx(ans2a_vec).margin(0.025));
+    #endif
     REQUIRE_THAT(ans0a_vec, Catch::Approx(ans1a_vec).margin(0.025));
 
 
@@ -179,7 +186,12 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     
     model_R.set_seed(8882);
     auto pred_R = model_R.predict(params_R, nullptr, true, false, true);
+
+    #ifdef BARRY_VALGRIND
+    auto pred_sim_R = model_R.predict_sim(params_R, false, 1);
+    #else
     auto pred_sim_R = model_R.predict_sim(params_R, false, 50000);
+    #endif
 
     std::vector< double > ansR_vec(0u);
     for (auto & i : pred_R)
@@ -202,7 +214,9 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
 
     }
 
+    #ifndef BARRY_VALGRIND
     REQUIRE_THAT(ansR_vec, Catch::Approx(ansR_sim_vec).margin(0.025));    
+    #endif
 
     // Another tricky case -----------------------------------------------------
     std::vector< std::vector< uint > > ann_R2 = {
@@ -325,7 +339,11 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     
     model_R2.set_seed(8882);
     auto pred_R2 = model_R2.predict(params_R, nullptr, true, false, true);
+    #ifdef BARRY_VALGRIND
+    auto pred_sim_R2 = model_R2.predict_sim(params_R, false, 1);
+    #else
     auto pred_sim_R2 = model_R2.predict_sim(params_R, false, 50000);
+    #endif
 
     std::vector< double > ansR2_vec(0u);
     for (auto & i : pred_R2)
@@ -337,5 +355,7 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
         for (auto & j: i)
             ansR2_sim_vec.push_back(j);
 
+    #ifndef BARRY_VALGRIND
     REQUIRE_THAT(ansR2_vec, Catch::Approx(ansR2_sim_vec).margin(0.025));    
+    #endif
 }

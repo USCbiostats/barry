@@ -82,6 +82,7 @@ public:
     unsigned int support_size() const noexcept;
     std::vector< std::string > colnames() const;
     unsigned int parse_polytomies(bool verb = true) const noexcept;
+    void print() const;
     ///@}
 
     /**
