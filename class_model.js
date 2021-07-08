@@ -30,6 +30,7 @@ var class_model =
     [ "likelihood_total", "class_model.html#a849c382c401986612056d6fdf043deb4", null ],
     [ "nterms", "class_model.html#a9d519dbe33fe258f09274243bd80b33a", null ],
     [ "operator=", "class_model.html#a4efbb1070a633381712aee3d2e5e8fb0", null ],
+    [ "print", "class_model.html#a9b882a97407460beb9b97405fac98dd9", null ],
     [ "print_stats", "class_model.html#acd6c7c2599ae49a5a3818b2b699c652c", null ],
     [ "sample", "class_model.html#a2adac6eb2d37bd67d5f0222374ce193d", null ],
     [ "sample", "class_model.html#af550a98c8cf963b3892d5b0ded7b2069", null ],

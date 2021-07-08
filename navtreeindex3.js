@@ -1,10 +1,14 @@
 var NAVTREEINDEX3 =
 {
+"group__counters-phylo.html#gae193c319ae2fd5edb3a6551e44ada0be":[3,0,0,0,0,1,16],
+"group__counters-phylo.html#gae37d65879b49c4a568e5f80795b492a5":[3,0,0,0,0,1,27],
+"group__counters-phylo.html#gae37d65879b49c4a568e5f80795b492a5":[0,3,11],
+"group__counters-phylo.html#gaf03875e668e9559a84896755e5108fc4":[3,0,0,0,0,1,18],
 "group__counters-phylo.html#gaf03875e668e9559a84896755e5108fc4":[0,3,2],
 "group__counting.html":[0,0],
 "group__rules-phylo.html":[0,4],
-"group__rules-phylo.html#ga2858fa9742c6713d93055c16fd30745f":[3,0,0,0,0,1,32],
 "group__rules-phylo.html#ga2858fa9742c6713d93055c16fd30745f":[0,4,1],
+"group__rules-phylo.html#ga2858fa9742c6713d93055c16fd30745f":[3,0,0,0,0,1,32],
 "group__stat-models.html":[0,1],
 "index.html":[],
 "model-bones_8hpp.html":[3,0,0,0,21],

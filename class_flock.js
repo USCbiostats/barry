@@ -16,6 +16,7 @@ var class_flock =
     [ "ntrees", "class_flock.html#a1c10e21ab3091fe8dbfa9ae5ec38fd4d", null ],
     [ "operator()", "class_flock.html#acf48c1e56d5bf03f9b240114fa1e18ff", null ],
     [ "parse_polytomies", "class_flock.html#aa461b79142ba54b530e897012ecfae73", null ],
+    [ "print", "class_flock.html#a5ddb72e66fc90f45335e8752e290dc3e", null ],
     [ "set_seed", "class_flock.html#acfa9efc24a1ff2f0f31206570da51259", null ],
     [ "support_size", "class_flock.html#aec9956b6d0bc303b4348e116027605d2", null ],
     [ "dat", "class_flock.html#af493163235db2dcb44b8c5e615f52bdb", null ],
