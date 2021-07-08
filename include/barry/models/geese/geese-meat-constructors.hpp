@@ -27,7 +27,7 @@ inline Geese::Geese(
     // In order to start...
     this->rengine         = new std::mt19937;
     this->delete_rengine  = true;
-    this->model         = new phylocounters::PhyloModel();
+    this->model           = new phylocounters::PhyloModel();
     this->delete_support  = true;
 
     this->model->set_keygen(keygen_full);
@@ -135,8 +135,12 @@ inline Geese::Geese(
     }
 
     // Verifying that all have the variable ord
-    for (auto& n : nodes) {
-        if (n.second.ord == UINT_MAX) {
+    for (auto& n : nodes)
+    {
+
+        // Checking variable
+        if (n.second.ord == UINT_MAX)
+        {
 
             const char *fmt = "Node id %i was not included in geneid.";
             int sz = std::snprintf(nullptr, 0, fmt, n.second.id);
@@ -145,6 +149,19 @@ inline Geese::Geese(
             throw std::logic_error(&buf[0]);
 
         }
+
+        // Checking duplication
+        if (n.second.duplication != duplication[n.second.ord])
+        {
+
+            const char *fmt = "Node id %i's duplication was not properly recorded.";
+            int sz = std::snprintf(nullptr, 0, fmt, n.second.id);
+            std::vector<char> buf(sz + 1);
+            std::snprintf(&buf[0], buf.size(), fmt, n.second.id);
+            throw std::logic_error(&buf[0]);
+
+        }
+
     }
 
 

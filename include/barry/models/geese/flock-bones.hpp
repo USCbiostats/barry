@@ -53,6 +53,7 @@ public:
     // void add_geese(Geese x);
     phylocounters::PhyloCounters * get_counters();
     phylocounters::PhyloSupport *  get_support();
+    phylocounters::PhyloModel *  get_model();
 
     /**
      * @brief Returns the joint likelihood of the model

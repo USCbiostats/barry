@@ -23,23 +23,45 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
      * |__2 (9, 0)
      */
 
-    std::vector< bool > duplication(geneid.size(), true);
+    std::vector< bool > duplication = {true, false, true, false, true};
 
     Geese model(ann, geneid, parent, duplication);
+    Flock model_flock;
+
+    (void) model_flock.add_data(ann, geneid, parent, duplication);
 
     // Adding terms
     counter_gains(model.get_counters(), {0, 1});
+    counter_gains(model.get_counters(), {0, 1}, false); // speciation
     counter_overall_changes(model.get_counters());
 
+    // Adding terms
+    counter_gains(model_flock.get_counters(), {0, 1});
+    counter_gains(model_flock.get_counters(), {0, 1}, false); // speciation
+    counter_overall_changes(model_flock.get_counters());
+
     model.init();
+    model_flock.init();
+    // for (uint i = 0; i < model.get_model()->size_unique(); ++i) {
+    //     printf_barry("--- i: % 2i ---\n", i);
+    //     model.get_model()->print_stats(i);
+    // }
+
+    // printf_barry("Flock --\n");
+    // for (uint i = 0; i < model.get_model()->size_unique(); ++i) {
+    //     printf_barry("--- i: % 2i ---\n", i);
+    //     model_flock.get_model()->print_stats(i);
+    // }
+
+    // model.get_model()->print_stats(3);
     model.set_seed(100);
 
     // Model parameters to test
-    std::vector<double> params = {1, -1, -.5, -5, -5};
+    std::vector<double> params = {1, -1, -1.5, -1.5, -.5, -5, -5};
 
     std::vector<std::vector<double>> ans0a = model.predict_exhaust(params);
     std::vector<std::vector<double>> ans1a = model.predict(params, nullptr, true);
-    std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 100000);
+    std::vector<std::vector<double>> ans2a = model.predict_sim(params, false, 50000);
     
     printf_barry("predict_exhaust():\n");
     for (auto & a : ans0a) {

@@ -739,22 +739,32 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const {
     
 }
 
-MODEL_TEMPLATE(uint, size)() const noexcept {
+MODEL_TEMPLATE(uint, size)() const noexcept
+{
+    // INITIALIZED()
     return this->target_stats.size();
+
 }
 
-MODEL_TEMPLATE(uint, size_unique)() const noexcept {
+MODEL_TEMPLATE(uint, size_unique)() const noexcept
+{
+
+    // INITIALIZED()
     return this->stats.size();
+
 } 
 
-MODEL_TEMPLATE(uint, nterms)() const noexcept {
+MODEL_TEMPLATE(uint, nterms)() const noexcept
+{
 
     return this->counters->size();
 
 }
 
-MODEL_TEMPLATE(uint, support_size)() const noexcept {
+MODEL_TEMPLATE(uint, support_size)() const noexcept
+{
 
+    // INITIALIZED()
     uint tot = 0u;
     for (auto& a : stats)
         tot += a.size();

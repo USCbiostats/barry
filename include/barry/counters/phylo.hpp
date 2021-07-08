@@ -50,7 +50,34 @@ public:
   
 };
 
-typedef std::vector< uint > PhyloCounterData;
+// typedef std::vector< uint > PhyloCounterData;
+class PhyloCounterData {
+private:
+    std::vector< uint > data;
+    std::vector< double > * counters;
+
+public:
+    PhyloCounterData(
+        std::vector< uint > data_,
+        std::vector< double > * counters_ = nullptr
+        ) : data(data_), counters(counters_) {};
+
+    uint at(uint d) {return data.at(d);};
+    uint operator()(uint d) {return data.at(d);};
+    void reserve(uint x) {return data.reserve(x);};
+    void push_back(uint x) {return data.push_back(x);};
+    void shrink_to_fit()  {return data.shrink_to_fit();};
+    uint size() {return data.size();};
+
+    std::vector< uint >::iterator begin() {return data.begin();};
+    std::vector< uint >::iterator end() {return data.end();};
+
+    bool empty() {return data.empty();};
+    std::vector< double > * get_counters() {return counters;};
+
+};
+
+
 typedef std::vector< std::pair< uint, uint > > PhyloRuleData;
 class PhyloRuleDynData;
 
@@ -96,7 +123,7 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
     if (data == nullptr) \
     throw std::logic_error("The counter/rule data is nullptr.")
 
-inline std::string get_last_name(bool d) {return ((d)? " at duplication" : "");}
+inline std::string get_last_name(bool d) {return ((d)? " at duplication" : " at speciation");}
 
 /**
  * @weakgroup counters-phylo Phylo counters
@@ -165,12 +192,13 @@ inline void counter_gains(
     PHYLO_COUNTER_LAMBDA(tmp_count)
     {
 
-        if (Array.D()->duplication & (data->at(1u) == 0u))
+        if (Array.D()->duplication != (data->at(1u) == 1u))
             return 0.0;
-        else if (!Array.D()->duplication & (data->at(1u) == 1u))
+
+        if (Array.D()->states[i]) // Nothing to gain since function already exists
             return 0.0;
         
-        return (!Array.D()->states[i]) && (i == data->at(0u)) ? 1.0 : 0.0;
+        return (i == data->at(0u)) ? 1.0 : 0.0;
 
     };
     
@@ -275,14 +303,11 @@ inline void counter_genes_changing(
         
         PHYLO_CHECK_MISSING();
 
-        if (Array.D()->duplication & (data->at(0u) == 0))
-            return 0.0;
-        else if (!Array.D()->duplication & (data->at(0u) == 1))
+        if (Array.D()->duplication != (data->at(0u) == 1u))
             return 0.0;
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-
         for (uint j0 = 0u; j0 < Array.nrow(); ++j0)
         {
 
@@ -301,68 +326,23 @@ inline void counter_genes_changing(
     {
 
         // Checking the type of event
-        if (Array.D()->duplication & (data->at(0u) == 0u))
-            return 0.0;
-        else if (!Array.D()->duplication & (data->at(0u) == 1u))
+        if (Array.D()->duplication != (data->at(0u) == 1u))
             return 0.0;
 
-        // Case 1: The parent had the function (then probably need to substract one)
-        if (Array.D()->states[i]) {
+        // Need to check the other functions
+        for (uint k = 0u; k < Array.nrow(); ++k)
+        {
 
-            // Need to check the other functions
-            for (uint k = 0u; k < Array.nrow(); ++k)
-            {
-
-                if (k != i)
-                {
-
-                    // Nah, this gene was already different.
-                    if (Array.D()->states[k] && (Array(k, j, false) == 0u))
-                        return 0.0;
-                    else if ((!Array.D()->states[k]) && (Array(k, j, false) == 1u))
-                        return 0.0;
-
-                }
-
-            }
-
-            // Nope, this gene is now matching its parent, so we need to 
-            // take it out from the count of genes that have changed.
-            return -1.0;
+            // Nah, this gene was already different.
+            if ((k != i) && (Array.D()->states[k] != (Array(k, j, false) == 1u)))
+                return 0.0;
+            
 
         }
-        else if (!Array.D()->states[i])
-        {
-            // Case 2: The parent didn't had the function. Probably need to increase
-            // by one.
 
-
-              // Need to check the other functions, where these the same?
-              // if these were the same, then we are facing a gene who is changing.
-              for (uint k = 0u; k < Array.nrow(); ++k)
-              {
-
-                  if (k != i)
-                  {
-                      // Nah, this gene was already different.
-                      if (Array.D()->states[k] && (Array(k, j, false) == 0u))
-                          return 0.0;
-                      else if ((!Array.D()->states[k]) && (Array(k, j, false) == 1u))
-                          return 0.0;
-                  }
-                  
-              }
-
-              // Nope, this gene is now matching its parent, so we need to 
-              // take it out from the count of genes that have changed.
-              return 1.0;
-
-        } else
-            throw std::logic_error(
-                "Reach the end of -counter_genes_changing-. This shouldn't happen!"
-                );
-
-        return 0.0;
+        // Nope, this gene is now matching its parent, so we need to 
+        // take it out from the count of genes that have changed.
+        return Array.D()->states[i] ? -1.0 : 1.0;
 
     };
     
@@ -377,6 +357,7 @@ inline void counter_genes_changing(
     return;
   
 }
+
 
 // -----------------------------------------------------------------------------
 /**
@@ -393,9 +374,7 @@ inline void counter_prop_genes_changing(
         
         PHYLO_CHECK_MISSING();
 
-        if (Array.D()->duplication & (data->at(0u) == 0))
-            return 0.0;
-        else if (!Array.D()->duplication & (data->at(0u) == 1))
+        if (Array.D()->duplication != (data->at(0u) == 1))
             return 0.0;
 
         // At the beginning, all offspring are zero, so we need to
@@ -638,12 +617,13 @@ inline void counter_loss(
     PHYLO_COUNTER_LAMBDA(tmp_count)
     {
 
-        if ((data->at(1u) == 1u) & !Array.D()->duplication)
+        if ((data->at(1u) == 1u) != Array.D()->duplication)
             return 0.0;
-        else if ((data->at(1u) == 0u) & Array.D()->duplication)
+
+        if (!Array.D()->states[i])
             return 0.0;
-        else
-            return (Array.D()->states[i]) && (i == data->at(0u)) ? -1.0 : 0.0;
+        
+        return (i == data->at(0u)) ? -1.0 : 0.0;
 
     };
     
@@ -652,12 +632,13 @@ inline void counter_loss(
 
         PHYLO_CHECK_MISSING();
 
-        if ((data->at(1u) == 1u) & !Array.D()->duplication)
+        if ((data->at(1u) == 1u) != Array.D()->duplication)
             return 0.0;
-        else if ((data->at(1u) == 0u) & Array.D()->duplication)
+        
+        if (!Array.D()->states[i])
             return 0.0;
-        else
-            return Array.D()->states[data->at(0u)]? Array.ncol() : 0.0;
+        
+        return Array.D()->states[data->at(0u)]? Array.ncol() : 0.0;
 
     };
     

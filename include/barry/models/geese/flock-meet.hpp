@@ -79,6 +79,10 @@ inline phylocounters::PhyloSupport *  Flock::get_support() {
     return this->model.get_support();
 }
 
+inline phylocounters::PhyloModel *  Flock::get_model() {
+    return &this->model;
+}
+
 inline double Flock::likelihood_joint(
     const std::vector< double > & par,
     bool as_log,
