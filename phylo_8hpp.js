@@ -1,11 +1,11 @@
 var phylo_8hpp =
 [
+    [ "PhyloCounterData", "class_phylo_counter_data.html", "class_phylo_counter_data" ],
     [ "PHYLO_CHECK_MISSING", "phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504", null ],
     [ "PHYLO_COUNTER_LAMBDA", "phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2", null ],
     [ "PHYLO_RULE_DYN_LAMBDA", "phylo_8hpp.html#a4a7a35cddb61f74a0ec3cb3893cf78b1", null ],
     [ "PhyloArray", "phylo_8hpp.html#a777255ae3149368254234a1bddecb601", null ],
     [ "PhyloCounter", "phylo_8hpp.html#a70f35d038e8044ff5761831220d07290", null ],
-    [ "PhyloCounterData", "phylo_8hpp.html#adccc07602cc07d6c62a6851478bec99a", null ],
     [ "PhyloCounters", "phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5", null ],
     [ "PhyloModel", "phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804", null ],
     [ "PhyloPowerSet", "phylo_8hpp.html#a0d16a69c8b447a32a3aa4d4c041773cc", null ],

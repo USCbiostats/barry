@@ -21,6 +21,7 @@ var annotated_dup =
     [ "NetworkData", "class_network_data.html", "class_network_data" ],
     [ "Node", "class_node.html", "class_node" ],
     [ "NodeData", "class_node_data.html", "class_node_data" ],
+    [ "PhyloCounterData", "class_phylo_counter_data.html", "class_phylo_counter_data" ],
     [ "PhyloRuleDynData", "class_phylo_rule_dyn_data.html", "class_phylo_rule_dyn_data" ],
     [ "PowerSet", "class_power_set.html", "class_power_set" ],
     [ "Rule", "class_rule.html", "class_rule" ],

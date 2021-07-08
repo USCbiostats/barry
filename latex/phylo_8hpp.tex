@@ -26,6 +26,8 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 class \mbox{\hyperlink{class_node_data}{Node\+Data}}
 \begin{DoxyCompactList}\small\item\em Data definition for the {\ttfamily Phylo\+Array} class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}
+\item 
 class \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Macros}
@@ -41,8 +43,6 @@ class \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}}
 \textbf{ }\par
 \begin{DoxyCompactItemize}
 \item 
-typedef std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}}
-\item 
 typedef std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $>$ \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}
 \end{DoxyCompactItemize}
 
@@ -51,9 +51,9 @@ typedef std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478
 \item 
 typedef \mbox{\hyperlink{class_b_array}{BArray}}$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{class_node_data}{Node\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}
 \item 
-typedef \mbox{\hyperlink{class_counter}{Counter}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a70f35d038e8044ff5761831220d07290}{Phylo\+Counter}}
+typedef \mbox{\hyperlink{class_counter}{Counter}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a70f35d038e8044ff5761831220d07290}{Phylo\+Counter}}
 \item 
-typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}}
+typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}}
 \item 
 typedef \mbox{\hyperlink{class_rule}{Rule}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}{Phylo\+Rule}}
 \item 
@@ -63,11 +63,11 @@ typedef \mbox{\hyperlink{class_rule}{Rule}}$<$ \mbox{\hyperlink{phylo_8hpp_a7772
 \item 
 typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a6c0e95789675ee382f2a42a7da14fcf9}{Phylo\+Rules\+Dyn}}
 \item 
-typedef \mbox{\hyperlink{class_support}{Support}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}}
+typedef \mbox{\hyperlink{class_support}{Support}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}}
 \item 
-typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}{Phylo\+Stats\+Counter}}
+typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}{Phylo\+Stats\+Counter}}
 \item 
-typedef \mbox{\hyperlink{class_model}{Model}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{Phylo\+Model}}
+typedef \mbox{\hyperlink{class_model}{Model}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{Phylo\+Model}}
 \item 
 typedef \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}{Phylo\+Power\+Set}}
 \end{DoxyCompactItemize}
@@ -128,7 +128,7 @@ void \mbox{\hyperlink{group__rules-phylo_ga2858fa9742c6713d93055c16fd30745f}{rul
 \end{DoxyCode}
 
 
-Definition at line 94 of file phylo.\+hpp.
+Definition at line 121 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_ac89fe9750bd62a338930ea730d23d0d2}\label{phylo_8hpp_ac89fe9750bd62a338930ea730d23d0d2}} 
 \index{phylo.hpp@{phylo.hpp}!PHYLO\_COUNTER\_LAMBDA@{PHYLO\_COUNTER\_LAMBDA}}
@@ -139,7 +139,7 @@ Definition at line 94 of file phylo.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\_fun\_type<PhyloArray, PhyloCounterData>}} a = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{PhyloArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} j, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{PhyloCounterData}} * data)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{PhyloArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} j, \mbox{\hyperlink{class_phylo_counter_data}{PhyloCounterData}} * data)}
 
 \end{DoxyCode}
 
@@ -148,7 +148,7 @@ Extension of a simple counter.
 
 It allows specifying extra arguments, in particular, the corresponding sets of rows to which this statistic may be relevant. This could be important in the case of, for example, counting correlation type statistics between function 1 and 2, and between function 1 and 3. 
 
-Definition at line 88 of file phylo.\+hpp.
+Definition at line 115 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a4a7a35cddb61f74a0ec3cb3893cf78b1}\label{phylo_8hpp_a4a7a35cddb61f74a0ec3cb3893cf78b1}} 
 \index{phylo.hpp@{phylo.hpp}!PHYLO\_RULE\_DYN\_LAMBDA@{PHYLO\_RULE\_DYN\_LAMBDA}}
@@ -164,7 +164,7 @@ Definition at line 88 of file phylo.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 91 of file phylo.\+hpp.
+Definition at line 118 of file phylo.\+hpp.
 
 
 
@@ -177,47 +177,37 @@ Definition at line 91 of file phylo.\+hpp.
 
 
 
-Definition at line 61 of file phylo.\+hpp.
+Definition at line 88 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a70f35d038e8044ff5761831220d07290}\label{phylo_8hpp_a70f35d038e8044ff5761831220d07290}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloCounter@{PhyloCounter}}
 \index{PhyloCounter@{PhyloCounter}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloCounter}{PhyloCounter}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counter}{Counter}}$<$\mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a70f35d038e8044ff5761831220d07290}{Phylo\+Counter}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counter}{Counter}}$<$\mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a70f35d038e8044ff5761831220d07290}{Phylo\+Counter}}}
 
 
 
-Definition at line 62 of file phylo.\+hpp.
-
-\mbox{\Hypertarget{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}\label{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}} 
-\index{phylo.hpp@{phylo.hpp}!PhyloCounterData@{PhyloCounterData}}
-\index{PhyloCounterData@{PhyloCounterData}!phylo.hpp@{phylo.hpp}}
-\doxysubsubsection{\texorpdfstring{PhyloCounterData}{PhyloCounterData}}
-{\footnotesize\ttfamily typedef std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}}}
-
-
-
-Definition at line 53 of file phylo.\+hpp.
+Definition at line 89 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}\label{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloCounters@{PhyloCounters}}
 \index{PhyloCounters@{PhyloCounters}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloCounters}{PhyloCounters}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}}}
 
 
 
-Definition at line 63 of file phylo.\+hpp.
+Definition at line 90 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}\label{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloModel@{PhyloModel}}
 \index{PhyloModel@{PhyloModel}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloModel}{PhyloModel}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_model}{Model}}$<$\mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{Phylo\+Model}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_model}{Model}}$<$\mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{Phylo\+Model}}}
 
 
 
-Definition at line 73 of file phylo.\+hpp.
+Definition at line 100 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}\label{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloPowerSet@{PhyloPowerSet}}
@@ -227,7 +217,7 @@ Definition at line 73 of file phylo.\+hpp.
 
 
 
-Definition at line 74 of file phylo.\+hpp.
+Definition at line 101 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}\label{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRule@{PhyloRule}}
@@ -237,7 +227,7 @@ Definition at line 74 of file phylo.\+hpp.
 
 
 
-Definition at line 65 of file phylo.\+hpp.
+Definition at line 92 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}\label{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRuleData@{PhyloRuleData}}
@@ -247,7 +237,7 @@ Definition at line 65 of file phylo.\+hpp.
 
 
 
-Definition at line 54 of file phylo.\+hpp.
+Definition at line 81 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_ad782519ef733c9b109bf465fe942b36a}\label{phylo_8hpp_ad782519ef733c9b109bf465fe942b36a}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRuleDyn@{PhyloRuleDyn}}
@@ -257,7 +247,7 @@ Definition at line 54 of file phylo.\+hpp.
 
 
 
-Definition at line 68 of file phylo.\+hpp.
+Definition at line 95 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}\label{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRules@{PhyloRules}}
@@ -267,7 +257,7 @@ Definition at line 68 of file phylo.\+hpp.
 
 
 
-Definition at line 66 of file phylo.\+hpp.
+Definition at line 93 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a6c0e95789675ee382f2a42a7da14fcf9}\label{phylo_8hpp_a6c0e95789675ee382f2a42a7da14fcf9}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRulesDyn@{PhyloRulesDyn}}
@@ -277,27 +267,27 @@ Definition at line 66 of file phylo.\+hpp.
 
 
 
-Definition at line 69 of file phylo.\+hpp.
+Definition at line 96 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}\label{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloStatsCounter@{PhyloStatsCounter}}
 \index{PhyloStatsCounter@{PhyloStatsCounter}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloStatsCounter}{PhyloStatsCounter}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$\mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}{Phylo\+Stats\+Counter}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$\mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}{Phylo\+Stats\+Counter}}}
 
 
 
-Definition at line 72 of file phylo.\+hpp.
+Definition at line 99 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}\label{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloSupport@{PhyloSupport}}
 \index{PhyloSupport@{PhyloSupport}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloSupport}{PhyloSupport}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_support}{Support}}$<$\mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_adccc07602cc07d6c62a6851478bec99a}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_support}{Support}}$<$\mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}}}
 
 
 
-Definition at line 71 of file phylo.\+hpp.
+Definition at line 98 of file phylo.\+hpp.
 
 
 
@@ -310,5 +300,5 @@ Definition at line 71 of file phylo.\+hpp.
 
 
 
-Definition at line 99 of file phylo.\+hpp.
+Definition at line 126 of file phylo.\+hpp.
 
