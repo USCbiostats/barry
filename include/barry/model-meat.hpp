@@ -853,6 +853,30 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
 }
 
+MODEL_TEMPLATE(double, conditional_prob)(
+    const Array_Type & Array_,
+    const std::vector< double > & params,
+    unsigned int i,
+    unsigned int j
+) {
+
+    // Generating a copy of the array so we can update
+    Array_Type A(Array_, true);
+
+    // Making sure we add it first
+    A.insert_cell(i, j, A.default_val(), true, false);
+
+    // Computing the change stats
+    std::vector< double > tmp_counts(counters->size());
+    for (unsigned int ii = 0u; ii < tmp_counts.size(); ++ii)
+        tmp_counts[ii] = counters->operator[](ii).count(A, i, j);
+
+    return 1.0/
+        (1.0 + std::exp(-vec_inner_prod<double>(params, tmp_counts)));
+
+    
+}
+
 MODEL_TEMPLATE(const std::mt19937 *, get_rengine)() const {
     return this->rengine;
 }
