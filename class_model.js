@@ -15,6 +15,7 @@ var class_model =
     [ "add_rule_dyn", "class_model.html#a16bdfebe17039c3bee9036695ae15b3d", null ],
     [ "add_rule_dyn", "class_model.html#ad73751c54d16bfc1992794ed2bfc2718", null ],
     [ "colnames", "class_model.html#a61b7baf9d45f885832db74fb9cd99c4d", null ],
+    [ "conditional_prob", "class_model.html#a1a8667f173641433b8ba05885c3f6734", null ],
     [ "gen_key", "class_model.html#a5ab59e34639b590094bc2716d056e78c", null ],
     [ "get_counters", "class_model.html#ab79035281970e647253bf5c26481e588", null ],
     [ "get_norm_const", "class_model.html#a9e1685f87f57bca1432ef77dcb86b3b6", null ],

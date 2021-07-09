@@ -42,6 +42,8 @@ Array\+\_\+\+Type \mbox{\hyperlink{class_model_a2adac6eb2d37bd67d5f0222374ce193d
 \item 
 Array\+\_\+\+Type \mbox{\hyperlink{class_model_af550a98c8cf963b3892d5b0ded7b2069}{sample}} (const \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&i, const std\+::vector$<$ double $>$ \&params)
 \item 
+double \mbox{\hyperlink{class_model_a1a8667f173641433b8ba05885c3f6734}{conditional\+\_\+prob}} (const Array\+\_\+\+Type \&Array\+\_\+, const std\+::vector$<$ double $>$ \&params, unsigned int i, unsigned int j)
+\begin{DoxyCompactList}\small\item\em Conditional probability (\char`\"{}\+Gibbs sampler\char`\"{}) \end{DoxyCompactList}\item 
 const std\+::mt19937 $\ast$ \mbox{\hyperlink{class_model_ab98a5c50c97fca438b0dc959fe9d5448}{get\+\_\+rengine}} () const
 \item 
 \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_model_ab79035281970e647253bf5c26481e588}{get\+\_\+counters}} ()
@@ -172,7 +174,7 @@ This implementation aims to reduce the number of times that the support needs to
 \end{DoxyTemplParams}
 
 
-Definition at line 52 of file model-\/bones.\+hpp.
+Definition at line 47 of file model-\/bones.\+hpp.
 
 
 
@@ -207,7 +209,7 @@ Definition at line 52 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 152 of file model-\/bones.\+hpp.
+Definition at line 149 of file model-\/bones.\+hpp.
 
 
 
@@ -303,6 +305,33 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::colnames (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+\mbox{\Hypertarget{class_model_a1a8667f173641433b8ba05885c3f6734}\label{class_model_a1a8667f173641433b8ba05885c3f6734}} 
+\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!conditional\_prob@{conditional\_prob}}
+\index{conditional\_prob@{conditional\_prob}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{conditional\_prob()}{conditional\_prob()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+double \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::conditional\+\_\+prob (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{Array\+\_\+,  }\item[{const std\+::vector$<$ double $>$ \&}]{params,  }\item[{unsigned int}]{i,  }\item[{unsigned int}]{j }\end{DoxyParamCaption})}
+
+
+
+Conditional probability (\char`\"{}\+Gibbs sampler\char`\"{}) 
+
+Computes the conditional probability of observing P\{Y(i,j) = $\vert$ Y$^\wedge$C, theta\}, i.\+e., the probability of observing the entry Y(i,j) equal to one given the rest of the array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Array\+\_\+} & Array to check \\
+\hline
+{\em params} & Vector of parameters \\
+\hline
+{\em i} & Row entry \\
+\hline
+{\em j} & Column entry \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double The conditional probability 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_model_a5ab59e34639b590094bc2716d056e78c}\label{class_model_a5ab59e34639b590094bc2716d056e78c}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!gen\_key@{gen\_key}}
 \index{gen\_key@{gen\_key}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
@@ -463,7 +492,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 124 of file model-\/bones.\+hpp.
+Definition at line 119 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a696fd8dc85423d35fee3b9718877abb4}\label{class_model_a696fd8dc85423d35fee3b9718877abb4}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!set\_rules@{set\_rules}}
@@ -488,7 +517,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 134 of file model-\/bones.\+hpp.
+Definition at line 129 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_ac9e1a5bb0ba275abb36f2e220b04dbd8}\label{class_model_ac9e1a5bb0ba275abb36f2e220b04dbd8}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!size@{size}}

@@ -139,6 +139,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2adac6eb2d37bd67d5f0222374ce193d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af550a98c8cf963b3892d5b0ded7b2069"><td class="memItemLeft" align="right" valign="top">Array_Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#af550a98c8cf963b3892d5b0ded7b2069">sample</a> (const <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp;i, const std::vector&lt; double &gt; &amp;params)</td></tr>
 <tr class="separator:af550a98c8cf963b3892d5b0ded7b2069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8667f173641433b8ba05885c3f6734"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a1a8667f173641433b8ba05885c3f6734">conditional_prob</a> (const Array_Type &amp;Array_, const std::vector&lt; double &gt; &amp;params, unsigned int i, unsigned int j)</td></tr>
+<tr class="memdesc:a1a8667f173641433b8ba05885c3f6734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conditional probability ("Gibbs sampler")  <a href="class_model.html#a1a8667f173641433b8ba05885c3f6734">More...</a><br /></td></tr>
+<tr class="separator:a1a8667f173641433b8ba05885c3f6734"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab98a5c50c97fca438b0dc959fe9d5448"><td class="memItemLeft" align="right" valign="top">const std::mt19937 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ab98a5c50c97fca438b0dc959fe9d5448">get_rengine</a> () const</td></tr>
 <tr class="separator:ab98a5c50c97fca438b0dc959fe9d5448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab79035281970e647253bf5c26481e588"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Counter_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ab79035281970e647253bf5c26481e588">get_counters</a> ()</td></tr>
@@ -251,7 +254,7 @@ class Model&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Typ
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00052">52</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00047">47</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad1a83640422f8f2a9ea2d3f593bf3799"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad1a83640422f8f2a9ea2d3f593bf3799">&#9670;&nbsp;</a></span>Model() <span class="overload">[1/3]</span></h2>
@@ -337,7 +340,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00152">152</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00149">149</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -632,6 +635,61 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a8667f173641433b8ba05885c3f6734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a8667f173641433b8ba05885c3f6734">&#9670;&nbsp;</a></span>conditional_prob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::conditional_prob </td>
+          <td>(</td>
+          <td class="paramtype">const Array_Type &amp;&#160;</td>
+          <td class="paramname"><em>Array_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Conditional probability ("Gibbs sampler") </p>
+<p>Computes the conditional probability of observing P{Y(i,j) = | Y^C, theta}, i.e., the probability of observing the entry Y(i,j) equal to one given the rest of the array.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Array_</td><td>Array to check </td></tr>
+    <tr><td class="paramname">params</td><td>Vector of parameters </td></tr>
+    <tr><td class="paramname">i</td><td>Row entry </td></tr>
+    <tr><td class="paramname">j</td><td>Column entry </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>double The conditional probability </dd></dl>
 
 </div>
 </div>
@@ -1200,7 +1258,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00124">124</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00119">119</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1270,7 +1328,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00134">134</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00129">129</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1391,7 +1449,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_model.html">Model</a></li>
-    <li class="footer">Generated on Thu Jul 8 2021 23:27:40 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jul 9 2021 05:48:45 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

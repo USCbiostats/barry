@@ -57,7 +57,7 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "class_cell.html#a3d063afd2a8743623d0e524debbd55e9",
-"class_power_set.html#a00ee318a40da91bcf0bff79bf71454ab",
+"class_power_set.html",
 "group__counters-phylo.html#gae193c319ae2fd5edb3a6551e44ada0be"
 ];
 
