@@ -816,66 +816,85 @@ inline void counter_degree(
     return;  
 }
 
-// // -----------------------------------------------------------------------------
-// /**@brief Counts errors of commission */
-// inline void counter_css_partially_false_recip(
-//         NetCounters * counters,
-//         uint netsize
-//     ) {
+// -----------------------------------------------------------------------------
+/**@brief Counts errors of commission */
+inline void counter_css_partially_false_recip(
+        NetCounters * counters,
+        uint netsize,
+        const std::vector< uint > & end_
+    ) {
     
-//     NETWORK_COUNTER_LAMBDA(tmp_count) {
+    NETWORK_COUNTER_LAMBDA(tmp_count) {
         
 
-//         // Getting the network size
-//         uint n = data->indices[0u];
+        // Getting the network size
+        uint n = data->indices[0u];
+        uint s = data->indices[1u]; ///< Start
+        uint e = data->indices[2u]; ///< End
 
-//         // True network
-//         if ((i < n) && (j < n))
-//         {
+        // True network
+        if ((i < n) && (j < n))
+        {
 
-//             // Need to check across vertices
-//             double ans = 0.0;
-//             for (uint i_ = 0u; i_ < n; ++i_)
-//             {
-//                 uint n_ = n
-//                 ans += 
-//             }
+            // Checking change stat of the true net
+            return 
+                static_cast<double>(
+                    Array(i + s, j + s)*(1.0 - Array(j + s, i + s))*(1.0 - 2*Array(j,i))
+                );
 
-//         } else {
+        } else if (((i >= s) && (i < e)) & ((j >= s) && (j < e))) {
 
-//         }
+            // Checking change stat of the percieved net
+            return 
+                static_cast<double>(
+                    Array(i + s, j + s)*Array(j + s, i + s)*(
+                        Array(i - s, j - s) + Array(j - s, i - s) - 2.0*Array(j,i))
+                );
 
-//         return std::pow(std::fabs(
-//                 Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][i] - 
-//                     Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][j]
-//         ), NET_C_DATA_NUM(0u));
+        } else
+            return 0.0;
+
         
-//     };
+    };
     
-//     NETWORK_COUNTER_LAMBDA(tmp_init) {
+    NETWORK_COUNTER_LAMBDA(tmp_init) {
+
+        // The reported size doesn't match the true network
+        if ((data->indices.at(0) > Array.ncol()) | (data->indices.at(2) > Array.ncol()))
+            throw std::range_error(
+                "The network does not match the prescribed size."
+                );
         
-//         if (Array.D() == nullptr)
-//             throw std::logic_error("The array data has not been initialized");
+        return 0.0;
         
-//         if (Array.D()->vertex_attr.size() == 0u)
-//             throw std::range_error("No attributes in the Array.");
-        
-//         if ((NET_C_DATA_IDX(0u) != 0u) && (Array.D()->vertex_attr.size() <= (NET_C_DATA_IDX(0u) - 1u)))
-//             throw std::range_error("Attribute index out of range.");
-        
-//         return 0.0;
-        
-//     };
+    };
     
-//     counters->add_counter(
-//             tmp_count, tmp_init,
-//             new NetCounterData({attr_id}, {alpha}),
-//             true
-//         );
+    // checking sizes
+    for (uint i = 0u; i < end_.size(); ++i)
+    {
+
+        if (i == 0u) continue;
+        else if (end_[i] < end_[i-1u])
+            throw std::logic_error("Endpoints should be specified in order.");
+
+    }
     
-//     return;
+    for (uint i = 0u; i < end_.size(); ++i)
+    {
+
+        // 
+        counters->add_counter(
+            tmp_count, tmp_init,
+            // network size, start point, end point
+            new NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),
+            true, "Partially false recip (commission)"
+        );
     
-// }
+    }
+    
+    return;
+    
+}
 
 ///@}
 
