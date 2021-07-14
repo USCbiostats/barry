@@ -49,7 +49,7 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
     [ "statscounter-bones.hpp", "statscounter-bones_8hpp.html", [
       [ "StatsCounter", "class_stats_counter.html", "class_stats_counter" ]
     ] ],
-    [ "statscounter-meat.hpp", "statscounter-meat_8hpp.html", null ],
+    [ "statscounter-meat.hpp", "statscounter-meat_8hpp.html", "statscounter-meat_8hpp" ],
     [ "statsdb.hpp", "statsdb_8hpp.html", [
       [ "FreqTable", "class_freq_table.html", "class_freq_table" ]
     ] ],

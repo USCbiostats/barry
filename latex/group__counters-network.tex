@@ -10,15 +10,17 @@
 \item 
 \#define \mbox{\hyperlink{group__counters-network_gace696ee5922030f6da06918043fa31a1}{CSS\+\_\+\+SIZE}}()
 \item 
-\#define \mbox{\hyperlink{group__counters-network_ga95751730bfbf23e60dc6d99a0926c8cd}{CSS\+\_\+\+CASE\+\_\+\+TRUTH}}()~\mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} ((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ n) \&\& (\mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}} $<$ n))
+\#define \mbox{\hyperlink{group__counters-network_ga95751730bfbf23e60dc6d99a0926c8cd}{CSS\+\_\+\+CASE\+\_\+\+TRUTH}}()~\mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} ((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ n) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}} $<$ n))
 \item 
-\#define \mbox{\hyperlink{group__counters-network_gae34e3408c6bb6787262ac80b8d49cc42}{CSS\+\_\+\+CASE\+\_\+\+PERCEIVED}}()~\mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} \mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} (((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ e)) \& ((\mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}} $<$ e)))
+\#define \mbox{\hyperlink{group__counters-network_gae34e3408c6bb6787262ac80b8d49cc42}{CSS\+\_\+\+CASE\+\_\+\+PERCEIVED}}()~\mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} \mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} (((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ e)) \& ((\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}} $>$= s) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}} $<$ e)))
 \item 
 \#define \mbox{\hyperlink{group__counters-network_gad8525323c7c2f3967ea803eb0280f00d}{CSS\+\_\+\+CASE\+\_\+\+ELSE}}()
 \item 
 \#define \mbox{\hyperlink{group__counters-network_ga354e5e948f865cefbe3b1e0e0fb76c4f}{CSS\+\_\+\+CHECK\+\_\+\+SIZE\+\_\+\+INIT}}()
 \item 
 \#define \mbox{\hyperlink{group__counters-network_ga7e1df8589a52ae97ec4d8bb26acbbea3}{CSS\+\_\+\+CHECK\+\_\+\+SIZE}}()
+\item 
+\#define \mbox{\hyperlink{group__counters-network_gae47801cf60e9466153f4f32d9e5300ab}{CSS\+\_\+\+APPEND}}(\mbox{\hyperlink{counters-meat_8hpp_a42cb6e97e822b37d4d982c1106a1b53e}{name}})
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -84,6 +86,26 @@ void \mbox{\hyperlink{group__counters-network_ga3f36ba81dfe10abdc040c5143da19fe5
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__counters-network_gae47801cf60e9466153f4f32d9e5300ab}\label{group__counters-network_gae47801cf60e9466153f4f32d9e5300ab}} 
+\index{Network counters@{Network counters}!CSS\_APPEND@{CSS\_APPEND}}
+\index{CSS\_APPEND@{CSS\_APPEND}!Network counters@{Network counters}}
+\doxysubsubsection{\texorpdfstring{CSS\_APPEND}{CSS\_APPEND}}
+{\footnotesize\ttfamily \#define CSS\+\_\+\+APPEND(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{counters-meat_8hpp_a42cb6e97e822b37d4d982c1106a1b53e}{name}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    std::string \mbox{\hyperlink{counters-meat_8hpp_a6d5c67469420c96792aec8644728ca45}{name\_}} = (\mbox{\hyperlink{counters-meat_8hpp_a42cb6e97e822b37d4d982c1106a1b53e}{name}});\(\backslash\)}
+\DoxyCodeLine{    for (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} < end\_.size(); ++\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) \{ \(\backslash\)}
+\DoxyCodeLine{    std::string tmpname = \mbox{\hyperlink{counters-meat_8hpp_a6d5c67469420c96792aec8644728ca45}{name\_}} + \textcolor{stringliteral}{"{} ("{}} + std::to\_string(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) + \textcolor{stringliteral}{"{})"{}};\(\backslash\)}
+\DoxyCodeLine{    counters-\/>add\_counter(tmp\_count, tmp\_init,\(\backslash\)}
+\DoxyCodeLine{            \textcolor{keyword}{new} \mbox{\hyperlink{class_net_counter_data}{NetCounterData}}(\{netsize, \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} == 0u ? netsize : end\_[\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}-\/1], end\_[\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}]\}, \{\}),\(\backslash\)}
+\DoxyCodeLine{            \textcolor{keyword}{true}, tmpname);\}}
+
+\end{DoxyCode}
+
+
+Definition at line 841 of file network.\+hpp.
+
 \mbox{\Hypertarget{group__counters-network_gad8525323c7c2f3967ea803eb0280f00d}\label{group__counters-network_gad8525323c7c2f3967ea803eb0280f00d}} 
 \index{Network counters@{Network counters}!CSS\_CASE\_ELSE@{CSS\_CASE\_ELSE}}
 \index{CSS\_CASE\_ELSE@{CSS\_CASE\_ELSE}!Network counters@{Network counters}}
@@ -98,7 +120,7 @@ Definition at line 831 of file network.\+hpp.
 \index{Network counters@{Network counters}!CSS\_CASE\_PERCEIVED@{CSS\_CASE\_PERCEIVED}}
 \index{CSS\_CASE\_PERCEIVED@{CSS\_CASE\_PERCEIVED}!Network counters@{Network counters}}
 \doxysubsubsection{\texorpdfstring{CSS\_CASE\_PERCEIVED}{CSS\_CASE\_PERCEIVED}}
-{\footnotesize\ttfamily \#define CSS\+\_\+\+CASE\+\_\+\+PERCEIVED(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} \mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} (((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ e)) \& ((\mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}} $<$ e)))}
+{\footnotesize\ttfamily \#define CSS\+\_\+\+CASE\+\_\+\+PERCEIVED(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} \mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} (((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ e)) \& ((\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}} $>$= s) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}} $<$ e)))}
 
 
 
@@ -108,7 +130,7 @@ Definition at line 830 of file network.\+hpp.
 \index{Network counters@{Network counters}!CSS\_CASE\_TRUTH@{CSS\_CASE\_TRUTH}}
 \index{CSS\_CASE\_TRUTH@{CSS\_CASE\_TRUTH}!Network counters@{Network counters}}
 \doxysubsubsection{\texorpdfstring{CSS\_CASE\_TRUTH}{CSS\_CASE\_TRUTH}}
-{\footnotesize\ttfamily \#define CSS\+\_\+\+CASE\+\_\+\+TRUTH(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} ((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ n) \&\& (\mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}} $<$ n))}
+{\footnotesize\ttfamily \#define CSS\+\_\+\+CASE\+\_\+\+TRUTH(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} ((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ n) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}} $<$ n))}
 
 
 
@@ -195,7 +217,7 @@ Counts completely false reciprocity (comission)
 
 
 
-Definition at line 976 of file network.\+hpp.
+Definition at line 960 of file network.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_ga3f36ba81dfe10abdc040c5143da19fe5}\label{group__counters-network_ga3f36ba81dfe10abdc040c5143da19fe5}} 
 \index{Network counters@{Network counters}!counter\_css\_completely\_false\_recip\_omiss@{counter\_css\_completely\_false\_recip\_omiss}}
@@ -209,7 +231,7 @@ Counts completely false reciprocity (omission)
 
 
 
-Definition at line 1044 of file network.\+hpp.
+Definition at line 1016 of file network.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_gad08c853dfee55e27159d943692903945}\label{group__counters-network_gad08c853dfee55e27159d943692903945}} 
 \index{Network counters@{Network counters}!counter\_css\_partially\_false\_recip\_commi@{counter\_css\_partially\_false\_recip\_commi}}
@@ -223,7 +245,7 @@ Counts errors of commission.
 
 
 
-Definition at line 842 of file network.\+hpp.
+Definition at line 850 of file network.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_gab13f8d2fb101909458cd9d53367d14f9}\label{group__counters-network_gab13f8d2fb101909458cd9d53367d14f9}} 
 \index{Network counters@{Network counters}!counter\_css\_partially\_false\_recip\_omiss@{counter\_css\_partially\_false\_recip\_omiss}}
@@ -237,7 +259,7 @@ Counts errors of omission.
 
 
 
-Definition at line 908 of file network.\+hpp.
+Definition at line 904 of file network.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_ga8ea4bb27771e3fb61f807f4dff2a6e57}\label{group__counters-network_ga8ea4bb27771e3fb61f807f4dff2a6e57}} 
 \index{Network counters@{Network counters}!counter\_ctriads@{counter\_ctriads}}

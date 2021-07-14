@@ -8,7 +8,7 @@ var class_stats_counter =
     [ "count_all", "class_stats_counter.html#a83bd92031a1499109c98f238221cbd67", null ],
     [ "count_current", "class_stats_counter.html#ab81166f7cb67eeaecc469016d237019a", null ],
     [ "count_init", "class_stats_counter.html#a19bd5936619e190c0d8918b4f343922e", null ],
-    [ "get_counters", "class_stats_counter.html#a5dbf54f099752b2ac273b98fa699e4b6", null ],
+    [ "get_counters", "class_stats_counter.html#aefed9e17931afb386933df0a4c2ff588", null ],
     [ "get_descriptions", "class_stats_counter.html#a0e013d18fa1155ce296025778d8cb92f", null ],
     [ "get_names", "class_stats_counter.html#aa7e4572b8f58a0fb79cdf3125ceb3520", null ],
     [ "reset_array", "class_stats_counter.html#a8dabc3a7a9931acbb76900a67d728f70", null ],
