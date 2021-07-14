@@ -73,6 +73,8 @@ public:
     std::vector< double > count_all();
 
     Counters<Array_Type,Data_Type> * get_counters();
+    std::vector< std::string > get_names() const;
+    std::vector< std::string > get_descriptions() const;
     
 };
 

@@ -85,6 +85,8 @@ public:
       */
     double count(Array_Type & Array, uint i, uint j);
     double init(Array_Type & Array, uint i, uint j);
+    std::string get_name() const;
+    std::string get_description() const;
     
 };
 
@@ -172,6 +174,8 @@ public:
         std::string                            desc_        = ""
     );
     void clear();
+    std::vector< std::string > get_names() const;
+    std::vector< std::string > get_descriptions() const;
     
 };
 
