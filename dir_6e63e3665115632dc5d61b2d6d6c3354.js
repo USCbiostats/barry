@@ -37,7 +37,7 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
     [ "counters-bones.hpp", "counters-bones_8hpp.html", [
       [ "Counters", "class_counters.html", "class_counters" ]
     ] ],
-    [ "counters-meat.hpp", "counters-meat_8hpp.html", null ],
+    [ "counters-meat.hpp", "counters-meat_8hpp.html", "counters-meat_8hpp" ],
     [ "model-bones.hpp", "model-bones_8hpp.html", "model-bones_8hpp" ],
     [ "model-meat.hpp", "model-meat_8hpp.html", "model-meat_8hpp" ],
     [ "powerset-bones.hpp", "powerset-bones_8hpp.html", [

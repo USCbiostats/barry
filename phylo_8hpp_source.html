@@ -135,21 +135,21 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a4094d738e4b56d89ed39f2428b91a09e">   60</a></span>&#160;    <a class="code" href="class_phylo_counter_data.html#a4094d738e4b56d89ed39f2428b91a09e">PhyloCounterData</a>(</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        std::vector&lt; uint &gt; data_,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        std::vector&lt; uint &gt; <a class="code" href="counters-meat_8hpp.html#a77488349c8b3388dc5690a67b65a04e5">data_</a>,</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        std::vector&lt; double &gt; * <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a> = <span class="keyword">nullptr</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        ) : data(data_), <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>) {};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        ) : <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>(<a class="code" href="counters-meat_8hpp.html#a77488349c8b3388dc5690a67b65a04e5">data_</a>), <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>(<a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>) {};</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a1b54a0726a83fa03b08d0ceaa14ae362">   65</a></span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_counter_data.html#a1b54a0726a83fa03b08d0ceaa14ae362">at</a>(<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> d) {<span class="keywordflow">return</span> data.at(d);};</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#ac217f75fd1e6db2e3eef1efb21cef7a9">   66</a></span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_counter_data.html#ac217f75fd1e6db2e3eef1efb21cef7a9">operator()</a>(<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> d) {<span class="keywordflow">return</span> data.at(d);};</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a33966238911e6d0f1dc2cbe7549d3fea">   67</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_phylo_counter_data.html#a33966238911e6d0f1dc2cbe7549d3fea">reserve</a>(<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> x) {<span class="keywordflow">return</span> data.reserve(x);};</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a58ef5ed54cf18ed816082893486ebd84">   68</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_phylo_counter_data.html#a58ef5ed54cf18ed816082893486ebd84">push_back</a>(<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> x) {<span class="keywordflow">return</span> data.push_back(x);};</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#ae6a913894d0a6777f72246c2c4d75e81">   69</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_phylo_counter_data.html#ae6a913894d0a6777f72246c2c4d75e81">shrink_to_fit</a>()  {<span class="keywordflow">return</span> data.shrink_to_fit();};</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a8b6e506cf96cd9badce267f9c6a09085">   70</a></span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_counter_data.html#a8b6e506cf96cd9badce267f9c6a09085">size</a>() {<span class="keywordflow">return</span> data.size();};</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a1b54a0726a83fa03b08d0ceaa14ae362">   65</a></span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_counter_data.html#a1b54a0726a83fa03b08d0ceaa14ae362">at</a>(<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> d) {<span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.at(d);};</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#ac217f75fd1e6db2e3eef1efb21cef7a9">   66</a></span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_counter_data.html#ac217f75fd1e6db2e3eef1efb21cef7a9">operator()</a>(<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> d) {<span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.at(d);};</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a33966238911e6d0f1dc2cbe7549d3fea">   67</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_phylo_counter_data.html#a33966238911e6d0f1dc2cbe7549d3fea">reserve</a>(<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> x) {<span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.reserve(x);};</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a58ef5ed54cf18ed816082893486ebd84">   68</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_phylo_counter_data.html#a58ef5ed54cf18ed816082893486ebd84">push_back</a>(<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> x) {<span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.push_back(x);};</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#ae6a913894d0a6777f72246c2c4d75e81">   69</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_phylo_counter_data.html#ae6a913894d0a6777f72246c2c4d75e81">shrink_to_fit</a>()  {<span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.shrink_to_fit();};</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a8b6e506cf96cd9badce267f9c6a09085">   70</a></span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_counter_data.html#a8b6e506cf96cd9badce267f9c6a09085">size</a>() {<span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.size();};</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#acfc6b686f56615e36fca4b4577768463">   72</a></span>&#160;    std::vector&lt; uint &gt;::iterator <a class="code" href="class_phylo_counter_data.html#acfc6b686f56615e36fca4b4577768463">begin</a>() {<span class="keywordflow">return</span> data.begin();};</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a09c948acab84f559489a17f01dfa69e6">   73</a></span>&#160;    std::vector&lt; uint &gt;::iterator <a class="code" href="class_phylo_counter_data.html#a09c948acab84f559489a17f01dfa69e6">end</a>() {<span class="keywordflow">return</span> data.end();};</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#acfc6b686f56615e36fca4b4577768463">   72</a></span>&#160;    std::vector&lt; uint &gt;::iterator <a class="code" href="class_phylo_counter_data.html#acfc6b686f56615e36fca4b4577768463">begin</a>() {<span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.begin();};</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a09c948acab84f559489a17f01dfa69e6">   73</a></span>&#160;    std::vector&lt; uint &gt;::iterator <a class="code" href="class_phylo_counter_data.html#a09c948acab84f559489a17f01dfa69e6">end</a>() {<span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.end();};</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a4e65e4a8887889914bd61e6bc8cc9445">   75</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_phylo_counter_data.html#a4e65e4a8887889914bd61e6bc8cc9445">empty</a>() {<span class="keywordflow">return</span> data.empty();};</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a4e65e4a8887889914bd61e6bc8cc9445">   75</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_phylo_counter_data.html#a4e65e4a8887889914bd61e6bc8cc9445">empty</a>() {<span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.empty();};</div>
 <div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#ae1c2daef01a863f41f06b4357e012ad5">   76</a></span>&#160;    std::vector&lt; double &gt; * <a class="code" href="class_phylo_counter_data.html#ae1c2daef01a863f41f06b4357e012ad5">get_counters</a>() {<span class="keywordflow">return</span> <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>;};</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
@@ -204,9 +204,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    {</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 1u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;          <span class="keywordflow">return</span> 1.0;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 0u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;          <span class="keywordflow">return</span> 1.0;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        </div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
@@ -241,22 +241,22 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    {</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication != (data-&gt;at(1u) == 1u))</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication != (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u) == 1u))</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[i]) <span class="comment">// Nothing to gain since function already exists</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>]) <span class="comment">// Nothing to gain since function already exists</span></div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordflow">return</span> (i == data-&gt;at(0u)) ? 1.0 : 0.0;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordflow">return</span> (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u)) ? 1.0 : 0.0;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    };</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; i : nfun)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : nfun)</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            tmp_count, tmp_init,</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keyword">new</span> <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({i, <a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a> ? 1u : 0u}),</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keyword">new</span> <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a> ? 1u : 0u}),</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="stringliteral">&quot;Gains &quot;</span> + std::to_string(i) + <a class="code" href="phylo_8hpp.html#add31e0ba346cdf08524d6da73500f846">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a>)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="stringliteral">&quot;Gains &quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) + <a class="code" href="phylo_8hpp.html#add31e0ba346cdf08524d6da73500f846">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a>)</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        );</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    </div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">return</span>;</div>
@@ -285,29 +285,29 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    {</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="comment">// Is this relevant?</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">if</span> (i != data-&gt;at(0u))</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u))</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="comment">// Checking the type of event</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (data-&gt;at(2u) == 0u))</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 0u))</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (data-&gt;at(2u) == 1u))</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 1u))</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="comment">// Is there any gain?</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[i])</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>])</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="comment">// Making the counts</span></div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a> = 0;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.ncol(); ++k)</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">if</span> (k != j) {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">if</span> (Array(i, k, <span class="keyword">false</span>) == 1u)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">if</span> (k != <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">if</span> (Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, k, <span class="keyword">false</span>) == 1u)</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    ++<a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a>;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            }</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="comment">// Three cases: base on the diff</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordtype">int</span> diff = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(data-&gt;at(1u)) - <a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a> + 1;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordtype">int</span> diff = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u)) - <a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a> + 1;</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="comment">// (a) counts were 1 below k, then +1</span></div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">if</span> (diff == 1)</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">return</span> -1.0;</div>
@@ -321,12 +321,12 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    };</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; i : nfun)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : nfun)</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            tmp_count, tmp_init,</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keyword">new</span> <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({i, k, <a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a> ? 1u : 0u}),</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keyword">new</span> <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, k, <a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a> ? 1u : 0u}),</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            std::to_string(k) + <span class="stringliteral">&quot; genes gain &quot;</span> + std::to_string(i) +</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            std::to_string(k) + <span class="stringliteral">&quot; genes gain &quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) +</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                <a class="code" href="phylo_8hpp.html#add31e0ba346cdf08524d6da73500f846">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a>)</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        );</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    </div>
@@ -345,7 +345,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        </div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication != (data-&gt;at(0u) == 1u))</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication != (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 1u))</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="comment">// At the beginning, all offspring are zero, so we need to</span></div>
@@ -368,7 +368,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    {</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="comment">// Checking the type of event</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication != (data-&gt;at(0u) == 1u))</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication != (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 1u))</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="comment">// Need to check the other functions</span></div>
@@ -376,7 +376,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        {</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="comment">// Nah, this gene was already different.</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <span class="keywordflow">if</span> ((k != i) &amp;&amp; (Array.D()-&gt;states[k] != (Array(k, j, <span class="keyword">false</span>) == 1u)))</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <span class="keywordflow">if</span> ((k != <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) &amp;&amp; (Array.D()-&gt;states[k] != (Array(k, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 1u)))</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            </div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
@@ -384,7 +384,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="comment">// Nope, this gene is now matching its parent, so we need to </span></div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="comment">// take it out from the count of genes that have changed.</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">return</span> Array.D()-&gt;states[i] ? -1.0 : 1.0;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">return</span> Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>] ? -1.0 : 1.0;</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    };</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    </div>
@@ -412,7 +412,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        </div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication != (data-&gt;at(0u) == 1))</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication != (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 1))</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="comment">// At the beginning, all offspring are zero, so we need to</span></div>
@@ -436,25 +436,25 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    {</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="comment">// Checking the type of event</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (data-&gt;at(0u) == 0u))</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 0u))</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (data-&gt;at(0u) == 1u))</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 1u))</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        <span class="comment">// Case 1: The parent had the function (then probably need to substract one)</span></div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[i]) {</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>]) {</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            <span class="comment">// Need to check the other functions</span></div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.nrow(); ++k)</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            {</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                <span class="keywordflow">if</span> (k != i)</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                <span class="keywordflow">if</span> (k != <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                {</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                    <span class="comment">// Nah, this gene was already different.</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                    <span class="keywordflow">if</span> (Array.D()-&gt;states[k] &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 0u))</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                    <span class="keywordflow">if</span> (Array.D()-&gt;states[k] &amp;&amp; (Array(k, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 0u))</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                        <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!Array.D()-&gt;states[k]) &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 1u))</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!Array.D()-&gt;states[k]) &amp;&amp; (Array(k, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                        <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                }</div>
@@ -466,7 +466,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            <span class="keywordflow">return</span> -1.0/<span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160; </div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        }</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;states[i])</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>])</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        {</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            <span class="comment">// Case 2: The parent didn&#39;t had the function. Probably need to increase</span></div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            <span class="comment">// by one.</span></div>
@@ -477,12 +477,12 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;              <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.nrow(); ++k)</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;              {</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                  <span class="keywordflow">if</span> (k != i)</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                  <span class="keywordflow">if</span> (k != <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                  {</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                      <span class="comment">// Nah, this gene was already different.</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                      <span class="keywordflow">if</span> (Array.D()-&gt;states[k] &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 0u))</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                      <span class="keywordflow">if</span> (Array.D()-&gt;states[k] &amp;&amp; (Array(k, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 0u))</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                          <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!Array.D()-&gt;states[k]) &amp;&amp; (Array(k, j, <span class="keyword">false</span>) == 1u))</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!Array.D()-&gt;states[k]) &amp;&amp; (Array(k, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                          <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                  }</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                  </div>
@@ -522,9 +522,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    {</div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        </div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 1u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="keywordflow">return</span> -1.0;</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 0u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            <span class="keywordflow">return</span> -1.0;</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        <span class="keywordflow">else</span> </div>
 <div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
@@ -536,9 +536,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; </div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;      <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;      <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;      <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 1u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>((Array.nrow() * Array.ncol()));</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 0u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;          <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>((Array.nrow() * Array.ncol()));</div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;      <span class="keywordflow">else</span> </div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;          <span class="keywordflow">return</span> 0.0;</div>
@@ -570,7 +570,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
 <div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;      <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();    </div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160; </div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;      <span class="keywordflow">if</span> (data-&gt;at(0u) == 0u)</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 0u)</div>
 <div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
 <div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;      <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;      {</div>
@@ -589,7 +589,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160; </div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;          }</div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160; </div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;          <span class="keywordflow">if</span> (count &gt;= data-&gt;at(0u) &amp;&amp; count &lt;= data-&gt;at(1u))</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;          <span class="keywordflow">if</span> (count &gt;= <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) &amp;&amp; count &lt;= <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u))</div>
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            ans += 1.0;</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160; </div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        }</div>
@@ -603,22 +603,22 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    {</div>
 <div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160; </div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (data-&gt;at(2u) == 0u))</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 0u))</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (data-&gt;at(2u) == 1u))</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 1u))</div>
 <div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        </div>
 <div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a> = 1u;</div>
 <div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.nrow(); ++k)</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            <span class="keywordflow">if</span> (k != j)</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;                <span class="keywordflow">if</span> (Array(k, j, <span class="keyword">false</span>) == 1u)</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            <span class="keywordflow">if</span> (k != <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;                <span class="keywordflow">if</span> (Array(k, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 1u)</div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;                    ++<a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a>;</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <span class="comment">// Reached the lower bound</span></div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a> == data-&gt;at(0u))</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a> == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u))</div>
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;            <span class="keywordflow">return</span> 1.0;</div>
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;          <span class="comment">// Went outside of the upper bound</span></div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a> == (data-&gt;at(1u) + 1u))</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a> == (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u) + 1u))</div>
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;            <span class="keywordflow">return</span> -1.0;</div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
@@ -646,13 +646,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;    {</div>
 <div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160; </div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(1u) == 1u) != Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u) == 1u) != Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160; </div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[i])</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>])</div>
 <div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        </div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        <span class="keywordflow">return</span> (i == data-&gt;at(0u)) ? -1.0 : 0.0;</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        <span class="keywordflow">return</span> (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u)) ? -1.0 : 0.0;</div>
 <div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160; </div>
 <div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    };</div>
 <div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    </div>
@@ -661,22 +661,22 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160; </div>
 <div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;        <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160; </div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(1u) == 1u) != Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u) == 1u) != Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;        </div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[i])</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>])</div>
 <div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;        </div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;        <span class="keywordflow">return</span> Array.D()-&gt;states[data-&gt;at(0u)]? Array.ncol() : 0.0;</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;        <span class="keywordflow">return</span> Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u)]? Array.ncol() : 0.0;</div>
 <div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160; </div>
 <div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    };</div>
 <div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    </div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; i : nfun)</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : nfun)</div>
 <div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;        <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
 <div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            tmp_count, tmp_init,</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;            <span class="keyword">new</span> <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({i, <a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a> ? 1u : 0u}),</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;            <span class="keyword">new</span> <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a> ? 1u : 0u}),</div>
 <div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;            <span class="keyword">true</span>,</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;            <span class="stringliteral">&quot;Loss &quot;</span> + std::to_string(i) + <a class="code" href="phylo_8hpp.html#add31e0ba346cdf08524d6da73500f846">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a>)</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;            <span class="stringliteral">&quot;Loss &quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) + <a class="code" href="phylo_8hpp.html#add31e0ba346cdf08524d6da73500f846">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a2e3ce3d2641b68856cacd3cf810326b5">duplication</a>)</div>
 <div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;        );</div>
 <div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    </div>
 <div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    <span class="keywordflow">return</span>;</div>
@@ -692,13 +692,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    {</div>
 <div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160; </div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 0u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;        <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160; </div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[i])</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>])</div>
 <div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;            <span class="keywordflow">return</span> -1.0;</div>
 <div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        <span class="keywordflow">else</span> </div>
 <div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            <span class="keywordflow">return</span> 1.0;</div>
@@ -712,9 +712,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160; </div>
 <div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160; </div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) == 0u) &amp; Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 0u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(0u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;        {</div>
@@ -756,34 +756,34 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    {</div>
 <div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160; </div>
 <div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;        <span class="comment">// Is this node duplication?</span></div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)  </div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)  </div>
 <div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160; </div>
 <div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;        <span class="comment">// Are we looking at either of the relevant functions?</span></div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(0u) != i) &amp;&amp; (data-&gt;at(1u) != i))</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) != <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u) != <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>))</div>
 <div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;        </div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;        <span class="comment">// Are A and B existant? if not, no change</span></div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[data-&gt;at(0u)] | !Array.D()-&gt;states[data-&gt;at(1u)])</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u)] | !Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u)])</div>
 <div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;        </div>
 <div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;        <span class="comment">// Figuring out which is the first (reference) function</span></div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> other = (i == data-&gt;at(0u))? data-&gt;at(1u) : data-&gt;at(0u);</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> other = (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u))? <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u) : <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u);</div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;        <span class="comment">// There are 4 cases: (first x second) x (had the second function)</span></div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;        <span class="keywordflow">if</span> (Array(other, j, <span class="keyword">false</span>) == 1u)</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;        <span class="keywordflow">if</span> (Array(other, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 1u)</div>
 <div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;        { </div>
 <div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;          </div>
 <div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;            {</div>
 <div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                </div>
 <div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                <span class="comment">// Not on self</span></div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                <span class="keywordflow">if</span> (off == j)</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                </div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                <span class="keywordflow">if</span> ((Array(i, off, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(other, off, <span class="keyword">false</span>) == 0u))</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(other, off, <span class="keyword">false</span>) == 0u))</div>
 <div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                    res -= 1.0;</div>
 <div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;                </div>
 <div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;            }</div>
@@ -794,10 +794,10 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;            {</div>
 <div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;              </div>
 <div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;                <span class="comment">// Not on self</span></div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                <span class="keywordflow">if</span> (off == j)</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                </div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                <span class="keywordflow">if</span> ((Array(i, off, <span class="keyword">false</span>) == 0u) &amp;&amp; (Array(other, off, <span class="keyword">false</span>) == 1u))</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off, <span class="keyword">false</span>) == 0u) &amp;&amp; (Array(other, off, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                    res += 1.0;</div>
 <div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;              </div>
 <div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;            }</div>
@@ -837,9 +837,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_count)</div>
 <div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;    {</div>
 <div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160; </div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;        <span class="keyword">auto</span> d0 = data-&gt;at(0u);</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;        <span class="keyword">auto</span> d1 = data-&gt;at(1u);</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;        <span class="keyword">auto</span> d2 = data-&gt;at(2u);</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;        <span class="keyword">auto</span> d0 = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u);</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;        <span class="keyword">auto</span> d1 = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u);</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;        <span class="keyword">auto</span> d2 = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u);</div>
 <div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;      </div>
 <div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        <span class="comment">// Is this node duplication?</span></div>
 <div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;        <span class="keywordflow">if</span> ((d2 == 1u) &amp; !Array.D()-&gt;duplication)</div>
@@ -848,16 +848,16 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160; </div>
 <div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;        <span class="comment">// Is the function in scope relevant?</span></div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;        <span class="keywordflow">if</span> ((i != d0) &amp;&amp; (i != d1))</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != d0) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != d1))</div>
 <div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;        </div>
 <div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;        <span class="comment">// None should have it</span></div>
 <div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[d0] &amp;&amp; !Array.D()-&gt;states[d1])</div>
 <div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;        {</div>
 <div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160; </div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;            <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> other = (i == d0)? d1 : d0;</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;            <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> other = (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == d0)? d1 : d0;</div>
 <div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160; </div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;            <span class="keywordflow">if</span> (Array(other, j, <span class="keyword">false</span>) == 1u)</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;            <span class="keywordflow">if</span> (Array(other, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 1u)</div>
 <div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                <span class="keywordflow">return</span> 1.0;</div>
 <div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
@@ -895,11 +895,11 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160; </div>
 <div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;        <span class="comment">// Only relevant if the </span></div>
 <div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[i])</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;        <span class="keywordflow">if</span> (Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>])</div>
 <div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        {</div>
 <div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;            </div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; off : *data)</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;                <span class="keywordflow">if</span> (off == j)</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; off : *<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>)</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;                {</div>
 <div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160; </div>
 <div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;                    res -= 1.0;</div>
@@ -909,8 +909,8 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;            </div>
 <div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;            </div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; off : *data)</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;                <span class="keywordflow">if</span> (off == j)</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; off : *<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>)</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;                {</div>
 <div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160; </div>
 <div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;                    res += 1.0;</div>
@@ -937,8 +937,8 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;        <span class="comment">// Finding the longest branch (or branches) --</span></div>
 <div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> longest_idx = 0u;</div>
 <div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;        <span class="keywordtype">double</span> diff      = 0.0;</div>
-<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;        data-&gt;reserve(Array.ncol()); </div>
-<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;        data-&gt;push_back(0u);</div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;reserve(Array.ncol()); </div>
+<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;push_back(0u);</div>
 <div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ii = 1u; ii &lt; Array.ncol(); ++ii)</div>
 <div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;        {</div>
 <div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;            </div>
@@ -948,19 +948,19 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (diff &lt; 0.0)</div>
 <div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;            {</div>
 <div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160; </div>
-<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;                data-&gt;empty();</div>
-<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;                data-&gt;push_back(ii);</div>
+<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;empty();</div>
+<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;push_back(ii);</div>
 <div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;                longest_idx = ii;</div>
 <div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160; </div>
 <div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;            }</div>
 <div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (diff == 0.0)</div>
-<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;                data-&gt;push_back(ii);</div>
+<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;push_back(ii);</div>
 <div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;            </div>
 <div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;        }</div>
 <div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160; </div>
-<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;        data-&gt;shrink_to_fit();</div>
+<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;shrink_to_fit();</div>
 <div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;        </div>
-<div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;        <span class="keywordflow">if</span> (data-&gt;size() == 0u)</div>
+<div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;size() == 0u)</div>
 <div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;            <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;The data on the longest branch has size 0.&quot;</span>);</div>
 <div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;        </div>
 <div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;        <span class="comment">// Starting the counter, since all in zero, then this will be equal to</span></div>
@@ -969,7 +969,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ii = 0u; ii &lt; Array.nrow(); ++ii) {</div>
 <div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;            </div>
 <div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;            <span class="keywordflow">if</span> (Array.D()-&gt;states[ii])</div>
-<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;                res += (1.0 * data-&gt;size());</div>
+<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;                res += (1.0 * <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;size());</div>
 <div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160; </div>
 <div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;        }</div>
 <div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;        </div>
@@ -997,35 +997,35 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;    {</div>
 <div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160; </div>
 <div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;        <span class="comment">// Is this node duplication?</span></div>
-<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)  </div>
+<div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)  </div>
 <div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160; </div>
 <div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;        <span class="comment">// Is the function in scope relevant?</span></div>
-<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;        <span class="keywordflow">if</span> ((i != data-&gt;at(0u)) &amp;&amp; (i != data-&gt;at(1u)))</div>
+<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u)) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u)))</div>
 <div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;        </div>
 <div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;        <span class="comment">// Checking if the parent has both functions</span></div>
-<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[data-&gt;at(0u)] &amp;&amp; !Array.D()-&gt;states[data-&gt;at(1u)]) </div>
+<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;        <span class="keywordflow">if</span> (!Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u)] &amp;&amp; !Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u)]) </div>
 <div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Array.D()-&gt;states[data-&gt;at(0u)] &amp;&amp; Array.D()-&gt;states[data-&gt;at(1u)])</div>
+<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u)] &amp;&amp; Array.D()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u)])</div>
 <div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01001"></a><span class="lineno"> 1001</span>&#160;        </div>
 <div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160;        <span class="comment">// Figuring out which is the first (reference) function</span></div>
-<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> other = (i == data-&gt;at(0u))? data-&gt;at(1u) : data-&gt;at(0u);</div>
+<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> other = (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u))? <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u) : <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u);</div>
 <div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
 <div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;        </div>
-<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;        <span class="keywordflow">if</span> (Array.is_empty(other, j, <span class="keyword">false</span>))</div>
+<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;        <span class="keywordflow">if</span> (Array.is_empty(other, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>))</div>
 <div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;        {</div>
 <div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;            </div>
 <div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;            {</div>
 <div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160; </div>
-<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;                <span class="keywordflow">if</span> (off == j)</div>
+<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;                </div>
-<div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;                <span class="keywordflow">if</span> (Array.is_empty(i, off, <span class="keyword">false</span>) &amp;&amp; !Array.is_empty(other, off, <span class="keyword">false</span>))</div>
+<div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;                <span class="keywordflow">if</span> (Array.is_empty(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off, <span class="keyword">false</span>) &amp;&amp; !Array.is_empty(other, off, <span class="keyword">false</span>))</div>
 <div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;                    res += 1.0;</div>
 <div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;                </div>
 <div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;            }</div>
@@ -1035,10 +1035,10 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;            {</div>
 <div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160; </div>
-<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;                <span class="keywordflow">if</span> (off == j)</div>
+<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01027"></a><span class="lineno"> 1027</span>&#160;              </div>
-<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160;                <span class="keywordflow">if</span> (!Array.is_empty(i, off, <span class="keyword">false</span>) &amp;&amp; Array.is_empty(other, off, <span class="keyword">false</span>))</div>
+<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160;                <span class="keywordflow">if</span> (!Array.is_empty(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off, <span class="keyword">false</span>) &amp;&amp; Array.is_empty(other, off, <span class="keyword">false</span>))</div>
 <div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;                    res -= 1.0;</div>
 <div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;              </div>
 <div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;            }</div>
@@ -1081,13 +1081,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;    {</div>
 <div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160; </div>
 <div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;        <span class="comment">// Is this node duplication?</span></div>
-<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)  </div>
+<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)  </div>
 <div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160; </div>
-<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;        <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; funA = data-&gt;at(0u);</div>
-<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;        <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; funB = data-&gt;at(1u);</div>
+<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;        <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; funA = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u);</div>
+<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;        <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; funB = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u);</div>
 <div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;        </div>
 <div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;        <span class="comment">// Checking the parent has funA but not funb</span></div>
 <div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;        <span class="keywordflow">if</span> ((!Array.D()-&gt;states[funA]) | Array.D()-&gt;states[funB]) </div>
@@ -1095,16 +1095,16 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;      </div>
 <div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
 <div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160; </div>
-<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;        <span class="keywordflow">if</span> (funA == i)</div>
+<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;        <span class="keywordflow">if</span> (funA == <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
 <div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;        {</div>
 <div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160; </div>
-<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;            <span class="keywordflow">if</span> (Array.get_cell(funB, j, <span class="keyword">true</span>) == 1)</div>
+<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;            <span class="keywordflow">if</span> (Array.get_cell(funB, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">true</span>) == 1)</div>
 <div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;            {</div>
 <div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160; </div>
 <div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;                <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.ncol(); ++k)</div>
 <div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;                {</div>
 <div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160; </div>
-<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;                    <span class="keywordflow">if</span> (k == j)</div>
+<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;                    <span class="keywordflow">if</span> (k == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, k, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(funB, k, <span class="keyword">false</span>) == 0u))</div>
 <div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;                        res -= 1.0;</div>
@@ -1115,7 +1115,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160; </div>
 <div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;                <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.ncol(); ++k) {</div>
 <div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160; </div>
-<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;                    <span class="keywordflow">if</span> (k == j)</div>
+<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;                    <span class="keywordflow">if</span> (k == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, k, <span class="keyword">false</span>) == 0u) &amp;&amp; (Array(funB, k, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;                        res += 1.0;</div>
@@ -1126,13 +1126,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160; </div>
 <div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160; </div>
-<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;            <span class="keywordflow">if</span> (Array.get_cell(funB, j, <span class="keyword">true</span>) == 1)</div>
+<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;            <span class="keywordflow">if</span> (Array.get_cell(funB, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">true</span>) == 1)</div>
 <div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;            {</div>
 <div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160; </div>
 <div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;                <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.ncol(); ++k)</div>
 <div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;                {</div>
 <div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160; </div>
-<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;                    <span class="keywordflow">if</span> (k == j)</div>
+<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;                    <span class="keywordflow">if</span> (k == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, k, <span class="keyword">false</span>) == 0u) &amp;&amp; (Array(funB, k, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;                        res -= 1.0;</div>
@@ -1144,7 +1144,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;                <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; Array.ncol(); ++k)</div>
 <div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;                {</div>
 <div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160; </div>
-<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;                    <span class="keywordflow">if</span> (k == j)</div>
+<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;                    <span class="keywordflow">if</span> (k == <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>)</div>
 <div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, k, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(funB, k, <span class="keyword">false</span>) == 0u))</div>
 <div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;                        res += 1.0;</div>
@@ -1191,17 +1191,17 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;    { </div>
 <div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160; </div>
 <div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;        <span class="comment">// Checking whether this is for duplication or not</span></div>
-<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 0u) &amp; Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((data-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(2u) == 1u) &amp; !Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;        <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160; </div>
-<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> funA = data-&gt;at(0u);</div>
-<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> funB = data-&gt;at(1u);</div>
+<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> funA = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u);</div>
+<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> funB = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u);</div>
 <div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160; </div>
 <div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;            <span class="comment">// If the change is out of scope, then nothing to do</span></div>
-<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;            <span class="keywordflow">if</span> ((i != funA) &amp; (i != funB))</div>
+<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;            <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != funA) &amp; (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != funB))</div>
 <div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160; </div>
 <div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;            <span class="comment">// If the parent does not have the initial state, then it makes no sense</span></div>
@@ -1209,17 +1209,17 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160; </div>
 <div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;            <span class="comment">// Checking whether function A or function B changed</span></div>
-<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;            <span class="keywordflow">if</span> (i == funA) {</div>
+<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == funA) {</div>
 <div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160; </div>
 <div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;                <span class="comment">// What was the state of the other function? If B is present, then</span></div>
 <div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;                <span class="comment">// nothing changes.</span></div>
-<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;                <span class="keywordflow">if</span> (Array(funB, j, <span class="keyword">false</span>) == 1u) </div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;                <span class="keywordflow">if</span> (Array(funB, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 1u) </div>
 <div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;                    <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160; </div>
 <div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;                <span class="comment">// Iterating through the sibs</span></div>
 <div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;                <span class="keywordtype">double</span> res = 0.0;</div>
 <div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> c = 0u; c &lt; Array.ncol(); ++c)</div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;                    <span class="keywordflow">if</span> ((c != j) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(funB, c, <span class="keyword">false</span>) == 1u))</div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;                    <span class="keywordflow">if</span> ((c != <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(funB, c, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;                        res += 1.0;</div>
 <div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160; </div>
 <div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;                <span class="keywordflow">return</span> res;</div>
@@ -1228,13 +1228,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160; </div>
 <div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;                <span class="comment">// What was the state of the other function? If A is not present, then</span></div>
 <div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;                <span class="comment">// nothing changes.</span></div>
-<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;                <span class="keywordflow">if</span> (Array(funA, j, <span class="keyword">false</span>) == 0u) </div>
+<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;                <span class="keywordflow">if</span> (Array(funA, <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>, <span class="keyword">false</span>) == 0u) </div>
 <div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;                    <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160; </div>
 <div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;                <span class="comment">// Iterating through the sibs</span></div>
 <div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;                <span class="keywordtype">double</span> res = 0.0;</div>
 <div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> c = 0u; c &lt; Array.ncol(); ++c)</div>
-<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;                    <span class="keywordflow">if</span> ((c != j) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u))</div>
+<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;                    <span class="keywordflow">if</span> ((c != <a class="code" href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a>) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;                        res += (Array(funB, c, <span class="keyword">false</span>) == 0u) ? 1.0 : -1.0;</div>
 <div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160; </div>
 <div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;                <span class="keywordflow">return</span> res;</div>
@@ -1248,16 +1248,16 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;    <a class="code" href="phylo_8hpp.html#ac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_init) {</div>
 <div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160; </div>
 <div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;        <a class="code" href="phylo_8hpp.html#a81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
-<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;        <span class="keywordflow">if</span> (data-&gt;size() != 3u)</div>
+<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;size() != 3u)</div>
 <div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;The counter data should be of length 2.&quot;</span>);</div>
 <div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160; </div>
-<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;        <span class="keywordflow">if</span> (data-&gt;at(0u) == data-&gt;at(1u))</div>
+<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u))</div>
 <div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;            <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Functions A and B should be different from each other.&quot;</span>);</div>
 <div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160; </div>
-<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;        <span class="keywordflow">if</span> (data-&gt;at(0u) &gt;= Array.nrow())</div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(0u) &gt;= Array.nrow())</div>
 <div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Function A in counter out of range.&quot;</span>);</div>
 <div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160; </div>
-<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;        <span class="keywordflow">if</span> (data-&gt;at(1u) &gt;= Array.nrow())</div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u) &gt;= Array.nrow())</div>
 <div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Function B in counter out of range.&quot;</span>);</div>
 <div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160; </div>
 <div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
@@ -1309,12 +1309,12 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;    <a class="code" href="phylo_8hpp.html#a4a7a35cddb61f74a0ec3cb3893cf78b1">PHYLO_RULE_DYN_LAMBDA</a>(tmp_rule)</div>
 <div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;    {</div>
 <div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160; </div>
-<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;        <span class="keywordflow">if</span> (data-&gt;duplication != Array.D()-&gt;duplication)</div>
+<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;duplication != Array.D()-&gt;duplication)</div>
 <div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;        </div>
-<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;        <span class="keywordflow">if</span> (data-&gt;counts-&gt;operator[](data-&gt;pos) &lt; data-&gt;lb)</div>
+<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;counts-&gt;operator[](<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;pos) &lt; <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;lb)</div>
 <div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data-&gt;counts-&gt;operator[](data-&gt;pos) &gt; data-&gt;ub)</div>
+<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;counts-&gt;operator[](<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;pos) &gt; <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;ub)</div>
 <div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -1338,7 +1338,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_b_array_html"><div class="ttname"><a href="class_b_array.html">BArray</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barray-bones_8hpp_source.html#l00022">barray-bones.hpp:22</a></div></div>
 <div class="ttc" id="aclass_counter_html"><div class="ttname"><a href="class_counter.html">Counter</a></div><div class="ttdoc">A counter function based on change statistics.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00038">counters-bones.hpp:38</a></div></div>
-<div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00099">counters-bones.hpp:99</a></div></div>
+<div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00101">counters-bones.hpp:101</a></div></div>
 <div class="ttc" id="aclass_model_html"><div class="ttname"><a href="class_model.html">Model</a></div><div class="ttdoc">General framework for discrete exponential models. This class allows generating discrete exponential ...</div><div class="ttdef"><b>Definition:</b> <a href="model-bones_8hpp_source.html#l00047">model-bones.hpp:47</a></div></div>
 <div class="ttc" id="aclass_node_data_html"><div class="ttname"><a href="class_node_data.html">NodeData</a></div><div class="ttdoc">Data definition for the PhyloArray class.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00023">phylo.hpp:23</a></div></div>
 <div class="ttc" id="aclass_node_data_html_a02da5f097c105813216d87ef89ad7bd4"><div class="ttname"><a href="class_node_data.html#a02da5f097c105813216d87ef89ad7bd4">NodeData::blengths</a></div><div class="ttdeci">std::vector&lt; double &gt; blengths</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00029">phylo.hpp:29</a></div></div>
@@ -1372,6 +1372,10 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="ttc" id="aclass_support_html"><div class="ttname"><a href="class_support.html">Support</a></div><div class="ttdoc">Compute the support of sufficient statistics.</div><div class="ttdef"><b>Definition:</b> <a href="support-bones_8hpp_source.html#l00035">support-bones.hpp:35</a></div></div>
 <div class="ttc" id="aclass_support_html_a8af9d807ce23c9f7259138b5aebdda31"><div class="ttname"><a href="class_support.html#a8af9d807ce23c9f7259138b5aebdda31">Support::get_current_stats</a></div><div class="ttdeci">std::vector&lt; double &gt; * get_current_stats()</div><div class="ttdoc">List current statistics.</div></div>
 <div class="ttc" id="aclass_support_html_a8d2f10623d7d6e5d76fee837a23efa1f"><div class="ttname"><a href="class_support.html#a8d2f10623d7d6e5d76fee837a23efa1f">Support::get_rules_dyn</a></div><div class="ttdeci">Rules&lt; Array_Type, Data_Rule_Dyn_Type &gt; * get_rules_dyn()</div><div class="ttdoc">Vector of dynamic rules (to include/exclude a realizaton).</div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_a1adc09117fb18eb79d260e4bd720ce41"><div class="ttname"><a href="counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41">j</a></div><div class="ttdeci">uint uint j</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00117">counters-meat.hpp:118</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_a6fc02db1fc3ce220c7c5e2999822ecf7"><div class="ttname"><a href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a></div><div class="ttdeci">Data_Type &amp;&amp;counter_ data(std::move(counter_.data))</div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_a77488349c8b3388dc5690a67b65a04e5"><div class="ttname"><a href="counters-meat_8hpp.html#a77488349c8b3388dc5690a67b65a04e5">data_</a></div><div class="ttdeci">Data_Type Counter_fun_type&lt; Array_Type, Data_Type &gt; Data_Type * data_</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00293">counters-meat.hpp:293</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00117">counters-meat.hpp:117</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_ga03aec4d306a8a0ad7e356bf6b137b73f"><div class="ttname"><a href="group__counters-phylo.html#ga03aec4d306a8a0ad7e356bf6b137b73f">counter_neofun_a2b</a></div><div class="ttdeci">void counter_neofun_a2b(PhyloCounters *counters, uint nfunA, uint nfunB, bool duplication=true)</div><div class="ttdoc">Total number of neofunctionalization events.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l01063">phylo.hpp:1063</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_ga0403ee027de1992d33cae8cf40ad7ef3"><div class="ttname"><a href="group__counters-phylo.html#ga0403ee027de1992d33cae8cf40ad7ef3">counter_gains_k_offspring</a></div><div class="ttdeci">void counter_gains_k_offspring(PhyloCounters *counters, std::vector&lt; uint &gt; nfun, uint k=1u, bool duplication=true)</div><div class="ttdoc">k genes gain function nfun</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00222">phylo.hpp:222</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_ga41afc89ceafd9c70883b37ea20b0db8a"><div class="ttname"><a href="group__counters-phylo.html#ga41afc89ceafd9c70883b37ea20b0db8a">counter_longest</a></div><div class="ttdeci">void counter_longest(PhyloCounters *counters)</div><div class="ttdoc">Longest branch mutates (either by gain or by loss)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00873">phylo.hpp:873</a></div></div>
@@ -1413,7 +1417,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
-    <li class="footer">Generated on Wed Jul 14 2021 07:06:00 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Jul 14 2021 21:07:53 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

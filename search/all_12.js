@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['val_410',['val',['../class_entries.html#ae0726e20b17868665cdae6ff70f93bb4',1,'Entries']]],
-  ['value_411',['value',['../class_cell.html#a5df1609bc0705830ec4dc6e177ddc955',1,'Cell']]],
-  ['vec_5fdiff_412',['vec_diff',['../geese-bones_8hpp.html#ac4e3e3e3920b3bbde57ac1ed395e9983',1,'geese-bones.hpp']]],
-  ['vec_5fequal_413',['vec_equal',['../typedefs_8hpp.html#a0520b46efb182c4254e257ff5c5e7394',1,'typedefs.hpp']]],
-  ['vec_5fequal_5fapprox_414',['vec_equal_approx',['../typedefs_8hpp.html#aec4a47b2d5c6f46872f300633cf1e938',1,'typedefs.hpp']]],
-  ['vec_5finner_5fprod_415',['vec_inner_prod',['../typedefs_8hpp.html#a843abed15fe9f1be82d863feef016c36',1,'typedefs.hpp']]],
-  ['vechasher_416',['vecHasher',['../structvec_hasher.html',1,'']]],
-  ['vector_5fcaster_417',['vector_caster',['../geese-bones_8hpp.html#a13c91ee42db6c3b986acbbac4ee58cb0',1,'geese-bones.hpp']]],
-  ['vertex_5fattr_418',['vertex_attr',['../class_network_data.html#a3dc3e5549abc6daa85f30dbdc504ecac',1,'NetworkData']]],
-  ['visited_419',['visited',['../class_b_array.html#ae0860bf21425397d1498f94da6518e85',1,'BArray::visited()'],['../class_b_array_dense.html#a98a7e8e1f6d19de2ae0a857d7fd7d2f1',1,'BArrayDense::visited()'],['../class_cell.html#a1f539a05953fa05d723c32e718f0eeb3',1,'Cell::visited()'],['../class_node.html#aa1bdec4e775fc578632e6a2dced9e251',1,'Node::visited()']]]
+  ['ub_439',['ub',['../class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346',1,'PhyloRuleDynData']]],
+  ['uint_440',['uint',['../typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14',1,'typedefs.hpp']]],
+  ['uknown_441',['UKNOWN',['../namespace_e_x_i_s_t_s.html#a81eb362d951445c658942a433afddb97',1,'EXISTS']]],
+  ['update_5fannotations_442',['update_annotations',['../class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a',1,'Geese']]],
+  ['update_5fnormalizing_5fconstant_443',['update_normalizing_constant',['../model-meat_8hpp.html#a557368a4713ccf9ee1867c1bd17d58ba',1,'model-meat.hpp']]]
 ];

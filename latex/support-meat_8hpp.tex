@@ -47,9 +47,9 @@ Empty\+Array \mbox{\hyperlink{support-meat_8hpp_a9d46a2276a9724f89649e4097c776aa
 \item 
 \mbox{\hyperlink{support-meat_8hpp_ac3e9dc0da8cb5558062309c63a98bb41}{if}} (\mbox{\hyperlink{support-meat_8hpp_a2997e52d3d749b34d5a97042e4f520e5}{rules\+\_\+dyn}}-\/$>$size() $>$ 0u)
 \item 
-\mbox{\hyperlink{support-meat_8hpp_a2e7d16a6d5b063a5b390419c643b35a2}{if}} (\mbox{\hyperlink{support-meat_8hpp_ac016b087458ce258194d3d26c8516d8e}{array\+\_\+bank}} !=nullptr) \mbox{\hyperlink{support-meat_8hpp_ac016b087458ce258194d3d26c8516d8e}{array\+\_\+bank}} -\/$>$ push\+\_\+back(Empty\+Array)
+\mbox{\hyperlink{support-meat_8hpp_a2e7d16a6d5b063a5b390419c643b35a2}{if}} (\mbox{\hyperlink{support-meat_8hpp_ac016b087458ce258194d3d26c8516d8e}{array\+\_\+bank}} !=nullptr) \mbox{\hyperlink{support-meat_8hpp_ac016b087458ce258194d3d26c8516d8e}{array\+\_\+bank}} -\/$>$ \mbox{\hyperlink{counters-meat_8hpp_a2a77ab0f368d26c7630926dd94d1baa6}{push\+\_\+back}}(Empty\+Array)
 \item 
-\mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} (\mbox{\hyperlink{support-meat_8hpp_a566566606aa0f6b5a588d80b177ea7b2}{stats\+\_\+bank}} !=nullptr) \mbox{\hyperlink{support-meat_8hpp_a566566606aa0f6b5a588d80b177ea7b2}{stats\+\_\+bank}} -\/$>$ push\+\_\+back(current\+\_\+stats)
+\mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} (\mbox{\hyperlink{support-meat_8hpp_a566566606aa0f6b5a588d80b177ea7b2}{stats\+\_\+bank}} !=nullptr) \mbox{\hyperlink{support-meat_8hpp_a566566606aa0f6b5a588d80b177ea7b2}{stats\+\_\+bank}} -\/$>$ \mbox{\hyperlink{counters-meat_8hpp_a2a77ab0f368d26c7630926dd94d1baa6}{push\+\_\+back}}(current\+\_\+stats)
 \item 
 Empty\+Array \mbox{\hyperlink{support-meat_8hpp_adbea6a38c6fb67cd1c434ccb7e3459d0}{rm\+\_\+cell}} (cfree.\+first, cfree.\+second, false, false)
 \item 
@@ -194,7 +194,7 @@ Definition at line 134 of file support-\/meat.\+hpp.
 \index{support-\/meat.hpp@{support-\/meat.hpp}!if@{if}}
 \index{if@{if}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_ac016b087458ce258194d3d26c8516d8e}{array\+\_\+bank}} !}]{ = {\ttfamily nullptr} }\end{DoxyParamCaption}) -\/$>$  push\+\_\+back(Empty\+Array)}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_ac016b087458ce258194d3d26c8516d8e}{array\+\_\+bank}} !}]{ = {\ttfamily nullptr} }\end{DoxyParamCaption}) -\/$>$  \mbox{\hyperlink{counters-meat_8hpp_a2a77ab0f368d26c7630926dd94d1baa6}{push\+\_\+back}}(Empty\+Array)}
 
 \mbox{\Hypertarget{support-meat_8hpp_ac3e9dc0da8cb5558062309c63a98bb41}\label{support-meat_8hpp_ac3e9dc0da8cb5558062309c63a98bb41}} 
 \index{support-\/meat.hpp@{support-\/meat.hpp}!if@{if}}
@@ -210,7 +210,7 @@ Definition at line 148 of file support-\/meat.\+hpp.
 \index{support-\/meat.hpp@{support-\/meat.hpp}!if@{if}}
 \index{if@{if}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_a566566606aa0f6b5a588d80b177ea7b2}{stats\+\_\+bank}} !}]{ = {\ttfamily nullptr} }\end{DoxyParamCaption}) -\/$>$  push\+\_\+back(current\+\_\+stats)}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_a566566606aa0f6b5a588d80b177ea7b2}{stats\+\_\+bank}} !}]{ = {\ttfamily nullptr} }\end{DoxyParamCaption}) -\/$>$  \mbox{\hyperlink{counters-meat_8hpp_a2a77ab0f368d26c7630926dd94d1baa6}{push\+\_\+back}}(current\+\_\+stats)}
 
 \mbox{\Hypertarget{support-meat_8hpp_a9d46a2276a9724f89649e4097c776aac}\label{support-meat_8hpp_a9d46a2276a9724f89649e4097c776aac}} 
 \index{support-\/meat.hpp@{support-\/meat.hpp}!insert\_cell@{insert\_cell}}
@@ -458,7 +458,7 @@ Definition at line 313 of file support-\/meat.\+hpp.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{}
-\DoxyCodeLine{        data.add(current\_stats)}
+\DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}}.add(current\_stats)}
 
 \end{DoxyCode}
 

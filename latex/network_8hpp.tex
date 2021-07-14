@@ -28,12 +28,26 @@ class \mbox{\hyperlink{class_network_data}{Network\+Data}}
 class \mbox{\hyperlink{class_net_counter_data}{Net\+Counter\+Data}}
 \begin{DoxyCompactList}\small\item\em Data class used to store arbitrary uint or double vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__counters-network_gace696ee5922030f6da06918043fa31a1}{CSS\+\_\+\+SIZE}}()
+\item 
+\#define \mbox{\hyperlink{group__counters-network_ga95751730bfbf23e60dc6d99a0926c8cd}{CSS\+\_\+\+CASE\+\_\+\+TRUTH}}()~\mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} ((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ n) \&\& (\mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}} $<$ n))
+\item 
+\#define \mbox{\hyperlink{group__counters-network_gae34e3408c6bb6787262ac80b8d49cc42}{CSS\+\_\+\+CASE\+\_\+\+PERCEIVED}}()~\mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} \mbox{\hyperlink{support-meat_8hpp_ab94c259ba65603a97ac1db3a4cad67ca}{if}} (((\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} $<$ e)) \& ((\mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}} $<$ e)))
+\item 
+\#define \mbox{\hyperlink{group__counters-network_gad8525323c7c2f3967ea803eb0280f00d}{CSS\+\_\+\+CASE\+\_\+\+ELSE}}()
+\item 
+\#define \mbox{\hyperlink{group__counters-network_ga354e5e948f865cefbe3b1e0e0fb76c4f}{CSS\+\_\+\+CHECK\+\_\+\+SIZE\+\_\+\+INIT}}()
+\item 
+\#define \mbox{\hyperlink{group__counters-network_ga7e1df8589a52ae97ec4d8bb26acbbea3}{CSS\+\_\+\+CHECK\+\_\+\+SIZE}}()
+\end{DoxyCompactItemize}
 \textbf{ }\par
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{network_8hpp_aa75d9c31d709148061626dc54a07723a}{NET\+\_\+\+C\+\_\+\+DATA\+\_\+\+IDX}}(i)~(data-\/$>$indices\mbox{[}i\mbox{]})
+\#define \mbox{\hyperlink{network_8hpp_aa75d9c31d709148061626dc54a07723a}{NET\+\_\+\+C\+\_\+\+DATA\+\_\+\+IDX}}(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}})~(\mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}}-\/$>$indices\mbox{[}\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}\mbox{]})
 \item 
-\#define \mbox{\hyperlink{network_8hpp_ad5ead8d8915b0536a4d5a6c3ef5001fb}{NET\+\_\+\+C\+\_\+\+DATA\+\_\+\+NUM}}(i)~(data-\/$>$numbers\mbox{[}i\mbox{]})
+\#define \mbox{\hyperlink{network_8hpp_ad5ead8d8915b0536a4d5a6c3ef5001fb}{NET\+\_\+\+C\+\_\+\+DATA\+\_\+\+NUM}}(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}})~(\mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}}-\/$>$numbers\mbox{[}\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}\mbox{]})
 \end{DoxyCompactItemize}
 
 \begin{Indent}\textbf{ Macros for defining counters}\par
@@ -116,8 +130,14 @@ void \mbox{\hyperlink{group__counters-network_ga36553e6453f939b96d6fb1b57d07ce16
 \begin{DoxyCompactList}\small\item\em Counts number of vertices with a given out-\/degree. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__counters-network_ga80b0d366d78946638af8c25139f0d203}{counter\+\_\+degree}} (\mbox{\hyperlink{network_8hpp_a174d872a0e267d33daf4d345fab537a3}{Net\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ d)
 \begin{DoxyCompactList}\small\item\em Counts number of vertices with a given out-\/degree. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-network_ga4903c624dc54d2711c28ba89bdd4bb46}{counter\+\_\+css\+\_\+partially\+\_\+false\+\_\+recip}} (\mbox{\hyperlink{network_8hpp_a174d872a0e267d33daf4d345fab537a3}{Net\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} netsize, const std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&end\+\_\+)
-\begin{DoxyCompactList}\small\item\em Counts errors of commission. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{group__counters-network_gad08c853dfee55e27159d943692903945}{counter\+\_\+css\+\_\+partially\+\_\+false\+\_\+recip\+\_\+commi}} (\mbox{\hyperlink{network_8hpp_a174d872a0e267d33daf4d345fab537a3}{Net\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} netsize, const std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&end\+\_\+)
+\begin{DoxyCompactList}\small\item\em Counts errors of commission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counters-network_gab13f8d2fb101909458cd9d53367d14f9}{counter\+\_\+css\+\_\+partially\+\_\+false\+\_\+recip\+\_\+omiss}} (\mbox{\hyperlink{network_8hpp_a174d872a0e267d33daf4d345fab537a3}{Net\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} netsize, const std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&end\+\_\+)
+\begin{DoxyCompactList}\small\item\em Counts errors of omission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counters-network_ga64d567eddbce1d2fa7f31abbd6d2e93c}{counter\+\_\+css\+\_\+completely\+\_\+false\+\_\+recip\+\_\+comiss}} (\mbox{\hyperlink{network_8hpp_a174d872a0e267d33daf4d345fab537a3}{Net\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} netsize, const std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&end\+\_\+)
+\begin{DoxyCompactList}\small\item\em Counts completely false reciprocity (comission) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counters-network_ga3f36ba81dfe10abdc040c5143da19fe5}{counter\+\_\+css\+\_\+completely\+\_\+false\+\_\+recip\+\_\+omiss}} (\mbox{\hyperlink{network_8hpp_a174d872a0e267d33daf4d345fab537a3}{Net\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} netsize, const std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&end\+\_\+)
+\begin{DoxyCompactList}\small\item\em Counts completely false reciprocity (omission) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Rules for network models}\par
 {\em 
 \begin{DoxyParams}{Parameters}
@@ -136,7 +156,7 @@ void \mbox{\hyperlink{network_8hpp_a4e3e163311d588f1516116e081d406f5}{rules\+\_\
 \index{network.hpp@{network.hpp}!NET\_C\_DATA\_IDX@{NET\_C\_DATA\_IDX}}
 \index{NET\_C\_DATA\_IDX@{NET\_C\_DATA\_IDX}!network.hpp@{network.hpp}}
 \doxysubsubsection{\texorpdfstring{NET\_C\_DATA\_IDX}{NET\_C\_DATA\_IDX}}
-{\footnotesize\ttfamily \#define NET\+\_\+\+C\+\_\+\+DATA\+\_\+\+IDX(\begin{DoxyParamCaption}\item[{}]{i }\end{DoxyParamCaption})~(data-\/$>$indices\mbox{[}i\mbox{]})}
+{\footnotesize\ttfamily \#define NET\+\_\+\+C\+\_\+\+DATA\+\_\+\+IDX(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} }\end{DoxyParamCaption})~(\mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}}-\/$>$indices\mbox{[}\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}\mbox{]})}
 
 
 
@@ -146,7 +166,7 @@ Definition at line 79 of file network.\+hpp.
 \index{network.hpp@{network.hpp}!NET\_C\_DATA\_NUM@{NET\_C\_DATA\_NUM}}
 \index{NET\_C\_DATA\_NUM@{NET\_C\_DATA\_NUM}!network.hpp@{network.hpp}}
 \doxysubsubsection{\texorpdfstring{NET\_C\_DATA\_NUM}{NET\_C\_DATA\_NUM}}
-{\footnotesize\ttfamily \#define NET\+\_\+\+C\+\_\+\+DATA\+\_\+\+NUM(\begin{DoxyParamCaption}\item[{}]{i }\end{DoxyParamCaption})~(data-\/$>$numbers\mbox{[}i\mbox{]})}
+{\footnotesize\ttfamily \#define NET\+\_\+\+C\+\_\+\+DATA\+\_\+\+NUM(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} }\end{DoxyParamCaption})~(\mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}}-\/$>$numbers\mbox{[}\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}\mbox{]})}
 
 
 
@@ -161,7 +181,7 @@ Definition at line 80 of file network.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{inline} double (a) \(\backslash\)}
-\DoxyCodeLine{(\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{Network}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} j, \mbox{\hyperlink{class_net_counter_data}{NetCounterData}} * data)}
+\DoxyCodeLine{(\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{Network}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}}, \mbox{\hyperlink{class_net_counter_data}{NetCounterData}} * \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
 
 \end{DoxyCode}
 Function for definition of a network counter function 
@@ -177,7 +197,7 @@ Definition at line 101 of file network.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\_fun\_type<Network, NetCounterData>}} a = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{Network}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} j, \mbox{\hyperlink{class_net_counter_data}{NetCounterData}} * data)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{Network}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}}, \mbox{\hyperlink{class_net_counter_data}{NetCounterData}} * \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
 
 \end{DoxyCode}
 Lambda function for definition of a network counter function 
@@ -193,7 +213,7 @@ Definition at line 104 of file network.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{inline} bool (a) \(\backslash\)}
-\DoxyCodeLine{(\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{Network}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} j, \textcolor{keywordtype}{bool} * data)}
+\DoxyCodeLine{(\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{Network}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}}, \textcolor{keywordtype}{bool} * \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
 
 \end{DoxyCode}
 Function for definition of a network counter function 
@@ -209,7 +229,7 @@ Definition at line 113 of file network.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{typedefs_8hpp_a99982bdca40c23ca6f901c8e66da78a1}{Rule\_fun\_type<Network, bool>}} a = \(\backslash\)}
-\DoxyCodeLine{[](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{Network}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} j, \textcolor{keywordtype}{bool} * data)}
+\DoxyCodeLine{[](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array}{Network}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}}, \textcolor{keywordtype}{bool} * \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
 
 \end{DoxyCode}
 Lambda function for definition of a network counter function 
@@ -314,5 +334,5 @@ Number of edges.
 
 
 
-Definition at line 909 of file network.\+hpp.
+Definition at line 1125 of file network.\+hpp.
 
