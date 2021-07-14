@@ -807,15 +807,9 @@ MODEL_TEMPLATE(uint, support_size)() const noexcept
 
 }
 
-MODEL_TEMPLATE(std::vector< std::string >, colnames)() const {
-
-    std::vector< std::string > ans;
-    ans.reserve(this->nterms());
-    for (uint i = 0u; i < nterms(); ++i)
-        ans.push_back(counters->operator[](i).name);
-    
-    return ans;
-
+MODEL_TEMPLATE(std::vector< std::string >, colnames)() const
+{
+    return counters->get_names();
 }
     
 MODEL_TEMPLATE(Array_Type, sample)(

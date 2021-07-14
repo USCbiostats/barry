@@ -3,17 +3,22 @@
 #ifndef BARRY_STATSCOUNTER_MEAT_HPP
 #define BARRY_STATSCOUNTER_MEAT_HPP 1
 
-template <typename Array_Type, typename Data_Type>
-inline StatsCounter<Array_Type,Data_Type>::~StatsCounter() {
+#define STATSCOUNTER_TYPE() StatsCounter<Array_Type,Data_Type>
+
+#define STATSCOUNTER_TEMPLATE_ARGS() <typename Array_Type, typename Data_Type>
+
+#define STATSCOUNTER_TEMPLATE(a,b) \
+    template STATSCOUNTER_TEMPLATE_ARGS() inline a STATSCOUNTER_TYPE()::b
+
+STATSCOUNTER_TEMPLATE(,~StatsCounter)()
+{
     if (!counter_deleted)
         delete counters;
     return;
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void StatsCounter<Array_Type,Data_Type>::reset_array(
-    const Array_Type * Array_
-) {
+STATSCOUNTER_TEMPLATE(void, reset_array)(const Array_Type * Array_)
+{
     
     Array = Array_;
     EmptyArray = *Array_;
@@ -21,20 +26,16 @@ inline void StatsCounter<Array_Type,Data_Type>::reset_array(
     return;
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void StatsCounter<Array_Type,Data_Type>::add_counter(
-        Counter<Array_Type,Data_Type> * f_
-    ) {
+STATSCOUNTER_TEMPLATE(void, add_counter)(Counter<Array_Type,Data_Type> * f_)
+{
     
     counters->add_counter(f_);
     return;
     
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void StatsCounter<Array_Type,Data_Type>::add_counter(
-        Counter<Array_Type,Data_Type> f_
-) {
+STATSCOUNTER_TEMPLATE(void, add_counter)(Counter<Array_Type,Data_Type> f_)
+{
     
     counters->add_counter(f_);
     
@@ -42,10 +43,8 @@ inline void StatsCounter<Array_Type,Data_Type>::add_counter(
     
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void StatsCounter<Array_Type,Data_Type>::set_counters(
-        Counters<Array_Type,Data_Type> * counters_
-) {
+STATSCOUNTER_TEMPLATE(void, set_counters)(Counters<Array_Type,Data_Type> * counters_)
+{
     
     // Cleaning up before replacing the memory
     if (!counter_deleted)
@@ -57,11 +56,8 @@ inline void StatsCounter<Array_Type,Data_Type>::set_counters(
     
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void StatsCounter<Array_Type, Data_Type>::count_init(
-        uint i,
-        uint j
-    ) {
+STATSCOUNTER_TEMPLATE(void, count_init)(uint i,uint j)
+{
     
     // Do we have any counter?
     if (counters->size() == 0u)
@@ -77,11 +73,8 @@ inline void StatsCounter<Array_Type, Data_Type>::count_init(
     return;
 }
 
-template <typename Array_Type, typename Data_Type>
-inline void StatsCounter<Array_Type, Data_Type>::count_current(
-        uint i,
-        uint j
-    ) {
+STATSCOUNTER_TEMPLATE(void, count_current)(uint i, uint j)
+{
     
     // Iterating through the functions, and updating the set of
     // statistics.
@@ -95,8 +88,8 @@ inline void StatsCounter<Array_Type, Data_Type>::count_current(
     
 }
 
-template <typename Array_Type, typename Data_Type>
-inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
+STATSCOUNTER_TEMPLATE(std::vector< double >, count_all)()
+{
     
     // Initializing the counter on the empty array
     count_init(0u, 0u);
@@ -105,7 +98,8 @@ inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
     EmptyArray.clear(false);
     
     // Start iterating through the data
-    for (uint i = 0; i < Array->nrow(); ++i) {
+    for (uint i = 0; i < Array->nrow(); ++i)
+    {
         
         const auto & row = Array->row(i, false);
 
@@ -114,7 +108,8 @@ inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
             continue;
         
         // If there's one, then update the statistic, by iterating
-        for (auto& col: row) {
+        for (auto& col: row)
+        {
 
             // We only insert if it is different from zero
             if (static_cast<int>(col.second.value) == 0)
@@ -135,10 +130,23 @@ inline std::vector< double > StatsCounter<Array_Type, Data_Type>::count_all() {
     
 }
 
-template <typename Array_Type, typename Data_Type>
-inline Counters<Array_Type,Data_Type> * StatsCounter<Array_Type, Data_Type>::get_counters() {
+template STATSCOUNTER_TEMPLATE_ARGS()
+inline Counters<Array_Type,Data_Type> * STATSCOUNTER_TYPE()::get_counters() {
     return this->counters;
 }
 
+STATSCOUNTER_TEMPLATE(std::vector< std::string >, get_names)() const
+{
+    return this->counters->get_names();
+}
+
+STATSCOUNTER_TEMPLATE(std::vector< std::string >, get_descriptions)() const
+{
+    return this->counters->get_descriptions();
+}
+
+#undef STATSCOUNTER_TYPE
+#undef STATSCOUNTER_TEMPLATE_ARGS
+#undef STATSCOUNTER_TEMPLATE
 
 #endif

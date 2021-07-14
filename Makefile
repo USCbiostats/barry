@@ -14,4 +14,9 @@ prof:
 	cd examples/&& \
 		g++ -std=c++11 -Wall -g -O2 -Wpedantic phylo-suff-stats.cpp -o phylo-suff-stats && \
 		valgrind --tool=callgrind ./phylo-suff-stats
-.PHONY: prof	
+.PHONY: prof counts
+
+counts:
+	cloc include/** tests/*.cpp examples/
+
+

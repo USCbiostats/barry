@@ -838,6 +838,14 @@ inline void counter_degree(
         else if (end_[i] < end_[i-1u]) \
             throw std::logic_error("Endpoints should be specified in order.");}
 
+#define CSS_APPEND(name) std::string name_ = (name);\
+    for (uint i = 0u; i < end_.size(); ++i) { \
+    std::string tmpname = name_ + " (" + std::to_string(i) + ")";\
+    counters->add_counter(tmp_count, tmp_init,\
+            new NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\
+            true, tmpname);}
+
+
 /** @brief Counts errors of commission */
 inline void counter_css_partially_false_recip_commi(
         NetCounters * counters,
@@ -858,7 +866,7 @@ inline void counter_css_partially_false_recip_commi(
             // Checking change stat of the true net
             double tji = static_cast<double>(Array(j, i, false));
             double pji = static_cast<double>(Array(j + s, i + s, false));
-            double pij = static_cast<double>(Array(j + s, i + s, false));
+            double pij = static_cast<double>(Array(i + s, j + s, false));
             return pij * pji * (1.0 - 2.0 * tji);
 
         } CSS_CASE_PERCEIVED() {
@@ -866,7 +874,7 @@ inline void counter_css_partially_false_recip_commi(
             // Checking change stat of the percieved net
             double tji = static_cast<double>(Array(j - s, i - s, false));
             double pji = static_cast<double>(Array(j, i, false));
-            double tij = static_cast<double>(Array(j - s, i - s, false));
+            double tij = static_cast<double>(Array(i - s, j - s, false));
             return pji * (tij + tji - 2.0 * tij*tji);
 
         } CSS_CASE_ELSE()
@@ -886,20 +894,8 @@ inline void counter_css_partially_false_recip_commi(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    
-    for (uint i = 0u; i < end_.size(); ++i)
-    {
+    CSS_APPEND("Partially false recip (comission)")
 
-        // 
-        counters->add_counter(
-            tmp_count, tmp_init,
-            // network size, start point, end point
-            new NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),
-            true, "Partially false recip (commission)"
-        );
-    
-    }
-    
     return;
     
 }
@@ -954,20 +950,8 @@ inline void counter_css_partially_false_recip_omiss(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    
-    for (uint i = 0u; i < end_.size(); ++i)
-    {
-
-        // 
-        counters->add_counter(
-            tmp_count, tmp_init,
-            // network size, start point, end point
-            new NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),
-            true, "Partially false recip (omission)"
-        );
-    
-    }
-    
+    CSS_APPEND("Partially false recip (omission)")
+        
     return;
     
 }
@@ -1022,20 +1006,8 @@ inline void counter_css_completely_false_recip_comiss(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    
-    for (uint i = 0u; i < end_.size(); ++i)
-    {
-
-        // 
-        counters->add_counter(
-            tmp_count, tmp_init,
-            // network size, start point, end point
-            new NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),
-            true, "Completely false recip (comission)"
-        );
-    
-    }
-    
+    CSS_APPEND("Completely false recip (comission)")
+        
     return;
     
 }
@@ -1088,20 +1060,8 @@ inline void counter_css_completely_false_recip_omiss(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    
-    for (uint i = 0u; i < end_.size(); ++i)
-    {
-
-        // 
-        counters->add_counter(
-            tmp_count, tmp_init,
-            // network size, start point, end point
-            new NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),
-            true, "Completely false recip (omission)"
-        );
-    
-    }
-    
+    CSS_APPEND("Completely false recip (omission)")
+        
     return;
     
 }
