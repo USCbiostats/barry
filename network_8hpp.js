@@ -16,6 +16,7 @@ var network_8hpp =
     [ "NetSupport", "network_8hpp.html#a05f5e7afe62d1c07b46876b4fbec0f4c", null ],
     [ "Network", "network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05", null ],
     [ "counter_absdiff", "group__counters-network.html#gabb2a587d5466415665c11e9d7a168d8b", null ],
+    [ "counter_css_partially_false_recip", "group__counters-network.html#ga4903c624dc54d2711c28ba89bdd4bb46", null ],
     [ "counter_ctriads", "group__counters-network.html#ga8ea4bb27771e3fb61f807f4dff2a6e57", null ],
     [ "counter_degree", "group__counters-network.html#ga80b0d366d78946638af8c25139f0d203", null ],
     [ "counter_density", "group__counters-network.html#ga6819b97e2e586cd1d7173f023109e10c", null ],

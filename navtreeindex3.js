@@ -1,9 +1,11 @@
 var NAVTREEINDEX3 =
 {
-"group__counters-phylo.html#gae193c319ae2fd5edb3a6551e44ada0be":[0,3,0],
+"group__counters-phylo.html#gaddc0f35b7e986425c9735c28c38aa9ed":[3,0,0,0,0,1,24],
+"group__counters-phylo.html#gaddc0f35b7e986425c9735c28c38aa9ed":[0,3,8],
 "group__counters-phylo.html#gae193c319ae2fd5edb3a6551e44ada0be":[3,0,0,0,0,1,16],
-"group__counters-phylo.html#gae37d65879b49c4a568e5f80795b492a5":[0,3,11],
+"group__counters-phylo.html#gae193c319ae2fd5edb3a6551e44ada0be":[0,3,0],
 "group__counters-phylo.html#gae37d65879b49c4a568e5f80795b492a5":[3,0,0,0,0,1,27],
+"group__counters-phylo.html#gae37d65879b49c4a568e5f80795b492a5":[0,3,11],
 "group__counters-phylo.html#gaf03875e668e9559a84896755e5108fc4":[3,0,0,0,0,1,18],
 "group__counters-phylo.html#gaf03875e668e9559a84896755e5108fc4":[0,3,2],
 "group__counting.html":[0,0],
@@ -33,7 +35,7 @@ var NAVTREEINDEX3 =
 "network_8hpp.html#a174d872a0e267d33daf4d345fab537a3":[3,0,0,0,0,0,8],
 "network_8hpp.html#a1b43d27746882e340d44cdb438c8c27a":[3,0,0,0,0,0,7],
 "network_8hpp.html#a1c44fa47dcf1cca1ba35eea6e70950a3":[3,0,0,0,0,0,12],
-"network_8hpp.html#a4e3e163311d588f1516116e081d406f5":[3,0,0,0,0,0,35],
+"network_8hpp.html#a4e3e163311d588f1516116e081d406f5":[3,0,0,0,0,0,36],
 "network_8hpp.html#a6002c13f2cfcd506080a917d6464ab53":[3,0,0,0,0,0,11],
 "network_8hpp.html#a676ca55541b8cd4d73caca424ea7e53d":[3,0,0,0,0,0,6],
 "network_8hpp.html#a8d2a3024f1f05e716a1b4cacfe661fac":[3,0,0,0,0,0,4],

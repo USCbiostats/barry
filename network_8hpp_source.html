@@ -856,87 +856,105 @@ $(document).ready(function(){initNavTree('network_8hpp_source.html',''); initRes
 <div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;    <span class="keywordflow">return</span>;  </div>
 <div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;}</div>
 <div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160; </div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;<span class="comment">// // -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;<span class="comment">// /**@brief Counts errors of commission */</span></div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;<span class="comment">// inline void counter_css_partially_false_recip(</span></div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;<span class="comment">//         NetCounters * counters,</span></div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;<span class="comment">//         uint netsize</span></div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;<span class="comment">//     ) {</span></div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    </div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;<span class="comment">//     NETWORK_COUNTER_LAMBDA(tmp_count) {</span></div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;        </div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160; </div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;<span class="comment">//         // Getting the network size</span></div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;<span class="comment">//         uint n = data-&gt;indices[0u];</span></div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160; </div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;<span class="comment">//         // True network</span></div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;<span class="comment">//         if ((i &lt; n) &amp;&amp; (j &lt; n))</span></div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;<span class="comment">//         {</span></div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160; </div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="comment">//             // Need to check across vertices</span></div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;<span class="comment">//             double ans = 0.0;</span></div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;<span class="comment">//             for (uint i_ = 0u; i_ &lt; n; ++i_)</span></div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="comment">//             {</span></div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="comment">//                 uint n_ = n</span></div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;<span class="comment">//                 ans += </span></div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="comment">//             }</span></div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160; </div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;<span class="comment">//         } else {</span></div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160; </div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;<span class="comment">//         }</span></div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160; </div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;<span class="comment">//         return std::pow(std::fabs(</span></div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;<span class="comment">//                 Array.D()-&gt;vertex_attr[NET_C_DATA_IDX(0u)][i] - </span></div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;<span class="comment">//                     Array.D()-&gt;vertex_attr[NET_C_DATA_IDX(0u)][j]</span></div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;<span class="comment">//         ), NET_C_DATA_NUM(0u));</span></div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;        </div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;<span class="comment">//     };</span></div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;    </div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;<span class="comment">//     NETWORK_COUNTER_LAMBDA(tmp_init) {</span></div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;        </div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;<span class="comment">//         if (Array.D() == nullptr)</span></div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;<span class="comment">//             throw std::logic_error(&quot;The array data has not been initialized&quot;);</span></div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;        </div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;<span class="comment">//         if (Array.D()-&gt;vertex_attr.size() == 0u)</span></div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;<span class="comment">//             throw std::range_error(&quot;No attributes in the Array.&quot;);</span></div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;        </div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="comment">//         if ((NET_C_DATA_IDX(0u) != 0u) &amp;&amp; (Array.D()-&gt;vertex_attr.size() &lt;= (NET_C_DATA_IDX(0u) - 1u)))</span></div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;<span class="comment">//             throw std::range_error(&quot;Attribute index out of range.&quot;);</span></div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;        </div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;<span class="comment">//         return 0.0;</span></div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00821"></a><span class="lineno"><a class="line" href="group__counters-network.html#ga4903c624dc54d2711c28ba89bdd4bb46">  821</a></span>&#160;<span class="comment"></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga4903c624dc54d2711c28ba89bdd4bb46">counter_css_partially_false_recip</a>(</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;        <a class="code" href="class_counters.html">NetCounters</a> * <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>,</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> netsize,</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;        <span class="keyword">const</span> std::vector&lt; uint &gt; &amp; end_</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    ) {</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;    </div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;    <a class="code" href="network_8hpp.html#a8d2a3024f1f05e716a1b4cacfe661fac">NETWORK_COUNTER_LAMBDA</a>(tmp_count) {</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;        </div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160; </div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;        <span class="comment">// Getting the network size</span></div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> n = data-&gt;indices[0u];</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> s = data-&gt;indices[1u]; </div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> e = data-&gt;indices[2u]; </div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160; </div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;        <span class="comment">// True network</span></div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;        <span class="keywordflow">if</span> ((i &lt; n) &amp;&amp; (j &lt; n))</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;        {</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160; </div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            <span class="comment">// Checking change stat of the true net</span></div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;            <span class="keywordflow">return</span> </div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;                    Array(i + s, j + s)*(1.0 - Array(j + s, i + s))*(1.0 - 2*Array(j,i))</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                );</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160; </div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (((i &gt;= s) &amp;&amp; (i &lt; e)) &amp; ((j &gt;= s) &amp;&amp; (j &lt; e))) {</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160; </div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            <span class="comment">// Checking change stat of the percieved net</span></div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;            <span class="keywordflow">return</span> </div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                    Array(i + s, j + s)*Array(j + s, i + s)*(</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                        Array(i - s, j - s) + Array(j - s, i - s) - 2.0*Array(j,i))</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                );</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160; </div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160; </div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;        </div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    };</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    </div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    <a class="code" href="network_8hpp.html#a8d2a3024f1f05e716a1b4cacfe661fac">NETWORK_COUNTER_LAMBDA</a>(tmp_init) {</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160; </div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;        <span class="comment">// The reported size doesn&#39;t match the true network</span></div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;        <span class="keywordflow">if</span> ((data-&gt;indices.at(0) &gt; Array.ncol()) | (data-&gt;indices.at(2) &gt; Array.ncol()))</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;            <span class="keywordflow">throw</span> std::range_error(</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                <span class="stringliteral">&quot;The network does not match the prescribed size.&quot;</span></div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;                );</div>
 <div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;        </div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;<span class="comment">//     };</span></div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    </div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;<span class="comment">//     counters-&gt;add_counter(</span></div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;<span class="comment">//             tmp_count, tmp_init,</span></div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;<span class="comment">//             new NetCounterData({attr_id}, {alpha}),</span></div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;<span class="comment">//             true</span></div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;<span class="comment">//         );</span></div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    </div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;<span class="comment">//     return;</span></div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    </div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;<span class="comment">// }</span></div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;        </div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;    };</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    </div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    <span class="comment">// checking sizes</span></div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; end_.size(); ++i)</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    {</div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160; </div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;        <span class="keywordflow">if</span> (i == 0u) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (end_[i] &lt; end_[i-1u])</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;            <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Endpoints should be specified in order.&quot;</span>);</div>
 <div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160; </div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160; </div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160; </div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00890"></a><span class="lineno"><a class="line" href="network_8hpp.html#a4e3e163311d588f1516116e081d406f5">  890</a></span>&#160;<span class="comment"></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="network_8hpp.html#a4e3e163311d588f1516116e081d406f5">rules_zerodiag</a>(<a class="code" href="class_rules.html">NetRules</a> * <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>) {</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    </div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    <a class="code" href="network_8hpp.html#a676ca55541b8cd4d73caca424ea7e53d">NETWORK_RULE_LAMBDA</a>(no_self_tie) {</div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;        <span class="keywordflow">return</span> i != j;</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    };</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;    </div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(no_self_tie);</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;    </div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;}</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    }</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    </div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0u; i &lt; end_.size(); ++i)</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    {</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160; </div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;        <span class="comment">// </span></div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;        <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;            tmp_count, tmp_init,</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;            <span class="comment">// network size, start point, end point</span></div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;            <span class="keyword">new</span> <a class="code" href="class_net_counter_data.html">NetCounterData</a>({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;            <span class="keyword">true</span>, <span class="stringliteral">&quot;Partially false recip (commission)&quot;</span></div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;        );</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    </div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    }</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    </div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    </div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;}</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160; </div>
 <div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160; </div>
-<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160; </div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160; </div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;<span class="preprocessor">#undef NET_C_DATA_IDX</span></div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;<span class="preprocessor">#undef NET_C_DATA_NUM</span></div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160; </div>
-<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160; </div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00909"></a><span class="lineno"><a class="line" href="network_8hpp.html#a4e3e163311d588f1516116e081d406f5">  909</a></span>&#160;<span class="comment"></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="network_8hpp.html#a4e3e163311d588f1516116e081d406f5">rules_zerodiag</a>(<a class="code" href="class_rules.html">NetRules</a> * <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>) {</div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;    </div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;    <a class="code" href="network_8hpp.html#a676ca55541b8cd4d73caca424ea7e53d">NETWORK_RULE_LAMBDA</a>(no_self_tie) {</div>
+<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;        <span class="keywordflow">return</span> i != j;</div>
+<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;    };</div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;    </div>
+<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(no_self_tie);</div>
+<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;    </div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;}</div>
+<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160; </div>
+<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160; </div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160; </div>
+<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;<span class="preprocessor">#undef NET_C_DATA_IDX</span></div>
+<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;<span class="preprocessor">#undef NET_C_DATA_NUM</span></div>
+<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160; </div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_b_array_html"><div class="ttname"><a href="class_b_array.html">BArray</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barray-bones_8hpp_source.html#l00022">barray-bones.hpp:22</a></div></div>
 <div class="ttc" id="aclass_counter_html"><div class="ttname"><a href="class_counter.html">Counter</a></div><div class="ttdoc">A counter function based on change statistics.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00038">counters-bones.hpp:38</a></div></div>
 <div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00099">counters-bones.hpp:99</a></div></div>
@@ -961,6 +979,7 @@ $(document).ready(function(){initNavTree('network_8hpp_source.html',''); initRes
 <div class="ttc" id="agroup__counters-network_html_ga1a5650b7182dc19a0f301a8bead98603"><div class="ttname"><a href="group__counters-network.html#ga1a5650b7182dc19a0f301a8bead98603">counter_nodeocov</a></div><div class="ttdeci">void counter_nodeocov(NetCounters *counters, uint attr_id)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00608">network.hpp:608</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga1e123d9b8d286f58a0c65ad2ae84ea6f"><div class="ttname"><a href="group__counters-network.html#ga1e123d9b8d286f58a0c65ad2ae84ea6f">counter_odegree15</a></div><div class="ttdeci">void counter_odegree15(NetCounters *counters)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00456">network.hpp:456</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga36553e6453f939b96d6fb1b57d07ce16"><div class="ttname"><a href="group__counters-network.html#ga36553e6453f939b96d6fb1b57d07ce16">counter_odegree</a></div><div class="ttdeci">void counter_odegree(NetCounters *counters, std::vector&lt; uint &gt; d)</div><div class="ttdoc">Counts number of vertices with a given out-degree.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00728">network.hpp:728</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga4903c624dc54d2711c28ba89bdd4bb46"><div class="ttname"><a href="group__counters-network.html#ga4903c624dc54d2711c28ba89bdd4bb46">counter_css_partially_false_recip</a></div><div class="ttdeci">void counter_css_partially_false_recip(NetCounters *counters, uint netsize, const std::vector&lt; uint &gt; &amp;end_)</div><div class="ttdoc">Counts errors of commission.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00821">network.hpp:821</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga4e62ef3e10ba18e498dee72dce20c3fa"><div class="ttname"><a href="group__counters-network.html#ga4e62ef3e10ba18e498dee72dce20c3fa">counter_idegree</a></div><div class="ttdeci">void counter_idegree(NetCounters *counters, std::vector&lt; uint &gt; d)</div><div class="ttdoc">Counts number of vertices with a given in-degree.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00680">network.hpp:680</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga58770be688fb8b546ab0a41b3832b737"><div class="ttname"><a href="group__counters-network.html#ga58770be688fb8b546ab0a41b3832b737">counter_idegree15</a></div><div class="ttdeci">void counter_idegree15(NetCounters *counters)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00434">network.hpp:434</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga63ea0cb7683f346dfe976ca31cb22f17"><div class="ttname"><a href="group__counters-network.html#ga63ea0cb7683f346dfe976ca31cb22f17">counter_nodecov</a></div><div class="ttdeci">void counter_nodecov(NetCounters *counters, uint attr_id)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00630">network.hpp:630</a></div></div>
@@ -981,7 +1000,7 @@ $(document).ready(function(){initNavTree('network_8hpp_source.html',''); initRes
 <div class="ttc" id="anetwork_8hpp_html_a174d872a0e267d33daf4d345fab537a3"><div class="ttname"><a href="network_8hpp.html#a174d872a0e267d33daf4d345fab537a3">NetCounters</a></div><div class="ttdeci">Counters&lt; Network, NetCounterData &gt; NetCounters</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00089">network.hpp:89</a></div></div>
 <div class="ttc" id="anetwork_8hpp_html_a1b43d27746882e340d44cdb438c8c27a"><div class="ttname"><a href="network_8hpp.html#a1b43d27746882e340d44cdb438c8c27a">NetCounter</a></div><div class="ttdeci">Counter&lt; Network, NetCounterData &gt; NetCounter</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00088">network.hpp:88</a></div></div>
 <div class="ttc" id="anetwork_8hpp_html_a1c44fa47dcf1cca1ba35eea6e70950a3"><div class="ttname"><a href="network_8hpp.html#a1c44fa47dcf1cca1ba35eea6e70950a3">NetStatsCounter</a></div><div class="ttdeci">StatsCounter&lt; Network, NetCounterData &gt; NetStatsCounter</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00091">network.hpp:91</a></div></div>
-<div class="ttc" id="anetwork_8hpp_html_a4e3e163311d588f1516116e081d406f5"><div class="ttname"><a href="network_8hpp.html#a4e3e163311d588f1516116e081d406f5">rules_zerodiag</a></div><div class="ttdeci">void rules_zerodiag(NetRules *rules)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00890">network.hpp:890</a></div></div>
+<div class="ttc" id="anetwork_8hpp_html_a4e3e163311d588f1516116e081d406f5"><div class="ttname"><a href="network_8hpp.html#a4e3e163311d588f1516116e081d406f5">rules_zerodiag</a></div><div class="ttdeci">void rules_zerodiag(NetRules *rules)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00909">network.hpp:909</a></div></div>
 <div class="ttc" id="anetwork_8hpp_html_a6002c13f2cfcd506080a917d6464ab53"><div class="ttname"><a href="network_8hpp.html#a6002c13f2cfcd506080a917d6464ab53">NetRules</a></div><div class="ttdeci">Rules&lt; Network, bool &gt; NetRules</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00094">network.hpp:94</a></div></div>
 <div class="ttc" id="anetwork_8hpp_html_a676ca55541b8cd4d73caca424ea7e53d"><div class="ttname"><a href="network_8hpp.html#a676ca55541b8cd4d73caca424ea7e53d">NETWORK_RULE_LAMBDA</a></div><div class="ttdeci">#define NETWORK_RULE_LAMBDA(a)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00116">network.hpp:116</a></div></div>
 <div class="ttc" id="anetwork_8hpp_html_a8d2a3024f1f05e716a1b4cacfe661fac"><div class="ttname"><a href="network_8hpp.html#a8d2a3024f1f05e716a1b4cacfe661fac">NETWORK_COUNTER_LAMBDA</a></div><div class="ttdeci">#define NETWORK_COUNTER_LAMBDA(a)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00104">network.hpp:104</a></div></div>
@@ -1001,7 +1020,7 @@ $(document).ready(function(){initNavTree('network_8hpp_source.html',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="network_8hpp.html">network.hpp</a></li>
-    <li class="footer">Generated on Mon Jul 12 2021 05:46:18 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Jul 14 2021 07:06:00 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
