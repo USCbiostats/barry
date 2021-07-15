@@ -104,6 +104,8 @@ C triads          : 1
 Mutuals           : 3
 ```
 
+# Features
+
 ## Efficient memory usage
 
 One of the key features of `barry` is that it will handle memory efficiently.
@@ -116,7 +118,12 @@ share the same support.
 </div>
 
 
-## Code of Conduct
+# Documentation
+
+More information can be found in the Doxygen website [here](https://uscbiostats.github.io/barry) and in the PDF version
+of the documentation [here](https://github.com/USCbiostats/barry/blob/gh-pages/latex/refman.pdf).
+
+# Code of Conduct
 
 Please note that the `barry` project is released with a
 [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).

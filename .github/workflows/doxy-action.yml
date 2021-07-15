@@ -29,8 +29,10 @@ jobs:
           doxyfile-path: './Doxyfile'
           enable-latex: true
 
-      - name: Mathjax
-        run: sudo mv mathjax docs/
+      - name: Mathjax & design
+        run: |
+          sudo mv mathjax docs/
+          sudo mv design docs/
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
