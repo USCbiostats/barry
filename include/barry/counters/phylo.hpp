@@ -1,9 +1,3 @@
-#include "../counters-bones.hpp"
-#include "../support-bones.hpp"
-#include "../statscounter-bones.hpp"
-#include "../model-bones.hpp"
-#include "../powerset-bones.hpp"
-
 #ifndef BARRAY_PHYLO_H
 #define BARRAY_PHYLO_H 1
 

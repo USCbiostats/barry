@@ -1,8 +1,3 @@
-#include "../counters-bones.hpp"
-#include "../support-bones.hpp"
-#include "../statscounter-bones.hpp"
-#include "../model-bones.hpp"
-
 #ifndef BARRAY_NETWORK_H
 #define BARRAY_NETWORK_H 1
 
@@ -218,14 +213,20 @@ inline void counter_mutual(NetCounters * counters)
             throw std::logic_error("The array data has not been initialized");
         
         if (!Array.D()->directed)
-            throw std::logic_error("The -mutual- counter only works on directed (non-symmetric) arrays.");
+            throw std::logic_error(
+                "The -mutual- counter only works on directed (non-symmetric) arrays."
+                );
         
         return 0.0;
 
     };
     
-    counters->add_counter(tmp_count, tmp_init, nullptr, false, "Reciprocity", "Number of mutual ties");
-    return ;
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr, false, "Reciprocity",
+        "Number of mutual ties"
+        );
+
+    return;
 
 }
 
@@ -354,7 +355,10 @@ inline void counter_ttriads(NetCounters * counters)
 
     };
     
-    counters->add_counter(tmp_count, tmp_init, nullptr, false, "Balance", "Number of directed triangles");
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr, false, "Balance",
+        "Number of directed triangles"
+    );
     
     return;
 
@@ -398,13 +402,18 @@ inline void counter_ctriads(NetCounters * counters)
             throw std::logic_error("The array data has not been initialized");
         
         if (!(Array.D()->directed))
-            throw std::invalid_argument("The ctriads counter is only valid for directed networks. This is undirected.");
+            throw std::invalid_argument(
+                "The ctriads counter is only valid for directed networks. This is undirected."
+                );
 
         return 0.0;
 
     };
     
-    counters->add_counter(tmp_count, tmp_init, nullptr, false, "Cyclical triads");
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr, false, "Cyclical triads"
+    );
+
     return;
     
 }
@@ -425,7 +434,11 @@ inline void counter_density(NetCounters * counters)
     
     // Preparing the counter data and returning. We make sure that the memory is 
     // released so we set delete_data = true.
-    counters->add_counter(tmp_count, nullptr, nullptr, false, "Density", "Proportion of present ties");
+    counters->add_counter(
+        tmp_count, nullptr, nullptr, false, "Density",
+        "Proportion of present ties"
+    );
+
     return ;
     
 }
@@ -442,12 +455,16 @@ inline void counter_idegree15(NetCounters * counters)
             return 1.0;
         
         return 
-            pow(static_cast<double> (Array.col(j).size()), 1.5) - pow(static_cast<double> (Array.col(j).size() - 1), 1.5)
+            pow(static_cast<double> (Array.col(j).size()), 1.5) -
+            pow(static_cast<double> (Array.col(j).size() - 1), 1.5)
             ;
         
     };
     
-    counters->add_counter(tmp_count, nullptr, nullptr, false, "Indegree^(1.5)");
+    counters->add_counter(
+        tmp_count, nullptr, nullptr, false, "Indegree^(1.5)"
+    );
+
     return;
     
 }
@@ -464,12 +481,16 @@ inline void counter_odegree15(NetCounters * counters)
             return 1.0;
         
         return 
-            pow(static_cast<double>(Array.row(i).size()), 1.5) - pow(static_cast<double>(Array.row(i).size() - 1), 1.5)
+            pow(static_cast<double>(Array.row(i).size()), 1.5) -
+            pow(static_cast<double>(Array.row(i).size() - 1), 1.5)
             ;
         
     };
     
-    counters->add_counter(tmp_count, nullptr, nullptr, false, "Outdegree^(1.5)");
+    counters->add_counter(
+        tmp_count, nullptr, nullptr, false, "Outdegree^(1.5)"
+    );
+
     return;
     
 }
@@ -510,10 +531,10 @@ inline void counter_absdiff(
     };
     
     counters->add_counter(
-            tmp_count, tmp_init,
-            new NetCounterData({attr_id}, {alpha}),
-            true, "Absdiff"
-        );
+        tmp_count, tmp_init,
+        new NetCounterData({attr_id}, {alpha}),
+        true, "Absdiff"
+    );
     
     return;
     
@@ -555,9 +576,9 @@ inline void counter_diff(
     };
     
     counters->add_counter(
-            tmp_count, tmp_init,
-            new NetCounterData({attr_id}, {alpha, tail_head ? 1.0: -1.0}),
-            true, "Absdiff^(" + std::to_string(alpha) + ")"
+        tmp_count, tmp_init,
+        new NetCounterData({attr_id}, {alpha, tail_head ? 1.0: -1.0}),
+        true, "Absdiff^(" + std::to_string(alpha) + ")"
     );
     
     return;
@@ -594,10 +615,10 @@ inline void counter_nodeicov(NetCounters * counters, uint attr_id)
     };
     
     counters->add_counter(
-            tmp_count, init_single_attr,
-            new NetCounterData({attr_id}, {}),
-            true, "nodeicov", "Sum of ego attribute"
-            );
+        tmp_count, init_single_attr,
+        new NetCounterData({attr_id}, {}),
+        true, "nodeicov", "Sum of ego attribute"
+    );
       
     return;
 
@@ -805,272 +826,19 @@ inline void counter_degree(
     };
     
     
-    for (auto iter = d.begin(); iter != d.end(); ++iter) {
+    for (auto iter = d.begin(); iter != d.end(); ++iter)
+    {
         counters->add_counter(
-                tmp_count, tmp_init,
-                new NetCounterData({*iter}, {}),
-                true
+            tmp_count, tmp_init,
+            new NetCounterData({*iter}, {}),
+            true
         );
     }
     
     return;  
 }
 
-// -----------------------------------------------------------------------------
-
-// n: Net size, 
-// s: Start
-// e: end
-#define CSS_SIZE() \
-    uint n = data->indices[0u]; \
-    uint s = data->indices[1u]; \
-    uint e = data->indices[2u];
-
-#define CSS_CASE_TRUTH() if ((i < n) && (j < n))
-#define CSS_CASE_PERCEIVED() else if (((i >= s) && (i < e)) & ((j >= s) && (j < e)))
-#define CSS_CASE_ELSE()
-#define CSS_CHECK_SIZE_INIT() if ((data->indices.at(0) > Array.ncol()) \
-        | (data->indices.at(2) > Array.ncol())) \
-            throw std::range_error("The network does not match the prescribed size.");
-
-#define CSS_CHECK_SIZE() for (uint i = 0u; i < end_.size(); ++i) {\
-        if (i == 0u) continue; \
-        else if (end_[i] < end_[i-1u]) \
-            throw std::logic_error("Endpoints should be specified in order.");}
-
-#define CSS_APPEND(name) std::string name_ = (name);\
-    for (uint i = 0u; i < end_.size(); ++i) { \
-    std::string tmpname = name_ + " (" + std::to_string(i) + ")";\
-    counters->add_counter(tmp_count, tmp_init,\
-            new NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\
-            true, tmpname);}
-
-
-/** @brief Counts errors of commission */
-inline void counter_css_partially_false_recip_commi(
-        NetCounters * counters,
-        uint netsize,
-        const std::vector< uint > & end_
-    ) {
-    
-    NETWORK_COUNTER_LAMBDA(tmp_count) {
-        
-
-        // Getting the network size
-        CSS_SIZE()
-
-        // True network
-        CSS_CASE_TRUTH()
-        {
-
-            // Checking change stat of the true net
-            double tji = static_cast<double>(Array(j, i, false));
-            double pji = static_cast<double>(Array(j + s, i + s, false));
-            double pij = static_cast<double>(Array(i + s, j + s, false));
-            return pij * pji * (1.0 - 2.0 * tji);
-
-        } CSS_CASE_PERCEIVED() {
-
-            // Checking change stat of the percieved net
-            double tji = static_cast<double>(Array(j - s, i - s, false));
-            double pji = static_cast<double>(Array(j, i, false));
-            double tij = static_cast<double>(Array(i - s, j - s, false));
-            return pji * (tij + tji - 2.0 * tij*tji);
-
-        } CSS_CASE_ELSE()
-            return 0.0;
-
-        
-    };
-    
-    NETWORK_COUNTER_LAMBDA(tmp_init) {
-
-        // The reported size doesn't match the true network
-        CSS_CHECK_SIZE_INIT()
-        
-        return 0.0;
-        
-    };
-    
-    // checking sizes
-    CSS_CHECK_SIZE()
-    CSS_APPEND("Partially false recip (comission)")
-
-    return;
-    
-}
-
-/** @brief Counts errors of omission */
-inline void counter_css_partially_false_recip_omiss(
-        NetCounters * counters,
-        uint netsize,
-        const std::vector< uint > & end_
-    ) {
-    
-    NETWORK_COUNTER_LAMBDA(tmp_count) {
-        
-
-        // Getting the network size
-        CSS_SIZE()
-
-        
-        // True network
-        CSS_CASE_TRUTH()
-        {
-
-            double tji = static_cast<double>(Array(j, i, false));
-            double pij = static_cast<double>(Array(i + s, j + s, false));
-            double pji = static_cast<double>(Array(j + s, i + s, false));
-
-            return tji * (pji + pji - 2.0 * pij * pji);
-
-        } CSS_CASE_PERCEIVED() {
-
-            // Checking change stat of the percieved net
-            double tji = static_cast<double>(Array(j - s, i - s, false));
-            double tij = static_cast<double>(Array(i - s, j - s, false));
-            double pji = static_cast<double>(Array(j, i, false));
-
-            return tji * tij * (1.0 - 2.0 * pji);
-
-        } CSS_CASE_ELSE()
-            return 0.0;
-
-        
-    };
-    
-    NETWORK_COUNTER_LAMBDA(tmp_init) {
-
-        // The reported size doesn't match the true network
-        CSS_CHECK_SIZE_INIT()
-        
-        return 0.0;
-        
-    };
-    
-    // checking sizes
-    CSS_CHECK_SIZE()
-    CSS_APPEND("Partially false recip (omission)")
-        
-    return;
-    
-}
-
-/** @brief Counts completely false reciprocity (comission) */
-inline void counter_css_completely_false_recip_comiss(
-        NetCounters * counters,
-        uint netsize,
-        const std::vector< uint > & end_
-    ) {
-    
-    NETWORK_COUNTER_LAMBDA(tmp_count) {
-        
-
-        // Getting the network size
-        CSS_SIZE()
-
-        
-
-        // True network
-        CSS_CASE_TRUTH()
-        {
-
-            double tji = static_cast<double>(Array(j, i, false));
-            double pij = static_cast<double>(Array(i + s, j + s, false));
-            double pji = static_cast<double>(Array(j + s, i + s, false));
-
-            return -(1.0 - tji) * pij * pji;
-
-        } CSS_CASE_PERCEIVED() {
-
-            // Checking change stat of the percieved net
-            double tji = static_cast<double>(Array(j - s, i - s, false));
-            double tij = static_cast<double>(Array(i - s, j - s, false));
-            double pji = static_cast<double>(Array(j, i, false));
-            return (1.0 - tij) * (1.0 - tji) * pji;
-
-        } CSS_CASE_ELSE()
-            return 0.0;
-
-        
-    };
-    
-    NETWORK_COUNTER_LAMBDA(tmp_init) {
-
-        // The reported size doesn't match the true network
-        CSS_CHECK_SIZE_INIT()
-        
-        return 0.0;
-        
-    };
-    
-    // checking sizes
-    CSS_CHECK_SIZE()
-    CSS_APPEND("Completely false recip (comission)")
-        
-    return;
-    
-}
-
-/** @brief Counts completely false reciprocity (omission) */
-inline void counter_css_completely_false_recip_omiss(
-        NetCounters * counters,
-        uint netsize,
-        const std::vector< uint > & end_
-    ) {
-    
-    NETWORK_COUNTER_LAMBDA(tmp_count) {
-        
-
-        // Getting the network size
-        CSS_SIZE()
-
-        // True network
-        CSS_CASE_TRUTH()
-        {
-
-            double tji = static_cast<double>(Array(j, i, false));
-            double pij = static_cast<double>(Array(i + s, j + s, false));
-            double pji = static_cast<double>(Array(j + s, i + s, false));
-
-            return tji * (1.0 - pij) * (1.0 - pji);
-
-        } CSS_CASE_PERCEIVED() {
-
-            // Checking change stat of the percieved net
-            double tji = static_cast<double>(Array(j - s, i - s, false));
-            double tij = static_cast<double>(Array(i - s, j - s, false));
-            double pji = static_cast<double>(Array(j, i, false));
-            return - tij * tji * (1.0 - pji);
-
-        } CSS_CASE_ELSE()
-            return 0.0;
-
-        
-    };
-    
-    NETWORK_COUNTER_LAMBDA(tmp_init) {
-
-        // The reported size doesn't match the true network
-        CSS_CHECK_SIZE_INIT()
-        
-        return 0.0;
-        
-    };
-    
-    // checking sizes
-    CSS_CHECK_SIZE()
-    CSS_APPEND("Completely false recip (omission)")
-        
-    return;
-    
-}
-
-#undef CSS_CASE_TRUTH
-#undef CSS_CASE_PERCEIVED
-#undef CSS_CASE_ELSE
-#undef CSS_CHECK_SIZE_INIT
-#undef CSS_CHECK_SIZE
+#include "network-css.hpp"
 
 ///@}
 
