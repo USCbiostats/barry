@@ -669,7 +669,7 @@ inline void counter_nodecov(NetCounters * counters, uint attr_id)
 }
 
 // -----------------------------------------------------------------------------
-//*@brief Number of homophililic ties */
+//* @brief Number of homophililic ties */
 inline void counter_nodematch(NetCounters * counters, uint attr_id)
 {
     
@@ -697,7 +697,7 @@ inline void counter_nodematch(NetCounters * counters, uint attr_id)
 }
 
 // -----------------------------------------------------------------------------
-/**@brief Counts number of vertices with a given in-degree */
+/** @brief Counts number of vertices with a given in-degree */
 inline void counter_idegree(
         NetCounters * counters,
         std::vector< uint > d)
@@ -794,7 +794,7 @@ inline void counter_odegree(
 }
     
 // -----------------------------------------------------------------------------
-/**@brief Counts number of vertices with a given out-degree */
+/** @brief Counts number of vertices with a given out-degree */
 inline void counter_degree(
         NetCounters * counters,
         std::vector<uint> d
