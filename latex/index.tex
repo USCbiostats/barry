@@ -4,7 +4,19 @@
 
 \doxysection*{Barry\+: your to-\/go motif accountant}
 
-\href{https://github.com/USCbiostats/barry}{\texttt{ This repository}} contains a C++ template library that essentially counts sufficient statistics on binary arrays. The idea of the library is that this can be used together to build exponential family models as those in Exponential Random Graph Models (ERGMs), but as a generalization that also deals with non square arrays.
+\href{https://github.com/USCbiostats/barry}{\texttt{ This repository}} contains a C++ template library that essentially counts sufficient statistics on binary arrays. The goal of the library is to provide a general framework for building discrete exponential-\/family models. A particular example is Exponential Random Graph Models (ERGMs), but we can use {\ttfamily barry} to deal with non-\/square arrays.
+
+Among the key features included in {\ttfamily barry}, we have\+:
+
+
+\begin{DoxyItemize}
+\item Sparse arrays.
+\item User-\/defined count statistics.
+\item User-\/defined constrain of the support set.
+\item Powerset generation of binary arrays.
+\item Discrete Exponential Family Models module (DEFMs).
+\item Pooled DEFMs.
+\end{DoxyItemize}
 
 \doxysection*{Examples}
 
@@ -110,7 +122,7 @@ Yields the following output\+:
 
 \doxysubsection*{Efficient memory usage}
 
-One of the key features of {\ttfamily barry} is that it will handle memory efficiently. In the case of pooled-\/data models, the statistical models modules avoid double support when possible by keeping track of what datasets (networks, for instance) share the same support.
+One of the key features of {\ttfamily barry} is that it will handle memory efficiently. In the case of pooled-\/data models, the module for statistical models avoids double-\/counting support when possible by keeping track of what datasets (networks, for instance) share the same.
 
   
 

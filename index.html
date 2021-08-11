@@ -98,7 +98,16 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml"><img src="https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml/badge.svg" alt="C/C++ CI" style="pointer-events: none;" class="inline"/></a> <a href="https://USCbiostats.github.io/barry"><img src="https://github.com/USCbiostats/barry/actions/workflows/doxy-action.yml/badge.svg" alt="Doxygen docs" style="pointer-events: none;" class="inline"/></a> <a href="https://codecov.io/gh/USCbiostats/barry"><img src="https://codecov.io/gh/USCbiostats/barry/branch/master/graph/badge.svg?token=qGBTD4GJDL" alt="codecov" style="pointer-events: none;" class="inline"/></a> <a href="https://image.usc.edu"><img src="https://raw.githubusercontent.com/USCbiostats/badges/master/tommy-image-badge.svg" alt="Integrative Methods of Analysis for Genetic Epidemiology" style="pointer-events: none;" class="inline"/></a></p>
 <h1>Barry: your to-go motif accountant<img src="design/logo.svg" alt="" style="pointer-events: none; max-width:200px;width:50%;" align="right" class="inline"/></h1>
-<p><a href="https://github.com/USCbiostats/barry">This repository</a> contains a C++ template library that essentially counts sufficient statistics on binary arrays. The idea of the library is that this can be used together to build exponential family models as those in Exponential Random Graph Models (ERGMs), but as a generalization that also deals with non square arrays.</p>
+<p><a href="https://github.com/USCbiostats/barry">This repository</a> contains a C++ template library that essentially counts sufficient statistics on binary arrays. The goal of the library is to provide a general framework for building discrete exponential-family models. A particular example is Exponential Random Graph Models (ERGMs), but we can use <code>barry</code> to deal with non-square arrays.</p>
+<p>Among the key features included in <code>barry</code>, we have:</p>
+<ul>
+<li>Sparse arrays.</li>
+<li>User-defined count statistics.</li>
+<li>User-defined constrain of the support set.</li>
+<li>Powerset generation of binary arrays.</li>
+<li>Discrete Exponential Family Models module (DEFMs).</li>
+<li>Pooled DEFMs.</li>
+</ul>
 <h1>Examples</h1>
 <h2>Counting statistics in a graph</h2>
 <p>In the following code we create an array of size 5x5 of class <code>Network</code> (available in the namespace <a href="https://uscbiostats.github.io/barry/namespacebarry_1_1counters_1_1network.html">netcounters</a>), add/remove ties, print the graph, and count common statistics used in ERGMs:</p>
@@ -186,7 +195,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">Mutuals           : 3</div>
 </div><!-- fragment --><h1>Features</h1>
 <h2>Efficient memory usage</h2>
-<p>One of the key features of <code>barry</code> is that it will handle memory efficiently. In the case of pooled-data models, the statistical models modules avoid double support when possible by keeping track of what datasets (networks, for instance) share the same support.</p>
+<p>One of the key features of <code>barry</code> is that it will handle memory efficiently. In the case of pooled-data models, the module for statistical models avoids double-counting support when possible by keeping track of what datasets (networks, for instance) share the same.</p>
 <div align="center"> <img src="design/ergm-computing.svg" alt="" style="pointer-events: none;" class="inline"/> </div><h1>Documentation</h1>
 <p>More information can be found in the Doxygen website <a href="https://uscbiostats.github.io/barry">here</a> and in the PDF version of the documentation <a href="https://github.com/USCbiostats/barry/blob/gh-pages/latex/refman.pdf">here</a>.</p>
 <h1>Code of Conduct</h1>
@@ -197,7 +206,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 15 2021 06:30:02 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 11 2021 19:52:04 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
