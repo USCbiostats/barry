@@ -195,7 +195,7 @@ Counts completely false reciprocity (comission)
 
 
 
-Definition at line 146 of file network-\/css.\+hpp.
+Definition at line 152 of file network-\/css.\+hpp.
 
 \mbox{\Hypertarget{network-css_8hpp_a3f36ba81dfe10abdc040c5143da19fe5}\label{network-css_8hpp_a3f36ba81dfe10abdc040c5143da19fe5}} 
 \index{network-\/css.hpp@{network-\/css.hpp}!counter\_css\_completely\_false\_recip\_omiss@{counter\_css\_completely\_false\_recip\_omiss}}
@@ -209,7 +209,7 @@ Counts completely false reciprocity (omission)
 
 
 
-Definition at line 192 of file network-\/css.\+hpp.
+Definition at line 198 of file network-\/css.\+hpp.
 
 \mbox{\Hypertarget{network-css_8hpp_ad08c853dfee55e27159d943692903945}\label{network-css_8hpp_ad08c853dfee55e27159d943692903945}} 
 \index{network-\/css.hpp@{network-\/css.hpp}!counter\_css\_partially\_false\_recip\_commi@{counter\_css\_partially\_false\_recip\_commi}}
@@ -222,8 +222,15 @@ Definition at line 192 of file network-\/css.\+hpp.
 Counts errors of commission. 
 
 
+\begin{DoxyParams}{Parameters}
+{\em netsize} & Size of the reference (true) network \\
+\hline
+{\em end\+\_\+} & Vector indicating one past the ending index of each network. (see details)\\
+\hline
+\end{DoxyParams}
+The {\ttfamily end\+\_\+} parameter should be of length {\ttfamily N of networks} -\/ 1. It is assumed that the first network ends at {\ttfamily netsize}. 
 
-Definition at line 51 of file network-\/css.\+hpp.
+Definition at line 57 of file network-\/css.\+hpp.
 
 \mbox{\Hypertarget{network-css_8hpp_ab13f8d2fb101909458cd9d53367d14f9}\label{network-css_8hpp_ab13f8d2fb101909458cd9d53367d14f9}} 
 \index{network-\/css.hpp@{network-\/css.hpp}!counter\_css\_partially\_false\_recip\_omiss@{counter\_css\_partially\_false\_recip\_omiss}}
@@ -237,5 +244,5 @@ Counts errors of omission.
 
 
 
-Definition at line 100 of file network-\/css.\+hpp.
+Definition at line 106 of file network-\/css.\+hpp.
 

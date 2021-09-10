@@ -21,6 +21,7 @@ var phylo_8hpp =
     [ "counter_gains", "group__counters-phylo.html#gaf03875e668e9559a84896755e5108fc4", null ],
     [ "counter_gains_k_offspring", "group__counters-phylo.html#ga0403ee027de1992d33cae8cf40ad7ef3", null ],
     [ "counter_genes_changing", "group__counters-phylo.html#ga8baaa25ef41a56b0581be6f03d27305e", null ],
+    [ "counter_k_genes_changing", "group__counters-phylo.html#ga633a49137424f3ae9908e28d28ab5f81", null ],
     [ "counter_longest", "group__counters-phylo.html#ga41afc89ceafd9c70883b37ea20b0db8a", null ],
     [ "counter_loss", "group__counters-phylo.html#gab295380f631d6ecbc6147ede9e7084d8", null ],
     [ "counter_maxfuns", "group__counters-phylo.html#gabf517e1c04c9e08be6e32de80859c1be", null ],

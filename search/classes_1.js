@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['cell_500',['Cell',['../class_cell.html',1,'']]],
-  ['cell_3c_20bool_20_3e_501',['Cell&lt; bool &gt;',['../class_cell.html',1,'']]],
-  ['constbarrayrowiter_502',['ConstBArrayRowIter',['../class_const_b_array_row_iter.html',1,'']]],
-  ['counter_503',['Counter',['../class_counter.html',1,'']]],
-  ['counters_504',['Counters',['../class_counters.html',1,'']]],
-  ['counters_3c_20barray_3c_3e_2c_20bool_20_3e_505',['Counters&lt; BArray&lt;&gt;, bool &gt;',['../class_counters.html',1,'']]]
+  ['cell_501',['Cell',['../class_cell.html',1,'']]],
+  ['cell_3c_20bool_20_3e_502',['Cell&lt; bool &gt;',['../class_cell.html',1,'']]],
+  ['constbarrayrowiter_503',['ConstBArrayRowIter',['../class_const_b_array_row_iter.html',1,'']]],
+  ['counter_504',['Counter',['../class_counter.html',1,'']]],
+  ['counters_505',['Counters',['../class_counters.html',1,'']]],
+  ['counters_3c_20barray_3c_3e_2c_20bool_20_3e_506',['Counters&lt; BArray&lt;&gt;, bool &gt;',['../class_counters.html',1,'']]]
 ];
