@@ -47,7 +47,13 @@
             true, tmpname);}
 
 
-/** @brief Counts errors of commission */
+/** @brief Counts errors of commission 
+ * @param netsize Size of the reference (true) network 
+ * @param end_ Vector indicating one past the ending index of each network. (see details)
+ * @details 
+ * The `end_` parameter should be of length `N of networks` - 1. It is
+ * assumed that the first network ends at `netsize`.
+ */
 inline void counter_css_partially_false_recip_commi(
         NetCounters * counters,
         uint netsize,

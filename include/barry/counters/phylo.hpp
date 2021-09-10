@@ -1271,6 +1271,126 @@ inline void counter_co_opt(
     return;
   
 }
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Indicator function. Equals to one if \f$k\f$ genes changed and zero
+ * otherwise.
+ */
+inline void counter_k_genes_changing(
+    PhyloCounters * counters,
+    unsigned int k,
+    bool duplication = true
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        PHYLO_CHECK_MISSING();
+
+        if (Array.D()->duplication != (data->at(0u) == 1))
+            return 0.0;
+
+        // At the beginning, all offspring are zero, so we need to
+        // find at least one state = true.
+        unsigned int count = 0u;
+        for (uint j0 = 0u; j0 < Array.nrow(); ++j0)
+            if (Array.D()->states[j0]) 
+                count++;
+
+        return (count == data->at(1u)) ? 1.0: 0.0;
+      
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Checking the type of event
+        if (Array.D()->duplication & (data->at(0u) == 0u))
+            return 0.0;
+        else if (!Array.D()->duplication & (data->at(0u) == 1u))
+            return 0.0;
+
+        // Setup
+        int count = 0u;
+        int k     = static_cast<int>(data->at(1u));
+        std::vector< bool > par_state = Array.D()->states;
+
+        // Comparing the focal gene with the parent. Whas this already
+        // different?
+        bool j_matches = true;
+        for (unsigned int f = 0u; f < Array.nrow(); ++f)
+        {
+            if (f == i)
+                continue;
+
+            if (par_state[f] != Array(f, j))
+            {
+                j_matches = false;
+                break;
+            }
+        }
+
+        // If there was a function other than this not matching, then
+        // there's no change.
+        if (!j_matches)
+            return 0.0;
+
+        // Otherwise, if the parent has the function, then it means
+        // that this gene now matches (so we increase the counter).
+        if (par_state[i])
+            count++;
+
+        // Iterating through genes
+        for (unsigned int g = 0u; g < Array.ncol(); ++g) 
+        {
+
+            // We already did j
+            if (g == j)
+                continue;
+
+            // Iterating through the function
+            bool changes = true;
+            for (unsigned int f = 0u; f < Array.nrow(); ++f)
+            {
+                
+                if ((Array(f, g) == 1u) != par_state[f])
+                {
+                    changes = false;
+                    break;
+                }
+
+            }
+
+            // If the branch has changed
+            if (changes)
+                ++count;
+
+        }
+
+        // If it matches, then we are now swithing to 1
+        if (count == k) 
+            return 1.0;
+        // Otherwise, if the difference is only one, then it means
+        // that we were matching
+        else if (std::fabs(count - k) < 1.0)
+            return -1.0;
+        else
+            return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new PhyloCounterData({duplication ? 1u : 0u, k}),
+        true,
+        std::to_string(k), + " genes changing" + get_last_name(duplication)
+    );
+  
+}
+
 ///@}
 
 /**
