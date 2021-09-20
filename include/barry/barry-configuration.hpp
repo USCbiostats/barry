@@ -55,21 +55,7 @@
     #define BARRY_MAX_NUM_ELEMENTS static_cast< unsigned int >(UINT_MAX/2u)
 #endif
 
-#ifndef BARRY_DEBUG_LEVEL
-    #define BARRY_DEBUG_LEVEL 0
-#else
-    #define BARRY_DEBUG_HEADER "[barry]"
-    #define BARRY_DEBUG_MSG(a) \
-        printf_barry("%s %s\n", BARRY_DEBUG_HEADER, (a));
-    template <typename T>
-    void BARRY_DEBUG_VEC_PRINT(const std::vector<T> & a) {
-        printf_barry("  [");
-        for(const auto & iter : (a)) 
-            printf_barry("%.4f ", static_cast<double>(iter));
-        printf_barry("]\n");
-        return;
-    };
-#endif
+// BARRY_DEBUG_LEVEL: See barry-debug.hpp
 
 ///@}
 

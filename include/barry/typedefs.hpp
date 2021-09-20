@@ -4,6 +4,9 @@
 // Configuration ---------------------------------------------------------------
 #include "barry-configuration.hpp"
 
+// Debug
+#include "barry-debug.hpp"
+
 // -----------------------------------------------------------------------------
 
 // Basic types

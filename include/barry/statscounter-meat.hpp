@@ -96,6 +96,13 @@ STATSCOUNTER_TEMPLATE(std::vector< double >, count_all)()
     
     // Setting it to zero.
     EmptyArray.clear(false);
+
+    #ifdef BARRY_DEBUG_LEVEL
+        #if BARRY_DEBUG_LEVEL > 0
+            BARRY_DEBUG_MSG("Initializing -count_all- debug. get_names():")
+            BARRY_DEBUG_VEC_PRINT<std::string>(this->get_names());
+        #endif
+    #endif
     
     // Start iterating through the data
     for (uint i = 0; i < Array->nrow(); ++i)
@@ -120,20 +127,27 @@ STATSCOUNTER_TEMPLATE(std::vector< double >, count_all)()
 
             #ifdef BARRY_DEBUG_LEVEL
                 #if (BARRY_DEBUG_LEVEL >= 1)
+                    BARRY_DEBUG_MSG("================================================================================")
                     BARRY_DEBUG_MSG("Debugging Stats counter: current_stats (before)")
-                    BARRY_DEBUG_MSG("Inserting cell (" + std::to_str(i) + std::to_str(col.first) + ")");
+                    std::string tmpmgs = "Inserting cell (" +
+                        std::to_string(i) + ", " + std::to_string(col.first) + ")";
+                    BARRY_DEBUG_MSG(tmpmgs.c_str());
                     BARRY_DEBUG_VEC_PRINT(current_stats);
                     #if (BARRY_DEBUG_LEVEL >= 2)
                         BARRY_DEBUG_MSG("Debugging Stats counter: EmptyArray")
                         EmptyArray.print();
                     #endif
-                    BARRY_DEBUG_MSG("Debugging Stats counter: current_stats (after)")
-                    BARRY_DEBUG_VEC_PRINT(current_stats);
                 #endif
             #endif 
 
             // Computing the change statistics
             count_current(i, col.first);
+            #ifdef BARRY_DEBUG_LEVEL
+                #if (BARRY_DEBUG_LEVEL >= 1)
+                    BARRY_DEBUG_MSG("Debugging Stats counter: current_stats (after)")
+                    BARRY_DEBUG_VEC_PRINT(current_stats);
+                #endif
+            #endif
           
         } 
         

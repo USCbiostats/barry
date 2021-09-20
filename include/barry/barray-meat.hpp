@@ -1165,7 +1165,13 @@ inline void BArray< Cell_Type, Data_Type >::print(const char * fmt, ...) const {
     va_end(args);
 
     for (uint i = 0u; i < N; ++i) {
+        #ifdef BARRY_DEBUG_LEVEL
+            #if BARRY_DEBUG_LEVEL > 1
+                printf_barry("%s [%3i,]", BARRY_DEBUG_HEADER, i);
+            #endif
+        #else
         printf_barry("[%3i,] ", i);
+        #endif
         for (uint j = 0u; j < M; ++j) {
             if (this->is_empty(i, j, false))
                 printf_barry("    . ");

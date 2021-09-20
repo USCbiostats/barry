@@ -134,15 +134,15 @@ SUPPORT_TEMPLATE(void, calc_backend)(
     for (uint n = 0u; n < counters->size(); ++n)
     {
 
-        #ifdef BARRY_DEBUG_LEVEL
-            #if (BARRY_DEBUG_LEVEL >= 1)
-                BARRY_DEBUG_MSG("Debugging support.")
-                BARRY_DEBUG_VEC_PRINT(change_stats[pos]);
-            #endif
-            #if (BARRY_DEBUG_LEVEL >= 2)
-                EmptyArray.print();
-            #endif
-        #endif
+        // #ifdef BARRY_DEBUG_LEVEL
+        //     #if (BARRY_DEBUG_LEVEL >= 1)
+        //         BARRY_DEBUG_MSG("Debugging support.")
+        //         BARRY_DEBUG_VEC_PRINT(change_stats[pos]);
+        //     #endif
+        //     #if (BARRY_DEBUG_LEVEL >= 2)
+        //         EmptyArray.print();
+        //     #endif
+        // #endif
 
         change_stats[pos][n] = counters->operator[](n).count(
             EmptyArray,
