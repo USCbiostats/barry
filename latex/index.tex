@@ -41,8 +41,7 @@ In the following code we create an array of size 5x5 of class {\ttfamily Network
 \DoxyCodeLine{  );}
 \DoxyCodeLine{  }
 \DoxyCodeLine{  \textcolor{comment}{// How does this looks like?}}
-\DoxyCodeLine{  std::cout << \textcolor{stringliteral}{"{}Current view"{}} << std::endl;}
-\DoxyCodeLine{  net.print();}
+\DoxyCodeLine{  net.print(\textcolor{stringliteral}{"{}Current view"{}});}
 \DoxyCodeLine{  }
 \DoxyCodeLine{  \textcolor{comment}{// Adding extra ties}}
 \DoxyCodeLine{  net += \{1, 0\};}
@@ -52,8 +51,7 @@ In the following code we create an array of size 5x5 of class {\ttfamily Network
 \DoxyCodeLine{  net(0, 0) = \textcolor{keyword}{false};}
 \DoxyCodeLine{  net -\/= \{1, 1\};}
 \DoxyCodeLine{}
-\DoxyCodeLine{  std::cout << \textcolor{stringliteral}{"{}New view"{}} << std::endl;  }
-\DoxyCodeLine{  net.print();}
+\DoxyCodeLine{  net.print(\textcolor{stringliteral}{"{}New view"{}});}
 \DoxyCodeLine{  }
 \DoxyCodeLine{  \textcolor{comment}{// Initializing the data. The program deals with freing the memory}}
 \DoxyCodeLine{  net.set\_data(\textcolor{keyword}{new} netcounters::NetworkData, \textcolor{keyword}{true});}

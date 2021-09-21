@@ -45,6 +45,7 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
       [ "PowerSet", "class_power_set.html", "class_power_set" ]
     ] ],
     [ "powerset-meat.hpp", "powerset-meat_8hpp.html", null ],
+    [ "progress.hpp", "progress_8hpp.html", "progress_8hpp" ],
     [ "rules-bones.hpp", "rules-bones_8hpp.html", "rules-bones_8hpp" ],
     [ "rules-meat.hpp", "rules-meat_8hpp.html", null ],
     [ "statscounter-bones.hpp", "statscounter-bones_8hpp.html", [

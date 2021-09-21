@@ -24,6 +24,7 @@ var annotated_dup =
     [ "PhyloCounterData", "class_phylo_counter_data.html", "class_phylo_counter_data" ],
     [ "PhyloRuleDynData", "class_phylo_rule_dyn_data.html", "class_phylo_rule_dyn_data" ],
     [ "PowerSet", "class_power_set.html", "class_power_set" ],
+    [ "Progress", "class_progress.html", "class_progress" ],
     [ "Rule", "class_rule.html", "class_rule" ],
     [ "Rules", "class_rules.html", "class_rules" ],
     [ "StatsCounter", "class_stats_counter.html", "class_stats_counter" ],

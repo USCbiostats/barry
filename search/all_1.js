@@ -39,13 +39,14 @@ var searchData=
   ['barry_5fhpp_51',['BARRY_HPP',['../barry_8hpp.html#a6bc87f9e176b4784e9b512b10758ad45',1,'barry.hpp']]],
   ['barry_5fisfinite_52',['BARRY_ISFINITE',['../barry-configuration_8hpp.html#aa3c8e71d6d426f5207d478054c790a13',1,'barry-configuration.hpp']]],
   ['barry_5fmax_5fnum_5felements_53',['BARRY_MAX_NUM_ELEMENTS',['../barry-configuration_8hpp.html#a4e96e4fea282b750197f31432abe3d97',1,'barry-configuration.hpp']]],
-  ['barry_5fsafe_5fexp_54',['BARRY_SAFE_EXP',['../barry-configuration_8hpp.html#aa8fd3df3585111e6734d97092df83f57',1,'barry-configuration.hpp']]],
-  ['barry_5fsupport_5fmeat_5fhpp_55',['BARRY_SUPPORT_MEAT_HPP',['../support-meat_8hpp.html#a1e1a05136f3cb63f283b317a8c7f7e7c',1,'support-meat.hpp']]],
-  ['barry_5fversion_56',['BARRY_VERSION',['../barry_8hpp.html#a2ba8357ca62703620968e0b6db92233f',1,'barry.hpp']]],
-  ['begin_57',['begin',['../class_power_set.html#abed9d58db924366d8a38baf168131fc3',1,'PowerSet::begin()'],['../class_phylo_counter_data.html#acfc6b686f56615e36fca4b4577768463',1,'PhyloCounterData::begin()'],['../class_b_array_vector__const.html#abfc8cf142de862d181d20afa5caf8d47',1,'BArrayVector_const::begin()'],['../class_b_array_vector.html#ac41c8bf35b91d569cd86a7750c202604',1,'BArrayVector::begin()']]],
-  ['blengths_58',['blengths',['../class_node_data.html#a02da5f097c105813216d87ef89ad7bd4',1,'NodeData']]],
-  ['both_59',['BOTH',['../namespace_c_h_e_c_k.html#a3acda1c74bfabb5b6b67e19d0ad2d52a',1,'CHECK::BOTH()'],['../namespace_e_x_i_s_t_s.html#a256db431572e1e7f26f8dfa6c9cae9bd',1,'EXISTS::BOTH()']]],
-  ['counters_60',['counters',['../namespacebarry_1_1counters.html',1,'barry']]],
-  ['network_61',['network',['../namespacebarry_1_1counters_1_1network.html',1,'barry::counters']]],
-  ['phylo_62',['phylo',['../namespacebarry_1_1counters_1_1phylo.html',1,'barry::counters']]]
+  ['barry_5fprogress_5fbar_5fwidth_54',['BARRY_PROGRESS_BAR_WIDTH',['../progress_8hpp.html#a736e2557ded6975dbf117eedf62ea66c',1,'progress.hpp']]],
+  ['barry_5fsafe_5fexp_55',['BARRY_SAFE_EXP',['../barry-configuration_8hpp.html#aa8fd3df3585111e6734d97092df83f57',1,'barry-configuration.hpp']]],
+  ['barry_5fsupport_5fmeat_5fhpp_56',['BARRY_SUPPORT_MEAT_HPP',['../support-meat_8hpp.html#a1e1a05136f3cb63f283b317a8c7f7e7c',1,'support-meat.hpp']]],
+  ['barry_5fversion_57',['BARRY_VERSION',['../barry_8hpp.html#a2ba8357ca62703620968e0b6db92233f',1,'barry.hpp']]],
+  ['begin_58',['begin',['../class_power_set.html#abed9d58db924366d8a38baf168131fc3',1,'PowerSet::begin()'],['../class_phylo_counter_data.html#acfc6b686f56615e36fca4b4577768463',1,'PhyloCounterData::begin()'],['../class_b_array_vector__const.html#abfc8cf142de862d181d20afa5caf8d47',1,'BArrayVector_const::begin()'],['../class_b_array_vector.html#ac41c8bf35b91d569cd86a7750c202604',1,'BArrayVector::begin()']]],
+  ['blengths_59',['blengths',['../class_node_data.html#a02da5f097c105813216d87ef89ad7bd4',1,'NodeData']]],
+  ['both_60',['BOTH',['../namespace_c_h_e_c_k.html#a3acda1c74bfabb5b6b67e19d0ad2d52a',1,'CHECK::BOTH()'],['../namespace_e_x_i_s_t_s.html#a256db431572e1e7f26f8dfa6c9cae9bd',1,'EXISTS::BOTH()']]],
+  ['counters_61',['counters',['../namespacebarry_1_1counters.html',1,'barry']]],
+  ['network_62',['network',['../namespacebarry_1_1counters_1_1network.html',1,'barry::counters']]],
+  ['phylo_63',['phylo',['../namespacebarry_1_1counters_1_1phylo.html',1,'barry::counters']]]
 ];

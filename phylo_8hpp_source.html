@@ -1309,7 +1309,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160; </div>
 <div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;        <span class="comment">// Setup</span></div>
-<div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;        <span class="keywordtype">int</span> count = 0u;</div>
+<div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;        <span class="keywordtype">int</span> count = 0u; </div>
 <div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;        <span class="keywordtype">int</span> k     = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>-&gt;at(1u));</div>
 <div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;        std::vector&lt; bool &gt; par_state = Array.D()-&gt;states;</div>
 <div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160; </div>
@@ -1333,9 +1333,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;        <span class="keywordflow">if</span> (!j_matches)</div>
 <div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160; </div>
-<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;        <span class="comment">// Otherwise, if the parent has the function, then it means</span></div>
-<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;        <span class="comment">// that this gene now matches (so we increase the counter).</span></div>
-<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;        <span class="keywordflow">if</span> (par_state[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>])</div>
+<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;        <span class="comment">// Otherwise, if the parent doesn&#39;t have the function, then it means</span></div>
+<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;        <span class="comment">// that this gene now diverges (so we increase the counter).</span></div>
+<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;        <span class="keywordflow">if</span> (!par_state[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>])</div>
 <div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;            count++;</div>
 <div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160; </div>
 <div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;        <span class="comment">// Iterating through genes</span></div>
@@ -1347,20 +1347,20 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160; </div>
 <div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;            <span class="comment">// Iterating through the function</span></div>
-<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;            <span class="keywordtype">bool</span> changes = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;            <span class="keywordtype">bool</span> changes = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> f = 0u; f &lt; Array.nrow(); ++f)</div>
 <div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;            {</div>
 <div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;                </div>
 <div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;                <span class="keywordflow">if</span> ((Array(f, g) == 1u) != par_state[f])</div>
 <div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;                {</div>
-<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;                    changes = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;                    changes = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;                }</div>
 <div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160; </div>
 <div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;            }</div>
 <div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160; </div>
 <div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;            <span class="comment">// If the branch has changed</span></div>
-<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;            <span class="keywordflow">if</span> (changes)</div>
+<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;            <span class="keywordflow">if</span> (!changes)</div>
 <div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;                ++count;</div>
 <div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160; </div>
 <div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;        }</div>
@@ -1521,14 +1521,14 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="ttc" id="aphylo_8hpp_html_add31e0ba346cdf08524d6da73500f846"><div class="ttname"><a href="phylo_8hpp.html#add31e0ba346cdf08524d6da73500f846">get_last_name</a></div><div class="ttdeci">std::string get_last_name(bool d)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00120">phylo.hpp:120</a></div></div>
 <div class="ttc" id="astatscounter-meat_8hpp_html_a06420c7858d72514761c1cca0654f9c0"><div class="ttname"><a href="statscounter-meat_8hpp.html#a06420c7858d72514761c1cca0654f9c0">counters_</a></div><div class="ttdeci">Data_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00046">statscounter-meat.hpp:47</a></div></div>
 <div class="ttc" id="astatscounter-meat_8hpp_html_a782c48a908662b34845b6f654f929788"><div class="ttname"><a href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div><div class="ttdeci">counters</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00053">statscounter-meat.hpp:53</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00013">typedefs.hpp:13</a></div></div>
+<div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00016">typedefs.hpp:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
-    <li class="footer">Generated on Mon Sep 20 2021 23:19:04 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Sep 21 2021 22:52:45 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
