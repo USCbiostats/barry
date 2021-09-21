@@ -156,7 +156,7 @@ public:
 
     ~Geese();
 
-    void init(bool verb = true);
+    void init(unsigned int bar_width = BARRY_PROGRESS_BAR_WIDTH);
 
     void inherit_support(const Geese & model_, bool delete_support_ = false);
 

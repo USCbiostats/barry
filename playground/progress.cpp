@@ -84,6 +84,50 @@ int main() {
     
     p4.end();
 
+    std::cout << "Length 121\n";
+    Progress p5(100, 121);
+    for (int i = 0; i < 100; ++i) 
+        p5.next();
+    
+    p5.end();
+
+    std::cout << "Checking different sizes" << std::endl;
+
+    std::cout << "Length 20\n";
+    Progress p_(20, 80);
+    for (int i = 0; i < 20; ++i) 
+        p_.next();
+    
+    p_.end();
+
+    std::cout << "Length 50\n";
+    Progress p2_(50, 80);
+    for (int i = 0; i < 50; ++i) 
+        p2_.next();
+    
+    p2_.end();
+
+    std::cout << "Length 100\n";
+    Progress p3_(100, 80);
+    for (int i = 0; i < 100; ++i) 
+        p3_.next();
+    
+    p3_.end();
+
+    std::cout << "Length 80\n";
+    Progress p4_(80, 80);
+    for (int i = 0; i < 80; ++i) 
+        p4_.next();
+    
+    p4_.end();
+
+    std::cout << "Length 121\n";
+    Progress p5_(121, 80);
+    for (int i = 0; i < 121; ++i) 
+        p5_.next();
+    
+    p5_.end();
+
     return 0;
 
 }

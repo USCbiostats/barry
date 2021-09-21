@@ -84,7 +84,7 @@ inline Geese::~Geese() {
 
 }
 
-inline void Geese::init(bool verb) {
+inline void Geese::init(unsigned int bar_width) {
 
     // Initializing the model, if it is null
     if (this->model == nullptr)
@@ -128,46 +128,77 @@ inline void Geese::init(bool verb) {
 
     }
 
-    if (verb)
-        printf_barry("Initializing nodes in Geese (this could take a while)...\n");
-
-    double width   = 73.0;
-    int n_internal = this->nnodes() - this->nleafs();
-    int n_steps    = (n_internal > width) ?
-        static_cast<int>(floor(static_cast<double>(n_internal) / width)) : n_internal;
-    int step_size  = static_cast<int>(n_internal / n_steps);
-    int n_bars     = static_cast<int>(std::max(1.0, floor(width / static_cast<double>(n_steps))));
-
-    // Iterating throught the nodes
-    int node_i = 0;
-    for (auto& iter : nodes) {
-
-        // Only parents get a node
-        if (!iter.second.is_leaf())
-        {
-            this->init_node(iter.second); 
-
-            if (verb & !(node_i++ % step_size))
-            {
-                for (int j = 0; j < n_bars; ++j)
-                    printf_barry("|");
-            }
-
-        }
-        
-    }
-
-    // Adding the extra bars, if needed
-    if (verb)
+    if (bar_width > 0u)
     {
+        printf_barry("Initializing nodes in Geese (this could take a while)...\n");
+        barry::Progress prog_bar(this->nnodes(), bar_width);
 
-        int reminder = static_cast<int>(width) - n_bars * n_steps;
-        for (int j = 0; j < reminder; ++j)
-            printf_barry("|");
-        
-        printf_barry(" done.\n");
+        // Iterating throught the nodes
+        for (auto& iter : nodes) {
+
+            // Only parents get a node
+            if (!iter.second.is_leaf())
+                this->init_node(iter.second); 
+                
+            prog_bar.next();
+            
+        }
+
+        prog_bar.end();
+
+
+    } else {
+
+        // Iterating throught the nodes
+        for (auto& iter : nodes) {
+
+            // Only parents get a node
+            if (!iter.second.is_leaf())
+                this->init_node(iter.second); 
+            
+        }
 
     }
+    
+
+
+    // double width   = 73.0;
+    // int n_internal = this->nnodes() - this->nleafs();
+    // int n_steps    = (n_internal > width) ?
+    //     static_cast<int>(floor(static_cast<double>(n_internal) / width)) : n_internal;
+    // int step_size  = static_cast<int>(n_internal / n_steps);
+    // int n_bars     = static_cast<int>(std::max(1.0, floor(width / static_cast<double>(n_steps))));
+
+    // // Iterating throught the nodes
+    // int node_i = 0;
+    // for (auto& iter : nodes) {
+
+    //     // Only parents get a node
+    //     if (!iter.second.is_leaf())
+    //     {
+    //         this->init_node(iter.second); 
+
+    //         if (verb & !(node_i++ % step_size))
+    //         {
+    //             for (int j = 0; j < n_bars; ++j)
+    //                 printf_barry("|");
+    //         }
+
+    //     }
+        
+    // }
+
+    // // Adding the extra bars, if needed
+    // if (verb)
+    // {
+
+    //     int reminder = static_cast<int>(width) - n_bars * n_steps;
+    //     for (int j = 0; j < reminder; ++j)
+    //         printf_barry("|");
+        
+    //     printf_barry(" done.\n");
+
+    // }
 
     // Resetting the sequence
     for (auto& n: this->nodes)

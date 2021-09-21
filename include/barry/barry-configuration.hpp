@@ -57,6 +57,8 @@
 
 // BARRY_DEBUG_LEVEL: See barry-debug.hpp
 
+// BARRY_PROGRESS_BAR_WIDTH: See progress.hpp
+
 ///@}
 
 #endif

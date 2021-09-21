@@ -48,7 +48,7 @@ public:
      */
     void set_seed(const unsigned int & s);
 
-    void init(bool verb = true);
+    void init(unsigned int bar_width = BARRY_PROGRESS_BAR_WIDTH);
     
     // void add_geese(Geese x);
     phylocounters::PhyloCounters * get_counters();
