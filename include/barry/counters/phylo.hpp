@@ -1314,7 +1314,7 @@ inline void counter_k_genes_changing(
             return 0.0;
 
         // Setup
-        int count = 0u;
+        int count = 0u; ///< How many genes diverge the parent
         int k     = static_cast<int>(data->at(1u));
         std::vector< bool > par_state = Array.D()->states;
 
@@ -1338,9 +1338,9 @@ inline void counter_k_genes_changing(
         if (!j_matches)
             return 0.0;
 
-        // Otherwise, if the parent has the function, then it means
-        // that this gene now matches (so we increase the counter).
-        if (par_state[i])
+        // Otherwise, if the parent doesn't have the function, then it means
+        // that this gene now diverges (so we increase the counter).
+        if (!par_state[i])
             count++;
 
         // Iterating through genes
@@ -1352,20 +1352,20 @@ inline void counter_k_genes_changing(
                 continue;
 
             // Iterating through the function
-            bool changes = true;
+            bool changes = false;
             for (unsigned int f = 0u; f < Array.nrow(); ++f)
             {
                 
                 if ((Array(f, g) == 1u) != par_state[f])
                 {
-                    changes = false;
+                    changes = true;
                     break;
                 }
 
             }
 
             // If the branch has changed
-            if (changes)
+            if (!changes)
                 ++count;
 
         }

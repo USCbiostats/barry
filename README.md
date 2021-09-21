@@ -41,8 +41,7 @@ int main() {
   );
   
   // How does this looks like?
-  std::cout << "Current view" << std::endl;
-  net.print();
+  net.print("Current view");
   
   // Adding extra ties
   net += {1, 0};
@@ -52,8 +51,7 @@ int main() {
   net(0, 0) = false;
   net -= {1, 1};
 
-  std::cout << "New view" << std::endl;  
-  net.print();
+  net.print("New view");
   
   // Initializing the data. The program deals with freing the memory
   net.set_data(new netcounters::NetworkData, true);

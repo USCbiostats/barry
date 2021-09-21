@@ -88,6 +88,13 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
     counter_overall_changes(counter2.get_counters(), false);
     counter_genes_changing(counter2.get_counters(), true);
     counter_genes_changing(counter2.get_counters(), false);
+    counter_k_genes_changing(counter2.get_counters(), 1, true);
+    counter_k_genes_changing(counter2.get_counters(), 2, true);
+    counter_k_genes_changing(counter2.get_counters(), 3, true);
+    counter_k_genes_changing(counter2.get_counters(), 1, false);
+    counter_k_genes_changing(counter2.get_counters(), 2, false);
+    counter_k_genes_changing(counter2.get_counters(), 3, false);
+
 
     std::vector< double > ans2_dpl_obs      = counter2.count_all();
     std::vector< double > ans2_dpl_expected = {
@@ -98,7 +105,9 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
         4, //counter_overall_changes (dpl)
         0, // counter_overall_changes (spe)
         2, // counter_genes_changing (dpl)
-        0 // counter_genes_changing (spe)
+        0, // counter_genes_changing (spe)
+        0, 1, 0, // 1, 2, 3 genes changing (dpl)
+        0, 0, 0  // 1, 2, 3 genes changing (spe)
     };
 
     REQUIRE_THAT(ans2_dpl_expected, Catch::Approx(ans2_dpl_obs).epsilon(.001));
@@ -113,7 +122,9 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
         0, // counter_overall_changes (spe)
         4, // counter_overall_changes (spe)
         0, // counter_genes_changing (dpl)
-        2 // counter_genes_changing (spe)
+        2, // counter_genes_changing (spe)
+        0, 0, 0, // 1, 2, 3 genes changing (dpl)
+        0, 1, 0  // 1, 2, 3 genes changing (spe)
     };
 
     REQUIRE_THAT(ans2_spe_expected, Catch::Approx(ans2_spe_obs).epsilon(.001));
