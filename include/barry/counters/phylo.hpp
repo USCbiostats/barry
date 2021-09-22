@@ -1386,10 +1386,10 @@ inline void counter_k_genes_changing(
         tmp_count, tmp_init,
         new PhyloCounterData({duplication ? 1u : 0u, k}),
         true,
-        std::to_string(k), + " genes changing" + get_last_name(duplication)
+        std::to_string(k) + " genes changing" + get_last_name(duplication)
     );
   
-}
+}   
 
 ///@}
 
