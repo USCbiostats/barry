@@ -72,13 +72,17 @@ inline void counter_css_partially_false_recip_commi(
 
             // Checking change stat of the true net
             CSS_TRUE_CELLS()
-            return pij * pji * (1.0 - 2.0 * tji);
+            return pij * pji * (1.0 - 2.0 * tji) - (1.0 - tji)*(
+                pij * (1.0 - pji) + (1.0 - pij) * pji
+            );
 
         } CSS_CASE_PERCEIVED() {
 
             // Checking change stat of the percieved net
             CSS_PERCEIVED_CELLS()
-            return pji * (tij + tji - 2.0 * tij*tji);
+            return pji * (tij * (1.0 - tji) + (1.0 - tij) * tji) +
+                (1.0 - tij) * (1.0 - tji) * (1 - 2.0 * pji)
+            ;
 
         } CSS_CASE_ELSE()
             return 0.0;
@@ -119,12 +123,16 @@ inline void counter_css_partially_false_recip_omiss(
         {
 
             CSS_TRUE_CELLS()
-            return tji * (pji + pji - 2.0 * pij * pji);
+            return tji * ((1.0 - pij) * pji + pij * (1.0 - pji)) +
+                (1.0 - 2.0 * tji) * (1.0 - pij) * (1.0 - pji)
+            ;
 
         } CSS_CASE_PERCEIVED() {
 
             CSS_PERCEIVED_CELLS()
-            return tji * tij * (1.0 - 2.0 * pji);
+            return tji * tij * (1.0 - 2.0 * pji) - 
+                (1.0 - pji) * ((1.0 - tij) * tji + tij * (1.0 - tji))
+            ;
 
         } CSS_CASE_ELSE()
             return 0.0;
@@ -235,6 +243,52 @@ inline void counter_css_completely_false_recip_omiss(
     // checking sizes
     CSS_CHECK_SIZE()
     CSS_APPEND("Completely false recip (omission)")
+        
+    return;
+    
+}
+
+/** @brief Counts mixed reciprocity errors */
+inline void counter_css_mixed_recip(
+        NetCounters * counters,
+        uint netsize,
+        const std::vector< uint > & end_
+    ) {
+    
+    NETWORK_COUNTER_LAMBDA(tmp_count) {
+
+        // Getting the network size
+        CSS_SIZE()
+
+        // True network
+        CSS_CASE_TRUTH()
+        {
+
+            CSS_TRUE_CELLS()
+            return (1.0 - tji) * (1.0 - pij) * pji - tji * pij * (1.0 - pji);
+
+        } CSS_CASE_PERCEIVED() {
+
+            CSS_PERCEIVED_CELLS()
+            return (1.0 - tij) * tji * (1.0 - pji) - tij * (1.0 - tij) * pji;
+
+        } CSS_CASE_ELSE()
+            return 0.0;
+        
+    };
+    
+    NETWORK_COUNTER_LAMBDA(tmp_init) {
+
+        // The reported size doesn't match the true network
+        CSS_CHECK_SIZE_INIT()
+        
+        return 0.0;
+        
+    };
+    
+    // checking sizes
+    CSS_CHECK_SIZE()
+    CSS_APPEND("Mixed reciprocity errors")
         
     return;
     
