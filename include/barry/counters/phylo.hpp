@@ -1077,13 +1077,11 @@ inline void counter_neofun_a2b(
     {
 
         // Is this node duplication?
-        if ((data->at(2u) == 1u) & !Array.D()->duplication)
+        IF_NOTMATCHES()
             return 0.0;
-        else if ((data->at(2u) == 0u) & Array.D()->duplication)  
-            return 0.0;
-
-        const uint & funA = data->at(0u);
-        const uint & funB = data->at(1u);
+        
+        const uint & funA = data->at(1u);
+        const uint & funB = data->at(2u);
         
         // Checking the parent has funA but not funb
         if ((!Array.D()->states[funA]) | Array.D()->states[funB]) 
@@ -1165,7 +1163,7 @@ inline void counter_neofun_a2b(
 
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({nfunA, nfunB, duplication ? 1u : 0u}),
+        new PhyloCounterData({duplication, nfunA, nfunB}),
         true,
         "Neofun from " + std::to_string(nfunA) + " to " +
         std::to_string(nfunB) + get_last_name(duplication)
@@ -1197,57 +1195,54 @@ inline void counter_co_opt(
     { 
 
         // Checking whether this is for duplication or not
-        if ((data->at(2u) == 0u) & Array.D()->duplication)
+        IF_NOTMATCHES()
             return 0.0;
-        else if ((data->at(2u) == 1u) & !Array.D()->duplication)
+        
+        const unsigned int funA = data->at(1u);
+        const unsigned int funB = data->at(2u);
+
+        // If the change is out of scope, then nothing to do
+        if ((i != funA) & (i != funB))
             return 0.0;
-        else {
 
-            const unsigned int funA = data->at(0u);
-            const unsigned int funB = data->at(1u);
+        // If the parent does not have the initial state, then it makes no sense
+        if ((!Array.D()->states[funA]) | Array.D()->states[funB])
+            return 0.0;
 
-            // If the change is out of scope, then nothing to do
-            if ((i != funA) & (i != funB))
+        // Checking whether function A or function B changed
+        if (i == funA) {
+
+            // What was the state of the other function? If B is present, then
+            // nothing changes.
+            if (Array(funB, j, false) == 1u) 
                 return 0.0;
 
-            // If the parent does not have the initial state, then it makes no sense
-            if ((!Array.D()->states[funA]) | Array.D()->states[funB])
+            // Iterating through the sibs
+            double res = 0.0;
+            for (auto c = 0u; c < Array.ncol(); ++c)
+                if ((c != j) && (Array(funA, c, false) == 1u) && (Array(funB, c, false) == 1u))
+                    res += 1.0;
+
+            return res;
+
+        } else {
+
+            // What was the state of the other function? If A is not present, then
+            // nothing changes.
+            if (Array(funA, j, false) == 0u) 
                 return 0.0;
 
-            // Checking whether function A or function B changed
-            if (i == funA) {
+            // Iterating through the sibs
+            double res = 0.0;
+            for (auto c = 0u; c < Array.ncol(); ++c)
+                if ((c != j) && (Array(funA, c, false) == 1u))
+                    res += (Array(funB, c, false) == 0u) ? 1.0 : -1.0;
 
-                // What was the state of the other function? If B is present, then
-                // nothing changes.
-                if (Array(funB, j, false) == 1u) 
-                    return 0.0;
-
-                // Iterating through the sibs
-                double res = 0.0;
-                for (auto c = 0u; c < Array.ncol(); ++c)
-                    if ((c != j) && (Array(funA, c, false) == 1u) && (Array(funB, c, false) == 1u))
-                        res += 1.0;
-
-                return res;
-
-            } else {
-
-                // What was the state of the other function? If A is not present, then
-                // nothing changes.
-                if (Array(funA, j, false) == 0u) 
-                    return 0.0;
-
-                // Iterating through the sibs
-                double res = 0.0;
-                for (auto c = 0u; c < Array.ncol(); ++c)
-                    if ((c != j) && (Array(funA, c, false) == 1u))
-                        res += (Array(funB, c, false) == 0u) ? 1.0 : -1.0;
-
-                return res;
-
-            }
+            return res;
 
         }
+
+        
 
     };
     
@@ -1272,7 +1267,7 @@ inline void counter_co_opt(
 
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({nfunA, nfunB, duplication ? 1u : 0u}),
+        new PhyloCounterData({duplication, nfunA, nfunB}),
         true,
         "Coopt of " + std::to_string(nfunA) + " by " +
         std::to_string(nfunB) + get_last_name(duplication)
@@ -1300,7 +1295,7 @@ inline void counter_k_genes_changing(
         
         PHYLO_CHECK_MISSING();
 
-        if (Array.D()->duplication != (data->at(0u) == 1))
+        IF_NOTMATCHES()
             return 0.0;
 
         // At the beginning, all offspring are zero, so we need to
@@ -1319,11 +1314,9 @@ inline void counter_k_genes_changing(
     {
 
         // Checking the type of event
-        if (Array.D()->duplication & (data->at(0u) == 0u))
+        IF_NOTMATCHES()
             return 0.0;
-        else if (!Array.D()->duplication & (data->at(0u) == 1u))
-            return 0.0;
-
+        
         // Setup
         int count = 0u; ///< How many genes diverge the parent
         int k     = static_cast<int>(data->at(1u));
@@ -1395,7 +1388,7 @@ inline void counter_k_genes_changing(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication ? 1u : 0u, k}),
+        new PhyloCounterData({duplication, k}),
         true,
         std::to_string(k) + " genes changing" + get_last_name(duplication)
     );
