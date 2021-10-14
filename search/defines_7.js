@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['statscounter_5ftemplate_1021',['STATSCOUNTER_TEMPLATE',['../statscounter-meat_8hpp.html#a0be2a43cbb1ef60a069583b540c72a5e',1,'statscounter-meat.hpp']]],
-  ['statscounter_5ftemplate_5fargs_1022',['STATSCOUNTER_TEMPLATE_ARGS',['../statscounter-meat_8hpp.html#a4f3342988a37f4ea182c13f9abb589f1',1,'statscounter-meat.hpp']]],
-  ['statscounter_5ftype_1023',['STATSCOUNTER_TYPE',['../statscounter-meat_8hpp.html#ac10625f9e9aacf59fb0fa88ca370ed9b',1,'statscounter-meat.hpp']]],
-  ['support_5ftemplate_1024',['SUPPORT_TEMPLATE',['../support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92',1,'support-meat.hpp']]],
-  ['support_5ftemplate_5fargs_1025',['SUPPORT_TEMPLATE_ARGS',['../support-meat_8hpp.html#af990eb73b13b01bd931f82fab1bf2d01',1,'support-meat.hpp']]],
-  ['support_5ftype_1026',['SUPPORT_TYPE',['../support-meat_8hpp.html#a86a2ec4c858bd43ec0a1d469592af52a',1,'support-meat.hpp']]]
+  ['row_1040',['ROW',['../barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b',1,'ROW():&#160;barray-meat-operators.hpp'],['../barray-meat_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b',1,'ROW():&#160;barray-meat.hpp'],['../barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b',1,'ROW():&#160;barraydense-meet.hpp']]],
+  ['rule_5ffunction_1041',['RULE_FUNCTION',['../barry_8hpp.html#aca4359c3356b25fb710d4dbc93d8d5a8',1,'barry.hpp']]],
+  ['rule_5flambda_1042',['RULE_LAMBDA',['../barry_8hpp.html#a65e3788fca9f405ff460ff7cfbad63f3',1,'barry.hpp']]]
 ];
