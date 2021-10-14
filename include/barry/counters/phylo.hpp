@@ -16,7 +16,7 @@
 #define IF_MATCHES() MAKE_DUPL_VARS() \
     if (IS_EITHER() || IS_DUPLICATION() || IS_SPECIATION())
 #define IF_NOTMATCHES() MAKE_DUPL_VARS() \
-    if (!IS_EITHER() && !IS_DUPLICATION() && !IS_SPECIATION())
+    if (!IS_EITHER() & !IS_DUPLICATION() & !IS_SPECIATION())
 
 
 /**
@@ -1464,7 +1464,7 @@ inline void rule_dyn_limit_changes(
             ),
         true 
     );
-
+    
     return;
   
 }

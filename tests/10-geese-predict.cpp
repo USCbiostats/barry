@@ -165,16 +165,16 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     // Creating the model
     Geese model_R(ann_R, geneid_R, parent_R, dpl_R);
 
-    counter_overall_changes(model_R.get_counters(), true);
-    counter_overall_changes(model_R.get_counters(), false);
-    counter_genes_changing(model_R.get_counters(), true);
-    counter_gains(model_R.get_counters(), {0}, true);
-    counter_loss(model_R.get_counters(), {0}, true);
-    counter_gains(model_R.get_counters(), {0}, false);
-    counter_loss(model_R.get_counters(), {0}, false);
+    counter_overall_changes(model_R.get_counters(), 1u);
+    counter_overall_changes(model_R.get_counters(), 0u);
+    counter_genes_changing(model_R.get_counters(), 1u);
+    counter_gains(model_R.get_counters(), {0}, 1u);
+    counter_loss(model_R.get_counters(), {0}, 1u);
+    counter_gains(model_R.get_counters(), {0}, 0u);
+    counter_loss(model_R.get_counters(), {0}, 0u);
 
-    rule_dyn_limit_changes(model_R.get_support(), 0, 0, 4, true);
-    rule_dyn_limit_changes(model_R.get_support(), 1, 0, 4, false);
+    rule_dyn_limit_changes(model_R.get_support(), 0, 0, 4, 1u);
+    rule_dyn_limit_changes(model_R.get_support(), 1, 0, 4, 0u);
 
     model_R.init();
 
@@ -318,16 +318,16 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     // Creating the model
     Geese model_R2(ann_R2, geneid_R2, parent_R2, dpl_R2);
 
-    counter_overall_changes(model_R2.get_counters(), true);
-    counter_overall_changes(model_R2.get_counters(), false);
-    counter_genes_changing(model_R2.get_counters(), true);
-    counter_gains(model_R2.get_counters(), {0}, true);
-    counter_loss(model_R2.get_counters(), {0}, true);
-    counter_gains(model_R2.get_counters(), {0}, false);
-    counter_loss(model_R2.get_counters(), {0}, false);
+    counter_overall_changes(model_R2.get_counters(), 1u);
+    counter_overall_changes(model_R2.get_counters(), 0u);
+    counter_genes_changing(model_R2.get_counters(), 1u);
+    counter_gains(model_R2.get_counters(), {0}, 1u);
+    counter_loss(model_R2.get_counters(), {0}, 1u);
+    counter_gains(model_R2.get_counters(), {0}, 0u);
+    counter_loss(model_R2.get_counters(), {0}, 0u);
 
-    rule_dyn_limit_changes(model_R2.get_support(), 0, 0, 4, true);
-    rule_dyn_limit_changes(model_R2.get_support(), 1, 0, 4, false);
+    rule_dyn_limit_changes(model_R2.get_support(), 0, 0, 4, 1u);
+    rule_dyn_limit_changes(model_R2.get_support(), 1, 0, 4, 0u);
 
     model_R2.init();
 
