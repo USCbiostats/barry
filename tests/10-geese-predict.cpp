@@ -174,7 +174,7 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     counter_loss(model_R.get_counters(), {0}, 0u);
 
     rule_dyn_limit_changes(model_R.get_support(), 0, 0, 4, 1u);
-    rule_dyn_limit_changes(model_R.get_support(), 1, 0, 4, 0u);
+    rule_dyn_limit_changes(model_R.get_support(), 0, 0, 4, 0u);
 
     model_R.init();
 

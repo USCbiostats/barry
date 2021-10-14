@@ -1,6 +1,3 @@
-// #include <vector>
-// #include <stdexcept>
-
 #include "typedefs.hpp"
 
 #ifndef BARRY_RULES_BONES_HPP
@@ -12,8 +9,10 @@ bool rule_fun_default(const Array_Type * array, uint i, uint j, Data_Type * dat)
 }
 
 /**
-  * @brief Rule for determining if a cell should be included in a sequence
-  * @details Rules can be used together with `Support` and `PowerSet` to determine
+  * @brief
+  * Rule for determining if a cell should be included in a sequence
+  * @details
+  * Rules can be used together with `Support` and `PowerSet` to determine
   * which cells should be included when enumerating all possible realizations of
   * a binary array.
   * @tparam Array_Type An object of class `BArray`.

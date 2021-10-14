@@ -2,19 +2,22 @@
 #define BARRAY_PHYLO_H 1
 
 // Default value that is used for the counters.
-#define DEFAULT_DUPLICATION 2u
+#define DEFAULT_DUPLICATION 1u
 #define DUPL_SPEC 0u
 #define DUPL_DUPL 1u
 #define DUPL_EITH 2u
 
 
-#define MAKE_DUPL_VARS() bool DPL = Array.D()->duplication; unsigned int DATA_AT = data->at(0u);
-#define IS_EITHER() (DATA_AT == DUPL_EITH)
-#define IS_DUPLICATION() ((DATA_AT == DUPL_DUPL) && (DPL))
-#define IS_SPECIATION() ((DATA_AT == DUPL_SPEC) && (!DPL))
+#define MAKE_DUPL_VARS() \
+    bool DPL = Array.D()->duplication; \
+    unsigned int DATA_AT = data->at(0u);
+
+#define IS_EITHER()      (DATA_AT == DUPL_EITH)
+#define IS_DUPLICATION() ((DATA_AT == DUPL_DUPL) & (DPL))
+#define IS_SPECIATION()  ((DATA_AT == DUPL_SPEC) & (!DPL))
 
 #define IF_MATCHES() MAKE_DUPL_VARS() \
-    if (IS_EITHER() || IS_DUPLICATION() || IS_SPECIATION())
+    if (IS_EITHER() | IS_DUPLICATION() | IS_SPECIATION())
 #define IF_NOTMATCHES() MAKE_DUPL_VARS() \
     if (!IS_EITHER() & !IS_DUPLICATION() & !IS_SPECIATION())
 
@@ -203,6 +206,10 @@ inline void counter_gains(
 
     PHYLO_COUNTER_LAMBDA(tmp_count)
     {
+
+        // Is there any gain?
+        if (Array.D()->states[i])
+            return 0.0;
 
         IF_MATCHES()
             return (i == data->at(1u)) ? 1.0 : 0.0;
@@ -1410,13 +1417,13 @@ public:
     uint pos;
     uint lb;
     uint ub;
-    bool duplication;
+    uint duplication;
     PhyloRuleDynData(
         const std::vector< double > * counts_,
         uint pos_,
         uint lb_,
         uint ub_,
-        bool duplication_
+        uint duplication_
         ) :
         counts(counts_), pos(pos_), lb(lb_), ub(ub_), duplication(duplication_) {};
     
@@ -1444,9 +1451,15 @@ inline void rule_dyn_limit_changes(
     PHYLO_RULE_DYN_LAMBDA(tmp_rule)
     {
 
-        if (data->duplication != Array.D()->duplication)
-            return true;
-        
+        unsigned int rule_type = data->duplication;
+        if (rule_type != DUPL_EITH)
+        {
+            if (Array.D()->duplication & (rule_type != DUPL_DUPL))
+                return true;
+            else if (!Array.D()->duplication & (rule_type != DUPL_SPEC))
+                return true;
+        }
+
         if (data->counts->operator[](data->pos) < data->lb)
             return false;
         else if (data->counts->operator[](data->pos) > data->ub)

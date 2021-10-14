@@ -27,12 +27,12 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
     
     // Adding counters
     PhyloStatsCounter counter(&A1_dpl);
-    counter_gains(counter.get_counters(), {0u, 1u, 2u}, true);
-    counter_gains(counter.get_counters(), {0u, 1u, 2u}, false);
-    counter_loss(counter.get_counters(), {0u, 1u, 2u}, true);
-    counter_loss(counter.get_counters(), {0u, 1u, 2u}, false);
-    counter_overall_changes(counter.get_counters(), true);
-    counter_overall_changes(counter.get_counters(), false);
+    counter_gains(counter.get_counters(), {0u, 1u, 2u}, 1u);
+    counter_gains(counter.get_counters(), {0u, 1u, 2u}, 0u);
+    counter_loss(counter.get_counters(), {0u, 1u, 2u}, 1u);
+    counter_loss(counter.get_counters(), {0u, 1u, 2u}, 0u);
+    counter_overall_changes(counter.get_counters(), 1u);
+    counter_overall_changes(counter.get_counters(), 0u);
 
     std::vector< double > ans1_dpl_obs      = counter.count_all();
     std::vector< double > ans1_dpl_expected = {
