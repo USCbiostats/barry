@@ -1,13 +1,14 @@
 var searchData=
 [
-  ['val_476',['val',['../class_entries.html#ae0726e20b17868665cdae6ff70f93bb4',1,'Entries']]],
-  ['value_477',['value',['../class_cell.html#a5df1609bc0705830ec4dc6e177ddc955',1,'Cell::value()'],['../barraydense-meet_8hpp.html#aab1acb2e02943ba321bb1bccdc5e0727',1,'value():&#160;barraydense-meet.hpp']]],
-  ['vec_5fdiff_478',['vec_diff',['../geese-bones_8hpp.html#ac4e3e3e3920b3bbde57ac1ed395e9983',1,'geese-bones.hpp']]],
-  ['vec_5fequal_479',['vec_equal',['../typedefs_8hpp.html#a0520b46efb182c4254e257ff5c5e7394',1,'typedefs.hpp']]],
-  ['vec_5fequal_5fapprox_480',['vec_equal_approx',['../typedefs_8hpp.html#aec4a47b2d5c6f46872f300633cf1e938',1,'typedefs.hpp']]],
-  ['vec_5finner_5fprod_481',['vec_inner_prod',['../typedefs_8hpp.html#a843abed15fe9f1be82d863feef016c36',1,'typedefs.hpp']]],
-  ['vechasher_482',['vecHasher',['../structvec_hasher.html',1,'']]],
-  ['vector_5fcaster_483',['vector_caster',['../geese-bones_8hpp.html#a13c91ee42db6c3b986acbbac4ee58cb0',1,'geese-bones.hpp']]],
-  ['vertex_5fattr_484',['vertex_attr',['../class_network_data.html#a3dc3e5549abc6daa85f30dbdc504ecac',1,'NetworkData']]],
-  ['visited_485',['visited',['../class_b_array.html#ae0860bf21425397d1498f94da6518e85',1,'BArray::visited()'],['../class_b_array_dense.html#a98a7e8e1f6d19de2ae0a857d7fd7d2f1',1,'BArrayDense::visited()'],['../class_cell.html#a1f539a05953fa05d723c32e718f0eeb3',1,'Cell::visited()'],['../class_node.html#aa1bdec4e775fc578632e6a2dced9e251',1,'Node::visited()']]]
+  ['v_487',['v',['../barraydense-meet_8hpp.html#a4f9d6b06db1b3136e48630969fea3b9a',1,'barraydense-meet.hpp']]],
+  ['val_488',['val',['../class_entries.html#ae0726e20b17868665cdae6ff70f93bb4',1,'Entries']]],
+  ['value_489',['value',['../class_cell.html#a5df1609bc0705830ec4dc6e177ddc955',1,'Cell::value()'],['../barraydense-meet_8hpp.html#aab1acb2e02943ba321bb1bccdc5e0727',1,'value():&#160;barraydense-meet.hpp']]],
+  ['vec_5fdiff_490',['vec_diff',['../geese-bones_8hpp.html#ac4e3e3e3920b3bbde57ac1ed395e9983',1,'geese-bones.hpp']]],
+  ['vec_5fequal_491',['vec_equal',['../typedefs_8hpp.html#a0520b46efb182c4254e257ff5c5e7394',1,'typedefs.hpp']]],
+  ['vec_5fequal_5fapprox_492',['vec_equal_approx',['../typedefs_8hpp.html#aec4a47b2d5c6f46872f300633cf1e938',1,'typedefs.hpp']]],
+  ['vec_5finner_5fprod_493',['vec_inner_prod',['../typedefs_8hpp.html#a843abed15fe9f1be82d863feef016c36',1,'typedefs.hpp']]],
+  ['vechasher_494',['vecHasher',['../structvec_hasher.html',1,'']]],
+  ['vector_5fcaster_495',['vector_caster',['../geese-bones_8hpp.html#a13c91ee42db6c3b986acbbac4ee58cb0',1,'geese-bones.hpp']]],
+  ['vertex_5fattr_496',['vertex_attr',['../class_network_data.html#a3dc3e5549abc6daa85f30dbdc504ecac',1,'NetworkData']]],
+  ['visited_497',['visited',['../class_b_array.html#ae0860bf21425397d1498f94da6518e85',1,'BArray::visited()'],['../class_b_array_dense.html#a98a7e8e1f6d19de2ae0a857d7fd7d2f1',1,'BArrayDense::visited()'],['../class_cell.html#a1f539a05953fa05d723c32e718f0eeb3',1,'Cell::visited()'],['../class_node.html#aa1bdec4e775fc578632e6a2dced9e251',1,'Node::visited()']]]
 ];
