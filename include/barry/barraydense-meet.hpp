@@ -4,6 +4,13 @@
 #ifndef BARRY_BARRAYDENSE_MEAT_HPP
 #define BARRY_BARRAYDENSE_MEAT_HPP 
 
+#define BDENSE_TYPE() BArrayDense<Cell_Type, Data_Type>
+
+#define BDENSE_TEMPLATE_ARGS() <typename Cell_Type, typename Data_Type>
+
+#define BDENSE_TEMPLATE(a,b) \
+    template BDENSE_TEMPLATE_ARGS() inline a BDENSE_TYPE()::b
+
 #define ROW(a) this->el_ij[a]
 #define COL(a) this->el_ji[a]
 #define POS(a,b) (b)*N + (a)
@@ -14,8 +21,7 @@ Cell<Cell_Type> BArrayDense<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>
 #define ZERO_CELL Cell< Cell_Type >(static_cast< Cell_Type >(0.0))
 
 // Edgelist with data
-template<typename Cell_Type, typename Data_Type>
-inline BArrayDense< Cell_Type,Data_Type >::BArrayDense (
+BDENSE_TEMPLATE(, BArrayDense)(
     uint N_, uint M_,
     const std::vector< uint > & source,
     const std::vector< uint > & target,
@@ -61,8 +67,7 @@ inline BArrayDense< Cell_Type,Data_Type >::BArrayDense (
 }
 
 // Edgelist with data
-template<typename Cell_Type, typename Data_Type>
-inline BArrayDense< Cell_Type,Data_Type >::BArrayDense (
+BDENSE_TEMPLATE(, BArrayDense)(
     uint N_, uint M_,
     const std::vector< uint > & source,
     const std::vector< uint > & target,
@@ -116,9 +121,8 @@ inline BArrayDense< Cell_Type,Data_Type >::BArrayDense (
   
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArrayDense<Cell_Type,Data_Type>::BArrayDense(
-    const BArrayDense<Cell_Type,Data_Type> & Array_,
+BDENSE_TEMPLATE(, BArrayDense)(
+    const BDENSE_TYPE() & Array_,
     bool copy_data
 ) : N(Array_.N), M(Array_.M){
   
@@ -152,9 +156,8 @@ inline BArrayDense<Cell_Type,Data_Type>::BArrayDense(
   
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArrayDense<Cell_Type,Data_Type> & BArrayDense<Cell_Type,Data_Type>::operator=(
-    const BArrayDense<Cell_Type,Data_Type> & Array_
+BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=) (
+    const BDENSE_TYPE() & Array_
 ) {
   
     // Clearing
@@ -192,9 +195,8 @@ inline BArrayDense<Cell_Type,Data_Type> & BArrayDense<Cell_Type,Data_Type>::oper
   
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArrayDense<Cell_Type,Data_Type>::BArrayDense(
-    BArrayDense<Cell_Type,Data_Type> && x
+BDENSE_TEMPLATE(, BArrayDense)(
+    BDENSE_TYPE() && x
     ) noexcept :
     N(std::move(x.N)), M(std::move(x.M)),
     NCells(std::move(x.NCells)),
@@ -208,10 +210,9 @@ inline BArrayDense<Cell_Type,Data_Type>::BArrayDense(
 
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArrayDense<Cell_Type,Data_Type> & BArrayDense<Cell_Type,Data_Type>::operator=(
-    BArrayDense<Cell_Type,Data_Type> && x
-) noexcept {
+BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=)(
+    BDENSE_TYPE() && x
+    ) noexcept {
   
     // Clearing
     if (this != &x)
@@ -250,9 +251,8 @@ inline BArrayDense<Cell_Type,Data_Type> & BArrayDense<Cell_Type,Data_Type>::oper
   
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline bool BArrayDense<Cell_Type,Data_Type>::operator==(
-    const BArrayDense<Cell_Type,Data_Type> & Array_
+BDENSE_TEMPLATE(bool, operator==) (
+    const BDENSE_TYPE() & Array_
 ) {
     
     // Dimension and number of cells used
@@ -269,8 +269,7 @@ inline bool BArrayDense<Cell_Type,Data_Type>::operator==(
     return true;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArrayDense<Cell_Type,Data_Type>::~BArrayDense() {
+BDENSE_TEMPLATE(, ~BArrayDense) () {
     
     if (delete_data && (data != nullptr))
         delete data;
@@ -278,8 +277,7 @@ inline BArrayDense<Cell_Type,Data_Type>::~BArrayDense() {
     return;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline void BArrayDense<Cell_Type,Data_Type>::set_data(
+BDENSE_TEMPLATE(void, set_data) (
     Data_Type * data_, bool delete_data_
 ) {  
 
@@ -293,18 +291,15 @@ inline void BArrayDense<Cell_Type,Data_Type>::set_data(
     
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline Data_Type * BArrayDense<Cell_Type,Data_Type>::D() {
+BDENSE_TEMPLATE(Data_Type *, D) () {
     return this->data;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline const Data_Type * BArrayDense<Cell_Type,Data_Type>::D() const {
+BDENSE_TEMPLATE(const Data_Type *, D) () const {
     return this->data;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline void BArrayDense< Cell_Type,Data_Type >::out_of_range(uint i, uint j) const {
+BDENSE_TEMPLATE(void, out_of_range) (uint i, uint j) const {
     if (i >= N)
         throw std::range_error("The row is out of range.");
     else if (j >= M)
@@ -312,9 +307,7 @@ inline void BArrayDense< Cell_Type,Data_Type >::out_of_range(uint i, uint j) con
     return;
 }
     
-
-template<typename Cell_Type, typename Data_Type>
-inline Cell_Type BArrayDense< Cell_Type,Data_Type >::get_cell(
+BDENSE_TEMPLATE(Cell_Type, get_cell) (
     uint i, uint j, bool check_bounds
 ) const {
     
@@ -326,9 +319,9 @@ inline Cell_Type BArrayDense< Cell_Type,Data_Type >::get_cell(
     
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline std::vector<Cell_Type>
-BArrayDense< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const {
+BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
+    uint i, bool check_bounds
+    ) const {
 
     // Checking boundaries  
     if (check_bounds) 
@@ -341,9 +334,7 @@ BArrayDense< Cell_Type,Data_Type >::get_row_vec(uint i, bool check_bounds) const
     return ans;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline void
-BArrayDense< Cell_Type,Data_Type >::get_row_vec(
+BDENSE_TEMPLATE(void, get_row_vec) (
     std::vector<Cell_Type> * x,
     uint i, bool check_bounds
     ) const {
@@ -357,9 +348,9 @@ BArrayDense< Cell_Type,Data_Type >::get_row_vec(
     
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline std::vector<Cell_Type>
-BArrayDense< Cell_Type,Data_Type >::get_col_vec(uint i, bool check_bounds) const {
+BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
+    uint i, bool check_bounds
+    ) const {
 
     // Checking boundaries  
     if (check_bounds) 
@@ -372,9 +363,7 @@ BArrayDense< Cell_Type,Data_Type >::get_col_vec(uint i, bool check_bounds) const
     return ans;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline void
-BArrayDense< Cell_Type,Data_Type >::get_col_vec(
+BDENSE_TEMPLATE(void, get_col_vec) (
     std::vector<Cell_Type> * x,
     uint i, bool check_bounds) const {
 
@@ -387,8 +376,9 @@ BArrayDense< Cell_Type,Data_Type >::get_col_vec(
     
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline const Row_type< Cell_Type > & BArrayDense<Cell_Type, Data_Type>::row(uint i, bool check_bounds) const {
+BDENSE_TEMPLATE(const Row_type< Cell_Type > &, row)(
+    uint i, bool check_bounds
+    ) const {
 
     if (check_bounds)
         out_of_range(i, 0u);
@@ -397,8 +387,9 @@ inline const Row_type< Cell_Type > & BArrayDense<Cell_Type, Data_Type>::row(uint
 
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline const Col_type< Cell_Type > & BArrayDense<Cell_Type, Data_Type>::col(uint i, bool check_bounds) const {
+BDENSE_TEMPLATE(const Col_Type< Cell_Type > &, col)(
+    uint i, bool check_bounds
+    ) const {
 
     if (check_bounds)
         out_of_range(0u, i);
@@ -1090,6 +1081,10 @@ inline void BArrayDense< Cell_Type, Data_Type >::print() const {
 #undef ROW
 #undef COL
 #undef POS
+
+#undef BDENSE_TYPE
+#undef BDENSE_TEMPLATE_ARGS
+#undef BDENSE_TEMPLATE
 
 #endif
 
