@@ -129,6 +129,12 @@ public:
      * 0, 1, and 9.
      * @param geneid Id of the gene. It should be of length `N`.
      * @param parent Id of the parent gene. Also of length `N`
+     * @param duplication Logical scalar indicating the type of event (true:
+     * duplication, false: speciation.)
+     * 
+     * @details 
+     * The ordering of the entries does not matter. Passing the nodes in post
+     * order or not makes no difference to the constructor.
      */
     ///@{
     Geese();

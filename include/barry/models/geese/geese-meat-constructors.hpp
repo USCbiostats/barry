@@ -19,9 +19,9 @@ inline Geese::Geese() {
 
 inline Geese::Geese(
     std::vector< std::vector<unsigned int> > & annotations,
-    std::vector< unsigned int > & geneid,
-    std::vector< int > &          parent,
-    std::vector< bool > &         duplication
+    std::vector< unsigned int > &              geneid,
+    std::vector< int > &                       parent,
+    std::vector< bool > &                      duplication
 ) {
 
     // In order to start...
@@ -40,9 +40,12 @@ inline Geese::Geese(
     nfunctions = annotations.at(0u).size();
 
     // unsigned int n = annotations.size();
-    for (auto& iter : annotations) {
+    for (auto& iter : annotations)
+    {
+
         if (iter.size() != nfunctions)
             throw std::length_error("Not all the annotations have the same length");
+
     }
 
     // Grouping up the data by parents -----------------------------------------
@@ -63,7 +66,8 @@ inline Geese::Geese(
             });
 
             // Case 1a: i does not exists
-            if (nodes.find(geneid.at(i)) == nodes.end()) {
+            if (nodes.find(geneid.at(i)) == nodes.end())
+            {
 
                 auto key_off = nodes.insert({
                     geneid.at(i),
@@ -95,7 +99,8 @@ inline Geese::Geese(
         } else { // Case 2: Either this is the root, or the parent does exists
 
             // Case 2a: i does not exists (but its parent does)
-            if (nodes.find(geneid.at(i)) == nodes.end()) {
+            if (nodes.find(geneid.at(i)) == nodes.end())
+            {
 
                 // Adding i
                 auto key_off = nodes.insert({
@@ -104,7 +109,8 @@ inline Geese::Geese(
                     });
 
                 // We only do this if this is not the root
-                if (parent.at(i) >= 0) {
+                if (parent.at(i) >= 0)
+                {
 
                     nodes[parent.at(i)].offspring.push_back(
                         &key_off.first->second
@@ -122,7 +128,8 @@ inline Geese::Geese(
                 nodes[geneid.at(i)].annotations = funs;
                 nodes[geneid.at(i)].ord         = i;
 
-                if (parent.at(i) >= 0) {
+                if (parent.at(i) >= 0)
+                {
 
                     nodes[geneid.at(i)].parent = &nodes[parent.at(i)];
                     nodes[parent.at(i)].offspring.push_back(
@@ -219,26 +226,31 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
 
     
     // Replicating -------------------------------------------------------------
-    if (copy_data) {
+    if (copy_data)
+    {
 
-        if (model_.rengine != nullptr) {
+        if (model_.rengine != nullptr)
+        {
             rengine = new std::mt19937(*(model_.rengine));
             delete_rengine = true;
         }
 
-        if (model_.model != nullptr) {
+        if (model_.model != nullptr)
+        {
             model = new phylocounters::PhyloModel(*(model_.model));
             delete_support = true;
         }
 
     } else {
         
-        if (model_.rengine != nullptr) {
+        if (model_.rengine != nullptr)
+        {
             rengine = model_.rengine;
             delete_rengine = false;
         }
 
-        if (model_.model != nullptr) {
+        if (model_.model != nullptr)
+        {
             model = model_.model;
             delete_support = false;
         }
@@ -253,7 +265,8 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
     auto revseq = this->sequence;
     std::reverse(revseq.begin(), revseq.end());
 
-    for (auto& i : revseq) {
+    for (auto& i : revseq)
+    {
 
         // Leaf do not have offspring
         if (this->nodes[i].is_leaf())
@@ -266,9 +279,8 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
         // create an entry with it (alegedly).
         auto n = model_.nodes.find(i);
 
-        for (const auto& off : n->second.offspring) {
+        for (const auto& off : n->second.offspring)
             this->nodes[i].offspring.push_back(&this->nodes[off->id]);
-        }
 
     }
 
@@ -293,7 +305,8 @@ inline Geese::Geese(Geese && x) noexcept :
     initialized(x.initialized)
 {
 
-    if (x.delete_rengine) {
+    if (x.delete_rengine)
+    {
 
         rengine = new std::mt19937(*x.rengine);
         delete_rengine = true;
@@ -305,7 +318,8 @@ inline Geese::Geese(Geese && x) noexcept :
 
     }
 
-    if (x.delete_support) {
+    if (x.delete_support)
+    {
 
         model = new phylocounters::PhyloModel(*x.model);
         delete_support = true;

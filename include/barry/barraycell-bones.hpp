@@ -15,7 +15,9 @@ public:
   
     BArrayCell(BArray<Cell_Type,Data_Type> * Array_, uint i_, uint j_, bool check_bounds = true) : 
     Array(Array_), i(i_), j(j_) {
-        if (check_bounds) {
+
+        if (check_bounds)
+        {
 
             if (i >= Array->nrow())
                 throw std::length_error("Row out of range.");
@@ -23,6 +25,7 @@ public:
                 throw std::length_error("Col out of range.");
 
         }
+
     };
 
     ~BArrayCell(){};
@@ -36,6 +39,8 @@ public:
     bool operator==(const Cell_Type & val) const;
   
 };
+
+
 
 template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArrayCell_const {

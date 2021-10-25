@@ -39,7 +39,7 @@ inline void Progress::next() {
     if (!(step++ % step_size))
     {
         for (int j = 0; j < n_bars; ++j)
-            printf("|");
+            printf_barry("|");
     }
 
 };
@@ -48,9 +48,9 @@ inline void Progress::end() {
 
     int reminder = static_cast<int>(width) - n_bars * n_steps;
     for (int j = 0; j < reminder; ++j)
-        printf("|");
+        printf_barry("|");
     
-    printf(" done.\n");
+    printf_barry(" done.\n");
 
 };
 
