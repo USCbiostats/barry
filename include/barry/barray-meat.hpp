@@ -645,6 +645,7 @@ BARRAY_TEMPLATE(void, rm_cell) (
     NCells--;
     
     return;
+    
 }
 
 BARRAY_TEMPLATE(void, insert_cell) (

@@ -7,6 +7,7 @@ template <typename Cell_Type>
 Cell<Cell_Type>& Cell<Cell_Type>::operator=(Cell<Cell_Type>& other) {
     this->value   = other.value;
     this->visited = other.visited;
+    this->active  = other.active;
     return *this;
 }
 
@@ -14,6 +15,7 @@ template <typename Cell_Type>
 Cell<Cell_Type>& Cell<Cell_Type>::operator=(Cell<Cell_Type>&& other) noexcept {
     this->value   = std::move(other.value);
     this->visited = std::move(other.visited);
+    this->active  = std::move(other.active);
     return *this;
 }
 
@@ -59,9 +61,9 @@ template <> inline void Cell<bool>::add(bool x) {
     return;
 }
 
-template<> inline Cell< double >::Cell() : value(1.0), visited(false) {}
-template<> inline Cell< uint >::Cell() : value(1u), visited(false) {}
-template<> inline Cell< int >::Cell() : value(1), visited(false) {}
-template<> inline Cell< bool >::Cell() : value(true), visited(false) {}
+template<> inline Cell< double >::Cell() : value(1.0), visited(false), active(true) {}
+template<> inline Cell< uint >::Cell() : value(1u), visited(false), active(true) {}
+template<> inline Cell< int >::Cell() : value(1), visited(false), active(true) {}
+template<> inline Cell< bool >::Cell() : value(true), visited(false), active(true) {}
 
 #endif

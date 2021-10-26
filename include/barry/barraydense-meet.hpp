@@ -14,6 +14,7 @@
 #define ROW(a) this->el_ij[a]
 #define COL(a) this->el_ji[a]
 #define POS(a,b) (b)*N + (a)
+#define POS_N(a,b,c) (b)*(c) + (a)
 
 template<typename Cell_Type, typename Data_Type>
 Cell<Cell_Type> BArrayDense<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(); 
@@ -38,8 +39,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
     N = N_;
     M = M_;
 
-    el.resize(N * M, ZERO_CELL);
-    
+    el.resize(N, M);
     
     // Writing the data
     for (uint i = 0u; i < source.size(); ++i)
@@ -299,16 +299,24 @@ BDENSE_TEMPLATE(const Data_Type *, D) () const {
     return this->data;
 }
 
-BDENSE_TEMPLATE(void, out_of_range) (uint i, uint j) const {
+BDENSE_TEMPLATE(void, out_of_range) (
+    uint i,
+    uint j
+) const {
+
     if (i >= N)
         throw std::range_error("The row is out of range.");
     else if (j >= M)
         throw std::range_error("The column is out of range.");
+
     return;
+
 }
     
 BDENSE_TEMPLATE(Cell_Type, get_cell) (
-    uint i, uint j, bool check_bounds
+    uint i,
+    uint j,
+    bool check_bounds
 ) const {
     
     // Checking boundaries  
@@ -320,8 +328,9 @@ BDENSE_TEMPLATE(Cell_Type, get_cell) (
 }
 
 BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
-    uint i, bool check_bounds
-    ) const {
+    uint i,
+    bool check_bounds
+) const {
 
     // Checking boundaries  
     if (check_bounds) 
@@ -332,12 +341,14 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
         ans[j] = el[POS(i, j)];
     
     return ans;
+
 }
 
 BDENSE_TEMPLATE(void, get_row_vec) (
     std::vector<Cell_Type> * x,
-    uint i, bool check_bounds
-    ) const {
+    uint i,
+    bool check_bounds
+) const {
 
     // Checking boundaries  
     if (check_bounds) 
@@ -349,8 +360,9 @@ BDENSE_TEMPLATE(void, get_row_vec) (
 }
 
 BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
-    uint i, bool check_bounds
-    ) const {
+    uint i,
+    bool check_bounds
+) const {
 
     // Checking boundaries  
     if (check_bounds) 
@@ -361,6 +373,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
         ans[j] = el[POS(j, i)];
     
     return ans;
+
 }
 
 BDENSE_TEMPLATE(void, get_col_vec) (
@@ -418,21 +431,15 @@ BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
 }
 
 BDENSE_TEMPLATE(bool, is_empty)(
-    uint i, uint j, bool check_bounds
+    uint i,
+    uint j,
+    bool check_bounds
 ) const {
     
     if (check_bounds)
         out_of_range(i, j);
     
-    if (ROW(i).size() == 0u)
-        return true;
-    else if (COL(j).size() == 0u)
-        return true;
-    
-    if (ROW(i).find(j) == ROW(i).end())
-        return true;
-    
-    return false;
+    return el[POS(i, j)].active;
     
 }
 
@@ -500,30 +507,18 @@ inline const BArrayDenseCell_const<Cell_Type,Data_Type> BDENSE_TYPE()::operator(
 }
 
 BDENSE_TEMPLATE(void, rm_cell) (
-        uint i, uint j, bool check_bounds, bool check_exists
-    ) {
+    uint i,
+    uint j,
+    bool check_bounds,
+    bool check_exists
+) {
     
     // Checking the boundaries
     if (check_bounds)
         out_of_range(i,j);
-    
-    if (check_exists) {
-        // Nothing to do
-        if (ROW(i).size() == 0u)
-            return;
         
-        // Checking the counter part
-        if (COL(j).size() == 0u)
-            return;
-        
-        // Hard work, need to remove it from both, if it exist
-        if (ROW(i).find(j) == ROW(i).end())
-            return;
-    }
-    
     // Remove the pointer first (so it wont point to empty)
-    COL(j).erase(i);
-    ROW(i).erase(j);
+    el[POS(i, j)].active = false;
     
     NCells--;
     
@@ -886,14 +881,13 @@ BDENSE_TEMPLATE(void, zero_row) (
     if (check_bounds)
         out_of_range(i, 0u);
     
-    // Nothing to do
-    if (ROW(i).size() == 0u)
+    // If already empty, nothing to do
+    if (NCells == 0u)
         return;
-    
+
     // Else, remove all elements
-    auto row0 = ROW(i);
-    for (auto row = row0.begin(); row != row0.end(); ++row) 
-        rm_cell(i, row->first, false, false);
+    for (unsigned int col = 0u; col < M; col++) 
+        rm_cell(i, col, false, false);
     
     return;
   
@@ -908,13 +902,12 @@ BDENSE_TEMPLATE(void, zero_col) (
         out_of_range(0u, j);
     
     // Nothing to do
-    if (COL(j).size() == 0u)
+    if (NCells == 0u)
         return;
     
     // Else, remove all elements
-    auto col0 = COL(j);
-    for (auto col = col0.begin(); col != col0.end(); ++col) 
-        rm_cell(col->first, j, false, false);
+    for (unsigned int row = 0u; row < N; row++) 
+        rm_cell(row, j, false, false);
     
     return;
   
@@ -1003,29 +996,42 @@ BDENSE_TEMPLATE(void, clear) (
 BDENSE_TEMPLATE(void, resize) (
     uint N_,
     uint M_
-  ) {
-  
-    // Removing rows
-    if (N_ < N)
-        for (uint i = N_; i < N; ++i)
-            zero_row(i, false);
-    
-    // Removing cols
-    if (M_ < M)
-        for (uint j = M_; j < M; ++j)
-            zero_col(j, false);
-    
-    // Resizing will invalidate pointers and values out of range
-    if (M_ != M) {
-        el_ji.resize(M_);
-        M = M_;
-    }
-    
-    if (N_ != N) {
-        el_ij.resize(N_);
+) {
+
+    // If already empty, it is very simple
+    if (NCells == 0u)
+    {
+        
+        el.resize(N_ * M_);
         N = N_;
+        M = M_;
+        return;
+
     }
-    
+  
+    // Moving stuff around
+    std::vector< Cell< Cell_Type > > el_tmp(std::move(el));
+    el.resize(N_ * M_);
+    for (unsigned int i = 0u; i < N; ++i)
+    {
+        // If reached the end
+        if (i >= N_)
+            break;
+
+        for (unsigned int j = 0u; j < M; ++j)
+        {
+
+            if (j >= M_)
+                break;
+
+            std::swap(el_tmp[POS_N(i, j, N_)], el[POS(i, j)]);
+
+        }
+
+    }
+
+    N = N_;
+    M = M_;
     
     return;
 
@@ -1064,6 +1070,7 @@ BDENSE_TEMPLATE(void, print) () const {
 #undef ROW
 #undef COL
 #undef POS
+#undef POS_N
 
 #undef BDENSE_TYPE
 #undef BDENSE_TEMPLATE_ARGS

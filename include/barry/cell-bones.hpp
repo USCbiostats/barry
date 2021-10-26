@@ -14,6 +14,7 @@ template <class Cell_Type > class Cell {
 public:
     Cell_Type value;
     bool visited;
+    bool active;
     Cell();
     Cell(Cell_Type value_, bool visited_ = false) :
         value(value_), visited(visited_) {};
@@ -21,7 +22,8 @@ public:
     
     // This is an explicit declaration since in other cases it seems
     // to try to use the move operator, which I do not intent to use.
-    Cell(const Cell<Cell_Type>& arg) : value(arg.value), visited(arg.visited) {};
+    Cell(const Cell<Cell_Type>& arg) :
+        value(arg.value), visited(arg.visited), active(arg.active) {};
     
     // Copy by assignment
     Cell<Cell_Type>& operator=(Cell<Cell_Type>& other);
@@ -29,7 +31,8 @@ public:
     // Move constructor
     Cell(Cell<Cell_Type>&& arg) noexcept:
         value(std::move(arg.value)),
-        visited(std::move(arg.visited)) {} ;
+        visited(std::move(arg.visited)),
+        active(std::move(arg.active)) {} ;
     
     // Move assign operator
     Cell<Cell_Type>& operator=(Cell<Cell_Type>&& other) noexcept;
