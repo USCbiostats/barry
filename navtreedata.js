@@ -44,7 +44,7 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
-        [ "Functions", "globals_func.html", null ],
+        [ "Functions", "globals_func.html", "globals_func" ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
@@ -56,10 +56,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_b_array_dense.html#a81fad3617cdc70925d04c7a14c415ec4",
-"class_model.html#a64f75d5e8fda31a27e3bf2aeb95a81da",
-"flock-meat_8hpp.html",
-"phylo_8hpp.html#aca4644373aecf9b296ac8ac730470952"
+"class_b_array.html#a4790d707fcf6a5b552816258922ca25b",
+"class_flock.html#acfa9efc24a1ff2f0f31206570da51259",
+"class_support.html#a8af9d807ce23c9f7259138b5aebdda31",
+"group__counters-phylo.html#ga32a7d5bf639d776e6293ab466e204303"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
