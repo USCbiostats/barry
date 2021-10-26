@@ -137,7 +137,7 @@ Macros</h2></td></tr>
 <tr class="separator:abf33b097799b4bfe44ec4477c592b0b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1715b9a21ce267cafd44c884fc4bb72c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a1715b9a21ce267cafd44c884fc4bb72c">POS_N</a>(a,  b,  c)&#160;&#160;&#160;(b)*(c) + (a)</td></tr>
 <tr class="separator:a1715b9a21ce267cafd44c884fc4bb72c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51b85d6bd8e8ab46aa8578ad029fbc54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a51b85d6bd8e8ab46aa8578ad029fbc54">ZERO_CELL</a>&#160;&#160;&#160;<a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt;(static_cast&lt; Cell_Type &gt;(0.0))</td></tr>
+<tr class="memitem:a51b85d6bd8e8ab46aa8578ad029fbc54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a51b85d6bd8e8ab46aa8578ad029fbc54">ZERO_CELL</a>&#160;&#160;&#160;<a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt;(static_cast&lt; Cell_Type &gt;(0.0), <a class="el" href="barraydense-meet_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>, <a class="el" href="barraydense-meet_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>)</td></tr>
 <tr class="separator:a51b85d6bd8e8ab46aa8578ad029fbc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -176,8 +176,8 @@ Functions</h2></td></tr>
 <tr class="separator:a5ac68587c09e0fe002496cbb9f83ff43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19e2094a4bdc53d4979b5487555cd2e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a19e2094a4bdc53d4979b5487555cd2e3">BDENSE_TEMPLATE</a> (std::vector&lt; Cell_Type &gt;, get_row_vec)(<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></td></tr>
 <tr class="separator:a19e2094a4bdc53d4979b5487555cd2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12eee12d7ad4ae646f30b21cd540cc2e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; Cell_Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a12eee12d7ad4ae646f30b21cd540cc2e">ans</a> (ncol(),(Cell_Type) <a class="el" href="barraydense-meet_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>)</td></tr>
-<tr class="separator:a12eee12d7ad4ae646f30b21cd540cc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e094024a44e50938f0b8faecb5a82d8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; Cell_Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a2e094024a44e50938f0b8faecb5a82d8">ans</a> (ncol(), static_cast&lt; Cell_Type &gt;(<a class="el" href="barraydense-meet_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>))</td></tr>
+<tr class="separator:a2e094024a44e50938f0b8faecb5a82d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97b82fc7c5f72882fa9757c5750e27b1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a97b82fc7c5f72882fa9757c5750e27b1">BDENSE_TEMPLATE</a> (void, get_row_vec)(std</td></tr>
 <tr class="separator:a97b82fc7c5f72882fa9757c5750e27b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d2f28467ccedaae650fc2ae1875e2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#af9d2f28467ccedaae650fc2ae1875e2e">BDENSE_TEMPLATE</a> (<a class="el" href="barraydense-meet_8hpp.html#ae99abc4214d49e4687514babd6af95f2">BDENSE_TYPE</a>() &amp;, operator-=)(<a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> std</td></tr>
@@ -186,10 +186,6 @@ Functions</h2></td></tr>
 <tr class="separator:a2c49021e4b796df5770dffece34aa5cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea6f7b5467448bc372b30832db3c29d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#aea6f7b5467448bc372b30832db3c29d5">if</a> (<a class="el" href="barraydense-meet_8hpp.html#a55f9b5f5029c8d5cb64a0c3f2a86b41c">check_exists</a>)</td></tr>
 <tr class="separator:aea6f7b5467448bc372b30832db3c29d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b8c44edae0485e461f86ff37b430d0b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a9b8c44edae0485e461f86ff37b430d0b">COL</a> (<a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>).emplace(<a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></td></tr>
-<tr class="separator:a9b8c44edae0485e461f86ff37b430d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0ecf56654c1482f9ba5df87b3afa180"><td class="memItemLeft" align="right" valign="top">&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#ab0ecf56654c1482f9ba5df87b3afa180">ROW</a> (<a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)[<a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>])</td></tr>
-<tr class="separator:ab0ecf56654c1482f9ba5df87b3afa180"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ddc9196f623829fd21ae4182a74a1c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a6ddc9196f623829fd21ae4182a74a1c2">BDENSE_TEMPLATE</a> (void, swap_cells)(<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i0</td></tr>
 <tr class="separator:a6ddc9196f623829fd21ae4182a74a1c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb65203198239b3f540b6e6f8c9efcbe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#acb65203198239b3f540b6e6f8c9efcbe">if</a> (<a class="el" href="barraydense-meet_8hpp.html#a1c97d677615ab6c6430f1a5908d3d248">report</a> !=nullptr)(*<a class="el" href="barraydense-meet_8hpp.html#a1c97d677615ab6c6430f1a5908d3d248">report</a>)</td></tr>
@@ -204,26 +200,8 @@ Functions</h2></td></tr>
 <tr class="separator:ac08f8121a63cf70858235a6af1dcc989"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f9995eed21f5a6af6797726ce5e0df6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a0f9995eed21f5a6af6797726ce5e0df6">BDENSE_TEMPLATE</a> (void, swap_rows)(<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i0</td></tr>
 <tr class="separator:a0f9995eed21f5a6af6797726ce5e0df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c458194455cb842393bbbc9e4196579"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a9c458194455cb842393bbbc9e4196579">if</a> (<a class="el" href="barraydense-meet_8hpp.html#adebf5af9ec07cd7e67e2dcf776d6230b">ROW</a>(i0).size()==0u) move0</td></tr>
-<tr class="separator:a9c458194455cb842393bbbc9e4196579"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1a69de3f8efdce61192a3813845f28a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#af1a69de3f8efdce61192a3813845f28a">if</a> (<a class="el" href="barraydense-meet_8hpp.html#adebf5af9ec07cd7e67e2dcf776d6230b">ROW</a>(<a class="el" href="barraydense-meet_8hpp.html#ae53ac559c37574f7895e8af57d87f849">i1</a>).size()==0u) move1</td></tr>
-<tr class="separator:af1a69de3f8efdce61192a3813845f28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0839ee74b40539432425dcf2bc0bbf91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a0839ee74b40539432425dcf2bc0bbf91">if</a> (!move0 &amp;&amp;!move1) <a class="el" href="barray-meat_8hpp.html#a4725aca18f0b3220c56baad1a1ffc023">return</a></td></tr>
-<tr class="separator:a0839ee74b40539432425dcf2bc0bbf91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adebf5af9ec07cd7e67e2dcf776d6230b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#adebf5af9ec07cd7e67e2dcf776d6230b">ROW</a> (i0).swap(ROW(<a class="el" href="barraydense-meet_8hpp.html#ae53ac559c37574f7895e8af57d87f849">i1</a>))</td></tr>
-<tr class="separator:adebf5af9ec07cd7e67e2dcf776d6230b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b3d675ce8153bfc62d83ab288104d86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a8b3d675ce8153bfc62d83ab288104d86">BDENSE_TEMPLATE</a> (void, swap_cols)(<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="barraydense-meet_8hpp.html#a76215ac0aab4542631c11206d92597e2">j0</a></td></tr>
 <tr class="separator:a8b3d675ce8153bfc62d83ab288104d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3f7115c83f47f2d6f61dff2a62dc939"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#af3f7115c83f47f2d6f61dff2a62dc939">if</a> (<a class="el" href="barraydense-meet_8hpp.html#a9b8c44edae0485e461f86ff37b430d0b">COL</a>(<a class="el" href="barraydense-meet_8hpp.html#a76215ac0aab4542631c11206d92597e2">j0</a>).size()==0u) check0</td></tr>
-<tr class="separator:af3f7115c83f47f2d6f61dff2a62dc939"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae07e7cc10229100eda78de5b8c5f07ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#ae07e7cc10229100eda78de5b8c5f07ce">if</a> (<a class="el" href="barraydense-meet_8hpp.html#a9b8c44edae0485e461f86ff37b430d0b">COL</a>(<a class="el" href="barraydense-meet_8hpp.html#a355f2dae482006084fd82d31f52cbbc1">j1</a>).size()==0u) check1</td></tr>
-<tr class="separator:ae07e7cc10229100eda78de5b8c5f07ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5515b6c59b1c043d59299929f5389c3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#af5515b6c59b1c043d59299929f5389c3">if</a> (check0 &amp;&amp;check1)</td></tr>
-<tr class="separator:af5515b6c59b1c043d59299929f5389c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2397fb65cfb0df3e91daba11f523325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="support-meat_8hpp.html#a0544c3fe466e421738dae463968b70ba">else</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#ae2397fb65cfb0df3e91daba11f523325">if</a> (check0 &amp;&amp;!check1)</td></tr>
-<tr class="separator:ae2397fb65cfb0df3e91daba11f523325"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2670b7febaa1b1f0157d5a3c997b6bd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="support-meat_8hpp.html#a0544c3fe466e421738dae463968b70ba">else</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a2670b7febaa1b1f0157d5a3c997b6bd5">if</a> (!check0 &amp;&amp;check1)</td></tr>
-<tr class="separator:a2670b7febaa1b1f0157d5a3c997b6bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89f271bb8785d58d75830da15edad7f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a89f271bb8785d58d75830da15edad7f9">BDENSE_TEMPLATE</a> (void, zero_row)(<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></td></tr>
 <tr class="separator:a89f271bb8785d58d75830da15edad7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a259115030b047c49c60f9827a5439eb3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a259115030b047c49c60f9827a5439eb3">if</a> (<a class="el" href="barraydense-meet_8hpp.html#aa4487f7305599aa40d6676de295b49c3">NCells</a>==0u) <a class="el" href="barray-meat_8hpp.html#a4725aca18f0b3220c56baad1a1ffc023">return</a></td></tr>
@@ -236,8 +214,8 @@ Functions</h2></td></tr>
 <tr class="separator:a2654d80500b37131b5dfd9b48f4f7486"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bb5cdd91751227abb7aac5a9480322a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a9bb5cdd91751227abb7aac5a9480322a">BDENSE_TEMPLATE</a> (void, <a class="el" href="statscounter-meat_8hpp.html#ae40d2e4f8ecd8bbe53d42f61bc802f8d">resize</a>)(<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> N_</td></tr>
 <tr class="separator:a9bb5cdd91751227abb7aac5a9480322a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f9b5452a6abf711d268fe090d2685c0"><td class="memItemLeft" align="right" valign="top">el&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a5f9b5452a6abf711d268fe090d2685c0">resize</a> (N_ *<a class="el" href="barraydense-meet_8hpp.html#a7ba174ad6ce79b3f56bf6d0ce0d93e34">M_</a>)</td></tr>
-<tr class="separator:a5f9b5452a6abf711d268fe090d2685c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0a26f5432433ff8eedd4f8f5bec0293"><td class="memItemLeft" align="right" valign="top">el&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#aa0a26f5432433ff8eedd4f8f5bec0293">resize</a> (N_ *<a class="el" href="barraydense-meet_8hpp.html#a7ba174ad6ce79b3f56bf6d0ce0d93e34">M_</a>, <a class="el" href="barraydense-meet_8hpp.html#a51b85d6bd8e8ab46aa8578ad029fbc54">ZERO_CELL</a>)</td></tr>
+<tr class="separator:aa0a26f5432433ff8eedd4f8f5bec0293"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7208953f53bfdc02e856d96bca963472"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#a7208953f53bfdc02e856d96bca963472">BDENSE_TEMPLATE</a> (void, reserve)()</td></tr>
 <tr class="separator:a7208953f53bfdc02e856d96bca963472"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe0a873541f888add45cdd45b4d1e26d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barraydense-meet_8hpp.html#afe0a873541f888add45cdd45b4d1e26d">BDENSE_TEMPLATE</a> (void, print)() <a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a></td></tr>
@@ -496,7 +474,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ZERO_CELL&#160;&#160;&#160;<a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt;(static_cast&lt; Cell_Type &gt;(0.0))</td>
+          <td class="memname">#define ZERO_CELL&#160;&#160;&#160;<a class="el" href="class_cell.html">Cell</a>&lt; Cell_Type &gt;(static_cast&lt; Cell_Type &gt;(0.0), <a class="el" href="barraydense-meet_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>, <a class="el" href="barraydense-meet_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -506,8 +484,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a12eee12d7ad4ae646f30b21cd540cc2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12eee12d7ad4ae646f30b21cd540cc2e">&#9670;&nbsp;</a></span>ans()</h2>
+<a id="a2e094024a44e50938f0b8faecb5a82d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e094024a44e50938f0b8faecb5a82d8">&#9670;&nbsp;</a></span>ans()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -521,8 +499,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">(Cell_Type)&#160;</td>
-          <td class="paramname"><em>false</em>&#160;</td>
+          <td class="paramtype">static_cast&lt; Cell_Type &gt;&#160;</td>
+          <td class="paramname">false&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -558,7 +536,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00198">198</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00208">208</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -614,7 +592,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00272">272</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00282">282</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -644,7 +622,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00477">477</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00509">509</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -682,7 +660,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00213">213</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00223">223</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -712,7 +690,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00159">159</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00161">161</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -742,7 +720,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00254">254</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00264">264</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -800,7 +778,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00298">298</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00309">309</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -830,7 +808,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00294">294</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00305">305</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -888,7 +866,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00972">972</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00913">913</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -918,7 +896,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00347">347</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00358">358</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1004,7 +982,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l01052">1052</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00989">989</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1034,7 +1012,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l01040">1040</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00979">979</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1232,7 +1210,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00916">916</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00886">886</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1292,24 +1270,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a9b8c44edae0485e461f86ff37b430d0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b8c44edae0485e461f86ff37b430d0b">&#9670;&nbsp;</a></span>COL()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">COL </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a8b04c8536edde866596e149f2596e451"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8b04c8536edde866596e149f2596e451">&#9670;&nbsp;</a></span>for()</h2>
 
@@ -1329,28 +1289,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a2670b7febaa1b1f0157d5a3c997b6bd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2670b7febaa1b1f0157d5a3c997b6bd5">&#9670;&nbsp;</a></span>if() <span class="overload">[1/14]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="support-meat_8hpp.html#a0544c3fe466e421738dae463968b70ba">else</a> if </td>
-          <td>(</td>
-          <td class="paramtype">!check0 &amp;&amp;&#160;</td>
-          <td class="paramname"><em>check1</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00857">857</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
-
-</div>
-</div>
 <a id="ab3e92e830c19645e08147d844814ed15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3e92e830c19645e08147d844814ed15">&#9670;&nbsp;</a></span>if() <span class="overload">[2/14]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3e92e830c19645e08147d844814ed15">&#9670;&nbsp;</a></span>if() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1365,30 +1305,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00708">708</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a0839ee74b40539432425dcf2bc0bbf91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0839ee74b40539432425dcf2bc0bbf91">&#9670;&nbsp;</a></span>if() <span class="overload">[3/14]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">if </td>
-          <td>(</td>
-          <td class="paramtype">!move0 &amp;&amp;!&#160;</td>
-          <td class="paramname"><em>move1</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00736">736</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
 <a id="a83a48ee41a450e99464538005b262934"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83a48ee41a450e99464538005b262934">&#9670;&nbsp;</a></span>if() <span class="overload">[4/14]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a83a48ee41a450e99464538005b262934">&#9670;&nbsp;</a></span>if() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1403,52 +1325,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00716">716</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ae2397fb65cfb0df3e91daba11f523325"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2397fb65cfb0df3e91daba11f523325">&#9670;&nbsp;</a></span>if() <span class="overload">[5/14]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="support-meat_8hpp.html#a0544c3fe466e421738dae463968b70ba">else</a> if </td>
-          <td>(</td>
-          <td class="paramtype">check0 &amp;&amp;!&#160;</td>
-          <td class="paramname"><em>check1</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00848">848</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
-
-</div>
-</div>
-<a id="af5515b6c59b1c043d59299929f5389c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5515b6c59b1c043d59299929f5389c3">&#9670;&nbsp;</a></span>if() <span class="overload">[6/14]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">if </td>
-          <td>(</td>
-          <td class="paramtype">check0 &amp;&amp;&#160;</td>
-          <td class="paramname"><em>check1</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00821">821</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00744">744</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
 <a id="a11a43692b8a84c51fb1c1947040d55f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11a43692b8a84c51fb1c1947040d55f4">&#9670;&nbsp;</a></span>if() <span class="overload">[7/14]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a11a43692b8a84c51fb1c1947040d55f4">&#9670;&nbsp;</a></span>if() <span class="overload">[3/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1463,12 +1345,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00691">691</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00718">718</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
 <a id="aea6f7b5467448bc372b30832db3c29d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea6f7b5467448bc372b30832db3c29d5">&#9670;&nbsp;</a></span>if() <span class="overload">[8/14]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6f7b5467448bc372b30832db3c29d5">&#9670;&nbsp;</a></span>if() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1483,48 +1365,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00539">539</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
-
-</div>
-</div>
-<a id="af3f7115c83f47f2d6f61dff2a62dc939"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3f7115c83f47f2d6f61dff2a62dc939">&#9670;&nbsp;</a></span>if() <span class="overload">[9/14]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">if </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="barraydense-meet_8hpp.html#a9b8c44edae0485e461f86ff37b430d0b">COL</a>(<a class="el" href="barraydense-meet_8hpp.html#a76215ac0aab4542631c11206d92597e2">j0</a>).size()&#160;</td>
-          <td class="paramname"> = <code>=0u</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae07e7cc10229100eda78de5b8c5f07ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae07e7cc10229100eda78de5b8c5f07ce">&#9670;&nbsp;</a></span>if() <span class="overload">[10/14]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">if </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="barraydense-meet_8hpp.html#a9b8c44edae0485e461f86ff37b430d0b">COL</a>(<a class="el" href="barraydense-meet_8hpp.html#a355f2dae482006084fd82d31f52cbbc1">j1</a>).size()&#160;</td>
-          <td class="paramname"> = <code>=0u</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00577">577</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
 <a id="a259115030b047c49c60f9827a5439eb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a259115030b047c49c60f9827a5439eb3">&#9670;&nbsp;</a></span>if() <span class="overload">[11/14]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a259115030b047c49c60f9827a5439eb3">&#9670;&nbsp;</a></span>if() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1542,7 +1388,7 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a id="acb65203198239b3f540b6e6f8c9efcbe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb65203198239b3f540b6e6f8c9efcbe">&#9670;&nbsp;</a></span>if() <span class="overload">[12/14]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#acb65203198239b3f540b6e6f8c9efcbe">&#9670;&nbsp;</a></span>if() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1552,42 +1398,6 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="barraydense-meet_8hpp.html#a1c97d677615ab6c6430f1a5908d3d248">report</a> !&#160;</td>
           <td class="paramname"> = <code>nullptr</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9c458194455cb842393bbbc9e4196579"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c458194455cb842393bbbc9e4196579">&#9670;&nbsp;</a></span>if() <span class="overload">[13/14]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">if </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="barraydense-meet_8hpp.html#adebf5af9ec07cd7e67e2dcf776d6230b">ROW</a>(i0).size()&#160;</td>
-          <td class="paramname"> = <code>=0u</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af1a69de3f8efdce61192a3813845f28a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1a69de3f8efdce61192a3813845f28a">&#9670;&nbsp;</a></span>if() <span class="overload">[14/14]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">if </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="barraydense-meet_8hpp.html#adebf5af9ec07cd7e67e2dcf776d6230b">ROW</a>(<a class="el" href="barraydense-meet_8hpp.html#ae53ac559c37574f7895e8af57d87f849">i1</a>).size()&#160;</td>
-          <td class="paramname"> = <code>=0u</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1611,7 +1421,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00127">127</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00128">128</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1671,8 +1481,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5f9b5452a6abf711d268fe090d2685c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f9b5452a6abf711d268fe090d2685c0">&#9670;&nbsp;</a></span>resize() <span class="overload">[3/3]</span></h2>
+<a id="aa0a26f5432433ff8eedd4f8f5bec0293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0a26f5432433ff8eedd4f8f5bec0293">&#9670;&nbsp;</a></span>resize() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1681,44 +1491,18 @@ Variables</h2></td></tr>
           <td class="memname">el resize </td>
           <td>(</td>
           <td class="paramtype">N_ *&#160;</td>
-          <td class="paramname"><em>M_</em></td><td>)</td>
-          <td></td>
+          <td class="paramname"><em>M_</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab0ecf56654c1482f9ba5df87b3afa180"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0ecf56654c1482f9ba5df87b3afa180">&#9670;&nbsp;</a></span>ROW() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">&amp; ROW </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="barraydense-meet_8hpp.html#a51b85d6bd8e8ab46aa8578ad029fbc54">ZERO_CELL</a>&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adebf5af9ec07cd7e67e2dcf776d6230b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adebf5af9ec07cd7e67e2dcf776d6230b">&#9670;&nbsp;</a></span>ROW() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">ROW </td>
-          <td>(</td>
-          <td class="paramtype">i0&#160;</td>
-          <td class="paramname"></td><td>)</td>
           <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1760,7 +1544,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00343">343</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00354">354</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1777,16 +1561,21 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
 <div class="line">  </div>
-<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="barraydense-meet_8hpp.html#a8899aeefb231f239e7aecd22c54e0731">check_bounds</a>) {</div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="barraydense-meet_8hpp.html#a8899aeefb231f239e7aecd22c54e0731">check_bounds</a>)</div>
+<div class="line">    {</div>
+<div class="line"> </div>
 <div class="line">        out_of_range(i0,0u);</div>
 <div class="line">        out_of_range(<a class="code" href="barraydense-meet_8hpp.html#ae53ac559c37574f7895e8af57d87f849">i1</a>,0u);</div>
+<div class="line"> </div>
 <div class="line">    }</div>
-<div class="line">    </div>
-<div class="line">    <span class="keywordtype">bool</span> move0=<span class="keyword">true</span>, move1=<span class="keyword">true</span></div>
-<div class="ttc" id="abarraydense-meet_8hpp_html_a8899aeefb231f239e7aecd22c54e0731"><div class="ttname"><a href="barraydense-meet_8hpp.html#a8899aeefb231f239e7aecd22c54e0731">check_bounds</a></div><div class="ttdeci">uint const Cell&lt; Cell_Type &gt; bool check_bounds</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00532">barraydense-meet.hpp:532</a></div></div>
-<div class="ttc" id="abarraydense-meet_8hpp_html_ae53ac559c37574f7895e8af57d87f849"><div class="ttname"><a href="barraydense-meet_8hpp.html#ae53ac559c37574f7895e8af57d87f849">i1</a></div><div class="ttdeci">uint uint i1</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00631">barraydense-meet.hpp:631</a></div></div>
+<div class="line">     </div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="barraydense-meet_8hpp.html#aa4487f7305599aa40d6676de295b49c3">NCells</a> == 0u)</div>
+<div class="line">        <span class="keywordflow">return</span></div>
+<div class="ttc" id="abarraydense-meet_8hpp_html_a8899aeefb231f239e7aecd22c54e0731"><div class="ttname"><a href="barraydense-meet_8hpp.html#a8899aeefb231f239e7aecd22c54e0731">check_bounds</a></div><div class="ttdeci">uint const Cell&lt; Cell_Type &gt; bool check_bounds</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00570">barraydense-meet.hpp:570</a></div></div>
+<div class="ttc" id="abarraydense-meet_8hpp_html_aa4487f7305599aa40d6676de295b49c3"><div class="ttname"><a href="barraydense-meet_8hpp.html#aa4487f7305599aa40d6676de295b49c3">NCells</a></div><div class="ttdeci">NCells</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00594">barraydense-meet.hpp:594</a></div></div>
+<div class="ttc" id="abarraydense-meet_8hpp_html_ae53ac559c37574f7895e8af57d87f849"><div class="ttname"><a href="barraydense-meet_8hpp.html#ae53ac559c37574f7895e8af57d87f849">i1</a></div><div class="ttdeci">uint uint i1</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00654">barraydense-meet.hpp:654</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00532">532</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00570">570</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1805,10 +1594,10 @@ Variables</h2></td></tr>
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code" href="barraydense-meet_8hpp.html#a8899aeefb231f239e7aecd22c54e0731">check_bounds</a>)</div>
 <div class="line">        out_of_range(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,<a class="code" href="barraydense-meet_8hpp.html#abf2bc2545a4a5f5683d9ef3ed0d977e0">j</a>)</div>
-<div class="ttc" id="abarraydense-meet_8hpp_html_abf2bc2545a4a5f5683d9ef3ed0d977e0"><div class="ttname"><a href="barraydense-meet_8hpp.html#abf2bc2545a4a5f5683d9ef3ed0d977e0">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00318">barraydense-meet.hpp:318</a></div></div>
+<div class="ttc" id="abarraydense-meet_8hpp_html_abf2bc2545a4a5f5683d9ef3ed0d977e0"><div class="ttname"><a href="barraydense-meet_8hpp.html#abf2bc2545a4a5f5683d9ef3ed0d977e0">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00329">barraydense-meet.hpp:329</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00117">counters-meat.hpp:117</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00533">533</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00571">571</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1824,7 +1613,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00890">890</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00860">860</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1845,7 +1634,7 @@ Variables</h2></td></tr>
 <div class="line">        <span class="keywordflow">throw</span> std::range_error(<span class="stringliteral">&quot;The row is out of range.&quot;</span>)</div>
 <div class="ttc" id="abarraydense-meet_8hpp_html_a8cc2e7240164328fdc3f0e5e21032c56"><div class="ttname"><a href="barraydense-meet_8hpp.html#a8cc2e7240164328fdc3f0e5e21032c56">N</a></div><div class="ttdeci">if(source.size() !=value.size()) throw std N</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00039">barraydense-meet.hpp:39</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00305">305</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00316">316</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1861,7 +1650,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00126">126</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00127">127</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1877,7 +1666,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00287">287</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00298">298</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1893,7 +1682,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00288">288</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00299">299</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1912,10 +1701,10 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> ((<a class="code" href="barraydense-meet_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a> != <span class="keyword">nullptr</span>) &amp;&amp; <a class="code" href="barraydense-meet_8hpp.html#aa019a8317b63824afc4f0fcdea03f740">delete_data</a>)</div>
 <div class="line">        <span class="keyword">delete</span> <a class="code" href="barraydense-meet_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div>
-<div class="ttc" id="abarraydense-meet_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barraydense-meet_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00287">barraydense-meet.hpp:287</a></div></div>
-<div class="ttc" id="abarraydense-meet_8hpp_html_aa019a8317b63824afc4f0fcdea03f740"><div class="ttname"><a href="barraydense-meet_8hpp.html#aa019a8317b63824afc4f0fcdea03f740">delete_data</a></div><div class="ttdeci">delete_data</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00288">barraydense-meet.hpp:288</a></div></div>
+<div class="ttc" id="abarraydense-meet_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barraydense-meet_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00298">barraydense-meet.hpp:298</a></div></div>
+<div class="ttc" id="abarraydense-meet_8hpp_html_aa019a8317b63824afc4f0fcdea03f740"><div class="ttname"><a href="barraydense-meet_8hpp.html#aa019a8317b63824afc4f0fcdea03f740">delete_data</a></div><div class="ttdeci">delete_data</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00299">barraydense-meet.hpp:299</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00281">281</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00292">292</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1932,13 +1721,11 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
 <div class="line">        </div>
-<div class="line">        <a class="code" href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>).insert(std::pair&lt; <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="code" href="class_cell.html">Cell&lt;Cell_Type&gt;</a>&gt;(<a class="code" href="barraydense-meet_8hpp.html#abf2bc2545a4a5f5683d9ef3ed0d977e0">j</a>, <a class="code" href="barraydense-meet_8hpp.html#a4f9d6b06db1b3136e48630969fea3b9a">v</a>))</div>
-<div class="ttc" id="abarraydense-meet_8hpp_html_a391c25765afb3eb7b8288b21dd2eb16b"><div class="ttname"><a href="barraydense-meet_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a></div><div class="ttdeci">#define ROW(a)</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00014">barraydense-meet.hpp:14</a></div></div>
-<div class="ttc" id="abarraydense-meet_8hpp_html_a4f9d6b06db1b3136e48630969fea3b9a"><div class="ttname"><a href="barraydense-meet_8hpp.html#a4f9d6b06db1b3136e48630969fea3b9a">v</a></div><div class="ttdeci">uint const Cell&lt; Cell_Type &gt; &amp; v</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00531">barraydense-meet.hpp:531</a></div></div>
-<div class="ttc" id="aclass_cell_html"><div class="ttname"><a href="class_cell.html">Cell</a></div><div class="ttdoc">Entries in BArray. For now, it only has two members:</div><div class="ttdef"><b>Definition:</b> <a href="cell-bones_8hpp_source.html#l00013">cell-bones.hpp:13</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00018">typedefs.hpp:18</a></div></div>
+<div class="line">        el[<a class="code" href="barraydense-meet_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9">POS</a>(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="barraydense-meet_8hpp.html#abf2bc2545a4a5f5683d9ef3ed0d977e0">j</a>)] = <a class="code" href="barraydense-meet_8hpp.html#a4f9d6b06db1b3136e48630969fea3b9a">v</a></div>
+<div class="ttc" id="abarraydense-meet_8hpp_html_a4f9d6b06db1b3136e48630969fea3b9a"><div class="ttname"><a href="barraydense-meet_8hpp.html#a4f9d6b06db1b3136e48630969fea3b9a">v</a></div><div class="ttdeci">uint const Cell&lt; Cell_Type &gt; &amp; v</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00569">barraydense-meet.hpp:569</a></div></div>
+<div class="ttc" id="abarraydense-meet_8hpp_html_abf33b097799b4bfe44ec4477c592b0b9"><div class="ttname"><a href="barraydense-meet_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9">POS</a></div><div class="ttdeci">#define POS(a, b)</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00016">barraydense-meet.hpp:16</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00563">563</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00591">591</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1954,7 +1741,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00890">890</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00860">860</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1970,7 +1757,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00631">631</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00654">654</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -1986,7 +1773,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00318">318</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00329">329</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -2002,7 +1789,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00630">630</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00653">653</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -2018,7 +1805,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00631">631</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00654">654</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -2065,7 +1852,6 @@ Variables</h2></td></tr>
 <div class="line">    </div>
 <div class="line">    std::vector&lt; Cell&lt; Cell_Type &gt; &gt; el_tmp(std::move(el))</div>
 <div class="ttc" id="abarraydense-meet_8hpp_html_a7ba174ad6ce79b3f56bf6d0ce0d93e34"><div class="ttname"><a href="barraydense-meet_8hpp.html#a7ba174ad6ce79b3f56bf6d0ce0d93e34">M_</a></div><div class="ttdeci">uint M_</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00026">barraydense-meet.hpp:26</a></div></div>
-<div class="ttc" id="abarraydense-meet_8hpp_html_aa4487f7305599aa40d6676de295b49c3"><div class="ttname"><a href="barraydense-meet_8hpp.html#aa4487f7305599aa40d6676de295b49c3">NCells</a></div><div class="ttdeci">NCells</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00567">barraydense-meet.hpp:567</a></div></div>
 <div class="ttc" id="abarraydense-meet_8hpp_html_aad05f78187c942f9dd521605fa81f1ba"><div class="ttname"><a href="barraydense-meet_8hpp.html#aad05f78187c942f9dd521605fa81f1ba">M</a></div><div class="ttdeci">M</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-meet_8hpp_source.html#l00040">barraydense-meet.hpp:40</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00026">26</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
@@ -2100,7 +1886,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00567">567</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00594">594</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -2116,7 +1902,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00634">634</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00657">657</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -2180,7 +1966,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00531">531</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meet_8hpp_source.html#l00569">569</a> of file <a class="el" href="barraydense-meet_8hpp_source.html">barraydense-meet.hpp</a>.</p>
 
 </div>
 </div>
@@ -2206,7 +1992,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barraydense-meet_8hpp.html">barraydense-meet.hpp</a></li>
-    <li class="footer">Generated on Tue Oct 26 2021 20:40:07 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Oct 26 2021 22:14:53 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

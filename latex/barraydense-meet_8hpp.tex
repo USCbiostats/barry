@@ -28,7 +28,7 @@ Include dependency graph for barraydense-\/meet.hpp\+:
 \item 
 \#define \mbox{\hyperlink{barraydense-meet_8hpp_a1715b9a21ce267cafd44c884fc4bb72c}{POS\+\_\+N}}(a,  b,  c)~(b)$\ast$(c) + (a)
 \item 
-\#define \mbox{\hyperlink{barraydense-meet_8hpp_a51b85d6bd8e8ab46aa8578ad029fbc54}{ZERO\+\_\+\+CELL}}~\mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$(static\+\_\+cast$<$ Cell\+\_\+\+Type $>$(0.\+0))
+\#define \mbox{\hyperlink{barraydense-meet_8hpp_a51b85d6bd8e8ab46aa8578ad029fbc54}{ZERO\+\_\+\+CELL}}~\mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$(static\+\_\+cast$<$ Cell\+\_\+\+Type $>$(0.\+0), \mbox{\hyperlink{barraydense-meet_8hpp_ae6c865df784842196d411c1466b01686}{false}}, \mbox{\hyperlink{barraydense-meet_8hpp_ae6c865df784842196d411c1466b01686}{false}})
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -67,7 +67,7 @@ bool \mbox{\hyperlink{barraydense-meet_8hpp_adb61ad66dabc2db1f586c93e095ef9d3}{M
 \item 
 \mbox{\hyperlink{barraydense-meet_8hpp_a19e2094a4bdc53d4979b5487555cd2e3}{BDENSE\+\_\+\+TEMPLATE}} (std\+::vector$<$ Cell\+\_\+\+Type $>$, get\+\_\+row\+\_\+vec)(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}
 \item 
-std\+::vector$<$ Cell\+\_\+\+Type $>$ \mbox{\hyperlink{barraydense-meet_8hpp_a12eee12d7ad4ae646f30b21cd540cc2e}{ans}} (ncol(),(Cell\+\_\+\+Type) \mbox{\hyperlink{barraydense-meet_8hpp_ae6c865df784842196d411c1466b01686}{false}})
+std\+::vector$<$ Cell\+\_\+\+Type $>$ \mbox{\hyperlink{barraydense-meet_8hpp_a2e094024a44e50938f0b8faecb5a82d8}{ans}} (ncol(), static\+\_\+cast$<$ Cell\+\_\+\+Type $>$(\mbox{\hyperlink{barraydense-meet_8hpp_ae6c865df784842196d411c1466b01686}{false}}))
 \item 
 \mbox{\hyperlink{barraydense-meet_8hpp_a97b82fc7c5f72882fa9757c5750e27b1}{BDENSE\+\_\+\+TEMPLATE}} (void, get\+\_\+row\+\_\+vec)(std
 \item 
@@ -76,10 +76,6 @@ std\+::vector$<$ Cell\+\_\+\+Type $>$ \mbox{\hyperlink{barraydense-meet_8hpp_a12
 \mbox{\hyperlink{barraydense-meet_8hpp_a2c49021e4b796df5770dffece34aa5cf}{BDENSE\+\_\+\+TEMPLATE}} (void, \mbox{\hyperlink{support-meat_8hpp_a9d46a2276a9724f89649e4097c776aac}{insert\+\_\+cell}})(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}
 \item 
 \mbox{\hyperlink{barraydense-meet_8hpp_aea6f7b5467448bc372b30832db3c29d5}{if}} (\mbox{\hyperlink{barraydense-meet_8hpp_a55f9b5f5029c8d5cb64a0c3f2a86b41c}{check\+\_\+exists}})
-\item 
-\mbox{\hyperlink{barraydense-meet_8hpp_a9b8c44edae0485e461f86ff37b430d0b}{COL}} (\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}).emplace(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}
-\item 
-\& \mbox{\hyperlink{barraydense-meet_8hpp_ab0ecf56654c1482f9ba5df87b3afa180}{ROW}} (\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}})\mbox{[}\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}\mbox{]})
 \item 
 \mbox{\hyperlink{barraydense-meet_8hpp_a6ddc9196f623829fd21ae4182a74a1c2}{BDENSE\+\_\+\+TEMPLATE}} (void, swap\+\_\+cells)(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i0
 \item 
@@ -95,25 +91,7 @@ std\+::vector$<$ Cell\+\_\+\+Type $>$ \mbox{\hyperlink{barraydense-meet_8hpp_a12
 \item 
 \mbox{\hyperlink{barraydense-meet_8hpp_a0f9995eed21f5a6af6797726ce5e0df6}{BDENSE\+\_\+\+TEMPLATE}} (void, swap\+\_\+rows)(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} i0
 \item 
-\mbox{\hyperlink{barraydense-meet_8hpp_a9c458194455cb842393bbbc9e4196579}{if}} (\mbox{\hyperlink{barraydense-meet_8hpp_adebf5af9ec07cd7e67e2dcf776d6230b}{ROW}}(i0).size()==0u) move0
-\item 
-\mbox{\hyperlink{barraydense-meet_8hpp_af1a69de3f8efdce61192a3813845f28a}{if}} (\mbox{\hyperlink{barraydense-meet_8hpp_adebf5af9ec07cd7e67e2dcf776d6230b}{ROW}}(\mbox{\hyperlink{barraydense-meet_8hpp_ae53ac559c37574f7895e8af57d87f849}{i1}}).size()==0u) move1
-\item 
-\mbox{\hyperlink{barraydense-meet_8hpp_a0839ee74b40539432425dcf2bc0bbf91}{if}} (!move0 \&\&!move1) \mbox{\hyperlink{barray-meat_8hpp_a4725aca18f0b3220c56baad1a1ffc023}{return}}
-\item 
-\mbox{\hyperlink{barraydense-meet_8hpp_adebf5af9ec07cd7e67e2dcf776d6230b}{ROW}} (i0).swap(ROW(\mbox{\hyperlink{barraydense-meet_8hpp_ae53ac559c37574f7895e8af57d87f849}{i1}}))
-\item 
 \mbox{\hyperlink{barraydense-meet_8hpp_a8b3d675ce8153bfc62d83ab288104d86}{BDENSE\+\_\+\+TEMPLATE}} (void, swap\+\_\+cols)(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barraydense-meet_8hpp_a76215ac0aab4542631c11206d92597e2}{j0}}
-\item 
-\mbox{\hyperlink{barraydense-meet_8hpp_af3f7115c83f47f2d6f61dff2a62dc939}{if}} (\mbox{\hyperlink{barraydense-meet_8hpp_a9b8c44edae0485e461f86ff37b430d0b}{COL}}(\mbox{\hyperlink{barraydense-meet_8hpp_a76215ac0aab4542631c11206d92597e2}{j0}}).size()==0u) check0
-\item 
-\mbox{\hyperlink{barraydense-meet_8hpp_ae07e7cc10229100eda78de5b8c5f07ce}{if}} (\mbox{\hyperlink{barraydense-meet_8hpp_a9b8c44edae0485e461f86ff37b430d0b}{COL}}(\mbox{\hyperlink{barraydense-meet_8hpp_a355f2dae482006084fd82d31f52cbbc1}{j1}}).size()==0u) check1
-\item 
-\mbox{\hyperlink{barraydense-meet_8hpp_af5515b6c59b1c043d59299929f5389c3}{if}} (check0 \&\&check1)
-\item 
-\mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} \mbox{\hyperlink{barraydense-meet_8hpp_ae2397fb65cfb0df3e91daba11f523325}{if}} (check0 \&\&!check1)
-\item 
-\mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} \mbox{\hyperlink{barraydense-meet_8hpp_a2670b7febaa1b1f0157d5a3c997b6bd5}{if}} (!check0 \&\&check1)
 \item 
 \mbox{\hyperlink{barraydense-meet_8hpp_a89f271bb8785d58d75830da15edad7f9}{BDENSE\+\_\+\+TEMPLATE}} (void, zero\+\_\+row)(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}
 \item 
@@ -127,7 +105,7 @@ std\+::vector$<$ Cell\+\_\+\+Type $>$ \mbox{\hyperlink{barraydense-meet_8hpp_a12
 \item 
 \mbox{\hyperlink{barraydense-meet_8hpp_a9bb5cdd91751227abb7aac5a9480322a}{BDENSE\+\_\+\+TEMPLATE}} (void, \mbox{\hyperlink{statscounter-meat_8hpp_ae40d2e4f8ecd8bbe53d42f61bc802f8d}{resize}})(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} N\+\_\+
 \item 
-el \mbox{\hyperlink{barraydense-meet_8hpp_a5f9b5452a6abf711d268fe090d2685c0}{resize}} (N\+\_\+ $\ast$\mbox{\hyperlink{barraydense-meet_8hpp_a7ba174ad6ce79b3f56bf6d0ce0d93e34}{M\+\_\+}})
+el \mbox{\hyperlink{barraydense-meet_8hpp_aa0a26f5432433ff8eedd4f8f5bec0293}{resize}} (N\+\_\+ $\ast$\mbox{\hyperlink{barraydense-meet_8hpp_a7ba174ad6ce79b3f56bf6d0ce0d93e34}{M\+\_\+}}, \mbox{\hyperlink{barraydense-meet_8hpp_a51b85d6bd8e8ab46aa8578ad029fbc54}{ZERO\+\_\+\+CELL}})
 \item 
 \mbox{\hyperlink{barraydense-meet_8hpp_a7208953f53bfdc02e856d96bca963472}{BDENSE\+\_\+\+TEMPLATE}} (void, reserve)()
 \item 
@@ -275,7 +253,7 @@ Definition at line 14 of file barraydense-\/meet.\+hpp.
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!ZERO\_CELL@{ZERO\_CELL}}
 \index{ZERO\_CELL@{ZERO\_CELL}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
 \doxysubsubsection{\texorpdfstring{ZERO\_CELL}{ZERO\_CELL}}
-{\footnotesize\ttfamily \#define ZERO\+\_\+\+CELL~\mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$(static\+\_\+cast$<$ Cell\+\_\+\+Type $>$(0.\+0))}
+{\footnotesize\ttfamily \#define ZERO\+\_\+\+CELL~\mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$(static\+\_\+cast$<$ Cell\+\_\+\+Type $>$(0.\+0), \mbox{\hyperlink{barraydense-meet_8hpp_ae6c865df784842196d411c1466b01686}{false}}, \mbox{\hyperlink{barraydense-meet_8hpp_ae6c865df784842196d411c1466b01686}{false}})}
 
 
 
@@ -284,11 +262,11 @@ Definition at line 22 of file barraydense-\/meet.\+hpp.
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{barraydense-meet_8hpp_a12eee12d7ad4ae646f30b21cd540cc2e}\label{barraydense-meet_8hpp_a12eee12d7ad4ae646f30b21cd540cc2e}} 
+\mbox{\Hypertarget{barraydense-meet_8hpp_a2e094024a44e50938f0b8faecb5a82d8}\label{barraydense-meet_8hpp_a2e094024a44e50938f0b8faecb5a82d8}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!ans@{ans}}
 \index{ans@{ans}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
 \doxysubsubsection{\texorpdfstring{ans()}{ans()}}
-{\footnotesize\ttfamily std\+::vector$<$ Cell\+\_\+\+Type $>$ ans (\begin{DoxyParamCaption}\item[{ncol()}]{,  }\item[{(Cell\+\_\+\+Type)}]{false }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ Cell\+\_\+\+Type $>$ ans (\begin{DoxyParamCaption}\item[{ncol()}]{,  }\item[{static\+\_\+cast$<$ Cell\+\_\+\+Type $>$}]{false }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a892cd52070462b29d032461168213674}\label{barraydense-meet_8hpp_a892cd52070462b29d032461168213674}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -298,7 +276,7 @@ Definition at line 22 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 198 of file barraydense-\/meet.\+hpp.
+Definition at line 208 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_ae1c11b9b9f062944cab352dee7dd28ae}\label{barraydense-meet_8hpp_ae1c11b9b9f062944cab352dee7dd28ae}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -320,7 +298,7 @@ Definition at line 198 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 272 of file barraydense-\/meet.\+hpp.
+Definition at line 282 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_af9d2f28467ccedaae650fc2ae1875e2e}\label{barraydense-meet_8hpp_af9d2f28467ccedaae650fc2ae1875e2e}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -330,7 +308,7 @@ Definition at line 272 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 477 of file barraydense-\/meet.\+hpp.
+Definition at line 509 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a888c1e579f4941f772377e454c9edde2}\label{barraydense-meet_8hpp_a888c1e579f4941f772377e454c9edde2}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -340,7 +318,7 @@ Definition at line 477 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 213 of file barraydense-\/meet.\+hpp.
+Definition at line 223 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a2116032b7a6a5dd78808e10fd89c7e04}\label{barraydense-meet_8hpp_a2116032b7a6a5dd78808e10fd89c7e04}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -350,7 +328,7 @@ Definition at line 213 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 159 of file barraydense-\/meet.\+hpp.
+Definition at line 161 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a5056e00f8d38cadcc8c2d0fb85b132d6}\label{barraydense-meet_8hpp_a5056e00f8d38cadcc8c2d0fb85b132d6}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -360,7 +338,7 @@ Definition at line 159 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 254 of file barraydense-\/meet.\+hpp.
+Definition at line 264 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a5ac68587c09e0fe002496cbb9f83ff43}\label{barraydense-meet_8hpp_a5ac68587c09e0fe002496cbb9f83ff43}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -376,7 +354,7 @@ Definition at line 254 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 298 of file barraydense-\/meet.\+hpp.
+Definition at line 309 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a10ab1d949aae284247a129608f7f9acf}\label{barraydense-meet_8hpp_a10ab1d949aae284247a129608f7f9acf}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -386,7 +364,7 @@ Definition at line 298 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 294 of file barraydense-\/meet.\+hpp.
+Definition at line 305 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a19e2094a4bdc53d4979b5487555cd2e3}\label{barraydense-meet_8hpp_a19e2094a4bdc53d4979b5487555cd2e3}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -402,7 +380,7 @@ Definition at line 294 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 972 of file barraydense-\/meet.\+hpp.
+Definition at line 913 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a97b82fc7c5f72882fa9757c5750e27b1}\label{barraydense-meet_8hpp_a97b82fc7c5f72882fa9757c5750e27b1}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -412,7 +390,7 @@ Definition at line 972 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 347 of file barraydense-\/meet.\+hpp.
+Definition at line 358 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a2c49021e4b796df5770dffece34aa5cf}\label{barraydense-meet_8hpp_a2c49021e4b796df5770dffece34aa5cf}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -434,7 +412,7 @@ Definition at line 347 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 1052 of file barraydense-\/meet.\+hpp.
+Definition at line 989 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a7208953f53bfdc02e856d96bca963472}\label{barraydense-meet_8hpp_a7208953f53bfdc02e856d96bca963472}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -444,7 +422,7 @@ Definition at line 1052 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 1040 of file barraydense-\/meet.\+hpp.
+Definition at line 979 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a9bb5cdd91751227abb7aac5a9480322a}\label{barraydense-meet_8hpp_a9bb5cdd91751227abb7aac5a9480322a}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -490,7 +468,7 @@ Definition at line 1040 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 916 of file barraydense-\/meet.\+hpp.
+Definition at line 886 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a7ae1a3823b157c7357f8d3962042c888}\label{barraydense-meet_8hpp_a7ae1a3823b157c7357f8d3962042c888}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!BDENSE\_TEMPLATE@{BDENSE\_TEMPLATE}}
@@ -504,12 +482,6 @@ Definition at line 916 of file barraydense-\/meet.\+hpp.
 \doxysubsubsection{\texorpdfstring{BDENSE\_TEMPLATE()}{BDENSE\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [27/27]}}
 {\footnotesize\ttfamily BDENSE\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{zero\+\_\+row}]{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{barraydense-meet_8hpp_a9b8c44edae0485e461f86ff37b430d0b}\label{barraydense-meet_8hpp_a9b8c44edae0485e461f86ff37b430d0b}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!COL@{COL}}
-\index{COL@{COL}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{COL()}{COL()}}
-{\footnotesize\ttfamily COL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}}]{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{barraydense-meet_8hpp_a8b04c8536edde866596e149f2596e451}\label{barraydense-meet_8hpp_a8b04c8536edde866596e149f2596e451}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!for@{for}}
 \index{for@{for}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
@@ -520,117 +492,57 @@ Definition at line 916 of file barraydense-\/meet.\+hpp.
 
 Definition at line 45 of file barraydense-\/meet.\+hpp.
 
-\mbox{\Hypertarget{barraydense-meet_8hpp_a2670b7febaa1b1f0157d5a3c997b6bd5}\label{barraydense-meet_8hpp_a2670b7febaa1b1f0157d5a3c997b6bd5}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
-\index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [1/14]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} if (\begin{DoxyParamCaption}\item[{!check0 \&\&}]{check1 }\end{DoxyParamCaption})}
-
-
-
-Definition at line 857 of file barraydense-\/meet.\+hpp.
-
 \mbox{\Hypertarget{barraydense-meet_8hpp_ab3e92e830c19645e08147d844814ed15}\label{barraydense-meet_8hpp_ab3e92e830c19645e08147d844814ed15}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
 \index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [2/14]}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} if (\begin{DoxyParamCaption}\item[{!check0 \&}]{check1 }\end{DoxyParamCaption})}
 
 
 
-Definition at line 708 of file barraydense-\/meet.\+hpp.
-
-\mbox{\Hypertarget{barraydense-meet_8hpp_a0839ee74b40539432425dcf2bc0bbf91}\label{barraydense-meet_8hpp_a0839ee74b40539432425dcf2bc0bbf91}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
-\index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [3/14]}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{!move0 \&\&!}]{move1 }\end{DoxyParamCaption})}
+Definition at line 736 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a83a48ee41a450e99464538005b262934}\label{barraydense-meet_8hpp_a83a48ee41a450e99464538005b262934}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
 \index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [4/14]}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} if (\begin{DoxyParamCaption}\item[{check0 \&!}]{check1 }\end{DoxyParamCaption})}
 
 
 
-Definition at line 716 of file barraydense-\/meet.\+hpp.
-
-\mbox{\Hypertarget{barraydense-meet_8hpp_ae2397fb65cfb0df3e91daba11f523325}\label{barraydense-meet_8hpp_ae2397fb65cfb0df3e91daba11f523325}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
-\index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [5/14]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{support-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} if (\begin{DoxyParamCaption}\item[{check0 \&\&!}]{check1 }\end{DoxyParamCaption})}
-
-
-
-Definition at line 848 of file barraydense-\/meet.\+hpp.
-
-\mbox{\Hypertarget{barraydense-meet_8hpp_af5515b6c59b1c043d59299929f5389c3}\label{barraydense-meet_8hpp_af5515b6c59b1c043d59299929f5389c3}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
-\index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [6/14]}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{check0 \&\&}]{check1 }\end{DoxyParamCaption})}
-
-
-
-Definition at line 821 of file barraydense-\/meet.\+hpp.
+Definition at line 744 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a11a43692b8a84c51fb1c1947040d55f4}\label{barraydense-meet_8hpp_a11a43692b8a84c51fb1c1947040d55f4}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
 \index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [7/14]}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
 {\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{check0 \&}]{check1 }\end{DoxyParamCaption})}
 
 
 
-Definition at line 691 of file barraydense-\/meet.\+hpp.
+Definition at line 718 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_aea6f7b5467448bc372b30832db3c29d5}\label{barraydense-meet_8hpp_aea6f7b5467448bc372b30832db3c29d5}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
 \index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [8/14]}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
 {\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meet_8hpp_a55f9b5f5029c8d5cb64a0c3f2a86b41c}{check\+\_\+exists}}}]{ = {\ttfamily =~\mbox{\hyperlink{namespace_c_h_e_c_k_a3acda1c74bfabb5b6b67e19d0ad2d52a}{CHECK\+::\+BOTH}}} }\end{DoxyParamCaption})}
 
 
 
-Definition at line 539 of file barraydense-\/meet.\+hpp.
-
-\mbox{\Hypertarget{barraydense-meet_8hpp_af3f7115c83f47f2d6f61dff2a62dc939}\label{barraydense-meet_8hpp_af3f7115c83f47f2d6f61dff2a62dc939}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
-\index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [9/14]}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meet_8hpp_a9b8c44edae0485e461f86ff37b430d0b}{COL}}(\mbox{\hyperlink{barraydense-meet_8hpp_a76215ac0aab4542631c11206d92597e2}{j0}}).size()}]{ = {\ttfamily =0u} }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{barraydense-meet_8hpp_ae07e7cc10229100eda78de5b8c5f07ce}\label{barraydense-meet_8hpp_ae07e7cc10229100eda78de5b8c5f07ce}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
-\index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [10/14]}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meet_8hpp_a9b8c44edae0485e461f86ff37b430d0b}{COL}}(\mbox{\hyperlink{barraydense-meet_8hpp_a355f2dae482006084fd82d31f52cbbc1}{j1}}).size()}]{ = {\ttfamily =0u} }\end{DoxyParamCaption})}
+Definition at line 577 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a259115030b047c49c60f9827a5439eb3}\label{barraydense-meet_8hpp_a259115030b047c49c60f9827a5439eb3}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
 \index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [11/14]}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
 {\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meet_8hpp_aa4487f7305599aa40d6676de295b49c3}{NCells}}}]{ = {\ttfamily =0u} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_acb65203198239b3f540b6e6f8c9efcbe}\label{barraydense-meet_8hpp_acb65203198239b3f540b6e6f8c9efcbe}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
 \index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [12/14]}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
 {\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meet_8hpp_a1c97d677615ab6c6430f1a5908d3d248}{report}} !}]{ = {\ttfamily nullptr} }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{barraydense-meet_8hpp_a9c458194455cb842393bbbc9e4196579}\label{barraydense-meet_8hpp_a9c458194455cb842393bbbc9e4196579}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
-\index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [13/14]}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meet_8hpp_adebf5af9ec07cd7e67e2dcf776d6230b}{ROW}}(i0).size()}]{ = {\ttfamily =0u} }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{barraydense-meet_8hpp_af1a69de3f8efdce61192a3813845f28a}\label{barraydense-meet_8hpp_af1a69de3f8efdce61192a3813845f28a}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!if@{if}}
-\index{if@{if}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [14/14]}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meet_8hpp_adebf5af9ec07cd7e67e2dcf776d6230b}{ROW}}(\mbox{\hyperlink{barraydense-meet_8hpp_ae53ac559c37574f7895e8af57d87f849}{i1}}).size()}]{ = {\ttfamily =0u} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_adb61ad66dabc2db1f586c93e095ef9d3}\label{barraydense-meet_8hpp_adb61ad66dabc2db1f586c93e095ef9d3}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!M@{M}}
@@ -640,7 +552,7 @@ Definition at line 539 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 127 of file barraydense-\/meet.\+hpp.
+Definition at line 128 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_ad651f4a1b29009c9aa5d9257ed4c0634}\label{barraydense-meet_8hpp_ad651f4a1b29009c9aa5d9257ed4c0634}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!resize@{resize}}
@@ -654,23 +566,11 @@ Definition at line 127 of file barraydense-\/meet.\+hpp.
 \doxysubsubsection{\texorpdfstring{resize()}{resize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily el resize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meet_8hpp_a8cc2e7240164328fdc3f0e5e21032c56}{N}}}]{,  }\item[{\mbox{\hyperlink{barraydense-meet_8hpp_adb61ad66dabc2db1f586c93e095ef9d3}{M}}}]{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{barraydense-meet_8hpp_a5f9b5452a6abf711d268fe090d2685c0}\label{barraydense-meet_8hpp_a5f9b5452a6abf711d268fe090d2685c0}} 
+\mbox{\Hypertarget{barraydense-meet_8hpp_aa0a26f5432433ff8eedd4f8f5bec0293}\label{barraydense-meet_8hpp_aa0a26f5432433ff8eedd4f8f5bec0293}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!resize@{resize}}
 \index{resize@{resize}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
 \doxysubsubsection{\texorpdfstring{resize()}{resize()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily el resize (\begin{DoxyParamCaption}\item[{N\+\_\+ $\ast$}]{M\+\_\+ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{barraydense-meet_8hpp_ab0ecf56654c1482f9ba5df87b3afa180}\label{barraydense-meet_8hpp_ab0ecf56654c1482f9ba5df87b3afa180}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!ROW@{ROW}}
-\index{ROW@{ROW}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{ROW()}{ROW()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \& ROW (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}}]{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{barraydense-meet_8hpp_adebf5af9ec07cd7e67e2dcf776d6230b}\label{barraydense-meet_8hpp_adebf5af9ec07cd7e67e2dcf776d6230b}} 
-\index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!ROW@{ROW}}
-\index{ROW@{ROW}!barraydense-\/meet.hpp@{barraydense-\/meet.hpp}}
-\doxysubsubsection{\texorpdfstring{ROW()}{ROW()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily ROW (\begin{DoxyParamCaption}\item[{i0}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily el resize (\begin{DoxyParamCaption}\item[{N\+\_\+ $\ast$}]{M\+\_\+,  }\item[{\mbox{\hyperlink{barraydense-meet_8hpp_a51b85d6bd8e8ab46aa8578ad029fbc54}{ZERO\+\_\+\+CELL}}}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -701,7 +601,7 @@ Definition at line 30 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 343 of file barraydense-\/meet.\+hpp.
+Definition at line 354 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a8899aeefb231f239e7aecd22c54e0731}\label{barraydense-meet_8hpp_a8899aeefb231f239e7aecd22c54e0731}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!check\_bounds@{check\_bounds}}
@@ -713,17 +613,21 @@ Definition at line 343 of file barraydense-\/meet.\+hpp.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{  }
-\DoxyCodeLine{    \textcolor{keywordflow}{if} (\mbox{\hyperlink{barraydense-meet_8hpp_a8899aeefb231f239e7aecd22c54e0731}{check\_bounds}}) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (\mbox{\hyperlink{barraydense-meet_8hpp_a8899aeefb231f239e7aecd22c54e0731}{check\_bounds}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{}
 \DoxyCodeLine{        out\_of\_range(i0,0u);}
 \DoxyCodeLine{        out\_of\_range(\mbox{\hyperlink{barraydense-meet_8hpp_ae53ac559c37574f7895e8af57d87f849}{i1}},0u);}
+\DoxyCodeLine{}
 \DoxyCodeLine{    \}}
-\DoxyCodeLine{    }
-\DoxyCodeLine{    \textcolor{keywordtype}{bool} move0=\textcolor{keyword}{true}, move1=\textcolor{keyword}{true}}
+\DoxyCodeLine{     }
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (\mbox{\hyperlink{barraydense-meet_8hpp_aa4487f7305599aa40d6676de295b49c3}{NCells}} == 0u)}
+\DoxyCodeLine{        \textcolor{keywordflow}{return}}
 
 \end{DoxyCode}
 
 
-Definition at line 532 of file barraydense-\/meet.\+hpp.
+Definition at line 570 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a55f9b5f5029c8d5cb64a0c3f2a86b41c}\label{barraydense-meet_8hpp_a55f9b5f5029c8d5cb64a0c3f2a86b41c}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!check\_exists@{check\_exists}}
@@ -741,7 +645,7 @@ Definition at line 532 of file barraydense-\/meet.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 533 of file barraydense-\/meet.\+hpp.
+Definition at line 571 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a80db10ba8808399dd69164a092cf2920}\label{barraydense-meet_8hpp_a80db10ba8808399dd69164a092cf2920}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!col@{col}}
@@ -751,7 +655,7 @@ Definition at line 533 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 890 of file barraydense-\/meet.\+hpp.
+Definition at line 860 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}\label{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!const@{const}}
@@ -769,7 +673,7 @@ Definition at line 890 of file barraydense-\/meet.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 305 of file barraydense-\/meet.\+hpp.
+Definition at line 316 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_ac94c1c34bd5a2a56bddedce602bbe8be}\label{barraydense-meet_8hpp_ac94c1c34bd5a2a56bddedce602bbe8be}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!copy\_data@{copy\_data}}
@@ -779,7 +683,7 @@ Definition at line 305 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 126 of file barraydense-\/meet.\+hpp.
+Definition at line 127 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}\label{barraydense-meet_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!data@{data}}
@@ -789,7 +693,7 @@ Definition at line 126 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 287 of file barraydense-\/meet.\+hpp.
+Definition at line 298 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_aa019a8317b63824afc4f0fcdea03f740}\label{barraydense-meet_8hpp_aa019a8317b63824afc4f0fcdea03f740}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!delete\_data@{delete\_data}}
@@ -799,7 +703,7 @@ Definition at line 287 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 288 of file barraydense-\/meet.\+hpp.
+Definition at line 299 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_adaf09f50ef2cc695a69c214cd140e4a7}\label{barraydense-meet_8hpp_adaf09f50ef2cc695a69c214cd140e4a7}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!delete\_data\_@{delete\_data\_}}
@@ -817,7 +721,7 @@ Definition at line 288 of file barraydense-\/meet.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 281 of file barraydense-\/meet.\+hpp.
+Definition at line 292 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a0544c3fe466e421738dae463968b70ba}\label{barraydense-meet_8hpp_a0544c3fe466e421738dae463968b70ba}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!else@{else}}
@@ -829,12 +733,12 @@ Definition at line 281 of file barraydense-\/meet.\+hpp.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{        }
-\DoxyCodeLine{        \mbox{\hyperlink{barraydense-meet_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}{ROW}}(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}).insert(std::pair< \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{class_cell}{Cell<Cell\_Type>}}>(\mbox{\hyperlink{barraydense-meet_8hpp_abf2bc2545a4a5f5683d9ef3ed0d977e0}{j}}, \mbox{\hyperlink{barraydense-meet_8hpp_a4f9d6b06db1b3136e48630969fea3b9a}{v}}))}
+\DoxyCodeLine{        el[\mbox{\hyperlink{barraydense-meet_8hpp_abf33b097799b4bfe44ec4477c592b0b9}{POS}}(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{barraydense-meet_8hpp_abf2bc2545a4a5f5683d9ef3ed0d977e0}{j}})] = \mbox{\hyperlink{barraydense-meet_8hpp_a4f9d6b06db1b3136e48630969fea3b9a}{v}}}
 
 \end{DoxyCode}
 
 
-Definition at line 563 of file barraydense-\/meet.\+hpp.
+Definition at line 591 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_ae6c865df784842196d411c1466b01686}\label{barraydense-meet_8hpp_ae6c865df784842196d411c1466b01686}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!false@{false}}
@@ -844,7 +748,7 @@ Definition at line 563 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 890 of file barraydense-\/meet.\+hpp.
+Definition at line 860 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_ae53ac559c37574f7895e8af57d87f849}\label{barraydense-meet_8hpp_ae53ac559c37574f7895e8af57d87f849}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!i1@{i1}}
@@ -854,7 +758,7 @@ Definition at line 890 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 631 of file barraydense-\/meet.\+hpp.
+Definition at line 654 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_abf2bc2545a4a5f5683d9ef3ed0d977e0}\label{barraydense-meet_8hpp_abf2bc2545a4a5f5683d9ef3ed0d977e0}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!j@{j}}
@@ -864,7 +768,7 @@ Definition at line 631 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 318 of file barraydense-\/meet.\+hpp.
+Definition at line 329 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a76215ac0aab4542631c11206d92597e2}\label{barraydense-meet_8hpp_a76215ac0aab4542631c11206d92597e2}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!j0@{j0}}
@@ -874,7 +778,7 @@ Definition at line 318 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 630 of file barraydense-\/meet.\+hpp.
+Definition at line 653 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a355f2dae482006084fd82d31f52cbbc1}\label{barraydense-meet_8hpp_a355f2dae482006084fd82d31f52cbbc1}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!j1@{j1}}
@@ -884,7 +788,7 @@ Definition at line 630 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 631 of file barraydense-\/meet.\+hpp.
+Definition at line 654 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_aad05f78187c942f9dd521605fa81f1ba}\label{barraydense-meet_8hpp_aad05f78187c942f9dd521605fa81f1ba}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!M@{M}}
@@ -943,7 +847,7 @@ Definition at line 39 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 567 of file barraydense-\/meet.\+hpp.
+Definition at line 594 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a1c97d677615ab6c6430f1a5908d3d248}\label{barraydense-meet_8hpp_a1c97d677615ab6c6430f1a5908d3d248}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!report@{report}}
@@ -953,7 +857,7 @@ Definition at line 567 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 634 of file barraydense-\/meet.\+hpp.
+Definition at line 657 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_a9717e7bbecb906637e86cef6da3d83c2}\label{barraydense-meet_8hpp_a9717e7bbecb906637e86cef6da3d83c2}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!return@{return}}
@@ -993,7 +897,7 @@ Definition at line 28 of file barraydense-\/meet.\+hpp.
 
 
 
-Definition at line 531 of file barraydense-\/meet.\+hpp.
+Definition at line 569 of file barraydense-\/meet.\+hpp.
 
 \mbox{\Hypertarget{barraydense-meet_8hpp_aab1acb2e02943ba321bb1bccdc5e0727}\label{barraydense-meet_8hpp_aab1acb2e02943ba321bb1bccdc5e0727}} 
 \index{barraydense-\/meet.hpp@{barraydense-\/meet.hpp}!value@{value}}
