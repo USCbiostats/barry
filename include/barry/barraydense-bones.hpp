@@ -31,6 +31,11 @@ private:
     bool delete_data = false;
 
     static Cell< Cell_Type > Cell_default;
+    
+    // These are used in case that we need to return a reference
+    // to a row or a column.
+    Row_type< Cell_Type > tmp_row;
+    Col_type< Cell_Type > tmp_col;
 
 public:
     

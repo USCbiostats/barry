@@ -19,7 +19,7 @@
 template<typename Cell_Type, typename Data_Type>
 Cell<Cell_Type> BArrayDense<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(); 
 
-#define ZERO_CELL Cell< Cell_Type >(static_cast< Cell_Type >(0.0))
+#define ZERO_CELL Cell< Cell_Type >(static_cast< Cell_Type >(0.0), false, false)
 
 // Edgelist with data
 BDENSE_TEMPLATE(, BArrayDense)(
@@ -46,11 +46,11 @@ BDENSE_TEMPLATE(, BArrayDense)(
     {
       
         // Checking range
-        bool empty = this->is_empty(source[i], target[i], true);
+        bool empty = is_empty(source[i], target[i], true);
         if (add && !empty)
         {
 
-            el[POS(source[i],target[i])].add(value[i]);
+            el[POS(source[i], target[i])].add(value[i]);
             continue;
 
         } 
@@ -96,7 +96,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
             throw std::range_error("Either source or target point to an element outside of the range by (N,M).");
         
         // Checking if it exists
-        if (ZERO_CELL != el[POS(source[i], target[i])])
+        if (el[POS(source[i], target[i])].active)
         {
 
             if (!add)
@@ -110,8 +110,9 @@ BDENSE_TEMPLATE(, BArrayDense)(
         }
         
         // Adding the value and creating a pointer to it
-        el[POS(source[i],target[i])].value   = value[i];
-        el[POS(source[i],target[i])].visited = visited;
+        el[POS(source[i], target[i])].value   = value[i];
+        el[POS(source[i], target[i])].visited = visited;
+        el[POS(source[i], target[i])].active  = true;
         
         NCells++;
 
@@ -127,8 +128,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
 ) : N(Array_.N), M(Array_.M){
   
     // Dimensions
-    // el_ij.resize(N);
-    // el_ji.resize(M);
+    el.resize(N * M);
     
     std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
 
@@ -136,9 +136,11 @@ BDENSE_TEMPLATE(, BArrayDense)(
     this->visited = Array_.visited;
     
     // Data
-    if (Array_.data != nullptr) {
+    if (Array_.data != nullptr)
+    {
 
-        if (copy_data) {
+        if (copy_data)
+        {
 
             data = new Data_Type(*Array_.data);
             delete_data = true;
@@ -161,13 +163,15 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=) (
 ) {
   
     // Clearing
-    if (this != &Array_) {
+    if (this != &Array_)
+    {
       
-        this->clear(true);
-        this->resize(Array_.N, Array_.M);
+        clear(true);
+        resize(Array_.N, Array_.M);
         
         // Entries
-        for (uint i = 0u; i < N; ++i) {
+        for (uint i = 0u; i < N; ++i)
+        {
           
             if (Array_.nnozero() == nnozero())
                 break;
@@ -178,15 +182,21 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=) (
         }
       
         // Data
-        if (data != nullptr) {
+        if (data != nullptr)
+        {
+
             if (delete_data)
                 delete data;
             data = nullptr;
+
         }
 
-        if (Array_.data != nullptr) {
+        if (Array_.data != nullptr)
+        {
+
             data = new Data_Type(*Array_.data);
             delete_data = true;
+
         }
       
     }
@@ -212,7 +222,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
 
 BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=)(
     BDENSE_TYPE() && x
-    ) noexcept {
+) noexcept {
   
     // Clearing
     if (this != &x)
@@ -278,7 +288,8 @@ BDENSE_TEMPLATE(, ~BArrayDense) () {
 }
 
 BDENSE_TEMPLATE(void, set_data) (
-    Data_Type * data_, bool delete_data_
+    Data_Type * data_,
+    bool delete_data_
 ) {  
 
     if ((data != nullptr) && delete_data)
@@ -336,7 +347,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
     if (check_bounds) 
         out_of_range(i, 0u);
 
-    std::vector< Cell_Type > ans(ncol(), (Cell_Type) false);
+    std::vector< Cell_Type > ans(ncol(), static_cast< Cell_Type >(false));
     for (uint j = 0u; j < M; ++j) 
         ans[j] = el[POS(i, j)];
     
@@ -368,7 +379,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
     if (check_bounds) 
         out_of_range(0u, i);
 
-    std::vector< Cell_Type > ans(nrow(), (Cell_Type) false);
+    std::vector< Cell_Type > ans(nrow(), static_cast< Cell_Type >(false));
     for (uint j = 0u; j < N; ++j) 
         ans[j] = el[POS(j, i)];
     
@@ -378,7 +389,9 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
 
 BDENSE_TEMPLATE(void, get_col_vec) (
     std::vector<Cell_Type> * x,
-    uint i, bool check_bounds) const {
+    uint i,
+    bool check_bounds
+) const {
 
     // Checking boundaries  
     if (check_bounds) 
@@ -390,24 +403,39 @@ BDENSE_TEMPLATE(void, get_col_vec) (
 }
 
 BDENSE_TEMPLATE(const Row_type< Cell_Type > &, row)(
-    uint i, bool check_bounds
-    ) const {
+    uint i,
+    bool check_bounds
+) const {
 
     if (check_bounds)
         out_of_range(i, 0u);
 
-    return this->el_ij[i];
+
+    // Creating a row to be returned as const
+    tmp_row.empty();
+    for (unsigned int j = 0u; j < M; ++j)
+        if (el[POS(i, j)].active)
+            tmp_row.insert(std::pair< uint, Cell< Cell_Type > >(j, el[POS(i, j)]));
+    
+    return tmp_row;
 
 }
 
-BDENSE_TEMPLATE(const Col_Type< Cell_Type > &, col)(
-    uint i, bool check_bounds
-    ) const {
+BDENSE_TEMPLATE(const Col_type< Cell_Type > &, col)(
+    uint i,
+    bool check_bounds
+) const {
 
     if (check_bounds)
         out_of_range(0u, i);
 
-    return this->el_ji[i];
+    // Creating a row to be returned as const
+    tmp_col.empty();
+    for (unsigned int j = 0u; j < M; ++j)
+        if (el[POS(j, i)].active)
+            tmp_col.emplace(j, &el[POS(i, j)]);
+
+    return tmp_col;
     
 }
 
@@ -415,19 +443,22 @@ BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
     
     Entries<Cell_Type> res(NCells);
     
-    for (uint i = 0u; i < N; ++i) {
-        
-        if (ROW(i).size() == 0u)
-            continue;
-        
-        for (auto col = ROW(i).begin(); col != ROW(i).end(); ++col) {
+    for (uint i = 0u; i < N; ++i)
+    {
+        for (uint j = 0u; col < M; ++j)
+        {
+
+            if (el[POS(i, j)].active)
             res.source.push_back(i),
-            res.target.push_back(col->first),
-            res.val.push_back(col->second.value);
+            res.target.push_back(j),
+            res.val.push_back(el[POS(i, j)].value);
+
         }
+
     }
     
     return res;
+
 }
 
 BDENSE_TEMPLATE(bool, is_empty)(
@@ -464,10 +495,11 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator+=)(
 ) {
     
     this->insert_cell(
-            coords.first,
-            coords.second,
-            this->Cell_default,
-            true, true
+        coords.first,
+        coords.second,
+        this->Cell_default,
+        true,
+        true
     );
     
     return *this;
@@ -479,9 +511,10 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator-=)(
 ) {
     
     this->rm_cell(
-            coords.first,
-            coords.second,
-            true, true
+        coords.first,
+        coords.second,
+        true,
+        true
     );
     
     return *this;
@@ -490,7 +523,9 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator-=)(
 
 template BDENSE_TEMPLATE_ARGS()
 inline BArrayDenseCell<Cell_Type,Data_Type> BDENSE_TYPE()::operator()(  
-    uint i, uint j, bool check_bounds
+    uint i,
+    uint j,
+    bool check_bounds
 ) {
     
     return BArrayDenseCell<Cell_Type,Data_Type>(this, i, j, check_bounds);
@@ -499,7 +534,9 @@ inline BArrayDenseCell<Cell_Type,Data_Type> BDENSE_TYPE()::operator()(
 
 template BDENSE_TEMPLATE_ARGS()
 inline const BArrayDenseCell_const<Cell_Type,Data_Type> BDENSE_TYPE()::operator()(  
-    uint i, uint j, bool check_bounds
+    uint i,
+    uint j,
+    bool check_bounds
 ) const {
     
     return BArrayDenseCell_const<Cell_Type,Data_Type>(this, i, j, check_bounds);
@@ -523,47 +560,37 @@ BDENSE_TEMPLATE(void, rm_cell) (
     NCells--;
     
     return;
+
 }
 
 BDENSE_TEMPLATE(void, insert_cell) (
-        uint i,
-        uint j,
-        const Cell< Cell_Type> & v,
-        bool check_bounds,
-        bool check_exists
-    ) { 
+    uint i,
+    uint j,
+    const Cell< Cell_Type> & v,
+    bool check_bounds,
+    bool check_exists
+) { 
     
     if (check_bounds)
         out_of_range(i,j); 
     
-    if (check_exists) {
+    if (check_exists)
+    {
         
         // Checking if nothing here, then we move along
-        if (ROW(i).size() == 0u) {
+        if (NCells == 0u)
+        {
             
-            ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
-            COL(j).emplace(i, &ROW(i)[j]);
+            el[POS(i, j)] = v;
             NCells++;
             return;
             
-        }
-        
-        // In this case, the row exists, but we are checking that the value is empty  
-        if (ROW(i).find(j) == ROW(i).end()) {
-            
-            ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v)); 
-            COL(j).emplace(i, &ROW(i)[j]);
-            NCells++;
-            
-        } else {
-            throw std::logic_error("The cell already exists.");
-        }
-        
+        } else
+            throw std::logic_error("The cell already exists.");        
         
     } else {
         
-        ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
-        COL(j).emplace(i, &ROW(i)[j]);
+        el[POS(i, j)] = v;
         NCells++;
         
     }
@@ -583,35 +610,26 @@ BDENSE_TEMPLATE(void, insert_cell) (
     if (check_bounds)
         out_of_range(i,j); 
     
-    if (check_exists) {
+    if (check_exists)
+    {
         
         // Checking if nothing here, then we move along
-        if (ROW(i).size() == 0u) {
+        if (NCells == 0u)
+        {
             
-            ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
-            COL(j).emplace(i, &ROW(i)[j]);
+            el[POS(i, j)] = std::move(v);
             NCells++;
             return;
             
-        }
-        
-        // In this case, the row exists, but we are checking that the value is empty  
-        if (ROW(i).find(j) == ROW(i).end()) {
-            
-            ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v)); 
-            COL(j).emplace(i, &ROW(i)[j]);
-            NCells++;
-            
-        } else {
+        } else 
             throw std::logic_error("The cell already exists.");
-        }
         
         
     } else {
         
-        ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
-        COL(j).emplace(i, &ROW(i)[j]);
+        el[POS(i, j)] = std::move(v);
         NCells++;
+        return;
         
     }
     
@@ -620,7 +638,12 @@ BDENSE_TEMPLATE(void, insert_cell) (
 }
 
 BDENSE_TEMPLATE(void, insert_cell)(
-        uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists) {
+    uint i,
+    uint j,
+    Cell_Type v,
+    bool check_bounds,
+    bool check_exists
+) {
         
     return insert_cell(i, j, Cell<Cell_Type>(v, visited), check_bounds, check_exists);
 
@@ -640,7 +663,8 @@ BDENSE_TEMPLATE(void, swap_cells) (
     }
     
     // Simplest case, we know both exists, so we don't need to check anything
-    if (check_exists == CHECK::NONE) {
+    if (check_exists == CHECK::NONE)
+    {
         
         // Just in case, if this was passed
         if (report != nullptr)
@@ -653,9 +677,9 @@ BDENSE_TEMPLATE(void, swap_cells) (
         // Using the initializing by move, after this, the cell becomes
         // invalid. We use pointers instead as this way we access the Heap memory,
         // which should be faster to access.
-        Cell<Cell_Type> c0(std::move(ROW(i0)[j0]));
+        Cell<Cell_Type> c0(std::move(el[POS(i0, j0)]));
         rm_cell(i0, j0, false, false);
-        Cell<Cell_Type> c1(std::move(ROW(i1)[j1]));
+        Cell<Cell_Type> c1(std::move(el[POS(i1, j1)]));
         rm_cell(i1, j1, false, false);
         
         // Inserting the cells by reference, these will be deleted afterwards
@@ -667,17 +691,20 @@ BDENSE_TEMPLATE(void, swap_cells) (
     }
     
     bool check0, check1;
-    if (check_exists == CHECK::BOTH) {
+    if (check_exists == CHECK::BOTH)
+    {
         
         check0 = !is_empty(i0, j0, false);
         check1 = !is_empty(i1, j1, false);
         
-    } else if (check_exists == CHECK::ONE) {
+    } else if (check_exists == CHECK::ONE)
+    {
         
         check0 = !is_empty(i0, j0, false);
         check1 = true;
         
-    } else if (check_exists == CHECK::TWO) {
+    } else if (check_exists == CHECK::TWO)
+    {
         
         check0 = true;
         check1 = !is_empty(i1, j1, false);
@@ -688,7 +715,8 @@ BDENSE_TEMPLATE(void, swap_cells) (
         (*report) = EXISTS::NONE;
     
     // If both cells exists
-    if (check0 & check1) {
+    if (check0 & check1)
+    {
         
         if (report != nullptr) 
             (*report) = EXISTS::BOTH;
@@ -697,9 +725,9 @@ BDENSE_TEMPLATE(void, swap_cells) (
         if ((i0 == i1) && (j0 == j1)) 
             return;
         
-        Cell<Cell_Type> c0(std::move(ROW(i0)[j0]));
+        Cell<Cell_Type> c0(std::move(el[POS(i0, j0)]));
         rm_cell(i0, j0, false, false);
-        Cell<Cell_Type> c1(std::move(ROW(i1)[j1]));
+        Cell<Cell_Type> c1(std::move(el[POS(i1, j1)]));
         rm_cell(i1, j1, false, false);
         
         insert_cell(i0, j0, c1, false, false);
@@ -710,7 +738,7 @@ BDENSE_TEMPLATE(void, swap_cells) (
         if (report != nullptr) 
             (*report) = EXISTS::TWO;
         
-        insert_cell(i0, j0, ROW(i1)[j1], false, false);
+        insert_cell(i0, j0, el[POS(i1, j1)], false, false);
         rm_cell(i1, j1, false, false);
         
     } else if (check0 & !check1) {
@@ -718,29 +746,34 @@ BDENSE_TEMPLATE(void, swap_cells) (
         if (report != nullptr) 
             (*report) = EXISTS::ONE;
         
-        insert_cell(i1, j1, ROW(i0)[j0], false, false);
+        insert_cell(i1, j1, el[POS(i0, j0)], false, false);
         rm_cell(i0, j0, false, false);
         
     }
     
     return;
+
 }
 
 BDENSE_TEMPLATE(void, toggle_cell) (
-        uint i,
-        uint j,
-        bool check_bounds,
-        int check_exists
-    ) {
+    uint i,
+    uint j,
+    bool check_bounds,
+    int check_exists
+) {
     
     if (check_bounds)
         out_of_range(i, j);
     
-    if (check_exists == EXISTS::UKNOWN) {
+    if (check_exists == EXISTS::UKNOWN)
+    {
         
-        if (is_empty(i, j, false)) {
+        if (is_empty(i, j, false))
+        {
+
             insert_cell(i, j, BArrayDense<Cell_Type, Data_Type>::Cell_default, false, false);
-            ROW(i)[j].visited = visited;
+            el[POS(i, j)].visited = visited;
+
         } else
             rm_cell(i, j, false, false);
         
@@ -751,7 +784,7 @@ BDENSE_TEMPLATE(void, toggle_cell) (
     } else if (check_exists == EXISTS::AS_ZERO) {
         
         insert_cell(i, j, BArrayDense<Cell_Type,Data_Type>::Cell_default, false, false);
-        ROW(i)[j].visited = visited;
+        el[POS(i, j)].visited = visited;
         
     }
     
@@ -765,110 +798,47 @@ BDENSE_TEMPLATE(void, swap_rows) (
     bool check_bounds
 ) {
   
-    if (check_bounds) {
+    if (check_bounds)
+    {
+
         out_of_range(i0,0u);
         out_of_range(i1,0u);
+
     }
-    
-    bool move0=true, move1=true;
-    if (ROW(i0).size() == 0u) move0 = false;
-    if (ROW(i1).size() == 0u) move1 = false;
-    
-    if (!move0 && !move1)
+     
+    if (NCells == 0u)
         return;
     
     // Swapping happens naturally, need to take care of the pointers
     // though
-    ROW(i0).swap(ROW(i1));
-    
-    // Delete the thing
-    if (move0)
-        for (auto& i: row(i1, false))
-            COL(i.first).erase(i0);
-    
-    if (move1)
-        for (auto& i: row(i0, false))
-            COL(i.first).erase(i1);
-    
-    // Now, point to the thing, if it has something to point at. Recall that
-    // the indices swapped.
-    if (move1)
-        for (auto& i: row(i0, false))
-            COL(i.first)[i0] = &ROW(i0)[i.first];
-    
-    if (move0)
-        for (auto& i: row(i1, false))
-            COL(i.first)[i1] = &ROW(i1)[i.first];
+    for (uint j = 0u; j < M; ++j)
+        std::swap(el[POS(i0, j)], el[POS(i1, j)]);
     
     return;
 }
 
 // This swapping is more expensive overall
 BDENSE_TEMPLATE(void, swap_cols) (
-    uint j0, uint j1, bool check_bounds
-    ) {
-  
-    if (check_bounds) {
+    uint j0,
+    uint j1,
+    bool check_bounds
+) {
+
+    if (check_bounds)
+    {
+
         out_of_range(0u, j0);
         out_of_range(0u, j1);
-    }
-    
-    // Which ones need to be checked
-    bool check0 = true, check1 = true;
-    if (COL(j0).size() == 0u) check0 = false;
-    if (COL(j1).size() == 0u) check1 = false;
-    
-    if (check0 && check1) {
-      
-        // Just swapping one at a time
-        int status;
-        Col_type<Cell_Type> col_tmp = COL(j1);
-        Col_type<Cell_Type> col1 = COL(j0);
-        for (auto iter = col1.begin(); iter != col1.end(); ++iter) {
-            
-            // Swapping values (col-wise)
-            swap_cells(iter->first, j0, iter->first, j1, false, CHECK::TWO, &status);
-            
-            // Need to remove it, so we don't swap that as well
-            if (status == EXISTS::BOTH)
-                col_tmp.erase(iter->first);
-        }
-        
-        // If there's anything left to move, we start moving it, otherwise, we just
-        // skip it
-        if (col_tmp.size() != 0u) {
-          
-            for (auto iter = col_tmp.begin(); iter != col_tmp.end(); ++iter) {
-                insert_cell(iter->first, j0, *iter->second, false, false);
-                rm_cell(iter->first, j1);
-            }
-          
-        }
-      
-    } else if (check0 && !check1) {
-      
-        // 1 is empty, so we just add new cells and remove the other ones
-        for (auto iter = COL(j0).begin(); iter != COL(j0).begin(); ++iter)
-            insert_cell(iter->first, j1, *iter->second, false, false);
-        
-        // Setting the column to be zero
-        COL(j0).empty();
-      
-    } else if (!check0 && check1) {
-      
-        // 1 is empty, so we just add new cells and remove the other ones
-        for (auto iter = COL(j1).begin(); iter != COL(j1).begin(); ++iter) {
-          
-            // Swapping values (col-wise)
-            insert_cell(iter->first, j0, *iter->second, false, false);
 
-        }
-        
-        // Setting the column to be zero
-        COL(j1).empty();
-      
     }
     
+    if (NCells == 0u)
+        return;
+    
+    // Swapping happens naturally, need to take care of the pointers
+    // though
+    for (uint i = 0u; i < N; ++j)
+        std::swap(el[POS(i, j0)], el[POS(i, j1)]);
     
     return;
 }
@@ -915,77 +885,46 @@ BDENSE_TEMPLATE(void, zero_col) (
 
 BDENSE_TEMPLATE(void, transpose) () {
   
+    if (NCells == 0u)
+    {
+
+        std::swap(N, M);
+        return;
+
+    }
+
     // Start by flipping the switch 
     visited = !visited;
-    
-    // Do we need to resize (increase) either?
-    if      (N > M) el_ji.resize(N);
-    else if (N < M) el_ij.resize(M);
-    
+
     // uint N0 = N, M0 = M;
-    int status;
-    for (uint i = 0u; i < N; ++i) {
-        
-        // Do we need to move anything?
-        if (ROW(i).size() == 0u)
-            continue;
-        
-        // We now iterate changing rows
-        Row_type<Cell_Type> row = ROW(i);
-        for (auto col = row.begin(); col != row.end(); ++col) {
-          
-            // Skip if in the diagoal
-            if (i == col->first) {
-                ROW(i)[i].visited = visited;
-                continue;
-            }
-            
-            // We have not visited this yet, we need to change that
-            if (ROW(i)[col->first].visited != visited) {
-                
-                // First, swap the contents
-                swap_cells(i, col->first, col->first, i, false, CHECK::TWO, &status);
-                
-                // Changing the switch
-                if (status == EXISTS::BOTH)
-                    ROW(i)[col->first].visited = visited;
-                
-                ROW(col->first)[i].visited = visited;
-              
-            }
-          
-        }
-      
-    }
-    
-    // Shreding. Note that no information should have been lost since, hence, no
-    // change in NCells.
-    if (N > M) el_ij.resize(M);
-    else if (N < M) el_ji.resize(N);
+    std::vector< Cell< Cell_Type > > tmp_el(std::move(el));
+    el.resize(N * M, ZERO_CELL);
+    for (uint i = 0u; i < N; ++i) 
+        for (uint j = 0u; j < M; ++j)
+            std::swap(tmp_el[POS(i, j)], el[POS_N(j, i, M)])
     
     // Swapping the values
     std::swap(N, M);
     
     return;
+
 }
 
 BDENSE_TEMPLATE(void, clear) (
     bool hard
-    ) {
+) {
     
-    if (hard) {
+    if (hard)
+    {
       
-        el_ji.clear();
-        el_ij.clear();
-        
-        el_ij.resize(N);
-        el_ji.resize(M);
+        el.clear();
+        el.resize(N * M, ZERO_CELL);
         NCells = 0u;
       
     } else {
         
-        for (unsigned int i = 0u; i < N; ++i)
-            zero_row(i, false);
+        for (auto & i : el)
+            i.active = false;
         
     }
     
@@ -1011,7 +950,7 @@ BDENSE_TEMPLATE(void, resize) (
   
     // Moving stuff around
     std::vector< Cell< Cell_Type > > el_tmp(std::move(el));
-    el.resize(N_ * M_);
+    el.resize(N_ * M_, ZERO_CELL);
     for (unsigned int i = 0u; i < N; ++i)
     {
         // If reached the end
@@ -1038,12 +977,10 @@ BDENSE_TEMPLATE(void, resize) (
 }
 
 BDENSE_TEMPLATE(void, reserve) () {
+
 #ifdef BARRAY_USE_UNORDERED_MAP
-    for (uint i = 0u; i < N; i++)
-        ROW(i).reserve(M);
-    
-    for (uint i = 0u; i < M; i++)
-        COL(i).reserve(N);
+    tmp_row.reserve(M);
+    tmp_col.reserve(N);
 #endif
     return;
   
@@ -1051,20 +988,27 @@ BDENSE_TEMPLATE(void, reserve) () {
 
 BDENSE_TEMPLATE(void, print) () const {
   
-    for (uint i = 0u; i < N; ++i) {
+    for (uint i = 0u; i < N; ++i)
+    {
+
         printf_barry("[%3i,] ", i);
-        for (uint j = 0u; j < M; ++j) {
+
+        for (uint j = 0u; j < M; ++j)
+        {
+
             if (this->is_empty(i, j, false))
                 printf_barry("    . ");
             else 
                 printf_barry(" %.2f ", static_cast<double>(this->get_cell(i, j, false)));
             
         }
+
         printf_barry("\n");
+
     }
     
-    
     return;
+    
 }
 
 #undef ROW

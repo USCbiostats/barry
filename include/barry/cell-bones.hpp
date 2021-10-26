@@ -16,8 +16,8 @@ public:
     bool visited;
     bool active;
     Cell();
-    Cell(Cell_Type value_, bool visited_ = false) :
-        value(value_), visited(visited_) {};
+    Cell(Cell_Type value_, bool visited_ = false, bool active_ = true) :
+        value(value_), visited(visited_), active(active_) {};
     ~Cell() {};
     
     // This is an explicit declaration since in other cases it seems
