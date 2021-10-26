@@ -15,7 +15,7 @@
 // Basic types
 // See this thread
 // https://stackoverflow.com/questions/35055042/difference-between-uint8-t-uint-fast8-t-and-uint-least8-t
-typedef std::uint_fast16_t uint;
+typedef unsigned int uint;
 
 // Mostly relevant for the BArray definition -----------------------------------
 

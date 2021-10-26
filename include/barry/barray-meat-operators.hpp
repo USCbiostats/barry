@@ -4,13 +4,20 @@
 #ifndef BARRY_BARRAY_MEAT_OPERATORS_HPP
 #define BARRY_BARRAY_MEAT_OPERATORS_HPP 1
 
+#define BARRAY_TYPE() BArray<Cell_Type, Data_Type>
+
+#define BARRAY_TEMPLATE_ARGS() <typename Cell_Type, typename Data_Type>
+
+#define BARRAY_TEMPLATE(a,b) \
+    template BARRAY_TEMPLATE_ARGS() inline a BARRAY_TYPE()::b
+
 #define ROW(a) this->el_ij[a]
 #define COL(a) this->el_ji[a]
 
-template<typename Cell_Type, typename Data_Type>
+template BARRAY_TEMPLATE_ARGS()
 inline void checkdim_(
-    const BArray<Cell_Type, Data_Type>& lhs,
-    const BArray<Cell_Type, Data_Type>& rhs
+    const BARRAY_TYPE()& lhs,
+    const BARRAY_TYPE()& rhs
 ) {
 
     if (lhs.ncol() != rhs.ncol())
@@ -22,25 +29,21 @@ inline void checkdim_(
     return;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator+=(
+BARRAY_TEMPLATE(BARRAY_TYPE()&, operator+=) (
     const BArray<Cell_Type, Data_Type>& rhs
 ) {
 
     // Must be compatible
     checkdim_(*this, rhs);
     
-    for (uint i = 0u; i < nrow(); ++i) {
-        for (uint j = 0u; j < ncol(); ++j) {
+    for (uint i = 0u; i < nrow(); ++i)
+        for (uint j = 0u; j < ncol(); ++j)
             this->operator()(i, j) += rhs.get_cell(i, j);
-        }
-    }
 
     return *this;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator+=(
+BARRAY_TEMPLATE(BARRAY_TYPE()&, operator+=) (
     const Cell_Type& rhs
 ) {
 
@@ -53,8 +56,7 @@ inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator+=(
     return *this;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator-=(
+BARRAY_TEMPLATE(BARRAY_TYPE()&, operator-=) (
     const BArray<Cell_Type, Data_Type>& rhs
 ) {
 
@@ -70,8 +72,7 @@ inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator-=(
     return *this;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator-=(
+BARRAY_TEMPLATE(BARRAY_TYPE()&, operator-=) (
     const Cell_Type& rhs
 ) {
 
@@ -84,8 +85,7 @@ inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator-=(
     return *this;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator*=(
+BARRAY_TEMPLATE(BARRAY_TYPE()&, operator*=) (
     const Cell_Type& rhs
 ) {
 
@@ -102,8 +102,7 @@ inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator*=(
     return *this;
 }
 
-template<typename Cell_Type, typename Data_Type>
-inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator/=(
+BARRAY_TEMPLATE(BARRAY_TYPE()&, operator/=) (
     const Cell_Type& rhs
 ) {
 
@@ -119,6 +118,10 @@ inline BArray<Cell_Type, Data_Type>& BArray<Cell_Type, Data_Type>::operator/=(
 
     return *this;
 }
+
+#undef BARRAY_TYPE
+#undef BARRAY_TEMPLATE_ARGS
+#undef BARRAY_TEMPLATE
 
 #undef ROW
 #undef COL
