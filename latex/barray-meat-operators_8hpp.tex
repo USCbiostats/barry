@@ -22,18 +22,79 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \#define \mbox{\hyperlink{barray-meat-operators_8hpp_a987a146b1dce88f254dca87a3702590c}{BARRY\+\_\+\+BARRAY\+\_\+\+MEAT\+\_\+\+OPERATORS\+\_\+\+HPP}}~1
 \item 
-\#define \mbox{\hyperlink{barray-meat-operators_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}{ROW}}(a)~this-\/$>$el\+\_\+ij\mbox{[}a\mbox{]}
+\#define \mbox{\hyperlink{barray-meat-operators_8hpp_a659ca7b4ae7b4f95efe64bb167602d6e}{BARRAY\+\_\+\+TYPE}}()~\mbox{\hyperlink{class_b_array}{BArray}}$<$Cell\+\_\+\+Type, Data\+\_\+\+Type$>$
 \item 
-\#define \mbox{\hyperlink{barray-meat-operators_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}{COL}}(a)~this-\/$>$el\+\_\+ji\mbox{[}a\mbox{]}
+\#define \mbox{\hyperlink{barray-meat-operators_8hpp_a1c0a0116d57e56c8ff3ebcf3898c028d}{BARRAY\+\_\+\+TEMPLATE\+\_\+\+ARGS}}()~$<$typename Cell\+\_\+\+Type, typename Data\+\_\+\+Type$>$
+\item 
+\#define \mbox{\hyperlink{barray-meat-operators_8hpp_af13a653838bf7594b0fb9f15f8a49218}{BARRAY\+\_\+\+TEMPLATE}}(a,  b)~    template \mbox{\hyperlink{barray-meat-operators_8hpp_a6bc423fbf0bf597cd9f254334d29fa0b}{BARRAY\+\_\+\+TEMPLATE\+\_\+\+ARGS}}() inline a \mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\+::b
+\item 
+\#define \mbox{\hyperlink{barray-meat-operators_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}{ROW}}(a)~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ij\mbox{[}a\mbox{]}
+\item 
+\#define \mbox{\hyperlink{barray-meat-operators_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}{COL}}(a)~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ji\mbox{[}a\mbox{]}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\void \mbox{\hyperlink{barray-meat-operators_8hpp_a38550eb5bfae32d431d2d838ccd779aa}{checkdim\+\_\+}} (\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \&lhs, \mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \&rhs)
+template \mbox{\hyperlink{barray-meat-operators_8hpp_a6bc423fbf0bf597cd9f254334d29fa0b}{BARRAY\+\_\+\+TEMPLATE\+\_\+\+ARGS}} () inline void checkdim\+\_\+(\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} \mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}() \&lhs
+\item 
+template \mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} \mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}} () \&\mbox{\hyperlink{barray-meat-operators_8hpp_abc38d91637d0da432c721d98227dd8b0}{rhs}})
+\item 
+\mbox{\hyperlink{barray-meat-operators_8hpp_a5211b9c62426c96f954228ab92934207}{BARRAY\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&, operator+=)(\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type
+\item 
+\mbox{\hyperlink{barray-meat-operators_8hpp_a7db6f8cb012951f7a09b11851dfa6ba0}{for}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}=0u;\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}$<$ nrow();++\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) for(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}=0u = el\mbox{[}\mbox{\hyperlink{barraydensecell-meat_8hpp_abf33b097799b4bfe44ec4477c592b0b9}{POS}}(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}})\mbox{]}
+\item 
+\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}$<$ ncol();++\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}) \mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$ \mbox{\hyperlink{barray-meat-operators_8hpp_a1d69c9c1e7d1940aa5a5ca5571884d16}{operator()}} (\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}})+
+\item 
+\mbox{\hyperlink{barray-meat-operators_8hpp_a2a6d4023d7c9ee5295400b1fa0d16cdb}{BARRAY\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&, operator+=)(\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} Cell\+\_\+\+Type \&\mbox{\hyperlink{barray-meat-operators_8hpp_abc38d91637d0da432c721d98227dd8b0}{rhs}})
+\item 
+\mbox{\hyperlink{barray-meat-operators_8hpp_a33833fb0fbfd7780164947cee08d5049}{BARRAY\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&, operator-\/=)(\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type
+\item 
+\mbox{\hyperlink{barray-meat-operators_8hpp_adb6bd922018b6d87e021bf747293b155}{BARRAY\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&, operator-\/=)(\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} Cell\+\_\+\+Type \&\mbox{\hyperlink{barray-meat-operators_8hpp_abc38d91637d0da432c721d98227dd8b0}{rhs}})
+\item 
+\mbox{\hyperlink{barray-meat-operators_8hpp_a402424114ee0c6ed411453ebe20cabab}{BARRAY\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&, operator$\ast$=)(\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} Cell\+\_\+\+Type \&\mbox{\hyperlink{barray-meat-operators_8hpp_abc38d91637d0da432c721d98227dd8b0}{rhs}})
+\item 
+\mbox{\hyperlink{barray-meat-operators_8hpp_ae3a0ff6198929eddf339eb728f04600f}{BARRAY\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&, operator/=)(\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} Cell\+\_\+\+Type \&\mbox{\hyperlink{barray-meat-operators_8hpp_abc38d91637d0da432c721d98227dd8b0}{rhs}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Data\+\_\+\+Type \& \mbox{\hyperlink{barray-meat-operators_8hpp_abc38d91637d0da432c721d98227dd8b0}{rhs}}
+\item 
+\mbox{\hyperlink{barray-meat_8hpp_a4725aca18f0b3220c56baad1a1ffc023}{return}} $\ast$ \mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{barray-meat-operators_8hpp_af13a653838bf7594b0fb9f15f8a49218}\label{barray-meat-operators_8hpp_af13a653838bf7594b0fb9f15f8a49218}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}}
+\index{BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TEMPLATE}{BARRAY\_TEMPLATE}}
+{\footnotesize\ttfamily \#define BARRAY\+\_\+\+TEMPLATE(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~    template \mbox{\hyperlink{barray-meat-operators_8hpp_a6bc423fbf0bf597cd9f254334d29fa0b}{BARRAY\+\_\+\+TEMPLATE\+\_\+\+ARGS}}() inline a \mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\+::b}
+
+
+
+Definition at line 11 of file barray-\/meat-\/operators.\+hpp.
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a1c0a0116d57e56c8ff3ebcf3898c028d}\label{barray-meat-operators_8hpp_a1c0a0116d57e56c8ff3ebcf3898c028d}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TEMPLATE\_ARGS@{BARRAY\_TEMPLATE\_ARGS}}
+\index{BARRAY\_TEMPLATE\_ARGS@{BARRAY\_TEMPLATE\_ARGS}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TEMPLATE\_ARGS}{BARRAY\_TEMPLATE\_ARGS}}
+{\footnotesize\ttfamily template BARRAY\+\_\+\+TEMPLATE\+\_\+\+ARGS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~$<$typename Cell\+\_\+\+Type, typename Data\+\_\+\+Type$>$}
+
+
+
+Definition at line 9 of file barray-\/meat-\/operators.\+hpp.
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a659ca7b4ae7b4f95efe64bb167602d6e}\label{barray-meat-operators_8hpp_a659ca7b4ae7b4f95efe64bb167602d6e}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TYPE@{BARRAY\_TYPE}}
+\index{BARRAY\_TYPE@{BARRAY\_TYPE}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TYPE}{BARRAY\_TYPE}}
+{\footnotesize\ttfamily template Data\+\_\+\+Type BARRAY\+\_\+\+TYPE(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{class_b_array}{BArray}}$<$Cell\+\_\+\+Type, Data\+\_\+\+Type$>$}
+
+
+
+Definition at line 7 of file barray-\/meat-\/operators.\+hpp.
+
 \mbox{\Hypertarget{barray-meat-operators_8hpp_a987a146b1dce88f254dca87a3702590c}\label{barray-meat-operators_8hpp_a987a146b1dce88f254dca87a3702590c}} 
 \index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRY\_BARRAY\_MEAT\_OPERATORS\_HPP@{BARRY\_BARRAY\_MEAT\_OPERATORS\_HPP}}
 \index{BARRY\_BARRAY\_MEAT\_OPERATORS\_HPP@{BARRY\_BARRAY\_MEAT\_OPERATORS\_HPP}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
@@ -48,33 +109,137 @@ Definition at line 5 of file barray-\/meat-\/operators.\+hpp.
 \index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!COL@{COL}}
 \index{COL@{COL}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
 \doxysubsubsection{\texorpdfstring{COL}{COL}}
-{\footnotesize\ttfamily \#define COL(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~this-\/$>$el\+\_\+ji\mbox{[}a\mbox{]}}
+{\footnotesize\ttfamily \#define COL(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ji\mbox{[}a\mbox{]}}
 
 
 
-Definition at line 8 of file barray-\/meat-\/operators.\+hpp.
+Definition at line 15 of file barray-\/meat-\/operators.\+hpp.
 
 \mbox{\Hypertarget{barray-meat-operators_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}\label{barray-meat-operators_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}} 
 \index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!ROW@{ROW}}
 \index{ROW@{ROW}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
 \doxysubsubsection{\texorpdfstring{ROW}{ROW}}
-{\footnotesize\ttfamily \#define ROW(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~this-\/$>$el\+\_\+ij\mbox{[}a\mbox{]}}
+{\footnotesize\ttfamily \#define ROW(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ij\mbox{[}a\mbox{]}}
 
 
 
-Definition at line 7 of file barray-\/meat-\/operators.\+hpp.
+Definition at line 14 of file barray-\/meat-\/operators.\+hpp.
 
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{barray-meat-operators_8hpp_a38550eb5bfae32d431d2d838ccd779aa}\label{barray-meat-operators_8hpp_a38550eb5bfae32d431d2d838ccd779aa}} 
-\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!checkdim\_@{checkdim\_}}
-\index{checkdim\_@{checkdim\_}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
-\doxysubsubsection{\texorpdfstring{checkdim\_()}{checkdim\_()}}
-{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-void checkdim\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \&}]{lhs,  }\item[{\mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a402424114ee0c6ed411453ebe20cabab}\label{barray-meat-operators_8hpp_a402424114ee0c6ed411453ebe20cabab}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}}
+\index{BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TEMPLATE()}{BARRAY\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily BARRAY\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&}]{,  }\item[{operator$\ast$}]{ }\end{DoxyParamCaption}) const \&}
 
 
 
-Definition at line 11 of file barray-\/meat-\/operators.\+hpp.
+Definition at line 88 of file barray-\/meat-\/operators.\+hpp.
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a5211b9c62426c96f954228ab92934207}\label{barray-meat-operators_8hpp_a5211b9c62426c96f954228ab92934207}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}}
+\index{BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TEMPLATE()}{BARRAY\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily BARRAY\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&}]{,  }\item[{operator+}]{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a2a6d4023d7c9ee5295400b1fa0d16cdb}\label{barray-meat-operators_8hpp_a2a6d4023d7c9ee5295400b1fa0d16cdb}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}}
+\index{BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TEMPLATE()}{BARRAY\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily BARRAY\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&}]{,  }\item[{operator+}]{ }\end{DoxyParamCaption}) const \&}
+
+
+
+Definition at line 46 of file barray-\/meat-\/operators.\+hpp.
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a33833fb0fbfd7780164947cee08d5049}\label{barray-meat-operators_8hpp_a33833fb0fbfd7780164947cee08d5049}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}}
+\index{BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TEMPLATE()}{BARRAY\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily BARRAY\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&}]{,  }\item[{operator-\/}]{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_adb6bd922018b6d87e021bf747293b155}\label{barray-meat-operators_8hpp_adb6bd922018b6d87e021bf747293b155}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}}
+\index{BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TEMPLATE()}{BARRAY\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily BARRAY\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&}]{,  }\item[{operator-\/}]{ }\end{DoxyParamCaption}) const \&}
+
+
+
+Definition at line 75 of file barray-\/meat-\/operators.\+hpp.
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_ae3a0ff6198929eddf339eb728f04600f}\label{barray-meat-operators_8hpp_ae3a0ff6198929eddf339eb728f04600f}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}}
+\index{BARRAY\_TEMPLATE@{BARRAY\_TEMPLATE}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TEMPLATE()}{BARRAY\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily BARRAY\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}{BARRAY\+\_\+\+TYPE}}()\&}]{,  }\item[{operator/}]{ }\end{DoxyParamCaption}) const \&}
+
+
+
+Definition at line 105 of file barray-\/meat-\/operators.\+hpp.
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a6bc423fbf0bf597cd9f254334d29fa0b}\label{barray-meat-operators_8hpp_a6bc423fbf0bf597cd9f254334d29fa0b}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TEMPLATE\_ARGS@{BARRAY\_TEMPLATE\_ARGS}}
+\index{BARRAY\_TEMPLATE\_ARGS@{BARRAY\_TEMPLATE\_ARGS}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TEMPLATE\_ARGS()}{BARRAY\_TEMPLATE\_ARGS()}}
+{\footnotesize\ttfamily template BARRAY\+\_\+\+TEMPLATE\+\_\+\+ARGS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const \&}
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}\label{barray-meat-operators_8hpp_aa088d077e347efbf290ceeed03ca0d22}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!BARRAY\_TYPE@{BARRAY\_TYPE}}
+\index{BARRAY\_TYPE@{BARRAY\_TYPE}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{BARRAY\_TYPE()}{BARRAY\_TYPE()}}
+{\footnotesize\ttfamily template \mbox{\hyperlink{barraydense-meet_8hpp_a4395e24e4bdd804c6851de7ac099a258}{const}} BARRAY\+\_\+\+TYPE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) \&}
+
+
+
+Definition at line 20 of file barray-\/meat-\/operators.\+hpp.
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a7db6f8cb012951f7a09b11851dfa6ba0}\label{barray-meat-operators_8hpp_a7db6f8cb012951f7a09b11851dfa6ba0}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!for@{for}}
+\index{for@{for}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{for()}{for()}}
+{\footnotesize\ttfamily for (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) = el\mbox{[}\mbox{\hyperlink{barraydensecell-meat_8hpp_abf33b097799b4bfe44ec4477c592b0b9}{POS}}(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}})\mbox{]}\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Definition at line 66 of file barray-\/meat-\/operators.\+hpp.
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a1d69c9c1e7d1940aa5a5ca5571884d16}\label{barray-meat-operators_8hpp_a1d69c9c1e7d1940aa5a5ca5571884d16}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!operator()@{operator()}}
+\index{operator()@{operator()}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}$<$ ncol(); ++\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}) \mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$ operator() (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}}]{,  }\item[{\mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{barray-meat-operators_8hpp_abc38d91637d0da432c721d98227dd8b0}\label{barray-meat-operators_8hpp_abc38d91637d0da432c721d98227dd8b0}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!rhs@{rhs}}
+\index{rhs@{rhs}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{rhs}{rhs}}
+{\footnotesize\ttfamily Data\+\_\+\+Type \& rhs}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    checkdim\_(*\textcolor{keyword}{this}, \mbox{\hyperlink{barray-meat-operators_8hpp_abc38d91637d0da432c721d98227dd8b0}{rhs}})}
+
+\end{DoxyCode}
+
+
+Definition at line 33 of file barray-\/meat-\/operators.\+hpp.
+
+\mbox{\Hypertarget{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}\label{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}} 
+\index{barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}!this@{this}}
+\index{this@{this}!barray-\/meat-\/operators.hpp@{barray-\/meat-\/operators.hpp}}
+\doxysubsubsection{\texorpdfstring{this}{this}}
+{\footnotesize\ttfamily \mbox{\hyperlink{barray-meat_8hpp_a4725aca18f0b3220c56baad1a1ffc023}{return}} $\ast$ this}
+
+
+
+Definition at line 43 of file barray-\/meat-\/operators.\+hpp.
 

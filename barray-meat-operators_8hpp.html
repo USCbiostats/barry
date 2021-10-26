@@ -94,7 +94,8 @@ $(document).ready(function(){initNavTree('barray-meat-operators_8hpp.html',''); 
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">barray-meat-operators.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -131,18 +132,116 @@ This graph shows which files directly or indirectly include this file:</div>
 Macros</h2></td></tr>
 <tr class="memitem:a987a146b1dce88f254dca87a3702590c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a987a146b1dce88f254dca87a3702590c">BARRY_BARRAY_MEAT_OPERATORS_HPP</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a987a146b1dce88f254dca87a3702590c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a391c25765afb3eb7b8288b21dd2eb16b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(a)&#160;&#160;&#160;this-&gt;el_ij[a]</td></tr>
+<tr class="memitem:a659ca7b4ae7b4f95efe64bb167602d6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a659ca7b4ae7b4f95efe64bb167602d6e">BARRAY_TYPE</a>()&#160;&#160;&#160;<a class="el" href="class_b_array.html">BArray</a>&lt;Cell_Type, Data_Type&gt;</td></tr>
+<tr class="separator:a659ca7b4ae7b4f95efe64bb167602d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c0a0116d57e56c8ff3ebcf3898c028d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a1c0a0116d57e56c8ff3ebcf3898c028d">BARRAY_TEMPLATE_ARGS</a>()&#160;&#160;&#160;&lt;typename Cell_Type, typename Data_Type&gt;</td></tr>
+<tr class="separator:a1c0a0116d57e56c8ff3ebcf3898c028d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af13a653838bf7594b0fb9f15f8a49218"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#af13a653838bf7594b0fb9f15f8a49218">BARRAY_TEMPLATE</a>(a,  b)&#160;&#160;&#160;    template <a class="el" href="barray-meat-operators_8hpp.html#a6bc423fbf0bf597cd9f254334d29fa0b">BARRAY_TEMPLATE_ARGS</a>() inline a <a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()::b</td></tr>
+<tr class="separator:af13a653838bf7594b0fb9f15f8a49218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a391c25765afb3eb7b8288b21dd2eb16b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a391c25765afb3eb7b8288b21dd2eb16b">ROW</a>(a)&#160;&#160;&#160;<a class="el" href="barray-meat-operators_8hpp.html#a16b15c19feaca0a6aa77abb6865710ef">this</a>-&gt;el_ij[a]</td></tr>
 <tr class="separator:a391c25765afb3eb7b8288b21dd2eb16b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2a0f8cf6ac7fdad243406f6e3ea0605"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605">COL</a>(a)&#160;&#160;&#160;this-&gt;el_ji[a]</td></tr>
+<tr class="memitem:ac2a0f8cf6ac7fdad243406f6e3ea0605"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605">COL</a>(a)&#160;&#160;&#160;<a class="el" href="barray-meat-operators_8hpp.html#a16b15c19feaca0a6aa77abb6865710ef">this</a>-&gt;el_ji[a]</td></tr>
 <tr class="separator:ac2a0f8cf6ac7fdad243406f6e3ea0605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a38550eb5bfae32d431d2d838ccd779aa"><td class="memTemplParams" colspan="2">template&lt;typename Cell_Type , typename Data_Type &gt; </td></tr>
-<tr class="memitem:a38550eb5bfae32d431d2d838ccd779aa"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a38550eb5bfae32d431d2d838ccd779aa">checkdim_</a> (<a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; &amp;lhs, <a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; &amp;rhs)</td></tr>
-<tr class="separator:a38550eb5bfae32d431d2d838ccd779aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bc423fbf0bf597cd9f254334d29fa0b"><td class="memItemLeft" align="right" valign="top">template&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a6bc423fbf0bf597cd9f254334d29fa0b">BARRAY_TEMPLATE_ARGS</a> () inline void checkdim_(<a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> <a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>() &amp;lhs</td></tr>
+<tr class="separator:a6bc423fbf0bf597cd9f254334d29fa0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa088d077e347efbf290ceeed03ca0d22"><td class="memItemLeft" align="right" valign="top">template <a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a> () &amp;<a class="el" href="barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0">rhs</a>)</td></tr>
+<tr class="separator:aa088d077e347efbf290ceeed03ca0d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5211b9c62426c96f954228ab92934207"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a5211b9c62426c96f954228ab92934207">BARRAY_TEMPLATE</a> (<a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;, operator+=)(<a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type</td></tr>
+<tr class="separator:a5211b9c62426c96f954228ab92934207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7db6f8cb012951f7a09b11851dfa6ba0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a7db6f8cb012951f7a09b11851dfa6ba0">for</a> (<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>=0u;<a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>&lt; nrow();++<a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) for(<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>=0u = el[<a class="el" href="barraydensecell-meat_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9">POS</a>(<a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)]</td></tr>
+<tr class="separator:a7db6f8cb012951f7a09b11851dfa6ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d69c9c1e7d1940aa5a5ca5571884d16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>&lt; ncol();++<a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) <a class="el" href="barray-meat-operators_8hpp.html#a16b15c19feaca0a6aa77abb6865710ef">this</a>-&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a1d69c9c1e7d1940aa5a5ca5571884d16">operator()</a> (<a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)+</td></tr>
+<tr class="separator:a1d69c9c1e7d1940aa5a5ca5571884d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a6d4023d7c9ee5295400b1fa0d16cdb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a2a6d4023d7c9ee5295400b1fa0d16cdb">BARRAY_TEMPLATE</a> (<a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;, operator+=)(<a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> Cell_Type &amp;<a class="el" href="barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0">rhs</a>)</td></tr>
+<tr class="separator:a2a6d4023d7c9ee5295400b1fa0d16cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33833fb0fbfd7780164947cee08d5049"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a33833fb0fbfd7780164947cee08d5049">BARRAY_TEMPLATE</a> (<a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;, operator-=)(<a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type</td></tr>
+<tr class="separator:a33833fb0fbfd7780164947cee08d5049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb6bd922018b6d87e021bf747293b155"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#adb6bd922018b6d87e021bf747293b155">BARRAY_TEMPLATE</a> (<a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;, operator-=)(<a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> Cell_Type &amp;<a class="el" href="barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0">rhs</a>)</td></tr>
+<tr class="separator:adb6bd922018b6d87e021bf747293b155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402424114ee0c6ed411453ebe20cabab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a402424114ee0c6ed411453ebe20cabab">BARRAY_TEMPLATE</a> (<a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;, operator*=)(<a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> Cell_Type &amp;<a class="el" href="barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0">rhs</a>)</td></tr>
+<tr class="separator:a402424114ee0c6ed411453ebe20cabab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3a0ff6198929eddf339eb728f04600f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#ae3a0ff6198929eddf339eb728f04600f">BARRAY_TEMPLATE</a> (<a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;, operator/=)(<a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> Cell_Type &amp;<a class="el" href="barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0">rhs</a>)</td></tr>
+<tr class="separator:ae3a0ff6198929eddf339eb728f04600f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:abc38d91637d0da432c721d98227dd8b0"><td class="memItemLeft" align="right" valign="top">Data_Type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0">rhs</a></td></tr>
+<tr class="separator:abc38d91637d0da432c721d98227dd8b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16b15c19feaca0a6aa77abb6865710ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="barray-meat_8hpp.html#a4725aca18f0b3220c56baad1a1ffc023">return</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barray-meat-operators_8hpp.html#a16b15c19feaca0a6aa77abb6865710ef">this</a></td></tr>
+<tr class="separator:a16b15c19feaca0a6aa77abb6865710ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="af13a653838bf7594b0fb9f15f8a49218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af13a653838bf7594b0fb9f15f8a49218">&#9670;&nbsp;</a></span>BARRAY_TEMPLATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BARRAY_TEMPLATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    template <a class="el" href="barray-meat-operators_8hpp.html#a6bc423fbf0bf597cd9f254334d29fa0b">BARRAY_TEMPLATE_ARGS</a>() inline a <a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()::b</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00011">11</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1c0a0116d57e56c8ff3ebcf3898c028d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c0a0116d57e56c8ff3ebcf3898c028d">&#9670;&nbsp;</a></span>BARRAY_TEMPLATE_ARGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template BARRAY_TEMPLATE_ARGS</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;&lt;typename Cell_Type, typename Data_Type&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00009">9</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a659ca7b4ae7b4f95efe64bb167602d6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a659ca7b4ae7b4f95efe64bb167602d6e">&#9670;&nbsp;</a></span>BARRAY_TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template Data_Type BARRAY_TYPE</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="class_b_array.html">BArray</a>&lt;Cell_Type, Data_Type&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00007">7</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a987a146b1dce88f254dca87a3702590c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a987a146b1dce88f254dca87a3702590c">&#9670;&nbsp;</a></span>BARRY_BARRAY_MEAT_OPERATORS_HPP</h2>
 
@@ -170,12 +269,12 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">a</td><td>)</td>
-          <td>&#160;&#160;&#160;this-&gt;el_ji[a]</td>
+          <td>&#160;&#160;&#160;<a class="el" href="barray-meat-operators_8hpp.html#a16b15c19feaca0a6aa77abb6865710ef">this</a>-&gt;el_ji[a]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00008">8</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00015">15</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
 
 </div>
 </div>
@@ -190,38 +289,272 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">a</td><td>)</td>
-          <td>&#160;&#160;&#160;this-&gt;el_ij[a]</td>
+          <td>&#160;&#160;&#160;<a class="el" href="barray-meat-operators_8hpp.html#a16b15c19feaca0a6aa77abb6865710ef">this</a>-&gt;el_ij[a]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00007">7</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00014">14</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a38550eb5bfae32d431d2d838ccd779aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38550eb5bfae32d431d2d838ccd779aa">&#9670;&nbsp;</a></span>checkdim_()</h2>
+<a id="a402424114ee0c6ed411453ebe20cabab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402424114ee0c6ed411453ebe20cabab">&#9670;&nbsp;</a></span>BARRAY_TEMPLATE() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename Cell_Type , typename Data_Type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">BARRAY_TEMPLATE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">operator*&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00088">88</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5211b9c62426c96f954228ab92934207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5211b9c62426c96f954228ab92934207">&#9670;&nbsp;</a></span>BARRAY_TEMPLATE() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BARRAY_TEMPLATE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">operator+&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a6d4023d7c9ee5295400b1fa0d16cdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a6d4023d7c9ee5295400b1fa0d16cdb">&#9670;&nbsp;</a></span>BARRAY_TEMPLATE() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BARRAY_TEMPLATE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">operator+&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00046">46</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a33833fb0fbfd7780164947cee08d5049"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33833fb0fbfd7780164947cee08d5049">&#9670;&nbsp;</a></span>BARRAY_TEMPLATE() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BARRAY_TEMPLATE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">operator-&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adb6bd922018b6d87e021bf747293b155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb6bd922018b6d87e021bf747293b155">&#9670;&nbsp;</a></span>BARRAY_TEMPLATE() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BARRAY_TEMPLATE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">operator-&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00075">75</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae3a0ff6198929eddf339eb728f04600f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a0ff6198929eddf339eb728f04600f">&#9670;&nbsp;</a></span>BARRAY_TEMPLATE() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BARRAY_TEMPLATE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="barray-meat-operators_8hpp.html#aa088d077e347efbf290ceeed03ca0d22">BARRAY_TYPE</a>()&amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">operator/&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00105">105</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6bc423fbf0bf597cd9f254334d29fa0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bc423fbf0bf597cd9f254334d29fa0b">&#9670;&nbsp;</a></span>BARRAY_TEMPLATE_ARGS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template BARRAY_TEMPLATE_ARGS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa088d077e347efbf290ceeed03ca0d22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa088d077e347efbf290ceeed03ca0d22">&#9670;&nbsp;</a></span>BARRAY_TYPE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">template <a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> BARRAY_TYPE </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00020">20</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a7db6f8cb012951f7a09b11851dfa6ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7db6f8cb012951f7a09b11851dfa6ba0">&#9670;&nbsp;</a></span>for()</h2>
+
+<div class="memitem">
+<div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void checkdim_ </td>
+          <td class="memname">for </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramname"></td><td>)</td>
+          <td> = el[<a class="el" href="barraydensecell-meat_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9">POS</a>(<a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00066">66</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1d69c9c1e7d1940aa5a5ca5571884d16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d69c9c1e7d1940aa5a5ca5571884d16">&#9670;&nbsp;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>&lt; ncol(); ++<a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) <a class="el" href="barray-meat-operators_8hpp.html#a16b15c19feaca0a6aa77abb6865710ef">this</a>-&gt; operator() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="barraydense-meet_8hpp.html#a4395e24e4bdd804c6851de7ac099a258">const</a> <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -229,14 +562,45 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00011">11</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="abc38d91637d0da432c721d98227dd8b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc38d91637d0da432c721d98227dd8b0">&#9670;&nbsp;</a></span>rhs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Data_Type &amp; rhs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line"> </div>
+<div class="line">    </div>
+<div class="line">    checkdim_(*<span class="keyword">this</span>, <a class="code" href="barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0">rhs</a>)</div>
+<div class="ttc" id="abarray-meat-operators_8hpp_html_abc38d91637d0da432c721d98227dd8b0"><div class="ttname"><a href="barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0">rhs</a></div><div class="ttdeci">Data_Type &amp; rhs</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat-operators_8hpp_source.html#l00033">barray-meat-operators.hpp:34</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00033">33</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a16b15c19feaca0a6aa77abb6865710ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16b15c19feaca0a6aa77abb6865710ef">&#9670;&nbsp;</a></span>this</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="barray-meat_8hpp.html#a4725aca18f0b3220c56baad1a1ffc023">return</a> * this</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-meat-operators_8hpp_source.html#l00043">43</a> of file <a class="el" href="barray-meat-operators_8hpp_source.html">barray-meat-operators.hpp</a>.</p>
 
 </div>
 </div>
@@ -246,7 +610,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barray-meat-operators_8hpp.html">barray-meat-operators.hpp</a></li>
-    <li class="footer">Generated on Tue Oct 26 2021 17:41:15 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Oct 26 2021 20:40:07 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

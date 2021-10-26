@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['n_309',['N',['../barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446',1,'N():&#160;barray-meat.hpp'],['../barraydense-meet_8hpp.html#a3aa458046d0f897cceeddda6839e4446',1,'N():&#160;barraydense-meet.hpp'],['../class_support.html#a33d391397682bc93e8a3f0e052d6e341',1,'Support::N()'],['../class_power_set.html#ab3b65c1b9bce012f4aabe5acae093acd',1,'PowerSet::N()']]],
+  ['n_309',['N',['../barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446',1,'N():&#160;barray-meat.hpp'],['../barraydense-meet_8hpp.html#a8cc2e7240164328fdc3f0e5e21032c56',1,'N():&#160;barraydense-meet.hpp'],['../class_support.html#a33d391397682bc93e8a3f0e052d6e341',1,'Support::N()'],['../class_power_set.html#ab3b65c1b9bce012f4aabe5acae093acd',1,'PowerSet::N()']]],
   ['name_310',['name',['../class_counter.html#aebf838d0d2bd0b44233f17f2f7cb8142',1,'Counter::name()'],['../counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e',1,'name(std::move(counter_.name)):&#160;counters-meat.hpp']]],
   ['name_5f_311',['name_',['../counters-meat_8hpp.html#a6d5c67469420c96792aec8644728ca45',1,'counters-meat.hpp']]],
   ['nannotations_312',['nannotations',['../class_geese.html#ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7',1,'Geese']]],
