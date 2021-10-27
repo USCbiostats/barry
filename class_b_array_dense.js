@@ -25,8 +25,8 @@ var class_b_array_dense =
     [ "ncol", "class_b_array_dense.html#a7beefb4d28ec3436911940254a002a75", null ],
     [ "nnozero", "class_b_array_dense.html#a561fcc15969495b4cb7eed4c0179aa3d", null ],
     [ "nrow", "class_b_array_dense.html#aec8c0cf7730763fee4eddbd29bb2ec07", null ],
-    [ "operator()", "class_b_array_dense.html#a22357e3f5f6590dd7d65bf2fe7d58b27", null ],
-    [ "operator()", "class_b_array_dense.html#ac6881bb6afa3e35b71ff97aba5da5aea", null ],
+    [ "operator()", "class_b_array_dense.html#a8db601febd2258dfa7e13254ff5acbc2", null ],
+    [ "operator()", "class_b_array_dense.html#a7d7989813d5e051cab3d3bcbb6eba594", null ],
     [ "operator*=", "class_b_array_dense.html#a84c1fe2f7c54597e6bd37c52cb3e09c3", null ],
     [ "operator+=", "class_b_array_dense.html#a177dae6fcfe2ddad9e264b2fe5135c14", null ],
     [ "operator+=", "class_b_array_dense.html#af8cc6f3258d16f951c9917d59643482c", null ],
@@ -53,7 +53,7 @@ var class_b_array_dense =
     [ "transpose", "class_b_array_dense.html#ae68480602f30492399d8c56e2972d5a6", null ],
     [ "zero_col", "class_b_array_dense.html#afb91f1eb1965efc5a3b2b872a4493e79", null ],
     [ "zero_row", "class_b_array_dense.html#a38f3d1cdebd70259bd31a7195d08987a", null ],
-    [ "BArrayCell< Cell_Type, Data_Type >", "class_b_array_dense.html#a2cd2ece8a4fc1027d3151b1ec33151cb", null ],
-    [ "BArrayCell_const< Cell_Type, Data_Type >", "class_b_array_dense.html#a8657a495751a2f5a01a94632a37c0af2", null ],
+    [ "BArrayDenseCell< Cell_Type, Data_Type >", "class_b_array_dense.html#a1073fe008a10979f6222ac412589c452", null ],
+    [ "BArrayDenseCell_const< Cell_Type, Data_Type >", "class_b_array_dense.html#a1028eb1b86ea5b46189935da2ba73f1b", null ],
     [ "visited", "class_b_array_dense.html#a98a7e8e1f6d19de2ae0a857d7fd7d2f1", null ]
 ];

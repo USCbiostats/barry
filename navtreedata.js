@@ -56,10 +56,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_b_array.html#a4096e4447f91ba52766587a08c62f1fa",
-"class_flock.html#aa461b79142ba54b530e897012ecfae73",
-"class_support.html#a62f4f98b01bb0a9424a425d38cd0e83d",
-"group__counters-phylo.html#ga22aa24b7cd557b55a5ebb0aeeff6c030"
+"class_b_array.html#a098b6170a1ea4b2a8e0832d1163e9ed1",
+"class_flock.html#a06498d9641893889d1387ff6fe70bcea",
+"class_stats_counter.html#ad175dcd2bd30d017881783de546ac333",
+"group__counters-network.html#gabbe3c52b9ed4649e08cbee10be2f5a4e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

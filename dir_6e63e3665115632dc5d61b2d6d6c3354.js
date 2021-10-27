@@ -13,10 +13,9 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
       [ "BArrayCell_const", "class_b_array_cell__const.html", "class_b_array_cell__const" ]
     ] ],
     [ "barraycell-meat.hpp", "barraycell-meat_8hpp.html", null ],
-    [ "barraydense-bones.hpp", "barraydense-bones_8hpp.html", [
-      [ "BArrayDense", "class_b_array_dense.html", "class_b_array_dense" ]
-    ] ],
-    [ "barraydense-meet.hpp", "barraydense-meet_8hpp.html", "barraydense-meet_8hpp" ],
+    [ "barraydense-bones.hpp", "barraydense-bones_8hpp.html", "barraydense-bones_8hpp" ],
+    [ "barraydense-meat-operators.hpp", "barraydense-meat-operators_8hpp.html", "barraydense-meat-operators_8hpp" ],
+    [ "barraydense-meat.hpp", "barraydense-meat_8hpp.html", "barraydense-meat_8hpp" ],
     [ "barraydensecell-bones.hpp", "barraydensecell-bones_8hpp.html", [
       [ "BArrayDenseCell", "class_b_array_dense_cell.html", "class_b_array_dense_cell" ],
       [ "BArrayDenseCell_const", "class_b_array_dense_cell__const.html", "class_b_array_dense_cell__const" ]
