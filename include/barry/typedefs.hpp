@@ -116,6 +116,7 @@ using MapVec_type = std::unordered_map< std::vector< Ta >, Tb, vecHasher<Ta>>;
 // Mostly relevant in the case of the stats count functions -------------------
 template <typename Cell_Type, typename Data_Type> class BArray;
 template <typename Array_Type, typename Counter_Type> class Counter;
+template <typename Cell_Type, typename Data_Type> class BArrayDense;
 
 /**
  * @brief Counter and rule functions

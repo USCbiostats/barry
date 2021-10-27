@@ -37,6 +37,12 @@ namespace barry {
     #include "barray-meat.hpp"
     #include "barraycell-meat.hpp"
     #include "barray-meat-operators.hpp"
+
+    #include "barraydense-bones.hpp"
+    #include "barraydensecell-bones.hpp"
+    #include "barraydense-meat.hpp"
+    #include "barraydensecell-meat.hpp"
+    #include "barraydense-meat-operators.hpp"
     
     #include "counters-bones.hpp"
     #include "counters-meat.hpp"

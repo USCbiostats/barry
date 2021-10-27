@@ -80,13 +80,21 @@ public:
  */
 ///@{
 typedef BArray<double, NetworkData> Network;
-typedef Counter<Network, NetCounterData > NetCounter;
-typedef Counters< Network, NetCounterData> NetCounters;
-typedef Support<Network, NetCounterData > NetSupport;
-typedef StatsCounter<Network, NetCounterData> NetStatsCounter;
-typedef Model<Network, NetCounterData> NetModel;
-typedef Rule<Network,bool> NetRule;
-typedef Rules<Network,bool> NetRules;
+typedef BArrayDense<double, NetworkData> NetworkDense;
+template <typename Tnet>
+using NetCounter =  Counter<Network, NetCounterData >;
+template <typename Tnet>
+using NetCounters =  Counters< Network, NetCounterData>;
+template <typename Tnet>
+using NetSupport =  Support<Network, NetCounterData >;
+template <typename Tnet>
+using NetStatsCounter =  StatsCounter<Network, NetCounterData>;
+template <typename Tnet>
+using NetModel =  Model<Network, NetCounterData>;
+template <typename Tnet>
+using NetRule =  Rule<Network,bool>;
+template <typename Tnet>
+using NetRules =  Rules<Network,bool>;
 ///@}
 
 /**@name Macros for defining counters

@@ -2,7 +2,7 @@
 // #include <unordered_map>
 #include "typedefs.hpp"
 #include "cell-bones.hpp"
-#include "barraycell-bones.hpp"
+#include "barraydensecell-bones.hpp"
 
 #ifndef BARRY_BARRAYDENSE_BONES_HPP 
 #define BARRY_BARRAYDENSE_BONES_HPP 1
@@ -20,8 +20,8 @@
  */
 template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArrayDense {
-    friend class BArrayCell<Cell_Type,Data_Type>;
-    friend class BArrayCell_const<Cell_Type,Data_Type>;
+    friend class BArrayDenseCell<Cell_Type,Data_Type>;
+    friend class BArrayDenseCell_const<Cell_Type,Data_Type>;
 private:
     uint N;
     uint M;
@@ -68,7 +68,8 @@ public:
     
     /** @brief Edgelist with data */
     BArrayDense (
-        uint N_, uint M_,
+        uint N_,
+        uint M_,
         const std::vector< uint > & source,
         const std::vector< uint > & target,
         const std::vector< Cell_Type > & value,
@@ -165,8 +166,8 @@ public:
     ///@{  
     BArrayDense<Cell_Type,Data_Type> & operator+=(const std::pair<uint, uint> & coords);
     BArrayDense<Cell_Type,Data_Type> & operator-=(const std::pair<uint, uint> & coords);
-    BArrayCell<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true);
-    const BArrayCell_const<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true) const;
+    BArrayDenseCell<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true);
+    const BArrayDenseCell_const<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true) const;
     
     void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
     
