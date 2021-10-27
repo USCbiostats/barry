@@ -644,7 +644,7 @@ inline void counter_nodeicov(
     };
     
     counters->add_counter(
-        tmp_count, init_single_attr,
+        tmp_count, init_single_attr<Tnet>,
         new NetCounterData({attr_id}, {}),
         true, "nodeicov", "Sum of ego attribute"
     );
@@ -669,7 +669,7 @@ inline void counter_nodeocov(
     };
     
     counters->add_counter(
-        tmp_count, init_single_attr,
+        tmp_count, init_single_attr<Tnet>,
         new NetCounterData({attr_id}, {}),
         true, "nodeocov", "Sum of alter attribute"
     );
@@ -695,7 +695,7 @@ inline void counter_nodecov(
     };
     
     counters->add_counter(
-        tmp_count, init_single_attr,
+        tmp_count, init_single_attr<Tnet>,
         new NetCounterData({attr_id}, {}),
         true, "nodecov", "Sum of nodes covariates"
     );
@@ -725,7 +725,7 @@ inline void counter_nodematch(
     // Preparing the counter data and returning. We make sure that the memory is 
     // released so we set delete_data = true.
     counters->add_counter(
-        tmp_count, init_single_attr,
+        tmp_count, init_single_attr<Tnet>,
         new NetCounterData({attr_id}, {}),
         true, "Homophily", "Number of homophilic ties"
     );

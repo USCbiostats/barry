@@ -45,7 +45,7 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   netcounters::Network net(4, 4, {2}, {3});
   net.set_data(new netcounters::NetworkData({0,0,1,0}), true);
   
-  netcounters::NetModel model;
+  netcounters::NetModel< Network > model;
   model.store_psets(); // Need this for sampling
   
   // Preparing model  
