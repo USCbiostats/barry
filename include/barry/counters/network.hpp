@@ -81,31 +81,34 @@ public:
 ///@{
 typedef BArray<double, NetworkData> Network;
 typedef BArrayDense<double, NetworkData> NetworkDense;
+template <typename Tnet = Network>
+using NetCounter =  Counter<Tnet, NetCounterData >;
+template <typename Tnet = Network>
+using NetCounters =  Counters<Tnet, NetCounterData>;
+template <typename Tnet = Network>
+using NetSupport =  Support<Tnet, NetCounterData >;
+template <typename Tnet = Network>
+using NetStatsCounter =  StatsCounter<Tnet, NetCounterData>;
 template <typename Tnet>
-using NetCounter =  Counter<Network, NetCounterData >;
-template <typename Tnet>
-using NetCounters =  Counters< Network, NetCounterData>;
-template <typename Tnet>
-using NetSupport =  Support<Network, NetCounterData >;
-template <typename Tnet>
-using NetStatsCounter =  StatsCounter<Network, NetCounterData>;
-template <typename Tnet>
-using NetModel =  Model<Network, NetCounterData>;
-template <typename Tnet>
-using NetRule =  Rule<Network,bool>;
-template <typename Tnet>
-using NetRules =  Rules<Network,bool>;
+using NetModel =  Model<Tnet, NetCounterData>;
+template <typename Tnet = Network>
+using NetRule =  Rule<Tnet, bool>;
+template <typename Tnet = Network>
+using NetRules =  Rules<Tnet, bool>;
 ///@}
 
 /**@name Macros for defining counters
   */
 ///@{
 /**Function for definition of a network counter function*/
-#define NETWORK_COUNTER(a) inline double (a) \
-(const Network & Array, uint i, uint j, NetCounterData * data)
+#define NETWORK_COUNTER(a) \
+template<typename Tnet = Network>\
+inline double (a) (const Tnet & Array, uint i, uint j, NetCounterData * data)
+
 /**Lambda function for definition of a network counter function*/
-#define NETWORK_COUNTER_LAMBDA(a) Counter_fun_type<Network, NetCounterData> a = \
-    [](const Network & Array, uint i, uint j, NetCounterData * data)
+#define NETWORK_COUNTER_LAMBDA(a) \
+Counter_fun_type<Tnet, NetCounterData> a = \
+    [](const Tnet & Array, uint i, uint j, NetCounterData * data)
 ///@}
 
 
@@ -113,11 +116,14 @@ using NetRules =  Rules<Network,bool>;
   */
 ///@{
 /**Function for definition of a network counter function*/
-#define NETWORK_RULE(a) inline bool (a) \
-(const Network & Array, uint i, uint j, bool * data)
+#define NETWORK_RULE(a) \
+template<typename Tnet = Network>\
+inline bool (a) (const Tnet & Array, uint i, uint j, bool * data)
+
 /**Lambda function for definition of a network counter function*/
-#define NETWORK_RULE_LAMBDA(a) Rule_fun_type<Network, bool> a = \
-[](const Network & Array, uint i, uint j, bool * data)
+#define NETWORK_RULE_LAMBDA(a) \
+Rule_fun_type<Tnet, bool> a = \
+[](const Tnet & Array, uint i, uint j, bool * data)
 ///@}
 
 /**
@@ -128,7 +134,8 @@ using NetRules =  Rules<Network,bool>;
 ///@{
 // -----------------------------------------------------------------------------
 /**@brief Number of edges */
-inline void counter_edges(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_edges(NetCounters<Tnet> * counters)
 {
     
     NETWORK_COUNTER_LAMBDA(count_edges)
@@ -149,7 +156,8 @@ inline void counter_edges(NetCounters * counters)
 
 // -----------------------------------------------------------------------------
 /**@brief Number of isolated vertices */
-inline void counter_isolates(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_isolates(NetCounters<Tnet> * counters)
 {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -187,7 +195,8 @@ inline void counter_isolates(NetCounters * counters)
 
 // -----------------------------------------------------------------------------
 /**@brief Number of mutual ties */
-inline void counter_mutual(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_mutual(NetCounters<Tnet> * counters)
 {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -240,7 +249,8 @@ inline void counter_mutual(NetCounters * counters)
 
 
 // 2-istars --------------------------------------------------------------------
-inline void counter_istar2(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_istar2(NetCounters<Tnet> * counters)
 {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -261,7 +271,8 @@ inline void counter_istar2(NetCounters * counters)
 }
 
 // 2-ostars --------------------------------------------------------------------
-inline void counter_ostar2(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_ostar2(NetCounters<Tnet> * counters)
 {
    
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -285,7 +296,8 @@ inline void counter_ostar2(NetCounters * counters)
 
 
 // ttriads ---------------------------------------------------------------------
-inline void counter_ttriads(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_ttriads(NetCounters<Tnet> * counters)
 {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -374,7 +386,8 @@ inline void counter_ttriads(NetCounters * counters)
 
 
 // Cycle triads --------------------------------------------------------------
-inline void counter_ctriads(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_ctriads(NetCounters<Tnet> * counters)
 {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -427,7 +440,8 @@ inline void counter_ctriads(NetCounters * counters)
 }
     
 // Density --------------------------------------------------------------
-inline void counter_density(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_density(NetCounters<Tnet> * counters)
 {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -452,7 +466,8 @@ inline void counter_density(NetCounters * counters)
 }
 
 // idegree1.5  -------------------------------------------------------------
-inline void counter_idegree15(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_idegree15(NetCounters<Tnet> * counters)
 {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -478,7 +493,8 @@ inline void counter_idegree15(NetCounters * counters)
 }
 
 // odegree1.5  -------------------------------------------------------------
-inline void counter_odegree15(NetCounters * counters)
+template<typename Tnet = Network>
+inline void counter_odegree15(NetCounters<Tnet> * counters)
 {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -506,11 +522,12 @@ inline void counter_odegree15(NetCounters * counters)
 
 // -----------------------------------------------------------------------------
 /**@brief Sum of absolute attribute difference between ego and alter */
+template<typename Tnet = Network>
 inline void counter_absdiff(
-        NetCounters * counters,
-        uint attr_id,
-        double alpha = 1.0
-    ) {
+    NetCounters<Tnet> * counters,
+    uint attr_id,
+    double alpha = 1.0
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
@@ -550,11 +567,12 @@ inline void counter_absdiff(
     
 // -----------------------------------------------------------------------------
 /**@brief Sum of attribute difference between ego and alter to pow(alpha)*/
+template<typename Tnet = Network>
 inline void counter_diff(
-        NetCounters * counters,
-        uint attr_id,
-        double alpha     = 1.0,
-        double tail_head = true
+    NetCounters<Tnet> * counters,
+    uint attr_id,
+    double alpha     = 1.0,
+    double tail_head = true
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -612,8 +630,11 @@ NETWORK_COUNTER(init_single_attr)
 
 // -----------------------------------------------------------------------------
 //*@brief Attribute sum over receiver nodes */
-inline void counter_nodeicov(NetCounters * counters, uint attr_id)
-{
+template<typename Tnet = Network>
+inline void counter_nodeicov(
+    NetCounters<Tnet> * counters,
+    uint attr_id
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
@@ -634,8 +655,11 @@ inline void counter_nodeicov(NetCounters * counters, uint attr_id)
 
 // -----------------------------------------------------------------------------
 //*@brief Attribute sum over sender nodes */
-inline void counter_nodeocov(NetCounters * counters, uint attr_id)
-{
+template<typename Tnet = Network>
+inline void counter_nodeocov(
+    NetCounters<Tnet> * counters,
+    uint attr_id
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
@@ -656,8 +680,11 @@ inline void counter_nodeocov(NetCounters * counters, uint attr_id)
 
 // -----------------------------------------------------------------------------
 //*@brief Attribute sum over receiver and sender nodes */
-inline void counter_nodecov(NetCounters * counters, uint attr_id)
-{
+template<typename Tnet = Network>
+inline void counter_nodecov(
+    NetCounters<Tnet> * counters,
+    uint attr_id
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
@@ -678,8 +705,11 @@ inline void counter_nodecov(NetCounters * counters, uint attr_id)
 
 // -----------------------------------------------------------------------------
 //* @brief Number of homophililic ties */
-inline void counter_nodematch(NetCounters * counters, uint attr_id)
-{
+template<typename Tnet = Network>
+inline void counter_nodematch(
+    NetCounters<Tnet> * counters,
+    uint attr_id
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
@@ -706,10 +736,11 @@ inline void counter_nodematch(NetCounters * counters, uint attr_id)
 
 // -----------------------------------------------------------------------------
 /** @brief Counts number of vertices with a given in-degree */
+template<typename Tnet = Network>
 inline void counter_idegree(
-        NetCounters * counters,
-        std::vector< uint > d)
-{
+    NetCounters<Tnet> * counters,
+    std::vector< uint > d
+) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
@@ -754,9 +785,10 @@ inline void counter_idegree(
 
 // -----------------------------------------------------------------------------
 /**@brief Counts number of vertices with a given out-degree */
+template<typename Tnet = Network>
 inline void counter_odegree(
-        NetCounters * counters,
-        std::vector<uint> d
+    NetCounters<Tnet> * counters,
+    std::vector<uint> d
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -803,9 +835,10 @@ inline void counter_odegree(
     
 // -----------------------------------------------------------------------------
 /** @brief Counts number of vertices with a given out-degree */
+template<typename Tnet = Network>
 inline void counter_degree(
-        NetCounters * counters,
-        std::vector<uint> d
+    NetCounters<Tnet> * counters,
+    std::vector<uint> d
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -858,7 +891,8 @@ inline void counter_degree(
 ///@{
 // -----------------------------------------------------------------------------
 /**@brief Number of edges */
-inline void rules_zerodiag(NetRules * rules) {
+template<typename Tnet = Network>
+inline void rules_zerodiag(NetRules<Tnet> * rules) {
     
     NETWORK_RULE_LAMBDA(no_self_tie) {
         return i != j;

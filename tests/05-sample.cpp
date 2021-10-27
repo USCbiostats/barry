@@ -6,14 +6,14 @@ TEST_CASE("Sampling networks (with Model)", "[sampling w model]") {
     using namespace barry::counters::network;
 
     // Builing model    
-    NetModel m;
+    NetModel<> m;
     m.store_psets();
 
-    counter_edges(m.get_counters());
-    counter_mutual(m.get_counters());
+    counter_edges<>(m.get_counters());
+    counter_mutual<>(m.get_counters());
 
     // Adding rules
-    rules_zerodiag(m.get_rules());
+    rules_zerodiag<>(m.get_rules());
 
     // Adding an array
     Network net(4, 4);

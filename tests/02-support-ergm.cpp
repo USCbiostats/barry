@@ -35,23 +35,23 @@ TEST_CASE("Computing support for networks", "[support]") {
 
     Network net(4, 4);
     net.set_data(new NetworkData({0,0,1,0}), true);
-    NetSupport support(net); 
+    NetSupport<> support(net); 
     
     // Preparing model  
     
-    counter_edges(support.get_counters());
-    counter_mutual(support.get_counters());
-    counter_isolates(support.get_counters());
-    counter_istar2(support.get_counters());
-    counter_ostar2(support.get_counters());
-    counter_ttriads(support.get_counters());
-    counter_ctriads(support.get_counters());
-    counter_density(support.get_counters());
-    counter_idegree15(support.get_counters());
-    counter_odegree15(support.get_counters());
-    counter_nodematch(support.get_counters(),0u);
+    counter_edges<>(support.get_counters());
+    counter_mutual<>(support.get_counters());
+    counter_isolates<>(support.get_counters());
+    counter_istar2<>(support.get_counters());
+    counter_ostar2<>(support.get_counters());
+    counter_ttriads<>(support.get_counters());
+    counter_ctriads<>(support.get_counters());
+    counter_density<>(support.get_counters());
+    counter_idegree15<>(support.get_counters());
+    counter_odegree15<>(support.get_counters());
+    counter_nodematch<>(support.get_counters(),0u);
     
-    rules_zerodiag(support.get_rules());
+    rules_zerodiag<>(support.get_rules());
     
     // Getting the full support
     support.calc(); 
@@ -112,10 +112,10 @@ TEST_CASE("Computing support for networks", "[support]") {
     net(2, 0) = 1;
 
     // Preparing the model
-    NetModel model2;
+    NetModel<Network> model2;
     model2.set_counters(support.get_counters());
     model2.add_array(net);
-    NetStatsCounter counter2(&net);
+    NetStatsCounter<> counter2(&net);
     counter2.set_counters(support.get_counters());
 
     // Counting stats

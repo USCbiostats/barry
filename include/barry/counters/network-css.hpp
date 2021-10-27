@@ -54,11 +54,12 @@
  * The `end_` parameter should be of length `N of networks` - 1. It is
  * assumed that the first network ends at `netsize`.
  */
+template<typename Tnet = Network>
 inline void counter_css_partially_false_recip_commi(
-        NetCounters * counters,
-        uint netsize,
-        const std::vector< uint > & end_
-    ) {
+    NetCounters<Tnet> * counters,
+    uint netsize,
+    const std::vector< uint > & end_
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
         
@@ -107,11 +108,12 @@ inline void counter_css_partially_false_recip_commi(
 }
 
 /** @brief Counts errors of omission */
+template<typename Tnet = Network>
 inline void counter_css_partially_false_recip_omiss(
-        NetCounters * counters,
-        uint netsize,
-        const std::vector< uint > & end_
-    ) {
+    NetCounters<Tnet> * counters,
+    uint netsize,
+    const std::vector< uint > & end_
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
         
@@ -157,11 +159,12 @@ inline void counter_css_partially_false_recip_omiss(
 }
 
 /** @brief Counts completely false reciprocity (comission) */
+template<typename Tnet = Network>
 inline void counter_css_completely_false_recip_comiss(
-        NetCounters * counters,
-        uint netsize,
-        const std::vector< uint > & end_
-    ) {
+    NetCounters<Tnet> * counters,
+    uint netsize,
+    const std::vector< uint > & end_
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
 
@@ -203,11 +206,12 @@ inline void counter_css_completely_false_recip_comiss(
 }
 
 /** @brief Counts completely false reciprocity (omission) */
+template<typename Tnet = Network>
 inline void counter_css_completely_false_recip_omiss(
-        NetCounters * counters,
-        uint netsize,
-        const std::vector< uint > & end_
-    ) {
+    NetCounters<Tnet> * counters,
+    uint netsize,
+    const std::vector< uint > & end_
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
 
@@ -249,11 +253,12 @@ inline void counter_css_completely_false_recip_omiss(
 }
 
 /** @brief Counts mixed reciprocity errors */
+template<typename Tnet = Network>
 inline void counter_css_mixed_recip(
-        NetCounters * counters,
-        uint netsize,
-        const std::vector< uint > & end_
-    ) {
+    NetCounters<Tnet> * counters,
+    uint netsize,
+    const std::vector< uint > & end_
+) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
 
