@@ -6,6 +6,8 @@ var annotated_dup =
     [ "BArrayDense", "class_b_array_dense.html", "class_b_array_dense" ],
     [ "BArrayDenseCell", "class_b_array_dense_cell.html", "class_b_array_dense_cell" ],
     [ "BArrayDenseCell_const", "class_b_array_dense_cell__const.html", "class_b_array_dense_cell__const" ],
+    [ "BArrayRow", "class_b_array_row.html", "class_b_array_row" ],
+    [ "BArrayRow_const", "class_b_array_row__const.html", "class_b_array_row__const" ],
     [ "BArrayVector", "class_b_array_vector.html", "class_b_array_vector" ],
     [ "BArrayVector_const", "class_b_array_vector__const.html", "class_b_array_vector__const" ],
     [ "Cell", "class_cell.html", "class_cell" ],

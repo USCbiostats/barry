@@ -21,6 +21,11 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
       [ "BArrayDenseCell_const", "class_b_array_dense_cell__const.html", "class_b_array_dense_cell__const" ]
     ] ],
     [ "barraydensecell-meat.hpp", "barraydensecell-meat_8hpp.html", "barraydensecell-meat_8hpp" ],
+    [ "barrayrow-bones.hpp", "barrayrow-bones_8hpp.html", [
+      [ "BArrayRow", "class_b_array_row.html", "class_b_array_row" ],
+      [ "BArrayRow_const", "class_b_array_row__const.html", "class_b_array_row__const" ]
+    ] ],
+    [ "barrayrow-meat.hpp", "barrayrow-meat_8hpp.html", "barrayrow-meat_8hpp" ],
     [ "barrayvector-bones.hpp", "barrayvector-bones_8hpp.html", [
       [ "BArrayVector", "class_b_array_vector.html", "class_b_array_vector" ],
       [ "BArrayVector_const", "class_b_array_vector__const.html", "class_b_array_vector__const" ]
