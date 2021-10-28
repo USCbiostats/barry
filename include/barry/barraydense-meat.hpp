@@ -19,7 +19,7 @@
 template<typename Cell_Type, typename Data_Type>
 Cell<Cell_Type> BArrayDense<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(); 
 
-#define ZERO_CELL Cell< Cell_Type >(static_cast< Cell_Type >(0.0), false, false)
+#define ZERO_CELL Cell< Cell_Type >( (Cell_Type) 0.0, false, false)
 
 // Edgelist with data
 BDENSE_TEMPLATE(,BArrayDense)(
@@ -86,7 +86,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
     N = N_;
     M = M_;
     
-    el.resize(N * M, ZERO_CELL);
+    el.resize(N * M);
     
     // Writing the data
     for (uint i = 0u; i < source.size(); ++i)
@@ -413,12 +413,20 @@ BDENSE_TEMPLATE(const Row_type< Cell_Type > &, row)(
 
 
     // Creating a row to be returned as const
-    tmp_row.empty();
+    Row_type< Cell_Type > tmprow;
+    // tmp_row.empty();
     for (unsigned int j = 0u; j < M; ++j)
         if (el[POS(i, j)].active)
-            tmp_row.insert(std::pair< uint, Cell< Cell_Type > >(j, el[POS(i, j)]));
+        {
+            Cell<Cell_Type> tmpcell(el[POS(i, j)]);
+            tmprow.insert(std::pair< uint, Cell<Cell_Type>>(j, tmpcell));
+        }
     
-    return tmp_row;
+    // no matching function for call to 
+    // ‘std::map<unsigned int, barry::Cell<double>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, barry::Cell<double> > > >::insert(std::pair<unsigned int, barry::Cell<double> >) const’
+    // tmp_row.insert(std::pair< uint, Cell< Cell_Type > >(j, el[POS(i, j)]));
+
+    return tmprow;
 
 }
 
@@ -431,12 +439,13 @@ BDENSE_TEMPLATE(const Col_type< Cell_Type > &, col)(
         out_of_range(0u, i);
 
     // Creating a row to be returned as const
-    tmp_col.empty();
+    Col_type< Cell_Type > tmpcol;
+    // tmp_col.empty();
     for (unsigned int j = 0u; j < M; ++j)
         if (el[POS(j, i)].active)
-            tmp_col.emplace(j, &el[POS(i, j)]);
+            tmpcol.emplace(j, &el[POS(i, j)]);
 
-    return tmp_col;
+    return tmpcol;
     
 }
 
@@ -581,8 +590,8 @@ BDENSE_TEMPLATE(void, insert_cell) (
         // Checking if nothing here, then we move along
         if (NCells == 0u)
         {
-            
-            el[POS(i, j)] = v;
+            Cell< Cell_Type > tmp(v);
+            el[POS(i, j)] = tmp;
             NCells++;
             return;
             
@@ -591,7 +600,8 @@ BDENSE_TEMPLATE(void, insert_cell) (
         
     } else {
         
-        el[POS(i, j)] = v;
+        Cell< Cell_Type > tmp(v);
+        el[POS(i, j)] = tmp;
         NCells++;
         
     }
@@ -919,7 +929,7 @@ BDENSE_TEMPLATE(void, clear) (
     {
       
         el.clear();
-        el.resize(N * M, ZERO_CELL);
+        el.resize(N * M);
         NCells = 0u;
       
     } else {
