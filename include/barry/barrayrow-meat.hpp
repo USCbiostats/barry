@@ -12,36 +12,41 @@
 
 BROW_TEMPLATE(void, operator=) (const BROW_TYPE() & val) {
     
-    if (Array->is_empty(i, j, false)) {
-        Array->insert_cell(i, j, val, false, false);
-    } else {
-        Array->el_ij.at(i).at(j).value = val;
-    }
+    // First, zeroout the row
+    this->Array->zero_row(j);
+
+    // Then, iterate throught the values of val and add it
+    for (auto & v: val)
+        Array->inser_cell(i, v.first, v.second);
+
+    // Return
+    return;
 
 }
 
 BROW_TEMPLATE(void, operator+=) (const BROW_TYPE() & val) {
     
-    if (Array->is_empty(i, j, false)) {
-        Array->insert_cell(i, j, val, false, false);
-    } else {
-        Array->el_ij.at(i).at(j).value += val;
-    }
-
-}
-
-BROW_TEMPLATE(void, operator-=(const BROW_TYPE() & val) {
+    for (auto & v : val)
+        this->Array->operator(i, v.first) += v.second;
     
-    if (Array->is_empty(i, j, false)) {
-        Array->insert_cell(i, j, -val, false, false);
-    } else {
-        Array->el_ij.at(i).at(j).value -= val;
-    }
+    return;
 
 }
 
-template<typename Cell_Type,typename Data_Type>
-inline void BArrayCell<Cell_Type,Data_Type>::operator*=(const Cell_Type & val) {
+BROW_TEMPLATE(void, operator-=) (
+    const BROW_TYPE() & val
+) {
+    
+    for (auto & v : val)
+        this->Array->operator(i, v.first) -= v.second;
+    
+    return;
+
+}
+
+BROW_TEMPLATE(void, operator*=) (
+    const BROW_TYPE() & val
+) {
     
     if (!Array->is_empty(i, j, false)) {
         Array->el_ij.at(i).at(j).value *= val;
@@ -49,8 +54,9 @@ inline void BArrayCell<Cell_Type,Data_Type>::operator*=(const Cell_Type & val) {
 
 }
 
-template<typename Cell_Type,typename Data_Type>
-inline void BArrayCell<Cell_Type,Data_Type>::operator/=(const Cell_Type & val) {
+BROW_TEMPLATE(void, operator/=) (
+    const BROW_TYPE() & val
+) {
     
     if (!Array->is_empty(i, j, false)) {
         Array->el_ij.at(i).at(j).value /= val;
