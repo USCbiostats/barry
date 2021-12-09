@@ -506,6 +506,162 @@ inline void counter_css_census06(
 
 }
 
+template<typename Tnet = Network>
+inline void counter_css_census07(
+    NetCounters<Tnet> * counters,
+    uint netsize,
+    const std::vector< uint > & end_
+) {
+
+    NETWORK_COUNTER_LAMBDA(tmp_count) {
+
+        // Getting the network size
+        CSS_SIZE()
+
+        // True network
+        CSS_CASE_TRUTH()
+        {
+
+            CSS_TRUE_CELLS()
+            return pij * pji * (1.0 - 2.0 * tji);
+
+        } CSS_CASE_PERCEIVED() {
+
+            CSS_PERCEIVED_CELLS()
+            return pij * (tij * (1.0 - tji) + (1.0 - tij) * tji);
+
+        } CSS_CASE_ELSE()
+            return 0.0;
+        
+    };
+    
+    CSS_NET_COUNTER_LAMBDA_INIT()
+    
+    // checking sizes
+    CSS_CHECK_SIZE()
+    CSS_APPEND("Partial false positive (assym)")
+        
+    return;
+
+}
+
+template<typename Tnet = Network>
+inline void counter_css_census08(
+    NetCounters<Tnet> * counters,
+    uint netsize,
+    const std::vector< uint > & end_
+) {
+
+    NETWORK_COUNTER_LAMBDA(tmp_count) {
+
+        // Getting the network size
+        CSS_SIZE()
+
+        // True network
+        CSS_CASE_TRUTH()
+        {
+
+            CSS_TRUE_CELLS()
+            return tji * (1.0 - pij) * (1.0 - pji);
+
+        } CSS_CASE_PERCEIVED() {
+
+            CSS_PERCEIVED_CELLS()
+            return - tij * tji * (1.0 - pji);
+
+        } CSS_CASE_ELSE()
+            return 0.0;
+        
+    };
+    
+    CSS_NET_COUNTER_LAMBDA_INIT()
+    
+    // checking sizes
+    CSS_CHECK_SIZE()
+    CSS_APPEND("Complete false negative (full)")
+        
+    return;
+
+}
+
+template<typename Tnet = Network>
+inline void counter_css_census09(
+    NetCounters<Tnet> * counters,
+    uint netsize,
+    const std::vector< uint > & end_
+) {
+
+    NETWORK_COUNTER_LAMBDA(tmp_count) {
+
+        // Getting the network size
+        CSS_SIZE()
+
+        // True network
+        CSS_CASE_TRUTH()
+        {
+
+            CSS_TRUE_CELLS()
+            return tji * (pij * (1.0 - pji) + (1.0 - pij) * pji);
+
+        } CSS_CASE_PERCEIVED() {
+
+            CSS_PERCEIVED_CELLS()
+            return tij * tji * (1.0 - 2.0 * pji);
+
+        } CSS_CASE_ELSE()
+            return 0.0;
+        
+    };
+    
+    CSS_NET_COUNTER_LAMBDA_INIT()
+    
+    // checking sizes
+    CSS_CHECK_SIZE()
+    CSS_APPEND("Mixed full")
+        
+    return;
+
+}
+
+template<typename Tnet = Network>
+inline void counter_css_census10(
+    NetCounters<Tnet> * counters,
+    uint netsize,
+    const std::vector< uint > & end_
+) {
+
+    NETWORK_COUNTER_LAMBDA(tmp_count) {
+
+        // Getting the network size
+        CSS_SIZE()
+
+        // True network
+        CSS_CASE_TRUTH()
+        {
+
+            CSS_TRUE_CELLS()
+            return tji * pij * pji;
+
+        } CSS_CASE_PERCEIVED() {
+
+            CSS_PERCEIVED_CELLS()
+            return tij * tji * pji;
+
+        } CSS_CASE_ELSE()
+            return 0.0;
+        
+    };
+    
+    CSS_NET_COUNTER_LAMBDA_INIT()
+    
+    // checking sizes
+    CSS_CHECK_SIZE()
+    CSS_APPEND("Accurate full")
+        
+    return;
+
+}
+
 #undef CSS_CASE_TRUTH
 #undef CSS_TRUE_CELLS
 #undef CSS_CASE_PERCEIVED
