@@ -17,6 +17,9 @@ Among the key features included in `barry`, we have:
 * Discrete Exponential Family Models module (DEFMs).
 * Pooled DEFMs.
 
+This was created and maintained by [Dr. George G. Vega Yon](https://ggvy.cl) as part of
+his doctoral dissertation ["Essays on Bioinformatics and Social Network Analysis: Statistical and Computational Methods for Complex Systems."](http://digitallibrary.usc.edu/digital/collection/p15799coll89/id/348731/rec/1)
+
 # Examples
 
 ## Counting statistics in a graph
