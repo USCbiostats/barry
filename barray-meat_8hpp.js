@@ -62,7 +62,7 @@ var barray_meat_8hpp =
     [ "check_bounds", "barray-meat_8hpp.html#a8899aeefb231f239e7aecd22c54e0731", null ],
     [ "check_exists", "barray-meat_8hpp.html#a55f9b5f5029c8d5cb64a0c3f2a86b41c", null ],
     [ "col0", "barray-meat_8hpp.html#a4be96108a26a7c352f29189228823356", null ],
-    [ "const", "barray-meat_8hpp.html#a4395e24e4bdd804c6851de7ac099a258", null ],
+    [ "const", "barray-meat_8hpp.html#a849b2391311252597e9d126537bd7464", null ],
     [ "copy_data", "barray-meat_8hpp.html#aef23c1c7760a3c8e2a7b909b67a3f836", null ],
     [ "data", "barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93", null ],
     [ "delete_data", "barray-meat_8hpp.html#aa019a8317b63824afc4f0fcdea03f740", null ],

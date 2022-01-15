@@ -8,5 +8,8 @@ var class_b_array_dense_cell__const =
     [ "operator<=", "class_b_array_dense_cell__const.html#a4f8c3570631b6d2adad6e0a4146b8eaa", null ],
     [ "operator==", "class_b_array_dense_cell__const.html#ab487476fab5d503e42bd11fbd2f12f47", null ],
     [ "operator>", "class_b_array_dense_cell__const.html#a60e7ec1433ca5099d0d19b325f830d55", null ],
-    [ "operator>=", "class_b_array_dense_cell__const.html#ab796dd924608436be7d434a15864be25", null ]
+    [ "operator>=", "class_b_array_dense_cell__const.html#ab796dd924608436be7d434a15864be25", null ],
+    [ "BArrayDense< Cell_Type, Data_Type >", "class_b_array_dense_cell__const.html#a9bef18a1875feef98176de5a59ece84c", null ],
+    [ "BArrayDenseCol< Cell_Type, Data_Type >", "class_b_array_dense_cell__const.html#ad8378535a52103fc689f97efb29d8acf", null ],
+    [ "BArrayDenseCol_const< Cell_Type, Data_Type >", "class_b_array_dense_cell__const.html#acc0f6a3c5c7806ab86cd218ce3f1de32", null ]
 ];
