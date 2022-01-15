@@ -37,7 +37,7 @@ class BArrayDenseCell_const;
 template<typename Cell_Type, typename Data_Type>
 Cell<Cell_Type> BArrayDense<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(); 
 
-#define ZERO_CELL Cell< Cell_Type >( (Cell_Type) 0.0, false, false)
+#define ZERO_CELL Cell< Cell_Type >( static_cast<Cell_Type>(0.0), !visited, false)
 
 // Edgelist with data
 BDENSE_TEMPLATE(,BArrayDense)(
@@ -58,7 +58,7 @@ BDENSE_TEMPLATE(,BArrayDense)(
     N = N_;
     M = M_;
 
-    el.resize(N, M);
+    el.resize(N * M, ZERO_CELL);
     
     // Writing the data
     for (uint i = 0u; i < source.size(); ++i)
@@ -104,7 +104,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
     N = N_;
     M = M_;
     
-    el.resize(N * M);
+    el.resize(N * M, ZERO_CELL);
     
     // Writing the data
     for (uint i = 0u; i < source.size(); ++i)
@@ -147,7 +147,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
 ) : N(Array_.N), M(Array_.M){
   
     // Dimensions
-    el.resize(N * M);
+    el.resize(N * M, ZERO_CELL);
     
     std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
 
@@ -505,7 +505,7 @@ BDENSE_TEMPLATE(bool, is_empty)(
     if (check_bounds)
         out_of_range(i, j);
     
-    return el[POS(i, j)].active;
+    return !el[POS(i, j)].active;
     
 }
 
@@ -591,6 +591,7 @@ BDENSE_TEMPLATE(void, rm_cell) (
         
     // Remove the pointer first (so it wont point to empty)
     el[POS(i, j)].active = false;
+    el[POS(i, j)].value  = static_cast<Cell_Type>(0);
     
     NCells--;
     
@@ -646,28 +647,8 @@ BDENSE_TEMPLATE(void, insert_cell) (
     if (check_bounds)
         out_of_range(i,j); 
     
-    if (check_exists)
-    {
-        
-        // Checking if nothing here, then we move along
-        if (NCells == 0u)
-        {
-            
-            el[POS(i, j)] = std::move(v);
-            NCells++;
-            return;
-            
-        } else 
-            throw std::logic_error("The cell already exists.");
-        
-        
-    } else {
-        
-        el[POS(i, j)] = std::move(v);
-        NCells++;
-        return;
-        
-    }
+    el[POS(i, j)] = std::move(v);
+    NCells++;    
     
     return;
     
@@ -698,94 +679,26 @@ BDENSE_TEMPLATE(void, swap_cells) (
         out_of_range(i1,j1);
     }
     
-    // Simplest case, we know both exists, so we don't need to check anything
-    if (check_exists == CHECK::NONE)
-    {
         
-        // Just in case, if this was passed
-        if (report != nullptr)
-            (*report) = EXISTS::BOTH;
-        
-        // If source and target coincide, we do nothing
-        if ((i0 == i1) && (j0 == j1)) 
-            return;
-        
-        // Using the initializing by move, after this, the cell becomes
-        // invalid. We use pointers instead as this way we access the Heap memory,
-        // which should be faster to access.
-        Cell<Cell_Type> c0(std::move(el[POS(i0, j0)]));
-        rm_cell(i0, j0, false, false);
-        Cell<Cell_Type> c1(std::move(el[POS(i1, j1)]));
-        rm_cell(i1, j1, false, false);
-        
-        // Inserting the cells by reference, these will be deleted afterwards
-        insert_cell(i0, j0, c1, false, false);
-        insert_cell(i1, j1, c0, false, false);
-        
+    // Just in case, if this was passed
+    if (report != nullptr)
+        (*report) = EXISTS::BOTH;
+    
+    // If source and target coincide, we do nothing
+    if ((i0 == i1) && (j0 == j1)) 
         return;
-        
-    }
     
-    bool check0, check1;
-    if (check_exists == CHECK::BOTH)
-    {
-        
-        check0 = !is_empty(i0, j0, false);
-        check1 = !is_empty(i1, j1, false);
-        
-    } else if (check_exists == CHECK::ONE)
-    {
-        
-        check0 = !is_empty(i0, j0, false);
-        check1 = true;
-        
-    } else if (check_exists == CHECK::TWO)
-    {
-        
-        check0 = true;
-        check1 = !is_empty(i1, j1, false);
-        
-    }
+    // Using the initializing by move, after this, the cell becomes
+    // invalid. We use pointers instead as this way we access the Heap memory,
+    // which should be faster to access.
+    Cell<Cell_Type> c0(std::move(el[POS(i0, j0)]));
+    rm_cell(i0, j0, false, false);
+    Cell<Cell_Type> c1(std::move(el[POS(i1, j1)]));
+    rm_cell(i1, j1, false, false);
     
-    if (report != nullptr) 
-        (*report) = EXISTS::NONE;
-    
-    // If both cells exists
-    if (check0 & check1)
-    {
-        
-        if (report != nullptr) 
-            (*report) = EXISTS::BOTH;
-        
-        // If source and target coincide, we do nothing
-        if ((i0 == i1) && (j0 == j1)) 
-            return;
-        
-        Cell<Cell_Type> c0(std::move(el[POS(i0, j0)]));
-        rm_cell(i0, j0, false, false);
-        Cell<Cell_Type> c1(std::move(el[POS(i1, j1)]));
-        rm_cell(i1, j1, false, false);
-        
-        insert_cell(i0, j0, c1, false, false);
-        insert_cell(i1, j1, c0, false, false);
-        
-    } else if (!check0 & check1) { // If only the second exists
-        
-        if (report != nullptr) 
-            (*report) = EXISTS::TWO;
-        
-        insert_cell(i0, j0, el[POS(i1, j1)], false, false);
-        rm_cell(i1, j1, false, false);
-        
-    } else if (check0 & !check1) {
-        
-        if (report != nullptr) 
-            (*report) = EXISTS::ONE;
-        
-        insert_cell(i1, j1, el[POS(i0, j0)], false, false);
-        rm_cell(i0, j0, false, false);
-        
-    }
+    // Inserting the cells by reference, these will be deleted afterwards
+    insert_cell(i0, j0, c1, false, false);
+    insert_cell(i1, j1, c0, false, false);
     
     return;
 
@@ -797,31 +710,23 @@ BDENSE_TEMPLATE(void, toggle_cell) (
     bool check_bounds,
     int check_exists
 ) {
+
+    auto & c = el[POS(i,j)];
     
-    if (check_bounds)
-        out_of_range(i, j);
-    
-    if (check_exists == EXISTS::UKNOWN)
+    if (c.active)
     {
-        
-        if (is_empty(i, j, false))
-        {
 
-            insert_cell(i, j, BArrayDense<Cell_Type, Data_Type>::Cell_default, false, false);
-            el[POS(i, j)].visited = visited;
+        c.active = false;
+        c.value  = static_cast<Cell_Type>(0);
 
-        } else
-            rm_cell(i, j, false, false);
-        
-    } else if (check_exists == EXISTS::AS_ONE) {
-        
-        rm_cell(i, j, false, false);
-        
-    } else if (check_exists == EXISTS::AS_ZERO) {
-        
-        insert_cell(i, j, BArrayDense<Cell_Type,Data_Type>::Cell_default, false, false);
-        el[POS(i, j)].visited = visited;
-        
+    }
+    else
+    {
+
+        c.active = true;
+        c.value  = static_cast<Cell_Type>(1);
+
+
     }
     
     return;
@@ -953,9 +858,9 @@ BDENSE_TEMPLATE(void, clear) (
     if (hard)
     {
       
-        el.clear();
-        el.resize(N * M);
-        NCells = 0u;
+        for (auto & c: el)
+            c = ZERO_CELL;
+    
       
     } else {
         
@@ -963,6 +868,8 @@ BDENSE_TEMPLATE(void, clear) (
             i.active = false;
         
     }
+
+    NCells = 0u;
     
     return;
     
@@ -977,7 +884,7 @@ BDENSE_TEMPLATE(void, resize) (
     if (NCells == 0u)
     {
         
-        el.resize(N_ * M_);
+        el.resize(N_ * M_, ZERO_CELL);
         N = N_;
         M = M_;
         return;

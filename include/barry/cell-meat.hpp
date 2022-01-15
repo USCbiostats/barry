@@ -4,7 +4,7 @@
 #define BARRY_CELL_MEAT_HPP 1
 
 template <typename Cell_Type>
-Cell<Cell_Type>& Cell<Cell_Type>::operator=(Cell<Cell_Type>& other) {
+Cell<Cell_Type>& Cell<Cell_Type>::operator=(const Cell<Cell_Type>& other) {
     this->value   = other.value;
     this->visited = other.visited;
     this->active  = other.active;

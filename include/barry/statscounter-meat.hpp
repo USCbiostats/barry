@@ -1,5 +1,6 @@
 #include "statscounter-bones.hpp"
 
+
 #ifndef BARRY_STATSCOUNTER_MEAT_HPP
 #define BARRY_STATSCOUNTER_MEAT_HPP 1
 
@@ -88,7 +89,8 @@ STATSCOUNTER_TEMPLATE(void, count_current)(uint i, uint j)
     
 }
 
-STATSCOUNTER_TEMPLATE(std::vector< double >, count_all)()
+template<typename Array_Type, typename Data_Type>
+inline std::vector< double > StatsCounter<Array_Type,Data_Type>::count_all()
 {
     
     // Initializing the counter on the empty array
@@ -150,6 +152,71 @@ STATSCOUNTER_TEMPLATE(std::vector< double >, count_all)()
             #endif
           
         } 
+        
+    }
+    
+    // Adding to the sufficient statistics
+    return current_stats;
+    
+}
+
+class NetworkData;
+class NetCounterData;
+
+template<>
+inline std::vector<double> StatsCounter<BArrayDense<int,NetworkData>,NetCounterData>::count_all()
+{
+    
+    // Initializing the counter on the empty array
+    count_init(0u, 0u);
+    
+    // Setting it to zero.
+    EmptyArray.clear(false);
+
+    #ifdef BARRY_DEBUG_LEVEL
+        #if BARRY_DEBUG_LEVEL > 0
+            BARRY_DEBUG_MSG("Initializing -count_all- debug. get_names():")
+            BARRY_DEBUG_VEC_PRINT<std::string>(this->get_names());
+        #endif
+    #endif
+    
+    // Start iterating through the data
+    for (unsigned int i = 0u; i < Array->nrow(); ++i)
+    {
+
+        for (unsigned int j = 0u; j < Array->ncol(); ++j)
+        {
+            // We only insert if it is different from zero
+            if (Array->operator()(i, j) == 0)
+                continue;
+            
+            // Adding a cell
+            EmptyArray(i, j) += 1;
+
+            #ifdef BARRY_DEBUG_LEVEL
+                #if (BARRY_DEBUG_LEVEL >= 1)
+                    BARRY_DEBUG_MSG("================================================================================")
+                    BARRY_DEBUG_MSG("Debugging Stats counter: current_stats (before)")
+                    std::string tmpmgs = "Inserting cell (" +
+                        std::to_string(i) + ", " + std::to_string(col.first) + ")";
+                    BARRY_DEBUG_MSG(tmpmgs.c_str());
+                    BARRY_DEBUG_VEC_PRINT(current_stats);
+                    #if (BARRY_DEBUG_LEVEL >= 2)
+                        BARRY_DEBUG_MSG("Debugging Stats counter: EmptyArray")
+                        EmptyArray.print();
+                    #endif
+                #endif
+            #endif 
+
+            // Computing the change statistics
+            count_current(i, j);
+            #ifdef BARRY_DEBUG_LEVEL
+                #if (BARRY_DEBUG_LEVEL >= 1)
+                    BARRY_DEBUG_MSG("Debugging Stats counter: current_stats (after)")
+                    BARRY_DEBUG_VEC_PRINT(current_stats);
+                #endif
+            #endif
+        }
         
     }
     

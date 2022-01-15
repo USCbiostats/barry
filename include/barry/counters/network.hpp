@@ -80,19 +80,26 @@ public:
  */
 ///@{
 typedef BArray<double, NetworkData> Network;
-typedef BArrayDense<double, NetworkData> NetworkDense;
+typedef BArrayDense<int, NetworkData> NetworkDense;
+
 template <typename Tnet = Network>
 using NetCounter =  Counter<Tnet, NetCounterData >;
+
 template <typename Tnet = Network>
 using NetCounters =  Counters<Tnet, NetCounterData>;
+
 template <typename Tnet = Network>
 using NetSupport =  Support<Tnet, NetCounterData >;
+
 template <typename Tnet = Network>
 using NetStatsCounter =  StatsCounter<Tnet, NetCounterData>;
+
 template <typename Tnet>
 using NetModel =  Model<Tnet, NetCounterData>;
+
 template <typename Tnet = Network>
 using NetRule =  Rule<Tnet, bool>;
+
 template <typename Tnet = Network>
 using NetRules =  Rules<Tnet, bool>;
 ///@}
@@ -109,6 +116,10 @@ inline double (a) (const Tnet & Array, uint i, uint j, NetCounterData * data)
 #define NETWORK_COUNTER_LAMBDA(a) \
 Counter_fun_type<Tnet, NetCounterData> a = \
     [](const Tnet & Array, uint i, uint j, NetCounterData * data)
+
+#define NETWORKDENSE_COUNTER_LAMBDA(a) \
+Counter_fun_type<NetworkDense, NetCounterData> a = \
+    [](const NetworkDense & Array, uint i, uint j, NetCounterData * data)
 ///@}
 
 
@@ -191,6 +202,73 @@ inline void counter_isolates(NetCounters<Tnet> * counters)
         tmp_init, nullptr, false, "Isolates", "Number of isolate vertices");
 
     return;
+}
+
+template<>
+inline void counter_isolates(NetCounters<NetworkDense> * counters)
+{
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
+    {
+
+        if (i == j)
+            return 0.0;
+        
+        double res = 0.0;
+        
+        // Checking the in and out degree
+        int nin  = 0;
+        int nout = 1; 
+        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        {
+
+            if (k == i)
+                continue;
+
+            if (k != j)
+                nout += Array(i, k);
+
+            nin += Array(k, i);
+            
+        }
+
+        if (nout == 1u && nin == 0u)
+            res -= 1.0;
+
+        // Now looking at j
+        nin  = 1;
+        nout = 0; 
+        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        {
+
+            if (k == j)
+                continue;
+
+            if (k != i)
+                nin += Array(k, j);
+
+            nout += Array(j, k);
+            
+        }
+
+        if (nout == 0u && nin == 1u)
+            res -= 1.0;
+        
+        return res;
+
+    };
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_init)
+    {
+        return static_cast<double>(Array.nrow());
+    };
+    
+    counters->add_counter(
+        tmp_count,
+        tmp_init, nullptr, false, "Isolates", "Number of isolate vertices");
+
+    return;
+
 }
 
 // -----------------------------------------------------------------------------
@@ -384,6 +462,57 @@ inline void counter_ttriads(NetCounters<Tnet> * counters)
 
 }
 
+template<>
+inline void counter_ttriads(NetCounters<NetworkDense> * counters)
+{
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Self ties do not count
+        if (i == j)
+            return 0.0;
+        
+        double ans = 0.0;
+        
+        // Case 1: i-j, i-k, j-k
+        // Case 2: i-j, i-k, k-j  
+        for (unsigned int l = 0u; l < Array.nrow(); ++l)
+        {
+            if (j != l & i != l)
+            {
+                ans += Array(i, l);
+                ans += Array(j, l);
+            }
+        }
+        
+        // The regular counter double counts
+        return ans;
+
+    };
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        if (Array.D() == nullptr)
+            throw std::logic_error("The array data has not been initialized");
+        
+        if (!(Array.D()->directed))
+            throw std::invalid_argument("The ttriads counter is only valid for directed networks. This is undirected.");
+
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr, false, "Balance",
+        "Number of directed triangles"
+    );
+    
+    return;
+
+}
+
 
 // Cycle triads --------------------------------------------------------------
 template<typename Tnet = Network>
@@ -417,6 +546,54 @@ inline void counter_ctriads(NetCounters<Tnet> * counters)
     };
     
     NETWORK_COUNTER_LAMBDA(tmp_init)
+    {
+
+        if (Array.D() == nullptr)
+            throw std::logic_error("The array data has not been initialized");
+        
+        if (!(Array.D()->directed))
+            throw std::invalid_argument(
+                "The ctriads counter is only valid for directed networks. This is undirected."
+                );
+
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr, false, "Cyclical triads"
+    );
+
+    return;
+    
+}
+
+template<>
+inline void counter_ctriads(NetCounters<NetworkDense> * counters)
+{
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
+    {
+
+        if (i == j)
+            return 0.0;
+        
+        // i->j->k->i
+        double ans = 0.0;
+        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        {
+            if (i != k && j != k)
+            {
+                if (Array(j, k) > 0 && Array(k, i) > 0)
+                    ans += 1.0;
+            }
+    }
+        
+        return ans;
+
+    };
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_init)
     {
 
         if (Array.D() == nullptr)

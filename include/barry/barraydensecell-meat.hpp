@@ -85,6 +85,40 @@ inline bool BArrayDenseCell_const<Cell_Type,Data_Type>::operator>=(const Cell_Ty
     return Array->el[POS(i, j)].value >= val;    
 }
 
+class NetworkData;
+
+
+template<>
+inline bool BArrayDenseCell_const<int,NetworkData>::operator==(const int & val) const {
+    return Array->el[POS(i, j)].value == static_cast<int>(val);
+}
+
+template<>
+inline bool BArrayDenseCell_const<int,NetworkData>::operator!=(const int & val) const {
+    return !(this->operator==(static_cast<int>(val)));
+}
+
+template<>
+inline bool BArrayDenseCell_const<int,NetworkData>::operator<(const int & val) const {
+    return Array->el[POS(i, j)].value < static_cast<int>(val);    
+}
+
+template<>
+inline bool BArrayDenseCell_const<int,NetworkData>::operator>(const int & val) const {
+    return Array->el[POS(i, j)].value > static_cast<int>(val);    
+}
+
+template<>
+inline bool BArrayDenseCell_const<int,NetworkData>::operator<=(const int & val) const {
+    return Array->el[POS(i, j)].value <= static_cast<int>(val);    
+}
+
+template<>
+inline bool BArrayDenseCell_const<int,NetworkData>::operator>=(const int & val) const {
+    return Array->el[POS(i, j)].value >= static_cast<int>(val);    
+}
+
+
 #undef POS
 
 #endif

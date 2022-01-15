@@ -86,12 +86,12 @@ public:
 
     };
 
-    typename std::vector< std::pair<unsigned int,Cell<Cell_Type>>  >::const_iterator begin()
+    typename std::vector< std::pair<unsigned int,Cell<Cell_Type>>  >::const_iterator begin() const
     {
         return dat.begin();
     };
 
-    typename std::vector< std::pair<unsigned int,Cell<Cell_Type>>  >::const_iterator end()
+    typename std::vector< std::pair<unsigned int,Cell<Cell_Type>>  >::const_iterator end() const
     {
         return dat.end();
     };

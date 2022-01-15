@@ -26,7 +26,7 @@ public:
         value(arg.value), visited(arg.visited), active(arg.active) {};
     
     // Copy by assignment
-    Cell<Cell_Type>& operator=(Cell<Cell_Type>& other);
+    Cell<Cell_Type>& operator=(const Cell<Cell_Type>& other);
     
     // Move constructor
     Cell(Cell<Cell_Type>&& arg) noexcept:
