@@ -7,6 +7,18 @@
 #ifndef BARRY_BARRAYDENSE_BONES_HPP 
 #define BARRY_BARRAYDENSE_BONES_HPP 1
 
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseRow;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseRow_const;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCell;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCell_const;
+
 /**
  * @brief Baseline class for binary arrays.
  * 
@@ -22,6 +34,10 @@ template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArrayDense {
     friend class BArrayDenseCell<Cell_Type,Data_Type>;
     friend class BArrayDenseCell_const<Cell_Type,Data_Type>;
+    friend class BArrayDenseCol<Cell_Type,Data_Type>;
+    friend class BArrayDenseCol_const<Cell_Type,Data_Type>;
+    friend class BArrayDenseRow<Cell_Type,Data_Type>;
+    friend class BArrayDenseRow_const<Cell_Type,Data_Type>;
 private:
     uint N;
     uint M;
@@ -125,8 +141,12 @@ public:
     std::vector< Cell_Type >      get_row_vec(uint i, bool check_bounds = true) const;
     void                          get_col_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
     void                          get_row_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
-    const Row_type< Cell_Type > & row(uint i, bool check_bounds = true) const;
-    const Col_type< Cell_Type > & col(uint i, bool check_bounds = true) const;
+    
+    BArrayDenseRow<Cell_Type,Data_Type> & row(uint i, bool check_bounds = true);
+    const BArrayDenseRow_const<Cell_Type,Data_Type> row(uint i, bool check_bounds = true) const;
+
+    BArrayDenseCol<Cell_Type,Data_Type> & col(uint j, bool check_bounds = true);
+    const BArrayDenseCol_const<Cell_Type,Data_Type> col(uint j, bool check_bounds = true) const;
 
     /**
      * @brief Get the edgelist

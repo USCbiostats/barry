@@ -4,6 +4,24 @@
 #ifndef BARRY_BARRAYDENSE_MEAT_HPP
 #define BARRY_BARRAYDENSE_MEAT_HPP 
 
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseRow;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseRow_const;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCol;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCol_const;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCell;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCell_const;
+
 #define BDENSE_TYPE() BArrayDense<Cell_Type, Data_Type>
 
 #define BDENSE_TEMPLATE_ARGS() <typename Cell_Type, typename Data_Type>
@@ -402,8 +420,8 @@ BDENSE_TEMPLATE(void, get_col_vec) (
         x->at(j) = el[POS(j, i)];//this->get_cell(iter->first, i, false);
     
 }
-
-BDENSE_TEMPLATE(const Row_type< Cell_Type > &, row)(
+template<typename Cell_Type, typename Data_Type>
+inline const BArrayDenseRow_const<Cell_Type,Data_Type> BDENSE_TYPE()::row(
     uint i,
     bool check_bounds
 ) const {
@@ -411,42 +429,49 @@ BDENSE_TEMPLATE(const Row_type< Cell_Type > &, row)(
     if (check_bounds)
         out_of_range(i, 0u);
 
-
-    // Creating a row to be returned as const
-    Row_type< Cell_Type > tmprow;
-    // tmp_row.empty();
-    for (unsigned int j = 0u; j < M; ++j)
-        if (el[POS(i, j)].active)
-        {
-            Cell<Cell_Type> tmpcell(el[POS(i, j)]);
-            tmprow.insert(std::pair< uint, Cell<Cell_Type>>(j, tmpcell));
-        }
-    
-    // no matching function for call to 
-    // ‘std::map<unsigned int, barry::Cell<double>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, barry::Cell<double> > > >::insert(std::pair<unsigned int, barry::Cell<double> >) const’
-    // tmp_row.insert(std::pair< uint, Cell< Cell_Type > >(j, el[POS(i, j)]));
-
-    return tmprow;
+    return BArrayDenseRow_const<Cell_Type,Data_Type>(*this, i);
 
 }
 
-BDENSE_TEMPLATE(const Col_type< Cell_Type > &, col)(
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDenseRow<Cell_Type,Data_Type> & BDENSE_TYPE()::row(
     uint i,
+    bool check_bounds
+) {
+
+    if (check_bounds)
+        out_of_range(i, 0u);
+
+    return BArrayDenseRow<Cell_Type,Data_Type>(*this, i);
+
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline const BArrayDenseCol_const<Cell_Type,Data_Type> 
+BArrayDense<Cell_Type,Data_Type>::col(
+    uint j,
     bool check_bounds
 ) const {
 
     if (check_bounds)
-        out_of_range(0u, i);
+        out_of_range(0u, j);
 
-    // Creating a row to be returned as const
-    Col_type< Cell_Type > tmpcol;
-    // tmp_col.empty();
-    for (unsigned int j = 0u; j < M; ++j)
-        if (el[POS(j, i)].active)
-            tmpcol.emplace(j, &el[POS(i, j)]);
+    return BArrayDenseCol_const<Cell_Type,Data_Type>(*this, j);
 
-    return tmpcol;
-    
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDenseCol<Cell_Type,Data_Type> & 
+BArrayDense<Cell_Type,Data_Type>::col(
+    uint j,
+    bool check_bounds
+) {
+
+    if (check_bounds)
+        out_of_range(0u, j);
+
+    return BArrayDenseCol<Cell_Type,Data_Type>(*this, j);
+
 }
 
 BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {

@@ -1,6 +1,12 @@
 // #include <stdexcept>
 #include "barray-bones.hpp"
 
+template<typename Cell_Type>
+class Cell;
+
+template<typename Cell_Type>
+class Cell_const;
+
 #ifndef BARRY_BARRAY_MEAT_HPP
 #define BARRY_BARRAY_MEAT_HPP 
 

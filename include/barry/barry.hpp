@@ -40,6 +40,10 @@ namespace barry {
 
     #include "barraydense-bones.hpp"
     #include "barraydensecell-bones.hpp"
+
+    #include "barraydenserow-bones.hpp"
+    #include "barraydensecol-bones.hpp"
+
     #include "barraydense-meat.hpp"
     #include "barraydensecell-meat.hpp"
     #include "barraydense-meat-operators.hpp"

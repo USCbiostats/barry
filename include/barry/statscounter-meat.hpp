@@ -115,7 +115,7 @@ STATSCOUNTER_TEMPLATE(std::vector< double >, count_all)()
             continue;
         
         // If there's one, then update the statistic, by iterating
-        for (auto& col: row)
+        for (const auto& col: row)
         {
 
             // We only insert if it is different from zero

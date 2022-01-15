@@ -59,9 +59,9 @@
  * The `end_` parameter should be of length `N of networks` - 1. It is
  * assumed that the first network ends at `netsize`.
  */
-
+template<typename Tnet = Network>
 inline void counter_css_partially_false_recip_commi(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -106,9 +106,9 @@ inline void counter_css_partially_false_recip_commi(
 }
 
 /** @brief Counts errors of omission */
-
+template<typename Tnet = Network>
 inline void counter_css_partially_false_recip_omiss(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -150,9 +150,9 @@ inline void counter_css_partially_false_recip_omiss(
 }
 
 /** @brief Counts completely false reciprocity (comission) */
-
+template<typename Tnet = Network>
 inline void counter_css_completely_false_recip_comiss(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -190,9 +190,9 @@ inline void counter_css_completely_false_recip_comiss(
 }
 
 /** @brief Counts completely false reciprocity (omission) */
-
+template<typename Tnet = Network>
 inline void counter_css_completely_false_recip_omiss(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -230,9 +230,9 @@ inline void counter_css_completely_false_recip_omiss(
 }
 
 /** @brief Counts mixed reciprocity errors */
-
+template<typename Tnet = Network>
 inline void counter_css_mixed_recip(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -271,9 +271,9 @@ inline void counter_css_mixed_recip(
 
 /////////////////////////// CENSUS
 
-
+template<typename Tnet = Network>
 inline void counter_css_census01(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -310,9 +310,9 @@ inline void counter_css_census01(
 
 }
 
-
+template<typename Tnet = Network>
 inline void counter_css_census02(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -349,9 +349,9 @@ inline void counter_css_census02(
 
 }
 
-
+template<typename Tnet = Network>
 inline void counter_css_census03(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -388,9 +388,9 @@ inline void counter_css_census03(
 
 }
 
-
+template<typename Tnet = Network>
 inline void counter_css_census04(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -427,9 +427,9 @@ inline void counter_css_census04(
 
 }
 
-
+template<typename Tnet = Network>
 inline void counter_css_census05(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -466,9 +466,9 @@ inline void counter_css_census05(
 
 }
 
-
+template<typename Tnet = Network>
 inline void counter_css_census06(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -505,9 +505,9 @@ inline void counter_css_census06(
 
 }
 
-
+template<typename Tnet = Network>
 inline void counter_css_census07(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -544,9 +544,9 @@ inline void counter_css_census07(
 
 }
 
-
+template<typename Tnet = Network>
 inline void counter_css_census08(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -583,9 +583,9 @@ inline void counter_css_census08(
 
 }
 
-
+template<typename Tnet = Network>
 inline void counter_css_census09(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {
@@ -622,9 +622,9 @@ inline void counter_css_census09(
 
 }
 
-
+template<typename Tnet = Network>
 inline void counter_css_census10(
-    NetCounters * counters,
+    NetCounters<Tnet> * counters,
     uint netsize,
     const std::vector< uint > & end_
 ) {

@@ -3,8 +3,17 @@
 #ifndef BARRY_BARRAYDENSECELL_BONES_HPP
 #define BARRY_BARRAYDENSECELL_BONES_HPP 1
 
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCol;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCol_const;
+
 template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArrayDenseCell {
+    friend class BArrayDense<Cell_Type,Data_Type>;
+    friend class BArrayDenseCol<Cell_Type,Data_Type>;
+    friend class BArrayDenseCol_const<Cell_Type,Data_Type>;
 private:
   
     BArrayDense<Cell_Type,Data_Type> * Array;
@@ -39,6 +48,9 @@ public:
 
 template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArrayDenseCell_const {
+    friend class BArrayDense<Cell_Type,Data_Type>;
+    friend class BArrayDenseCol<Cell_Type,Data_Type>;
+    friend class BArrayDenseCol_const<Cell_Type,Data_Type>;
 private:
     
     const BArrayDense<Cell_Type,Data_Type> * Array;
