@@ -56,11 +56,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"barrayvector-meat_8hpp.html#ade161b176cd6f559bc2eae95afdc0393",
-"class_b_array_vector.html#a56f27c99ab6c74ac1f665ed69abff0ef",
-"class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac",
-"geese-bones_8hpp.html#ac4e3e3e3920b3bbde57ac1ed395e9983",
-"statscounter-meat_8hpp.html#a001697fe93836f604a469b412e057b86"
+"barrayvector-bones_8hpp.html",
+"class_b_array_row__const.html#aa5272c923920dfdf6ae5ba241f208caf",
+"class_node.html#a0c9bb1827ebcdb298c05e9b9bf04aac8",
+"functions_u.html",
+"phylo_8hpp.html#ad7d1052d3cdcf6286b6d7907d1ec1eaf"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

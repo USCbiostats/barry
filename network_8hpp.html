@@ -142,6 +142,8 @@ Macros</h2></td></tr>
 <tr class="separator:ad7bf24e04cb161400f56990502bda0e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d2a3024f1f05e716a1b4cacfe661fac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a8d2a3024f1f05e716a1b4cacfe661fac">NETWORK_COUNTER_LAMBDA</a>(a)</td></tr>
 <tr class="separator:a8d2a3024f1f05e716a1b4cacfe661fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e9872b5ae19d4e845e545d1f42057b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a0e9872b5ae19d4e845e545d1f42057b8">NETWORKDENSE_COUNTER_LAMBDA</a>(a)</td></tr>
+<tr class="separator:a0e9872b5ae19d4e845e545d1f42057b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Macros for defining rules</div></td></tr>
 <tr class="memitem:a029e63cbf36397488cbd25940afb4c38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a029e63cbf36397488cbd25940afb4c38">NETWORK_RULE</a>(a)</td></tr>
 <tr class="separator:a029e63cbf36397488cbd25940afb4c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,8 +155,8 @@ Typedefs</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Convenient typedefs for network objects.</div></td></tr>
 <tr class="memitem:ad0e1efde7782396b9f93c16ce892af05"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_b_array.html">BArray</a>&lt; double, <a class="el" href="class_network_data.html">NetworkData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05">Network</a></td></tr>
 <tr class="separator:ad0e1efde7782396b9f93c16ce892af05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a8043806c35edb50a1231cbea06c69e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; double, <a class="el" href="class_network_data.html">NetworkData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a7a8043806c35edb50a1231cbea06c69e">NetworkDense</a></td></tr>
-<tr class="separator:a7a8043806c35edb50a1231cbea06c69e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ba41d6263c31a6f9a92d45bc8b2ff87"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; int, <a class="el" href="class_network_data.html">NetworkData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a9ba41d6263c31a6f9a92d45bc8b2ff87">NetworkDense</a></td></tr>
+<tr class="separator:a9ba41d6263c31a6f9a92d45bc8b2ff87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75ff9a7bece02dfc6d99fc2f7a35e463"><td class="memTemplParams" colspan="2">template&lt;typename Tnet  = Network&gt; </td></tr>
 <tr class="memitem:a75ff9a7bece02dfc6d99fc2f7a35e463"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="network_8hpp.html#a75ff9a7bece02dfc6d99fc2f7a35e463">NetCounter</a> = <a class="el" href="class_counter.html">Counter</a>&lt; Tnet, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;</td></tr>
 <tr class="separator:a75ff9a7bece02dfc6d99fc2f7a35e463"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +189,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga7563764e739bd6a2021ce4ec3b26eb76"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga7563764e739bd6a2021ce4ec3b26eb76">counter_isolates</a> (<a class="el" href="network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d">NetCounters</a>&lt; Tnet &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>)</td></tr>
 <tr class="memdesc:ga7563764e739bd6a2021ce4ec3b26eb76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of isolated vertices.  <a href="group__counters-network.html#ga7563764e739bd6a2021ce4ec3b26eb76">More...</a><br /></td></tr>
 <tr class="separator:ga7563764e739bd6a2021ce4ec3b26eb76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadfadf92506970c5deff0c96bd3549cce"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:gadfadf92506970c5deff0c96bd3549cce"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gadfadf92506970c5deff0c96bd3549cce">counter_isolates</a> (<a class="el" href="network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d">NetCounters</a>&lt; <a class="el" href="network_8hpp.html#a9ba41d6263c31a6f9a92d45bc8b2ff87">NetworkDense</a> &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>)</td></tr>
+<tr class="separator:gadfadf92506970c5deff0c96bd3549cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1605cc66474b3b960bddd7c0adebcfc7"><td class="memTemplParams" colspan="2">template&lt;typename Tnet  = Network&gt; </td></tr>
 <tr class="memitem:ga1605cc66474b3b960bddd7c0adebcfc7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga1605cc66474b3b960bddd7c0adebcfc7">counter_mutual</a> (<a class="el" href="network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d">NetCounters</a>&lt; Tnet &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>)</td></tr>
 <tr class="memdesc:ga1605cc66474b3b960bddd7c0adebcfc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of mutual ties.  <a href="group__counters-network.html#ga1605cc66474b3b960bddd7c0adebcfc7">More...</a><br /></td></tr>
@@ -200,9 +205,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ga465ebcc2edcdae4ff9cd7625f886681f"><td class="memTemplParams" colspan="2">template&lt;typename Tnet  = Network&gt; </td></tr>
 <tr class="memitem:ga465ebcc2edcdae4ff9cd7625f886681f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga465ebcc2edcdae4ff9cd7625f886681f">counter_ttriads</a> (<a class="el" href="network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d">NetCounters</a>&lt; Tnet &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>)</td></tr>
 <tr class="separator:ga465ebcc2edcdae4ff9cd7625f886681f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadadede01536081fb8b79e4d14368f946"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:gadadede01536081fb8b79e4d14368f946"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gadadede01536081fb8b79e4d14368f946">counter_ttriads</a> (<a class="el" href="network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d">NetCounters</a>&lt; <a class="el" href="network_8hpp.html#a9ba41d6263c31a6f9a92d45bc8b2ff87">NetworkDense</a> &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>)</td></tr>
+<tr class="separator:gadadede01536081fb8b79e4d14368f946"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga558e4e627e5d99062d4c5546c443aabb"><td class="memTemplParams" colspan="2">template&lt;typename Tnet  = Network&gt; </td></tr>
 <tr class="memitem:ga558e4e627e5d99062d4c5546c443aabb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga558e4e627e5d99062d4c5546c443aabb">counter_ctriads</a> (<a class="el" href="network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d">NetCounters</a>&lt; Tnet &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>)</td></tr>
 <tr class="separator:ga558e4e627e5d99062d4c5546c443aabb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf3fec1692cb595e2d22205b105a8e727"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:gaf3fec1692cb595e2d22205b105a8e727"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gaf3fec1692cb595e2d22205b105a8e727">counter_ctriads</a> (<a class="el" href="network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d">NetCounters</a>&lt; <a class="el" href="network_8hpp.html#a9ba41d6263c31a6f9a92d45bc8b2ff87">NetworkDense</a> &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>)</td></tr>
+<tr class="separator:gaf3fec1692cb595e2d22205b105a8e727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga54be4f2afc03d8616c60ed148219865f"><td class="memTemplParams" colspan="2">template&lt;typename Tnet  = Network&gt; </td></tr>
 <tr class="memitem:ga54be4f2afc03d8616c60ed148219865f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga54be4f2afc03d8616c60ed148219865f">counter_density</a> (<a class="el" href="network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d">NetCounters</a>&lt; Tnet &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>)</td></tr>
 <tr class="separator:ga54be4f2afc03d8616c60ed148219865f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -324,7 +335,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00018">typedefs.hpp:18</a></div></div>
 </div><!-- fragment --><p>Function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00104">104</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00111">111</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -348,7 +359,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="atypedefs_8hpp_html_a1e12ad6cdda3588f5b2157a5ad3177d2"><div class="ttname"><a href="typedefs_8hpp.html#a1e12ad6cdda3588f5b2157a5ad3177d2">Counter_fun_type</a></div><div class="ttdeci">std::function&lt; double(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Counter_fun_type</div><div class="ttdoc">Counter and rule functions.</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00132">typedefs.hpp:132</a></div></div>
 </div><!-- fragment --><p>Lambda function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00109">109</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00116">116</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -371,7 +382,7 @@ Functions</h2></td></tr>
 <div class="line">inline bool (a) (<span class="keyword">const</span> Tnet &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <span class="keywordtype">bool</span> * <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
 </div><!-- fragment --><p>Function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00119">119</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00130">130</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -395,7 +406,30 @@ Functions</h2></td></tr>
 <div class="ttc" id="atypedefs_8hpp_html_a99982bdca40c23ca6f901c8e66da78a1"><div class="ttname"><a href="typedefs_8hpp.html#a99982bdca40c23ca6f901c8e66da78a1">Rule_fun_type</a></div><div class="ttdeci">std::function&lt; bool(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Rule_fun_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00135">typedefs.hpp:135</a></div></div>
 </div><!-- fragment --><p>Lambda function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00124">124</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00135">135</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0e9872b5ae19d4e845e545d1f42057b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e9872b5ae19d4e845e545d1f42057b8">&#9670;&nbsp;</a></span>NETWORKDENSE_COUNTER_LAMBDA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NETWORKDENSE_COUNTER_LAMBDA</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code" href="typedefs_8hpp.html#a1e12ad6cdda3588f5b2157a5ad3177d2">Counter_fun_type&lt;NetworkDense, NetCounterData&gt;</a> a = \</div>
+<div class="line">    [](<span class="keyword">const</span> <a class="code" href="class_b_array_dense.html">NetworkDense</a> &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <a class="code" href="class_net_counter_data.html">NetCounterData</a> * <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
+<div class="ttc" id="aclass_b_array_dense_html"><div class="ttname"><a href="class_b_array_dense.html">BArrayDense</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-bones_8hpp_source.html#l00034">barraydense-bones.hpp:34</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00120">120</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -414,7 +448,7 @@ template&lt;typename Tnet  = Network&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00085">85</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00086">86</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -432,7 +466,7 @@ template&lt;typename Tnet  = Network&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00087">87</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00089">89</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -450,7 +484,7 @@ template&lt;typename Tnet &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00093">93</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00098">98</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -468,7 +502,7 @@ template&lt;typename Tnet  = Network&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00095">95</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00101">101</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -486,7 +520,7 @@ template&lt;typename Tnet  = Network&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00097">97</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00104">104</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -504,7 +538,7 @@ template&lt;typename Tnet  = Network&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00091">91</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00095">95</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -522,7 +556,7 @@ template&lt;typename Tnet  = Network&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00089">89</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00092">92</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -542,14 +576,14 @@ template&lt;typename Tnet  = Network&gt; </div>
 
 </div>
 </div>
-<a id="a7a8043806c35edb50a1231cbea06c69e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a8043806c35edb50a1231cbea06c69e">&#9670;&nbsp;</a></span>NetworkDense</h2>
+<a id="a9ba41d6263c31a6f9a92d45bc8b2ff87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ba41d6263c31a6f9a92d45bc8b2ff87">&#9670;&nbsp;</a></span>NetworkDense</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt;double, <a class="el" href="class_network_data.html">NetworkData</a>&gt; <a class="el" href="network_8hpp.html#a7a8043806c35edb50a1231cbea06c69e">NetworkDense</a></td>
+          <td class="memname">typedef <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt;int, <a class="el" href="class_network_data.html">NetworkData</a>&gt; <a class="el" href="network_8hpp.html#a9ba41d6263c31a6f9a92d45bc8b2ff87">NetworkDense</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -587,7 +621,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 
 <p>Number of edges. </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00895">895</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01072">1072</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -597,7 +631,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="network_8hpp.html">network.hpp</a></li>
-    <li class="footer">Generated on Sat Jan 15 2022 00:35:24 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Jan 15 2022 08:56:08 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

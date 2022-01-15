@@ -15,7 +15,7 @@ var class_cell =
     [ "operator Cell_Type", "class_cell.html#abe9b289bc80d4f5d0717ba9e69197c0b", null ],
     [ "operator!=", "class_cell.html#a3485dfb79ac41f1ec1b9f3d773890cbe", null ],
     [ "operator=", "class_cell.html#a9ea03f80e1b160ca43b1db5b5792e482", null ],
-    [ "operator=", "class_cell.html#a6cfdc588dba9ca10a11693d644ac0c60", null ],
+    [ "operator=", "class_cell.html#a85cce62ff7a83efe42d911845b6c5cb5", null ],
     [ "operator==", "class_cell.html#ad0ef21913c029711911172215e988ce8", null ],
     [ "active", "class_cell.html#ab685b120fa7b40ba18bc5f86059101e2", null ],
     [ "value", "class_cell.html#a5df1609bc0705830ec4dc6e177ddc955", null ],

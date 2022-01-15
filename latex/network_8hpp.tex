@@ -39,6 +39,8 @@ class \mbox{\hyperlink{class_net_counter_data}{Net\+Counter\+Data}}
 \#define \mbox{\hyperlink{network_8hpp_ad7bf24e04cb161400f56990502bda0e2}{NETWORK\+\_\+\+COUNTER}}(a)
 \item 
 \#define \mbox{\hyperlink{network_8hpp_a8d2a3024f1f05e716a1b4cacfe661fac}{NETWORK\+\_\+\+COUNTER\+\_\+\+LAMBDA}}(a)
+\item 
+\#define \mbox{\hyperlink{network_8hpp_a0e9872b5ae19d4e845e545d1f42057b8}{NETWORKDENSE\+\_\+\+COUNTER\+\_\+\+LAMBDA}}(a)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Macros for defining rules}\par
@@ -55,7 +57,7 @@ class \mbox{\hyperlink{class_net_counter_data}{Net\+Counter\+Data}}
 \item 
 typedef \mbox{\hyperlink{class_b_array}{BArray}}$<$ double, \mbox{\hyperlink{class_network_data}{Network\+Data}} $>$ \mbox{\hyperlink{network_8hpp_ad0e1efde7782396b9f93c16ce892af05}{Network}}
 \item 
-typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ double, \mbox{\hyperlink{class_network_data}{Network\+Data}} $>$ \mbox{\hyperlink{network_8hpp_a7a8043806c35edb50a1231cbea06c69e}{Network\+Dense}}
+typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ int, \mbox{\hyperlink{class_network_data}{Network\+Data}} $>$ \mbox{\hyperlink{network_8hpp_a9ba41d6263c31a6f9a92d45bc8b2ff87}{Network\+Dense}}
 \item 
 {\footnotesize template$<$typename Tnet  = Network$>$ }\\using \mbox{\hyperlink{network_8hpp_a75ff9a7bece02dfc6d99fc2f7a35e463}{Net\+Counter}} = \mbox{\hyperlink{class_counter}{Counter}}$<$ Tnet, \mbox{\hyperlink{class_net_counter_data}{Net\+Counter\+Data}} $>$
 \item 
@@ -79,6 +81,8 @@ typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ double, \mbox{\
 \begin{DoxyCompactList}\small\item\em Number of edges. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Tnet  = Network$>$ }\\void \mbox{\hyperlink{group__counters-network_ga7563764e739bd6a2021ce4ec3b26eb76}{counter\+\_\+isolates}} (\mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Counters}}$<$ Tnet $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}})
 \begin{DoxyCompactList}\small\item\em Number of isolated vertices. \end{DoxyCompactList}\item 
+template$<$$>$ void \mbox{\hyperlink{group__counters-network_gadfadf92506970c5deff0c96bd3549cce}{counter\+\_\+isolates}} (\mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Counters}}$<$ \mbox{\hyperlink{network_8hpp_a9ba41d6263c31a6f9a92d45bc8b2ff87}{Network\+Dense}} $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}})
+\item 
 {\footnotesize template$<$typename Tnet  = Network$>$ }\\void \mbox{\hyperlink{group__counters-network_ga1605cc66474b3b960bddd7c0adebcfc7}{counter\+\_\+mutual}} (\mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Counters}}$<$ Tnet $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}})
 \begin{DoxyCompactList}\small\item\em Number of mutual ties. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Tnet  = Network$>$ }\\void \mbox{\hyperlink{group__counters-network_ga0ca1e0394d95e7ddd1848732ef2005e9}{counter\+\_\+istar2}} (\mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Counters}}$<$ Tnet $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}})
@@ -87,7 +91,11 @@ typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ double, \mbox{\
 \item 
 {\footnotesize template$<$typename Tnet  = Network$>$ }\\void \mbox{\hyperlink{group__counters-network_ga465ebcc2edcdae4ff9cd7625f886681f}{counter\+\_\+ttriads}} (\mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Counters}}$<$ Tnet $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}})
 \item 
+template$<$$>$ void \mbox{\hyperlink{group__counters-network_gadadede01536081fb8b79e4d14368f946}{counter\+\_\+ttriads}} (\mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Counters}}$<$ \mbox{\hyperlink{network_8hpp_a9ba41d6263c31a6f9a92d45bc8b2ff87}{Network\+Dense}} $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}})
+\item 
 {\footnotesize template$<$typename Tnet  = Network$>$ }\\void \mbox{\hyperlink{group__counters-network_ga558e4e627e5d99062d4c5546c443aabb}{counter\+\_\+ctriads}} (\mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Counters}}$<$ Tnet $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}})
+\item 
+template$<$$>$ void \mbox{\hyperlink{group__counters-network_gaf3fec1692cb595e2d22205b105a8e727}{counter\+\_\+ctriads}} (\mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Counters}}$<$ \mbox{\hyperlink{network_8hpp_a9ba41d6263c31a6f9a92d45bc8b2ff87}{Network\+Dense}} $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}})
 \item 
 {\footnotesize template$<$typename Tnet  = Network$>$ }\\void \mbox{\hyperlink{group__counters-network_ga54be4f2afc03d8616c60ed148219865f}{counter\+\_\+density}} (\mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Counters}}$<$ Tnet $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}})
 \item 
@@ -163,7 +171,7 @@ Definition at line 75 of file network.\+hpp.
 \end{DoxyCode}
 Function for definition of a network counter function 
 
-Definition at line 104 of file network.\+hpp.
+Definition at line 111 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a8d2a3024f1f05e716a1b4cacfe661fac}\label{network_8hpp_a8d2a3024f1f05e716a1b4cacfe661fac}} 
 \index{network.hpp@{network.hpp}!NETWORK\_COUNTER\_LAMBDA@{NETWORK\_COUNTER\_LAMBDA}}
@@ -179,7 +187,7 @@ Definition at line 104 of file network.\+hpp.
 \end{DoxyCode}
 Lambda function for definition of a network counter function 
 
-Definition at line 109 of file network.\+hpp.
+Definition at line 116 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a029e63cbf36397488cbd25940afb4c38}\label{network_8hpp_a029e63cbf36397488cbd25940afb4c38}} 
 \index{network.hpp@{network.hpp}!NETWORK\_RULE@{NETWORK\_RULE}}
@@ -195,7 +203,7 @@ Definition at line 109 of file network.\+hpp.
 \end{DoxyCode}
 Function for definition of a network counter function 
 
-Definition at line 119 of file network.\+hpp.
+Definition at line 130 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a676ca55541b8cd4d73caca424ea7e53d}\label{network_8hpp_a676ca55541b8cd4d73caca424ea7e53d}} 
 \index{network.hpp@{network.hpp}!NETWORK\_RULE\_LAMBDA@{NETWORK\_RULE\_LAMBDA}}
@@ -211,7 +219,23 @@ Definition at line 119 of file network.\+hpp.
 \end{DoxyCode}
 Lambda function for definition of a network counter function 
 
-Definition at line 124 of file network.\+hpp.
+Definition at line 135 of file network.\+hpp.
+
+\mbox{\Hypertarget{network_8hpp_a0e9872b5ae19d4e845e545d1f42057b8}\label{network_8hpp_a0e9872b5ae19d4e845e545d1f42057b8}} 
+\index{network.hpp@{network.hpp}!NETWORKDENSE\_COUNTER\_LAMBDA@{NETWORKDENSE\_COUNTER\_LAMBDA}}
+\index{NETWORKDENSE\_COUNTER\_LAMBDA@{NETWORKDENSE\_COUNTER\_LAMBDA}!network.hpp@{network.hpp}}
+\doxysubsubsection{\texorpdfstring{NETWORKDENSE\_COUNTER\_LAMBDA}{NETWORKDENSE\_COUNTER\_LAMBDA}}
+{\footnotesize\ttfamily \#define NETWORKDENSE\+\_\+\+COUNTER\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\_fun\_type<NetworkDense, NetCounterData>}} a = \(\backslash\)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{NetworkDense}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_net_counter_data}{NetCounterData}} * \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+
+\end{DoxyCode}
+
+
+Definition at line 120 of file network.\+hpp.
 
 
 
@@ -225,7 +249,7 @@ using \mbox{\hyperlink{network_8hpp_a75ff9a7bece02dfc6d99fc2f7a35e463}{Net\+Coun
 
 
 
-Definition at line 85 of file network.\+hpp.
+Definition at line 86 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}\label{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}} 
 \index{network.hpp@{network.hpp}!NetCounters@{NetCounters}}
@@ -236,7 +260,7 @@ using \mbox{\hyperlink{network_8hpp_a93d69933a4fa28f3460e7647ac03860d}{Net\+Coun
 
 
 
-Definition at line 87 of file network.\+hpp.
+Definition at line 89 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a3689057a7a18f67f6839f3e1b2b6c140}\label{network_8hpp_a3689057a7a18f67f6839f3e1b2b6c140}} 
 \index{network.hpp@{network.hpp}!NetModel@{NetModel}}
@@ -247,7 +271,7 @@ using \mbox{\hyperlink{network_8hpp_a3689057a7a18f67f6839f3e1b2b6c140}{Net\+Mode
 
 
 
-Definition at line 93 of file network.\+hpp.
+Definition at line 98 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_ac8c9529b68fa80139a776663a7ee43a1}\label{network_8hpp_ac8c9529b68fa80139a776663a7ee43a1}} 
 \index{network.hpp@{network.hpp}!NetRule@{NetRule}}
@@ -258,7 +282,7 @@ using \mbox{\hyperlink{network_8hpp_ac8c9529b68fa80139a776663a7ee43a1}{Net\+Rule
 
 
 
-Definition at line 95 of file network.\+hpp.
+Definition at line 101 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_aa7fdf74711b0b97f984156cee30683c3}\label{network_8hpp_aa7fdf74711b0b97f984156cee30683c3}} 
 \index{network.hpp@{network.hpp}!NetRules@{NetRules}}
@@ -269,7 +293,7 @@ using \mbox{\hyperlink{network_8hpp_aa7fdf74711b0b97f984156cee30683c3}{Net\+Rule
 
 
 
-Definition at line 97 of file network.\+hpp.
+Definition at line 104 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_aa601fca284af7d89c905f0077e350cc0}\label{network_8hpp_aa601fca284af7d89c905f0077e350cc0}} 
 \index{network.hpp@{network.hpp}!NetStatsCounter@{NetStatsCounter}}
@@ -280,7 +304,7 @@ using \mbox{\hyperlink{network_8hpp_aa601fca284af7d89c905f0077e350cc0}{Net\+Stat
 
 
 
-Definition at line 91 of file network.\+hpp.
+Definition at line 95 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_a8e585f661c3cacbff9653516b0babf00}\label{network_8hpp_a8e585f661c3cacbff9653516b0babf00}} 
 \index{network.hpp@{network.hpp}!NetSupport@{NetSupport}}
@@ -291,7 +315,7 @@ using \mbox{\hyperlink{network_8hpp_a8e585f661c3cacbff9653516b0babf00}{Net\+Supp
 
 
 
-Definition at line 89 of file network.\+hpp.
+Definition at line 92 of file network.\+hpp.
 
 \mbox{\Hypertarget{network_8hpp_ad0e1efde7782396b9f93c16ce892af05}\label{network_8hpp_ad0e1efde7782396b9f93c16ce892af05}} 
 \index{network.hpp@{network.hpp}!Network@{Network}}
@@ -303,11 +327,11 @@ Definition at line 89 of file network.\+hpp.
 
 Definition at line 82 of file network.\+hpp.
 
-\mbox{\Hypertarget{network_8hpp_a7a8043806c35edb50a1231cbea06c69e}\label{network_8hpp_a7a8043806c35edb50a1231cbea06c69e}} 
+\mbox{\Hypertarget{network_8hpp_a9ba41d6263c31a6f9a92d45bc8b2ff87}\label{network_8hpp_a9ba41d6263c31a6f9a92d45bc8b2ff87}} 
 \index{network.hpp@{network.hpp}!NetworkDense@{NetworkDense}}
 \index{NetworkDense@{NetworkDense}!network.hpp@{network.hpp}}
 \doxysubsubsection{\texorpdfstring{NetworkDense}{NetworkDense}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$double, \mbox{\hyperlink{class_network_data}{Network\+Data}}$>$ \mbox{\hyperlink{network_8hpp_a7a8043806c35edb50a1231cbea06c69e}{Network\+Dense}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$int, \mbox{\hyperlink{class_network_data}{Network\+Data}}$>$ \mbox{\hyperlink{network_8hpp_a9ba41d6263c31a6f9a92d45bc8b2ff87}{Network\+Dense}}}
 
 
 
@@ -329,5 +353,5 @@ Number of edges.
 
 
 
-Definition at line 895 of file network.\+hpp.
+Definition at line 1072 of file network.\+hpp.
 

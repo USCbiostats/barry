@@ -137,6 +137,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa7e4572b8f58a0fb79cdf3125ceb3520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e013d18fa1155ce296025778d8cb92f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stats_counter.html#a0e013d18fa1155ce296025778d8cb92f">get_descriptions</a> () <a class="el" href="barraydense-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a></td></tr>
 <tr class="separator:a0e013d18fa1155ce296025778d8cb92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2b033a731936bef39a4b101929af3f7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stats_counter.html#af2b033a731936bef39a4b101929af3f7">count_all</a> ()</td></tr>
+<tr class="separator:af2b033a731936bef39a4b101929af3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Type = bool&gt;<br />
@@ -277,21 +279,55 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 </div>
 </div>
 <a id="a83bd92031a1499109c98f238221cbd67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83bd92031a1499109c98f238221cbd67">&#9670;&nbsp;</a></span>count_all()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a83bd92031a1499109c98f238221cbd67">&#9670;&nbsp;</a></span>count_all() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt; </div>
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; double &gt; <a class="el" href="class_stats_counter.html">StatsCounter</a>&lt; Array_Type, Data_Type &gt;::count_all </td>
+          <td class="memname">std::vector&lt; double &gt; <a class="el" href="class_stats_counter.html">StatsCounter</a>&lt; Array_Type, Data_Type &gt;::count_all</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="statscounter-meat_8hpp_source.html#l00093">93</a> of file <a class="el" href="statscounter-meat_8hpp_source.html">statscounter-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af2b033a731936bef39a4b101929af3f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2b033a731936bef39a4b101929af3f7">&#9670;&nbsp;</a></span>count_all() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; double &gt; <a class="el" href="class_stats_counter.html">StatsCounter</a>&lt; <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; int, <a class="el" href="class_network_data.html">NetworkData</a> &gt;, <a class="el" href="class_net_counter_data.html">NetCounterData</a> &gt;::count_all </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="statscounter-meat_8hpp_source.html#l00167">167</a> of file <a class="el" href="statscounter-meat_8hpp_source.html">statscounter-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -462,8 +498,9 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/barry/<a class="el" href="statscounter-bones_8hpp_source.html">statscounter-bones.hpp</a></li>
+<li>include/barry/<a class="el" href="statscounter-meat_8hpp_source.html">statscounter-meat.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -471,7 +508,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Type  = bool&gt
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_stats_counter.html">StatsCounter</a></li>
-    <li class="footer">Generated on Sat Jan 15 2022 00:35:24 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Jan 15 2022 08:56:09 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
