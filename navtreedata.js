@@ -59,8 +59,8 @@ var NAVTREEINDEX =
 "barrayrow-meat_8hpp.html#ae40cd6ad010141bb5a0f516b9d6ec24f",
 "class_b_array_row__const.html#a62c8375e0c4dbdc2b418af21bec40c8b",
 "class_network_data.html#af62a7dde71c52bc49bc1e0ddc27b4724",
-"functions_s.html",
-"phylo_8hpp.html#aca4644373aecf9b296ac8ac730470952"
+"functions_rela.html",
+"phylo_8hpp.html#a70f35d038e8044ff5761831220d07290"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
