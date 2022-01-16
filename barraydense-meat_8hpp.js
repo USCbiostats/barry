@@ -55,7 +55,6 @@ var barraydense_meat_8hpp =
     [ "resize", "barraydense-meat_8hpp.html#aa0a26f5432433ff8eedd4f8f5bec0293", null ],
     [ "rm_cell", "barraydense-meat_8hpp.html#a3d6c0ae54ba9c6ccc634e8e45cc85e40", null ],
     [ "rm_cell", "barraydense-meat_8hpp.html#a1ad51b770b9e0db237ef8f8d42f619aa", null ],
-    [ "active", "barraydense-meat_8hpp.html#af96e1d1f4597ec60c2ca843e20189fba", null ],
     [ "add", "barraydense-meat_8hpp.html#a1339d67b0cfdee9f9720b2fd7732a121", null ],
     [ "ans", "barraydense-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906", null ],
     [ "c0", "barraydense-meat_8hpp.html#a13fdffa7e4dfe5f912438d5f6f6e52b0", null ],

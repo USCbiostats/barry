@@ -1,8 +1,8 @@
 var class_b_array_dense_col =
 [
     [ "BArrayDenseCol", "class_b_array_dense_col.html#ab65d1b0516fb8f0de60af38f54838581", null ],
-    [ "begin", "class_b_array_dense_col.html#a9858514113cd0c6b7a20d5bfc6483b9d", null ],
-    [ "end", "class_b_array_dense_col.html#a4bba84ac195bc70b3f6b594e4364d707", null ],
+    [ "begin", "class_b_array_dense_col.html#a273ac15c983496d06b7b454f763b4338", null ],
+    [ "end", "class_b_array_dense_col.html#a7af4b159accd69b3f0fc8ad49b0a4b78", null ],
     [ "operator()", "class_b_array_dense_col.html#a53ba89c622af6a80d62ddf70e02b931a", null ],
     [ "size", "class_b_array_dense_col.html#ad98af3af82a9a36ea4f4b11e2d8bb84b", null ],
     [ "BArrayDense< Cell_Type, Data_Type >", "class_b_array_dense_col.html#a9bef18a1875feef98176de5a59ece84c", null ],
