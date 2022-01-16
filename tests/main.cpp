@@ -12,8 +12,9 @@
 
 #include "01-all-counts.cpp"
 #include "01b-all-counts.cpp"
-// #include "02-support-ergm.cpp"
-// #include "03-support-ergm-b.cpp"
+#include "02-support-ergm.cpp"
+#include "02b-support-ergm.cpp"
+#include "03-support-ergm-b.cpp"
 // #include "04-locked.cpp"
 // #include "05-sample.cpp"
 // #include "06-geese.cpp"

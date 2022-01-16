@@ -80,7 +80,7 @@ TEST_CASE("NetworkDense counts work", "[counts-dense]") {
   std::cout << "done." << std::endl;
   
   std::cout << "Starting the count...";
-  std::vector< double > ans = counter.count_all();
+  std::vector< double > ans = counter.count_all_dense();
   std::cout << "done." << std::endl;
   
   // delete net.data;

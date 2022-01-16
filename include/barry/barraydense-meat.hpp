@@ -581,8 +581,7 @@ BDENSE_TEMPLATE(void, rm_cell) (
         out_of_range(i,j);
         
     // Remove the pointer first (so it wont point to empty)
-    el[POS(i, j)].active = false;
-    el[POS(i, j)].value  = static_cast<Cell_Type>(0);
+    el[POS(i, j)] = BARRY_ZERO_DENSE;
     
     NCells--;
     
@@ -939,6 +938,7 @@ BDENSE_TEMPLATE(void, print) () const {
 #undef BDENSE_TYPE
 #undef BDENSE_TEMPLATE_ARGS
 #undef BDENSE_TEMPLATE
+#undef ZERO_CELL
 
 #endif
 

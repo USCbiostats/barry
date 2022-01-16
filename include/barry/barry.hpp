@@ -28,6 +28,7 @@ namespace barry {
     
     //! Tree class and TreeIterator class
     #include "typedefs.hpp"
+    #include "barry-macros.hpp"
 
     #include "cell-bones.hpp"
     #include "cell-meat.hpp"

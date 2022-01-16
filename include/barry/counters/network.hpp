@@ -82,6 +82,9 @@ public:
 typedef BArray<double, NetworkData> Network;
 typedef BArrayDense<int, NetworkData> NetworkDense;
 
+#define BARRY_ZERO_NETWORK 0.0
+#define BARRY_ZERO_NETWORK_DENSE 0
+
 template <typename Tnet = Network>
 using NetCounter =  Counter<Tnet, NetCounterData >;
 
@@ -372,6 +375,35 @@ inline void counter_ostar2(NetCounters<Tnet> * counters)
     
 }
 
+template<>
+inline void counter_ostar2(NetCounters<NetworkDense> * counters)
+{
+   
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Need to check the receiving, if he/she is getting a new set of stars
+        // when looking at triads
+        int nties = 0;
+        for (unsigned int k = 0u; k < Array.ncol(); ++k)
+        {
+            if (Array(i, k) != BARRY_ZERO_NETWORK_DENSE)
+                ++nties;
+        }
+
+        if (nties == 1u)
+            return 0.0;
+        
+        return static_cast<double>(nties - 1.0);
+
+    };
+    
+    counters->add_counter(tmp_count, nullptr, nullptr, false, "Ostar 2", "Outdegree 2-star");
+
+    return ;
+    
+}
+
 
 // ttriads ---------------------------------------------------------------------
 template<typename Tnet = Network>
@@ -419,7 +451,7 @@ inline void counter_ttriads(NetCounters<Tnet> * counters)
                 
         }
         
-        // Case 3: 
+        // Case 3: i->j, k->j, k->i
         if (Array.col(i).size() > Array.col(j).size())
         {
             
@@ -474,15 +506,25 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
             return 0.0;
         
         double ans = 0.0;
-        
-        // Case 1: i-j, i-k, j-k
-        // Case 2: i-j, i-k, k-j  
-        for (unsigned int l = 0u; l < Array.nrow(); ++l)
+        for (unsigned int k = 0u; k < Array.nrow(); ++k)
         {
-            if (j != l & i != l)
+            if (j != k & i != k)
             {
-                ans += Array(i, l);
-                ans += Array(j, l);
+
+                if (Array(i, k) != BARRY_ZERO_NETWORK_DENSE)
+                {
+                    // Case 1: i-j, i-k, j-k
+                    if (Array(j, k))
+                        ans += 1.0;
+
+                    // Case 2: i-j, i-k, k-j 
+                    if (Array(k, j) != BARRY_ZERO_NETWORK_DENSE)
+                        ans += 1.0;
+                }
+                
+                if ((Array(k, i) != BARRY_ZERO_NETWORK_DENSE) && (Array(k,j) != BARRY_ZERO_NETWORK_DENSE))
+                    ans += 1.0;
+
             }
         }
         
@@ -669,6 +711,43 @@ inline void counter_idegree15(NetCounters<Tnet> * counters)
     
 }
 
+template<>
+inline void counter_idegree15(NetCounters<NetworkDense> * counters)
+{
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
+    {
+        
+        // In case of the first, we need to add
+        int ideg = 0;
+        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        {
+            if (k == j)
+                continue;
+
+            if (Array(k, j) != BARRY_ZERO_NETWORK_DENSE)
+                ideg++;
+
+        }
+        
+        if (ideg == 1)
+            return 1.0;
+        
+        return 
+            pow(static_cast<double> (ideg), 1.5) -
+            pow(static_cast<double> (ideg - 1), 1.5)
+            ;
+        
+    };
+    
+    counters->add_counter(
+        tmp_count, nullptr, nullptr, false, "Indegree^(1.5)"
+    );
+
+    return;
+    
+}
+
 // odegree1.5  -------------------------------------------------------------
 template<typename Tnet = Network>
 inline void counter_odegree15(NetCounters<Tnet> * counters)
@@ -684,6 +763,44 @@ inline void counter_odegree15(NetCounters<Tnet> * counters)
         return 
             pow(static_cast<double>(Array.row(i).size()), 1.5) -
             pow(static_cast<double>(Array.row(i).size() - 1), 1.5)
+            ;
+        
+    };
+    
+    counters->add_counter(
+        tmp_count, nullptr, nullptr, false, "Outdegree^(1.5)"
+    );
+
+    return;
+    
+}
+
+template<>
+inline void counter_odegree15(NetCounters<NetworkDense> * counters)
+{
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
+    {
+        
+        // In case of the first, we need to add
+        int odeg = 0;
+        for (unsigned int k = 0u; k < Array.ncol(); ++k)
+        {
+
+            if (k == i)
+                continue;
+
+            if (Array(i, k) != BARRY_ZERO_NETWORK_DENSE)
+                odeg++;
+
+        }
+
+        if (odeg == 1)
+            return 1.0;
+        
+        return 
+            pow(static_cast<double>(odeg), 1.5) -
+            pow(static_cast<double>(odeg - 1), 1.5)
             ;
         
     };
@@ -960,6 +1077,57 @@ inline void counter_idegree(
 
 }
 
+template<>
+inline void counter_idegree(
+    NetCounters<NetworkDense> * counters,
+    std::vector< uint > d
+) {
+
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
+    {
+        
+        unsigned int indeg = 0u;
+        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+            if (Array(k, j) != BARRY_ZERO_NETWORK_DENSE)
+                indeg++;
+
+        if (indeg == NET_C_DATA_IDX(0u))
+            return 1.0;
+        else if (indeg == (NET_C_DATA_IDX(0u) + 1))
+            return -1.0;
+        
+        return 0.0;
+
+    };
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        if (Array.D() == nullptr)
+            throw std::logic_error("The array data has not been initialized");
+        
+        if (!Array.D()->directed)
+            throw std::logic_error("-odegree- counter is only valid for directed graphs");
+        
+        if (NET_C_DATA_IDX(0u) == 0u)
+            return static_cast<double>(Array.nrow());
+        
+        return 0.0;
+
+    };
+    
+    for (auto iter = d.begin(); iter != d.end(); ++iter)
+        counters->add_counter(
+            tmp_count, tmp_init,
+            new NetCounterData({*iter}, {}),
+            true, "Nodes indeg " + std::to_string(*iter),
+            "Number of nodes with indigree " + std::to_string(*iter)
+        );
+    
+    return;  
+
+}
+
 // -----------------------------------------------------------------------------
 /**@brief Counts number of vertices with a given out-degree */
 template<typename Tnet = Network>
@@ -1010,6 +1178,59 @@ inline void counter_odegree(
     
 }
     
+template<>
+inline void counter_odegree(
+    NetCounters<NetworkDense> * counters,
+    std::vector<uint> d
+) {
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
+    {
+        
+        uint d = 0;
+        for (unsigned int k = 0u; k < Array.ncol(); ++k)
+            if (Array(i, k) != BARRY_ZERO_NETWORK_DENSE)
+                d++;
+        
+        if (d == NET_C_DATA_IDX(0u))
+            return 1.0;
+        else if (d == (NET_C_DATA_IDX(0u) + 1))
+            return -1.0;
+        
+        return 0.0;
+
+    };
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        if (Array.D() == nullptr)
+            throw std::logic_error("The array data has not been initialized");
+        
+        if (!Array.D()->directed)
+            throw std::logic_error("-odegree- counter is only valid for directed graphs");
+        
+        if (NET_C_DATA_IDX(0u) == 0u)
+            return static_cast<double>(Array.nrow());
+        
+        return 0.0;
+
+    };
+        
+        
+    for (auto iter = d.begin(); iter != d.end(); ++iter) 
+        counters->add_counter(
+            tmp_count, tmp_init,
+            new NetCounterData({*iter}, {}),
+            true, "Nodes w/ outdeg " + std::to_string(*iter),
+            "Number of nodes with outdegree " + std::to_string(*iter)
+        );
+    
+    return;  
+    
+}
+
+
 // -----------------------------------------------------------------------------
 /** @brief Counts number of vertices with a given out-degree */
 template<typename Tnet = Network>
