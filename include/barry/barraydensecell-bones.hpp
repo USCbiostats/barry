@@ -3,6 +3,8 @@
 #ifndef BARRY_BARRAYDENSECELL_BONES_HPP
 #define BARRY_BARRAYDENSECELL_BONES_HPP 1
 
+#define POS(a, b) (a) + (b) * N
+
 template<typename Cell_Type, typename Data_Type>
 class BArrayDenseCol;
 
@@ -16,22 +18,34 @@ class BArrayDenseCell {
     friend class BArrayDenseCol_const<Cell_Type,Data_Type>;
 private:
   
-    BArrayDense<Cell_Type,Data_Type> * Array;
+    Cell_Type * dat;
     uint i;
     uint j;
+    unsigned int N;
   
 public:
   
-    BArrayDenseCell(BArrayDense<Cell_Type,Data_Type> * Array_, uint i_, uint j_, bool check_bounds = true) : 
-    Array(Array_), i(i_), j(j_) {
-        if (check_bounds) {
+    BArrayDenseCell(
+        BArrayDense<Cell_Type,Data_Type> * Array_,
+        uint i_,
+        uint j_,
+        bool check_bounds = true
+        ) : 
+    i(i_), j(j_)
+    {
 
-            if (i >= Array->nrow())
+        if (check_bounds)
+        {
+
+            if (i >= Array_->nrow())
                 throw std::length_error("Row out of range.");
-            if (j >= Array->ncol())
+            if (j >= Array_->ncol())
                 throw std::length_error("Col out of range.");
 
         }
+        N = Array_->N;
+        dat = &(Array_->el[POS(i,j)]);
+
     };
 
     ~BArrayDenseCell(){};
@@ -53,22 +67,36 @@ class BArrayDenseCell_const {
     friend class BArrayDenseCol_const<Cell_Type,Data_Type>;
 private:
     
-    const BArrayDense<Cell_Type,Data_Type> * Array;
+    Cell_Type dat;
+    unsigned int N;
     uint i;
     uint j;
     
 public:
   
-    BArrayDenseCell_const(const BArrayDense<Cell_Type,Data_Type> * Array_, uint i_, uint j_, bool check_bounds = true) : 
-    Array(Array_), i(i_), j(j_) {
-        if (check_bounds) {
+    BArrayDenseCell_const(
+        const BArrayDense<Cell_Type,Data_Type> * Array_,
+        uint i_,
+        uint j_,
+        bool check_bounds = true
+        ) : 
+    i(i_), j(j_)
+    {
+        
+        if (check_bounds)
+        {
 
-            if (i >= Array->nrow())
+            if (i >= Array_->nrow())
                 throw std::length_error("Row out of range.");
-            if (j >= Array->ncol())
+            if (j >= Array_->ncol())
                 throw std::length_error("Col out of range.");
 
         }
+
+        N = Array_->N;
+        dat = Array_->el[POS(i,j)];
+
+
     };
     
     ~BArrayDenseCell_const(){};
@@ -82,5 +110,7 @@ public:
     bool operator>=(const Cell_Type & val) const;
   
 };
+
+#undef POS
 
 #endif

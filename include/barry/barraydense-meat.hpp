@@ -35,9 +35,9 @@ class BArrayDenseCell_const;
 #define POS_N(a,b,c) (b)*(c) + (a)
 
 template<typename Cell_Type, typename Data_Type>
-Cell<Cell_Type> BArrayDense<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(); 
+Cell_Type BArrayDense<Cell_Type,Data_Type>::Cell_default = static_cast< Cell_Type >(1.0); 
 
-#define ZERO_CELL Cell< Cell_Type >( static_cast<Cell_Type>(0.0), !visited, false)
+#define ZERO_CELL static_cast<Cell_Type>(0.0)
 
 // Edgelist with data
 BDENSE_TEMPLATE(,BArrayDense)(
@@ -69,7 +69,7 @@ BDENSE_TEMPLATE(,BArrayDense)(
         if (add && !empty)
         {
 
-            el[POS(source[i], target[i])].add(value[i]);
+            el[POS(source[i], target[i])] += value[i];
             continue;
 
         } 
@@ -77,7 +77,7 @@ BDENSE_TEMPLATE(,BArrayDense)(
         if (!empty)
             throw std::logic_error("The value already exists. Use 'add = true'.");
           
-        this->insert_cell(source[i], target[i], value[i], false, false);
+        el[POS(source[i], target[i])] = value[i];
 
     }
     
@@ -115,7 +115,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
             throw std::range_error("Either source or target point to an element outside of the range by (N,M).");
         
         // Checking if it exists
-        if (el[POS(source[i], target[i])].active)
+        if (el[POS(source[i], target[i])] != ZERO_CELL)
         {
 
             if (!add)
@@ -123,15 +123,13 @@ BDENSE_TEMPLATE(, BArrayDense)(
           
             // Increasing the value (this will automatically update the
             // other value)
-            el[POS(source[i], target[i])].add(value[i]);
+            el[POS(source[i], target[i])] += value[i];
             continue;
 
         }
         
         // Adding the value and creating a pointer to it
-        el[POS(source[i], target[i])].value   = value[i];
-        el[POS(source[i], target[i])].visited = visited;
-        el[POS(source[i], target[i])].active  = true;
+        el[POS(source[i], target[i])] = value[i];
         
         NCells++;
 
@@ -147,7 +145,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
 ) : N(Array_.N), M(Array_.M){
   
     // Dimensions
-    el.resize(N * M, ZERO_CELL);
+    el.resize(0u, ZERO_CELL);
     
     std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
 
@@ -185,20 +183,13 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=) (
     if (this != &Array_)
     {
       
-        clear(true);
-        resize(Array_.N, Array_.M);
+        el.resize(0u);
         
         // Entries
-        for (uint i = 0u; i < N; ++i)
-        {
-          
-            if (Array_.nnozero() == nnozero())
-                break;
-            
-            for (auto& r : Array_.row(i, false)) 
-                this->insert_cell(i, r.first, r.second.value, false, false);
-          
-        }
+        std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
+        this->NCells = Array_.NCells;
+        this->N      = Array_.N;
+        this->M      = Array_.M;
       
         // Data
         if (data != nullptr)
@@ -353,7 +344,7 @@ BDENSE_TEMPLATE(Cell_Type, get_cell) (
     if (check_bounds)
         out_of_range(i,j);
     
-    return el[POS(i, j)].value;
+    return el[POS(i, j)];
     
 }
 
@@ -505,7 +496,7 @@ BDENSE_TEMPLATE(bool, is_empty)(
     if (check_bounds)
         out_of_range(i, j);
     
-    return !el[POS(i, j)].active;
+    return el[POS(i, j)] == ZERO_CELL;
     
 }
 
@@ -616,8 +607,7 @@ BDENSE_TEMPLATE(void, insert_cell) (
         // Checking if nothing here, then we move along
         if (NCells == 0u)
         {
-            Cell< Cell_Type > tmp(v);
-            el[POS(i, j)] = tmp;
+            el[POS(i, j)] = Cell< Cell_Type >(v, !visited, true);
             NCells++;
             return;
             
@@ -626,8 +616,7 @@ BDENSE_TEMPLATE(void, insert_cell) (
         
     } else {
         
-        Cell< Cell_Type > tmp(v);
-        el[POS(i, j)] = tmp;
+        el[POS(i, j)] = Cell< Cell_Type >(v, !visited, true);
         NCells++;
         
     }
@@ -725,6 +714,7 @@ BDENSE_TEMPLATE(void, toggle_cell) (
 
         c.active = true;
         c.value  = static_cast<Cell_Type>(1);
+        NCells++;
 
 
     }
@@ -855,19 +845,9 @@ BDENSE_TEMPLATE(void, clear) (
     bool hard
 ) {
     
-    if (hard)
-    {
-      
-        for (auto & c: el)
-            c = ZERO_CELL;
-    
-      
-    } else {
-        
-        for (auto & i : el)
-            i.active = false;
-        
-    }
+    bool nothard = hard; // Trick the compiler :P
+    for (auto & c: el)
+        c = ZERO_CELL;
 
     NCells = 0u;
     
@@ -921,10 +901,7 @@ BDENSE_TEMPLATE(void, resize) (
 
 BDENSE_TEMPLATE(void, reserve) () {
 
-#ifdef BARRAY_USE_UNORDERED_MAP
-    tmp_row.reserve(M);
-    tmp_col.reserve(N);
-#endif
+    el.reserve(N * M);
     return;
   
 }

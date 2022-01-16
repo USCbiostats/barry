@@ -1,8 +1,9 @@
 #ifndef BARRY_BARRAYDENSEROW_BONES_HPP
 #define BARRY_BARRAYDENSEROW_BONES_HPP
 
-#define POS(a,b) (b)*N + (a)
+#define POS(a,b) (b) * N + (a)
 #define POS_N(a,b,c) (b)*(c) + (a)
+#define ZERO_CELL static_cast< Cell_Type >(0.0)
 
 template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArrayDenseRow {
@@ -11,47 +12,66 @@ class BArrayDenseRow {
     friend class BArrayDenseCell_const<Cell_Type,Data_Type>;
 private:
     BArrayDense< Cell_Type,Data_Type > * array;
-    std::vector< std::pair<unsigned int, Cell<Cell_Type> > > dat;
+    Row_type< Cell_Type > row;
     unsigned int index;
+    bool row_filled = false; // after row is filled
+
+    void fill_if_needed()
+    {
+        if (!row_filled)
+        {
+
+            for (unsigned int j = 0u; j < array->M; ++j)
+            {
+                
+                if (array->el[POS_N(index, j, array->N)] != ZERO_CELL)
+                    row[j] = row[POS_N(index, j, array->N)];
+                    
+            }
+
+            row_filled = true;
+            
+        }
+    }
+
 
 public:
+
     BArrayDenseRow(
         BArrayDense< Cell_Type,Data_Type > & array_,
         unsigned int i
-    ) : array(&array_), index(i)
+    ) : array(&array_), index(i) {};
+
+    typename Row_type<Cell_Type>::iterator & begin()
     {
 
-        const unsigned int N = array->N;
-
-        dat.resize(array->M);
-        for (unsigned int j = 0u; j < dat.size(); ++j)
-            dat[i] = std::pair<unsigned int,Cell<Cell_Type>>(
-                j,
-                Cell<Cell_Type>(array->el[POS_N(i, j, N)]))
-                ;
-
-        return;
+        fill_if_needed();
+        return row.begin();
 
     };
 
-    typename std::vector< std::pair<unsigned int,Cell<Cell_Type>>  >::iterator & begin()
+    typename Row_type<Cell_Type>::iterator & end()
     {
-        return dat.begin();
-    };
 
-    typename std::vector< std::pair<unsigned int,Cell<Cell_Type>>  >::iterator & end()
-    {
-        return dat.end();
+        fill_if_needed();
+        return row.end();
+
     };
 
     size_t size() const noexcept
     {
-        return dat.size();
+
+        fill_if_needed();
+        return row.size();
+
     };
 
     std::pair<unsigned int,Cell<Cell_Type>> & operator()(unsigned int i)
     {
-        return dat[i];
+
+        fill_if_needed();
+        return row[i];
+
     }
 
 };
@@ -62,7 +82,7 @@ class BArrayDenseRow_const {
     friend class BArrayDenseCell_const<Cell_Type,Data_Type>;
 private:
     const BArrayDense< Cell_Type,Data_Type > * array;
-    std::vector< std::pair<unsigned int, Cell<Cell_Type> > > dat;
+    Row_type< Cell_Type > row;
     unsigned int index;
 
 public:
@@ -72,43 +92,43 @@ public:
     ) : array(&array_), index(i)
     {
 
-        const unsigned int N = array->N;
-
-        dat.resize(array->M);
-        for (unsigned int j = 0u; j < dat.size(); ++j)
-            dat[i] = std::pair<unsigned int, Cell_Type>(
-                j,
-                Cell<Cell_Type>(array->el[POS_N(i, j, N)])
-                );
+        for (unsigned int j = 0u; j < array->M; ++j)
+        {
+            
+            if (array->el[POS_N(index, j, array->N)] != ZERO_CELL)
+                row[j] = row[POS_N(index, j, array->N)];
+                
+        }
 
         return;
 
 
     };
 
-    typename std::vector< std::pair<unsigned int,Cell<Cell_Type>>  >::const_iterator begin() const
+    typename Row_type< Cell_Type >::const_iterator begin() const
     {
-        return dat.begin();
+        return row.begin();
     };
 
-    typename std::vector< std::pair<unsigned int,Cell<Cell_Type>>  >::const_iterator end() const
+    typename Row_type< Cell_Type >::const_iterator end() const
     {
-        return dat.end();
+        return row.end();
     };
 
     size_t size() const noexcept
     {
-        return dat.size();
+        return row.size();
     };
 
     const std::pair<unsigned int,Cell<Cell_Type>> operator()(unsigned int i) const
     {
-        return dat[i];
+        return row[i];
     }
 
 };
 
 #undef POS
 #undef POS_N
+#undef ZERO_CELL
 
 #endif

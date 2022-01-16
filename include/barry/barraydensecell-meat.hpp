@@ -8,56 +8,56 @@
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayDenseCell<Cell_Type,Data_Type>::operator=(const Cell_Type & val) {
 
-    Array->el[POS(i, j)].value = val;
+    (*dat) = val;
     
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayDenseCell<Cell_Type,Data_Type>::operator+=(const Cell_Type & val) {
     
-    Array->el[POS(i, j)].value += val;
+    (*dat) += val;
 
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayDenseCell<Cell_Type,Data_Type>::operator-=(const Cell_Type & val) {
     
-    Array->el[POS(i, j)].value -= val;
+    (*dat) -= val;
 
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayDenseCell<Cell_Type,Data_Type>::operator*=(const Cell_Type & val) {
     
-    Array->el[POS(i, j)].value *= val;
+    (*dat) *= val;
 
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayDenseCell<Cell_Type,Data_Type>::operator/=(const Cell_Type & val) {
     
-    Array->el[POS(i, j)].value /= val;
+    (*dat) /= val;
 
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline BArrayDenseCell<Cell_Type,Data_Type>::operator Cell_Type() const {
-        return Array->el[POS(i, j)].value;
+        return (*dat);
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline bool BArrayDenseCell<Cell_Type,Data_Type>::operator==(const Cell_Type & val) const {
-    return Array->el[POS(i, j)].value == val;  
+    return (*dat) == val;  
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline BArrayDenseCell_const<Cell_Type,Data_Type>::operator Cell_Type() const {
-        return Array->el[POS(i, j)].value;
+        return dat;
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline bool BArrayDenseCell_const<Cell_Type,Data_Type>::operator==(const Cell_Type & val) const {
-    return Array->el[POS(i, j)].value == val;
+    return dat == val;
 }
 
 template<typename Cell_Type,typename Data_Type>
@@ -67,22 +67,22 @@ inline bool BArrayDenseCell_const<Cell_Type,Data_Type>::operator!=(const Cell_Ty
 
 template<typename Cell_Type,typename Data_Type>
 inline bool BArrayDenseCell_const<Cell_Type,Data_Type>::operator<(const Cell_Type & val) const {
-    return Array->el[POS(i, j)].value < val;    
+    return dat < val;    
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline bool BArrayDenseCell_const<Cell_Type,Data_Type>::operator>(const Cell_Type & val) const {
-    return Array->el[POS(i, j)].value > val;    
+    return dat > val;    
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline bool BArrayDenseCell_const<Cell_Type,Data_Type>::operator<=(const Cell_Type & val) const {
-    return Array->el[POS(i, j)].value <= val;    
+    return dat <= val;    
 }
 
 template<typename Cell_Type,typename Data_Type>
 inline bool BArrayDenseCell_const<Cell_Type,Data_Type>::operator>=(const Cell_Type & val) const {
-    return Array->el[POS(i, j)].value >= val;    
+    return dat >= val;    
 }
 
 class NetworkData;
@@ -90,7 +90,7 @@ class NetworkData;
 
 template<>
 inline bool BArrayDenseCell_const<int,NetworkData>::operator==(const int & val) const {
-    return Array->el[POS(i, j)].value == static_cast<int>(val);
+    return dat == static_cast<int>(val);
 }
 
 template<>
@@ -100,22 +100,22 @@ inline bool BArrayDenseCell_const<int,NetworkData>::operator!=(const int & val) 
 
 template<>
 inline bool BArrayDenseCell_const<int,NetworkData>::operator<(const int & val) const {
-    return Array->el[POS(i, j)].value < static_cast<int>(val);    
+    return dat < static_cast<int>(val);    
 }
 
 template<>
 inline bool BArrayDenseCell_const<int,NetworkData>::operator>(const int & val) const {
-    return Array->el[POS(i, j)].value > static_cast<int>(val);    
+    return dat > static_cast<int>(val);    
 }
 
 template<>
 inline bool BArrayDenseCell_const<int,NetworkData>::operator<=(const int & val) const {
-    return Array->el[POS(i, j)].value <= static_cast<int>(val);    
+    return dat <= static_cast<int>(val);    
 }
 
 template<>
 inline bool BArrayDenseCell_const<int,NetworkData>::operator>=(const int & val) const {
-    return Array->el[POS(i, j)].value >= static_cast<int>(val);    
+    return dat >= static_cast<int>(val);    
 }
 
 

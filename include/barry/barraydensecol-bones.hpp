@@ -3,6 +3,7 @@
 
 #define POS(a,b) (b)*N + (a)
 #define POS_N(a,b,c) (b)*(c) + (a)
+#define ZERO_CELL static_cast<Cell_Type>(0.0)
 
 template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArrayDenseCol {
@@ -11,45 +12,57 @@ class BArrayDenseCol {
     friend class BArrayDenseCell_const<Cell_Type,Data_Type>;
 private:
     BArrayDense< Cell_Type,Data_Type > * array;
-    std::vector< std::pair<unsigned int, Cell_Type* > > dat;
+    Col_type<Cell_Type> col;
     unsigned int index;
+    bool col_filled = false;
+
+    void fill_if_needed()
+    {
+        if (!col_filled)
+        {
+
+            for (unsigned int i = 0u; i < array->N; ++i)
+            {
+                
+                if (array->el[POS_N(i, index, array->N)] != ZERO_CELL)
+                    col[i] = col[POS_N(i, index, array->N)];
+                    
+            }
+
+            col_filled = true;
+            
+        }
+    }
 
 public:
     BArrayDenseCol(
         BArrayDense< Cell_Type,Data_Type > & array_,
         unsigned int j
-    ) : array(&array_), index(j)
+    ) : array(&array_), index(j) {};
+
+
+    typename Col_type<Cell_Type>::iterator & begin()
     {
-
-        const unsigned int N = array->N;
-
-        dat.resize(N);
-        for (unsigned int i = 0u; i < dat.size(); ++i)
-            dat[i] = std::pair<unsigned int, Cell_Type*>(j, &(array->el[POS_N(i, j, N)]));
-
-        return;
-
+        fill_if_needed();
+        return col.begin();
     };
 
-
-    typename std::vector< std::pair<unsigned int,Cell_Type*>  >::iterator & begin()
+    typename Col_type<Cell_Type>::iterator & end()
     {
-        return dat.begin();
-    };
-
-    typename std::vector< std::pair<unsigned int,Cell_Type*>  >::iterator & end()
-    {
-        return dat.end();
+        fill_if_needed();
+        return col.end();
     };
 
     size_t size() const noexcept
     {
-        return dat.size();
+        fill_if_needed();
+        return col.size();
     };
 
     std::pair<unsigned int,Cell_Type*> & operator()(unsigned int i)
     {
-        return dat[i];
+        fill_if_needed();
+        return col[i];
     }
 
 };
@@ -60,9 +73,8 @@ class BArrayDenseCol_const {
     friend class BArrayDenseCell_const<Cell_Type,Data_Type>;
 private:
     const BArrayDense< Cell_Type,Data_Type > * array;
-    std::vector< std::pair<unsigned int, Cell_Type* > > dat;
-    std::vector< Cell_Type > cell_dat;
     unsigned int index;
+    Col_type<Cell_Type> col;
 
 public:
     BArrayDenseCol_const(
@@ -71,45 +83,41 @@ public:
     ) : array(&array_), index(j)
     {
 
-        const unsigned int N = array->N;
-
-        dat.resize(N);
-        cell_dat.resize(N);
-        for (unsigned int i = 0u; i < dat.size(); ++i)
+        for (unsigned int i = 0u; i < array->N; ++i)
         {
-            cell_dat[i] = array->el[POS_N(i, j, N)];
-            dat[i]      = std::pair<unsigned int, Cell_Type*>(j, &cell_dat[i]);
+            
+            if (array->el[POS_N(i, index, array->N)] != ZERO_CELL)
+                col[i] = col[POS_N(i, index, array->N)];
+                
         }
 
-        return;
-
-
     };
 
-    typename std::vector< std::pair<unsigned int,Cell_Type*>  >::iterator begin()
+    typename Col_type<Cell_Type>::iterator begin()
     {
-        return dat.begin();
+        return col.begin();
     };
 
-    typename std::vector< std::pair<unsigned int,Cell_Type*>  >::iterator end()
+    typename Col_type<Cell_Type>::iterator end()
     {
-        return dat.end();
+        return col.end();
     };
 
 
     size_t size() const noexcept
     {
-        return dat.size();
+        return col.size();
     };
 
     const std::pair<unsigned int,Cell_Type*> operator()(unsigned int i) const
     {
-        return dat[i];
+        return col[i];
     }
 
 };
 
 #undef POS
 #undef POS_N
+#undef ZERO_CELL
 
 #endif
