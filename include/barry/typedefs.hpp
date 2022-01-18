@@ -50,6 +50,18 @@ namespace EXISTS {
   * A single count
   */
 typedef std::vector< std::pair< std::vector<double>, uint > > Counts_type;
+
+// class Counts_type
+// {
+// private:
+//     std::vector< std::uint_fast32_t > stats_counts;
+//     std::vector< double > stats_values;
+//     size_t n_stats;
+//     unsigned int n_obs;
+// public:
+//     std::vector< double > operator()
+// }
+
 template <class Type_A > class Cell;
 
 template<typename Cell_Type>
@@ -91,8 +103,11 @@ public:
 
 // Relevant for anything using vecHasher function ------------------------------
 template <typename T>
-struct vecHasher {
-    std::size_t operator()(std::vector< T > const&  dat) const noexcept {
+struct vecHasher
+{
+
+    std::size_t operator()(std::vector< T > const&  dat) const noexcept
+    {
         
         std::hash< T > hasher;
         std::size_t hash = hasher(dat[0u]);
@@ -107,6 +122,7 @@ struct vecHasher {
         return hash;
         
     }
+
 };
 
 template<typename Ta = double, typename Tb = uint> 

@@ -7,33 +7,48 @@ inline double Geese::likelihood(
     const std::vector< double > & par,
     bool as_log,
     bool use_reduced_sequence
-    ) {
+) {
 
     INITIALIZED()
 
     // Splitting the probabilities
     std::vector< double > par0(par.begin(), par.end() - nfunctions);
+
     std::vector< double > par_root(par.end() - nfunctions, par.end());
 
     // Scaling root
-    for (auto& p : par_root) {
+    for (auto& p : par_root)
+    {
+
         p = std::exp(p)/(std::exp(p) + 1);
+
     }
 
     std::vector< unsigned int > tmpstate(nfunctions);
 
     double ll = 0.0;
+
     Node * n_off;
 
     // Following the prunning sequence
     std::vector< unsigned int > * preseq;
+
     if (use_reduced_sequence)
+    {
+
         preseq = &this->reduced_sequence;
+
+    }
     else
+    {   
+
         preseq = &this->sequence;
 
+    }
 
-    for (auto& i : *preseq) {
+
+    for (auto& i : *preseq)
+    {
 
         // We cannot compute probability at the leaf, we need to continue
         if (this->nodes[i].is_leaf())
@@ -43,40 +58,46 @@ inline double Geese::likelihood(
         Node & node = nodes[i];
 
         // Iterating through states
-        for (unsigned int s = 0u; s < states.size(); ++s) {
+        for (unsigned int s = 0u; s < states.size(); ++s)
+        {
 
             // Starting the prob
             double totprob = 0.0;
 
             // Retrieving the sets of arrays
-            const std::vector< phylocounters::PhyloArray > * psets = model->get_pset(
-                node.narray[s]
-            );
+            const std::vector< phylocounters::PhyloArray > * psets =
+                model->get_pset(node.narray[s]);
 
-            const std::vector< std::vector<double> > * psets_stats = model->get_pset_stats(
-                node.narray[s]
-            );
+            const std::vector< std::vector<double> > * psets_stats =
+                model->get_pset_stats(node.narray[s]);
 
             // Summation over all possible values of X
             unsigned int nstate = 0u;
-            for (auto x = psets->begin(); x != psets->end(); ++x) {
+
+            for (auto x = psets->begin(); x != psets->end(); ++x)
+            {
 
                 // Extracting the possible values of each offspring
                 double off_mult = 1.0;
-                for (auto o = 0u; o < x->ncol(); ++o) {
+
+                for (auto o = 0u; o < x->ncol(); ++o)
+                {
 
                     // Setting the node
                     n_off = node.offspring[o];
 
                     // First, getting what is the corresponding state
                     std::fill(tmpstate.begin(), tmpstate.end(), 0u);
+
                     x->get_col_vec(&tmpstate, o, false);
 
                     // In the case that the offspring is a leaf, then we need to
                     // check whether the state makes sense.
-                    if (n_off->is_leaf()) {
+                    if (n_off->is_leaf())
+                    {
 
-                        if (vec_diff(tmpstate, n_off->annotations)) {
+                        if (vec_diff(tmpstate, n_off->annotations))
+                        {
 
                             off_mult = -1.0;
                             break;
@@ -89,18 +110,19 @@ inline double Geese::likelihood(
 
                     // Retrieving the location to the respective set of probabilities
                     unsigned int loc = map_to_nodes[tmpstate];
+
                     off_mult *= node.offspring[o]->subtree_prob[loc];
 
                 }
 
                 // Is this state valid?
-                if (off_mult < 0.0) {
+                if (off_mult < 0.0)
+                {
 
                     ++nstate;
                     continue;
                     
                 }
-                    
 
                 // Multiplying by P(x|x_n), the transition probability
                 off_mult *= model->likelihood(
@@ -120,11 +142,19 @@ inline double Geese::likelihood(
         }
 
         // All probabilities should be completed at this point
-        if (node.parent == nullptr) {
-            for (unsigned int s = 0u; s < states.size(); ++s) {
+        if (node.parent == nullptr)
+        {
+
+            for (unsigned int s = 0u; s < states.size(); ++s)
+            {
+
                 double tmpll = 1.0;
-                for (auto k = 0u; k < nfunctions; ++k) {
+
+                for (auto k = 0u; k < nfunctions; ++k)
+                {
+
                     tmpll *= states[s][k] ? par_root[k] : (1 - par_root[k]);
+
                 }
 
                 ll += tmpll * node.subtree_prob[s];

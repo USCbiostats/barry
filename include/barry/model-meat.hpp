@@ -15,14 +15,16 @@ inline double update_normalizing_constant(
     
     double res = 0.0;
     double tmp;
-    for (unsigned int n = 0u; n < support.size(); ++n)
+    // for (unsigned int n = 0u; n < support.size(); ++n)
+    for (const auto & sup : support)
     {
         
         tmp = 0.0;
-        for (unsigned int j = 0u; j < params.size(); ++j)
-            tmp += support[n].first[j] * params[j];
         
-        res += exp(tmp BARRY_SAFE_EXP) * support[n].second;
+        for (unsigned int j = 0u; j < params.size(); ++j)
+            tmp += sup.first[j] * params[j];
+        
+        res += exp(tmp BARRY_SAFE_EXP) * sup.second;
 
     }
     
@@ -430,7 +432,9 @@ MODEL_TEMPLATE(uint, add_array)(
                     &(pset_stats[pset_stats.size() - 1u])
                 );
                 
-            } catch (const std::exception& e) {
+            }
+            catch (const std::exception& e)
+            {
                 
                 printf_barry(
                     "A problem ocurred while trying to add the array (and recording the powerset). "
@@ -441,14 +445,18 @@ MODEL_TEMPLATE(uint, add_array)(
                 
             }
             
-        } else {
+        }
+        else
+        {
             
             try
             {
 
                 support_fun.calc();
 
-            } catch (const std::exception& e) {
+            }
+            catch (const std::exception& e)
+            {
                 
                 printf_barry("A problem ocurred while trying to add the array. ");
                 printf_barry("with error: %s", e.what());
@@ -490,27 +498,30 @@ MODEL_TEMPLATE(double, likelihood)(
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
+    unsigned int idx = arrays2support[i];
+
     // Checking if this actually has a change of happening
-    if (this->stats[arrays2support[i]].size() == 0u)
+    if (this->stats[idx].size() == 0u)
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) ) {
+    if (!first_calc_done[idx] || !vec_equal_approx(params, params_last[idx]) )
+    {
         
-        first_calc_done[arrays2support[i]] = true;
+        first_calc_done[idx] = true;
         
-        normalizing_constants[arrays2support[i]] = update_normalizing_constant(
-            params, stats[arrays2support[i]]
+        normalizing_constants[idx] = update_normalizing_constant(
+            params, stats[idx]
         );
         
-        params_last[arrays2support[i]] = params;
+        params_last[idx] = params;
         
     }
     
     return likelihood_(
         target_stats[i],
         params,
-        normalizing_constants[arrays2support[i]],
+        normalizing_constants[idx],
         as_log
     );
     
@@ -526,7 +537,8 @@ MODEL_TEMPLATE(double, likelihood)(
     // Key of the support set to use
     int loc;
 
-    if (i < 0) {
+    if (i < 0)
+    {
 
         std::vector< double > key = keygen(Array_);
         MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
@@ -535,7 +547,9 @@ MODEL_TEMPLATE(double, likelihood)(
 
         loc = locator->second;
 
-    } else {
+    }
+    else
+    {
 
         if (static_cast<uint>(i) >= arrays2support.size())
             throw std::range_error("This type of array has not been included in the model.");

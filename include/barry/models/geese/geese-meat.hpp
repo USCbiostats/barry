@@ -3,12 +3,16 @@
 #ifndef GEESE_MEAT_HPP
 #define GEESE_MEAT_HPP 1
 
-inline void Geese::init_node(Node & n) {
+inline void Geese::init_node(Node & n)
+{
 
     // Creating the phyloarray, nfunctions x noffspring
     n.array = phylocounters::PhyloArray(nfunctions, n.offspring.size());
+
     std::vector< bool > tmp_state = vector_caster<bool,uint>(n.annotations);
+
     std::vector< double > blen(n.offspring.size(), 1.0);
+
     n.array.set_data(
         new phylocounters::NodeData(blen, tmp_state, n.duplication),
         true
@@ -24,7 +28,8 @@ inline void Geese::init_node(Node & n) {
 
         // Then through the offspring
         unsigned int j = 0;
-        for (auto& o : n.offspring) {
+        for (auto& o : n.offspring)
+        {
 
             // If leaf, then it may have an annotation
             if (o->is_leaf())
@@ -33,7 +38,9 @@ inline void Geese::init_node(Node & n) {
                 if (o->annotations[k] != 0)
                     n.array.insert_cell(k, j, o->annotations[k], false, false);
 
-            } else {
+            }
+            else
+            {
                 // Otherwise, we fill it with a 9.
                 n.array.insert_cell(k, j, 9u, false, false);
 
@@ -50,6 +57,7 @@ inline void Geese::init_node(Node & n) {
     {
 
         n.arrays.resize(states.size());
+
         n.narray.resize(states.size());
 
     }
@@ -58,6 +66,7 @@ inline void Geese::init_node(Node & n) {
     {
 
         n.arrays[s] = phylocounters::PhyloArray(n.array, true);
+
         n.arrays[s].set_data(
             new phylocounters::NodeData(blen, states[s], n.duplication),
             true
@@ -91,8 +100,11 @@ inline void Geese::init(unsigned int bar_width) {
     {
 
         this->model = new phylocounters::PhyloModel();
+
         this->delete_support = true;
+
         this->model->set_keygen(keygen_full);
+
         this->model->store_psets();
 
     }
@@ -104,10 +116,13 @@ inline void Geese::init(unsigned int bar_width) {
 
     // All combinations of the function
     phylocounters::PhyloPowerSet pset(nfunctions, 1u);
+
     pset.calc();
 
     states.reserve(pset.data.size());
+
     unsigned int i = 0u;
+
     for (auto& iter : pset.data)
     {
 
@@ -131,10 +146,12 @@ inline void Geese::init(unsigned int bar_width) {
     if (bar_width > 0u)
     {
         printf_barry("Initializing nodes in Geese (this could take a while)...\n");
+
         barry::Progress prog_bar(this->nnodes(), bar_width);
 
         // Iterating throught the nodes
-        for (auto& iter : nodes) {
+        for (auto& iter : nodes)
+        {
 
             // Only parents get a node
             if (!iter.second.is_leaf())
@@ -147,10 +164,13 @@ inline void Geese::init(unsigned int bar_width) {
         prog_bar.end();
 
 
-    } else {
+    }
+    else
+    {
 
         // Iterating throught the nodes
-        for (auto& iter : nodes) {
+        for (auto& iter : nodes)
+        {
 
             // Only parents get a node
             if (!iter.second.is_leaf())
@@ -159,46 +179,6 @@ inline void Geese::init(unsigned int bar_width) {
         }
 
     }
-    
-
-
-    // double width   = 73.0;
-    // int n_internal = this->nnodes() - this->nleafs();
-    // int n_steps    = (n_internal > width) ?
-    //     static_cast<int>(floor(static_cast<double>(n_internal) / width)) : n_internal;
-    // int step_size  = static_cast<int>(n_internal / n_steps);
-    // int n_bars     = static_cast<int>(std::max(1.0, floor(width / static_cast<double>(n_steps))));
-
-    // // Iterating throught the nodes
-    // int node_i = 0;
-    // for (auto& iter : nodes) {
-
-    //     // Only parents get a node
-    //     if (!iter.second.is_leaf())
-    //     {
-    //         this->init_node(iter.second); 
-
-    //         if (verb & !(node_i++ % step_size))
-    //         {
-    //             for (int j = 0; j < n_bars; ++j)
-    //                 printf_barry("|");
-    //         }
-
-    //     }
-        
-    // }
-
-    // // Adding the extra bars, if needed
-    // if (verb)
-    // {
-
-    //     int reminder = static_cast<int>(width) - n_bars * n_steps;
-    //     for (int j = 0; j < reminder; ++j)
-    //         printf_barry("|");
-        
-    //     printf_barry(" done.\n");
-
-    // }
 
     // Resetting the sequence
     for (auto& n: this->nodes)
@@ -211,12 +191,16 @@ inline void Geese::init(unsigned int bar_width) {
 
 }
 
-inline void Geese::inherit_support(const Geese & model_, bool delete_support_) {
+inline void Geese::inherit_support(const Geese & model_, bool delete_support_)
+{
     
     if (this->model != nullptr)
-        throw std::logic_error("There is already a -model- in this Geese. Cannot set a -model- after one is present.");
+        throw std::logic_error(
+            "There is already a -model- in this Geese. Cannot set a -model- after one is present."
+            );
 
     this->model = model_.model;
+
     this->delete_support = delete_support_;
 
     // And random number generation
@@ -224,6 +208,7 @@ inline void Geese::inherit_support(const Geese & model_, bool delete_support_) {
     {
 
         delete this->rengine;
+
         this->delete_rengine = false;
 
     }
@@ -263,7 +248,8 @@ inline void Geese::update_annotations(
 
 }
 
-inline void Geese::calc_sequence(Node * n) {
+inline void Geese::calc_sequence(Node * n)
+{
 
     if (sequence.size() == nodes.size())
         return;
@@ -278,12 +264,16 @@ inline void Geese::calc_sequence(Node * n) {
 
     n->visited = true;
 
-    if (!n->is_leaf()) {
+    if (!n->is_leaf())
+    {
 
         // iterating over its offspring, only if not there before
-        for (auto& it : n->offspring) {
+        for (auto& it : n->offspring)
+        {
+
             if (!it->visited)
                 calc_sequence(it);
+
         }
 
     }
@@ -302,12 +292,15 @@ inline void Geese::calc_sequence(Node * n) {
 
 }
 
-inline void Geese::calc_reduced_sequence() {
+inline void Geese::calc_reduced_sequence()
+{
 
     // The criteria, if none of its decendants is annotated, then we can remove
     // the node from the model
     std::vector< bool > includeit(nodes.size(), false);
-    for (auto& i : sequence) {
+
+    for (auto& i : sequence)
+    {
 
         Node & n = nodes[i];
 
@@ -325,7 +318,9 @@ inline void Geese::calc_reduced_sequence() {
 
                 }
 
-        } else {
+        }
+        else
+        {
 
             // Checking, am I including any of my offspring?
             for (auto& o : n.offspring) 
@@ -345,33 +340,46 @@ inline void Geese::calc_reduced_sequence() {
 
 }
 
-inline std::vector< double > Geese::get_probabilities() const {
+inline std::vector< double > Geese::get_probabilities() const
+{
 
     std::vector< double > res;
+
     res.reserve(
         this->states.size() * nodes.size()
         );
     
-    for (auto& i : sequence) {
+    for (auto& i : sequence)
+    {
+
         for (auto& p : this->nodes.at(i).subtree_prob)
             res.push_back(p);
+
     }
 
     return res;
     
 }
 
-inline unsigned int Geese::nfuns() const noexcept {
+inline unsigned int Geese::nfuns() const noexcept
+{
+
     return this->nfunctions;
+
 }
 
-inline unsigned int Geese::nnodes() const noexcept {
+inline unsigned int Geese::nnodes() const noexcept
+{
+
     return this->nodes.size();
+
 }
 
-inline unsigned int Geese::nleafs() const noexcept {
+inline unsigned int Geese::nleafs() const noexcept
+{
 
     unsigned int n = 0u;
+
     for (auto& iter : this->nodes)
         if (iter.second.is_leaf())
             n++;
@@ -399,8 +407,11 @@ inline unsigned int Geese::support_size() const noexcept
 
 inline std::vector< unsigned int > Geese::nannotations() const noexcept
 {
+
     std::vector< unsigned int > ans = {this->n_zeros, this->n_ones};
+
     return ans;
+
 }
 
 inline std::vector< std::string > Geese::colnames() const
@@ -410,7 +421,8 @@ inline std::vector< std::string > Geese::colnames() const
 
 }
 
-inline unsigned int Geese::parse_polytomies(bool verb) const noexcept {
+inline unsigned int Geese::parse_polytomies(bool verb) const noexcept
+{
 
     unsigned int largest = 0u;
     for (const auto& n : this->nodes)
@@ -434,46 +446,69 @@ inline unsigned int Geese::parse_polytomies(bool verb) const noexcept {
 
 }
 
-inline std::vector< std::vector<double> > Geese::observed_counts() {
+inline std::vector< std::vector<double> > Geese::observed_counts()
+{
 
     // Making room for the output
     std::vector<std::vector<double>> ans;
+
     ans.reserve(nnodes());
 
     // Creating counter
     phylocounters::PhyloStatsCounter tmpcount;
+
     tmpcount.set_counters(this->model->get_counters());
 
     // Iterating through the nodes
-    for (auto& n : nodes) {
+    for (auto& n : nodes)
+    {
 
-        if (n.second.is_leaf()) {
+        if (n.second.is_leaf())
+        {
+
             ans.push_back({});
             continue;
+
         }
 
         phylocounters::PhyloArray tmparray(nfuns(), n.second.offspring.size());
 
         uint j = 0u;
-        for (auto& o : n.second.offspring) {
-            for (uint k = 0u; k < nfuns(); ++k) {
-                if (o->annotations.at(k) != 0) {
+
+        for (auto& o : n.second.offspring)
+        {
+
+            for (uint k = 0u; k < nfuns(); ++k)
+            {
+
+                if (o->annotations.at(k) != 0)
+                {
+
                     tmparray.insert_cell(
                         k, j, o->annotations.at(k), false, false
                         );
+
                 }
+
             }
+
             ++j;
+
         }
 
-        std::vector< bool > tmp_state =vector_caster<bool,uint>(n.second.annotations);
+        std::vector< bool > tmp_state = vector_caster<bool,uint>(
+            n.second.annotations
+            );
+
         std::vector< double > blen(n.second.offspring.size(), 1.0);
+
         tmparray.set_data(
             new phylocounters::NodeData(blen, tmp_state, n.second.duplication),
             true
         );
 
         tmpcount.reset_array(&tmparray);
+
         ans.push_back(tmpcount.count_all());
 
     }
@@ -482,7 +517,8 @@ inline std::vector< std::vector<double> > Geese::observed_counts() {
 
 }
 
-inline void Geese::print_observed_counts() {
+inline void Geese::print_observed_counts()
+{
 
     // Making room for the output
     std::vector<std::vector<double>> ans;

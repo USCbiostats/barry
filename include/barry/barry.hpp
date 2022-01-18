@@ -11,6 +11,7 @@
 #include <random>
 #include <climits>
 #include <string>
+#include <cstdint>
 
 #ifdef BARRY_USE_OMP
 #include <omp.h>

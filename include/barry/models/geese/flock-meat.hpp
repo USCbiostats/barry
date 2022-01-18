@@ -11,13 +11,18 @@ inline unsigned int Flock::add_data(
 ) {
 
     // Setting up the model
-    if (dat.size() == 0u) {
+    if (dat.size() == 0u)
+    {
 
         model.set_rengine(&this->rengine, false);
+
         model.set_keygen(keygen_full);
+        
         model.store_psets();
 
-    } else {
+    }
+    else
+    {
 
         if (annotations[0u].size() != nfuns())
             throw std::length_error("The number of functions in the new set of annotations does not match that of the first Geese.");
@@ -34,15 +39,20 @@ inline unsigned int Flock::add_data(
 
 }
 
-inline void Flock::set_seed(const unsigned int & s) {
+inline void Flock::set_seed(const unsigned int & s)
+{
+
     this->rengine.seed(s);
+
 }
 
-inline void Flock::init(unsigned int bar_width) {
+inline void Flock::init(unsigned int bar_width)
+{
 
     // For some strange reason, pointing to model during
     // the add_data function changes addresses once its out.
-    for (auto& a : dat) {
+    for (auto& a : dat)
+    {
 
         if (a.delete_support)
             delete a.model;
@@ -66,13 +76,17 @@ inline void Flock::init(unsigned int bar_width) {
         barry::Progress prog_bar(this->ntrees(), bar_width);
         for (auto& d : dat)
         {
+
             d.init(0u);
             prog_bar.next();
+
         }
 
         prog_bar.end();
 
-    } else {
+    }
+    else
+    {
 
         for (auto& d : dat)
             d.init(0u);
@@ -83,7 +97,8 @@ inline void Flock::init(unsigned int bar_width) {
     
 }
 
-inline phylocounters::PhyloCounters * Flock::get_counters() {
+inline phylocounters::PhyloCounters * Flock::get_counters()
+{
 
     if (dat.size() == 0u)
         throw std::logic_error("The flock has no data yet.");
@@ -92,29 +107,39 @@ inline phylocounters::PhyloCounters * Flock::get_counters() {
 
 }
 
-inline phylocounters::PhyloSupport *  Flock::get_support() {
+inline phylocounters::PhyloSupport *  Flock::get_support()
+{
+
     return this->model.get_support();
+
 }
 
-inline phylocounters::PhyloModel *  Flock::get_model() {
+inline phylocounters::PhyloModel *  Flock::get_model()
+{
+
     return &this->model;
+
 }
 
 inline double Flock::likelihood_joint(
     const std::vector< double > & par,
     bool as_log,
     bool use_reduced_sequence
-) {
+)
+{
 
     INITIALIZED()
 
     double ans = as_log ? 0.0: 1.0;
+
     if (as_log) {
 
         for (auto& d : this->dat) 
             ans += d.likelihood(par, as_log, use_reduced_sequence);
 
-    } else {
+    }
+    else
+    {
 
         for (auto& d : this->dat) 
             ans *= d.likelihood(par, as_log, use_reduced_sequence);
@@ -125,32 +150,39 @@ inline double Flock::likelihood_joint(
 
 }
 
-inline unsigned int Flock::nfuns() const noexcept {
+inline unsigned int Flock::nfuns() const noexcept
+{
 
     return this->nfunctions;
 
 }
 
-inline unsigned int Flock::ntrees() const noexcept {
+inline unsigned int Flock::ntrees() const noexcept
+{
 
     return this->dat.size();
 
 }
 
-inline std::vector< unsigned int > Flock::nnodes() const noexcept {
+inline std::vector< unsigned int > Flock::nnodes() const noexcept
+{
 
     std::vector< unsigned int > res;
+
     res.reserve(this->ntrees());
 
     for (const auto& d : dat)
         res.push_back(d.nnodes());
 
     return res;
+
 }
 
-inline std::vector< unsigned int > Flock::nleafs() const noexcept {
+inline std::vector< unsigned int > Flock::nleafs() const noexcept
+{
 
     std::vector< unsigned int > res;
+
     res.reserve(this->ntrees());
 
     for (const auto& d : dat)
@@ -160,30 +192,37 @@ inline std::vector< unsigned int > Flock::nleafs() const noexcept {
 
 }
 
-inline unsigned int Flock::nterms() const {
+inline unsigned int Flock::nterms() const
+{
 
     INITIALIZED()
     return model.nterms() + this->nfuns();
 
 }
 
-inline unsigned int Flock::support_size() const noexcept {
+inline unsigned int Flock::support_size() const noexcept
+{
 
     return this->model.support_size();
 
 }
 
-inline std::vector< std::string > Flock::colnames() const {
+inline std::vector< std::string > Flock::colnames() const
+{
 
     return this->model.colnames();
 
 }
 
-inline unsigned int Flock::parse_polytomies(bool verb) const noexcept {
+inline unsigned int Flock::parse_polytomies(bool verb) const noexcept
+{
 
     unsigned int ans = 0;
+
     int i = 0;
-    for (const auto & d : dat) {
+
+    for (const auto & d : dat)
+    {
 
         if (verb)
             printf_barry("Checking tree %i\n", i);
@@ -192,6 +231,7 @@ inline unsigned int Flock::parse_polytomies(bool verb) const noexcept {
 
         if (tmp > ans)
             ans = tmp;
+
     }
 
     return ans;
@@ -208,9 +248,13 @@ inline void Flock::print() const
 
     // Computing total number of annotations and events
     unsigned int nzeros = 0u;
+
     unsigned int nones  = 0u;
+
     unsigned int ndpl   = 0u;
+
     unsigned int nspe   = 0u;
+
     for (const auto & tree : this->dat)
     {
         nzeros += tree.n_zeros;
@@ -221,12 +265,19 @@ inline void Flock::print() const
     }
 
     printf_barry("FLOCK (GROUP OF GEESE)\nINFO ABOUT THE PHYLOGENIES\n");
+    
     printf_barry("# of phylogenies         : %i\n", ntrees());
+    
     printf_barry("# of functions           : %i\n", nfuns());
+    
     printf_barry("# of ann. [zeros; ones]  : [%i; %i]\n", nzeros, nones);
+    
     printf_barry("# of events [dupl; spec] : [%i; %i]\n", ndpl, nspe);
+    
     printf_barry("Largest polytomy         : %i\n", parse_polytomies(false));
+    
     printf_barry("\nINFO ABOUT THE SUPPORT\n");
+    
     return this->model.print();
 
 }
