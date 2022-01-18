@@ -1,9 +1,7 @@
-// #include <vector>
-// #include "../include/barry.hpp"
-// #include "catch.hpp"
-// #include "tests.h"
+#include "tests.hpp"
 
-TEST_CASE("Computing support for networks", "[support]") {
+BARRY_TEST_CASE("Computing support for networks", "[support]")
+{
     
     // Reading large network
     /**
@@ -95,7 +93,10 @@ TEST_CASE("Computing support for networks", "[support]") {
     std::cout << nnets << " networks." << std::endl;
     print(logs);
     print(logs_expected);
+
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE_THAT(logs, Catch::Approx(logs_expected).epsilon(0.001));
+    #endif
 
     // Checking change statistics
     // - Triangle: 0-1-2-0
@@ -125,14 +126,16 @@ TEST_CASE("Computing support for networks", "[support]") {
 
     std::vector< double > diff(counts1.size(), 0.0);
     for (unsigned int i = 0; i < counts0.size(); ++i)
-      diff[i] = counts1[i] - counts0[i];
+        diff[i] = counts1[i] - counts0[i];
 
     double logistic_prob0 = 1.0/
         (1.0 + std::exp(-barry::vec_inner_prod<double>(p0, diff)));
 
     double logistic_prob1 = model2.conditional_prob(net, p0, 3, 0);
 
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE(logistic_prob0 == Approx(logistic_prob1).epsilon(0.001));
+    #endif
 
     
 }

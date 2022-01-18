@@ -1,9 +1,6 @@
-// #include <vector>
-// #include "../include/barry.hpp"
-// #include "catch.hpp"
-// #include "tests.h"
+#include "tests.hpp"
 
-TEST_CASE("Computing support for NetworkDense (with Model)", "[support w model-dense]") {
+BARRY_TEST_CASE("Computing support for NetworkDense (with Model)", "[support w model-dense]") {
   
   // Reading large network
   /**
@@ -70,9 +67,9 @@ TEST_CASE("Computing support for NetworkDense (with Model)", "[support w model-d
   
   model.set_seed(1231);
   std::vector< double > p2 = {-1.0, 2.0, 0.0, 0.0, 0.0, 1.0*0, 0.0, 0.0, 0.0, 0.0, 0.0};
-  netcounters::Network net0 = model.sample(0, p2);
-  netcounters::Network net1 = model.sample(0, p2);
-  netcounters::Network net2 = model.sample(0, p2);
+  netcounters::NetworkDense net0 = model.sample(0, p2);
+  netcounters::NetworkDense net1 = model.sample(0, p2);
+  netcounters::NetworkDense net2 = model.sample(0, p2);
 
   std::cout << "Printing networks" << std::endl;
   std::cout << "Net 0" << std::endl;
@@ -96,8 +93,11 @@ TEST_CASE("Computing support for NetworkDense (with Model)", "[support w model-d
   print(logs0);
   print(logs1);
   print(logs_expected);
+
+  #ifdef CATCH_CONFIG_MAIN
   REQUIRE_THAT(logs0, Catch::Approx(logs_expected).epsilon(0.001));
   REQUIRE_THAT(logs1, Catch::Approx(logs_expected).epsilon(0.001));
+  #endif
   
 }
 

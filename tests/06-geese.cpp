@@ -1,6 +1,8 @@
+#include "tests.hpp"
 #include "../include/barry/models/geese.hpp"
 
-TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
+BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
+{
 
     using namespace barry::counters::phylo;
 
@@ -36,7 +38,9 @@ TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
     double ans0a = model.likelihood(params);
     double ans1a = model.likelihood_exhaust(params);
     
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(ans0a - ans1a) < .0000001);
+    #endif
 
     // Updating an annotation --------------------------------------------------
     ann[3u][1u] = 9u;
@@ -57,7 +61,9 @@ TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
     double ans0b = model.likelihood(params);
     double ans1b = model2.likelihood(params);
 
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(ans0b - ans1b) < .0000001);
+    #endif
 
     // Going back
     model.update_annotations(3u, {1u, 1u});
@@ -65,7 +71,9 @@ TEST_CASE("Phylo model likelihood", "[phylo likelihood]") {
 
     double ans0c = model.likelihood(params);
 
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(ans0a - ans0c) < .0000001);
+    #endif
 
     std::cout << "Test for updating annotations" << std::endl;
     std::cout << "Likelihood(baseline): " << ans0a << std::endl;

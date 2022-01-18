@@ -1,15 +1,7 @@
-// #include <vector>
-// #include "../include/barry.hpp"
-// #include "catch.hpp"
-// #include "tests.h"
+#include "tests.hpp"
 
-#ifndef CATCH_CONFIG_MAIN
-    #include "../include/barry/barry.hpp"
-    #include "tests.h"
-    int main() {
-#else
-    TEST_CASE("Computing support for NetworkDense", "[support-dense]") {
-#endif
+BARRY_TEST_CASE("Computing support for NetworkDense", "[support-dense]")
+{
 
     
     // Reading large network
