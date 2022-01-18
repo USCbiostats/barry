@@ -142,6 +142,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5eacd388e3d0f638f2c35b6e0f0c490c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a046bd53282a7368f2eecd1690ddd5fda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a046bd53282a7368f2eecd1690ddd5fda">print</a> (<a class="el" href="barraydense-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a> char *fmt=nullptr,...) <a class="el" href="barraydense-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a></td></tr>
 <tr class="separator:a046bd53282a7368f2eecd1690ddd5fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13912f32d72498edd42e98c5d30034c6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array.html#a13912f32d72498edd42e98c5d30034c6">is_dense</a> () <a class="el" href="barraydense-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a> <a class="el" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></td></tr>
+<tr class="separator:a13912f32d72498edd42e98c5d30034c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Constructors</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -317,7 +319,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 
 <p>Zero-size array. </p>
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00060">60</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00063">63</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -359,7 +361,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 
 <p>Empty array. </p>
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00063">63</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00066">66</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1009,6 +1011,35 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13912f32d72498edd42e98c5d30034c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13912f32d72498edd42e98c5d30034c6">&#9670;&nbsp;</a></span>is_dense()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_b_array.html">BArray</a>&lt; Cell_Type, Data_Type &gt;::is_dense </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00232">232</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -2011,7 +2042,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 </div><div class="memdoc">
 <p>This is as a reference, if we need to iterate through the cells and we need to keep track which were visited, we use this as a reference. So that if cell.visited = true and visited = true, it means that we haven't been here yet. Ideally, any routine using this-&gt;visited should switch it at the beginning of the routine. </p>
 
-<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00045">45</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barray-bones_8hpp_source.html#l00048">48</a> of file <a class="el" href="barray-bones_8hpp_source.html">barray-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -2024,7 +2055,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_b_array.html">BArray</a></li>
-    <li class="footer">Generated on Sun Jan 16 2022 04:48:02 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jan 18 2022 01:43:32 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

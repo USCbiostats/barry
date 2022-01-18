@@ -4,7 +4,9 @@ var support_meat_8hpp =
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92", null ],
     [ "SUPPORT_TEMPLATE_ARGS", "support-meat_8hpp.html#af990eb73b13b01bd931f82fab1bf2d01", null ],
     [ "SUPPORT_TYPE", "support-meat_8hpp.html#a86a2ec4c858bd43ec0a1d469592af52a", null ],
-    [ "calc_backend", "support-meat_8hpp.html#ad3e848848272a8f96f12ba3e154d7693", null ],
+    [ "calc_backend_dense", "support-meat_8hpp.html#ab38525a95e90bb46ae74d5fdda68a8e9", null ],
+    [ "calc_backend_sparse", "support-meat_8hpp.html#a980099bf621a65db8f01ee0cabdcfc58", null ],
+    [ "EmptyArray", "support-meat_8hpp.html#af860aa10eaca7b12c6a8080e4c86acb8", null ],
     [ "for", "support-meat_8hpp.html#afb0a19c83aa89872726156b5e58928ab", null ],
     [ "if", "support-meat_8hpp.html#a2e7d16a6d5b063a5b390419c643b35a2", null ],
     [ "if", "support-meat_8hpp.html#ac3e9dc0da8cb5558062309c63a98bb41", null ],
@@ -20,7 +22,8 @@ var support_meat_8hpp =
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#ab55baa5250655a2774497aab54287a73", null ],
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a5c4511c9c993029a647b0204a234220b", null ],
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a443889459cbfaf8645b8589bb35d77e8", null ],
-    [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#ad8e35cbd52eb80b5d86febadd606c1fd", null ],
+    [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a8b3901d4ec45493eee3ee55093f446a4", null ],
+    [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a8202b5af120e1aeb5d3ea67acbd2d13c", null ],
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#acfd0513d76c46a0398222cd362ec39e4", null ],
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#aecd932d8ed5f7c2942fda1c78bd80dcc", null ],
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a0b1e41f4d7a8b19929df16f281821710", null ],
@@ -28,8 +31,8 @@ var support_meat_8hpp =
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a399aa4e3987a24a17a4d880ec2da3f19", null ],
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a207333d0a9fef722cbc4fe1a6ea213e0", null ],
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a73d63a8eb320e6467b25423b8f853ae4", null ],
-    [ "array_bank", "support-meat_8hpp.html#ac016b087458ce258194d3d26c8516d8e", null ],
-    [ "cfree", "support-meat_8hpp.html#af894efd034e1ad9f4e5155fccc576240", null ],
+    [ "array_bank", "support-meat_8hpp.html#ac507b5b05a329a72fa561a352608abdf", null ],
+    [ "cfree", "support-meat_8hpp.html#afe5358bcbc30145ef9cb60a66e4bc7ed", null ],
     [ "counters", "support-meat_8hpp.html#a782c48a908662b34845b6f654f929788", null ],
     [ "counters_", "support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35", null ],
     [ "delete_counters", "support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b", null ],
@@ -41,5 +44,5 @@ var support_meat_8hpp =
     [ "rules", "support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28", null ],
     [ "rules_", "support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588", null ],
     [ "rules_dyn", "support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5", null ],
-    [ "stats_bank", "support-meat_8hpp.html#a566566606aa0f6b5a588d80b177ea7b2", null ]
+    [ "stats_bank", "support-meat_8hpp.html#a39489bd3dc7e3d72a31609106b58284f", null ]
 ];

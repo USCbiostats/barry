@@ -43,6 +43,8 @@ void \mbox{\hyperlink{class_b_array_aefe411fe1890273518bfbc3f8ca616ce}{resize}} 
 void \mbox{\hyperlink{class_b_array_a5eacd388e3d0f638f2c35b6e0f0c490c}{reserve}} ()
 \item 
 void \mbox{\hyperlink{class_b_array_a046bd53282a7368f2eecd1690ddd5fda}{print}} (\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} char $\ast$fmt=nullptr,...) \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}}
+\item 
+bool \mbox{\hyperlink{class_b_array_a13912f32d72498edd42e98c5d30034c6}{is\+\_\+dense}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Constructors}\par
 {\em 
@@ -222,7 +224,7 @@ Zero-\/size array.
 
 
 
-Definition at line 60 of file barray-\/bones.\+hpp.
+Definition at line 63 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a411b65e1985396261ca9df2923a6f3c6}\label{class_b_array_a411b65e1985396261ca9df2923a6f3c6}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!BArray@{BArray}}
@@ -237,7 +239,7 @@ Empty array.
 
 
 
-Definition at line 63 of file barray-\/bones.\+hpp.
+Definition at line 66 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a098b6170a1ea4b2a8e0832d1163e9ed1}\label{class_b_array_a098b6170a1ea4b2a8e0832d1163e9ed1}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!BArray@{BArray}}
@@ -406,6 +408,17 @@ void \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+T
 \doxysubsubsection{\texorpdfstring{insert\_cell()}{insert\_cell()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
 void \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::insert\+\_\+cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{i,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{j,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$ \&}]{v,  }\item[{bool}]{check\+\_\+bounds,  }\item[{bool}]{check\+\_\+exists }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_array_a13912f32d72498edd42e98c5d30034c6}\label{class_b_array_a13912f32d72498edd42e98c5d30034c6}} 
+\index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!is\_dense@{is\_dense}}
+\index{is\_dense@{is\_dense}!BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{is\_dense()}{is\_dense()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
+bool \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::is\+\_\+dense (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 232 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a37ed3962c0ee5030b23cb6cde23a5cdf}\label{class_b_array_a37ed3962c0ee5030b23cb6cde23a5cdf}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!is\_empty@{is\_empty}}
@@ -687,7 +700,7 @@ bool \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+T
 
 This is as a reference, if we need to iterate through the cells and we need to keep track which were visited, we use this as a reference. So that if cell.\+visited = true and visited = true, it means that we haven\textquotesingle{}t been here yet. Ideally, any routine using this-\/$>$visited should switch it at the beginning of the routine. 
 
-Definition at line 45 of file barray-\/bones.\+hpp.
+Definition at line 48 of file barray-\/bones.\+hpp.
 
 
 

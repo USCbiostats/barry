@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['statscounter_622',['StatsCounter',['../class_stats_counter.html',1,'']]],
-  ['statscounter_3c_20barray_3c_3e_2c_20bool_20_3e_623',['StatsCounter&lt; BArray&lt;&gt;, bool &gt;',['../class_stats_counter.html',1,'']]],
-  ['support_624',['Support',['../class_support.html',1,'']]],
-  ['support_3c_20barray_3c_3e_2c_20bool_2c_20bool_2c_20bool_20_3e_625',['Support&lt; BArray&lt;&gt;, bool, bool, bool &gt;',['../class_support.html',1,'']]]
+  ['statscounter_632',['StatsCounter',['../class_stats_counter.html',1,'']]],
+  ['statscounter_3c_20barray_3c_3e_2c_20bool_20_3e_633',['StatsCounter&lt; BArray&lt;&gt;, bool &gt;',['../class_stats_counter.html',1,'']]],
+  ['support_634',['Support',['../class_support.html',1,'']]],
+  ['support_3c_20barray_3c_3e_2c_20bool_2c_20bool_2c_20bool_20_3e_635',['Support&lt; BArray&lt;&gt;, bool, bool, bool &gt;',['../class_support.html',1,'']]]
 ];

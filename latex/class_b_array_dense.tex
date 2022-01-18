@@ -47,6 +47,8 @@ void \mbox{\hyperlink{class_b_array_dense_af748efa3a8faf1782c049ae34302639f}{res
 void \mbox{\hyperlink{class_b_array_dense_ae37e80c20cee4ce892a210135d2695ab}{reserve}} ()
 \item 
 void \mbox{\hyperlink{class_b_array_dense_a448a8caa6ed96177ed4e2a5a985dc4e5}{print}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}}
+\item 
+bool \mbox{\hyperlink{class_b_array_dense_ac9eb73069ecd3ec66960d25e189dcfed}{is\+\_\+dense}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Constructors}\par
 {\em 
@@ -232,7 +234,7 @@ Zero-\/size array.
 
 
 
-Definition at line 75 of file barraydense-\/bones.\+hpp.
+Definition at line 78 of file barraydense-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_dense_a4c501b3f65f617e67dcd7970d18a9c69}\label{class_b_array_dense_a4c501b3f65f617e67dcd7970d18a9c69}} 
 \index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!BArrayDense@{BArrayDense}}
@@ -247,7 +249,7 @@ Empty array.
 
 
 
-Definition at line 78 of file barraydense-\/bones.\+hpp.
+Definition at line 81 of file barraydense-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_dense_a008198a9e9fc649d2815c1d0e35a804d}\label{class_b_array_dense_a008198a9e9fc649d2815c1d0e35a804d}} 
 \index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!BArrayDense@{BArrayDense}}
@@ -424,6 +426,17 @@ void \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, 
 \doxysubsubsection{\texorpdfstring{insert\_cell()}{insert\_cell()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
 void \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::insert\+\_\+cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{i,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{j,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$ \&}]{v,  }\item[{bool}]{check\+\_\+bounds,  }\item[{bool}]{check\+\_\+exists }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_array_dense_ac9eb73069ecd3ec66960d25e189dcfed}\label{class_b_array_dense_ac9eb73069ecd3ec66960d25e189dcfed}} 
+\index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!is\_dense@{is\_dense}}
+\index{is\_dense@{is\_dense}!BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{is\_dense()}{is\_dense()}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
+bool \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::is\+\_\+dense (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 251 of file barraydense-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_dense_a9f5c2f0de8d25e114c2b1d5217284938}\label{class_b_array_dense_a9f5c2f0de8d25e114c2b1d5217284938}} 
 \index{BArrayDense$<$ Cell\_Type, Data\_Type $>$@{BArrayDense$<$ Cell\_Type, Data\_Type $>$}!is\_empty@{is\_empty}}
@@ -756,7 +769,7 @@ bool \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ Cell\+\_\+\+Type, 
 
 This is as a reference, if we need to iterate through the cells and we need to keep track which were visited, we use this as a reference. So that if cell.\+visited = true and visited = true, it means that we haven\textquotesingle{}t been here yet. Ideally, any routine using this-\/$>$visited should switch it at the beginning of the routine. 
 
-Definition at line 60 of file barraydense-\/bones.\+hpp.
+Definition at line 63 of file barraydense-\/bones.\+hpp.
 
 
 

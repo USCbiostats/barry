@@ -32,6 +32,7 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
     [ "barrayvector-meat.hpp", "barrayvector-meat_8hpp.html", "barrayvector-meat_8hpp" ],
     [ "barry-configuration.hpp", "barry-configuration_8hpp.html", "barry-configuration_8hpp" ],
     [ "barry-debug.hpp", "barry-debug_8hpp.html", "barry-debug_8hpp" ],
+    [ "barry-macros.hpp", "barry-macros_8hpp.html", "barry-macros_8hpp" ],
     [ "barry.hpp", "barry_8hpp.html", "barry_8hpp" ],
     [ "cell-bones.hpp", "cell-bones_8hpp.html", [
       [ "Cell", "class_cell.html", "class_cell" ]

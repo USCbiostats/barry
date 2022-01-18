@@ -13,6 +13,7 @@ var group__counters_network =
     [ "counter_idegree15", "group__counters-network.html#gaed62411a578038a5cb8e8da0ca93064f", null ],
     [ "counter_isolates", "group__counters-network.html#gadfadf92506970c5deff0c96bd3549cce", null ],
     [ "counter_isolates", "group__counters-network.html#ga7563764e739bd6a2021ce4ec3b26eb76", null ],
+    [ "counter_istar2", "group__counters-network.html#gabab4fe84f6bd71d96ebfb1feff1a6f66", null ],
     [ "counter_istar2", "group__counters-network.html#ga0ca1e0394d95e7ddd1848732ef2005e9", null ],
     [ "counter_mutual", "group__counters-network.html#ga1605cc66474b3b960bddd7c0adebcfc7", null ],
     [ "counter_nodecov", "group__counters-network.html#gaa38b17191ef9a98fc7c68cc935887550", null ],

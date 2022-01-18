@@ -22,6 +22,7 @@ var class_b_array_dense =
     [ "insert_cell", "class_b_array_dense.html#a38199d31179db26b52aa3539d769d4be", null ],
     [ "insert_cell", "class_b_array_dense.html#acfcec094ebc2f443a81b874b4f457cb0", null ],
     [ "insert_cell", "class_b_array_dense.html#a4660a1606bd0ba4f33eea4edf9d9bd58", null ],
+    [ "is_dense", "class_b_array_dense.html#ac9eb73069ecd3ec66960d25e189dcfed", null ],
     [ "is_empty", "class_b_array_dense.html#a9f5c2f0de8d25e114c2b1d5217284938", null ],
     [ "ncol", "class_b_array_dense.html#a7beefb4d28ec3436911940254a002a75", null ],
     [ "nnozero", "class_b_array_dense.html#a561fcc15969495b4cb7eed4c0179aa3d", null ],
