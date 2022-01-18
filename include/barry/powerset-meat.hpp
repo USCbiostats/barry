@@ -26,9 +26,17 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
     rules->get_seq(EmptyArray, &coordinates_free, &coordinates_locked);
     
     // Computing initial statistics
-    if (EmptyArray.nnozero() > 0u) {
+    if (EmptyArray.nnozero() > 0u)
+    {
+
         for (uint i = 0u; i < coordinates_free.size(); ++i) 
-            EmptyArray.rm_cell(coordinates_free[i].first, coordinates_free[i].second, false, true);
+            EmptyArray.rm_cell(
+                coordinates_free[i].first,
+                coordinates_free[i].second,
+                false,
+                true
+            );
+            
     }
 
     // EmptyArray.clear(true);

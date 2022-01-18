@@ -118,7 +118,6 @@ inline bool BArrayDenseCell_const<int,NetworkData>::operator>=(const int & val) 
     return dat >= static_cast<int>(val);    
 }
 
-
 #undef POS
 
 #endif

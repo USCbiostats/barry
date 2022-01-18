@@ -12,6 +12,7 @@
 #define SUPPORT_TEMPLATE(a,b) template SUPPORT_TEMPLATE_ARGS() \
     inline a SUPPORT_TYPE()::b
 
+
 SUPPORT_TEMPLATE(void, init_support)(
     std::vector< Array_Type > * array_bank,
     std::vector< std::vector< double > > * stats_bank
@@ -104,7 +105,7 @@ SUPPORT_TEMPLATE(void, reset_array)(const Array_Type & Array_) {
     
 }
 
-SUPPORT_TEMPLATE(void, calc_backend)(
+SUPPORT_TEMPLATE(void, calc_backend_sparse)(
         uint                                   pos,
         std::vector< Array_Type > *            array_bank,
         std::vector< std::vector< double > > * stats_bank
@@ -115,7 +116,7 @@ SUPPORT_TEMPLATE(void, calc_backend)(
         return;
             
     // We will pass it to the next step, if the iteration makes sense.
-    calc_backend(pos + 1u, array_bank, stats_bank);
+    calc_backend_sparse(pos + 1u, array_bank, stats_bank);
     
     // Once we have returned, everything will be back as it used to be, so we
     // treat the data as if nothing has changed.
@@ -133,16 +134,6 @@ SUPPORT_TEMPLATE(void, calc_backend)(
     // std::vector< double > change_stats(counters.size());
     for (uint n = 0u; n < counters->size(); ++n)
     {
-
-        // #ifdef BARRY_DEBUG_LEVEL
-        //     #if (BARRY_DEBUG_LEVEL >= 1)
-        //         BARRY_DEBUG_MSG("Debugging support.")
-        //         BARRY_DEBUG_VEC_PRINT(change_stats[pos]);
-        //     #endif
-        //     #if (BARRY_DEBUG_LEVEL >= 2)
-        //         EmptyArray.print();
-        //     #endif
-        // #endif
 
         change_stats[pos][n] = counters->operator[](n).count(
             EmptyArray,
@@ -187,7 +178,7 @@ SUPPORT_TEMPLATE(void, calc_backend)(
     
     // Again, we only pass it to the next level iff the next level is not
     // passed the last step.
-    calc_backend(pos + 1u, array_bank, stats_bank);
+    calc_backend_sparse(pos + 1u, array_bank, stats_bank);
     
     // We need to restore the state of the cell
     EmptyArray.rm_cell(
@@ -195,6 +186,88 @@ SUPPORT_TEMPLATE(void, calc_backend)(
         cfree.second,
         false, false
         );
+    
+    for (uint n = 0u; n < counters->size(); ++n) 
+        current_stats[n] -= change_stats[pos][n];
+    
+    
+    return;
+    
+}
+
+SUPPORT_TEMPLATE(void, calc_backend_dense)(
+        uint                                   pos,
+        std::vector< Array_Type > *            array_bank,
+        std::vector< std::vector< double > > * stats_bank
+    ) {
+    
+    // Did we reached the end??
+    if (pos >= coordinates_free.size())
+        return;
+            
+    // We will pass it to the next step, if the iteration makes sense.
+    calc_backend_dense(pos + 1u, array_bank, stats_bank);
+    
+    // Once we have returned, everything will be back as it used to be, so we
+    // treat the data as if nothing has changed.
+    
+    const std::pair<uint,uint> & cfree = coordinates_free[pos];
+
+    // Toggle the cell (we will toggle it back after calling the counter)
+    EmptyArray(cfree.first, cfree.second) = 1;
+
+    // Counting
+    // std::vector< double > change_stats(counters.size());
+    for (uint n = 0u; n < counters->size(); ++n)
+    {
+
+        change_stats[pos][n] = counters->operator[](n).count(
+            EmptyArray,
+            cfree.first,
+            cfree.second
+            );
+        current_stats[n] += change_stats[pos][n];
+
+    }
+    
+    // Adding to the overall count
+    BARRY_CHECK_SUPPORT(data, max_num_elements)
+    if (rules_dyn->size() > 0u)
+    {
+        
+        if (rules_dyn->operator()(EmptyArray, cfree.first, cfree.second))
+        {
+
+            data.add(current_stats);
+
+            // Need to save?
+            if (array_bank != nullptr)
+                array_bank->push_back(EmptyArray);
+            
+            if (stats_bank != nullptr)
+                stats_bank->push_back(current_stats);
+
+        }
+            
+
+    } else {
+
+        data.add(current_stats);
+        // Need to save?
+        if (array_bank != nullptr)
+            array_bank->push_back(EmptyArray);
+        
+        if (stats_bank != nullptr)
+            stats_bank->push_back(current_stats);
+
+    }
+    
+    // Again, we only pass it to the next level iff the next level is not
+    // passed the last step.
+    calc_backend_dense(pos + 1u, array_bank, stats_bank);
+    
+    // We need to restore the state of the cell
+    EmptyArray(cfree.first, cfree.second) = 0;
     
     for (uint n = 0u; n < counters->size(); ++n) 
         current_stats[n] -= change_stats[pos][n];
@@ -217,7 +290,10 @@ SUPPORT_TEMPLATE(void, calc)(
     this->init_support(array_bank, stats_bank);
 
     // Recursive function to count
-    calc_backend(0u, array_bank, stats_bank);
+    if (EmptyArray.is_dense())
+        calc_backend_dense(0u, array_bank, stats_bank);
+    else
+        calc_backend_sparse(0u, array_bank, stats_bank);
 
     change_stats.clear();
 

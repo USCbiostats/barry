@@ -35,7 +35,13 @@ template <
 class Support {
     
 private:
-    void calc_backend(
+    void calc_backend_sparse(
+        uint pos = 0u,
+        std::vector< Array_Type > * array_bank = nullptr,
+        std::vector< std::vector< double > > * stats_bank = nullptr
+    );
+
+    void calc_backend_dense(
         uint pos = 0u,
         std::vector< Array_Type > * array_bank = nullptr,
         std::vector< std::vector< double > > * stats_bank = nullptr
@@ -104,7 +110,6 @@ public:
         std::vector< Array_Type > * array_bank = nullptr,
         std::vector< std::vector< double > > * stats_bank = nullptr
     );
-    
     
     /**
      * @name Resets the support calculator

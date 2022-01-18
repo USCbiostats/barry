@@ -38,7 +38,7 @@ TEST_CASE("NetworkDense counts work", "[counts-dense]") {
 
   // As computed by ergm  
   std::vector< double > expected_counts = {
-    57.0000, 2.0000, //2.0000, 86.0000, // (isolates, istart2),
+    57.0000, 2.0000, 2.0000, 86.0000, // (isolates, istart2),
     75.0000, 25.0000, 11.0000, 0.1500,
     111.8882, 107.2032, 24.0000, 85.0000, 82.0000, 167.0000, 15.6926,
     -0.7202, 7.4380, -0.4130,
@@ -59,8 +59,8 @@ TEST_CASE("NetworkDense counts work", "[counts-dense]") {
 
   counter_edges<NetworkDense>(counter.get_counters());
   counter_mutual<NetworkDense>(counter.get_counters());
-  // counter_isolates<NetworkDense>(counter.get_counters());
-  // counter_istar2<NetworkDense>(counter.get_counters());
+  counter_isolates<NetworkDense>(counter.get_counters());
+  counter_istar2<NetworkDense>(counter.get_counters());
   counter_ostar2<NetworkDense>(counter.get_counters());
   counter_ttriads<NetworkDense>(counter.get_counters());
   counter_ctriads<NetworkDense>(counter.get_counters());
@@ -80,7 +80,7 @@ TEST_CASE("NetworkDense counts work", "[counts-dense]") {
   std::cout << "done." << std::endl;
   
   std::cout << "Starting the count...";
-  std::vector< double > ans = counter.count_all_dense();
+  std::vector< double > ans = counter.count_all();
   std::cout << "done." << std::endl;
   
   // delete net.data;

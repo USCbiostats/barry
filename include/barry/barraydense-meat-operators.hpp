@@ -1,8 +1,8 @@
 // #include <stdexcept>
 #include "barraydense-bones.hpp"
 
-#ifndef BARRY_BARRAY_MEAT_OPERATORS_HPP
-#define BARRY_BARRAY_MEAT_OPERATORS_HPP 1
+#ifndef BARRY_BARRAYDENSE_MEAT_OPERATORS_HPP
+#define BARRY_BARRAYDENSE_MEAT_OPERATORS_HPP 1
 
 #define BDENSE_TYPE() BArrayDense<Cell_Type, Data_Type>
 

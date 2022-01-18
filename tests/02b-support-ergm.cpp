@@ -3,7 +3,14 @@
 // #include "catch.hpp"
 // #include "tests.h"
 
-TEST_CASE("Computing support for networks", "[support]") {
+#ifndef CATCH_CONFIG_MAIN
+    #include "../include/barry/barry.hpp"
+    #include "tests.h"
+    int main() {
+#else
+    TEST_CASE("Computing support for NetworkDense", "[support-dense]") {
+#endif
+
     
     // Reading large network
     /**
@@ -95,7 +102,10 @@ TEST_CASE("Computing support for networks", "[support]") {
     std::cout << nnets << " networks." << std::endl;
     print(logs);
     print(logs_expected);
+
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE_THAT(logs, Catch::Approx(logs_expected).epsilon(0.001));
+    #endif
 
     // Checking change statistics
     // - Triangle: 0-1-2-0
@@ -112,10 +122,10 @@ TEST_CASE("Computing support for networks", "[support]") {
     net(2, 0) = 1;
 
     // Preparing the model
-    NetModel<Network> model2;
+    NetModel<NetworkDense> model2;
     model2.set_counters(support.get_counters());
     model2.add_array(net);
-    NetStatsCounter<> counter2(&net);
+    NetStatsCounter<NetworkDense> counter2(&net);
     counter2.set_counters(support.get_counters());
 
     // Counting stats
@@ -132,7 +142,9 @@ TEST_CASE("Computing support for networks", "[support]") {
 
     double logistic_prob1 = model2.conditional_prob(net, p0, 3, 0);
 
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE(logistic_prob0 == Approx(logistic_prob1).epsilon(0.001));
+    #endif
 
     
 }

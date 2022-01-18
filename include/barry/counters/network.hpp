@@ -351,6 +351,37 @@ inline void counter_istar2(NetCounters<Tnet> * counters)
     return ;
 }
 
+template<>
+inline void counter_istar2(NetCounters<NetworkDense> * counters)
+{
+    
+    NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
+    {
+        // Need to check the receiving, if he/she is getting a new set of stars
+        // when looking at triads
+        int indeg = 1;
+        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        {
+            if (i == k)
+                continue;
+
+            if (Array(k,j) != BARRY_ZERO_NETWORK_DENSE)
+                indeg++;
+        }
+
+        if (indeg == 1)
+            return 0.0;
+        
+        return static_cast<double>(indeg - 1);
+
+    };
+    
+    counters->add_counter(tmp_count, nullptr, nullptr, false, "Istar 2", "Indegree 2-star");
+    
+    return ;
+}
+
+
 // 2-ostars --------------------------------------------------------------------
 template<typename Tnet = Network>
 inline void counter_ostar2(NetCounters<Tnet> * counters)

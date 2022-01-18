@@ -38,6 +38,8 @@ class BArrayDense {
     friend class BArrayDenseCol_const<Cell_Type,Data_Type>;
     friend class BArrayDenseRow<Cell_Type,Data_Type>;
     friend class BArrayDenseRow_const<Cell_Type,Data_Type>;
+    // friend class Support<Cell_Type,Data_Type>;
+    // friend class StatsCounter<Cell_Type,Data_Type>;
 private:
     uint N;
     uint M;
@@ -47,6 +49,7 @@ private:
     bool delete_data = false;
 
     static Cell_Type Cell_default;
+    static const bool dense = true;
 
 public:
     
@@ -244,7 +247,8 @@ public:
     // operator BArrayDense<uint,bool>() const;
     // operator BArrayDense<bool,bool>() const;
     // ///@}
-
+    
+    bool is_dense() const noexcept {return dense;};
 };
 
 #endif

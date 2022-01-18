@@ -92,6 +92,21 @@ STATSCOUNTER_TEMPLATE(void, count_current)(uint i, uint j)
 template<typename Array_Type, typename Data_Type>
 inline std::vector< double > StatsCounter<Array_Type,Data_Type>::count_all()
 {
+
+    if (Array->is_dense())
+    {
+        return count_all_dense(); 
+    }
+    else
+    {
+        return count_all_sparse();
+    }
+
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::vector< double > StatsCounter<Array_Type,Data_Type>::count_all_sparse()
+{
     
     // Initializing the counter on the empty array
     count_init(0u, 0u);

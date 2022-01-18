@@ -28,7 +28,9 @@ private:
     // We will save the data here
     Counters<Array_Type,Data_Type> * counters;
     bool                             counter_deleted  = false;
-    bool is_dense = false;
+
+    std::vector< double > count_all_dense();
+    std::vector< double > count_all_sparse();
 
 public:
         
@@ -44,19 +46,6 @@ public:
         // We are removing the entries without freeing the memory. This should
         // make the insertion faster.
         EmptyArray.clear(false);
-        
-        return;
-    }
-
-    StatsCounter(const NetworkDense * Array_) :
-        Array(Array_), EmptyArray(*Array_),
-        counters(new Counters<Array_Type,Data_Type>()) {
-
-            is_dense = true;
-        
-            // We are removing the entries without freeing the memory. This should
-            // make the insertion faster.
-            EmptyArray.clear(false);
         
         return;
     }
@@ -88,7 +77,6 @@ public:
     void count_init(uint i, uint j);
     void count_current(uint i, uint j);
     std::vector< double > count_all();
-    std::vector< double > count_all_dense();
 
     Counters<Array_Type,Data_Type> * get_counters();
     std::vector< std::string > get_names() const;
