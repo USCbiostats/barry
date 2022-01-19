@@ -140,6 +140,7 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
             cfree.first,
             cfree.second
             );
+            
         current_stats[n] += change_stats[pos][n];
 
     }
