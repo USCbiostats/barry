@@ -426,9 +426,9 @@ SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
 
 //////////////////////////
 
-SUPPORT_TEMPLATE(Counts_type, get_counts)() const {
+SUPPORT_TEMPLATE(std::vector< double >, get_counts)() const {
     
-    return data.as_vector(); 
+    return data.get_data(); 
     
 }
 
