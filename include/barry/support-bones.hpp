@@ -170,7 +170,7 @@ public:
     );
     
     Counts_type           get_counts() const;
-    const MapVec_type<> * get_counts_ptr() const;
+    // const MapVec_type<> * get_counts_ptr() const;
     std::vector< double > * get_current_stats(); ///< List current statistics.
     void print() const;
     

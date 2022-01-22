@@ -432,11 +432,11 @@ SUPPORT_TEMPLATE(Counts_type, get_counts)() const {
     
 }
 
-SUPPORT_TEMPLATE(const MapVec_type<> *, get_counts_ptr)() const {
+// SUPPORT_TEMPLATE(const MapVec_type<> *, get_counts_ptr)() const {
     
-    return data.get_data_ptr();
+//     return data.get_data_ptr();
       
-}
+// }
 
 SUPPORT_TEMPLATE(std::vector< double > *, get_current_stats)() {
     return &this->current_stats;

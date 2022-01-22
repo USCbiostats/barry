@@ -15,13 +15,13 @@
 template<typename T = double> 
 class FreqTable {
 private:
-    MapVec_type<T, uint> data;
-    
-    /**
-    * A nasty way to declare when using :: on template members
-    * https://stackoverflow.com/questions/6571381/dependent-scope-and-nested-templates/6571836
-    */
-    typename MapVec_type<T,uint>::iterator iter;
+
+    MapVec_type<T, int> index;
+    std::vector< double > data;
+    size_t k = 0u;
+    size_t n = 0u;
+
+    typename MapVec_type<T,int>::iterator iter;
         
 public:
     // uint ncols;
@@ -31,8 +31,9 @@ public:
     void add(const std::vector< T > & x);
     
     Counts_type                 as_vector() const;
-    MapVec_type<T,uint>         get_data() const;
-    const MapVec_type<T,uint> * get_data_ptr() const;
+    const std::vector< double > & get_data() const {return data;};
+    const MapVec_type<T,int> & get_index() const {return index;};
+    // const MapVec_type<T,uint> * get_data_ptr() const;
     
     void clear();
     void reserve(unsigned int n);
@@ -48,40 +49,97 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
     
     // The term exists, then we add it to the list and we initialize it
     // with a single count
-    iter = data.find(x);
-    if (iter == data.end()) {
-        data.insert(std::make_pair(x, 1u));
-    } else // We increment the counter
-        ++(iter->second);
+    if (k == 0u)
+    {
+
+        index[x] = 0u;
+
+        data.push_back(1.0);
+        data.insert(data.end(), x.begin(), x.end());
+
+        k = x.size();
+
+        n++;
+
+        return;
+
+    }
+    else
+    {
+
+        if (x.size() != k)
+            throw std::length_error(
+                "The value you are trying to add doesn't have the same lenght used in the database."
+                );
+            
+        iter = index.find(x);
+
+        if (iter == index.end())
+        {
+
+            index[x] = data.size();
+
+            data.push_back(1.0);
+
+            data.insert(data.end(), x.begin(), x.end());
+
+            n++;
+            
+            return;
+
+        }
+
+        data[(*iter).second] += 1.0;
+
+    }
     
     return; 
+
 }
 
 template<typename T>
 inline Counts_type FreqTable<T>::as_vector() const { 
     
     Counts_type ans;
-    ans.reserve(data.size());
-    for (auto iter = data.begin(); iter != data.end(); ++iter)
-        ans.push_back(*iter);
+
+    ans.reserve(index.size());
+
+    for (unsigned int i = 0u; i < n; ++i)
+    {
+        
+        std::vector< double > tmp(k, 0.0);
+        for (unsigned j = 1u; j < (k + 1u); ++j)
+            tmp[j - 1u] = data[i * (k + 1) + j];
+        
+        ans.push_back(
+            std::make_pair<std::vector<double>,unsigned int>(
+                std::move(tmp),
+                static_cast<unsigned int>(data[i * (k + 1u)])
+                )
+        );
+
+    }
     
     
     return ans;
 }
 
-template<typename T>
-inline MapVec_type<T,uint> FreqTable<T>::get_data() const {
-    return data;
-}
+// template<typename T>
+// inline MapVec_type<T,uint> FreqTable<T>::get_data() const {
+//     return data;
+// }
 
-template<typename T>
-inline const MapVec_type<T,uint> * FreqTable<T>::get_data_ptr() const {
-    return &data;
-}
+// template<typename T>
+// inline const MapVec_type<T,uint> * FreqTable<T>::get_data_ptr() const {
+//     return &data;
+// }
 
 template<typename T>
 inline void FreqTable<T>::clear() {
+    index.clear();
     data.clear();
+    n = 0u;
+    k = 0u;
     return;
 }
 
@@ -101,18 +159,18 @@ inline void FreqTable<T>::reserve(
 template<typename T>
 inline void FreqTable<T>::print() const {
 
-    uint grand_total = 0u;
+    unsigned int grand_total = 0u;
     printf_barry("%7s | %s\n", "Counts", "Stats");
-    for (auto i = data.begin(); i != data.end(); ++i)
+    for (unsigned int i = 0u; i < n; ++i)
     {
 
-        printf_barry("%7i | ", i->second);
+        printf_barry("%7i | ", static_cast<int>(data[i * (k + 1u)]));
 
-        for (const auto& j : i->first)
-            printf_barry(" %.2f", j);
+        for (unsigned int j = 1u; j < (k + 1u); ++j)
+            printf_barry(" %.2f", data[i * (k + 1) + j]);
         printf_barry("\n");
 
-        grand_total += i->second;
+        grand_total += static_cast<unsigned int>(data[i * (k + 1u)]);
 
     }
 
@@ -125,7 +183,7 @@ inline void FreqTable<T>::print() const {
 template<typename T>
 inline size_t FreqTable<T>::size() const noexcept {
 
-    return this->data.size();
+    return n;
 
 }
 

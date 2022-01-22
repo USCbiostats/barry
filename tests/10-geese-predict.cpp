@@ -1,6 +1,8 @@
+#include "tests.hpp"
+
 #include "../include/barry/models/geese.hpp"
 
-TEST_CASE("Geese model prediction", "[geese prediction]") {
+BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
 
     using namespace barry::counters::phylo;
 
@@ -107,11 +109,12 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
         for (auto & j: i)
             ans2a_vec.push_back(j);
 
-    #ifndef BARRY_VALGRIND
-    REQUIRE_THAT(ans0a_vec, Catch::Approx(ans2a_vec).margin(0.025));
+    #ifdef CATCH_CONFIG_MAIN
+        #ifndef BARRY_VALGRIND
+            REQUIRE_THAT(ans0a_vec, Catch::Approx(ans2a_vec).margin(0.025));
+        #endif
+            REQUIRE_THAT(ans0a_vec, Catch::Approx(ans1a_vec).margin(0.025));
     #endif
-    REQUIRE_THAT(ans0a_vec, Catch::Approx(ans1a_vec).margin(0.025));
-
 
     // A tricky case -----------------------------------------------------------
     // This tree was causing problems in R geese.
@@ -187,10 +190,14 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     model_R.set_seed(8882);
     auto pred_R = model_R.predict(params_R, nullptr, true, false, true);
 
-    #ifdef BARRY_VALGRIND
-    auto pred_sim_R = model_R.predict_sim(params_R, false, 1);
+    #ifdef CATCH_CONFIG_MAIN
+        #ifdef BARRY_VALGRIND
+            auto pred_sim_R = model_R.predict_sim(params_R, false, 1);
+        #else
+            auto pred_sim_R = model_R.predict_sim(params_R, false, 50000);
+        #endif
     #else
-    auto pred_sim_R = model_R.predict_sim(params_R, false, 50000);
+        auto pred_sim_R = model_R.predict_sim(params_R, false, 1);
     #endif
 
     std::vector< double > ansR_vec(0u);
@@ -214,8 +221,10 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
 
     }
 
-    #ifndef BARRY_VALGRIND
-    REQUIRE_THAT(ansR_vec, Catch::Approx(ansR_sim_vec).margin(0.025));    
+    #ifdef CATCH_CONFIG_MAIN
+        #ifndef BARRY_VALGRIND
+            REQUIRE_THAT(ansR_vec, Catch::Approx(ansR_sim_vec).margin(0.025));    
+        #endif
     #endif
 
     // Another tricky case -----------------------------------------------------
@@ -339,10 +348,15 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
     
     model_R2.set_seed(8882);
     auto pred_R2 = model_R2.predict(params_R, nullptr, true, false, true);
-    #ifdef BARRY_VALGRIND
-    auto pred_sim_R2 = model_R2.predict_sim(params_R, false, 1);
+
+    #ifdef CATCH_CONFIG_MAIN
+        #ifdef BARRY_VALGRIND
+            auto pred_sim_R2 = model_R2.predict_sim(params_R, false, 1);
+        #else
+            auto pred_sim_R2 = model_R2.predict_sim(params_R, false, 50000);
+        #endif
     #else
-    auto pred_sim_R2 = model_R2.predict_sim(params_R, false, 50000);
+        auto pred_sim_R2 = model_R2.predict_sim(params_R, false, 1);
     #endif
 
     std::vector< double > ansR2_vec(0u);
@@ -355,7 +369,10 @@ TEST_CASE("Geese model prediction", "[geese prediction]") {
         for (auto & j: i)
             ansR2_sim_vec.push_back(j);
 
-    #ifndef BARRY_VALGRIND
-    REQUIRE_THAT(ansR2_vec, Catch::Approx(ansR2_sim_vec).margin(0.025));    
+    #ifdef CATCH_CONFIG_MAIN
+        #ifndef BARRY_VALGRIND
+            REQUIRE_THAT(ansR2_vec, Catch::Approx(ansR2_sim_vec).margin(0.025));    
+        #endif
     #endif
+
 }
