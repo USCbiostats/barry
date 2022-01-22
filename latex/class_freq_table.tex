@@ -20,9 +20,9 @@ void \mbox{\hyperlink{class_freq_table_a919e08556ba3aa9535a64827315bb89a}{add}} 
 \item 
 \mbox{\hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type}} \mbox{\hyperlink{class_freq_table_a1898e62605d8753e170189936d403e05}{as\+\_\+vector}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}}
 \item 
-\mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}}$<$ T, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \mbox{\hyperlink{class_freq_table_a7b99496d1c2f4193654752856b30d1a5}{get\+\_\+data}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}}
+\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} std\+::vector$<$ double $>$ \& \mbox{\hyperlink{class_freq_table_a40c1554542e44e224768c22bcfdfaf36}{get\+\_\+data}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}}
 \item 
-\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}}$<$ T, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $\ast$ \mbox{\hyperlink{class_freq_table_ab5dd6677f52072c93d18b2b9a3369ae7}{get\+\_\+data\+\_\+ptr}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}}
+\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}}$<$ T, int $>$ \& \mbox{\hyperlink{class_freq_table_a6caba65bbc07d895e4aa9f929d480b2b}{get\+\_\+index}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}}
 \item 
 void \mbox{\hyperlink{class_freq_table_a326660096e4309780aea8355d0f74ac7}{clear}} ()
 \item 
@@ -31,7 +31,7 @@ void \mbox{\hyperlink{class_freq_table_a0bdced25f7c0bee38e073c4654578d19}{reserv
 void \mbox{\hyperlink{class_freq_table_a4fe8f5e3b5bf64a1cbaf99deb96298d4}{print}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}}
 \item 
 size\+\_\+t \mbox{\hyperlink{class_freq_table_af1f26bddaded94f0d5acb68f3a94fb86}{size}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Number of unique elements in the table. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -81,7 +81,7 @@ void \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::add (\begin{Do
 
 
 
-Definition at line 47 of file statsdb.\+hpp.
+Definition at line 52 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_a1898e62605d8753e170189936d403e05}\label{class_freq_table_a1898e62605d8753e170189936d403e05}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!as\_vector@{as\_vector}}
@@ -92,7 +92,7 @@ Definition at line 47 of file statsdb.\+hpp.
 
 
 
-Definition at line 61 of file statsdb.\+hpp.
+Definition at line 102 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_a326660096e4309780aea8355d0f74ac7}\label{class_freq_table_a326660096e4309780aea8355d0f74ac7}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!clear@{clear}}
@@ -103,29 +103,29 @@ void \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::clear\hspace{0
 
 
 
-Definition at line 83 of file statsdb.\+hpp.
+Definition at line 131 of file statsdb.\+hpp.
 
-\mbox{\Hypertarget{class_freq_table_a7b99496d1c2f4193654752856b30d1a5}\label{class_freq_table_a7b99496d1c2f4193654752856b30d1a5}} 
+\mbox{\Hypertarget{class_freq_table_a40c1554542e44e224768c22bcfdfaf36}\label{class_freq_table_a40c1554542e44e224768c22bcfdfaf36}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!get\_data@{get\_data}}
 \index{get\_data@{get\_data}!FreqTable$<$ T $>$@{FreqTable$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{get\_data()}{get\_data()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-\mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}}$<$ T, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::get\+\_\+data\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$typename T  = double$>$ \\
+\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} std\+::vector$<$ double $>$\& \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::get\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 73 of file statsdb.\+hpp.
+Definition at line 34 of file statsdb.\+hpp.
 
-\mbox{\Hypertarget{class_freq_table_ab5dd6677f52072c93d18b2b9a3369ae7}\label{class_freq_table_ab5dd6677f52072c93d18b2b9a3369ae7}} 
-\index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!get\_data\_ptr@{get\_data\_ptr}}
-\index{get\_data\_ptr@{get\_data\_ptr}!FreqTable$<$ T $>$@{FreqTable$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{get\_data\_ptr()}{get\_data\_ptr()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}}$<$ T, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $\ast$ \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::get\+\_\+data\+\_\+ptr\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_freq_table_a6caba65bbc07d895e4aa9f929d480b2b}\label{class_freq_table_a6caba65bbc07d895e4aa9f929d480b2b}} 
+\index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!get\_index@{get\_index}}
+\index{get\_index@{get\_index}!FreqTable$<$ T $>$@{FreqTable$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_index()}{get\_index()}}
+{\footnotesize\ttfamily template$<$typename T  = double$>$ \\
+\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}}$<$T,int$>$\& \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::get\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 78 of file statsdb.\+hpp.
+Definition at line 35 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_a4fe8f5e3b5bf64a1cbaf99deb96298d4}\label{class_freq_table_a4fe8f5e3b5bf64a1cbaf99deb96298d4}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!print@{print}}
@@ -136,7 +136,7 @@ void \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::print\hspace{0
 
 
 
-Definition at line 102 of file statsdb.\+hpp.
+Definition at line 162 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_a0bdced25f7c0bee38e073c4654578d19}\label{class_freq_table_a0bdced25f7c0bee38e073c4654578d19}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!reserve@{reserve}}
@@ -147,7 +147,7 @@ void \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::reserve (\begi
 
 
 
-Definition at line 89 of file statsdb.\+hpp.
+Definition at line 145 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_af1f26bddaded94f0d5acb68f3a94fb86}\label{class_freq_table_af1f26bddaded94f0d5acb68f3a94fb86}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!size@{size}}
@@ -158,7 +158,14 @@ size\+\_\+t \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::size\hs
 
 
 
-Definition at line 126 of file statsdb.\+hpp.
+Number of unique elements in the table. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t 
+\end{DoxyReturn}
+
+
+Definition at line 189 of file statsdb.\+hpp.
 
 
 
