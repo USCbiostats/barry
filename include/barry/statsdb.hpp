@@ -33,13 +33,17 @@ public:
     Counts_type                 as_vector() const;
     const std::vector< double > & get_data() const {return data;};
     const MapVec_type<T,int> & get_index() const {return index;};
-    // const MapVec_type<T,uint> * get_data_ptr() const;
     
     void clear();
     void reserve(unsigned int n);
     void print() const;
+
+    /**
+     * @brief Number of unique elements in the table.
+     * 
+     * @return size_t 
+     */
     size_t size() const noexcept;
-    // void rehash();
     
     
 };
@@ -58,7 +62,6 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
         data.insert(data.end(), x.begin(), x.end());
 
         k = x.size();
-
         n++;
 
         return;
@@ -78,9 +81,7 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
         {
 
             index[x] = data.size();
-
             data.push_back(1.0);
-
             data.insert(data.end(), x.begin(), x.end());
 
             n++;
@@ -98,7 +99,8 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
 }
 
 template<typename T>
-inline Counts_type FreqTable<T>::as_vector() const { 
+inline Counts_type FreqTable<T>::as_vector() const
+{ 
     
     Counts_type ans;
 
@@ -108,6 +110,7 @@ inline Counts_type FreqTable<T>::as_vector() const {
     {
         
         std::vector< double > tmp(k, 0.0);
+
         for (unsigned j = 1u; j < (k + 1u); ++j)
             tmp[j - 1u] = data[i * (k + 1) + j];
         
@@ -124,31 +127,30 @@ inline Counts_type FreqTable<T>::as_vector() const {
     return ans;
 }
 
-// template<typename T>
-// inline MapVec_type<T,uint> FreqTable<T>::get_data() const {
-//     return data;
-// }
-
-// template<typename T>
-// inline const MapVec_type<T,uint> * FreqTable<T>::get_data_ptr() const {
-//     return &data;
-// }
-
 template<typename T>
-inline void FreqTable<T>::clear() {
+inline void FreqTable<T>::clear()
+{
+
     index.clear();
     data.clear();
+
     n = 0u;
     k = 0u;
+
     return;
+
 }
 
 template<typename T>
 inline void FreqTable<T>::reserve(
     unsigned int n
-) {
+)
+{
+
     data.reserve(n);
+
     return;
+
 }
 
 // inline void StatsDB::rehash() {
@@ -157,10 +159,13 @@ inline void FreqTable<T>::reserve(
 // }
 
 template<typename T>
-inline void FreqTable<T>::print() const {
+inline void FreqTable<T>::print() const
+{
 
     unsigned int grand_total = 0u;
+
     printf_barry("%7s | %s\n", "Counts", "Stats");
+
     for (unsigned int i = 0u; i < n; ++i)
     {
 
@@ -181,9 +186,10 @@ inline void FreqTable<T>::print() const {
 }
 
 template<typename T>
-inline size_t FreqTable<T>::size() const noexcept {
+inline size_t FreqTable<T>::size() const noexcept
+{
 
-    return n;
+    return index.size();
 
 }
 

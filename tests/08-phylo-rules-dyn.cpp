@@ -59,6 +59,8 @@ BARRY_TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
     unsigned int matches = 0u;
 
     const auto& s = S.get_data().get_index();
+    auto D1 = S.get_data().get_data();
+    auto D2 = S2.get_data().get_data();
 
     for (const auto& s2 : S2.get_data().get_index())
     {
@@ -70,7 +72,7 @@ BARRY_TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
             continue;
 
         // If we found it, is this matching?
-        if ((*iter).second == s2.second)
+        if (D1[(*iter).second] == D2[s2.second])
             ++matches;
 
     }
