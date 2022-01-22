@@ -6,5 +6,5 @@ var model_meat_8hpp =
     [ "likelihood_", "model-meat_8hpp.html#a30867af87b732210c25b5148a8909454", null ],
     [ "MODEL_TEMPLATE", "model-meat_8hpp.html#a16e011aa4221e3c5ff8fad077800c101", null ],
     [ "MODEL_TEMPLATE", "model-meat_8hpp.html#a260825c37355e3dc0a5eaa60c3656127", null ],
-    [ "update_normalizing_constant", "model-meat_8hpp.html#a557368a4713ccf9ee1867c1bd17d58ba", null ]
+    [ "update_normalizing_constant", "model-meat_8hpp.html#ad7e8525ae043a17e7b6edc07ccad3a8c", null ]
 ];
