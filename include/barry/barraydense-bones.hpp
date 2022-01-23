@@ -193,7 +193,7 @@ public:
     void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
     
     void insert_cell(uint i, uint j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
-    void insert_cell(uint i, uint j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
+    // void insert_cell(uint i, uint j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
     void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists);
     
     void swap_cells(

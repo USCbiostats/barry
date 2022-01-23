@@ -512,7 +512,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
             return 0.0;
 
         // This is the first i sends, so nothing will change
-        if (Array.rowsum(i) == Array(i,j))
+        if (Array.rowsum(i) == BARRY_ZERO_NETWORK_DENSE)
             return 0.0;
 
         
@@ -521,7 +521,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
         {
 
             // In all cases k receives, so if not, then continue
-            if (Array.colsum(k) == BARRY_ZERO_NETWORK_DENSE)
+            if ((Array.colsum(k) == BARRY_ZERO_NETWORK_DENSE) && (Array.rowsum(k) == BARRY_ZERO_NETWORK_DENSE))
                 continue;
 
             if (j != k & i != k)
@@ -538,7 +538,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
                         ans += 1.0;
                 }
                 
-                // Case 3: i-j, i-k, j-k
+                // Case 3: i-j, k-i, k-j
                 if ((dat[i * N + k] != BARRY_ZERO_NETWORK_DENSE) && (dat[j * N + k] != BARRY_ZERO_NETWORK_DENSE))
                     ans += 1.0;
 

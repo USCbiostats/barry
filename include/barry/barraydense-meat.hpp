@@ -559,13 +559,15 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator+=)(
     const std::pair<uint,uint> & coords
 ) {
     
-    this->insert_cell(
-        coords.first,
-        coords.second,
-        this->Cell_default,
-        true,
-        true
-    );
+
+    unsigned int i = coords.first;
+    unsigned int j = coords.second;
+
+    out_of_range(i, j);
+
+    el[POS(i,j)]  += 1;
+    el_rowsums[i] += 1;
+    el_colsums[j] += 1;
     
     return *this;
     
@@ -575,12 +577,16 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator-=)(
     const std::pair<uint,uint> & coords
 ) {
     
-    this->rm_cell(
-        coords.first,
-        coords.second,
-        true,
-        true
-    );
+    unsigned int i = coords.first;
+    unsigned int j = coords.second;
+
+    out_of_range(i, j);
+
+    Cell_Type old = el[POS(i,j)];
+
+    el[POS(i,j)]   = ZERO_CELL;
+    el_rowsums[i] -= old;
+    el_colsums[j] -= old;
     
     return *this;
     
@@ -621,6 +627,8 @@ BDENSE_TEMPLATE(void, rm_cell) (
     // Checking the boundaries
     if (check_bounds)
         out_of_range(i,j);
+
+    BARRY_UNUSED(check_exists)
         
     // Remove the pointer first (so it wont point to empty)
     el_rowsums[i] -= el[POS(i, j)];
@@ -642,49 +650,28 @@ BDENSE_TEMPLATE(void, insert_cell) (
     if (check_bounds)
         out_of_range(i,j); 
     
-    if (check_exists)
+    BARRY_UNUSED(check_exists)
+
+    if (el[POS(i,j)] == BARRY_ZERO_DENSE)
     {
 
-        if (el[POS(i,j)] != BARRY_ZERO_DENSE)
-            throw std::logic_error("The cell already exists.");
+        el_rowsums[i] += v.value;
+        el_colsums[j] += v.value;
         
     } 
-    
-    el[POS(i, j)] = static_cast< Cell_Type >(v);
-    
-    el_rowsums[i] += el[POS(i, j)];
-    el_colsums[j] += el[POS(i, j)];
-
-    return;
-
-    
-}
-
-BDENSE_TEMPLATE(void, insert_cell) (
-    uint i,
-    uint j,
-    Cell< Cell_Type> && v,
-    bool check_bounds,
-    bool check_exists
-) { 
-    
-    if (check_bounds)
-        out_of_range(i,j);
-        
-    if (check_exists)
+    else
     {
 
-        if (el[POS(i,j)] != BARRY_ZERO_DENSE)
-            throw std::logic_error("The cell already exists.");
-        
-    } 
-    
+        Cell_Type old = el[POS(i,j)];
+        el_rowsums[i] += (v.value - old);
+        el_colsums[j] += (v.value - old);
+
+    }
+
     el[POS(i, j)] = v.value;
-    el_rowsums[i] += v.value;
-    el_colsums[j] += v.value;
-    
-    
+
     return;
+
     
 }
 
@@ -698,18 +685,26 @@ BDENSE_TEMPLATE(void, insert_cell)(
     
     if (check_bounds)
         out_of_range(i,j);
+
+    BARRY_UNUSED(check_exists)
         
-    if (check_exists)
+    if (el[POS(i,j)] == BARRY_ZERO_DENSE)
     {
 
-        if (el[POS(i,j)] != BARRY_ZERO_DENSE)
-            throw std::logic_error("The cell already exists.");
+        el_rowsums[i] += v;
+        el_colsums[j] += v;
         
     } 
-    
+    else
+    {
+
+        Cell_Type old = el[POS(i,j)];
+        el_rowsums[i] += (v - old);
+        el_colsums[j] += (v - old);
+
+    }
+
     el[POS(i, j)] = v;
-    el_rowsums[i] += v;
-    el_colsums[j] += v;
 
 }
 
@@ -913,7 +908,7 @@ BDENSE_TEMPLATE(void, resize) (
     std::vector< Cell_Type > el_tmp(el);
     el.resize(N_ * M_, ZERO_CELL);
     el_rowsums.resize(N_, ZERO_CELL);
-    el_colsums.resize(N_, ZERO_CELL);
+    el_colsums.resize(M_, ZERO_CELL);
 
     for (unsigned int i = 0u; i < N; ++i)
     {

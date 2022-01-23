@@ -21,7 +21,7 @@ STATSCOUNTER_TEMPLATE(,~StatsCounter)()
 STATSCOUNTER_TEMPLATE(void, reset_array)(const Array_Type * Array_)
 {
     
-    Array = Array_;
+    Array      = Array_;
     EmptyArray = *Array_;
     
     return;

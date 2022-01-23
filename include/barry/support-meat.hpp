@@ -121,7 +121,6 @@ SUPPORT_TEMPLATE(void, reset_array)(const Array_Type & Array_) {
     EmptyArray = Array_;
     N = Array_.nrow();
     M = Array_.ncol();
-    // init_support();
     
 }
 
