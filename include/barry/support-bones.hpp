@@ -70,7 +70,8 @@ public:
     std::vector< size_t >                coordinates_locked;
     size_t coordiantes_n_free;
     size_t coordiantes_n_locked;
-    std::vector< std::vector< double > > change_stats;
+    std::vector< double > change_stats;
+    size_t n_counters;
     
     /**@brief Constructor passing a reference Array.
       */

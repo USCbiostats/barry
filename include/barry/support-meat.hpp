@@ -25,16 +25,19 @@ SUPPORT_TEMPLATE(void, init_support)(
 
     coordiantes_n_free   = coordinates_free.size() / 2u;
     coordiantes_n_locked = coordinates_locked.size() / 2u;
+    n_counters           = counters->size();
     
     // Computing initial statistics
     if (EmptyArray.nnozero() > 0u)
     {
+
         for (uint i = 0u; i < coordiantes_n_free; ++i)
             EmptyArray.rm_cell(
                 coordinates_free[i * 2u],
                 coordinates_free[i * 2u + 1u],
                 false, true
                 );
+                
     }
 
     // Looked coordinates should still be removed if these are
@@ -55,7 +58,7 @@ SUPPORT_TEMPLATE(void, init_support)(
     }
 
     // Do we have any counter?
-    if (counters->size() == 0u)
+    if (n_counters == 0u)
         throw std::logic_error("No counters added: Cannot compute the support without knowning what to count!");
 
     // Initial count (including constrains)
@@ -70,10 +73,10 @@ SUPPORT_TEMPLATE(void, init_support)(
     else
     {
 
-        current_stats.resize(counters->size(), 0.0);
+        current_stats.resize(n_counters, 0.0);
 
         // Initialize counters
-        for (uint n = 0u; n < counters->size(); ++n)
+        for (uint n = 0u; n < n_counters; ++n)
         {
 
             current_stats[n] = counters->operator[](n).init(
@@ -95,7 +98,7 @@ SUPPORT_TEMPLATE(void, init_support)(
     if (include_it)
         data.add(current_stats);
 
-    change_stats.resize(coordiantes_n_free, current_stats);
+    change_stats.resize(coordiantes_n_free * n_counters);
         
     if (include_it && (array_bank != nullptr)) 
         array_bank->push_back(EmptyArray);
@@ -150,16 +153,16 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
 
     // Counting
     // std::vector< double > change_stats(counters.size());
-    for (uint n = 0u; n < counters->size(); ++n)
+    for (uint n = 0u; n < n_counters; ++n)
     {
 
-        change_stats[pos][n] = counters->operator[](n).count(
+        change_stats[pos * n_counters + n] = counters->operator[](n).count(
             EmptyArray,
             coord_i,
             coord_j
             );
             
-        current_stats[n] += change_stats[pos][n];
+        current_stats[n] += change_stats[pos * n_counters + n];
 
     }
     
@@ -210,8 +213,8 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
         false, false
         );
     
-    for (uint n = 0u; n < counters->size(); ++n) 
-        current_stats[n] -= change_stats[pos][n];
+    for (uint n = 0u; n < n_counters; ++n) 
+        current_stats[n] -= change_stats[pos * n_counters + n];
     
     
     return;
@@ -241,16 +244,16 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
 
     // Counting
     // std::vector< double > change_stats(counters.size());
-    for (uint n = 0u; n < counters->size(); ++n)
+    for (uint n = 0u; n < n_counters; ++n)
     {
 
-        change_stats[pos][n] = counters->operator[](n).count(
+        change_stats[pos * n_counters + n] = counters->operator[](n).count(
             EmptyArray,
             coord_i,
             coord_j
             );
 
-        current_stats[n] += change_stats[pos][n];
+        current_stats[n] += change_stats[pos * n_counters + n];
 
     }
     
@@ -293,8 +296,8 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     // We need to restore the state of the cell
     EmptyArray(coord_i, coord_j) = 0;
     
-    for (uint n = 0u; n < counters->size(); ++n) 
-        current_stats[n] -= change_stats[pos][n];
+    for (uint n = 0u; n < n_counters; ++n) 
+        current_stats[n] -= change_stats[pos * n_counters + n];
     
     
     return;
@@ -469,7 +472,7 @@ SUPPORT_TEMPLATE(void, print)() const {
 
     // Starting from the name of the stats
     printf_barry("Position of variables:\n");
-    for (uint i = 0u; i < counters->size(); ++i) {
+    for (uint i = 0u; i < n_counters; ++i) {
         printf_barry("[% 2i] %s\n", i, counters->operator[](i).name.c_str());
     }
 

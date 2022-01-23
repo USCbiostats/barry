@@ -856,9 +856,6 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
     // Getting the index
     unsigned int a = arrays2support[i];
-    // if (pset_probs.at(a).size() == 0u) {
-    //   pset_probs.at(a).resize(pset_arrays.at(a).size(), 0u);
-    // }
     
     // Generating a random
     std::uniform_real_distribution<> urand(0, 1);
@@ -867,7 +864,8 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
     // Updating until reach above
     unsigned int j = 0u;
-    while (cumprob < r) {
+    while (cumprob < r)
+    {
 
         cumprob += this->likelihood(params, this->pset_stats[a][j], i, false);
         ++j;
