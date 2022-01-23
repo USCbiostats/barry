@@ -25,7 +25,7 @@ var class_support =
     [ "set_counters", "class_support.html#afc199188011973ef28bcf7dd1383743e", null ],
     [ "set_rules", "class_support.html#af537df5404dcd989b9d606e4dae454e1", null ],
     [ "set_rules_dyn", "class_support.html#a9e296aa740b9aad3e7feef3981002c9e", null ],
-    [ "change_stats", "class_support.html#a66f18465f36acc610ee36ac9f365aa59", null ],
+    [ "change_stats", "class_support.html#a7981b38d84ec4782ff139a2d6c1a7871", null ],
     [ "coordiantes_n_free", "class_support.html#a4d939728c8c020717eba4232a4a89f38", null ],
     [ "coordiantes_n_locked", "class_support.html#a5061f4f3257702ce64355aa3af22be1f", null ],
     [ "coordinates_free", "class_support.html#a60579f8384f5db6f7f586214439d348f", null ],
@@ -36,5 +36,6 @@ var class_support =
     [ "delete_rules_dyn", "class_support.html#a186d2735c60ab0b0e5da69e1a5cce92b", null ],
     [ "M", "class_support.html#a0996a88d823b533f55c734b7bf526f4a", null ],
     [ "max_num_elements", "class_support.html#ae191c14de35f91695704173d04945633", null ],
-    [ "N", "class_support.html#a33d391397682bc93e8a3f0e052d6e341", null ]
+    [ "N", "class_support.html#a33d391397682bc93e8a3f0e052d6e341", null ],
+    [ "n_counters", "class_support.html#a5f6b17222ab5591a9120d16179f06062", null ]
 ];

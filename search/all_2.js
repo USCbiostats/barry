@@ -12,7 +12,7 @@ var searchData=
   ['cell_2dmeat_2ehpp_111',['cell-meat.hpp',['../cell-meat_8hpp.html',1,'']]],
   ['cell_3c_20bool_20_3e_112',['Cell&lt; bool &gt;',['../class_cell.html',1,'']]],
   ['cell_5fconst_113',['Cell_const',['../class_cell__const.html',1,'']]],
-  ['change_5fstats_114',['change_stats',['../class_support.html#a66f18465f36acc610ee36ac9f365aa59',1,'Support']]],
+  ['change_5fstats_114',['change_stats',['../class_support.html#a7981b38d84ec4782ff139a2d6c1a7871',1,'Support']]],
   ['check_115',['CHECK',['../namespace_c_h_e_c_k.html',1,'']]],
   ['check_5fbounds_116',['check_bounds',['../barraydense-meat_8hpp.html#a8899aeefb231f239e7aecd22c54e0731',1,'check_bounds():&#160;barraydense-meat.hpp'],['../barray-meat_8hpp.html#a8899aeefb231f239e7aecd22c54e0731',1,'check_bounds():&#160;barray-meat.hpp']]],
   ['check_5fexists_117',['check_exists',['../barraydense-meat_8hpp.html#a55f9b5f5029c8d5cb64a0c3f2a86b41c',1,'check_exists():&#160;barraydense-meat.hpp'],['../barray-meat_8hpp.html#a55f9b5f5029c8d5cb64a0c3f2a86b41c',1,'check_exists():&#160;barray-meat.hpp']]],
