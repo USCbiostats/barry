@@ -41,7 +41,7 @@ var class_b_array_dense =
     [ "operator=", "class_b_array_dense.html#ae81b2d681ccfa3715d110aec2f7fa1d6", null ],
     [ "operator==", "class_b_array_dense.html#a1df571341d9ee5afa21d67dec7fa2542", null ],
     [ "out_of_range", "class_b_array_dense.html#aa5e0a1ca6315fb1ba97d11432afa12a7", null ],
-    [ "print", "class_b_array_dense.html#a448a8caa6ed96177ed4e2a5a985dc4e5", null ],
+    [ "print", "class_b_array_dense.html#a4e460b4178a6189bc65cab7c6e70c578", null ],
     [ "reserve", "class_b_array_dense.html#ae37e80c20cee4ce892a210135d2695ab", null ],
     [ "resize", "class_b_array_dense.html#af748efa3a8faf1782c049ae34302639f", null ],
     [ "rm_cell", "class_b_array_dense.html#a1eb6f4092da8530c9bbb9477e53b7be6", null ],

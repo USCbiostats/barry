@@ -116,163 +116,159 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// Scaling root</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; p : par_root)</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        p = std::exp(p)/(std::exp(p) + 1);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        p = std::exp(p)/(std::exp(p) + 1);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::vector&lt; unsigned int &gt; tmpstate(<a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">double</span> ll = 0.0;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::vector&lt; unsigned int &gt; tmpstate(<a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_node.html">Node</a> * n_off;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">double</span> ll = 0.0;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="class_node.html">Node</a> * n_off;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Following the prunning sequence</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::vector&lt; unsigned int &gt; * preseq;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (use_reduced_sequence)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        preseq = &amp;this-&gt;<a class="code" href="class_geese.html#aabcf5e284f7277109567a84ba615f97e">reduced_sequence</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// Following the prunning sequence</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::vector&lt; unsigned int &gt; * preseq;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span> (use_reduced_sequence)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        preseq = &amp;this-&gt;<a class="code" href="class_geese.html#aabcf5e284f7277109567a84ba615f97e">reduced_sequence</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {   </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {   </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        preseq = &amp;this-&gt;<a class="code" href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">sequence</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        preseq = &amp;this-&gt;<a class="code" href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">sequence</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : *preseq)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : *preseq)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// We cannot compute probability at the leaf, we need to continue</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span> (this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>].is_leaf())</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">// We cannot compute probability at the leaf, we need to continue</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> (this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>].is_leaf())</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// Since we are using this a lot...</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="class_node.html">Node</a> &amp; node = <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>];</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">// Since we are using this a lot...</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="class_node.html">Node</a> &amp; node = <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">// Iterating through states</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s = 0u; s &lt; states.size(); ++s)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// Iterating through states</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s = 0u; s &lt; states.size(); ++s)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="comment">// Starting the prob</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordtype">double</span> totprob = 0.0;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="comment">// Starting the prob</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordtype">double</span> totprob = 0.0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="comment">// Retrieving the sets of arrays</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">const</span> std::vector&lt; phylocounters::PhyloArray &gt; * psets =</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                model-&gt;get_pset(node.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>[s]);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="comment">// Retrieving the sets of arrays</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">const</span> std::vector&lt; phylocounters::PhyloArray &gt; * psets =</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                model-&gt;get_pset(node.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>[s]);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keyword">const</span> std::vector&lt; std::vector&lt;double&gt; &gt; * psets_stats =</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                model-&gt;get_pset_stats(node.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>[s]);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="comment">// Summation over all possible values of X</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nstate = 0u;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> x = psets-&gt;begin(); x != psets-&gt;end(); ++x)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="comment">// Extracting the possible values of each offspring</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordtype">double</span> off_mult = 1.0;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> o = 0u; o &lt; x-&gt;ncol(); ++o)</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    <span class="comment">// Setting the node</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    n_off = node.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>[o];</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="comment">// First, getting what is the corresponding state</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    std::fill(tmpstate.begin(), tmpstate.end(), 0u);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    x-&gt;get_col_vec(&amp;tmpstate, o, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    <span class="comment">// In the case that the offspring is a leaf, then we need to</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    <span class="comment">// check whether the state makes sense.</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    <span class="keywordflow">if</span> (n_off-&gt;<a class="code" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">is_leaf</a>())</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="geese-bones_8hpp.html#ac4e3e3e3920b3bbde57ac1ed395e9983">vec_diff</a>(tmpstate, n_off-&gt;<a class="code" href="class_node.html#aea43a76094980788d1debd3e18ed8070">annotations</a>))</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                        {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                            off_mult = -1.0;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">const</span> std::vector&lt; std::vector&lt;double&gt; &gt; * psets_stats =</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                model-&gt;get_pset_stats(node.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>[s]);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="comment">// Summation over all possible values of X</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nstate = 0u;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> x = psets-&gt;begin(); x != psets-&gt;end(); ++x)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="comment">// Extracting the possible values of each offspring</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordtype">double</span> off_mult = 1.0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> o = 0u; o &lt; x-&gt;ncol(); ++o)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    <span class="comment">// Setting the node</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    n_off = node.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>[o];</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <span class="comment">// First, getting what is the corresponding state</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    std::fill(tmpstate.begin(), tmpstate.end(), 0u);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    x-&gt;get_col_vec(&amp;tmpstate, o, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="comment">// In the case that the offspring is a leaf, then we need to</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    <span class="comment">// check whether the state makes sense.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <span class="keywordflow">if</span> (n_off-&gt;<a class="code" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">is_leaf</a>())</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="geese-bones_8hpp.html#ac4e3e3e3920b3bbde57ac1ed395e9983">vec_diff</a>(tmpstate, n_off-&gt;<a class="code" href="class_node.html#aea43a76094980788d1debd3e18ed8070">annotations</a>))</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                            off_mult = -1.0;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                        } </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        } </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    }</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    <span class="comment">// Retrieving the location to the respective set of probabilities</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> loc = <a class="code" href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">map_to_nodes</a>[tmpstate];</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                    <span class="comment">// Retrieving the location to the respective set of probabilities</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> loc = <a class="code" href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">map_to_nodes</a>[tmpstate];</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                    off_mult *= node.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>[o]-&gt;subtree_prob[loc];</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                }</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                    off_mult *= node.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>[o]-&gt;subtree_prob[loc];</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="comment">// Is this state valid?</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">if</span> (off_mult &lt; 0.0)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                {</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="comment">// Is this state valid?</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">if</span> (off_mult &lt; 0.0)</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                    ++nstate;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="comment">// Multiplying by P(x|x_n), the transition probability</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                off_mult *= model-&gt;likelihood(</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    par0,</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                    psets_stats-&gt;at(nstate++),</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                    node.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>[s]</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                );</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="comment">// Adding to the total probabilities</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                totprob += off_mult;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="comment">// Setting the probability at the node</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            node.<a class="code" href="class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d">subtree_prob</a>[s] = totprob;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                    ++nstate;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                <span class="comment">// Multiplying by P(x|x_n), the transition probability</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                off_mult *= model-&gt;likelihood(</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    par0,</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    psets_stats-&gt;at(nstate++),</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                    node.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>[s]</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                );</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="comment">// Adding to the total probabilities</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                totprob += off_mult;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="comment">// Setting the probability at the node</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            node.<a class="code" href="class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d">subtree_prob</a>[s] = totprob;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">// All probabilities should be completed at this point</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">if</span> (node.<a class="code" href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">parent</a> == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="comment">// All probabilities should be completed at this point</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">if</span> (node.<a class="code" href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">parent</a> == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s = 0u; s &lt; states.size(); ++s)</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                <span class="keywordtype">double</span> tmpll = 1.0;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> k = 0u; k &lt; <a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>; ++k)</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s = 0u; s &lt; states.size(); ++s)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordtype">double</span> tmpll = 1.0;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> k = 0u; k &lt; <a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>; ++k)</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                    tmpll *= states[s][k] ? par_root[k] : (1 - par_root[k]);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                }</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    tmpll *= states[s][k] ? par_root[k] : (1 - par_root[k]);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                ll += tmpll * node.<a class="code" href="class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d">subtree_prob</a>[s];</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                ll += tmpll * node.<a class="code" href="class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d">subtree_prob</a>[s];</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="comment">// In the case that the sequence is empty, then it means</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="comment">// that we are looking at a completely unnanotated tree,</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// thus the likelihood should be one</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">if</span> (preseq-&gt;size() == 0u)</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">return</span> as_log ? -std::numeric_limits&lt;double&gt;::infinity() : 1.0;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">return</span> as_log ? std::log(ll) : ll;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">// In the case that the sequence is empty, then it means</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="comment">// that we are looking at a completely unnanotated tree,</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">// thus the likelihood should be one</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">if</span> (preseq-&gt;size() == 0u)</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">return</span> as_log ? -std::numeric_limits&lt;double&gt;::infinity() : 1.0;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">return</span> as_log ? std::log(ll) : ll;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_geese_html_a0483807174fe427f5bd2ccbb22ac3ad6"><div class="ttname"><a href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">Geese::nfunctions</a></div><div class="ttdeci">unsigned int nfunctions</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00107">geese-bones.hpp:107</a></div></div>
 <div class="ttc" id="aclass_geese_html_a25f8324ae2c43b8a940a8e934c768a7c"><div class="ttname"><a href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">Geese::map_to_nodes</a></div><div class="ttdeci">barry::MapVec_type&lt; unsigned int &gt; map_to_nodes</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00109">geese-bones.hpp:109</a></div></div>
 <div class="ttc" id="aclass_geese_html_a6eb9e15bdf70319857e4ad90baefdece"><div class="ttname"><a href="class_geese.html#a6eb9e15bdf70319857e4ad90baefdece">Geese::likelihood</a></div><div class="ttdeci">double likelihood(const std::vector&lt; double &gt; &amp;par, bool as_log=false, bool use_reduced_sequence=true)</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat-likelihood_8hpp_source.html#l00006">geese-meat-likelihood.hpp:6</a></div></div>
@@ -296,7 +292,7 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-meat-likelihood_8hpp.html">geese-meat-likelihood.hpp</a></li>
-    <li class="footer">Generated on Sat Jan 22 2022 20:22:08 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sun Jan 23 2022 04:48:50 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

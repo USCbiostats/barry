@@ -24,11 +24,11 @@ Collaboration diagram for Node\+:
 \item 
 \mbox{\hyperlink{class_node_aa0840c3cb5c7159be6d992adecd2097c}{$\sim$\+Node}} ()
 \item 
-int \mbox{\hyperlink{class_node_a661cb63a33e950b84c9c093c63d1ab63}{get\+\_\+parent}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}}
+int \mbox{\hyperlink{class_node_a661cb63a33e950b84c9c093c63d1ab63}{get\+\_\+parent}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
-unsigned int \mbox{\hyperlink{class_node_adebf92c47c8da4bf439173d44ad98abb}{noffspring}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+unsigned int \mbox{\hyperlink{class_node_adebf92c47c8da4bf439173d44ad98abb}{noffspring}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
-bool \mbox{\hyperlink{class_node_af95aad82ea29953c3eaed6b761c4b13e}{is\+\_\+leaf}} () \mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+bool \mbox{\hyperlink{class_node_af95aad82ea29953c3eaed6b761c4b13e}{is\+\_\+leaf}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Construct a new Node object}\par
 \begin{DoxyCompactItemize}
@@ -41,7 +41,7 @@ bool \mbox{\hyperlink{class_node_af95aad82ea29953c3eaed6b761c4b13e}{is\+\_\+leaf
 \item 
 \mbox{\hyperlink{class_node_a7541702bb12f9dae3f6cbf83bddaed2a}{Node}} (\mbox{\hyperlink{class_node}{Node}} \&\&x) \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
-\mbox{\hyperlink{class_node_ac9e4a04860b442c2034e24aa058db129}{Node}} (\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{class_node}{Node}} \&x)
+\mbox{\hyperlink{class_node_ac9e4a04860b442c2034e24aa058db129}{Node}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_node}{Node}} \&x)
 \end{DoxyCompactItemize}
 \end{Indent}
 \doxysubsection*{Public Attributes}
@@ -51,13 +51,13 @@ unsigned int \mbox{\hyperlink{class_node_adb90577d9d796c4ccbccf41ce2efc6c9}{id}}
 \begin{DoxyCompactList}\small\item\em Id of the node (as specified in the input) \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_node_ac58501488a47ad56989463668d062e8f}{ord}}
 \begin{DoxyCompactList}\small\item\em Order in which the node was created. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{phylocounters\+::\+Phylo\+Array}} \mbox{\hyperlink{class_node_a86d6575dd1ad7ab0cb02c6e6202b0608}{array}}
+\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{phylocounters\+::\+Phylo\+Array}} \mbox{\hyperlink{class_node_a86d6575dd1ad7ab0cb02c6e6202b0608}{array}}
 \item 
 std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{class_node_aea43a76094980788d1debd3e18ed8070}{annotations}}
 \begin{DoxyCompactList}\small\item\em Observed annotations (only defined for \mbox{\hyperlink{class_geese}{Geese}}) \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_node_a3129939e8a58c055cb5ad8db8be6b10a}{duplication}}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{phylocounters\+::\+Phylo\+Array}} $>$ \mbox{\hyperlink{class_node_a269d78db10090d106c697d7c73bac9c7}{arrays}} = \{\}
+std\+::vector$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{phylocounters\+::\+Phylo\+Array}} $>$ \mbox{\hyperlink{class_node_a269d78db10090d106c697d7c73bac9c7}{arrays}} = \{\}
 \begin{DoxyCompactList}\small\item\em Arrays given all possible states. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_node}{Node}} $\ast$ \mbox{\hyperlink{class_node_ad8184598cdea70e4bbdfd76f2b0f9e85}{parent}} = nullptr
 \begin{DoxyCompactList}\small\item\em Parent node. \end{DoxyCompactList}\item 
@@ -127,7 +127,7 @@ Definition at line 69 of file geese-\/node-\/bones.\+hpp.
 \index{Node@{Node}!Node@{Node}}
 \index{Node@{Node}!Node@{Node}}
 \doxysubsubsection{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
-{\footnotesize\ttfamily Node\+::\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a849b2391311252597e9d126537bd7464}{const}} \mbox{\hyperlink{class_node}{Node}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Node\+::\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_node}{Node}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -197,7 +197,7 @@ Definition at line 18 of file geese-\/node-\/bones.\+hpp.
 \index{Node@{Node}!array@{array}}
 \index{array@{array}!Node@{Node}}
 \doxysubsubsection{\texorpdfstring{array}{array}}
-{\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{phylocounters\+::\+Phylo\+Array}} Node\+::array}
+{\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{phylocounters\+::\+Phylo\+Array}} Node\+::array}
 
 
 
@@ -207,7 +207,7 @@ Definition at line 17 of file geese-\/node-\/bones.\+hpp.
 \index{Node@{Node}!arrays@{arrays}}
 \index{arrays@{arrays}!Node@{Node}}
 \doxysubsubsection{\texorpdfstring{arrays}{arrays}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{phylo_8hpp_a777255ae3149368254234a1bddecb601}{phylocounters\+::\+Phylo\+Array}} $>$ Node\+::arrays = \{\}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{phylocounters\+::\+Phylo\+Array}} $>$ Node\+::arrays = \{\}}
 
 
 

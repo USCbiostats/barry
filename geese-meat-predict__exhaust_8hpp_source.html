@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('geese-meat-predict__exhaust_8hpp_sourc
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Computing all combinations ----------------------------------------------</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// The base PhyloArray will store the original set of annotations.</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="phylo_8hpp.html#a777255ae3149368254234a1bddecb601">phylocounters::PhyloArray</a> base(<a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(), <a class="code" href="class_geese.html#aa0249f7b6163c0b18d55fae140074d07">nnodes</a>());</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a">phylocounters::PhyloArray</a> base(<a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(), <a class="code" href="class_geese.html#aa0249f7b6163c0b18d55fae140074d07">nnodes</a>());</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; n : <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>)</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
@@ -184,7 +184,7 @@ $(document).ready(function(){initNavTree('geese-meat-predict__exhaust_8hpp_sourc
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">// ith state</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">const</span> <a class="code" href="phylo_8hpp.html#a777255ae3149368254234a1bddecb601">phylocounters::PhyloArray</a> * s = &amp;pset[p];</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">const</span> <a class="code" href="phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a">phylocounters::PhyloArray</a> * s = &amp;pset[p];</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">// Computing the likelihood of the state s        </span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">double</span> current_prob = 1.0;</div>
@@ -211,7 +211,7 @@ $(document).ready(function(){initNavTree('geese-meat-predict__exhaust_8hpp_sourc
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="comment">// Generating a copy of the observed array</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="comment">// (data is copied so that we can chage the state of the parent)</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <a class="code" href="phylo_8hpp.html#a777255ae3149368254234a1bddecb601">phylocounters::PhyloArray</a> tmparray(n.<a class="code" href="class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608">array</a>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <a class="code" href="phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a">phylocounters::PhyloArray</a> tmparray(n.<a class="code" href="class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608">array</a>, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="comment">// Updating the state of the parent</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> f = 0u; f &lt; <a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(); ++f)</div>
@@ -284,14 +284,14 @@ $(document).ready(function(){initNavTree('geese-meat-predict__exhaust_8hpp_sourc
 <div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00117">counters-meat.hpp:117</a></div></div>
 <div class="ttc" id="ageese-bones_8hpp_html_a08888c91f4cab1da64c8f8bf10b59c40"><div class="ttname"><a href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a></div><div class="ttdeci">#define INITIALIZED()</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00022">geese-bones.hpp:22</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a0d16a69c8b447a32a3aa4d4c041773cc"><div class="ttname"><a href="phylo_8hpp.html#a0d16a69c8b447a32a3aa4d4c041773cc">PhyloPowerSet</a></div><div class="ttdeci">PowerSet&lt; PhyloArray, PhyloRuleData &gt; PhyloPowerSet</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00116">phylo.hpp:116</a></div></div>
-<div class="ttc" id="aphylo_8hpp_html_a777255ae3149368254234a1bddecb601"><div class="ttname"><a href="phylo_8hpp.html#a777255ae3149368254234a1bddecb601">PhyloArray</a></div><div class="ttdeci">BArray&lt; uint, NodeData &gt; PhyloArray</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00103">phylo.hpp:103</a></div></div>
+<div class="ttc" id="aphylo_8hpp_html_a62f661a25cbdbac960f6d00b7b42ff4a"><div class="ttname"><a href="phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a">PhyloArray</a></div><div class="ttdeci">BArrayDense&lt; uint, NodeData &gt; PhyloArray</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00103">phylo.hpp:103</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-meat-predict__exhaust_8hpp.html">geese-meat-predict_exhaust.hpp</a></li>
-    <li class="footer">Generated on Sat Jan 22 2022 20:22:08 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sun Jan 23 2022 04:48:50 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
