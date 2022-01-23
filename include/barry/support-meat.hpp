@@ -240,7 +240,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     const size_t & coord_j = coordinates_free[pos * 2u + 1u];
 
     // Toggle the cell (we will toggle it back after calling the counter)
-    EmptyArray(coord_i, coord_j) = 1;
+    EmptyArray.insert_cell(coord_i, coord_j, 1, false, false);
 
     // Counting
     // std::vector< double > change_stats(counters.size());
@@ -294,11 +294,10 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     calc_backend_dense(pos + 1u, array_bank, stats_bank);
     
     // We need to restore the state of the cell
-    EmptyArray(coord_i, coord_j) = 0;
+    EmptyArray.rm_cell(coord_i, coord_j, false, false);
     
     for (uint n = 0u; n < n_counters; ++n) 
         current_stats[n] -= change_stats[pos * n_counters + n];
-    
     
     return;
     

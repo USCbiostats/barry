@@ -203,7 +203,7 @@ inline std::vector< double > StatsCounter<Array_Type,Data_Type>::count_all_dense
                 continue;
             
             // Adding a cell
-            EmptyArray(i, j) += 1;
+            EmptyArray.insert_cell(i, j, 1, false, false);
 
             #ifdef BARRY_DEBUG_LEVEL
                 #if (BARRY_DEBUG_LEVEL >= 1)

@@ -90,10 +90,10 @@ List support (
   ) { 
   
   // Initializing the Binary array, and also the the suffstats counter
-  netcounters::Network net(N,M);
+  netcounters::NetworkDense net(N,M);
   net.set_data(new netcounters::NetworkData(gender), true);
   
-  netcounters::NetSupport<netcounters::Network> dat(net);
+  netcounters::NetSupport<netcounters::NetworkDense> dat(net);
   
   netcounters::counter_edges(dat.get_counters());
   netcounters::counter_mutual(dat.get_counters());
@@ -124,7 +124,7 @@ List support (
     
     std::vector< double > tmp(n_counters);
     for (unsigned int j = 0u; j < n_counters; ++j)
-        tmp[j] = ans[i * (n_counters + 1u) + j];
+        tmp[j] = ans[i * (n_counters + 1u) + j + 1];
     
     res[i] = List::create(
       _["x"]     = tmp,
@@ -244,7 +244,9 @@ ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
 stop()
 ans1 <- ergm::ergm.allstats(
   mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
-    density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE)
+    density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE,
+    maxNumChangeStatVectors = 2^20
+  )
 ans1 <- cbind(ans1$statmat, w = ans1$weights)
 
 # Sorting equally
