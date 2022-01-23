@@ -29,8 +29,10 @@ public:
     bool rules_deleted   = false;
 
     // Tempvars
-    std::vector< std::pair<uint,uint> >  coordinates_free;
-    std::vector< std::pair<uint,uint> >  coordinates_locked;
+    std::vector< size_t >  coordinates_free;
+    std::vector< size_t >  coordinates_locked;
+    size_t n_free;
+    size_t n_locked;
     
     /**
      * @name Construct and destroy a PowerSet object

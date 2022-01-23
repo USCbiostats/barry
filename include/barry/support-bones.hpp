@@ -66,8 +66,10 @@ public:
     
     // Temp variables to reduce memory allocation
     std::vector< double >                current_stats;
-    std::vector< std::pair<uint,uint> >  coordinates_free;
-    std::vector< std::pair<uint,uint> >  coordinates_locked;
+    std::vector< size_t >                coordinates_free;
+    std::vector< size_t >                coordinates_locked;
+    size_t coordiantes_n_free;
+    size_t coordiantes_n_locked;
     std::vector< std::vector< double > > change_stats;
     
     /**@brief Constructor passing a reference Array.

@@ -22,21 +22,35 @@ SUPPORT_TEMPLATE(void, init_support)(
     coordinates_free.clear();
     coordinates_locked.clear();
     rules->get_seq(EmptyArray, &coordinates_free, &coordinates_locked);
+
+    coordiantes_n_free   = coordinates_free.size() / 2u;
+    coordiantes_n_locked = coordinates_locked.size() / 2u;
     
     // Computing initial statistics
     if (EmptyArray.nnozero() > 0u)
     {
-        for (uint i = 0u; i < coordinates_free.size(); ++i)
-            EmptyArray.rm_cell(coordinates_free[i].first, coordinates_free[i].second, false, true);
+        for (uint i = 0u; i < coordiantes_n_free; ++i)
+            EmptyArray.rm_cell(
+                coordinates_free[i * 2u],
+                coordinates_free[i * 2u + 1u],
+                false, true
+                );
     }
 
     // Looked coordinates should still be removed if these are
     // equivalent to zero
-    for (auto & coord: coordinates_locked)
+    for (unsigned int i = 0u; i < coordiantes_n_locked; ++i)
     {
 
-        if (static_cast<int>(EmptyArray(coord.first, coord.second, false)) == 0)
-            EmptyArray.rm_cell(coord.first, coord.second, false, true);
+        if (static_cast<int>(EmptyArray(
+            coordinates_locked[i * 2u], coordinates_locked[i * 2u + 1u]
+            )) == 0)
+
+            EmptyArray.rm_cell(
+                coordinates_locked[i * 2u],
+                coordinates_locked[i * 2u + 1u],
+                false, true
+                );
 
     }
 
@@ -45,24 +59,27 @@ SUPPORT_TEMPLATE(void, init_support)(
         throw std::logic_error("No counters added: Cannot compute the support without knowning what to count!");
 
     // Initial count (including constrains)
-    if (coordinates_locked.size()) {
+    if (coordiantes_n_locked)
+    {
 
         StatsCounter<Array_Type,Data_Counter_Type> tmpcount(&EmptyArray);
         tmpcount.set_counters(counters);
         current_stats = tmpcount.count_all();
 
-    } else {
+    }
+    else
+    {
 
         current_stats.resize(counters->size(), 0.0);
-
-        const auto & cordfree = coordinates_free[0u];
 
         // Initialize counters
         for (uint n = 0u; n < counters->size(); ++n)
         {
 
             current_stats[n] = counters->operator[](n).init(
-                EmptyArray, cordfree.first, cordfree.second
+                EmptyArray,
+                coordinates_free[0u],
+                coordinates_free[1u]
                 );
 
         }
@@ -70,15 +87,15 @@ SUPPORT_TEMPLATE(void, init_support)(
     }
 
     // Resizing support
-    if (coordinates_free.size() > 9u)
-        data.reserve(pow(2.0, static_cast<double>(coordinates_free.size() - 4u))); 
+    if (coordiantes_n_free > 9u)
+        data.reserve(pow(2.0, static_cast<double>(coordiantes_n_free - 4u))); 
 
     // Adding to the overall count
     bool include_it = rules_dyn->operator()(EmptyArray, 0u, 0u);
     if (include_it)
         data.add(current_stats);
 
-    change_stats.resize(coordinates_free.size(), current_stats);
+    change_stats.resize(coordiantes_n_free, current_stats);
         
     if (include_it && (array_bank != nullptr)) 
         array_bank->push_back(EmptyArray);
@@ -112,7 +129,7 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
     ) {
     
     // Did we reached the end??
-    if (pos >= coordinates_free.size())
+    if (pos >= coordiantes_n_free)
         return;
             
     // We will pass it to the next step, if the iteration makes sense.
@@ -120,12 +137,13 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
     
     // Once we have returned, everything will be back as it used to be, so we
     // treat the data as if nothing has changed.
-    
-    const std::pair<uint,uint> & cfree = coordinates_free[pos];
+    const size_t & coord_i = coordinates_free[pos * 2u];
+    const size_t & coord_j = coordinates_free[pos * 2u + 1u];
 
     // Toggle the cell (we will toggle it back after calling the counter)
     EmptyArray.insert_cell(
-        cfree.first, cfree.second,
+        coord_i,
+        coord_j,
         EmptyArray.default_val().value,
         false, false
         );
@@ -137,8 +155,8 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
 
         change_stats[pos][n] = counters->operator[](n).count(
             EmptyArray,
-            cfree.first,
-            cfree.second
+            coord_i,
+            coord_j
             );
             
         current_stats[n] += change_stats[pos][n];
@@ -150,7 +168,11 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
     if (rules_dyn->size() > 0u)
     {
         
-        if (rules_dyn->operator()(EmptyArray, cfree.first, cfree.second))
+        if (rules_dyn->operator()(
+            EmptyArray,
+            coord_i,
+            coord_j
+            ))
         {
 
             data.add(current_stats);
@@ -183,8 +205,8 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
     
     // We need to restore the state of the cell
     EmptyArray.rm_cell(
-        cfree.first,
-        cfree.second,
+        coord_i,
+        coord_j,
         false, false
         );
     
@@ -203,7 +225,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     ) {
     
     // Did we reached the end??
-    if (pos >= coordinates_free.size())
+    if (pos >= coordiantes_n_free)
         return;
             
     // We will pass it to the next step, if the iteration makes sense.
@@ -211,11 +233,11 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     
     // Once we have returned, everything will be back as it used to be, so we
     // treat the data as if nothing has changed.
-    
-    const std::pair<uint,uint> & cfree = coordinates_free[pos];
+    const size_t & coord_i = coordinates_free[pos * 2u];
+    const size_t & coord_j = coordinates_free[pos * 2u + 1u];
 
     // Toggle the cell (we will toggle it back after calling the counter)
-    EmptyArray(cfree.first, cfree.second) = 1;
+    EmptyArray(coord_i, coord_j) = 1;
 
     // Counting
     // std::vector< double > change_stats(counters.size());
@@ -224,9 +246,10 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
 
         change_stats[pos][n] = counters->operator[](n).count(
             EmptyArray,
-            cfree.first,
-            cfree.second
+            coord_i,
+            coord_j
             );
+
         current_stats[n] += change_stats[pos][n];
 
     }
@@ -236,7 +259,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     if (rules_dyn->size() > 0u)
     {
         
-        if (rules_dyn->operator()(EmptyArray, cfree.first, cfree.second))
+        if (rules_dyn->operator()(EmptyArray, coord_i, coord_j))
         {
 
             data.add(current_stats);
@@ -268,7 +291,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     calc_backend_dense(pos + 1u, array_bank, stats_bank);
     
     // We need to restore the state of the cell
-    EmptyArray(cfree.first, cfree.second) = 0;
+    EmptyArray(coord_i, coord_j) = 0;
     
     for (uint n = 0u; n < counters->size(); ++n) 
         current_stats[n] -= change_stats[pos][n];
