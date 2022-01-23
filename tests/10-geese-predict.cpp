@@ -44,16 +44,6 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
 
     model.init();
     model_flock.init();
-    // for (uint i = 0; i < model.get_model()->size_unique(); ++i) {
-    //     printf_barry("--- i: % 2i ---\n", i);
-    //     model.get_model()->print_stats(i);
-    // }
-
-    // printf_barry("Flock --\n");
-    // for (uint i = 0; i < model.get_model()->size_unique(); ++i) {
-    //     printf_barry("--- i: % 2i ---\n", i);
-    //     model_flock.get_model()->print_stats(i);
-    // }
 
     // model.get_model()->print_stats(3);
     model.set_seed(100);

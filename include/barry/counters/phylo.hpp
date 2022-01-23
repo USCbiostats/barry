@@ -100,7 +100,7 @@ class PhyloRuleDynData;
  * @name Convenient typedefs for Node objects.
  * */
 ///@{
-typedef BArray<uint, NodeData> PhyloArray;
+typedef BArrayDense<uint, NodeData> PhyloArray;
 typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
 typedef Counters< PhyloArray, PhyloCounterData> PhyloCounters;
 

@@ -88,6 +88,34 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend(uint pos) {
     
 }
 
+template <typename Array_Type, typename Data_Rule_Type>
+inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_dense(uint pos) {
+    
+    // Did we reached the end??
+    if (pos >= coordinates_free.size())
+        return;
+            
+    // We will pass it to the next step, if the iteration makes sense.
+    calc_backend_dense(pos + 1u);
+
+    const std::pair<uint,uint> & coords = coordinates_free[pos];
+        
+    // Toggle the cell (we will toggle it back after calling the counter)
+    EmptyArray(coords.first, coords.second) = 1;
+
+    data.push_back(EmptyArray);
+    
+    // Again, we only pass it to the next level iff the next level is not
+    // passed the last step.
+    calc_backend_dense(pos + 1u);
+    
+    // We need to restore the state of the cell
+    EmptyArray(coords.first, coords.second) = 0;  
+    
+    return;
+    
+}
+
 
 /***
   * Function to generate the powerset of the 
@@ -99,7 +127,10 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc() {
     this->init_support();
 
     // Recursive function to count
-    calc_backend(0u);
+    if (EmptyArray.is_dense())
+        calc_backend_dense(0u);
+    else
+        calc_backend(0u);
 
     return;
     

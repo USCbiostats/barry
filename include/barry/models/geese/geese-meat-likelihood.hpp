@@ -18,11 +18,7 @@ inline double Geese::likelihood(
 
     // Scaling root
     for (auto& p : par_root)
-    {
-
         p = std::exp(p)/(std::exp(p) + 1);
-
-    }
 
     std::vector< unsigned int > tmpstate(nfunctions);
 

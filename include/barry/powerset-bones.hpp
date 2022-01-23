@@ -18,6 +18,7 @@ class PowerSet {
     
 private:
     void calc_backend(uint pos = 0u);  
+    void calc_backend_dense(uint pos = 0u);  
 
 public:
     Array_Type                         EmptyArray;

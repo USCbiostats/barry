@@ -11,16 +11,17 @@
 inline double update_normalizing_constant(
     const std::vector< double > & params,
     const std::vector< double > & support
-) {
+)
+{
     
     double res = 0.0;
     size_t k   = params.size();
     size_t n   = support.size() / (k + 1u);
 
     double tmp;
-    // for (unsigned int n = 0u; n < support.size(); ++n)
     for (unsigned int i = 0u; i < n; ++i)
     {
+
         tmp = 0.0;
         
         for (unsigned int j = 0u; j < params.size(); ++j)
@@ -29,17 +30,6 @@ inline double update_normalizing_constant(
         res += exp(tmp BARRY_SAFE_EXP) * support[i * (k + 1u)];
 
     }
-    // for (const auto & sup : support)
-    // {
-        
-    //     tmp = 0.0;
-        
-    //     for (unsigned int j = 0u; j < params.size(); ++j)
-    //         tmp += sup.first[j] * params[j];
-        
-    //     res += exp(tmp BARRY_SAFE_EXP) * sup.second;
-
-    // }
     
     // This will only evaluate if the option BARRY_CHECK_FINITE
     // is defined
@@ -73,9 +63,7 @@ inline double likelihood_(
     double ans = numerator/normalizing_constant;
 
     if (ans > 1.0)
-    {
         printf_barry("ooo\n");
-    }
 
     return ans;
     
@@ -703,24 +691,26 @@ MODEL_TEMPLATE(double, get_norm_const)(
     // Checking if the index exists
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
+
+    const auto id = arrays2support[i];
     
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) )
+    if (!first_calc_done[id] || !vec_equal_approx(params, params_last[id]) )
     {
         
-        first_calc_done[arrays2support[i]] = true;
+        first_calc_done[id] = true;
         
-        normalizing_constants[arrays2support[i]] = update_normalizing_constant(
-                params, stats[arrays2support[i]]
+        normalizing_constants[id] = update_normalizing_constant(
+                params, stats[id]
         );
         
-        params_last[arrays2support[i]] = params;
+        params_last[id] = params;
         
     }
     
     return as_log ? 
-        std::log(normalizing_constants[arrays2support[i]]) :
-        normalizing_constants[arrays2support[i]]
+        std::log(normalizing_constants[id]) :
+        normalizing_constants[id]
         ;
     
 }
