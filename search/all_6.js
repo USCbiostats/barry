@@ -38,7 +38,7 @@ var searchData=
   ['get_5frow_5fvec_300',['get_row_vec',['../class_b_array.html#a2be45b966d99e2bdd3f9994ed70ff145',1,'BArray::get_row_vec(uint i, bool check_bounds=true) const'],['../class_b_array.html#a974b0841e51dac12b88bc5c2cfc9bef7',1,'BArray::get_row_vec(std::vector&lt; Cell_Type &gt; *x, uint i, bool check_bounds=true) const'],['../class_b_array_dense.html#ada00c8753d153e6d4adb08a3a13d76c1',1,'BArrayDense::get_row_vec(uint i, bool check_bounds=true) const'],['../class_b_array_dense.html#a6ed61aad62cc95c91d2a432639567850',1,'BArrayDense::get_row_vec(std::vector&lt; Cell_Type &gt; *x, uint i, bool check_bounds=true) const']]],
   ['get_5frules_301',['get_rules',['../class_model.html#a4c9d8b857f82d69275f120f2461072b8',1,'Model::get_rules()'],['../class_support.html#a792ae05c77c18919a30dd5e2a9d44bf1',1,'Support::get_rules()']]],
   ['get_5frules_5fdyn_302',['get_rules_dyn',['../class_model.html#aff4a65facf467f1857160abc9cb720f2',1,'Model::get_rules_dyn()'],['../class_support.html#a8d2f10623d7d6e5d76fee837a23efa1f',1,'Support::get_rules_dyn()']]],
-  ['get_5fseq_303',['get_seq',['../class_rules.html#afc2e6ddd9cf384f9e70896ad6e581ed4',1,'Rules']]],
+  ['get_5fseq_303',['get_seq',['../class_rules.html#aa6e5d575803251a3e599677a395a2c1e',1,'Rules']]],
   ['get_5fstates_304',['get_states',['../class_geese.html#a08873639292543015324d3c3768e900f',1,'Geese']]],
   ['get_5fsupport_305',['get_support',['../class_model.html#abedfdf782647e5401f832d0121fdab5c',1,'Model::get_support()'],['../class_flock.html#a5f64895180c09db230979d0f5f1bdf06',1,'Flock::get_support()'],['../class_geese.html#ae9c93f40cb142891c294ed541622dab6',1,'Geese::get_support()']]]
 ];

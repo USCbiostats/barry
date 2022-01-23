@@ -112,9 +112,13 @@ bool \mbox{\hyperlink{class_support_a186d2735c60ab0b0e5da69e1a5cce92b}{delete\+\
 \item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_support_a259923d608585376992618f66087efc4}{current\+\_\+stats}}
 \item 
-std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $>$ \mbox{\hyperlink{class_support_af57233b77725e533b8405fcd04b8b159}{coordinates\+\_\+free}}
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_support_a60579f8384f5db6f7f586214439d348f}{coordinates\+\_\+free}}
 \item 
-std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $>$ \mbox{\hyperlink{class_support_af24b093f369d5539706c4e76a6a0a136}{coordinates\+\_\+locked}}
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_support_ac8aae72646b103c79a048f34b1718358}{coordinates\+\_\+locked}}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_support_a4d939728c8c020717eba4232a4a89f38}{coordiantes\+\_\+n\+\_\+free}}
+\item 
+size\+\_\+t \mbox{\hyperlink{class_support_a5061f4f3257702ce64355aa3af22be1f}{coordiantes\+\_\+n\+\_\+locked}}
 \item 
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_support_a66f18465f36acc610ee36ac9f365aa59}{change\+\_\+stats}}
 \end{DoxyCompactItemize}
@@ -150,7 +154,7 @@ Constructor passing a reference Array.
 
 
 
-Definition at line 75 of file support-\/bones.\+hpp.
+Definition at line 77 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_ad76463dc345fe38a78155bb9e238719f}\label{class_support_ad76463dc345fe38a78155bb9e238719f}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!Support@{Support}}
@@ -165,7 +169,7 @@ Constructor specifying the dimensions of the array (empty).
 
 
 
-Definition at line 84 of file support-\/bones.\+hpp.
+Definition at line 86 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_ae24e462f00c68fd4e603b61684fc0e6f}\label{class_support_ae24e462f00c68fd4e603b61684fc0e6f}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!Support@{Support}}
@@ -176,7 +180,7 @@ Definition at line 84 of file support-\/bones.\+hpp.
 
 
 
-Definition at line 91 of file support-\/bones.\+hpp.
+Definition at line 93 of file support-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_support_ad4b178a6a9593273f72dccdba252b949}\label{class_support_ad4b178a6a9593273f72dccdba252b949}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!````~Support@{$\sim$Support}}
@@ -187,7 +191,7 @@ Definition at line 91 of file support-\/bones.\+hpp.
 
 
 
-Definition at line 98 of file support-\/bones.\+hpp.
+Definition at line 100 of file support-\/bones.\+hpp.
 
 
 
@@ -380,25 +384,47 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_support}
 
 
 
+Definition at line 73 of file support-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_support_a4d939728c8c020717eba4232a4a89f38}\label{class_support_a4d939728c8c020717eba4232a4a89f38}} 
+\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!coordiantes\_n\_free@{coordiantes\_n\_free}}
+\index{coordiantes\_n\_free@{coordiantes\_n\_free}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{coordiantes\_n\_free}{coordiantes\_n\_free}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+size\+\_\+t \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::coordiantes\+\_\+n\+\_\+free}
+
+
+
 Definition at line 71 of file support-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_support_af57233b77725e533b8405fcd04b8b159}\label{class_support_af57233b77725e533b8405fcd04b8b159}} 
+\mbox{\Hypertarget{class_support_a5061f4f3257702ce64355aa3af22be1f}\label{class_support_a5061f4f3257702ce64355aa3af22be1f}} 
+\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!coordiantes\_n\_locked@{coordiantes\_n\_locked}}
+\index{coordiantes\_n\_locked@{coordiantes\_n\_locked}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{coordiantes\_n\_locked}{coordiantes\_n\_locked}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+size\+\_\+t \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::coordiantes\+\_\+n\+\_\+locked}
+
+
+
+Definition at line 72 of file support-\/bones.\+hpp.
+
+\mbox{\Hypertarget{class_support_a60579f8384f5db6f7f586214439d348f}\label{class_support_a60579f8384f5db6f7f586214439d348f}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!coordinates\_free@{coordinates\_free}}
 \index{coordinates\_free@{coordinates\_free}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{coordinates\_free}{coordinates\_free}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-std\+::vector$<$ std\+::pair$<$\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}},\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}$>$ $>$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::coordinates\+\_\+free}
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::coordinates\+\_\+free}
 
 
 
 Definition at line 69 of file support-\/bones.\+hpp.
 
-\mbox{\Hypertarget{class_support_af24b093f369d5539706c4e76a6a0a136}\label{class_support_af24b093f369d5539706c4e76a6a0a136}} 
+\mbox{\Hypertarget{class_support_ac8aae72646b103c79a048f34b1718358}\label{class_support_ac8aae72646b103c79a048f34b1718358}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!coordinates\_locked@{coordinates\_locked}}
 \index{coordinates\_locked@{coordinates\_locked}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{coordinates\_locked}{coordinates\_locked}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-std\+::vector$<$ std\+::pair$<$\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}},\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}$>$ $>$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::coordinates\+\_\+locked}
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::coordinates\+\_\+locked}
 
 
 

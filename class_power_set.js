@@ -16,12 +16,14 @@ var class_power_set =
     [ "operator[]", "class_power_set.html#acc822131a9fbfd5b87f85b675f293d39", null ],
     [ "reset", "class_power_set.html#aba11dd8802cd2eb529c7c30b55994248", null ],
     [ "size", "class_power_set.html#a9a92b7c43517e11f3245a7ae89a578ef", null ],
-    [ "coordinates_free", "class_power_set.html#a99cfef97c3a457ea7be1b000b39f41d9", null ],
-    [ "coordinates_locked", "class_power_set.html#ac5cdec06502e8bd20e36fca3abbb9a3e", null ],
+    [ "coordinates_free", "class_power_set.html#a1ccab9487dde1f4d1961983eb28c0976", null ],
+    [ "coordinates_locked", "class_power_set.html#ad9e1a542a0234e3f943611de2bcab51a", null ],
     [ "data", "class_power_set.html#af456c157d157692ba5890c549c51af75", null ],
     [ "EmptyArray", "class_power_set.html#a367db2c97e0301dd0dd78e5e4b458d34", null ],
     [ "M", "class_power_set.html#a91d328d5ace1ed6a8587a66af905ae98", null ],
     [ "N", "class_power_set.html#ab3b65c1b9bce012f4aabe5acae093acd", null ],
+    [ "n_free", "class_power_set.html#a017d35750d824f8e9ce7e03b996c4d4c", null ],
+    [ "n_locked", "class_power_set.html#a690b4321cd83063d5b78d192993864b2", null ],
     [ "rules", "class_power_set.html#afa542ecc31858c8644d1e76078eb1713", null ],
     [ "rules_deleted", "class_power_set.html#a08b6baf1e244e023d997ddaecbc2116f", null ]
 ];
