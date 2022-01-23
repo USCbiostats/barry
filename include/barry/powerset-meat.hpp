@@ -18,7 +18,8 @@ inline PowerSet<Array_Type,Data_Rule_Type>::~PowerSet() {
 }
 
 template <typename Array_Type, typename Data_Rule_Type>
-inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
+inline void PowerSet<Array_Type,Data_Rule_Type>::init_support()
+{
     
     // Computing the locations
     coordinates_free.clear();
@@ -29,13 +30,26 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
     if (EmptyArray.nnozero() > 0u)
     {
 
-        for (uint i = 0u; i < coordinates_free.size(); ++i) 
-            EmptyArray.rm_cell(
-                coordinates_free[i].first,
-                coordinates_free[i].second,
-                false,
-                true
-            );
+        if (EmptyArray.is_dense())
+        {
+
+            for (uint i = 0u; i < coordinates_free.size(); ++i) 
+                EmptyArray(coordinates_free[i].first, coordinates_free[i].second) = 0;
+
+        }
+        else
+        {
+
+            for (uint i = 0u; i < coordinates_free.size(); ++i) 
+                EmptyArray.rm_cell(
+                    coordinates_free[i].first,
+                    coordinates_free[i].second,
+                    false,
+                    true
+                );
+
+
+        }
             
     }
 
@@ -52,14 +66,17 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
 }
 
 template <typename Array_Type, typename Data_Rule_Type>
-inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend(uint pos) {
+inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_sparse(
+    uint pos
+)
+{
     
     // Did we reached the end??
     if (pos >= coordinates_free.size())
         return;
             
     // We will pass it to the next step, if the iteration makes sense.
-    calc_backend(pos + 1u);
+    calc_backend_sparse(pos + 1u);
 
     const std::pair<uint,uint> & coords = coordinates_free[pos];
         
@@ -75,7 +92,7 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend(uint pos) {
     
     // Again, we only pass it to the next level iff the next level is not
     // passed the last step.
-    calc_backend(pos + 1u);
+    calc_backend_sparse(pos + 1u);
     
     // We need to restore the state of the cell
     EmptyArray.rm_cell(
@@ -89,7 +106,10 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend(uint pos) {
 }
 
 template <typename Array_Type, typename Data_Rule_Type>
-inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_dense(uint pos) {
+inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_dense(
+    uint pos
+)
+{
     
     // Did we reached the end??
     if (pos >= coordinates_free.size())
@@ -130,7 +150,7 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc() {
     if (EmptyArray.is_dense())
         calc_backend_dense(0u);
     else
-        calc_backend(0u);
+        calc_backend_sparse(0u);
 
     return;
     

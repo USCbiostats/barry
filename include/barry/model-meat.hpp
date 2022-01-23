@@ -565,11 +565,14 @@ MODEL_TEMPLATE(double, likelihood)(
     
     // Counting stats
     StatsCounter< Array_Type, Data_Counter_Type> tmpstats(&Array_);
+
     tmpstats.set_counters(this->counters);
+    
     std::vector< double > target_ = tmpstats.count_all();
 
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
+    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) )
+    {
         
         first_calc_done[loc] = true;
         

@@ -17,7 +17,7 @@ template <typename Array_Type = BArray<>, typename Data_Rule_Type = bool>
 class PowerSet {
     
 private:
-    void calc_backend(uint pos = 0u);  
+    void calc_backend_sparse(uint pos = 0u);  
     void calc_backend_dense(uint pos = 0u);  
 
 public:

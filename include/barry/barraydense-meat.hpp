@@ -131,7 +131,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
         // Adding the value and creating a pointer to it
         el[POS(source[i], target[i])] = value[i];
         
-        NCells++;
+        // NCells++;
 
     }
     
@@ -149,7 +149,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
     
     std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
 
-    this->NCells  = Array_.NCells;
+    // this->NCells  = Array_.NCells;
     this->visited = Array_.visited;
     
     // Data
@@ -187,7 +187,7 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=) (
         
         // Entries
         std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
-        this->NCells = Array_.NCells;
+        // this->NCells = Array_.NCells;
         this->N      = Array_.N;
         this->M      = Array_.M;
       
@@ -219,7 +219,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
     BDENSE_TYPE() && x
     ) noexcept :
     N(std::move(x.N)), M(std::move(x.M)),
-    NCells(std::move(x.NCells)),
+    // NCells(std::move(x.NCells)),
     el(std::move(x.el)),
     data(std::move(x.data)),
     delete_data(std::move(x.delete_data))
@@ -240,7 +240,7 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=)(
       
         N      = x.N;
         M      = x.M;
-        NCells = x.NCells;
+        // NCells = x.NCells;
         
         std::swap(el, x.el);
               
@@ -276,7 +276,7 @@ BDENSE_TEMPLATE(bool, operator==) (
 ) {
     
     // Dimension and number of cells used
-    if ((N != Array_.nrow()) | (M != Array_.ncol()) | (NCells != Array_.nnozero()))
+    if ( (N != Array_.nrow()) | (M != Array_.ncol()) )
         return false;
     
     // One holds, and the other doesn't.
@@ -467,17 +467,24 @@ BArrayDense<Cell_Type,Data_Type>::col(
 
 BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
     
-    Entries<Cell_Type> res(NCells);
+    unsigned int nzero = this->nnozero();
+
+    Entries<Cell_Type> res(nzero);
     
     for (uint i = 0u; i < N; ++i)
     {
         for (uint j = 0u; col < M; ++j)
         {
 
-            if (el[POS(i, j)].active)
-            res.source.push_back(i),
-            res.target.push_back(j),
-            res.val.push_back(el[POS(i, j)].value);
+            if (el[POS(i, j)] != BARRY_ZERO_DENSE)
+            {
+
+                res.source.push_back(i),
+                res.target.push_back(j),
+                res.val.push_back(el[POS(i, j)]);
+
+            }
+            
 
         }
 
@@ -509,7 +516,13 @@ BDENSE_TEMPLATE(unsigned int, ncol)() const noexcept {
 }
 
 BDENSE_TEMPLATE(unsigned int, nnozero)() const noexcept {
-    return NCells;
+
+    unsigned int nzero = 0u;
+    for (auto & v : el)
+        if (v != BARRY_ZERO_DENSE)
+            nzero++;
+
+    return nzero;
 }
 
 BDENSE_TEMPLATE(Cell< Cell_Type>, default_val)() const {
@@ -583,8 +596,6 @@ BDENSE_TEMPLATE(void, rm_cell) (
     // Remove the pointer first (so it wont point to empty)
     el[POS(i, j)] = BARRY_ZERO_DENSE;
     
-    NCells--;
-    
     return;
 
 }
@@ -602,25 +613,15 @@ BDENSE_TEMPLATE(void, insert_cell) (
     
     if (check_exists)
     {
+
+        if (el[POS(i,j)] != BARRY_ZERO_DENSE)
+            throw std::logic_error("The cell already exists.");
         
-        // Checking if nothing here, then we move along
-        if (NCells == 0u)
-        {
-            el[POS(i, j)] = Cell< Cell_Type >(v, !visited, true);
-            NCells++;
-            return;
-            
-        } else
-            throw std::logic_error("The cell already exists.");        
-        
-    } else {
-        
-        el[POS(i, j)] = Cell< Cell_Type >(v, !visited, true);
-        NCells++;
-        
-    }
+    } 
     
+    el[POS(i, j)] = static_cast< Cell_Type >(v);
     return;
+
     
 }
 
@@ -636,7 +637,7 @@ BDENSE_TEMPLATE(void, insert_cell) (
         out_of_range(i,j); 
     
     el[POS(i, j)] = std::move(v);
-    NCells++;    
+    // NCells++;    
     
     return;
     
@@ -713,7 +714,7 @@ BDENSE_TEMPLATE(void, toggle_cell) (
 
         c.active = true;
         c.value  = static_cast<Cell_Type>(1);
-        NCells++;
+        // NCells++;
 
 
     }
@@ -736,8 +737,8 @@ BDENSE_TEMPLATE(void, swap_rows) (
 
     }
      
-    if (NCells == 0u)
-        return;
+    // if (NCells == 0u)
+    //     return;
     
     // Swapping happens naturally, need to take care of the pointers
     // though
@@ -762,8 +763,8 @@ BDENSE_TEMPLATE(void, swap_cols) (
 
     }
     
-    if (NCells == 0u)
-        return;
+    // if (NCells == 0u)
+    //     return;
     
     // Swapping happens naturally, need to take care of the pointers
     // though
@@ -781,9 +782,9 @@ BDENSE_TEMPLATE(void, zero_row) (
     if (check_bounds)
         out_of_range(i, 0u);
     
-    // If already empty, nothing to do
-    if (NCells == 0u)
-        return;
+    // // If already empty, nothing to do
+    // if (NCells == 0u)
+    //     return;
 
     // Else, remove all elements
     for (unsigned int col = 0u; col < M; col++) 
@@ -801,9 +802,9 @@ BDENSE_TEMPLATE(void, zero_col) (
     if (check_bounds)
         out_of_range(0u, j);
     
-    // Nothing to do
-    if (NCells == 0u)
-        return;
+    // // Nothing to do
+    // if (NCells == 0u)
+    //     return;
     
     // Else, remove all elements
     for (unsigned int row = 0u; row < N; row++) 
@@ -815,13 +816,13 @@ BDENSE_TEMPLATE(void, zero_col) (
 
 BDENSE_TEMPLATE(void, transpose) () {
   
-    if (NCells == 0u)
-    {
+    // if (NCells == 0u)
+    // {
 
-        std::swap(N, M);
-        return;
+    //     std::swap(N, M);
+    //     return;
 
-    }
+    // }
 
     // Start by flipping the switch 
     visited = !visited;
@@ -848,7 +849,7 @@ BDENSE_TEMPLATE(void, clear) (
     for (auto & c: el)
         c = ZERO_CELL;
 
-    NCells = 0u;
+    // NCells = 0u;
     
     return;
     
@@ -859,16 +860,16 @@ BDENSE_TEMPLATE(void, resize) (
     uint M_
 ) {
 
-    // If already empty, it is very simple
-    if (NCells == 0u)
-    {
+    // // If already empty, it is very simple
+    // if (NCells == 0u)
+    // {
         
-        el.resize(N_ * M_, ZERO_CELL);
-        N = N_;
-        M = M_;
-        return;
+    //     el.resize(N_ * M_, ZERO_CELL);
+    //     N = N_;
+    //     M = M_;
+    //     return;
 
-    }
+    // }
   
     // Moving stuff around
     std::vector< Cell< Cell_Type > > el_tmp(std::move(el));
@@ -905,8 +906,17 @@ BDENSE_TEMPLATE(void, reserve) () {
   
 }
 
-BDENSE_TEMPLATE(void, print) () const {
+BDENSE_TEMPLATE(void, print) (
+    const char * fmt,
+    ...
+) const
+{
   
+    std::va_list args;
+    va_start(args, fmt);
+    vprintf(fmt, args);
+    va_end(args);
+
     for (uint i = 0u; i < N; ++i)
     {
 

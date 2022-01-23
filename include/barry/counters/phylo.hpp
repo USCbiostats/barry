@@ -1445,10 +1445,12 @@ inline void rule_dyn_limit_changes(
         unsigned int rule_type = data->duplication;
         if (rule_type != DUPL_EITH)
         {
+
             if (Array.D()->duplication & (rule_type != DUPL_DUPL))
                 return true;
             else if (!Array.D()->duplication & (rule_type != DUPL_SPEC))
                 return true;
+                
         }
 
         if (data->counts->operator[](data->pos) < data->lb)

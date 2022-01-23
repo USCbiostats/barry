@@ -35,8 +35,8 @@ BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
     // Tryingout likelihood
     std::vector<double> params = {1, 1, -1, -10, -10};
 
-    double ans0a = model.likelihood(params);
-    double ans1a = model.likelihood_exhaust(params);
+    double ans0a = model.likelihood(params); // 0.057089548117690694
+    double ans1a = model.likelihood_exhaust(params); // 0.057089548117690736
     
     #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(ans0a - ans1a) < .0000001);
@@ -58,8 +58,8 @@ BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
     model.update_annotations(3u, {1u, 9u});
     model.update_annotations(4u, {0u, 0u});
 
-    double ans0b = model.likelihood(params);
-    double ans1b = model2.likelihood(params);
+    double ans0b = model.likelihood(params);  // 0.056110910038269665
+    double ans1b = model2.likelihood(params); // 0.056110910038269665
 
     #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(ans0b - ans1b) < .0000001);
@@ -69,7 +69,7 @@ BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
     model.update_annotations(3u, {1u, 1u});
     model.update_annotations(4u, {0u, 9u});
 
-    double ans0c = model.likelihood(params);
+    double ans0c = model.likelihood(params); // 0.057089548117690694
 
     #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(ans0a - ans0c) < .0000001);

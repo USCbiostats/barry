@@ -43,7 +43,7 @@ class BArrayDense {
 private:
     uint N;
     uint M;
-    uint NCells = 0u;
+    // uint NCells = 0u;
     std::vector< Cell_Type > el;
     Data_Type * data = nullptr;
     bool delete_data = false;
@@ -75,10 +75,10 @@ public:
     ///@{
     
     /** @brief Zero-size array */
-    BArrayDense() : N(0u), M(0u), NCells(0u), el(0u) {};
+    BArrayDense() : N(0u), M(0u), el(0u) {};
     
     /** @brief Empty array */
-    BArrayDense (uint N_, uint M_) : N(N_), M(M_), NCells(0u), el(N_ * M_) {};
+    BArrayDense (uint N_, uint M_) : N(N_), M(M_), el(N_ * M_) {};
     
     /** @brief Edgelist with data */
     BArrayDense (
@@ -221,7 +221,7 @@ public:
     // void toggle_iterator
     
     // Misc
-    void print() const;
+    void print(const char * fmt = nullptr, ...) const;
 
     /**
      * @name Arithmetic operators
