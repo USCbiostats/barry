@@ -59,8 +59,8 @@ var NAVTREEINDEX =
 "barraydenserow-bones_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9",
 "class_b_array_row.html#aeed05adb94aa119e9fcf910e4a3a9807",
 "class_network_data.html",
-"functions_g.html",
-"phylo_8hpp.html#a0d16a69c8b447a32a3aa4d4c041773cc"
+"functions_func_z.html",
+"network_8hpp.html#ade7c09a084b266e48f9222c54fd12681"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -11,6 +11,7 @@ var typedefs_8hpp =
     [ "uint", "typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14", null ],
     [ "vec_equal", "typedefs_8hpp.html#a0520b46efb182c4254e257ff5c5e7394", null ],
     [ "vec_equal_approx", "typedefs_8hpp.html#aec4a47b2d5c6f46872f300633cf1e938", null ],
+    [ "vec_inner_prod", "typedefs_8hpp.html#a60bd7a30be2c251b3eb7b05c5d1dff38", null ],
     [ "vec_inner_prod", "typedefs_8hpp.html#a843abed15fe9f1be82d863feef016c36", null ],
     [ "AS_ONE", "typedefs_8hpp.html#a735e5ca6565905e84346e3ff62842a0a", null ],
     [ "AS_ZERO", "typedefs_8hpp.html#a03d550dd049f50f852b8fb4caa48238a", null ],

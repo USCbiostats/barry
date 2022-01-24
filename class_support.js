@@ -34,6 +34,8 @@ var class_support =
     [ "delete_counters", "class_support.html#a97091e3705c3d816ea02d078bca42f71", null ],
     [ "delete_rules", "class_support.html#af0c0f1a81bd42c8640ddfa151ed98815", null ],
     [ "delete_rules_dyn", "class_support.html#a186d2735c60ab0b0e5da69e1a5cce92b", null ],
+    [ "hashes", "class_support.html#af10c9a101c751eb4d5d0b331d8ff0465", null ],
+    [ "hashes_initialized", "class_support.html#a6f2e96153f42a5e4a7bebfa79adcc331", null ],
     [ "M", "class_support.html#a0996a88d823b533f55c734b7bf526f4a", null ],
     [ "max_num_elements", "class_support.html#ae191c14de35f91695704173d04945633", null ],
     [ "N", "class_support.html#a33d391397682bc93e8a3f0e052d6e341", null ],

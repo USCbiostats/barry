@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['keygen_5fdefault_338',['keygen_default',['../model-bones_8hpp.html#ac8a92bc92bfb721602c0470f3efa4f84',1,'model-bones.hpp']]],
-  ['keygen_5ffull_339',['keygen_full',['../geese-bones_8hpp.html#aa60134cca317d64e4b3d1707380d5d0d',1,'geese-bones.hpp']]]
+  ['j_337',['j',['../barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e',1,'j():&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#abf2bc2545a4a5f5683d9ef3ed0d977e0',1,'j():&#160;barraydense-meat.hpp'],['../counters-meat_8hpp.html#a1adc09117fb18eb79d260e4bd720ce41',1,'j():&#160;counters-meat.hpp'],['../statscounter-meat_8hpp.html#abbe66f29402555d707260862a10eb56e',1,'j():&#160;statscounter-meat.hpp']]],
+  ['j0_338',['j0',['../barray-meat_8hpp.html#a76215ac0aab4542631c11206d92597e2',1,'j0():&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#a76215ac0aab4542631c11206d92597e2',1,'j0():&#160;barraydense-meat.hpp']]],
+  ['j1_339',['j1',['../barray-meat_8hpp.html#a355f2dae482006084fd82d31f52cbbc1',1,'j1():&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#a355f2dae482006084fd82d31f52cbbc1',1,'j1():&#160;barraydense-meat.hpp']]]
 ];

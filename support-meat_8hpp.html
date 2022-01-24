@@ -167,6 +167,8 @@ Functions</h2></td></tr>
 <tr class="separator:ab94c259ba65603a97ac1db3a4cad67ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a374b4083f6045b49bcde35a8da4d5e80"><td class="memItemLeft" align="right" valign="top">EmptyArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#a374b4083f6045b49bcde35a8da4d5e80">rm_cell</a> (<a class="el" href="support-meat_8hpp.html#aa90d256a87dd45ec1f1b398a11d21881">coord_i</a>, <a class="el" href="support-meat_8hpp.html#ac5c22dcb010da5ba693bd700d0ba4fd6">coord_j</a>, <a class="el" href="barraydense-meat_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>, <a class="el" href="barraydense-meat_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>)</td></tr>
 <tr class="separator:a374b4083f6045b49bcde35a8da4d5e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fcea6eb1c3a87ac95c8c20f7d03226a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#a1fcea6eb1c3a87ac95c8c20f7d03226a">if</a> (<a class="el" href="support-meat_8hpp.html#a8cd8db93da5adaf7327496c53f1a133e">change_stats_different</a> &gt; 0u)</td></tr>
+<tr class="separator:a1fcea6eb1c3a87ac95c8c20f7d03226a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b3901d4ec45493eee3ee55093f446a4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#a8b3901d4ec45493eee3ee55093f446a4">SUPPORT_TEMPLATE</a> (void, <a class="el" href="support-meat_8hpp.html#ab38525a95e90bb46ae74d5fdda68a8e9">calc_backend_dense</a>)(<a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> pos</td></tr>
 <tr class="separator:a8b3901d4ec45493eee3ee55093f446a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab38525a95e90bb46ae74d5fdda68a8e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#ab38525a95e90bb46ae74d5fdda68a8e9">calc_backend_dense</a> (pos+1u, <a class="el" href="support-meat_8hpp.html#ac507b5b05a329a72fa561a352608abdf">array_bank</a>, <a class="el" href="support-meat_8hpp.html#a39489bd3dc7e3d72a31609106b58284f">stats_bank</a>)</td></tr>
@@ -208,8 +210,14 @@ Variables</h2></td></tr>
 <tr class="separator:aa90d256a87dd45ec1f1b398a11d21881"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5c22dcb010da5ba693bd700d0ba4fd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> size_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#ac5c22dcb010da5ba693bd700d0ba4fd6">coord_j</a> = coordinates_free[pos * 2u + 1u]</td></tr>
 <tr class="separator:ac5c22dcb010da5ba693bd700d0ba4fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99bc64000138ec8cdb4a77888dff849f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#a99bc64000138ec8cdb4a77888dff849f">tmp_chng</a></td></tr>
+<tr class="separator:a99bc64000138ec8cdb4a77888dff849f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cd8db93da5adaf7327496c53f1a133e"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#a8cd8db93da5adaf7327496c53f1a133e">change_stats_different</a> = hashes_initialized[pos] ? 0u : 1u</td></tr>
+<tr class="separator:a8cd8db93da5adaf7327496c53f1a133e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0544c3fe466e421738dae463968b70ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#a0544c3fe466e421738dae463968b70ba">else</a></td></tr>
 <tr class="separator:a0544c3fe466e421738dae463968b70ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81e509685549f0b2bd6dce17d453383c"><td class="memItemLeft" align="right" valign="top">&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#a81e509685549f0b2bd6dce17d453383c">hashes</a> [pos]</td></tr>
+<tr class="separator:a81e509685549f0b2bd6dce17d453383c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9717e7bbecb906637e86cef6da3d83c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2">return</a></td></tr>
 <tr class="separator:a9717e7bbecb906637e86cef6da3d83c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa80d872ce00a593ea8f27137907b9cf3"><td class="memItemLeft" align="right" valign="top">Data_Counter_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></td></tr>
@@ -409,12 +417,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00155">155</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00160">160</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
 <a id="a2e7d16a6d5b063a5b390419c643b35a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e7d16a6d5b063a5b390419c643b35a2">&#9670;&nbsp;</a></span>if() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e7d16a6d5b063a5b390419c643b35a2">&#9670;&nbsp;</a></span>if() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -431,8 +439,38 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a1fcea6eb1c3a87ac95c8c20f7d03226a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fcea6eb1c3a87ac95c8c20f7d03226a">&#9670;&nbsp;</a></span>if() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">if </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="support-meat_8hpp.html#a8cd8db93da5adaf7327496c53f1a133e">change_stats_different</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0u&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00241">241</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+
+</div>
+</div>
 <a id="ac3e9dc0da8cb5558062309c63a98bb41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3e9dc0da8cb5558062309c63a98bb41">&#9670;&nbsp;</a></span>if() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3e9dc0da8cb5558062309c63a98bb41">&#9670;&nbsp;</a></span>if() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,12 +495,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00170">170</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00189">189</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
 <a id="ab94c259ba65603a97ac1db3a4cad67ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab94c259ba65603a97ac1db3a4cad67ca">&#9670;&nbsp;</a></span>if() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab94c259ba65603a97ac1db3a4cad67ca">&#9670;&nbsp;</a></span>if() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -637,7 +675,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00433">433</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00489">489</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -667,7 +705,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00482">482</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00538">538</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -697,7 +735,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00467">467</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00523">523</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -727,7 +765,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00455">455</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00511">511</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -841,7 +879,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00307">307</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00363">363</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -957,7 +995,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00471">471</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00527">527</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -987,7 +1025,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00112">112</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00115">115</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1017,7 +1055,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00118">118</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00121">121</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1118,7 +1156,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00129">129</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00132">132</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8cd8db93da5adaf7327496c53f1a133e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cd8db93da5adaf7327496c53f1a133e">&#9670;&nbsp;</a></span>change_stats_different</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int change_stats_different = hashes_initialized[pos] ? 0u : 1u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00159">159</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1134,7 +1188,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00142">142</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00145">145</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1150,7 +1204,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00143">143</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00146">146</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1166,7 +1220,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00361">361</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00417">417</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1186,10 +1240,10 @@ Variables</h2></td></tr>
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">delete_counters</a>)</div>
 <div class="line">        <span class="keyword">delete</span> <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a782c48a908662b34845b6f654f929788"><div class="ttname"><a href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div><div class="ttdeci">counters</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00361">support-meat.hpp:361</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_ad39d911b94d7512d07b68ab7eac8164b"><div class="ttname"><a href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">delete_counters</a></div><div class="ttdeci">delete_counters</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00360">support-meat.hpp:360</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a782c48a908662b34845b6f654f929788"><div class="ttname"><a href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div><div class="ttdeci">counters</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00417">support-meat.hpp:417</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_ad39d911b94d7512d07b68ab7eac8164b"><div class="ttname"><a href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">delete_counters</a></div><div class="ttdeci">delete_counters</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00416">support-meat.hpp:416</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00354">354</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00410">410</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1205,7 +1259,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00360">360</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00416">416</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1275,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00394">394</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00450">450</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1237,7 +1291,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00426">426</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00482">482</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1248,16 +1302,23 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">else</td>
+          <td class="memname">else </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
 <div class="line"> </div>
-<div class="line">        <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.add(current_stats)</div>
+<div class="line">        <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#a8cd8db93da5adaf7327496c53f1a133e">change_stats_different</a> &gt; 0u)</div>
+<div class="line">            <a class="code" href="support-meat_8hpp.html#a81e509685549f0b2bd6dce17d453383c">hashes</a>[pos] = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.add(current_stats, <span class="keyword">nullptr</span>)</div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a81e509685549f0b2bd6dce17d453383c"><div class="ttname"><a href="support-meat_8hpp.html#a81e509685549f0b2bd6dce17d453383c">hashes</a></div><div class="ttdeci">&amp; hashes[pos]</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00219">support-meat.hpp:219</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a8cd8db93da5adaf7327496c53f1a133e"><div class="ttname"><a href="support-meat_8hpp.html#a8cd8db93da5adaf7327496c53f1a133e">change_stats_different</a></div><div class="ttdeci">unsigned int change_stats_different</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00159">support-meat.hpp:159</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00192">192</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00214">214</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1275,9 +1336,25 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
 <div class="line">    </div>
 <div class="line">    <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>)</div>
-<div class="ttc" id="asupport-meat_8hpp_html_aa80d872ce00a593ea8f27137907b9cf3"><div class="ttname"><a href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div><div class="ttdeci">Data_Counter_Type * f_</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00336">support-meat.hpp:337</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_aa80d872ce00a593ea8f27137907b9cf3"><div class="ttname"><a href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div><div class="ttdeci">Data_Counter_Type * f_</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00392">support-meat.hpp:393</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00336">336</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00392">392</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a81e509685549f0b2bd6dce17d453383c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e509685549f0b2bd6dce17d453383c">&#9670;&nbsp;</a></span>hashes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">&amp; hashes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00219">219</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1293,7 +1370,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00219">219</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00249">249</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1309,7 +1386,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00395">395</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00451">451</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1329,10 +1406,10 @@ Variables</h2></td></tr>
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">delete_rules</a>)</div>
 <div class="line">        <span class="keyword">delete</span> <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a595e07a99f60f22a6a29e4fca291ea28"><div class="ttname"><a href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a></div><div class="ttdeci">rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00395">support-meat.hpp:395</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a89cc6daed3ad4d168d186db36f4f063d"><div class="ttname"><a href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">delete_rules</a></div><div class="ttdeci">delete_rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00394">support-meat.hpp:394</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a595e07a99f60f22a6a29e4fca291ea28"><div class="ttname"><a href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a></div><div class="ttdeci">rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00451">support-meat.hpp:451</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a89cc6daed3ad4d168d186db36f4f063d"><div class="ttname"><a href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">delete_rules</a></div><div class="ttdeci">delete_rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00450">support-meat.hpp:450</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00388">388</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00444">444</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1348,7 +1425,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00427">427</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00483">483</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1369,7 +1446,23 @@ Variables</h2></td></tr>
 <div class="line">    <span class="keywordflow">if</span> (pos &gt;= coordiantes_n_free)</div>
 <div class="line">        <span class="keywordflow">return</span></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00130">130</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00133">133</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a99bc64000138ec8cdb4a77888dff849f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99bc64000138ec8cdb4a77888dff849f">&#9670;&nbsp;</a></span>tmp_chng</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double tmp_chng</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="support-meat_8hpp_source.html#l00158">158</a> of file <a class="el" href="support-meat_8hpp_source.html">support-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -1379,7 +1472,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="support-meat_8hpp.html">support-meat.hpp</a></li>
-    <li class="footer">Generated on Mon Jan 24 2022 06:52:22 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jan 24 2022 20:47:47 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -8,6 +8,7 @@ var support_meat_8hpp =
     [ "calc_backend_sparse", "support-meat_8hpp.html#a980099bf621a65db8f01ee0cabdcfc58", null ],
     [ "for", "support-meat_8hpp.html#a60708372bc78ab014d166f99ad509b41", null ],
     [ "if", "support-meat_8hpp.html#a2e7d16a6d5b063a5b390419c643b35a2", null ],
+    [ "if", "support-meat_8hpp.html#a1fcea6eb1c3a87ac95c8c20f7d03226a", null ],
     [ "if", "support-meat_8hpp.html#ac3e9dc0da8cb5558062309c63a98bb41", null ],
     [ "if", "support-meat_8hpp.html#ab94c259ba65603a97ac1db3a4cad67ca", null ],
     [ "insert_cell", "support-meat_8hpp.html#ab532d2e43799a4eda296996fae57a22f", null ],
@@ -31,6 +32,7 @@ var support_meat_8hpp =
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a207333d0a9fef722cbc4fe1a6ea213e0", null ],
     [ "SUPPORT_TEMPLATE", "support-meat_8hpp.html#a73d63a8eb320e6467b25423b8f853ae4", null ],
     [ "array_bank", "support-meat_8hpp.html#ac507b5b05a329a72fa561a352608abdf", null ],
+    [ "change_stats_different", "support-meat_8hpp.html#a8cd8db93da5adaf7327496c53f1a133e", null ],
     [ "coord_i", "support-meat_8hpp.html#aa90d256a87dd45ec1f1b398a11d21881", null ],
     [ "coord_j", "support-meat_8hpp.html#ac5c22dcb010da5ba693bd700d0ba4fd6", null ],
     [ "counters", "support-meat_8hpp.html#a782c48a908662b34845b6f654f929788", null ],
@@ -40,9 +42,11 @@ var support_meat_8hpp =
     [ "delete_rules_dyn", "support-meat_8hpp.html#a2e7c4ddea9211859d1f7f6f288590e02", null ],
     [ "else", "support-meat_8hpp.html#a0544c3fe466e421738dae463968b70ba", null ],
     [ "f_", "support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3", null ],
+    [ "hashes", "support-meat_8hpp.html#a81e509685549f0b2bd6dce17d453383c", null ],
     [ "return", "support-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2", null ],
     [ "rules", "support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28", null ],
     [ "rules_", "support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588", null ],
     [ "rules_dyn", "support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5", null ],
-    [ "stats_bank", "support-meat_8hpp.html#a39489bd3dc7e3d72a31609106b58284f", null ]
+    [ "stats_bank", "support-meat_8hpp.html#a39489bd3dc7e3d72a31609106b58284f", null ],
+    [ "tmp_chng", "support-meat_8hpp.html#a99bc64000138ec8cdb4a77888dff849f", null ]
 ];

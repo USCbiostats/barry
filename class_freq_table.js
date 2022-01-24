@@ -2,7 +2,7 @@ var class_freq_table =
 [
     [ "FreqTable", "class_freq_table.html#a2fdea53e35f9a301d7d1bbf6b7da5f41", null ],
     [ "~FreqTable", "class_freq_table.html#a7ed627807a61c484243636137609abcd", null ],
-    [ "add", "class_freq_table.html#a919e08556ba3aa9535a64827315bb89a", null ],
+    [ "add", "class_freq_table.html#acd7b10dbea3f6aebd9cb029ddf13c603", null ],
     [ "as_vector", "class_freq_table.html#a1898e62605d8753e170189936d403e05", null ],
     [ "clear", "class_freq_table.html#a326660096e4309780aea8355d0f74ac7", null ],
     [ "get_data", "class_freq_table.html#a40c1554542e44e224768c22bcfdfaf36", null ],
