@@ -32,7 +32,7 @@ public:
     
     Counts_type                 as_vector() const;
     const std::vector< double > & get_data() const {return data;};
-    const MapVec_type<T,int> & get_index() const {return index;};
+    const std::unordered_map<size_t,size_t> & get_index() const {return index;};
     
     void clear();
     void reserve(unsigned int n);
@@ -57,7 +57,7 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
     if (k == 0u)
     {
 
-        index[make_hash(x)] = 0u;
+        index.insert({make_hash(x), 0u});
 
         data.push_back(1.0);
         data.insert(data.end(), x.begin(), x.end());

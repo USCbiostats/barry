@@ -276,7 +276,9 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
         }
             
 
-    } else {
+    }
+    else
+    {
 
         data.add(current_stats);
         // Need to save?
