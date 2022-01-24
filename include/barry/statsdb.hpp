@@ -16,12 +16,12 @@ template<typename T = double>
 class FreqTable {
 private:
 
-    MapVec_type<T, int> index;
+    std::unordered_map<size_t, size_t> index;
     std::vector< double > data;
     size_t k = 0u;
     size_t n = 0u;
 
-    typename MapVec_type<T,int>::iterator iter;
+    typename std::unordered_map<size_t, size_t>::iterator iter;
         
 public:
     // uint ncols;
@@ -40,11 +40,12 @@ public:
 
     /**
      * @brief Number of unique elements in the table.
-     * 
+     * (
      * @return size_t 
      */
     size_t size() const noexcept;
-    
+
+    size_t make_hash(const std::vector< double > & x) const;
     
 };
 
@@ -56,7 +57,7 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
     if (k == 0u)
     {
 
-        index[x] = 0u;
+        index[make_hash(x)] = 0u;
 
         data.push_back(1.0);
         data.insert(data.end(), x.begin(), x.end());
@@ -74,13 +75,14 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
             throw std::length_error(
                 "The value you are trying to add doesn't have the same lenght used in the database."
                 );
-            
-        iter = index.find(x);
+        
+        size_t h = make_hash(x);
+        iter = index.find(h);
 
         if (iter == index.end())
         {
 
-            index[x] = data.size();
+            index.insert({h, data.size()});
             data.push_back(1.0);
             data.insert(data.end(), x.begin(), x.end());
 
@@ -190,6 +192,24 @@ inline size_t FreqTable<T>::size() const noexcept
 {
 
     return index.size();
+
+}
+
+template<typename T>
+inline size_t FreqTable<T>::make_hash(const std::vector< double > & x) const
+{
+
+    std::hash< T > hasher;
+    std::size_t hash = hasher(x[0u]);
+    
+    // ^ makes bitwise XOR
+    // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
+    // << is a shift operator, something like lhs * 2^(rhs)
+    if (x.size() > 1u)
+        for (unsigned int i = 1u; i < x.size(); ++i)
+            hash ^= hasher(x[i]) + 0x9e3779b9 + (hash<<6) + (hash>>2);
+    
+    return hash;
 
 }
 
