@@ -22,7 +22,7 @@ void \mbox{\hyperlink{class_freq_table_a919e08556ba3aa9535a64827315bb89a}{add}} 
 \item 
 \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \& \mbox{\hyperlink{class_freq_table_a40c1554542e44e224768c22bcfdfaf36}{get\+\_\+data}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}}$<$ T, int $>$ \& \mbox{\hyperlink{class_freq_table_a6caba65bbc07d895e4aa9f929d480b2b}{get\+\_\+index}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::unordered\+\_\+map$<$ size\+\_\+t, size\+\_\+t $>$ \& \mbox{\hyperlink{class_freq_table_aaedc785570175889a224d6ebaab6ffa7}{get\+\_\+index}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
 void \mbox{\hyperlink{class_freq_table_a326660096e4309780aea8355d0f74ac7}{clear}} ()
 \item 
@@ -31,7 +31,9 @@ void \mbox{\hyperlink{class_freq_table_a0bdced25f7c0bee38e073c4654578d19}{reserv
 void \mbox{\hyperlink{class_freq_table_a4fe8f5e3b5bf64a1cbaf99deb96298d4}{print}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
 size\+\_\+t \mbox{\hyperlink{class_freq_table_af1f26bddaded94f0d5acb68f3a94fb86}{size}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
-\begin{DoxyCompactList}\small\item\em Number of unique elements in the table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Number of unique elements in the table. (. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_freq_table_a50356d179b94e20aefb94952ed9646bc}{make\+\_\+hash}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&x) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -81,7 +83,7 @@ void \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::add (\begin{Do
 
 
 
-Definition at line 52 of file statsdb.\+hpp.
+Definition at line 53 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_a1898e62605d8753e170189936d403e05}\label{class_freq_table_a1898e62605d8753e170189936d403e05}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!as\_vector@{as\_vector}}
@@ -92,7 +94,7 @@ Definition at line 52 of file statsdb.\+hpp.
 
 
 
-Definition at line 102 of file statsdb.\+hpp.
+Definition at line 104 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_a326660096e4309780aea8355d0f74ac7}\label{class_freq_table_a326660096e4309780aea8355d0f74ac7}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!clear@{clear}}
@@ -103,7 +105,7 @@ void \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::clear\hspace{0
 
 
 
-Definition at line 131 of file statsdb.\+hpp.
+Definition at line 133 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_a40c1554542e44e224768c22bcfdfaf36}\label{class_freq_table_a40c1554542e44e224768c22bcfdfaf36}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!get\_data@{get\_data}}
@@ -116,16 +118,27 @@ Definition at line 131 of file statsdb.\+hpp.
 
 Definition at line 34 of file statsdb.\+hpp.
 
-\mbox{\Hypertarget{class_freq_table_a6caba65bbc07d895e4aa9f929d480b2b}\label{class_freq_table_a6caba65bbc07d895e4aa9f929d480b2b}} 
+\mbox{\Hypertarget{class_freq_table_aaedc785570175889a224d6ebaab6ffa7}\label{class_freq_table_aaedc785570175889a224d6ebaab6ffa7}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!get\_index@{get\_index}}
 \index{get\_index@{get\_index}!FreqTable$<$ T $>$@{FreqTable$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{get\_index()}{get\_index()}}
 {\footnotesize\ttfamily template$<$typename T  = double$>$ \\
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}}$<$T,int$>$\& \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::get\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::unordered\+\_\+map$<$size\+\_\+t,size\+\_\+t$>$\& \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::get\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 35 of file statsdb.\+hpp.
+
+\mbox{\Hypertarget{class_freq_table_a50356d179b94e20aefb94952ed9646bc}\label{class_freq_table_a50356d179b94e20aefb94952ed9646bc}} 
+\index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!make\_hash@{make\_hash}}
+\index{make\_hash@{make\_hash}!FreqTable$<$ T $>$@{FreqTable$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{make\_hash()}{make\_hash()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::make\+\_\+hash (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 199 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_a4fe8f5e3b5bf64a1cbaf99deb96298d4}\label{class_freq_table_a4fe8f5e3b5bf64a1cbaf99deb96298d4}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!print@{print}}
@@ -136,7 +149,7 @@ void \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::print\hspace{0
 
 
 
-Definition at line 162 of file statsdb.\+hpp.
+Definition at line 164 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_a0bdced25f7c0bee38e073c4654578d19}\label{class_freq_table_a0bdced25f7c0bee38e073c4654578d19}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!reserve@{reserve}}
@@ -147,7 +160,7 @@ void \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::reserve (\begi
 
 
 
-Definition at line 145 of file statsdb.\+hpp.
+Definition at line 147 of file statsdb.\+hpp.
 
 \mbox{\Hypertarget{class_freq_table_af1f26bddaded94f0d5acb68f3a94fb86}\label{class_freq_table_af1f26bddaded94f0d5acb68f3a94fb86}} 
 \index{FreqTable$<$ T $>$@{FreqTable$<$ T $>$}!size@{size}}
@@ -158,14 +171,14 @@ size\+\_\+t \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ T $>$\+::size\hs
 
 
 
-Number of unique elements in the table. 
+Number of unique elements in the table. (. 
 
 \begin{DoxyReturn}{Returns}
 size\+\_\+t 
 \end{DoxyReturn}
 
 
-Definition at line 189 of file statsdb.\+hpp.
+Definition at line 191 of file statsdb.\+hpp.
 
 
 

@@ -29,6 +29,7 @@ var barray_meat_8hpp =
     [ "BARRAY_TEMPLATE", "barray-meat_8hpp.html#a92e904728ae60a0c28c17516418e34f5", null ],
     [ "BARRAY_TEMPLATE", "barray-meat_8hpp.html#a071acdda91bf05cde66638e57e6a8ddb", null ],
     [ "BARRAY_TEMPLATE", "barray-meat_8hpp.html#aa39f872b06a5776a3a07f054dd9b34b1", null ],
+    [ "BARRAY_TEMPLATE_ARGS", "barray-meat_8hpp.html#a2cd81fd291b740bdea3e7d0621d7f7e2", null ],
     [ "COL", "barray-meat_8hpp.html#a9b8c44edae0485e461f86ff37b430d0b", null ],
     [ "for", "barray-meat_8hpp.html#a009384dc163a2dc0f6d5465933ef3aa2", null ],
     [ "for", "barray-meat_8hpp.html#ae8aac1f0ca098820ff4c54f7b3566218", null ],
@@ -85,5 +86,5 @@ var barray_meat_8hpp =
     [ "source", "barray-meat_8hpp.html#ab3aa82e361912925fc1ecaf85e5041bf", null ],
     [ "target", "barray-meat_8hpp.html#a653ae33b3514ffbd1ba2223a9e23764b", null ],
     [ "v", "barray-meat_8hpp.html#a4f9d6b06db1b3136e48630969fea3b9a", null ],
-    [ "value", "barray-meat_8hpp.html#ae41624626d8fb404b5db4a16241365e4", null ]
+    [ "value", "barray-meat_8hpp.html#a7c51d076c92c9801c8129c4214b7bcec", null ]
 ];

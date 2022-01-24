@@ -127,17 +127,17 @@ $(document).ready(function(){initNavTree('statscounter-bones_8hpp_source.html','
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        </div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_stats_counter.html#aad1531e93d2d217c5cfd6b389ccf6fba">   42</a></span>&#160;    <a class="code" href="class_stats_counter.html#aad1531e93d2d217c5cfd6b389ccf6fba">StatsCounter</a>(<span class="keyword">const</span> Array_Type * <a class="code" href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a>) :</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        Array(<a class="code" href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a>), <a class="code" href="support-meat_8hpp.html#a85907fa4e2d9e9395e45a0ccbb68aef9">EmptyArray</a>(*<a class="code" href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a>),</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        Array(<a class="code" href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a>), EmptyArray(*<a class="code" href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a>),</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>(new <a class="code" href="class_counters.html">Counters</a>&lt;Array_Type,Data_Type&gt;()) {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">// We are removing the entries without freeing the memory. This should</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">// make the insertion faster.</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="support-meat_8hpp.html#a85907fa4e2d9e9395e45a0ccbb68aef9">EmptyArray</a>.clear(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        EmptyArray.clear(<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_stats_counter.html#a6cef1e5bb4914a49ba8dd0f63070f81c">   57</a></span>&#160;    <a class="code" href="class_stats_counter.html#a6cef1e5bb4914a49ba8dd0f63070f81c">StatsCounter</a>() : Array(nullptr), <a class="code" href="support-meat_8hpp.html#a85907fa4e2d9e9395e45a0ccbb68aef9">EmptyArray</a>(0u,0u),</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_stats_counter.html#a6cef1e5bb4914a49ba8dd0f63070f81c">   57</a></span>&#160;    <a class="code" href="class_stats_counter.html#a6cef1e5bb4914a49ba8dd0f63070f81c">StatsCounter</a>() : Array(nullptr), EmptyArray(0u,0u),</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>(new <a class="code" href="class_counters.html">Counters</a>&lt;Array_Type,Data_Type&gt;()) {};</div>
 <div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_stats_counter.html#a2824d86765d94e909e4b33396250b6c7">   59</a></span>&#160;    <a class="code" href="class_stats_counter.html#a2824d86765d94e909e4b33396250b6c7">~StatsCounter</a>();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
@@ -185,7 +185,6 @@ $(document).ready(function(){initNavTree('statscounter-bones_8hpp_source.html','
 <div class="ttc" id="astatscounter-meat_8hpp_html_a782c48a908662b34845b6f654f929788"><div class="ttname"><a href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div><div class="ttdeci">counters</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00054">statscounter-meat.hpp:54</a></div></div>
 <div class="ttc" id="astatscounter-meat_8hpp_html_aa80d872ce00a593ea8f27137907b9cf3"><div class="ttname"><a href="statscounter-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div><div class="ttdeci">Data_Type * f_</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00030">statscounter-meat.hpp:31</a></div></div>
 <div class="ttc" id="astatsdb_8hpp_html"><div class="ttname"><a href="statsdb_8hpp.html">statsdb.hpp</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a85907fa4e2d9e9395e45a0ccbb68aef9"><div class="ttname"><a href="support-meat_8hpp.html#a85907fa4e2d9e9395e45a0ccbb68aef9">EmptyArray</a></div><div class="ttdeci">EmptyArray(coord_i, coord_j)</div></div>
 <div class="ttc" id="atypedefs_8hpp_html"><div class="ttname"><a href="typedefs_8hpp.html">typedefs.hpp</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00018">typedefs.hpp:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -194,7 +193,7 @@ $(document).ready(function(){initNavTree('statscounter-bones_8hpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="statscounter-bones_8hpp.html">statscounter-bones.hpp</a></li>
-    <li class="footer">Generated on Sun Jan 23 2022 08:24:07 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jan 24 2022 06:52:22 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
