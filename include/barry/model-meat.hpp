@@ -10,21 +10,26 @@
 
 inline double update_normalizing_constant(
     const std::vector< double > & params,
-    const Counts_type & support
-) {
+    const std::vector< double > & support
+)
+{
     
     double res = 0.0;
+    size_t k   = params.size() + 1u;
+    size_t n   = support.size() / k;
+
     double tmp;
-    // for (unsigned int n = 0u; n < support.size(); ++n)
-    for (const auto & sup : support)
+    #pragma GCC ivdep
+    for (unsigned int i = 0u; i < n; ++i)
     {
-        
+
         tmp = 0.0;
         
+        #pragma GCC ivdep
         for (unsigned int j = 0u; j < params.size(); ++j)
-            tmp += sup.first[j] * params[j];
+            tmp += support[i * k + j + 1u] * params[j];
         
-        res += exp(tmp BARRY_SAFE_EXP) * sup.second;
+        res += exp(tmp BARRY_SAFE_EXP) * support[i * k];
 
     }
     
@@ -60,9 +65,7 @@ inline double likelihood_(
     double ans = numerator/normalizing_constant;
 
     if (ans > 1.0)
-    {
         printf_barry("ooo\n");
-    }
 
     return ans;
     
@@ -564,11 +567,14 @@ MODEL_TEMPLATE(double, likelihood)(
     
     // Counting stats
     StatsCounter< Array_Type, Data_Counter_Type> tmpstats(&Array_);
+
     tmpstats.set_counters(this->counters);
+    
     std::vector< double > target_ = tmpstats.count_all();
 
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
+    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) )
+    {
         
         first_calc_done[loc] = true;
         
@@ -690,24 +696,26 @@ MODEL_TEMPLATE(double, get_norm_const)(
     // Checking if the index exists
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
+
+    const auto id = arrays2support[i];
     
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[arrays2support[i]] || !vec_equal_approx(params, params_last[arrays2support[i]]) )
+    if (!first_calc_done[id] || !vec_equal_approx(params, params_last[id]) )
     {
         
-        first_calc_done[arrays2support[i]] = true;
+        first_calc_done[id] = true;
         
-        normalizing_constants[arrays2support[i]] = update_normalizing_constant(
-                params, stats[arrays2support[i]]
+        normalizing_constants[id] = update_normalizing_constant(
+                params, stats[id]
         );
         
-        params_last[arrays2support[i]] = params;
+        params_last[id] = params;
         
     }
     
     return as_log ? 
-        std::log(normalizing_constants[arrays2support[i]]) :
-        normalizing_constants[arrays2support[i]]
+        std::log(normalizing_constants[id]) :
+        normalizing_constants[id]
         ;
     
 }
@@ -741,13 +749,23 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    for (uint l = 0u; l < stats[arrays2support[i]].size(); ++l) {
+    const auto & S = stats[arrays2support[i]];
+
+    size_t k       = params_last.size();
+    size_t nunique = S.size() / (k + 1u);
+
+    for (uint l = 0u; l < nunique; ++l)
+    {
+
         printf_barry("% 5i ", l);
-        printf_barry("counts: %i motif: ", stats[arrays2support[i]][l].second);
-        for (unsigned int k = 0u; k < stats[arrays2support[i]][l].first.size(); ++k) {
-            printf_barry("%.2f, ", stats[arrays2support[i]][l].first[k]);
-        }
+
+        printf_barry("counts: %i motif: ", S[l * (k + 1)]);
+        
+        for (unsigned int j = 0u; j < k; ++j)
+            printf_barry("%.2f, ", S[l * (k + 1) + k + 1]);
+
         printf_barry("\n");
+
     }
     
     return;
@@ -840,9 +858,6 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
     // Getting the index
     unsigned int a = arrays2support[i];
-    // if (pset_probs.at(a).size() == 0u) {
-    //   pset_probs.at(a).resize(pset_arrays.at(a).size(), 0u);
-    // }
     
     // Generating a random
     std::uniform_real_distribution<> urand(0, 1);
@@ -851,7 +866,8 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
     // Updating until reach above
     unsigned int j = 0u;
-    while (cumprob < r) {
+    while (cumprob < r)
+    {
 
         cumprob += this->likelihood(params, this->pset_stats[a][j], i, false);
         ++j;

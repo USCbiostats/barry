@@ -10,6 +10,7 @@
 #include <utility>
 #include <random>
 #include <climits>
+#include <cfloat>
 #include <string>
 #include <cstdint>
 

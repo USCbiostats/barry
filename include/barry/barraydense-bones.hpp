@@ -33,7 +33,6 @@ class BArrayDenseCell_const;
 template <typename Cell_Type = bool, typename Data_Type = bool>
 class BArrayDense {
     friend class BArrayDenseCell<Cell_Type,Data_Type>;
-    friend class BArrayDenseCell_const<Cell_Type,Data_Type>;
     friend class BArrayDenseCol<Cell_Type,Data_Type>;
     friend class BArrayDenseCol_const<Cell_Type,Data_Type>;
     friend class BArrayDenseRow<Cell_Type,Data_Type>;
@@ -43,8 +42,10 @@ class BArrayDense {
 private:
     uint N;
     uint M;
-    uint NCells = 0u;
+    // uint NCells = 0u;
     std::vector< Cell_Type > el;
+    std::vector< Cell_Type > el_rowsums;
+    std::vector< Cell_Type > el_colsums;
     Data_Type * data = nullptr;
     bool delete_data = false;
 
@@ -75,10 +76,12 @@ public:
     ///@{
     
     /** @brief Zero-size array */
-    BArrayDense() : N(0u), M(0u), NCells(0u), el(0u) {};
+    BArrayDense() : N(0u), M(0u), el(0u), el_rowsums(0u), el_colsums(0u) {};
     
     /** @brief Empty array */
-    BArrayDense (uint N_, uint M_) : N(N_), M(M_), NCells(0u), el(N_ * M_) {};
+    BArrayDense (uint N_, uint M_) :
+        N(N_), M(M_), el(N_ * M_, 0),
+        el_rowsums(N_, 0), el_colsums(M_, 0) {};
     
     /** @brief Edgelist with data */
     BArrayDense (
@@ -185,12 +188,12 @@ public:
     BArrayDense<Cell_Type,Data_Type> & operator+=(const std::pair<uint, uint> & coords);
     BArrayDense<Cell_Type,Data_Type> & operator-=(const std::pair<uint, uint> & coords);
     BArrayDenseCell<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true);
-    const BArrayDenseCell_const<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true) const;
+    const Cell_Type operator()(uint i, uint j, bool check_bounds = true) const;
     
     void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
     
     void insert_cell(uint i, uint j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
-    void insert_cell(uint i, uint j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
+    // void insert_cell(uint i, uint j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
     void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists);
     
     void swap_cells(
@@ -221,7 +224,7 @@ public:
     // void toggle_iterator
     
     // Misc
-    void print() const;
+    void print(const char * fmt = nullptr, ...) const;
 
     /**
      * @name Arithmetic operators
@@ -249,6 +252,10 @@ public:
     // ///@}
     
     bool is_dense() const noexcept {return dense;};
+
+    const std::vector< Cell_Type > & get_data() const;
+    const Cell_Type rowsum(unsigned int i) const;
+    const Cell_Type colsum(unsigned int i) const;
 };
 
 #endif

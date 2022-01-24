@@ -609,13 +609,16 @@ inline BArrayCell<Cell_Type,Data_Type> BARRAY_TYPE()::operator()(
 }
 
 template BARRAY_TEMPLATE_ARGS()
-inline const BArrayCell_const<Cell_Type,Data_Type> BARRAY_TYPE()::operator() (  
+inline const Cell<Cell_Type> & BARRAY_TYPE()::operator() (  
     uint i,
     uint j,
     bool check_bounds
 ) const {
     
-    return BArrayCell_const<Cell_Type,Data_Type>(this, i, j, check_bounds);
+    if (check_bounds)
+        out_of_range(i,j);
+
+    return el_ij[i][j];
     
 }
 

@@ -17,7 +17,8 @@ template <typename Array_Type = BArray<>, typename Data_Rule_Type = bool>
 class PowerSet {
     
 private:
-    void calc_backend(uint pos = 0u);  
+    void calc_backend_sparse(uint pos = 0u);  
+    void calc_backend_dense(uint pos = 0u);  
 
 public:
     Array_Type                         EmptyArray;
@@ -28,8 +29,10 @@ public:
     bool rules_deleted   = false;
 
     // Tempvars
-    std::vector< std::pair<uint,uint> >  coordinates_free;
-    std::vector< std::pair<uint,uint> >  coordinates_locked;
+    std::vector< size_t >  coordinates_free;
+    std::vector< size_t >  coordinates_locked;
+    size_t n_free;
+    size_t n_locked;
     
     /**
      * @name Construct and destroy a PowerSet object

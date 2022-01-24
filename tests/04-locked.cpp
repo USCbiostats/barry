@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include "../include/barry/barry.hpp"
-#include "catch.hpp"
+#include "tests.hpp"
 
 // Defining rule to lock the first cell
 RULE_FUNCTION(myrule) {
@@ -34,7 +31,7 @@ COUNTER_FUNCTION(n_mutual) {
     );
 }
 
-TEST_CASE("Constrained support", "[const-support]") {
+BARRY_TEST_CASE("Constrained support", "[const-support]") {
 
     // Creating the following array:
     // [  0,]  1  . 
@@ -73,14 +70,24 @@ TEST_CASE("Constrained support", "[const-support]") {
     expected.insert({{3,1,0}, 2});
 
     barry::MapVec_type<double> observed(0u);
-    for (auto iter = counts.begin(); iter != counts.end(); ++iter)
-        observed.insert({iter->first, iter->second});
+    size_t n_stats  = 3u;
+    size_t n_unique = counts.size() / (n_stats + 1u);
+    for (unsigned int i = 0u; i < n_unique; ++i)
+    {
+        std::vector< double > tmp(n_stats);
+        for (unsigned int j = 0u; j < n_stats; ++j)
+            tmp[j] = counts[i * (n_stats + 1u) + j + 1u];
 
+        observed.insert({tmp, counts[i * (n_stats + 1)]});
+    }
+
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE(expected.size() == observed.size());
     REQUIRE(expected[{1,3,0}] == observed[{1,3,0}]);
     REQUIRE(expected[{4,0,1}] == observed[{4,0,1}]);
     REQUIRE(expected[{2,2,0}] == observed[{2,2,0}]);
     REQUIRE(expected[{3,1,1}] == observed[{3,1,1}]);
     REQUIRE(expected[{3,1,0}] == observed[{3,1,0}]);
+    #endif 
     
 }

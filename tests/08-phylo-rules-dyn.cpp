@@ -25,7 +25,9 @@ bool check_max_gains(const PhyloArray & A, uint i, uint j, RuleDynD * d)
 
 }
 
-TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
+#include "tests.hpp"
+
+BARRY_TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
 
     
 
@@ -45,9 +47,7 @@ TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
     
     rule_dyn_limit_changes(&S, 0, 0, 2);
     S.calc();
-    S.print();
-
-    
+    S.print();    
 
     std::cout << "---- Support with full pset ------" << std::endl;
     barry::Support<PhyloArray,PhyloCounterData,PhyloRuleData,RuleDynD> S2(d);
@@ -57,20 +57,28 @@ TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
 
     // Computing differences
     unsigned int matches = 0u;
-    const auto& s = S.get_data().get_data();
-    for (const auto& s2 : S2.get_data().get_data()) {
+
+    const auto& s = S.get_data().get_index();
+    auto D1 = S.get_data().get_data();
+    auto D2 = S2.get_data().get_data();
+
+    for (const auto& s2 : S2.get_data().get_index())
+    {
 
         // Can we find it?
         auto iter = s.find(s2.first);
+
         if (iter == s.end()) 
             continue;
 
         // If we found it, is this matching?
-        if ((*iter).second == s2.second)
+        if (D1[(*iter).second] == D2[s2.second])
             ++matches;
 
     }
 
-    REQUIRE(matches == S.get_data().size());
+    #ifdef CATCH_CONFIG_MAIN
+        REQUIRE(matches == S.get_data().size());
+    #endif
 
 }

@@ -126,8 +126,8 @@ public:
      */
     void get_seq(
         const Array_Type & a,
-        std::vector< std::pair<uint,uint> > * free,
-        std::vector< std::pair<uint,uint> > * locked = nullptr
+        std::vector< size_t > * free,
+        std::vector< size_t > * locked = nullptr
     );
     
 };

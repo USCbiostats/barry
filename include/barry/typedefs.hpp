@@ -201,16 +201,37 @@ inline T vec_inner_prod(
 const std::vector< T > & a,
 const std::vector< T > & b
 ) {
+
     
     if (a.size() != b.size())
         throw std::length_error("-a- and -b- should have the same length.");
     
     double res = 0.0;
+    #pragma GCC ivdep
     for (unsigned int i = 0u; i < a.size(); ++i)
         res += (a[i] * b[i]);
     
     return res;
+
 }
 
+template <>
+inline double vec_inner_prod(
+const std::vector< double > & a,
+const std::vector< double > & b
+) {
+    
+    
+    if (a.size() != b.size())
+        throw std::length_error("-a- and -b- should have the same length.");
+    
+    double res = 0.0;
+    #pragma GCC ivdep
+    for (unsigned int i = 0u; i < a.size(); ++i)
+        res += (a[i] * b[i]);
+    
+    return res;
+
+}
 
 #endif

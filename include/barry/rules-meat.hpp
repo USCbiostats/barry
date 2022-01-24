@@ -126,6 +126,7 @@ inline bool Rules<Array_Type,Data_Type>::operator()(
 template <typename Array_Type, typename Data_Type>
 inline void Rules<Array_Type,Data_Type>::clear() {
     
+
     for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
         delete data[*iter];
     
@@ -138,8 +139,8 @@ inline void Rules<Array_Type,Data_Type>::clear() {
 template <typename Array_Type, typename Data_Type>
 inline void Rules<Array_Type,Data_Type>::get_seq(
     const Array_Type & a,
-    std::vector< std::pair<uint,uint> > * free,
-    std::vector< std::pair<uint,uint> > * locked
+    std::vector< size_t > * free,
+    std::vector< size_t > * locked
 ) {
 
     
@@ -148,7 +149,7 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
     
     // Reserving some space
     free->empty();
-    free->reserve(N*K);
+    free->reserve(2u * N * K);
     
     for (uint i = 0u; i < N; ++i)
     {
@@ -161,13 +162,19 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
             {
 
                 if (locked != nullptr)
-                    locked->push_back({i,j});
+                {
+
+                    locked->push_back(i);
+                    locked->push_back(j);
+
+                }
 
                 continue;
 
             }
 
-            free->push_back({i, j});
+            free->push_back(i);
+            free->push_back(j);
                 
         }
 

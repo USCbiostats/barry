@@ -15,82 +15,152 @@
 template<typename T = double> 
 class FreqTable {
 private:
-    MapVec_type<T, uint> data;
-    
-    /**
-    * A nasty way to declare when using :: on template members
-    * https://stackoverflow.com/questions/6571381/dependent-scope-and-nested-templates/6571836
-    */
-    typename MapVec_type<T,uint>::iterator iter;
+
+    std::unordered_map<size_t, size_t> index;
+    std::vector< double > data;
+    size_t k = 0u;
+    size_t n = 0u;
+
+    typename std::unordered_map<size_t, size_t>::iterator iter;
         
 public:
     // uint ncols;
     FreqTable() {};
     ~FreqTable() {};
     
-    void add(const std::vector< T > & x);
+    size_t add(const std::vector< T > & x, size_t * h_precomp);
     
     Counts_type                 as_vector() const;
-    MapVec_type<T,uint>         get_data() const;
-    const MapVec_type<T,uint> * get_data_ptr() const;
+    const std::vector< double > & get_data() const {return data;};
+    const std::unordered_map<size_t,size_t> & get_index() const {return index;};
     
     void clear();
     void reserve(unsigned int n);
     void print() const;
+
+    /**
+     * @brief Number of unique elements in the table.
+     * (
+     * @return size_t 
+     */
     size_t size() const noexcept;
-    // void rehash();
-    
+
+    size_t make_hash(const std::vector< double > & x) const;
     
 };
 
 template<typename T>  
-inline void FreqTable<T>::add(const std::vector< T > & x) { 
+inline size_t FreqTable<T>::add(
+    const std::vector< T > & x,
+    size_t * h_precomp
+    ) { 
     
     // The term exists, then we add it to the list and we initialize it
     // with a single count
-    iter = data.find(x);
-    if (iter == data.end()) {
-        data.insert(std::make_pair(x, 1u));
-    } else // We increment the counter
-        ++(iter->second);
+    size_t h;
+    if (h_precomp == nullptr)
+        h = make_hash(x);
+    else
+        h = *h_precomp;
+
+    if (k == 0u)
+    {
+
+        index.insert({h, 0u});
+
+        data.push_back(1.0);
+        data.insert(data.end(), x.begin(), x.end());
+
+        k = x.size();
+        n++;
+
+        return h;
+
+    }
+    else
+    {
+
+        if (x.size() != k)
+            throw std::length_error(
+                "The value you are trying to add doesn't have the same lenght used in the database."
+                );
+        
+        iter = index.find(h);
+
+        if (iter == index.end())
+        {
+
+            index.insert({h, data.size()});
+            data.push_back(1.0);
+            data.insert(data.end(), x.begin(), x.end());
+
+            n++;
+            
+            return h;
+
+        }
+
+        data[(*iter).second] += 1.0;
+
+    }
     
-    return; 
+    return h;
+
 }
 
 template<typename T>
-inline Counts_type FreqTable<T>::as_vector() const { 
+inline Counts_type FreqTable<T>::as_vector() const
+{ 
     
     Counts_type ans;
-    ans.reserve(data.size());
-    for (auto iter = data.begin(); iter != data.end(); ++iter)
-        ans.push_back(*iter);
+
+    ans.reserve(index.size());
+
+    for (unsigned int i = 0u; i < n; ++i)
+    {
+        
+        std::vector< double > tmp(k, 0.0);
+
+        for (unsigned j = 1u; j < (k + 1u); ++j)
+            tmp[j - 1u] = data[i * (k + 1) + j];
+        
+        ans.push_back(
+            std::make_pair<std::vector<double>,unsigned int>(
+                std::move(tmp),
+                static_cast<unsigned int>(data[i * (k + 1u)])
+                )
+        );
+
+    }
     
     
     return ans;
 }
 
 template<typename T>
-inline MapVec_type<T,uint> FreqTable<T>::get_data() const {
-    return data;
-}
+inline void FreqTable<T>::clear()
+{
 
-template<typename T>
-inline const MapVec_type<T,uint> * FreqTable<T>::get_data_ptr() const {
-    return &data;
-}
-
-template<typename T>
-inline void FreqTable<T>::clear() {
+    index.clear();
     data.clear();
+
+    n = 0u;
+    k = 0u;
+
     return;
+
 }
 
 template<typename T>
 inline void FreqTable<T>::reserve(
     unsigned int n
-) {
+)
+{
+
     data.reserve(n);
+
     return;
+
 }
 
 // inline void StatsDB::rehash() {
@@ -99,20 +169,23 @@ inline void FreqTable<T>::reserve(
 // }
 
 template<typename T>
-inline void FreqTable<T>::print() const {
+inline void FreqTable<T>::print() const
+{
 
-    uint grand_total = 0u;
+    unsigned int grand_total = 0u;
+
     printf_barry("%7s | %s\n", "Counts", "Stats");
-    for (auto i = data.begin(); i != data.end(); ++i)
+
+    for (unsigned int i = 0u; i < n; ++i)
     {
 
-        printf_barry("%7i | ", i->second);
+        printf_barry("%7i | ", static_cast<int>(data[i * (k + 1u)]));
 
-        for (const auto& j : i->first)
-            printf_barry(" %.2f", j);
+        for (unsigned int j = 1u; j < (k + 1u); ++j)
+            printf_barry(" %.2f", data[i * (k + 1) + j]);
         printf_barry("\n");
 
-        grand_total += i->second;
+        grand_total += static_cast<unsigned int>(data[i * (k + 1u)]);
 
     }
 
@@ -123,9 +196,28 @@ inline void FreqTable<T>::print() const {
 }
 
 template<typename T>
-inline size_t FreqTable<T>::size() const noexcept {
+inline size_t FreqTable<T>::size() const noexcept
+{
 
-    return this->data.size();
+    return index.size();
+
+}
+
+template<typename T>
+inline size_t FreqTable<T>::make_hash(const std::vector< double > & x) const
+{
+
+    std::hash< T > hasher;
+    std::size_t hash = hasher(x[0u]);
+    
+    // ^ makes bitwise XOR
+    // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
+    // << is a shift operator, something like lhs * 2^(rhs)
+    if (x.size() > 1u)
+        for (unsigned int i = 1u; i < x.size(); ++i)
+            hash ^= hasher(x[i]) + 0x9e3779b9 + (hash<<6) + (hash>>2);
+    
+    return hash;
 
 }
 
