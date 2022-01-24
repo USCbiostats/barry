@@ -220,41 +220,11 @@ inline void counter_isolates(NetCounters<NetworkDense> * counters)
         double res = 0.0;
         
         // Checking the in and out degree
-        int nin  = 0;
-        int nout = 1; 
-        for (unsigned int k = 0u; k < Array.nrow(); ++k)
-        {
-
-            if (k == i)
-                continue;
-
-            if (k != j)
-                nout += Array(i, k);
-
-            nin += Array(k, i);
-            
-        }
-
-        if (nout == 1u && nin == 0u)
+        if (Array.rowsum(i) == 1u && Array.colsum(i) == 0u)
             res -= 1.0;
 
         // Now looking at j
-        nin  = 1;
-        nout = 0; 
-        for (unsigned int k = 0u; k < Array.nrow(); ++k)
-        {
-
-            if (k == j)
-                continue;
-
-            if (k != i)
-                nin += Array(k, j);
-
-            nout += Array(j, k);
-            
-        }
-
-        if (nout == 0u && nin == 1u)
+        if (Array.rowsum(j) == 0u && Array.colsum(j) == 1u)
             res -= 1.0;
         
         return res;
@@ -359,20 +329,21 @@ inline void counter_istar2(NetCounters<NetworkDense> * counters)
     {
         // Need to check the receiving, if he/she is getting a new set of stars
         // when looking at triads
-        int indeg = 1;
-        for (unsigned int k = 0u; k < Array.nrow(); ++k)
-        {
-            if (i == k)
-                continue;
+        // int indeg = 1;
+        // for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        // {
+        //     if (i == k)
+        //         continue;
 
-            if (Array(k,j) != BARRY_ZERO_NETWORK_DENSE)
-                indeg++;
-        }
+        //     if (Array(k,j) != BARRY_ZERO_NETWORK_DENSE)
+        //         indeg++;
+        // }
 
-        if (indeg == 1)
-            return 0.0;
+        // if (indeg == 1)
+        //     return 0.0;
         
-        return static_cast<double>(indeg - 1);
+        // return static_cast<double>(indeg - 1);
+        return static_cast<double>(Array.colsum(j) - 1);
 
     };
     
@@ -415,17 +386,18 @@ inline void counter_ostar2(NetCounters<NetworkDense> * counters)
 
         // Need to check the receiving, if he/she is getting a new set of stars
         // when looking at triads
-        int nties = 0;
-        for (unsigned int k = 0u; k < Array.ncol(); ++k)
-        {
-            if (Array(i, k) != BARRY_ZERO_NETWORK_DENSE)
-                ++nties;
-        }
+        // int nties = 0;
+        // for (unsigned int k = 0u; k < Array.ncol(); ++k)
+        // {
+        //     if (Array(i, k) != BARRY_ZERO_NETWORK_DENSE)
+        //         ++nties;
+        // }
 
-        if (nties == 1u)
-            return 0.0;
+        // if (nties == 1u)
+        //     return 0.0;
         
-        return static_cast<double>(nties - 1.0);
+        // return static_cast<double>(nties - 1.0);
+        return static_cast<double>(Array.rowsum(i) - 1);
 
     };
     
@@ -532,28 +504,42 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
     NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
     {
 
+        const auto dat = Array.get_data();
+        unsigned int N = Array.nrow();
+
         // Self ties do not count
         if (i == j)
             return 0.0;
+
+        // This is the first i sends, so nothing will change
+        if (Array.rowsum(i) == BARRY_ZERO_NETWORK_DENSE)
+            return 0.0;
+
         
         double ans = 0.0;
-        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        for (unsigned int k = 0u; k < N; ++k)
         {
+
+            // In all cases k receives, so if not, then continue
+            if ((Array.colsum(k) == BARRY_ZERO_NETWORK_DENSE) && (Array.rowsum(k) == BARRY_ZERO_NETWORK_DENSE))
+                continue;
+
             if (j != k & i != k)
             {
 
-                if (Array(i, k) != BARRY_ZERO_NETWORK_DENSE)
+                if (dat[k * N + i] != BARRY_ZERO_NETWORK_DENSE)
                 {
                     // Case 1: i-j, i-k, j-k
-                    if (Array(j, k))
+                    if (dat[k * N + j])
                         ans += 1.0;
 
                     // Case 2: i-j, i-k, k-j 
-                    if (Array(k, j) != BARRY_ZERO_NETWORK_DENSE)
+                    if (dat[j * N + k] != BARRY_ZERO_NETWORK_DENSE)
                         ans += 1.0;
                 }
                 
-                if ((Array(k, i) != BARRY_ZERO_NETWORK_DENSE) && (Array(k,j) != BARRY_ZERO_NETWORK_DENSE))
+                // Case 3: i-j, k-i, k-j
+                if ((dat[i * N + k] != BARRY_ZERO_NETWORK_DENSE) && (dat[j * N + k] != BARRY_ZERO_NETWORK_DENSE))
                     ans += 1.0;
 
             }
@@ -655,10 +641,20 @@ inline void counter_ctriads(NetCounters<NetworkDense> * counters)
         double ans = 0.0;
         for (unsigned int k = 0u; k < Array.nrow(); ++k)
         {
+
+            // If isolated, then next
+            if (Array.colsum(k) == BARRY_ZERO_NETWORK_DENSE)
+                continue;
+
+            if (Array.rowsum(k) == BARRY_ZERO_NETWORK_DENSE)
+                continue;
+
             if (i != k && j != k)
             {
-                if (Array(j, k) > 0 && Array(k, i) > 0)
+
+                if ((Array(j, k) != BARRY_ZERO_NETWORK_DENSE) && (Array(k, i) != BARRY_ZERO_NETWORK_DENSE))
                     ans += 1.0;
+
             }
     }
         

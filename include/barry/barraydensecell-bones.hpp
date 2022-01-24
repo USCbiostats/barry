@@ -18,10 +18,9 @@ class BArrayDenseCell {
     friend class BArrayDenseCol_const<Cell_Type,Data_Type>;
 private:
   
-    Cell_Type * dat;
+    BArrayDense<Cell_Type,Data_Type> * dat;
     uint i;
     uint j;
-    unsigned int N;
   
 public:
   
@@ -43,8 +42,7 @@ public:
                 throw std::length_error("Col out of range.");
 
         }
-        N = Array_->N;
-        dat = &(Array_->el[POS(i,j)]);
+        dat = Array_;
 
     };
 
@@ -60,56 +58,6 @@ public:
   
 };
 
-template <typename Cell_Type = bool, typename Data_Type = bool>
-class BArrayDenseCell_const {
-    friend class BArrayDense<Cell_Type,Data_Type>;
-    friend class BArrayDenseCol<Cell_Type,Data_Type>;
-    friend class BArrayDenseCol_const<Cell_Type,Data_Type>;
-private:
-    
-    Cell_Type dat;
-    unsigned int N;
-    uint i;
-    uint j;
-    
-public:
-  
-    BArrayDenseCell_const(
-        const BArrayDense<Cell_Type,Data_Type> * Array_,
-        uint i_,
-        uint j_,
-        bool check_bounds = true
-        ) : 
-    i(i_), j(j_)
-    {
-        
-        if (check_bounds)
-        {
-
-            if (i >= Array_->nrow())
-                throw std::length_error("Row out of range.");
-            if (j >= Array_->ncol())
-                throw std::length_error("Col out of range.");
-
-        }
-
-        N = Array_->N;
-        dat = Array_->el[POS(i,j)];
-
-
-    };
-    
-    ~BArrayDenseCell_const(){};
-    
-    operator Cell_Type() const;
-    bool operator==(const Cell_Type & val) const;
-    bool operator!=(const Cell_Type & val) const;
-    bool operator<(const Cell_Type & val) const;
-    bool operator>(const Cell_Type & val) const;
-    bool operator<=(const Cell_Type & val) const;
-    bool operator>=(const Cell_Type & val) const;
-  
-};
 
 #undef POS
 

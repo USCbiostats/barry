@@ -18,24 +18,45 @@ inline PowerSet<Array_Type,Data_Rule_Type>::~PowerSet() {
 }
 
 template <typename Array_Type, typename Data_Rule_Type>
-inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
+inline void PowerSet<Array_Type,Data_Rule_Type>::init_support()
+{
     
     // Computing the locations
     coordinates_free.clear();
     coordinates_locked.clear();
     rules->get_seq(EmptyArray, &coordinates_free, &coordinates_locked);
+
+    n_free   = coordinates_free.size() / 2u;
+    n_locked = coordinates_locked.size() / 2u;
     
+
     // Computing initial statistics
     if (EmptyArray.nnozero() > 0u)
     {
 
-        for (uint i = 0u; i < coordinates_free.size(); ++i) 
-            EmptyArray.rm_cell(
-                coordinates_free[i].first,
-                coordinates_free[i].second,
-                false,
-                true
-            );
+        if (EmptyArray.is_dense())
+        {
+
+            for (uint i = 0u; i < n_free; ++i) 
+                EmptyArray(
+                    coordinates_free[i * 2u],
+                    coordinates_free[i * 2u + 1u]
+                    ) = 0;
+
+        }
+        else
+        {
+
+            for (uint i = 0u; i < n_free; ++i) 
+                EmptyArray.rm_cell(
+                    coordinates_free[i * 2u],
+                    coordinates_free[i * 2u + 1u],
+                    false,
+                    true
+                );
+
+
+        }
             
     }
 
@@ -43,7 +64,7 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
     // EmptyArray.reserve();
     
     // Resizing support
-    data.reserve(pow(2.0, coordinates_free.size())); 
+    data.reserve(pow(2.0, n_free)); 
 
     // Adding the empty array to the set
     data.push_back(EmptyArray);
@@ -52,21 +73,22 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support() {
 }
 
 template <typename Array_Type, typename Data_Rule_Type>
-inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend(uint pos) {
+inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_sparse(
+    uint pos
+)
+{
     
     // Did we reached the end??
-    if (pos >= coordinates_free.size())
+    if (pos >= n_free)
         return;
             
     // We will pass it to the next step, if the iteration makes sense.
-    calc_backend(pos + 1u);
-
-    const std::pair<uint,uint> & coords = coordinates_free[pos];
+    calc_backend_sparse(pos + 1u);
         
     // Toggle the cell (we will toggle it back after calling the counter)
     EmptyArray.insert_cell(
-        coords.first,
-        coords.second,
+        coordinates_free[pos * 2u],
+        coordinates_free[pos * 2u + 1u],
         EmptyArray.default_val().value,
         false, false
         );
@@ -75,14 +97,43 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend(uint pos) {
     
     // Again, we only pass it to the next level iff the next level is not
     // passed the last step.
-    calc_backend(pos + 1u);
+    calc_backend_sparse(pos + 1u);
     
     // We need to restore the state of the cell
     EmptyArray.rm_cell(
-        coords.first,
-        coords.second,
+        coordinates_free[pos * 2u],
+        coordinates_free[pos * 2u + 1u],
         false, false
         );  
+    
+    return;
+    
+}
+
+template <typename Array_Type, typename Data_Rule_Type>
+inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_dense(
+    uint pos
+)
+{
+    
+    // Did we reached the end??
+    if (pos >= n_free)
+        return;
+            
+    // We will pass it to the next step, if the iteration makes sense.
+    calc_backend_dense(pos + 1u);
+        
+    // Toggle the cell (we will toggle it back after calling the counter)
+    EmptyArray(coordinates_free[pos * 2u], coordinates_free[pos * 2u + 1u]) = 1;
+
+    data.push_back(EmptyArray);
+    
+    // Again, we only pass it to the next level iff the next level is not
+    // passed the last step.
+    calc_backend_dense(pos + 1u);
+    
+    // We need to restore the state of the cell
+    EmptyArray(coordinates_free[pos * 2u], coordinates_free[pos * 2u + 1u]) = 0;
     
     return;
     
@@ -99,7 +150,10 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc() {
     this->init_support();
 
     // Recursive function to count
-    calc_backend(0u);
+    if (EmptyArray.is_dense())
+        calc_backend_dense(0u);
+    else
+        calc_backend_sparse(0u);
 
     return;
     

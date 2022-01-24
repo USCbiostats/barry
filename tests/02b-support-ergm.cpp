@@ -55,14 +55,16 @@ BARRY_TEST_CASE("Computing support for NetworkDense", "[support-dense]")
     // Getting the full support
     support.calc(); 
     
-    // Generating the entries
-    barry::Counts_type ans = support.get_counts();
+       // Generating the entries
+    auto ans = support.get_counts();
     
     // log(exp(p0 %*% t(ans[, -ncol(ans)])) %*% cbind(ans[,ncol(ans)]))
     std::vector< double > logs = {0.0, 0.0};
     auto nnets = 0u;
+    size_t n_counters = support.get_counters()->size();
+    size_t n_unique   = ans.size() / (n_counters + 1);
 
-    for (auto n = 0u; n < ans.size(); ++n)
+    for (auto n = 0u; n < n_unique; ++n)
     {
         
         // // Printing the first 10
@@ -71,18 +73,20 @@ BARRY_TEST_CASE("Computing support for NetworkDense", "[support-dense]")
         
         double tmp0 = 0.0;
         double tmp1 = 0.0;
-        nnets += ans[n].second;
+        nnets += ans[n * (n_counters + 1u)];
         
         // Now iterating through the parameters
         for (auto j = 0u; j < p0.size(); ++j)
         {
-            tmp0 += p0[j] * ans[n].first[j];
-            tmp1 += p1[j] * ans[n].first[j];
+
+            tmp0 += p0[j] * ans[n * (n_counters + 1u) + j + 1u];
+            tmp1 += p1[j] * ans[n * (n_counters + 1u) + j + 1u];
+
         }
         
         // Exp and weights
-        logs[0u] += exp(tmp0) * ans[n].second;
-        logs[1u] += exp(tmp1) * ans[n].second;
+        logs[0u] += exp(tmp0) * ans[n * (n_counters + 1u)];
+        logs[1u] += exp(tmp1) * ans[n * (n_counters + 1u)];
 
     }
     

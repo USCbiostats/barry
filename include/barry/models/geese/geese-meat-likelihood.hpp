@@ -13,16 +13,11 @@ inline double Geese::likelihood(
 
     // Splitting the probabilities
     std::vector< double > par0(par.begin(), par.end() - nfunctions);
-
     std::vector< double > par_root(par.end() - nfunctions, par.end());
 
     // Scaling root
     for (auto& p : par_root)
-    {
-
         p = std::exp(p)/(std::exp(p) + 1);
-
-    }
 
     std::vector< unsigned int > tmpstate(nfunctions);
 

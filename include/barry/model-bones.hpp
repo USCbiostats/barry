@@ -55,7 +55,7 @@ private:
     std::mt19937 * rengine = nullptr;
     bool delete_rengine    = false;
 
-    std::vector< Counts_type >         stats;              ///< Sufficient statistics of the model (support)
+    std::vector< std::vector< double > >         stats;              ///< Sufficient statistics of the model (support)
     std::vector< uint >                n_arrays_per_stats; ///< Number of arrays included per support.
 
     /**

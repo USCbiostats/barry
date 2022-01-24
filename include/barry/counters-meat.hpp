@@ -318,6 +318,7 @@ COUNTERS_TEMPLATE(void, add_counter)(
 COUNTERS_TEMPLATE(void, clear)()
 {
     
+    #pragma GCC ivdep
     for (auto& i : (*to_be_deleted))
         delete data->operator[](i);
     

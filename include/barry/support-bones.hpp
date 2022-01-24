@@ -66,9 +66,14 @@ public:
     
     // Temp variables to reduce memory allocation
     std::vector< double >                current_stats;
-    std::vector< std::pair<uint,uint> >  coordinates_free;
-    std::vector< std::pair<uint,uint> >  coordinates_locked;
-    std::vector< std::vector< double > > change_stats;
+    std::vector< size_t >                coordinates_free;
+    std::vector< size_t >                coordinates_locked;
+    size_t coordiantes_n_free;
+    size_t coordiantes_n_locked;
+    std::vector< double > change_stats;
+    std::vector< size_t > hashes;
+    std::vector< bool   > hashes_initialized;
+    size_t n_counters;
     
     /**@brief Constructor passing a reference Array.
       */
@@ -169,8 +174,7 @@ public:
         unsigned int max_num_elements_ = 0u
     );
     
-    Counts_type           get_counts() const;
-    const MapVec_type<> * get_counts_ptr() const;
+    std::vector< double > get_counts() const;
     std::vector< double > * get_current_stats(); ///< List current statistics.
     void print() const;
     

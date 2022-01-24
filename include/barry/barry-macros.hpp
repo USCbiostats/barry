@@ -7,4 +7,6 @@
 #define BARRY_ONE       Cell<Cell_Type>(1.0)
 #define BARRY_ONE_DENSE static_cast<Cell_Type>(1.0)
 
+#define BARRY_UNUSED(expr) do { (void)(expr); } while (0);
+
 #endif

@@ -4,7 +4,10 @@
 // #include "../../barry.hpp"
 // #include "geese-bones.hpp" 
 
-inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
+inline double Geese::likelihood_exhaust(
+    const std::vector< double > & par
+)
+{
 
     INITIALIZED()
 
@@ -13,9 +16,8 @@ inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
     std::vector< double > par_root(par.end() - nfunctions, par.end());
 
     // Scaling root
-    for (auto& p : par_root) {
+    for (auto& p : par_root)
         p = std::exp(p)/(std::exp(p) + 1);
-    }
 
     // This is only worthwhile if the number of nodes is small
     if (this->nnodes() > 6)
@@ -26,9 +28,12 @@ inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
 
     // Computing all combinations ----------------------------------------------
     phylocounters::PhyloArray base(nfuns(), nnodes());
-    for (auto& n : nodes) {
+    for (auto& n : nodes)
+    {
+
         for (unsigned int i = 0u; i < nfuns(); ++i)
             base(i, n.second.ord) = n.second.annotations[i];
+            
     }
 
     phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
@@ -45,7 +50,8 @@ inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
     
     // This vector says whether the probability has to be included in 
     // the final likelihood or not.
-    for (unsigned int p = 0u; p < pset.size(); ++p) {
+    for (unsigned int p = 0u; p < pset.size(); ++p)
+    {
         
         // ith state
         const phylocounters::PhyloArray * s = &pset[p];
@@ -55,46 +61,57 @@ inline double Geese::likelihood_exhaust(const std::vector< double > & par) {
         std::vector< unsigned int > tmpstates(this->nfuns());
 
         Node * node;
-        for (auto& i : preorder) {
+        for (auto& i : preorder)
+        {
 
             node = &nodes[i];
             std::fill(tmpstates.begin(), tmpstates.end(), 0u);
             s->get_col_vec(&tmpstates, node->ord, false);
 
             // Root node first
-            if (node->parent == nullptr) {               
+            if (node->parent == nullptr)
+            {               
                 // Since it is the root, the first probability is computed using
                 // the root only
-                for (auto k = 0u; k < this->nfuns(); ++k) {
+                for (auto k = 0u; k < this->nfuns(); ++k)
                     prob *= tmpstates[k] == 1u ? par_root[k] : (1.0 - par_root[k]);
-                }
 
-            } else if (node->is_leaf())
+            }
+            else if (node->is_leaf())
                 continue;
 
             // Computing the transition
             phylocounters::PhyloArray transition(nfuns(), node->offspring.size());
+
             std::vector< double > bl(node->offspring.size(), 1.0);
-            std::vector< bool > sl =vector_caster<bool,unsigned int>(tmpstates);
+
+            std::vector< bool > sl = vector_caster<bool,unsigned int>(tmpstates);
+
             transition.set_data(
                 new phylocounters::NodeData(bl, sl, node->duplication),
                 true
             );
 
             // Filling the array
-            for (unsigned int a = 0u; a < nfuns(); ++a) {
+            for (unsigned int a = 0u; a < nfuns(); ++a)
+            {
 
-                for (unsigned int o = 0u; o < node->offspring.size(); ++o) {
+                for (unsigned int o = 0u; o < node->offspring.size(); ++o)
+                {
+
                     if (s->get_cell(a, node->offspring[o]->id) == 1u)
                         transition(a, o) = 1u;
+
                 }
 
             }
 
             prob *= this->model->likelihood(
-                par0, transition,
+                par0,
+                transition,
                 node->narray[this->map_to_nodes[tmpstates]],
-                false);
+                false
+                );
 
         }
 

@@ -1,3 +1,5 @@
+#pragma GCC optimize ("O3")
+
 #include <random>
 #include <iostream>
 #include <string>
@@ -20,7 +22,7 @@ SEXP suff_stats(const NumericMatrix & x) {
   // Counting the stats
   for (barry::uint i = 0u; i < x.ncol(); ++i) {
     const std::vector< double > r(x.column(i).begin(), x.column(i).end());
-    xptr->add(r);
+    xptr->add(r, nullptr);
   }
   
   return xptr;
@@ -56,24 +58,24 @@ NumericVector counter(
 ) {
   
   // Initializing the Binary array, and also the the suffstats counter
-  netcounters::Network Array((uint) N, (uint) M, source, target);
-  Array.set_data(new netcounters::NetworkData(gender), true)
+  netcounters::NetworkDense Array((uint) N, (uint) M, source, target);
+  Array.set_data(new netcounters::NetworkData(gender), true);
 
   // Creating the counter object; 
-  netcounters::NetStatsCounter dat(&Array);
+  netcounters::NetStatsCounter<netcounters::NetworkDense> dat(&Array);
 
   // Adding functions 
-  netcounters::counter_edges(dat.counters);
-  netcounters::counter_mutual(dat.counters);
-  netcounters::counter_isolates(dat.counters);
-  netcounters::counter_istar2(dat.counters);
-  netcounters::counter_ostar2(dat.counters);
-  netcounters::counter_ttriads(dat.counters);
-  netcounters::counter_ctriads(dat.counters);
-  netcounters::counter_density(dat.counters);
-  netcounters::counter_idegree15(dat.counters);
-  netcounters::counter_odegree15(dat.counters);
-  netcounters::counter_nodematch(dat.counters, 0u);
+  netcounters::counter_edges(dat.get_counters());
+  netcounters::counter_mutual(dat.get_counters());
+  netcounters::counter_isolates(dat.get_counters());
+  netcounters::counter_istar2(dat.get_counters());
+  netcounters::counter_ostar2(dat.get_counters());
+  netcounters::counter_ttriads(dat.get_counters());
+  netcounters::counter_ctriads(dat.get_counters());
+  netcounters::counter_density(dat.get_counters());
+  netcounters::counter_idegree15(dat.get_counters());
+  netcounters::counter_odegree15(dat.get_counters());
+  netcounters::counter_nodematch(dat.get_counters(), 0u);
   
     // Fingers crossed
   std::vector< double > ans = dat.count_all();
@@ -90,38 +92,47 @@ List support (
   ) { 
   
   // Initializing the Binary array, and also the the suffstats counter
-  netcounters::Network net(N,M);
+  netcounters::NetworkDense net(N,M);
   net.set_data(new netcounters::NetworkData(gender), true);
   
-  netcounters::NetSupport dat(net);
+  netcounters::NetSupport<netcounters::NetworkDense> dat(net);
   
-  netcounters::counter_edges(dat.counters);
-  netcounters::counter_mutual(dat.counters);
-  netcounters::counter_isolates(dat.counters);
-  netcounters::counter_istar2(dat.counters);
-  netcounters::counter_ostar2(dat.counters);
-  netcounters::counter_ttriads(dat.counters);
-  netcounters::counter_ctriads(dat.counters);
-  netcounters::counter_density(dat.counters);
-  netcounters::counter_idegree15(dat.counters);
-  netcounters::counter_odegree15(dat.counters);
-  netcounters::counter_nodematch(dat.counters, 0u);
+  netcounters::counter_edges(dat.get_counters());
+  netcounters::counter_mutual(dat.get_counters());
+  netcounters::counter_isolates(dat.get_counters());
+  netcounters::counter_istar2(dat.get_counters());
+  netcounters::counter_ostar2(dat.get_counters());
+  netcounters::counter_ttriads(dat.get_counters());
+  netcounters::counter_ctriads(dat.get_counters());
+  netcounters::counter_density(dat.get_counters());
+  netcounters::counter_idegree15(dat.get_counters());
+  netcounters::counter_odegree15(dat.get_counters());
+  netcounters::counter_nodematch(dat.get_counters(), 0u);
   
-  netcounters::rules_zerodiag(dat.rules);
+  netcounters::rules_zerodiag(dat.get_rules());
   
   // Generating the data
   dat.calc(); 
   
   // Generating the entries
-  barry::Counts_type ans = dat.get_counts();
+  std::vector< double > ans = dat.get_counts();
   
+  size_t n_counters = dat.get_counters()->size();
+  size_t n_unique   = ans.size() / (n_counters + 1);
   
-  List res(ans.size());
-  for (unsigned int i = 0u; i < res.size(); ++i) {
+  List res(n_unique);
+  for (unsigned int i = 0u; i < res.size(); ++i)
+  {
+    
+    std::vector< double > tmp(n_counters);
+    for (unsigned int j = 0u; j < n_counters; ++j)
+        tmp[j] = ans[i * (n_counters + 1u) + j + 1];
+    
     res[i] = List::create(
-      _["x"] = ans.at(i).first,
-      _["count"] = ans.at(i).second
+      _["x"]     = tmp,
+      _["count"] = ans[i * (n_counters + 1u)]
     );
+    
   }
   
   return res;
@@ -228,14 +239,16 @@ ans0 <- t(sapply(ans0, function(i) c(i$x, i$count)))
       density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE,
     maxNumChangeStatVectors = 2^20),
   times = 10,
-  unit = "relative"
+  unit = "s"
 ))
 
 
 stop()
 ans1 <- ergm::ergm.allstats(
   mat ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriad + ctriad +
-    density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE)
+    density + idegree1.5 + odegree1.5 + nodematch("gender"), zeroobs = FALSE,
+    maxNumChangeStatVectors = 2^20
+  )
 ans1 <- cbind(ans1$statmat, w = ans1$weights)
 
 # Sorting equally
