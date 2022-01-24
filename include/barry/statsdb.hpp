@@ -28,7 +28,7 @@ public:
     FreqTable() {};
     ~FreqTable() {};
     
-    void add(const std::vector< T > & x);
+    size_t add(const std::vector< T > & x, size_t * h_precomp);
     
     Counts_type                 as_vector() const;
     const std::vector< double > & get_data() const {return data;};
@@ -50,14 +50,23 @@ public:
 };
 
 template<typename T>  
-inline void FreqTable<T>::add(const std::vector< T > & x) { 
+inline size_t FreqTable<T>::add(
+    const std::vector< T > & x,
+    size_t * h_precomp
+    ) { 
     
     // The term exists, then we add it to the list and we initialize it
     // with a single count
+    size_t h;
+    if (h_precomp == nullptr)
+        h = make_hash(x);
+    else
+        h = *h_precomp;
+
     if (k == 0u)
     {
 
-        index.insert({make_hash(x), 0u});
+        index.insert({h, 0u});
 
         data.push_back(1.0);
         data.insert(data.end(), x.begin(), x.end());
@@ -65,7 +74,7 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
         k = x.size();
         n++;
 
-        return;
+        return h;
 
     }
     else
@@ -76,7 +85,6 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
                 "The value you are trying to add doesn't have the same lenght used in the database."
                 );
         
-        size_t h = make_hash(x);
         iter = index.find(h);
 
         if (iter == index.end())
@@ -88,7 +96,7 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
 
             n++;
             
-            return;
+            return h;
 
         }
 
@@ -96,7 +104,7 @@ inline void FreqTable<T>::add(const std::vector< T > & x) {
 
     }
     
-    return; 
+    return h;
 
 }
 

@@ -26,6 +26,9 @@ SUPPORT_TEMPLATE(void, init_support)(
     coordiantes_n_free   = coordinates_free.size() / 2u;
     coordiantes_n_locked = coordinates_locked.size() / 2u;
     n_counters           = counters->size();
+
+    hashes.resize(coordiantes_n_free, 0u);
+    hashes_initialized.resize(coordiantes_n_free, false);
     
     // Computing initial statistics
     if (EmptyArray.nnozero() > 0u)
@@ -96,9 +99,9 @@ SUPPORT_TEMPLATE(void, init_support)(
     // Adding to the overall count
     bool include_it = rules_dyn->operator()(EmptyArray, 0u, 0u);
     if (include_it)
-        data.add(current_stats);
+        data.add(current_stats, nullptr);
 
-    change_stats.resize(coordiantes_n_free * n_counters);
+    change_stats.resize(coordiantes_n_free * n_counters, 0.0);
         
     if (include_it && (array_bank != nullptr)) 
         array_bank->push_back(EmptyArray);
@@ -152,16 +155,32 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
 
     // Counting
     // std::vector< double > change_stats(counters.size());
+    double tmp_chng;
+    bool change_stats_different = hashes_initialized[pos] ? false : true;
     for (uint n = 0u; n < n_counters; ++n)
     {
 
-        change_stats[pos * n_counters + n] = counters->operator[](n).count(
+        tmp_chng = counters->operator[](n).count(
             EmptyArray,
             coord_i,
             coord_j
             );
+        
+        if ((tmp_chng < DBL_MIN) & (tmp_chng > -DBL_MIN))
+        {
+
+            change_stats[pos * n_counters + n] = 0.0;
+
+        }
+        else
+        {
+
+            change_stats_different = true;
+            current_stats[n] += tmp_chng;
+            change_stats[pos * n_counters + n] = tmp_chng;
+
+        }
             
-        current_stats[n] += change_stats[pos * n_counters + n];
 
     }
     
@@ -177,7 +196,10 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
             ))
         {
 
-            data.add(current_stats);
+            if (change_stats_different)
+                hashes[pos] = data.add(current_stats, nullptr);
+            else
+                (void) data.add(current_stats, &hashes[pos]);
 
             // Need to save?
             if (array_bank != nullptr)
@@ -191,7 +213,11 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
 
     } else {
 
-        data.add(current_stats);
+        if (change_stats_different)
+            hashes[pos] = data.add(current_stats, nullptr);
+        else
+            (void) data.add(current_stats, &hashes[pos]);
+
         // Need to save?
         if (array_bank != nullptr)
             array_bank->push_back(EmptyArray);
@@ -212,9 +238,12 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
         false, false
         );
     
-    for (uint n = 0u; n < n_counters; ++n) 
-        current_stats[n] -= change_stats[pos * n_counters + n];
-    
+    if (change_stats_different)
+    {
+        for (uint n = 0u; n < n_counters; ++n) 
+            current_stats[n] -= change_stats[pos * n_counters + n];
+    }
+        
     
     return;
     
@@ -243,16 +272,31 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
 
     // Counting
     // std::vector< double > change_stats(counters.size());
+    double tmp_chng;
+    bool change_stats_different = false;
     for (uint n = 0u; n < n_counters; ++n)
     {
 
-        change_stats[pos * n_counters + n] = counters->operator[](n).count(
+        tmp_chng = counters->operator[](n).count(
             EmptyArray,
             coord_i,
             coord_j
             );
 
-        current_stats[n] += change_stats[pos * n_counters + n];
+        if ((tmp_chng < 1e-15) & (tmp_chng > -1e-15))
+        {
+
+            change_stats[pos * n_counters + n] = 0.0;
+
+        }
+        else
+        {
+
+            change_stats_different = true;
+            current_stats[n] += tmp_chng;
+            change_stats[pos * n_counters + n] = tmp_chng;
+
+        }
 
     }
     
@@ -264,7 +308,10 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
         if (rules_dyn->operator()(EmptyArray, coord_i, coord_j))
         {
 
-            data.add(current_stats);
+            if (change_stats_different)
+                hashes[pos] = data.add(current_stats, nullptr);
+            else
+                (void) data.add(current_stats, &hashes[pos]);
 
             // Need to save?
             if (array_bank != nullptr)
@@ -280,7 +327,11 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     else
     {
 
-        data.add(current_stats);
+        if (change_stats_different)
+            hashes[pos] = data.add(current_stats, nullptr);
+        else
+            (void) data.add(current_stats, &hashes[pos]);
+
         // Need to save?
         if (array_bank != nullptr)
             array_bank->push_back(EmptyArray);
@@ -297,8 +348,11 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     // We need to restore the state of the cell
     EmptyArray.rm_cell(coord_i, coord_j, false, false);
     
-    for (uint n = 0u; n < n_counters; ++n) 
-        current_stats[n] -= change_stats[pos * n_counters + n];
+    if (change_stats_different)
+    {
+        for (uint n = 0u; n < n_counters; ++n) 
+            current_stats[n] -= change_stats[pos * n_counters + n];
+    }
     
     return;
     

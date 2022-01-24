@@ -20,7 +20,7 @@ SEXP suff_stats(const NumericMatrix & x) {
   // Counting the stats
   for (barry::uint i = 0u; i < x.ncol(); ++i) {
     const std::vector< double > r(x.column(i).begin(), x.column(i).end());
-    xptr->add(r);
+    xptr->add(r, nullptr);
   }
   
   return xptr;

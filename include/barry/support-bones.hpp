@@ -71,6 +71,8 @@ public:
     size_t coordiantes_n_free;
     size_t coordiantes_n_locked;
     std::vector< double > change_stats;
+    std::vector< size_t > hashes;
+    std::vector< bool   > hashes_initialized;
     size_t n_counters;
     
     /**@brief Constructor passing a reference Array.
