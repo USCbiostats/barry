@@ -156,7 +156,7 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
     // Counting
     // std::vector< double > change_stats(counters.size());
     double tmp_chng;
-    bool change_stats_different = hashes_initialized[pos] ? false : true;
+    unsigned int change_stats_different = hashes_initialized[pos] ? 0u : 1u;
     for (uint n = 0u; n < n_counters; ++n)
     {
 
@@ -175,7 +175,7 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
         else
         {
 
-            change_stats_different = true;
+            change_stats_different++;
             current_stats[n] += tmp_chng;
             change_stats[pos * n_counters + n] = tmp_chng;
 
@@ -196,7 +196,7 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
             ))
         {
 
-            if (change_stats_different)
+            if (change_stats_different > 0u)
                 hashes[pos] = data.add(current_stats, nullptr);
             else
                 (void) data.add(current_stats, &hashes[pos]);
@@ -213,7 +213,7 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
 
     } else {
 
-        if (change_stats_different)
+        if (change_stats_different > 0u)
             hashes[pos] = data.add(current_stats, nullptr);
         else
             (void) data.add(current_stats, &hashes[pos]);
@@ -238,8 +238,9 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
         false, false
         );
     
-    if (change_stats_different)
+    if (change_stats_different > 0u)
     {
+        #pragma GCC ivdep
         for (uint n = 0u; n < n_counters; ++n) 
             current_stats[n] -= change_stats[pos * n_counters + n];
     }
@@ -273,7 +274,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     // Counting
     // std::vector< double > change_stats(counters.size());
     double tmp_chng;
-    bool change_stats_different = false;
+    unsigned int change_stats_different = hashes_initialized[pos] ? 0u : 1u;
     for (uint n = 0u; n < n_counters; ++n)
     {
 
@@ -283,7 +284,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
             coord_j
             );
 
-        if ((tmp_chng < 1e-15) & (tmp_chng > -1e-15))
+        if ((tmp_chng < DBL_MIN) & (tmp_chng > -DBL_MIN))
         {
 
             change_stats[pos * n_counters + n] = 0.0;
@@ -292,7 +293,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
         else
         {
 
-            change_stats_different = true;
+            change_stats_different++;
             current_stats[n] += tmp_chng;
             change_stats[pos * n_counters + n] = tmp_chng;
 
@@ -308,7 +309,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
         if (rules_dyn->operator()(EmptyArray, coord_i, coord_j))
         {
 
-            if (change_stats_different)
+            if (change_stats_different > 0u)
                 hashes[pos] = data.add(current_stats, nullptr);
             else
                 (void) data.add(current_stats, &hashes[pos]);
@@ -327,7 +328,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     else
     {
 
-        if (change_stats_different)
+        if (change_stats_different > 0u)
             hashes[pos] = data.add(current_stats, nullptr);
         else
             (void) data.add(current_stats, &hashes[pos]);
@@ -348,8 +349,9 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     // We need to restore the state of the cell
     EmptyArray.rm_cell(coord_i, coord_j, false, false);
     
-    if (change_stats_different)
+    if (change_stats_different > 0u)
     {
+        #pragma GCC ivdep
         for (uint n = 0u; n < n_counters; ++n) 
             current_stats[n] -= change_stats[pos * n_counters + n];
     }

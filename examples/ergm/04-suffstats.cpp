@@ -1,3 +1,5 @@
+#pragma GCC optimize ("O3")
+
 #include <random>
 #include <iostream>
 #include <string>

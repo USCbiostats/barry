@@ -126,6 +126,7 @@ inline bool Rules<Array_Type,Data_Type>::operator()(
 template <typename Array_Type, typename Data_Type>
 inline void Rules<Array_Type,Data_Type>::clear() {
     
+
     for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
         delete data[*iter];
     

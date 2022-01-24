@@ -15,19 +15,21 @@ inline double update_normalizing_constant(
 {
     
     double res = 0.0;
-    size_t k   = params.size();
-    size_t n   = support.size() / (k + 1u);
+    size_t k   = params.size() + 1u;
+    size_t n   = support.size() / k;
 
     double tmp;
+    #pragma GCC ivdep
     for (unsigned int i = 0u; i < n; ++i)
     {
 
         tmp = 0.0;
         
+        #pragma GCC ivdep
         for (unsigned int j = 0u; j < params.size(); ++j)
-            tmp += support[i * (k + 1u) + j + 1u] * params[j];
+            tmp += support[i * k + j + 1u] * params[j];
         
-        res += exp(tmp BARRY_SAFE_EXP) * support[i * (k + 1u)];
+        res += exp(tmp BARRY_SAFE_EXP) * support[i * k];
 
     }
     
