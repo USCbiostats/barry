@@ -11,6 +11,22 @@
 #define STATSCOUNTER_TEMPLATE(a,b) \
     template STATSCOUNTER_TEMPLATE_ARGS() inline a STATSCOUNTER_TYPE()::b
 
+STATSCOUNTER_TEMPLATE(,StatsCounter)(
+    const StatsCounter<Array_Type,Data_Type> & counter
+)
+{
+
+    Array      = counter.Array;
+    EmptyArray = *Array;
+    EmptyArray.clear();
+    current_stats = counter.current_stats;
+      
+    // We will save the data here
+    counters = new Counters<Array_Type,Data_Type>((*counter.counters));
+    counter_deleted  = false;
+
+}
+
 STATSCOUNTER_TEMPLATE(,~StatsCounter)()
 {
     if (!counter_deleted)
@@ -23,6 +39,7 @@ STATSCOUNTER_TEMPLATE(void, reset_array)(const Array_Type * Array_)
     
     Array      = Array_;
     EmptyArray = *Array_;
+    EmptyArray.clear();
     
     return;
 }

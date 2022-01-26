@@ -20,7 +20,9 @@ COUNTER_TEMPLATE(,Counter)(
         this->data = new Data_Type(*counter_.data);
         this->delete_data = true;
         
-    } else {
+    }
+    else
+    {
 
         this->data = counter_.data;
         this->delete_data = false;
@@ -317,16 +319,20 @@ COUNTERS_TEMPLATE(void, add_counter)(
 
 COUNTERS_TEMPLATE(void, clear)()
 {
-    
-    #pragma GCC ivdep
-    for (auto& i : (*to_be_deleted))
-        delete data->operator[](i);
-    
+        
+    if (delete_to_be_deleted)
+    {
+
+        #pragma GCC ivdep
+        for (auto& i : (*to_be_deleted))
+            delete data->operator[](i);
+
+        delete to_be_deleted;
+
+    }
+
     if (delete_data)
         delete data;
-
-    if (delete_to_be_deleted)
-        delete to_be_deleted;
 
     data          = nullptr;
     to_be_deleted = nullptr;

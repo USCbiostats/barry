@@ -1,8 +1,6 @@
-// #include <vector>
-// #include "../include/barry.hpp"
-// #include "catch.hpp"
+#include "tests.hpp"
 
-TEST_CASE("Phylo counts work", "[phylo counts]") {
+BARRY_TEST_CASE("Phylo counts work", "[phylo counts]") {
 
     using namespace barry::counters::phylo;
   
@@ -16,7 +14,7 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
      */
     
     PhyloArray A1_dpl(3, 2);
-    A1_dpl.set_data(new NodeData({1.0, 1.5}, {true, true}, true), true);
+    A1_dpl.set_data(new NodeData({1.0, 1.5}, {true, true, false}, true), true);
     A1_dpl(1, 0) = 1;
     A1_dpl(0, 1) = 1;
     A1_dpl(2, 0) = 1;
@@ -43,8 +41,10 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
         4, //counter_overall_changes (dpl)
         0 // counter_overall_changes (spe)
     };
-
+    
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE_THAT(ans1_dpl_expected, Catch::Approx(ans1_dpl_obs).epsilon(.001));
+    #endif
 
     counter.reset_array(&A1_spe);
     std::vector< double > ans1_spe_obs      = counter.count_all();
@@ -56,8 +56,10 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
         0, // counter_overall_changes (spe)
         4 //counter_overall_changes (dpl)
     };
-
+    
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE_THAT(ans1_spe_expected, Catch::Approx(ans1_spe_obs).epsilon(.001));
+    #endif
 
     /** PhyloArrays to check 2:
      * 
@@ -69,7 +71,7 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
      */
     
     PhyloArray A2_dpl(3, 3);
-    A2_dpl.set_data(new NodeData({1.0, 1.5}, {true, true}, true), true);
+    A2_dpl.set_data(new NodeData({1.0, 1.5}, {true, true, false}, true), true);
     A2_dpl(0, 2) = 1;
     A2_dpl(1, 1) = 1;
     A2_dpl(1, 2) = 1;
@@ -88,13 +90,25 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
     counter_overall_changes(counter2.get_counters(), false);
     counter_genes_changing(counter2.get_counters(), true);
     counter_genes_changing(counter2.get_counters(), false);
-    counter_k_genes_changing(counter2.get_counters(), 1, true);
-    counter_k_genes_changing(counter2.get_counters(), 2, true);
-    counter_k_genes_changing(counter2.get_counters(), 3, true);
-    counter_k_genes_changing(counter2.get_counters(), 1, false);
-    counter_k_genes_changing(counter2.get_counters(), 2, false);
-    counter_k_genes_changing(counter2.get_counters(), 3, false);
+    counter_k_genes_changing(counter2.get_counters(), 1, 1u);
+    counter_k_genes_changing(counter2.get_counters(), 2, 1u);
+    counter_k_genes_changing(counter2.get_counters(), 3, 1u);
+    counter_k_genes_changing(counter2.get_counters(), 1, 0u);
+    counter_k_genes_changing(counter2.get_counters(), 2, 0u);
+    counter_k_genes_changing(counter2.get_counters(), 3, 0u);
 
+
+    PhyloStatsCounter counter_sup(counter2);
+    PhyloSupport support(A2_dpl);
+    support.set_counters(counter_sup.get_counters());
+    counter_prop_genes_changing(counter_sup.get_counters(), 1u);
+    support.calc();
+    support.print();
+
+    support.reset_array(A2_spe);
+    support.calc();
+    support.print();
+   
 
     std::vector< double > ans2_dpl_obs      = counter2.count_all();
     std::vector< double > ans2_dpl_expected = {
@@ -110,7 +124,9 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
         0, 0, 0  // 1, 2, 3 genes changing (spe)
     };
 
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE_THAT(ans2_dpl_expected, Catch::Approx(ans2_dpl_obs).epsilon(.001));
+    #endif
 
     counter2.reset_array(&A2_spe);
     std::vector< double > ans2_spe_obs      = counter2.count_all();
@@ -127,7 +143,9 @@ TEST_CASE("Phylo counts work", "[phylo counts]") {
         0, 1, 0  // 1, 2, 3 genes changing (spe)
     };
 
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE_THAT(ans2_spe_expected, Catch::Approx(ans2_spe_obs).epsilon(.001));
+    #endif
     // { 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 2.0, 1.0, 0.0, 0.0, 4.0, 0.0, 2.0 }
     // { 0.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 4.0, 0.0, 2.0 }
 }

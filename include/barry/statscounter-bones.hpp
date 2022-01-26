@@ -49,6 +49,13 @@ public:
         
         return;
     }
+
+    /**
+     * @brief Copy constructor
+     * 
+     * @param counter 
+     */
+    StatsCounter(const StatsCounter<Array_Type,Data_Type> & counter);
     
     /**
      * @brief Can be created without setting the array.
