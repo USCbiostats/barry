@@ -6,6 +6,7 @@ var group__counters_phylo =
     [ "counter_gains_k_offspring", "group__counters-phylo.html#ga5f4909dc6fb4d0e2de35c43e324ea586", null ],
     [ "counter_genes_changing", "group__counters-phylo.html#ga3c7d3812dac0bda158601ee9b25f0ac3", null ],
     [ "counter_k_genes_changing", "group__counters-phylo.html#ga2dd8d6fd138f7783ef0143e496b4bec8", null ],
+    [ "counter_less_than_p_prop_genes_changing", "group__counters-phylo.html#ga6778ed9ac8fd3dacda838631863c5235", null ],
     [ "counter_longest", "group__counters-phylo.html#ga32a7d5bf639d776e6293ab466e204303", null ],
     [ "counter_loss", "group__counters-phylo.html#ga2c37ea0362e2cec9e28c8225d01f8245", null ],
     [ "counter_maxfuns", "group__counters-phylo.html#gab8267f636cac54ef64171b6b7b15251c", null ],

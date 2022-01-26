@@ -1,6 +1,7 @@
 var class_stats_counter =
 [
     [ "StatsCounter", "class_stats_counter.html#aad1531e93d2d217c5cfd6b389ccf6fba", null ],
+    [ "StatsCounter", "class_stats_counter.html#af3fd082aa6667ec0a4ed24a4cf1f1fd9", null ],
     [ "StatsCounter", "class_stats_counter.html#a6cef1e5bb4914a49ba8dd0f63070f81c", null ],
     [ "~StatsCounter", "class_stats_counter.html#a2824d86765d94e909e4b33396250b6c7", null ],
     [ "add_counter", "class_stats_counter.html#a829e41243a7b18cf71337deeec9f7030", null ],

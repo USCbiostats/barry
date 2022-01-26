@@ -29,6 +29,10 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{statscounter-meat_8hpp_abc429f91283d75fd99416bc90c6b5c15}{STATSCOUNTER\+\_\+\+TEMPLATE}} (, \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}})(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$ Array\+\_\+\+Type
+\item 
+\mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} \mbox{\hyperlink{statscounter-meat_8hpp_acdeee95221bfcd8b7b9e1c2e1776259c}{clear}} ()
+\item 
 \mbox{\hyperlink{statscounter-meat_8hpp_af57f0e315f3dca2f15fbbbd23d2efe1b}{STATSCOUNTER\+\_\+\+TEMPLATE}} (,$\sim$\mbox{\hyperlink{class_stats_counter}{Stats\+Counter}})()
 \item 
 \mbox{\hyperlink{statscounter-meat_8hpp_a810665e36600218ee981f80d0a9af24f}{STATSCOUNTER\+\_\+\+TEMPLATE}} (void, reset\+\_\+array)(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type $\ast$\mbox{\hyperlink{barray-meat_8hpp_a6cb31aaad809d508e214b61785d7fb47}{Array\+\_\+}})
@@ -39,9 +43,9 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \mbox{\hyperlink{statscounter-meat_8hpp_a526aea49dde42dad375a9da92ea3cc6b}{STATSCOUNTER\+\_\+\+TEMPLATE}} (void, count\+\_\+init)(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}
 \item 
-current\+\_\+stats \mbox{\hyperlink{statscounter-meat_8hpp_ae40d2e4f8ecd8bbe53d42f61bc802f8d}{resize}} (\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$size(), 0.\+0)
+\mbox{\hyperlink{statscounter-meat_8hpp_acda6567d00fd45cc346957cbe93d5a9c}{current\+\_\+stats}} \mbox{\hyperlink{statscounter-meat_8hpp_ae40d2e4f8ecd8bbe53d42f61bc802f8d}{resize}} (\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$size(), 0.\+0)
 \item 
-\mbox{\hyperlink{statscounter-meat_8hpp_a9b85f115b4ac304ca9bf777470fa945f}{for}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} n=0u;n$<$ \mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$size();++n) current\+\_\+stats\mbox{[}n\mbox{]}
+\mbox{\hyperlink{statscounter-meat_8hpp_a9b85f115b4ac304ca9bf777470fa945f}{for}} (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} n=0u;n$<$ \mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$size();++n) \mbox{\hyperlink{statscounter-meat_8hpp_acda6567d00fd45cc346957cbe93d5a9c}{current\+\_\+stats}}\mbox{[}n\mbox{]}
 \item 
 \mbox{\hyperlink{statscounter-meat_8hpp_a9a1ec6af3aafd2929947bdecbed633e5}{STATSCOUNTER\+\_\+\+TEMPLATE}} (void, count\+\_\+current)(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}
 \item 
@@ -52,15 +56,21 @@ current\+\_\+stats \mbox{\hyperlink{statscounter-meat_8hpp_ae40d2e4f8ecd8bbe53d4
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
+Data\+\_\+\+Type \& \mbox{\hyperlink{statscounter-meat_8hpp_adee42f2c06e4e0d3087f70059908f7d1}{counter}}
+\item 
+\mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} = $\ast$Array
+\item 
+\mbox{\hyperlink{statscounter-meat_8hpp_acda6567d00fd45cc346957cbe93d5a9c}{current\+\_\+stats}} = counter.\+current\+\_\+stats
+\item 
+\mbox{\hyperlink{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}} = new \mbox{\hyperlink{class_counters}{Counters}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$(($\ast$counter.\+counters))
+\item 
+\mbox{\hyperlink{statscounter-meat_8hpp_a0d65b145934806521470a9f93278c795}{counter\+\_\+deleted}} = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}
+\item 
 Data\+\_\+\+Type $\ast$ \mbox{\hyperlink{statscounter-meat_8hpp_aa80d872ce00a593ea8f27137907b9cf3}{f\+\_\+}}
 \item 
 \mbox{\hyperlink{statscounter-meat_8hpp_a9717e7bbecb906637e86cef6da3d83c2}{return}}
 \item 
 Data\+\_\+\+Type $\ast$ \mbox{\hyperlink{statscounter-meat_8hpp_a06420c7858d72514761c1cca0654f9c0}{counters\+\_\+}}
-\item 
-\mbox{\hyperlink{statscounter-meat_8hpp_a0d65b145934806521470a9f93278c795}{counter\+\_\+deleted}} = true
-\item 
-\mbox{\hyperlink{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}} = \mbox{\hyperlink{support-meat_8hpp_aa79c6fa1f7864a8258e8f2c0a68b6d35}{counters\+\_\+}}
 \item 
 \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}
 \end{DoxyCompactItemize}
@@ -100,6 +110,12 @@ Definition at line 7 of file statscounter-\/meat.\+hpp.
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{statscounter-meat_8hpp_acdeee95221bfcd8b7b9e1c2e1776259c}\label{statscounter-meat_8hpp_acdeee95221bfcd8b7b9e1c2e1776259c}} 
+\index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!clear@{clear}}
+\index{clear@{clear}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{statscounter-meat_8hpp_a9b85f115b4ac304ca9bf777470fa945f}\label{statscounter-meat_8hpp_a9b85f115b4ac304ca9bf777470fa945f}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!for@{for}}
 \index{for@{for}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
@@ -110,94 +126,117 @@ Definition at line 7 of file statscounter-\/meat.\+hpp.
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!resize@{resize}}
 \index{resize@{resize}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{resize()}{resize()}}
-{\footnotesize\ttfamily current\+\_\+stats resize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$}]{size(),  }\item[{0.}]{0 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{statscounter-meat_8hpp_acda6567d00fd45cc346957cbe93d5a9c}{current\+\_\+stats}} resize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$}]{size(),  }\item[{0.}]{0 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{statscounter-meat_8hpp_abc429f91283d75fd99416bc90c6b5c15}\label{statscounter-meat_8hpp_abc429f91283d75fd99416bc90c6b5c15}} 
+\index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}}
+\index{STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/9]}}
+{\footnotesize\ttfamily STATSCOUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}}]{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_af57f0e315f3dca2f15fbbbd23d2efe1b}\label{statscounter-meat_8hpp_af57f0e315f3dca2f15fbbbd23d2efe1b}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}}
 \index{STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/9]}}
 {\footnotesize\ttfamily STATSCOUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{$\sim$}]{Stats\+Counter }\end{DoxyParamCaption})}
 
 
 
-Definition at line 14 of file statscounter-\/meat.\+hpp.
+Definition at line 30 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_a747ef18c7e504ddafbe17c8f367196de}\label{statscounter-meat_8hpp_a747ef18c7e504ddafbe17c8f367196de}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}}
 \index{STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/9]}}
 {\footnotesize\ttfamily STATSCOUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{,  }\item[{get\+\_\+descriptions}]{ }\end{DoxyParamCaption}) const}
 
 
 
-Definition at line 250 of file statscounter-\/meat.\+hpp.
+Definition at line 267 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_a526cc3e5befb645e099dd98aee25295f}\label{statscounter-meat_8hpp_a526cc3e5befb645e099dd98aee25295f}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}}
 \index{STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/9]}}
 {\footnotesize\ttfamily STATSCOUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{,  }\item[{get\+\_\+names}]{ }\end{DoxyParamCaption}) const}
 
 
 
-Definition at line 245 of file statscounter-\/meat.\+hpp.
+Definition at line 262 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_acb127b0f8d8b3764857ab521e17c3f15}\label{statscounter-meat_8hpp_acb127b0f8d8b3764857ab521e17c3f15}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}}
 \index{STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/9]}}
 {\footnotesize\ttfamily STATSCOUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{add\+\_\+counter}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_a9a1ec6af3aafd2929947bdecbed633e5}\label{statscounter-meat_8hpp_a9a1ec6af3aafd2929947bdecbed633e5}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}}
 \index{STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/9]}}
 {\footnotesize\ttfamily STATSCOUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{count\+\_\+current}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_a526aea49dde42dad375a9da92ea3cc6b}\label{statscounter-meat_8hpp_a526aea49dde42dad375a9da92ea3cc6b}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}}
 \index{STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/9]}}
 {\footnotesize\ttfamily STATSCOUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{count\+\_\+init}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_a810665e36600218ee981f80d0a9af24f}\label{statscounter-meat_8hpp_a810665e36600218ee981f80d0a9af24f}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}}
 \index{STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [8/9]}}
 {\footnotesize\ttfamily STATSCOUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{reset\+\_\+array}]{ }\end{DoxyParamCaption}) const}
 
 
 
-Definition at line 21 of file statscounter-\/meat.\+hpp.
+Definition at line 37 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_a001697fe93836f604a469b412e057b86}\label{statscounter-meat_8hpp_a001697fe93836f604a469b412e057b86}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}}
 \index{STATSCOUNTER\_TEMPLATE@{STATSCOUNTER\_TEMPLATE}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+\doxysubsubsection{\texorpdfstring{STATSCOUNTER\_TEMPLATE()}{STATSCOUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [9/9]}}
 {\footnotesize\ttfamily STATSCOUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{set\+\_\+counters}]{ }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{statscounter-meat_8hpp_adee42f2c06e4e0d3087f70059908f7d1}\label{statscounter-meat_8hpp_adee42f2c06e4e0d3087f70059908f7d1}} 
+\index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!counter@{counter}}
+\index{counter@{counter}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily Data\+\_\+\+Type\& counter}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{    Array      = \mbox{\hyperlink{statscounter-meat_8hpp_adee42f2c06e4e0d3087f70059908f7d1}{counter}}.Array}
+
+\end{DoxyCode}
+
+
+Definition at line 15 of file statscounter-\/meat.\+hpp.
+
 \mbox{\Hypertarget{statscounter-meat_8hpp_a0d65b145934806521470a9f93278c795}\label{statscounter-meat_8hpp_a0d65b145934806521470a9f93278c795}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!counter\_deleted@{counter\_deleted}}
 \index{counter\_deleted@{counter\_deleted}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{counter\_deleted}{counter\_deleted}}
-{\footnotesize\ttfamily counter\+\_\+deleted = true}
+{\footnotesize\ttfamily counter\+\_\+deleted = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}
 
 
 
-Definition at line 53 of file statscounter-\/meat.\+hpp.
+Definition at line 26 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}\label{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!counters@{counters}}
 \index{counters@{counters}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{counters}{counters}}
-{\footnotesize\ttfamily counters = \mbox{\hyperlink{support-meat_8hpp_aa79c6fa1f7864a8258e8f2c0a68b6d35}{counters\+\_\+}}}
+{\footnotesize\ttfamily counters = new \mbox{\hyperlink{class_counters}{Counters}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$(($\ast$counter.\+counters))}
 
 
 
-Definition at line 54 of file statscounter-\/meat.\+hpp.
+Definition at line 25 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_a06420c7858d72514761c1cca0654f9c0}\label{statscounter-meat_8hpp_a06420c7858d72514761c1cca0654f9c0}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!counters\_@{counters\_}}
@@ -216,7 +255,27 @@ Definition at line 54 of file statscounter-\/meat.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 47 of file statscounter-\/meat.\+hpp.
+Definition at line 64 of file statscounter-\/meat.\+hpp.
+
+\mbox{\Hypertarget{statscounter-meat_8hpp_acda6567d00fd45cc346957cbe93d5a9c}\label{statscounter-meat_8hpp_acda6567d00fd45cc346957cbe93d5a9c}} 
+\index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!current\_stats@{current\_stats}}
+\index{current\_stats@{current\_stats}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{current\_stats}{current\_stats}}
+{\footnotesize\ttfamily current\+\_\+stats = counter.\+current\+\_\+stats}
+
+
+
+Definition at line 22 of file statscounter-\/meat.\+hpp.
+
+\mbox{\Hypertarget{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}\label{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}} 
+\index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!EmptyArray@{EmptyArray}}
+\index{EmptyArray@{EmptyArray}!statscounter-\/meat.hpp@{statscounter-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{EmptyArray}{EmptyArray}}
+{\footnotesize\ttfamily Empty\+Array = $\ast$Array}
+
+
+
+Definition at line 20 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_aa80d872ce00a593ea8f27137907b9cf3}\label{statscounter-meat_8hpp_aa80d872ce00a593ea8f27137907b9cf3}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!f\_@{f\_}}
@@ -233,7 +292,7 @@ Definition at line 47 of file statscounter-\/meat.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 30 of file statscounter-\/meat.\+hpp.
+Definition at line 47 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}\label{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!j@{j}}
@@ -252,7 +311,7 @@ Definition at line 30 of file statscounter-\/meat.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 60 of file statscounter-\/meat.\+hpp.
+Definition at line 77 of file statscounter-\/meat.\+hpp.
 
 \mbox{\Hypertarget{statscounter-meat_8hpp_a9717e7bbecb906637e86cef6da3d83c2}\label{statscounter-meat_8hpp_a9717e7bbecb906637e86cef6da3d83c2}} 
 \index{statscounter-\/meat.hpp@{statscounter-\/meat.hpp}!return@{return}}
@@ -262,5 +321,5 @@ Definition at line 60 of file statscounter-\/meat.\+hpp.
 
 
 
-Definition at line 34 of file statscounter-\/meat.\+hpp.
+Definition at line 51 of file statscounter-\/meat.\+hpp.
 

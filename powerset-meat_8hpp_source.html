@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Rule_Type&gt;</div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_power_set.html#acc20a68ff11aa1891d9a0676ed50808f">    7</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_power_set.html#a095815ccc44c88e0da73d92c6b5cf5f3">PowerSet&lt;Array_Type,Data_Rule_Type&gt;::PowerSet</a>(</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">const</span> Array_Type &amp; array</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;) : EmptyArray(array), <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>(0u),</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;) : <a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>(array), <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>(0u),</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>(new <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Type&gt;()), <a class="code" href="barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446">N</a>(array.nrow()), <a class="code" href="barray-meat_8hpp.html#aad05f78187c942f9dd521605fa81f1ba">M</a>(array.ncol()) {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
@@ -122,21 +122,21 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// Computing the locations</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    coordinates_free.clear();</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    coordinates_locked.clear();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;get_seq(EmptyArray, &amp;coordinates_free, &amp;coordinates_locked);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;get_seq(<a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>, &amp;coordinates_free, &amp;coordinates_locked);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    n_free   = coordinates_free.size() / 2u;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    n_locked = coordinates_locked.size() / 2u;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Computing initial statistics</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">if</span> (EmptyArray.nnozero() &gt; 0u)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>.nnozero() &gt; 0u)</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> (EmptyArray.is_dense())</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>.is_dense())</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; n_free; ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                EmptyArray(</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>(</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    coordinates_free[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> * 2u],</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    coordinates_free[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> * 2u + 1u]</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    ) = 0;</div>
@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; n_free; ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                EmptyArray.rm_cell(</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>.rm_cell(</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    coordinates_free[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> * 2u],</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    coordinates_free[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> * 2u + 1u],</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    <span class="keyword">false</span>,</div>
@@ -165,7 +165,7 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.reserve(pow(2.0, n_free)); </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Adding the empty array to the set</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.push_back(EmptyArray);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.push_back(<a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    </div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
@@ -184,21 +184,21 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="support-meat_8hpp.html#a980099bf621a65db8f01ee0cabdcfc58">calc_backend_sparse</a>(pos + 1u);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">// Toggle the cell (we will toggle it back after calling the counter)</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    EmptyArray.insert_cell(</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>.insert_cell(</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        coordinates_free[pos * 2u],</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        coordinates_free[pos * 2u + 1u],</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        EmptyArray.default_val().value,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>.default_val().value,</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">false</span>, <span class="keyword">false</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        );</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.push_back(EmptyArray);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.push_back(<a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Again, we only pass it to the next level iff the next level is not</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// passed the last step.</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="support-meat_8hpp.html#a980099bf621a65db8f01ee0cabdcfc58">calc_backend_sparse</a>(pos + 1u);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    </div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// We need to restore the state of the cell</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    EmptyArray.rm_cell(</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>.rm_cell(</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        coordinates_free[pos * 2u],</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        coordinates_free[pos * 2u + 1u],</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">false</span>, <span class="keyword">false</span></div>
@@ -222,16 +222,16 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="support-meat_8hpp.html#ab38525a95e90bb46ae74d5fdda68a8e9">calc_backend_dense</a>(pos + 1u);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        </div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="comment">// Toggle the cell (we will toggle it back after calling the counter)</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    EmptyArray(coordinates_free[pos * 2u], coordinates_free[pos * 2u + 1u]) = 1;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>(coordinates_free[pos * 2u], coordinates_free[pos * 2u + 1u]) = 1;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.push_back(EmptyArray);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.push_back(<a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    </div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment">// Again, we only pass it to the next level iff the next level is not</span></div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// passed the last step.</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="support-meat_8hpp.html#ab38525a95e90bb46ae74d5fdda68a8e9">calc_backend_dense</a>(pos + 1u);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    </div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// We need to restore the state of the cell</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    EmptyArray(coordinates_free[pos * 2u], coordinates_free[pos * 2u + 1u]) = 0;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>(coordinates_free[pos * 2u], coordinates_free[pos * 2u + 1u]) = 0;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    </div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    </div>
@@ -248,7 +248,7 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    this-&gt;init_support();</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// Recursive function to count</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">if</span> (EmptyArray.is_dense())</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>.is_dense())</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="support-meat_8hpp.html#ab38525a95e90bb46ae74d5fdda68a8e9">calc_backend_dense</a>(0u);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <a class="code" href="support-meat_8hpp.html#a980099bf621a65db8f01ee0cabdcfc58">calc_backend_sparse</a>(0u);</div>
@@ -320,9 +320,10 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div class="ttc" id="aclass_power_set_html_ad3b707294498105b2cc1a04017cc96d2"><div class="ttname"><a href="class_power_set.html#ad3b707294498105b2cc1a04017cc96d2">PowerSet::calc</a></div><div class="ttdeci">void calc()</div><div class="ttdef"><b>Definition:</b> <a href="powerset-meat_8hpp_source.html#l00147">powerset-meat.hpp:147</a></div></div>
 <div class="ttc" id="aclass_rule_html"><div class="ttname"><a href="class_rule.html">Rule</a></div><div class="ttdoc">Rule for determining if a cell should be included in a sequence.</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00022">rules-bones.hpp:22</a></div></div>
 <div class="ttc" id="aclass_rules_html"><div class="ttname"><a href="class_rules.html">Rules</a></div><div class="ttdoc">Vector of objects of class Rule.</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00068">rules-bones.hpp:68</a></div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_a77488349c8b3388dc5690a67b65a04e5"><div class="ttname"><a href="counters-meat_8hpp.html#a77488349c8b3388dc5690a67b65a04e5">data_</a></div><div class="ttdeci">Data_Type Counter_fun_type&lt; Array_Type, Data_Type &gt; Data_Type * data_</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00293">counters-meat.hpp:293</a></div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00117">counters-meat.hpp:117</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_a77488349c8b3388dc5690a67b65a04e5"><div class="ttname"><a href="counters-meat_8hpp.html#a77488349c8b3388dc5690a67b65a04e5">data_</a></div><div class="ttdeci">Data_Type Counter_fun_type&lt; Array_Type, Data_Type &gt; Data_Type * data_</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00295">counters-meat.hpp:295</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00119">counters-meat.hpp:119</a></div></div>
 <div class="ttc" id="apowerset-bones_8hpp_html"><div class="ttname"><a href="powerset-bones_8hpp.html">powerset-bones.hpp</a></div></div>
+<div class="ttc" id="astatscounter-meat_8hpp_html_a850cc1cfc690a36f2478789fa123a6d3"><div class="ttname"><a href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a></div><div class="ttdeci">EmptyArray</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00020">statscounter-meat.hpp:20</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a595e07a99f60f22a6a29e4fca291ea28"><div class="ttname"><a href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a></div><div class="ttdeci">rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00451">support-meat.hpp:451</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a980099bf621a65db8f01ee0cabdcfc58"><div class="ttname"><a href="support-meat_8hpp.html#a980099bf621a65db8f01ee0cabdcfc58">calc_backend_sparse</a></div><div class="ttdeci">calc_backend_sparse(pos+1u, array_bank, stats_bank)</div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_ab38525a95e90bb46ae74d5fdda68a8e9"><div class="ttname"><a href="support-meat_8hpp.html#ab38525a95e90bb46ae74d5fdda68a8e9">calc_backend_dense</a></div><div class="ttdeci">calc_backend_dense(pos+1u, array_bank, stats_bank)</div></div>
@@ -334,7 +335,7 @@ $(document).ready(function(){initNavTree('powerset-meat_8hpp_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="powerset-meat_8hpp.html">powerset-meat.hpp</a></li>
-    <li class="footer">Generated on Mon Jan 24 2022 20:59:25 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Jan 26 2022 01:46:11 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

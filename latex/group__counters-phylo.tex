@@ -39,6 +39,8 @@ void \mbox{\hyperlink{group__counters-phylo_ga4aa6855316673440f7ebff2d01e3ddca}{
 void \mbox{\hyperlink{group__counters-phylo_ga578ee88179c6ff445b597248527384cd}{counter\+\_\+co\+\_\+opt}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Function co-\/opting. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__counters-phylo_ga2dd8d6fd138f7783ef0143e496b4bec8}{counter\+\_\+k\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int k, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+\begin{DoxyCompactList}\small\item\em Indicator function. Equals to one if $k$ genes changed and zero otherwise. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counters-phylo_ga6778ed9ac8fd3dacda838631863c5235}{counter\+\_\+less\+\_\+than\+\_\+p\+\_\+prop\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, double p, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Indicator function. Equals to one if $k$ genes changed and zero otherwise. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -65,7 +67,7 @@ Function co-\/opting.
 
 Function co-\/opting of functions A and B happens when, for example, function B is gained as a new featured leveraging what function A already does; without losing function A. The sufficient statistic is defined as follows\+: \[ x_{pa}(1 - x_{pb})\sum_{i<j}\left[x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p + x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p\right] \] This algorithm implements the change statistic. 
 
-Definition at line 1194 of file phylo.\+hpp.
+Definition at line 1234 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga06b193f4d4ac04ebcd8535a4d1b61636}\label{group__counters-phylo_ga06b193f4d4ac04ebcd8535a4d1b61636}} 
 \index{Phylo counters@{Phylo counters}!counter\_cogain@{counter\_cogain}}
@@ -79,7 +81,7 @@ Co-\/evolution (joint gain or loss)
 
 Needs to specify pairs of functions ({\ttfamily nfunA}, {\ttfamily nfunB}). 
 
-Definition at line 819 of file phylo.\+hpp.
+Definition at line 859 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gadf617caf15474389d73caf3370672d91}\label{group__counters-phylo_gadf617caf15474389d73caf3370672d91}} 
 \index{Phylo counters@{Phylo counters}!counter\_gains@{counter\_gains}}
@@ -93,7 +95,7 @@ Functional gains for a specific function ({\ttfamily nfun}).
 
 
 
-Definition at line 192 of file phylo.\+hpp.
+Definition at line 205 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga5f4909dc6fb4d0e2de35c43e324ea586}\label{group__counters-phylo_ga5f4909dc6fb4d0e2de35c43e324ea586}} 
 \index{Phylo counters@{Phylo counters}!counter\_gains\_k\_offspring@{counter\_gains\_k\_offspring}}
@@ -107,7 +109,7 @@ k genes gain function nfun
 
 
 
-Definition at line 238 of file phylo.\+hpp.
+Definition at line 266 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga3c7d3812dac0bda158601ee9b25f0ac3}\label{group__counters-phylo_ga3c7d3812dac0bda158601ee9b25f0ac3}} 
 \index{Phylo counters@{Phylo counters}!counter\_genes\_changing@{counter\_genes\_changing}}
@@ -121,7 +123,7 @@ Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with re
 
 
 
-Definition at line 311 of file phylo.\+hpp.
+Definition at line 339 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga2dd8d6fd138f7783ef0143e496b4bec8}\label{group__counters-phylo_ga2dd8d6fd138f7783ef0143e496b4bec8}} 
 \index{Phylo counters@{Phylo counters}!counter\_k\_genes\_changing@{counter\_k\_genes\_changing}}
@@ -135,9 +137,21 @@ Indicator function. Equals to one if $k$ genes changed and zero otherwise.
 
 $<$ How many genes diverge the parent
 
+Definition at line 1333 of file phylo.\+hpp.
+
+\mbox{\Hypertarget{group__counters-phylo_ga6778ed9ac8fd3dacda838631863c5235}\label{group__counters-phylo_ga6778ed9ac8fd3dacda838631863c5235}} 
+\index{Phylo counters@{Phylo counters}!counter\_less\_than\_p\_prop\_genes\_changing@{counter\_less\_than\_p\_prop\_genes\_changing}}
+\index{counter\_less\_than\_p\_prop\_genes\_changing@{counter\_less\_than\_p\_prop\_genes\_changing}!Phylo counters@{Phylo counters}}
+\doxysubsubsection{\texorpdfstring{counter\_less\_than\_p\_prop\_genes\_changing()}{counter\_less\_than\_p\_prop\_genes\_changing()}}
+{\footnotesize\ttfamily void counter\+\_\+less\+\_\+than\+\_\+p\+\_\+prop\+\_\+genes\+\_\+changing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{double}]{p,  }\item[{unsigned int}]{duplication = {\ttfamily \mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicator function. Equals to one if $k$ genes changed and zero otherwise. 
+
 $<$ How many genes diverge the parent
 
-Definition at line 1293 of file phylo.\+hpp.
+Definition at line 1467 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga32a7d5bf639d776e6293ab466e204303}\label{group__counters-phylo_ga32a7d5bf639d776e6293ab466e204303}} 
 \index{Phylo counters@{Phylo counters}!counter\_longest@{counter\_longest}}
@@ -151,7 +165,7 @@ Longest branch mutates (either by gain or by loss)
 
 
 
-Definition at line 877 of file phylo.\+hpp.
+Definition at line 917 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga2c37ea0362e2cec9e28c8225d01f8245}\label{group__counters-phylo_ga2c37ea0362e2cec9e28c8225d01f8245}} 
 \index{Phylo counters@{Phylo counters}!counter\_loss@{counter\_loss}}
@@ -165,7 +179,7 @@ Total count of losses for an specific function.
 
 
 
-Definition at line 622 of file phylo.\+hpp.
+Definition at line 654 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gab8267f636cac54ef64171b6b7b15251c}\label{group__counters-phylo_gab8267f636cac54ef64171b6b7b15251c}} 
 \index{Phylo counters@{Phylo counters}!counter\_maxfuns@{counter\_maxfuns}}
@@ -179,7 +193,7 @@ Cap the number of functions per gene.
 
 
 
-Definition at line 540 of file phylo.\+hpp.
+Definition at line 572 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gaea3d5f58d5042aa4b43d01662a7f0fca}\label{group__counters-phylo_gaea3d5f58d5042aa4b43d01662a7f0fca}} 
 \index{Phylo counters@{Phylo counters}!counter\_neofun@{counter\_neofun}}
@@ -193,7 +207,7 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 989 of file phylo.\+hpp.
+Definition at line 1029 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga4aa6855316673440f7ebff2d01e3ddca}\label{group__counters-phylo_ga4aa6855316673440f7ebff2d01e3ddca}} 
 \index{Phylo counters@{Phylo counters}!counter\_neofun\_a2b@{counter\_neofun\_a2b}}
@@ -207,7 +221,7 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 1075 of file phylo.\+hpp.
+Definition at line 1115 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gaa0c3d78f05f5789ac030ebb5655edd01}\label{group__counters-phylo_gaa0c3d78f05f5789ac030ebb5655edd01}} 
 \index{Phylo counters@{Phylo counters}!counter\_overall\_changes@{counter\_overall\_changes}}
@@ -221,7 +235,7 @@ Total number of changes. Use this statistic to account for \char`\"{}preservatio
 
 
 
-Definition at line 672 of file phylo.\+hpp.
+Definition at line 712 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga0b30b6172ca57ab66ca7c80fe3ef76fd}\label{group__counters-phylo_ga0b30b6172ca57ab66ca7c80fe3ef76fd}} 
 \index{Phylo counters@{Phylo counters}!counter\_overall\_gains@{counter\_overall\_gains}}
@@ -249,7 +263,7 @@ Overall functional loss.
 
 
 
-Definition at line 497 of file phylo.\+hpp.
+Definition at line 529 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gac6ca46e26d1a64a7b7956bba55ecc453}\label{group__counters-phylo_gac6ca46e26d1a64a7b7956bba55ecc453}} 
 \index{Phylo counters@{Phylo counters}!counter\_prop\_genes\_changing@{counter\_prop\_genes\_changing}}
@@ -263,7 +277,7 @@ Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with re
 
 
 
-Definition at line 383 of file phylo.\+hpp.
+Definition at line 411 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga22aa24b7cd557b55a5ebb0aeeff6c030}\label{group__counters-phylo_ga22aa24b7cd557b55a5ebb0aeeff6c030}} 
 \index{Phylo counters@{Phylo counters}!counter\_subfun@{counter\_subfun}}
@@ -277,5 +291,5 @@ Total count of Sub-\/functionalization events.
 
 It requires to specify data = \{funA, funB\} 
 
-Definition at line 732 of file phylo.\+hpp.
+Definition at line 772 of file phylo.\+hpp.
 
