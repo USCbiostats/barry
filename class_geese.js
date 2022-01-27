@@ -14,7 +14,7 @@ var class_geese =
     [ "get_probabilities", "class_geese.html#a5c9cf28a69270fe4d3f48984fe2c5723", null ],
     [ "get_rengine", "class_geese.html#addb8366d2d098403a0e0ac9e321afeeb", null ],
     [ "get_states", "class_geese.html#a08873639292543015324d3c3768e900f", null ],
-    [ "get_support", "class_geese.html#ae9c93f40cb142891c294ed541622dab6", null ],
+    [ "get_support_fun", "class_geese.html#ae9bc7b2cbc23aca9229d2ef511e53186", null ],
     [ "inherit_support", "class_geese.html#aa95abe540b9977592bcc88e77619d070", null ],
     [ "init", "class_geese.html#a6a655763da1c4bba0e886bd69658bd76", null ],
     [ "init_node", "class_geese.html#a3855898a556e2ac1d30529d3bc35f13a", null ],

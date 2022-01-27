@@ -150,8 +150,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4c9d8b857f82d69275f120f2461072b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff4a65facf467f1857160abc9cb720f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_rules.html">Rules</a>&lt; Array_Type, Data_Rule_Dyn_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#aff4a65facf467f1857160abc9cb720f2">get_rules_dyn</a> ()</td></tr>
 <tr class="separator:aff4a65facf467f1857160abc9cb720f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abedfdf782647e5401f832d0121fdab5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#abedfdf782647e5401f832d0121fdab5c">get_support</a> ()</td></tr>
-<tr class="separator:abedfdf782647e5401f832d0121fdab5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a5e28f9d316bbc914a6d8f24071f8c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a0a5e28f9d316bbc914a6d8f24071f8c1">get_support_fun</a> ()</td></tr>
+<tr class="separator:a0a5e28f9d316bbc914a6d8f24071f8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Wrappers for the &lt;tt&gt;Counters&lt;/tt&gt; member.</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>These will add counters to the model, which are shared by the support and the actual counter function. </p>
 </div></td></tr>
@@ -218,7 +218,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2dd1551af539117400ddbfe42ac25ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Size of the model</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Number of different supports included in the model</p>
-<p>This will return the size of <code>stats</code>.</p>
+<p>This will return the size of <code>stats_target</code>.</p>
 <dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="class_model.html#ac9e1a5bb0ba275abb36f2e220b04dbd8">size()</a></code> returns the number of arrays in the model. </dd>
 <dd>
 <code><a class="el" href="class_model.html#ab25ddd02d4e0cd5b6be7169291b814be">size_unique()</a></code> returns the number of unique arrays (according to the hasher) in the model. </dd>
@@ -235,6 +235,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2e1bbdf9ab840e64da0ba3e348812e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61b7baf9d45f885832db74fb9cd99c4d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a61b7baf9d45f885832db74fb9cd99c4d">colnames</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
 <tr class="separator:a61b7baf9d45f885832db74fb9cd99c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a6eacbc0a8bb76ae183ec9cc112767dd6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a6eacbc0a8bb76ae183ec9cc112767dd6">get_stats_target</a> ()</td></tr>
+<tr class="memdesc:a6eacbc0a8bb76ae183ec9cc112767dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw pointers to the support and target statistics.  <a href="class_model.html#a6eacbc0a8bb76ae183ec9cc112767dd6">More...</a><br /></td></tr>
+<tr class="separator:a6eacbc0a8bb76ae183ec9cc112767dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae32b03e221b22c30eff464dc75787061"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ae32b03e221b22c30eff464dc75787061">get_stats_support</a> ()</td></tr>
+<tr class="separator:ae32b03e221b22c30eff464dc75787061"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = bool, typename Data_Rule_Type = bool, typename Data_Rule_Dyn_Type = bool&gt;<br />
@@ -254,7 +260,7 @@ class Model&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Typ
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00047">47</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00046">46</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad1a83640422f8f2a9ea2d3f593bf3799"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad1a83640422f8f2a9ea2d3f593bf3799">&#9670;&nbsp;</a></span>Model() <span class="overload">[1/3]</span></h2>
@@ -340,7 +346,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00149">149</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00147">147</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -865,8 +871,8 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 
 </div>
 </div>
-<a id="abedfdf782647e5401f832d0121fdab5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abedfdf782647e5401f832d0121fdab5c">&#9670;&nbsp;</a></span>get_support()</h2>
+<a id="ae32b03e221b22c30eff464dc75787061"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae32b03e221b22c30eff464dc75787061">&#9670;&nbsp;</a></span>get_stats_support()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -874,7 +880,47 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_support.html">Support</a>&lt;Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type&gt;* <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_support </td>
+          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt;* <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_stats_support </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6eacbc0a8bb76ae183ec9cc112767dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eacbc0a8bb76ae183ec9cc112767dd6">&#9670;&nbsp;</a></span>get_stats_target()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; double &gt; &gt;* <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_stats_target </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Raw pointers to the support and target statistics. </p>
+
+</div>
+</div>
+<a id="a0a5e28f9d316bbc914a6d8f24071f8c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a5e28f9d316bbc914a6d8f24071f8c1">&#9670;&nbsp;</a></span>get_support_fun()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_support.html">Support</a>&lt;Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type&gt;* <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_support_fun </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1258,7 +1304,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00119">119</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00117">117</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1328,7 +1374,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00129">129</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-bones_8hpp_source.html#l00127">127</a> of file <a class="el" href="model-bones_8hpp_source.html">model-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1449,7 +1495,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_model.html">Model</a></li>
-    <li class="footer">Generated on Wed Jan 26 2022 01:46:11 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jan 27 2022 01:41:22 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
