@@ -101,13 +101,6 @@ private:
     unsigned int n_spec_events = 0u; ///< Number of speciation events
     ///@}
 
-    /**
-     * @brief Keeps the locations of the model
-     * 
-     */
-    std::vector< size_t > psets_locations_to_subtree;
-    bool psets_locations_to_subtree_done = false;
-
 public:
 
     // Data
