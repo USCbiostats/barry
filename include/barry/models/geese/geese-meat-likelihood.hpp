@@ -41,7 +41,8 @@ inline double Geese::likelihood(
 
     }
 
-
+    // Location in the map of subtrees
+    size_t loc = 0u;
     for (auto& i : *preseq)
     {
 
@@ -105,9 +106,18 @@ inline double Geese::likelihood(
                     }
 
                     // Retrieving the location to the respective set of probabilities
-                    unsigned int loc = map_to_nodes[tmpstate];
-
-                    off_mult *= node.offspring[o]->subtree_prob[loc];
+                    if (!psets_locations_to_subtree_done)
+                    {
+                        size_t tmp_loc = map_to_nodes[tmpstate];
+                        psets_locations_to_subtree.push_back(tmp_loc);
+                        off_mult *= node.offspring[o]->subtree_prob[tmp_loc];    
+                    }
+                    else
+                    {
+                        off_mult *= node.offspring[o]->subtree_prob[
+                            psets_locations_to_subtree[loc++]
+                        ];
+                    }
 
                 }
 
@@ -159,6 +169,10 @@ inline double Geese::likelihood(
         }
 
     }
+
+    // After the first run, we can change the value
+    if (!psets_locations_to_subtree_done)
+        psets_locations_to_subtree_done = true;
 
     // In the case that the sequence is empty, then it means
     // that we are looking at a completely unnanotated tree,
