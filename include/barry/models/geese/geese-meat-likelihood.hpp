@@ -82,8 +82,9 @@ inline double Geese::likelihood(
                     n_off = node.offspring[o];
 
                     // First, getting what is the corresponding state
-                    std::fill(tmpstate.begin(), tmpstate.end(), 0u);
-
+                    if (!x->is_dense())
+                        std::fill(tmpstate.begin(), tmpstate.end(), 0u);
+                    
                     x->get_col_vec(&tmpstate, o, false);
 
                     // In the case that the offspring is a leaf, then we need to
@@ -122,7 +123,7 @@ inline double Geese::likelihood(
                 // Multiplying by P(x|x_n), the transition probability
                 off_mult *= model->likelihood(
                     par0,
-                    psets_stats->at(nstate++),
+                    psets_stats->operator[](nstate++),
                     node.narray[s]
                 );
 

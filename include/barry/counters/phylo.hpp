@@ -10,7 +10,7 @@
 
 #define MAKE_DUPL_VARS() \
     bool DPL = Array.D()->duplication; \
-    unsigned int DATA_AT = data->at(0u);
+    unsigned int DATA_AT = data->operator[](0u);
 
 #define IS_EITHER()      (DATA_AT == DUPL_EITH)
 #define IS_DUPLICATION() ((DATA_AT == DUPL_DUPL) & (DPL))
@@ -79,6 +79,7 @@ public:
 
     uint at(uint d) {return data.at(d);};
     uint operator()(uint d) {return data.at(d);};
+    uint operator[](uint d) {return data[d];};
     void reserve(uint x) {return data.reserve(x);};
     void push_back(uint x) {return data.push_back(x);};
     void shrink_to_fit()  {return data.shrink_to_fit();};
@@ -216,7 +217,7 @@ inline void counter_gains(
             return 0.0;
 
         double ngains = 0.0;
-        auto   k = data->at(1u);
+        auto   k = data->operator[](1u);
         auto   s = Array.D()->states[k];
 
         if (s)
@@ -240,7 +241,7 @@ inline void counter_gains(
             return 0.0;
 
         IF_MATCHES()
-            return (i == data->at(1u)) ? 1.0 : 0.0;
+            return (i == data->operator[](1u)) ? 1.0 : 0.0;
         
         return 0.0;
 
@@ -283,7 +284,7 @@ inline void counter_gains_k_offspring(
     {
 
         // Is this relevant?
-        if (i != data->at(1u))
+        if (i != data->operator[](1u))
             return 0.0;
 
         IF_NOTMATCHES()
@@ -303,7 +304,7 @@ inline void counter_gains_k_offspring(
             }
 
         // Three cases: base on the diff
-        int diff = static_cast<int>(data->at(2u)) - counts + 1;
+        int diff = static_cast<int>(data->operator[](2u)) - counts + 1;
         // (a) counts were 1 below k, then +1
         if (diff == 1)
             return -1.0;
@@ -567,7 +568,7 @@ inline void counter_maxfuns(
 
       PHYLO_CHECK_MISSING();    
 
-      if (data->at(0u) == 0u)
+      if (data->operator[](0u) == 0u)
         return static_cast<double>(Array.ncol());
       else
       {
@@ -586,7 +587,7 @@ inline void counter_maxfuns(
 
           }
 
-          if (count >= data->at(0u) && count <= data->at(1u))
+          if (count >= data->operator[](0u) && count <= data->operator[](1u))
             ans += 1.0;
 
         }
@@ -610,10 +611,10 @@ inline void counter_maxfuns(
                     ++counts;
 
         // Reached the lower bound
-        if (counts == data->at(1u))
+        if (counts == data->operator[](1u))
             return 1.0;
           // Went outside of the upper bound
-        else if (counts == (data->at(2u) + 1u))
+        else if (counts == (data->operator[](2u) + 1u))
             return -1.0;
         else
             return 0.0;
@@ -652,7 +653,7 @@ inline void counter_loss(
         if (!Array.D()->states[i])
             return 0.0;
         
-        return (i == data->at(1u)) ? -1.0 : 0.0;
+        return (i == data->operator[](1u)) ? -1.0 : 0.0;
 
     };
     
@@ -664,7 +665,7 @@ inline void counter_loss(
         IF_NOTMATCHES()
             return 0.0;
         
-        auto        f = data->at(1u);
+        auto        f = data->operator[](1u);
 
         if (!Array.D()->states[f])
             return 0.0;
@@ -770,15 +771,15 @@ inline void counter_subfun(
             return 0.0;
         
         // Are we looking at either of the relevant functions?
-        if ((data->at(1u) != i) && (data->at(2u) != i))
+        if ((data->operator[](1u) != i) && (data->operator[](2u) != i))
             return 0.0;
         
         // Are A and B existant? if not, no change
-        if (!Array.D()->states[data->at(1u)] | !Array.D()->states[data->at(2u)])
+        if (!Array.D()->states[data->operator[](1u)] | !Array.D()->states[data->operator[](2u)])
             return 0.0;
         
         // Figuring out which is the first (reference) function
-        uint other = (i == data->at(1u))? data->at(2u) : data->at(1u);
+        uint other = (i == data->operator[](1u))? data->operator[](2u) : data->operator[](1u);
         double res = 0.0;
         // There are 4 cases: (first x second) x (had the second function)
         if (Array(other, j, false) == 1u)
@@ -855,8 +856,8 @@ inline void counter_cogain(
         IF_NOTMATCHES()
             return 0.0;
 
-        auto d1 = data->at(1u);
-        auto d2 = data->at(2u);
+        auto d1 = data->operator[](1u);
+        auto d2 = data->operator[](2u);
       
         // Is the function in scope relevant?
         if ((i != d1) && (i != d2))
@@ -1027,17 +1028,17 @@ inline void counter_neofun(
             return 0.0;
         
         // Is the function in scope relevant?
-        if ((i != data->at(1u)) && (i != data->at(2u)))
+        if ((i != data->operator[](1u)) && (i != data->operator[](2u)))
             return 0.0;
         
         // Checking if the parent has both functions
-        if (!Array.D()->states[data->at(1u)] && !Array.D()->states[data->at(2u)]) 
+        if (!Array.D()->states[data->operator[](1u)] && !Array.D()->states[data->operator[](2u)]) 
             return 0.0;
-        else if (Array.D()->states[data->at(1u)] && Array.D()->states[data->at(2u)])
+        else if (Array.D()->states[data->operator[](1u)] && Array.D()->states[data->operator[](2u)])
             return 0.0;
         
         // Figuring out which is the first (reference) function
-        uint other = (i == data->at(1u))? data->at(2u) : data->at(1u);
+        uint other = (i == data->operator[](1u))? data->operator[](2u) : data->operator[](1u);
         double res = 0.0;
         
         if (Array.is_empty(other, j, false))
@@ -1112,8 +1113,8 @@ inline void counter_neofun_a2b(
         IF_NOTMATCHES()
             return 0.0;
         
-        const uint & funA = data->at(1u);
-        const uint & funB = data->at(2u);
+        const uint & funA = data->operator[](1u);
+        const uint & funB = data->operator[](2u);
         
         // Checking the parent has funA but not funb
         if ((!Array.D()->states[funA]) | Array.D()->states[funB]) 
@@ -1230,8 +1231,8 @@ inline void counter_co_opt(
         IF_NOTMATCHES()
             return 0.0;
         
-        const unsigned int funA = data->at(1u);
-        const unsigned int funB = data->at(2u);
+        const unsigned int funA = data->operator[](1u);
+        const unsigned int funB = data->operator[](2u);
 
         // If the change is out of scope, then nothing to do
         if ((i != funA) & (i != funB))
@@ -1284,13 +1285,13 @@ inline void counter_co_opt(
         if (data->size() != 3u)
             throw std::length_error("The counter data should be of length 2.");
 
-        if (data->at(1u) == data->at(2u))
+        if (data->operator[](1u) == data->operator[](2u))
             throw std::logic_error("Functions A and B should be different from each other.");
 
-        if (data->at(1u) >= Array.nrow())
+        if (data->operator[](1u) >= Array.nrow())
             throw std::length_error("Function A in counter out of range.");
 
-        if (data->at(2u) >= Array.nrow())
+        if (data->operator[](2u) >= Array.nrow())
             throw std::length_error("Function B in counter out of range.");
 
         return 0.0;
@@ -1334,9 +1335,9 @@ inline void counter_k_genes_changing(
         // find at least one state = true.
         for (auto s : Array.D()->states)
             if (s)
-                return Array.ncol() == data->at(1u) ? 1.0 : 0.0;
+                return Array.ncol() == data->operator[](1u) ? 1.0 : 0.0;
 
-        return 0.0;
+        return data->operator[](1u) == 0 ? 1.0 : 0.0;
       
     };
 
@@ -1352,7 +1353,7 @@ inline void counter_k_genes_changing(
         bool        j_diverges = false;
         const auto & par_state = Array.D()->states;
 
-        int k = static_cast<int>(data->at(1u));
+        int k = static_cast<int>(data->operator[](1u));
 
         for (auto o = 0u; o < Array.ncol(); ++o)
         {
@@ -1453,10 +1454,10 @@ inline void counter_less_than_p_prop_genes_changing(
 
         for (auto s : Array.D()->states)
             if (s)
-                return data->at(1u) == 100 ? 1.0 : 0.0;
+                return data->operator[](1u) == 100 ? 1.0 : 0.0;
 
         // Only one if it was specified it was zero
-        return data->at(1u) == 0 ? 1.0 : 0.0;
+        return 1.0;
       
     };
 
@@ -1533,7 +1534,7 @@ inline void counter_less_than_p_prop_genes_changing(
             count_prev += 1.0;
 
         double ncol = static_cast<double>(Array.ncol());
-        double p    = static_cast<double>(data->at(1u)) / 100.0;
+        double p    = static_cast<double>(data->operator[](1u)) / 100.0;
 
         return ((count/ncol) <= p ? 1.0 : 0.0) - ((count_prev/ncol) <= p ? 1.0 : 0.0);
 

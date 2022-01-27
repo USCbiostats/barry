@@ -62,7 +62,7 @@ inline bool vec_diff(
 ) {
 
     for (unsigned int i = 0u; i < a.size(); ++i)
-        if ((a.at(i) != 9u) && (a.at(i) != s.at(i)))
+        if ((a[i] != 9u) && (a[i] != s[i]))
             return true;
 
     return false;
