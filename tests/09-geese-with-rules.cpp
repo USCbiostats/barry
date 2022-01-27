@@ -28,7 +28,7 @@ TEST_CASE("Geese model with rules", "[geese with rules]") {
     counter_maxfuns(model.get_counters(), 2, 2);
     counter_overall_changes(model.get_counters());
 
-    rule_dyn_limit_changes(model.get_support(), 3, 0, 2);
+    rule_dyn_limit_changes(model.get_support_fun(), 3, 0, 2);
 
     model.init();
     model.set_seed(100);

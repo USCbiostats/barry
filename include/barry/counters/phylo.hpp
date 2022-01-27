@@ -352,10 +352,10 @@ inline void counter_genes_changing(
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-        for (uint j0 = 0u; j0 < Array.nrow(); ++j0)
+        for (auto s : Array.D()->states)
         {
 
-            if (Array.D()->states[j0]) 
+            if (s) 
                 // Yup, we are loosing a function, so break
                 return static_cast<double>(Array.ncol());
             
@@ -424,28 +424,13 @@ inline void counter_prop_genes_changing(
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-        auto & parent_states = Array.D()->states;       
-        size_t ndifferent = 0u;
-        for (auto o = 0u; o < Array.ncol(); ++o)
+        for (auto s : Array.D()->states)
         {
-
-            for (auto f = 0u; f < Array.nrow(); ++f)
-            {
-                // If it diverges from the parent here, then mark
-                // as different and go to the next.
-                if (parent_states[f] != (Array(f,o) == 1u))
-                {
-
-                    ndifferent++;
-                    break;
-
-                }
-
-            }
-
+            if (s)
+                return 1.0;
         }
-
-        return static_cast<double>(ndifferent / Array.ncol());
+        
+        return 0.0;
       
     };
 
@@ -477,7 +462,7 @@ inline void counter_prop_genes_changing(
         for (unsigned int f = 0u; f < Array.nrow(); ++f)
         {
 
-            if (f != j)
+            if (f == i)
             {
                 if (par_state[f])
                 {
@@ -1347,28 +1332,11 @@ inline void counter_k_genes_changing(
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-        auto & parent_states = Array.D()->states;       
-        size_t ndifferent = 0u;
-        for (auto o = 0u; o < Array.ncol(); ++o)
-        {
+        for (auto s : Array.D()->states)
+            if (s)
+                return Array.ncol() == data->at(1u) ? 1.0 : 0.0;
 
-            for (auto f = 0u; f < Array.nrow(); ++f)
-            {
-                // If it diverges from the parent here, then mark
-                // as different and go to the next.
-                if (parent_states[f] != (Array(f,o) == 1u))
-                {
-
-                    ndifferent++;
-                    break;
-
-                }
-
-            }
-
-        }
-
-        return static_cast<double>(data->at(1u) == ndifferent);
+        return 0.0;
       
     };
 
@@ -1379,17 +1347,17 @@ inline void counter_k_genes_changing(
         IF_NOTMATCHES()
             return 0.0;
         
-        // Setup
-        int count = 0; ///< How many genes diverge the parent
+        // How many genes diverge the parent
+        int              count = 0; 
+        bool        j_diverges = false;
+        const auto & par_state = Array.D()->states;
 
         int k = static_cast<int>(data->at(1u));
-        bool j_diverges = false;
-        const std::vector< bool > & par_state = Array.D()->states;
 
-        for (unsigned int o = 0u; o < Array.ncol(); ++o)
+        for (auto o = 0u; o < Array.ncol(); ++o)
         {
 
-            for (unsigned int f = 0u; f < Array.nrow(); ++f)
+            for (auto f = 0u; f < Array.nrow(); ++f)
             {
 
                 // Was the gene annotation different from the parent?
@@ -1408,14 +1376,19 @@ inline void counter_k_genes_changing(
 
         }
 
+        // Counts will only be relevant if (count - k) > 1. Otherwise,
+        // having the j gene changed is not relevant
+        if (std::abs(count - k) > 1)
+            return 0.0;
 
+        // Did it used to diverge?
         bool j_used_to_diverge = false;
-        for (unsigned int f = 0u; f < Array.nrow(); ++f)
+        for (auto f = 0u; f < Array.nrow(); ++f)
         {
 
-            if (f != j)
+            if (f == i)
             {
-                if (par_state[f])
+                if (par_state[f]) // Since it is now true, it used to diverge
                 {
                     j_used_to_diverge = true;
                     break;
@@ -1445,8 +1418,7 @@ inline void counter_k_genes_changing(
         else
             count_prev++;
 
-
-        return static_cast<double>((count == k) - (count_prev == k));
+        return (count == k ? 1.0 : 0.0) - (count_prev == k ? 1.0 : 0.0);
 
     };
     
@@ -1479,30 +1451,12 @@ inline void counter_less_than_p_prop_genes_changing(
         IF_NOTMATCHES()
             return 0.0;
 
-        // At the beginning, all offspring are zero, so we need to
-        // find at least one state = true.
-        auto & parent_states = Array.D()->states;       
-        size_t ndifferent = 0u;
-        for (auto o = 0u; o < Array.ncol(); ++o)
-        {
+        for (auto s : Array.D()->states)
+            if (s)
+                return data->at(1u) == 100 ? 1.0 : 0.0;
 
-            for (auto f = 0u; f < Array.nrow(); ++f)
-            {
-                // If it diverges from the parent here, then mark
-                // as different and go to the next.
-                if (parent_states[f] != (Array(f,o) == 1u))
-                {
-
-                    ndifferent++;
-                    break;
-
-                }
-
-            }
-
-        }
-
-        return static_cast<double>((ndifferent/Array.ncol()) <= (data->at(1u)/100));
+        // Only one if it was specified it was zero
+        return data->at(1u) == 0 ? 1.0 : 0.0;
       
     };
 
@@ -1514,7 +1468,7 @@ inline void counter_less_than_p_prop_genes_changing(
             return 0.0;
         
         // Setup
-        int count = 0; ///< How many genes diverge the parent
+        double count = 0.0; ///< How many genes diverge the parent
 
         bool j_diverges = false;
         const std::vector< bool > & par_state = Array.D()->states;
@@ -1532,7 +1486,7 @@ inline void counter_less_than_p_prop_genes_changing(
                     if (o == j)
                         j_diverges = true;
 
-                    count++;
+                    count += 1.0;
                     break;
 
                 }
@@ -1546,7 +1500,7 @@ inline void counter_less_than_p_prop_genes_changing(
         for (unsigned int f = 0u; f < Array.nrow(); ++f)
         {
 
-            if (f != j)
+            if (f == i)
             {
                 if (par_state[f])
                 {
@@ -1573,17 +1527,15 @@ inline void counter_less_than_p_prop_genes_changing(
             return 0.0;
         // Case 2: j NOW diverges
         else if (j_diverges)
-            count_prev--;
+            count_prev -= 1.0;
         // Case 3: j USED to diverge
         else
-            count_prev++;
+            count_prev += 1.0;
 
         double ncol = static_cast<double>(Array.ncol());
+        double p    = static_cast<double>(data->at(1u)) / 100.0;
 
-        double p = static_cast<double>(data->at(1u)) / 100.0;
-        return static_cast<double>(
-            (static_cast<double>(count)/ncol <= p) - (static_cast<double>(count_prev)/ncol <= p)
-        );
+        return ((count/ncol) <= p ? 1.0 : 0.0) - ((count_prev/ncol) <= p ? 1.0 : 0.0);
 
     };
     
@@ -1591,7 +1543,7 @@ inline void counter_less_than_p_prop_genes_changing(
         tmp_count, tmp_init,
         new PhyloCounterData({duplication, static_cast<uint>(p * 100)}),
         true,
-        std::to_string(p) + "prop genes changing" + get_last_name(duplication)
+        std::to_string(p) + " prop genes changing" + get_last_name(duplication)
     );
   
 }

@@ -275,13 +275,13 @@ public:
      * @return `get_rengine()` returns the Pseudo-RNG engine used.
      * @return `get_counters()` returns the vector of counters used.
      * @return `get_model()` returns the `Model` object used.
-     * @return `get_support()` returns the computed support of the model.
+     * @return `get_support_fun()` returns the computed support of the model.
      */
     ///@{
     std::mt19937 *                     get_rengine();
     phylocounters::PhyloCounters *     get_counters();
     phylocounters::PhyloModel *        get_model();
-    phylocounters::PhyloSupport *      get_support();
+    phylocounters::PhyloSupport *      get_support_fun();
     ///@}
     
     /**

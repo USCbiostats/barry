@@ -52,7 +52,9 @@ public:
     
     // void add_geese(Geese x);
     phylocounters::PhyloCounters * get_counters();
-    phylocounters::PhyloSupport *  get_support();
+    phylocounters::PhyloSupport *  get_support_fun();
+    std::vector< std::vector< double > > * get_stats_support();
+    std::vector< std::vector< double > > * get_stats_target();
     phylocounters::PhyloModel *  get_model();
 
     /**

@@ -524,7 +524,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
             if ((Array.colsum(k) == BARRY_ZERO_NETWORK_DENSE) && (Array.rowsum(k) == BARRY_ZERO_NETWORK_DENSE))
                 continue;
 
-            if (j != k & i != k)
+            if ((j != k) & (i != k))
             {
 
                 if (dat[k * N + i] != BARRY_ZERO_NETWORK_DENSE)

@@ -107,10 +107,24 @@ inline phylocounters::PhyloCounters * Flock::get_counters()
 
 }
 
-inline phylocounters::PhyloSupport *  Flock::get_support()
+inline phylocounters::PhyloSupport *  Flock::get_support_fun()
 {
 
-    return this->model.get_support();
+    return this->model.get_support_fun();
+
+}
+
+inline std::vector< std::vector< double > > *  Flock::get_stats_support()
+{
+
+    return this->model.get_stats_support();
+
+}
+
+inline std::vector< std::vector< double > > *  Flock::get_stats_target()
+{
+
+    return this->model.get_stats_target();
 
 }
 

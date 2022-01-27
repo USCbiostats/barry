@@ -166,8 +166,8 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
     counter_gains(model_R.get_counters(), {0}, 0u);
     counter_loss(model_R.get_counters(), {0}, 0u);
 
-    rule_dyn_limit_changes(model_R.get_support(), 0, 0, 4, 1u);
-    rule_dyn_limit_changes(model_R.get_support(), 0, 0, 4, 0u);
+    rule_dyn_limit_changes(model_R.get_support_fun(), 0, 0, 4, 1u);
+    rule_dyn_limit_changes(model_R.get_support_fun(), 0, 0, 4, 0u);
 
     model_R.init();
 
@@ -325,8 +325,8 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
     counter_gains(model_R2.get_counters(), {0}, 0u);
     counter_loss(model_R2.get_counters(), {0}, 0u);
 
-    rule_dyn_limit_changes(model_R2.get_support(), 0, 0, 4, 1u);
-    rule_dyn_limit_changes(model_R2.get_support(), 1, 0, 4, 0u);
+    rule_dyn_limit_changes(model_R2.get_support_fun(), 0, 0, 4, 1u);
+    rule_dyn_limit_changes(model_R2.get_support_fun(), 1, 0, 4, 0u);
 
     model_R2.init();
 

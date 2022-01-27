@@ -42,20 +42,20 @@ inline double update_normalizing_constant(
 }
 
 inline double likelihood_(
-        const std::vector< double > & target_stats,
+        const std::vector< double > & stats_target,
         const std::vector< double > & params,
         const double normalizing_constant,
         bool log_ = false
 ) {
     
-    if (target_stats.size() != params.size())
-        throw std::length_error("-target_stats- and -params- should have the same length.");
+    if (stats_target.size() != params.size())
+        throw std::length_error("-stats_target- and -params- should have the same length.");
         
     double numerator = 0.0;
     
     // Computing the numerator
-    for (unsigned int j = 0u; j < target_stats.size(); ++j)
-        numerator += target_stats[j] * params[j];
+    for (unsigned int j = 0u; j < stats_target.size(); ++j)
+        numerator += stats_target[j] * params[j];
 
     if (!log_)
         numerator = exp(numerator BARRY_SAFE_EXP);
@@ -82,8 +82,10 @@ inline double likelihood_(
 
 
 MODEL_TEMPLATE(,Model)() :
-    stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
-    target_stats(0u), arrays2support(0u), keys2support(0u),
+    stats_support(0u), stats_support_n_arrays(0u),
+    stats_target(0u), arrays2support(0u),
+    keys2support(0u),
+    pset_arrays(0u), pset_stats(0u),
     counters(new Counters<Array_Type,Data_Counter_Type>()),
     rules(new Rules<Array_Type,Data_Rule_Type>()),
     rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
@@ -108,8 +110,9 @@ MODEL_TEMPLATE(,Model)() :
 }
 
 MODEL_TEMPLATE(,Model)(uint size_) :
-    stats(0u), n_arrays_per_stats(0u), pset_arrays(0u), pset_stats(0u),
-    target_stats(0u), arrays2support(0u), keys2support(0u), 
+    stats_support(0u), stats_support_n_arrays(0u),
+    stats_target(0u), arrays2support(0u), keys2support(0u), 
+    pset_arrays(0u), pset_stats(0u),
     counters(new Counters<Array_Type,Data_Counter_Type>()),
     rules(new Rules<Array_Type,Data_Rule_Type>()),
     rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
@@ -118,7 +121,7 @@ MODEL_TEMPLATE(,Model)(uint size_) :
     delete_rules_dyn(true)
 {
     
-    target_stats.reserve(size_);
+    stats_target.reserve(size_);
     arrays2support.reserve(size_);
 
     // Counters are shared
@@ -138,13 +141,13 @@ MODEL_TEMPLATE(,Model)(uint size_) :
 
 MODEL_TEMPLATE(,Model)(
     const MODEL_TYPE() & Model_) : 
-    stats(Model_.stats),
-    n_arrays_per_stats(Model_.n_arrays_per_stats),
-    pset_arrays(Model_.pset_arrays),
-    pset_stats(Model_.pset_stats),
-    target_stats(Model_.target_stats),
+    stats_support(Model_.stats_support),
+    stats_support_n_arrays(Model_.stats_support_n_arrays),
+    stats_target(Model_.stats_target),
     arrays2support(Model_.arrays2support),
     keys2support(Model_.keys2support),
+    pset_arrays(Model_.pset_arrays),
+    pset_stats(Model_.pset_stats),
     counters(new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters))),
     rules(new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules))),
     rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn))),
@@ -188,22 +191,22 @@ MODEL_TEMPLATE(MODEL_TYPE() &, operator)=(
         if (delete_rules_dyn)
             delete rules_dyn;
         
-        stats                 = Model_.stats;
-        n_arrays_per_stats    = Model_.n_arrays_per_stats;
-        pset_arrays           = Model_.pset_arrays;
-        pset_stats            = Model_.pset_stats;
-        target_stats          = Model_.target_stats;
-        arrays2support        = Model_.arrays2support;
-        keys2support          = Model_.keys2support;
-        counters              = new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters));
-        rules                 = new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules));
-        rules_dyn             = new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn));
-        delete_counters       = true;
-        delete_rules          = true;
-        delete_rules_dyn      = true;
-        params_last           = Model_.params_last;
-        normalizing_constants = Model_.normalizing_constants;
-        first_calc_done       = Model_.first_calc_done;
+        stats_support          = Model_.stats_support;
+        stats_support_n_arrays = Model_.stats_support_n_arrays;
+        stats_target           = Model_.stats_target;
+        arrays2support         = Model_.arrays2support;
+        keys2support           = Model_.keys2support;
+        pset_arrays            = Model_.pset_arrays;
+        pset_stats             = Model_.pset_stats;
+        counters               = new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters));
+        rules                  = new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules));
+        rules_dyn              = new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn));
+        delete_counters        = true;
+        delete_rules           = true;
+        delete_rules_dyn       = true;
+        params_last            = Model_.params_last;
+        normalizing_constants  = Model_.normalizing_constants;
+        first_calc_done        = Model_.first_calc_done;
 
         // Counters are shared
         support_fun.set_counters(counters);
@@ -400,7 +403,7 @@ MODEL_TEMPLATE(uint, add_array)(
     
     // Array counts (target statistics)
     counter_fun.reset_array(&Array_);
-    target_stats.push_back(counter_fun.count_all());
+    stats_target.push_back(counter_fun.count_all());
     
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
@@ -410,9 +413,9 @@ MODEL_TEMPLATE(uint, add_array)(
     {
         
         // Adding to the map
-        keys2support[key] = stats.size();
-        n_arrays_per_stats.push_back(1u);       // How many elements now
-        arrays2support.push_back(stats.size()); // Map of the array id to the support
+        keys2support[key] = stats_support.size();
+        stats_support_n_arrays.push_back(1u);       // How many elements now
+        arrays2support.push_back(stats_support.size()); // Map of the array id to the support
         
         // Computing support using the counters included in the model
         support_fun.reset_array(Array_);
@@ -469,11 +472,11 @@ MODEL_TEMPLATE(uint, add_array)(
             
         }
         
-        stats.push_back(support_fun.get_counts());
+        stats_support.push_back(support_fun.get_counts());
         
         // Making room for the previous parameters. This will be used to check if
         // the normalizing constant has been updated or not.
-        params_last.push_back(target_stats[0u]);
+        params_last.push_back(stats_target[0u]);
         normalizing_constants.push_back(0.0);
         first_calc_done.push_back(false);
         
@@ -482,7 +485,7 @@ MODEL_TEMPLATE(uint, add_array)(
     }
     
     // Increasing the number of arrays in that stat
-    ++n_arrays_per_stats[locator->second];
+    ++stats_support_n_arrays[locator->second];
     
     // Adding the corresponding map
     arrays2support.push_back(locator->second);
@@ -504,7 +507,7 @@ MODEL_TEMPLATE(double, likelihood)(
     unsigned int idx = arrays2support[i];
 
     // Checking if this actually has a change of happening
-    if (this->stats[idx].size() == 0u)
+    if (this->stats_support[idx].size() == 0u)
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     // Checking if we have updated the normalizing constant or not
@@ -514,7 +517,7 @@ MODEL_TEMPLATE(double, likelihood)(
         first_calc_done[idx] = true;
         
         normalizing_constants[idx] = update_normalizing_constant(
-            params, stats[idx]
+            params, stats_support[idx]
         );
         
         params_last[idx] = params;
@@ -522,7 +525,7 @@ MODEL_TEMPLATE(double, likelihood)(
     }
     
     return likelihood_(
-        target_stats[i],
+        stats_target[i],
         params,
         normalizing_constants[idx],
         as_log
@@ -562,10 +565,10 @@ MODEL_TEMPLATE(double, likelihood)(
     }
 
     // Checking if this actually has a change of happening
-    if (this->stats[loc].size() == 0u)
+    if (this->stats_support[loc].size() == 0u)
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
-    // Counting stats
+    // Counting stats_target
     StatsCounter< Array_Type, Data_Counter_Type> tmpstats(&Array_);
 
     tmpstats.set_counters(this->counters);
@@ -579,7 +582,7 @@ MODEL_TEMPLATE(double, likelihood)(
         first_calc_done[loc] = true;
         
         normalizing_constants[loc] = update_normalizing_constant(
-            params, stats[loc]
+            params, stats_support[loc]
         );
         
         params_last[loc] = params;
@@ -617,7 +620,7 @@ MODEL_TEMPLATE(double, likelihood)(
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
 
     // Checking if this actually has a change of happening
-    if (this->stats[loc].size() == 0u)
+    if (this->stats_support[loc].size() == 0u)
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     // Checking if we have updated the normalizing constant or not
@@ -626,7 +629,7 @@ MODEL_TEMPLATE(double, likelihood)(
         first_calc_done[loc] = true;
         
         normalizing_constants[loc] = update_normalizing_constant(
-            params, stats[loc]
+            params, stats_support[loc]
         );
         
         params_last[loc] = params;
@@ -655,7 +658,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
             
             first_calc_done[i] = true;
             normalizing_constants[i] = update_normalizing_constant(
-                params, stats[i]
+                params, stats_support[i]
             );
             
             params_last[i] = params;
@@ -668,17 +671,17 @@ MODEL_TEMPLATE(double, likelihood_total)(
     if (as_log)
     {
 
-        for (uint i = 0; i < target_stats.size(); ++i) 
-            res += vec_inner_prod(target_stats[i], params) BARRY_SAFE_EXP;
+        for (uint i = 0; i < stats_target.size(); ++i) 
+            res += vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP;
         
         for (uint i = 0u; i < params_last.size(); ++i)
-            res -= (std::log(normalizing_constants[i]) * this->n_arrays_per_stats[i]);
+            res -= (std::log(normalizing_constants[i]) * this->stats_support_n_arrays[i]);
 
     } else {
         
         res = 1.0;
-        for (uint i = 0; i < target_stats.size(); ++i)
-            res *= std::exp(vec_inner_prod(target_stats[i], params) BARRY_SAFE_EXP) / 
+        for (uint i = 0; i < stats_target.size(); ++i)
+            res *= std::exp(vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP) / 
                 normalizing_constants[arrays2support[i]];
         
     }
@@ -706,7 +709,7 @@ MODEL_TEMPLATE(double, get_norm_const)(
         first_calc_done[id] = true;
         
         normalizing_constants[id] = update_normalizing_constant(
-                params, stats[id]
+                params, stats_support[id]
         );
         
         params_last[id] = params;
@@ -749,7 +752,7 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    const auto & S = stats[arrays2support[i]];
+    const auto & S = stats_support[arrays2support[i]];
 
     size_t k       = params_last.size();
     size_t nunique = S.size() / (k + 1u);
@@ -783,7 +786,7 @@ MODEL_TEMPLATE(void, print)() const
     uint min_v = std::numeric_limits<uint>::infinity();
     uint max_v = 0u;
 
-    for (const auto & stat : this->stats)
+    for (const auto & stat : this->stats_support)
     {
         if (stat.size() > max_v)
             max_v = stat.size();
@@ -808,7 +811,7 @@ MODEL_TEMPLATE(void, print)() const
 MODEL_TEMPLATE(uint, size)() const noexcept
 {
     // INITIALIZED()
-    return this->target_stats.size();
+    return this->stats_target.size();
 
 }
 
@@ -816,7 +819,7 @@ MODEL_TEMPLATE(uint, size_unique)() const noexcept
 {
 
     // INITIALIZED()
-    return this->stats.size();
+    return this->stats_support.size();
 
 } 
 
@@ -832,7 +835,7 @@ MODEL_TEMPLATE(uint, support_size)() const noexcept
 
     // INITIALIZED()
     uint tot = 0u;
-    for (auto& a : stats)
+    for (auto& a : stats_support)
         tot += a.size();
 
     return tot;
@@ -890,7 +893,7 @@ MODEL_TEMPLATE(double, conditional_prob)(
     // Making sure we add it first
     A.insert_cell(i, j, A.default_val(), true, false);
 
-    // Computing the change stats
+    // Computing the change stats_target
     std::vector< double > tmp_counts(counters->size());
     for (unsigned int ii = 0u; ii < tmp_counts.size(); ++ii)
         tmp_counts[ii] = counters->operator[](ii).count(A, i, j);
@@ -922,9 +925,20 @@ inline Rules<Array_Type,Data_Rule_Dyn_Type> * MODEL_TYPE()::get_rules_dyn() {
 
 template MODEL_TEMPLATE_ARGS()
 inline Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> *
-MODEL_TYPE()::get_support() {
+MODEL_TYPE()::get_support_fun() {
     return &this->support_fun;
 }
+
+MODEL_TEMPLATE(std::vector< std::vector< double > > *, get_stats_target)()
+{
+    return &stats_target;
+}
+
+MODEL_TEMPLATE(std::vector< std::vector< double > > *, get_stats_support)()
+{
+    return &stats_support;
+}
+
 
 #undef MODEL_TEMPLATE
 #undef MODEL_TEMPLATE_ARGS

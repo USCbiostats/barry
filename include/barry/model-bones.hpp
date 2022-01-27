@@ -8,7 +8,6 @@
 #ifndef BARRY_MODEL_BONES_HPP 
 #define BARRY_MODEL_BONES_HPP 1
 
-
 /**
  * @brief Array Hasher class (used for computing support)
  * 
@@ -55,11 +54,29 @@ private:
     std::mt19937 * rengine = nullptr;
     bool delete_rengine    = false;
 
-    std::vector< std::vector< double > >         stats;              ///< Sufficient statistics of the model (support)
-    std::vector< uint >                n_arrays_per_stats; ///< Number of arrays included per support.
+    /**
+     * @name Information about the arrays used in the model 
+     * @details `stats_target` holds the observed sufficient statistics for each
+     * array in the dataset. `array_frequency` contains the frequency with which
+     * each of the target stats_target (arrays) shows in the support. `array2support` 
+     * maps array indices (0, 1, ...) to the corresponding support.
+     */
+    ///@{
+    std::vector< std::vector< double > > stats_support; ///< Sufficient statistics of the model (support)
+    std::vector< uint >                  stats_support_n_arrays; ///< Number of arrays included per support.
+    std::vector< std::vector< double > > stats_target;  ///< Target statistics of the model
+    std::vector< uint >                  array_frequency;
+    std::vector< uint >                  arrays2support;
+    ///@}
 
     /**
-     * @name Container space for the powerset (and its sufficient stats)
+      * @brief Map of types of arrays to support sets
+      * @details This is of the same length as the vector `stats_target`.
+      */
+    MapVec_type< double, uint > keys2support;
+
+    /**
+     * @name Container space for the powerset (and its sufficient stats_target)
      * @details This is useful in the case of using simulations or evaluating
      * functions that need to account for the full set of states.
      */
@@ -69,25 +86,6 @@ private:
     std::vector< std::vector< std::vector<double> > > pset_stats;  ///< Statistics of the support(s)
     std::vector< std::vector<double> >                pset_probs;  ///< Probabilities of the support(s)
     ///@}
-
-    /**
-     * @name Information about the arrays used in the model 
-     * @details `target_stats` holds the observed sufficient statistics for each
-     * array in the dataset. `array_frequency` contains the frequency with which
-     * each of the target stats (arrays) shows in the support. `array2support` 
-     * maps array indices (0, 1, ...) to the corresponding support.
-     */
-    ///@{
-    std::vector< std::vector< double > > target_stats;
-    std::vector< uint >                  array_frequency;
-    std::vector< uint >                  arrays2support;
-    ///@}
-
-    /**
-      * @brief Map of types of arrays to support sets
-      * @details This is of the same length as the vector `stats`.
-      */
-    MapVec_type< double, uint > keys2support;
     
     /**
       * @name Functions to compute statistics
@@ -318,7 +316,7 @@ public:
      * 
      * @brief Number of different supports included in the model
      * 
-     * This will return the size of `stats`.
+     * This will return the size of `stats_target`.
      * 
      * @return `size()` returns the number of arrays in the model.
      * @return `size_unique()` returns the number of unique arrays (according to
@@ -338,7 +336,16 @@ public:
     Counters<Array_Type,Data_Counter_Type> * get_counters();
     Rules<Array_Type,Data_Rule_Type>       * get_rules();
     Rules<Array_Type,Data_Rule_Dyn_Type>   * get_rules_dyn();
-    Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> * get_support();
+    Support<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> * get_support_fun();
+
+    /**
+     * @brief Raw pointers to the support and target statistics
+     */
+    ///@{
+    std::vector< std::vector< double > > * get_stats_target();
+    std::vector< std::vector< double > > * get_stats_support();
+    ///@}
+
 
 };
 

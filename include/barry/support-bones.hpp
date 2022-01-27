@@ -182,6 +182,7 @@ public:
     Counters<Array_Type,Data_Counter_Type> * get_counters();   ///< Vector of couter functions.
     Rules<Array_Type,Data_Rule_Type> *       get_rules();      ///< Vector of static rules (cells to iterate).
     Rules<Array_Type,Data_Rule_Dyn_Type> *   get_rules_dyn();  ///< Vector of dynamic rules (to include/exclude a realizaton).
+    
 };
 
 

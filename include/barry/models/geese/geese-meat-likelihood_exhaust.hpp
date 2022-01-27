@@ -23,7 +23,7 @@ inline double Geese::likelihood_exhaust(
     if (this->nnodes() > 6)
         throw std::overflow_error("Too many nodes! Exhaust calculation of likelihood cannot be done for such cases.");
 
-    if (this->nfuns() > 2)
+    if (this->nfuns() > 3)
         throw std::overflow_error("Too many functions! Exhaust calculation of likelihood cannot be done for such cases.");
 
     // Computing all combinations ----------------------------------------------
