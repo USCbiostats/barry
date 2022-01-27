@@ -24,13 +24,14 @@ var searchData=
   ['rule_5ffunction_499',['RULE_FUNCTION',['../barry_8hpp.html#aca4359c3356b25fb710d4dbc93d8d5a8',1,'RULE_FUNCTION():&#160;barry.hpp'],['../geese-bones_8hpp.html#a11c7dd7dca27f32547bb602f30ceb5e8',1,'RULE_FUNCTION(rule_empty_free):&#160;geese-bones.hpp']]],
   ['rule_5flambda_500',['RULE_LAMBDA',['../barry_8hpp.html#a65e3788fca9f405ff460ff7cfbad63f3',1,'barry.hpp']]],
   ['rules_501',['rules',['../support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28',1,'support-meat.hpp']]],
-  ['rules_502',['Rules',['../class_rules.html',1,'Rules&lt; Array_Type, Data_Type &gt;'],['../class_rules.html#a57f5ab44febba391b2a06d163d25b237',1,'Rules::Rules(const Rules&lt; Array_Type, Data_Type &gt; &amp;rules_)'],['../class_rules.html#aa78e9abf82ed8a0e4320d570191c8968',1,'Rules::Rules()']]],
+  ['rules_502',['Rules',['../class_rules.html',1,'']]],
   ['rules_503',['rules',['../class_power_set.html#afa542ecc31858c8644d1e76078eb1713',1,'PowerSet']]],
-  ['rules_2dbones_2ehpp_504',['rules-bones.hpp',['../rules-bones_8hpp.html',1,'']]],
-  ['rules_2dmeat_2ehpp_505',['rules-meat.hpp',['../rules-meat_8hpp.html',1,'']]],
-  ['rules_3c_20barray_3c_3e_2c_20bool_20_3e_506',['Rules&lt; BArray&lt;&gt;, bool &gt;',['../class_rules.html',1,'']]],
-  ['rules_5f_507',['rules_',['../support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588',1,'support-meat.hpp']]],
-  ['rules_5fdeleted_508',['rules_deleted',['../class_power_set.html#a08b6baf1e244e023d997ddaecbc2116f',1,'PowerSet']]],
-  ['rules_5fdyn_509',['rules_dyn',['../support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5',1,'support-meat.hpp']]],
-  ['rules_5fzerodiag_510',['rules_zerodiag',['../network_8hpp.html#ade7c09a084b266e48f9222c54fd12681',1,'network.hpp']]]
+  ['rules_504',['Rules',['../class_rules.html#a57f5ab44febba391b2a06d163d25b237',1,'Rules::Rules(const Rules&lt; Array_Type, Data_Type &gt; &amp;rules_)'],['../class_rules.html#aa78e9abf82ed8a0e4320d570191c8968',1,'Rules::Rules()']]],
+  ['rules_2dbones_2ehpp_505',['rules-bones.hpp',['../rules-bones_8hpp.html',1,'']]],
+  ['rules_2dmeat_2ehpp_506',['rules-meat.hpp',['../rules-meat_8hpp.html',1,'']]],
+  ['rules_3c_20barray_3c_3e_2c_20bool_20_3e_507',['Rules&lt; BArray&lt;&gt;, bool &gt;',['../class_rules.html',1,'']]],
+  ['rules_5f_508',['rules_',['../support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588',1,'support-meat.hpp']]],
+  ['rules_5fdeleted_509',['rules_deleted',['../class_power_set.html#a08b6baf1e244e023d997ddaecbc2116f',1,'PowerSet']]],
+  ['rules_5fdyn_510',['rules_dyn',['../support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5',1,'support-meat.hpp']]],
+  ['rules_5fzerodiag_511',['rules_zerodiag',['../network_8hpp.html#ade7c09a084b266e48f9222c54fd12681',1,'network.hpp']]]
 ];
