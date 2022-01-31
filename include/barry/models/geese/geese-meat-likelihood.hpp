@@ -19,8 +19,6 @@ inline double Geese::likelihood(
     for (auto& p : par_root)
         p = std::exp(p)/(std::exp(p) + 1);
 
-    std::vector< unsigned int > tmpstate(nfunctions);
-
     double ll = 0.0;
 
     Node * n_off;
@@ -41,6 +39,10 @@ inline double Geese::likelihood(
 
     }
 
+    // The first time it is called, it need to generate the corresponding
+    // hashes of the columns so it is fast to access then (saves time
+    // hashing and looking in the map.)
+    auto arrays2support = model->get_arrays2support();
 
     for (auto& i : *preseq)
     {
@@ -66,11 +68,20 @@ inline double Geese::likelihood(
             const std::vector< std::vector<double> > * psets_stats =
                 model->get_pset_stats(node.narray[s]);
 
+            std::vector< std::vector< size_t > > & locations = pset_loc[
+                arrays2support->operator[](node.narray[s])
+                ];
+            
             // Summation over all possible values of X
             unsigned int nstate = 0u;
-
+            unsigned int narray = 0u;
             for (auto x = psets->begin(); x != psets->end(); ++x)
             {
+
+                if (!x->is_dense())
+                    throw std::logic_error("This is only supported for dense arrays.");
+
+                std::vector< size_t > & location_x = locations[narray++];
 
                 // Extracting the possible values of each offspring
                 double off_mult = 1.0;
@@ -80,34 +91,34 @@ inline double Geese::likelihood(
 
                     // Setting the node
                     n_off = node.offspring[o];
-
-                    // First, getting what is the corresponding state
-                    if (!x->is_dense())
-                        std::fill(tmpstate.begin(), tmpstate.end(), 0u);
                     
-                    x->get_col_vec(&tmpstate, o, false);
-
                     // In the case that the offspring is a leaf, then we need to
                     // check whether the state makes sense.
                     if (n_off->is_leaf())
                     {
-
-                        if (vec_diff(tmpstate, n_off->annotations))
+                        for (auto f = 0u; f < nfunctions; ++f)
                         {
+                            if (n_off->annotations[f] != 9u)
+                            {
 
-                            off_mult = -1.0;
-                            break;
+                                if (x->operator()(f, o) != n_off->annotations[f])
+                                {
 
-                        } 
+                                    off_mult = -1.0;
+                                    break;
 
+                                }
+                                
+                            }
+
+                        }
+                
                         continue;
 
                     }
 
                     // Retrieving the location to the respective set of probabilities
-                    unsigned int loc = map_to_nodes[tmpstate];
-
-                    off_mult *= node.offspring[o]->subtree_prob[loc];
+                    off_mult *= node.offspring[o]->subtree_prob[location_x[o]];
 
                 }
 

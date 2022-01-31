@@ -162,20 +162,8 @@ inline void counter_overall_gains(
     {
 
         PHYLO_CHECK_MISSING();
-
-        IF_NOTMATCHES()
-            return 0.0;
-
-        double ngains = 0.0;
-        auto & paren_state = Array.D()->states;
-        for (auto o = 0u; o < Array.ncol(); ++o)
-        {
-            for (auto f = 0u; f < Array.nrow(); ++f)
-                if (!paren_state[f] && (Array(f,o) == 1u))
-                    ngains += 1.0;
-        }
         
-        return ngains;
+        return 0.0;
 
     };
 
@@ -566,35 +554,25 @@ inline void counter_maxfuns(
     PHYLO_COUNTER_LAMBDA(tmp_init)
     {
 
-      PHYLO_CHECK_MISSING();    
+        PHYLO_CHECK_MISSING();    
 
-      if (data->operator[](0u) == 0u)
-        return static_cast<double>(Array.ncol());
-      else
-      {
+        IF_NOTMATCHES()
+            return 0.0;
+
 
         double ans = 0.0;
-        for (uint k = 0u; k < Array.ncol(); ++k)
+        for (uint o = 0u; o < Array.ncol(); ++o)
         {
 
-          // How many functions the k-th offspring has
-          uint count = 0u;
-          for (uint l = 0u; l < Array.nrow(); ++l)
-          {
-
-            if (Array(l, k, false) == 1u)
-              ++count;
-
-          }
-
-          if (count >= data->operator[](0u) && count <= data->operator[](1u))
-            ans += 1.0;
+            if (Array.rowsum(o) >= data->at(1u))
+                if (Array.rowsum(o) <= data->at(1u))
+                    ans += 1.0;
 
         }
 
         return ans;
 
-      }
+      
 
     };
     
@@ -603,21 +581,20 @@ inline void counter_maxfuns(
 
         IF_NOTMATCHES()
             return 0.0;
-        
-        uint counts = 1u;
-        for (uint k = 0u; k < Array.nrow(); ++k)
-            if (k != j)
-                if (Array(k, j, false) == 1u)
-                    ++counts;
 
-        // Reached the lower bound
-        if (counts == data->operator[](1u))
+        int count = Array.colsum(j);
+        int ub    = data->operator[](2u);
+        
+        // It now matches
+        if (count == static_cast<int>(data->operator[](1u)))
             return 1.0;
-          // Went outside of the upper bound
-        else if (counts == (data->operator[](2u) + 1u))
+
+        // Was within, but now outside
+        if (count > ub && ((count - ub) == 1))
             return -1.0;
-        else
-            return 0.0;
+
+        // Otherwise nothing happens.
+        return 0.0;
 
     };
 
@@ -665,17 +642,12 @@ inline void counter_loss(
         IF_NOTMATCHES()
             return 0.0;
         
-        auto        f = data->operator[](1u);
+        auto f = data->operator[](1u);
 
         if (!Array.D()->states[f])
             return 0.0;
-
-        double counts = 0.0;
-        for (auto o = 0u; o < Array.ncol(); ++o)
-            if (Array(f,o) == 0u)
-                counts += 1.0;
         
-        return counts;
+        return static_cast<double>(Array.ncol());
 
     };
     

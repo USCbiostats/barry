@@ -939,6 +939,22 @@ MODEL_TEMPLATE(std::vector< std::vector< double > > *, get_stats_support)()
     return &stats_support;
 }
 
+MODEL_TEMPLATE(std::vector< unsigned int > *, get_arrays2support)()
+{
+    return &arrays2support;
+}
+
+MODEL_TEMPLATE(std::vector< std::vector< Array_Type > > *, get_pset_arrays)() {
+    return &pset_arrays;
+}
+
+MODEL_TEMPLATE(std::vector< std::vector< std::vector<double> > > *, get_pset_stats)() {
+    return &pset_stats;
+}
+
+MODEL_TEMPLATE(std::vector< std::vector<double> > *               , get_pset_probs)() {
+    return &pset_probs;
+}
 
 #undef MODEL_TEMPLATE
 #undef MODEL_TEMPLATE_ARGS

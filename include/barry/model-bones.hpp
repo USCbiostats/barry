@@ -344,6 +344,10 @@ public:
     ///@{
     std::vector< std::vector< double > > * get_stats_target();
     std::vector< std::vector< double > > * get_stats_support();
+    std::vector< unsigned int > * get_arrays2support();
+    std::vector< std::vector< Array_Type > > * get_pset_arrays();
+    std::vector< std::vector< std::vector<double> > > * get_pset_stats();  ///< Statistics of the support(s)
+    std::vector< std::vector<double> > *                get_pset_probs(); 
     ///@}
 
 

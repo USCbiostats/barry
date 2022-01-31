@@ -184,6 +184,35 @@ inline void Geese::init(unsigned int bar_width) {
     for (auto& n: this->nodes)
         n.second.visited = false;
 
+    // The first time it is called, it need to generate the corresponding
+    // hashes of the columns so it is fast to access then (saves time
+    // hashing and looking in the map.)
+    auto sup_arrays = model->get_pset_arrays();
+
+    pset_loc.resize(sup_arrays->size());
+    std::vector< unsigned int > tmpstate(nfunctions);
+
+    for (auto s = 0u; s < sup_arrays->size(); ++s)
+    {
+
+        auto sup_array = sup_arrays->operator[](s);
+        pset_loc[s].resize(sup_array.size());
+
+        for (auto a = 0u; a < sup_array.size(); ++a)
+        {
+
+            for (auto o = 0u; o < sup_array[a].ncol(); ++o)
+            {
+
+                sup_array[a].get_col_vec(&tmpstate, o, false);
+                pset_loc[s][a].push_back(map_to_nodes[tmpstate]);
+                
+            }   
+
+        }
+
+    }
+    
     // So that others now know it was initialized
     initialized = true;
 

@@ -107,6 +107,7 @@ public:
     unsigned int                       nfunctions;
     std::map< unsigned int, Node >     nodes;
     barry::MapVec_type< unsigned int > map_to_nodes;
+    std::vector< std::vector< std::vector< size_t > > > pset_loc;    ///< Locations of columns
 
     // Tree-traversal sequence
     std::vector< unsigned int > sequence;

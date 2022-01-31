@@ -8,7 +8,7 @@ inline Geese::Geese() {
     // In order to start...
     this->rengine         = new std::mt19937;
     this->delete_rengine  = true;
-    this->model         = new phylocounters::PhyloModel();
+    this->model           = new phylocounters::PhyloModel();
     this->delete_support  = true;
 
     this->model->set_keygen(keygen_full);
@@ -220,6 +220,7 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
     nfunctions(model_.nfunctions),
     nodes(model_.nodes),
     map_to_nodes(model_.map_to_nodes),
+    pset_loc(model_.pset_loc),
     sequence(model_.sequence),
     reduced_sequence(model_.reduced_sequence),
     initialized(model_.initialized) {
@@ -300,6 +301,7 @@ inline Geese::Geese(Geese && x) noexcept :
     nfunctions(x.nfunctions),
     nodes(std::move(x.nodes)),
     map_to_nodes(std::move(x.map_to_nodes)),
+    pset_loc(std::move(x.pset_loc)),
     sequence(std::move(x.sequence)),
     reduced_sequence(std::move(x.reduced_sequence)),
     initialized(x.initialized)
