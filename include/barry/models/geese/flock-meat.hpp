@@ -228,7 +228,10 @@ inline std::vector< std::string > Flock::colnames() const
 
 }
 
-inline unsigned int Flock::parse_polytomies(bool verb) const noexcept
+inline unsigned int Flock::parse_polytomies(
+    bool verb,
+    std::vector< size_t > * dist
+) const noexcept
 {
 
     unsigned int ans = 0;
@@ -241,7 +244,7 @@ inline unsigned int Flock::parse_polytomies(bool verb) const noexcept
         if (verb)
             printf_barry("Checking tree %i\n", i);
 
-        unsigned int tmp = d.parse_polytomies(verb);
+        unsigned int tmp = d.parse_polytomies(verb, dist);
 
         if (tmp > ans)
             ans = tmp;

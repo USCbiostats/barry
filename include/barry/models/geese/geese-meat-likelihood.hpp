@@ -112,6 +112,10 @@ inline double Geese::likelihood(
                             }
 
                         }
+
+                        // Going out
+                        if (off_mult < 0)
+                            break;
                 
                         continue;
 

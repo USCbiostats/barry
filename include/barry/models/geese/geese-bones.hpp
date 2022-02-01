@@ -199,7 +199,11 @@ public:
     unsigned int support_size() const noexcept;      ///< Number of unique sets of sufficient stats.
     std::vector< unsigned int > nannotations() const noexcept;      ///< Number of annotations.
     std::vector< std::string > colnames() const;     ///< Names of the terms in the model.
-    unsigned int parse_polytomies(bool verb = true) const noexcept;  ///< Check polytomies and return the largest.
+    unsigned int parse_polytomies(
+        bool verb = true,
+        std::vector< size_t > * dist = nullptr
+        ) const noexcept;  ///< Check polytomies and return the largest.
+
     ///@}
 
     std::vector< std::vector<double> > observed_counts();

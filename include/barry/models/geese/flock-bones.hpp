@@ -83,7 +83,10 @@ public:
     unsigned int nterms() const;
     unsigned int support_size() const noexcept;
     std::vector< std::string > colnames() const;
-    unsigned int parse_polytomies(bool verb = true) const noexcept;
+    unsigned int parse_polytomies(
+        bool verb = true,
+        std::vector< size_t > * dist = nullptr
+        ) const noexcept;  ///< Check polytomies and return the largest.
     void print() const;
     ///@}
 

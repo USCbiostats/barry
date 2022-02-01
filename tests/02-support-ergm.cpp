@@ -84,8 +84,8 @@ BARRY_TEST_CASE("Computing support for networks", "[support]")
         }
         
         // Exp and weights
-        logs[0u] += exp(tmp0) * ans[n * (n_counters + 1u)];
-        logs[1u] += exp(tmp1) * ans[n * (n_counters + 1u)];
+        logs[0u] += std::exp(tmp0) * ans[n * (n_counters + 1u)];
+        logs[1u] += std::exp(tmp1) * ans[n * (n_counters + 1u)];
 
     }
     

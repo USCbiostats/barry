@@ -18,8 +18,13 @@ inline double update_normalizing_constant(
     size_t k   = params.size() + 1u;
     size_t n   = support.size() / k;
 
+    #ifdef INTEL_ADVISOR
+    ANNOTATE_SITE_BEGIN(normalizing_update);
+    #endif
+
     double tmp;
-    #pragma GCC ivdep
+    // #pragma GCC ivdep
+    #pragma omp simd reduction(+:res) 
     for (unsigned int i = 0u; i < n; ++i)
     {
 
@@ -27,12 +32,24 @@ inline double update_normalizing_constant(
         
         #pragma GCC ivdep
         for (unsigned int j = 0u; j < params.size(); ++j)
+        {
+            #ifdef INTEL_ADVISOR
+            ANNOTATE_LOCK_ACQUIRE(0);
+            #endif
             tmp += support[i * k + j + 1u] * params[j];
+            #ifdef INTEL_ADVISO
+            ANNOTATE_LOCK_RELEASE(0);
+            #endif
+        }
         
-        res += exp(tmp BARRY_SAFE_EXP) * support[i * k];
+        res += std::exp(tmp BARRY_SAFE_EXP) * support[i * k];
 
     }
     
+    #ifdef INTEL_ADVISOR
+    ANNOTATE_SITE_END(normalizing_update);
+    #endif
+
     // This will only evaluate if the option BARRY_CHECK_FINITE
     // is defined
     BARRY_ISFINITE(res)
@@ -54,6 +71,7 @@ inline double likelihood_(
     double numerator = 0.0;
     
     // Computing the numerator
+    #pragma omp simd reduction(+:numerator)
     for (unsigned int j = 0u; j < stats_target.size(); ++j)
         numerator += stats_target[j] * params[j];
 

@@ -450,14 +450,24 @@ inline std::vector< std::string > Geese::colnames() const
 
 }
 
-inline unsigned int Geese::parse_polytomies(bool verb) const noexcept
+inline unsigned int Geese::parse_polytomies(
+    bool verb,
+    std::vector< size_t > * dist
+) const noexcept
 {
 
     unsigned int largest = 0u;
     for (const auto& n : this->nodes)
     {
 
+        if (n.second.is_leaf())
+            continue;
+
         unsigned int noff = n.second.noffspring();
+
+        if (dist)
+            dist->push_back(noff);
+
         if (noff > 2u)
         {
 

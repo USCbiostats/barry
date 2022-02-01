@@ -499,7 +499,7 @@ BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
     
     for (uint i = 0u; i < N; ++i)
     {
-        for (uint j = 0u; col < M; ++j)
+        for (uint j = 0u; j < M; ++j)
         {
 
             if (el[POS(i, j)] != BARRY_ZERO_DENSE)

@@ -180,7 +180,7 @@ template <typename T>
 inline bool vec_equal_approx(
     const std::vector< T > & a,
     const std::vector< T > & b,
-    double eps = 1e-10
+    double eps = 1e-100
 ) {
     
     if (a.size() != b.size())
