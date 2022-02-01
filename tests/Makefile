@@ -1,17 +1,18 @@
+CPP=g++
 VPATH = ../include/barry
 BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
        counters-*.gcov model-*.gcov rules-*.gcov \
        cell-*.gcov powerset-*.gcov support-*.gcov \
        statscounter*.gcov statsdb*.gcov
 
-CPPFLAGS= -std=c++17 -fopenmp -DBARRY_USE_OPENMP -Wall -pedantic
+CPPFLAGS= -std=c++17 -fopenmp -DBARRY_USE_OPENMP -Wall -pedantic # -march=native only works with g++10
 
 check: main.o 
 	./main.o
 
 .PHONY: %.cpp
 main.o: %.cpp
-	g++ $(CPPFLAGS) -O3 main.cpp -g -o main.o
+	$(CPP) $(CPPFLAGS) -O2 main.cpp -g -o main.o
 
 checkv: mainv.o
 	valgrind --leak-check=full --track-origins=yes ./mainv.o #valgrind --tool=cachegrind ./main

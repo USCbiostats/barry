@@ -19,14 +19,21 @@ inline double update_normalizing_constant(
     size_t n   = support.size() / k;
 
     double tmp;
-    // #pragma GCC ivdep
+    #ifdef __OPENMP
     #pragma omp simd reduction(+:res) 
+    #else
+    #pragma GCC ivdep
+    #endif
     for (unsigned int i = 0u; i < n; ++i)
     {
 
         tmp = 0.0;
         
+        #ifdef __OPENM
+        #pragma omp simd reduction(+:tmp)
+        #else
         #pragma GCC ivdep
+        #endif
         for (unsigned int j = 0u; j < params.size(); ++j)
         {
 
@@ -59,7 +66,11 @@ inline double likelihood_(
     double numerator = 0.0;
     
     // Computing the numerator
+    #ifdef __OPENMP
     #pragma omp simd reduction(+:numerator)
+    #else
+    #pragma GCC ivdep
+    #endif
     for (unsigned int j = 0u; j < stats_target.size(); ++j)
         numerator += stats_target[j] * params[j];
 
@@ -680,13 +691,23 @@ MODEL_TEMPLATE(double, likelihood_total)(
         for (uint i = 0; i < stats_target.size(); ++i) 
             res += vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP;
         
-        for (uint i = 0u; i < params_last.size(); ++i)
+        #ifdef __OPENM 
+        #pragma omp simd reduction(-:res)
+        #else
+        #pragma GCC ivdep
+        #endif
+        for (auto i = 0u; i < params_last.size(); ++i)
             res -= (std::log(normalizing_constants[i]) * this->stats_support_n_arrays[i]);
 
     } else {
         
         res = 1.0;
-        for (uint i = 0; i < stats_target.size(); ++i)
+        #ifdef __OPENM 
+        #pragma omp simd reduction(*:res)
+        #else
+        #pragma GCC ivdep
+        #endif
+        for (auto i = 0; i < stats_target.size(); ++i)
             res *= std::exp(vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP) / 
                 normalizing_constants[arrays2support[i]];
         

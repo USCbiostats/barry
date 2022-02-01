@@ -639,6 +639,11 @@ inline void counter_ctriads(NetCounters<NetworkDense> * counters)
         
         // i->j->k->i
         double ans = 0.0;
+        #ifdef __OPENM 
+        #pragma omp simd reduction(+:ans)
+        #else
+        #pragma GCC ivdep
+        #endif
         for (unsigned int k = 0u; k < Array.nrow(); ++k)
         {
 

@@ -207,7 +207,11 @@ const std::vector< T > & b
         throw std::length_error("-a- and -b- should have the same length.");
     
     double res = 0.0;
+    #ifdef __OPENM 
+    #pragma omp simd reduction(+:res)
+    #else
     #pragma GCC ivdep
+    #endif
     for (unsigned int i = 0u; i < a.size(); ++i)
         res += (a[i] * b[i]);
     
@@ -226,7 +230,11 @@ const std::vector< double > & b
         throw std::length_error("-a- and -b- should have the same length.");
     
     double res = 0.0;
+    #ifdef __OPENMP
+    #pragma omp simd reduction(+:res)
+    #else
     #pragma GCC ivdep
+    #endif
     for (unsigned int i = 0u; i < a.size(); ++i)
         res += (a[i] * b[i]);
     
