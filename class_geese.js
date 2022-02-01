@@ -28,7 +28,7 @@ var class_geese =
     [ "observed_counts", "class_geese.html#a82def7c8a870aa1b3ec069099c01fe02", null ],
     [ "operator=", "class_geese.html#a857663144d377cd5ee69960267865eaa", null ],
     [ "operator=", "class_geese.html#a5a56d129d383ca8648e6ddf9b845b05a", null ],
-    [ "parse_polytomies", "class_geese.html#a6e66ba14dc87a271da1da3a0e5eea4c2", null ],
+    [ "parse_polytomies", "class_geese.html#ab21479832092db4910125fd90782e4e2", null ],
     [ "predict", "class_geese.html#a10442dde49613332080792a6090d46fa", null ],
     [ "predict_backend", "class_geese.html#a167c2562599432adbf2ed50f6ccc45cb", null ],
     [ "predict_exhaust", "class_geese.html#aceb9a8b7f9e830cfa5cd358c27727229", null ],
@@ -46,6 +46,7 @@ var class_geese =
     [ "map_to_nodes", "class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c", null ],
     [ "nfunctions", "class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6", null ],
     [ "nodes", "class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5", null ],
+    [ "pset_loc", "class_geese.html#a0fffee17a5df7ec95858f8307144c3f9", null ],
     [ "reduced_sequence", "class_geese.html#aabcf5e284f7277109567a84ba615f97e", null ],
     [ "sequence", "class_geese.html#ab815e9b33ce2cfb5757f86083f357152", null ]
 ];

@@ -241,6 +241,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6eacbc0a8bb76ae183ec9cc112767dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae32b03e221b22c30eff464dc75787061"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ae32b03e221b22c30eff464dc75787061">get_stats_support</a> ()</td></tr>
 <tr class="separator:ae32b03e221b22c30eff464dc75787061"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85ddd07e7afe4fd7e15e396cdaa1a282"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a85ddd07e7afe4fd7e15e396cdaa1a282">get_arrays2support</a> ()</td></tr>
+<tr class="separator:a85ddd07e7afe4fd7e15e396cdaa1a282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d3242876ee289ecd4e92d8a953cacb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; Array_Type &gt; &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a43d3242876ee289ecd4e92d8a953cacb">get_pset_arrays</a> ()</td></tr>
+<tr class="separator:a43d3242876ee289ecd4e92d8a953cacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7494f4d8793e5d457213163b6357022"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; std::vector&lt; double &gt; &gt; &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#af7494f4d8793e5d457213163b6357022">get_pset_stats</a> ()</td></tr>
+<tr class="memdesc:af7494f4d8793e5d457213163b6357022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics of the support(s)  <a href="class_model.html#af7494f4d8793e5d457213163b6357022">More...</a><br /></td></tr>
+<tr class="separator:af7494f4d8793e5d457213163b6357022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38a7545244ac95aa624496dbf1d71120"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a38a7545244ac95aa624496dbf1d71120">get_pset_probs</a> ()</td></tr>
+<tr class="separator:a38a7545244ac95aa624496dbf1d71120"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = bool, typename Data_Rule_Type = bool, typename Data_Rule_Dyn_Type = bool&gt;<br />
@@ -719,6 +728,25 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 
 </div>
 </div>
+<a id="a85ddd07e7afe4fd7e15e396cdaa1a282"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85ddd07e7afe4fd7e15e396cdaa1a282">&#9670;&nbsp;</a></span>get_arrays2support()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; unsigned int &gt;* <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_arrays2support </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab79035281970e647253bf5c26481e588"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab79035281970e647253bf5c26481e588">&#9670;&nbsp;</a></span>get_counters()</h2>
 
@@ -794,8 +822,67 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 
 </div>
 </div>
+<a id="a43d3242876ee289ecd4e92d8a953cacb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43d3242876ee289ecd4e92d8a953cacb">&#9670;&nbsp;</a></span>get_pset_arrays()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; Array_Type &gt; &gt;* <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_pset_arrays </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a38a7545244ac95aa624496dbf1d71120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38a7545244ac95aa624496dbf1d71120">&#9670;&nbsp;</a></span>get_pset_probs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt;double&gt; &gt;* <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_pset_probs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7494f4d8793e5d457213163b6357022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7494f4d8793e5d457213163b6357022">&#9670;&nbsp;</a></span>get_pset_stats() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::vector&lt; std::vector&lt;double&gt; &gt; &gt;* <a class="el" href="class_model.html">Model</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_pset_stats </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Statistics of the support(s) </p>
+
+</div>
+</div>
 <a id="a2dd1551af539117400ddbfe42ac25ebe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2dd1551af539117400ddbfe42ac25ebe">&#9670;&nbsp;</a></span>get_pset_stats()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dd1551af539117400ddbfe42ac25ebe">&#9670;&nbsp;</a></span>get_pset_stats() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1495,7 +1582,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_model.html">Model</a></li>
-    <li class="footer">Generated on Thu Jan 27 2022 05:25:45 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Feb 1 2022 00:26:01 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

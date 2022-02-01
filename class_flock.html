@@ -151,8 +151,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aec9956b6d0bc303b4348e116027605d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fb9c1d463b2cd19a966aa85d5511a92"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a0fb9c1d463b2cd19a966aa85d5511a92">colnames</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
 <tr class="separator:a0fb9c1d463b2cd19a966aa85d5511a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa461b79142ba54b530e897012ecfae73"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#aa461b79142ba54b530e897012ecfae73">parse_polytomies</a> (bool verb=true) <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> <a class="el" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></td></tr>
-<tr class="separator:aa461b79142ba54b530e897012ecfae73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21d484cc922858f0d01d4fcb7ec57008"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a21d484cc922858f0d01d4fcb7ec57008">parse_polytomies</a> (bool verb=true, std::vector&lt; size_t &gt; *dist=nullptr) <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> <a class="el" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></td></tr>
+<tr class="memdesc:a21d484cc922858f0d01d4fcb7ec57008"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check polytomies and return the largest.  <a href="class_flock.html#a21d484cc922858f0d01d4fcb7ec57008">More...</a><br /></td></tr>
+<tr class="separator:a21d484cc922858f0d01d4fcb7ec57008"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ddb72e66fc90f45335e8752e290dc3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a5ddb72e66fc90f45335e8752e290dc3e">print</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
 <tr class="separator:a5ddb72e66fc90f45335e8752e290dc3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -716,12 +717,12 @@ Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Geese* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="flock-meat_8hpp_source.html#l00299">299</a> of file <a class="el" href="flock-meat_8hpp_source.html">flock-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-meat_8hpp_source.html#l00302">302</a> of file <a class="el" href="flock-meat_8hpp_source.html">flock-meat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aa461b79142ba54b530e897012ecfae73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa461b79142ba54b530e897012ecfae73">&#9670;&nbsp;</a></span>parse_polytomies()</h2>
+<a id="a21d484cc922858f0d01d4fcb7ec57008"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21d484cc922858f0d01d4fcb7ec57008">&#9670;&nbsp;</a></span>parse_polytomies()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -733,8 +734,18 @@ Public Attributes</h2></td></tr>
           <td class="memname">unsigned int Flock::parse_polytomies </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>verb</em> = <code>true</code></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>verb</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; size_t &gt; *&#160;</td>
+          <td class="paramname"><em>dist</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -743,6 +754,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Check polytomies and return the largest. </p>
 
 <p class="definition">Definition at line <a class="el" href="flock-meat_8hpp_source.html#l00231">231</a> of file <a class="el" href="flock-meat_8hpp_source.html">flock-meat.hpp</a>.</p>
 
@@ -771,7 +784,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="flock-meat_8hpp_source.html#l00255">255</a> of file <a class="el" href="flock-meat_8hpp_source.html">flock-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="flock-meat_8hpp_source.html#l00258">258</a> of file <a class="el" href="flock-meat_8hpp_source.html">flock-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -929,7 +942,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_flock.html">Flock</a></li>
-    <li class="footer">Generated on Thu Jan 27 2022 05:25:45 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Feb 1 2022 00:26:01 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

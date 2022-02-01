@@ -157,6 +157,14 @@ std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_model_a61b7baf9d45f885
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \mbox{\hyperlink{class_model_a6eacbc0a8bb76ae183ec9cc112767dd6}{get\+\_\+stats\+\_\+target}} ()
 \begin{DoxyCompactList}\small\item\em Raw pointers to the support and target statistics. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \mbox{\hyperlink{class_model_ae32b03e221b22c30eff464dc75787061}{get\+\_\+stats\+\_\+support}} ()
+\item 
+std\+::vector$<$ unsigned int $>$ $\ast$ \mbox{\hyperlink{class_model_a85ddd07e7afe4fd7e15e396cdaa1a282}{get\+\_\+arrays2support}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ Array\+\_\+\+Type $>$ $>$ $\ast$ \mbox{\hyperlink{class_model_a43d3242876ee289ecd4e92d8a953cacb}{get\+\_\+pset\+\_\+arrays}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $>$ $\ast$ \mbox{\hyperlink{class_model_af7494f4d8793e5d457213163b6357022}{get\+\_\+pset\+\_\+stats}} ()
+\begin{DoxyCompactList}\small\item\em Statistics of the support(s) \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \mbox{\hyperlink{class_model_a38a7545244ac95aa624496dbf1d71120}{get\+\_\+pset\+\_\+probs}} ()
 \end{DoxyCompactItemize}
 
 
@@ -347,6 +355,13 @@ double The conditional probability
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::gen\+\_\+key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&}]{Array\+\_\+ }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{class_model_a85ddd07e7afe4fd7e15e396cdaa1a282}\label{class_model_a85ddd07e7afe4fd7e15e396cdaa1a282}} 
+\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_arrays2support@{get\_arrays2support}}
+\index{get\_arrays2support@{get\_arrays2support}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_arrays2support()}{get\_arrays2support()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ unsigned int $>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+arrays2support (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{class_model_ab79035281970e647253bf5c26481e588}\label{class_model_ab79035281970e647253bf5c26481e588}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_counters@{get\_counters}}
 \index{get\_counters@{get\_counters}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
@@ -368,10 +383,35 @@ double \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+C
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
 \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ Array\+\_\+\+Type $>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+pset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&}]{i }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{class_model_a43d3242876ee289ecd4e92d8a953cacb}\label{class_model_a43d3242876ee289ecd4e92d8a953cacb}} 
+\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_pset\_arrays@{get\_pset\_arrays}}
+\index{get\_pset\_arrays@{get\_pset\_arrays}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_pset\_arrays()}{get\_pset\_arrays()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ std\+::vector$<$ Array\+\_\+\+Type $>$ $>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+pset\+\_\+arrays (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_model_a38a7545244ac95aa624496dbf1d71120}\label{class_model_a38a7545244ac95aa624496dbf1d71120}} 
+\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_pset\_probs@{get\_pset\_probs}}
+\index{get\_pset\_probs@{get\_pset\_probs}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_pset\_probs()}{get\_pset\_probs()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ std\+::vector$<$double$>$ $>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+pset\+\_\+probs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_model_af7494f4d8793e5d457213163b6357022}\label{class_model_af7494f4d8793e5d457213163b6357022}} 
+\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_pset\_stats@{get\_pset\_stats}}
+\index{get\_pset\_stats@{get\_pset\_stats}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{get\_pset\_stats()}{get\_pset\_stats()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$ std\+::vector$<$ std\+::vector$<$double$>$ $>$ $>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+pset\+\_\+stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Statistics of the support(s) 
+
 \mbox{\Hypertarget{class_model_a2dd1551af539117400ddbfe42ac25ebe}\label{class_model_a2dd1551af539117400ddbfe42ac25ebe}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_pset\_stats@{get\_pset\_stats}}
 \index{get\_pset\_stats@{get\_pset\_stats}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{get\_pset\_stats()}{get\_pset\_stats()}}
+\doxysubsubsection{\texorpdfstring{get\_pset\_stats()}{get\_pset\_stats()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
 \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ std\+::vector$<$ double $>$ $>$$\ast$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+pset\+\_\+stats (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&}]{i }\end{DoxyParamCaption})}
 

@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('geese-meat-constructors_8hpp_source.ht
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="comment">// In order to start...</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    this-&gt;rengine         = <span class="keyword">new</span> std::mt19937;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    this-&gt;<a class="code" href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">delete_rengine</a>  = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    this-&gt;model         = <span class="keyword">new</span> <a class="code" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a>();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    this-&gt;model           = <span class="keyword">new</span> <a class="code" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a>();</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    this-&gt;<a class="code" href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">delete_support</a>  = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    this-&gt;model-&gt;set_keygen(<a class="code" href="geese-bones_8hpp.html#aa60134cca317d64e4b3d1707380d5d0d">keygen_full</a>);</div>
@@ -318,147 +318,149 @@ $(document).ready(function(){initNavTree('geese-meat-constructors_8hpp_source.ht
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    nfunctions(model_.nfunctions),</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    nodes(model_.nodes),</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    map_to_nodes(model_.map_to_nodes),</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    sequence(model_.sequence),</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    reduced_sequence(model_.reduced_sequence),</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    initialized(model_.initialized) {</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="comment">// Replicating -------------------------------------------------------------</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#aef23c1c7760a3c8e2a7b909b67a3f836">copy_data</a>)</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    {</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keywordflow">if</span> (model_.rengine != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            rengine = <span class="keyword">new</span> std::mt19937(*(model_.rengine));</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <a class="code" href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">delete_rengine</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        }</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">if</span> (model_.model != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            model = <span class="keyword">new</span> <a class="code" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a>(*(model_.model));</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <a class="code" href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">delete_support</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">if</span> (model_.rengine != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            rengine = model_.rengine;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <a class="code" href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">delete_rengine</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        }</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">if</span> (model_.model != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            model = model_.model;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <a class="code" href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">delete_support</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        }</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="comment">// These should not be necesary as they are already initialized.</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="comment">// this-&gt;model-&gt;set_keygen(keygen_full);</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="comment">// this-&gt;model-&gt;store_psets();</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="comment">// Dealing with the nodes is a bit different -------------------------------</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keyword">auto</span> revseq = this-&gt;<a class="code" href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">sequence</a>;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    std::reverse(revseq.begin(), revseq.end());</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : revseq)</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    {</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="comment">// Leaf do not have offspring</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">if</span> (this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>].is_leaf())</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="comment">// Clearing offspring</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>].offspring.clear();</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="comment">// I cannot directly access the node since, if non existent, it will </span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="comment">// create an entry with it (alegedly).</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keyword">auto</span> n = model_.<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.find(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; off : n-&gt;second.offspring)</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>].offspring.push_back(&amp;this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[off-&gt;id]);</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;}</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">// Constructor move</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="class_geese.html#a3f80a16330da3af4a5cf250cbf79a6a4">  292</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_geese.html#a4766bb548b2a33e16019c52026f455f5">Geese::Geese</a>(<a class="code" href="class_geese.html">Geese</a> &amp;&amp; x) <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a> :</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    rengine(<span class="keyword">nullptr</span>),</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    model(<span class="keyword">nullptr</span>),</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    states(std::move(x.states)),</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    n_zeros(std::move(x.n_zeros)),</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    n_ones(std::move(x.n_ones)),</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    n_dupl_events(std::move(x.n_dupl_events)),</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    n_spec_events(std::move(x.n_spec_events)),</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    nfunctions(x.nfunctions),</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    nodes(std::move(x.nodes)),</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    map_to_nodes(std::move(x.map_to_nodes)),</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    sequence(std::move(x.sequence)),</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    reduced_sequence(std::move(x.reduced_sequence)),</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    initialized(x.initialized)</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;{</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">if</span> (x.delete_rengine)</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        rengine = <span class="keyword">new</span> std::mt19937(*x.rengine);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        delete_rengine = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    pset_loc(model_.pset_loc),</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    sequence(model_.sequence),</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    reduced_sequence(model_.reduced_sequence),</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    initialized(model_.initialized) {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="comment">// Replicating -------------------------------------------------------------</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#aef23c1c7760a3c8e2a7b909b67a3f836">copy_data</a>)</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">if</span> (model_.rengine != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            rengine = <span class="keyword">new</span> std::mt19937(*(model_.rengine));</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <a class="code" href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">delete_rengine</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">if</span> (model_.model != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            model = <span class="keyword">new</span> <a class="code" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a>(*(model_.model));</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <a class="code" href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">delete_support</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">if</span> (model_.rengine != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            rengine = model_.rengine;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <a class="code" href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">delete_rengine</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">if</span> (model_.model != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            model = model_.model;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <a class="code" href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">delete_support</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="comment">// These should not be necesary as they are already initialized.</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="comment">// this-&gt;model-&gt;set_keygen(keygen_full);</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="comment">// this-&gt;model-&gt;store_psets();</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="comment">// Dealing with the nodes is a bit different -------------------------------</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keyword">auto</span> revseq = this-&gt;<a class="code" href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">sequence</a>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    std::reverse(revseq.begin(), revseq.end());</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : revseq)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="comment">// Leaf do not have offspring</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">if</span> (this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>].is_leaf())</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="comment">// Clearing offspring</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>].offspring.clear();</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="comment">// I cannot directly access the node since, if non existent, it will </span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="comment">// create an entry with it (alegedly).</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keyword">auto</span> n = model_.<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.find(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; off : n-&gt;second.offspring)</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>].offspring.push_back(&amp;this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[off-&gt;id]);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    }</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;}</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">// Constructor move</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="class_geese.html#a3f80a16330da3af4a5cf250cbf79a6a4">  293</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_geese.html#a4766bb548b2a33e16019c52026f455f5">Geese::Geese</a>(<a class="code" href="class_geese.html">Geese</a> &amp;&amp; x) <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a> :</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    rengine(<span class="keyword">nullptr</span>),</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    model(<span class="keyword">nullptr</span>),</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    states(std::move(x.states)),</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    n_zeros(std::move(x.n_zeros)),</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    n_ones(std::move(x.n_ones)),</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    n_dupl_events(std::move(x.n_dupl_events)),</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    n_spec_events(std::move(x.n_spec_events)),</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    nfunctions(x.nfunctions),</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    nodes(std::move(x.nodes)),</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    map_to_nodes(std::move(x.map_to_nodes)),</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    pset_loc(std::move(x.pset_loc)),</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    sequence(std::move(x.sequence)),</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    reduced_sequence(std::move(x.reduced_sequence)),</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    initialized(x.initialized)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;{</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">if</span> (x.delete_rengine)</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        rengine = <span class="keyword">new</span> std::mt19937(*x.rengine);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        delete_rengine = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        rengine = x.rengine;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        delete_rengine = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        rengine = x.rengine;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        delete_rengine = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">if</span> (x.delete_support)</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    {</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        model = <span class="keyword">new</span> <a class="code" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a>(*x.model);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        delete_support = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">if</span> (x.delete_support)</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        model = <span class="keyword">new</span> <a class="code" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a>(*x.model);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        delete_support = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        model = x.model;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        delete_support = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        </div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    }</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="comment">// Figuring out if model needs to be updated</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordflow">if</span> ((model != <span class="keyword">nullptr</span>) &amp;&amp; (x.delete_support | x.delete_rengine))</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        model-&gt;set_rengine(rengine, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        model = x.model;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        delete_support = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="comment">// Figuring out if model needs to be updated</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">if</span> ((model != <span class="keyword">nullptr</span>) &amp;&amp; (x.delete_support | x.delete_rengine))</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        model-&gt;set_rengine(rengine, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;}</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment">// // Copy assignment</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment">// inline Geese &amp; Geese::operator=(const Geese &amp; model_) {</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">// }</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;}</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">// // Copy assignment</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">// inline Geese &amp; Geese::operator=(const Geese &amp; model_) {</span></div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">// // Move assignment</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">// inline Geese &amp; Geese::operator=(Geese &amp;&amp; model_) noexcept {</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">// }</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">// }</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment">// // Move assignment</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">// inline Geese &amp; Geese::operator=(Geese &amp;&amp; model_) noexcept {</span></div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">// }</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-meat-operators_8hpp_html_a16b15c19feaca0a6aa77abb6865710ef"><div class="ttname"><a href="barray-meat-operators_8hpp.html#a16b15c19feaca0a6aa77abb6865710ef">this</a></div><div class="ttdeci">return * this</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat-operators_8hpp_source.html#l00043">barray-meat-operators.hpp:43</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_aef23c1c7760a3c8e2a7b909b67a3f836"><div class="ttname"><a href="barray-meat_8hpp.html#aef23c1c7760a3c8e2a7b909b67a3f836">copy_data</a></div><div class="ttdeci">Data_Type bool copy_data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00135">barray-meat.hpp:136</a></div></div>
 <div class="ttc" id="aclass_geese_html"><div class="ttname"><a href="class_geese.html">Geese</a></div><div class="ttdoc">Annotated Phylo Model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00080">geese-bones.hpp:80</a></div></div>
 <div class="ttc" id="aclass_geese_html_a0483807174fe427f5bd2ccbb22ac3ad6"><div class="ttname"><a href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">Geese::nfunctions</a></div><div class="ttdeci">unsigned int nfunctions</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00107">geese-bones.hpp:107</a></div></div>
-<div class="ttc" id="aclass_geese_html_a0a460414624fd1b7013ce3b1a09150d1"><div class="ttname"><a href="class_geese.html#a0a460414624fd1b7013ce3b1a09150d1">Geese::calc_reduced_sequence</a></div><div class="ttdeci">void calc_reduced_sequence()</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat_8hpp_source.html#l00295">geese-meat.hpp:295</a></div></div>
-<div class="ttc" id="aclass_geese_html_a1e614555901572392026f85ff1a6b3c8"><div class="ttname"><a href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">Geese::delete_rengine</a></div><div class="ttdeci">bool delete_rengine</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00117">geese-bones.hpp:117</a></div></div>
+<div class="ttc" id="aclass_geese_html_a0a460414624fd1b7013ce3b1a09150d1"><div class="ttname"><a href="class_geese.html#a0a460414624fd1b7013ce3b1a09150d1">Geese::calc_reduced_sequence</a></div><div class="ttdeci">void calc_reduced_sequence()</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat_8hpp_source.html#l00324">geese-meat.hpp:324</a></div></div>
+<div class="ttc" id="aclass_geese_html_a1e614555901572392026f85ff1a6b3c8"><div class="ttname"><a href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">Geese::delete_rengine</a></div><div class="ttdeci">bool delete_rengine</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00118">geese-bones.hpp:118</a></div></div>
 <div class="ttc" id="aclass_geese_html_a4766bb548b2a33e16019c52026f455f5"><div class="ttname"><a href="class_geese.html#a4766bb548b2a33e16019c52026f455f5">Geese::Geese</a></div><div class="ttdeci">Geese()</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat-constructors_8hpp_source.html#l00006">geese-meat-constructors.hpp:6</a></div></div>
-<div class="ttc" id="aclass_geese_html_a914996ac39160fb46e1ce6d70609a36a"><div class="ttname"><a href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">Geese::delete_support</a></div><div class="ttdeci">bool delete_support</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00118">geese-bones.hpp:118</a></div></div>
-<div class="ttc" id="aclass_geese_html_aa71af5fe38d785cc184c904fc9308dc1"><div class="ttname"><a href="class_geese.html#aa71af5fe38d785cc184c904fc9308dc1">Geese::calc_sequence</a></div><div class="ttdeci">void calc_sequence(Node *n=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat_8hpp_source.html#l00251">geese-meat.hpp:251</a></div></div>
+<div class="ttc" id="aclass_geese_html_a914996ac39160fb46e1ce6d70609a36a"><div class="ttname"><a href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">Geese::delete_support</a></div><div class="ttdeci">bool delete_support</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00119">geese-bones.hpp:119</a></div></div>
+<div class="ttc" id="aclass_geese_html_aa71af5fe38d785cc184c904fc9308dc1"><div class="ttname"><a href="class_geese.html#aa71af5fe38d785cc184c904fc9308dc1">Geese::calc_sequence</a></div><div class="ttdeci">void calc_sequence(Node *n=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat_8hpp_source.html#l00280">geese-meat.hpp:280</a></div></div>
 <div class="ttc" id="aclass_geese_html_ab00af142f1f0e13b5c9d0cb7c8d41ee5"><div class="ttname"><a href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">Geese::nodes</a></div><div class="ttdeci">std::map&lt; unsigned int, Node &gt; nodes</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00108">geese-bones.hpp:108</a></div></div>
-<div class="ttc" id="aclass_geese_html_ab815e9b33ce2cfb5757f86083f357152"><div class="ttname"><a href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">Geese::sequence</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; sequence</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00112">geese-bones.hpp:112</a></div></div>
+<div class="ttc" id="aclass_geese_html_ab815e9b33ce2cfb5757f86083f357152"><div class="ttname"><a href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">Geese::sequence</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; sequence</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00113">geese-bones.hpp:113</a></div></div>
 <div class="ttc" id="aclass_node_html"><div class="ttname"><a href="class_node.html">Node</a></div><div class="ttdoc">A single node for the model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00011">geese-node-bones.hpp:11</a></div></div>
 <div class="ttc" id="aclass_node_html_a3129939e8a58c055cb5ad8db8be6b10a"><div class="ttname"><a href="class_node.html#a3129939e8a58c055cb5ad8db8be6b10a">Node::duplication</a></div><div class="ttdeci">bool duplication</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00019">geese-node-bones.hpp:19</a></div></div>
 <div class="ttc" id="aclass_node_html_ac58501488a47ad56989463668d062e8f"><div class="ttname"><a href="class_node.html#ac58501488a47ad56989463668d062e8f">Node::ord</a></div><div class="ttdeci">unsigned int ord</div><div class="ttdoc">Order in which the node was created.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00015">geese-node-bones.hpp:15</a></div></div>
@@ -475,7 +477,7 @@ $(document).ready(function(){initNavTree('geese-meat-constructors_8hpp_source.ht
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-meat-constructors_8hpp.html">geese-meat-constructors.hpp</a></li>
-    <li class="footer">Generated on Thu Jan 27 2022 05:25:45 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Feb 1 2022 00:26:01 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
