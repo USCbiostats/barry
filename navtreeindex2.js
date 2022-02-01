@@ -140,7 +140,7 @@ var NAVTREEINDEX2 =
 "class_flock.html#af26b0dbbaf1d0870f94b1cad71825d19":[0,1,1,9],
 "class_flock.html#af493163235db2dcb44b8c5e615f52bdb":[0,1,1,21],
 "class_freq_table.html":[2,0,21],
-"class_freq_table.html#a0bdced25f7c0bee38e073c4654578d19":[2,0,21,9],
+"class_freq_table.html#a0ea3fccbb53c8e5c672ea3340e3a1264":[2,0,21,9],
 "class_freq_table.html#a1898e62605d8753e170189936d403e05":[2,0,21,3],
 "class_freq_table.html#a2fdea53e35f9a301d7d1bbf6b7da5f41":[2,0,21,0],
 "class_freq_table.html#a326660096e4309780aea8355d0f74ac7":[2,0,21,4],

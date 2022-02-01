@@ -121,8 +121,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaedc785570175889a224d6ebaab6ffa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a326660096e4309780aea8355d0f74ac7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_freq_table.html#a326660096e4309780aea8355d0f74ac7">clear</a> ()</td></tr>
 <tr class="separator:a326660096e4309780aea8355d0f74ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bdced25f7c0bee38e073c4654578d19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_freq_table.html#a0bdced25f7c0bee38e073c4654578d19">reserve</a> (unsigned int n)</td></tr>
-<tr class="separator:a0bdced25f7c0bee38e073c4654578d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ea3fccbb53c8e5c672ea3340e3a1264"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_freq_table.html#a0ea3fccbb53c8e5c672ea3340e3a1264">reserve</a> (size_t n, size_t k)</td></tr>
+<tr class="separator:a0ea3fccbb53c8e5c672ea3340e3a1264"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fe8f5e3b5bf64a1cbaf99deb96298d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_freq_table.html#a4fe8f5e3b5bf64a1cbaf99deb96298d4">print</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
 <tr class="separator:a4fe8f5e3b5bf64a1cbaf99deb96298d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1f26bddaded94f0d5acb68f3a94fb86"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_freq_table.html#af1f26bddaded94f0d5acb68f3a94fb86">size</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> <a class="el" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></td></tr>
@@ -261,7 +261,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00112">112</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00133">133</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -287,7 +287,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00141">141</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00162">162</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -375,7 +375,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00207">207</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00233">233</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -401,12 +401,12 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00172">172</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00198">198</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0bdced25f7c0bee38e073c4654578d19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bdced25f7c0bee38e073c4654578d19">&#9670;&nbsp;</a></span>reserve()</h2>
+<a id="a0ea3fccbb53c8e5c672ea3340e3a1264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ea3fccbb53c8e5c672ea3340e3a1264">&#9670;&nbsp;</a></span>reserve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -419,9 +419,19 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_freq_table.html">FreqTable</a>&lt; T &gt;::reserve </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -431,7 +441,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00155">155</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00176">176</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -460,7 +470,7 @@ template&lt;typename T &gt; </div>
 <p>Number of unique elements in the table. (. </p>
 <dl class="section return"><dt>Returns</dt><dd>size_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00199">199</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00225">225</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -473,7 +483,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_freq_table.html">FreqTable</a></li>
-    <li class="footer">Generated on Tue Feb 1 2022 00:26:01 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Feb 1 2022 18:15:15 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
