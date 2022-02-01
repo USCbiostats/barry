@@ -52,14 +52,13 @@
 #endif
 
 #ifndef BARRY_MAX_NUM_ELEMENTS
-    #define BARRY_MAX_NUM_ELEMENTS static_cast< unsigned int >(UINT_MAX/2u)
+    #define BARRY_MAX_NUM_ELEMENTS static_cast< size_t >(UINT_MAX/2u)
 #endif
 
 #ifdef BARRY_USE_OMP
     #define BARRY_WITH_OMP
     #include <omp.h>
 #endif
-
 
 
 // BARRY_DEBUG_LEVEL: See barry-debug.hpp

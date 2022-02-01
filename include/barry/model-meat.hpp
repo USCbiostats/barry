@@ -18,10 +18,6 @@ inline double update_normalizing_constant(
     size_t k   = params.size() + 1u;
     size_t n   = support.size() / k;
 
-    #ifdef INTEL_ADVISOR
-    ANNOTATE_SITE_BEGIN(normalizing_update);
-    #endif
-
     double tmp;
     // #pragma GCC ivdep
     #pragma omp simd reduction(+:res) 
@@ -33,23 +29,15 @@ inline double update_normalizing_constant(
         #pragma GCC ivdep
         for (unsigned int j = 0u; j < params.size(); ++j)
         {
-            #ifdef INTEL_ADVISOR
-            ANNOTATE_LOCK_ACQUIRE(0);
-            #endif
+
             tmp += support[i * k + j + 1u] * params[j];
-            #ifdef INTEL_ADVISO
-            ANNOTATE_LOCK_RELEASE(0);
-            #endif
+            
         }
         
         res += std::exp(tmp BARRY_SAFE_EXP) * support[i * k];
 
     }
     
-    #ifdef INTEL_ADVISOR
-    ANNOTATE_SITE_END(normalizing_update);
-    #endif
-
     // This will only evaluate if the option BARRY_CHECK_FINITE
     // is defined
     BARRY_ISFINITE(res)

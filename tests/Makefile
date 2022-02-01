@@ -4,7 +4,7 @@ BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
        cell-*.gcov powerset-*.gcov support-*.gcov \
        statscounter*.gcov statsdb*.gcov
 
-CPPFLAGS= -std=c++11 -Wall -pedantic
+CPPFLAGS= -std=c++17 -fopenmp -DBARRY_USE_OPENMP -Wall -pedantic
 
 check: main.o 
 	./main.o

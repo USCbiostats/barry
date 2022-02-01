@@ -504,7 +504,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
     NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
     {
 
-        const auto dat = Array.get_data();
+        const auto & dat = Array.get_data();
         unsigned int N = Array.nrow();
 
         // Self ties do not count

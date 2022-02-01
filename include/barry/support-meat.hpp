@@ -93,8 +93,10 @@ SUPPORT_TEMPLATE(void, init_support)(
     }
 
     // Resizing support
-    if (coordiantes_n_free > 9u)
-        data.reserve(pow(2.0, static_cast<double>(coordiantes_n_free - 4u))); 
+    data.reserve(
+        pow(2.0, static_cast<double>(coordiantes_n_free)),
+        counters->size()
+        ); 
 
     // Adding to the overall count
     bool include_it = rules_dyn->operator()(EmptyArray, 0u, 0u);
@@ -240,7 +242,11 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
     
     if (change_stats_different > 0u)
     {
+        #ifdef __OPENMP
+        #pragma omp simd
+        #else
         #pragma GCC ivdep
+        #endif
         for (uint n = 0u; n < n_counters; ++n) 
             current_stats[n] -= change_stats[pos * n_counters + n];
     }
@@ -351,7 +357,11 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     
     if (change_stats_different > 0u)
     {
+        #ifdef __OPENMP
+        #pragma omp simd
+        #else
         #pragma GCC ivdep
+        #endif
         for (uint n = 0u; n < n_counters; ++n) 
             current_stats[n] -= change_stats[pos * n_counters + n];
     }

@@ -88,6 +88,8 @@ BARRY_TEST_CASE("Constrained support", "[const-support]") {
     REQUIRE(expected[{2,2,0}] == observed[{2,2,0}]);
     REQUIRE(expected[{3,1,1}] == observed[{3,1,1}]);
     REQUIRE(expected[{3,1,0}] == observed[{3,1,0}]);
+    #else
+    return 0;
     #endif 
     
 }

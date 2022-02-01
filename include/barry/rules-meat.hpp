@@ -148,8 +148,8 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
     uint K = a.ncol();
     
     // Reserving some space
-    free->empty();
-    free->reserve(2u * N * K);
+    (void) free->empty();
+    (void) free->reserve(2u * N * K);
     
     for (uint i = 0u; i < N; ++i)
     {

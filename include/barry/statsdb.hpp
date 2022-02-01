@@ -35,7 +35,7 @@ public:
     const std::unordered_map<size_t,size_t> & get_index() const {return index;};
     
     void clear();
-    void reserve(unsigned int n);
+    void reserve(size_t n, size_t k);
     void print() const;
 
     /**
@@ -80,15 +80,33 @@ inline size_t FreqTable<T>::add(
     else
     {
 
+
         if (x.size() != k)
             throw std::length_error(
                 "The value you are trying to add doesn't have the same lenght used in the database."
                 );
         
+        #if __cplusplus > 201700L
+        auto iter2 = index.try_emplace(h, data.size());
+        
+        if (!iter2.second)
+        {
+            
+            data[(iter2.first)->second] += 1.0;
+
+        }
+        else
+        {
+            data.push_back(1.0);
+            data.insert(data.end(), x.begin(), x.end());
+            n++;
+        }
+        #else
         iter = index.find(h);
 
         if (iter == index.end())
         {
+        
 
             index.insert({h, data.size()});
             data.push_back(1.0);
@@ -101,6 +119,9 @@ inline size_t FreqTable<T>::add(
         }
 
         data[(*iter).second] += 1.0;
+        
+        #endif
+        
 
     }
     
@@ -153,11 +174,16 @@ inline void FreqTable<T>::clear()
 
 template<typename T>
 inline void FreqTable<T>::reserve(
-    unsigned int n
+    size_t n,
+    size_t k
 )
 {
 
-    data.reserve(n);
+    // Figuring out the max size
+    auto nk = std::min(BARRY_MAX_NUM_ELEMENTS, n * k);
+    n = nk / k;
+    data.reserve(nk);
+    index.reserve(n);
 
     return;
 

@@ -1,3 +1,7 @@
+// [[Rcpp::plugins(cpp17)]]
+// [[Rcpp::plugins(openmp)]]
+
+
 #pragma GCC optimize ("O3")
 
 #include <random>
