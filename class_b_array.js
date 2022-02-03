@@ -28,7 +28,7 @@ var class_b_array =
     [ "nnozero", "class_b_array.html#afef755759c2618dbdc3d216642d1b8cb", null ],
     [ "nrow", "class_b_array.html#ad6532bbcff89fa7df589de57969b0c5a", null ],
     [ "operator()", "class_b_array.html#ae509989759e1eae0da9115e405e6d4a3", null ],
-    [ "operator()", "class_b_array.html#a532da31275e7da6767c63f2fe85dbce2", null ],
+    [ "operator()", "class_b_array.html#a208fbd6da96dcbf1d4bde039aac8fc77", null ],
     [ "operator*=", "class_b_array.html#a9d4b4f6bba8199a7ead8682a31a31bb1", null ],
     [ "operator+=", "class_b_array.html#a8f82f221089d87578eba3c5707df04b6", null ],
     [ "operator+=", "class_b_array.html#a83c29c31065f61c2b02c0711f2e9577b", null ],
