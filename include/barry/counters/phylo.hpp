@@ -871,7 +871,7 @@ inline void counter_cogain(
 }
 
 // -----------------------------------------------------------------------------
-/**@brief Longest branch mutates (either by gain or by loss) */
+/** @brief Longest branch mutates (either by gain or by loss) */
 inline void counter_longest(
     PhyloCounters * counters,
     unsigned int duplication = DEFAULT_DUPLICATION
@@ -884,34 +884,93 @@ inline void counter_longest(
         IF_NOTMATCHES()
             return 0.0;
 
-        // Only relevant if the 
-        double res = 0.0;
-        if (Array.D()->states[i])
+        // Figuring out which match
+        std::vector< bool> is_longest(Array.ncol(), false);
+        bool j_mutates = false;
+        int nmutate = 0;
+        int nmutate_longest = 0;
+
+        auto states  = Array.D()->states;
+        
+        for (auto off = 0u; off < Array.ncol(); ++off)
         {
-            
-            for (auto& off : *data)
-                if (off == j)
+
+            // On the fly, figuring out if it is longest
+            for (auto & l : *data)
+                if (l == off)
+                    is_longest[off] = true;
+
+            for (auto f = 0u; f < Array.nrow(); ++f)
+            {
+                if ((Array(f, off) == 1u) != states[f])
                 {
+                    
+                    // If it happens that j != off and is not longest
+                    // then return 0 (a not longest was mutating prev)
+                    if (is_longest[off] && (off != j))
+                        return 0.0;
 
-                    res -= 1.0;
+                    if (off == j)
+                        j_mutates = true;
+
+                    if (is_longest[j])
+                        nmutate_longest++;
+                    else
+                        nmutate++;
+
                     break;
-
                 }
-            
-        } else {
-            
-            for (auto& off : *data)
-                if (off == j)
-                {
 
-                    res += 1.0;
-                    break;
+            }
+        }
 
-                }
-            
+        // There was already more than one in difference
+        // so nothing to change
+        if (std::fabs(nmutate - nmutate_longest) > 1)
+            return 0.0;
+
+        // Figuring out previously
+        bool j_mutates_prev = false;
+        for (auto f = 0u; f < Array.nrow(); ++f)
+        {
+            // Checking the previous function... was it
+            // different before?
+            if ((f == i) && states[i])
+            {
+                j_mutates_prev = true;
+                break;
+            }
+            else if ((Array(f, j) == 1u) != states[f])
+            {
+                j_mutates_prev = true;
+                break;
+            }
+
+        }
+
+        // Adjusting the previous count
+        auto nmutate_prev         = nmutate;
+        auto nmutate_longest_prev = nmutate_longest;
+        if (j_mutates & !j_mutates_prev)
+        {
+            if (is_longest[j])
+                nmutate_longest_prev--;
+            else
+                nmutate_prev--;
+        }
+        else if (!j_mutates & j_mutates)
+        {
+            if (is_longest[j])
+                nmutate_longest_prev++;
+            else
+                nmutate_prev++;
+
         }
         
-        return res;
+        // Just compute the change statistic directly
+        return
+            ( ((nmutate == 0) & (nmutate_longest > 0)) ? 1.0 : 0.0 ) +
+            ( ((nmutate_prev == 0) & (nmutate_longest_prev > 0)) ? 1.0 : 0.0 );
 
     };
     
@@ -956,16 +1015,16 @@ inline void counter_longest(
         
         // Starting the counter, since all in zero, then this will be equal to
         // the number of functions in 1 x number of longest branches
-        double res = 0.0;
         for (uint ii = 0u; ii < Array.nrow(); ++ii)
         {
             
             if (Array.D()->states[ii])
-                res += (1.0 * data->size());
+                return (1.0 * static_cast<double>(data->size()));
 
         }
         
-        return res;
+        return 0.0;
+
     };
     
     counters->add_counter(

@@ -696,7 +696,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
         #else
         #pragma GCC ivdep
         #endif
-        for (auto i = 0u; i < params_last.size(); ++i)
+        for (unsigned int i = 0u; i < params_last.size(); ++i)
             res -= (std::log(normalizing_constants[i]) * this->stats_support_n_arrays[i]);
 
     } else {
@@ -707,7 +707,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
         #else
         #pragma GCC ivdep
         #endif
-        for (auto i = 0; i < stats_target.size(); ++i)
+        for (unsigned int i = 0; i < stats_target.size(); ++i)
             res *= std::exp(vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP) / 
                 normalizing_constants[arrays2support[i]];
         

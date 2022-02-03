@@ -278,7 +278,8 @@ inline void counter_css_census01(
     const std::vector< uint > & end_
 ) {
 
-    NETWORK_COUNTER_LAMBDA(tmp_count) {
+    NETWORK_COUNTER_LAMBDA(tmp_count)
+    {
 
         // Getting the network size
         CSS_SIZE()
@@ -300,11 +301,21 @@ inline void counter_css_census01(
         
     };
     
-    CSS_NET_COUNTER_LAMBDA_INIT()
+    // CSS_NET_COUNTER_LAMBDA_INIT()
+    NETWORK_COUNTER_LAMBDA(tmp_init)
+    {
+
+        CSS_CHECK_SIZE_INIT()
+        double n_dbl = static_cast<double>(data->indices[0u]);
+
+        // At the beginning is all zero
+        return n_dbl * (n_dbl - 1.0)/2.0;
+
+    };
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Accurate null")
+    CSS_APPEND("(01) Accurate null")
         
     return;
 
@@ -332,7 +343,7 @@ inline void counter_css_census02(
         } CSS_CASE_PERCEIVED() {
 
             CSS_PERCEIVED_CELLS()
-            return -(1.0 - tij) * (1.0 - tji) * (1 - 2.0 * pji);
+            return (1.0 - tij) * (1.0 - tji) * (1 - 2.0 * pji);
 
         } CSS_CASE_ELSE()
             return 0.0;
@@ -343,7 +354,7 @@ inline void counter_css_census02(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Partial false positive (null)")
+    CSS_APPEND("(02) Partial false positive (null)")
         
     return;
 
@@ -382,7 +393,7 @@ inline void counter_css_census03(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Complete false positive (null)")
+    CSS_APPEND("(03) Complete false positive (null)")
         
     return;
 
@@ -421,7 +432,7 @@ inline void counter_css_census04(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Partial false negative (assym)")
+    CSS_APPEND("(04) Partial false negative (assym)")
         
     return;
 
@@ -460,7 +471,7 @@ inline void counter_css_census05(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Accurate assym")
+    CSS_APPEND("(05) Accurate assym")
         
     return;
 
@@ -499,7 +510,7 @@ inline void counter_css_census06(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Mixed assym")
+    CSS_APPEND("(06) Mixed assym")
         
     return;
 
@@ -538,7 +549,7 @@ inline void counter_css_census07(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Partial false positive (assym)")
+    CSS_APPEND("(07) Partial false positive (assym)")
         
     return;
 
@@ -577,7 +588,7 @@ inline void counter_css_census08(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Complete false negative (full)")
+    CSS_APPEND("(08) Complete false negative (full)")
         
     return;
 
@@ -616,7 +627,7 @@ inline void counter_css_census09(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Mixed full")
+    CSS_APPEND("(09) Partial false negative (full)")
         
     return;
 
@@ -655,7 +666,7 @@ inline void counter_css_census10(
     
     // checking sizes
     CSS_CHECK_SIZE()
-    CSS_APPEND("Accurate full")
+    CSS_APPEND("(10) Accurate full")
         
     return;
 

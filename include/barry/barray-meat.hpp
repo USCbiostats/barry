@@ -22,7 +22,7 @@ class Cell_const;
 
 
 template<typename Cell_Type, typename Data_Type>
-Cell<Cell_Type> BArray<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(); 
+Cell<Cell_Type> BArray<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(static_cast<Cell_Type>(1.0)); 
 
 
 // Edgelist with data
@@ -609,16 +609,13 @@ inline BArrayCell<Cell_Type,Data_Type> BARRAY_TYPE()::operator()(
 }
 
 template BARRAY_TEMPLATE_ARGS()
-inline const Cell<Cell_Type> & BARRAY_TYPE()::operator() (  
+inline const Cell_Type BARRAY_TYPE()::operator() (  
     uint i,
     uint j,
     bool check_bounds
 ) const {
     
-    if (check_bounds)
-        out_of_range(i,j);
-
-    return el_ij[i][j];
+    return get_cell(i, j, check_bounds);
     
 }
 

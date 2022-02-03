@@ -143,7 +143,7 @@ public:
     Geese(
         std::vector< std::vector<unsigned int> > & annotations,
         std::vector< unsigned int > &              geneid,
-        std::vector< int> &                        parent,
+        std::vector< int > &                       parent,
         std::vector< bool > &                      duplication
         );
 
