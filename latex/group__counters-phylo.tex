@@ -41,7 +41,11 @@ void \mbox{\hyperlink{group__counters-phylo_ga578ee88179c6ff445b597248527384cd}{
 void \mbox{\hyperlink{group__counters-phylo_ga2dd8d6fd138f7783ef0143e496b4bec8}{counter\+\_\+k\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int k, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Indicator function. Equals to one if $k$ genes changed and zero otherwise. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__counters-phylo_ga6778ed9ac8fd3dacda838631863c5235}{counter\+\_\+less\+\_\+than\+\_\+p\+\_\+prop\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, double p, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
-\begin{DoxyCompactList}\small\item\em Indicator function. Equals to one if $k$ genes changed and zero otherwise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Indicator function. Equals to one if $k$ genes changed and zero otherwise. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counters-phylo_gaa78da8ac544b21905eb005eaaa44a63b}{counter\+\_\+gains\+\_\+from\+\_\+0}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ nfun, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+\begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counters-phylo_gafe46e12da1a44fbe590b5ffc882760c8}{counter\+\_\+pairwise\+\_\+preserving}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+\begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -67,7 +71,7 @@ Function co-\/opting.
 
 Function co-\/opting of functions A and B happens when, for example, function B is gained as a new featured leveraging what function A already does; without losing function A. The sufficient statistic is defined as follows\+: \[ x_{pa}(1 - x_{pb})\sum_{i<j}\left[x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p + x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p\right] \] This algorithm implements the change statistic. 
 
-Definition at line 1251 of file phylo.\+hpp.
+Definition at line 1245 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga06b193f4d4ac04ebcd8535a4d1b61636}\label{group__counters-phylo_ga06b193f4d4ac04ebcd8535a4d1b61636}} 
 \index{Phylo counters@{Phylo counters}!counter\_cogain@{counter\_cogain}}
@@ -96,6 +100,20 @@ Functional gains for a specific function ({\ttfamily nfun}).
 
 
 Definition at line 194 of file phylo.\+hpp.
+
+\mbox{\Hypertarget{group__counters-phylo_gaa78da8ac544b21905eb005eaaa44a63b}\label{group__counters-phylo_gaa78da8ac544b21905eb005eaaa44a63b}} 
+\index{Phylo counters@{Phylo counters}!counter\_gains\_from\_0@{counter\_gains\_from\_0}}
+\index{counter\_gains\_from\_0@{counter\_gains\_from\_0}!Phylo counters@{Phylo counters}}
+\doxysubsubsection{\texorpdfstring{counter\_gains\_from\_0()}{counter\_gains\_from\_0()}}
+{\footnotesize\ttfamily void counter\+\_\+gains\+\_\+from\+\_\+0 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$}]{nfun,  }\item[{unsigned int}]{duplication = {\ttfamily \mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Used when all the functions are in 0 (like the root node prob.) 
+
+Needs to specify function a. 
+
+Definition at line 1582 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga5f4909dc6fb4d0e2de35c43e324ea586}\label{group__counters-phylo_ga5f4909dc6fb4d0e2de35c43e324ea586}} 
 \index{Phylo counters@{Phylo counters}!counter\_gains\_k\_offspring@{counter\_gains\_k\_offspring}}
@@ -137,7 +155,7 @@ Indicator function. Equals to one if $k$ genes changed and zero otherwise.
 
 
 
-Definition at line 1350 of file phylo.\+hpp.
+Definition at line 1344 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga6778ed9ac8fd3dacda838631863c5235}\label{group__counters-phylo_ga6778ed9ac8fd3dacda838631863c5235}} 
 \index{Phylo counters@{Phylo counters}!counter\_less\_than\_p\_prop\_genes\_changing@{counter\_less\_than\_p\_prop\_genes\_changing}}
@@ -151,7 +169,7 @@ Indicator function. Equals to one if $k$ genes changed and zero otherwise.
 
 $<$ How many genes diverge the parent
 
-Definition at line 1471 of file phylo.\+hpp.
+Definition at line 1465 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga32a7d5bf639d776e6293ab466e204303}\label{group__counters-phylo_ga32a7d5bf639d776e6293ab466e204303}} 
 \index{Phylo counters@{Phylo counters}!counter\_longest@{counter\_longest}}
@@ -221,7 +239,7 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 1132 of file phylo.\+hpp.
+Definition at line 1126 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gaa0c3d78f05f5789ac030ebb5655edd01}\label{group__counters-phylo_gaa0c3d78f05f5789ac030ebb5655edd01}} 
 \index{Phylo counters@{Phylo counters}!counter\_overall\_changes@{counter\_overall\_changes}}
@@ -264,6 +282,20 @@ Overall functional loss.
 
 
 Definition at line 503 of file phylo.\+hpp.
+
+\mbox{\Hypertarget{group__counters-phylo_gafe46e12da1a44fbe590b5ffc882760c8}\label{group__counters-phylo_gafe46e12da1a44fbe590b5ffc882760c8}} 
+\index{Phylo counters@{Phylo counters}!counter\_pairwise\_preserving@{counter\_pairwise\_preserving}}
+\index{counter\_pairwise\_preserving@{counter\_pairwise\_preserving}!Phylo counters@{Phylo counters}}
+\doxysubsubsection{\texorpdfstring{counter\_pairwise\_preserving()}{counter\_pairwise\_preserving()}}
+{\footnotesize\ttfamily void counter\+\_\+pairwise\+\_\+preserving (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{nfunA,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{nfunB,  }\item[{unsigned int}]{duplication = {\ttfamily \mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Used when all the functions are in 0 (like the root node prob.) 
+
+Needs to specify function a. 
+
+Definition at line 1649 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gac6ca46e26d1a64a7b7956bba55ecc453}\label{group__counters-phylo_gac6ca46e26d1a64a7b7956bba55ecc453}} 
 \index{Phylo counters@{Phylo counters}!counter\_prop\_genes\_changing@{counter\_prop\_genes\_changing}}

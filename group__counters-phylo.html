@@ -155,6 +155,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6778ed9ac8fd3dacda838631863c5235"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-phylo.html#ga6778ed9ac8fd3dacda838631863c5235">counter_less_than_p_prop_genes_changing</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, double p, unsigned int duplication=<a class="el" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a>)</td></tr>
 <tr class="memdesc:ga6778ed9ac8fd3dacda838631863c5235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicator function. Equals to one if \(k\) genes changed and zero otherwise.  <a href="group__counters-phylo.html#ga6778ed9ac8fd3dacda838631863c5235">More...</a><br /></td></tr>
 <tr class="separator:ga6778ed9ac8fd3dacda838631863c5235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa78da8ac544b21905eb005eaaa44a63b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-phylo.html#gaa78da8ac544b21905eb005eaaa44a63b">counter_gains_from_0</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt; nfun, unsigned int duplication=<a class="el" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a>)</td></tr>
+<tr class="memdesc:gaa78da8ac544b21905eb005eaaa44a63b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used when all the functions are in 0 (like the root node prob.)  <a href="group__counters-phylo.html#gaa78da8ac544b21905eb005eaaa44a63b">More...</a><br /></td></tr>
+<tr class="separator:gaa78da8ac544b21905eb005eaaa44a63b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe46e12da1a44fbe590b5ffc882760c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-phylo.html#gafe46e12da1a44fbe590b5ffc882760c8">counter_pairwise_preserving</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunB, unsigned int duplication=<a class="el" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a>)</td></tr>
+<tr class="memdesc:gafe46e12da1a44fbe590b5ffc882760c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used when all the functions are in 0 (like the root node prob.)  <a href="group__counters-phylo.html#gafe46e12da1a44fbe590b5ffc882760c8">More...</a><br /></td></tr>
+<tr class="separator:gafe46e12da1a44fbe590b5ffc882760c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p><a class="el" href="class_counters.html" title="Vector of counters.">Counters</a> for phylogenetic modeling. </p>
@@ -217,7 +223,7 @@ Functions</h2></td></tr>
 </p>
 <p> This algorithm implements the change statistic. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01251">1251</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01245">1245</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -317,6 +323,53 @@ Functions</h2></td></tr>
 <p>Functional gains for a specific function (<code>nfun</code>). </p>
 
 <p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00194">194</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+
+</div>
+</div>
+<a id="gaa78da8ac544b21905eb005eaaa44a63b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa78da8ac544b21905eb005eaaa44a63b">&#9670;&nbsp;</a></span>counter_gains_from_0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void counter_gains_from_0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *&#160;</td>
+          <td class="paramname"><em>counters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &gt;&#160;</td>
+          <td class="paramname"><em>nfun</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>duplication</em> = <code><a class="el" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used when all the functions are in 0 (like the root node prob.) </p>
+<p>Needs to specify function a. </p>
+
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01582">1582</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -454,7 +507,7 @@ Functions</h2></td></tr>
 
 <p>Indicator function. Equals to one if \(k\) genes changed and zero otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01350">1350</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01344">1344</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -501,7 +554,7 @@ Functions</h2></td></tr>
 <p>Indicator function. Equals to one if \(k\) genes changed and zero otherwise. </p>
 <p>&lt; How many genes diverge the parent</p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01471">1471</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01465">1465</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -745,7 +798,7 @@ Functions</h2></td></tr>
 <p>Total number of neofunctionalization events. </p>
 <p>Needs to specify pairs of function. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01132">1132</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01126">1126</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -870,6 +923,59 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gafe46e12da1a44fbe590b5ffc882760c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafe46e12da1a44fbe590b5ffc882760c8">&#9670;&nbsp;</a></span>counter_pairwise_preserving()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void counter_pairwise_preserving </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *&#160;</td>
+          <td class="paramname"><em>counters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>nfunA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>nfunB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>duplication</em> = <code><a class="el" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Used when all the functions are in 0 (like the root node prob.) </p>
+<p>Needs to specify function a. </p>
+
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01649">1649</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+
+</div>
+</div>
 <a id="gac6ca46e26d1a64a7b7956bba55ecc453"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac6ca46e26d1a64a7b7956bba55ecc453">&#9670;&nbsp;</a></span>counter_prop_genes_changing()</h2>
 
@@ -968,7 +1074,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Feb 3 2022 00:09:29 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Feb 8 2022 08:25:30 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
