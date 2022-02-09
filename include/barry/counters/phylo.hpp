@@ -391,6 +391,87 @@ inline void counter_genes_changing(
   
 }
 
+// -----------------------------------------------------------------------------
+/**
+ * @brief Keeps track of how many pairs of genes preserve pseudostate.
+ */
+inline void counter_preserve_pseudogene(
+    PhyloCounters * counters,
+    unsigned int nfunA,
+    unsigned int nfunB,
+    unsigned int duplication = DEFAULT_DUPLICATION
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        PHYLO_CHECK_MISSING();
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // At the beginning, all offspring are zero, so we need to
+        // find at least one state = true.
+        if (Array.D()->states[data->operator[](1u)] | Array.D()->states[data->operator[](2u)])
+            return 0.0;
+
+        double n = static_cast<double>(Array.ncol());
+        return n * (n - 1.0) / 2.0;
+      
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Checking the type of event
+        IF_NOTMATCHES()
+            return 0.0;
+
+        auto nfunA = data->operator[](1u);
+        auto nfunB = data->operator[](2u);
+
+        if ((i != nfunA) & (i != nfunB))
+            return 0.0;
+
+        if (Array.D()->states[data->operator[](1u)] | Array.D()->states[data->operator[](2u)])
+            return 0.0;
+
+        unsigned int k = (i == nfunA) ? nfunB : nfunA;
+
+        if (Array(k, j) == 1u)
+            return 0.0;
+
+        double res = 0.0;
+        for (auto off = 0u; off < Array.ncol(); ++off)
+        {
+            if (off == j)
+                continue;
+
+            if ((Array(i, off) == 0u) && (Array(k, off) == 0u))
+                res -= 1.0;
+
+        }
+
+        return res;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new PhyloCounterData({duplication}),
+        true,
+        "Preserve pseudo gene (" + 
+        std::to_string(nfunA) + ", " +
+        std::to_string(nfunB) + ")" + get_last_name(duplication)
+    );
+
+    
+    return;
+  
+}
+
 
 // -----------------------------------------------------------------------------
 /**
@@ -509,6 +590,9 @@ inline void counter_overall_loss(
     PHYLO_COUNTER_LAMBDA(tmp_count)
     {
 
+        if (!Array.D()->states[i])
+            return 0.0;
+
         IF_MATCHES()
             return -1.0;
         else 
@@ -519,12 +603,15 @@ inline void counter_overall_loss(
     PHYLO_COUNTER_LAMBDA(tmp_init)
     {
 
-        PHYLO_CHECK_MISSING();
-
-        IF_MATCHES()
-            return static_cast<double>((Array.nrow() * Array.ncol()));
-        else 
+        IF_NOTMATCHES()
             return 0.0;
+        
+        double res = 0.0;
+        for (auto s : Array.D()->states)
+            if (s)
+                res += 1.0;
+
+        return res * static_cast<double>(Array.ncol());
 
     };
     
@@ -741,17 +828,20 @@ inline void counter_subfun(
         // Is this node duplication?
         IF_NOTMATCHES()
             return 0.0;
+
+        auto funA = data->operator[](1u);
+        auto funB = data->operator[](2u);
         
         // Are we looking at either of the relevant functions?
-        if ((data->operator[](1u) != i) && (data->operator[](2u) != i))
+        if ((funA != i) && (funB != i))
             return 0.0;
         
         // Are A and B existant? if not, no change
-        if (!Array.D()->states[data->operator[](1u)] | !Array.D()->states[data->operator[](2u)])
+        if (!Array.D()->states[funA] | !Array.D()->states[funB])
             return 0.0;
         
         // Figuring out which is the first (reference) function
-        uint other = (i == data->operator[](1u))? data->operator[](2u) : data->operator[](1u);
+        uint other = (i == funA)? funB : funA;
         double res = 0.0;
         // There are 4 cases: (first x second) x (had the second function)
         if (Array(other, j, false) == 1u)
@@ -1058,43 +1148,44 @@ inline void counter_neofun(
         IF_NOTMATCHES()
             return 0.0;
         
+        auto funA = data->operator[](1u);
+        auto funB = data->operator[](2u);
+
         // Is the function in scope relevant?
-        if ((i != data->operator[](1u)) && (i != data->operator[](2u)))
+        if ((i != funA) && (i != funB))
             return 0.0;
         
         // Checking if the parent has both functions
-        if (!Array.D()->states[data->operator[](1u)] && !Array.D()->states[data->operator[](2u)]) 
+        uint other = (i == funA)? funB : funA;
+        bool parent_i     = Array.D()->states[i];
+        bool parent_other = Array.D()->states[other];
+        
+        if (!parent_i & !parent_other) 
             return 0.0;
-        else if (Array.D()->states[data->operator[](1u)] && Array.D()->states[data->operator[](2u)])
+        else if (parent_i & parent_other) 
             return 0.0;
         
         // Figuring out which is the first (reference) function
-        uint other = (i == data->operator[](1u))? data->operator[](2u) : data->operator[](1u);
         double res = 0.0;
         
-        for (auto off = 0u; off < Array.ncol(); ++off)
+        if (Array(other, j) == 0u)
         {
 
-            if (off == j)
-                continue;
 
-            if (Array(other, j) == 0u)
-            {
-
-                if ((Array(other,off) == 1) && (Array(i,off) == 0))
+            for (auto off = 0u; off < Array.ncol(); ++off)
+                if ((Array(i,off) == 0) && (Array(other,off) == 1))
                     res += 1.0;
 
-            }
-            else
-            {
-
-                if ((Array(other,off) == 0) && (Array(i,off) == 1))
-                    res -= 1.0;
-                    
-            }
-
         }
-        
+        else
+        {
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+                if ((Array(i,off) == 1) && (Array(other,off) == 0))
+                    res -= 1.0;
+                
+        }
+             
         return res;
 
     };
@@ -1646,6 +1737,118 @@ inline void counter_gains_from_0(
  * @brief Used when all the functions are in 0 (like the root node prob.)
  * @details Needs to specify function a.
  */
+inline void counter_overall_gains_from_0(
+    PhyloCounters * counters,
+    unsigned int duplication = DEFAULT_DUPLICATION
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // All must be false
+        for (auto s : Array.D()->states)
+        {
+
+            if (s)
+                return 0.0;
+
+        }
+
+        return 1.0;
+        
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new PhyloCounterData({duplication}),
+        true,
+        "Overall first gains" +
+            get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Used when all the functions are in 0 (like the root node prob.)
+ * @details Needs to specify function a.
+ */
+inline void counter_pairwise_overall_change(
+    PhyloCounters * counters,
+    unsigned int duplication = DEFAULT_DUPLICATION
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        unsigned int funpar = Array.D()->states[i] == 1u;
+
+        // All must be false
+        double res = 0.0;
+        for (auto off = 0u; off < Array.ncol(); ++off)
+        {
+            if (off == j)
+                continue;
+
+            if (funpar > Array(i, off))
+                res -= 1.0;
+            else if (funpar < Array(i, off))
+                res += 1.0;
+        }
+        
+        return res;
+        
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+
+        double res = 0.0;
+        double n   = static_cast<double>(Array.ncol());
+        for (auto s : Array.D()->states)
+            if (s)
+                res += n * (n - 1.0) / 2.0;
+
+        return res;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new PhyloCounterData({duplication}),
+        true,
+        "Pairs of genes changing" +
+            get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Used when all the functions are in 0 (like the root node prob.)
+ * @details Needs to specify function a.
+ * sum x(a)^3(1-x(b))^3 + x(b)^3(1-x(a))^3 + x(a)^3 * x(b)^3 + (1 - x(a))^3 * (1-x(b))^3
+ */
 inline void counter_pairwise_preserving(
     PhyloCounters * counters,
     uint nfunA,
@@ -1671,6 +1874,9 @@ inline void counter_pairwise_preserving(
         bool parent_i = Array.D()->states[i];
         bool parent_k = Array.D()->states[k];
 
+        // if (!parent_i & !parent_k)
+        //     return 0.0;
+
         double res = 0.0;
         // Case 1: (0,0)
         if (!parent_i & !parent_k)
@@ -1679,7 +1885,7 @@ inline void counter_pairwise_preserving(
             if (Array(k, j) == 1u)
                 return 0.0; 
 
-            for (auto off = 0u; off < j; ++off)
+            for (auto off = 0u; off < Array.ncol(); ++off)
             {
 
                 if (off == j)
@@ -1697,7 +1903,7 @@ inline void counter_pairwise_preserving(
             if (Array(k, j) == 1u)
                 return 0.0; 
 
-            for (auto off = 0u; off < j; ++off)
+            for (auto off = 0u; off < Array.ncol(); ++off)
             {
 
                 if (off == j)
@@ -1715,7 +1921,7 @@ inline void counter_pairwise_preserving(
             if (Array(k, j) == 0u)
                 return 0.0; 
 
-            for (auto off = 0u; off < j; ++off)
+            for (auto off = 0u; off < Array.ncol(); ++off)
             {
 
                 if (off == j)
@@ -1733,7 +1939,7 @@ inline void counter_pairwise_preserving(
             if (Array(k, j) == 0u)
                 return 0.0; 
 
-            for (auto off = 0u; off < j; ++off)
+            for (auto off = 0u; off < Array.ncol(); ++off)
             {
 
                 if (off == j)
@@ -1751,6 +1957,10 @@ inline void counter_pairwise_preserving(
 
     PHYLO_COUNTER_LAMBDA(tmp_init) {
 
+
+        IF_NOTMATCHES()
+            return 0.0;
+        
         PHYLO_CHECK_MISSING();
         
         double n = static_cast< double >(Array.ncol());
@@ -1766,6 +1976,106 @@ inline void counter_pairwise_preserving(
         new PhyloCounterData({duplication, nfunA, nfunB}),
         true,
         "Pariwise preserve (" + std::to_string(nfunA) + ", " +
+            std::to_string(nfunB) + ")" +get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Used when all the functions are in 0 (like the root node prob.)
+ * @details Needs to specify function a.
+ * sum x(a)^3(1-x(b))^3 + x(b)^3(1-x(a))^3 + x(a)^3 * x(b)^3 + (1 - x(a))^3 * (1-x(b))^3
+ */
+inline void counter_pairwise_first_gain(
+    PhyloCounters * counters,
+    uint nfunA,
+    uint nfunB,
+    unsigned int duplication = DEFAULT_DUPLICATION
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // Not in the scope
+        auto funA = data->operator[](1u);
+        auto funB = data->operator[](2u);
+        if ((funA != i) && (funB != i))
+            return 0.0;
+
+        unsigned int k = (funA == i) ? funB : funA;
+
+        double res = 0.0;
+        if (Array(k, j) == 1)
+        {
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+            {
+                if (off == j)
+                    continue;
+
+                if ((Array(i,off) == 0u) && (Array(k,off) == 0u))
+                    res -= 1.0;
+            }
+
+        }
+        else
+        {
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+            {
+
+                if (off == j)
+                    continue;
+
+                if ((Array(i, off) == 1u))
+                {
+
+                    // j: (0,0)\(1,0) -> (1,0)\(1,0), so less 1
+                    if (Array(k, off) == 0u)
+                        res -= 1.0;
+
+                }
+                else
+                {
+
+                    if (Array(k, off) == 1u) 
+                    // j: (0,0)\(0,1) -> (1,0)\(0,1), so less 1
+                        res -= 1.0;
+                    else
+                    // j: (0,0)\(0,0) -> (1,0)\(0,0), so plus 1
+                        res += 1.0;
+
+                }
+
+            }
+
+        }
+        
+
+        return res;
+        
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new PhyloCounterData({duplication, nfunA, nfunB}),
+        true,
+        "First gain (either " + std::to_string(nfunA) + " or " +
             std::to_string(nfunB) + ")" +get_last_name(duplication)
     );
     
