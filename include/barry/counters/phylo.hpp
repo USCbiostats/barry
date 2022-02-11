@@ -1212,6 +1212,72 @@ inline void counter_neofun(
 //------------------------------------------------------------------------------
 /**
  * @brief Total number of neofunctionalization events 
+ * sum_u sum_{w < u} [x(u,a)*(1 - x(w,a)) + (1 - x(u,a)) * x(w,a)]
+ * change stat: delta{x(u,a): 0->1} = 1 - 2 * x(w,a)
+ */
+inline void counter_pairwise_neofun_singlefun(
+    PhyloCounters * counters,
+    uint nfunA,
+    unsigned int duplication = DEFAULT_DUPLICATION
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Is this node duplication?
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        // Is the function in scope relevant?
+        if (i != data->operator[](1u))
+            return 0.0;
+        
+        // Checking if the parent has both functions
+        if (Array.D()->states[i])
+            return 0.0;
+        
+        // Figuring out which is the first (reference) function
+        double res = 0.0;
+        for (auto off = 0u; off < Array.ncol(); ++off)
+        {
+
+            if (off == j)
+                continue;
+
+            if ((Array(i, off) == 0))
+                res += 1.0;
+            else 
+                res -= 1.0;
+
+        }
+
+        return res;
+
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        return 0.0;
+
+    };
+
+    counters->add_counter(
+        tmp_count, tmp_init,
+        new PhyloCounterData({duplication, nfunA}),
+        true,
+        "Pairwise neofun function " + std::to_string(nfunA) +
+        get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+//------------------------------------------------------------------------------
+/**
+ * @brief Total number of neofunctionalization events 
  * @details Needs to specify pairs of function.
  */
 inline void counter_neofun_a2b(
@@ -1231,68 +1297,45 @@ inline void counter_neofun_a2b(
         
         const uint & funA = data->operator[](1u);
         const uint & funB = data->operator[](2u);
+
+        // Checking scope
+        if ((i != funA) && (i != funB))
+            return 0.0;
         
         // Checking the parent has funA but not funb
-        if ((!Array.D()->states[funA]) | Array.D()->states[funB]) 
+        if (!Array.D()->states[funA] | Array.D()->states[funB]) 
             return 0.0;
+
       
         double res = 0.0;
+        unsigned int other = i == funA ? funB : funA;
 
-        if (funA == i)
+        if (Array(other, j)== 0u)
         {
 
-            if (Array.get_cell(funB, j, true) == 1)
+            for (auto off = 0u; off < Array.ncol(); ++off)
             {
 
-                for (uint k = 0u; k < Array.ncol(); ++k)
-                {
+                if (off == j)
+                    continue;
 
-                    if (k == j)
-                        continue;
-                    if ((Array(funA, k, false) == 1u) && (Array(funB, k, false) == 0u))
-                        res -= 1.0;
-
-                }
-
-            } else {
-
-                for (uint k = 0u; k < Array.ncol(); ++k) {
-
-                    if (k == j)
-                        continue;
-                    if ((Array(funA, k, false) == 0u) && (Array(funB, k, false) == 1u))
-                        res += 1.0;
-
-                }
+                if ((Array(i, off) == 0u) && (Array(other, off) == 1u))
+                    res += 1.0;
 
             }
 
-        } else {
+        }
+        else
+        {
 
-            if (Array.get_cell(funB, j, true) == 1)
+            for (auto off = 0u; off < Array.ncol(); ++off)
             {
 
-                for (uint k = 0u; k < Array.ncol(); ++k)
-                {
+                if (off == j)
+                    continue;
 
-                    if (k == j)
-                        continue;
-                    if ((Array(funA, k, false) == 0u) && (Array(funB, k, false) == 1u))
-                        res -= 1.0;
-
-                }
-
-            } else {
-
-                for (uint k = 0u; k < Array.ncol(); ++k)
-                {
-
-                    if (k == j)
-                        continue;
-                    if ((Array(funA, k, false) == 1u) && (Array(funB, k, false) == 0u))
-                        res += 1.0;
-
-                }
+                if ((Array(i, off) == 1u) && (Array(other, off) == 0u))
+                    res += 1.0;
 
             }
 
@@ -1820,6 +1863,9 @@ inline void counter_pairwise_overall_change(
     PHYLO_COUNTER_LAMBDA(tmp_init) {
 
         PHYLO_CHECK_MISSING();
+
+        IF_NOTMATCHES()
+            return 0.0;
 
         double res = 0.0;
         double n   = static_cast<double>(Array.ncol());
