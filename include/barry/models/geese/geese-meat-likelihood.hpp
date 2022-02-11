@@ -75,7 +75,6 @@ inline double Geese::likelihood(
             // Summation over all possible values of X
             unsigned int nstate = 0u;
             unsigned int narray = 0u;
-            std::vector< unsigned int > tmpstate(nfunctions);
             for (auto x = psets->begin(); x != psets->end(); ++x)
             {
 
@@ -123,13 +122,7 @@ inline double Geese::likelihood(
                     }
 
                     // Retrieving the location to the respective set of probabilities
-                    x->get_col_vec(&tmpstate, o, false);
-                    unsigned int loc = map_to_nodes[tmpstate];
-
-                    off_mult *= node.offspring[o]->subtree_prob[loc];
-
-                    // Retrieving the location to the respective set of probabilities
-                    // off_mult *= node.offspring[o]->subtree_prob[location_x[o]];
+                    off_mult *= node.offspring[o]->subtree_prob[location_x[o]];
 
                 }
 
