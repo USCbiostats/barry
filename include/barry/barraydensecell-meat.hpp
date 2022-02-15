@@ -36,9 +36,10 @@ inline void BArrayDenseCell<Cell_Type,Data_Type>::operator-=(const Cell_Type & v
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayDenseCell<Cell_Type,Data_Type>::operator*=(const Cell_Type & val) {
     
-    dat->el_colsums[j] += (dat->el[POS(i,j)] * val - dat->el[POS(i,j)]);
-    dat->el[POS(i,j)]  += (dat->el[POS(i,j)] * val - dat->el[POS(i,j)]);
-    dat->el_rowsums[i] *= val;
+    Cell_Type old = dat->el[POS(i,j)];
+    dat->el_colsums[j] += (old * val - old);
+    dat->el_rowsums[i] += (old * val - old);
+    dat->el[POS(i,j)] *= val;
 
 }
 

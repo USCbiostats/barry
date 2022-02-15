@@ -41,7 +41,12 @@ inline void Geese::init_node(Node & n)
             }
             else
             {
-                // Otherwise, we fill it with a 9.
+                // [2022-02-11]: (IMPORTANT COMMENT!)
+                // Otherwise, we fill it with a 0 so the support works correctly.
+                // When adding an array from the interior, we don't need to deal
+                // with the actual value as it is the powerset that matters. Using
+                // nine instead will block the cell and stop the routine for computing
+                // the values correctly
                 n.array.insert_cell(k, j, 9u, false, false);
 
             }
@@ -65,7 +70,9 @@ inline void Geese::init_node(Node & n)
     for (unsigned int s = 0u; s < states.size(); ++s)
     {
 
-        n.arrays[s] = phylocounters::PhyloArray(n.array, true);
+        // [2022-02-11]: (IMPORTANT COMMENT!)
+        // n.arrays[s] = phylocounters::PhyloArray(n.array.nrow(), n.array.ncol());
+        n.arrays[s] = phylocounters::PhyloArray(n.array, false);
 
         n.arrays[s].set_data(
             new phylocounters::NodeData(blen, states[s], n.duplication),

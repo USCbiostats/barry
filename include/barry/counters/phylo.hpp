@@ -646,20 +646,12 @@ inline void counter_maxfuns(
         IF_NOTMATCHES()
             return 0.0;
 
-
-        double ans = 0.0;
-        for (uint o = 0u; o < Array.ncol(); ++o)
-        {
-
-            if (Array.rowsum(o) >= data->at(1u))
-                if (Array.rowsum(o) <= data->at(1u))
-                    ans += 1.0;
-
-        }
-
-        return ans;
-
-      
+        // At first, all are zero, so we need to check if the lower
+        // bound is zero
+        if (data->operator[](1u) == 0)
+            return static_cast<double>(Array.ncol());
+        
+        return 0.0;
 
     };
     
@@ -1233,7 +1225,7 @@ inline void counter_pairwise_neofun_singlefun(
         if (i != data->operator[](1u))
             return 0.0;
         
-        // Checking if the parent has both functions
+        // Checking if the parent has the function
         if (Array.D()->states[i])
             return 0.0;
         
@@ -1302,25 +1294,43 @@ inline void counter_neofun_a2b(
         if ((i != funA) && (i != funB))
             return 0.0;
         
-        // Checking the parent has funA but not funb
+        // Checking the parent doesn't have funA or has funB
         if (!Array.D()->states[funA] | Array.D()->states[funB]) 
             return 0.0;
 
-      
         double res = 0.0;
-        unsigned int other = i == funA ? funB : funA;
 
-        if (Array(other, j)== 0u)
+        if (i == funA)
         {
 
-            for (auto off = 0u; off < Array.ncol(); ++off)
+            if (Array(funB, j) == 0u)
             {
 
-                if (off == j)
-                    continue;
+                for (auto off = 0u; off < Array.ncol(); ++off)
+                {
 
-                if ((Array(i, off) == 0u) && (Array(other, off) == 1u))
-                    res += 1.0;
+                    if (off == j)
+                        continue;
+
+                    if ((Array(funA, off) == 0u) && (Array(funB, off) == 1u))
+                        res += 1.0;
+
+                }
+
+            }
+            else
+            {
+
+                for (auto off = 0u; off < Array.ncol(); ++off)
+                {
+                    
+                    if (off == j)
+                        continue;
+
+                    if ((Array(funA, off) == 1u) && (Array(funB, off) == 0u))
+                        res -= 1.0;
+
+                }
 
             }
 
@@ -1328,14 +1338,34 @@ inline void counter_neofun_a2b(
         else
         {
 
-            for (auto off = 0u; off < Array.ncol(); ++off)
+            if (Array(funA, j) == 0u)
             {
 
-                if (off == j)
-                    continue;
+                for (auto off = 0u; off < Array.ncol(); ++off)
+                {
 
-                if ((Array(i, off) == 1u) && (Array(other, off) == 0u))
-                    res += 1.0;
+                    if (off == j)
+                        continue;
+
+                    if ((Array(funA, off) == 1u) && (Array(funB, off) == 0u))
+                        res += 1.0;
+
+                }
+
+            }
+            else
+            {
+
+                for (auto off = 0u; off < Array.ncol(); ++off)
+                {
+                    
+                    if (off == j)
+                        continue;
+
+                    if ((Array(funA, off) == 0u) && (Array(funB, off) == 1u))
+                        res -= 1.0;
+
+                }
 
             }
 
