@@ -298,6 +298,8 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
         }
         else
         {
+            if (std::isnan(tmp_chng))
+                throw std::domain_error("Undefined number.");
 
             change_stats_different++;
             current_stats[n] += tmp_chng;

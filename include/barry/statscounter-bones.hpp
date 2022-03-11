@@ -88,6 +88,8 @@ public:
     Counters<Array_Type,Data_Type> * get_counters();
     std::vector< std::string > get_names() const;
     std::vector< std::string > get_descriptions() const;
+
+    size_t size() const {return counters->size();};
     
 };
 

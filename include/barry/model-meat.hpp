@@ -99,7 +99,8 @@ inline double likelihood_(
 
 
 MODEL_TEMPLATE(,Model)() :
-    stats_support(0u), stats_support_n_arrays(0u),
+    stats_support(0u),
+    stats_support_n_arrays(0u),
     stats_target(0u), arrays2support(0u),
     keys2support(0u),
     pset_arrays(0u), pset_stats(0u),
@@ -108,7 +109,9 @@ MODEL_TEMPLATE(,Model)() :
     rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
     support_fun(), counter_fun(), delete_counters(true),
     delete_rules(true),
-    delete_rules_dyn(true)
+    delete_rules_dyn(true),
+    transform_model_fun(nullptr),
+    transform_model_term_names(0u)
 {  
 
     // Counters are shared
@@ -127,7 +130,8 @@ MODEL_TEMPLATE(,Model)() :
 }
 
 MODEL_TEMPLATE(,Model)(uint size_) :
-    stats_support(0u), stats_support_n_arrays(0u),
+    stats_support(0u),
+    stats_support_n_arrays(0u),
     stats_target(0u), arrays2support(0u), keys2support(0u), 
     pset_arrays(0u), pset_stats(0u),
     counters(new Counters<Array_Type,Data_Counter_Type>()),
@@ -135,7 +139,9 @@ MODEL_TEMPLATE(,Model)(uint size_) :
     rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>()),
     support_fun(), counter_fun(), delete_counters(true),
     delete_rules(true),
-    delete_rules_dyn(true)
+    delete_rules_dyn(true),
+    transform_model_fun(nullptr),
+    transform_model_term_names(0u)
 {
     
     stats_target.reserve(size_);
@@ -175,7 +181,9 @@ MODEL_TEMPLATE(,Model)(
     first_calc_done(Model_.first_calc_done),
     delete_counters(true),
     delete_rules(true),
-    delete_rules_dyn(true)
+    delete_rules_dyn(true),
+    transform_model_fun(Model_.transform_model_fun),
+    transform_model_term_names(Model_.transform_model_term_names)
     {
     
     // Counters are shared
@@ -208,22 +216,24 @@ MODEL_TEMPLATE(MODEL_TYPE() &, operator)=(
         if (delete_rules_dyn)
             delete rules_dyn;
         
-        stats_support          = Model_.stats_support;
-        stats_support_n_arrays = Model_.stats_support_n_arrays;
-        stats_target           = Model_.stats_target;
-        arrays2support         = Model_.arrays2support;
-        keys2support           = Model_.keys2support;
-        pset_arrays            = Model_.pset_arrays;
-        pset_stats             = Model_.pset_stats;
-        counters               = new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters));
-        rules                  = new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules));
-        rules_dyn              = new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn));
-        delete_counters        = true;
-        delete_rules           = true;
-        delete_rules_dyn       = true;
-        params_last            = Model_.params_last;
-        normalizing_constants  = Model_.normalizing_constants;
-        first_calc_done        = Model_.first_calc_done;
+        stats_support              = Model_.stats_support;
+        stats_support_n_arrays     = Model_.stats_support_n_arrays;
+        stats_target               = Model_.stats_target;
+        arrays2support             = Model_.arrays2support;
+        keys2support               = Model_.keys2support;
+        pset_arrays                = Model_.pset_arrays;
+        pset_stats                 = Model_.pset_stats;
+        counters                   = new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters));
+        rules                      = new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules));
+        rules_dyn                  = new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn));
+        delete_counters            = true;
+        delete_rules               = true;
+        delete_rules_dyn           = true;
+        params_last                = Model_.params_last;
+        normalizing_constants      = Model_.normalizing_constants;
+        first_calc_done            = Model_.first_calc_done;
+        transform_model_fun        = Model_.transform_model_fun;
+        transform_model_term_names = Model_.transform_model_term_names;
 
         // Counters are shared
         support_fun.set_counters(counters);
@@ -420,7 +430,13 @@ MODEL_TEMPLATE(uint, add_array)(
     
     // Array counts (target statistics)
     counter_fun.reset_array(&Array_);
-    stats_target.push_back(counter_fun.count_all());
+    
+    if (transform_model_fun)
+    {
+        auto tmpcounts = counter_fun.count_all();
+        stats_target.push_back(transform_model_fun(&tmpcounts[0u], tmpcounts.size()));
+    } else
+        stats_target.push_back(counter_fun.count_all());
     
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
@@ -489,7 +505,31 @@ MODEL_TEMPLATE(uint, add_array)(
             
         }
         
-        stats_support.push_back(support_fun.get_counts());
+        if (transform_model_fun)
+        {
+            auto tmpsupport = support_fun.get_counts();
+            size_t k = counter_fun.size();
+            size_t n = tmpsupport.size() / (k + 1);
+
+            std::vector< double > s_new(0u);            
+            s_new.reserve(tmpsupport.size());
+
+            for (size_t i = 0u; i < n; ++i)
+            {
+
+                // Appending size
+                s_new.push_back(tmpsupport[i * (k + 1u)]);
+
+                // Applying transformation and adding to the new set
+                auto res = transform_model_fun(&tmpsupport[i * (k + 1u) + 1u], k);
+                std::copy(res.begin(), res.end(), std::back_inserter(s_new));
+
+            }
+
+            stats_support.push_back(s_new);
+
+        } else 
+            stats_support.push_back(support_fun.get_counts());
         
         // Making room for the previous parameters. This will be used to check if
         // the normalizing constant has been updated or not.
@@ -591,6 +631,9 @@ MODEL_TEMPLATE(double, likelihood)(
     tmpstats.set_counters(this->counters);
     
     std::vector< double > target_ = tmpstats.count_all();
+
+    if (transform_model_fun)
+        target_ = transform_model_fun(&target_[0u], target_.size());
 
     // Checking if we have updated the normalizing constant or not
     if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) )
@@ -781,7 +824,7 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const
 
     const auto & S = stats_support[arrays2support[i]];
 
-    size_t k       = params_last.size();
+    size_t k       = nterms();
     size_t nunique = S.size() / (k + 1u);
 
     for (uint l = 0u; l < nunique; ++l)
@@ -789,10 +832,10 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const
 
         printf_barry("% 5i ", l);
 
-        printf_barry("counts: %i motif: ", S[l * (k + 1)]);
+        printf_barry("counts: %.0f motif: ", S[l * (k + 1u)]);
         
         for (unsigned int j = 0u; j < k; ++j)
-            printf_barry("%.2f, ", S[l * (k + 1) + k + 1]);
+            printf_barry("%.2f, ", S[l * (k + 1) + j + 1]);
 
         printf_barry("\n");
 
@@ -826,8 +869,9 @@ MODEL_TEMPLATE(void, print)() const
     printf_barry("Num. of Arrays     : %i\n", this->size());
     printf_barry("Support size       : %i\n", this->size_unique());
     printf_barry("Support size range : [%i, %i]\n", min_v, max_v);
+    printf_barry("Transform. Fun.    : %s\n", transform_model_fun ? "yes": "no");
     printf_barry("Model terms (%i)   :\n", this->nterms());
-        
+    
     for (auto & cn : this->colnames())
         printf_barry(" - %s\n", cn.c_str());
 
@@ -852,8 +896,11 @@ MODEL_TEMPLATE(uint, size_unique)() const noexcept
 
 MODEL_TEMPLATE(uint, nterms)() const noexcept
 {
-
-    return this->counters->size();
+ 
+    if (transform_model_fun)
+        return transform_model_term_names.size();
+    else
+        return this->counters->size();
 
 }
 
@@ -871,7 +918,12 @@ MODEL_TEMPLATE(uint, support_size)() const noexcept
 
 MODEL_TEMPLATE(std::vector< std::string >, colnames)() const
 {
-    return counters->get_names();
+    
+    if (transform_model_fun)
+        return transform_model_term_names;
+    else
+        return counters->get_names();
+
 }
     
 MODEL_TEMPLATE(Array_Type, sample)(
@@ -924,6 +976,11 @@ MODEL_TEMPLATE(double, conditional_prob)(
     std::vector< double > tmp_counts(counters->size());
     for (unsigned int ii = 0u; ii < tmp_counts.size(); ++ii)
         tmp_counts[ii] = counters->operator[](ii).count(A, i, j);
+
+    // If there is a transformation function, it needs to be
+    // applied before dealing with the likelihood.
+    if (transform_model_fun)
+        tmp_counts = transform_model_fun(&tmp_counts[0u], tmp_counts.size());
 
     return 1.0/
         (1.0 + std::exp(-vec_inner_prod<double>(params, tmp_counts)));
@@ -981,6 +1038,77 @@ MODEL_TEMPLATE(std::vector< std::vector< std::vector<double> > > *, get_pset_sta
 
 MODEL_TEMPLATE(std::vector< std::vector<double> > *               , get_pset_probs)() {
     return &pset_probs;
+}
+
+MODEL_TEMPLATE(void, set_transform_model)(
+    std::function<std::vector<double>(double *,unsigned int)> fun,
+    std::vector< std::string > names
+    )
+{
+
+    if (transform_model_fun)
+        throw std::logic_error("A transformation function for the model has already been established.");
+    
+    transform_model_fun = fun;
+    transform_model_term_names = names;
+
+    size_t k = counters->size(); 
+
+    // Applying over the support
+    for (auto & s : stats_support)
+    {
+
+        // Making room for the new support
+        std::vector< double > s_new(0u);
+        s_new.reserve(s.size());
+
+        size_t n = s.size() / (k + 1u);
+
+        // Iterating through the unique sets
+        for (size_t i = 0; i < n; ++i)
+        {
+
+            // Appending size
+            s_new.push_back(s[i * (k + 1u)]);
+
+            // Applying transformation and adding to the new set
+            auto res = transform_model_fun(&s[i * (k + 1u) + 1u], k);
+
+            if (res.size() != transform_model_term_names.size())
+                throw std::length_error("The transform vector from -transform_model_fun- does not match the size of -transform_model_term_names-.");
+
+            std::copy(res.begin(), res.end(), std::back_inserter(s_new));
+
+        }
+
+        // Exchanging with the original
+        std::swap(s, s_new);
+
+    }
+
+    // Applying over the target statistics
+    for (auto & s : stats_target)
+        s = transform_model_fun(&s[0u], k);
+
+    // Checking if there is support included
+    if (with_pset)
+    {
+
+        // Applying it to the support
+        for (auto & S : pset_stats)
+        {
+            for (auto & s : S)
+                s = transform_model_fun(&s[0], k);
+
+        }
+    }
+
+    // And, resizing the last set of parameters
+    for (auto & p : params_last)
+        p.resize(transform_model_term_names.size());
+
+    return;
+
 }
 
 #undef MODEL_TEMPLATE

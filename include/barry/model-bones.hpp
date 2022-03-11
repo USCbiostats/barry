@@ -60,12 +60,20 @@ private:
      * array in the dataset. `array_frequency` contains the frequency with which
      * each of the target stats_target (arrays) shows in the support. `array2support` 
      * maps array indices (0, 1, ...) to the corresponding support.
+     * 
+     * Each vector of `stats_support` has the data stored in a row-wise order,
+     * with each row starting with the weights, e.g., in a model with `k` terms
+     * the first k + 1 elements of `stats_support` would be:
+     * - weights
+     * - term 1
+     * - term 2
+     * - ...
+     * - term k
      */
     ///@{
-    std::vector< std::vector< double > > stats_support; ///< Sufficient statistics of the model (support)
+    std::vector< std::vector< double > > stats_support;          ///< Sufficient statistics of the model (support)
     std::vector< uint >                  stats_support_n_arrays; ///< Number of arrays included per support.
-    std::vector< std::vector< double > > stats_target;  ///< Target statistics of the model
-    std::vector< uint >                  array_frequency;
+    std::vector< std::vector< double > > stats_target;           ///< Target statistics of the model
     std::vector< uint >                  arrays2support;
     ///@}
 
@@ -112,6 +120,26 @@ private:
     bool delete_rules     = false;
     bool delete_rules_dyn = false;
 
+    /**
+     * @brief Transformation of the model
+     * 
+     * @details When specified, this function will update the model by modifying
+     * the linear equation. For example, if the user wanted to add interaction
+     * terms, rescale, or apply other operations of the sorts, the user can do such
+     * through this function.
+     * 
+     * The function should return `void` and receive the following arguments:
+     * - `data` Pointer to the first element of the set of sufficient statistics
+     * - `k` unsigned int indicating the number of sufficient statistics
+     * 
+     * @returns
+     * Nothing, but it will modify the model data.
+     */
+    std::function<std::vector<double>(double *, unsigned int k)>
+        transform_model_fun = nullptr;
+
+    std::vector< std::string > transform_model_term_names;
+    
 public:
     
     void set_rengine(std::mt19937 * rengine_, bool delete_ = false) {
@@ -340,6 +368,13 @@ public:
 
     /**
      * @brief Raw pointers to the support and target statistics
+     * @details 
+     * The support of the model is stored as a vector of vector<double>. Each
+     * element of it contains the support for an specific type of array included.
+     * It represents an array of size `(k + 1) x n unique elements`, with the data
+     * stored by-row. The last element of each entry corresponds to the weights,
+     * i.e., the frequency with which such sufficient statistics are observed in
+     * the support.
      */
     ///@{
     std::vector< std::vector< double > > * get_stats_target();
@@ -350,6 +385,25 @@ public:
     std::vector< std::vector<double> > *                get_pset_probs(); 
     ///@}
 
+    /**
+     * @brief Set the transform_model_fun object
+     * @details The transform_model function is used to transform the data
+     * 
+     * @param data 
+     * @param target 
+     * @param n_arrays 
+     * @param arrays2support 
+     */
+    ///@{
+    void set_transform_model(
+        std::function<std::vector<double>(double*,unsigned int)> fun,
+        std::vector< std::string > names
+        );
+    std::vector<double> transform_model(
+        double * data,
+        unsigned int k
+    );
+    ///@}
 
 };
 

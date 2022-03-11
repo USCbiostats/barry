@@ -764,10 +764,16 @@ inline void counter_idegree15(NetCounters<NetworkDense> * counters)
         
         if (ideg == 1)
             return 1.0;
+
+        double res = std::pow(static_cast<double> (ideg), 1.5) -
+            std::pow(static_cast<double> (ideg - 1.0), 1.5);
+
+        if (std::isnan(res))
+            throw std::domain_error("Resulting indeg is undefined.");
         
         return 
-            pow(static_cast<double> (ideg), 1.5) -
-            pow(static_cast<double> (ideg - 1), 1.5)
+            std::pow(static_cast<double> (ideg), 1.5) -
+            std::pow(static_cast<double> (ideg - 1.0), 1.5)
             ;
         
     };

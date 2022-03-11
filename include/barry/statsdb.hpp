@@ -7,9 +7,20 @@
 #define BARRY_STATSDB_HPP 1
   
 /**
- * @brief Database of statistics.
+ * @brief Frequency table of vectors
  * 
- * This is mostly used in `Support`.
+ * This is mostly used in `Support`. The main data is contained in the
+ * `data` double vector. The matrix is stored in a row-wise fashion, where
+ * the first element is the frequency with which the vector is observed.
+ * 
+ * For example, in a model with `k` terms the first k + 1 elements of
+ * `data` would be:
+ * 
+ * - weights
+ * - term 1
+ * - term 2
+ * - ...
+ * - term k
  * 
  */
 template<typename T = double> 
