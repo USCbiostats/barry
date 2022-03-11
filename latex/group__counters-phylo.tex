@@ -36,6 +36,8 @@ void \mbox{\hyperlink{group__counters-phylo_ga32a7d5bf639d776e6293ab466e204303}{
 \begin{DoxyCompactList}\small\item\em Longest branch mutates (either by gain or by loss) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__counters-phylo_gaea3d5f58d5042aa4b43d01662a7f0fca}{counter\+\_\+neofun}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counters-phylo_ga76bc99e444eee89d810b92407f4a1bd7}{counter\+\_\+pairwise\+\_\+neofun\+\_\+singlefun}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+\begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events sum\+\_\+u sum\+\_\+\{w $<$ u\} \mbox{[}x(u,a)$\ast$(1 -\/ x(w,a)) + (1 -\/ x(u,a)) $\ast$ x(w,a)\mbox{]} change stat\+: delta\{x(u,a)\+: 0-\/$>$1\} = 1 -\/ 2 $\ast$ x(w,a) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__counters-phylo_ga4aa6855316673440f7ebff2d01e3ddca}{counter\+\_\+neofun\+\_\+a2b}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__counters-phylo_ga578ee88179c6ff445b597248527384cd}{counter\+\_\+co\+\_\+opt}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
@@ -79,7 +81,7 @@ Function co-\/opting.
 
 Function co-\/opting of functions A and B happens when, for example, function B is gained as a new featured leveraging what function A already does; without losing function A. The sufficient statistic is defined as follows\+: \[ x_{pa}(1 - x_{pb})\sum_{i<j}\left[x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p + x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p\right] \] This algorithm implements the change statistic. 
 
-Definition at line 1336 of file phylo.\+hpp.
+Definition at line 1409 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga06b193f4d4ac04ebcd8535a4d1b61636}\label{group__counters-phylo_ga06b193f4d4ac04ebcd8535a4d1b61636}} 
 \index{Phylo counters@{Phylo counters}!counter\_cogain@{counter\_cogain}}
@@ -93,7 +95,7 @@ Co-\/evolution (joint gain or loss)
 
 Needs to specify pairs of functions ({\ttfamily nfunA}, {\ttfamily nfunB}). 
 
-Definition at line 907 of file phylo.\+hpp.
+Definition at line 899 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gadf617caf15474389d73caf3370672d91}\label{group__counters-phylo_gadf617caf15474389d73caf3370672d91}} 
 \index{Phylo counters@{Phylo counters}!counter\_gains@{counter\_gains}}
@@ -121,7 +123,7 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. 
 
-Definition at line 1673 of file phylo.\+hpp.
+Definition at line 1746 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga5f4909dc6fb4d0e2de35c43e324ea586}\label{group__counters-phylo_ga5f4909dc6fb4d0e2de35c43e324ea586}} 
 \index{Phylo counters@{Phylo counters}!counter\_gains\_k\_offspring@{counter\_gains\_k\_offspring}}
@@ -163,7 +165,7 @@ Indicator function. Equals to one if $k$ genes changed and zero otherwise.
 
 
 
-Definition at line 1435 of file phylo.\+hpp.
+Definition at line 1508 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga6778ed9ac8fd3dacda838631863c5235}\label{group__counters-phylo_ga6778ed9ac8fd3dacda838631863c5235}} 
 \index{Phylo counters@{Phylo counters}!counter\_less\_than\_p\_prop\_genes\_changing@{counter\_less\_than\_p\_prop\_genes\_changing}}
@@ -177,7 +179,7 @@ Indicator function. Equals to one if $k$ genes changed and zero otherwise.
 
 $<$ How many genes diverge the parent
 
-Definition at line 1556 of file phylo.\+hpp.
+Definition at line 1629 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga32a7d5bf639d776e6293ab466e204303}\label{group__counters-phylo_ga32a7d5bf639d776e6293ab466e204303}} 
 \index{Phylo counters@{Phylo counters}!counter\_longest@{counter\_longest}}
@@ -191,7 +193,7 @@ Longest branch mutates (either by gain or by loss)
 
 
 
-Definition at line 965 of file phylo.\+hpp.
+Definition at line 957 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga2c37ea0362e2cec9e28c8225d01f8245}\label{group__counters-phylo_ga2c37ea0362e2cec9e28c8225d01f8245}} 
 \index{Phylo counters@{Phylo counters}!counter\_loss@{counter\_loss}}
@@ -205,7 +207,7 @@ Total count of losses for an specific function.
 
 
 
-Definition at line 704 of file phylo.\+hpp.
+Definition at line 696 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gab8267f636cac54ef64171b6b7b15251c}\label{group__counters-phylo_gab8267f636cac54ef64171b6b7b15251c}} 
 \index{Phylo counters@{Phylo counters}!counter\_maxfuns@{counter\_maxfuns}}
@@ -233,7 +235,7 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 1136 of file phylo.\+hpp.
+Definition at line 1128 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga4aa6855316673440f7ebff2d01e3ddca}\label{group__counters-phylo_ga4aa6855316673440f7ebff2d01e3ddca}} 
 \index{Phylo counters@{Phylo counters}!counter\_neofun\_a2b@{counter\_neofun\_a2b}}
@@ -247,7 +249,7 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 1217 of file phylo.\+hpp.
+Definition at line 1275 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gaa0c3d78f05f5789ac030ebb5655edd01}\label{group__counters-phylo_gaa0c3d78f05f5789ac030ebb5655edd01}} 
 \index{Phylo counters@{Phylo counters}!counter\_overall\_changes@{counter\_overall\_changes}}
@@ -261,7 +263,7 @@ Total number of changes. Use this statistic to account for \char`\"{}preservatio
 
 
 
-Definition at line 757 of file phylo.\+hpp.
+Definition at line 749 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga0b30b6172ca57ab66ca7c80fe3ef76fd}\label{group__counters-phylo_ga0b30b6172ca57ab66ca7c80fe3ef76fd}} 
 \index{Phylo counters@{Phylo counters}!counter\_overall\_gains@{counter\_overall\_gains}}
@@ -289,7 +291,7 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. 
 
-Definition at line 1740 of file phylo.\+hpp.
+Definition at line 1813 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga89539d88e4c611fb84e60dcb2689202d}\label{group__counters-phylo_ga89539d88e4c611fb84e60dcb2689202d}} 
 \index{Phylo counters@{Phylo counters}!counter\_overall\_loss@{counter\_overall\_loss}}
@@ -317,7 +319,21 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. sum x(a)$^\wedge$3(1-\/x(b))$^\wedge$3 + x(b)$^\wedge$3(1-\/x(a))$^\wedge$3 + x(a)$^\wedge$3 $\ast$ x(b)$^\wedge$3 + (1 -\/ x(a))$^\wedge$3 $\ast$ (1-\/x(b))$^\wedge$3 
 
-Definition at line 1992 of file phylo.\+hpp.
+Definition at line 2068 of file phylo.\+hpp.
+
+\mbox{\Hypertarget{group__counters-phylo_ga76bc99e444eee89d810b92407f4a1bd7}\label{group__counters-phylo_ga76bc99e444eee89d810b92407f4a1bd7}} 
+\index{Phylo counters@{Phylo counters}!counter\_pairwise\_neofun\_singlefun@{counter\_pairwise\_neofun\_singlefun}}
+\index{counter\_pairwise\_neofun\_singlefun@{counter\_pairwise\_neofun\_singlefun}!Phylo counters@{Phylo counters}}
+\doxysubsubsection{\texorpdfstring{counter\_pairwise\_neofun\_singlefun()}{counter\_pairwise\_neofun\_singlefun()}}
+{\footnotesize\ttfamily void counter\+\_\+pairwise\+\_\+neofun\+\_\+singlefun (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{nfunA,  }\item[{unsigned int}]{duplication = {\ttfamily \mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Total number of neofunctionalization events sum\+\_\+u sum\+\_\+\{w $<$ u\} \mbox{[}x(u,a)$\ast$(1 -\/ x(w,a)) + (1 -\/ x(u,a)) $\ast$ x(w,a)\mbox{]} change stat\+: delta\{x(u,a)\+: 0-\/$>$1\} = 1 -\/ 2 $\ast$ x(w,a) 
+
+
+
+Definition at line 1210 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_ga8822f7130a6e6102085d533692a7e3b6}\label{group__counters-phylo_ga8822f7130a6e6102085d533692a7e3b6}} 
 \index{Phylo counters@{Phylo counters}!counter\_pairwise\_overall\_change@{counter\_pairwise\_overall\_change}}
@@ -331,7 +347,7 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. 
 
-Definition at line 1789 of file phylo.\+hpp.
+Definition at line 1862 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gafe46e12da1a44fbe590b5ffc882760c8}\label{group__counters-phylo_gafe46e12da1a44fbe590b5ffc882760c8}} 
 \index{Phylo counters@{Phylo counters}!counter\_pairwise\_preserving@{counter\_pairwise\_preserving}}
@@ -345,7 +361,7 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. sum x(a)$^\wedge$3(1-\/x(b))$^\wedge$3 + x(b)$^\wedge$3(1-\/x(a))$^\wedge$3 + x(a)$^\wedge$3 $\ast$ x(b)$^\wedge$3 + (1 -\/ x(a))$^\wedge$3 $\ast$ (1-\/x(b))$^\wedge$3 
 
-Definition at line 1852 of file phylo.\+hpp.
+Definition at line 1928 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{group__counters-phylo_gad4d1e036b452d3fa7268f63c4637969a}\label{group__counters-phylo_gad4d1e036b452d3fa7268f63c4637969a}} 
 \index{Phylo counters@{Phylo counters}!counter\_preserve\_pseudogene@{counter\_preserve\_pseudogene}}
@@ -387,5 +403,5 @@ Total count of Sub-\/functionalization events.
 
 It requires to specify data = \{funA, funB\} 
 
-Definition at line 817 of file phylo.\+hpp.
+Definition at line 809 of file phylo.\+hpp.
 

@@ -156,10 +156,12 @@ $(document).ready(function(){initNavTree('statscounter-bones_8hpp_source.html','
 <div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_stats_counter.html#aefed9e17931afb386933df0a4c2ff588">   88</a></span>&#160;    <a class="code" href="class_counters.html">Counters&lt;Array_Type,Data_Type&gt;</a> * <a class="code" href="class_stats_counter.html#aefed9e17931afb386933df0a4c2ff588">get_counters</a>();</div>
 <div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_stats_counter.html#aa7e4572b8f58a0fb79cdf3125ceb3520">   89</a></span>&#160;    std::vector&lt; std::string &gt; <a class="code" href="class_stats_counter.html#aa7e4572b8f58a0fb79cdf3125ceb3520">get_names</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_stats_counter.html#a0e013d18fa1155ce296025778d8cb92f">   90</a></span>&#160;    std::vector&lt; std::string &gt; <a class="code" href="class_stats_counter.html#a0e013d18fa1155ce296025778d8cb92f">get_descriptions</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_stats_counter.html#ab682162c2ff13eb65bbc4d88213e9255">   92</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_stats_counter.html#ab682162c2ff13eb65bbc4d88213e9255">size</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;size();};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;};</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-bones_8hpp_html"><div class="ttname"><a href="barray-bones_8hpp.html">barray-bones.hpp</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a6cb31aaad809d508e214b61785d7fb47"><div class="ttname"><a href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a></div><div class="ttdeci">Data_Type &amp; Array_</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00134">barray-meat.hpp:134</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00403">barray-meat.hpp:403</a></div></div>
@@ -178,6 +180,7 @@ $(document).ready(function(){initNavTree('statscounter-bones_8hpp_source.html','
 <div class="ttc" id="aclass_stats_counter_html_a8dabc3a7a9931acbb76900a67d728f70"><div class="ttname"><a href="class_stats_counter.html#a8dabc3a7a9931acbb76900a67d728f70">StatsCounter::reset_array</a></div><div class="ttdeci">void reset_array(const Array_Type *Array_)</div><div class="ttdoc">Changes the reference array for the counting.</div></div>
 <div class="ttc" id="aclass_stats_counter_html_aa7e4572b8f58a0fb79cdf3125ceb3520"><div class="ttname"><a href="class_stats_counter.html#aa7e4572b8f58a0fb79cdf3125ceb3520">StatsCounter::get_names</a></div><div class="ttdeci">std::vector&lt; std::string &gt; get_names() const</div></div>
 <div class="ttc" id="aclass_stats_counter_html_aad1531e93d2d217c5cfd6b389ccf6fba"><div class="ttname"><a href="class_stats_counter.html#aad1531e93d2d217c5cfd6b389ccf6fba">StatsCounter::StatsCounter</a></div><div class="ttdeci">StatsCounter(const Array_Type *Array_)</div><div class="ttdoc">Creator of a StatsCounter</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-bones_8hpp_source.html#l00042">statscounter-bones.hpp:42</a></div></div>
+<div class="ttc" id="aclass_stats_counter_html_ab682162c2ff13eb65bbc4d88213e9255"><div class="ttname"><a href="class_stats_counter.html#ab682162c2ff13eb65bbc4d88213e9255">StatsCounter::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-bones_8hpp_source.html#l00092">statscounter-bones.hpp:92</a></div></div>
 <div class="ttc" id="aclass_stats_counter_html_ab81166f7cb67eeaecc469016d237019a"><div class="ttname"><a href="class_stats_counter.html#ab81166f7cb67eeaecc469016d237019a">StatsCounter::count_current</a></div><div class="ttdeci">void count_current(uint i, uint j)</div></div>
 <div class="ttc" id="aclass_stats_counter_html_ad175dcd2bd30d017881783de546ac333"><div class="ttname"><a href="class_stats_counter.html#ad175dcd2bd30d017881783de546ac333">StatsCounter::add_counter</a></div><div class="ttdeci">void add_counter(Counter&lt; Array_Type, Data_Type &gt; f_)</div></div>
 <div class="ttc" id="aclass_stats_counter_html_aefed9e17931afb386933df0a4c2ff588"><div class="ttname"><a href="class_stats_counter.html#aefed9e17931afb386933df0a4c2ff588">StatsCounter::get_counters</a></div><div class="ttdeci">Counters&lt; Array_Type, Data_Type &gt; * get_counters()</div></div>
@@ -198,7 +201,7 @@ $(document).ready(function(){initNavTree('statscounter-bones_8hpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="statscounter-bones_8hpp.html">statscounter-bones.hpp</a></li>
-    <li class="footer">Generated on Wed Feb 9 2022 23:58:57 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Mar 11 2022 23:25:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

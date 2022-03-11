@@ -167,6 +167,14 @@ std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $>$ $\ast$ \mb
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \mbox{\hyperlink{class_model_a38a7545244ac95aa624496dbf1d71120}{get\+\_\+pset\+\_\+probs}} ()
 \end{DoxyCompactItemize}
 
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_model_a3920808b5ece7db2e7d56ceb7d238018}{set\+\_\+transform\+\_\+model}} (std\+::function$<$ std\+::vector$<$ double $>$(double $\ast$, unsigned int)$>$ fun, std\+::vector$<$ std\+::string $>$ names)
+\begin{DoxyCompactList}\small\item\em Set the transform\+\_\+model\+\_\+fun object. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_model_a59f69217bb8295aaf8b0eb8b5d87e5c6}{transform\+\_\+model}} (double $\ast$\mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}}, unsigned int k)
+\end{DoxyCompactItemize}
+
 
 
 \doxysubsection{Detailed Description}
@@ -225,7 +233,7 @@ Definition at line 46 of file model-\/bones.\+hpp.
 
 
 
-Definition at line 147 of file model-\/bones.\+hpp.
+Definition at line 175 of file model-\/bones.\+hpp.
 
 
 
@@ -454,7 +462,7 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$$\ast$ \mbox{\hyperlink{class_mo
 
 Raw pointers to the support and target statistics. 
 
-\mbox{\Hypertarget{class_model_a0a5e28f9d316bbc914a6d8f24071f8c1}\label{class_model_a0a5e28f9d316bbc914a6d8f24071f8c1}} 
+The support of the model is stored as a vector of vector$<$double$>$. Each element of it contains the support for an specific type of array included. It represents an array of size {\ttfamily (k + 1) x n unique elements}, with the data stored by-\/row. The last element of each entry corresponds to the weights, i.\+e., the frequency with which such sufficient statistics are observed in the support. \mbox{\Hypertarget{class_model_a0a5e28f9d316bbc914a6d8f24071f8c1}\label{class_model_a0a5e28f9d316bbc914a6d8f24071f8c1}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_support\_fun@{get\_support\_fun}}
 \index{get\_support\_fun@{get\_support\_fun}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{get\_support\_fun()}{get\_support\_fun()}}
@@ -558,7 +566,7 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 117 of file model-\/bones.\+hpp.
+Definition at line 145 of file model-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_model_a696fd8dc85423d35fee3b9718877abb4}\label{class_model_a696fd8dc85423d35fee3b9718877abb4}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!set\_rules@{set\_rules}}
@@ -583,8 +591,32 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 
 
 
-Definition at line 127 of file model-\/bones.\+hpp.
+Definition at line 155 of file model-\/bones.\+hpp.
 
+\mbox{\Hypertarget{class_model_a3920808b5ece7db2e7d56ceb7d238018}\label{class_model_a3920808b5ece7db2e7d56ceb7d238018}} 
+\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!set\_transform\_model@{set\_transform\_model}}
+\index{set\_transform\_model@{set\_transform\_model}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{set\_transform\_model()}{set\_transform\_model()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::set\+\_\+transform\+\_\+model (\begin{DoxyParamCaption}\item[{std\+::function$<$ std\+::vector$<$ double $>$(double $\ast$, unsigned int)$>$}]{fun,  }\item[{std\+::vector$<$ std\+::string $>$}]{names }\end{DoxyParamCaption})}
+
+
+
+Set the transform\+\_\+model\+\_\+fun object. 
+
+The transform\+\_\+model function is used to transform the data
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+{\em target} & \\
+\hline
+{\em n\+\_\+arrays} & \\
+\hline
+{\em arrays2support} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_model_ac9e1a5bb0ba275abb36f2e220b04dbd8}\label{class_model_ac9e1a5bb0ba275abb36f2e220b04dbd8}} 
 \index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!size@{size}}
 \index{size@{size}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
@@ -612,6 +644,13 @@ void \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Cou
 \doxysubsubsection{\texorpdfstring{support\_size()}{support\_size()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
 unsigned int \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::support\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{class_model_a59f69217bb8295aaf8b0eb8b5d87e5c6}\label{class_model_a59f69217bb8295aaf8b0eb8b5d87e5c6}} 
+\index{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!transform\_model@{transform\_model}}
+\index{transform\_model@{transform\_model}!Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Model$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{transform\_model()}{transform\_model()}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
+std\+::vector$<$double$>$ \mbox{\hyperlink{class_model}{Model}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::transform\+\_\+model (\begin{DoxyParamCaption}\item[{double $\ast$}]{data,  }\item[{unsigned int}]{k }\end{DoxyParamCaption})}
 
 
 

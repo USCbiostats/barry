@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('class_freq_table.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 
-<p>Database of statistics.  
+<p>Frequency table of vectors.  
  <a href="class_freq_table.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>&gt;</code></p>
@@ -135,10 +135,18 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename T = double&gt;<br />
 class FreqTable&lt; T &gt;</h3>
 
-<p>Database of statistics. </p>
-<p>This is mostly used in <code><a class="el" href="class_support.html" title="Compute the support of sufficient statistics.">Support</a></code>. </p>
+<p>Frequency table of vectors. </p>
+<p>This is mostly used in <code><a class="el" href="class_support.html" title="Compute the support of sufficient statistics.">Support</a></code>. The main data is contained in the <code>data</code> double vector. The matrix is stored in a row-wise fashion, where the first element is the frequency with which the vector is observed.</p>
+<p>For example, in a model with <code>k</code> terms the first k + 1 elements of <code>data</code> would be:</p>
+<ul>
+<li>weights</li>
+<li>term 1</li>
+<li>term 2</li>
+<li>...</li>
+<li>term k </li>
+</ul>
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00016">16</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00027">27</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2fdea53e35f9a301d7d1bbf6b7da5f41"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2fdea53e35f9a301d7d1bbf6b7da5f41">&#9670;&nbsp;</a></span>FreqTable()</h2>
@@ -165,7 +173,7 @@ template&lt;typename T  = double&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00028">28</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00039">39</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -194,7 +202,7 @@ template&lt;typename T  = double&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00029">29</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00040">40</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -235,7 +243,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00053">53</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00064">64</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -261,7 +269,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00133">133</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00144">144</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -287,7 +295,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00162">162</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00173">173</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -316,7 +324,7 @@ template&lt;typename T  = double&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00034">34</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00045">45</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -345,7 +353,7 @@ template&lt;typename T  = double&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00035">35</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00046">46</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -375,7 +383,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00233">233</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00244">244</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -401,7 +409,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00198">198</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00209">209</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +449,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00176">176</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00187">187</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -470,7 +478,7 @@ template&lt;typename T &gt; </div>
 <p>Number of unique elements in the table. (. </p>
 <dl class="section return"><dt>Returns</dt><dd>size_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00225">225</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="statsdb_8hpp_source.html#l00236">236</a> of file <a class="el" href="statsdb_8hpp_source.html">statsdb.hpp</a>.</p>
 
 </div>
 </div>
@@ -483,7 +491,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_freq_table.html">FreqTable</a></li>
-    <li class="footer">Generated on Wed Feb 9 2022 23:58:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Mar 11 2022 23:25:07 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -13,5 +13,6 @@ var class_stats_counter =
     [ "get_descriptions", "class_stats_counter.html#a0e013d18fa1155ce296025778d8cb92f", null ],
     [ "get_names", "class_stats_counter.html#aa7e4572b8f58a0fb79cdf3125ceb3520", null ],
     [ "reset_array", "class_stats_counter.html#a8dabc3a7a9931acbb76900a67d728f70", null ],
-    [ "set_counters", "class_stats_counter.html#a1d66f7d7326cac60a46ee56a8eb0a497", null ]
+    [ "set_counters", "class_stats_counter.html#a1d66f7d7326cac60a46ee56a8eb0a497", null ],
+    [ "size", "class_stats_counter.html#ab682162c2ff13eb65bbc4d88213e9255", null ]
 ];

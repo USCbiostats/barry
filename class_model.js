@@ -47,8 +47,10 @@ var class_model =
     [ "set_rules", "class_model.html#a696fd8dc85423d35fee3b9718877abb4", null ],
     [ "set_rules_dyn", "class_model.html#ab200cf9d28983471fa8264fc90071bad", null ],
     [ "set_seed", "class_model.html#a616ea1628570afcd5701a4e923e6dc1c", null ],
+    [ "set_transform_model", "class_model.html#a3920808b5ece7db2e7d56ceb7d238018", null ],
     [ "size", "class_model.html#ac9e1a5bb0ba275abb36f2e220b04dbd8", null ],
     [ "size_unique", "class_model.html#ab25ddd02d4e0cd5b6be7169291b814be", null ],
     [ "store_psets", "class_model.html#a3e8c4587b259d60fcf7c70c7e3f55082", null ],
-    [ "support_size", "class_model.html#a2e1bbdf9ab840e64da0ba3e348812e62", null ]
+    [ "support_size", "class_model.html#a2e1bbdf9ab840e64da0ba3e348812e62", null ],
+    [ "transform_model", "class_model.html#a59f69217bb8295aaf8b0eb8b5d87e5c6", null ]
 ];

@@ -146,6 +146,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaea3d5f58d5042aa4b43d01662a7f0fca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-phylo.html#gaea3d5f58d5042aa4b43d01662a7f0fca">counter_neofun</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunB, unsigned int duplication=<a class="el" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a>)</td></tr>
 <tr class="memdesc:gaea3d5f58d5042aa4b43d01662a7f0fca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of neofunctionalization events.  <a href="group__counters-phylo.html#gaea3d5f58d5042aa4b43d01662a7f0fca">More...</a><br /></td></tr>
 <tr class="separator:gaea3d5f58d5042aa4b43d01662a7f0fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76bc99e444eee89d810b92407f4a1bd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-phylo.html#ga76bc99e444eee89d810b92407f4a1bd7">counter_pairwise_neofun_singlefun</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, unsigned int duplication=<a class="el" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a>)</td></tr>
+<tr class="memdesc:ga76bc99e444eee89d810b92407f4a1bd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of neofunctionalization events sum_u sum_{w &lt; u} [x(u,a)*(1 - x(w,a)) + (1 - x(u,a)) * x(w,a)] change stat: delta{x(u,a): 0-&gt;1} = 1 - 2 * x(w,a)  <a href="group__counters-phylo.html#ga76bc99e444eee89d810b92407f4a1bd7">More...</a><br /></td></tr>
+<tr class="separator:ga76bc99e444eee89d810b92407f4a1bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4aa6855316673440f7ebff2d01e3ddca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-phylo.html#ga4aa6855316673440f7ebff2d01e3ddca">counter_neofun_a2b</a> (<a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunA, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> nfunB, unsigned int duplication=<a class="el" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a>)</td></tr>
 <tr class="memdesc:ga4aa6855316673440f7ebff2d01e3ddca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of neofunctionalization events.  <a href="group__counters-phylo.html#ga4aa6855316673440f7ebff2d01e3ddca">More...</a><br /></td></tr>
 <tr class="separator:ga4aa6855316673440f7ebff2d01e3ddca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,7 +238,7 @@ Functions</h2></td></tr>
 </p>
 <p> This algorithm implements the change statistic. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01336">1336</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01409">1409</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -288,7 +291,7 @@ Functions</h2></td></tr>
 <p>Co-evolution (joint gain or loss) </p>
 <p>Needs to specify pairs of functions (<code>nfunA</code>, <code>nfunB</code>). </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00907">907</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00899">899</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -381,7 +384,7 @@ Functions</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01673">1673</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01746">1746</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -519,7 +522,7 @@ Functions</h2></td></tr>
 
 <p>Indicator function. Equals to one if \(k\) genes changed and zero otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01435">1435</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01508">1508</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -566,7 +569,7 @@ Functions</h2></td></tr>
 <p>Indicator function. Equals to one if \(k\) genes changed and zero otherwise. </p>
 <p>&lt; How many genes diverge the parent</p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01556">1556</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01629">1629</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -606,7 +609,7 @@ Functions</h2></td></tr>
 
 <p>Longest branch mutates (either by gain or by loss) </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00965">965</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00957">957</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -652,7 +655,7 @@ Functions</h2></td></tr>
 
 <p>Total count of losses for an specific function. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00704">704</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00696">696</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -757,7 +760,7 @@ Functions</h2></td></tr>
 <p>Total number of neofunctionalization events. </p>
 <p>Needs to specify pairs of function. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01136">1136</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01128">1128</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -810,7 +813,7 @@ Functions</h2></td></tr>
 <p>Total number of neofunctionalization events. </p>
 <p>Needs to specify pairs of function. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01217">1217</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01275">1275</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -850,7 +853,7 @@ Functions</h2></td></tr>
 
 <p>Total number of changes. Use this statistic to account for "preservation". </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00757">757</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00749">749</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -932,7 +935,7 @@ Functions</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01740">1740</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01813">1813</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -1025,7 +1028,53 @@ Functions</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. sum x(a)^3(1-x(b))^3 + x(b)^3(1-x(a))^3 + x(a)^3 * x(b)^3 + (1 - x(a))^3 * (1-x(b))^3 </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01992">1992</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l02068">2068</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ga76bc99e444eee89d810b92407f4a1bd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga76bc99e444eee89d810b92407f4a1bd7">&#9670;&nbsp;</a></span>counter_pairwise_neofun_singlefun()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void counter_pairwise_neofun_singlefun </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a> *&#160;</td>
+          <td class="paramname"><em>counters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
+          <td class="paramname"><em>nfunA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>duplication</em> = <code><a class="el" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Total number of neofunctionalization events sum_u sum_{w &lt; u} [x(u,a)*(1 - x(w,a)) + (1 - x(u,a)) * x(w,a)] change stat: delta{x(u,a): 0-&gt;1} = 1 - 2 * x(w,a) </p>
+
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01210">1210</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -1066,7 +1115,7 @@ Functions</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01789">1789</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01862">1862</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -1119,7 +1168,7 @@ Functions</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. sum x(a)^3(1-x(b))^3 + x(b)^3(1-x(a))^3 + x(a)^3 * x(b)^3 + (1 - x(a))^3 * (1-x(b))^3 </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01852">1852</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l01928">1928</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -1264,7 +1313,7 @@ Functions</h2></td></tr>
 <p>Total count of Sub-functionalization events. </p>
 <p>It requires to specify data = {funA, funB} </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00817">817</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00809">809</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -1273,7 +1322,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Feb 9 2022 23:58:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Mar 11 2022 23:25:07 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
