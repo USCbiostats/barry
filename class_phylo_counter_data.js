@@ -1,6 +1,7 @@
 var class_phylo_counter_data =
 [
     [ "PhyloCounterData", "class_phylo_counter_data.html#a4094d738e4b56d89ed39f2428b91a09e", null ],
+    [ "PhyloCounterData", "class_phylo_counter_data.html#af49e627a2b24ef4290889f30870aef5d", null ],
     [ "at", "class_phylo_counter_data.html#a1b54a0726a83fa03b08d0ceaa14ae362", null ],
     [ "begin", "class_phylo_counter_data.html#acfc6b686f56615e36fca4b4577768463", null ],
     [ "empty", "class_phylo_counter_data.html#a4e65e4a8887889914bd61e6bc8cc9445", null ],

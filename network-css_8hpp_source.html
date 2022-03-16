@@ -103,9 +103,9 @@ $(document).ready(function(){initNavTree('network-css_8hpp_source.html',''); ini
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// s: Start of the i-th network</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// e: end of the i-th network</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="network-css_8hpp.html#ace696ee5922030f6da06918043fa31a1">    7</a></span>&#160;<span class="preprocessor">#define CSS_SIZE() \</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">    uint n = data-&gt;indices[0u]; \</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    uint s = data-&gt;indices[1u]; \</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">    uint e = data-&gt;indices[2u];</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">    uint n = data.indices[0u]; \</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    uint s = data.indices[1u]; \</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">    uint e = data.indices[2u];</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// Variables in case that the current cell corresponds to the True</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="network-css_8hpp.html#a95751730bfbf23e60dc6d99a0926c8cd">   13</a></span>&#160;<span class="preprocessor">#define CSS_CASE_TRUTH() if ((i &lt; n) &amp;&amp; (j &lt; n)) </span></div>
@@ -128,8 +128,8 @@ $(document).ready(function(){initNavTree('network-css_8hpp_source.html',''); ini
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// the boundaries of the graph.</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="network-css_8hpp.html#a354e5e948f865cefbe3b1e0e0fb76c4f">   31</a></span>&#160;<span class="preprocessor">#define CSS_CHECK_SIZE_INIT() \</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">    </span><span class="comment">/* The indices fall within the network */</span><span class="preprocessor"> \</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">    if ((data-&gt;indices.at(0) &gt; Array.ncol()) \</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">    | (data-&gt;indices.at(2) &gt; Array.ncol())) \</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">    if ((data.indices.at(0) &gt; Array.ncol()) \</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">    | (data.indices.at(2) &gt; Array.ncol())) \</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">        throw std::range_error(&quot;The network does not match the prescribed size.&quot;</span>); </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="network-css_8hpp.html#a7e1df8589a52ae97ec4d8bb26acbbea3">   37</a></span>&#160;<span class="preprocessor">#define CSS_CHECK_SIZE() for (uint i = 0u; i &lt; end_.size(); ++i) {\</span></div>
@@ -141,8 +141,8 @@ $(document).ready(function(){initNavTree('network-css_8hpp_source.html',''); ini
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">    for (uint i = 0u; i &lt; end_.size(); ++i) { \</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">    std::string tmpname = name_ + &quot; (&quot;</span> + std::to_string(i) + &quot;)&quot;;\</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    counters-&gt;add_counter(tmp_count, tmp_init,\</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            new NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            true, tmpname);}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            tmpname);}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="network-css_8hpp.html#aad3325a2c9de853767e5839ece10b289">   49</a></span>&#160;<span class="preprocessor">#define CSS_NET_COUNTER_LAMBDA_INIT() NETWORK_COUNTER_LAMBDA(tmp_init) {\</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">        CSS_CHECK_SIZE_INIT() \</span></div>
@@ -392,7 +392,7 @@ $(document).ready(function(){initNavTree('network-css_8hpp_source.html',''); ini
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    {</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <a class="code" href="network-css_8hpp.html#a354e5e948f865cefbe3b1e0e0fb76c4f">CSS_CHECK_SIZE_INIT</a>()</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordtype">double</span> n_dbl = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>-&gt;indices[0u]);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordtype">double</span> n_dbl = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.indices[0u]);</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="comment">// At the beginning is all zero</span></div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordflow">return</span> n_dbl * (n_dbl - 1.0)/2.0;</div>
@@ -768,7 +768,7 @@ $(document).ready(function(){initNavTree('network-css_8hpp_source.html',''); ini
 <div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;<span class="preprocessor">#undef CSS_NET_COUNTER_LAMBDA_INIT</span></div>
 <div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
-<div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00101">counters-bones.hpp:101</a></div></div>
+<div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00095">counters-bones.hpp:95</a></div></div>
 <div class="ttc" id="anetwork-css_8hpp_html_a15e5b3dd64b44ef5c91ce24dbbb3c86c"><div class="ttname"><a href="network-css_8hpp.html#a15e5b3dd64b44ef5c91ce24dbbb3c86c">counter_css_census02</a></div><div class="ttdeci">void counter_css_census02(NetCounters&lt; Tnet &gt; *counters, uint netsize, const std::vector&lt; uint &gt; &amp;end_)</div><div class="ttdef"><b>Definition:</b> <a href="network-css_8hpp_source.html#l00325">network-css.hpp:325</a></div></div>
 <div class="ttc" id="anetwork-css_8hpp_html_a1a4521849c6e9cb86e1e7c7fc4693218"><div class="ttname"><a href="network-css_8hpp.html#a1a4521849c6e9cb86e1e7c7fc4693218">counter_css_census08</a></div><div class="ttdeci">void counter_css_census08(NetCounters&lt; Tnet &gt; *counters, uint netsize, const std::vector&lt; uint &gt; &amp;end_)</div><div class="ttdef"><b>Definition:</b> <a href="network-css_8hpp_source.html#l00559">network-css.hpp:559</a></div></div>
 <div class="ttc" id="anetwork-css_8hpp_html_a1a93b12056b8197eb552669db9366bb9"><div class="ttname"><a href="network-css_8hpp.html#a1a93b12056b8197eb552669db9366bb9">counter_css_partially_false_recip_omiss</a></div><div class="ttdeci">void counter_css_partially_false_recip_omiss(NetCounters&lt; Tnet &gt; *counters, uint netsize, const std::vector&lt; uint &gt; &amp;end_)</div><div class="ttdoc">Counts errors of omission.</div><div class="ttdef"><b>Definition:</b> <a href="network-css_8hpp_source.html#l00110">network-css.hpp:110</a></div></div>
@@ -803,7 +803,7 @@ $(document).ready(function(){initNavTree('network-css_8hpp_source.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="network-css_8hpp.html">network-css.hpp</a></li>
-    <li class="footer">Generated on Fri Mar 11 2022 23:25:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Mar 16 2022 21:02:51 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

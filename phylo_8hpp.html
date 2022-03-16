@@ -444,7 +444,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordtype">bool</span> DPL = Array.D()-&gt;duplication; \</div>
-<div class="line">    unsigned <span class="keywordtype">int</span> DATA_AT = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>-&gt;operator[](0u);</div>
+<div class="line">    unsigned <span class="keywordtype">int</span> DATA_AT = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[0u];</div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00011">11</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
@@ -467,10 +467,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (Array.D() == <span class="keyword">nullptr</span>) \</div>
 <div class="line">    throw std::logic_error(<span class="stringliteral">&quot;The array data is nullptr.&quot;</span>); \</div>
-<div class="line">    if (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a> == <span class="keyword">nullptr</span>) \</div>
-<div class="line">    throw std::logic_error(<span class="stringliteral">&quot;The counter/rule data is nullptr.&quot;</span>)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00137">137</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00139">139</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -489,19 +487,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="typedefs_8hpp.html#a1e12ad6cdda3588f5b2157a5ad3177d2">Counter_fun_type&lt;PhyloArray, PhyloCounterData&gt;</a> a = \</div>
-<div class="line">    [](<span class="keyword">const</span> <a class="code" href="class_b_array_dense.html">PhyloArray</a> &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a> * <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
+<b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="typedefs_8hpp.html#a6a6ce8184bcdbb465486ebb7ca9ec76b">Counter_fun_type&lt;PhyloArray, PhyloCounterData&gt;</a> a = \</div>
+<div class="line">    [](<span class="keyword">const</span> <a class="code" href="class_b_array_dense.html">PhyloArray</a> &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a> &amp; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
 <div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00403">barray-meat.hpp:403</a></div></div>
 <div class="ttc" id="aclass_b_array_dense_html"><div class="ttname"><a href="class_b_array_dense.html">BArrayDense</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-bones_8hpp_source.html#l00034">barraydense-bones.hpp:34</a></div></div>
 <div class="ttc" id="aclass_phylo_counter_data_html"><div class="ttname"><a href="class_phylo_counter_data.html">PhyloCounterData</a></div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00069">phylo.hpp:69</a></div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00119">counters-meat.hpp:119</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_a1e12ad6cdda3588f5b2157a5ad3177d2"><div class="ttname"><a href="typedefs_8hpp.html#a1e12ad6cdda3588f5b2157a5ad3177d2">Counter_fun_type</a></div><div class="ttdeci">std::function&lt; double(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Counter_fun_type</div><div class="ttdoc">Counter and rule functions.</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00148">typedefs.hpp:148</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00082">counters-meat.hpp:82</a></div></div>
+<div class="ttc" id="atypedefs_8hpp_html_a6a6ce8184bcdbb465486ebb7ca9ec76b"><div class="ttname"><a href="typedefs_8hpp.html#a6a6ce8184bcdbb465486ebb7ca9ec76b">Counter_fun_type</a></div><div class="ttdeci">std::function&lt; double(const Array_Type &amp;, uint, uint, Data_Type &amp;)&gt; Counter_fun_type</div><div class="ttdoc">Counter and rule functions.</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00148">typedefs.hpp:148</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00018">typedefs.hpp:18</a></div></div>
 </div><!-- fragment -->
 <p>Extension of a simple counter. </p>
 <p>It allows specifying extra arguments, in particular, the corresponding sets of rows to which this statistic may be relevant. This could be important in the case of, for example, counting correlation type statistics between function 1 and 2, and between function 1 and 3. </p>
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00131">131</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00133">133</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -520,12 +518,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="typedefs_8hpp.html#a99982bdca40c23ca6f901c8e66da78a1">Rule_fun_type&lt;PhyloArray, PhyloRuleDynData&gt;</a> a = \</div>
-<div class="line">    [](<span class="keyword">const</span> <a class="code" href="class_b_array_dense.html">PhyloArray</a> &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <a class="code" href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a> * <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
-<div class="ttc" id="aclass_phylo_rule_dyn_data_html"><div class="ttname"><a href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a></div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02171">phylo.hpp:2171</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_a99982bdca40c23ca6f901c8e66da78a1"><div class="ttname"><a href="typedefs_8hpp.html#a99982bdca40c23ca6f901c8e66da78a1">Rule_fun_type</a></div><div class="ttdeci">std::function&lt; bool(const Array_Type &amp;, uint, uint, Data_Type *)&gt; Rule_fun_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00151">typedefs.hpp:151</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="typedefs_8hpp.html#a93a0e903405ba5549990f0138386bfa4">Rule_fun_type&lt;PhyloArray, PhyloRuleDynData&gt;</a> a = \</div>
+<div class="line">    [](<span class="keyword">const</span> <a class="code" href="class_b_array_dense.html">PhyloArray</a> &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <a class="code" href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a> &amp; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
+<div class="ttc" id="aclass_phylo_rule_dyn_data_html"><div class="ttname"><a href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a></div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02147">phylo.hpp:2147</a></div></div>
+<div class="ttc" id="atypedefs_8hpp_html_a93a0e903405ba5549990f0138386bfa4"><div class="ttname"><a href="typedefs_8hpp.html#a93a0e903405ba5549990f0138386bfa4">Rule_fun_type</a></div><div class="ttdeci">std::function&lt; bool(const Array_Type &amp;, uint, uint, Data_Type &amp;)&gt; Rule_fun_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00151">typedefs.hpp:151</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00134">134</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00136">136</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -542,7 +540,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00104">104</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00106">106</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -558,7 +556,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00105">105</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00107">107</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -574,7 +572,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00106">106</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00108">108</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -590,7 +588,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00116">116</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00118">118</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -606,7 +604,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00117">117</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00119">119</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -622,7 +620,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00108">108</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00110">110</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -638,7 +636,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00097">97</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00099">99</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -654,7 +652,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00111">111</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00113">113</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -670,7 +668,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00109">109</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00111">111</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -686,7 +684,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00112">112</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00114">114</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -702,7 +700,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00115">115</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00117">117</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -718,7 +716,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00114">114</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phylo_8hpp_source.html#l00116">116</a> of file <a class="el" href="phylo_8hpp_source.html">phylo.hpp</a>.</p>
 
 </div>
 </div>
@@ -757,7 +755,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
-    <li class="footer">Generated on Fri Mar 11 2022 23:25:07 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Mar 16 2022 21:02:52 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

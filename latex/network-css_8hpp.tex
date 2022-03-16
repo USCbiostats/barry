@@ -75,12 +75,12 @@ This graph shows which files directly or indirectly include this file\+:
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    std::string \mbox{\hyperlink{counters-meat_8hpp_a6d5c67469420c96792aec8644728ca45}{name\_}} = (\mbox{\hyperlink{counters-meat_8hpp_a42cb6e97e822b37d4d982c1106a1b53e}{name}});\(\backslash\)}
+\DoxyCodeLine{    std::string \mbox{\hyperlink{counters-meat_8hpp_aabe971ac52c2492ee06de144544f9dc0}{name\_}} = (\mbox{\hyperlink{counters-meat_8hpp_a42cb6e97e822b37d4d982c1106a1b53e}{name}});\(\backslash\)}
 \DoxyCodeLine{    for (\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} < end\_.size(); ++\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) \{ \(\backslash\)}
-\DoxyCodeLine{    std::string tmpname = \mbox{\hyperlink{counters-meat_8hpp_a6d5c67469420c96792aec8644728ca45}{name\_}} + \textcolor{stringliteral}{"{} ("{}} + std::to\_string(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) + \textcolor{stringliteral}{"{})"{}};\(\backslash\)}
+\DoxyCodeLine{    std::string tmpname = \mbox{\hyperlink{counters-meat_8hpp_aabe971ac52c2492ee06de144544f9dc0}{name\_}} + \textcolor{stringliteral}{"{} ("{}} + std::to\_string(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) + \textcolor{stringliteral}{"{})"{}};\(\backslash\)}
 \DoxyCodeLine{    counters-\/>add\_counter(tmp\_count, tmp\_init,\(\backslash\)}
-\DoxyCodeLine{            \textcolor{keyword}{new} \mbox{\hyperlink{class_net_counter_data}{NetCounterData}}(\{netsize, \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} == 0u ? netsize : end\_[\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}-\/1], end\_[\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}]\}, \{\}),\(\backslash\)}
-\DoxyCodeLine{            \textcolor{keyword}{true}, tmpname);\}}
+\DoxyCodeLine{            \mbox{\hyperlink{class_net_counter_data}{NetCounterData}}(\{netsize, \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} == 0u ? netsize : end\_[\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}-\/1], end\_[\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}]\}, \{\}),\(\backslash\)}
+\DoxyCodeLine{            tmpname);\}}
 
 \end{DoxyCode}
 
@@ -144,8 +144,8 @@ Definition at line 37 of file network-\/css.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    \textcolor{comment}{/* The indices fall within the network */} \(\backslash\)}
-\DoxyCodeLine{    if ((\mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}-\/>indices.at(0) > Array.ncol()) \(\backslash\)}
-\DoxyCodeLine{    | (\mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}-\/>indices.at(2) > Array.ncol())) \(\backslash\)}
+\DoxyCodeLine{    if ((\mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}.indices.at(0) > Array.ncol()) \(\backslash\)}
+\DoxyCodeLine{    | (\mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}.indices.at(2) > Array.ncol())) \(\backslash\)}
 \DoxyCodeLine{        throw std::range\_error(\textcolor{stringliteral}{"{}The network does not match the prescribed size."{}});}
 
 \end{DoxyCode}
@@ -196,9 +196,9 @@ Definition at line 21 of file network-\/css.\+hpp.
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} n = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}-\/>indices[0u]; \(\backslash\)}
-\DoxyCodeLine{    uint s = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}-\/>indices[1u]; \(\backslash\)}
-\DoxyCodeLine{    uint e = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}-\/>indices[2u];}
+\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} n = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}.indices[0u]; \(\backslash\)}
+\DoxyCodeLine{    uint s = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}.indices[1u]; \(\backslash\)}
+\DoxyCodeLine{    uint e = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}.indices[2u];}
 
 \end{DoxyCode}
 

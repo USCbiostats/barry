@@ -204,16 +204,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    std::string <a class="code" href="counters-meat_8hpp.html#a6d5c67469420c96792aec8644728ca45">name_</a> = (<a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a>);\</div>
+<b>Value:</b><div class="fragment"><div class="line">    std::string <a class="code" href="counters-meat_8hpp.html#aabe971ac52c2492ee06de144544f9dc0">name_</a> = (<a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a>);\</div>
 <div class="line">    for (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; end_.size(); ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) { \</div>
-<div class="line">    std::string tmpname = <a class="code" href="counters-meat_8hpp.html#a6d5c67469420c96792aec8644728ca45">name_</a> + <span class="stringliteral">&quot; (&quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) + <span class="stringliteral">&quot;)&quot;</span>;\</div>
+<div class="line">    std::string tmpname = <a class="code" href="counters-meat_8hpp.html#aabe971ac52c2492ee06de144544f9dc0">name_</a> + <span class="stringliteral">&quot; (&quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) + <span class="stringliteral">&quot;)&quot;</span>;\</div>
 <div class="line">    counters-&gt;add_counter(tmp_count, tmp_init,\</div>
-<div class="line">            <span class="keyword">new</span> <a class="code" href="class_net_counter_data.html">NetCounterData</a>({netsize, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == 0u ? netsize : end_[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>-1], end_[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>]}, {}),\</div>
-<div class="line">            <span class="keyword">true</span>, tmpname);}</div>
+<div class="line">            <a class="code" href="class_net_counter_data.html">NetCounterData</a>({netsize, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == 0u ? netsize : end_[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>-1], end_[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>]}, {}),\</div>
+<div class="line">            tmpname);}</div>
 <div class="ttc" id="aclass_net_counter_data_html"><div class="ttname"><a href="class_net_counter_data.html">NetCounterData</a></div><div class="ttdoc">Data class used to store arbitrary uint or double vectors.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00056">network.hpp:56</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_a42cb6e97e822b37d4d982c1106a1b53e"><div class="ttname"><a href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a></div><div class="ttdeci">Data_Type &amp;&amp;counter_ name(std::move(counter_.name))</div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_a6d5c67469420c96792aec8644728ca45"><div class="ttname"><a href="counters-meat_8hpp.html#a6d5c67469420c96792aec8644728ca45">name_</a></div><div class="ttdeci">Data_Type Counter_fun_type&lt; Array_Type, Data_Type &gt; Data_Type bool std::string name_</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00297">counters-meat.hpp:297</a></div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00119">counters-meat.hpp:119</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00082">counters-meat.hpp:82</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_aabe971ac52c2492ee06de144544f9dc0"><div class="ttname"><a href="counters-meat_8hpp.html#aabe971ac52c2492ee06de144544f9dc0">name_</a></div><div class="ttdeci">Data_Type Counter_fun_type&lt; Array_Type, Data_Type &gt; Data_Type std::string name_</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00166">counters-meat.hpp:166</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00018">typedefs.hpp:18</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="network-css_8hpp_source.html#l00042">42</a> of file <a class="el" href="network-css_8hpp_source.html">network-css.hpp</a>.</p>
@@ -315,8 +315,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="comment">/* The indices fall within the network */</span> \</div>
-<div class="line">    if ((<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>-&gt;indices.at(0) &gt; Array.ncol()) \</div>
-<div class="line">    | (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>-&gt;indices.at(2) &gt; Array.ncol())) \</div>
+<div class="line">    if ((<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.indices.at(0) &gt; Array.ncol()) \</div>
+<div class="line">    | (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.indices.at(2) &gt; Array.ncol())) \</div>
 <div class="line">        throw std::range_error(<span class="stringliteral">&quot;The network does not match the prescribed size.&quot;</span>);</div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
 </div><!-- fragment -->
@@ -385,9 +385,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> n = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>-&gt;indices[0u]; \</div>
-<div class="line">    uint s = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>-&gt;indices[1u]; \</div>
-<div class="line">    uint e = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>-&gt;indices[2u];</div>
+<b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> n = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.indices[0u]; \</div>
+<div class="line">    uint s = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.indices[1u]; \</div>
+<div class="line">    uint e = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.indices[2u];</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="network-css_8hpp_source.html#l00007">7</a> of file <a class="el" href="network-css_8hpp_source.html">network-css.hpp</a>.</p>
 
@@ -1130,7 +1130,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="network-css_8hpp.html">network-css.hpp</a></li>
-    <li class="footer">Generated on Fri Mar 11 2022 23:25:07 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Mar 16 2022 21:02:52 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

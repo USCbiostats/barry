@@ -248,7 +248,7 @@ Definition at line 17 of file phylo.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    \textcolor{keywordtype}{bool} DPL = Array.D()-\/>duplication; \(\backslash\)}
-\DoxyCodeLine{    unsigned \textcolor{keywordtype}{int} DATA\_AT = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}-\/>operator[](0u);}
+\DoxyCodeLine{    unsigned \textcolor{keywordtype}{int} DATA\_AT = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}[0u];}
 
 \end{DoxyCode}
 
@@ -265,13 +265,11 @@ Definition at line 11 of file phylo.\+hpp.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    \textcolor{keywordflow}{if} (Array.D() == \textcolor{keyword}{nullptr}) \(\backslash\)}
 \DoxyCodeLine{    throw std::logic\_error(\textcolor{stringliteral}{"{}The array data is nullptr."{}}); \(\backslash\)}
-\DoxyCodeLine{    if (\mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}} == \textcolor{keyword}{nullptr}) \(\backslash\)}
-\DoxyCodeLine{    throw std::logic\_error(\textcolor{stringliteral}{"{}The counter/rule data is nullptr."{}})}
 
 \end{DoxyCode}
 
 
-Definition at line 137 of file phylo.\+hpp.
+Definition at line 139 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_ac89fe9750bd62a338930ea730d23d0d2}\label{phylo_8hpp_ac89fe9750bd62a338930ea730d23d0d2}} 
 \index{phylo.hpp@{phylo.hpp}!PHYLO\_COUNTER\_LAMBDA@{PHYLO\_COUNTER\_LAMBDA}}
@@ -281,8 +279,8 @@ Definition at line 137 of file phylo.\+hpp.
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a1e12ad6cdda3588f5b2157a5ad3177d2}{Counter\_fun\_type<PhyloArray, PhyloCounterData>}} a = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{PhyloArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_phylo_counter_data}{PhyloCounterData}} * \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\_fun\_type<PhyloArray, PhyloCounterData>}} a = \(\backslash\)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{PhyloArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_phylo_counter_data}{PhyloCounterData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
 
 \end{DoxyCode}
 
@@ -291,7 +289,7 @@ Extension of a simple counter.
 
 It allows specifying extra arguments, in particular, the corresponding sets of rows to which this statistic may be relevant. This could be important in the case of, for example, counting correlation type statistics between function 1 and 2, and between function 1 and 3. 
 
-Definition at line 131 of file phylo.\+hpp.
+Definition at line 133 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a4a7a35cddb61f74a0ec3cb3893cf78b1}\label{phylo_8hpp_a4a7a35cddb61f74a0ec3cb3893cf78b1}} 
 \index{phylo.hpp@{phylo.hpp}!PHYLO\_RULE\_DYN\_LAMBDA@{PHYLO\_RULE\_DYN\_LAMBDA}}
@@ -301,13 +299,13 @@ Definition at line 131 of file phylo.\+hpp.
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a99982bdca40c23ca6f901c8e66da78a1}{Rule\_fun\_type<PhyloArray, PhyloRuleDynData>}} a = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{PhyloArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{PhyloRuleDynData}} * \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a93a0e903405ba5549990f0138386bfa4}{Rule\_fun\_type<PhyloArray, PhyloRuleDynData>}} a = \(\backslash\)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{PhyloArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{PhyloRuleDynData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
 
 \end{DoxyCode}
 
 
-Definition at line 134 of file phylo.\+hpp.
+Definition at line 136 of file phylo.\+hpp.
 
 
 
@@ -320,7 +318,7 @@ Definition at line 134 of file phylo.\+hpp.
 
 
 
-Definition at line 104 of file phylo.\+hpp.
+Definition at line 106 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a70f35d038e8044ff5761831220d07290}\label{phylo_8hpp_a70f35d038e8044ff5761831220d07290}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloCounter@{PhyloCounter}}
@@ -330,7 +328,7 @@ Definition at line 104 of file phylo.\+hpp.
 
 
 
-Definition at line 105 of file phylo.\+hpp.
+Definition at line 107 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}\label{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloCounters@{PhyloCounters}}
@@ -340,7 +338,7 @@ Definition at line 105 of file phylo.\+hpp.
 
 
 
-Definition at line 106 of file phylo.\+hpp.
+Definition at line 108 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}\label{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloModel@{PhyloModel}}
@@ -350,7 +348,7 @@ Definition at line 106 of file phylo.\+hpp.
 
 
 
-Definition at line 116 of file phylo.\+hpp.
+Definition at line 118 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}\label{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloPowerSet@{PhyloPowerSet}}
@@ -360,7 +358,7 @@ Definition at line 116 of file phylo.\+hpp.
 
 
 
-Definition at line 117 of file phylo.\+hpp.
+Definition at line 119 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}\label{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRule@{PhyloRule}}
@@ -370,7 +368,7 @@ Definition at line 117 of file phylo.\+hpp.
 
 
 
-Definition at line 108 of file phylo.\+hpp.
+Definition at line 110 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}\label{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRuleData@{PhyloRuleData}}
@@ -380,7 +378,7 @@ Definition at line 108 of file phylo.\+hpp.
 
 
 
-Definition at line 97 of file phylo.\+hpp.
+Definition at line 99 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_ad782519ef733c9b109bf465fe942b36a}\label{phylo_8hpp_ad782519ef733c9b109bf465fe942b36a}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRuleDyn@{PhyloRuleDyn}}
@@ -390,7 +388,7 @@ Definition at line 97 of file phylo.\+hpp.
 
 
 
-Definition at line 111 of file phylo.\+hpp.
+Definition at line 113 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}\label{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRules@{PhyloRules}}
@@ -400,7 +398,7 @@ Definition at line 111 of file phylo.\+hpp.
 
 
 
-Definition at line 109 of file phylo.\+hpp.
+Definition at line 111 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a6c0e95789675ee382f2a42a7da14fcf9}\label{phylo_8hpp_a6c0e95789675ee382f2a42a7da14fcf9}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRulesDyn@{PhyloRulesDyn}}
@@ -410,7 +408,7 @@ Definition at line 109 of file phylo.\+hpp.
 
 
 
-Definition at line 112 of file phylo.\+hpp.
+Definition at line 114 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}\label{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloStatsCounter@{PhyloStatsCounter}}
@@ -420,7 +418,7 @@ Definition at line 112 of file phylo.\+hpp.
 
 
 
-Definition at line 115 of file phylo.\+hpp.
+Definition at line 117 of file phylo.\+hpp.
 
 \mbox{\Hypertarget{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}\label{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloSupport@{PhyloSupport}}
@@ -430,7 +428,7 @@ Definition at line 115 of file phylo.\+hpp.
 
 
 
-Definition at line 114 of file phylo.\+hpp.
+Definition at line 116 of file phylo.\+hpp.
 
 
 

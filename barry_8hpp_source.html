@@ -178,18 +178,18 @@ $(document).ready(function(){initNavTree('barry_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacebarry_1_1counters_1_1phylo.html">phylocounters</a> = <a class="code" href="namespacebarry_1_1counters_1_1phylo.html">barry::counters::phylo</a>;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="barry_8hpp.html#ae7fbc217bad33cff559b1fc41375a8ff">   86</a></span>&#160;<span class="preprocessor">#define COUNTER_FUNCTION(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">    inline double (a) (const Array_Type &amp; Array, uint i, uint j, Data_Type * data)\</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">    inline double (a) (const Array_Type &amp; Array, uint i, uint j, Data_Type &amp; data)\</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor"></span> </div>
 <div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="barry_8hpp.html#a0dd594d2194ac0aa72b14cc42077331b">   89</a></span>&#160;<span class="preprocessor">#define COUNTER_LAMBDA(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">    Counter_fun_type&lt;Array_Type, Data_Type&gt; a = \</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">    [](const Array_Type &amp; Array, uint i, uint j, Data_Type * data)</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">    [](const Array_Type &amp; Array, uint i, uint j, Data_Type &amp; data)</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
 <div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="barry_8hpp.html#aca4359c3356b25fb710d4dbc93d8d5a8">   93</a></span>&#160;<span class="preprocessor">#define RULE_FUNCTION(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">    inline bool (a) (const Array_Type &amp; Array, uint i, uint j, Data_Type * data)\</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">    inline bool (a) (const Array_Type &amp; Array, uint i, uint j, Data_Type &amp; data)\</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor"></span> </div>
 <div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="barry_8hpp.html#a65e3788fca9f405ff460ff7cfbad63f3">   96</a></span>&#160;<span class="preprocessor">#define RULE_LAMBDA(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">    Rule_fun_type&lt;Array_Type, Data_Type&gt; a = \</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">    [](const Array_Type &amp; Array, uint i, uint j, Data_Type * data)</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">    [](const Array_Type &amp; Array, uint i, uint j, Data_Type &amp; data)</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-bones_8hpp_html"><div class="ttname"><a href="barray-bones_8hpp.html">barray-bones.hpp</a></div></div>
@@ -232,7 +232,7 @@ $(document).ready(function(){initNavTree('barry_8hpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barry_8hpp.html">barry.hpp</a></li>
-    <li class="footer">Generated on Fri Mar 11 2022 23:25:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Mar 16 2022 21:02:51 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
