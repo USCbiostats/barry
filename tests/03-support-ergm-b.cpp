@@ -1,9 +1,6 @@
-// #include <vector>
-// #include "../include/barry.hpp"
-// #include "catch.hpp"
-// #include "tests.h"
+#include "tests.hpp"
 
-TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
+BARRY_TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   
   // Reading large network
   /**
@@ -45,7 +42,7 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   netcounters::Network net(4, 4, {2}, {3});
   net.set_data(new netcounters::NetworkData({0,0,1,0}), true);
   
-  netcounters::NetModel< Network > model;
+  netcounters::NetModel< netcounters::Network > model;
   model.store_psets(); // Need this for sampling
   
   // Preparing model  
@@ -96,8 +93,12 @@ TEST_CASE("Computing support for networks (with Model)", "[support w model]") {
   print(logs0);
   print(logs1);
   print(logs_expected);
+
+
+  #ifdef CATCH_CONFIG_MAIN
   REQUIRE_THAT(logs0, Catch::Approx(logs_expected).epsilon(0.001));
   REQUIRE_THAT(logs1, Catch::Approx(logs_expected).epsilon(0.001));
+  #endif 
   
 }
 

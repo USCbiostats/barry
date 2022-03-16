@@ -1,7 +1,6 @@
-// #include "../include/barry/barry.hpp"
-// #include "catch.hpp"
+#include "tests.hpp"
 
-TEST_CASE("Sampling networks (with Model)", "[sampling w model]") {
+BARRY_TEST_CASE("Sampling networks (with Model)", "[sampling w model]") {
 
     using namespace barry::counters::network;
 
@@ -38,8 +37,10 @@ TEST_CASE("Sampling networks (with Model)", "[sampling w model]") {
     (total/=(double) nsamp).print();
 
     std::cout << "The value of cell (1, 0): " << (double) total(1,0) << std::endl;
+    #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(
         static_cast<double>(total(1,0)) - 0.1192029
     ) < .1);
+    #endif
 
 }

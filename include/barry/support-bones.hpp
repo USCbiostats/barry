@@ -2,7 +2,7 @@
 // #include <unordered_map>
 #include "typedefs.hpp"
 #include "barray-bones.hpp"
-#include "statsdb.hpp"
+#include "freqtable.hpp"
 #include "counters-bones.hpp"
 #include "rules-bones.hpp"
 
@@ -38,13 +38,13 @@ private:
     void calc_backend_sparse(
         uint pos = 0u,
         std::vector< Array_Type > * array_bank = nullptr,
-        std::vector< std::vector< double > > * stats_bank = nullptr
+        std::vector< double > * stats_bank = nullptr
     );
 
     void calc_backend_dense(
         uint pos = 0u,
         std::vector< Array_Type > * array_bank = nullptr,
-        std::vector< std::vector< double > > * stats_bank = nullptr
+        std::vector< double > * stats_bank = nullptr
     );
 
     /**
@@ -113,7 +113,7 @@ public:
     
     void init_support(
         std::vector< Array_Type > * array_bank = nullptr,
-        std::vector< std::vector< double > > * stats_bank = nullptr
+        std::vector< double > * stats_bank = nullptr
     );
     
     /**
@@ -135,7 +135,6 @@ public:
      * @param counters_ A vector of counters to be added.
      */
     ///@{
-    void add_counter(Counter<Array_Type, Data_Counter_Type> * f_);
     void add_counter(Counter<Array_Type,Data_Counter_Type> f_);
     void set_counters(Counters<Array_Type,Data_Counter_Type> * counters_);
     ///@}
@@ -170,7 +169,7 @@ public:
      */
     void calc(
         std::vector< Array_Type > * array_bank = nullptr,
-        std::vector< std::vector< double > > * stats_bank = nullptr,
+        std::vector< double > * stats_bank = nullptr,
         unsigned int max_num_elements_ = 0u
     );
     

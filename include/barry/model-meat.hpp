@@ -759,7 +759,7 @@ MODEL_TEMPLATE(const std::vector< Array_Type > *, get_pset)(
 
 }
 
-MODEL_TEMPLATE(const std::vector< std::vector< double > > *, get_pset_stats)(
+MODEL_TEMPLATE(const std::vector< double > *, get_pset_stats)(
     const uint & i
 ) {
 
@@ -900,16 +900,47 @@ MODEL_TEMPLATE(Array_Type, sample)(
     double r = urand(*rengine);
     double cumprob = 0.0;
 
-    // Updating until reach above
+    size_t k = params.size();
+
+    // Sampling an array
     unsigned int j = 0u;
-    while (cumprob < r)
+    std::vector< double > & probs = pset_probs[a];
+    if ((probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
+    // If precomputed, then no need to recalc support
     {
 
-        cumprob += this->likelihood(params, this->pset_stats[a][j], i, false);
-        ++j;
-    }
+        while (cumprob < r)
+            cumprob += probs[j++];
 
-    return this->pset_arrays[a][j-1u];   
+        j--;
+
+    } else { 
+       
+        probs.resize(pset_arrays[a].size());
+        std::vector< double > temp_stats(params.size());
+        const std::vector< double > & stats = pset_stats[a];
+
+        int i_matches = -1;
+        for (size_t array = 0u; array < probs.size(); ++array)
+        {
+
+            // Filling out the parameters
+            for (auto p = 0u; p < params.size(); ++p)
+                temp_stats[p] = stats[array * k + p];
+
+            probs[array] = this->likelihood(params, temp_stats, i, false);
+            cumprob += probs[array];
+
+            if (i_matches == -1 && cumprob >= r)
+                i_matches = array;
+        }
+
+        j = i_matches;
+        
+    }
+    
+
+    return this->pset_arrays[a][j];   
 
 }
 
@@ -986,11 +1017,11 @@ MODEL_TEMPLATE(std::vector< std::vector< Array_Type > > *, get_pset_arrays)() {
     return &pset_arrays;
 }
 
-MODEL_TEMPLATE(std::vector< std::vector< std::vector<double> > > *, get_pset_stats)() {
+MODEL_TEMPLATE(std::vector< std::vector<double> > *, get_pset_stats)() {
     return &pset_stats;
 }
 
-MODEL_TEMPLATE(std::vector< std::vector<double> > *               , get_pset_probs)() {
+MODEL_TEMPLATE(std::vector< std::vector<double> > *, get_pset_probs)() {
     return &pset_probs;
 }
 
@@ -1049,12 +1080,27 @@ MODEL_TEMPLATE(void, set_transform_model)(
     {
 
         // Applying it to the support
-        for (auto & S : pset_stats)
+        for (auto s = 0u; s < pset_arrays.size(); ++s)
         {
-            for (auto & s : S)
-                s = transform_model_fun(&s[0], k);
+            std::vector< double > new_stats(0u);
+
+            for (auto a = 0u; a < pset_arrays[s].size(); ++a)
+            {
+                // Computing the transformed version of the data
+                auto tmpstats = transform_model_fun(
+                    &pset_stats[s][a * k], k
+                    );
+
+                // Storing the new values
+                for (auto p = 0u; p < k; ++p)
+                    new_stats.push_back(tmpstats[p]);
+            }
+
+            // Updating the dataset
+            std::swap(pset_stats[s], new_stats);
 
         }
+
     }
 
     // And, resizing the last set of parameters

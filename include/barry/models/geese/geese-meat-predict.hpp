@@ -63,6 +63,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Storing the final prob
     res[nodes[preorder[0u]].ord] = tmp_prob;
+    size_t n_pars = par_terms.size();
 
     for (auto & i : preorder)
     {
@@ -92,14 +93,16 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             // it is not const since we will flip the states back and forth
             // to generate the key
             const auto & pset_arrays = model->get_pset(parent.narray[s]);
-            const auto & pset_target = model->get_pset_stats(parent.narray[s]);
+            const std::vector<double> * pset_target = model->get_pset_stats(parent.narray[s]);
 
             for (unsigned int p = 0u; p < pset_arrays->size(); ++p)
             {
 
                 // Corresponding graph and target stats
                 const phylocounters::PhyloArray & array_p = pset_arrays->at(p);
-                const std::vector<double> & target_p = pset_target->at(p);
+                std::vector<double> target_p(n_pars, 0.0);
+                for (size_t par_i = 0u; par_i < target_p.size(); ++par_i)
+                    target_p[par_i] = pset_target->operator[](p * n_pars + par_i);
 
                 phylocounters::PhyloArray tmp_array(nfuns(), array_p.ncol());
                 tmp_array += array_p;
