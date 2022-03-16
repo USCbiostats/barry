@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['calc_103',['calc',['../class_support.html#aaebf5a9e6057636f3c099ff1bfeb53f3',1,'Support::calc()'],['../class_power_set.html#ad3b707294498105b2cc1a04017cc96d2',1,'PowerSet::calc()']]],
+  ['calc_103',['calc',['../class_support.html#a432ed88600718e2646f91d9dda73875f',1,'Support::calc()'],['../class_power_set.html#ad3b707294498105b2cc1a04017cc96d2',1,'PowerSet::calc()']]],
   ['calc_5fbackend_5fdense_104',['calc_backend_dense',['../support-meat_8hpp.html#ab38525a95e90bb46ae74d5fdda68a8e9',1,'support-meat.hpp']]],
   ['calc_5fbackend_5fsparse_105',['calc_backend_sparse',['../support-meat_8hpp.html#a980099bf621a65db8f01ee0cabdcfc58',1,'support-meat.hpp']]],
   ['calc_5freduced_5fsequence_106',['calc_reduced_sequence',['../class_geese.html#a0a460414624fd1b7013ce3b1a09150d1',1,'Geese::calc_reduced_sequence()'],['../class_geese.html#a0a460414624fd1b7013ce3b1a09150d1',1,'Geese::calc_reduced_sequence()']]],

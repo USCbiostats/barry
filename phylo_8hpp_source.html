@@ -2105,77 +2105,79 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02151"></a><span class="lineno"><a class="line" href="class_phylo_rule_dyn_data.html#a8866d1a7c84d608c2fb99d651ff83b31"> 2151</a></span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_rule_dyn_data.html#a8866d1a7c84d608c2fb99d651ff83b31">lb</a>;</div>
 <div class="line"><a name="l02152"></a><span class="lineno"><a class="line" href="class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346"> 2152</a></span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346">ub</a>;</div>
 <div class="line"><a name="l02153"></a><span class="lineno"><a class="line" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c"> 2153</a></span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>;</div>
-<div class="line"><a name="l02154"></a><span class="lineno"><a class="line" href="class_phylo_rule_dyn_data.html#a31bb67f25d80909427ed18fd80c3752b"> 2154</a></span>&#160;    <a class="code" href="class_phylo_rule_dyn_data.html#a31bb67f25d80909427ed18fd80c3752b">PhyloRuleDynData</a>(</div>
-<div class="line"><a name="l02155"></a><span class="lineno"> 2155</span>&#160;        <span class="keyword">const</span> std::vector&lt; double &gt; * counts_,</div>
-<div class="line"><a name="l02156"></a><span class="lineno"> 2156</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> pos_,</div>
-<div class="line"><a name="l02157"></a><span class="lineno"> 2157</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> lb_,</div>
-<div class="line"><a name="l02158"></a><span class="lineno"> 2158</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ub_,</div>
-<div class="line"><a name="l02159"></a><span class="lineno"> 2159</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> duplication_</div>
-<div class="line"><a name="l02160"></a><span class="lineno"> 2160</span>&#160;        ) :</div>
-<div class="line"><a name="l02161"></a><span class="lineno"> 2161</span>&#160;        <a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a>(counts_), <a class="code" href="class_phylo_rule_dyn_data.html#a6c653f20ca848b0da97adca9790ad86e">pos</a>(pos_), <a class="code" href="class_phylo_rule_dyn_data.html#a8866d1a7c84d608c2fb99d651ff83b31">lb</a>(lb_), <a class="code" href="class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346">ub</a>(ub_), <a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>(duplication_) {};</div>
-<div class="line"><a name="l02162"></a><span class="lineno"> 2162</span>&#160;    </div>
-<div class="line"><a name="l02163"></a><span class="lineno"><a class="line" href="class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90"> 2163</a></span>&#160;    <a class="code" href="class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90">~PhyloRuleDynData</a>() {};</div>
-<div class="line"><a name="l02164"></a><span class="lineno"> 2164</span>&#160;};</div>
-<div class="line"><a name="l02165"></a><span class="lineno"> 2165</span>&#160; </div>
-<div class="line"><a name="l02175"></a><span class="lineno"><a class="line" href="group__rules-phylo.html#gad74275257f39acecc00b53448ad803ba"> 2175</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__rules-phylo.html#gad74275257f39acecc00b53448ad803ba">rule_dyn_limit_changes</a>(</div>
-<div class="line"><a name="l02176"></a><span class="lineno"> 2176</span>&#160;    <a class="code" href="class_support.html">PhyloSupport</a> * support,</div>
-<div class="line"><a name="l02177"></a><span class="lineno"> 2177</span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> pos,</div>
-<div class="line"><a name="l02178"></a><span class="lineno"> 2178</span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> lb,</div>
-<div class="line"><a name="l02179"></a><span class="lineno"> 2179</span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ub,</div>
-<div class="line"><a name="l02180"></a><span class="lineno"> 2180</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> duplication = <a class="code" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a></div>
-<div class="line"><a name="l02181"></a><span class="lineno"> 2181</span>&#160;)</div>
-<div class="line"><a name="l02182"></a><span class="lineno"> 2182</span>&#160;{</div>
-<div class="line"><a name="l02183"></a><span class="lineno"> 2183</span>&#160;  </div>
-<div class="line"><a name="l02184"></a><span class="lineno"> 2184</span>&#160;    <a class="code" href="phylo_8hpp.html#a4a7a35cddb61f74a0ec3cb3893cf78b1">PHYLO_RULE_DYN_LAMBDA</a>(tmp_rule)</div>
-<div class="line"><a name="l02185"></a><span class="lineno"> 2185</span>&#160;    {</div>
-<div class="line"><a name="l02186"></a><span class="lineno"> 2186</span>&#160; </div>
-<div class="line"><a name="l02187"></a><span class="lineno"> 2187</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> rule_type = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.duplication;</div>
-<div class="line"><a name="l02188"></a><span class="lineno"> 2188</span>&#160;        <span class="keywordflow">if</span> (rule_type != <a class="code" href="phylo_8hpp.html#a9462334dc2f422bd8443655470121fb6">DUPL_EITH</a>)</div>
-<div class="line"><a name="l02189"></a><span class="lineno"> 2189</span>&#160;        {</div>
-<div class="line"><a name="l02190"></a><span class="lineno"> 2190</span>&#160; </div>
-<div class="line"><a name="l02191"></a><span class="lineno"> 2191</span>&#160;            <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (rule_type != <a class="code" href="phylo_8hpp.html#a27453fc0a40c5d37cb3da40837cd7604">DUPL_DUPL</a>))</div>
-<div class="line"><a name="l02192"></a><span class="lineno"> 2192</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l02193"></a><span class="lineno"> 2193</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (rule_type != <a class="code" href="phylo_8hpp.html#a96286ccee51dec5b55af9de002bf8cfa">DUPL_SPEC</a>))</div>
+<div class="line"><a name="l02154"></a><span class="lineno"> 2154</span>&#160; </div>
+<div class="line"><a name="l02155"></a><span class="lineno"><a class="line" href="class_phylo_rule_dyn_data.html#a31bb67f25d80909427ed18fd80c3752b"> 2155</a></span>&#160;    <a class="code" href="class_phylo_rule_dyn_data.html#a31bb67f25d80909427ed18fd80c3752b">PhyloRuleDynData</a>(</div>
+<div class="line"><a name="l02156"></a><span class="lineno"> 2156</span>&#160;        <span class="keyword">const</span> std::vector&lt; double &gt; * counts_,</div>
+<div class="line"><a name="l02157"></a><span class="lineno"> 2157</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> pos_,</div>
+<div class="line"><a name="l02158"></a><span class="lineno"> 2158</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> lb_,</div>
+<div class="line"><a name="l02159"></a><span class="lineno"> 2159</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ub_,</div>
+<div class="line"><a name="l02160"></a><span class="lineno"> 2160</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> duplication_</div>
+<div class="line"><a name="l02161"></a><span class="lineno"> 2161</span>&#160;        ) :</div>
+<div class="line"><a name="l02162"></a><span class="lineno"> 2162</span>&#160;        <a class="code" href="class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98">counts</a>(counts_), <a class="code" href="class_phylo_rule_dyn_data.html#a6c653f20ca848b0da97adca9790ad86e">pos</a>(pos_), <a class="code" href="class_phylo_rule_dyn_data.html#a8866d1a7c84d608c2fb99d651ff83b31">lb</a>(lb_), <a class="code" href="class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346">ub</a>(ub_), <a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>(duplication_) {};</div>
+<div class="line"><a name="l02163"></a><span class="lineno"> 2163</span>&#160;    </div>
+<div class="line"><a name="l02164"></a><span class="lineno"><a class="line" href="class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90"> 2164</a></span>&#160;    <a class="code" href="class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90">~PhyloRuleDynData</a>() {};</div>
+<div class="line"><a name="l02165"></a><span class="lineno"> 2165</span>&#160;    </div>
+<div class="line"><a name="l02166"></a><span class="lineno"> 2166</span>&#160;};</div>
+<div class="line"><a name="l02167"></a><span class="lineno"> 2167</span>&#160; </div>
+<div class="line"><a name="l02177"></a><span class="lineno"><a class="line" href="group__rules-phylo.html#gad74275257f39acecc00b53448ad803ba"> 2177</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__rules-phylo.html#gad74275257f39acecc00b53448ad803ba">rule_dyn_limit_changes</a>(</div>
+<div class="line"><a name="l02178"></a><span class="lineno"> 2178</span>&#160;    <a class="code" href="class_support.html">PhyloSupport</a> * support,</div>
+<div class="line"><a name="l02179"></a><span class="lineno"> 2179</span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> pos,</div>
+<div class="line"><a name="l02180"></a><span class="lineno"> 2180</span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> lb,</div>
+<div class="line"><a name="l02181"></a><span class="lineno"> 2181</span>&#160;    <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ub,</div>
+<div class="line"><a name="l02182"></a><span class="lineno"> 2182</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> duplication = <a class="code" href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a></div>
+<div class="line"><a name="l02183"></a><span class="lineno"> 2183</span>&#160;)</div>
+<div class="line"><a name="l02184"></a><span class="lineno"> 2184</span>&#160;{</div>
+<div class="line"><a name="l02185"></a><span class="lineno"> 2185</span>&#160;  </div>
+<div class="line"><a name="l02186"></a><span class="lineno"> 2186</span>&#160;    <a class="code" href="phylo_8hpp.html#a4a7a35cddb61f74a0ec3cb3893cf78b1">PHYLO_RULE_DYN_LAMBDA</a>(tmp_rule)</div>
+<div class="line"><a name="l02187"></a><span class="lineno"> 2187</span>&#160;    {</div>
+<div class="line"><a name="l02188"></a><span class="lineno"> 2188</span>&#160; </div>
+<div class="line"><a name="l02189"></a><span class="lineno"> 2189</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> rule_type = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.duplication;</div>
+<div class="line"><a name="l02190"></a><span class="lineno"> 2190</span>&#160;        <span class="keywordflow">if</span> (rule_type != <a class="code" href="phylo_8hpp.html#a9462334dc2f422bd8443655470121fb6">DUPL_EITH</a>)</div>
+<div class="line"><a name="l02191"></a><span class="lineno"> 2191</span>&#160;        {</div>
+<div class="line"><a name="l02192"></a><span class="lineno"> 2192</span>&#160; </div>
+<div class="line"><a name="l02193"></a><span class="lineno"> 2193</span>&#160;            <span class="keywordflow">if</span> (Array.D()-&gt;duplication &amp; (rule_type != <a class="code" href="phylo_8hpp.html#a27453fc0a40c5d37cb3da40837cd7604">DUPL_DUPL</a>))</div>
 <div class="line"><a name="l02194"></a><span class="lineno"> 2194</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l02195"></a><span class="lineno"> 2195</span>&#160;                </div>
-<div class="line"><a name="l02196"></a><span class="lineno"> 2196</span>&#160;        }</div>
-<div class="line"><a name="l02197"></a><span class="lineno"> 2197</span>&#160; </div>
-<div class="line"><a name="l02198"></a><span class="lineno"> 2198</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.counts-&gt;operator[](<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.pos) &lt; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.lb)</div>
-<div class="line"><a name="l02199"></a><span class="lineno"> 2199</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l02200"></a><span class="lineno"> 2200</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.counts-&gt;operator[](<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.pos) &gt; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.ub)</div>
+<div class="line"><a name="l02195"></a><span class="lineno"> 2195</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Array.D()-&gt;duplication &amp; (rule_type != <a class="code" href="phylo_8hpp.html#a96286ccee51dec5b55af9de002bf8cfa">DUPL_SPEC</a>))</div>
+<div class="line"><a name="l02196"></a><span class="lineno"> 2196</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l02197"></a><span class="lineno"> 2197</span>&#160;                </div>
+<div class="line"><a name="l02198"></a><span class="lineno"> 2198</span>&#160;        }</div>
+<div class="line"><a name="l02199"></a><span class="lineno"> 2199</span>&#160; </div>
+<div class="line"><a name="l02200"></a><span class="lineno"> 2200</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.counts-&gt;operator[](<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.pos) &lt; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.lb)</div>
 <div class="line"><a name="l02201"></a><span class="lineno"> 2201</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l02202"></a><span class="lineno"> 2202</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l02203"></a><span class="lineno"> 2203</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l02204"></a><span class="lineno"> 2204</span>&#160;      </div>
-<div class="line"><a name="l02205"></a><span class="lineno"> 2205</span>&#160;    };</div>
-<div class="line"><a name="l02206"></a><span class="lineno"> 2206</span>&#160;    </div>
-<div class="line"><a name="l02207"></a><span class="lineno"> 2207</span>&#160;    support-&gt;<a class="code" href="class_support.html#a8d2f10623d7d6e5d76fee837a23efa1f">get_rules_dyn</a>()-&gt;add_rule(</div>
-<div class="line"><a name="l02208"></a><span class="lineno"> 2208</span>&#160;        tmp_rule,</div>
-<div class="line"><a name="l02209"></a><span class="lineno"> 2209</span>&#160;        <a class="code" href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a>(</div>
-<div class="line"><a name="l02210"></a><span class="lineno"> 2210</span>&#160;            support-&gt;<a class="code" href="class_support.html#a8af9d807ce23c9f7259138b5aebdda31">get_current_stats</a>(),</div>
-<div class="line"><a name="l02211"></a><span class="lineno"> 2211</span>&#160;            pos, lb, ub, duplication</div>
-<div class="line"><a name="l02212"></a><span class="lineno"> 2212</span>&#160;            )</div>
-<div class="line"><a name="l02213"></a><span class="lineno"> 2213</span>&#160;    );</div>
-<div class="line"><a name="l02214"></a><span class="lineno"> 2214</span>&#160;    </div>
-<div class="line"><a name="l02215"></a><span class="lineno"> 2215</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l02216"></a><span class="lineno"> 2216</span>&#160;  </div>
-<div class="line"><a name="l02217"></a><span class="lineno"> 2217</span>&#160;}</div>
-<div class="line"><a name="l02218"></a><span class="lineno"> 2218</span>&#160; </div>
+<div class="line"><a name="l02202"></a><span class="lineno"> 2202</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.counts-&gt;operator[](<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.pos) &gt; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.ub)</div>
+<div class="line"><a name="l02203"></a><span class="lineno"> 2203</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l02204"></a><span class="lineno"> 2204</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l02205"></a><span class="lineno"> 2205</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l02206"></a><span class="lineno"> 2206</span>&#160;      </div>
+<div class="line"><a name="l02207"></a><span class="lineno"> 2207</span>&#160;    };</div>
+<div class="line"><a name="l02208"></a><span class="lineno"> 2208</span>&#160;    </div>
+<div class="line"><a name="l02209"></a><span class="lineno"> 2209</span>&#160;    support-&gt;<a class="code" href="class_support.html#a8d2f10623d7d6e5d76fee837a23efa1f">get_rules_dyn</a>()-&gt;add_rule(</div>
+<div class="line"><a name="l02210"></a><span class="lineno"> 2210</span>&#160;        tmp_rule,</div>
+<div class="line"><a name="l02211"></a><span class="lineno"> 2211</span>&#160;        <a class="code" href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a>(</div>
+<div class="line"><a name="l02212"></a><span class="lineno"> 2212</span>&#160;            support-&gt;<a class="code" href="class_support.html#a8af9d807ce23c9f7259138b5aebdda31">get_current_stats</a>(),</div>
+<div class="line"><a name="l02213"></a><span class="lineno"> 2213</span>&#160;            pos, lb, ub, duplication</div>
+<div class="line"><a name="l02214"></a><span class="lineno"> 2214</span>&#160;            )</div>
+<div class="line"><a name="l02215"></a><span class="lineno"> 2215</span>&#160;    );</div>
+<div class="line"><a name="l02216"></a><span class="lineno"> 2216</span>&#160;    </div>
+<div class="line"><a name="l02217"></a><span class="lineno"> 2217</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l02218"></a><span class="lineno"> 2218</span>&#160;  </div>
+<div class="line"><a name="l02219"></a><span class="lineno"> 2219</span>&#160;}</div>
 <div class="line"><a name="l02220"></a><span class="lineno"> 2220</span>&#160; </div>
-<div class="line"><a name="l02221"></a><span class="lineno"> 2221</span>&#160;<span class="preprocessor">#undef MAKE_DUPL_VARS</span></div>
-<div class="line"><a name="l02222"></a><span class="lineno"> 2222</span>&#160;<span class="preprocessor">#undef IS_EITHER</span></div>
-<div class="line"><a name="l02223"></a><span class="lineno"> 2223</span>&#160;<span class="preprocessor">#undef IS_DUPLICATION</span></div>
-<div class="line"><a name="l02224"></a><span class="lineno"> 2224</span>&#160;<span class="preprocessor">#undef IS_SPECIATION</span></div>
-<div class="line"><a name="l02225"></a><span class="lineno"> 2225</span>&#160;<span class="preprocessor">#undef IF_MATCHES</span></div>
-<div class="line"><a name="l02226"></a><span class="lineno"> 2226</span>&#160;<span class="preprocessor">#undef IF_NOTMATCHES</span></div>
-<div class="line"><a name="l02227"></a><span class="lineno"> 2227</span>&#160; </div>
-<div class="line"><a name="l02228"></a><span class="lineno"> 2228</span>&#160;<span class="preprocessor">#undef DEFAULT_DUPLICATION</span></div>
-<div class="line"><a name="l02229"></a><span class="lineno"> 2229</span>&#160;<span class="preprocessor">#undef DUPL_SPEC</span></div>
-<div class="line"><a name="l02230"></a><span class="lineno"> 2230</span>&#160;<span class="preprocessor">#undef DUPL_DUPL</span></div>
-<div class="line"><a name="l02231"></a><span class="lineno"> 2231</span>&#160;<span class="preprocessor">#undef DUPL_EITH</span></div>
-<div class="line"><a name="l02232"></a><span class="lineno"> 2232</span>&#160; </div>
-<div class="line"><a name="l02233"></a><span class="lineno"> 2233</span>&#160; </div>
-<div class="line"><a name="l02234"></a><span class="lineno"> 2234</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l02222"></a><span class="lineno"> 2222</span>&#160; </div>
+<div class="line"><a name="l02223"></a><span class="lineno"> 2223</span>&#160;<span class="preprocessor">#undef MAKE_DUPL_VARS</span></div>
+<div class="line"><a name="l02224"></a><span class="lineno"> 2224</span>&#160;<span class="preprocessor">#undef IS_EITHER</span></div>
+<div class="line"><a name="l02225"></a><span class="lineno"> 2225</span>&#160;<span class="preprocessor">#undef IS_DUPLICATION</span></div>
+<div class="line"><a name="l02226"></a><span class="lineno"> 2226</span>&#160;<span class="preprocessor">#undef IS_SPECIATION</span></div>
+<div class="line"><a name="l02227"></a><span class="lineno"> 2227</span>&#160;<span class="preprocessor">#undef IF_MATCHES</span></div>
+<div class="line"><a name="l02228"></a><span class="lineno"> 2228</span>&#160;<span class="preprocessor">#undef IF_NOTMATCHES</span></div>
+<div class="line"><a name="l02229"></a><span class="lineno"> 2229</span>&#160; </div>
+<div class="line"><a name="l02230"></a><span class="lineno"> 2230</span>&#160;<span class="preprocessor">#undef DEFAULT_DUPLICATION</span></div>
+<div class="line"><a name="l02231"></a><span class="lineno"> 2231</span>&#160;<span class="preprocessor">#undef DUPL_SPEC</span></div>
+<div class="line"><a name="l02232"></a><span class="lineno"> 2232</span>&#160;<span class="preprocessor">#undef DUPL_DUPL</span></div>
+<div class="line"><a name="l02233"></a><span class="lineno"> 2233</span>&#160;<span class="preprocessor">#undef DUPL_EITH</span></div>
+<div class="line"><a name="l02234"></a><span class="lineno"> 2234</span>&#160; </div>
+<div class="line"><a name="l02235"></a><span class="lineno"> 2235</span>&#160; </div>
+<div class="line"><a name="l02236"></a><span class="lineno"> 2236</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00403">barray-meat.hpp:403</a></div></div>
 <div class="ttc" id="aclass_b_array_dense_html"><div class="ttname"><a href="class_b_array_dense.html">BArrayDense</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-bones_8hpp_source.html#l00034">barraydense-bones.hpp:34</a></div></div>
@@ -2202,9 +2204,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="ttc" id="aclass_phylo_counter_data_html_ae6a913894d0a6777f72246c2c4d75e81"><div class="ttname"><a href="class_phylo_counter_data.html#ae6a913894d0a6777f72246c2c4d75e81">PhyloCounterData::shrink_to_fit</a></div><div class="ttdeci">void shrink_to_fit()</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00087">phylo.hpp:87</a></div></div>
 <div class="ttc" id="aclass_phylo_counter_data_html_af49e627a2b24ef4290889f30870aef5d"><div class="ttname"><a href="class_phylo_counter_data.html#af49e627a2b24ef4290889f30870aef5d">PhyloCounterData::PhyloCounterData</a></div><div class="ttdeci">PhyloCounterData()</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00080">phylo.hpp:80</a></div></div>
 <div class="ttc" id="aclass_phylo_rule_dyn_data_html"><div class="ttname"><a href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a></div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02147">phylo.hpp:2147</a></div></div>
-<div class="ttc" id="aclass_phylo_rule_dyn_data_html_a02bf73d09a11120ca08686d939b53d90"><div class="ttname"><a href="class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90">PhyloRuleDynData::~PhyloRuleDynData</a></div><div class="ttdeci">~PhyloRuleDynData()</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02163">phylo.hpp:2163</a></div></div>
+<div class="ttc" id="aclass_phylo_rule_dyn_data_html_a02bf73d09a11120ca08686d939b53d90"><div class="ttname"><a href="class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90">PhyloRuleDynData::~PhyloRuleDynData</a></div><div class="ttdeci">~PhyloRuleDynData()</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02164">phylo.hpp:2164</a></div></div>
 <div class="ttc" id="aclass_phylo_rule_dyn_data_html_a28584dafe4c3cbc9454917b79398417c"><div class="ttname"><a href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">PhyloRuleDynData::duplication</a></div><div class="ttdeci">uint duplication</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02153">phylo.hpp:2153</a></div></div>
-<div class="ttc" id="aclass_phylo_rule_dyn_data_html_a31bb67f25d80909427ed18fd80c3752b"><div class="ttname"><a href="class_phylo_rule_dyn_data.html#a31bb67f25d80909427ed18fd80c3752b">PhyloRuleDynData::PhyloRuleDynData</a></div><div class="ttdeci">PhyloRuleDynData(const std::vector&lt; double &gt; *counts_, uint pos_, uint lb_, uint ub_, uint duplication_)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02154">phylo.hpp:2154</a></div></div>
+<div class="ttc" id="aclass_phylo_rule_dyn_data_html_a31bb67f25d80909427ed18fd80c3752b"><div class="ttname"><a href="class_phylo_rule_dyn_data.html#a31bb67f25d80909427ed18fd80c3752b">PhyloRuleDynData::PhyloRuleDynData</a></div><div class="ttdeci">PhyloRuleDynData(const std::vector&lt; double &gt; *counts_, uint pos_, uint lb_, uint ub_, uint duplication_)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02155">phylo.hpp:2155</a></div></div>
 <div class="ttc" id="aclass_phylo_rule_dyn_data_html_a6c653f20ca848b0da97adca9790ad86e"><div class="ttname"><a href="class_phylo_rule_dyn_data.html#a6c653f20ca848b0da97adca9790ad86e">PhyloRuleDynData::pos</a></div><div class="ttdeci">uint pos</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02150">phylo.hpp:2150</a></div></div>
 <div class="ttc" id="aclass_phylo_rule_dyn_data_html_a87bf5a3d08bfd7135b0d23b732c87346"><div class="ttname"><a href="class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346">PhyloRuleDynData::ub</a></div><div class="ttdeci">uint ub</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02152">phylo.hpp:2152</a></div></div>
 <div class="ttc" id="aclass_phylo_rule_dyn_data_html_a8866d1a7c84d608c2fb99d651ff83b31"><div class="ttname"><a href="class_phylo_rule_dyn_data.html#a8866d1a7c84d608c2fb99d651ff83b31">PhyloRuleDynData::lb</a></div><div class="ttdeci">uint lb</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02151">phylo.hpp:2151</a></div></div>
@@ -2242,7 +2244,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="ttc" id="agroup__counters-phylo_html_gadf617caf15474389d73caf3370672d91"><div class="ttname"><a href="group__counters-phylo.html#gadf617caf15474389d73caf3370672d91">counter_gains</a></div><div class="ttdeci">void counter_gains(PhyloCounters *counters, std::vector&lt; uint &gt; nfun, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Functional gains for a specific function (nfun).</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00193">phylo.hpp:193</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_gaea3d5f58d5042aa4b43d01662a7f0fca"><div class="ttname"><a href="group__counters-phylo.html#gaea3d5f58d5042aa4b43d01662a7f0fca">counter_neofun</a></div><div class="ttdeci">void counter_neofun(PhyloCounters *counters, uint nfunA, uint nfunB, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Total number of neofunctionalization events.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l01115">phylo.hpp:1115</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_gafe46e12da1a44fbe590b5ffc882760c8"><div class="ttname"><a href="group__counters-phylo.html#gafe46e12da1a44fbe590b5ffc882760c8">counter_pairwise_preserving</a></div><div class="ttdeci">void counter_pairwise_preserving(PhyloCounters *counters, uint nfunA, uint nfunB, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Used when all the functions are in 0 (like the root node prob.)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l01906">phylo.hpp:1906</a></div></div>
-<div class="ttc" id="agroup__rules-phylo_html_gad74275257f39acecc00b53448ad803ba"><div class="ttname"><a href="group__rules-phylo.html#gad74275257f39acecc00b53448ad803ba">rule_dyn_limit_changes</a></div><div class="ttdeci">void rule_dyn_limit_changes(PhyloSupport *support, uint pos, uint lb, uint ub, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Overall functional gains.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02175">phylo.hpp:2175</a></div></div>
+<div class="ttc" id="agroup__rules-phylo_html_gad74275257f39acecc00b53448ad803ba"><div class="ttname"><a href="group__rules-phylo.html#gad74275257f39acecc00b53448ad803ba">rule_dyn_limit_changes</a></div><div class="ttdeci">void rule_dyn_limit_changes(PhyloSupport *support, uint pos, uint lb, uint ub, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Overall functional gains.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02177">phylo.hpp:2177</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a0d16a69c8b447a32a3aa4d4c041773cc"><div class="ttname"><a href="phylo_8hpp.html#a0d16a69c8b447a32a3aa4d4c041773cc">PhyloPowerSet</a></div><div class="ttdeci">PowerSet&lt; PhyloArray, PhyloRuleData &gt; PhyloPowerSet</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00119">phylo.hpp:119</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a24a353ed0e1af57ac94d0002ecadf4b8"><div class="ttname"><a href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a></div><div class="ttdeci">#define DEFAULT_DUPLICATION</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00005">phylo.hpp:5</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a27453fc0a40c5d37cb3da40837cd7604"><div class="ttname"><a href="phylo_8hpp.html#a27453fc0a40c5d37cb3da40837cd7604">DUPL_DUPL</a></div><div class="ttdeci">#define DUPL_DUPL</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00007">phylo.hpp:7</a></div></div>
@@ -2265,7 +2267,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="ttc" id="aphylo_8hpp_html_aca4644373aecf9b296ac8ac730470952"><div class="ttname"><a href="phylo_8hpp.html#aca4644373aecf9b296ac8ac730470952">PhyloStatsCounter</a></div><div class="ttdeci">StatsCounter&lt; PhyloArray, PhyloCounterData &gt; PhyloStatsCounter</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00117">phylo.hpp:117</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_ad782519ef733c9b109bf465fe942b36a"><div class="ttname"><a href="phylo_8hpp.html#ad782519ef733c9b109bf465fe942b36a">PhyloRuleDyn</a></div><div class="ttdeci">Rule&lt; PhyloArray, PhyloRuleDynData &gt; PhyloRuleDyn</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00113">phylo.hpp:113</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_ad7d1052d3cdcf6286b6d7907d1ec1eaf"><div class="ttname"><a href="phylo_8hpp.html#ad7d1052d3cdcf6286b6d7907d1ec1eaf">PhyloRuleData</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; uint, uint &gt; &gt; PhyloRuleData</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00099">phylo.hpp:99</a></div></div>
-<div class="ttc" id="astatscounter-meat_8hpp_html_a06420c7858d72514761c1cca0654f9c0"><div class="ttname"><a href="statscounter-meat_8hpp.html#a06420c7858d72514761c1cca0654f9c0">counters_</a></div><div class="ttdeci">Data_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00064">statscounter-meat.hpp:65</a></div></div>
+<div class="ttc" id="astatscounter-meat_8hpp_html_a06420c7858d72514761c1cca0654f9c0"><div class="ttname"><a href="statscounter-meat_8hpp.html#a06420c7858d72514761c1cca0654f9c0">counters_</a></div><div class="ttdeci">Data_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00056">statscounter-meat.hpp:57</a></div></div>
 <div class="ttc" id="astatscounter-meat_8hpp_html_a782c48a908662b34845b6f654f929788"><div class="ttname"><a href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div><div class="ttdeci">counters</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00025">statscounter-meat.hpp:25</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00018">typedefs.hpp:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -2274,7 +2276,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
-    <li class="footer">Generated on Wed Mar 16 2022 21:02:51 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Mar 16 2022 23:07:33 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

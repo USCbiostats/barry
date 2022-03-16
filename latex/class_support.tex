@@ -20,9 +20,9 @@ Compute the support of sufficient statistics.
 \item 
 \mbox{\hyperlink{class_support_ad4b178a6a9593273f72dccdba252b949}{$\sim$\+Support}} ()
 \item 
-void \mbox{\hyperlink{class_support_a4815c1e806cc785ad66320ea6364d087}{init\+\_\+support}} (std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_ac507b5b05a329a72fa561a352608abdf}{array\+\_\+bank}}=nullptr, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a39489bd3dc7e3d72a31609106b58284f}{stats\+\_\+bank}}=nullptr)
+void \mbox{\hyperlink{class_support_a50d9804b965b3b3a9f9fd6d0e60a3204}{init\+\_\+support}} (std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_ac507b5b05a329a72fa561a352608abdf}{array\+\_\+bank}}=nullptr, std\+::vector$<$ double $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a73c7169e5f8a4a5554380af6d4ca2107}{stats\+\_\+bank}}=nullptr)
 \item 
-void \mbox{\hyperlink{class_support_aaebf5a9e6057636f3c099ff1bfeb53f3}{calc}} (std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_ac507b5b05a329a72fa561a352608abdf}{array\+\_\+bank}}=nullptr, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a39489bd3dc7e3d72a31609106b58284f}{stats\+\_\+bank}}=nullptr, unsigned int max\+\_\+num\+\_\+elements\+\_\+=0u)
+void \mbox{\hyperlink{class_support_a432ed88600718e2646f91d9dda73875f}{calc}} (std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_ac507b5b05a329a72fa561a352608abdf}{array\+\_\+bank}}=nullptr, std\+::vector$<$ double $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a73c7169e5f8a4a5554380af6d4ca2107}{stats\+\_\+bank}}=nullptr, unsigned int max\+\_\+num\+\_\+elements\+\_\+=0u)
 \begin{DoxyCompactList}\small\item\em Computes the entire support. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_support_a47cc8dfe2705652a988cf77f0f27b43e}{get\+\_\+counts}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
@@ -62,8 +62,6 @@ void \mbox{\hyperlink{class_support_ac1e766ceaae569d8b6a925f9dcfb817c}{reset\+\_
 \hline
 \end{DoxyParams}
 }\begin{DoxyCompactItemize}
-\item 
-void \mbox{\hyperlink{class_support_aae2b11c2f95cb27426213d2b6eef5d61}{add\+\_\+counter}} (\mbox{\hyperlink{class_counter}{Counter}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_aa80d872ce00a593ea8f27137907b9cf3}{f\+\_\+}})
 \item 
 void \mbox{\hyperlink{class_support_ab23c6d59f0b2fc3de6ca9a6a1c273fb0}{add\+\_\+counter}} (\mbox{\hyperlink{class_counter}{Counter}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ \mbox{\hyperlink{support-meat_8hpp_aa80d872ce00a593ea8f27137907b9cf3}{f\+\_\+}})
 \item 
@@ -202,17 +200,10 @@ Definition at line 103 of file support-\/bones.\+hpp.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_support_aae2b11c2f95cb27426213d2b6eef5d61}\label{class_support_aae2b11c2f95cb27426213d2b6eef5d61}} 
-\index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_counter@{add\_counter}}
-\index{add\_counter@{add\_counter}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{add\_counter()}{add\_counter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-void \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_counter}{Counter}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$ $\ast$}]{f\+\_\+ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_support_ab23c6d59f0b2fc3de6ca9a6a1c273fb0}\label{class_support_ab23c6d59f0b2fc3de6ca9a6a1c273fb0}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!add\_counter@{add\_counter}}
 \index{add\_counter@{add\_counter}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
-\doxysubsubsection{\texorpdfstring{add\_counter()}{add\_counter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{add\_counter()}{add\_counter()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
 void \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::add\+\_\+counter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_counter}{Counter}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type $>$}]{f\+\_\+ }\end{DoxyParamCaption})}
 
@@ -244,12 +235,12 @@ void \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
 void \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::add\+\_\+rule\+\_\+dyn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_rule}{Rule}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$}]{f\+\_\+ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_support_aaebf5a9e6057636f3c099ff1bfeb53f3}\label{class_support_aaebf5a9e6057636f3c099ff1bfeb53f3}} 
+\mbox{\Hypertarget{class_support_a432ed88600718e2646f91d9dda73875f}\label{class_support_a432ed88600718e2646f91d9dda73875f}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!calc@{calc}}
 \index{calc@{calc}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{calc()}{calc()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-void \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::calc (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$}]{array\+\_\+bank = {\ttfamily nullptr},  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{stats\+\_\+bank = {\ttfamily nullptr},  }\item[{unsigned int}]{max\+\_\+num\+\_\+elements\+\_\+ = {\ttfamily 0u} }\end{DoxyParamCaption})}
+void \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::calc (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$}]{array\+\_\+bank = {\ttfamily nullptr},  }\item[{std\+::vector$<$ double $>$ $\ast$}]{stats\+\_\+bank = {\ttfamily nullptr},  }\item[{unsigned int}]{max\+\_\+num\+\_\+elements\+\_\+ = {\ttfamily 0u} }\end{DoxyParamCaption})}
 
 
 
@@ -329,12 +320,12 @@ Vector of static rules (cells to iterate).
 
 Vector of dynamic rules (to include/exclude a realizaton). 
 
-\mbox{\Hypertarget{class_support_a4815c1e806cc785ad66320ea6364d087}\label{class_support_a4815c1e806cc785ad66320ea6364d087}} 
+\mbox{\Hypertarget{class_support_a50d9804b965b3b3a9f9fd6d0e60a3204}\label{class_support_a50d9804b965b3b3a9f9fd6d0e60a3204}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!init\_support@{init\_support}}
 \index{init\_support@{init\_support}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{init\_support()}{init\_support()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Counter\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool, typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type  = bool$>$ \\
-void \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::init\+\_\+support (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$}]{array\+\_\+bank = {\ttfamily nullptr},  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{stats\+\_\+bank = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+void \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::init\+\_\+support (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$}]{array\+\_\+bank = {\ttfamily nullptr},  }\item[{std\+::vector$<$ double $>$ $\ast$}]{stats\+\_\+bank = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_support_a62f4f98b01bb0a9424a425d38cd0e83d}\label{class_support_a62f4f98b01bb0a9424a425d38cd0e83d}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!print@{print}}

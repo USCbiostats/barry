@@ -43,6 +43,9 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
       [ "Counters", "class_counters.html", "class_counters" ]
     ] ],
     [ "counters-meat.hpp", "counters-meat_8hpp.html", "counters-meat_8hpp" ],
+    [ "freqtable.hpp", "freqtable_8hpp.html", [
+      [ "FreqTable", "class_freq_table.html", "class_freq_table" ]
+    ] ],
     [ "model-bones.hpp", "model-bones_8hpp.html", "model-bones_8hpp" ],
     [ "model-meat.hpp", "model-meat_8hpp.html", "model-meat_8hpp" ],
     [ "powerset-bones.hpp", "powerset-bones_8hpp.html", [
@@ -56,9 +59,6 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
       [ "StatsCounter", "class_stats_counter.html", "class_stats_counter" ]
     ] ],
     [ "statscounter-meat.hpp", "statscounter-meat_8hpp.html", "statscounter-meat_8hpp" ],
-    [ "statsdb.hpp", "statsdb_8hpp.html", [
-      [ "FreqTable", "class_freq_table.html", "class_freq_table" ]
-    ] ],
     [ "support-bones.hpp", "support-bones_8hpp.html", [
       [ "Support", "class_support.html", "class_support" ]
     ] ],
