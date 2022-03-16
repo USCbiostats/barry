@@ -145,10 +145,10 @@ template <typename Cell_Type, typename Data_Type> class BArrayDense;
  */
 ///@{
 template <typename Array_Type, typename Data_Type>
-using Counter_fun_type = std::function<double(const Array_Type &, uint, uint, Data_Type *)>;
+using Counter_fun_type = std::function<double(const Array_Type &, uint, uint, Data_Type &)>;
 
 template <typename Array_Type, typename Data_Type>
-using Rule_fun_type = std::function<bool(const Array_Type &, uint, uint, Data_Type *)>;
+using Rule_fun_type = std::function<bool(const Array_Type &, uint, uint, Data_Type &)>;
 ///@}
 
 // Misc ------------------------------------------------------------------------

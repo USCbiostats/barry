@@ -273,31 +273,20 @@ MODEL_TEMPLATE(void, add_counter)(
         Counter<Array_Type, Data_Counter_Type> & counter
 ) {
     
-    counters->add_counter(counter);
+    counters->add_counter(counter, Data_Counter_Type());
     return;
-}
-
-MODEL_TEMPLATE(void, add_counter)(
-        Counter<Array_Type, Data_Counter_Type> * counter
-) {
-    
-    counters->add_counter(counter);
-    return;
-    
 }
 
 MODEL_TEMPLATE(void, add_counter)(
     Counter_fun_type<Array_Type,Data_Counter_Type> count_fun_,
     Counter_fun_type<Array_Type,Data_Counter_Type> init_fun_,
-    Data_Counter_Type *                            data_,
-    bool                                           delete_data_
+    Data_Counter_Type                              data_
 ) {
     
     counters->add_counter(
         count_fun_,
         init_fun_,
-        data_,
-        delete_data_
+        data_
     );
     
     return;
@@ -327,34 +316,10 @@ MODEL_TEMPLATE(void, add_rule)(
     Rule<Array_Type, Data_Rule_Type> & rules
 ) {
     
-    rules->add_rule(rules);
+    rules->add_rule(rules, Data_Rule_Type());
     return;
 }
 
-MODEL_TEMPLATE(void, add_rule)(
-    Rule<Array_Type, Data_Rule_Type> * rule
-) {
-    
-    rules->add_rule(rule);
-    return;
-    
-}
-
-MODEL_TEMPLATE(void, add_rule)(
-    Rule_fun_type<Array_Type,Data_Rule_Type> rule_fun_,
-    Data_Rule_Type *                         data_,
-    bool                                     delete_data_
-) {
-    
-    rules->add_rule(
-        rule_fun_,
-        data_,
-        delete_data_
-    );
-    
-    return;
-    
-}
 
 MODEL_TEMPLATE(void, set_rules)(
     Rules<Array_Type,Data_Rule_Type> * rules_
@@ -377,29 +342,18 @@ MODEL_TEMPLATE(void, add_rule_dyn)(
     Rule<Array_Type, Data_Rule_Dyn_Type> & rules_
 ) {
     
-    rules_dyn->add_rule(rules_);
+    rules_dyn->add_rule(rules_, Data_Rule_Dyn_Type());
     return;
-}
-
-MODEL_TEMPLATE(void, add_rule_dyn)(
-    Rule<Array_Type, Data_Rule_Dyn_Type> * rules_
-) {
-    
-    rules_dyn->add_rule(rules_);
-    return;
-    
 }
 
 MODEL_TEMPLATE(void, add_rule_dyn)(
     Rule_fun_type<Array_Type,Data_Rule_Dyn_Type> rule_fun_,
-    Data_Rule_Dyn_Type *                         data_,
-    bool                                     delete_data_
+    Data_Rule_Dyn_Type                           data_
 ) {
     
     rules_dyn->add_rule(
         rule_fun_,
-        data_,
-        delete_data_
+        data_
     );
     
     return;

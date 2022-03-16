@@ -73,7 +73,8 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 
     phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
     pset.add_rule(
-            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>
+            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>,
+            phylocounters::PhyloRuleData()
             );
     pset.calc();
     
