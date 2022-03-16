@@ -90,9 +90,9 @@ private:
      */
     ///@{
     bool with_pset = false;
-    std::vector< std::vector< Array_Type > >          pset_arrays; ///< Arrays of the support(s)
-    std::vector< std::vector< std::vector<double> > > pset_stats;  ///< Statistics of the support(s)
-    std::vector< std::vector<double> >                pset_probs;  ///< Probabilities of the support(s)
+    std::vector< std::vector< Array_Type > > pset_arrays; ///< Arrays of the support(s)
+    std::vector< std::vector<double> >       pset_stats;  ///< Statistics of the support(s)
+    std::vector< std::vector<double> >       pset_probs;  ///< Probabilities of the support(s)
     ///@}
     
     /**
@@ -272,7 +272,7 @@ public:
         const uint & i,
         bool as_log = false
     );
-
+    
     double likelihood_total(
         const std::vector<double> & params,
         bool as_log = false
@@ -298,7 +298,7 @@ public:
         const uint & i
     );
 
-    const std::vector< std::vector< double > > * get_pset_stats(
+    const std::vector< double > * get_pset_stats(
         const uint & i
     );
     ///@}
@@ -375,8 +375,8 @@ public:
     std::vector< std::vector< double > > * get_stats_support();
     std::vector< unsigned int > * get_arrays2support();
     std::vector< std::vector< Array_Type > > * get_pset_arrays();
-    std::vector< std::vector< std::vector<double> > > * get_pset_stats();  ///< Statistics of the support(s)
-    std::vector< std::vector<double> > *                get_pset_probs(); 
+    std::vector< std::vector<double> > * get_pset_stats();  ///< Statistics of the support(s)
+    std::vector< std::vector<double> > * get_pset_probs(); 
     ///@}
 
     /**

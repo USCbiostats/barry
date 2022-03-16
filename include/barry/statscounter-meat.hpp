@@ -44,14 +44,6 @@ STATSCOUNTER_TEMPLATE(void, reset_array)(const Array_Type * Array_)
     return;
 }
 
-STATSCOUNTER_TEMPLATE(void, add_counter)(Counter<Array_Type,Data_Type> * f_)
-{
-    
-    counters->add_counter(f_);
-    return;
-    
-}
-
 STATSCOUNTER_TEMPLATE(void, add_counter)(Counter<Array_Type,Data_Type> f_)
 {
     

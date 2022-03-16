@@ -2151,6 +2151,7 @@ public:
     uint lb;
     uint ub;
     uint duplication;
+
     PhyloRuleDynData(
         const std::vector< double > * counts_,
         uint pos_,
@@ -2161,6 +2162,7 @@ public:
         counts(counts_), pos(pos_), lb(lb_), ub(ub_), duplication(duplication_) {};
     
     ~PhyloRuleDynData() {};
+    
 };
 
 /**
