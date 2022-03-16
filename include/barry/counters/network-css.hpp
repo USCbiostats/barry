@@ -5,9 +5,9 @@
 // s: Start of the i-th network
 // e: end of the i-th network
 #define CSS_SIZE() \
-    uint n = data->indices[0u]; \
-    uint s = data->indices[1u]; \
-    uint e = data->indices[2u];
+    uint n = data.indices[0u]; \
+    uint s = data.indices[1u]; \
+    uint e = data.indices[2u];
 
 // Variables in case that the current cell corresponds to the True
 #define CSS_CASE_TRUTH() if ((i < n) && (j < n)) 
@@ -30,8 +30,8 @@
 // the boundaries of the graph.
 #define CSS_CHECK_SIZE_INIT() \
     /* The indices fall within the network */ \
-    if ((data->indices.at(0) > Array.ncol()) \
-    | (data->indices.at(2) > Array.ncol())) \
+    if ((data.indices.at(0) > Array.ncol()) \
+    | (data.indices.at(2) > Array.ncol())) \
         throw std::range_error("The network does not match the prescribed size."); 
 
 #define CSS_CHECK_SIZE() for (uint i = 0u; i < end_.size(); ++i) {\
@@ -43,8 +43,8 @@
     for (uint i = 0u; i < end_.size(); ++i) { \
     std::string tmpname = name_ + " (" + std::to_string(i) + ")";\
     counters->add_counter(tmp_count, tmp_init,\
-            new NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\
-            true, tmpname);}
+            NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\
+            tmpname);}
 
 #define CSS_NET_COUNTER_LAMBDA_INIT() NETWORK_COUNTER_LAMBDA(tmp_init) {\
         CSS_CHECK_SIZE_INIT() \
@@ -306,7 +306,7 @@ inline void counter_css_census01(
     {
 
         CSS_CHECK_SIZE_INIT()
-        double n_dbl = static_cast<double>(data->indices[0u]);
+        double n_dbl = static_cast<double>(data.indices[0u]);
 
         // At the beginning is all zero
         return n_dbl * (n_dbl - 1.0)/2.0;

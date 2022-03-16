@@ -11,21 +11,10 @@ inline Rules<Array_Type,Data_Type>::Rules(
     const Rules<Array_Type,Data_Type> & rules_
 ) {
 
-    // Checking which need to be deleted
-    std::vector< bool > tobedeleted(rules_.size(), false);
-    for (auto i = rules_.to_be_deleted.begin(); i != rules_.to_be_deleted.end(); ++i)
-        tobedeleted[*i] = true;
-
     // Copy all rules, if a rule is tagged as 
     // to be deleted, then copy the value
-    for (auto i = 0u; i != rules_.size(); ++i) {
-
-        if (tobedeleted[i])
-            this->add_rule(*rules_.data[i]);
-        else 
-            this->add_rule(rules_.data[i]);
-        
-    }
+    for (auto i = 0u; i != rules_.size(); ++i)
+        this->add_rule(rules_.data[i]);
 
     return;
 
@@ -38,20 +27,10 @@ Rules<Array_Type,Data_Type> Rules<Array_Type,Data_Type>::operator=(
 
     if (this != &rules_) {
 
-        // Checking which need to be deleted
-        std::vector< bool > tobedeleted(rules_.size(), false);
-        for (auto i = rules_.to_be_deleted.begin(); i != rules_.to_be_deleted.end(); ++i)
-            tobedeleted[*i] = true;
-
         // Copy all rules, if a rule is tagged as 
         // to be deleted, then copy the value
-        for (auto i = 0u; i != rules_.size(); ++i) {
-            if (tobedeleted[i]) 
-                this->add_rule(*rules_.data[i]);
-            else 
-                this->add_rule(rules_.data[i]);
-            
-        }
+        for (auto i = 0u; i != rules_.size(); ++i)
+            this->add_rule(rules_.data[i]);
 
     }
 
@@ -66,41 +45,23 @@ inline bool Rule<Array_Type,Data_Type>::operator()(const Array_Type & a, uint i,
 
 template <typename Array_Type, typename Data_Type>
 inline void Rules<Array_Type,Data_Type>::add_rule(
-        Rule<Array_Type, Data_Type> & rule
-) {
-    
-    to_be_deleted.push_back(data.size());
-    data.push_back(new Rule<Array_Type, Data_Type>(rule));
-    
-    return;
-}
-
-template <typename Array_Type, typename Data_Type>
-inline void Rules<Array_Type,Data_Type>::add_rule(
-        Rule<Array_Type, Data_Type> * rule
+        Rule<Array_Type, Data_Type> rule
 ) {
     
     data.push_back(rule);
-    return;
     
+    return;
 }
 
 template <typename Array_Type, typename Data_Type>
 inline void Rules<Array_Type,Data_Type>::add_rule(
         Rule_fun_type<Array_Type,Data_Type> rule_,
-        Data_Type *                         data_,
-        bool                                delete_data_
+        Data_Type                           data_
 ) {
-    
-    /* We still need to delete the counter since we are using the 'new' operator.
-      * Yet, the actual data may not need to be deleted.
-      */
-    to_be_deleted.push_back(data.size());
-    
-    data.push_back(new Rule<Array_Type,Data_Type>(
-            rule_,
-            data_,
-            delete_data_
+       
+    data.push_back(Rule<Array_Type,Data_Type>(
+        rule_,
+        data_
     ));
     
     return;
@@ -115,24 +76,11 @@ inline bool Rules<Array_Type,Data_Type>::operator()(
     if (data.size()==0u)
         return true;
     
-    for (auto iter = data.begin(); iter != data.end(); ++iter)
-        if (!(*iter)->operator()(a, i, j))
+    for (auto & f: data)
+        if (!f.operator()(a, i, j))
             return false;
     
     return true;
-    
-}
-
-template <typename Array_Type, typename Data_Type>
-inline void Rules<Array_Type,Data_Type>::clear() {
-    
-
-    for (auto iter = to_be_deleted.begin(); iter != to_be_deleted.end(); ++iter)
-        delete data[*iter];
-    
-    to_be_deleted.clear();
-    
-    return;
     
 }
 

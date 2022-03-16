@@ -10,7 +10,7 @@
 
 #define MAKE_DUPL_VARS() \
     bool DPL = Array.D()->duplication; \
-    unsigned int DATA_AT = data->operator[](0u);
+    unsigned int DATA_AT = data[0u];
 
 #define IS_EITHER()      (DATA_AT == DUPL_EITH)
 #define IS_DUPLICATION() ((DATA_AT == DUPL_DUPL) & (DPL))
@@ -77,6 +77,8 @@ public:
         std::vector< double > * counters_ = nullptr
         ) : data(data_), counters(counters_) {};
 
+    PhyloCounterData() : data(0u) {};
+
     uint at(uint d) {return data.at(d);};
     uint operator()(uint d) {return data.at(d);};
     uint operator[](uint d) {return data[d];};
@@ -129,16 +131,14 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
  * 
  */
 #define PHYLO_COUNTER_LAMBDA(a) Counter_fun_type<PhyloArray, PhyloCounterData> a = \
-    [](const PhyloArray & Array, uint i, uint j, PhyloCounterData * data)
+    [](const PhyloArray & Array, uint i, uint j, PhyloCounterData & data)
 
 #define PHYLO_RULE_DYN_LAMBDA(a) Rule_fun_type<PhyloArray, PhyloRuleDynData> a = \
-    [](const PhyloArray & Array, uint i, uint j, PhyloRuleDynData * data)
+    [](const PhyloArray & Array, uint i, uint j, PhyloRuleDynData & data)
 
 #define PHYLO_CHECK_MISSING() if (Array.D() == nullptr) \
     throw std::logic_error("The array data is nullptr."); \
-    if (data == nullptr) \
-    throw std::logic_error("The counter/rule data is nullptr.")
-
+    
 inline std::string get_last_name(unsigned int d) {return ((d == 1u)? " at duplication" : ((d == 0u)? " at speciation" : ""));}
 
 /**
@@ -178,8 +178,7 @@ inline void counter_overall_gains(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication}),
-        true,
+        PhyloCounterData({duplication}),
         "Overall gains" + get_last_name(duplication)
     );
 
@@ -205,7 +204,7 @@ inline void counter_gains(
             return 0.0;
 
         double ngains = 0.0;
-        auto   k = data->operator[](1u);
+        auto   k = data[1u];
         auto   s = Array.D()->states[k];
 
         if (s)
@@ -229,7 +228,7 @@ inline void counter_gains(
             return 0.0;
 
         IF_MATCHES()
-            return (i == data->operator[](1u)) ? 1.0 : 0.0;
+            return (i == data[1u]) ? 1.0 : 0.0;
         
         return 0.0;
 
@@ -238,8 +237,7 @@ inline void counter_gains(
     for (auto& i : nfun)
         counters->add_counter(
             tmp_count, tmp_init,
-            new PhyloCounterData({duplication, i}),
-            true,
+            PhyloCounterData({duplication, i}),
             "Gains " + std::to_string(i) + get_last_name(duplication)
         );
     
@@ -272,7 +270,7 @@ inline void counter_gains_k_offspring(
     {
 
         // Is this relevant?
-        if (i != data->operator[](1u))
+        if (i != data[1u])
             return 0.0;
 
         IF_NOTMATCHES()
@@ -292,7 +290,7 @@ inline void counter_gains_k_offspring(
             }
 
         // Three cases: base on the diff
-        int diff = static_cast<int>(data->operator[](2u)) - counts + 1;
+        int diff = static_cast<int>(data[2u]) - counts + 1;
         // (a) counts were 1 below k, then +1
         if (diff == 1)
             return -1.0;
@@ -310,8 +308,7 @@ inline void counter_gains_k_offspring(
     for (auto& i : nfun)
         counters->add_counter(
             tmp_count, tmp_init,
-            new PhyloCounterData({duplication, i, k}),
-            true,
+            PhyloCounterData({duplication, i, k}),
             std::to_string(k) + " genes gain " + std::to_string(i) +
                 get_last_name(duplication)
         );
@@ -381,8 +378,7 @@ inline void counter_genes_changing(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication}),
-        true,
+        PhyloCounterData({duplication}),
         "Num. of genes changing" + get_last_name(duplication)
     );
 
@@ -413,7 +409,7 @@ inline void counter_preserve_pseudogene(
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-        if (Array.D()->states[data->operator[](1u)] | Array.D()->states[data->operator[](2u)])
+        if (Array.D()->states[data[1u]] | Array.D()->states[data[2u]])
             return 0.0;
 
         double n = static_cast<double>(Array.ncol());
@@ -429,13 +425,13 @@ inline void counter_preserve_pseudogene(
         IF_NOTMATCHES()
             return 0.0;
 
-        auto nfunA = data->operator[](1u);
-        auto nfunB = data->operator[](2u);
+        auto nfunA = data[1u];
+        auto nfunB = data[2u];
 
         if ((i != nfunA) & (i != nfunB))
             return 0.0;
 
-        if (Array.D()->states[data->operator[](1u)] | Array.D()->states[data->operator[](2u)])
+        if (Array.D()->states[data[1u]] | Array.D()->states[data[2u]])
             return 0.0;
 
         unsigned int k = (i == nfunA) ? nfunB : nfunA;
@@ -460,8 +456,7 @@ inline void counter_preserve_pseudogene(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication}),
-        true,
+        PhyloCounterData({duplication}),
         "Preserve pseudo gene (" + 
         std::to_string(nfunA) + ", " +
         std::to_string(nfunB) + ")" + get_last_name(duplication)
@@ -567,8 +562,7 @@ inline void counter_prop_genes_changing(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication}),
-        true,
+        PhyloCounterData({duplication}),
         "Proportion of genes changing" + get_last_name(duplication)
     );
 
@@ -617,8 +611,7 @@ inline void counter_overall_loss(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication}),
-        true,
+        PhyloCounterData({duplication}),
         "Overall loses" + get_last_name(duplication)
     );
     
@@ -648,7 +641,7 @@ inline void counter_maxfuns(
 
         // At first, all are zero, so we need to check if the lower
         // bound is zero
-        if (data->operator[](1u) == 0)
+        if (data[1u] == 0)
             return static_cast<double>(Array.ncol());
         
         return 0.0;
@@ -662,10 +655,10 @@ inline void counter_maxfuns(
             return 0.0;
 
         int count = Array.colsum(j);
-        int ub    = data->operator[](2u);
+        int ub    = data[2u];
         
         // It now matches
-        if (count == static_cast<int>(data->operator[](1u)))
+        if (count == static_cast<int>(data[1u]))
             return 1.0;
 
         // Was within, but now outside
@@ -679,8 +672,7 @@ inline void counter_maxfuns(
 
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, lb, ub}),
-        true,
+        PhyloCounterData({duplication, lb, ub}),
         "Genes with [" + std::to_string(lb) + ", " + std::to_string(ub) +
             "] funs" + get_last_name(duplication)
     );
@@ -709,7 +701,7 @@ inline void counter_loss(
         if (!Array.D()->states[i])
             return 0.0;
         
-        return (i == data->operator[](1u)) ? -1.0 : 0.0;
+        return (i == data[1u]) ? -1.0 : 0.0;
 
     };
     
@@ -721,7 +713,7 @@ inline void counter_loss(
         IF_NOTMATCHES()
             return 0.0;
         
-        auto f = data->operator[](1u);
+        auto f = data[1u];
 
         if (!Array.D()->states[f])
             return 0.0;
@@ -733,8 +725,7 @@ inline void counter_loss(
     for (auto& i : nfun)
         counters->add_counter(
             tmp_count, tmp_init,
-            new PhyloCounterData({duplication, i}),
-            true,
+            PhyloCounterData({duplication, i}),
             "Loss " + std::to_string(i) + get_last_name(duplication)
         );
     
@@ -790,8 +781,7 @@ inline void counter_overall_changes(
 
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication}),
-        true,
+        PhyloCounterData({duplication}),
         "Overall changes" + get_last_name(duplication)
     );
     
@@ -821,8 +811,8 @@ inline void counter_subfun(
         IF_NOTMATCHES()
             return 0.0;
 
-        auto funA = data->operator[](1u);
-        auto funB = data->operator[](2u);
+        auto funA = data[1u];
+        auto funB = data[2u];
         
         // Are we looking at either of the relevant functions?
         if ((funA != i) && (funB != i))
@@ -881,8 +871,7 @@ inline void counter_subfun(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, nfunA, nfunB}),
-        true,
+        PhyloCounterData({duplication, nfunA, nfunB}),
         "Subfun between " + std::to_string(nfunA) + " and " +
             std::to_string(nfunB) + get_last_name(duplication)
     );
@@ -910,8 +899,8 @@ inline void counter_cogain(
         IF_NOTMATCHES()
             return 0.0;
 
-        auto d1 = data->operator[](1u);
-        auto d2 = data->operator[](2u);
+        auto d1 = data[1u];
+        auto d2 = data[2u];
       
         // Is the function in scope relevant?
         if ((i != d1) && (i != d2))
@@ -942,8 +931,7 @@ inline void counter_cogain(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, nfunA, nfunB}),
-        true,
+        PhyloCounterData({duplication, nfunA, nfunB}),
         "Co-gains " + std::to_string(nfunA) + " & " + std::to_string(nfunB) +
             get_last_name(duplication)
     );
@@ -978,7 +966,7 @@ inline void counter_longest(
         {
 
             // On the fly, figuring out if it is longest
-            for (auto & l : *data)
+            for (auto & l : data)
                 if (l == off)
                     is_longest[off] = true;
 
@@ -1069,8 +1057,8 @@ inline void counter_longest(
         // Finding the longest branch (or branches) --
         uint longest_idx = 0u;
         double diff      = 0.0;
-        data->reserve(Array.ncol()); 
-        data->push_back(0u);
+        data.reserve(Array.ncol()); 
+        data.push_back(0u);
         for (uint ii = 1u; ii < Array.ncol(); ++ii)
         {
             
@@ -1080,19 +1068,19 @@ inline void counter_longest(
             else if (diff < 0.0)
             {
 
-                data->empty();
-                data->push_back(ii);
+                data.empty();
+                data.push_back(ii);
                 longest_idx = ii;
 
             }
             else if (diff == 0.0)
-                data->push_back(ii);
+                data.push_back(ii);
             
         }
 
-        data->shrink_to_fit();
+        data.shrink_to_fit();
         
-        if (data->size() == 0u)
+        if (data.size() == 0u)
             throw std::logic_error("The data on the longest branch has size 0.");
         
         // Starting the counter, since all in zero, then this will be equal to
@@ -1101,7 +1089,7 @@ inline void counter_longest(
         {
             
             if (Array.D()->states[ii])
-                return (1.0 * static_cast<double>(data->size()));
+                return (1.0 * static_cast<double>(data.size()));
 
         }
         
@@ -1111,8 +1099,7 @@ inline void counter_longest(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication}),
-        true,
+        PhyloCounterData({duplication}),
         "Longest branch mutates" + get_last_name(duplication)
     );
     
@@ -1140,8 +1127,8 @@ inline void counter_neofun(
         IF_NOTMATCHES()
             return 0.0;
         
-        auto funA = data->operator[](1u);
-        auto funB = data->operator[](2u);
+        auto funA = data[1u];
+        auto funB = data[2u];
 
         // Is the function in scope relevant?
         if ((i != funA) && (i != funB))
@@ -1191,8 +1178,7 @@ inline void counter_neofun(
 
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, nfunA, nfunB}),
-        true,
+        PhyloCounterData({duplication, nfunA, nfunB}),
         "Neofun between " + std::to_string(nfunA) + " and " +
         std::to_string(nfunB) + get_last_name(duplication)
     );
@@ -1222,7 +1208,7 @@ inline void counter_pairwise_neofun_singlefun(
             return 0.0;
         
         // Is the function in scope relevant?
-        if (i != data->operator[](1u))
+        if (i != data[1u])
             return 0.0;
         
         // Checking if the parent has the function
@@ -1257,8 +1243,7 @@ inline void counter_pairwise_neofun_singlefun(
 
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, nfunA}),
-        true,
+        PhyloCounterData({duplication, nfunA}),
         "Pairwise neofun function " + std::to_string(nfunA) +
         get_last_name(duplication)
     );
@@ -1287,8 +1272,8 @@ inline void counter_neofun_a2b(
         IF_NOTMATCHES()
             return 0.0;
         
-        const uint & funA = data->operator[](1u);
-        const uint & funB = data->operator[](2u);
+        const uint & funA = data[1u];
+        const uint & funB = data[2u];
 
         // Checking scope
         if ((i != funA) && (i != funB))
@@ -1385,8 +1370,7 @@ inline void counter_neofun_a2b(
 
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, nfunA, nfunB}),
-        true,
+        PhyloCounterData({duplication, nfunA, nfunB}),
         "Neofun from " + std::to_string(nfunA) + " to " +
         std::to_string(nfunB) + get_last_name(duplication)
     );
@@ -1420,8 +1404,8 @@ inline void counter_co_opt(
         IF_NOTMATCHES()
             return 0.0;
         
-        const unsigned int funA = data->operator[](1u);
-        const unsigned int funB = data->operator[](2u);
+        const unsigned int funA = data[1u];
+        const unsigned int funB = data[2u];
 
         // If the change is out of scope, then nothing to do
         if ((i != funA) & (i != funB))
@@ -1471,16 +1455,16 @@ inline void counter_co_opt(
     PHYLO_COUNTER_LAMBDA(tmp_init) {
 
         PHYLO_CHECK_MISSING();
-        if (data->size() != 3u)
+        if (data.size() != 3u)
             throw std::length_error("The counter data should be of length 2.");
 
-        if (data->operator[](1u) == data->operator[](2u))
+        if (data[1u] == data[2u])
             throw std::logic_error("Functions A and B should be different from each other.");
 
-        if (data->operator[](1u) >= Array.nrow())
+        if (data[1u] >= Array.nrow())
             throw std::length_error("Function A in counter out of range.");
 
-        if (data->operator[](2u) >= Array.nrow())
+        if (data[2u] >= Array.nrow())
             throw std::length_error("Function B in counter out of range.");
 
         return 0.0;
@@ -1489,8 +1473,7 @@ inline void counter_co_opt(
 
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, nfunA, nfunB}),
-        true,
+        PhyloCounterData({duplication, nfunA, nfunB}),
         "Coopt of " + std::to_string(nfunA) + " by " +
         std::to_string(nfunB) + get_last_name(duplication)
     );
@@ -1524,9 +1507,9 @@ inline void counter_k_genes_changing(
         // find at least one state = true.
         for (auto s : Array.D()->states)
             if (s)
-                return Array.ncol() == data->operator[](1u) ? 1.0 : 0.0;
+                return Array.ncol() == data[1u] ? 1.0 : 0.0;
 
-        return data->operator[](1u) == 0 ? 1.0 : 0.0;
+        return data[1u] == 0 ? 1.0 : 0.0;
       
     };
 
@@ -1542,7 +1525,7 @@ inline void counter_k_genes_changing(
         bool        j_diverges = false;
         const auto & par_state = Array.D()->states;
 
-        int k = static_cast<int>(data->operator[](1u));
+        int k = static_cast<int>(data[1u]);
 
         for (auto o = 0u; o < Array.ncol(); ++o)
         {
@@ -1614,8 +1597,7 @@ inline void counter_k_genes_changing(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, k}),
-        true,
+        PhyloCounterData({duplication, k}),
         std::to_string(k) + " genes changing" + get_last_name(duplication)
     );
   
@@ -1643,7 +1625,7 @@ inline void counter_less_than_p_prop_genes_changing(
 
         for (auto s : Array.D()->states)
             if (s)
-                return data->operator[](1u) == 100 ? 1.0 : 0.0;
+                return data[1u] == 100 ? 1.0 : 0.0;
 
         // Only one if it was specified it was zero
         return 1.0;
@@ -1723,7 +1705,7 @@ inline void counter_less_than_p_prop_genes_changing(
             count_prev += 1.0;
 
         double ncol = static_cast<double>(Array.ncol());
-        double p    = static_cast<double>(data->operator[](1u)) / 100.0;
+        double p    = static_cast<double>(data[1u]) / 100.0;
 
         return ((count/ncol) <= p ? 1.0 : 0.0) - ((count_prev/ncol) <= p ? 1.0 : 0.0);
 
@@ -1731,8 +1713,7 @@ inline void counter_less_than_p_prop_genes_changing(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, static_cast<uint>(p * 100)}),
-        true,
+        PhyloCounterData({duplication, static_cast<uint>(p * 100)}),
         std::to_string(p) + " prop genes changing" + get_last_name(duplication)
     );
   
@@ -1766,7 +1747,7 @@ inline void counter_gains_from_0(
         }
 
         // Is this the function?
-        if (i != data->operator[](1u))
+        if (i != data[1u])
             return 0.0;
 
         // Now computing the change stats
@@ -1795,8 +1776,7 @@ inline void counter_gains_from_0(
     for (auto& i : nfun)
         counters->add_counter(
             tmp_count, tmp_init,
-            new PhyloCounterData({duplication, i}),
-            true,
+            PhyloCounterData({duplication, i}),
             "First gain " + std::to_string(i) +
                 get_last_name(duplication)
         );
@@ -1844,8 +1824,7 @@ inline void counter_overall_gains_from_0(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication}),
-        true,
+        PhyloCounterData({duplication}),
         "Overall first gains" +
             get_last_name(duplication)
     );
@@ -1909,8 +1888,7 @@ inline void counter_pairwise_overall_change(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication}),
-        true,
+        PhyloCounterData({duplication}),
         "Pairs of genes changing" +
             get_last_name(duplication)
     );
@@ -1940,8 +1918,8 @@ inline void counter_pairwise_preserving(
             return 0.0;
 
         // Not in the scope
-        auto funA = data->operator[](1u);
-        auto funB = data->operator[](2u);
+        auto funA = data[1u];
+        auto funB = data[2u];
         if ((funA != i) && (funB != i))
             return 0.0;
 
@@ -2040,7 +2018,7 @@ inline void counter_pairwise_preserving(
         PHYLO_CHECK_MISSING();
         
         double n = static_cast< double >(Array.ncol());
-        if (!Array.D()->states[data->operator[](1u)] && !Array.D()->states[data->operator[](2u)])
+        if (!Array.D()->states[data[1u]] && !Array.D()->states[data[2u]])
             return n * (n - 1.0) / 2.0;
 
         return 0.0;
@@ -2049,8 +2027,7 @@ inline void counter_pairwise_preserving(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, nfunA, nfunB}),
-        true,
+        PhyloCounterData({duplication, nfunA, nfunB}),
         "Pariwise preserve (" + std::to_string(nfunA) + ", " +
             std::to_string(nfunB) + ")" +get_last_name(duplication)
     );
@@ -2080,8 +2057,8 @@ inline void counter_pairwise_first_gain(
             return 0.0;
 
         // Not in the scope
-        auto funA = data->operator[](1u);
-        auto funB = data->operator[](2u);
+        auto funA = data[1u];
+        auto funB = data[2u];
         if ((funA != i) && (funB != i))
             return 0.0;
 
@@ -2149,8 +2126,7 @@ inline void counter_pairwise_first_gain(
     
     counters->add_counter(
         tmp_count, tmp_init,
-        new PhyloCounterData({duplication, nfunA, nfunB}),
-        true,
+        PhyloCounterData({duplication, nfunA, nfunB}),
         "First gain (either " + std::to_string(nfunA) + " or " +
             std::to_string(nfunB) + ")" +get_last_name(duplication)
     );
@@ -2208,7 +2184,7 @@ inline void rule_dyn_limit_changes(
     PHYLO_RULE_DYN_LAMBDA(tmp_rule)
     {
 
-        unsigned int rule_type = data->duplication;
+        unsigned int rule_type = data.duplication;
         if (rule_type != DUPL_EITH)
         {
 
@@ -2219,9 +2195,9 @@ inline void rule_dyn_limit_changes(
                 
         }
 
-        if (data->counts->operator[](data->pos) < data->lb)
+        if (data.counts->operator[](data.pos) < data.lb)
             return false;
-        else if (data->counts->operator[](data->pos) > data->ub)
+        else if (data.counts->operator[](data.pos) > data.ub)
             return false;
         else
             return true;
@@ -2230,11 +2206,10 @@ inline void rule_dyn_limit_changes(
     
     support->get_rules_dyn()->add_rule(
         tmp_rule,
-        new PhyloRuleDynData(
+        PhyloRuleDynData(
             support->get_current_stats(),
             pos, lb, ub, duplication
-            ),
-        true 
+            )
     );
     
     return;

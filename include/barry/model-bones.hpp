@@ -197,12 +197,10 @@ public:
      */
     ///@{
     void add_counter(Counter<Array_Type, Data_Counter_Type> & counter);
-    void add_counter(Counter<Array_Type, Data_Counter_Type> * counter);
     void add_counter(
         Counter_fun_type<Array_Type,Data_Counter_Type> count_fun_,
         Counter_fun_type<Array_Type,Data_Counter_Type> init_fun_    = nullptr,
-        Data_Counter_Type *                            data_        = nullptr,
-        bool                                           delete_data_ = false
+        Data_Counter_Type                              data_        = nullptr
     );
     void set_counters(Counters<Array_Type,Data_Counter_Type> * counters_);
     ///@}
@@ -214,21 +212,17 @@ public:
      */
     ///@{
     void add_rule(Rule<Array_Type, Data_Rule_Type> & rule);
-    void add_rule(Rule<Array_Type, Data_Rule_Type> * rule);
     void add_rule(
         Rule_fun_type<Array_Type, Data_Rule_Type> count_fun_,
-        Data_Rule_Type *                          data_        = nullptr,
-        bool                                      delete_data_ = false
+        Data_Rule_Type                            data_
     );
     
     void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);
 
     void add_rule_dyn(Rule<Array_Type, Data_Rule_Dyn_Type> & rule);
-    void add_rule_dyn(Rule<Array_Type, Data_Rule_Dyn_Type> * rule);
     void add_rule_dyn(
         Rule_fun_type<Array_Type, Data_Rule_Dyn_Type> count_fun_,
-        Data_Rule_Dyn_Type *                          data_        = nullptr,
-        bool                                      delete_data_ = false
+        Data_Rule_Dyn_Type                            data_
     );
     
     void set_rules_dyn(Rules<Array_Type,Data_Rule_Dyn_Type> * rules_);

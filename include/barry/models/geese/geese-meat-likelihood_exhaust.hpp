@@ -38,7 +38,8 @@ inline double Geese::likelihood_exhaust(
 
     phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
     pset.add_rule(
-            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>
+            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>,
+            phylocounters::PhyloRuleData()
             );
     pset.calc();
 

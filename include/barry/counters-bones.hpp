@@ -40,8 +40,7 @@ public:
     
     Counter_fun_type<Array_Type,Data_Type> count_fun;
     Counter_fun_type<Array_Type,Data_Type> init_fun;
-    Data_Type * data = nullptr;
-    bool delete_data = false;
+    Data_Type data;
     std::string  name = "";
     std::string  desc = "";
 
@@ -60,13 +59,12 @@ public:
     
     Counter(
         Counter_fun_type<Array_Type,Data_Type> count_fun_,
-        Counter_fun_type<Array_Type,Data_Type> init_fun_    = nullptr,
-        Data_Type *                            data_        = nullptr,
-        bool                                   delete_data_ = false,
+        Counter_fun_type<Array_Type,Data_Type> init_fun_,
+        Data_Type                              data_,
         std::string                            name_        = "",   
         std::string                            desc_        = ""
         ): count_fun(count_fun_), init_fun(init_fun_), data(data_),
-            delete_data(delete_data_), name(name_), desc(desc_) {};
+            name(name_), desc(desc_) {};
     
     Counter(const Counter<Array_Type,Data_Type> & counter_); ///< Copy constructor
     Counter(Counter<Array_Type,Data_Type> && counter_) noexcept; ///< Move constructor
@@ -74,11 +72,7 @@ public:
     Counter<Array_Type,Data_Type>& operator=(Counter<Array_Type,Data_Type> && counter_) noexcept; ///< Move assignment
     ///@}
 
-    ~Counter() {
-        // delete data;
-        if (delete_data)
-            delete data;
-    };
+    ~Counter() {};
     
     /***
       * ! Main functions.
@@ -101,10 +95,7 @@ template <typename Array_Type = BArray<>, typename Data_Type = bool>
 class Counters {
     
 private:
-    std::vector< Counter<Array_Type,Data_Type >* > *        data = nullptr;
-    std::vector< uint > *                          to_be_deleted = nullptr;
-    bool                                             delete_data = false;
-    bool                                    delete_to_be_deleted = false;
+    std::vector< Counter<Array_Type,Data_Type > > data;
     
 public: 
     
@@ -112,9 +103,7 @@ public:
     Counters();
     
     // Destructor needs to deal with the pointers
-    ~Counters() {
-        this->clear();
-    }
+    ~Counters() {};
 
     /**
      * @brief Copy constructor
@@ -159,21 +148,19 @@ public:
      * @return uint 
      */
     std::size_t size() const noexcept {
-        return data->size();
+        return data.size();
         };
     
     // Functions to add counters
-    void add_counter(Counter<Array_Type, Data_Type> & counter);
-    void add_counter(Counter<Array_Type, Data_Type> * counter);
+    void add_counter(Counter<Array_Type, Data_Type> counter);
     void add_counter(
         Counter_fun_type<Array_Type,Data_Type> count_fun_,
-        Counter_fun_type<Array_Type,Data_Type> init_fun_    = nullptr,
-        Data_Type *                            data_        = nullptr,
-        bool                                   delete_data_ = false,
+        Counter_fun_type<Array_Type,Data_Type> init_fun_,
+        Data_Type                              data_,
         std::string                            name_        = "",   
         std::string                            desc_        = ""
     );
-    void clear();
+    
     std::vector< std::string > get_names() const;
     std::vector< std::string > get_descriptions() const;
     
