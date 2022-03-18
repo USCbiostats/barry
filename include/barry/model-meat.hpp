@@ -9,14 +9,14 @@
  */
 
 inline double update_normalizing_constant(
-    const std::vector< double > & params,
-    const std::vector< double > & support
+    const double * params,
+    const double * support,
+    size_t k,
+    size_t n
 )
 {
     
     double res = 0.0;
-    size_t k   = params.size() + 1u;
-    size_t n   = support.size() / k;
 
     double tmp;
     #ifdef __OPENMP
@@ -28,20 +28,21 @@ inline double update_normalizing_constant(
     {
 
         tmp = 0.0;
+        const double * support_n = support + i * k + 1u;
         
         #ifdef __OPENM
         #pragma omp simd reduction(+:tmp)
         #else
         #pragma GCC ivdep
         #endif
-        for (unsigned int j = 0u; j < params.size(); ++j)
+        for (unsigned int j = 0u; j < (k - 1u); ++j)
         {
 
-            tmp += support[i * k + j + 1u] * params[j];
+            tmp += (*(support_n + j)) * (*(params + j));
             
         }
         
-        res += std::exp(tmp BARRY_SAFE_EXP) * support[i * k];
+        res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
 
     }
     
@@ -54,13 +55,14 @@ inline double update_normalizing_constant(
 }
 
 inline double likelihood_(
-        const std::vector< double > & stats_target,
+        const double * stats_target,
         const std::vector< double > & params,
         const double normalizing_constant,
+        size_t n_params,
         bool log_ = false
 ) {
     
-    if (stats_target.size() != params.size())
+    if (n_params != params.size())
         throw std::length_error("-stats_target- and -params- should have the same length.");
         
     double numerator = 0.0;
@@ -71,8 +73,8 @@ inline double likelihood_(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int j = 0u; j < stats_target.size(); ++j)
-        numerator += stats_target[j] * params[j];
+    for (unsigned int j = 0u; j < params.size(); ++j)
+        numerator += *(stats_target + j) * params[j];
 
     if (!log_)
         numerator = exp(numerator BARRY_SAFE_EXP);
@@ -442,20 +444,20 @@ MODEL_TEMPLATE(uint, add_array)(
         else
         {
             
-            try
-            {
+            // try
+            // {
 
                 support_fun.calc();
 
-            }
-            catch (const std::exception& e)
-            {
+            // }
+            // catch (const std::exception& e)
+            // {
                 
-                printf_barry("A problem ocurred while trying to add the array. ");
-                printf_barry("with error: %s", e.what());
-                throw std::logic_error("");
+            //     printf_barry("A problem ocurred while trying to add the array. ");
+            //     printf_barry("with error: %s", e.what());
+            //     throw std::logic_error("");
                 
-            }
+            // }
             
         }
         
@@ -527,8 +529,11 @@ MODEL_TEMPLATE(double, likelihood)(
         
         first_calc_done[idx] = true;
         
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[idx].size() / k;
+
         normalizing_constants[idx] = update_normalizing_constant(
-            params, stats_support[idx]
+            &params[0u], &stats_support[idx][0u], k, n
         );
         
         params_last[idx] = params;
@@ -536,9 +541,10 @@ MODEL_TEMPLATE(double, likelihood)(
     }
     
     return likelihood_(
-        stats_target[i],
+        &stats_target[i],
         params,
         normalizing_constants[idx],
+        nterms(),
         as_log
     );
     
@@ -594,9 +600,12 @@ MODEL_TEMPLATE(double, likelihood)(
     {
         
         first_calc_done[loc] = true;
+
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[loc].size() / k;
         
         normalizing_constants[loc] = update_normalizing_constant(
-            params, stats_support[loc]
+            &params[0u], &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -608,9 +617,10 @@ MODEL_TEMPLATE(double, likelihood)(
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     return likelihood_(
-        target_,
+        &target_[0u],
         params,
         normalizing_constants[loc],
+        nterms(),
         as_log
     );
     
@@ -642,8 +652,67 @@ MODEL_TEMPLATE(double, likelihood)(
         
         first_calc_done[loc] = true;
         
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[loc].size() / k;
+
         normalizing_constants[loc] = update_normalizing_constant(
-            params, stats_support[loc]
+            &params[0u], &stats_support[loc][0u], k, n
+        );
+        
+        params_last[loc] = params;
+        
+    }
+    
+    return likelihood_(
+        &target_[0u],
+        params,
+        normalizing_constants[loc],
+        nterms(),
+        as_log
+    );
+    
+}
+
+MODEL_TEMPLATE(double, likelihood)(
+    const std::vector<double> & params,
+    const double * target_,
+    const uint & i,
+    bool as_log
+) {
+    
+    // Checking if the index exists
+    if (i >= arrays2support.size())
+        throw std::range_error("The requested support is out of range");
+
+    uint loc = arrays2support[i];
+
+    // Checking if passes the rules
+    if (support_fun.get_rules_dyn()->size() > 0u)
+    {
+
+        std::vector< double > tmp_target(nterms(), 0.0);
+        for (size_t t = 0u; t < nterms(); ++t)
+            tmp_target[t] = *(target_ + t);
+
+        if (!support_fun.eval_rules_dyn(tmp_target, 0u, 0u))
+            return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+
+    }
+
+    // Checking if this actually has a change of happening
+    if (this->stats_support[loc].size() == 0u)
+        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+    
+    // Checking if we have updated the normalizing constant or not
+    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
+        
+        first_calc_done[loc] = true;
+        
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[loc].size() / k;
+
+        normalizing_constants[loc] = update_normalizing_constant(
+            &params[0u], &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -654,6 +723,7 @@ MODEL_TEMPLATE(double, likelihood)(
         target_,
         params,
         normalizing_constants[loc],
+        nterms(),
         as_log
     );
     
@@ -664,15 +734,20 @@ MODEL_TEMPLATE(double, likelihood_total)(
     bool as_log
 ) {
     
-    for (uint i = 0u; i < params_last.size(); ++i)
+    size_t params_last_size = params_last.size();
+
+    for (uint i = 0u; i < params_last_size; ++i)
     {
 
         if (!first_calc_done[i] || !vec_equal_approx(params, params_last[i]) )
         {
+
+            size_t k = params.size() + 1u;
+            size_t n = stats_support[i].size() / k;
             
             first_calc_done[i] = true;
             normalizing_constants[i] = update_normalizing_constant(
-                params, stats_support[i]
+                &params[0u], &stats_support[i][0u], k, n
             );
             
             params_last[i] = params;
@@ -693,18 +768,19 @@ MODEL_TEMPLATE(double, likelihood_total)(
         #else
         #pragma GCC ivdep
         #endif
-        for (unsigned int i = 0u; i < params_last.size(); ++i)
+        for (unsigned int i = 0u; i < params_last_size; ++i)
             res -= (std::log(normalizing_constants[i]) * this->stats_support_n_arrays[i]);
 
     } else {
         
         res = 1.0;
+        size_t stats_target_size = stats_target.size();
         #ifdef __OPENM 
         #pragma omp simd reduction(*:res)
         #else
         #pragma GCC ivdep
         #endif
-        for (unsigned int i = 0; i < stats_target.size(); ++i)
+        for (unsigned int i = 0; i < stats_target_size; ++i)
             res *= std::exp(vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP) / 
                 normalizing_constants[arrays2support[i]];
         
@@ -732,8 +808,11 @@ MODEL_TEMPLATE(double, get_norm_const)(
         
         first_calc_done[id] = true;
         
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[id].size() / k;
+
         normalizing_constants[id] = update_normalizing_constant(
-                params, stats_support[id]
+            &params[0u], &stats_support[id][0u], k, n
         );
         
         params_last[id] = params;

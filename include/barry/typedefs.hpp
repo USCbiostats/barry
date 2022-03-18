@@ -198,8 +198,8 @@ inline bool vec_equal_approx(
 
 template <typename T>
 inline T vec_inner_prod(
-const std::vector< T > & a,
-const std::vector< T > & b
+    const std::vector< T > & a,
+    const std::vector< T > & b
 ) {
 
     
@@ -219,12 +219,14 @@ const std::vector< T > & b
 
 }
 
+#ifdef __OPENM
+#pragma omp declare simd
+#endif
 template <>
 inline double vec_inner_prod(
 const std::vector< double > & a,
 const std::vector< double > & b
 ) {
-    
     
     if (a.size() != b.size())
         throw std::length_error("-a- and -b- should have the same length.");

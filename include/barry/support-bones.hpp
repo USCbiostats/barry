@@ -152,6 +152,7 @@ public:
     void add_rule_dyn(Rule<Array_Type,Data_Rule_Dyn_Type> f_);
     void set_rules_dyn(Rules<Array_Type,Data_Rule_Dyn_Type> * rules_);
     bool eval_rules_dyn(const std::vector<double> & counts, const uint & i, const uint & j);
+    // bool eval_rules_dyn(const double * counts, const uint & i, const uint & j);
     ///@}
 
     /**

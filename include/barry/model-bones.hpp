@@ -42,7 +42,12 @@ inline std::vector< double > keygen_default(const Array_Type & Array_) {
  * @tparam Data_Counter_Type Any type.
  * @tparam Data_Rule_Type Any type.
  */
-template <typename Array_Type = BArray<>, typename Data_Counter_Type = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type = bool>
+template<
+    typename Array_Type = BArray<>,
+    typename Data_Counter_Type = bool,
+    typename Data_Rule_Type  = bool,
+    typename Data_Rule_Dyn_Type = bool
+    >
 class Model {
 
 private:
@@ -269,6 +274,13 @@ public:
     double likelihood(
         const std::vector<double> & params,
         const std::vector<double> & target_,
+        const uint & i,
+        bool as_log = false
+    );
+
+    double likelihood(
+        const std::vector<double> & params,
+        const double * target_,
         const uint & i,
         bool as_log = false
     );
