@@ -196,15 +196,15 @@ inline bool vec_equal_approx(
 }
 ///@}
 
+#ifdef __OPENM
+#pragma omp declare simd
+#endif
 template <typename T>
 inline T vec_inner_prod(
-    const std::vector< T > & a,
-    const std::vector< T > & b
+    const T * a,
+    const T * b,
+    size_t n
 ) {
-
-    
-    if (a.size() != b.size())
-        throw std::length_error("-a- and -b- should have the same length.");
     
     double res = 0.0;
     #ifdef __OPENM 
@@ -212,8 +212,8 @@ inline T vec_inner_prod(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < a.size(); ++i)
-        res += (a[i] * b[i]);
+    for (unsigned int i = 0u; i < n; ++i)
+        res += (*(a + i) * *(b + i));
     
     return res;
 
@@ -224,12 +224,10 @@ inline T vec_inner_prod(
 #endif
 template <>
 inline double vec_inner_prod(
-const std::vector< double > & a,
-const std::vector< double > & b
+    const double * a,
+    const double * b,
+    size_t n
 ) {
-    
-    if (a.size() != b.size())
-        throw std::length_error("-a- and -b- should have the same length.");
     
     double res = 0.0;
     #ifdef __OPENMP
@@ -237,8 +235,8 @@ const std::vector< double > & b
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < a.size(); ++i)
-        res += (a[i] * b[i]);
+    for (unsigned int i = 0u; i < n; ++i)
+        res += (*(a + i) * *(b + i));
     
     return res;
 
