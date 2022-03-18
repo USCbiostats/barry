@@ -17,8 +17,7 @@ inline double update_normalizing_constant(
 {
     
     double res = 0.0;
-
-    double tmp;
+    
     #ifdef __OPENMP
     #pragma omp simd reduction(+:res) 
     #else
@@ -27,14 +26,9 @@ inline double update_normalizing_constant(
     for (unsigned int i = 0u; i < n; ++i)
     {
 
-        tmp = 0.0;
+        double tmp = 0.0;
         const double * support_n = support + i * k + 1u;
         
-        // #ifdef __OPENM
-        // #pragma omp simd reduction(+:tmp)
-        // #else
-        // #pragma GCC ivdep
-        // #endif
         for (unsigned int j = 0u; j < (k - 1u); ++j)
             tmp += (*(support_n + j)) * (*(params + j));
         
