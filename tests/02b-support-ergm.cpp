@@ -128,13 +128,13 @@ BARRY_TEST_CASE("Computing support for NetworkDense", "[support-dense]")
     auto counts0 = counter2.count_all();
     net(3, 0) = 1;
     auto counts1 = counter2.count_all();
-  
+
     std::vector< double > diff(counts1.size(), 0.0);
     for (unsigned int i = 0; i < counts0.size(); ++i)
       diff[i] = counts1[i] - counts0[i];
 
     double logistic_prob0 = 1.0/
-        (1.0 + std::exp(-barry::vec_inner_prod<double>(p0, diff)));
+        (1.0 + std::exp(-barry::vec_inner_prod<double>(&p0[0u], &diff[0u], p0.size())));
 
     double logistic_prob1 = model2.conditional_prob(net, p0, 3, 0);
 

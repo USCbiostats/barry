@@ -39,8 +39,8 @@ BARRY_TEST_CASE("Computing support for NetworkDense (with Model)", "[support w m
   std::vector< double > logs_expected = {-61.79280, -48.59951};
   
   // phylocounters::PhyloArray node(4, 2);
-  netcounters::NetworkDense net(4, 4, {2}, {3});
-  net.set_data(new netcounters::NetworkData({0,0,1,0}), true);
+  netcounters::NetworkDense net(5, 5, {2}, {3});
+  net.set_data(new netcounters::NetworkData({0,0,1,0,1}), true);
   
   netcounters::NetModel< netcounters::NetworkDense > model;
   model.store_psets(); // Need this for sampling
@@ -82,10 +82,13 @@ BARRY_TEST_CASE("Computing support for NetworkDense (with Model)", "[support w m
 
   std::vector< double > logs0(2);
   std::vector< double > logs1(2);
-  logs0[0u] = model.likelihood_total(p0, true); 
-  logs0[1u] = model.likelihood_total(p1, true);
-  logs1[0u] = model.likelihood(p0, net, 0, true); 
-  logs1[1u] = model.likelihood(p1, net, 0, true);
+  for (size_t i = 0u; i < 50; ++i)
+  {
+    logs0[0u] = model.likelihood_total(p0, true); 
+    logs0[1u] = model.likelihood_total(p1, true);
+    logs1[0u] = model.likelihood(p0, net, 0, true); 
+    logs1[1u] = model.likelihood(p1, net, 0, true);
+  }
 
   // std::vector< double > margin = {std::fabs(logs_expected[0u] * .001), std::fabs(logs_expected[1u] * .001)};
 

@@ -30,17 +30,13 @@ inline double update_normalizing_constant(
         tmp = 0.0;
         const double * support_n = support + i * k + 1u;
         
-        #ifdef __OPENM
-        #pragma omp simd reduction(+:tmp)
-        #else
-        #pragma GCC ivdep
-        #endif
+        // #ifdef __OPENM
+        // #pragma omp simd reduction(+:tmp)
+        // #else
+        // #pragma GCC ivdep
+        // #endif
         for (unsigned int j = 0u; j < (k - 1u); ++j)
-        {
-
             tmp += (*(support_n + j)) * (*(params + j));
-            
-        }
         
         res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
 
@@ -761,7 +757,11 @@ MODEL_TEMPLATE(double, likelihood_total)(
     {
 
         for (uint i = 0; i < stats_target.size(); ++i) 
-            res += vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP;
+            res += vec_inner_prod(
+                &stats_target[i][0u],
+                &params[0u],
+                params.size()
+                ) BARRY_SAFE_EXP;
         
         #ifdef __OPENM 
         #pragma omp simd reduction(-:res)
@@ -781,7 +781,12 @@ MODEL_TEMPLATE(double, likelihood_total)(
         #pragma GCC ivdep
         #endif
         for (unsigned int i = 0; i < stats_target_size; ++i)
-            res *= std::exp(vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP) / 
+            res *= std::exp(
+                vec_inner_prod(
+                    &stats_target[i][0u],
+                    &params[0u],
+                    params.size()
+                ) BARRY_SAFE_EXP) / 
                 normalizing_constants[arrays2support[i]];
         
     }
@@ -1047,7 +1052,9 @@ MODEL_TEMPLATE(double, conditional_prob)(
         tmp_counts = transform_model_fun(&tmp_counts[0u], tmp_counts.size());
 
     return 1.0/
-        (1.0 + std::exp(-vec_inner_prod<double>(params, tmp_counts)));
+        (1.0 + std::exp(-vec_inner_prod<double>(
+            &params[0u], &tmp_counts[0u], params.size()
+            )));
 
     
 }
