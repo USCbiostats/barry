@@ -1,10 +1,11 @@
 // #include <vector>
 // #include "../include/barry.hpp"
 // #include "catch.hpp"
+#include "tests.hpp"
 
 using namespace barry::counters::network;
 
-TEST_CASE("Network counts work", "[counts]") {
+BARRY_TEST_CASE("Network counts work", "[counts]") {
   
   // Reading large network
   /**
@@ -92,6 +93,8 @@ TEST_CASE("Network counts work", "[counts]") {
   // net.print();
   print(expected_counts);
   
+  #ifdef CATCH_CONFIG_MAIN
   REQUIRE_THAT(expected_counts, Catch::Approx(ans).epsilon(.001));
+  #endif
 }
 

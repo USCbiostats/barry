@@ -182,7 +182,6 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
             change_stats[pos * n_counters + n] = tmp_chng;
 
         }
-            
 
     }
     
@@ -507,8 +506,27 @@ SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
 
     return rule_res;
 
-
 }
+
+// SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
+//     const double * counts,
+//     const uint & i,
+//     const uint & j
+// ) {
+
+//     if (rules_dyn->size() == 0u)
+//         return true;
+
+//     // Swapping pointers for a while
+//     std::vector< double > tmpstats = current_stats;
+//     current_stats = counts;
+
+//     bool rule_res = rules_dyn->operator()(EmptyArray, i, j);
+//     current_stats = tmpstats;
+
+//     return rule_res;
+
+// }
 
 //////////////////////////
 

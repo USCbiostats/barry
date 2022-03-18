@@ -801,6 +801,9 @@ inline void counter_idegree15(NetCounters<NetworkDense> * counters)
                 ideg++;
 
         }
+
+        if (ideg == 0)
+            return 0.0;
         
         if (ideg == 1)
             return 1.0;
@@ -876,6 +879,9 @@ inline void counter_odegree15(NetCounters<NetworkDense> * counters)
                 odeg++;
 
         }
+
+        if (odeg == 0)
+            return 0.0;
 
         if (odeg == 1)
             return 1.0;
