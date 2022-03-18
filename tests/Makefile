@@ -40,3 +40,6 @@ main.cachegrind.out: main.o
 03.o: 03b-support-ergm-b.cpp
 	$(CPP) $(CPPFLAGS) -O2 -g 03b-support-ergm-b.cpp -o 03.o
 
+13.o: 13-likelihood-benchmark.cpp
+	$(CPP) $(CPPFLAGS) -O2 -g 13-likelihood-benchmark.cpp -o 13.o
+
