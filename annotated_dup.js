@@ -19,6 +19,8 @@ var annotated_dup =
     [ "ConstBArrayRowIter", "class_const_b_array_row_iter.html", "class_const_b_array_row_iter" ],
     [ "Counter", "class_counter.html", "class_counter" ],
     [ "Counters", "class_counters.html", "class_counters" ],
+    [ "DEFMCounterData", "class_d_e_f_m_counter_data.html", "class_d_e_f_m_counter_data" ],
+    [ "DEFMData", "class_d_e_f_m_data.html", "class_d_e_f_m_data" ],
     [ "Entries", "class_entries.html", "class_entries" ],
     [ "Flock", "class_flock.html", "class_flock" ],
     [ "FreqTable", "class_freq_table.html", "class_freq_table" ],

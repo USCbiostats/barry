@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>barry: Your go-to motif accountant: Network counters</title>
+<title>barry: Your go-to motif accountant: DEFMArray counters</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('group__counters-network.html',''); ini
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Network counters</div>  </div>
+<div class="title">DEFMArray counters</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -104,6 +104,10 @@ $(document).ready(function(){initNavTree('group__counters-network.html',''); ini
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga4237bffaaf6a707bd4902661e52984a1"><td class="memTemplParams" colspan="2">template&lt;typename Tarray  = DEFMArray&gt; </td></tr>
+<tr class="memitem:ga4237bffaaf6a707bd4902661e52984a1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">counter_ones</a> (<a class="el" href="counters_2defm_8hpp.html#adc3b121854abd8a0283c8a59cd522a81">DEFMCounters</a>&lt; Tarray &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, int covar_index=-1)</td></tr>
+<tr class="memdesc:ga4237bffaaf6a707bd4902661e52984a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevalence of ones.  <a href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">More...</a><br /></td></tr>
+<tr class="separator:ga4237bffaaf6a707bd4902661e52984a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa20cbb0b2a612048d0c20bb9cabeb8e3"><td class="memTemplParams" colspan="2">template&lt;typename Tnet  = Network&gt; </td></tr>
 <tr class="memitem:gaa20cbb0b2a612048d0c20bb9cabeb8e3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gaa20cbb0b2a612048d0c20bb9cabeb8e3">counter_edges</a> (<a class="el" href="network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d">NetCounters</a>&lt; Tnet &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>)</td></tr>
 <tr class="memdesc:gaa20cbb0b2a612048d0c20bb9cabeb8e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of edges.  <a href="group__counters-network.html#gaa20cbb0b2a612048d0c20bb9cabeb8e3">More...</a><br /></td></tr>
@@ -203,6 +207,7 @@ Functions</h2></td></tr>
 <p><a class="el" href="class_counters.html" title="Vector of counters.">Counters</a> for network models. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">counters</td><td>A pointer to a <code>DEFMCounters</code> object (<code><a class="el" href="class_counters.html" title="Vector of counters.">Counters</a></code>&lt;<code>DEFMArray</code>, <code><a class="el" href="class_d_e_f_m_counter_data.html" title="Data class used to store arbitrary uint or double vectors.">DEFMCounterData</a></code>&gt;).</td></tr>
     <tr><td class="paramname">counters</td><td>A pointer to a <code>NetCounters</code> object (<code><a class="el" href="class_counters.html" title="Vector of counters.">Counters</a></code>&lt;<code>Network</code>, <code><a class="el" href="class_net_counter_data.html" title="Data class used to store arbitrary uint or double vectors.">NetCounterData</a></code>&gt;). </td></tr>
   </table>
   </dd>
@@ -252,7 +257,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 
 <p>Sum of absolute attribute difference between ego and alter. </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00904">904</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00910">910</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -354,7 +359,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 
 <p>Counts number of vertices with a given out-degree. </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01322">1322</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01328">1328</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -438,7 +443,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 
 <p>Sum of attribute difference between ego and alter to pow(alpha) </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00949">949</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00955">955</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -510,7 +515,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01166">1166</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01172">1172</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -552,7 +557,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 
 <p>Counts number of vertices with a given in-degree. </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01119">1119</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01125">1125</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -806,7 +811,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01062">1062</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01068">1068</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -846,7 +851,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01012">1012</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01018">1018</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -886,7 +891,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01087">1087</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01093">1093</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -926,7 +931,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01037">1037</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01043">1043</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -966,7 +971,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01267">1267</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01273">1273</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -1008,7 +1013,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 
 <p>Counts number of vertices with a given out-degree. </p>
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01219">1219</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l01225">1225</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -1038,7 +1043,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00861">861</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00864">864</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -1068,7 +1073,63 @@ template&lt;typename Tnet  = Network&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00833">833</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00836">836</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ga4237bffaaf6a707bd4902661e52984a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4237bffaaf6a707bd4902661e52984a1">&#9670;&nbsp;</a></span>counter_ones()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Tarray  = DEFMArray&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void counter_ones </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="counters_2defm_8hpp.html#adc3b121854abd8a0283c8a59cd522a81">DEFMCounters</a>&lt; Tarray &gt; *&#160;</td>
+          <td class="paramname"><em>counters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>covar_index</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prevalence of ones. </p>
+<p>Canonical term.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Tarray</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">counters</td><td>Pointer ot a vector of counters </td></tr>
+    <tr><td class="paramname">covar_index</td><td>If &gt;= than 0, then the interaction </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00167">167</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -1208,7 +1269,7 @@ template&lt;typename Tnet  = Network&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00993">993</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00999">999</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -1217,7 +1278,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Mar 16 2022 23:09:00 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Mar 18 2022 22:44:42 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

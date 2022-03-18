@@ -20,9 +20,9 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{model-meat_8hpp_ad7e8525ae043a17e7b6edc07ccad3a8c}{update\+\_\+normalizing\+\_\+constant}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&params, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&support)
+double \mbox{\hyperlink{model-meat_8hpp_a298affefd54bd00274c6af4dd64053be}{update\+\_\+normalizing\+\_\+constant}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$params, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$support, size\+\_\+t k, size\+\_\+t n)
 \item 
-double \mbox{\hyperlink{model-meat_8hpp_a4e5aa6602c6b016a997fc4bc4889389a}{likelihood\+\_\+}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&stats\+\_\+target, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&params, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double normalizing\+\_\+constant, bool log\+\_\+=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}})
+double \mbox{\hyperlink{model-meat_8hpp_a40cd8ec3301c44ffdc24b74e8e4eadc5}{likelihood\+\_\+}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$stats\+\_\+target, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&params, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double normalizing\+\_\+constant, size\+\_\+t n\+\_\+params, bool log\+\_\+=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}})
 \item 
 \mbox{\hyperlink{model-meat_8hpp_a16e011aa4221e3c5ff8fad077800c101}{MODEL\+\_\+\+TEMPLATE}} (, \mbox{\hyperlink{class_model}{Model}})()
 \item 
@@ -39,7 +39,7 @@ double \mbox{\hyperlink{model-meat_8hpp_a4e5aa6602c6b016a997fc4bc4889389a}{likel
 
 
 
-Definition at line 97 of file model-\/meat.\+hpp.
+Definition at line 89 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a122c313b8f98e5d915b2d362342aaa42}\label{model-meat_8hpp_a122c313b8f98e5d915b2d362342aaa42}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE\_ARGS@{MODEL\_TEMPLATE\_ARGS}}
@@ -55,7 +55,7 @@ Definition at line 97 of file model-\/meat.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 94 of file model-\/meat.\+hpp.
+Definition at line 86 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a24ddbed8965ed12e96bdb37abf4c317c}\label{model-meat_8hpp_a24ddbed8965ed12e96bdb37abf4c317c}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TYPE@{MODEL\_TYPE}}
@@ -71,20 +71,20 @@ Definition at line 94 of file model-\/meat.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 91 of file model-\/meat.\+hpp.
+Definition at line 83 of file model-\/meat.\+hpp.
 
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{model-meat_8hpp_a4e5aa6602c6b016a997fc4bc4889389a}\label{model-meat_8hpp_a4e5aa6602c6b016a997fc4bc4889389a}} 
+\mbox{\Hypertarget{model-meat_8hpp_a40cd8ec3301c44ffdc24b74e8e4eadc5}\label{model-meat_8hpp_a40cd8ec3301c44ffdc24b74e8e4eadc5}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!likelihood\_@{likelihood\_}}
 \index{likelihood\_@{likelihood\_}!model-\/meat.hpp@{model-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{likelihood\_()}{likelihood\_()}}
-{\footnotesize\ttfamily double likelihood\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{stats\+\_\+target,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{params,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double}]{normalizing\+\_\+constant,  }\item[{bool}]{log\+\_\+ = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily double likelihood\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$}]{stats\+\_\+target,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{params,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double}]{normalizing\+\_\+constant,  }\item[{size\+\_\+t}]{n\+\_\+params,  }\item[{bool}]{log\+\_\+ = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 56 of file model-\/meat.\+hpp.
+Definition at line 47 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a16e011aa4221e3c5ff8fad077800c101}\label{model-meat_8hpp_a16e011aa4221e3c5ff8fad077800c101}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -94,7 +94,7 @@ Definition at line 56 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 101 of file model-\/meat.\+hpp.
+Definition at line 93 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a260825c37355e3dc0a5eaa60c3656127}\label{model-meat_8hpp_a260825c37355e3dc0a5eaa60c3656127}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -104,13 +104,13 @@ Definition at line 101 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 165 of file model-\/meat.\+hpp.
+Definition at line 157 of file model-\/meat.\+hpp.
 
-\mbox{\Hypertarget{model-meat_8hpp_ad7e8525ae043a17e7b6edc07ccad3a8c}\label{model-meat_8hpp_ad7e8525ae043a17e7b6edc07ccad3a8c}} 
+\mbox{\Hypertarget{model-meat_8hpp_a298affefd54bd00274c6af4dd64053be}\label{model-meat_8hpp_a298affefd54bd00274c6af4dd64053be}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!update\_normalizing\_constant@{update\_normalizing\_constant}}
 \index{update\_normalizing\_constant@{update\_normalizing\_constant}!model-\/meat.hpp@{model-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{update\_normalizing\_constant()}{update\_normalizing\_constant()}}
-{\footnotesize\ttfamily double update\+\_\+normalizing\+\_\+constant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{params,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{support }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily double update\+\_\+normalizing\+\_\+constant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$}]{params,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$}]{support,  }\item[{size\+\_\+t}]{k,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

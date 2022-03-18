@@ -24,6 +24,7 @@ var group__counters_network =
     [ "counter_odegree", "group__counters-network.html#gaaae1b44d32d04b450d511d6de7f5af39", null ],
     [ "counter_odegree15", "group__counters-network.html#gad45b2c461b0ce77715410ce9d11efbe6", null ],
     [ "counter_odegree15", "group__counters-network.html#gac3f7b3edf5f2f648a6780ebe6505ae73", null ],
+    [ "counter_ones", "group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1", null ],
     [ "counter_ostar2", "group__counters-network.html#gad2e83eeaed6f17346ac8ac1ca64b327a", null ],
     [ "counter_ostar2", "group__counters-network.html#ga218f364352e49e462d6f152ad848f9dc", null ],
     [ "counter_ttriads", "group__counters-network.html#gadadede01536081fb8b79e4d14368f946", null ],

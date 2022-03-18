@@ -29,6 +29,7 @@ var class_model =
     [ "get_stats_target", "class_model.html#a6eacbc0a8bb76ae183ec9cc112767dd6", null ],
     [ "get_support_fun", "class_model.html#a0a5e28f9d316bbc914a6d8f24071f8c1", null ],
     [ "likelihood", "class_model.html#a42cc1109ccaf9b016a1c1787cd356c0b", null ],
+    [ "likelihood", "class_model.html#af80e5e5dcf9410c4ad594ac356533ab5", null ],
     [ "likelihood", "class_model.html#a64f75d5e8fda31a27e3bf2aeb95a81da", null ],
     [ "likelihood", "class_model.html#a6b7ca648f1b2f04967e0d3473ae13eab", null ],
     [ "likelihood_total", "class_model.html#a849c382c401986612056d6fdf043deb4", null ],

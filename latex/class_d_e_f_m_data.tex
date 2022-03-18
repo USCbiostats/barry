@@ -1,0 +1,199 @@
+\hypertarget{class_d_e_f_m_data}{}\doxysection{DEFMData Class Reference}
+\label{class_d_e_f_m_data}\index{DEFMData@{DEFMData}}
+
+
+Data class for DEFM arrays.  
+
+
+
+
+{\ttfamily \#include $<$defm.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_d_e_f_m_data_aa0a9abe59bcd6b7bf7943af55804487d}{DEFMData}} ()
+\item 
+\mbox{\hyperlink{class_d_e_f_m_data_af21c1bb6f46d2793a17f3377ef21da9d}{DEFMData}} (std\+::vector$<$ double $>$ $\ast$covariates\+\_\+, size\+\_\+t obs\+\_\+start\+\_\+, size\+\_\+t obs\+\_\+n\+\_\+times\+\_\+, size\+\_\+t n\+\_\+states\+\_\+, size\+\_\+t n\+\_\+covariates\+\_\+)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_d_e_f_m_data_a637f2c896da37c0f3a72bd0174ca718c}{$\sim$\+DEFMData}} ()
+\end{DoxyCompactItemize}
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_d_e_f_m_data_aa4d2d2452715c127440cc102184828ec}{operator()}} (size\+\_\+t \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}})
+\begin{DoxyCompactList}\small\item\em Access to the row (i) colum (j) data. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_d_e_f_m_data_aa4ac92ec9891a1d6791bf0f703ef10c0}{at}} (size\+\_\+t \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}})
+\end{DoxyCompactItemize}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ $\ast$ \mbox{\hyperlink{class_d_e_f_m_data_a61b20537621f329bf2c1b1ccd28c1df3}{covariates}}
+\begin{DoxyCompactList}\small\item\em Vector of covariates (complete vector) \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_data_a89a3ee0a0a27f78c47b010d5498e1fd2}{obs\+\_\+start}}
+\begin{DoxyCompactList}\small\item\em Index of the observation in the data. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_data_a0dea095b0dfea6a4ad45cc93336b1e96}{obs\+\_\+n\+\_\+times}}
+\begin{DoxyCompactList}\small\item\em Number of observations in the model. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_data_a78c70f5bc902e34018735350ff8d2ee3}{n\+\_\+covariates}}
+\begin{DoxyCompactList}\small\item\em Number of covariates included in the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Data class for DEFM arrays. 
+
+Details on the available counters for {\ttfamily DEFMwork\+Data} can be found in the \mbox{\hyperlink{group__counters-network}{DEFMArray counters}} section.
+
+This holds information pointing to the data array, including information regarding the number of observations, the time slices of the observation, and the number of covariates in the data. 
+
+Definition at line 20 of file defm.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_d_e_f_m_data_aa0a9abe59bcd6b7bf7943af55804487d}\label{class_d_e_f_m_data_aa0a9abe59bcd6b7bf7943af55804487d}} 
+\index{DEFMData@{DEFMData}!DEFMData@{DEFMData}}
+\index{DEFMData@{DEFMData}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{DEFMData()}{DEFMData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily DEFMData\+::\+DEFMData (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 28 of file defm.\+hpp.
+
+\mbox{\Hypertarget{class_d_e_f_m_data_af21c1bb6f46d2793a17f3377ef21da9d}\label{class_d_e_f_m_data_af21c1bb6f46d2793a17f3377ef21da9d}} 
+\index{DEFMData@{DEFMData}!DEFMData@{DEFMData}}
+\index{DEFMData@{DEFMData}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{DEFMData()}{DEFMData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily DEFMData\+::\+DEFMData (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ $\ast$}]{covariates\+\_\+,  }\item[{size\+\_\+t}]{obs\+\_\+start\+\_\+,  }\item[{size\+\_\+t}]{obs\+\_\+n\+\_\+times\+\_\+,  }\item[{size\+\_\+t}]{n\+\_\+states\+\_\+,  }\item[{size\+\_\+t}]{n\+\_\+covariates\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em covariates\+\_\+} & Pointer to the attribute data. \\
+\hline
+{\em obs\+\_\+start\+\_\+} & Location of the current observation in the covariates vector \\
+\hline
+{\em obs\+\_\+n\+\_\+times\+\_\+} & Number of observations in the model \\
+\hline
+{\em n\+\_\+covariates\+\_\+} & Number of columns (covariates.) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 38 of file defm.\+hpp.
+
+\mbox{\Hypertarget{class_d_e_f_m_data_a637f2c896da37c0f3a72bd0174ca718c}\label{class_d_e_f_m_data_a637f2c896da37c0f3a72bd0174ca718c}} 
+\index{DEFMData@{DEFMData}!````~DEFMData@{$\sim$DEFMData}}
+\index{````~DEFMData@{$\sim$DEFMData}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{$\sim$DEFMData()}{~DEFMData()}}
+{\footnotesize\ttfamily DEFMData\+::$\sim$\+DEFMData (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 57 of file defm.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_d_e_f_m_data_aa4ac92ec9891a1d6791bf0f703ef10c0}\label{class_d_e_f_m_data_aa4ac92ec9891a1d6791bf0f703ef10c0}} 
+\index{DEFMData@{DEFMData}!at@{at}}
+\index{at@{at}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily double DEFMData\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 66 of file defm.\+hpp.
+
+\mbox{\Hypertarget{class_d_e_f_m_data_aa4d2d2452715c127440cc102184828ec}\label{class_d_e_f_m_data_aa4d2d2452715c127440cc102184828ec}} 
+\index{DEFMData@{DEFMData}!operator()@{operator()}}
+\index{operator()@{operator()}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily double DEFMData\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access to the row (i) colum (j) data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+{\em j} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Definition at line 61 of file defm.\+hpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_d_e_f_m_data_a61b20537621f329bf2c1b1ccd28c1df3}\label{class_d_e_f_m_data_a61b20537621f329bf2c1b1ccd28c1df3}} 
+\index{DEFMData@{DEFMData}!covariates@{covariates}}
+\index{covariates@{covariates}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{covariates}{covariates}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$$\ast$ DEFMData\+::covariates}
+
+
+
+Vector of covariates (complete vector) 
+
+
+
+Definition at line 23 of file defm.\+hpp.
+
+\mbox{\Hypertarget{class_d_e_f_m_data_a78c70f5bc902e34018735350ff8d2ee3}\label{class_d_e_f_m_data_a78c70f5bc902e34018735350ff8d2ee3}} 
+\index{DEFMData@{DEFMData}!n\_covariates@{n\_covariates}}
+\index{n\_covariates@{n\_covariates}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{n\_covariates}{n\_covariates}}
+{\footnotesize\ttfamily size\+\_\+t DEFMData\+::n\+\_\+covariates}
+
+
+
+Number of covariates included in the model. 
+
+
+
+Definition at line 26 of file defm.\+hpp.
+
+\mbox{\Hypertarget{class_d_e_f_m_data_a0dea095b0dfea6a4ad45cc93336b1e96}\label{class_d_e_f_m_data_a0dea095b0dfea6a4ad45cc93336b1e96}} 
+\index{DEFMData@{DEFMData}!obs\_n\_times@{obs\_n\_times}}
+\index{obs\_n\_times@{obs\_n\_times}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{obs\_n\_times}{obs\_n\_times}}
+{\footnotesize\ttfamily size\+\_\+t DEFMData\+::obs\+\_\+n\+\_\+times}
+
+
+
+Number of observations in the model. 
+
+
+
+Definition at line 25 of file defm.\+hpp.
+
+\mbox{\Hypertarget{class_d_e_f_m_data_a89a3ee0a0a27f78c47b010d5498e1fd2}\label{class_d_e_f_m_data_a89a3ee0a0a27f78c47b010d5498e1fd2}} 
+\index{DEFMData@{DEFMData}!obs\_start@{obs\_start}}
+\index{obs\_start@{obs\_start}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{obs\_start}{obs\_start}}
+{\footnotesize\ttfamily size\+\_\+t DEFMData\+::obs\+\_\+start}
+
+
+
+Index of the observation in the data. 
+
+
+
+Definition at line 24 of file defm.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/barry/counters/\mbox{\hyperlink{counters_2defm_8hpp}{defm.\+hpp}}\end{DoxyCompactItemize}

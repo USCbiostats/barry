@@ -122,10 +122,10 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad7e8525ae043a17e7b6edc07ccad3a8c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model-meat_8hpp.html#ad7e8525ae043a17e7b6edc07ccad3a8c">update_normalizing_constant</a> (<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> std::vector&lt; double &gt; &amp;params, <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> std::vector&lt; double &gt; &amp;support)</td></tr>
-<tr class="separator:ad7e8525ae043a17e7b6edc07ccad3a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e5aa6602c6b016a997fc4bc4889389a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model-meat_8hpp.html#a4e5aa6602c6b016a997fc4bc4889389a">likelihood_</a> (<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> std::vector&lt; double &gt; &amp;stats_target, <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> std::vector&lt; double &gt; &amp;params, <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double normalizing_constant, bool log_=<a class="el" href="barraydense-meat_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>)</td></tr>
-<tr class="separator:a4e5aa6602c6b016a997fc4bc4889389a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a298affefd54bd00274c6af4dd64053be"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model-meat_8hpp.html#a298affefd54bd00274c6af4dd64053be">update_normalizing_constant</a> (<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double *params, <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double *support, size_t k, size_t n)</td></tr>
+<tr class="separator:a298affefd54bd00274c6af4dd64053be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40cd8ec3301c44ffdc24b74e8e4eadc5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model-meat_8hpp.html#a40cd8ec3301c44ffdc24b74e8e4eadc5">likelihood_</a> (<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double *stats_target, <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> std::vector&lt; double &gt; &amp;params, <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double normalizing_constant, size_t n_params, bool log_=<a class="el" href="barraydense-meat_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>)</td></tr>
+<tr class="separator:a40cd8ec3301c44ffdc24b74e8e4eadc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16e011aa4221e3c5ff8fad077800c101"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model-meat_8hpp.html#a16e011aa4221e3c5ff8fad077800c101">MODEL_TEMPLATE</a> (, <a class="el" href="class_model.html">Model</a>)()</td></tr>
 <tr class="separator:a16e011aa4221e3c5ff8fad077800c101"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a260825c37355e3dc0a5eaa60c3656127"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model-meat_8hpp.html#a260825c37355e3dc0a5eaa60c3656127">MODEL_TEMPLATE</a> (, <a class="el" href="class_model.html">Model</a>)(<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> <a class="el" href="model-meat_8hpp.html#a24ddbed8965ed12e96bdb37abf4c317c">MODEL_TYPE</a>() &amp;Model_)</td></tr>
@@ -158,7 +158,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00097">97</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00089">89</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -179,7 +179,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    &lt;<span class="keyword">typename</span> Array_Type, <span class="keyword">typename</span> Data_Counter_Type,\</div>
 <div class="line">    typename Data_Rule_Type, <span class="keyword">typename</span> Data_Rule_Dyn_Type&gt;</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00094">94</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00086">86</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -199,15 +199,15 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="class_model.html">Model</a>&lt;Array_Type,Data_Counter_Type,Data_Rule_Type,\</div>
 <div class="line">    Data_Rule_Dyn_Type&gt;</div>
-<div class="ttc" id="aclass_model_html"><div class="ttname"><a href="class_model.html">Model</a></div><div class="ttdoc">General framework for discrete exponential models. This class allows generating discrete exponential ...</div><div class="ttdef"><b>Definition:</b> <a href="model-bones_8hpp_source.html#l00046">model-bones.hpp:46</a></div></div>
+<div class="ttc" id="aclass_model_html"><div class="ttname"><a href="class_model.html">Model</a></div><div class="ttdoc">General framework for discrete exponential models. This class allows generating discrete exponential ...</div><div class="ttdef"><b>Definition:</b> <a href="model-bones_8hpp_source.html#l00051">model-bones.hpp:51</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00091">91</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00083">83</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a4e5aa6602c6b016a997fc4bc4889389a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e5aa6602c6b016a997fc4bc4889389a">&#9670;&nbsp;</a></span>likelihood_()</h2>
+<a id="a40cd8ec3301c44ffdc24b74e8e4eadc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40cd8ec3301c44ffdc24b74e8e4eadc5">&#9670;&nbsp;</a></span>likelihood_()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,7 +218,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">double likelihood_ </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double *&#160;</td>
           <td class="paramname"><em>stats_target</em>, </td>
         </tr>
         <tr>
@@ -232,6 +232,12 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double&#160;</td>
           <td class="paramname"><em>normalizing_constant</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n_params</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -252,7 +258,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00056">56</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00047">47</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -272,7 +278,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00101">101</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00093">93</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -292,12 +298,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00165">165</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="model-meat_8hpp_source.html#l00157">157</a> of file <a class="el" href="model-meat_8hpp_source.html">model-meat.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad7e8525ae043a17e7b6edc07ccad3a8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7e8525ae043a17e7b6edc07ccad3a8c">&#9670;&nbsp;</a></span>update_normalizing_constant()</h2>
+<a id="a298affefd54bd00274c6af4dd64053be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a298affefd54bd00274c6af4dd64053be">&#9670;&nbsp;</a></span>update_normalizing_constant()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -308,14 +314,26 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">double update_normalizing_constant </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double *&#160;</td>
           <td class="paramname"><em>params</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> std::vector&lt; double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>support</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double *&#160;</td>
+          <td class="paramname"><em>support</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -340,7 +358,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="model-meat_8hpp.html">model-meat.hpp</a></li>
-    <li class="footer">Generated on Wed Mar 16 2022 23:09:00 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Mar 18 2022 22:44:41 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
