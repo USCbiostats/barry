@@ -21,7 +21,7 @@ BARRY_TEST_CASE("Phylo counts work", "[phylo counts]") {
     A1_dpl(2, 1) = 1;
 
     PhyloArray A1_spe(A1_dpl, true);
-    A1_spe.D()->duplication = false;
+    A1_spe.D_ptr()->duplication = false;
     
     // Adding counters
     PhyloStatsCounter counter(&A1_dpl);
@@ -78,7 +78,7 @@ BARRY_TEST_CASE("Phylo counts work", "[phylo counts]") {
     A2_dpl(2, 0) = 1;
 
     PhyloArray A2_spe(A2_dpl, true);
-    A2_spe.D()->duplication = false;
+    A2_spe.D_ptr()->duplication = false;
     
     // Adding counters
     PhyloStatsCounter counter2(&A2_dpl);

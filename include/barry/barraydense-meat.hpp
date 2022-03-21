@@ -338,12 +338,20 @@ BDENSE_TEMPLATE(void, set_data) (
     
 }
 
-BDENSE_TEMPLATE(Data_Type *, D) () {
+BDENSE_TEMPLATE(Data_Type *, D_ptr) () {
     return this->data;
 }
 
-BDENSE_TEMPLATE(const Data_Type *, D) () const {
+BDENSE_TEMPLATE(const Data_Type *, D_ptr) () const {
     return this->data;
+}
+
+BDENSE_TEMPLATE(Data_Type &, D) () {
+    return *this->data;
+}
+
+BDENSE_TEMPLATE(const Data_Type &, D) () const {
+    return *this->data;
 }
 
 BDENSE_TEMPLATE(void, out_of_range) (

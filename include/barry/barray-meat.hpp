@@ -358,15 +358,26 @@ BARRAY_TEMPLATE(void, set_data) (
     
 }
 
-BARRAY_TEMPLATE(Data_Type *, D) ()
+BARRAY_TEMPLATE(Data_Type *, D_ptr) ()
 {
     return this->data;
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline const Data_Type * BArray<Cell_Type,Data_Type>::D() const
+inline const Data_Type * BArray<Cell_Type,Data_Type>::D_ptr() const
 {
     return this->data;
+}
+
+BARRAY_TEMPLATE(Data_Type &, D) ()
+{
+    return *this->data;
+}
+
+template<typename Cell_Type, typename Data_Type>
+inline const Data_Type & BArray<Cell_Type,Data_Type>::D() const
+{
+    return *this->data;
 }
 
 template<typename Cell_Type, typename Data_Type>
