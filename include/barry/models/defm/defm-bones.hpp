@@ -30,13 +30,13 @@ inline std::vector< double > keygen_full(
     // State of the parent
     dat.push_back(0.0);
     unsigned int count = 0u;
-    for (bool i : array.D()->states) {
+    for (bool i : array.D_ptr()->states) {
         dat[dat.size() - 1u] += (i ? 1.0 : 0.0) * pow(10, static_cast<double>(count));
         count++;
     }
 
     // Type of the parent
-    dat.push_back(array.D()->duplication ? 1.0 : 0.0);
+    dat.push_back(array.D_ptr()->duplication ? 1.0 : 0.0);
 
     return dat;
 }

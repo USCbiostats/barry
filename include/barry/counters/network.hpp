@@ -283,10 +283,10 @@ inline void counter_mutual(NetCounters<Tnet> * counters)
         if (Array.nrow() != Array.ncol())
             throw std::logic_error("The -mutual- counter only works on square arrays.");
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (!Array.D()->directed)
+        if (!Array.D_ptr()->directed)
             throw std::logic_error(
                 "The -mutual- counter only works on directed (non-symmetric) arrays."
                 );
@@ -506,10 +506,10 @@ inline void counter_ttriads(NetCounters<Tnet> * counters)
     NETWORK_COUNTER_LAMBDA(tmp_init)
     {
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (!(Array.D()->directed))
+        if (!(Array.D_ptr()->directed))
             throw std::invalid_argument("The ttriads counter is only valid for directed networks. This is undirected.");
 
         return 0.0;
@@ -583,10 +583,10 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
     NETWORKDENSE_COUNTER_LAMBDA(tmp_init)
     {
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (!(Array.D()->directed))
+        if (!(Array.D_ptr()->directed))
             throw std::invalid_argument("The ttriads counter is only valid for directed networks. This is undirected.");
 
         return 0.0;
@@ -639,10 +639,10 @@ inline void counter_ctriads(NetCounters<Tnet> * counters)
     NETWORK_COUNTER_LAMBDA(tmp_init)
     {
 
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (!(Array.D()->directed))
+        if (!(Array.D_ptr()->directed))
             throw std::invalid_argument(
                 "The ctriads counter is only valid for directed networks. This is undirected."
                 );
@@ -704,10 +704,10 @@ inline void counter_ctriads(NetCounters<NetworkDense> * counters)
     NETWORKDENSE_COUNTER_LAMBDA(tmp_init)
     {
 
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (!(Array.D()->directed))
+        if (!(Array.D_ptr()->directed))
             throw std::invalid_argument(
                 "The ctriads counter is only valid for directed networks. This is undirected."
                 );
@@ -736,7 +736,7 @@ inline void counter_density(NetCounters<Tnet> * counters)
         
         return
             1.0/(Array.nrow() * (Array.ncol() - 1.0)) / (
-                (Array.D()->directed)? 1.0 : 2.0
+                (Array.D_ptr()->directed)? 1.0 : 2.0
             );
         
     };
@@ -917,8 +917,8 @@ inline void counter_absdiff(
     {
         
         return std::pow(std::fabs(
-                Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][i] - 
-                    Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][j]
+                Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][i] - 
+                    Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][j]
         ), NET_C_DATA_NUM(0u));
         
     };
@@ -926,13 +926,13 @@ inline void counter_absdiff(
     NETWORK_COUNTER_LAMBDA(tmp_init)
     {
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (Array.D()->vertex_attr.size() == 0u)
+        if (Array.D_ptr()->vertex_attr.size() == 0u)
             throw std::range_error("No attributes in the Array.");
         
-        if ((NET_C_DATA_IDX(0u) != 0u) && (Array.D()->vertex_attr.size() <= (NET_C_DATA_IDX(0u) - 1u)))
+        if ((NET_C_DATA_IDX(0u) != 0u) && (Array.D_ptr()->vertex_attr.size() <= (NET_C_DATA_IDX(0u) - 1u)))
             throw std::range_error("Attribute index out of range.");
         
         return 0.0;
@@ -963,8 +963,8 @@ inline void counter_diff(
     {
         
         return std::pow(NET_C_DATA_NUM(1u) * (
-                Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][i] - 
-                    Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][j]
+                Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][i] - 
+                    Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][j]
         ), NET_C_DATA_NUM(0u));
         
     };
@@ -972,13 +972,13 @@ inline void counter_diff(
     NETWORK_COUNTER_LAMBDA(tmp_init)
     {
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (Array.D()->vertex_attr.size() == 0u)
+        if (Array.D_ptr()->vertex_attr.size() == 0u)
             throw std::range_error("No attributes in the Array.");
         
-        if ((NET_C_DATA_IDX(0u) != 0u) && (Array.D()->vertex_attr.size() <= (NET_C_DATA_IDX(0u) - 1u)))
+        if ((NET_C_DATA_IDX(0u) != 0u) && (Array.D_ptr()->vertex_attr.size() <= (NET_C_DATA_IDX(0u) - 1u)))
             throw std::range_error("Attribute index out of range.");
         
         return 0.0;
@@ -999,13 +999,13 @@ inline void counter_diff(
 NETWORK_COUNTER(init_single_attr)
 {
     
-    if (Array.D() == nullptr)
+    if (Array.D_ptr() == nullptr)
         throw std::logic_error("The array data has not been initialized");
     
-    if (Array.D()->vertex_attr.size() == 0u)
+    if (Array.D_ptr()->vertex_attr.size() == 0u)
         throw std::range_error("No attributes in the Array.");
     
-    if ((NET_C_DATA_IDX(0u) != 0u) && (Array.D()->vertex_attr.size() <= (NET_C_DATA_IDX(0u) - 1u)))
+    if ((NET_C_DATA_IDX(0u) != 0u) && (Array.D_ptr()->vertex_attr.size() <= (NET_C_DATA_IDX(0u) - 1u)))
         throw std::range_error("Attribute index out of range.");
     
     return 0.0;
@@ -1023,7 +1023,7 @@ inline void counter_nodeicov(
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
         
-        return Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][j];
+        return Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][j];
         
     };
     
@@ -1048,7 +1048,7 @@ inline void counter_nodeocov(
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
         
-        return Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][i];
+        return Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][i];
         
     };
     
@@ -1073,8 +1073,8 @@ inline void counter_nodecov(
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
         
-        return Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][i] +
-            Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][j];
+        return Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][i] +
+            Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][j];
         
     };
     
@@ -1100,8 +1100,8 @@ inline void counter_nodematch(
         
         return 
         (
-                Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][i] == 
-                    Array.D()->vertex_attr[NET_C_DATA_IDX(0u)][j]
+                Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][i] == 
+                    Array.D_ptr()->vertex_attr[NET_C_DATA_IDX(0u)][j]
         )? 1.0 : 0.0;
         
     };
@@ -1143,10 +1143,10 @@ inline void counter_idegree(
     NETWORK_COUNTER_LAMBDA(tmp_init)
     {
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (!Array.D()->directed)
+        if (!Array.D_ptr()->directed)
             throw std::logic_error("-odegree- counter is only valid for directed graphs");
         
         if (NET_C_DATA_IDX(0u) == 0u)
@@ -1194,10 +1194,10 @@ inline void counter_idegree(
     NETWORKDENSE_COUNTER_LAMBDA(tmp_init)
     {
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (!Array.D()->directed)
+        if (!Array.D_ptr()->directed)
             throw std::logic_error("-odegree- counter is only valid for directed graphs");
         
         if (NET_C_DATA_IDX(0u) == 0u)
@@ -1243,10 +1243,10 @@ inline void counter_odegree(
     NETWORK_COUNTER_LAMBDA(tmp_init)
     {
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (!Array.D()->directed)
+        if (!Array.D_ptr()->directed)
             throw std::logic_error("-odegree- counter is only valid for directed graphs");
         
         if (NET_C_DATA_IDX(0u) == 0u)
@@ -1295,10 +1295,10 @@ inline void counter_odegree(
     NETWORKDENSE_COUNTER_LAMBDA(tmp_init)
     {
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (!Array.D()->directed)
+        if (!Array.D_ptr()->directed)
             throw std::logic_error("-odegree- counter is only valid for directed graphs");
         
         if (NET_C_DATA_IDX(0u) == 0u)
@@ -1343,10 +1343,10 @@ inline void counter_degree(
     
     NETWORK_COUNTER_LAMBDA(tmp_init) {
         
-        if (Array.D() == nullptr)
+        if (Array.D_ptr() == nullptr)
             throw std::logic_error("The array data has not been initialized");
         
-        if (Array.D()->directed)
+        if (Array.D_ptr()->directed)
             throw std::logic_error("-degree- counter is only valid for undirected graphs");
         
         if (NET_C_DATA_IDX(0u) == 0u)

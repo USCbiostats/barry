@@ -9,7 +9,7 @@
 
 
 #define MAKE_DUPL_VARS() \
-    bool DPL = Array.D()->duplication; \
+    bool DPL = Array.D_ptr()->duplication; \
     unsigned int DATA_AT = data[0u];
 
 #define IS_EITHER()      (DATA_AT == DUPL_EITH)
@@ -136,7 +136,7 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
 #define PHYLO_RULE_DYN_LAMBDA(a) Rule_fun_type<PhyloArray, PhyloRuleDynData> a = \
     [](const PhyloArray & Array, uint i, uint j, PhyloRuleDynData & data)
 
-#define PHYLO_CHECK_MISSING() if (Array.D() == nullptr) \
+#define PHYLO_CHECK_MISSING() if (Array.D_ptr() == nullptr) \
     throw std::logic_error("The array data is nullptr."); \
     
 inline std::string get_last_name(unsigned int d) {return ((d == 1u)? " at duplication" : ((d == 0u)? " at speciation" : ""));}
@@ -172,7 +172,7 @@ inline void counter_overall_gains(
         IF_NOTMATCHES()
             return 0.0;
       
-        return Array.D()->states[i] ? 0.0 : 1.0;
+        return Array.D_ptr()->states[i] ? 0.0 : 1.0;
       
     };
     
@@ -205,7 +205,7 @@ inline void counter_gains(
 
         double ngains = 0.0;
         auto   k = data[1u];
-        auto   s = Array.D()->states[k];
+        auto   s = Array.D_ptr()->states[k];
 
         if (s)
             return 0.0;
@@ -224,7 +224,7 @@ inline void counter_gains(
     {
 
         // Is there any gain?
-        if (Array.D()->states[i])
+        if (Array.D_ptr()->states[i])
             return 0.0;
 
         IF_MATCHES()
@@ -277,7 +277,7 @@ inline void counter_gains_k_offspring(
             return 0.0;
 
         // Is there any gain?
-        if (Array.D()->states[i])
+        if (Array.D_ptr()->states[i])
             return 0.0;
 
         // Making the counts
@@ -338,7 +338,7 @@ inline void counter_genes_changing(
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-        for (auto s : Array.D()->states)
+        for (auto s : Array.D_ptr()->states)
         {
 
             if (s) 
@@ -364,7 +364,7 @@ inline void counter_genes_changing(
         {
 
             // Nah, this gene was already different.
-            if ((k != i) && (Array.D()->states[k] != (Array(k, j, false) == 1u)))
+            if ((k != i) && (Array.D_ptr()->states[k] != (Array(k, j, false) == 1u)))
                 return 0.0;
             
 
@@ -372,7 +372,7 @@ inline void counter_genes_changing(
 
         // Nope, this gene is now matching its parent, so we need to 
         // take it out from the count of genes that have changed.
-        return Array.D()->states[i] ? -1.0 : 1.0;
+        return Array.D_ptr()->states[i] ? -1.0 : 1.0;
 
     };
     
@@ -409,7 +409,7 @@ inline void counter_preserve_pseudogene(
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-        if (Array.D()->states[data[1u]] | Array.D()->states[data[2u]])
+        if (Array.D_ptr()->states[data[1u]] | Array.D_ptr()->states[data[2u]])
             return 0.0;
 
         double n = static_cast<double>(Array.ncol());
@@ -431,7 +431,7 @@ inline void counter_preserve_pseudogene(
         if ((i != nfunA) & (i != nfunB))
             return 0.0;
 
-        if (Array.D()->states[data[1u]] | Array.D()->states[data[2u]])
+        if (Array.D_ptr()->states[data[1u]] | Array.D_ptr()->states[data[2u]])
             return 0.0;
 
         unsigned int k = (i == nfunA) ? nfunB : nfunA;
@@ -489,7 +489,7 @@ inline void counter_prop_genes_changing(
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-        for (auto s : Array.D()->states)
+        for (auto s : Array.D_ptr()->states)
         {
             if (s)
                 return 1.0;
@@ -508,7 +508,7 @@ inline void counter_prop_genes_changing(
         
         // Setup
         bool j_diverges = false;
-        const std::vector< bool > & par_state = Array.D()->states;
+        const std::vector< bool > & par_state = Array.D_ptr()->states;
 
         for (unsigned int f = 0u; f < Array.nrow(); ++f)
         {
@@ -584,7 +584,7 @@ inline void counter_overall_loss(
     PHYLO_COUNTER_LAMBDA(tmp_count)
     {
 
-        if (!Array.D()->states[i])
+        if (!Array.D_ptr()->states[i])
             return 0.0;
 
         IF_MATCHES()
@@ -601,7 +601,7 @@ inline void counter_overall_loss(
             return 0.0;
         
         double res = 0.0;
-        for (auto s : Array.D()->states)
+        for (auto s : Array.D_ptr()->states)
             if (s)
                 res += 1.0;
 
@@ -698,7 +698,7 @@ inline void counter_loss(
         IF_NOTMATCHES()
             return 0.0;
 
-        if (!Array.D()->states[i])
+        if (!Array.D_ptr()->states[i])
             return 0.0;
         
         return (i == data[1u]) ? -1.0 : 0.0;
@@ -715,7 +715,7 @@ inline void counter_loss(
         
         auto f = data[1u];
 
-        if (!Array.D()->states[f])
+        if (!Array.D_ptr()->states[f])
             return 0.0;
         
         return static_cast<double>(Array.ncol());
@@ -749,7 +749,7 @@ inline void counter_overall_changes(
         IF_NOTMATCHES()
             return 0.0;
 
-        if (Array.D()->states[i])
+        if (Array.D_ptr()->states[i])
             return -1.0;
         else 
             return 1.0;
@@ -770,7 +770,7 @@ inline void counter_overall_changes(
         double noff   = static_cast<double> (Array.ncol());
         double counts = 0.0;
         for (uint k = 0u; k < Array.nrow(); ++k)
-            if (Array.D()->states[k])
+            if (Array.D_ptr()->states[k])
                 counts += noff;
 
         return counts;
@@ -819,7 +819,7 @@ inline void counter_subfun(
             return 0.0;
         
         // Are A and B existant? if not, no change
-        if (!Array.D()->states[funA] | !Array.D()->states[funB])
+        if (!Array.D_ptr()->states[funA] | !Array.D_ptr()->states[funB])
             return 0.0;
         
         // Figuring out which is the first (reference) function
@@ -907,7 +907,7 @@ inline void counter_cogain(
             return 0.0;
         
         // None should have it
-        if (!Array.D()->states[d1] && !Array.D()->states[d2])
+        if (!Array.D_ptr()->states[d1] && !Array.D_ptr()->states[d2])
         {
 
             uint other = (i == d1)? d2 : d1;
@@ -960,7 +960,7 @@ inline void counter_longest(
         int nmutate = 0;
         int nmutate_longest = 0;
 
-        auto states  = Array.D()->states;
+        auto states  = Array.D_ptr()->states;
         
         for (auto off = 0u; off < Array.ncol(); ++off)
         {
@@ -1049,7 +1049,7 @@ inline void counter_longest(
 
         PHYLO_CHECK_MISSING();
         
-        if (Array.D()->blengths.size() != Array.ncol())
+        if (Array.D_ptr()->blengths.size() != Array.ncol())
             throw std::logic_error(
                 "longest should be initialized with a vec of size Array.ncol()."
             );
@@ -1062,7 +1062,7 @@ inline void counter_longest(
         for (uint ii = 1u; ii < Array.ncol(); ++ii)
         {
             
-            diff = Array.D()->blengths[longest_idx] - Array.D()->blengths[ii];
+            diff = Array.D_ptr()->blengths[longest_idx] - Array.D_ptr()->blengths[ii];
             if (diff > 0.0)
                 continue;
             else if (diff < 0.0)
@@ -1088,7 +1088,7 @@ inline void counter_longest(
         for (uint ii = 0u; ii < Array.nrow(); ++ii)
         {
             
-            if (Array.D()->states[ii])
+            if (Array.D_ptr()->states[ii])
                 return (1.0 * static_cast<double>(data.size()));
 
         }
@@ -1136,8 +1136,8 @@ inline void counter_neofun(
         
         // Checking if the parent has both functions
         uint other = (i == funA)? funB : funA;
-        bool parent_i     = Array.D()->states[i];
-        bool parent_other = Array.D()->states[other];
+        bool parent_i     = Array.D_ptr()->states[i];
+        bool parent_other = Array.D_ptr()->states[other];
         
         if (!parent_i & !parent_other) 
             return 0.0;
@@ -1212,7 +1212,7 @@ inline void counter_pairwise_neofun_singlefun(
             return 0.0;
         
         // Checking if the parent has the function
-        if (Array.D()->states[i])
+        if (Array.D_ptr()->states[i])
             return 0.0;
         
         // Figuring out which is the first (reference) function
@@ -1280,7 +1280,7 @@ inline void counter_neofun_a2b(
             return 0.0;
         
         // Checking the parent doesn't have funA or has funB
-        if (!Array.D()->states[funA] | Array.D()->states[funB]) 
+        if (!Array.D_ptr()->states[funA] | Array.D_ptr()->states[funB]) 
             return 0.0;
 
         double res = 0.0;
@@ -1412,7 +1412,7 @@ inline void counter_co_opt(
             return 0.0;
 
         // If the parent does not have the initial state, then it makes no sense
-        if ((!Array.D()->states[funA]) | Array.D()->states[funB])
+        if ((!Array.D_ptr()->states[funA]) | Array.D_ptr()->states[funB])
             return 0.0;
 
         // Checking whether function A or function B changed
@@ -1505,7 +1505,7 @@ inline void counter_k_genes_changing(
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-        for (auto s : Array.D()->states)
+        for (auto s : Array.D_ptr()->states)
             if (s)
                 return Array.ncol() == data[1u] ? 1.0 : 0.0;
 
@@ -1523,7 +1523,7 @@ inline void counter_k_genes_changing(
         // How many genes diverge the parent
         int              count = 0; 
         bool        j_diverges = false;
-        const auto & par_state = Array.D()->states;
+        const auto & par_state = Array.D_ptr()->states;
 
         int k = static_cast<int>(data[1u]);
 
@@ -1623,7 +1623,7 @@ inline void counter_less_than_p_prop_genes_changing(
         IF_NOTMATCHES()
             return 0.0;
 
-        for (auto s : Array.D()->states)
+        for (auto s : Array.D_ptr()->states)
             if (s)
                 return data[1u] == 100 ? 1.0 : 0.0;
 
@@ -1643,7 +1643,7 @@ inline void counter_less_than_p_prop_genes_changing(
         double count = 0.0; ///< How many genes diverge the parent
 
         bool j_diverges = false;
-        const std::vector< bool > & par_state = Array.D()->states;
+        const std::vector< bool > & par_state = Array.D_ptr()->states;
 
         for (unsigned int o = 0u; o < Array.ncol(); ++o)
         {
@@ -1738,7 +1738,7 @@ inline void counter_gains_from_0(
             return 0.0;
 
         // All must be false
-        for (auto s : Array.D()->states)
+        for (auto s : Array.D_ptr()->states)
         {
 
             if (s)
@@ -1803,7 +1803,7 @@ inline void counter_overall_gains_from_0(
             return 0.0;
 
         // All must be false
-        for (auto s : Array.D()->states)
+        for (auto s : Array.D_ptr()->states)
         {
 
             if (s)
@@ -1850,7 +1850,7 @@ inline void counter_pairwise_overall_change(
         IF_NOTMATCHES()
             return 0.0;
 
-        unsigned int funpar = Array.D()->states[i] == 1u;
+        unsigned int funpar = Array.D_ptr()->states[i] == 1u;
 
         // All must be false
         double res = 0.0;
@@ -1878,7 +1878,7 @@ inline void counter_pairwise_overall_change(
 
         double res = 0.0;
         double n   = static_cast<double>(Array.ncol());
-        for (auto s : Array.D()->states)
+        for (auto s : Array.D_ptr()->states)
             if (s)
                 res += n * (n - 1.0) / 2.0;
 
@@ -1925,8 +1925,8 @@ inline void counter_pairwise_preserving(
 
         unsigned int k = (funA == i) ? funB : funA;
 
-        bool parent_i = Array.D()->states[i];
-        bool parent_k = Array.D()->states[k];
+        bool parent_i = Array.D_ptr()->states[i];
+        bool parent_k = Array.D_ptr()->states[k];
 
         // if (!parent_i & !parent_k)
         //     return 0.0;
@@ -2018,7 +2018,7 @@ inline void counter_pairwise_preserving(
         PHYLO_CHECK_MISSING();
         
         double n = static_cast< double >(Array.ncol());
-        if (!Array.D()->states[data[1u]] && !Array.D()->states[data[2u]])
+        if (!Array.D_ptr()->states[data[1u]] && !Array.D_ptr()->states[data[2u]])
             return n * (n - 1.0) / 2.0;
 
         return 0.0;
@@ -2190,9 +2190,9 @@ inline void rule_dyn_limit_changes(
         if (rule_type != DUPL_EITH)
         {
 
-            if (Array.D()->duplication & (rule_type != DUPL_DUPL))
+            if (Array.D_ptr()->duplication & (rule_type != DUPL_DUPL))
                 return true;
-            else if (!Array.D()->duplication & (rule_type != DUPL_SPEC))
+            else if (!Array.D_ptr()->duplication & (rule_type != DUPL_SPEC))
                 return true;
                 
         }

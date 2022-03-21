@@ -118,7 +118,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 
             // Updating the state of the parent
             for (unsigned int f = 0u; f < nfuns(); ++f)
-                tmparray.D()->states[f] = par_state[f] == 1u;
+                tmparray.D_ptr()->states[f] = par_state[f] == 1u;
 
             // Updating offspring annotations
             int loc = 0;

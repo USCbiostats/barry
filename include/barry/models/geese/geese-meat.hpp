@@ -611,7 +611,7 @@ inline void Geese::print_observed_counts()
         printf_barry("----------\n");
         printf_barry("nodeid: % 3i (%s)\nstate: [", n.second.id, dpl);
         for (uint f = 0u; f < nfuns(); ++f)
-            printf_barry("%i, ", (tmparray.D()->states[f] ? 1 : 0));
+            printf_barry("%i, ", (tmparray.D_ptr()->states[f] ? 1 : 0));
 
         printf_barry("]; Array:\n");
         tmparray.print();
