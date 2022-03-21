@@ -116,8 +116,8 @@ Macros</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Macros for defining counters</div></td></tr>
 <tr class="memitem:aceda72b2e1b110e80235df9dbac17351"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="counters_2defm_8hpp.html#aceda72b2e1b110e80235df9dbac17351">DEFM_COUNTER</a>(a)</td></tr>
 <tr class="separator:aceda72b2e1b110e80235df9dbac17351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0de627ee2d314d645cf885c7cc0ee36b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">DEFM_COUNTER_LAMBDA</a>(a)</td></tr>
-<tr class="separator:a0de627ee2d314d645cf885c7cc0ee36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c0df2d8860fd823fcc9c2a1998ebc5e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="counters_2defm_8hpp.html#a1c0df2d8860fd823fcc9c2a1998ebc5e">DEFM_COUNTER_LAMBDA</a>(a,  b)</td></tr>
+<tr class="separator:a1c0df2d8860fd823fcc9c2a1998ebc5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e9872b5ae19d4e845e545d1f42057b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="counters_2defm_8hpp.html#a0e9872b5ae19d4e845e545d1f42057b8">NETWORKDENSE_COUNTER_LAMBDA</a>(a)</td></tr>
 <tr class="separator:a0e9872b5ae19d4e845e545d1f42057b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Macros for defining rules</div></td></tr>
@@ -129,8 +129,8 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Convenient typedefs for network objects.</div></td></tr>
-<tr class="memitem:a73243d737153ebdef1124a0565220b65"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; double, <a class="el" href="class_d_e_f_m_data.html">DEFMData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="counters_2defm_8hpp.html#a73243d737153ebdef1124a0565220b65">DEFMArray</a></td></tr>
-<tr class="separator:a73243d737153ebdef1124a0565220b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b423f2edc017f1bb06fe423cbd49b75"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; int, <a class="el" href="class_d_e_f_m_data.html">DEFMData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="counters_2defm_8hpp.html#a0b423f2edc017f1bb06fe423cbd49b75">DEFMArray</a></td></tr>
+<tr class="separator:a0b423f2edc017f1bb06fe423cbd49b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac18c40ee8f7ca5a391019825e3d7c5e9"><td class="memTemplParams" colspan="2">template&lt;typename Tarray  = DEFMArray&gt; </td></tr>
 <tr class="memitem:ac18c40ee8f7ca5a391019825e3d7c5e9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="counters_2defm_8hpp.html#ac18c40ee8f7ca5a391019825e3d7c5e9">DEFMCounter</a> = <a class="el" href="class_counter.html">Counter</a>&lt; Tarray, <a class="el" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a> &gt;</td></tr>
 <tr class="separator:ac18c40ee8f7ca5a391019825e3d7c5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,6 +159,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ga4237bffaaf6a707bd4902661e52984a1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">counter_ones</a> (<a class="el" href="counters_2defm_8hpp.html#adc3b121854abd8a0283c8a59cd522a81">DEFMCounters</a>&lt; Tarray &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, int covar_index=-1)</td></tr>
 <tr class="memdesc:ga4237bffaaf6a707bd4902661e52984a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevalence of ones.  <a href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">More...</a><br /></td></tr>
 <tr class="separator:ga4237bffaaf6a707bd4902661e52984a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62b79939ddd76cba42755c98e9629a5e"><td class="memTemplParams" colspan="2">template&lt;typename Tarray  = DEFMArray&gt; </td></tr>
+<tr class="memitem:ga62b79939ddd76cba42755c98e9629a5e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga62b79939ddd76cba42755c98e9629a5e">counter_transition</a> (<a class="el" href="counters_2defm_8hpp.html#adc3b121854abd8a0283c8a59cd522a81">DEFMCounters</a>&lt; Tarray &gt; *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, std::vector&lt; int &gt; coords, int covar_index=-1)</td></tr>
+<tr class="memdesc:ga62b79939ddd76cba42755c98e9629a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevalence of ones.  <a href="group__counters-network.html#ga62b79939ddd76cba42755c98e9629a5e">More...</a><br /></td></tr>
+<tr class="separator:ga62b79939ddd76cba42755c98e9629a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Rules for network models</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -167,10 +171,10 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 </div></td></tr>
-<tr class="memitem:aa6b07795302a078414933c6e9f88e259"><td class="memTemplParams" colspan="2">template&lt;typename Tarray  = DEFMArray&gt; </td></tr>
-<tr class="memitem:aa6b07795302a078414933c6e9f88e259"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="counters_2defm_8hpp.html#aa6b07795302a078414933c6e9f88e259">rules_zerodiag</a> (<a class="el" href="counters_2defm_8hpp.html#a7cb9b4d8e3517fea74f8d2a6408da261">DEFMRules</a>&lt; Tarray &gt; *<a class="el" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>)</td></tr>
-<tr class="memdesc:aa6b07795302a078414933c6e9f88e259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of edges.  <a href="counters_2defm_8hpp.html#aa6b07795302a078414933c6e9f88e259">More...</a><br /></td></tr>
-<tr class="separator:aa6b07795302a078414933c6e9f88e259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6b07795302a078414933c6e9f88e259"><td class="memTemplParams" colspan="2">template&lt;typename Tarray  = DEFMArray&gt; </td></tr>
+<tr class="memitem:gaa6b07795302a078414933c6e9f88e259"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gaa6b07795302a078414933c6e9f88e259">rules_zerodiag</a> (<a class="el" href="counters_2defm_8hpp.html#a7cb9b4d8e3517fea74f8d2a6408da261">DEFMRules</a>&lt; Tarray &gt; *<a class="el" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>)</td></tr>
+<tr class="memdesc:gaa6b07795302a078414933c6e9f88e259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of edges.  <a href="group__counters-network.html#gaa6b07795302a078414933c6e9f88e259">More...</a><br /></td></tr>
+<tr class="separator:gaa6b07795302a078414933c6e9f88e259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aceda72b2e1b110e80235df9dbac17351"></a>
@@ -191,18 +195,18 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;\</div>
 <div class="line">inline double (a) (<span class="keyword">const</span> Tarray &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a> &amp; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
-<div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00403">barray-meat.hpp:403</a></div></div>
+<div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_counter_data_html"><div class="ttname"><a href="class_d_e_f_m_counter_data.html">DEFMCounterData</a></div><div class="ttdoc">Data class used to store arbitrary uint or double vectors.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00073">defm.hpp:73</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00082">counters-meat.hpp:82</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00018">typedefs.hpp:18</a></div></div>
 </div><!-- fragment --><p>Function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00123">123</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00126">126</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0de627ee2d314d645cf885c7cc0ee36b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0de627ee2d314d645cf885c7cc0ee36b">&#9670;&nbsp;</a></span>DEFM_COUNTER_LAMBDA</h2>
+<a id="a1c0df2d8860fd823fcc9c2a1998ebc5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c0df2d8860fd823fcc9c2a1998ebc5e">&#9670;&nbsp;</a></span>DEFM_COUNTER_LAMBDA</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,17 +215,27 @@ Functions</h2></td></tr>
           <td class="memname">#define DEFM_COUNTER_LAMBDA</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">a</td><td>)</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code" href="typedefs_8hpp.html#a6a6ce8184bcdbb465486ebb7ca9ec76b">Counter_fun_type&lt;Tarray, DEFMCounterData&gt;</a> a = \</div>
-<div class="line">    [](<span class="keyword">const</span> Tarray &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a> &amp; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
+<div class="line">    [b](<span class="keyword">const</span> Tarray &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a> &amp; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
 <div class="ttc" id="atypedefs_8hpp_html_a6a6ce8184bcdbb465486ebb7ca9ec76b"><div class="ttname"><a href="typedefs_8hpp.html#a6a6ce8184bcdbb465486ebb7ca9ec76b">Counter_fun_type</a></div><div class="ttdeci">std::function&lt; double(const Array_Type &amp;, uint, uint, Data_Type &amp;)&gt; Counter_fun_type</div><div class="ttdoc">Counter and rule functions.</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00148">typedefs.hpp:148</a></div></div>
 </div><!-- fragment --><p>Lambda function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00128">128</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00131">131</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -244,7 +258,7 @@ Functions</h2></td></tr>
 <div class="line">inline bool (a) (<span class="keyword">const</span> Tarray &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <span class="keywordtype">bool</span> &amp; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
 </div><!-- fragment --><p>Function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00142">142</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00145">145</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -268,7 +282,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="atypedefs_8hpp_html_a93a0e903405ba5549990f0138386bfa4"><div class="ttname"><a href="typedefs_8hpp.html#a93a0e903405ba5549990f0138386bfa4">Rule_fun_type</a></div><div class="ttdeci">std::function&lt; bool(const Array_Type &amp;, uint, uint, Data_Type &amp;)&gt; Rule_fun_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00151">typedefs.hpp:151</a></div></div>
 </div><!-- fragment --><p>Lambda function for definition of a network counter function </p>
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00147">147</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00150">150</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -290,24 +304,24 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><a class="code" href="typedefs_8hpp.html#a6a6ce8184bcdbb465486ebb7ca9ec76b">Counter_fun_type&lt;DEFMworkDense, DEFMCounterData&gt;</a> a = \</div>
 <div class="line">    [](<span class="keyword">const</span> DEFMworkDense &amp; Array, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a> &amp; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00132">132</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00135">135</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a73243d737153ebdef1124a0565220b65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73243d737153ebdef1124a0565220b65">&#9670;&nbsp;</a></span>DEFMArray</h2>
+<a id="a0b423f2edc017f1bb06fe423cbd49b75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b423f2edc017f1bb06fe423cbd49b75">&#9670;&nbsp;</a></span>DEFMArray</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt;double, <a class="el" href="class_d_e_f_m_data.html">DEFMData</a>&gt; <a class="el" href="counters_2defm_8hpp.html#a73243d737153ebdef1124a0565220b65">DEFMArray</a></td>
+          <td class="memname">typedef <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt;int, <a class="el" href="class_d_e_f_m_data.html">DEFMData</a>&gt; <a class="el" href="counters_2defm_8hpp.html#a0b423f2edc017f1bb06fe423cbd49b75">DEFMArray</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00095">95</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00098">98</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -325,7 +339,7 @@ template&lt;typename Tarray  = DEFMArray&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00098">98</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00101">101</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -343,7 +357,7 @@ template&lt;typename Tarray  = DEFMArray&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00101">101</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00104">104</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +375,7 @@ template&lt;typename Tarray &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00110">110</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00113">113</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -379,7 +393,7 @@ template&lt;typename Tarray  = DEFMArray&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00113">113</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00116">116</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -397,7 +411,7 @@ template&lt;typename Tarray  = DEFMArray&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00116">116</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00119">119</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -415,7 +429,7 @@ template&lt;typename Tarray  = DEFMArray&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00107">107</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00110">110</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -433,40 +447,7 @@ template&lt;typename Tarray  = DEFMArray&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00104">104</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="aa6b07795302a078414933c6e9f88e259"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6b07795302a078414933c6e9f88e259">&#9670;&nbsp;</a></span>rules_zerodiag()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Tarray  = DEFMArray&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rules_zerodiag </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="counters_2defm_8hpp.html#a7cb9b4d8e3517fea74f8d2a6408da261">DEFMRules</a>&lt; Tarray &gt; *&#160;</td>
-          <td class="paramname"><em>rules</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of edges. </p>
-
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00258">258</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00107">107</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -476,7 +457,7 @@ template&lt;typename Tarray  = DEFMArray&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="counters_2defm_8hpp.html">defm.hpp</a></li>
-    <li class="footer">Generated on Fri Mar 18 2022 22:44:52 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Mar 21 2022 22:39:04 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

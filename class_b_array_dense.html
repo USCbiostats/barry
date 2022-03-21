@@ -194,10 +194,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a773a7953f931a84847c2e63aa0f7d53f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array_dense.html#a773a7953f931a84847c2e63aa0f7d53f">set_data</a> (Data_Type *<a class="el" href="counters-meat_8hpp.html#afb5ad8f08fd716bba9cf4c1760f11927">data_</a>, bool <a class="el" href="barraydense-meat_8hpp.html#adaf09f50ef2cc695a69c214cd140e4a7">delete_data_</a>=<a class="el" href="barraydense-meat_8hpp.html#ae6c865df784842196d411c1466b01686">false</a>)</td></tr>
 <tr class="memdesc:a773a7953f931a84847c2e63aa0f7d53f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the data object.  <a href="class_b_array_dense.html#a773a7953f931a84847c2e63aa0f7d53f">More...</a><br /></td></tr>
 <tr class="separator:a773a7953f931a84847c2e63aa0f7d53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeeef5289677349eca4ffab903db39643"><td class="memItemLeft" align="right" valign="top">Data_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array_dense.html#aeeef5289677349eca4ffab903db39643">D</a> ()</td></tr>
-<tr class="separator:aeeef5289677349eca4ffab903db39643"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d1be5f2d7e8438b7d6627af7c616fa8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Data_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array_dense.html#a2d1be5f2d7e8438b7d6627af7c616fa8">D</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
-<tr class="separator:a2d1be5f2d7e8438b7d6627af7c616fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7adb05e9e97aa85d252bf24dd7253ed"><td class="memItemLeft" align="right" valign="top">Data_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array_dense.html#af7adb05e9e97aa85d252bf24dd7253ed">D_ptr</a> ()</td></tr>
+<tr class="separator:af7adb05e9e97aa85d252bf24dd7253ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cab5fa81198bb5313922b0e520022d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Data_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array_dense.html#a5cab5fa81198bb5313922b0e520022d4">D_ptr</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
+<tr class="separator:a5cab5fa81198bb5313922b0e520022d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6f0132d00bf3380d3252e4c6ade1e69"><td class="memItemLeft" align="right" valign="top">Data_Type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array_dense.html#ab6f0132d00bf3380d3252e4c6ade1e69">D</a> ()</td></tr>
+<tr class="separator:ab6f0132d00bf3380d3252e4c6ade1e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0569599348d96ce66be42c48080b1e27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Data_Type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_array_dense.html#a0569599348d96ce66be42c48080b1e27">D</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
+<tr class="separator:a0569599348d96ce66be42c48080b1e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Queries</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p><code>is_empty</code> queries a single cell. <code>nrow</code>, <code>ncol</code>, and <code>nnozero</code> return the number of rows, columns, and non-zero cells respectively. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -293,7 +297,7 @@ Friends</h2></td></tr>
 class BArrayDense&lt; Cell_Type, Data_Type &gt;</h3>
 
 <p>Baseline class for binary arrays. </p>
-<p><code><a class="el" href="class_b_array_dense.html" title="Baseline class for binary arrays.">BArrayDense</a></code> class objects are arbitrary arrays in which non-empty cells hold data of type <code>Cell_Type</code>. The non-empty cells are stored by row and indexed using <code>unordered_map</code>s, i.e. <code>std::vector&lt; std::unordered_map&lt;unsigned int,Cell_Type&gt; &gt;</code>.</p>
+<p><code><a class="el" href="class_b_array_dense.html" title="Baseline class for binary arrays.">BArrayDense</a></code> class objects are arbitrary dense-arrays. The data is stored internally in the <code>el</code> member, which can be accessed using the member function <code><a class="el" href="class_b_array_dense.html#a581494508f9e90774eb512dd26c4b81a">get_data()</a></code>, by column.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Cell_Type</td><td>Type of cell (any type). </td></tr>
@@ -302,7 +306,7 @@ class BArrayDense&lt; Cell_Type, Data_Type &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00034">34</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00033">33</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae399b8f3741f52478edfe88a2e986c75"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae399b8f3741f52478edfe88a2e986c75">&#9670;&nbsp;</a></span>BArrayDense() <span class="overload">[1/6]</span></h2>
@@ -331,7 +335,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 
 <p>Zero-size array. </p>
 
-<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00079">79</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00078">78</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -373,7 +377,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 
 <p>Empty array. </p>
 
-<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00082">82</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00081">81</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -621,7 +625,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meat_8hpp_source.html#l00482">482</a> of file <a class="el" href="barraydense-meat_8hpp_source.html">barraydense-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meat_8hpp_source.html#l00490">490</a> of file <a class="el" href="barraydense-meat_8hpp_source.html">barraydense-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -661,7 +665,7 @@ template&lt;typename Cell_Type , typename Data_Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-meat_8hpp_source.html#l00468">468</a> of file <a class="el" href="barraydense-meat_8hpp_source.html">barraydense-meat.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-meat_8hpp_source.html#l00476">476</a> of file <a class="el" href="barraydense-meat_8hpp_source.html">barraydense-meat.hpp</a>.</p>
 
 </div>
 </div>
@@ -685,8 +689,8 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 
 </div>
 </div>
-<a id="aeeef5289677349eca4ffab903db39643"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeeef5289677349eca4ffab903db39643">&#9670;&nbsp;</a></span>D() <span class="overload">[1/2]</span></h2>
+<a id="ab6f0132d00bf3380d3252e4c6ade1e69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6f0132d00bf3380d3252e4c6ade1e69">&#9670;&nbsp;</a></span>D() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -694,7 +698,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Data_Type* <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; Cell_Type, Data_Type &gt;::D </td>
+          <td class="memname">Data_Type&amp; <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; Cell_Type, Data_Type &gt;::D </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -704,8 +708,8 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 
 </div>
 </div>
-<a id="a2d1be5f2d7e8438b7d6627af7c616fa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d1be5f2d7e8438b7d6627af7c616fa8">&#9670;&nbsp;</a></span>D() <span class="overload">[2/2]</span></h2>
+<a id="a0569599348d96ce66be42c48080b1e27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0569599348d96ce66be42c48080b1e27">&#9670;&nbsp;</a></span>D() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -713,7 +717,45 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Data_Type* <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; Cell_Type, Data_Type &gt;::D </td>
+          <td class="memname"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Data_Type&amp; <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; Cell_Type, Data_Type &gt;::D </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7adb05e9e97aa85d252bf24dd7253ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7adb05e9e97aa85d252bf24dd7253ed">&#9670;&nbsp;</a></span>D_ptr() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Data_Type* <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; Cell_Type, Data_Type &gt;::D_ptr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5cab5fa81198bb5313922b0e520022d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cab5fa81198bb5313922b0e520022d4">&#9670;&nbsp;</a></span>D_ptr() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Data_Type* <a class="el" href="class_b_array_dense.html">BArrayDense</a>&lt; Cell_Type, Data_Type &gt;::D_ptr </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1073,7 +1115,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00254">254</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00255">255</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -2204,7 +2246,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 </div><div class="memdoc">
 <p>This is as a reference, if we need to iterate through the cells and we need to keep track which were visited, we use this as a reference. So that if cell.visited = true and visited = true, it means that we haven't been here yet. Ideally, any routine using this-&gt;visited should switch it at the beginning of the routine. </p>
 
-<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00064">64</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="barraydense-bones_8hpp_source.html#l00063">63</a> of file <a class="el" href="barraydense-bones_8hpp_source.html">barraydense-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -2218,7 +2260,7 @@ template&lt;typename Cell_Type  = bool, typename Data_Type  = bool&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_b_array_dense.html">BArrayDense</a></li>
-    <li class="footer">Generated on Fri Mar 18 2022 22:44:52 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Mar 21 2022 22:39:05 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

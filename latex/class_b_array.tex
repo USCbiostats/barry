@@ -84,9 +84,13 @@ bool \mbox{\hyperlink{class_b_array_a13912f32d72498edd42e98c5d30034c6}{is\+\_\+d
 \item 
 void \mbox{\hyperlink{class_b_array_accf44b49caa7746a462a3ac9b6024cfc}{set\+\_\+data}} (Data\+\_\+\+Type $\ast$\mbox{\hyperlink{counters-meat_8hpp_afb5ad8f08fd716bba9cf4c1760f11927}{data\+\_\+}}, bool \mbox{\hyperlink{barraydense-meat_8hpp_adaf09f50ef2cc695a69c214cd140e4a7}{delete\+\_\+data\+\_\+}}=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}})
 \begin{DoxyCompactList}\small\item\em Set the data object. \end{DoxyCompactList}\item 
-Data\+\_\+\+Type $\ast$ \mbox{\hyperlink{class_b_array_a6c7c1577b33435e4a35215c530e79e59}{D}} ()
+Data\+\_\+\+Type $\ast$ \mbox{\hyperlink{class_b_array_a278123bc0685719bf72d550e9c7a87e9}{D\+\_\+ptr}} ()
 \item 
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Data\+\_\+\+Type $\ast$ \mbox{\hyperlink{class_b_array_a5aca11e93b4169df851724b83e2869d2}{D}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Data\+\_\+\+Type $\ast$ \mbox{\hyperlink{class_b_array_a419059dd3a2fb4ad185c5267b51e0732}{D\+\_\+ptr}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
+Data\+\_\+\+Type \& \mbox{\hyperlink{class_b_array_a96ff9dc092b94ba0143da386015cb4f3}{D}} ()
+\item 
+\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Data\+\_\+\+Type \& \mbox{\hyperlink{class_b_array_a26b67c8b0ab12118746120cd688df65f}{D}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
 void \mbox{\hyperlink{class_b_array_a004b19f21bf67587e262b14b210155b5}{flush\+\_\+data}} ()
 \end{DoxyCompactItemize}
@@ -309,19 +313,33 @@ void \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+T
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
 \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type}}$<$ Cell\+\_\+\+Type $>$\& \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::col (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}]{i,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption}) const}
 
-\mbox{\Hypertarget{class_b_array_a6c7c1577b33435e4a35215c530e79e59}\label{class_b_array_a6c7c1577b33435e4a35215c530e79e59}} 
+\mbox{\Hypertarget{class_b_array_a96ff9dc092b94ba0143da386015cb4f3}\label{class_b_array_a96ff9dc092b94ba0143da386015cb4f3}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!D@{D}}
 \index{D@{D}!BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{D()}{D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-Data\+\_\+\+Type$\ast$ \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+Data\+\_\+\+Type\& \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_b_array_a5aca11e93b4169df851724b83e2869d2}\label{class_b_array_a5aca11e93b4169df851724b83e2869d2}} 
+\mbox{\Hypertarget{class_b_array_a26b67c8b0ab12118746120cd688df65f}\label{class_b_array_a26b67c8b0ab12118746120cd688df65f}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!D@{D}}
 \index{D@{D}!BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{D()}{D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Data\+\_\+\+Type$\ast$ \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Data\+\_\+\+Type\& \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_b_array_a278123bc0685719bf72d550e9c7a87e9}\label{class_b_array_a278123bc0685719bf72d550e9c7a87e9}} 
+\index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!D\_ptr@{D\_ptr}}
+\index{D\_ptr@{D\_ptr}!BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{D\_ptr()}{D\_ptr()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
+Data\+\_\+\+Type$\ast$ \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::D\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_b_array_a419059dd3a2fb4ad185c5267b51e0732}\label{class_b_array_a419059dd3a2fb4ad185c5267b51e0732}} 
+\index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!D\_ptr@{D\_ptr}}
+\index{D\_ptr@{D\_ptr}!BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}}
+\doxysubsubsection{\texorpdfstring{D\_ptr()}{D\_ptr()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
+\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Data\+\_\+\+Type$\ast$ \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::D\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{class_b_array_a1e4efac293adb1462c8921a07691fee5}\label{class_b_array_a1e4efac293adb1462c8921a07691fee5}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!default\_val@{default\_val}}
@@ -418,7 +436,7 @@ bool \mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+T
 
 
 
-Definition at line 232 of file barray-\/bones.\+hpp.
+Definition at line 234 of file barray-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_b_array_a37ed3962c0ee5030b23cb6cde23a5cdf}\label{class_b_array_a37ed3962c0ee5030b23cb6cde23a5cdf}} 
 \index{BArray$<$ Cell\_Type, Data\_Type $>$@{BArray$<$ Cell\_Type, Data\_Type $>$}!is\_empty@{is\_empty}}

@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    </div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_d_e_f_m_data.html#a61b20537621f329bf2c1b1ccd28c1df3">   23</a></span>&#160;    std::vector&lt; double &gt; * <a class="code" href="class_d_e_f_m_data.html#a61b20537621f329bf2c1b1ccd28c1df3">covariates</a>; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_d_e_f_m_data.html#a89a3ee0a0a27f78c47b010d5498e1fd2">   24</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m_data.html#a89a3ee0a0a27f78c47b010d5498e1fd2">obs_start</a>;   </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_d_e_f_m_data.html#a89a3ee0a0a27f78c47b010d5498e1fd2">   24</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m_data.html#a89a3ee0a0a27f78c47b010d5498e1fd2">obs_start</a>;    </div>
 <div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_d_e_f_m_data.html#a0dea095b0dfea6a4ad45cc93336b1e96">   25</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m_data.html#a0dea095b0dfea6a4ad45cc93336b1e96">obs_n_times</a>;  </div>
 <div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_d_e_f_m_data.html#a78c70f5bc902e34018735350ff8d2ee3">   26</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m_data.html#a78c70f5bc902e34018735350ff8d2ee3">n_covariates</a>; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
@@ -149,164 +149,247 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">const</span> std::vector&lt; double &gt; numbers_,</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">size_t</span> markov_order_</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    ): <a class="code" href="class_d_e_f_m_counter_data.html#a1798d8ea93c677ed7fbfb91a6fc568dd">indices</a>(indices_), <a class="code" href="class_d_e_f_m_counter_data.html#a42bd6d1deaa0d800a878ba9fe87d8b18">numbers</a>(numbers_), <a class="code" href="class_d_e_f_m_counter_data.html#a38769090a011ecf6d3f638d35445e07e">markov_order</a>(markov_order_) {};</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_d_e_f_m_counter_data.html#a0b09b4a0c405b1e2f694d39136bf87f6">   87</a></span>&#160;    <a class="code" href="class_d_e_f_m_counter_data.html#a0b09b4a0c405b1e2f694d39136bf87f6">~DEFMCounterData</a>() {};</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a73243d737153ebdef1124a0565220b65">   95</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="class_b_array_dense.html">BArrayDense&lt;double, DEFMData&gt;</a> <a class="code" href="counters_2defm_8hpp.html#a73243d737153ebdef1124a0565220b65">DEFMArray</a>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#ac18c40ee8f7ca5a391019825e3d7c5e9">   98</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_counter.html">DEFMCounter</a> =  <a class="code" href="class_counter.html">Counter&lt;Tarray, DEFMCounterData &gt;</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_d_e_f_m_counter_data.html#a7c3684926b2bcdaa961b7005ac5d391c">   87</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m_counter_data.html#a7c3684926b2bcdaa961b7005ac5d391c">idx</a>(<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) {<span class="keywordflow">return</span> <a class="code" href="class_d_e_f_m_counter_data.html#a1798d8ea93c677ed7fbfb91a6fc568dd">indices</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>];};</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_d_e_f_m_counter_data.html#a911d07631ee0d00407d741efa436325b">   88</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_d_e_f_m_counter_data.html#a911d07631ee0d00407d741efa436325b">num</a>(<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) {<span class="keywordflow">return</span> <a class="code" href="class_d_e_f_m_counter_data.html#a42bd6d1deaa0d800a878ba9fe87d8b18">numbers</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>];};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_d_e_f_m_counter_data.html#a0b09b4a0c405b1e2f694d39136bf87f6">   90</a></span>&#160;    <a class="code" href="class_d_e_f_m_counter_data.html#a0b09b4a0c405b1e2f694d39136bf87f6">~DEFMCounterData</a>() {};</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a0b423f2edc017f1bb06fe423cbd49b75">   98</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="class_b_array_dense.html">BArrayDense&lt;int, DEFMData&gt;</a> <a class="code" href="counters_2defm_8hpp.html#a0b423f2edc017f1bb06fe423cbd49b75">DEFMArray</a>;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#adc3b121854abd8a0283c8a59cd522a81">  101</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_counters.html">DEFMCounters</a> =  <a class="code" href="class_counters.html">Counters&lt;Tarray, DEFMCounterData&gt;</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#ac18c40ee8f7ca5a391019825e3d7c5e9">  101</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_counter.html">DEFMCounter</a> =  <a class="code" href="class_counter.html">Counter&lt;Tarray, DEFMCounterData &gt;</a>;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a89bc1824f0f4afaed87b18abf9b417f9">  104</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_support.html">DEFMSupport</a> =  <a class="code" href="class_support.html">Support&lt;Tarray, DEFMCounterData &gt;</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#adc3b121854abd8a0283c8a59cd522a81">  104</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_counters.html">DEFMCounters</a> =  <a class="code" href="class_counters.html">Counters&lt;Tarray, DEFMCounterData&gt;</a>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#ac87e722fb88c699ffd6e9e1c264bc586">  107</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_stats_counter.html">DEFMStatsCounter</a> =  <a class="code" href="class_stats_counter.html">StatsCounter&lt;Tarray, DEFMCounterData&gt;</a>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a89bc1824f0f4afaed87b18abf9b417f9">  107</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_support.html">DEFMSupport</a> =  <a class="code" href="class_support.html">Support&lt;Tarray, DEFMCounterData &gt;</a>;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray&gt;</div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a5f07c1ee7e253baf5cdae87c90e61276">  110</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_model.html">DEFMModel</a> =  <a class="code" href="class_model.html">Model&lt;Tarray, DEFMCounterData&gt;</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#ac87e722fb88c699ffd6e9e1c264bc586">  110</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_stats_counter.html">DEFMStatsCounter</a> =  <a class="code" href="class_stats_counter.html">StatsCounter&lt;Tarray, DEFMCounterData&gt;</a>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a06ca688614658a3cfa3d932a1f916ef5">  113</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_rule.html">DEFMRule</a> =  <a class="code" href="class_rule.html">Rule&lt;Tarray, bool&gt;</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray&gt;</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a5f07c1ee7e253baf5cdae87c90e61276">  113</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_model.html">DEFMModel</a> =  <a class="code" href="class_model.html">Model&lt;Tarray, DEFMCounterData&gt;</a>;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a7cb9b4d8e3517fea74f8d2a6408da261">  116</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_rules.html">DEFMRules</a> =  <a class="code" href="class_rules.html">Rules&lt;Tarray, bool&gt;</a>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#aceda72b2e1b110e80235df9dbac17351">  123</a></span>&#160;<span class="preprocessor">#define DEFM_COUNTER(a) \</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">template&lt;typename Tarray = DEFMArray&gt;\</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">inline double (a) (const Tarray &amp; Array, uint i, uint j, DEFMCounterData &amp; data)</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">  128</a></span>&#160;<span class="preprocessor">#define DEFM_COUNTER_LAMBDA(a) \</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">Counter_fun_type&lt;Tarray, DEFMCounterData&gt; a = \</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">    [](const Tarray &amp; Array, uint i, uint j, DEFMCounterData &amp; data)</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a0e9872b5ae19d4e845e545d1f42057b8">  132</a></span>&#160;<span class="preprocessor">#define NETWORKDENSE_COUNTER_LAMBDA(a) \</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">Counter_fun_type&lt;DEFMworkDense, DEFMCounterData&gt; a = \</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">    [](const DEFMworkDense &amp; Array, uint i, uint j, DEFMCounterData &amp; data)</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#af210bb3f47af7995ff200264370d9db6">  142</a></span>&#160;<span class="preprocessor">#define DEFM_RULE(a) \</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">template&lt;typename Tarray = DEFMArray&gt;\</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="preprocessor">inline bool (a) (const Tarray &amp; Array, uint i, uint j, bool &amp; data)</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba">  147</a></span>&#160;<span class="preprocessor">#define DEFM_RULE_LAMBDA(a) \</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">Rule_fun_type&lt;Tarray, bool&gt; a = \</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">[](const Tarray &amp; Array, uint i, uint j, bool &amp; data)</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
-<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">  167</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">counter_ones</a>(</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="class_counters.html">DEFMCounters&lt;Tarray&gt;</a> * <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>,</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordtype">int</span> covar_index = -1</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;)</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">DEFM_COUNTER_LAMBDA</a>(count_ones)</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    {</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a> != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">return</span> Array.D()-&gt;;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">return</span> 1.0;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    };</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="comment">// Weighted by a feature of the array</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">if</span> (covar_index &gt;= 0)</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    {      </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            count_ones, <span class="keyword">nullptr</span>,</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>({<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(covar_index)}, {}, 0), </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="stringliteral">&quot;# of ones x attr&quot;</span> + std::to_str(covar_index), </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="stringliteral">&quot;Overall number of ones&quot;</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        );</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            count_ones, <span class="keyword">nullptr</span>,</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(),</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="stringliteral">&quot;# of ones&quot;</span>, </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="stringliteral">&quot;Overall number of ones&quot;</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        );</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">counter_ones</a>(</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="class_counters.html">DEFMCounters&lt;Tarray&gt;</a> * <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>,</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordtype">int</span> covar_index = -1</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;)</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;{</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">DEFM_COUNTER_LAMBDA</a>(count_ones)</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">return</span> 1.0;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    };</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">// Weighted by a feature of the array</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">if</span> (covar_index &gt;= 0)</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    {      </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            count_ones, <span class="keyword">nullptr</span>,</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>({<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(covar_index)}, {}, 0),</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="stringliteral">&quot;# of ones x attr&quot;</span> + std::to_str(covar_index), </div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="stringliteral">&quot;Overall number of ones&quot;</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        );</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            count_ones, <span class="keyword">nullptr</span>,</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(),</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="stringliteral">&quot;# of ones&quot;</span>, </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="stringliteral">&quot;Overall number of ones&quot;</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        );</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a06ca688614658a3cfa3d932a1f916ef5">  116</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_rule.html">DEFMRule</a> =  <a class="code" href="class_rule.html">Rule&lt;Tarray, bool&gt;</a>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a7cb9b4d8e3517fea74f8d2a6408da261">  119</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_rules.html">DEFMRules</a> =  <a class="code" href="class_rules.html">Rules&lt;Tarray, bool&gt;</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#aceda72b2e1b110e80235df9dbac17351">  126</a></span>&#160;<span class="preprocessor">#define DEFM_COUNTER(a) \</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">template&lt;typename Tarray = DEFMArray&gt;\</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">inline double (a) (const Tarray &amp; Array, uint i, uint j, DEFMCounterData &amp; data)</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a1c0df2d8860fd823fcc9c2a1998ebc5e">  131</a></span>&#160;<span class="preprocessor">#define DEFM_COUNTER_LAMBDA(a,b) \</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">Counter_fun_type&lt;Tarray, DEFMCounterData&gt; a = \</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">    [b](const Tarray &amp; Array, uint i, uint j, DEFMCounterData &amp; data)</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a0e9872b5ae19d4e845e545d1f42057b8">  135</a></span>&#160;<span class="preprocessor">#define NETWORKDENSE_COUNTER_LAMBDA(a) \</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">Counter_fun_type&lt;DEFMworkDense, DEFMCounterData&gt; a = \</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">    [](const DEFMworkDense &amp; Array, uint i, uint j, DEFMCounterData &amp; data)</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#af210bb3f47af7995ff200264370d9db6">  145</a></span>&#160;<span class="preprocessor">#define DEFM_RULE(a) \</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">template&lt;typename Tarray = DEFMArray&gt;\</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">inline bool (a) (const Tarray &amp; Array, uint i, uint j, bool &amp; data)</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba">  150</a></span>&#160;<span class="preprocessor">#define DEFM_RULE_LAMBDA(a) \</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">Rule_fun_type&lt;Tarray, bool&gt; a = \</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">[](const Tarray &amp; Array, uint i, uint j, bool &amp; data)</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">  170</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">counter_ones</a>(</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="class_counters.html">DEFMCounters&lt;Tarray&gt;</a> * <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>,</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">int</span> covar_index = -1</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="comment">// Weighted by a feature of the array</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">if</span> (covar_index &gt;= 0)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    {      </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <a class="code" href="counters_2defm_8hpp.html#a1c0df2d8860fd823fcc9c2a1998ebc5e">DEFM_COUNTER_LAMBDA</a>(count_ones, vid = covar_index)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <span class="keywordflow">return</span> Array.D()(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, vid);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            };</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            count_ones, <span class="keyword">nullptr</span>,</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(), </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="stringliteral">&quot;# of ones x attr&quot;</span> + std::to_str(covar_index), </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="stringliteral">&quot;Overall number of ones&quot;</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        );</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <a class="code" href="counters_2defm_8hpp.html#a1c0df2d8860fd823fcc9c2a1998ebc5e">DEFM_COUNTER_LAMBDA</a>(count_ones,) {<span class="keywordflow">return</span> 1.0;};</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            count_ones, <span class="keyword">nullptr</span>,</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(),</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="stringliteral">&quot;# of ones&quot;</span>, </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="stringliteral">&quot;Overall number of ones&quot;</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        );</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="group__counters-network.html#ga62b79939ddd76cba42755c98e9629a5e">  217</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga62b79939ddd76cba42755c98e9629a5e">counter_transition</a>(</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <a class="code" href="class_counters.html">DEFMCounters&lt;Tarray&gt;</a> * <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    std::vector&lt; int &gt; coords,</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordtype">int</span> covar_index = -1</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">// Weighted by a feature of the array</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">if</span> (covar_index &gt;= 0)</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    {      </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        coords.push_back(covar_index);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <a class="code" href="counters_2defm_8hpp.html#a1c0df2d8860fd823fcc9c2a1998ebc5e">DEFM_COUNTER_LAMBDA</a>(count_ones, dat = coords)</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="comment">// Checking if the observation is in the stat. We </span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> &amp; array = Array.get_data();</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordtype">int</span> loc = <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> + <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> * Array.nrow();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="comment">// Only one currently needs to be a zero for it</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="comment">// to change</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordtype">int</span> n_present = 0;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keywordtype">bool</span> i_in_array = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> e = 0u; e &lt; (dat.size() - 1); ++e)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="keywordflow">if</span> (array[dat[e]] != 1)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                    n_present++;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                    </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    <span class="keywordflow">if</span> (dat[e] == loc)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                        i_in_array = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                }</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
-<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#aa6b07795302a078414933c6e9f88e259">  258</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="counters_2defm_8hpp.html#aa6b07795302a078414933c6e9f88e259">rules_zerodiag</a>(<a class="code" href="class_rules.html">DEFMRules&lt;Tarray&gt;</a> * <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>) {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba">DEFM_RULE_LAMBDA</a>(no_self_tie) {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    };</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(no_self_tie);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
-<div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00403">barray-meat.hpp:403</a></div></div>
-<div class="ttc" id="aclass_b_array_dense_html"><div class="ttname"><a href="class_b_array_dense.html">BArrayDense</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-bones_8hpp_source.html#l00034">barraydense-bones.hpp:34</a></div></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="comment">// If i in array still false, then no change</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="keywordflow">if</span> (!i_in_array)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="comment">// Measuring the number of elements</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keywordtype">int</span> nele = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(dat.size()) - 1;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="comment">// We now match, so adding a new one</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">if</span> (nele == n_present)</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">return</span> Array.D()(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, dat[nele]);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">return</span> 0.0;            </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        };</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="comment">// Creating name of the structure</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        std::string <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> = <span class="stringliteral">&quot;Motif&quot;</span>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> d = 0u; d &lt; (coords.size() - 1u); ++d)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += (<span class="stringliteral">&quot; &quot;</span>+ std::to_str(coords[d]));</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            count_ones, <span class="keyword">nullptr</span>,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(), </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> + <span class="stringliteral">&quot; with attr &quot;</span> + std::to_str(covar_index), </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="stringliteral">&quot;Motif weigher by single attribute&quot;</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        );</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <a class="code" href="counters_2defm_8hpp.html#a1c0df2d8860fd823fcc9c2a1998ebc5e">DEFM_COUNTER_LAMBDA</a>(count_ones, dat = coords)</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="comment">// Checking if the observation is in the stat. We </span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> &amp; array = Array.get_data();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <span class="keywordtype">int</span> loc = <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> + <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> * Array.nrow();</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="comment">// Only one currently needs to be a zero for it</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="comment">// to change</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="keywordtype">int</span> n_present = 0;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordtype">bool</span> i_in_array = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> e = 0u; e &lt; dat.size(); ++e)</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <span class="keywordflow">if</span> (array[dat[e]] != 1)</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                    n_present++;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                    </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                    <span class="keywordflow">if</span> (dat[e] == loc)</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        i_in_array = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="comment">// If i in array still false, then no change</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="keywordflow">if</span> (!i_in_array)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="comment">// Measuring the number of elements</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordtype">int</span> nele = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(dat.size()) - 1;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="comment">// We now match, so adding a new one</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">if</span> (nele == n_present)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                <span class="keywordflow">return</span> 1.0;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordflow">return</span> 0.0;            </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        };</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="comment">// Creating name of the structure</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        std::string <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> = <span class="stringliteral">&quot;Motif&quot;</span>;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> d = 0u; d &lt; (coords.size() - 1u); ++d)</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += (<span class="stringliteral">&quot; &quot;</span>+ std::to_str(coords[d]));</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            count_ones, <span class="keyword">nullptr</span>,</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(), </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a>, </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="stringliteral">&quot;Structural motif&quot;</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        );</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Tarray = DEFMArray&gt;</div>
+<div class="line"><a name="l00339"></a><span class="lineno"><a class="line" href="group__counters-network.html#gaa6b07795302a078414933c6e9f88e259">  339</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#gaa6b07795302a078414933c6e9f88e259">rules_zerodiag</a>(<a class="code" href="class_rules.html">DEFMRules&lt;Tarray&gt;</a> * <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>) {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba">DEFM_RULE_LAMBDA</a>(no_self_tie) {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    };</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(no_self_tie);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;}</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
+<div class="ttc" id="aclass_b_array_dense_html"><div class="ttname"><a href="class_b_array_dense.html">BArrayDense</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-bones_8hpp_source.html#l00033">barraydense-bones.hpp:33</a></div></div>
 <div class="ttc" id="aclass_counter_html"><div class="ttname"><a href="class_counter.html">Counter</a></div><div class="ttdoc">A counter function based on change statistics.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00038">counters-bones.hpp:38</a></div></div>
 <div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00095">counters-bones.hpp:95</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_counter_data_html"><div class="ttname"><a href="class_d_e_f_m_counter_data.html">DEFMCounterData</a></div><div class="ttdoc">Data class used to store arbitrary uint or double vectors.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00073">defm.hpp:73</a></div></div>
-<div class="ttc" id="aclass_d_e_f_m_counter_data_html_a0b09b4a0c405b1e2f694d39136bf87f6"><div class="ttname"><a href="class_d_e_f_m_counter_data.html#a0b09b4a0c405b1e2f694d39136bf87f6">DEFMCounterData::~DEFMCounterData</a></div><div class="ttdeci">~DEFMCounterData()</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00087">defm.hpp:87</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_counter_data_html_a0b09b4a0c405b1e2f694d39136bf87f6"><div class="ttname"><a href="class_d_e_f_m_counter_data.html#a0b09b4a0c405b1e2f694d39136bf87f6">DEFMCounterData::~DEFMCounterData</a></div><div class="ttdeci">~DEFMCounterData()</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00090">defm.hpp:90</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_counter_data_html_a1798d8ea93c677ed7fbfb91a6fc568dd"><div class="ttname"><a href="class_d_e_f_m_counter_data.html#a1798d8ea93c677ed7fbfb91a6fc568dd">DEFMCounterData::indices</a></div><div class="ttdeci">std::vector&lt; size_t &gt; indices</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00076">defm.hpp:76</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_counter_data_html_a1bce58127a5d36549416f517bffa5375"><div class="ttname"><a href="class_d_e_f_m_counter_data.html#a1bce58127a5d36549416f517bffa5375">DEFMCounterData::DEFMCounterData</a></div><div class="ttdeci">DEFMCounterData(const std::vector&lt; uint &gt; indices_, const std::vector&lt; double &gt; numbers_, size_t markov_order_)</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00081">defm.hpp:81</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_counter_data_html_a38769090a011ecf6d3f638d35445e07e"><div class="ttname"><a href="class_d_e_f_m_counter_data.html#a38769090a011ecf6d3f638d35445e07e">DEFMCounterData::markov_order</a></div><div class="ttdeci">size_t markov_order</div><div class="ttdoc">Order of the markov process.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00078">defm.hpp:78</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_counter_data_html_a42bd6d1deaa0d800a878ba9fe87d8b18"><div class="ttname"><a href="class_d_e_f_m_counter_data.html#a42bd6d1deaa0d800a878ba9fe87d8b18">DEFMCounterData::numbers</a></div><div class="ttdeci">std::vector&lt; double &gt; numbers</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00077">defm.hpp:77</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_counter_data_html_a5d370202642dddaad6d211288fb41f4d"><div class="ttname"><a href="class_d_e_f_m_counter_data.html#a5d370202642dddaad6d211288fb41f4d">DEFMCounterData::DEFMCounterData</a></div><div class="ttdeci">DEFMCounterData()</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00080">defm.hpp:80</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_counter_data_html_a7c3684926b2bcdaa961b7005ac5d391c"><div class="ttname"><a href="class_d_e_f_m_counter_data.html#a7c3684926b2bcdaa961b7005ac5d391c">DEFMCounterData::idx</a></div><div class="ttdeci">size_t idx(size_t i)</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00087">defm.hpp:87</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_counter_data_html_a911d07631ee0d00407d741efa436325b"><div class="ttname"><a href="class_d_e_f_m_counter_data.html#a911d07631ee0d00407d741efa436325b">DEFMCounterData::num</a></div><div class="ttdeci">double num(size_t i)</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00088">defm.hpp:88</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_data_html"><div class="ttname"><a href="class_d_e_f_m_data.html">DEFMData</a></div><div class="ttdoc">Data class for DEFM arrays.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00020">defm.hpp:20</a></div></div>
-<div class="ttc" id="aclass_d_e_f_m_data_html_a0dea095b0dfea6a4ad45cc93336b1e96"><div class="ttname"><a href="class_d_e_f_m_data.html#a0dea095b0dfea6a4ad45cc93336b1e96">DEFMData::obs_n_times</a></div><div class="ttdeci">size_t obs_n_times</div><div class="ttdoc">Number of observations in the model.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00025">defm.hpp:25</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_data_html_a0dea095b0dfea6a4ad45cc93336b1e96"><div class="ttname"><a href="class_d_e_f_m_data.html#a0dea095b0dfea6a4ad45cc93336b1e96">DEFMData::obs_n_times</a></div><div class="ttdeci">size_t obs_n_times</div><div class="ttdoc">Number of records of the observation in the model.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00025">defm.hpp:25</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_data_html_a61b20537621f329bf2c1b1ccd28c1df3"><div class="ttname"><a href="class_d_e_f_m_data.html#a61b20537621f329bf2c1b1ccd28c1df3">DEFMData::covariates</a></div><div class="ttdeci">std::vector&lt; double &gt; * covariates</div><div class="ttdoc">Vector of covariates (complete vector)</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00023">defm.hpp:23</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_data_html_a637f2c896da37c0f3a72bd0174ca718c"><div class="ttname"><a href="class_d_e_f_m_data.html#a637f2c896da37c0f3a72bd0174ca718c">DEFMData::~DEFMData</a></div><div class="ttdeci">~DEFMData()</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00057">defm.hpp:57</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_data_html_a78c70f5bc902e34018735350ff8d2ee3"><div class="ttname"><a href="class_d_e_f_m_data.html#a78c70f5bc902e34018735350ff8d2ee3">DEFMData::n_covariates</a></div><div class="ttdeci">size_t n_covariates</div><div class="ttdoc">Number of covariates included in the model.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00026">defm.hpp:26</a></div></div>
@@ -320,12 +403,14 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="ttc" id="aclass_rules_html"><div class="ttname"><a href="class_rules.html">Rules</a></div><div class="ttdoc">Vector of objects of class Rule.</div><div class="ttdef"><b>Definition:</b> <a href="rules-bones_8hpp_source.html#l00062">rules-bones.hpp:62</a></div></div>
 <div class="ttc" id="aclass_stats_counter_html"><div class="ttname"><a href="class_stats_counter.html">StatsCounter</a></div><div class="ttdoc">Count stats for a single Array.</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-bones_8hpp_source.html#l00019">statscounter-bones.hpp:19</a></div></div>
 <div class="ttc" id="aclass_support_html"><div class="ttname"><a href="class_support.html">Support</a></div><div class="ttdoc">Compute the support of sufficient statistics.</div><div class="ttdef"><b>Definition:</b> <a href="support-bones_8hpp_source.html#l00035">support-bones.hpp:35</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_a42cb6e97e822b37d4d982c1106a1b53e"><div class="ttname"><a href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a></div><div class="ttdeci">Data_Type &amp;&amp;counter_ name(std::move(counter_.name))</div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00082">counters-meat.hpp:82</a></div></div>
-<div class="ttc" id="acounters_2defm_8hpp_html_a0de627ee2d314d645cf885c7cc0ee36b"><div class="ttname"><a href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">DEFM_COUNTER_LAMBDA</a></div><div class="ttdeci">#define DEFM_COUNTER_LAMBDA(a)</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00128">defm.hpp:128</a></div></div>
-<div class="ttc" id="acounters_2defm_8hpp_html_a73243d737153ebdef1124a0565220b65"><div class="ttname"><a href="counters_2defm_8hpp.html#a73243d737153ebdef1124a0565220b65">DEFMArray</a></div><div class="ttdeci">BArrayDense&lt; double, DEFMData &gt; DEFMArray</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00095">defm.hpp:95</a></div></div>
-<div class="ttc" id="acounters_2defm_8hpp_html_a94148d8866c1e18cbb02be5ba7d233ba"><div class="ttname"><a href="counters_2defm_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba">DEFM_RULE_LAMBDA</a></div><div class="ttdeci">#define DEFM_RULE_LAMBDA(a)</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00147">defm.hpp:147</a></div></div>
-<div class="ttc" id="acounters_2defm_8hpp_html_aa6b07795302a078414933c6e9f88e259"><div class="ttname"><a href="counters_2defm_8hpp.html#aa6b07795302a078414933c6e9f88e259">rules_zerodiag</a></div><div class="ttdeci">void rules_zerodiag(DEFMRules&lt; Tarray &gt; *rules)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00258">defm.hpp:258</a></div></div>
-<div class="ttc" id="agroup__counters-network_html_ga4237bffaaf6a707bd4902661e52984a1"><div class="ttname"><a href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">counter_ones</a></div><div class="ttdeci">void counter_ones(DEFMCounters&lt; Tarray &gt; *counters, int covar_index=-1)</div><div class="ttdoc">Prevalence of ones.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00167">defm.hpp:167</a></div></div>
+<div class="ttc" id="acounters_2defm_8hpp_html_a0b423f2edc017f1bb06fe423cbd49b75"><div class="ttname"><a href="counters_2defm_8hpp.html#a0b423f2edc017f1bb06fe423cbd49b75">DEFMArray</a></div><div class="ttdeci">BArrayDense&lt; int, DEFMData &gt; DEFMArray</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00098">defm.hpp:98</a></div></div>
+<div class="ttc" id="acounters_2defm_8hpp_html_a1c0df2d8860fd823fcc9c2a1998ebc5e"><div class="ttname"><a href="counters_2defm_8hpp.html#a1c0df2d8860fd823fcc9c2a1998ebc5e">DEFM_COUNTER_LAMBDA</a></div><div class="ttdeci">#define DEFM_COUNTER_LAMBDA(a, b)</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00131">defm.hpp:131</a></div></div>
+<div class="ttc" id="acounters_2defm_8hpp_html_a94148d8866c1e18cbb02be5ba7d233ba"><div class="ttname"><a href="counters_2defm_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba">DEFM_RULE_LAMBDA</a></div><div class="ttdeci">#define DEFM_RULE_LAMBDA(a)</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00150">defm.hpp:150</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga4237bffaaf6a707bd4902661e52984a1"><div class="ttname"><a href="group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1">counter_ones</a></div><div class="ttdeci">void counter_ones(DEFMCounters&lt; Tarray &gt; *counters, int covar_index=-1)</div><div class="ttdoc">Prevalence of ones.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00170">defm.hpp:170</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga62b79939ddd76cba42755c98e9629a5e"><div class="ttname"><a href="group__counters-network.html#ga62b79939ddd76cba42755c98e9629a5e">counter_transition</a></div><div class="ttdeci">void counter_transition(DEFMCounters&lt; Tarray &gt; *counters, std::vector&lt; int &gt; coords, int covar_index=-1)</div><div class="ttdoc">Prevalence of ones.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00217">defm.hpp:217</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_gaa6b07795302a078414933c6e9f88e259"><div class="ttname"><a href="group__counters-network.html#gaa6b07795302a078414933c6e9f88e259">rules_zerodiag</a></div><div class="ttdeci">void rules_zerodiag(DEFMRules&lt; Tarray &gt; *rules)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00339">defm.hpp:339</a></div></div>
 <div class="ttc" id="astatscounter-meat_8hpp_html_a782c48a908662b34845b6f654f929788"><div class="ttname"><a href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div><div class="ttdeci">counters</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00025">statscounter-meat.hpp:25</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a595e07a99f60f22a6a29e4fca291ea28"><div class="ttname"><a href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a></div><div class="ttdeci">rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00453">support-meat.hpp:453</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -334,7 +419,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="counters_2defm_8hpp.html">defm.hpp</a></li>
-    <li class="footer">Generated on Fri Mar 18 2022 22:44:51 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Mar 21 2022 22:39:04 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
