@@ -39,10 +39,9 @@ public:
         std::vector< double > * covariates_,
         size_t obs_start_,
         size_t obs_n_times_,
-        size_t n_states_,
         size_t n_covariates_
-    ) : obs_start(obs_start_), obs_n_times(obs_n_times_),
-    n_states(n_states_), n_covariates(n_covariates_) {}; 
+    ) : covariates(covariates_), obs_start(obs_start_), obs_n_times(obs_n_times_),
+    n_covariates(n_covariates_) {}; 
 
     /**
      * @brief Access to the row (i) colum (j) data
@@ -51,19 +50,19 @@ public:
      * @param j 
      * @return double 
      */
-    double operator()(size_t i, size_t j);
-    double at(size_t i, size_t j);
+    double operator()(size_t i, size_t j) const;
+    double at(size_t i, size_t j) const;
     
     ~DEFMData() {};
 
 };
 
-inline double DEFMData::operator()(size_t i, size_t j)
+inline double DEFMData::operator()(size_t i, size_t j) const
 {
     return covariates->operator[](obs_start + i * n_covariates + j);
 }
 
-inline double DEFMData::at(size_t i, size_t j)
+inline double DEFMData::at(size_t i, size_t j) const
 {
     return covariates->at(obs_start + i * n_covariates + j);
 }
@@ -79,7 +78,7 @@ public:
     
     DEFMCounterData() : indices(0u), numbers(0u) {};
     DEFMCounterData(
-        const std::vector< uint > indices_,
+        const std::vector< size_t > indices_,
         const std::vector< double > numbers_,
         size_t markov_order_
     ): indices(indices_), numbers(numbers_), markov_order(markov_order_) {};
@@ -128,13 +127,10 @@ template<typename Tarray = DEFMArray>\
 inline double (a) (const Tarray & Array, uint i, uint j, DEFMCounterData & data)
 
 /**Lambda function for definition of a network counter function*/
-#define DEFM_COUNTER_LAMBDA(a,b) \
+#define DEFM_COUNTER_LAMBDA(a) \
 Counter_fun_type<Tarray, DEFMCounterData> a = \
-    [b](const Tarray & Array, uint i, uint j, DEFMCounterData & data)
+    [](const Tarray & Array, uint i, uint j, DEFMCounterData & data)
 
-#define NETWORKDENSE_COUNTER_LAMBDA(a) \
-Counter_fun_type<DEFMworkDense, DEFMCounterData> a = \
-    [](const DEFMworkDense & Array, uint i, uint j, DEFMCounterData & data)
 ///@}
 
 
@@ -177,22 +173,22 @@ inline void counter_ones(
     if (covar_index >= 0)
     {      
 
-        DEFM_COUNTER_LAMBDA(count_ones, vid = covar_index)
-            {
-                return Array.D()(i, vid);
+        DEFM_COUNTER_LAMBDA(counter_tmp)
+        {
+            return Array.D()(static_cast<size_t>(i), data.idx(0u));
 
-            };
+        };
 
         counters->add_counter(
-            count_ones, nullptr,
-            DEFMCounterData(), 
-            "# of ones x attr" + std::to_str(covar_index), 
+            counter_tmp, nullptr,
+            DEFMCounterData({static_cast<size_t>(covar_index)}, {}, 3u), 
+            "# of ones x attr" + std::to_string(covar_index), 
             "Overall number of ones"
         );
 
     } else {
 
-        DEFM_COUNTER_LAMBDA(count_ones,) {return 1.0;};
+        DEFM_COUNTER_LAMBDA(count_ones) {return 1.0;};
 
         counters->add_counter(
             count_ones, nullptr,
@@ -216,7 +212,7 @@ inline void counter_ones(
 template<typename Tarray = DEFMArray>
 inline void counter_transition(
     DEFMCounters<Tarray> * counters,
-    std::vector< int > coords,
+    std::vector< size_t > coords,
     int covar_index = -1
 )
 {
@@ -225,11 +221,13 @@ inline void counter_transition(
     if (covar_index >= 0)
     {      
 
-        coords.push_back(covar_index);
+        coords.push_back(static_cast<size_t>(covar_index));
 
-        DEFM_COUNTER_LAMBDA(count_ones, dat = coords)
+        DEFM_COUNTER_LAMBDA(count_ones)
         {
             
+            auto dat = data.indices;
+
             // Checking if the observation is in the stat. We 
             const auto & array = Array.get_data();
             int loc = i + j * Array.nrow();
@@ -239,11 +237,11 @@ inline void counter_transition(
             int n_present = 0;
             bool i_in_array = false;
             for (size_t e = 0u; e < (dat.size() - 1); ++e)
-                if (array[dat[e]] != 1)
+                if (array[dat[e]] == 1)
                 {
                     n_present++;
                     
-                    if (dat[e] == loc)
+                    if (dat[e] == static_cast<size_t>(loc))
                         i_in_array = true;
                 }
 
@@ -256,7 +254,7 @@ inline void counter_transition(
 
             // We now match, so adding a new one
             if (nele == n_present)
-                return Array.D()(i, dat[nele]);
+                return Array.D()(static_cast<size_t>(i), static_cast<size_t>(dat[nele]));
 
             return 0.0;            
 
@@ -265,19 +263,21 @@ inline void counter_transition(
         // Creating name of the structure
         std::string name = "Motif";
         for (size_t d = 0u; d < (coords.size() - 1u); ++d)
-            name += (" "+ std::to_str(coords[d]));
+            name += (" "+ std::to_string(coords[d]));
 
         counters->add_counter(
             count_ones, nullptr,
-            DEFMCounterData(), 
-            name + " with attr " + std::to_str(covar_index), 
+            DEFMCounterData(coords, {}, 3u), 
+            name + " with attr " + std::to_string(covar_index), 
             "Motif weigher by single attribute"
         );
 
     } else {
 
-        DEFM_COUNTER_LAMBDA(count_ones, dat = coords)
+        DEFM_COUNTER_LAMBDA(count_ones)
         {
+
+            auto dat = data.indices;
             
             // Checking if the observation is in the stat. We 
             const auto & array = Array.get_data();
@@ -288,11 +288,11 @@ inline void counter_transition(
             int n_present = 0;
             bool i_in_array = false;
             for (size_t e = 0u; e < dat.size(); ++e)
-                if (array[dat[e]] != 1)
+                if (array[dat[e]] == 1)
                 {
                     n_present++;
                     
-                    if (dat[e] == loc)
+                    if (dat[e] == static_cast<size_t>(loc))
                         i_in_array = true;
                 }
 
@@ -301,7 +301,7 @@ inline void counter_transition(
                 return 0.0;
 
             // Measuring the number of elements
-            int nele = static_cast<int>(dat.size()) - 1;
+            int nele = static_cast<int>(dat.size());
 
             // We now match, so adding a new one
             if (nele == n_present)
@@ -314,15 +314,50 @@ inline void counter_transition(
         // Creating name of the structure
         std::string name = "Motif";
         for (size_t d = 0u; d < (coords.size() - 1u); ++d)
-            name += (" "+ std::to_str(coords[d]));
+            name += (" "+ std::to_string(coords[d]));
 
         counters->add_counter(
             count_ones, nullptr,
-            DEFMCounterData(), 
+            DEFMCounterData({coords}, {}, 3u), 
             name, 
             "Structural motif"
         );
     }
+
+    return;
+
+}
+
+/**
+ * @brief Prevalence of ones
+ * 
+ * @tparam Tarray 
+ * @param counters Pointer ot a vector of counters
+ * @param covar_index If >= than 0, then the interaction
+ */
+template<typename Tarray = DEFMArray>
+inline void counter_fixed_effect(
+    DEFMCounters<Tarray> * counters,
+    int covar_index,
+    double k
+)
+{
+
+    DEFM_COUNTER_LAMBDA(count_init)
+    {
+        return std::pow(Array.D()((size_t) i, data.idx(0u)), data.num(0u));
+    };
+
+    DEFM_COUNTER_LAMBDA(count_tmp)
+    {
+        return 0.0;
+    };
+
+    counters->add_counter(
+        count_tmp, count_init,
+        DEFMCounterData({static_cast<size_t>(covar_index)}, {k}, 3u), 
+        "Fixed effect feature " + std::to_string(covar_index) + "^" + std::to_string(k)
+    );
 
     return;
 
