@@ -145,10 +145,10 @@ template <typename Cell_Type, typename Data_Type> class BArrayDense;
  */
 ///@{
 template <typename Array_Type, typename Data_Type>
-using Counter_fun_type = std::function<double(const Array_Type &, uint, uint, Data_Type *)>;
+using Counter_fun_type = std::function<double(const Array_Type &, uint, uint, Data_Type &)>;
 
 template <typename Array_Type, typename Data_Type>
-using Rule_fun_type = std::function<bool(const Array_Type &, uint, uint, Data_Type *)>;
+using Rule_fun_type = std::function<bool(const Array_Type &, uint, uint, Data_Type &)>;
 ///@}
 
 // Misc ------------------------------------------------------------------------
@@ -196,15 +196,15 @@ inline bool vec_equal_approx(
 }
 ///@}
 
+#ifdef __OPENM
+#pragma omp declare simd
+#endif
 template <typename T>
 inline T vec_inner_prod(
-const std::vector< T > & a,
-const std::vector< T > & b
+    const T * a,
+    const T * b,
+    size_t n
 ) {
-
-    
-    if (a.size() != b.size())
-        throw std::length_error("-a- and -b- should have the same length.");
     
     double res = 0.0;
     #ifdef __OPENM 
@@ -212,22 +212,22 @@ const std::vector< T > & b
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < a.size(); ++i)
-        res += (a[i] * b[i]);
+    for (unsigned int i = 0u; i < n; ++i)
+        res += (*(a + i) * *(b + i));
     
     return res;
 
 }
 
+#ifdef __OPENM
+#pragma omp declare simd
+#endif
 template <>
 inline double vec_inner_prod(
-const std::vector< double > & a,
-const std::vector< double > & b
+    const double * a,
+    const double * b,
+    size_t n
 ) {
-    
-    
-    if (a.size() != b.size())
-        throw std::length_error("-a- and -b- should have the same length.");
     
     double res = 0.0;
     #ifdef __OPENMP
@@ -235,8 +235,8 @@ const std::vector< double > & b
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < a.size(); ++i)
-        res += (a[i] * b[i]);
+    for (unsigned int i = 0u; i < n; ++i)
+        res += (*(a + i) * *(b + i));
     
     return res;
 

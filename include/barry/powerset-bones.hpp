@@ -59,12 +59,10 @@ public:
      * support and the actual counter function.
      */
     ///@{
-    void add_rule(Rule<Array_Type, Data_Rule_Type> & rule);
-    void add_rule(Rule<Array_Type, Data_Rule_Type> * rule);
+    void add_rule(Rule<Array_Type, Data_Rule_Type> rule);
     void add_rule(
         Rule_fun_type<Array_Type,Data_Rule_Type> count_fun_,
-        Data_Rule_Type * data_ = nullptr,
-        bool delete_data_ = false
+        Data_Rule_Type data_
     );
     ///@}
     

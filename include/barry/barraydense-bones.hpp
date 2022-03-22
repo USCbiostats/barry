@@ -22,10 +22,9 @@ class BArrayDenseCell_const;
 /**
  * @brief Baseline class for binary arrays.
  * 
- * `BArrayDense` class objects are arbitrary arrays
- * in which non-empty cells hold data of type `Cell_Type`. The non-empty cells
- * are stored by row and indexed using `unordered_map`s, i.e.
- * `std::vector< std::unordered_map<unsigned int,Cell_Type> >`.
+ * `BArrayDense` class objects are arbitrary dense-arrays. The data
+ * is stored internally in the `el` member, which can be accessed
+ * using the member function `get_data()`, by column.
  *
  * @tparam Cell_Type Type of cell (any type).
  * @tparam Data_Type Data type of the array (bool default).
@@ -130,8 +129,10 @@ public:
      */
     ///@{
     void set_data(Data_Type * data_, bool delete_data_ = false);
-    Data_Type * D();
-    const Data_Type * D() const;
+    Data_Type * D_ptr();
+    const Data_Type * D_ptr() const;
+    Data_Type & D();
+    const Data_Type & D() const;
     ///@}
     
     // Function to access the elements

@@ -42,7 +42,12 @@ inline std::vector< double > keygen_default(const Array_Type & Array_) {
  * @tparam Data_Counter_Type Any type.
  * @tparam Data_Rule_Type Any type.
  */
-template <typename Array_Type = BArray<>, typename Data_Counter_Type = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type = bool>
+template<
+    typename Array_Type = BArray<>,
+    typename Data_Counter_Type = bool,
+    typename Data_Rule_Type  = bool,
+    typename Data_Rule_Dyn_Type = bool
+    >
 class Model {
 
 private:
@@ -90,9 +95,9 @@ private:
      */
     ///@{
     bool with_pset = false;
-    std::vector< std::vector< Array_Type > >          pset_arrays; ///< Arrays of the support(s)
-    std::vector< std::vector< std::vector<double> > > pset_stats;  ///< Statistics of the support(s)
-    std::vector< std::vector<double> >                pset_probs;  ///< Probabilities of the support(s)
+    std::vector< std::vector< Array_Type > > pset_arrays; ///< Arrays of the support(s)
+    std::vector< std::vector<double> >       pset_stats;  ///< Statistics of the support(s)
+    std::vector< std::vector<double> >       pset_probs;  ///< Probabilities of the support(s)
     ///@}
     
     /**
@@ -197,12 +202,10 @@ public:
      */
     ///@{
     void add_counter(Counter<Array_Type, Data_Counter_Type> & counter);
-    void add_counter(Counter<Array_Type, Data_Counter_Type> * counter);
     void add_counter(
         Counter_fun_type<Array_Type,Data_Counter_Type> count_fun_,
         Counter_fun_type<Array_Type,Data_Counter_Type> init_fun_    = nullptr,
-        Data_Counter_Type *                            data_        = nullptr,
-        bool                                           delete_data_ = false
+        Data_Counter_Type                              data_        = nullptr
     );
     void set_counters(Counters<Array_Type,Data_Counter_Type> * counters_);
     ///@}
@@ -214,21 +217,17 @@ public:
      */
     ///@{
     void add_rule(Rule<Array_Type, Data_Rule_Type> & rule);
-    void add_rule(Rule<Array_Type, Data_Rule_Type> * rule);
     void add_rule(
         Rule_fun_type<Array_Type, Data_Rule_Type> count_fun_,
-        Data_Rule_Type *                          data_        = nullptr,
-        bool                                      delete_data_ = false
+        Data_Rule_Type                            data_
     );
     
     void set_rules(Rules<Array_Type,Data_Rule_Type> * rules_);
 
     void add_rule_dyn(Rule<Array_Type, Data_Rule_Dyn_Type> & rule);
-    void add_rule_dyn(Rule<Array_Type, Data_Rule_Dyn_Type> * rule);
     void add_rule_dyn(
         Rule_fun_type<Array_Type, Data_Rule_Dyn_Type> count_fun_,
-        Data_Rule_Dyn_Type *                          data_        = nullptr,
-        bool                                      delete_data_ = false
+        Data_Rule_Dyn_Type                            data_
     );
     
     void set_rules_dyn(Rules<Array_Type,Data_Rule_Dyn_Type> * rules_);
@@ -279,6 +278,13 @@ public:
         bool as_log = false
     );
 
+    double likelihood(
+        const std::vector<double> & params,
+        const double * target_,
+        const uint & i,
+        bool as_log = false
+    );
+    
     double likelihood_total(
         const std::vector<double> & params,
         bool as_log = false
@@ -304,7 +310,7 @@ public:
         const uint & i
     );
 
-    const std::vector< std::vector< double > > * get_pset_stats(
+    const std::vector< double > * get_pset_stats(
         const uint & i
     );
     ///@}
@@ -381,8 +387,8 @@ public:
     std::vector< std::vector< double > > * get_stats_support();
     std::vector< unsigned int > * get_arrays2support();
     std::vector< std::vector< Array_Type > > * get_pset_arrays();
-    std::vector< std::vector< std::vector<double> > > * get_pset_stats();  ///< Statistics of the support(s)
-    std::vector< std::vector<double> > *                get_pset_probs(); 
+    std::vector< std::vector<double> > * get_pset_stats();  ///< Statistics of the support(s)
+    std::vector< std::vector<double> > * get_pset_probs(); 
     ///@}
 
     /**

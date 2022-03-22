@@ -76,6 +76,9 @@ namespace barry {
         namespace phylo {
             #include "counters/phylo.hpp"
         }
+        namespace defm {
+            #include "counters/defm.hpp"
+        }
     }
     
 }
@@ -84,17 +87,17 @@ namespace netcounters = barry::counters::network;
 namespace phylocounters = barry::counters::phylo;
 
 #define COUNTER_FUNCTION(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
-    inline double (a) (const Array_Type & Array, uint i, uint j, Data_Type * data)\
+    inline double (a) (const Array_Type & Array, uint i, uint j, Data_Type & data)\
 
 #define COUNTER_LAMBDA(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
     Counter_fun_type<Array_Type, Data_Type> a = \
-    [](const Array_Type & Array, uint i, uint j, Data_Type * data)
+    [](const Array_Type & Array, uint i, uint j, Data_Type & data)
 
 #define RULE_FUNCTION(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
-    inline bool (a) (const Array_Type & Array, uint i, uint j, Data_Type * data)\
+    inline bool (a) (const Array_Type & Array, uint i, uint j, Data_Type & data)\
 
 #define RULE_LAMBDA(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
     Rule_fun_type<Array_Type, Data_Type> a = \
-    [](const Array_Type & Array, uint i, uint j, Data_Type * data)
+    [](const Array_Type & Array, uint i, uint j, Data_Type & data)
 
 #endif

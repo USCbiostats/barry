@@ -9,16 +9,15 @@
  */
 
 inline double update_normalizing_constant(
-    const std::vector< double > & params,
-    const std::vector< double > & support
+    const double * params,
+    const double * support,
+    size_t k,
+    size_t n
 )
 {
     
     double res = 0.0;
-    size_t k   = params.size() + 1u;
-    size_t n   = support.size() / k;
-
-    double tmp;
+    
     #ifdef __OPENMP
     #pragma omp simd reduction(+:res) 
     #else
@@ -27,21 +26,13 @@ inline double update_normalizing_constant(
     for (unsigned int i = 0u; i < n; ++i)
     {
 
-        tmp = 0.0;
+        double tmp = 0.0;
+        const double * support_n = support + i * k + 1u;
         
-        #ifdef __OPENM
-        #pragma omp simd reduction(+:tmp)
-        #else
-        #pragma GCC ivdep
-        #endif
-        for (unsigned int j = 0u; j < params.size(); ++j)
-        {
-
-            tmp += support[i * k + j + 1u] * params[j];
-            
-        }
+        for (unsigned int j = 0u; j < (k - 1u); ++j)
+            tmp += (*(support_n + j)) * (*(params + j));
         
-        res += std::exp(tmp BARRY_SAFE_EXP) * support[i * k];
+        res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
 
     }
     
@@ -54,13 +45,14 @@ inline double update_normalizing_constant(
 }
 
 inline double likelihood_(
-        const std::vector< double > & stats_target,
+        const double * stats_target,
         const std::vector< double > & params,
         const double normalizing_constant,
+        size_t n_params,
         bool log_ = false
 ) {
     
-    if (stats_target.size() != params.size())
+    if (n_params != params.size())
         throw std::length_error("-stats_target- and -params- should have the same length.");
         
     double numerator = 0.0;
@@ -71,8 +63,8 @@ inline double likelihood_(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int j = 0u; j < stats_target.size(); ++j)
-        numerator += stats_target[j] * params[j];
+    for (unsigned int j = 0u; j < params.size(); ++j)
+        numerator += *(stats_target + j) * params[j];
 
     if (!log_)
         numerator = exp(numerator BARRY_SAFE_EXP);
@@ -273,31 +265,20 @@ MODEL_TEMPLATE(void, add_counter)(
         Counter<Array_Type, Data_Counter_Type> & counter
 ) {
     
-    counters->add_counter(counter);
+    counters->add_counter(counter, Data_Counter_Type());
     return;
-}
-
-MODEL_TEMPLATE(void, add_counter)(
-        Counter<Array_Type, Data_Counter_Type> * counter
-) {
-    
-    counters->add_counter(counter);
-    return;
-    
 }
 
 MODEL_TEMPLATE(void, add_counter)(
     Counter_fun_type<Array_Type,Data_Counter_Type> count_fun_,
     Counter_fun_type<Array_Type,Data_Counter_Type> init_fun_,
-    Data_Counter_Type *                            data_,
-    bool                                           delete_data_
+    Data_Counter_Type                              data_
 ) {
     
     counters->add_counter(
         count_fun_,
         init_fun_,
-        data_,
-        delete_data_
+        data_
     );
     
     return;
@@ -327,34 +308,10 @@ MODEL_TEMPLATE(void, add_rule)(
     Rule<Array_Type, Data_Rule_Type> & rules
 ) {
     
-    rules->add_rule(rules);
+    rules->add_rule(rules, Data_Rule_Type());
     return;
 }
 
-MODEL_TEMPLATE(void, add_rule)(
-    Rule<Array_Type, Data_Rule_Type> * rule
-) {
-    
-    rules->add_rule(rule);
-    return;
-    
-}
-
-MODEL_TEMPLATE(void, add_rule)(
-    Rule_fun_type<Array_Type,Data_Rule_Type> rule_fun_,
-    Data_Rule_Type *                         data_,
-    bool                                     delete_data_
-) {
-    
-    rules->add_rule(
-        rule_fun_,
-        data_,
-        delete_data_
-    );
-    
-    return;
-    
-}
 
 MODEL_TEMPLATE(void, set_rules)(
     Rules<Array_Type,Data_Rule_Type> * rules_
@@ -377,29 +334,18 @@ MODEL_TEMPLATE(void, add_rule_dyn)(
     Rule<Array_Type, Data_Rule_Dyn_Type> & rules_
 ) {
     
-    rules_dyn->add_rule(rules_);
+    rules_dyn->add_rule(rules_, Data_Rule_Dyn_Type());
     return;
-}
-
-MODEL_TEMPLATE(void, add_rule_dyn)(
-    Rule<Array_Type, Data_Rule_Dyn_Type> * rules_
-) {
-    
-    rules_dyn->add_rule(rules_);
-    return;
-    
 }
 
 MODEL_TEMPLATE(void, add_rule_dyn)(
     Rule_fun_type<Array_Type,Data_Rule_Dyn_Type> rule_fun_,
-    Data_Rule_Dyn_Type *                         data_,
-    bool                                     delete_data_
+    Data_Rule_Dyn_Type                           data_
 ) {
     
     rules_dyn->add_rule(
         rule_fun_,
-        data_,
-        delete_data_
+        data_
     );
     
     return;
@@ -488,20 +434,20 @@ MODEL_TEMPLATE(uint, add_array)(
         else
         {
             
-            try
-            {
+            // try
+            // {
 
                 support_fun.calc();
 
-            }
-            catch (const std::exception& e)
-            {
+            // }
+            // catch (const std::exception& e)
+            // {
                 
-                printf_barry("A problem ocurred while trying to add the array. ");
-                printf_barry("with error: %s", e.what());
-                throw std::logic_error("");
+            //     printf_barry("A problem ocurred while trying to add the array. ");
+            //     printf_barry("with error: %s", e.what());
+            //     throw std::logic_error("");
                 
-            }
+            // }
             
         }
         
@@ -573,8 +519,11 @@ MODEL_TEMPLATE(double, likelihood)(
         
         first_calc_done[idx] = true;
         
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[idx].size() / k;
+
         normalizing_constants[idx] = update_normalizing_constant(
-            params, stats_support[idx]
+            &params[0u], &stats_support[idx][0u], k, n
         );
         
         params_last[idx] = params;
@@ -582,9 +531,10 @@ MODEL_TEMPLATE(double, likelihood)(
     }
     
     return likelihood_(
-        stats_target[i],
+        &stats_target[i],
         params,
         normalizing_constants[idx],
+        nterms(),
         as_log
     );
     
@@ -640,9 +590,12 @@ MODEL_TEMPLATE(double, likelihood)(
     {
         
         first_calc_done[loc] = true;
+
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[loc].size() / k;
         
         normalizing_constants[loc] = update_normalizing_constant(
-            params, stats_support[loc]
+            &params[0u], &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -654,9 +607,10 @@ MODEL_TEMPLATE(double, likelihood)(
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     return likelihood_(
-        target_,
+        &target_[0u],
         params,
         normalizing_constants[loc],
+        nterms(),
         as_log
     );
     
@@ -688,8 +642,67 @@ MODEL_TEMPLATE(double, likelihood)(
         
         first_calc_done[loc] = true;
         
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[loc].size() / k;
+
         normalizing_constants[loc] = update_normalizing_constant(
-            params, stats_support[loc]
+            &params[0u], &stats_support[loc][0u], k, n
+        );
+        
+        params_last[loc] = params;
+        
+    }
+    
+    return likelihood_(
+        &target_[0u],
+        params,
+        normalizing_constants[loc],
+        nterms(),
+        as_log
+    );
+    
+}
+
+MODEL_TEMPLATE(double, likelihood)(
+    const std::vector<double> & params,
+    const double * target_,
+    const uint & i,
+    bool as_log
+) {
+    
+    // Checking if the index exists
+    if (i >= arrays2support.size())
+        throw std::range_error("The requested support is out of range");
+
+    uint loc = arrays2support[i];
+
+    // Checking if passes the rules
+    if (support_fun.get_rules_dyn()->size() > 0u)
+    {
+
+        std::vector< double > tmp_target(nterms(), 0.0);
+        for (size_t t = 0u; t < nterms(); ++t)
+            tmp_target[t] = *(target_ + t);
+
+        if (!support_fun.eval_rules_dyn(tmp_target, 0u, 0u))
+            return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+
+    }
+
+    // Checking if this actually has a change of happening
+    if (this->stats_support[loc].size() == 0u)
+        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+    
+    // Checking if we have updated the normalizing constant or not
+    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
+        
+        first_calc_done[loc] = true;
+        
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[loc].size() / k;
+
+        normalizing_constants[loc] = update_normalizing_constant(
+            &params[0u], &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -700,6 +713,7 @@ MODEL_TEMPLATE(double, likelihood)(
         target_,
         params,
         normalizing_constants[loc],
+        nterms(),
         as_log
     );
     
@@ -710,15 +724,20 @@ MODEL_TEMPLATE(double, likelihood_total)(
     bool as_log
 ) {
     
-    for (uint i = 0u; i < params_last.size(); ++i)
+    size_t params_last_size = params_last.size();
+
+    for (uint i = 0u; i < params_last_size; ++i)
     {
 
         if (!first_calc_done[i] || !vec_equal_approx(params, params_last[i]) )
         {
+
+            size_t k = params.size() + 1u;
+            size_t n = stats_support[i].size() / k;
             
             first_calc_done[i] = true;
             normalizing_constants[i] = update_normalizing_constant(
-                params, stats_support[i]
+                &params[0u], &stats_support[i][0u], k, n
             );
             
             params_last[i] = params;
@@ -732,26 +751,36 @@ MODEL_TEMPLATE(double, likelihood_total)(
     {
 
         for (uint i = 0; i < stats_target.size(); ++i) 
-            res += vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP;
+            res += vec_inner_prod(
+                &stats_target[i][0u],
+                &params[0u],
+                params.size()
+                ) BARRY_SAFE_EXP;
         
         #ifdef __OPENM 
         #pragma omp simd reduction(-:res)
         #else
         #pragma GCC ivdep
         #endif
-        for (unsigned int i = 0u; i < params_last.size(); ++i)
+        for (unsigned int i = 0u; i < params_last_size; ++i)
             res -= (std::log(normalizing_constants[i]) * this->stats_support_n_arrays[i]);
 
     } else {
         
         res = 1.0;
+        size_t stats_target_size = stats_target.size();
         #ifdef __OPENM 
         #pragma omp simd reduction(*:res)
         #else
         #pragma GCC ivdep
         #endif
-        for (unsigned int i = 0; i < stats_target.size(); ++i)
-            res *= std::exp(vec_inner_prod(stats_target[i], params) BARRY_SAFE_EXP) / 
+        for (unsigned int i = 0; i < stats_target_size; ++i)
+            res *= std::exp(
+                vec_inner_prod(
+                    &stats_target[i][0u],
+                    &params[0u],
+                    params.size()
+                ) BARRY_SAFE_EXP) / 
                 normalizing_constants[arrays2support[i]];
         
     }
@@ -778,8 +807,11 @@ MODEL_TEMPLATE(double, get_norm_const)(
         
         first_calc_done[id] = true;
         
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[id].size() / k;
+
         normalizing_constants[id] = update_normalizing_constant(
-                params, stats_support[id]
+            &params[0u], &stats_support[id][0u], k, n
         );
         
         params_last[id] = params;
@@ -805,7 +837,7 @@ MODEL_TEMPLATE(const std::vector< Array_Type > *, get_pset)(
 
 }
 
-MODEL_TEMPLATE(const std::vector< std::vector< double > > *, get_pset_stats)(
+MODEL_TEMPLATE(const std::vector< double > *, get_pset_stats)(
     const uint & i
 ) {
 
@@ -946,16 +978,47 @@ MODEL_TEMPLATE(Array_Type, sample)(
     double r = urand(*rengine);
     double cumprob = 0.0;
 
-    // Updating until reach above
+    size_t k = params.size();
+
+    // Sampling an array
     unsigned int j = 0u;
-    while (cumprob < r)
+    std::vector< double > & probs = pset_probs[a];
+    if ((probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
+    // If precomputed, then no need to recalc support
     {
 
-        cumprob += this->likelihood(params, this->pset_stats[a][j], i, false);
-        ++j;
-    }
+        while (cumprob < r)
+            cumprob += probs[j++];
 
-    return this->pset_arrays[a][j-1u];   
+        j--;
+
+    } else { 
+       
+        probs.resize(pset_arrays[a].size());
+        std::vector< double > temp_stats(params.size());
+        const std::vector< double > & stats = pset_stats[a];
+
+        int i_matches = -1;
+        for (size_t array = 0u; array < probs.size(); ++array)
+        {
+
+            // Filling out the parameters
+            for (auto p = 0u; p < params.size(); ++p)
+                temp_stats[p] = stats[array * k + p];
+
+            probs[array] = this->likelihood(params, temp_stats, i, false);
+            cumprob += probs[array];
+
+            if (i_matches == -1 && cumprob >= r)
+                i_matches = array;
+        }
+
+        j = i_matches;
+        
+    }
+    
+
+    return this->pset_arrays[a][j];   
 
 }
 
@@ -983,7 +1046,9 @@ MODEL_TEMPLATE(double, conditional_prob)(
         tmp_counts = transform_model_fun(&tmp_counts[0u], tmp_counts.size());
 
     return 1.0/
-        (1.0 + std::exp(-vec_inner_prod<double>(params, tmp_counts)));
+        (1.0 + std::exp(-vec_inner_prod<double>(
+            &params[0u], &tmp_counts[0u], params.size()
+            )));
 
     
 }
@@ -1032,11 +1097,11 @@ MODEL_TEMPLATE(std::vector< std::vector< Array_Type > > *, get_pset_arrays)() {
     return &pset_arrays;
 }
 
-MODEL_TEMPLATE(std::vector< std::vector< std::vector<double> > > *, get_pset_stats)() {
+MODEL_TEMPLATE(std::vector< std::vector<double> > *, get_pset_stats)() {
     return &pset_stats;
 }
 
-MODEL_TEMPLATE(std::vector< std::vector<double> > *               , get_pset_probs)() {
+MODEL_TEMPLATE(std::vector< std::vector<double> > *, get_pset_probs)() {
     return &pset_probs;
 }
 
@@ -1095,12 +1160,27 @@ MODEL_TEMPLATE(void, set_transform_model)(
     {
 
         // Applying it to the support
-        for (auto & S : pset_stats)
+        for (auto s = 0u; s < pset_arrays.size(); ++s)
         {
-            for (auto & s : S)
-                s = transform_model_fun(&s[0], k);
+            std::vector< double > new_stats(0u);
+
+            for (auto a = 0u; a < pset_arrays[s].size(); ++a)
+            {
+                // Computing the transformed version of the data
+                auto tmpstats = transform_model_fun(
+                    &pset_stats[s][a * k], k
+                    );
+
+                // Storing the new values
+                for (auto p = 0u; p < k; ++p)
+                    new_stats.push_back(tmpstats[p]);
+            }
+
+            // Updating the dataset
+            std::swap(pset_stats[s], new_stats);
 
         }
+
     }
 
     // And, resizing the last set of parameters

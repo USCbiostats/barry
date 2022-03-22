@@ -133,7 +133,7 @@ BARRY_TEST_CASE("Computing support for networks", "[support]")
         diff[i] = counts1[i] - counts0[i];
 
     double logistic_prob0 = 1.0/
-        (1.0 + std::exp(-barry::vec_inner_prod<double>(p0, diff)));
+        (1.0 + std::exp(-barry::vec_inner_prod<double>(&p0[0u], &diff[0u], p0.size())));
 
     double logistic_prob1 = model2.conditional_prob(net, p0, 3, 0);
 

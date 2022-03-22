@@ -1,6 +1,6 @@
 #include "typedefs.hpp"
 #include "barray-bones.hpp"
-#include "statsdb.hpp"
+#include "freqtable.hpp"
 #include "counters-bones.hpp"
 
 #ifndef BARRY_STATSCOUNTER_BONES_HPP 
@@ -72,7 +72,6 @@ public:
      */
     void reset_array(const Array_Type * Array_);
     
-    void add_counter(Counter<Array_Type,Data_Type> * f_);
     void add_counter(Counter<Array_Type,Data_Type> f_);
     void set_counters(Counters<Array_Type,Data_Type> * counters_);
     

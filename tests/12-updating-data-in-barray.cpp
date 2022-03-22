@@ -24,18 +24,18 @@
     // Creating a copy
     array B(A, true);
 
-    for (auto & b : *B.D())
+    for (auto & b : *B.D_ptr())
         std::cout << b << std::endl;
 
     std::vector< std::vector<int> > states(
         {{2,3}, {2,8},{6,7}});
 
-    std::vector<int> * tmp = B.D();
+    std::vector<int> * tmp = B.D_ptr();
 
     for (int i = 0; i < static_cast<int>(states.size()); ++i)
     {
         *tmp = states[i];
-        for (auto & b : *B.D())
+        for (auto & b : *B.D_ptr())
             std::cout << b << std::endl;
 
     }

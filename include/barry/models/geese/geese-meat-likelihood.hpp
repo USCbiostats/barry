@@ -65,7 +65,7 @@ inline double Geese::likelihood(
             const std::vector< phylocounters::PhyloArray > * psets =
                 model->get_pset(node.narray[s]);
 
-            const std::vector< std::vector<double> > * psets_stats =
+            const std::vector<double> * psets_stats =
                 model->get_pset_stats(node.narray[s]);
 
             std::vector< std::vector< size_t > > & locations = pset_loc[
@@ -136,9 +136,15 @@ inline double Geese::likelihood(
                 }
 
                 // Multiplying by P(x|x_n), the transition probability
+                std::vector< double > temp_stats(par0.size(), 0.0);
+                for (auto p = 0u; p < par0.size(); ++p)
+                    temp_stats[p] = psets_stats->operator[](par0.size() * nstate + p);
+
+                nstate++;
+
                 off_mult *= model->likelihood(
                     par0,
-                    psets_stats->operator[](nstate++),
+                    temp_stats,
                     node.narray[s]
                 );
 

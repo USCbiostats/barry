@@ -30,8 +30,11 @@ BARRY_TEST_CASE("Transformation of models", "[transformation]")
     std::vector< double > p1 = {0.34609, 0.81370, 0.79881, 0.96398, 0.48765, 0.13675, 0.47716, 0.11797, 0.13809, 0.69155, 0.07703};
 
     // Reverse version (for checking transformation)
-    std::vector< double > p0_rev = {0.02286, 0.87739, 0.18479, 0.47980, 0.51485, 0.97016, 0.01958, 0.62935, 0.90534, 0.01940, 0.60959};
-    std::vector< double > p1_rev = {0.07703, 0.69155, 0.13809, 0.11797, 0.47716, 0.13675, 0.48765, 0.96398, 0.79881, 0.81370, 0.34609};
+    std::vector< double > p0_rev = p0; 
+    std::reverse(p0_rev.begin(), p0_rev.end());
+
+    std::vector< double > p1_rev = p1; 
+    std::reverse(p1_rev.begin(), p1_rev.end());
 
     std::vector< double > logs_expected = {65.31523, 51.38268};
     
@@ -178,10 +181,14 @@ BARRY_TEST_CASE("Transformation of models", "[transformation]")
     auto loglik0b = model3.likelihood_total(p0, true);
     auto loglik1b = model3.likelihood_total(p1, true);
 
+    auto target = *model3.get_stats_target();
+
     model3.set_transform_model(tfun2, newnames2);
 
     auto loglik0b_rev = model3.likelihood_total(p0_rev, true);
     auto loglik1b_rev = model3.likelihood_total(p1_rev, true);
+
+    auto targetb = *model3.get_stats_target();
 
     model3.print();
 
