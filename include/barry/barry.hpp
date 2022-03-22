@@ -76,6 +76,9 @@ namespace barry {
         namespace phylo {
             #include "counters/phylo.hpp"
         }
+        namespace defm {
+            #include "counters/defm.hpp"
+        }
     }
     
 }
