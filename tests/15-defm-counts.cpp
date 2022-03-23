@@ -1,4 +1,5 @@
 #include "tests.hpp"
+#include "../include/barry/models/defm/defm-bones.hpp"
 
 BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
 
@@ -18,12 +19,12 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
      * and another datum that is negative
      */
     std::vector< double > covars = {
-        31.5, -.26,
-        31.5, -.26,
-        31.5, -.26
+        31.5, 31.5, 31.5,
+        -.26, -.26, -.26
         };
+
     DEFMArray A1(3, 3);
-    A1.set_data(new DEFMData(&covars, 0, 3, 2), true);
+    A1.set_data(new DEFMData(&covars[0u], 0, 2, 3), true);
     A1(0, 0) = 1;
     A1(0, 1) = 1;
     A1(1, 1) = 1;
@@ -31,7 +32,7 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     A1(2, 2) = 1;
 
     // Adding counters
-    DEFMStatsCounter<> counter(&A1);
+    DEFMStatsCounter counter(&A1);
     counter_fixed_effect(counter.get_counters(), 0, 1.0);
     counter_fixed_effect(counter.get_counters(), 0, 0.5);
     counter_fixed_effect(counter.get_counters(), 1, 1.0);
@@ -58,10 +59,33 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     
     #ifdef CATCH_CONFIG_MAIN
     REQUIRE_THAT(ans_expected, Catch::Approx(ans_observed).epsilon(.001));
-    #else
-    return 0;
     #endif
 
+    // Creating models
+    std::vector< int > id = {0,0,0,1,1,1};
+    std::vector< int > Y  = {
+        0, 0, 1, 1, 0, 0,
+        0, 0, 1, 0, 0, 0,
+        0, 0, 1, 1, 1, 0
+    };
+
+    std::vector< double > X = {
+        .1, .5, .1, 1, 1, 2,
+        .1, 1.5, 3, 1, 1, 4
+    };
+
+    DEFM model(&id[0u], &Y[0u], &X[0u], 6, 3, 2, 1);
+    
+    defmcounters::counter_ones(model.get_model().get_counters());
+    defmcounters::counter_ones(model.get_model().get_counters(), 0);
+
+    model.init();
+
+    #ifndef CATCH_CONFIG_MAIN
+    model.get_model().print();
+    model.get_model().print_stats(0u);
+    return 0;
+    #endif
 
 }
 

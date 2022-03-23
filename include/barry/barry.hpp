@@ -13,6 +13,7 @@
 #include <cfloat>
 #include <string>
 #include <cstdint>
+#include <memory>
 
 #ifdef BARRY_USE_OMP
 #include <omp.h>
@@ -85,6 +86,7 @@ namespace barry {
 
 namespace netcounters = barry::counters::network;
 namespace phylocounters = barry::counters::phylo;
+namespace defmcounters = barry::counters::defm;
 
 #define COUNTER_FUNCTION(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
     inline double (a) (const Array_Type & Array, uint i, uint j, Data_Type & data)\

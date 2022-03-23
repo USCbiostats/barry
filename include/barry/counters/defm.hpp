@@ -20,10 +20,10 @@
 class DEFMData {
 public:
     
-    std::vector< double > * covariates; ///< Vector of covariates (complete vector)
+    const double * covariates; ///< Vector of covariates (complete vector)
     size_t obs_start;    ///< Index of the observation in the data.
-    size_t obs_n_times;  ///< Number of records of the observation in the model.
-    size_t n_covariates; ///< Number of covariates included in the model.
+    size_t X_ncol; ///< Number of covariates included in the model.
+    size_t X_nrow; ///< Number of covariates included in the model.
     
     DEFMData() {};
     
@@ -32,16 +32,15 @@ public:
      * @param covariates_ Pointer to the attribute data.
      * @param obs_start_ Location of the current observation in the covariates
      *  vector
-     * @param obs_n_times_ Number of observations in the model
-     * @param n_covariates_ Number of columns (covariates.)
+     * @param X_ncol_ Number of columns (covariates.)
      */
     DEFMData(
-        std::vector< double > * covariates_,
+        const double * covariates_,
         size_t obs_start_,
-        size_t obs_n_times_,
-        size_t n_covariates_
-    ) : covariates(covariates_), obs_start(obs_start_), obs_n_times(obs_n_times_),
-    n_covariates(n_covariates_) {}; 
+        size_t X_ncol_,
+        size_t X_nrow_
+    ) : covariates(covariates_), obs_start(obs_start_),
+    X_ncol(X_ncol_), X_nrow(X_nrow_) {}; 
 
     /**
      * @brief Access to the row (i) colum (j) data
@@ -59,12 +58,7 @@ public:
 
 inline double DEFMData::operator()(size_t i, size_t j) const
 {
-    return covariates->operator[](obs_start + i * n_covariates + j);
-}
-
-inline double DEFMData::at(size_t i, size_t j) const
-{
-    return covariates->at(obs_start + i * n_covariates + j);
+    return *(covariates + (obs_start + j * X_nrow + i));
 }
 
 /**
@@ -90,32 +84,37 @@ public:
     
 };
 
+class DEFMRuleData {
+private: 
+    std::vector< double > numbers;
+    std::vector< size_t > indices;
+
+public:
+
+    double num(size_t i) {return numbers[i];};
+    size_t idx(size_t i) {return indices[i];};
+
+    DEFMRuleData() {};
+
+    DEFMRuleData(
+        std::vector< double > numbers_,
+        std::vector< size_t > indices_
+    ) : numbers(numbers_), indices(indices_) {};
+
+};
+
 /**
  * @name Convenient typedefs for network objects.
  */
 ///@{
 typedef BArrayDense<int, DEFMData> DEFMArray;
-
-template <typename Tarray = DEFMArray>
-using DEFMCounter =  Counter<Tarray, DEFMCounterData >;
-
-template <typename Tarray = DEFMArray>
-using DEFMCounters =  Counters<Tarray, DEFMCounterData>;
-
-template <typename Tarray = DEFMArray>
-using DEFMSupport =  Support<Tarray, DEFMCounterData >;
-
-template <typename Tarray = DEFMArray>
-using DEFMStatsCounter =  StatsCounter<Tarray, DEFMCounterData>;
-
-template <typename Tarray>
-using DEFMModel =  Model<Tarray, DEFMCounterData>;
-
-template <typename Tarray = DEFMArray>
-using DEFMRule =  Rule<Tarray, bool>;
-
-template <typename Tarray = DEFMArray>
-using DEFMRules =  Rules<Tarray, bool>;
+typedef Counter<DEFMArray, DEFMCounterData > DEFMCounter;
+typedef Counters<DEFMArray, DEFMCounterData> DEFMCounters;
+typedef Support<DEFMArray, DEFMCounterData, DEFMRuleData> DEFMSupport;
+typedef StatsCounter<DEFMArray, DEFMCounterData> DEFMStatsCounter;
+typedef Model<DEFMArray, DEFMCounterData,DEFMRuleData,DEFMRuleData> DEFMModel;
+typedef Rule<DEFMArray, DEFMRuleData> DEFMRule;
+typedef Rules<DEFMArray, DEFMRuleData> DEFMRules;
 ///@}
 
 /**@name Macros for defining counters
@@ -123,13 +122,12 @@ using DEFMRules =  Rules<Tarray, bool>;
 ///@{
 /**Function for definition of a network counter function*/
 #define DEFM_COUNTER(a) \
-template<typename Tarray = DEFMArray>\
-inline double (a) (const Tarray & Array, uint i, uint j, DEFMCounterData & data)
+inline double (a) (const DEFMArray & Array, uint i, uint j, DEFMCounterData & data)
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_COUNTER_LAMBDA(a) \
-Counter_fun_type<Tarray, DEFMCounterData> a = \
-    [](const Tarray & Array, uint i, uint j, DEFMCounterData & data)
+Counter_fun_type<DEFMArray, DEFMCounterData> a = \
+    [](const DEFMArray & Array, uint i, uint j, DEFMCounterData & data)
 
 ///@}
 
@@ -139,13 +137,12 @@ Counter_fun_type<Tarray, DEFMCounterData> a = \
 ///@{
 /**Function for definition of a network counter function*/
 #define DEFM_RULE(a) \
-template<typename Tarray = DEFMArray>\
-inline bool (a) (const Tarray & Array, uint i, uint j, bool & data)
+inline bool (a) (const DEFMArray & Array, uint i, uint j, bool & data)
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_RULE_LAMBDA(a) \
-Rule_fun_type<Tarray, bool> a = \
-[](const Tarray & Array, uint i, uint j, bool & data)
+Rule_fun_type<DEFMArray, DEFMRuleData> a = \
+[](const DEFMArray & Array, uint i, uint j, DEFMRuleData & data)
 ///@}
 
 /**
@@ -158,13 +155,11 @@ Rule_fun_type<Tarray, bool> a = \
 /**
  * @brief Prevalence of ones
  * 
- * @tparam Tarray 
  * @param counters Pointer ot a vector of counters
  * @param covar_index If >= than 0, then the interaction
  */
-template<typename Tarray = DEFMArray>
 inline void counter_ones(
-    DEFMCounters<Tarray> * counters,
+    DEFMCounters * counters,
     int covar_index = -1
 )
 {
@@ -205,13 +200,11 @@ inline void counter_ones(
 /**
  * @brief Prevalence of ones
  * 
- * @tparam Tarray 
  * @param counters Pointer ot a vector of counters
  * @param covar_index If >= than 0, then the interaction
  */
-template<typename Tarray = DEFMArray>
 inline void counter_transition(
-    DEFMCounters<Tarray> * counters,
+    DEFMCounters * counters,
     std::vector< size_t > coords,
     int covar_index = -1
 )
@@ -331,13 +324,11 @@ inline void counter_transition(
 /**
  * @brief Prevalence of ones
  * 
- * @tparam Tarray 
  * @param counters Pointer ot a vector of counters
  * @param covar_index If >= than 0, then the interaction
  */
-template<typename Tarray = DEFMArray>
 inline void counter_fixed_effect(
-    DEFMCounters<Tarray> * counters,
+    DEFMCounters * counters,
     int covar_index,
     double k
 )
@@ -370,14 +361,19 @@ inline void counter_fixed_effect(
 ///@{
 // -----------------------------------------------------------------------------
 /**@brief Number of edges */
-template<typename Tarray = DEFMArray>
-inline void rules_zerodiag(DEFMRules<Tarray> * rules) {
+inline void rules_markov_fixed(
+    DEFMRules * rules,
+    size_t markov_order
+    ) {
     
     DEFM_RULE_LAMBDA(no_self_tie) {
-        return i != j;
+        return i <= data.idx(0u);
     };
     
-    rules->add_rule(no_self_tie);
+    rules->add_rule(
+        no_self_tie,
+        DEFMRuleData({},{markov_order})
+        );
     
     return;
 }

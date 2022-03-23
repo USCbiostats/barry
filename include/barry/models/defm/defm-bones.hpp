@@ -5,286 +5,169 @@
 // #include <algorithm>
 // #include <random>
 // #include <stdexcept>
+// #include <memory>
 
-#define INITIALIZED() if (!this->initialized) \
-    throw std::logic_error("The model has not been initialized yet.");
-
-// The same need to be locked
-RULE_FUNCTION(rule_empty_free) {
-
-    return Array(i, j) == 9u;
-    
-}
-
-// Hasher
-inline std::vector< double > keygen_full(
-    const phylocounters::PhyloArray & array
-    ) {
-
-    // Baseline data: nrows and columns
-    std::vector< double > dat = {
-        static_cast<double>(array.nrow()) * 100000 +
-         static_cast<double>(array.ncol()),
-    };
-
-    // State of the parent
-    dat.push_back(0.0);
-    unsigned int count = 0u;
-    for (bool i : array.D_ptr()->states) {
-        dat[dat.size() - 1u] += (i ? 1.0 : 0.0) * pow(10, static_cast<double>(count));
-        count++;
-    }
-
-    // Type of the parent
-    dat.push_back(array.D_ptr()->duplication ? 1.0 : 0.0);
-
-    return dat;
-}
-
-inline bool vec_diff(
-    const std::vector< unsigned int > & s,
-    const std::vector< unsigned int > & a
-) {
-
-    for (unsigned int i = 0u; i < a.size(); ++i)
-        if ((a[i] != 9u) && (a[i] != s[i]))
-            return true;
-
-    return false;
-}
-
-class Flock;
-
-/**
- * @ingroup stat-models
- * @brief Annotated Phylo Model
- * @details A list of available terms for this model can be found in the
- * \ref counters-phylo section.
- *
- */
-class Geese {
-    friend Flock;
+class DEFM {
 private:
 
+    std::shared_ptr< std::mt19937 > rengine = nullptr;
+    std::shared_ptr< defmcounters::DEFMModel > model = nullptr;
+
     /**
-     * @name Shared objects within a `Geese`
-     * @details
-     * Since users may start adding counters before initializing the PhyloModel
-     * object, the object `counter` is initialized first.
-     * 
-     * While the member `model` has an `rengine`, since `Geese` can sample trees,
-     * we have the option to keep it separate.
-     * 
+     * @brief Model data
      */
     ///@{
-    std::mt19937 *                     rengine = nullptr;
-    phylocounters::PhyloModel *        model   = nullptr;
-    std::vector< std::vector< bool > > states;
-    unsigned int n_zeros       = 0u; ///< Number of zeros
-    unsigned int n_ones        = 0u; ///< Number of ones
-    unsigned int n_dupl_events = 0u; ///< Number of duplication events
-    unsigned int n_spec_events = 0u; ///< Number of speciation events
+    const int * Y = nullptr;    ///< Outcome variable
+    const int * ID = nullptr;   ///< Individual ids
+    const double * X = nullptr; ///< Covariates
+    
+    size_t N;             ///< Number of agents/individuals
+    size_t ID_length;     ///< Length of the vector IDs
+    size_t Y_ncol;        ///< Number of columns in the response
+    size_t Y_length;      ///< Length of the vector Y
+    size_t X_ncol;        ///< Number of columns in the features
+    size_t X_length;      ///< Length of the vector X
+    size_t M_order;       ///< Markov order of the model
+
+    std::vector< size_t > start_end;
     ///@}
 
 public:
 
-    // Data
-    unsigned int                       nfunctions;
-    std::map< unsigned int, Node >     nodes;
-    barry::MapVec_type< unsigned int > map_to_nodes;
-    std::vector< std::vector< std::vector< size_t > > > pset_loc;    ///< Locations of columns
-
-    // Tree-traversal sequence
-    std::vector< unsigned int > sequence;
-    std::vector< unsigned int > reduced_sequence;  
-
-    // Admin-related objects
-    bool initialized     = false;
-    bool delete_rengine  = false;
-    bool delete_support  = false;
-
-    /**
-     * @name Construct a new Geese object
-     *
-     * The model includes a total of `N + 1` nodes, the `+ 1` beign
-     * the root node.
-     *
-     * @param annotations A vector of vectors with annotations. It should be of
-     * length `k` (number of functions). Each vector should be of length `N`
-     * (equal to the number of nodes, including interior). Possible values are
-     * 0, 1, and 9.
-     * @param geneid Id of the gene. It should be of length `N`.
-     * @param parent Id of the parent gene. Also of length `N`
-     * @param duplication Logical scalar indicating the type of event (true:
-     * duplication, false: speciation.)
-     * 
-     * @details 
-     * The ordering of the entries does not matter. Passing the nodes in post
-     * order or not makes no difference to the constructor.
-     */
-    ///@{
-    Geese();
-
-    Geese(
-        std::vector< std::vector<unsigned int> > & annotations,
-        std::vector< unsigned int > &              geneid,
-        std::vector< int > &                       parent,
-        std::vector< bool > &                      duplication
-        );
-
-    // Copy constructor
-    Geese(const Geese & model_, bool copy_data = true);
-    
-    // Constructor move
-    Geese(Geese && x) noexcept;
-
-    // Copy assignment
-    Geese & operator=(const Geese & model_) = delete;
-
-    // // Move assignment
-    Geese & operator=(Geese && model_) noexcept = delete;
-
-    ///@}
-
-    ~Geese();
-
-    void init(unsigned int bar_width = BARRY_PROGRESS_BAR_WIDTH);
-
-    void inherit_support(const Geese & model_, bool delete_support_ = false);
-
-    // Node * operator()(unsigned int & nodeid);
-    void calc_sequence(Node * n = nullptr);
-    void calc_reduced_sequence();
-
-    double likelihood(
-        const std::vector< double > & par,
-        bool as_log = false,
-        bool use_reduced_sequence = true
-        );
-
-    double likelihood_exhaust(const std::vector< double > & par);
-
-    std::vector< double > get_probabilities() const;
-
-    void set_seed(const unsigned int & s);
-    std::vector< std::vector< unsigned int > > simulate(
-        const std::vector< double > & par
-        );
-
-    /**
-     * @name Information about the model 
-     * @param verb When `true` it will print out information about the encountered
-     * polytomies.
-     */
-    ///@{
-    unsigned int nfuns() const noexcept;             ///< Number of functions analyzed
-    unsigned int nnodes() const noexcept;            ///< Number of nodes (interior + leaf)
-    unsigned int nleafs() const noexcept;            ///< Number of leaf
-    unsigned int nterms() const;                     ///< Number of terms included
-    unsigned int support_size() const noexcept;      ///< Number of unique sets of sufficient stats.
-    std::vector< unsigned int > nannotations() const noexcept;      ///< Number of annotations.
-    std::vector< std::string > colnames() const;     ///< Names of the terms in the model.
-    unsigned int parse_polytomies(
-        bool verb = true,
-        std::vector< size_t > * dist = nullptr
-        ) const noexcept;  ///< Check polytomies and return the largest.
-
-    ///@}
-
-    std::vector< std::vector<double> > observed_counts();
-    void print_observed_counts();
-
-    /**
-     * @brief Prints information about the DEFM
-     */
-    void print() const;
-
-    /**
-     * @name Geese prediction
-     * @brief Calculate the conditional probability
-     * 
-     * @param par Vector of parameters (terms + root).
-     * @param res_prob Vector indicating each nodes' state probability.
-     * @param leave_one_out When `true`, it will compute the predictions using
-     * leave-one-out, thus the prediction will be repeated nleaf times.
-     * @param only_annotated When `true`, it will make the predictions only
-     * on the induced sub-tree with annotated leafs.
-     * @param use_reduced_sequence  Passed to the `likelihood` method.
-     * @param preorder For the tree traversal.
-     * 
-     * @details When `res_prob` is specified, the function will attach
-     * the member vector `probabilities` from the `Node`s objects. This
-     * contains the probability that the ith node has either of the
-     * possible states.
-     * 
-     * @return std::vector< double > Returns the posterior probability
-     */
-    ///@{
-    std::vector< std::vector< double > > predict(
-        const std::vector< double > & par,
-        std::vector< std::vector< double > > * res_prob = nullptr,
-        bool leave_one_out        = false,
-        bool only_annotated       = false,
-        bool use_reduced_sequence = true
-        );
-    
-    std::vector< std::vector<double> > predict_backend(
-        const std::vector< double > & par,
-        bool use_reduced_sequence,
-        const std::vector< uint > & preorder
-        );
-
-    std::vector< std::vector< double > > predict_exhaust_backend(
-        const std::vector< double > & par,
-        const std::vector< uint > & preorder
-        );
-
-    std::vector< std::vector< double > > predict_exhaust(
-        const std::vector< double > & par
-        );
-
-    std::vector< std::vector< double > > predict_sim(
-        const std::vector< double > & par,
-        bool only_annotated       = false,
-        unsigned int nsims        = 10000u
-        );
-    ///@}
-
-    void init_node(Node & n);
-    void update_annotations(
-        unsigned int nodeid,
-        std::vector< unsigned int > newann
+    DEFM(
+        const int * id,
+        const int * y,
+        const double * x,
+        size_t id_length,
+        size_t y_ncol,
+        size_t x_ncol,
+        size_t m_order
     );
 
-    /**
-     * @name Non-const pointers to shared objects in `Geese`
-     * 
-     * @details These functions provide direct access to some member
-     * objects that are shared by the nodes within `Geese`.
-     * 
-     * @return `get_rengine()` returns the Pseudo-RNG engine used.
-     * @return `get_counters()` returns the vector of counters used.
-     * @return `get_model()` returns the `Model` object used.
-     * @return `get_support_fun()` returns the computed support of the model.
-     */
-    ///@{
-    std::mt19937 *                     get_rengine();
-    phylocounters::PhyloCounters *     get_counters();
-    phylocounters::PhyloModel *        get_model();
-    phylocounters::PhyloSupport *      get_support_fun();
-    ///@}
-    
-    /**
-     * @brief Powerset of a gene's possible states
-     * @details This list of vectors is used throughout `Geese`. It lists
-     * all possible combinations of functional states for any gene. Thus,
-     * for `P` functions, there will be `2^P` possible combinations.
-     * 
-     * @return std::vector< std::vector< bool > > of length `2^P`.
-     */
-    std::vector< std::vector< bool > > get_states() const;  
-    std::vector< unsigned int >        get_annotated_nodes() const; ///< Returns the ids of the nodes with at least one annotation
+    ~DEFM() {};
+
+    defmcounters::DEFMModel & get_model() {
+        return *model;
+    };
+
+    void init();
 
 };
 
+inline DEFM::DEFM(
+    const int * id,
+    const int * y,
+    const double * x,
+    size_t id_length,
+    size_t y_ncol,
+    size_t x_ncol,
+    size_t m_order
+) {
+
+    // Pointers
+    ID = id;
+    Y  = y;
+    X  = x;
+
+    // Overall dimmensions
+    ID_length = id_length;
+
+    Y_ncol    = y_ncol;
+    Y_length  = y_ncol * id_length;
+
+    X_ncol    = x_ncol;
+    X_length  = x_ncol * id_length;
+
+    M_order   = m_order;
+
+    // Creating the model and engine
+    rengine = std::make_shared< std::mt19937 >();
+    model   = std::make_shared< defmcounters::DEFMModel >();
+
+    model->set_rengine(&(*(rengine)));
+
+    // Iterating for adding observations
+    start_end.reserve(id_length);
+    start_end.push_back(0);
+
+    // Identifying the start and end of each observation
+    N = 0u;
+    for (size_t row = 1u; row < id_length; ++row)
+    {
+
+        // Still in the individual
+        if (*(id + row) != *(id + row - 1u))
+        {
+
+            // End of the previous observation
+            start_end.push_back(row - 1u);
+
+            // In the case that the start and end do not fit
+            // within the markov process order, then it should fail
+            size_t n_rows_i = (row - 1u) - start_end[N++ * 2u] + 1;
+            if (n_rows_i < (M_order + 1u))
+                throw std::length_error(
+                    "Obs. id: " + std::to_string(*(id + row - 1u)) + " (row " +
+                    std::to_string(row) + ") has fewer rows (" +
+                    std::to_string(n_rows_i) + ") than those needed (" +
+                    std::to_string(M_order + 1) + ") for the Markov Model."
+                );
+
+            // Beginning of the current
+            start_end.push_back(row);
+
+        }
+        
+    }
+
+    start_end.push_back(id_length - 1u);
+
+    N++;
+
+    return;
+    
+
+}
+
+inline void DEFM::init() 
+{
+    // Creating the arrays
+    for (size_t i = 0u; i < N; ++i)
+    {
+
+        // Figuring out how many processes can we observe
+        size_t start_i = start_end[i * 2u];
+        size_t end_i   = start_end[i * 2u + 1u];
+        size_t nobs_i  = end_i - start_i + 1u;
+
+        // Creating the observations
+        for (size_t n_proc = 0u; n_proc < (nobs_i - (M_order + 1u) + 1u); ++n_proc)
+        {
+
+            // Creating the array for process n_proc and setting the data
+            defmcounters::DEFMArray array(M_order + 1u, Y_ncol);
+            array.set_data(
+                new defmcounters::DEFMData(X, (start_i + n_proc), ID_length, X_ncol),
+                true // Delete the data
+            );
+
+            // Filling-out the array
+            for (size_t k = 0u; k < Y_ncol; ++k)
+                for (size_t o = 0u; o < (M_order + 1u); ++o)
+                    array(o, k) = *(Y + k * ID_length + start_i + n_proc);
+
+            // Adding the rule
+            defmcounters::rules_markov_fixed(model->get_rules(), M_order);
+
+            // Adding to the model
+            model->add_array(
+                array
+            );
+
+        }
+
+    }
+}
+
 #endif
+
