@@ -25,31 +25,18 @@ inline std::vector< double > keygen_full(
     std::vector< double > dat = {
         static_cast<double>(array.nrow()) * 100000 +
          static_cast<double>(array.ncol()),
-<<<<<<< HEAD
-         0.0
-    };
-
-    // State of the parent
-    unsigned int count = 0u;
-    for (bool i : array.D()->states) {
-=======
     };
 
     // State of the parent
     dat.push_back(0.0);
     unsigned int count = 0u;
     for (bool i : array.D_ptr()->states) {
->>>>>>> db776350974075d9c7ec3bdd3759ecbfd341f4da
         dat[dat.size() - 1u] += (i ? 1.0 : 0.0) * pow(10, static_cast<double>(count));
         count++;
     }
 
     // Type of the parent
-<<<<<<< HEAD
-    dat.push_back(array.D()->duplication ? 1.0 : 0.0);
-=======
     dat.push_back(array.D_ptr()->duplication ? 1.0 : 0.0);
->>>>>>> db776350974075d9c7ec3bdd3759ecbfd341f4da
 
     return dat;
 }
