@@ -7,7 +7,7 @@ Annotated Phylo \mbox{\hyperlink{class_model}{Model}}.
 
 
 
-{\ttfamily \#include $<$defm-\/bones.\+hpp$>$}
+{\ttfamily \#include $<$geese-\/bones.\+hpp$>$}
 
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -33,40 +33,6 @@ void \mbox{\hyperlink{class_geese_aa5d623d5e242a29090bf5a01bfeeeb9f}{set\+\_\+se
 std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \mbox{\hyperlink{class_geese_a675662efdded0d24c146946aa15ed481}{simulate}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par)
 \item 
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a82def7c8a870aa1b3ec069099c01fe02}{observed\+\_\+counts}} ()
-\item 
-void \mbox{\hyperlink{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}{print\+\_\+observed\+\_\+counts}} ()
-\item 
-void \mbox{\hyperlink{class_geese_a1d8ae4a9c27f4653929a48bbd640bf71}{print}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
-\begin{DoxyCompactList}\small\item\em Prints information about the DEFM. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_geese_a3855898a556e2ac1d30529d3bc35f13a}{init\+\_\+node}} (\mbox{\hyperlink{class_node}{Node}} \&n)
-\item 
-void \mbox{\hyperlink{class_geese_a5d3f0a97dd5d37b6f6cfd79c41629a1a}{update\+\_\+annotations}} (unsigned int nodeid, std\+::vector$<$ unsigned int $>$ newann)
-\item 
-std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ \mbox{\hyperlink{class_geese_a08873639292543015324d3c3768e900f}{get\+\_\+states}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
-\begin{DoxyCompactList}\small\item\em Powerset of a gene\textquotesingle{}s possible states. \end{DoxyCompactList}\item 
-std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{class_geese_a7e39cec2fede50e1c59bf7886dd13f7a}{get\+\_\+annotated\+\_\+nodes}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
-\begin{DoxyCompactList}\small\item\em Returns the ids of the nodes with at least one annotation. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_geese_a8b665d6faea65caacbb00feea98d53b0}{$\sim$\+Geese}} ()
-\item 
-void \mbox{\hyperlink{class_geese_a6a655763da1c4bba0e886bd69658bd76}{init}} (unsigned int bar\+\_\+width=\mbox{\hyperlink{progress_8hpp_a736e2557ded6975dbf117eedf62ea66c}{BARRY\+\_\+\+PROGRESS\+\_\+\+BAR\+\_\+\+WIDTH}})
-\item 
-void \mbox{\hyperlink{class_geese_aa95abe540b9977592bcc88e77619d070}{inherit\+\_\+support}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&model\+\_\+, bool delete\+\_\+support\+\_\+=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}})
-\item 
-void \mbox{\hyperlink{class_geese_aa71af5fe38d785cc184c904fc9308dc1}{calc\+\_\+sequence}} (\mbox{\hyperlink{class_node}{Node}} $\ast$n=nullptr)
-\item 
-void \mbox{\hyperlink{class_geese_a0a460414624fd1b7013ce3b1a09150d1}{calc\+\_\+reduced\+\_\+sequence}} ()
-\item 
-double \mbox{\hyperlink{class_geese_a6eb9e15bdf70319857e4ad90baefdece}{likelihood}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}, bool use\+\_\+reduced\+\_\+sequence=true)
-\item 
-double \mbox{\hyperlink{class_geese_af2d4bac42cc7c8287fb6853d50882115}{likelihood\+\_\+exhaust}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par)
-\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{class_geese_a5c9cf28a69270fe4d3f48984fe2c5723}{get\+\_\+probabilities}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
-\item 
-void \mbox{\hyperlink{class_geese_aa5d623d5e242a29090bf5a01bfeeeb9f}{set\+\_\+seed}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} unsigned int \&s)
-\item 
-std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \mbox{\hyperlink{class_geese_a675662efdded0d24c146946aa15ed481}{simulate}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par)
-\item 
-std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a6df1d41764f2fc4a848c26a5784abeaa}{observed\+\_\+counts}} ()
 \item 
 void \mbox{\hyperlink{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}{print\+\_\+observed\+\_\+counts}} ()
 \item 
@@ -107,18 +73,6 @@ The ordering of the entries does not matter. Passing the nodes in post order or 
 \mbox{\hyperlink{class_geese}{Geese}} \& \mbox{\hyperlink{class_geese_a857663144d377cd5ee69960267865eaa}{operator=}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&model\+\_\+)=delete
 \item 
 \mbox{\hyperlink{class_geese}{Geese}} \& \mbox{\hyperlink{class_geese_a5a56d129d383ca8648e6ddf9b845b05a}{operator=}} (\mbox{\hyperlink{class_geese}{Geese}} \&\&model\+\_\+) \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}=delete
-\item 
-\mbox{\hyperlink{class_geese_a4766bb548b2a33e16019c52026f455f5}{Geese}} ()
-\item 
-\mbox{\hyperlink{class_geese_a9ffb63eefb64afb9a5c2b25006e9ab52}{Geese}} (std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \&annotations, std\+::vector$<$ unsigned int $>$ \&geneid, std\+::vector$<$ int $>$ \&parent, std\+::vector$<$ bool $>$ \&duplication)
-\item 
-\mbox{\hyperlink{class_geese_acb709c40f1b4d3c7fd8fb06c4ea2627c}{Geese}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&model\+\_\+, bool \mbox{\hyperlink{barraydense-meat_8hpp_ac94c1c34bd5a2a56bddedce602bbe8be}{copy\+\_\+data}}=true)
-\item 
-\mbox{\hyperlink{class_geese_a3f80a16330da3af4a5cf250cbf79a6a4}{Geese}} (\mbox{\hyperlink{class_geese}{Geese}} \&\&x) \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
-\item 
-\mbox{\hyperlink{class_geese}{Geese}} \& \mbox{\hyperlink{class_geese_a857663144d377cd5ee69960267865eaa}{operator=}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&model\+\_\+)=delete
-\item 
-\mbox{\hyperlink{class_geese}{Geese}} \& \mbox{\hyperlink{class_geese_a5a56d129d383ca8648e6ddf9b845b05a}{operator=}} (\mbox{\hyperlink{class_geese}{Geese}} \&\&model\+\_\+) \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}=delete
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Information about the model}\par
@@ -129,22 +83,6 @@ The ordering of the entries does not matter. Passing the nodes in post order or 
 \end{DoxyParams}
 }\begin{DoxyCompactItemize}
 \item 
-unsigned int \mbox{\hyperlink{class_geese_ac3e067871732f3eba27626f94bcd44b4}{nfuns}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
-\begin{DoxyCompactList}\small\item\em Number of functions analyzed. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{class_geese_aa0249f7b6163c0b18d55fae140074d07}{nnodes}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
-\begin{DoxyCompactList}\small\item\em Number of nodes (interior + leaf) \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{class_geese_adf173ab52a4ed973131989ce0560e7a6}{nleafs}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
-\begin{DoxyCompactList}\small\item\em Number of leaf. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{class_geese_a0bfdc90924ef14433df93dd866a28126}{nterms}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
-\begin{DoxyCompactList}\small\item\em Number of terms included. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{class_geese_a4716f07b6ffb2b0f171a9130fbb38f1a}{support\+\_\+size}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
-\begin{DoxyCompactList}\small\item\em Number of unique sets of sufficient stats. \end{DoxyCompactList}\item 
-std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{class_geese_ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7}{nannotations}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
-\begin{DoxyCompactList}\small\item\em Number of annotations. \end{DoxyCompactList}\item 
-std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_geese_a4d9127f67eea16500650cca49be58018}{colnames}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
-\begin{DoxyCompactList}\small\item\em Names of the terms in the model. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{class_geese_ab21479832092db4910125fd90782e4e2}{parse\+\_\+polytomies}} (bool verb=true, std\+::vector$<$ size\+\_\+t $>$ $\ast$dist=nullptr) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
-\begin{DoxyCompactList}\small\item\em Check polytomies and return the largest. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_geese_ac3e067871732f3eba27626f94bcd44b4}{nfuns}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \begin{DoxyCompactList}\small\item\em Number of functions analyzed. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{class_geese_aa0249f7b6163c0b18d55fae140074d07}{nnodes}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
@@ -196,16 +134,6 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_aa
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_aceb9a8b7f9e830cfa5cd358c27727229}{predict\+\_\+exhaust}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par)
 \item 
 std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a8ad890607169531c1763f51870005918}{predict\+\_\+sim}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par, bool only\+\_\+annotated=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}, unsigned int nsims=10000u)
-\item 
-std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a10442dde49613332080792a6090d46fa}{predict}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$res\+\_\+prob=nullptr, bool leave\+\_\+one\+\_\+out=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}, bool only\+\_\+annotated=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}, bool use\+\_\+reduced\+\_\+sequence=true)
-\item 
-std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_abaebdbb8ae84aaeb023998ffd53edee0}{predict\+\_\+backend}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par, bool use\+\_\+reduced\+\_\+sequence, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&preorder)
-\item 
-std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_aadbb2397434048485757eaed2b4a33b8}{predict\+\_\+exhaust\+\_\+backend}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&preorder)
-\item 
-std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_aceb9a8b7f9e830cfa5cd358c27727229}{predict\+\_\+exhaust}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par)
-\item 
-std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{class_geese_a8ad890607169531c1763f51870005918}{predict\+\_\+sim}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par, bool only\+\_\+annotated=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}, unsigned int nsims=10000u)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Non-\/const pointers to shared objects in $<$tt$>$Geese$<$/tt$>$}\par
@@ -229,14 +157,6 @@ std\+::mt19937 $\ast$ \mbox{\hyperlink{class_geese_addb8366d2d098403a0e0ac9e321a
 \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{phylocounters\+::\+Phylo\+Model}} $\ast$ \mbox{\hyperlink{class_geese_ad0c172270f676443a47a5f818f5920b0}{get\+\_\+model}} ()
 \item 
 \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{phylocounters\+::\+Phylo\+Support}} $\ast$ \mbox{\hyperlink{class_geese_ae9bc7b2cbc23aca9229d2ef511e53186}{get\+\_\+support\+\_\+fun}} ()
-\item 
-std\+::mt19937 $\ast$ \mbox{\hyperlink{class_geese_aa48508ee73e77b651380617e74148167}{get\+\_\+rengine}} ()
-\item 
-\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}} $\ast$ \mbox{\hyperlink{class_geese_a42d20baedc45ed705a83af22008df052}{get\+\_\+counters}} ()
-\item 
-\mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{phylocounters\+::\+Phylo\+Model}} $\ast$ \mbox{\hyperlink{class_geese_ac349e2f899880cd3033b152c1f28d789}{get\+\_\+model}} ()
-\item 
-\mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{phylocounters\+::\+Phylo\+Support}} $\ast$ \mbox{\hyperlink{class_geese_a1f6044ee1cb9f01c99c47419b1db9c46}{get\+\_\+support\+\_\+fun}} ()
 \end{DoxyCompactItemize}
 \end{Indent}
 \doxysubsection*{Public Attributes}
@@ -267,7 +187,7 @@ Annotated Phylo \mbox{\hyperlink{class_model}{Model}}.
 
 A list of available terms for this model can be found in the \mbox{\hyperlink{group__counters-phylo}{Phylo counters}} section. 
 
-Definition at line 78 of file defm-\/bones.\+hpp.
+Definition at line 80 of file geese-\/bones.\+hpp.
 
 
 
@@ -275,7 +195,7 @@ Definition at line 78 of file defm-\/bones.\+hpp.
 \mbox{\Hypertarget{class_geese_a4766bb548b2a33e16019c52026f455f5}\label{class_geese_a4766bb548b2a33e16019c52026f455f5}} 
 \index{Geese@{Geese}!Geese@{Geese}}
 \index{Geese@{Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
 {\footnotesize\ttfamily Geese\+::\+Geese (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -285,7 +205,7 @@ Definition at line 6 of file geese-\/meat-\/constructors.\+hpp.
 \mbox{\Hypertarget{class_geese_a9ffb63eefb64afb9a5c2b25006e9ab52}\label{class_geese_a9ffb63eefb64afb9a5c2b25006e9ab52}} 
 \index{Geese@{Geese}!Geese@{Geese}}
 \index{Geese@{Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
 {\footnotesize\ttfamily Geese\+::\+Geese (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \&}]{annotations,  }\item[{std\+::vector$<$ unsigned int $>$ \&}]{geneid,  }\item[{std\+::vector$<$ int $>$ \&}]{parent,  }\item[{std\+::vector$<$ bool $>$ \&}]{duplication }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -295,7 +215,7 @@ Definition at line 20 of file geese-\/meat-\/constructors.\+hpp.
 \mbox{\Hypertarget{class_geese_acb709c40f1b4d3c7fd8fb06c4ea2627c}\label{class_geese_acb709c40f1b4d3c7fd8fb06c4ea2627c}} 
 \index{Geese@{Geese}!Geese@{Geese}}
 \index{Geese@{Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
 {\footnotesize\ttfamily Geese\+::\+Geese (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&}]{model\+\_\+,  }\item[{bool}]{copy\+\_\+data = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -305,7 +225,7 @@ Definition at line 214 of file geese-\/meat-\/constructors.\+hpp.
 \mbox{\Hypertarget{class_geese_a3f80a16330da3af4a5cf250cbf79a6a4}\label{class_geese_a3f80a16330da3af4a5cf250cbf79a6a4}} 
 \index{Geese@{Geese}!Geese@{Geese}}
 \index{Geese@{Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
 {\footnotesize\ttfamily Geese\+::\+Geese (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_geese}{Geese}} \&\&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
@@ -315,42 +235,12 @@ Definition at line 293 of file geese-\/meat-\/constructors.\+hpp.
 \mbox{\Hypertarget{class_geese_a8b665d6faea65caacbb00feea98d53b0}\label{class_geese_a8b665d6faea65caacbb00feea98d53b0}} 
 \index{Geese@{Geese}!````~Geese@{$\sim$Geese}}
 \index{````~Geese@{$\sim$Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{$\sim$Geese()}{~Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{$\sim$Geese()}{~Geese()}}
 {\footnotesize\ttfamily Geese\+::$\sim$\+Geese (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 91 of file defm-\/meat.\+hpp.
-
-\mbox{\Hypertarget{class_geese_a4766bb548b2a33e16019c52026f455f5}\label{class_geese_a4766bb548b2a33e16019c52026f455f5}} 
-\index{Geese@{Geese}!Geese@{Geese}}
-\index{Geese@{Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
-{\footnotesize\ttfamily Geese\+::\+Geese (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_geese_a9ffb63eefb64afb9a5c2b25006e9ab52}\label{class_geese_a9ffb63eefb64afb9a5c2b25006e9ab52}} 
-\index{Geese@{Geese}!Geese@{Geese}}
-\index{Geese@{Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
-{\footnotesize\ttfamily Geese\+::\+Geese (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ \&}]{annotations,  }\item[{std\+::vector$<$ unsigned int $>$ \&}]{geneid,  }\item[{std\+::vector$<$ int $>$ \&}]{parent,  }\item[{std\+::vector$<$ bool $>$ \&}]{duplication }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_geese_acb709c40f1b4d3c7fd8fb06c4ea2627c}\label{class_geese_acb709c40f1b4d3c7fd8fb06c4ea2627c}} 
-\index{Geese@{Geese}!Geese@{Geese}}
-\index{Geese@{Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
-{\footnotesize\ttfamily Geese\+::\+Geese (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&}]{model\+\_\+,  }\item[{bool}]{copy\+\_\+data = {\ttfamily true} }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{class_geese_a3f80a16330da3af4a5cf250cbf79a6a4}\label{class_geese_a3f80a16330da3af4a5cf250cbf79a6a4}} 
-\index{Geese@{Geese}!Geese@{Geese}}
-\index{Geese@{Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{Geese()}{Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
-{\footnotesize\ttfamily Geese\+::\+Geese (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_geese}{Geese}} \&\&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-\mbox{\Hypertarget{class_geese_a8b665d6faea65caacbb00feea98d53b0}\label{class_geese_a8b665d6faea65caacbb00feea98d53b0}} 
-\index{Geese@{Geese}!````~Geese@{$\sim$Geese}}
-\index{````~Geese@{$\sim$Geese}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{$\sim$Geese()}{~Geese()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Geese\+::$\sim$\+Geese (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -358,39 +248,27 @@ Definition at line 91 of file defm-\/meat.\+hpp.
 \mbox{\Hypertarget{class_geese_a0a460414624fd1b7013ce3b1a09150d1}\label{class_geese_a0a460414624fd1b7013ce3b1a09150d1}} 
 \index{Geese@{Geese}!calc\_reduced\_sequence@{calc\_reduced\_sequence}}
 \index{calc\_reduced\_sequence@{calc\_reduced\_sequence}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{calc\_reduced\_sequence()}{calc\_reduced\_sequence()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{calc\_reduced\_sequence()}{calc\_reduced\_sequence()}}
 {\footnotesize\ttfamily void Geese\+::calc\+\_\+reduced\+\_\+sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 331 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a0a460414624fd1b7013ce3b1a09150d1}\label{class_geese_a0a460414624fd1b7013ce3b1a09150d1}} 
-\index{Geese@{Geese}!calc\_reduced\_sequence@{calc\_reduced\_sequence}}
-\index{calc\_reduced\_sequence@{calc\_reduced\_sequence}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{calc\_reduced\_sequence()}{calc\_reduced\_sequence()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Geese\+::calc\+\_\+reduced\+\_\+sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_aa71af5fe38d785cc184c904fc9308dc1}\label{class_geese_aa71af5fe38d785cc184c904fc9308dc1}} 
 \index{Geese@{Geese}!calc\_sequence@{calc\_sequence}}
 \index{calc\_sequence@{calc\_sequence}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{calc\_sequence()}{calc\_sequence()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{calc\_sequence()}{calc\_sequence()}}
 {\footnotesize\ttfamily void Geese\+::calc\+\_\+sequence (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{n = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 287 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_aa71af5fe38d785cc184c904fc9308dc1}\label{class_geese_aa71af5fe38d785cc184c904fc9308dc1}} 
-\index{Geese@{Geese}!calc\_sequence@{calc\_sequence}}
-\index{calc\_sequence@{calc\_sequence}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{calc\_sequence()}{calc\_sequence()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Geese\+::calc\+\_\+sequence (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{n = {\ttfamily nullptr} }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a4d9127f67eea16500650cca49be58018}\label{class_geese_a4d9127f67eea16500650cca49be58018}} 
 \index{Geese@{Geese}!colnames@{colnames}}
 \index{colnames@{colnames}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{colnames()}{colnames()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{colnames()}{colnames()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Geese\+::colnames (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -401,20 +279,10 @@ Names of the terms in the model.
 
 Definition at line 453 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a4d9127f67eea16500650cca49be58018}\label{class_geese_a4d9127f67eea16500650cca49be58018}} 
-\index{Geese@{Geese}!colnames@{colnames}}
-\index{colnames@{colnames}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{colnames()}{colnames()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Geese\+::colnames (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Names of the terms in the model. 
-
 \mbox{\Hypertarget{class_geese_a7e39cec2fede50e1c59bf7886dd13f7a}\label{class_geese_a7e39cec2fede50e1c59bf7886dd13f7a}} 
 \index{Geese@{Geese}!get\_annotated\_nodes@{get\_annotated\_nodes}}
 \index{get\_annotated\_nodes@{get\_annotated\_nodes}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_annotated\_nodes()}{get\_annotated\_nodes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{get\_annotated\_nodes()}{get\_annotated\_nodes()}}
 {\footnotesize\ttfamily std\+::vector$<$ unsigned int $>$ Geese\+::get\+\_\+annotated\+\_\+nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -425,84 +293,50 @@ Returns the ids of the nodes with at least one annotation.
 
 Definition at line 669 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a7e39cec2fede50e1c59bf7886dd13f7a}\label{class_geese_a7e39cec2fede50e1c59bf7886dd13f7a}} 
-\index{Geese@{Geese}!get\_annotated\_nodes@{get\_annotated\_nodes}}
-\index{get\_annotated\_nodes@{get\_annotated\_nodes}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_annotated\_nodes()}{get\_annotated\_nodes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ unsigned int $>$ Geese\+::get\+\_\+annotated\+\_\+nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Returns the ids of the nodes with at least one annotation. 
-
 \mbox{\Hypertarget{class_geese_abb975286a0ab1fd438e5bb4427398993}\label{class_geese_abb975286a0ab1fd438e5bb4427398993}} 
 \index{Geese@{Geese}!get\_counters@{get\_counters}}
 \index{get\_counters@{get\_counters}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_counters()}{get\_counters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{get\_counters()}{get\_counters()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}} $\ast$ Geese\+::get\+\_\+counters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 652 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a42d20baedc45ed705a83af22008df052}\label{class_geese_a42d20baedc45ed705a83af22008df052}} 
-\index{Geese@{Geese}!get\_counters@{get\_counters}}
-\index{get\_counters@{get\_counters}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_counters()}{get\_counters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{phylocounters\+::\+Phylo\+Counters}}$\ast$ Geese\+::get\+\_\+counters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_ad0c172270f676443a47a5f818f5920b0}\label{class_geese_ad0c172270f676443a47a5f818f5920b0}} 
 \index{Geese@{Geese}!get\_model@{get\_model}}
 \index{get\_model@{get\_model}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_model()}{get\_model()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{get\_model()}{get\_model()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{phylocounters\+::\+Phylo\+Model}} $\ast$ Geese\+::get\+\_\+model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 657 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_ac349e2f899880cd3033b152c1f28d789}\label{class_geese_ac349e2f899880cd3033b152c1f28d789}} 
-\index{Geese@{Geese}!get\_model@{get\_model}}
-\index{get\_model@{get\_model}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_model()}{get\_model()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{phylocounters\+::\+Phylo\+Model}}$\ast$ Geese\+::get\+\_\+model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a5c9cf28a69270fe4d3f48984fe2c5723}\label{class_geese_a5c9cf28a69270fe4d3f48984fe2c5723}} 
 \index{Geese@{Geese}!get\_probabilities@{get\_probabilities}}
 \index{get\_probabilities@{get\_probabilities}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_probabilities()}{get\_probabilities()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{get\_probabilities()}{get\_probabilities()}}
 {\footnotesize\ttfamily std\+::vector$<$ double $>$ Geese\+::get\+\_\+probabilities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 379 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a5c9cf28a69270fe4d3f48984fe2c5723}\label{class_geese_a5c9cf28a69270fe4d3f48984fe2c5723}} 
-\index{Geese@{Geese}!get\_probabilities@{get\_probabilities}}
-\index{get\_probabilities@{get\_probabilities}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_probabilities()}{get\_probabilities()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$ Geese\+::get\+\_\+probabilities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
 \mbox{\Hypertarget{class_geese_addb8366d2d098403a0e0ac9e321afeeb}\label{class_geese_addb8366d2d098403a0e0ac9e321afeeb}} 
 \index{Geese@{Geese}!get\_rengine@{get\_rengine}}
 \index{get\_rengine@{get\_rengine}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_rengine()}{get\_rengine()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{get\_rengine()}{get\_rengine()}}
 {\footnotesize\ttfamily std\+::mt19937 $\ast$ Geese\+::get\+\_\+rengine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 647 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_aa48508ee73e77b651380617e74148167}\label{class_geese_aa48508ee73e77b651380617e74148167}} 
-\index{Geese@{Geese}!get\_rengine@{get\_rengine}}
-\index{get\_rengine@{get\_rengine}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_rengine()}{get\_rengine()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::mt19937$\ast$ Geese\+::get\+\_\+rengine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a08873639292543015324d3c3768e900f}\label{class_geese_a08873639292543015324d3c3768e900f}} 
 \index{Geese@{Geese}!get\_states@{get\_states}}
 \index{get\_states@{get\_states}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_states()}{get\_states()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{get\_states()}{get\_states()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ Geese\+::get\+\_\+states (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -518,121 +352,70 @@ std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ of length {\ttfamily 2$^\wedge$P}
 
 Definition at line 665 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a08873639292543015324d3c3768e900f}\label{class_geese_a08873639292543015324d3c3768e900f}} 
-\index{Geese@{Geese}!get\_states@{get\_states}}
-\index{get\_states@{get\_states}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_states()}{get\_states()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ Geese\+::get\+\_\+states (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Powerset of a gene\textquotesingle{}s possible states. 
-
-This list of vectors is used throughout {\ttfamily \mbox{\hyperlink{class_geese}{Geese}}}. It lists all possible combinations of functional states for any gene. Thus, for {\ttfamily P} functions, there will be {\ttfamily 2$^\wedge$P} possible combinations.
-
-\begin{DoxyReturn}{Returns}
-std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ of length {\ttfamily 2$^\wedge$P}. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{class_geese_ae9bc7b2cbc23aca9229d2ef511e53186}\label{class_geese_ae9bc7b2cbc23aca9229d2ef511e53186}} 
 \index{Geese@{Geese}!get\_support\_fun@{get\_support\_fun}}
 \index{get\_support\_fun@{get\_support\_fun}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_support\_fun()}{get\_support\_fun()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{get\_support\_fun()}{get\_support\_fun()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{phylocounters\+::\+Phylo\+Support}} $\ast$ Geese\+::get\+\_\+support\+\_\+fun (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 661 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a1f6044ee1cb9f01c99c47419b1db9c46}\label{class_geese_a1f6044ee1cb9f01c99c47419b1db9c46}} 
-\index{Geese@{Geese}!get\_support\_fun@{get\_support\_fun}}
-\index{get\_support\_fun@{get\_support\_fun}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{get\_support\_fun()}{get\_support\_fun()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{phylocounters\+::\+Phylo\+Support}}$\ast$ Geese\+::get\+\_\+support\+\_\+fun (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_aa95abe540b9977592bcc88e77619d070}\label{class_geese_aa95abe540b9977592bcc88e77619d070}} 
 \index{Geese@{Geese}!inherit\_support@{inherit\_support}}
 \index{inherit\_support@{inherit\_support}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{inherit\_support()}{inherit\_support()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{inherit\_support()}{inherit\_support()}}
 {\footnotesize\ttfamily void Geese\+::inherit\+\_\+support (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&}]{model\+\_\+,  }\item[{bool}]{delete\+\_\+support\+\_\+ = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 230 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_aa95abe540b9977592bcc88e77619d070}\label{class_geese_aa95abe540b9977592bcc88e77619d070}} 
-\index{Geese@{Geese}!inherit\_support@{inherit\_support}}
-\index{inherit\_support@{inherit\_support}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{inherit\_support()}{inherit\_support()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Geese\+::inherit\+\_\+support (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&}]{model\+\_\+,  }\item[{bool}]{delete\+\_\+support\+\_\+ = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}} }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a6a655763da1c4bba0e886bd69658bd76}\label{class_geese_a6a655763da1c4bba0e886bd69658bd76}} 
 \index{Geese@{Geese}!init@{init}}
 \index{init@{init}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily void Geese\+::init (\begin{DoxyParamCaption}\item[{unsigned int}]{bar\+\_\+width = {\ttfamily \mbox{\hyperlink{progress_8hpp_a736e2557ded6975dbf117eedf62ea66c}{BARRY\+\_\+\+PROGRESS\+\_\+\+BAR\+\_\+\+WIDTH}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 103 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a6a655763da1c4bba0e886bd69658bd76}\label{class_geese_a6a655763da1c4bba0e886bd69658bd76}} 
-\index{Geese@{Geese}!init@{init}}
-\index{init@{init}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Geese\+::init (\begin{DoxyParamCaption}\item[{unsigned int}]{bar\+\_\+width = {\ttfamily \mbox{\hyperlink{progress_8hpp_a736e2557ded6975dbf117eedf62ea66c}{BARRY\+\_\+\+PROGRESS\+\_\+\+BAR\+\_\+\+WIDTH}}} }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a3855898a556e2ac1d30529d3bc35f13a}\label{class_geese_a3855898a556e2ac1d30529d3bc35f13a}} 
 \index{Geese@{Geese}!init\_node@{init\_node}}
 \index{init\_node@{init\_node}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{init\_node()}{init\_node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{init\_node()}{init\_node()}}
 {\footnotesize\ttfamily void Geese\+::init\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 6 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a3855898a556e2ac1d30529d3bc35f13a}\label{class_geese_a3855898a556e2ac1d30529d3bc35f13a}} 
-\index{Geese@{Geese}!init\_node@{init\_node}}
-\index{init\_node@{init\_node}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{init\_node()}{init\_node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Geese\+::init\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} \&}]{n }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a6eb9e15bdf70319857e4ad90baefdece}\label{class_geese_a6eb9e15bdf70319857e4ad90baefdece}} 
 \index{Geese@{Geese}!likelihood@{likelihood}}
 \index{likelihood@{likelihood}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{likelihood()}{likelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{likelihood()}{likelihood()}}
 {\footnotesize\ttfamily double Geese\+::likelihood (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 6 of file geese-\/meat-\/likelihood.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a6eb9e15bdf70319857e4ad90baefdece}\label{class_geese_a6eb9e15bdf70319857e4ad90baefdece}} 
-\index{Geese@{Geese}!likelihood@{likelihood}}
-\index{likelihood@{likelihood}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{likelihood()}{likelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily double Geese\+::likelihood (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_af2d4bac42cc7c8287fb6853d50882115}\label{class_geese_af2d4bac42cc7c8287fb6853d50882115}} 
 \index{Geese@{Geese}!likelihood\_exhaust@{likelihood\_exhaust}}
 \index{likelihood\_exhaust@{likelihood\_exhaust}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{likelihood\_exhaust()}{likelihood\_exhaust()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{likelihood\_exhaust()}{likelihood\_exhaust()}}
 {\footnotesize\ttfamily double Geese\+::likelihood\+\_\+exhaust (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 7 of file geese-\/meat-\/likelihood\+\_\+exhaust.\+hpp.
 
-\mbox{\Hypertarget{class_geese_af2d4bac42cc7c8287fb6853d50882115}\label{class_geese_af2d4bac42cc7c8287fb6853d50882115}} 
-\index{Geese@{Geese}!likelihood\_exhaust@{likelihood\_exhaust}}
-\index{likelihood\_exhaust@{likelihood\_exhaust}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{likelihood\_exhaust()}{likelihood\_exhaust()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily double Geese\+::likelihood\+\_\+exhaust (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7}\label{class_geese_ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7}} 
 \index{Geese@{Geese}!nannotations@{nannotations}}
 \index{nannotations@{nannotations}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nannotations()}{nannotations()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{nannotations()}{nannotations()}}
 {\footnotesize\ttfamily std\+::vector$<$ unsigned int $>$ Geese\+::nannotations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
@@ -643,20 +426,10 @@ Number of annotations.
 
 Definition at line 444 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7}\label{class_geese_ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7}} 
-\index{Geese@{Geese}!nannotations@{nannotations}}
-\index{nannotations@{nannotations}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nannotations()}{nannotations()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ unsigned int $>$ Geese\+::nannotations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-
-
-Number of annotations. 
-
 \mbox{\Hypertarget{class_geese_ac3e067871732f3eba27626f94bcd44b4}\label{class_geese_ac3e067871732f3eba27626f94bcd44b4}} 
 \index{Geese@{Geese}!nfuns@{nfuns}}
 \index{nfuns@{nfuns}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nfuns()}{nfuns()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{nfuns()}{nfuns()}}
 {\footnotesize\ttfamily unsigned int Geese\+::nfuns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
@@ -667,20 +440,10 @@ Number of functions analyzed.
 
 Definition at line 400 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_ac3e067871732f3eba27626f94bcd44b4}\label{class_geese_ac3e067871732f3eba27626f94bcd44b4}} 
-\index{Geese@{Geese}!nfuns@{nfuns}}
-\index{nfuns@{nfuns}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nfuns()}{nfuns()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily unsigned int Geese\+::nfuns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-
-
-Number of functions analyzed. 
-
 \mbox{\Hypertarget{class_geese_adf173ab52a4ed973131989ce0560e7a6}\label{class_geese_adf173ab52a4ed973131989ce0560e7a6}} 
 \index{Geese@{Geese}!nleafs@{nleafs}}
 \index{nleafs@{nleafs}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nleafs()}{nleafs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{nleafs()}{nleafs()}}
 {\footnotesize\ttfamily unsigned int Geese\+::nleafs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
@@ -691,20 +454,10 @@ Number of leaf.
 
 Definition at line 414 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_adf173ab52a4ed973131989ce0560e7a6}\label{class_geese_adf173ab52a4ed973131989ce0560e7a6}} 
-\index{Geese@{Geese}!nleafs@{nleafs}}
-\index{nleafs@{nleafs}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nleafs()}{nleafs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily unsigned int Geese\+::nleafs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-
-
-Number of leaf. 
-
 \mbox{\Hypertarget{class_geese_aa0249f7b6163c0b18d55fae140074d07}\label{class_geese_aa0249f7b6163c0b18d55fae140074d07}} 
 \index{Geese@{Geese}!nnodes@{nnodes}}
 \index{nnodes@{nnodes}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nnodes()}{nnodes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{nnodes()}{nnodes()}}
 {\footnotesize\ttfamily unsigned int Geese\+::nnodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
@@ -715,20 +468,10 @@ Number of nodes (interior + leaf)
 
 Definition at line 407 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_aa0249f7b6163c0b18d55fae140074d07}\label{class_geese_aa0249f7b6163c0b18d55fae140074d07}} 
-\index{Geese@{Geese}!nnodes@{nnodes}}
-\index{nnodes@{nnodes}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nnodes()}{nnodes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily unsigned int Geese\+::nnodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-
-
-Number of nodes (interior + leaf) 
-
 \mbox{\Hypertarget{class_geese_a0bfdc90924ef14433df93dd866a28126}\label{class_geese_a0bfdc90924ef14433df93dd866a28126}} 
 \index{Geese@{Geese}!nterms@{nterms}}
 \index{nterms@{nterms}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nterms()}{nterms()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{nterms()}{nterms()}}
 {\footnotesize\ttfamily unsigned int Geese\+::nterms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -739,60 +482,32 @@ Number of terms included.
 
 Definition at line 426 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a0bfdc90924ef14433df93dd866a28126}\label{class_geese_a0bfdc90924ef14433df93dd866a28126}} 
-\index{Geese@{Geese}!nterms@{nterms}}
-\index{nterms@{nterms}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{nterms()}{nterms()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily unsigned int Geese\+::nterms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Number of terms included. 
-
 \mbox{\Hypertarget{class_geese_a82def7c8a870aa1b3ec069099c01fe02}\label{class_geese_a82def7c8a870aa1b3ec069099c01fe02}} 
 \index{Geese@{Geese}!observed\_counts@{observed\_counts}}
 \index{observed\_counts@{observed\_counts}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{observed\_counts()}{observed\_counts()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{observed\_counts()}{observed\_counts()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::observed\+\_\+counts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 495 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a6df1d41764f2fc4a848c26a5784abeaa}\label{class_geese_a6df1d41764f2fc4a848c26a5784abeaa}} 
-\index{Geese@{Geese}!observed\_counts@{observed\_counts}}
-\index{observed\_counts@{observed\_counts}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{observed\_counts()}{observed\_counts()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$double$>$ $>$ Geese\+::observed\+\_\+counts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a857663144d377cd5ee69960267865eaa}\label{class_geese_a857663144d377cd5ee69960267865eaa}} 
 \index{Geese@{Geese}!operator=@{operator=}}
 \index{operator=@{operator=}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_geese}{Geese}}\& Geese\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&}]{model\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
-
-\mbox{\Hypertarget{class_geese_a857663144d377cd5ee69960267865eaa}\label{class_geese_a857663144d377cd5ee69960267865eaa}} 
-\index{Geese@{Geese}!operator=@{operator=}}
-\index{operator=@{operator=}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_geese}{Geese}}\& Geese\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_geese}{Geese}} \&}]{model\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
 \mbox{\Hypertarget{class_geese_a5a56d129d383ca8648e6ddf9b845b05a}\label{class_geese_a5a56d129d383ca8648e6ddf9b845b05a}} 
 \index{Geese@{Geese}!operator=@{operator=}}
 \index{operator=@{operator=}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_geese}{Geese}}\& Geese\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_geese}{Geese}} \&\&}]{model\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}, {\ttfamily [noexcept]}}
-
-\mbox{\Hypertarget{class_geese_a5a56d129d383ca8648e6ddf9b845b05a}\label{class_geese_a5a56d129d383ca8648e6ddf9b845b05a}} 
-\index{Geese@{Geese}!operator=@{operator=}}
-\index{operator=@{operator=}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_geese}{Geese}}\& Geese\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_geese}{Geese}} \&\&}]{model\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}, {\ttfamily [noexcept]}}
 
 \mbox{\Hypertarget{class_geese_ab21479832092db4910125fd90782e4e2}\label{class_geese_ab21479832092db4910125fd90782e4e2}} 
 \index{Geese@{Geese}!parse\_polytomies@{parse\_polytomies}}
 \index{parse\_polytomies@{parse\_polytomies}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{parse\_polytomies()}{parse\_polytomies()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{parse\_polytomies()}{parse\_polytomies()}}
 {\footnotesize\ttfamily unsigned int Geese\+::parse\+\_\+polytomies (\begin{DoxyParamCaption}\item[{bool}]{verb = {\ttfamily true},  }\item[{std\+::vector$<$ size\+\_\+t $>$ $\ast$}]{dist = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
@@ -803,172 +518,104 @@ Check polytomies and return the largest.
 
 Definition at line 460 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_ab21479832092db4910125fd90782e4e2}\label{class_geese_ab21479832092db4910125fd90782e4e2}} 
-\index{Geese@{Geese}!parse\_polytomies@{parse\_polytomies}}
-\index{parse\_polytomies@{parse\_polytomies}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{parse\_polytomies()}{parse\_polytomies()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily unsigned int Geese\+::parse\+\_\+polytomies (\begin{DoxyParamCaption}\item[{bool}]{verb = {\ttfamily true},  }\item[{std\+::vector$<$ size\+\_\+t $>$ $\ast$}]{dist = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-
-
-Check polytomies and return the largest. 
-
 \mbox{\Hypertarget{class_geese_a10442dde49613332080792a6090d46fa}\label{class_geese_a10442dde49613332080792a6090d46fa}} 
 \index{Geese@{Geese}!predict@{predict}}
 \index{predict@{predict}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict()}{predict()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{res\+\_\+prob = {\ttfamily nullptr},  }\item[{bool}]{leave\+\_\+one\+\_\+out = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}},  }\item[{bool}]{only\+\_\+annotated = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 243 of file geese-\/meat-\/predict.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a10442dde49613332080792a6090d46fa}\label{class_geese_a10442dde49613332080792a6090d46fa}} 
-\index{Geese@{Geese}!predict@{predict}}
-\index{predict@{predict}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict()}{predict()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$}]{res\+\_\+prob = {\ttfamily nullptr},  }\item[{bool}]{leave\+\_\+one\+\_\+out = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}},  }\item[{bool}]{only\+\_\+annotated = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a167c2562599432adbf2ed50f6ccc45cb}\label{class_geese_a167c2562599432adbf2ed50f6ccc45cb}} 
 \index{Geese@{Geese}!predict\_backend@{predict\_backend}}
 \index{predict\_backend@{predict\_backend}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict\_backend()}{predict\_backend()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{predict\_backend()}{predict\_backend()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict\+\_\+backend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&}]{preorder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 $<$ True if the array belongs to the set
 
 Definition at line 6 of file geese-\/meat-\/predict.\+hpp.
 
-\mbox{\Hypertarget{class_geese_abaebdbb8ae84aaeb023998ffd53edee0}\label{class_geese_abaebdbb8ae84aaeb023998ffd53edee0}} 
-\index{Geese@{Geese}!predict\_backend@{predict\_backend}}
-\index{predict\_backend@{predict\_backend}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict\_backend()}{predict\_backend()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$double$>$ $>$ Geese\+::predict\+\_\+backend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&}]{preorder }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_aceb9a8b7f9e830cfa5cd358c27727229}\label{class_geese_aceb9a8b7f9e830cfa5cd358c27727229}} 
 \index{Geese@{Geese}!predict\_exhaust@{predict\_exhaust}}
 \index{predict\_exhaust@{predict\_exhaust}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict\_exhaust()}{predict\_exhaust()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{predict\_exhaust()}{predict\_exhaust()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict\+\_\+exhaust (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 5 of file geese-\/meat-\/predict\+\_\+exhaust.\+hpp.
 
-\mbox{\Hypertarget{class_geese_aceb9a8b7f9e830cfa5cd358c27727229}\label{class_geese_aceb9a8b7f9e830cfa5cd358c27727229}} 
-\index{Geese@{Geese}!predict\_exhaust@{predict\_exhaust}}
-\index{predict\_exhaust@{predict\_exhaust}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict\_exhaust()}{predict\_exhaust()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict\+\_\+exhaust (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_aadbb2397434048485757eaed2b4a33b8}\label{class_geese_aadbb2397434048485757eaed2b4a33b8}} 
 \index{Geese@{Geese}!predict\_exhaust\_backend@{predict\_exhaust\_backend}}
 \index{predict\_exhaust\_backend@{predict\_exhaust\_backend}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict\_exhaust\_backend()}{predict\_exhaust\_backend()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{predict\_exhaust\_backend()}{predict\_exhaust\_backend()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict\+\_\+exhaust\+\_\+backend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&}]{preorder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 47 of file geese-\/meat-\/predict\+\_\+exhaust.\+hpp.
 
-\mbox{\Hypertarget{class_geese_aadbb2397434048485757eaed2b4a33b8}\label{class_geese_aadbb2397434048485757eaed2b4a33b8}} 
-\index{Geese@{Geese}!predict\_exhaust\_backend@{predict\_exhaust\_backend}}
-\index{predict\_exhaust\_backend@{predict\_exhaust\_backend}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict\_exhaust\_backend()}{predict\_exhaust\_backend()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict\+\_\+exhaust\+\_\+backend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ \&}]{preorder }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a8ad890607169531c1763f51870005918}\label{class_geese_a8ad890607169531c1763f51870005918}} 
 \index{Geese@{Geese}!predict\_sim@{predict\_sim}}
 \index{predict\_sim@{predict\_sim}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict\_sim()}{predict\_sim()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{predict\_sim()}{predict\_sim()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict\+\_\+sim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{only\+\_\+annotated = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}},  }\item[{unsigned int}]{nsims = {\ttfamily 10000u} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 6 of file geese-\/meat-\/predict\+\_\+sim.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a8ad890607169531c1763f51870005918}\label{class_geese_a8ad890607169531c1763f51870005918}} 
-\index{Geese@{Geese}!predict\_sim@{predict\_sim}}
-\index{predict\_sim@{predict\_sim}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{predict\_sim()}{predict\_sim()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Geese\+::predict\+\_\+sim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{only\+\_\+annotated = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}},  }\item[{unsigned int}]{nsims = {\ttfamily 10000u} }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a1d8ae4a9c27f4653929a48bbd640bf71}\label{class_geese_a1d8ae4a9c27f4653929a48bbd640bf71}} 
 \index{Geese@{Geese}!print@{print}}
 \index{print@{print}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
 {\footnotesize\ttfamily void Geese\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Prints information about the DEFM. 
-
-
-
-Definition at line 629 of file defm-\/meat.\+hpp.
-
-\mbox{\Hypertarget{class_geese_a1d8ae4a9c27f4653929a48bbd640bf71}\label{class_geese_a1d8ae4a9c27f4653929a48bbd640bf71}} 
-\index{Geese@{Geese}!print@{print}}
-\index{print@{print}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Geese\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
 Prints information about the GEESE. 
 
+
+
+Definition at line 629 of file defm-\/meat.\+hpp.
+
 \mbox{\Hypertarget{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}\label{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}} 
 \index{Geese@{Geese}!print\_observed\_counts@{print\_observed\_counts}}
 \index{print\_observed\_counts@{print\_observed\_counts}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{print\_observed\_counts()}{print\_observed\_counts()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{print\_observed\_counts()}{print\_observed\_counts()}}
 {\footnotesize\ttfamily void Geese\+::print\+\_\+observed\+\_\+counts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 566 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}\label{class_geese_a3b63231475f73a59b94bb4443c8aa7b8}} 
-\index{Geese@{Geese}!print\_observed\_counts@{print\_observed\_counts}}
-\index{print\_observed\_counts@{print\_observed\_counts}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{print\_observed\_counts()}{print\_observed\_counts()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Geese\+::print\+\_\+observed\+\_\+counts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_aa5d623d5e242a29090bf5a01bfeeeb9f}\label{class_geese_aa5d623d5e242a29090bf5a01bfeeeb9f}} 
 \index{Geese@{Geese}!set\_seed@{set\_seed}}
 \index{set\_seed@{set\_seed}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{set\_seed()}{set\_seed()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{set\_seed()}{set\_seed()}}
 {\footnotesize\ttfamily void Geese\+::set\+\_\+seed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} unsigned int \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 4 of file geese-\/meat-\/simulate.\+hpp.
 
-\mbox{\Hypertarget{class_geese_aa5d623d5e242a29090bf5a01bfeeeb9f}\label{class_geese_aa5d623d5e242a29090bf5a01bfeeeb9f}} 
-\index{Geese@{Geese}!set\_seed@{set\_seed}}
-\index{set\_seed@{set\_seed}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{set\_seed()}{set\_seed()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Geese\+::set\+\_\+seed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} unsigned int \&}]{s }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a675662efdded0d24c146946aa15ed481}\label{class_geese_a675662efdded0d24c146946aa15ed481}} 
 \index{Geese@{Geese}!simulate@{simulate}}
 \index{simulate@{simulate}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{simulate()}{simulate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{simulate()}{simulate()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ Geese\+::simulate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 8 of file geese-\/meat-\/simulate.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a675662efdded0d24c146946aa15ed481}\label{class_geese_a675662efdded0d24c146946aa15ed481}} 
-\index{Geese@{Geese}!simulate@{simulate}}
-\index{simulate@{simulate}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{simulate()}{simulate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ unsigned int $>$ $>$ Geese\+::simulate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_geese_a4716f07b6ffb2b0f171a9130fbb38f1a}\label{class_geese_a4716f07b6ffb2b0f171a9130fbb38f1a}} 
 \index{Geese@{Geese}!support\_size@{support\_size}}
 \index{support\_size@{support\_size}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{support\_size()}{support\_size()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{support\_size()}{support\_size()}}
 {\footnotesize\ttfamily unsigned int Geese\+::support\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
@@ -979,31 +626,15 @@ Number of unique sets of sufficient stats.
 
 Definition at line 434 of file defm-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_geese_a4716f07b6ffb2b0f171a9130fbb38f1a}\label{class_geese_a4716f07b6ffb2b0f171a9130fbb38f1a}} 
-\index{Geese@{Geese}!support\_size@{support\_size}}
-\index{support\_size@{support\_size}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{support\_size()}{support\_size()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily unsigned int Geese\+::support\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-
-
-Number of unique sets of sufficient stats. 
-
 \mbox{\Hypertarget{class_geese_a5d3f0a97dd5d37b6f6cfd79c41629a1a}\label{class_geese_a5d3f0a97dd5d37b6f6cfd79c41629a1a}} 
 \index{Geese@{Geese}!update\_annotations@{update\_annotations}}
 \index{update\_annotations@{update\_annotations}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{update\_annotations()}{update\_annotations()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{update\_annotations()}{update\_annotations()}}
 {\footnotesize\ttfamily void Geese\+::update\+\_\+annotations (\begin{DoxyParamCaption}\item[{unsigned int}]{nodeid,  }\item[{std\+::vector$<$ unsigned int $>$}]{newann }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 Definition at line 258 of file defm-\/meat.\+hpp.
-
-\mbox{\Hypertarget{class_geese_a5d3f0a97dd5d37b6f6cfd79c41629a1a}\label{class_geese_a5d3f0a97dd5d37b6f6cfd79c41629a1a}} 
-\index{Geese@{Geese}!update\_annotations@{update\_annotations}}
-\index{update\_annotations@{update\_annotations}!Geese@{Geese}}
-\doxysubsubsection{\texorpdfstring{update\_annotations()}{update\_annotations()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Geese\+::update\+\_\+annotations (\begin{DoxyParamCaption}\item[{unsigned int}]{nodeid,  }\item[{std\+::vector$<$ unsigned int $>$}]{newann }\end{DoxyParamCaption})}
 
 
 
@@ -1016,7 +647,7 @@ Definition at line 258 of file defm-\/meat.\+hpp.
 
 
 
-Definition at line 116 of file defm-\/bones.\+hpp.
+Definition at line 118 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a914996ac39160fb46e1ce6d70609a36a}\label{class_geese_a914996ac39160fb46e1ce6d70609a36a}} 
 \index{Geese@{Geese}!delete\_support@{delete\_support}}
@@ -1026,7 +657,7 @@ Definition at line 116 of file defm-\/bones.\+hpp.
 
 
 
-Definition at line 117 of file defm-\/bones.\+hpp.
+Definition at line 119 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_aa3c3181a20e367fe13e92180c83f84c0}\label{class_geese_aa3c3181a20e367fe13e92180c83f84c0}} 
 \index{Geese@{Geese}!initialized@{initialized}}
@@ -1036,7 +667,7 @@ Definition at line 117 of file defm-\/bones.\+hpp.
 
 
 
-Definition at line 115 of file defm-\/bones.\+hpp.
+Definition at line 117 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a25f8324ae2c43b8a940a8e934c768a7c}\label{class_geese_a25f8324ae2c43b8a940a8e934c768a7c}} 
 \index{Geese@{Geese}!map\_to\_nodes@{map\_to\_nodes}}
@@ -1046,7 +677,7 @@ Definition at line 115 of file defm-\/bones.\+hpp.
 
 
 
-Definition at line 107 of file defm-\/bones.\+hpp.
+Definition at line 109 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a0483807174fe427f5bd2ccbb22ac3ad6}\label{class_geese_a0483807174fe427f5bd2ccbb22ac3ad6}} 
 \index{Geese@{Geese}!nfunctions@{nfunctions}}
@@ -1056,7 +687,7 @@ Definition at line 107 of file defm-\/bones.\+hpp.
 
 
 
-Definition at line 105 of file defm-\/bones.\+hpp.
+Definition at line 107 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_ab00af142f1f0e13b5c9d0cb7c8d41ee5}\label{class_geese_ab00af142f1f0e13b5c9d0cb7c8d41ee5}} 
 \index{Geese@{Geese}!nodes@{nodes}}
@@ -1066,7 +697,7 @@ Definition at line 105 of file defm-\/bones.\+hpp.
 
 
 
-Definition at line 106 of file defm-\/bones.\+hpp.
+Definition at line 108 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_a0fffee17a5df7ec95858f8307144c3f9}\label{class_geese_a0fffee17a5df7ec95858f8307144c3f9}} 
 \index{Geese@{Geese}!pset\_loc@{pset\_loc}}
@@ -1080,7 +711,7 @@ Locations of columns.
 
 
 
-Definition at line 108 of file defm-\/bones.\+hpp.
+Definition at line 110 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_aabcf5e284f7277109567a84ba615f97e}\label{class_geese_aabcf5e284f7277109567a84ba615f97e}} 
 \index{Geese@{Geese}!reduced\_sequence@{reduced\_sequence}}
@@ -1090,7 +721,7 @@ Definition at line 108 of file defm-\/bones.\+hpp.
 
 
 
-Definition at line 112 of file defm-\/bones.\+hpp.
+Definition at line 114 of file geese-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_geese_ab815e9b33ce2cfb5757f86083f357152}\label{class_geese_ab815e9b33ce2cfb5757f86083f357152}} 
 \index{Geese@{Geese}!sequence@{sequence}}
@@ -1100,13 +731,12 @@ Definition at line 112 of file defm-\/bones.\+hpp.
 
 
 
-Definition at line 111 of file defm-\/bones.\+hpp.
+Definition at line 113 of file geese-\/bones.\+hpp.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/barry/models/defm/\mbox{\hyperlink{defm-bones_8hpp}{defm-\/bones.\+hpp}}\item 
 include/barry/models/geese/\mbox{\hyperlink{geese-bones_8hpp}{geese-\/bones.\+hpp}}\item 
 include/barry/models/defm/\mbox{\hyperlink{defm-meat_8hpp}{defm-\/meat.\+hpp}}\item 
 include/barry/models/geese/\mbox{\hyperlink{geese-meat-constructors_8hpp}{geese-\/meat-\/constructors.\+hpp}}\item 

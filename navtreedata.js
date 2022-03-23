@@ -58,10 +58,9 @@ var NAVTREEINDEX =
 "annotated.html",
 "barraydenserow-bones_8hpp.html#a1715b9a21ce267cafd44c884fc4bb72c",
 "class_b_array_row.html#a60a93991bd2431dbbeb9325420fcac6c",
-"class_geese.html#acb709c40f1b4d3c7fd8fb06c4ea2627c",
-"counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7",
-"group__counters-phylo.html#ga2c37ea0362e2cec9e28c8225d01f8245",
-"typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14"
+"class_model.html#a4efbb1070a633381712aee3d2e5e8fb0",
+"counters_2defm_8hpp.html#a15fca190888778da53799b1b53507703",
+"group__counters-phylo.html#gad4d1e036b452d3fa7268f63c4637969a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

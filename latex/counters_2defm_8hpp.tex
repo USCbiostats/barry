@@ -12,14 +12,16 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_d_e_f_m_data}{DEFMData}}
-\begin{DoxyCompactList}\small\item\em Data class for DEFM arrays. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Data class for \mbox{\hyperlink{class_d_e_f_m}{DEFM}} arrays. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}
-\begin{DoxyCompactList}\small\item\em Data class used to store arbitrary uint or double vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Data class used to store arbitrary uint or double vectors. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Macros}
 \begin{Indent}\textbf{ Macros for defining counters}\par
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{counters_2defm_8hpp_aceda72b2e1b110e80235df9dbac17351}{DEFM\+\_\+\+COUNTER}}(a)
+\#define \mbox{\hyperlink{counters_2defm_8hpp_aceda72b2e1b110e80235df9dbac17351}{DEFM\+\_\+\+COUNTER}}(a)~inline double (a) (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})
 \item 
 \#define \mbox{\hyperlink{counters_2defm_8hpp_a0de627ee2d314d645cf885c7cc0ee36b}{DEFM\+\_\+\+COUNTER\+\_\+\+LAMBDA}}(a)
 \end{DoxyCompactItemize}
@@ -27,7 +29,7 @@ class \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}
 \begin{Indent}\textbf{ Macros for defining rules}\par
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{counters_2defm_8hpp_af210bb3f47af7995ff200264370d9db6}{DEFM\+\_\+\+RULE}}(a)
+\#define \mbox{\hyperlink{counters_2defm_8hpp_af210bb3f47af7995ff200264370d9db6}{DEFM\+\_\+\+RULE}}(a)~inline bool (a) (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, bool \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})
 \item 
 \#define \mbox{\hyperlink{counters_2defm_8hpp_a94148d8866c1e18cbb02be5ba7d233ba}{DEFM\+\_\+\+RULE\+\_\+\+LAMBDA}}(a)
 \end{DoxyCompactItemize}
@@ -38,29 +40,29 @@ class \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}
 \item 
 typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ int, \mbox{\hyperlink{class_d_e_f_m_data}{DEFMData}} $>$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}
 \item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\using \mbox{\hyperlink{counters_2defm_8hpp_ac18c40ee8f7ca5a391019825e3d7c5e9}{DEFMCounter}} = \mbox{\hyperlink{class_counter}{Counter}}$<$ Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$
+typedef \mbox{\hyperlink{class_counter}{Counter}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{counters_2defm_8hpp_af38626b20ade1bfb966140e1ac7bc06b}{DEFMCounter}}
 \item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\using \mbox{\hyperlink{counters_2defm_8hpp_adc3b121854abd8a0283c8a59cd522a81}{DEFMCounters}} = \mbox{\hyperlink{class_counters}{Counters}}$<$ Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$
+typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}{DEFMCounters}}
 \item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\using \mbox{\hyperlink{counters_2defm_8hpp_a89bc1824f0f4afaed87b18abf9b417f9}{DEFMSupport}} = \mbox{\hyperlink{class_support}{Support}}$<$ Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$
+typedef \mbox{\hyperlink{class_support}{Support}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}} $>$ \mbox{\hyperlink{counters_2defm_8hpp_a15fca190888778da53799b1b53507703}{DEFMSupport}}
 \item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\using \mbox{\hyperlink{counters_2defm_8hpp_ac87e722fb88c699ffd6e9e1c264bc586}{DEFMStats\+Counter}} = \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$ Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$
+typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{counters_2defm_8hpp_af8198b2184baee8a83e8ee69da487833}{DEFMStats\+Counter}}
 \item 
-{\footnotesize template$<$typename Tarray $>$ }\\using \mbox{\hyperlink{counters_2defm_8hpp_a5f07c1ee7e253baf5cdae87c90e61276}{DEFMModel}} = \mbox{\hyperlink{class_model}{Model}}$<$ Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$
+typedef \mbox{\hyperlink{class_model}{Model}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}} $>$ \mbox{\hyperlink{counters_2defm_8hpp_ae83192714c8d9333a678bae1534d18b2}{DEFMModel}}
 \item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\using \mbox{\hyperlink{counters_2defm_8hpp_a06ca688614658a3cfa3d932a1f916ef5}{DEFMRule}} = \mbox{\hyperlink{class_rule}{Rule}}$<$ Tarray, bool $>$
+typedef \mbox{\hyperlink{class_rule}{Rule}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}} $>$ \mbox{\hyperlink{counters_2defm_8hpp_a07c9dbf302b45bbd65051c8bd228798d}{DEFMRule}}
 \item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\using \mbox{\hyperlink{counters_2defm_8hpp_a7cb9b4d8e3517fea74f8d2a6408da261}{DEFMRules}} = \mbox{\hyperlink{class_rules}{Rules}}$<$ Tarray, bool $>$
+typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}} $>$ \mbox{\hyperlink{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}{DEFMRules}}
 \end{DoxyCompactItemize}
 \end{Indent}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\void \mbox{\hyperlink{group__counters-network_ga4237bffaaf6a707bd4902661e52984a1}{counter\+\_\+ones}} (\mbox{\hyperlink{counters_2defm_8hpp_adc3b121854abd8a0283c8a59cd522a81}{DEFMCounters}}$<$ Tarray $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, int covar\+\_\+index=-\/1)
+void \mbox{\hyperlink{group__counters-network_gab063a94825b6b1f0c19e339275124c40}{counter\+\_\+ones}} (\mbox{\hyperlink{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}{DEFMCounters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, int covar\+\_\+index=-\/1)
 \begin{DoxyCompactList}\small\item\em Prevalence of ones. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\void \mbox{\hyperlink{group__counters-network_gad25885fcb162e2f834732c254c39d8a0}{counter\+\_\+transition}} (\mbox{\hyperlink{counters_2defm_8hpp_adc3b121854abd8a0283c8a59cd522a81}{DEFMCounters}}$<$ Tarray $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ coords, int covar\+\_\+index=-\/1)
+void \mbox{\hyperlink{group__counters-network_ga6b5b5e5431d4a1c863ce45e5fb29385c}{counter\+\_\+transition}} (\mbox{\hyperlink{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}{DEFMCounters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ coords, int covar\+\_\+index=-\/1)
 \begin{DoxyCompactList}\small\item\em Prevalence of ones. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\void \mbox{\hyperlink{group__counters-network_ga46e5a458609f49087105295bf901ec37}{counter\+\_\+fixed\+\_\+effect}} (\mbox{\hyperlink{counters_2defm_8hpp_adc3b121854abd8a0283c8a59cd522a81}{DEFMCounters}}$<$ Tarray $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, int covar\+\_\+index, double k)
+void \mbox{\hyperlink{group__counters-network_ga5b37312b45651ac35a6f803d212968a9}{counter\+\_\+fixed\+\_\+effect}} (\mbox{\hyperlink{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}{DEFMCounters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, int covar\+\_\+index, double k)
 \begin{DoxyCompactList}\small\item\em Prevalence of ones. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Rules for network models}\par
 {\em 
@@ -70,7 +72,7 @@ typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ int, \mbox{\hyp
 \end{DoxyParams}
 }\begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename Tarray  = DEFMArray$>$ }\\void \mbox{\hyperlink{group__counters-network_gaa6b07795302a078414933c6e9f88e259}{rules\+\_\+zerodiag}} (\mbox{\hyperlink{counters_2defm_8hpp_a7cb9b4d8e3517fea74f8d2a6408da261}{DEFMRules}}$<$ Tarray $>$ $\ast$\mbox{\hyperlink{support-meat_8hpp_a595e07a99f60f22a6a29e4fca291ea28}{rules}})
+void \mbox{\hyperlink{group__counters-network_ga31452452bf9dad7f6c5767dcabfb4dbe}{rules\+\_\+markov\+\_\+fixed}} (\mbox{\hyperlink{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}{DEFMRules}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a595e07a99f60f22a6a29e4fca291ea28}{rules}}, size\+\_\+t markov\+\_\+order)
 \begin{DoxyCompactList}\small\item\em Number of edges. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \end{Indent}
 
@@ -80,17 +82,11 @@ typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ int, \mbox{\hyp
 \index{defm.hpp@{defm.hpp}!DEFM\_COUNTER@{DEFM\_COUNTER}}
 \index{DEFM\_COUNTER@{DEFM\_COUNTER}!defm.hpp@{defm.hpp}}
 \doxysubsubsection{\texorpdfstring{DEFM\_COUNTER}{DEFM\_COUNTER}}
-{\footnotesize\ttfamily \#define DEFM\+\_\+\+COUNTER(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define DEFM\+\_\+\+COUNTER(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~inline double (a) (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
 
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename} Tarray = DEFMArray>\(\backslash\)}
-\DoxyCodeLine{inline double (a) (\textcolor{keyword}{const} Tarray \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounterData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
-
-\end{DoxyCode}
 Function for definition of a network counter function 
 
-Definition at line 125 of file defm.\+hpp.
+Definition at line 124 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_a0de627ee2d314d645cf885c7cc0ee36b}\label{counters_2defm_8hpp_a0de627ee2d314d645cf885c7cc0ee36b}} 
 \index{defm.hpp@{defm.hpp}!DEFM\_COUNTER\_LAMBDA@{DEFM\_COUNTER\_LAMBDA}}
@@ -100,29 +96,23 @@ Definition at line 125 of file defm.\+hpp.
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\_fun\_type<Tarray, DEFMCounterData>}} a = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} Tarray \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounterData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+\DoxyCodeLine{\mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\_fun\_type<DEFMArray, DEFMCounterData>}} a = \(\backslash\)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{DEFMArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounterData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
 
 \end{DoxyCode}
 Lambda function for definition of a network counter function 
 
-Definition at line 130 of file defm.\+hpp.
+Definition at line 128 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_af210bb3f47af7995ff200264370d9db6}\label{counters_2defm_8hpp_af210bb3f47af7995ff200264370d9db6}} 
 \index{defm.hpp@{defm.hpp}!DEFM\_RULE@{DEFM\_RULE}}
 \index{DEFM\_RULE@{DEFM\_RULE}!defm.hpp@{defm.hpp}}
 \doxysubsubsection{\texorpdfstring{DEFM\_RULE}{DEFM\_RULE}}
-{\footnotesize\ttfamily \#define DEFM\+\_\+\+RULE(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define DEFM\+\_\+\+RULE(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~inline bool (a) (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, bool \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
 
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename} Tarray = DEFMArray>\(\backslash\)}
-\DoxyCodeLine{inline bool (a) (\textcolor{keyword}{const} Tarray \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \textcolor{keywordtype}{bool} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
-
-\end{DoxyCode}
 Function for definition of a network counter function 
 
-Definition at line 141 of file defm.\+hpp.
+Definition at line 139 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_a94148d8866c1e18cbb02be5ba7d233ba}\label{counters_2defm_8hpp_a94148d8866c1e18cbb02be5ba7d233ba}} 
 \index{defm.hpp@{defm.hpp}!DEFM\_RULE\_LAMBDA@{DEFM\_RULE\_LAMBDA}}
@@ -132,13 +122,13 @@ Definition at line 141 of file defm.\+hpp.
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{typedefs_8hpp_a93a0e903405ba5549990f0138386bfa4}{Rule\_fun\_type<Tarray, bool>}} a = \(\backslash\)}
-\DoxyCodeLine{[](\textcolor{keyword}{const} Tarray \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \textcolor{keywordtype}{bool} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+\DoxyCodeLine{\mbox{\hyperlink{typedefs_8hpp_a93a0e903405ba5549990f0138386bfa4}{Rule\_fun\_type<DEFMArray, DEFMRuleData>}} a = \(\backslash\)}
+\DoxyCodeLine{[](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{DEFMArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRuleData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
 
 \end{DoxyCode}
 Lambda function for definition of a network counter function 
 
-Definition at line 146 of file defm.\+hpp.
+Definition at line 143 of file defm.\+hpp.
 
 
 
@@ -151,82 +141,75 @@ Definition at line 146 of file defm.\+hpp.
 
 
 
-Definition at line 97 of file defm.\+hpp.
+Definition at line 110 of file defm.\+hpp.
 
-\mbox{\Hypertarget{counters_2defm_8hpp_ac18c40ee8f7ca5a391019825e3d7c5e9}\label{counters_2defm_8hpp_ac18c40ee8f7ca5a391019825e3d7c5e9}} 
+\mbox{\Hypertarget{counters_2defm_8hpp_af38626b20ade1bfb966140e1ac7bc06b}\label{counters_2defm_8hpp_af38626b20ade1bfb966140e1ac7bc06b}} 
 \index{defm.hpp@{defm.hpp}!DEFMCounter@{DEFMCounter}}
 \index{DEFMCounter@{DEFMCounter}!defm.hpp@{defm.hpp}}
 \doxysubsubsection{\texorpdfstring{DEFMCounter}{DEFMCounter}}
-{\footnotesize\ttfamily template$<$typename Tarray  = DEFMArray$>$ \\
-using \mbox{\hyperlink{counters_2defm_8hpp_ac18c40ee8f7ca5a391019825e3d7c5e9}{DEFMCounter}} =  \mbox{\hyperlink{class_counter}{Counter}}$<$Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counter}{Counter}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{counters_2defm_8hpp_af38626b20ade1bfb966140e1ac7bc06b}{DEFMCounter}}}
 
 
 
-Definition at line 100 of file defm.\+hpp.
+Definition at line 111 of file defm.\+hpp.
 
-\mbox{\Hypertarget{counters_2defm_8hpp_adc3b121854abd8a0283c8a59cd522a81}\label{counters_2defm_8hpp_adc3b121854abd8a0283c8a59cd522a81}} 
+\mbox{\Hypertarget{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}\label{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}} 
 \index{defm.hpp@{defm.hpp}!DEFMCounters@{DEFMCounters}}
 \index{DEFMCounters@{DEFMCounters}!defm.hpp@{defm.hpp}}
 \doxysubsubsection{\texorpdfstring{DEFMCounters}{DEFMCounters}}
-{\footnotesize\ttfamily template$<$typename Tarray  = DEFMArray$>$ \\
-using \mbox{\hyperlink{counters_2defm_8hpp_adc3b121854abd8a0283c8a59cd522a81}{DEFMCounters}} =  \mbox{\hyperlink{class_counters}{Counters}}$<$Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}$>$}
-
-
-
-Definition at line 103 of file defm.\+hpp.
-
-\mbox{\Hypertarget{counters_2defm_8hpp_a5f07c1ee7e253baf5cdae87c90e61276}\label{counters_2defm_8hpp_a5f07c1ee7e253baf5cdae87c90e61276}} 
-\index{defm.hpp@{defm.hpp}!DEFMModel@{DEFMModel}}
-\index{DEFMModel@{DEFMModel}!defm.hpp@{defm.hpp}}
-\doxysubsubsection{\texorpdfstring{DEFMModel}{DEFMModel}}
-{\footnotesize\ttfamily template$<$typename Tarray $>$ \\
-using \mbox{\hyperlink{counters_2defm_8hpp_a5f07c1ee7e253baf5cdae87c90e61276}{DEFMModel}} =  \mbox{\hyperlink{class_model}{Model}}$<$Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}$>$}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counters}{Counters}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}$>$ \mbox{\hyperlink{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}{DEFMCounters}}}
 
 
 
 Definition at line 112 of file defm.\+hpp.
 
-\mbox{\Hypertarget{counters_2defm_8hpp_a06ca688614658a3cfa3d932a1f916ef5}\label{counters_2defm_8hpp_a06ca688614658a3cfa3d932a1f916ef5}} 
-\index{defm.hpp@{defm.hpp}!DEFMRule@{DEFMRule}}
-\index{DEFMRule@{DEFMRule}!defm.hpp@{defm.hpp}}
-\doxysubsubsection{\texorpdfstring{DEFMRule}{DEFMRule}}
-{\footnotesize\ttfamily template$<$typename Tarray  = DEFMArray$>$ \\
-using \mbox{\hyperlink{counters_2defm_8hpp_a06ca688614658a3cfa3d932a1f916ef5}{DEFMRule}} =  \mbox{\hyperlink{class_rule}{Rule}}$<$Tarray, bool$>$}
+\mbox{\Hypertarget{counters_2defm_8hpp_ae83192714c8d9333a678bae1534d18b2}\label{counters_2defm_8hpp_ae83192714c8d9333a678bae1534d18b2}} 
+\index{defm.hpp@{defm.hpp}!DEFMModel@{DEFMModel}}
+\index{DEFMModel@{DEFMModel}!defm.hpp@{defm.hpp}}
+\doxysubsubsection{\texorpdfstring{DEFMModel}{DEFMModel}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_model}{Model}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}},\mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}},\mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}$>$ \mbox{\hyperlink{counters_2defm_8hpp_ae83192714c8d9333a678bae1534d18b2}{DEFMModel}}}
 
 
 
 Definition at line 115 of file defm.\+hpp.
 
-\mbox{\Hypertarget{counters_2defm_8hpp_a7cb9b4d8e3517fea74f8d2a6408da261}\label{counters_2defm_8hpp_a7cb9b4d8e3517fea74f8d2a6408da261}} 
+\mbox{\Hypertarget{counters_2defm_8hpp_a07c9dbf302b45bbd65051c8bd228798d}\label{counters_2defm_8hpp_a07c9dbf302b45bbd65051c8bd228798d}} 
+\index{defm.hpp@{defm.hpp}!DEFMRule@{DEFMRule}}
+\index{DEFMRule@{DEFMRule}!defm.hpp@{defm.hpp}}
+\doxysubsubsection{\texorpdfstring{DEFMRule}{DEFMRule}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rule}{Rule}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}$>$ \mbox{\hyperlink{counters_2defm_8hpp_a07c9dbf302b45bbd65051c8bd228798d}{DEFMRule}}}
+
+
+
+Definition at line 116 of file defm.\+hpp.
+
+\mbox{\Hypertarget{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}\label{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}} 
 \index{defm.hpp@{defm.hpp}!DEFMRules@{DEFMRules}}
 \index{DEFMRules@{DEFMRules}!defm.hpp@{defm.hpp}}
 \doxysubsubsection{\texorpdfstring{DEFMRules}{DEFMRules}}
-{\footnotesize\ttfamily template$<$typename Tarray  = DEFMArray$>$ \\
-using \mbox{\hyperlink{counters_2defm_8hpp_a7cb9b4d8e3517fea74f8d2a6408da261}{DEFMRules}} =  \mbox{\hyperlink{class_rules}{Rules}}$<$Tarray, bool$>$}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rules}{Rules}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}$>$ \mbox{\hyperlink{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}{DEFMRules}}}
 
 
 
-Definition at line 118 of file defm.\+hpp.
+Definition at line 117 of file defm.\+hpp.
 
-\mbox{\Hypertarget{counters_2defm_8hpp_ac87e722fb88c699ffd6e9e1c264bc586}\label{counters_2defm_8hpp_ac87e722fb88c699ffd6e9e1c264bc586}} 
+\mbox{\Hypertarget{counters_2defm_8hpp_af8198b2184baee8a83e8ee69da487833}\label{counters_2defm_8hpp_af8198b2184baee8a83e8ee69da487833}} 
 \index{defm.hpp@{defm.hpp}!DEFMStatsCounter@{DEFMStatsCounter}}
 \index{DEFMStatsCounter@{DEFMStatsCounter}!defm.hpp@{defm.hpp}}
 \doxysubsubsection{\texorpdfstring{DEFMStatsCounter}{DEFMStatsCounter}}
-{\footnotesize\ttfamily template$<$typename Tarray  = DEFMArray$>$ \\
-using \mbox{\hyperlink{counters_2defm_8hpp_ac87e722fb88c699ffd6e9e1c264bc586}{DEFMStats\+Counter}} =  \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}$>$}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}$>$ \mbox{\hyperlink{counters_2defm_8hpp_af8198b2184baee8a83e8ee69da487833}{DEFMStats\+Counter}}}
 
 
 
-Definition at line 109 of file defm.\+hpp.
+Definition at line 114 of file defm.\+hpp.
 
-\mbox{\Hypertarget{counters_2defm_8hpp_a89bc1824f0f4afaed87b18abf9b417f9}\label{counters_2defm_8hpp_a89bc1824f0f4afaed87b18abf9b417f9}} 
+\mbox{\Hypertarget{counters_2defm_8hpp_a15fca190888778da53799b1b53507703}\label{counters_2defm_8hpp_a15fca190888778da53799b1b53507703}} 
 \index{defm.hpp@{defm.hpp}!DEFMSupport@{DEFMSupport}}
 \index{DEFMSupport@{DEFMSupport}!defm.hpp@{defm.hpp}}
 \doxysubsubsection{\texorpdfstring{DEFMSupport}{DEFMSupport}}
-{\footnotesize\ttfamily template$<$typename Tarray  = DEFMArray$>$ \\
-using \mbox{\hyperlink{counters_2defm_8hpp_a89bc1824f0f4afaed87b18abf9b417f9}{DEFMSupport}} =  \mbox{\hyperlink{class_support}{Support}}$<$Tarray, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_support}{Support}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}$>$ \mbox{\hyperlink{counters_2defm_8hpp_a15fca190888778da53799b1b53507703}{DEFMSupport}}}
 
 
 
-Definition at line 106 of file defm.\+hpp.
+Definition at line 113 of file defm.\+hpp.
 

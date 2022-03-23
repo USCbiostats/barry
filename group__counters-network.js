@@ -7,7 +7,7 @@ var group__counters_network =
     [ "counter_density", "group__counters-network.html#ga54be4f2afc03d8616c60ed148219865f", null ],
     [ "counter_diff", "group__counters-network.html#ga48ad01a1af3733b904502f8b4a2ba9a7", null ],
     [ "counter_edges", "group__counters-network.html#gaa20cbb0b2a612048d0c20bb9cabeb8e3", null ],
-    [ "counter_fixed_effect", "group__counters-network.html#ga46e5a458609f49087105295bf901ec37", null ],
+    [ "counter_fixed_effect", "group__counters-network.html#ga5b37312b45651ac35a6f803d212968a9", null ],
     [ "counter_idegree", "group__counters-network.html#gabf5fddfd9b2200194527775478fa4bb3", null ],
     [ "counter_idegree", "group__counters-network.html#gabbe3c52b9ed4649e08cbee10be2f5a4e", null ],
     [ "counter_idegree15", "group__counters-network.html#ga51c01546635bbfd827174ec5900552ac", null ],
@@ -25,12 +25,12 @@ var group__counters_network =
     [ "counter_odegree", "group__counters-network.html#gaaae1b44d32d04b450d511d6de7f5af39", null ],
     [ "counter_odegree15", "group__counters-network.html#gad45b2c461b0ce77715410ce9d11efbe6", null ],
     [ "counter_odegree15", "group__counters-network.html#gac3f7b3edf5f2f648a6780ebe6505ae73", null ],
-    [ "counter_ones", "group__counters-network.html#ga4237bffaaf6a707bd4902661e52984a1", null ],
+    [ "counter_ones", "group__counters-network.html#gab063a94825b6b1f0c19e339275124c40", null ],
     [ "counter_ostar2", "group__counters-network.html#gad2e83eeaed6f17346ac8ac1ca64b327a", null ],
     [ "counter_ostar2", "group__counters-network.html#ga218f364352e49e462d6f152ad848f9dc", null ],
-    [ "counter_transition", "group__counters-network.html#gad25885fcb162e2f834732c254c39d8a0", null ],
+    [ "counter_transition", "group__counters-network.html#ga6b5b5e5431d4a1c863ce45e5fb29385c", null ],
     [ "counter_ttriads", "group__counters-network.html#gadadede01536081fb8b79e4d14368f946", null ],
     [ "counter_ttriads", "group__counters-network.html#ga465ebcc2edcdae4ff9cd7625f886681f", null ],
     [ "NETWORK_COUNTER", "group__counters-network.html#gad6539320de604e7c6e31e9fb152f70bd", null ],
-    [ "rules_zerodiag", "group__counters-network.html#gaa6b07795302a078414933c6e9f88e259", null ]
+    [ "rules_markov_fixed", "group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe", null ]
 ];

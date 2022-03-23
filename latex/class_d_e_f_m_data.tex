@@ -2,7 +2,7 @@
 \label{class_d_e_f_m_data}\index{DEFMData@{DEFMData}}
 
 
-Data class for DEFM arrays.  
+Data class for \mbox{\hyperlink{class_d_e_f_m}{DEFM}} arrays.  
 
 
 
@@ -14,33 +14,33 @@ Data class for DEFM arrays.
 \item 
 \mbox{\hyperlink{class_d_e_f_m_data_aa0a9abe59bcd6b7bf7943af55804487d}{DEFMData}} ()
 \item 
-\mbox{\hyperlink{class_d_e_f_m_data_aac21ca606256d2bc184d74223e2c640d}{DEFMData}} (std\+::vector$<$ double $>$ $\ast$covariates\+\_\+, size\+\_\+t obs\+\_\+start\+\_\+, size\+\_\+t obs\+\_\+n\+\_\+times\+\_\+, size\+\_\+t n\+\_\+covariates\+\_\+)
+\mbox{\hyperlink{class_d_e_f_m_data_a3e7c2529971df513e103d42c7fe738b4}{DEFMData}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$covariates\+\_\+, size\+\_\+t obs\+\_\+start\+\_\+, size\+\_\+t X\+\_\+ncol\+\_\+, size\+\_\+t X\+\_\+nrow\+\_\+)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_d_e_f_m_data_ab2a20858a209c975a4a3ca341f33f9c2}{at}} (size\+\_\+t \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
 \mbox{\hyperlink{class_d_e_f_m_data_a637f2c896da37c0f3a72bd0174ca718c}{$\sim$\+DEFMData}} ()
 \end{DoxyCompactItemize}
 \textbf{ }\par
 \begin{DoxyCompactItemize}
 \item 
 double \mbox{\hyperlink{class_d_e_f_m_data_a66b7a40df357b79514dcbc4accfe679d}{operator()}} (size\+\_\+t \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
-\begin{DoxyCompactList}\small\item\em Access to the row (i) colum (j) data. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{class_d_e_f_m_data_ab2a20858a209c975a4a3ca341f33f9c2}{at}} (size\+\_\+t \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Access to the row (i) colum (j) data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ double $>$ $\ast$ \mbox{\hyperlink{class_d_e_f_m_data_a61b20537621f329bf2c1b1ccd28c1df3}{covariates}}
+\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$ \mbox{\hyperlink{class_d_e_f_m_data_a8f6950493a55ebf9772ae4a5869b7a33}{covariates}}
 \begin{DoxyCompactList}\small\item\em Vector of covariates (complete vector) \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_data_a89a3ee0a0a27f78c47b010d5498e1fd2}{obs\+\_\+start}}
 \begin{DoxyCompactList}\small\item\em Index of the observation in the data. \end{DoxyCompactList}\item 
-size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_data_a0dea095b0dfea6a4ad45cc93336b1e96}{obs\+\_\+n\+\_\+times}}
-\begin{DoxyCompactList}\small\item\em Number of records of the observation in the model. \end{DoxyCompactList}\item 
-size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_data_a78c70f5bc902e34018735350ff8d2ee3}{n\+\_\+covariates}}
+size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_data_a13a6688217231167d87c033db3803209}{X\+\_\+ncol}}
+\begin{DoxyCompactList}\small\item\em Number of covariates included in the model. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_data_adf8ebba08c3c2b590494ed738c76482a}{X\+\_\+nrow}}
 \begin{DoxyCompactList}\small\item\em Number of covariates included in the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Data class for DEFM arrays. 
+Data class for \mbox{\hyperlink{class_d_e_f_m}{DEFM}} arrays. 
 
 Details on the available counters for {\ttfamily DEFMwork\+Data} can be found in the \mbox{\hyperlink{group__counters-network}{DEFMArray counters}} section.
 
@@ -61,11 +61,11 @@ Definition at line 20 of file defm.\+hpp.
 
 Definition at line 28 of file defm.\+hpp.
 
-\mbox{\Hypertarget{class_d_e_f_m_data_aac21ca606256d2bc184d74223e2c640d}\label{class_d_e_f_m_data_aac21ca606256d2bc184d74223e2c640d}} 
+\mbox{\Hypertarget{class_d_e_f_m_data_a3e7c2529971df513e103d42c7fe738b4}\label{class_d_e_f_m_data_a3e7c2529971df513e103d42c7fe738b4}} 
 \index{DEFMData@{DEFMData}!DEFMData@{DEFMData}}
 \index{DEFMData@{DEFMData}!DEFMData@{DEFMData}}
 \doxysubsubsection{\texorpdfstring{DEFMData()}{DEFMData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily DEFMData\+::\+DEFMData (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ $\ast$}]{covariates\+\_\+,  }\item[{size\+\_\+t}]{obs\+\_\+start\+\_\+,  }\item[{size\+\_\+t}]{obs\+\_\+n\+\_\+times\+\_\+,  }\item[{size\+\_\+t}]{n\+\_\+covariates\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily DEFMData\+::\+DEFMData (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$}]{covariates\+\_\+,  }\item[{size\+\_\+t}]{obs\+\_\+start\+\_\+,  }\item[{size\+\_\+t}]{X\+\_\+ncol\+\_\+,  }\item[{size\+\_\+t}]{X\+\_\+nrow\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -77,14 +77,12 @@ Constructor.
 \hline
 {\em obs\+\_\+start\+\_\+} & Location of the current observation in the covariates vector \\
 \hline
-{\em obs\+\_\+n\+\_\+times\+\_\+} & Number of observations in the model \\
-\hline
-{\em n\+\_\+covariates\+\_\+} & Number of columns (covariates.) \\
+{\em X\+\_\+ncol\+\_\+} & Number of columns (covariates.) \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 38 of file defm.\+hpp.
+Definition at line 37 of file defm.\+hpp.
 
 \mbox{\Hypertarget{class_d_e_f_m_data_a637f2c896da37c0f3a72bd0174ca718c}\label{class_d_e_f_m_data_a637f2c896da37c0f3a72bd0174ca718c}} 
 \index{DEFMData@{DEFMData}!````~DEFMData@{$\sim$DEFMData}}
@@ -94,7 +92,7 @@ Definition at line 38 of file defm.\+hpp.
 
 
 
-Definition at line 56 of file defm.\+hpp.
+Definition at line 55 of file defm.\+hpp.
 
 
 
@@ -103,11 +101,7 @@ Definition at line 56 of file defm.\+hpp.
 \index{DEFMData@{DEFMData}!at@{at}}
 \index{at@{at}!DEFMData@{DEFMData}}
 \doxysubsubsection{\texorpdfstring{at()}{at()}}
-{\footnotesize\ttfamily double DEFMData\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Definition at line 65 of file defm.\+hpp.
+{\footnotesize\ttfamily double DEFMData\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{class_d_e_f_m_data_a66b7a40df357b79514dcbc4accfe679d}\label{class_d_e_f_m_data_a66b7a40df357b79514dcbc4accfe679d}} 
 \index{DEFMData@{DEFMData}!operator()@{operator()}}
@@ -131,16 +125,16 @@ double
 \end{DoxyReturn}
 
 
-Definition at line 60 of file defm.\+hpp.
+Definition at line 59 of file defm.\+hpp.
 
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_d_e_f_m_data_a61b20537621f329bf2c1b1ccd28c1df3}\label{class_d_e_f_m_data_a61b20537621f329bf2c1b1ccd28c1df3}} 
+\mbox{\Hypertarget{class_d_e_f_m_data_a8f6950493a55ebf9772ae4a5869b7a33}\label{class_d_e_f_m_data_a8f6950493a55ebf9772ae4a5869b7a33}} 
 \index{DEFMData@{DEFMData}!covariates@{covariates}}
 \index{covariates@{covariates}!DEFMData@{DEFMData}}
 \doxysubsubsection{\texorpdfstring{covariates}{covariates}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$$\ast$ DEFMData\+::covariates}
+{\footnotesize\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double$\ast$ DEFMData\+::covariates}
 
 
 
@@ -149,34 +143,6 @@ Vector of covariates (complete vector)
 
 
 Definition at line 23 of file defm.\+hpp.
-
-\mbox{\Hypertarget{class_d_e_f_m_data_a78c70f5bc902e34018735350ff8d2ee3}\label{class_d_e_f_m_data_a78c70f5bc902e34018735350ff8d2ee3}} 
-\index{DEFMData@{DEFMData}!n\_covariates@{n\_covariates}}
-\index{n\_covariates@{n\_covariates}!DEFMData@{DEFMData}}
-\doxysubsubsection{\texorpdfstring{n\_covariates}{n\_covariates}}
-{\footnotesize\ttfamily size\+\_\+t DEFMData\+::n\+\_\+covariates}
-
-
-
-Number of covariates included in the model. 
-
-
-
-Definition at line 26 of file defm.\+hpp.
-
-\mbox{\Hypertarget{class_d_e_f_m_data_a0dea095b0dfea6a4ad45cc93336b1e96}\label{class_d_e_f_m_data_a0dea095b0dfea6a4ad45cc93336b1e96}} 
-\index{DEFMData@{DEFMData}!obs\_n\_times@{obs\_n\_times}}
-\index{obs\_n\_times@{obs\_n\_times}!DEFMData@{DEFMData}}
-\doxysubsubsection{\texorpdfstring{obs\_n\_times}{obs\_n\_times}}
-{\footnotesize\ttfamily size\+\_\+t DEFMData\+::obs\+\_\+n\+\_\+times}
-
-
-
-Number of records of the observation in the model. 
-
-
-
-Definition at line 25 of file defm.\+hpp.
 
 \mbox{\Hypertarget{class_d_e_f_m_data_a89a3ee0a0a27f78c47b010d5498e1fd2}\label{class_d_e_f_m_data_a89a3ee0a0a27f78c47b010d5498e1fd2}} 
 \index{DEFMData@{DEFMData}!obs\_start@{obs\_start}}
@@ -191,6 +157,34 @@ Index of the observation in the data.
 
 
 Definition at line 24 of file defm.\+hpp.
+
+\mbox{\Hypertarget{class_d_e_f_m_data_a13a6688217231167d87c033db3803209}\label{class_d_e_f_m_data_a13a6688217231167d87c033db3803209}} 
+\index{DEFMData@{DEFMData}!X\_ncol@{X\_ncol}}
+\index{X\_ncol@{X\_ncol}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{X\_ncol}{X\_ncol}}
+{\footnotesize\ttfamily size\+\_\+t DEFMData\+::\+X\+\_\+ncol}
+
+
+
+Number of covariates included in the model. 
+
+
+
+Definition at line 25 of file defm.\+hpp.
+
+\mbox{\Hypertarget{class_d_e_f_m_data_adf8ebba08c3c2b590494ed738c76482a}\label{class_d_e_f_m_data_adf8ebba08c3c2b590494ed738c76482a}} 
+\index{DEFMData@{DEFMData}!X\_nrow@{X\_nrow}}
+\index{X\_nrow@{X\_nrow}!DEFMData@{DEFMData}}
+\doxysubsubsection{\texorpdfstring{X\_nrow}{X\_nrow}}
+{\footnotesize\ttfamily size\+\_\+t DEFMData\+::\+X\+\_\+nrow}
+
+
+
+Number of covariates included in the model. 
+
+
+
+Definition at line 26 of file defm.\+hpp.
 
 
 
