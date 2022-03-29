@@ -7,6 +7,14 @@
 // #include <stdexcept>
 // #include <memory>
 
+#define DEFM_RANGES(a) \
+    size_t __CONCAT(start_,a) = start_end[a * 2u];\
+    size_t __CONCAT(end_,a)   = start_end[a * 2u + 1u];\
+    size_t __CONCAT(nobs_,a)  = __CONCAT(end_,i) - __CONCAT(start_,i) + 1u;
+
+#define DEFM_LOOP_ARRAYS(a) \
+    for (size_t a = 0u; a < (nobs_i - (M_order + 1u) + 1u); ++a)
+
 class DEFM {
 private:
 
@@ -30,6 +38,7 @@ private:
     size_t M_order;       ///< Markov order of the model
 
     std::vector< size_t > start_end;
+    std::vector< size_t > model_ord;
     ///@}
 
 public:
@@ -52,7 +61,36 @@ public:
 
     void init();
 
+    double likelihood(std::vector< double > & par, bool as_log = false);
+    void simulate(std::vector< double > par, int * y_out);
+
 };
+
+inline void DEFM::simulate(
+    std::vector< double > par,
+    int * y_out
+) {
+
+    size_t model_num = 0u; 
+    size_t n_entry = 0u;
+    for (size_t i = 0u; i < N; ++i)
+    {
+
+        // Figuring out how many processes can we observe
+        DEFM_RANGES(i)
+        
+        DEFM_LOOP_ARRAYS(proc_n)
+        {
+
+            defmcounters::DEFMArray tmp_array = model->sample(model_num++, par);
+            for (size_t y = 0u; y < Y_ncol; ++y)
+                *(y_out + n_entry++) = tmp_array(0u, y, false);
+
+        }
+
+    }
+
+}
 
 inline DEFM::DEFM(
     const int * id,
@@ -124,10 +162,10 @@ inline DEFM::DEFM(
 
     N++;
 
-    return;
-    
+    return;    
 
 }
+
 
 inline void DEFM::init() 
 {
@@ -160,14 +198,15 @@ inline void DEFM::init()
             defmcounters::rules_markov_fixed(model->get_rules(), M_order);
 
             // Adding to the model
-            model->add_array(
-                array
-            );
+            model_ord.push_back( model->add_array(array) );
 
         }
 
     }
 }
+
+#undef DEFM_RANGES
+#undef DEFM_LOOP_ARRAYS
 
 #endif
 

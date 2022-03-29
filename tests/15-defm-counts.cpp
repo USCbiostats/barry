@@ -75,17 +75,46 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     };
 
     DEFM model(&id[0u], &Y[0u], &X[0u], 6, 3, 2, 1);
+    model.get_model().store_psets();
     
     defmcounters::counter_ones(model.get_model().get_counters());
     defmcounters::counter_ones(model.get_model().get_counters(), 0);
 
     model.init();
 
+    std::vector< double > par0 = {.5, -.1};
+
+    #ifndef CATCH_CONFIG_MAIN
+
+    #define GET_Y(a,b,c,d) \
+        a [b * 6 + c * 3 + d]
+    
+
+
+    std::vector< int > out_sim(Y.size(), -1);
+    model.simulate(par0, &out_sim[0u]);
+
+    for (size_t i = 0u; i < 2u; ++i)
+    {
+        for (size_t t = 0u; t < 2u; ++t)
+        {
+            printf("Begin: ");
+            for (size_t j = 0u; j < 3u; ++j)
+                printf("%i ", GET_Y(out_sim, i, t, j));
+            printf("end\n");
+        }
+    }
+
+    #undef GET_Y
+
+    #endif
+
     #ifndef CATCH_CONFIG_MAIN
     model.get_model().print();
-    model.get_model().print_stats(0u);
+    model.get_model().print_stats(0u);    
     return 0;
     #endif
+
 
 }
 

@@ -46,7 +46,6 @@ BARRY_TEST_CASE("Computing support for NetworkDense (with Model)", "[support w m
   model.store_psets(); // Need this for sampling
   
   // Preparing model  
-  
   netcounters::counter_edges(model.get_counters());
   netcounters::counter_mutual(model.get_counters());
   netcounters::counter_isolates(model.get_counters());
