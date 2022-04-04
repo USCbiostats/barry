@@ -2,7 +2,9 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
 [
     [ "counters", "dir_b3150c389b0f5b078392750f1ae70361.html", "dir_b3150c389b0f5b078392750f1ae70361" ],
     [ "models", "dir_488ec4010567cc6d95c62bdcb57a6d3e.html", "dir_488ec4010567cc6d95c62bdcb57a6d3e" ],
-    [ "barray-bones.hpp", "barray-bones_8hpp.html", "barray-bones_8hpp" ],
+    [ "barray-bones.hpp", "barray-bones_8hpp.html", [
+      [ "BArray", "class_b_array.html", "class_b_array" ]
+    ] ],
     [ "barray-iterator.hpp", "barray-iterator_8hpp.html", [
       [ "ConstBArrayRowIter", "class_const_b_array_row_iter.html", "class_const_b_array_row_iter" ]
     ] ],
@@ -13,7 +15,9 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
       [ "BArrayCell_const", "class_b_array_cell__const.html", "class_b_array_cell__const" ]
     ] ],
     [ "barraycell-meat.hpp", "barraycell-meat_8hpp.html", null ],
-    [ "barraydense-bones.hpp", "barraydense-bones_8hpp.html", "barraydense-bones_8hpp" ],
+    [ "barraydense-bones.hpp", "barraydense-bones_8hpp.html", [
+      [ "BArrayDense", "class_b_array_dense.html", "class_b_array_dense" ]
+    ] ],
     [ "barraydense-meat-operators.hpp", "barraydense-meat-operators_8hpp.html", "barraydense-meat-operators_8hpp" ],
     [ "barraydense-meat.hpp", "barraydense-meat_8hpp.html", "barraydense-meat_8hpp" ],
     [ "barraydensecell-bones.hpp", "barraydensecell-bones_8hpp.html", "barraydensecell-bones_8hpp" ],
@@ -29,7 +33,7 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
       [ "BArrayVector", "class_b_array_vector.html", "class_b_array_vector" ],
       [ "BArrayVector_const", "class_b_array_vector__const.html", "class_b_array_vector__const" ]
     ] ],
-    [ "barrayvector-meat.hpp", "barrayvector-meat_8hpp.html", "barrayvector-meat_8hpp" ],
+    [ "barrayvector-meat.hpp", "barrayvector-meat_8hpp.html", null ],
     [ "barry-configuration.hpp", "barry-configuration_8hpp.html", "barry-configuration_8hpp" ],
     [ "barry-debug.hpp", "barry-debug_8hpp.html", "barry-debug_8hpp" ],
     [ "barry-macros.hpp", "barry-macros_8hpp.html", "barry-macros_8hpp" ],

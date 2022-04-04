@@ -130,8 +130,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8af9d807ce23c9f7259138b5aebdda31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f4f98b01bb0a9424a425d38cd0e83d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a62f4f98b01bb0a9424a425d38cd0e83d">print</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
 <tr class="separator:a62f4f98b01bb0a9424a425d38cd0e83d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35c7706d41cd36934a435db1b785755a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> <a class="el" href="class_freq_table.html">FreqTable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a35c7706d41cd36934a435db1b785755a">get_data</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
-<tr class="separator:a35c7706d41cd36934a435db1b785755a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c802f58da498e6abb5bc30c25c6b493"><td class="memItemLeft" align="right" valign="top"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> <a class="el" href="class_freq_table.html">FreqTable</a>&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a2c802f58da498e6abb5bc30c25c6b493">get_data</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
+<tr class="separator:a2c802f58da498e6abb5bc30c25c6b493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d9b587fdea50e25f0d5e4046c563c36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_counters.html">Counters</a>&lt; Array_Type, Data_Counter_Type &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_support.html#a1d9b587fdea50e25f0d5e4046c563c36">get_counters</a> ()</td></tr>
 <tr class="memdesc:a1d9b587fdea50e25f0d5e4046c563c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of couter functions.  <a href="class_support.html#a1d9b587fdea50e25f0d5e4046c563c36">More...</a><br /></td></tr>
 <tr class="separator:a1d9b587fdea50e25f0d5e4046c563c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -225,7 +225,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a5f6b17222ab5591a9120d16179f06062"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename Array_Type = BArray&lt;&gt;, typename Data_Counter_Type = bool, typename Data_Rule_Type = bool, typename Data_Rule_Dyn_Type = bool&gt;<br />
+<div class="textblock"><h3>template&lt;typename Array_Type = BArray&lt;bool, bool&gt;, typename Data_Counter_Type = bool, typename Data_Rule_Type = bool, typename Data_Rule_Dyn_Type = bool&gt;<br />
 class Support&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;</h3>
 
 <p>Compute the support of sufficient statistics. </p>
@@ -233,7 +233,7 @@ class Support&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_T
 <p>The members <code>rule</code> and <code>rule_dyn</code> allow constraining the support. The first will establish which cells of the array will be used to iterate, for example, in the case of social networks, self-loops are not allowed, so the entire diagonal would be fixed to zero, reducing the size of the support.</p>
 <p>In the case of <code>rule_dyn</code>, the function will stablish dynamically whether the current state will be included in the counts or not. For example, this set of rules can be used to constrain the support to networks that have a prescribed degree sequence. </p>
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00035">35</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00042">42</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4197eb1067185aee7c79434f4d8e469c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4197eb1067185aee7c79434f4d8e469c">&#9670;&nbsp;</a></span>Support() <span class="overload">[1/3]</span></h2>
@@ -241,7 +241,7 @@ class Support&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_T
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -263,7 +263,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 
 <p>Constructor passing a reference Array. </p>
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00080">80</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00087">87</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -273,7 +273,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -305,7 +305,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 
 <p>Constructor specifying the dimensions of the array (empty). </p>
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00089">89</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00096">96</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -315,7 +315,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -334,7 +334,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00096">96</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00103">103</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -344,7 +344,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -363,7 +363,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00103">103</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00110">110</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -374,7 +374,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::add_counter </td>
@@ -394,7 +394,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::add_rule </td>
@@ -414,7 +414,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::add_rule </td>
@@ -434,7 +434,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::add_rule_dyn </td>
@@ -454,7 +454,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::add_rule_dyn </td>
@@ -474,7 +474,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::calc </td>
@@ -520,7 +520,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::eval_rules_dyn </td>
@@ -556,7 +556,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_counters.html">Counters</a>&lt;Array_Type,Data_Counter_Type&gt;* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_counters </td>
@@ -577,7 +577,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; double &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_counts </td>
@@ -596,7 +596,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; double &gt;* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_current_stats </td>
@@ -611,16 +611,16 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 
 </div>
 </div>
-<a id="a35c7706d41cd36934a435db1b785755a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35c7706d41cd36934a435db1b785755a">&#9670;&nbsp;</a></span>get_data()</h2>
+<a id="a2c802f58da498e6abb5bc30c25c6b493"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c802f58da498e6abb5bc30c25c6b493">&#9670;&nbsp;</a></span>get_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> <a class="el" href="class_freq_table.html">FreqTable</a>&amp; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_data </td>
+          <td class="memname"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> <a class="el" href="class_freq_table.html">FreqTable</a>&lt; double &gt;&amp; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_data </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -636,7 +636,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Type&gt;* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_rules </td>
@@ -657,7 +657,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Dyn_Type&gt;* <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::get_rules_dyn </td>
@@ -678,7 +678,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::init_support </td>
@@ -708,7 +708,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::print </td>
@@ -727,7 +727,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::reset_array </td>
@@ -746,7 +746,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::reset_array </td>
@@ -766,7 +766,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::set_counters </td>
@@ -786,7 +786,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::set_rules </td>
@@ -806,7 +806,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::set_rules_dyn </td>
@@ -827,7 +827,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; double &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::change_stats</td>
@@ -835,7 +835,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00073">73</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00080">80</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -845,7 +845,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">size_t <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::coordiantes_n_free</td>
@@ -853,7 +853,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00071">71</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00078">78</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -863,7 +863,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">size_t <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::coordiantes_n_locked</td>
@@ -871,7 +871,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00072">72</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00079">79</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -881,7 +881,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; size_t &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::coordinates_free</td>
@@ -889,7 +889,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00069">69</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00076">76</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -899,7 +899,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; size_t &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::coordinates_locked</td>
@@ -907,7 +907,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00070">70</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00077">77</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -917,7 +917,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; double &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::current_stats</td>
@@ -925,7 +925,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00068">68</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00075">75</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -935,7 +935,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::delete_counters = true</td>
@@ -943,7 +943,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00062">62</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00069">69</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -953,7 +953,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::delete_rules = true</td>
@@ -961,7 +961,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00063">63</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00070">70</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -971,7 +971,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::delete_rules_dyn = true</td>
@@ -979,7 +979,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00064">64</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00071">71</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -989,7 +989,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; size_t &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::hashes</td>
@@ -997,7 +997,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00074">74</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00081">81</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1007,7 +1007,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; bool &gt; <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::hashes_initialized</td>
@@ -1015,7 +1015,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00075">75</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00082">82</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1025,7 +1025,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::M</td>
@@ -1033,7 +1033,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00061">61</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00068">68</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1043,7 +1043,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::max_num_elements = <a class="el" href="barry-configuration_8hpp.html#a4e96e4fea282b750197f31432abe3d97">BARRY_MAX_NUM_ELEMENTS</a></td>
@@ -1051,7 +1051,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00065">65</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00072">72</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1061,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::N</td>
@@ -1069,7 +1069,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00061">61</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00068">68</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1079,7 +1079,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
+template&lt;typename Array_Type  = BArray&lt;bool, bool&gt;, typename Data_Counter_Type  = bool, typename Data_Rule_Type  = bool, typename Data_Rule_Dyn_Type  = bool&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">size_t <a class="el" href="class_support.html">Support</a>&lt; Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type &gt;::n_counters</td>
@@ -1087,7 +1087,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00076">76</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="support-bones_8hpp_source.html#l00083">83</a> of file <a class="el" href="support-bones_8hpp_source.html">support-bones.hpp</a>.</p>
 
 </div>
 </div>
@@ -1100,7 +1100,7 @@ template&lt;typename Array_Type  = BArray&lt;&gt;, typename Data_Counter_Type  =
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_support.html">Support</a></li>
-    <li class="footer">Generated on Tue Mar 29 2022 22:35:51 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Apr 4 2022 20:38:11 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

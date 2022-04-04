@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml"><img src="https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml/badge.svg" alt="C/C++ CI" style="pointer-events: none;" class="inline"/></a> <a href="https://USCbiostats.github.io/barry"><img src="https://github.com/USCbiostats/barry/actions/workflows/doxy-action.yml/badge.svg" alt="Doxygen docs" style="pointer-events: none;" class="inline"/></a> <a href="https://codecov.io/gh/USCbiostats/barry"><img src="https://codecov.io/gh/USCbiostats/barry/branch/master/graph/badge.svg?token=qGBTD4GJDL" alt="codecov" style="pointer-events: none;" class="inline"/></a> <a href="https://image.usc.edu"><img src="https://raw.githubusercontent.com/USCbiostats/badges/master/tommy-image-badge.svg" alt="Integrative Methods of Analysis for Genetic Epidemiology" style="pointer-events: none;" class="inline"/></a></p>
 <h1>Barry: your to-go motif accountant<img src="design/logo.svg" alt="" style="pointer-events: none; max-width:200px;width:50%;" align="right" class="inline"/></h1>
-<p><a href="https://github.com/USCbiostats/barry">This repository</a> contains a C++ template library that essentially counts sufficient statistics on binary arrays. The goal of the library is to provide a general framework for building discrete exponential-family models. A particular example is Exponential Random Graph Models (ERGMs), but we can use <code>barry</code> to deal with non-square arrays.</p>
+<p><a href="https://github.com/USCbiostats/barry">This repository</a> contains a C++ template library that essentially counts sufficient statistics on binary arrays. Its primary goal is to provide a general framework for building discrete exponential-family models. A particular example is Exponential Random Graph Models (ERGMs), but we can use <code>barry</code> to deal with non-square arrays.</p>
 <p>Among the key features included in <code>barry</code>, we have:</p>
 <ul>
 <li>Sparse arrays.</li>
@@ -108,7 +108,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>Discrete Exponential Family Models module (DEFMs).</li>
 <li>Pooled DEFMs.</li>
 </ul>
-<p>This was created and maintained by <a href="https://ggvy.cl">Dr. George G. Vega Yon</a> as part of his doctoral dissertation <a href="http://digitallibrary.usc.edu/digital/collection/p15799coll89/id/348731/rec/1">"Essays on Bioinformatics and Social Network Analysis: Statistical and Computational Methods for Complex Systems."</a></p>
+<p>To use barry, you can either download the entire repository or, since it is header-only, the single header version <a href="barry.hpp"><code>barry.hpp</code></a>.</p>
+<p>This library was created and maintained by <a href="https://ggvy.cl">Dr. George G. Vega Yon</a> as part of his doctoral dissertation <a href="http://digitallibrary.usc.edu/digital/collection/p15799coll89/id/348731/rec/1">"Essays on Bioinformatics and Social Network Analysis: Statistical and Computational Methods for Complex Systems."</a></p>
 <h1>Examples</h1>
 <h2>Counting statistics in a graph</h2>
 <p>In the following code we create an array of size 5x5 of class <code>Network</code> (available in the namespace <a href="https://uscbiostats.github.io/barry/namespacebarry_1_1counters_1_1network.html">netcounters</a>), add/remove ties, print the graph, and count common statistics used in ERGMs:</p>
@@ -162,7 +163,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">  </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="acounters-meat_8hpp_html_ada63845ba43e9bf4e10e4afba28e0915"><div class="ttname"><a href="counters-meat_8hpp.html#ada63845ba43e9bf4e10e4afba28e0915">counter</a></div><div class="ttdeci">Data_Type counter</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00154">counters-meat.hpp:155</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_ada63845ba43e9bf4e10e4afba28e0915"><div class="ttname"><a href="counters-meat_8hpp.html#ada63845ba43e9bf4e10e4afba28e0915">counter</a></div><div class="ttdeci">Data_Type counter</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00152">counters-meat.hpp:153</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga1605cc66474b3b960bddd7c0adebcfc7"><div class="ttname"><a href="group__counters-network.html#ga1605cc66474b3b960bddd7c0adebcfc7">counter_mutual</a></div><div class="ttdeci">void counter_mutual(NetCounters&lt; Tnet &gt; *counters)</div><div class="ttdoc">Number of mutual ties.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00256">network.hpp:256</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga465ebcc2edcdae4ff9cd7625f886681f"><div class="ttname"><a href="group__counters-network.html#ga465ebcc2edcdae4ff9cd7625f886681f">counter_ttriads</a></div><div class="ttdeci">void counter_ttriads(NetCounters&lt; Tnet &gt; *counters)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00441">network.hpp:441</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga558e4e627e5d99062d4c5546c443aabb"><div class="ttname"><a href="group__counters-network.html#ga558e4e627e5d99062d4c5546c443aabb">counter_ctriads</a></div><div class="ttdeci">void counter_ctriads(NetCounters&lt; Tnet &gt; *counters)</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00610">network.hpp:610</a></div></div>
@@ -205,7 +206,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Mar 29 2022 22:35:51 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Apr 4 2022 20:38:11 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
