@@ -1,8 +1,8 @@
 // #include <vector>
 // #include <unordered_map>
-#include "typedefs.hpp"
-#include "cell-bones.hpp"
-#include "barraycell-bones.hpp"
+// #include "typedefs.hpp"
+// #include "cell-bones.hpp"
+// #include "barraycell-bones.hpp"
 
 #ifndef BARRAY_BONES_HPP 
 #define BARRAY_BONES_HPP 1

@@ -70,15 +70,18 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     };
 
     std::vector< double > X = {
-        .1, .5, .1, 1, 1, 2,
-        .1, 1.5, 3, 1, 1, 4
+        .1, .5, .1, 1, 1, 2,  // Covariate 1
+        .1, 1.5, 3, 1, 1, 4   // Covariate 2
     };
 
+    // Creating the model, need to pass the data
     DEFM model(&id[0u], &Y[0u], &X[0u], 6, 3, 2, 1);
     model.get_model().store_psets();
     
+    // Generating the model specification
     defmcounters::counter_ones(model.get_model().get_counters());
     defmcounters::counter_ones(model.get_model().get_counters(), 0);
+    // defmcounters::counter_fixed_effect(model.get_model().get_counters(), 0, 1.0);
 
     model.init();
 
@@ -87,20 +90,18 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     #ifndef CATCH_CONFIG_MAIN
 
     #define GET_Y(a,b,c,d) \
-        a [b * 6 + c * 3 + d]
+        a [b * 9 + c * 3 + d]
     
-
-
     std::vector< int > out_sim(Y.size(), -1);
     model.simulate(par0, &out_sim[0u]);
 
     for (size_t i = 0u; i < 2u; ++i)
     {
-        for (size_t t = 0u; t < 2u; ++t)
+        for (size_t t = 0u; t < 3u; ++t)
         {
-            printf("Begin: ");
+            printf("Begin % 2li: ", i);
             for (size_t j = 0u; j < 3u; ++j)
-                printf("%i ", GET_Y(out_sim, i, t, j));
+                printf("% 2i ", GET_Y(out_sim, i, t, j));
             printf("end\n");
         }
     }

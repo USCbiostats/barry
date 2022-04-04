@@ -72,7 +72,7 @@ inline void DEFM::simulate(
 ) {
 
     size_t model_num = 0u; 
-    size_t n_entry = 0u;
+    size_t n_entry = M_order * Y_ncol;
     for (size_t i = 0u; i < N; ++i)
     {
 
@@ -87,6 +87,8 @@ inline void DEFM::simulate(
                 *(y_out + n_entry++) = tmp_array(0u, y, false);
 
         }
+
+        n_entry += M_order * Y_ncol;
 
     }
 
