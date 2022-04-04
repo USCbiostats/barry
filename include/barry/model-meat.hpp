@@ -1,5 +1,3 @@
-// #include "model-bones.hpp"
-
 #ifndef BARRY_MODEL_MEAT_HPP 
 #define BARRY_MODEL_MEAT_HPP 1
 

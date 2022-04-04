@@ -1,9 +1,3 @@
-// #include <vector>
-// #include <unordered_map>
-#include "typedefs.hpp"
-#include "barray-bones.hpp"
-#include "rules-bones.hpp"
-
 #ifndef BARRY_POWERSET_BONES_HPP 
 #define BARRY_POWERSET_BONES_HPP 1
 

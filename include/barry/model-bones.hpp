@@ -1,10 +1,3 @@
-// #include <vector>
-// #include <unordered_map>
-#include "barray-bones.hpp"
-#include "support-bones.hpp"
-#include "statscounter-bones.hpp"
-#include "rules-bones.hpp"
-
 #ifndef BARRY_MODEL_BONES_HPP 
 #define BARRY_MODEL_BONES_HPP 1
 

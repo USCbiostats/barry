@@ -1,9 +1,3 @@
-// #include <vector>
-// #include <unordered_map>
-#include "typedefs.hpp"
-#include "cell-bones.hpp"
-#include "barraydensecell-bones.hpp"
-
 #ifndef BARRY_BARRAYDENSE_BONES_HPP 
 #define BARRY_BARRAYDENSE_BONES_HPP 1
 
@@ -12,6 +6,12 @@ class BArrayDenseRow;
 
 template<typename Cell_Type, typename Data_Type>
 class BArrayDenseRow_const;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCol;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayDenseCol_const;
 
 template<typename Cell_Type, typename Data_Type>
 class BArrayDenseCell;

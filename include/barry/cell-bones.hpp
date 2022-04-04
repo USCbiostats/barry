@@ -1,6 +1,3 @@
-// #include <vector>
-#include "typedefs.hpp"
-
 #ifndef BARRY_CELL_BONES_HPP 
 #define BARRY_CELL_BONES_HPP 1
 

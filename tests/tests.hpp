@@ -2,6 +2,7 @@
 #define H_BARRY_TESTS
 
 #include "../include/barry/barry.hpp"
+// #include "../barry.hpp"
 
 #include <vector>
 #include <iostream>

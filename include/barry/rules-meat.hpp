@@ -1,8 +1,3 @@
-// #include <vector>
-// #include <stdexcept>
-
-#include "rules-bones.hpp"
-
 #ifndef BARRY_RULES_MEAT_HPP
 #define BARRY_RULES_MEAT_HPP 1
 

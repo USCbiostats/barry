@@ -1,5 +1,3 @@
-#include "typedefs.hpp"
-
 #ifndef BARRY_BARRAYROW_BONES_HPP
 #define BARRY_BARRAYROW_BONES_HPP 1
 

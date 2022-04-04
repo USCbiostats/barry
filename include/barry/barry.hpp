@@ -22,7 +22,9 @@
 #ifndef BARRY_HPP
 #define BARRY_HPP 
 
-#define BARRY_VERSION 0.1
+#define BARRY_VERSION_MAYOR 0
+#define BARRY_VERSION_MINOR 1
+#define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR
 
 /**
   * @brief barry: Your go-to motif accountant
@@ -32,6 +34,7 @@ namespace barry {
     //! Tree class and TreeIterator class
     #include "typedefs.hpp"
     #include "barry-macros.hpp"
+    #include "freqtable.hpp"
 
     #include "cell-bones.hpp"
     #include "cell-meat.hpp"

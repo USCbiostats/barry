@@ -1,5 +1,3 @@
-#include "powerset-bones.hpp"
-
 #ifndef BARRY_POWERSET_MEAT_HPP
 #define BARRY_POWERSET_MEAT_HPP 1
 

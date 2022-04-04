@@ -5,8 +5,7 @@
 
 <h1>Barry: your to-go motif accountant<img src="design/logo.svg" style="max-width:200px;width:50%;" align="right"></h1>
 
-[This repository](https://github.com/USCbiostats/barry) contains a C++ template library that essentially counts sufficient statistics on binary arrays. The goal
-of the library is to provide a general framework for building discrete exponential-family models. A particular example is Exponential Random Graph Models (ERGMs), but we can use `barry` to deal with non-square arrays.
+[This repository](https://github.com/USCbiostats/barry) contains a C++ template library that essentially counts sufficient statistics on binary arrays. Its primary goal is to provide a general framework for building discrete exponential-family models. A particular example is Exponential Random Graph Models (ERGMs), but we can use `barry` to deal with non-square arrays.
 
 Among the key features included in `barry`, we have:
 
@@ -17,7 +16,9 @@ Among the key features included in `barry`, we have:
 * Discrete Exponential Family Models module (DEFMs).
 * Pooled DEFMs.
 
-This was created and maintained by [Dr. George G. Vega Yon](https://ggvy.cl) as part of
+To use barry, you can either download the entire repository or, since it is header-only, the single header version [`barry.hpp`](barry.hpp). 
+
+This library was created and maintained by [Dr. George G. Vega Yon](https://ggvy.cl) as part of
 his doctoral dissertation ["Essays on Bioinformatics and Social Network Analysis: Statistical and Computational Methods for Complex Systems."](http://digitallibrary.usc.edu/digital/collection/p15799coll89/id/348731/rec/1)
 
 # Examples

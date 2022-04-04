@@ -7,6 +7,12 @@
 #ifndef BARRAY_BONES_HPP 
 #define BARRAY_BONES_HPP 1
 
+template<typename Cell_Type, typename Data_Type>
+class BArrayCell;
+
+template<typename Cell_Type, typename Data_Type>
+class BArrayCell_const;
+
 /**
  * @brief Baseline class for binary arrays.
  * 

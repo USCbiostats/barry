@@ -1,5 +1,3 @@
-#include "barrayvector-bones.hpp"
-
 #ifndef BARRY_BARRAYVECTOR_MEAT_HPP
 #define BARRY_BARRAYVECTOR_MEAT_HPP 1
 

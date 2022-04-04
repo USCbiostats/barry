@@ -1,5 +1,3 @@
-#include "barrayrow-bones.hpp"
-
 #ifndef BARRY_BARRAYROW_MEAT_HPP
 #define BARRY_BARRAYROW_MEAT_HPP 1
 

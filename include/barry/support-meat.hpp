@@ -1,5 +1,3 @@
-#include "support-bones.hpp"
-
 #ifndef BARRY_SUPPORT_MEAT
 #define BARRY_SUPPORT_MEAT_HPP 1
 
@@ -11,7 +9,6 @@
 
 #define SUPPORT_TEMPLATE(a,b) template SUPPORT_TEMPLATE_ARGS() \
     inline a SUPPORT_TYPE()::b
-
 
 SUPPORT_TEMPLATE(void, init_support)(
     std::vector< Array_Type > * array_bank,
@@ -557,7 +554,7 @@ SUPPORT_TEMPLATE(void, print)() const {
     data.print();
 }
 
-SUPPORT_TEMPLATE(const FreqTable<> &, get_data)() const {
+SUPPORT_TEMPLATE(const FreqTable<double> &, get_data)() const {
     return this->data;
 }
 

@@ -1,5 +1,5 @@
 // #include <stdexcept>
-#include "barray-bones.hpp"
+// #include "barray-bones.hpp"
 
 #ifndef BARRY_BARRAY_MEAT_OPERATORS_HPP
 #define BARRY_BARRAY_MEAT_OPERATORS_HPP 1

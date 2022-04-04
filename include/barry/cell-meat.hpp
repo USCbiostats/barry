@@ -1,5 +1,3 @@
-#include "cell-bones.hpp"
-
 #ifndef BARRY_CELL_MEAT_HPP
 #define BARRY_CELL_MEAT_HPP 1
 

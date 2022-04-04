@@ -1,6 +1,3 @@
-#include "typedefs.hpp"
-#include "barray-bones.hpp"
-
 #ifndef BARRY_COUNTERS_BONES_HPP
 #define BARRY_COUNTERS_BONES_HPP 1
 
