@@ -1,5 +1,6 @@
 var counters_2defm_8hpp =
 [
+    [ "DEFMData", "class_d_e_f_m_data.html", "class_d_e_f_m_data" ],
     [ "DEFMCounterData", "class_d_e_f_m_counter_data.html", "class_d_e_f_m_counter_data" ],
     [ "DEFMRuleData", "class_d_e_f_m_rule_data.html", "class_d_e_f_m_rule_data" ],
     [ "DEFM_COUNTER", "counters_2defm_8hpp.html#aceda72b2e1b110e80235df9dbac17351", null ],

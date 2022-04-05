@@ -6,7 +6,7 @@ var searchData=
   ['default_5fval_899',['default_val',['../class_b_array_dense.html#ac1e9cf40131d277e577a999c78dd55f6',1,'BArrayDense::default_val()'],['../class_b_array.html#a1e4efac293adb1462c8921a07691fee5',1,'BArray::default_val()']]],
   ['defm_900',['DEFM',['../class_d_e_f_m.html#aef1a45afb37071a7a0053efaf97c8368',1,'DEFM']]],
   ['defmcounterdata_901',['DEFMCounterData',['../class_d_e_f_m_counter_data.html#a5d370202642dddaad6d211288fb41f4d',1,'DEFMCounterData::DEFMCounterData()'],['../class_d_e_f_m_counter_data.html#a5f43d4f8a7da2f2d09c7ee766b137269',1,'DEFMCounterData::DEFMCounterData(const std::vector&lt; size_t &gt; indices_, const std::vector&lt; double &gt; numbers_, size_t markov_order_)']]],
-  ['defmdata_902',['DEFMData',['../class_d_e_f_m_data.html#aa0a9abe59bcd6b7bf7943af55804487d',1,'DEFMData::DEFMData()'],['../class_d_e_f_m_data.html#a3e7c2529971df513e103d42c7fe738b4',1,'DEFMData::DEFMData(const double *covariates_, size_t obs_start_, size_t X_ncol_, size_t X_nrow_)']]],
+  ['defmdata_902',['DEFMData',['../class_d_e_f_m_data.html#aa0a9abe59bcd6b7bf7943af55804487d',1,'DEFMData::DEFMData()'],['../class_d_e_f_m_data.html#a565c76b50a702e1cf86206d625fe512b',1,'DEFMData::DEFMData(DEFMArray *array_, const double *covariates_, size_t obs_start_, size_t X_ncol_, size_t X_nrow_)']]],
   ['defmruledata_903',['DEFMRuleData',['../class_d_e_f_m_rule_data.html#afb84c6ffe48f80056b15e0ae6bad4b3a',1,'DEFMRuleData::DEFMRuleData()'],['../class_d_e_f_m_rule_data.html#a97709e387171f34facb5410f1d726f9b',1,'DEFMRuleData::DEFMRuleData(std::vector&lt; double &gt; numbers_, std::vector&lt; size_t &gt; indices_)']]],
   ['desc_904',['desc',['../counters-meat_8hpp.html#a38d3c9281c6c11f71ca2e155fb65a81e',1,'counters-meat.hpp']]]
 ];

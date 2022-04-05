@@ -4,7 +4,7 @@ var searchData=
   ['add_1115',['add',['../barray-meat_8hpp.html#a1339d67b0cfdee9f9720b2fd7732a121',1,'add():&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#a1339d67b0cfdee9f9720b2fd7732a121',1,'add():&#160;barraydense-meat.hpp']]],
   ['annotations_1116',['annotations',['../class_node.html#aea43a76094980788d1debd3e18ed8070',1,'Node']]],
   ['ans_1117',['ans',['../barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906',1,'ans():&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906',1,'ans():&#160;barraydense-meat.hpp']]],
-  ['array_1118',['array',['../class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608',1,'Node']]],
+  ['array_1118',['array',['../class_d_e_f_m_data.html#a17038d453f18a0db9169ada226512674',1,'DEFMData::array()'],['../class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608',1,'Node::array()']]],
   ['array_1119',['Array',['../class_const_b_array_row_iter.html#ae7f5ef61225621953a664e73c6153ed3',1,'ConstBArrayRowIter']]],
   ['array_5f_1120',['Array_',['../barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47',1,'barray-meat.hpp']]],
   ['array_5fbank_1121',['array_bank',['../support-meat_8hpp.html#ac507b5b05a329a72fa561a352608abdf',1,'support-meat.hpp']]],
