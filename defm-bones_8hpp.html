@@ -93,8 +93,7 @@ $(document).ready(function(){initNavTree('defm-bones_8hpp.html',''); initResizab
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">defm-bones.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -115,66 +114,14 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_e_f_m.html">DEFM</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:adfece462b32a0dea6b270efc91a7dd5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="defm-bones_8hpp.html#adfece462b32a0dea6b270efc91a7dd5c">DEFM_RANGES</a>(a)</td></tr>
-<tr class="separator:adfece462b32a0dea6b270efc91a7dd5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf64635c1c487e9ea0eaad4fbffb34ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="defm-bones_8hpp.html#adf64635c1c487e9ea0eaad4fbffb34ac">DEFM_LOOP_ARRAYS</a>(a)&#160;&#160;&#160;    <a class="el" href="support-meat_8hpp.html#a60708372bc78ab014d166f99ad509b41">for</a> (size_t a = 0u; a &lt; (nobs_i - (M_order + 1u) + 1u); ++a)</td></tr>
-<tr class="separator:adf64635c1c487e9ea0eaad4fbffb34ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="adf64635c1c487e9ea0eaad4fbffb34ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf64635c1c487e9ea0eaad4fbffb34ac">&#9670;&nbsp;</a></span>DEFM_LOOP_ARRAYS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DEFM_LOOP_ARRAYS</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">a</td><td>)</td>
-          <td>&#160;&#160;&#160;    <a class="el" href="support-meat_8hpp.html#a60708372bc78ab014d166f99ad509b41">for</a> (size_t a = 0u; a &lt; (nobs_i - (M_order + 1u) + 1u); ++a)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="defm-bones_8hpp_source.html#l00015">15</a> of file <a class="el" href="defm-bones_8hpp_source.html">defm-bones.hpp</a>.</p>
-
-</div>
-</div>
-<a id="adfece462b32a0dea6b270efc91a7dd5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfece462b32a0dea6b270efc91a7dd5c">&#9670;&nbsp;</a></span>DEFM_RANGES</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DEFM_RANGES</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">a</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordtype">size_t</span> __CONCAT(start_,a) = start_end[a * 2u];\</div>
-<div class="line">    size_t __CONCAT(end_,a)   = start_end[a * 2u + 1u];\</div>
-<div class="line">    size_t __CONCAT(nobs_,a)  = __CONCAT(end_,<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) - __CONCAT(start_,<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) + 1u;</div>
-<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00080">counters-meat.hpp:80</a></div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="defm-bones_8hpp_source.html#l00010">10</a> of file <a class="el" href="defm-bones_8hpp_source.html">defm-bones.hpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_d7a554d3e09ed8456d56450fe8436947.html">defm</a></li><li class="navelem"><a class="el" href="defm-bones_8hpp.html">defm-bones.hpp</a></li>
-    <li class="footer">Generated on Mon Apr 4 2022 20:38:10 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Apr 5 2022 07:39:14 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -96,770 +96,210 @@ $(document).ready(function(){initNavTree('defm-meat_8hpp_source.html',''); initR
 <div class="title">defm-meat.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="defm-meat_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// #include &quot;geese-bones.hpp&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef DEFM_MEAT_HPP</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define DEFM_MEAT_HPP 1</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_geese.html#a3855898a556e2ac1d30529d3bc35f13a">    6</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_geese.html#a3855898a556e2ac1d30529d3bc35f13a">Geese::init_node</a>(<a class="code" href="class_node.html">Node</a> &amp; n)</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<a href="defm-meat_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef DEFM_MEAT_HPP</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define DEFM_MEAT_HPP 1</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="defm-meat_8hpp.html#adfece462b32a0dea6b270efc91a7dd5c">    4</a></span>&#160;<span class="preprocessor">#define DEFM_RANGES(a) \</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">    size_t __CONCAT(start_,a) = start_end[a * 2u];\</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">    size_t __CONCAT(end_,a)   = start_end[a * 2u + 1u];\</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">    size_t __CONCAT(nobs_,a)  = __CONCAT(end_,i) - __CONCAT(start_,i) + 1u;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="comment">// Creating the phyloarray, nfunctions x noffspring</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    n.<a class="code" href="class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608">array</a> = <a class="code" href="phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a">phylocounters::PhyloArray</a>(<a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>, n.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>.size());</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="defm-meat_8hpp.html#adf64635c1c487e9ea0eaad4fbffb34ac">    9</a></span>&#160;<span class="preprocessor">#define DEFM_LOOP_ARRAYS(a) \</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">    for (size_t a = 0u; a &lt; (nobs_i - M_order); ++a)</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::vector&lt; bool &gt; tmp_state = vector_caster&lt;bool,uint&gt;(n.<a class="code" href="class_node.html#aea43a76094980788d1debd3e18ed8070">annotations</a>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    std::vector&lt; double &gt; blen(n.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>.size(), 1.0);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    n.<a class="code" href="class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608">array</a>.set_data(</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">new</span> phylocounters::NodeData(blen, tmp_state, n.<a class="code" href="class_node.html#a3129939e8a58c055cb5ad8db8be6b10a">duplication</a>),</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">true</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    );</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// We initialize all with a zero since, if excluded from the pruning process,</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// We need to set it to one (as the result of the full integration).</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    n.<a class="code" href="class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d">subtree_prob</a>.resize(states.size(), 1.0);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// Adding the data, first through functions</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> k = 0u; k &lt; <a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>; ++k)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_d_e_f_m.html#afb829f5b9805da628740131f6f644c24">   12</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_d_e_f_m.html#afb829f5b9805da628740131f6f644c24">DEFM::simulate</a>(</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::vector&lt; double &gt; par,</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> * y_out</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">size_t</span> model_num = 0u; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">size_t</span> n_entry = M_order * Y_ncol;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">auto</span> idx = model-&gt;get_arrays2support();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; N; ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="comment">// Figuring out how many processes can we observe</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="defm-meat_8hpp.html#adfece462b32a0dea6b270efc91a7dd5c">DEFM_RANGES</a>(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="defm-meat_8hpp.html#adf64635c1c487e9ea0eaad4fbffb34ac">DEFM_LOOP_ARRAYS</a>(proc_n)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// Then through the offspring</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> = 0;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; o : n.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="comment">// If leaf, then it may have an annotation</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordflow">if</span> (o-&gt;is_leaf())</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keywordflow">if</span> (o-&gt;annotations[k] != 0)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    n.<a class="code" href="class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608">array</a>.insert_cell(k, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, o-&gt;annotations[k], <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="counters_2defm_8hpp.html#a0b423f2edc017f1bb06fe423cbd49b75">defmcounters::DEFMArray</a> tmp_array = model-&gt;sample(idx-&gt;at(model_num++), par);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> y = 0u; y &lt; Y_ncol; ++y)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                *(y_out + n_entry++) = tmp_array(M_order, y, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        n_entry += M_order * Y_ncol;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="comment">// [2022-02-11]: (IMPORTANT COMMENT!)</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="comment">// Otherwise, we fill it with a 0 so the support works correctly.</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="comment">// When adding an array from the interior, we don&#39;t need to deal</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="comment">// with the actual value as it is the powerset that matters. Using</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="comment">// nine instead will block the cell and stop the routine for computing</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="comment">// the values correctly</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                n.<a class="code" href="class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608">array</a>.insert_cell(k, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, 9u, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            ++<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_d_e_f_m.html#aef1a45afb37071a7a0053efaf97c8368">   41</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_d_e_f_m.html#aef1a45afb37071a7a0053efaf97c8368">DEFM::DEFM</a>(</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> * <span class="keywordtype">id</span>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> * y,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> * x,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">size_t</span> id_length,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">size_t</span> y_ncol,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">size_t</span> x_ncol,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">size_t</span> m_order</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Pointers</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    ID = id;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Y  = y;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    X  = x;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// We then need to set the powerset</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (n.<a class="code" href="class_node.html#a269d78db10090d106c697d7c73bac9c7">arrays</a>.size() != states.size())</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        n.<a class="code" href="class_node.html#a269d78db10090d106c697d7c73bac9c7">arrays</a>.resize(states.size());</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        n.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>.resize(states.size());</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> s = 0u; s &lt; states.size(); ++s)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">// [2022-02-11]: (IMPORTANT COMMENT!)</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="comment">// n.arrays[s] = phylocounters::PhyloArray(n.array.nrow(), n.array.ncol());</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        n.<a class="code" href="class_node.html#a269d78db10090d106c697d7c73bac9c7">arrays</a>[s] = <a class="code" href="phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a">phylocounters::PhyloArray</a>(n.<a class="code" href="class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608">array</a>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        n.<a class="code" href="class_node.html#a269d78db10090d106c697d7c73bac9c7">arrays</a>[s].set_data(</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keyword">new</span> phylocounters::NodeData(blen, states[s], n.<a class="code" href="class_node.html#a3129939e8a58c055cb5ad8db8be6b10a">duplication</a>),</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keyword">true</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        );</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="comment">// Once the array is ready, we can add it to the model</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        n.<a class="code" href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">narray</a>[s] = model-&gt;add_array(n.<a class="code" href="class_node.html#a269d78db10090d106c697d7c73bac9c7">arrays</a>[s]);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// Overall dimmensions</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    ID_length = id_length;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    Y_ncol    = y_ncol;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    Y_length  = y_ncol * id_length;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    X_ncol    = x_ncol;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    X_length  = x_ncol * id_length;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    M_order   = m_order;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Creating the model and engine</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    rengine = std::make_shared&lt; std::mt19937 &gt;();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    model   = std::make_shared&lt; defmcounters::DEFMModel &gt;();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    model-&gt;set_rengine(&amp;(*(rengine)));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    model-&gt;store_psets();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Iterating for adding observations</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    start_end.reserve(id_length);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    start_end.push_back(0);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// Identifying the start and end of each observation</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    N = 0u;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> row = 1u; row &lt; id_length; ++row)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="comment">// Still in the individual</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span> (*(<span class="keywordtype">id</span> + row) != *(<span class="keywordtype">id</span> + row - 1u))</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_geese.html#a8b665d6faea65caacbb00feea98d53b0">   91</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_geese.html#a8b665d6faea65caacbb00feea98d53b0">Geese::~Geese</a>() {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">delete_support</a>)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">delete</span> model;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">delete_rengine</a>)</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">delete</span> rengine;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="comment">// End of the previous observation</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            start_end.push_back(row - 1u);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="comment">// In the case that the start and end do not fit</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="comment">// within the markov process order, then it should fail</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordtype">size_t</span> n_rows_i = (row - 1u) - start_end[N++ * 2u] + 1;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">if</span> (n_rows_i &lt; (M_order + 1u))</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">throw</span> std::length_error(</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    <span class="stringliteral">&quot;Obs. id: &quot;</span> + std::to_string(*(<span class="keywordtype">id</span> + row - 1u)) + <span class="stringliteral">&quot; (row &quot;</span> +</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    std::to_string(row) + <span class="stringliteral">&quot;) has fewer rows (&quot;</span> +</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    std::to_string(n_rows_i) + <span class="stringliteral">&quot;) than those needed (&quot;</span> +</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    std::to_string(M_order + 1) + <span class="stringliteral">&quot;) for the Markov Model.&quot;</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                );</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_geese.html#a6a655763da1c4bba0e886bd69658bd76">  103</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_geese.html#a6a655763da1c4bba0e886bd69658bd76">Geese::init</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> bar_width) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// Initializing the model, if it is null</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">if</span> (this-&gt;model == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        this-&gt;model = <span class="keyword">new</span> <a class="code" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a>();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        this-&gt;<a class="code" href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">delete_support</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        this-&gt;model-&gt;set_keygen(<a class="code" href="geese-bones_8hpp.html#aa60134cca317d64e4b3d1707380d5d0d">keygen_full</a>);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        this-&gt;model-&gt;store_psets();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="comment">// Beginning of the current</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            start_end.push_back(row);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    start_end.push_back(id_length - 1u);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    N++;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span>;    </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">// Checking rseed, this is relevant when dealing with a flock. In the case of</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// flock, both model and rengine are shared.</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (this-&gt;model-&gt;get_rengine() == <span class="keyword">nullptr</span>) </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        this-&gt;model-&gt;set_rengine(this-&gt;rengine, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">// All combinations of the function</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="phylo_8hpp.html#a0d16a69c8b447a32a3aa4d4c041773cc">phylocounters::PhyloPowerSet</a> pset(<a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>, 1u);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    pset.calc();</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    states.reserve(pset.data.size());</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u;</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="class_d_e_f_m.html#a3a49994e3ecff9a0bfde8924900f98c8">  117</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_d_e_f_m.html#a3a49994e3ecff9a0bfde8924900f98c8">DEFM::init</a>() </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;{</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">// Creating the arrays</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; N; ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">// Figuring out how many processes can we observe</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordtype">size_t</span> start_i = start_end[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> * 2u];</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordtype">size_t</span> end_i   = start_end[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> * 2u + 1u];</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordtype">size_t</span> nobs_i  = end_i - start_i + 1u;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="comment">// Creating the observations.</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="comment">// Number of processes : (N rows) - (Process size)</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> n_proc = 0u; n_proc &lt; (nobs_i - M_order); ++n_proc)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; iter : pset.data)</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        states.push_back(std::vector&lt; bool &gt;(<a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>, <span class="keyword">false</span>));</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> = 0u; <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> &lt; <a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>; ++<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">if</span> (!iter.is_empty(<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, 0u, <span class="keyword">false</span>))</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>][<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        }</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="comment">// Adding to map so we can look at it later on</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <a class="code" href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">map_to_nodes</a>.insert({iter.get_col_vec(0u, <span class="keyword">false</span>), <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>});</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>++;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="comment">// Creating the array for process n_proc and setting the data</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="counters_2defm_8hpp.html#a0b423f2edc017f1bb06fe423cbd49b75">defmcounters::DEFMArray</a> array(M_order + 1u, Y_ncol);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            array.set_data(</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keyword">new</span> defmcounters::DEFMData(X, (start_i + n_proc), X_ncol, ID_length),</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                <span class="keyword">true</span> <span class="comment">// Delete the data</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            );</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="comment">// Filling-out the array</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0u; k &lt; Y_ncol; ++k)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> o = 0u; o &lt; (M_order + 1u); ++o)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                    array(o, k) = *(Y + k * ID_length + start_i + n_proc * M_order + o);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="comment">// Adding the rule</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <a class="code" href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">defmcounters::rules_markov_fixed</a>(model-&gt;get_rules(), M_order);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="comment">// Adding to the model</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            model_ord.push_back( model-&gt;add_array(array, <span class="keyword">true</span>) );</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">if</span> (bar_width &gt; 0u)</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Initializing nodes in Geese (this could take a while)...\n&quot;</span>);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        barry::Progress prog_bar(this-&gt;<a class="code" href="class_geese.html#aa0249f7b6163c0b18d55fae140074d07">nnodes</a>(), bar_width);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="comment">// Iterating throught the nodes</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; iter : <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>)</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="comment">// Only parents get a node</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">if</span> (!iter.second.is_leaf())</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                this-&gt;<a class="code" href="class_geese.html#a3855898a556e2ac1d30529d3bc35f13a">init_node</a>(iter.second); </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            prog_bar.next();</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="class_d_e_f_m.html#af97885bc28233c5d73d353260a765907">  156</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m.html#af97885bc28233c5d73d353260a765907">DEFM::get_n_y</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">return</span> Y_ncol;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="class_d_e_f_m.html#ac5ff9a6f9e6c69312207bd38860184da">  161</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m.html#ac5ff9a6f9e6c69312207bd38860184da">DEFM::get_n_obs</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">return</span> N;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="class_d_e_f_m.html#a1d7601ba671a46690fe598d75873c0dd">  166</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m.html#a1d7601ba671a46690fe598d75873c0dd">DEFM::get_n_covars</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">return</span> X_ncol;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        prog_bar.end();</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="comment">// Iterating throught the nodes</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; iter : <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>)</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="comment">// Only parents get a node</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">if</span> (!iter.second.is_leaf())</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                this-&gt;<a class="code" href="class_geese.html#a3855898a556e2ac1d30529d3bc35f13a">init_node</a>(iter.second); </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">// Resetting the sequence</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; n: this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>)</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        n.second.visited = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="comment">// The first time it is called, it need to generate the corresponding</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="comment">// hashes of the columns so it is fast to access then (saves time</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">// hashing and looking in the map.)</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keyword">auto</span> sup_arrays = model-&gt;get_pset_arrays();</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="class_geese.html#a0fffee17a5df7ec95858f8307144c3f9">pset_loc</a>.resize(sup_arrays-&gt;size());</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    std::vector&lt; unsigned int &gt; tmpstate(<a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> s = 0u; s &lt; sup_arrays-&gt;size(); ++s)</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keyword">auto</span> sup_array = sup_arrays-&gt;operator[](s);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <a class="code" href="class_geese.html#a0fffee17a5df7ec95858f8307144c3f9">pset_loc</a>[s].resize(sup_array.size());</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> a = 0u; a &lt; sup_array.size(); ++a)</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> o = 0u; o &lt; sup_array[a].ncol(); ++o)</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            {</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                sup_array[a].get_col_vec(&amp;tmpstate, o, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <a class="code" href="class_geese.html#a0fffee17a5df7ec95858f8307144c3f9">pset_loc</a>[s][a].push_back(<a class="code" href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">map_to_nodes</a>[tmpstate]);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            }   </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    }</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">// So that others now know it was initialized</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <a class="code" href="class_geese.html#aa3c3181a20e367fe13e92180c83f84c0">initialized</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
-<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="class_geese.html#aa95abe540b9977592bcc88e77619d070">  230</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_geese.html#aa95abe540b9977592bcc88e77619d070">Geese::inherit_support</a>(<span class="keyword">const</span> <a class="code" href="class_geese.html">Geese</a> &amp; model_, <span class="keywordtype">bool</span> delete_support_)</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;{</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">if</span> (this-&gt;model != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="stringliteral">&quot;There is already a -model- in this Geese. Cannot set a -model- after one is present.&quot;</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            );</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    this-&gt;model = model_.model;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    this-&gt;<a class="code" href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">delete_support</a> = delete_support_;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="comment">// And random number generation</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">delete_rengine</a>)</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    {</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keyword">delete</span> this-&gt;rengine;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        this-&gt;<a class="code" href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">delete_rengine</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    }</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    </div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    this-&gt;rengine = model_.rengine;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a">  258</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a">Geese::update_annotations</a>(</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nodeid,</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    std::vector&lt; unsigned int &gt; newann</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;) {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="comment">// This can only be done if it has been initialized</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <a class="code" href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a>()</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="comment">// Is this node present?</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.find(nodeid) == <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.end())</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;The requested node is not present.&quot;</span>);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[nodeid].annotations.size() != newann.size())</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Incorrect length of the new annotations.&quot;</span>);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="comment">// Resetting the annotations, and updating the stats from the</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="comment">// parent node</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[nodeid].annotations = newann;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="comment">// This only makes sense (for now) if it is a tip </span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[nodeid].is_leaf())</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <a class="code" href="class_geese.html#a3855898a556e2ac1d30529d3bc35f13a">init_node</a>(*<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[nodeid].parent);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno"><a class="line" href="class_geese.html#aa71af5fe38d785cc184c904fc9308dc1">  287</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_geese.html#aa71af5fe38d785cc184c904fc9308dc1">Geese::calc_sequence</a>(<a class="code" href="class_node.html">Node</a> * n)</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;{</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">sequence</a>.size() == <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.size())</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="comment">// First iteration</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">if</span> (n == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        n = &amp;(<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.begin()-&gt;second);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="comment">// Here before?</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">if</span> (n-&gt;<a class="code" href="class_node.html#aa1bdec4e775fc578632e6a2dced9e251">visited</a>)</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    n-&gt;<a class="code" href="class_node.html#aa1bdec4e775fc578632e6a2dced9e251">visited</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">if</span> (!n-&gt;<a class="code" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">is_leaf</a>())</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="comment">// iterating over its offspring, only if not there before</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; it : n-&gt;<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>)</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordflow">if</span> (!it-&gt;visited)</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                <a class="code" href="class_geese.html#aa71af5fe38d785cc184c904fc9308dc1">calc_sequence</a>(it);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="comment">// Now, adding to the list and going to its parent</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <a class="code" href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">sequence</a>.push_back(n-&gt;<a class="code" href="class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9">id</a>);</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">if</span> (n-&gt;<a class="code" href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">parent</a> == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="comment">// Go to the parent iff not visited</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keywordflow">if</span> (!n-&gt;<a class="code" href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">parent</a>-&gt;<a class="code" href="class_node.html#aa1bdec4e775fc578632e6a2dced9e251">visited</a>)</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <a class="code" href="class_geese.html#aa71af5fe38d785cc184c904fc9308dc1">calc_sequence</a>(n-&gt;<a class="code" href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">parent</a>);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno"><a class="line" href="class_geese.html#a0a460414624fd1b7013ce3b1a09150d1">  331</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_geese.html#a0a460414624fd1b7013ce3b1a09150d1">Geese::calc_reduced_sequence</a>()</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;{</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="comment">// The criteria, if none of its decendants is annotated, then we can remove</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="comment">// the node from the model</span></div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    std::vector&lt; bool &gt; includeit(<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.size(), <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : <a class="code" href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">sequence</a>)</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <a class="code" href="class_node.html">Node</a> &amp; n = <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>];</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="comment">// We will count this at the end</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keywordflow">if</span> (n.<a class="code" href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">is_leaf</a>())</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        {</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> k = 0u; k &lt; <a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(); ++k)</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                <span class="keywordflow">if</span> (n.<a class="code" href="class_node.html#aea43a76094980788d1debd3e18ed8070">annotations</a>[k] != 9u)</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                    includeit[n.<a class="code" href="class_node.html#ac58501488a47ad56989463668d062e8f">ord</a>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                    <a class="code" href="class_geese.html#aabcf5e284f7277109567a84ba615f97e">reduced_sequence</a>.push_back(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>);</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                }</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        }</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        {</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            <span class="comment">// Checking, am I including any of my offspring?</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; o : n.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>) </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                <span class="keywordflow">if</span> (includeit[o-&gt;ord])</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                {</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                    </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                    includeit[n.<a class="code" href="class_node.html#ac58501488a47ad56989463668d062e8f">ord</a>] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                    <a class="code" href="class_geese.html#aabcf5e284f7277109567a84ba615f97e">reduced_sequence</a>.push_back(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>);</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                }</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        }</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    }</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;}</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
-<div class="line"><a name="l00379"></a><span class="lineno"><a class="line" href="class_geese.html#a5c9cf28a69270fe4d3f48984fe2c5723">  379</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; double &gt; <a class="code" href="class_geese.html#a5c9cf28a69270fe4d3f48984fe2c5723">Geese::get_probabilities</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    std::vector&lt; double &gt; res;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    res.reserve(</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        this-&gt;states.size() * <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.size()</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        );</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : <a class="code" href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">sequence</a>)</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    {</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; p : this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.at(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>).subtree_prob)</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            res.push_back(p);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    }</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordflow">return</span> res;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    </div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">  400</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">Geese::nfuns</a>() <a class="code" href="barray-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;{</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">nfunctions</a>;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;}</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
-<div class="line"><a name="l00407"></a><span class="lineno"><a class="line" href="class_geese.html#aa0249f7b6163c0b18d55fae140074d07">  407</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_geese.html#aa0249f7b6163c0b18d55fae140074d07">Geese::nnodes</a>() <a class="code" href="barray-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;{</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>.size();</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;}</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
-<div class="line"><a name="l00414"></a><span class="lineno"><a class="line" href="class_geese.html#adf173ab52a4ed973131989ce0560e7a6">  414</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_geese.html#adf173ab52a4ed973131989ce0560e7a6">Geese::nleafs</a>() <a class="code" href="barray-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;{</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> n = 0u;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; iter : this-&gt;<a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>)</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        <span class="keywordflow">if</span> (iter.second.is_leaf())</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            n++;</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;}</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
-<div class="line"><a name="l00426"></a><span class="lineno"><a class="line" href="class_geese.html#a0bfdc90924ef14433df93dd866a28126">  426</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_geese.html#a0bfdc90924ef14433df93dd866a28126">Geese::nterms</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <a class="code" href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a>()</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="keywordflow">return</span> model-&gt;nterms() + this-&gt;<a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>();</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="class_geese.html#a4716f07b6ffb2b0f171a9130fbb38f1a">  434</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_geese.html#a4716f07b6ffb2b0f171a9130fbb38f1a">Geese::support_size</a>() <a class="code" href="barray-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;{</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span> (model == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="keywordflow">return</span> 0u;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <span class="keywordflow">return</span> model-&gt;support_size();</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    </div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;}</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
-<div class="line"><a name="l00444"></a><span class="lineno"><a class="line" href="class_geese.html#ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7">  444</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; unsigned int &gt; <a class="code" href="class_geese.html#ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7">Geese::nannotations</a>() <a class="code" href="barray-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;{</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    std::vector&lt; unsigned int &gt; <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a> = {this-&gt;n_zeros, this-&gt;n_ones};</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>;</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160; </div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;}</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
-<div class="line"><a name="l00453"></a><span class="lineno"><a class="line" href="class_geese.html#a4d9127f67eea16500650cca49be58018">  453</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; std::string &gt; <a class="code" href="class_geese.html#a4d9127f67eea16500650cca49be58018">Geese::colnames</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keywordflow">return</span> this-&gt;model-&gt;colnames();</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;}</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
-<div class="line"><a name="l00460"></a><span class="lineno"><a class="line" href="class_geese.html#ab21479832092db4910125fd90782e4e2">  460</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_geese.html#ab21479832092db4910125fd90782e4e2">Geese::parse_polytomies</a>(</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="keywordtype">bool</span> verb,</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    std::vector&lt; size_t &gt; * dist</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;) <span class="keyword">const</span> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;{</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> largest = 0u;</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; n : this-&gt;nodes)</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    {</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        <span class="keywordflow">if</span> (n.second.is_leaf())</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> noff = n.second.noffspring();</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        <span class="keywordflow">if</span> (dist)</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            dist-&gt;push_back(noff);</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        <span class="keywordflow">if</span> (noff &gt; 2u)</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        {</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160; </div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            <span class="keywordflow">if</span> (verb)</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Node id: %i has polytomy size %i\n&quot;</span>, n.second.id, noff);</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                </div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        }</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        <span class="keywordflow">if</span> (noff &gt; largest)</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            largest = noff;</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160; </div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    }</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160; </div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    <span class="keywordflow">return</span> largest;</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;}</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
-<div class="line"><a name="l00495"></a><span class="lineno"><a class="line" href="class_geese.html#a82def7c8a870aa1b3ec069099c01fe02">  495</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; std::vector&lt;double&gt; &gt; <a class="code" href="class_geese.html#a82def7c8a870aa1b3ec069099c01fe02">Geese::observed_counts</a>()</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;{</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    <span class="comment">// Making room for the output</span></div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    std::vector&lt;std::vector&lt;double&gt;&gt; <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>;</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.reserve(<a class="code" href="class_geese.html#aa0249f7b6163c0b18d55fae140074d07">nnodes</a>());</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; </div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    <span class="comment">// Creating counter</span></div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    <a class="code" href="phylo_8hpp.html#aca4644373aecf9b296ac8ac730470952">phylocounters::PhyloStatsCounter</a> tmpcount;</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    tmpcount.set_counters(this-&gt;model-&gt;get_counters());</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    <span class="comment">// Iterating through the nodes</span></div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; n : <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>)</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    {</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;        <span class="keywordflow">if</span> (n.second.is_leaf())</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        {</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160; </div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.push_back({});</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;        }</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        <a class="code" href="phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a">phylocounters::PhyloArray</a> tmparray(<a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(), n.second.offspring.size());</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> = 0u;</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; o : n.second.offspring)</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        {</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; <a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(); ++k)</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;            {</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; </div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                <span class="keywordflow">if</span> (o-&gt;annotations.at(k) != 0)</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                {</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                    tmparray.insert_cell(</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                        k, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, o-&gt;annotations.at(k), <span class="keyword">false</span>, <a class="code" href="barray-meat_8hpp.html#ad716ef2b93f5b18b847c03c7911159e2">false</a></div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                        );</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160; </div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                }</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;            }</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160; </div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;            ++<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>;</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160; </div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        }</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160; </div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        std::vector&lt; bool &gt; tmp_state = vector_caster&lt;bool,uint&gt;(</div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;            n.second.annotations</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;            );</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160; </div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        std::vector&lt; double &gt; blen(n.second.offspring.size(), 1.0);</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        tmparray.set_data(</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;            <span class="keyword">new</span> phylocounters::NodeData(blen, tmp_state, n.second.duplication),</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;            <span class="keyword">true</span></div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        );</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160; </div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        tmpcount.reset_array(&amp;tmparray);</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160; </div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.push_back(tmpcount.count_all());</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160; </div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    }</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160; </div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>;</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160; </div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;}</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
-<div class="line"><a name="l00566"></a><span class="lineno"><a class="line" href="class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8">  566</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8">Geese::print_observed_counts</a>()</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;{</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160; </div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    <span class="comment">// Making room for the output</span></div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    std::vector&lt;std::vector&lt;double&gt;&gt; <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>;</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.reserve(<a class="code" href="class_geese.html#aa0249f7b6163c0b18d55fae140074d07">nnodes</a>());</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160; </div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <span class="comment">// Creating counter</span></div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    <a class="code" href="phylo_8hpp.html#aca4644373aecf9b296ac8ac730470952">phylocounters::PhyloStatsCounter</a> tmpcount;</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    tmpcount.set_counters(this-&gt;model-&gt;get_counters());</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160; </div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    <span class="comment">// Iterating through the nodes</span></div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; n : <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>) {</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160; </div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        <span class="keywordflow">if</span> (n.second.is_leaf()) {</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.push_back({});</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        }</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <a class="code" href="phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a">phylocounters::PhyloArray</a> tmparray(<a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(), n.second.offspring.size());</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160; </div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> = 0u;</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; o : n.second.offspring) {</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> k = 0u; k &lt; <a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(); ++k) {</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                <span class="keywordflow">if</span> (o-&gt;annotations.at(k) != 0) {</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                    tmparray.insert_cell(</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                        k, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, o-&gt;annotations.at(k), <span class="keyword">false</span>, <a class="code" href="barray-meat_8hpp.html#ad716ef2b93f5b18b847c03c7911159e2">false</a></div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;                        );</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                }</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;            }</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            ++<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>;</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        }</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160; </div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        std::vector&lt; bool &gt; tmp_state =vector_caster&lt;bool,uint&gt;(n.second.annotations);</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        std::vector&lt; double &gt; blen(n.second.offspring.size(), 1.0);</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        tmparray.set_data(</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            <span class="keyword">new</span> phylocounters::NodeData(blen, tmp_state, n.second.duplication),</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            <span class="keyword">true</span></div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        );</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160; </div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        tmpcount.reset_array(&amp;tmparray);</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        std::vector&lt; double &gt; counts = tmpcount.count_all();</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160; </div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;        <span class="comment">// Printing</span></div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;        <span class="keyword">auto</span> dpl = n.second.duplication ? <span class="stringliteral">&quot;duplication&quot;</span> : <span class="stringliteral">&quot;speciation&quot;</span>;</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;----------\n&quot;</span>);</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;nodeid: % 3i (%s)\nstate: [&quot;</span>, n.second.id, dpl);</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> f = 0u; f &lt; <a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(); ++f)</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%i, &quot;</span>, (tmparray.D_ptr()-&gt;states[f] ? 1 : 0));</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160; </div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;]; Array:\n&quot;</span>);</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;        tmparray.print();</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Counts: &quot;</span>);</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; c : counts)</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%.2f, &quot;</span>, c);</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160; </div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    }</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160; </div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160; </div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;}</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160; </div>
-<div class="line"><a name="l00629"></a><span class="lineno"><a class="line" href="class_geese.html#a1d8ae4a9c27f4653929a48bbd640bf71">  629</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_geese.html#a1d8ae4a9c27f4653929a48bbd640bf71">Geese::print</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160; </div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    <span class="comment">// Information about the tree:</span></div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    <span class="comment">// - Number of functions</span></div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    <span class="comment">// - Number of nodes and leafs</span></div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    <span class="comment">// - Number of annotated leafs (0/1)</span></div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;DEFM\nINFO ABOUT PHYLOGENY\n&quot;</span>);</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of functions           : %i\n&quot;</span>, this-&gt;<a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>());</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of nodes [int; leaf]   : [%i; %i]\n&quot;</span>, this-&gt;<a class="code" href="class_geese.html#aa0249f7b6163c0b18d55fae140074d07">nnodes</a>(), this-&gt;<a class="code" href="class_geese.html#adf173ab52a4ed973131989ce0560e7a6">nleafs</a>());</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of ann. [zeros; ones]  : [%i; %i]\n&quot;</span>, this-&gt;n_zeros, this-&gt;n_ones);</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of events [dupl; spec] : [%i; %i]\n&quot;</span>, this-&gt;n_dupl_events, this-&gt;n_spec_events);</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Largest polytomy         : %i\n&quot;</span>, <a class="code" href="class_geese.html#ab21479832092db4910125fd90782e4e2">parse_polytomies</a>(<span class="keyword">false</span>));</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;\nINFO ABOUT THE SUPPORT\n&quot;</span>);</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    this-&gt;model-&gt;print();</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160; </div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;}</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160; </div>
-<div class="line"><a name="l00647"></a><span class="lineno"><a class="line" href="class_geese.html#addb8366d2d098403a0e0ac9e321afeeb">  647</a></span>&#160;<span class="keyword">inline</span> std::mt19937 * <a class="code" href="class_geese.html#addb8366d2d098403a0e0ac9e321afeeb">Geese::get_rengine</a>()</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;{</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    <span class="keywordflow">return</span> this-&gt;rengine;</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;}</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160; </div>
-<div class="line"><a name="l00652"></a><span class="lineno"><a class="line" href="class_geese.html#abb975286a0ab1fd438e5bb4427398993">  652</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">phylocounters::PhyloCounters</a> * <a class="code" href="class_geese.html#abb975286a0ab1fd438e5bb4427398993">Geese::get_counters</a>()</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;{</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    <span class="keywordflow">return</span> this-&gt;model-&gt;get_counters();</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;}</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160; </div>
-<div class="line"><a name="l00657"></a><span class="lineno"><a class="line" href="class_geese.html#ad0c172270f676443a47a5f818f5920b0">  657</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">phylocounters::PhyloModel</a> * <a class="code" href="class_geese.html#ad0c172270f676443a47a5f818f5920b0">Geese::get_model</a>() {</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    <span class="keywordflow">return</span> this-&gt;model;</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;}</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160; </div>
-<div class="line"><a name="l00661"></a><span class="lineno"><a class="line" href="class_geese.html#ae9bc7b2cbc23aca9229d2ef511e53186">  661</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="phylo_8hpp.html#a7261d5284bec3ec15fe7b038399a9c5a">phylocounters::PhyloSupport</a> * <a class="code" href="class_geese.html#ae9bc7b2cbc23aca9229d2ef511e53186">Geese::get_support_fun</a>() {</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <span class="keywordflow">return</span> this-&gt;model-&gt;get_support_fun();</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;}</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160; </div>
-<div class="line"><a name="l00665"></a><span class="lineno"><a class="line" href="class_geese.html#a08873639292543015324d3c3768e900f">  665</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; std::vector&lt; bool &gt; &gt; <a class="code" href="class_geese.html#a08873639292543015324d3c3768e900f">Geese::get_states</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <span class="keywordflow">return</span> this-&gt;states;</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;}</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160; </div>
-<div class="line"><a name="l00669"></a><span class="lineno"><a class="line" href="class_geese.html#a7e39cec2fede50e1c59bf7886dd13f7a">  669</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; unsigned int &gt; <a class="code" href="class_geese.html#a7e39cec2fede50e1c59bf7886dd13f7a">Geese::get_annotated_nodes</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160; </div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    std::vector&lt; unsigned int &gt; ids(0u);</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp; n : <a class="code" href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">nodes</a>)</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    {</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160; </div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        <span class="comment">// Counting non-9 annotations</span></div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> f = 0u; f &lt; <a class="code" href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">nfuns</a>(); ++f)</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        {</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            <span class="comment">// If it has one non-9, then add it to the list</span></div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;            <span class="comment">// and continue to the next node.</span></div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;            <span class="keywordflow">if</span> (n.second.annotations[f] != 9u) {</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                ids.push_back(n.second.id);</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;            }</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        }</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160; </div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    }</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160; </div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    <span class="keywordflow">return</span> ids;</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160; </div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;}</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160; </div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="abarray-meat_8hpp_html_a76c0b31eda093c9e1357ff71b5c54906"><div class="ttname"><a href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a></div><div class="ttdeci">return ans</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00449">barray-meat.hpp:449</a></div></div>
-<div class="ttc" id="abarray-meat_8hpp_html_a849b2391311252597e9d126537bd7464"><div class="ttname"><a href="barray-meat_8hpp.html#a849b2391311252597e9d126537bd7464">const</a></div><div class="ttdeci">uint j const</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00402">barray-meat.hpp:402</a></div></div>
-<div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
-<div class="ttc" id="abarray-meat_8hpp_html_ad716ef2b93f5b18b847c03c7911159e2"><div class="ttname"><a href="barray-meat_8hpp.html#ad716ef2b93f5b18b847c03c7911159e2">false</a></div><div class="ttdeci">row false</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l01042">barray-meat.hpp:1042</a></div></div>
-<div class="ttc" id="abarry-configuration_8hpp_html_a2bd7dd8168e4165684de9dba0ae08469"><div class="ttname"><a href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a></div><div class="ttdeci">#define printf_barry</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00051">barry-configuration.hpp:51</a></div></div>
-<div class="ttc" id="aclass_geese_html"><div class="ttname"><a href="class_geese.html">Geese</a></div><div class="ttdoc">Annotated Phylo Model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00080">geese-bones.hpp:80</a></div></div>
-<div class="ttc" id="aclass_geese_html_a0483807174fe427f5bd2ccbb22ac3ad6"><div class="ttname"><a href="class_geese.html#a0483807174fe427f5bd2ccbb22ac3ad6">Geese::nfunctions</a></div><div class="ttdeci">unsigned int nfunctions</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00107">geese-bones.hpp:107</a></div></div>
-<div class="ttc" id="aclass_geese_html_a08873639292543015324d3c3768e900f"><div class="ttname"><a href="class_geese.html#a08873639292543015324d3c3768e900f">Geese::get_states</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; bool &gt; &gt; get_states() const</div><div class="ttdoc">Powerset of a gene's possible states.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00665">defm-meat.hpp:665</a></div></div>
-<div class="ttc" id="aclass_geese_html_a0a460414624fd1b7013ce3b1a09150d1"><div class="ttname"><a href="class_geese.html#a0a460414624fd1b7013ce3b1a09150d1">Geese::calc_reduced_sequence</a></div><div class="ttdeci">void calc_reduced_sequence()</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00331">defm-meat.hpp:331</a></div></div>
-<div class="ttc" id="aclass_geese_html_a0bfdc90924ef14433df93dd866a28126"><div class="ttname"><a href="class_geese.html#a0bfdc90924ef14433df93dd866a28126">Geese::nterms</a></div><div class="ttdeci">unsigned int nterms() const</div><div class="ttdoc">Number of terms included.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00426">defm-meat.hpp:426</a></div></div>
-<div class="ttc" id="aclass_geese_html_a0fffee17a5df7ec95858f8307144c3f9"><div class="ttname"><a href="class_geese.html#a0fffee17a5df7ec95858f8307144c3f9">Geese::pset_loc</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; std::vector&lt; size_t &gt; &gt; &gt; pset_loc</div><div class="ttdoc">Locations of columns.</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00110">geese-bones.hpp:110</a></div></div>
-<div class="ttc" id="aclass_geese_html_a1d8ae4a9c27f4653929a48bbd640bf71"><div class="ttname"><a href="class_geese.html#a1d8ae4a9c27f4653929a48bbd640bf71">Geese::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Prints information about the GEESE.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00629">defm-meat.hpp:629</a></div></div>
-<div class="ttc" id="aclass_geese_html_a1e614555901572392026f85ff1a6b3c8"><div class="ttname"><a href="class_geese.html#a1e614555901572392026f85ff1a6b3c8">Geese::delete_rengine</a></div><div class="ttdeci">bool delete_rengine</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00118">geese-bones.hpp:118</a></div></div>
-<div class="ttc" id="aclass_geese_html_a25f8324ae2c43b8a940a8e934c768a7c"><div class="ttname"><a href="class_geese.html#a25f8324ae2c43b8a940a8e934c768a7c">Geese::map_to_nodes</a></div><div class="ttdeci">barry::MapVec_type&lt; unsigned int &gt; map_to_nodes</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00109">geese-bones.hpp:109</a></div></div>
-<div class="ttc" id="aclass_geese_html_a3855898a556e2ac1d30529d3bc35f13a"><div class="ttname"><a href="class_geese.html#a3855898a556e2ac1d30529d3bc35f13a">Geese::init_node</a></div><div class="ttdeci">void init_node(Node &amp;n)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00006">defm-meat.hpp:6</a></div></div>
-<div class="ttc" id="aclass_geese_html_a3b63231475f73a59b94bb4443c8aa7b8"><div class="ttname"><a href="class_geese.html#a3b63231475f73a59b94bb4443c8aa7b8">Geese::print_observed_counts</a></div><div class="ttdeci">void print_observed_counts()</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00566">defm-meat.hpp:566</a></div></div>
-<div class="ttc" id="aclass_geese_html_a4716f07b6ffb2b0f171a9130fbb38f1a"><div class="ttname"><a href="class_geese.html#a4716f07b6ffb2b0f171a9130fbb38f1a">Geese::support_size</a></div><div class="ttdeci">unsigned int support_size() const noexcept</div><div class="ttdoc">Number of unique sets of sufficient stats.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00434">defm-meat.hpp:434</a></div></div>
-<div class="ttc" id="aclass_geese_html_a4d9127f67eea16500650cca49be58018"><div class="ttname"><a href="class_geese.html#a4d9127f67eea16500650cca49be58018">Geese::colnames</a></div><div class="ttdeci">std::vector&lt; std::string &gt; colnames() const</div><div class="ttdoc">Names of the terms in the model.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00453">defm-meat.hpp:453</a></div></div>
-<div class="ttc" id="aclass_geese_html_a5c9cf28a69270fe4d3f48984fe2c5723"><div class="ttname"><a href="class_geese.html#a5c9cf28a69270fe4d3f48984fe2c5723">Geese::get_probabilities</a></div><div class="ttdeci">std::vector&lt; double &gt; get_probabilities() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00379">defm-meat.hpp:379</a></div></div>
-<div class="ttc" id="aclass_geese_html_a5d3f0a97dd5d37b6f6cfd79c41629a1a"><div class="ttname"><a href="class_geese.html#a5d3f0a97dd5d37b6f6cfd79c41629a1a">Geese::update_annotations</a></div><div class="ttdeci">void update_annotations(unsigned int nodeid, std::vector&lt; unsigned int &gt; newann)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00258">defm-meat.hpp:258</a></div></div>
-<div class="ttc" id="aclass_geese_html_a6a655763da1c4bba0e886bd69658bd76"><div class="ttname"><a href="class_geese.html#a6a655763da1c4bba0e886bd69658bd76">Geese::init</a></div><div class="ttdeci">void init(unsigned int bar_width=BARRY_PROGRESS_BAR_WIDTH)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00103">defm-meat.hpp:103</a></div></div>
-<div class="ttc" id="aclass_geese_html_a7e39cec2fede50e1c59bf7886dd13f7a"><div class="ttname"><a href="class_geese.html#a7e39cec2fede50e1c59bf7886dd13f7a">Geese::get_annotated_nodes</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; get_annotated_nodes() const</div><div class="ttdoc">Returns the ids of the nodes with at least one annotation.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00669">defm-meat.hpp:669</a></div></div>
-<div class="ttc" id="aclass_geese_html_a82def7c8a870aa1b3ec069099c01fe02"><div class="ttname"><a href="class_geese.html#a82def7c8a870aa1b3ec069099c01fe02">Geese::observed_counts</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; observed_counts()</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00495">defm-meat.hpp:495</a></div></div>
-<div class="ttc" id="aclass_geese_html_a8b665d6faea65caacbb00feea98d53b0"><div class="ttname"><a href="class_geese.html#a8b665d6faea65caacbb00feea98d53b0">Geese::~Geese</a></div><div class="ttdeci">~Geese()</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00091">defm-meat.hpp:91</a></div></div>
-<div class="ttc" id="aclass_geese_html_a914996ac39160fb46e1ce6d70609a36a"><div class="ttname"><a href="class_geese.html#a914996ac39160fb46e1ce6d70609a36a">Geese::delete_support</a></div><div class="ttdeci">bool delete_support</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00119">geese-bones.hpp:119</a></div></div>
-<div class="ttc" id="aclass_geese_html_aa0249f7b6163c0b18d55fae140074d07"><div class="ttname"><a href="class_geese.html#aa0249f7b6163c0b18d55fae140074d07">Geese::nnodes</a></div><div class="ttdeci">unsigned int nnodes() const noexcept</div><div class="ttdoc">Number of nodes (interior + leaf)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00407">defm-meat.hpp:407</a></div></div>
-<div class="ttc" id="aclass_geese_html_aa3c3181a20e367fe13e92180c83f84c0"><div class="ttname"><a href="class_geese.html#aa3c3181a20e367fe13e92180c83f84c0">Geese::initialized</a></div><div class="ttdeci">bool initialized</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00117">geese-bones.hpp:117</a></div></div>
-<div class="ttc" id="aclass_geese_html_aa71af5fe38d785cc184c904fc9308dc1"><div class="ttname"><a href="class_geese.html#aa71af5fe38d785cc184c904fc9308dc1">Geese::calc_sequence</a></div><div class="ttdeci">void calc_sequence(Node *n=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00287">defm-meat.hpp:287</a></div></div>
-<div class="ttc" id="aclass_geese_html_aa95abe540b9977592bcc88e77619d070"><div class="ttname"><a href="class_geese.html#aa95abe540b9977592bcc88e77619d070">Geese::inherit_support</a></div><div class="ttdeci">void inherit_support(const Geese &amp;model_, bool delete_support_=false)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00230">defm-meat.hpp:230</a></div></div>
-<div class="ttc" id="aclass_geese_html_aabcf5e284f7277109567a84ba615f97e"><div class="ttname"><a href="class_geese.html#aabcf5e284f7277109567a84ba615f97e">Geese::reduced_sequence</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; reduced_sequence</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00114">geese-bones.hpp:114</a></div></div>
-<div class="ttc" id="aclass_geese_html_ab00af142f1f0e13b5c9d0cb7c8d41ee5"><div class="ttname"><a href="class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5">Geese::nodes</a></div><div class="ttdeci">std::map&lt; unsigned int, Node &gt; nodes</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00108">geese-bones.hpp:108</a></div></div>
-<div class="ttc" id="aclass_geese_html_ab21479832092db4910125fd90782e4e2"><div class="ttname"><a href="class_geese.html#ab21479832092db4910125fd90782e4e2">Geese::parse_polytomies</a></div><div class="ttdeci">unsigned int parse_polytomies(bool verb=true, std::vector&lt; size_t &gt; *dist=nullptr) const noexcept</div><div class="ttdoc">Check polytomies and return the largest.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00460">defm-meat.hpp:460</a></div></div>
-<div class="ttc" id="aclass_geese_html_ab815e9b33ce2cfb5757f86083f357152"><div class="ttname"><a href="class_geese.html#ab815e9b33ce2cfb5757f86083f357152">Geese::sequence</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; sequence</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00113">geese-bones.hpp:113</a></div></div>
-<div class="ttc" id="aclass_geese_html_abb975286a0ab1fd438e5bb4427398993"><div class="ttname"><a href="class_geese.html#abb975286a0ab1fd438e5bb4427398993">Geese::get_counters</a></div><div class="ttdeci">phylocounters::PhyloCounters * get_counters()</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00652">defm-meat.hpp:652</a></div></div>
-<div class="ttc" id="aclass_geese_html_ac3e067871732f3eba27626f94bcd44b4"><div class="ttname"><a href="class_geese.html#ac3e067871732f3eba27626f94bcd44b4">Geese::nfuns</a></div><div class="ttdeci">unsigned int nfuns() const noexcept</div><div class="ttdoc">Number of functions analyzed.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00400">defm-meat.hpp:400</a></div></div>
-<div class="ttc" id="aclass_geese_html_ad0c172270f676443a47a5f818f5920b0"><div class="ttname"><a href="class_geese.html#ad0c172270f676443a47a5f818f5920b0">Geese::get_model</a></div><div class="ttdeci">phylocounters::PhyloModel * get_model()</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00657">defm-meat.hpp:657</a></div></div>
-<div class="ttc" id="aclass_geese_html_ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7"><div class="ttname"><a href="class_geese.html#ad62efc5ac1a1b19b0e3c0ce6b8d8f8c7">Geese::nannotations</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; nannotations() const noexcept</div><div class="ttdoc">Number of annotations.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00444">defm-meat.hpp:444</a></div></div>
-<div class="ttc" id="aclass_geese_html_addb8366d2d098403a0e0ac9e321afeeb"><div class="ttname"><a href="class_geese.html#addb8366d2d098403a0e0ac9e321afeeb">Geese::get_rengine</a></div><div class="ttdeci">std::mt19937 * get_rengine()</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00647">defm-meat.hpp:647</a></div></div>
-<div class="ttc" id="aclass_geese_html_adf173ab52a4ed973131989ce0560e7a6"><div class="ttname"><a href="class_geese.html#adf173ab52a4ed973131989ce0560e7a6">Geese::nleafs</a></div><div class="ttdeci">unsigned int nleafs() const noexcept</div><div class="ttdoc">Number of leaf.</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00414">defm-meat.hpp:414</a></div></div>
-<div class="ttc" id="aclass_geese_html_ae9bc7b2cbc23aca9229d2ef511e53186"><div class="ttname"><a href="class_geese.html#ae9bc7b2cbc23aca9229d2ef511e53186">Geese::get_support_fun</a></div><div class="ttdeci">phylocounters::PhyloSupport * get_support_fun()</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00661">defm-meat.hpp:661</a></div></div>
-<div class="ttc" id="aclass_node_html"><div class="ttname"><a href="class_node.html">Node</a></div><div class="ttdoc">A single node for the model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00011">geese-node-bones.hpp:11</a></div></div>
-<div class="ttc" id="aclass_node_html_a269d78db10090d106c697d7c73bac9c7"><div class="ttname"><a href="class_node.html#a269d78db10090d106c697d7c73bac9c7">Node::arrays</a></div><div class="ttdeci">std::vector&lt; phylocounters::PhyloArray &gt; arrays</div><div class="ttdoc">Arrays given all possible states.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00021">geese-node-bones.hpp:21</a></div></div>
-<div class="ttc" id="aclass_node_html_a3129939e8a58c055cb5ad8db8be6b10a"><div class="ttname"><a href="class_node.html#a3129939e8a58c055cb5ad8db8be6b10a">Node::duplication</a></div><div class="ttdeci">bool duplication</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00019">geese-node-bones.hpp:19</a></div></div>
-<div class="ttc" id="aclass_node_html_a4e7e9c69da2575cad9c5fb7865dd42c7"><div class="ttname"><a href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">Node::offspring</a></div><div class="ttdeci">std::vector&lt; Node * &gt; offspring</div><div class="ttdoc">Offspring nodes.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00023">geese-node-bones.hpp:23</a></div></div>
-<div class="ttc" id="aclass_node_html_a86d6575dd1ad7ab0cb02c6e6202b0608"><div class="ttname"><a href="class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608">Node::array</a></div><div class="ttdeci">phylocounters::PhyloArray array</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00017">geese-node-bones.hpp:17</a></div></div>
-<div class="ttc" id="aclass_node_html_a9abaf3f1f5e9c5e383125946b04a15ac"><div class="ttname"><a href="class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac">Node::narray</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; narray</div><div class="ttdoc">ID of the array in the model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00024">geese-node-bones.hpp:24</a></div></div>
-<div class="ttc" id="aclass_node_html_aa1bdec4e775fc578632e6a2dced9e251"><div class="ttname"><a href="class_node.html#aa1bdec4e775fc578632e6a2dced9e251">Node::visited</a></div><div class="ttdeci">bool visited</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00025">geese-node-bones.hpp:25</a></div></div>
-<div class="ttc" id="aclass_node_html_ac58501488a47ad56989463668d062e8f"><div class="ttname"><a href="class_node.html#ac58501488a47ad56989463668d062e8f">Node::ord</a></div><div class="ttdeci">unsigned int ord</div><div class="ttdoc">Order in which the node was created.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00015">geese-node-bones.hpp:15</a></div></div>
-<div class="ttc" id="aclass_node_html_ad8184598cdea70e4bbdfd76f2b0f9e85"><div class="ttname"><a href="class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85">Node::parent</a></div><div class="ttdeci">Node * parent</div><div class="ttdoc">Parent node.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00022">geese-node-bones.hpp:22</a></div></div>
-<div class="ttc" id="aclass_node_html_adb90577d9d796c4ccbccf41ce2efc6c9"><div class="ttname"><a href="class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9">Node::id</a></div><div class="ttdeci">unsigned int id</div><div class="ttdoc">Id of the node (as specified in the input)</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00014">geese-node-bones.hpp:14</a></div></div>
-<div class="ttc" id="aclass_node_html_aea43a76094980788d1debd3e18ed8070"><div class="ttname"><a href="class_node.html#aea43a76094980788d1debd3e18ed8070">Node::annotations</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; annotations</div><div class="ttdoc">Observed annotations (only defined for Geese)</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00018">geese-node-bones.hpp:18</a></div></div>
-<div class="ttc" id="aclass_node_html_af95aad82ea29953c3eaed6b761c4b13e"><div class="ttname"><a href="class_node.html#af95aad82ea29953c3eaed6b761c4b13e">Node::is_leaf</a></div><div class="ttdeci">bool is_leaf() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00109">geese-node-bones.hpp:109</a></div></div>
-<div class="ttc" id="aclass_node_html_afb0c9a29d8b65c33e9cec846e7d5811d"><div class="ttname"><a href="class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d">Node::subtree_prob</a></div><div class="ttdeci">std::vector&lt; double &gt; subtree_prob</div><div class="ttdoc">Induced subtree probabilities.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00027">geese-node-bones.hpp:27</a></div></div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="class_d_e_f_m.html#a53cd79b604f4f469600949f0ec080581">  171</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m.html#a53cd79b604f4f469600949f0ec080581">DEFM::get_m_order</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">return</span> M_order;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="class_d_e_f_m.html#a5fe82e5e9020e3fc3371f759267eda93">  176</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_d_e_f_m.html#a5fe82e5e9020e3fc3371f759267eda93">DEFM::get_n_rows</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">return</span> ID_length;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">#undef DEFM_RANGES</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#undef DEFM_LOOP_ARRAYS</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_d_e_f_m_html_a1d7601ba671a46690fe598d75873c0dd"><div class="ttname"><a href="class_d_e_f_m.html#a1d7601ba671a46690fe598d75873c0dd">DEFM::get_n_covars</a></div><div class="ttdeci">size_t get_n_covars() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00166">defm-meat.hpp:166</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_html_a3a49994e3ecff9a0bfde8924900f98c8"><div class="ttname"><a href="class_d_e_f_m.html#a3a49994e3ecff9a0bfde8924900f98c8">DEFM::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00117">defm-meat.hpp:117</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_html_a53cd79b604f4f469600949f0ec080581"><div class="ttname"><a href="class_d_e_f_m.html#a53cd79b604f4f469600949f0ec080581">DEFM::get_m_order</a></div><div class="ttdeci">size_t get_m_order() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00171">defm-meat.hpp:171</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_html_a5fe82e5e9020e3fc3371f759267eda93"><div class="ttname"><a href="class_d_e_f_m.html#a5fe82e5e9020e3fc3371f759267eda93">DEFM::get_n_rows</a></div><div class="ttdeci">size_t get_n_rows() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00176">defm-meat.hpp:176</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_html_ac5ff9a6f9e6c69312207bd38860184da"><div class="ttname"><a href="class_d_e_f_m.html#ac5ff9a6f9e6c69312207bd38860184da">DEFM::get_n_obs</a></div><div class="ttdeci">size_t get_n_obs() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00161">defm-meat.hpp:161</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_html_aef1a45afb37071a7a0053efaf97c8368"><div class="ttname"><a href="class_d_e_f_m.html#aef1a45afb37071a7a0053efaf97c8368">DEFM::DEFM</a></div><div class="ttdeci">DEFM(const int *id, const int *y, const double *x, size_t id_length, size_t y_ncol, size_t x_ncol, size_t m_order)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00041">defm-meat.hpp:41</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_html_af97885bc28233c5d73d353260a765907"><div class="ttname"><a href="class_d_e_f_m.html#af97885bc28233c5d73d353260a765907">DEFM::get_n_y</a></div><div class="ttdeci">size_t get_n_y() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00156">defm-meat.hpp:156</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_html_afb829f5b9805da628740131f6f644c24"><div class="ttname"><a href="class_d_e_f_m.html#afb829f5b9805da628740131f6f644c24">DEFM::simulate</a></div><div class="ttdeci">void simulate(std::vector&lt; double &gt; par, int *y_out)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00012">defm-meat.hpp:12</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00080">counters-meat.hpp:80</a></div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_ae763aeff9df78ca7be5f904fa4bbdc09"><div class="ttname"><a href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div><div class="ttdeci">Data_Type &amp;&amp;counter_ noexcept</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00026">counters-meat.hpp:27</a></div></div>
-<div class="ttc" id="ageese-bones_8hpp_html_a08888c91f4cab1da64c8f8bf10b59c40"><div class="ttname"><a href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a></div><div class="ttdeci">#define INITIALIZED()</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00022">geese-bones.hpp:22</a></div></div>
-<div class="ttc" id="ageese-bones_8hpp_html_aa60134cca317d64e4b3d1707380d5d0d"><div class="ttname"><a href="geese-bones_8hpp.html#aa60134cca317d64e4b3d1707380d5d0d">keygen_full</a></div><div class="ttdeci">std::vector&lt; double &gt; keygen_full(const phylocounters::PhyloArray &amp;array)</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00035">geese-bones.hpp:35</a></div></div>
-<div class="ttc" id="aphylo_8hpp_html_a0d16a69c8b447a32a3aa4d4c041773cc"><div class="ttname"><a href="phylo_8hpp.html#a0d16a69c8b447a32a3aa4d4c041773cc">PhyloPowerSet</a></div><div class="ttdeci">PowerSet&lt; PhyloArray, PhyloRuleData &gt; PhyloPowerSet</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00119">phylo.hpp:119</a></div></div>
-<div class="ttc" id="aphylo_8hpp_html_a3747688acf3d8e264c2ce8b07e0eb804"><div class="ttname"><a href="phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804">PhyloModel</a></div><div class="ttdeci">Model&lt; PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData &gt; PhyloModel</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00118">phylo.hpp:118</a></div></div>
-<div class="ttc" id="aphylo_8hpp_html_a62f661a25cbdbac960f6d00b7b42ff4a"><div class="ttname"><a href="phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a">PhyloArray</a></div><div class="ttdeci">BArrayDense&lt; uint, NodeData &gt; PhyloArray</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00106">phylo.hpp:106</a></div></div>
-<div class="ttc" id="aphylo_8hpp_html_a7261d5284bec3ec15fe7b038399a9c5a"><div class="ttname"><a href="phylo_8hpp.html#a7261d5284bec3ec15fe7b038399a9c5a">PhyloSupport</a></div><div class="ttdeci">Support&lt; PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData &gt; PhyloSupport</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00116">phylo.hpp:116</a></div></div>
-<div class="ttc" id="aphylo_8hpp_html_a7f579c2548e28d17881691a3abe7ecb5"><div class="ttname"><a href="phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5">PhyloCounters</a></div><div class="ttdeci">Counters&lt; PhyloArray, PhyloCounterData &gt; PhyloCounters</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00108">phylo.hpp:108</a></div></div>
-<div class="ttc" id="aphylo_8hpp_html_aca4644373aecf9b296ac8ac730470952"><div class="ttname"><a href="phylo_8hpp.html#aca4644373aecf9b296ac8ac730470952">PhyloStatsCounter</a></div><div class="ttdeci">StatsCounter&lt; PhyloArray, PhyloCounterData &gt; PhyloStatsCounter</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00117">phylo.hpp:117</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00018">typedefs.hpp:18</a></div></div>
+<div class="ttc" id="acounters_2defm_8hpp_html_a0b423f2edc017f1bb06fe423cbd49b75"><div class="ttname"><a href="counters_2defm_8hpp.html#a0b423f2edc017f1bb06fe423cbd49b75">DEFMArray</a></div><div class="ttdeci">BArrayDense&lt; int, DEFMData &gt; DEFMArray</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00110">defm.hpp:110</a></div></div>
+<div class="ttc" id="adefm-meat_8hpp_html_adf64635c1c487e9ea0eaad4fbffb34ac"><div class="ttname"><a href="defm-meat_8hpp.html#adf64635c1c487e9ea0eaad4fbffb34ac">DEFM_LOOP_ARRAYS</a></div><div class="ttdeci">#define DEFM_LOOP_ARRAYS(a)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00009">defm-meat.hpp:9</a></div></div>
+<div class="ttc" id="adefm-meat_8hpp_html_adfece462b32a0dea6b270efc91a7dd5c"><div class="ttname"><a href="defm-meat_8hpp.html#adfece462b32a0dea6b270efc91a7dd5c">DEFM_RANGES</a></div><div class="ttdeci">#define DEFM_RANGES(a)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00004">defm-meat.hpp:4</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga31452452bf9dad7f6c5767dcabfb4dbe"><div class="ttname"><a href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">rules_markov_fixed</a></div><div class="ttdeci">void rules_markov_fixed(DEFMRules *rules, size_t markov_order)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00364">defm.hpp:364</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_d7a554d3e09ed8456d56450fe8436947.html">defm</a></li><li class="navelem"><a class="el" href="defm-meat_8hpp.html">defm-meat.hpp</a></li>
-    <li class="footer">Generated on Mon Apr 4 2022 20:38:10 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Apr 5 2022 07:39:14 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

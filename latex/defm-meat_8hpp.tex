@@ -8,3 +8,40 @@ This graph shows which files directly or indirectly include this file\+:
 \includegraphics[width=189pt]{defm-meat_8hpp__dep__incl}
 \end{center}
 \end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{defm-meat_8hpp_adfece462b32a0dea6b270efc91a7dd5c}{DEFM\+\_\+\+RANGES}}(a)
+\item 
+\#define \mbox{\hyperlink{defm-meat_8hpp_adf64635c1c487e9ea0eaad4fbffb34ac}{DEFM\+\_\+\+LOOP\+\_\+\+ARRAYS}}(a)~    \mbox{\hyperlink{support-meat_8hpp_a60708372bc78ab014d166f99ad509b41}{for}} (size\+\_\+t a = 0u; a $<$ (nobs\+\_\+i -\/ M\+\_\+order); ++a)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{defm-meat_8hpp_adf64635c1c487e9ea0eaad4fbffb34ac}\label{defm-meat_8hpp_adf64635c1c487e9ea0eaad4fbffb34ac}} 
+\index{defm-\/meat.hpp@{defm-\/meat.hpp}!DEFM\_LOOP\_ARRAYS@{DEFM\_LOOP\_ARRAYS}}
+\index{DEFM\_LOOP\_ARRAYS@{DEFM\_LOOP\_ARRAYS}!defm-\/meat.hpp@{defm-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{DEFM\_LOOP\_ARRAYS}{DEFM\_LOOP\_ARRAYS}}
+{\footnotesize\ttfamily \#define DEFM\+\_\+\+LOOP\+\_\+\+ARRAYS(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~    \mbox{\hyperlink{support-meat_8hpp_a60708372bc78ab014d166f99ad509b41}{for}} (size\+\_\+t a = 0u; a $<$ (nobs\+\_\+i -\/ M\+\_\+order); ++a)}
+
+
+
+Definition at line 9 of file defm-\/meat.\+hpp.
+
+\mbox{\Hypertarget{defm-meat_8hpp_adfece462b32a0dea6b270efc91a7dd5c}\label{defm-meat_8hpp_adfece462b32a0dea6b270efc91a7dd5c}} 
+\index{defm-\/meat.hpp@{defm-\/meat.hpp}!DEFM\_RANGES@{DEFM\_RANGES}}
+\index{DEFM\_RANGES@{DEFM\_RANGES}!defm-\/meat.hpp@{defm-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{DEFM\_RANGES}{DEFM\_RANGES}}
+{\footnotesize\ttfamily \#define DEFM\+\_\+\+RANGES(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordtype}{size\_t} \_\_CONCAT(start\_,a) = start\_end[a * 2u];\(\backslash\)}
+\DoxyCodeLine{    size\_t \_\_CONCAT(end\_,a)   = start\_end[a * 2u + 1u];\(\backslash\)}
+\DoxyCodeLine{    size\_t \_\_CONCAT(nobs\_,a)  = \_\_CONCAT(end\_,\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) -\/ \_\_CONCAT(start\_,\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) + 1u;}
+
+\end{DoxyCode}
+
+
+Definition at line 4 of file defm-\/meat.\+hpp.
+
