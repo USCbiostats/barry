@@ -51,6 +51,7 @@ public:
      */
     double operator()(size_t i, size_t j) const;
     double at(size_t i, size_t j) const;
+    size_t ncol() const;
     
     ~DEFMData() {};
 
@@ -59,6 +60,10 @@ public:
 inline double DEFMData::operator()(size_t i, size_t j) const
 {
     return *(covariates + (obs_start + j * X_nrow + i));
+}
+
+inline size_t DEFMData::ncol() const {
+    return X_ncol;
 }
 
 /**
@@ -262,7 +267,7 @@ inline void counter_transition(
             count_ones, nullptr,
             DEFMCounterData(coords, {}, 3u), 
             name + " with attr " + std::to_string(covar_index), 
-            "Motif weigher by single attribute"
+            "Motif weighted by single attribute"
         );
 
     } else {
@@ -355,7 +360,7 @@ inline void counter_fixed_effect(
 }
 
 /**
- * @name Rules for network models
+ * @name Returns true if the cell is free
  * @param rules A pointer to a `DEFMRules` object (`Rules`<`DEFMArray`, `bool`>).
  */
 ///@{
@@ -367,7 +372,7 @@ inline void rules_markov_fixed(
     ) {
     
     DEFM_RULE_LAMBDA(no_self_tie) {
-        return i <= data.idx(0u);
+        return i >= data.idx(0u);
     };
     
     rules->add_rule(

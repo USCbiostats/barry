@@ -6,6 +6,21 @@
 #define POS(a, b) (a) + (b) * dat->N 
 
 template<typename Cell_Type,typename Data_Type>
+inline BArrayDenseCell<Cell_Type,Data_Type>& BArrayDenseCell<Cell_Type,Data_Type>::operator=(
+    const BArrayDenseCell<Cell_Type,Data_Type> & other
+    ) {
+    
+    Cell_Type val = static_cast<Cell_Type>(other);
+    Cell_Type old      =  dat->el[POS(i,j)];
+    dat->el[POS(i,j)]  =  val;
+    dat->el_rowsums[i] += (val - old);
+    dat->el_colsums[j] += (val - old);
+
+    return *this;
+
+}
+
+template<typename Cell_Type,typename Data_Type>
 inline void BArrayDenseCell<Cell_Type,Data_Type>::operator=(const Cell_Type & val) {
 
     Cell_Type old      =  dat->el[POS(i,j)];

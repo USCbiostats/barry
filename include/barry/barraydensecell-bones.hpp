@@ -49,6 +49,10 @@ public:
 
     };
 
+    BArrayDenseCell<Cell_Type,Data_Type>& operator=(
+        const BArrayDenseCell<Cell_Type,Data_Type> & other
+        );
+
     ~BArrayDenseCell(){};
     void operator=(const Cell_Type & val);
     void operator+=(const Cell_Type & val);

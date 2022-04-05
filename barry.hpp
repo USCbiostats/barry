@@ -3201,6 +3201,10 @@ public:
 
     };
 
+    BArrayDenseCell<Cell_Type,Data_Type>& operator=(
+        const BArrayDenseCell<Cell_Type,Data_Type> & other
+        );
+
     ~BArrayDenseCell(){};
     void operator=(const Cell_Type & val);
     void operator+=(const Cell_Type & val);
@@ -4569,6 +4573,21 @@ BDENSE_TEMPLATE(const Cell_Type, colsum)(unsigned int j) const
 #define BARRY_BARRAYDENSECELL_MEAT_HPP 1
 
 #define POS(a, b) (a) + (b) * dat->N 
+
+template<typename Cell_Type,typename Data_Type>
+inline BArrayDenseCell<Cell_Type,Data_Type>& BArrayDenseCell<Cell_Type,Data_Type>::operator=(
+    const BArrayDenseCell<Cell_Type,Data_Type> & other
+    ) {
+    
+    Cell_Type val = static_cast<Cell_Type>(other);
+    Cell_Type old      =  dat->el[POS(i,j)];
+    dat->el[POS(i,j)]  =  val;
+    dat->el_rowsums[i] += (val - old);
+    dat->el_colsums[j] += (val - old);
+
+    return *this;
+
+}
 
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayDenseCell<Cell_Type,Data_Type>::operator=(const Cell_Type & val) {
@@ -7569,7 +7588,6 @@ MODEL_TEMPLATE(uint, add_array)(
                     "A problem ocurred while trying to add the array (and recording the powerset). "
                 );
                 printf_barry("with error %s\n", e.what());
-                    // "with error: " << e.what();
                 throw std::logic_error("");
                 
             }
@@ -7577,22 +7595,7 @@ MODEL_TEMPLATE(uint, add_array)(
         }
         else
         {
-            
-            // try
-            // {
-
-                support_fun.calc();
-
-            // }
-            // catch (const std::exception& e)
-            // {
-                
-            //     printf_barry("A problem ocurred while trying to add the array. ");
-            //     printf_barry("with error: %s", e.what());
-            //     throw std::logic_error("");
-                
-            // }
-            
+            support_fun.calc();
         }
         
         if (transform_model_fun)
@@ -8113,6 +8116,158 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
+
+    // Getting the index
+    unsigned int a = arrays2support[i];
+    
+    // Generating a random
+    std::uniform_real_distribution<> urand(0, 1);
+    double r = urand(*rengine);
+    double cumprob = 0.0;
+
+    size_t k = params.size();
+
+    // Sampling an array
+    unsigned int j = 0u;
+    std::vector< double > & probs = pset_probs[a];
+    if ((probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
+    // If precomputed, then no need to recalc support
+    {
+
+        while (cumprob < r)
+            cumprob += probs[j++];
+
+        j--;
+
+    } else { 
+       
+        probs.resize(pset_arrays[a].size());
+        std::vector< double > temp_stats(params.size());
+        const std::vector< double > & stats = pset_stats[a];
+
+        int i_matches = -1;
+        for (size_t array = 0u; array < probs.size(); ++array)
+        {
+
+            // Filling out the parameters
+            for (auto p = 0u; p < params.size(); ++p)
+                temp_stats[p] = stats[array * k + p];
+
+            probs[array] = this->likelihood(params, temp_stats, i, false);
+            cumprob += probs[array];
+
+            if (i_matches == -1 && cumprob >= r)
+                i_matches = array;
+        }
+
+        j = i_matches;
+        
+    }
+    
+
+    return this->pset_arrays[a][j];   
+
+}
+
+MODEL_TEMPLATE(Array_Type, sample)(
+    const Array_Type & Array_,
+    const std::vector<double> & params
+) {
+
+    // Are we recording this?
+    if (!this->with_pset)
+        throw std::logic_error("Sampling is only available when store_pset() is active.");
+
+    size_t i;
+
+    // If the data hasn't been analyzed earlier, then we need to compute
+    // the support
+    std::vector< double > key = keygen(Array_);
+    MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
+    if (locator == keys2support.end())
+    {
+        // throw std::out_of_range("Sampling from an array that has no support in the model.");
+
+        // Adding to the map
+        keys2support[key] = stats_support.size();
+        stats_support_n_arrays.push_back(1u);       // How many elements now
+        arrays2support.push_back(stats_support.size()); // Map of the array id to the support
+        
+        // Computing support using the counters included in the model
+        support_fun.reset_array(Array_);
+        
+        /** When computing with the powerset, we need to grow the corresponding
+            * vectors on the fly */
+        if (with_pset)
+        {
+            
+            // Making space for storing the support
+            pset_arrays.resize(pset_arrays.size() + 1u);
+            pset_stats.resize(pset_stats.size() + 1u);
+            pset_probs.resize(pset_probs.size() + 1u);
+            
+            try
+            {
+                
+                support_fun.calc(
+                    &(pset_arrays[pset_arrays.size() - 1u]),
+                    &(pset_stats[pset_stats.size() - 1u])
+                );
+                
+            }
+            catch (const std::exception& e)
+            {
+                
+                printf_barry(
+                    "A problem ocurred while trying to add the array (and recording the powerset). "
+                );
+                printf_barry("with error %s\n", e.what());
+                throw std::logic_error("");
+                
+            }
+            
+        }
+        else
+        {
+            support_fun.calc();
+        }
+        
+        if (transform_model_fun)
+        {
+            auto tmpsupport = support_fun.get_counts();
+            size_t k = counter_fun.size();
+            size_t n = tmpsupport.size() / (k + 1);
+
+            std::vector< double > s_new(0u);            
+            s_new.reserve(tmpsupport.size());
+
+            for (size_t i = 0u; i < n; ++i)
+            {
+
+                // Appending size
+                s_new.push_back(tmpsupport[i * (k + 1u)]);
+
+                // Applying transformation and adding to the new set
+                auto res = transform_model_fun(&tmpsupport[i * (k + 1u) + 1u], k);
+                std::copy(res.begin(), res.end(), std::back_inserter(s_new));
+
+            }
+
+            stats_support.push_back(s_new);
+
+        } else 
+            stats_support.push_back(support_fun.get_counts());
+        
+        // Making room for the previous parameters. This will be used to check if
+        // the normalizing constant has been updated or not.
+        params_last.push_back(stats_target[0u]);
+        normalizing_constants.push_back(0.0);
+        first_calc_done.push_back(false);
+        
+        i = arrays2support.size() - 1u;
+    } else
+        // Retrieving the corresponding position in the support
+        i = locator->second;
 
     // Getting the index
     unsigned int a = arrays2support[i];
@@ -13080,6 +13235,7 @@ public:
      */
     double operator()(size_t i, size_t j) const;
     double at(size_t i, size_t j) const;
+    size_t ncol() const;
     
     ~DEFMData() {};
 
@@ -13088,6 +13244,10 @@ public:
 inline double DEFMData::operator()(size_t i, size_t j) const
 {
     return *(covariates + (obs_start + j * X_nrow + i));
+}
+
+inline size_t DEFMData::ncol() const {
+    return X_ncol;
 }
 
 /**
@@ -13291,7 +13451,7 @@ inline void counter_transition(
             count_ones, nullptr,
             DEFMCounterData(coords, {}, 3u), 
             name + " with attr " + std::to_string(covar_index), 
-            "Motif weigher by single attribute"
+            "Motif weighted by single attribute"
         );
 
     } else {
@@ -13384,7 +13544,7 @@ inline void counter_fixed_effect(
 }
 
 /**
- * @name Rules for network models
+ * @name Returns true if the cell is free
  * @param rules A pointer to a `DEFMRules` object (`Rules`<`DEFMArray`, `bool`>).
  */
 ///@{
@@ -13396,7 +13556,7 @@ inline void rules_markov_fixed(
     ) {
     
     DEFM_RULE_LAMBDA(no_self_tie) {
-        return i <= data.idx(0u);
+        return i >= data.idx(0u);
     };
     
     rules->add_rule(

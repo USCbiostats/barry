@@ -96,6 +96,37 @@ public:
 #ifndef DEFM_MEAT_HPP
 #define DEFM_MEAT_HPP 1
 
+inline std::vector< double > keygen_defm(
+    const defmcounters::DEFMArray & Array_
+    ) {
+    
+    size_t nrow = Array_.nrow();
+    size_t ncol = Array_.nrow();
+    size_t k    = Array_.D().ncol();
+
+    std::vector< double > res(
+        2u +                 // Rows + cols
+        ncol * (nrow - 1u) + // Markov cells
+        k * nrow             // Data
+        , 0.0);
+
+    res[0u] = static_cast<double>(nrow);
+    res[1u] = static_cast<double>(ncol);
+
+    size_t iter = 2u;
+    // Adding the cells
+    for (size_t i = 0u; i < (nrow - 1); ++i)
+        for (size_t j = 0u; j < ncol; ++j)
+            res[iter++] = Array_(i, j);
+
+    // Adding the data
+    for (size_t i = 0u; i < nrow; ++i)
+        for (size_t j = 0u; j < k; ++j)
+            res[iter++] = Array_.D()(i, j);
+
+    return res;
+}
+
 #define DEFM_RANGES(a) \
     size_t __CONCAT(start_,a) = start_end[a * 2u];\
     size_t __CONCAT(end_,a)   = start_end[a * 2u + 1u];\
@@ -112,6 +143,7 @@ inline void DEFM::simulate(
     size_t model_num = 0u; 
     size_t n_entry = M_order * Y_ncol;
     auto idx = model->get_arrays2support();
+    defmcounters::DEFMArray last_array;
     for (size_t i = 0u; i < N; ++i)
     {
 
@@ -121,11 +153,48 @@ inline void DEFM::simulate(
         DEFM_LOOP_ARRAYS(proc_n)
         {
 
-            defmcounters::DEFMArray tmp_array = model->sample(idx->at(model_num++), par);
-            for (size_t y = 0u; y < Y_ncol; ++y)
-                *(y_out + n_entry++) = tmp_array(M_order, y, false);
+            // In the first process, we take the data as is
+            if (proc_n == 0u)
+            {
+                last_array = model->sample(idx->at(model_num++), par);
+                for (size_t y = 0u; y < Y_ncol; ++y)
+                    *(y_out + n_entry++) = last_array(M_order, y, false);
 
+                // last_array.print("i: %li, proc_n: %li\n", i, proc_n);
+
+            }
+            else
+            // Otherwise, we need to continue using the previous data!
+            {
+                // Removing the previous row
+                defmcounters::DEFMArray tmp_array(M_order + 1u, Y_ncol);
+                for (size_t t_i = 1u; t_i < (M_order + 1u); ++t_i)
+                    for (size_t t_j = 0u; t_j < Y_ncol; ++t_j)
+                        tmp_array(t_i - 1u, t_j) = last_array(t_i, t_j);
+
+                // Setting the data
+                tmp_array.set_data(
+                    new defmcounters::DEFMData(X, (start_i + proc_n), X_ncol, ID_length),
+                    true // Delete the data
+                );
+
+                // Baseline
+                // tmp_array.print("baseline i: %li, proc_n: %li\n", i, proc_n);
+
+                model_num++;
+                last_array = model->sample(tmp_array, par);
+                for (size_t y = 0u; y < Y_ncol; ++y)
+                    *(y_out + n_entry++) = last_array(M_order, y, false);
+
+                // last_array.print("generated i: %li, proc_n: %li\n", i, proc_n);
+
+            }
+
+
+            
         }
+
+        printf_barry("---------------------------------\n");
 
         n_entry += M_order * Y_ncol;
 
@@ -165,6 +234,8 @@ inline DEFM::DEFM(
 
     model->set_rengine(&(*(rengine)));
     model->store_psets();
+    std::function<std::vector<double>(const defmcounters::DEFMArray &)> kgen = keygen_defm;
+    model->set_keygen(kgen);
 
     // Iterating for adding observations
     start_end.reserve(id_length);
@@ -211,6 +282,10 @@ inline DEFM::DEFM(
 
 inline void DEFM::init() 
 {
+
+    // Adding the rule
+    defmcounters::rules_markov_fixed(model->get_rules(), M_order);
+
     // Creating the arrays
     for (size_t i = 0u; i < N; ++i)
     {
@@ -237,15 +312,13 @@ inline void DEFM::init()
                 for (size_t o = 0u; o < (M_order + 1u); ++o)
                     array(o, k) = *(Y + k * ID_length + start_i + n_proc * M_order + o);
 
-            // Adding the rule
-            defmcounters::rules_markov_fixed(model->get_rules(), M_order);
-
             // Adding to the model
             model_ord.push_back( model->add_array(array, true) );
 
         }
 
     }
+
 }
 
 inline size_t DEFM::get_n_y() const
