@@ -7,6 +7,7 @@ var class_b_array_dense_cell =
     [ "operator+=", "class_b_array_dense_cell.html#a435d36df508b7a6d4044979bdbaeddeb", null ],
     [ "operator-=", "class_b_array_dense_cell.html#af45da636e07bd0418671de90bef9a566", null ],
     [ "operator/=", "class_b_array_dense_cell.html#a1e2729aad18773a664c287e2af97d241", null ],
+    [ "operator=", "class_b_array_dense_cell.html#ad564020d14aee1c23c3115ae9f457b38", null ],
     [ "operator=", "class_b_array_dense_cell.html#a529725a3c1ca2fad33deb568a35cace1", null ],
     [ "operator==", "class_b_array_dense_cell.html#a5b3b5759908f0848f78960fda043f001", null ],
     [ "BArrayDense< Cell_Type, Data_Type >", "class_b_array_dense_cell.html#a9bef18a1875feef98176de5a59ece84c", null ],
