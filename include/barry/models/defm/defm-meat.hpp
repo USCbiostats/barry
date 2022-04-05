@@ -30,7 +30,7 @@ inline std::vector< double > keygen_defm(
             res[iter++] = Array_.D()(i, j);
 
     return res;
-    
+
 }
 
 #define DEFM_RANGES(a) \
@@ -80,12 +80,13 @@ inline void DEFM::simulate(
 
                 // Setting the data
                 tmp_array.set_data(
-                    new defmcounters::DEFMData(X, (start_i + proc_n), X_ncol, ID_length),
+                    new defmcounters::DEFMData(&tmp_array, X, (start_i + proc_n), X_ncol, ID_length),
                     true // Delete the data
                 );
 
                 // Baseline
                 // tmp_array.print("baseline i: %li, proc_n: %li\n", i, proc_n);
+                // tmp_array.D().print();
 
                 model_num++;
                 last_array = model->sample(tmp_array, par);
@@ -207,7 +208,7 @@ inline void DEFM::init()
             // Creating the array for process n_proc and setting the data
             defmcounters::DEFMArray array(M_order + 1u, Y_ncol);
             array.set_data(
-                new defmcounters::DEFMData(X, (start_i + n_proc), X_ncol, ID_length),
+                new defmcounters::DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
                 true // Delete the data
             );
 

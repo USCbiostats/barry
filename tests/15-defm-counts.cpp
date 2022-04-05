@@ -25,7 +25,7 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
         };
 
     DEFMArray A1(3, 3);
-    A1.set_data(new DEFMData(&covars[0u], 0, 2, 3), true);
+    A1.set_data(new DEFMData(&A1, &covars[0u], 0, 2, 3), true);
     A1(0, 0) = 1;
     A1(0, 1) = 1;
     A1(1, 1) = 1;

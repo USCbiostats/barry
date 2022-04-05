@@ -13201,9 +13201,15 @@ inline void rule_dyn_limit_changes(
  * and the number of covariates in the data.
  * 
  */
+
+class DEFMData;
+
+typedef BArrayDense<int, DEFMData> DEFMArray;
+
 class DEFMData {
 public:
     
+    DEFMArray * array; // Pointer to the owner of this data
     const double * covariates; ///< Vector of covariates (complete vector)
     size_t obs_start;    ///< Index of the observation in the data.
     size_t X_ncol; ///< Number of covariates included in the model.
@@ -13219,11 +13225,12 @@ public:
      * @param X_ncol_ Number of columns (covariates.)
      */
     DEFMData(
+        DEFMArray * array_,
         const double * covariates_,
         size_t obs_start_,
         size_t X_ncol_,
         size_t X_nrow_
-    ) : covariates(covariates_), obs_start(obs_start_),
+    ) : array(array_), covariates(covariates_), obs_start(obs_start_),
     X_ncol(X_ncol_), X_nrow(X_nrow_) {}; 
 
     /**
@@ -13236,19 +13243,11 @@ public:
     double operator()(size_t i, size_t j) const;
     double at(size_t i, size_t j) const;
     size_t ncol() const;
+    void print() const;
     
     ~DEFMData() {};
 
 };
-
-inline double DEFMData::operator()(size_t i, size_t j) const
-{
-    return *(covariates + (obs_start + j * X_nrow + i));
-}
-
-inline size_t DEFMData::ncol() const {
-    return X_ncol;
-}
 
 /**
   * @brief Data class used to store arbitrary uint or double vectors */
@@ -13296,7 +13295,6 @@ public:
  * @name Convenient typedefs for network objects.
  */
 ///@{
-typedef BArrayDense<int, DEFMData> DEFMArray;
 typedef Counter<DEFMArray, DEFMCounterData > DEFMCounter;
 typedef Counters<DEFMArray, DEFMCounterData> DEFMCounters;
 typedef Support<DEFMArray, DEFMCounterData, DEFMRuleData> DEFMSupport;
@@ -13305,6 +13303,29 @@ typedef Model<DEFMArray, DEFMCounterData,DEFMRuleData,DEFMRuleData> DEFMModel;
 typedef Rule<DEFMArray, DEFMRuleData> DEFMRule;
 typedef Rules<DEFMArray, DEFMRuleData> DEFMRules;
 ///@}
+
+inline double DEFMData::operator()(size_t i, size_t j) const
+{
+    return *(covariates + (obs_start + j * X_nrow + i));
+}
+
+inline size_t DEFMData::ncol() const {
+    return X_ncol;
+}
+
+inline void DEFMData::print() const {
+
+    for (size_t i = 0u; i < array->nrow(); ++i)
+    {
+
+        printf_barry("row %li (%li): ", i, obs_start + i);
+        for (size_t j = 0u; j < X_ncol; ++j)
+            printf_barry("% 5.2f, ", operator()(i, j));
+        printf_barry("\n");
+        
+    }
+
+}
 
 /**@name Macros for defining counters
   */
