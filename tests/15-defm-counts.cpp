@@ -1,5 +1,6 @@
 #include "tests.hpp"
-#include "../include/barry/models/defm/defm-bones.hpp"
+#include "../include/barry/models/defm.hpp"
+// #include "../defm.hpp"
 
 BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
 
@@ -111,6 +112,7 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     #endif
 
     #ifndef CATCH_CONFIG_MAIN
+    auto res = model.get_model().likelihood_total(par0, true);
     model.get_model().print();
     model.get_model().print_stats(0u);    
     return 0;

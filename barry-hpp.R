@@ -2,18 +2,6 @@ line78 <- paste(rep("/", 78), collapse = "")
 
 unfolder <- function(txt, rel = "include/barry/") {
 
-    if (!exists("UNFOLDER_START")) {
-        txt <- c(
-            sprintf(
-                "/*%s\n%1$s//\n\n  SINGLE HEADER BUILT ON %s\n\n//%1$s\n%1$s*/\n\n",
-                line78,
-                Sys.time()
-                ),
-            txt
-            )
-        UNFOLDER_START <- TRUE
-    }
-
     heads <- which(grepl("^\\s*#include \"", txt))
 
     if (!length(heads))
