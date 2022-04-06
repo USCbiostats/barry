@@ -71,6 +71,10 @@ public:
     size_t get_m_order() const;
     size_t get_n_rows() const;
 
+    const int * get_Y() const;
+    const int * get_ID() const;
+    const double * get_X() const;
+
 };
 
 #endif
@@ -345,6 +349,22 @@ inline size_t DEFM::get_n_rows() const
 {
     return ID_length;
 }
+
+inline const int * DEFM::get_Y() const
+{
+    return Y;
+}
+
+inline const int * DEFM::get_ID() const
+{
+    return ID;
+}
+
+inline const double * DEFM::get_X() const
+{
+    return X;
+}
+
 
 #undef DEFM_RANGES
 #undef DEFM_LOOP_ARRAYS

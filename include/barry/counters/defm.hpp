@@ -236,6 +236,8 @@ inline void counter_transition(
 )
 {
 
+    std::vector< double > signs(coords.size(), 1.0);
+
     // Weighted by a feature of the array
     if (covar_index >= 0)
     {      

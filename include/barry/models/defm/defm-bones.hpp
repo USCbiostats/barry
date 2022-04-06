@@ -56,6 +56,10 @@ public:
     size_t get_m_order() const;
     size_t get_n_rows() const;
 
+    const int * get_Y() const;
+    const int * get_ID() const;
+    const double * get_X() const;
+
 };
 
 #endif
