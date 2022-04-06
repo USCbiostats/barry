@@ -72,17 +72,19 @@ public:
     
     std::vector< size_t > indices;
     std::vector< double > numbers;
-    size_t markov_order; ///< Order of the markov process
+    std::vector< bool >   logical;
     
     DEFMCounterData() : indices(0u), numbers(0u) {};
     DEFMCounterData(
         const std::vector< size_t > indices_,
         const std::vector< double > numbers_,
-        size_t markov_order_
-    ): indices(indices_), numbers(numbers_), markov_order(markov_order_) {};
+        const std::vector< bool > logical_
+    ): indices(indices_), numbers(numbers_), 
+        logical(logical_) {};
 
     size_t idx(size_t i) {return indices[i];};
     double num(size_t i) {return numbers[i];};
+    bool is_true(size_t i) {return logical[i];};
     
     ~DEFMCounterData() {};
     
@@ -202,7 +204,7 @@ inline void counter_ones(
 
         counters->add_counter(
             counter_tmp, nullptr,
-            DEFMCounterData({static_cast<size_t>(covar_index)}, {}, 3u), 
+            DEFMCounterData({static_cast<size_t>(covar_index)}, {}, {}), 
             "# of ones x attr" + std::to_string(covar_index), 
             "Overall number of ones"
         );
@@ -232,11 +234,16 @@ inline void counter_ones(
 inline void counter_transition(
     DEFMCounters * counters,
     std::vector< size_t > coords,
+    std::vector< bool > signs,
     int covar_index = -1
 )
 {
 
-    std::vector< double > signs(coords.size(), 1.0);
+    // A vector to store the type of dat
+    if (signs.size() == 0u)
+        signs.resize(coords.size(), true);
+    else if (signs.size() != coords.size())
+        throw std::length_error("Size of -coords- and -signs- must match.");
 
     // Weighted by a feature of the array
     if (covar_index >= 0)
@@ -248,36 +255,60 @@ inline void counter_transition(
         {
             
             auto dat = data.indices;
+            auto sgn = data.logical;
 
             // Checking if the observation is in the stat. We 
             const auto & array = Array.get_data();
-            int loc = i + j * Array.nrow();
+            size_t loc = i + j * Array.nrow();
+            size_t n_cells = dat.size() - 1u;
+
 
             // Only one currently needs to be a zero for it
             // to change
-            int n_present = 0;
+            size_t n_present = 0;
+            bool baseline_value = 0;
             bool i_in_array = false;
-            for (size_t e = 0u; e < (dat.size() - 1); ++e)
-                if (array[dat[e]] == 1)
+            for (size_t e = 0u; e < n_cells; ++e)
+            {
+
+                // Is the current cell in the list?
+                if (dat[e] == loc)
                 {
-                    n_present++;
-                    
-                    if (dat[e] == static_cast<size_t>(loc))
-                        i_in_array = true;
+                    i_in_array = true;
+                    baseline_value = sgn[e];
                 }
+
+                if ((sgn[e] & (array[dat[e]] == 1)) | (!sgn[e] & (array[dat[e]] == 0)))
+                    n_present++;
+                
+            }
 
             // If i in array still false, then no change
             if (!i_in_array)
                 return 0.0;
 
-            // Measuring the number of elements
-            int nele = static_cast<int>(dat.size()) - 1;
+            // If the difference is greater than one, then nothing
+            // happens
+            if (std::fabs(n_present - n_cells) > 1)
+                return 0.0;
 
-            // We now match, so adding a new one
-            if (nele == n_present)
-                return Array.D()(static_cast<size_t>(i), static_cast<size_t>(dat[nele]));
+            double val = Array.D()(static_cast<size_t>(i), static_cast<size_t>(dat[n_cells]));
+            if (n_present == n_cells) // We now match (regardless)
+                return val;
 
-            return 0.0;            
+            // We know we added one now, so we have two cases:
+            // false -> Now disagreen, so removed a counter
+            //   n_present > n_cells: Was above alreadu => 0.0;
+            //   n_present < n_cells: Used to match => -val;
+            // true -> Now agree so adding a counter
+            //   n_present > n_cells: Used to match => -val;
+            //   n_present < n_cells: Was below already => 0.0;
+
+
+            if (!baseline_value)
+                return (n_present > n_cells) ? 0.0 : -val;
+            else
+                return (n_present > n_cells) ? -val: 0.0;
 
         };
 
@@ -288,7 +319,7 @@ inline void counter_transition(
 
         counters->add_counter(
             count_ones, nullptr,
-            DEFMCounterData(coords, {}, 3u), 
+            DEFMCounterData(coords, {}, signs), 
             name + " with attr " + std::to_string(covar_index), 
             "Motif weighted by single attribute"
         );
@@ -299,47 +330,69 @@ inline void counter_transition(
         {
 
             auto dat = data.indices;
-            
+            auto sgn = data.logical;
+
             // Checking if the observation is in the stat. We 
             const auto & array = Array.get_data();
-            int loc = i + j * Array.nrow();
+            size_t loc = i + j * Array.nrow();
+            size_t n_cells = dat.size();
 
             // Only one currently needs to be a zero for it
             // to change
-            int n_present = 0;
+            size_t n_present = 0;
+            bool baseline_value = 0;
             bool i_in_array = false;
-            for (size_t e = 0u; e < dat.size(); ++e)
-                if (array[dat[e]] == 1)
+            for (size_t e = 0u; e < n_cells; ++e)
+            {
+
+                // Is the current cell in the list?
+                if (dat[e] == loc)
                 {
-                    n_present++;
-                    
-                    if (dat[e] == static_cast<size_t>(loc))
-                        i_in_array = true;
+                    i_in_array = true;
+                    baseline_value = sgn[e];
                 }
+
+                if ((sgn[e] & (array[dat[e]] == 1)) | (!sgn[e] & (array[dat[e]] == 0)))
+                    n_present++;
+                
+            }
 
             // If i in array still false, then no change
             if (!i_in_array)
                 return 0.0;
 
-            // Measuring the number of elements
-            int nele = static_cast<int>(dat.size());
+            // If the difference is greater than one, then nothing
+            // happens
+            if (std::fabs(n_present - n_cells) > 1)
+                return 0.0;
 
-            // We now match, so adding a new one
-            if (nele == n_present)
+            if (n_present == n_cells) // We now match (regardless)
                 return 1.0;
 
-            return 0.0;            
+            // We know we added one now, so we have two cases:
+            // false -> Now disagreen, so removed a counter
+            //   n_present > n_cells: Was above alreadu => 0.0;
+            //   n_present < n_cells: Used to match => -val;
+            // true -> Now agree so adding a counter
+            //   n_present > n_cells: Used to match => -val;
+            //   n_present < n_cells: Was below already => 0.0;
+
+
+            if (!baseline_value)
+                return (n_present > n_cells) ? 0.0 : -1.0;
+            else
+                return (n_present > n_cells) ? -1.0: 0.0;   
 
         };
 
         // Creating name of the structure
         std::string name = "Motif";
-        for (size_t d = 0u; d < (coords.size() - 1u); ++d)
+        for (size_t d = 0u; d < coords.size(); ++d)
             name += (" "+ std::to_string(coords[d]));
 
         counters->add_counter(
             count_ones, nullptr,
-            DEFMCounterData({coords}, {}, 3u), 
+            DEFMCounterData({coords}, {}, signs), 
             name, 
             "Structural motif"
         );
@@ -374,7 +427,7 @@ inline void counter_fixed_effect(
 
     counters->add_counter(
         count_tmp, count_init,
-        DEFMCounterData({static_cast<size_t>(covar_index)}, {k}, 3u), 
+        DEFMCounterData({static_cast<size_t>(covar_index)}, {k}, {}), 
         "Fixed effect feature " + std::to_string(covar_index) + "^" + std::to_string(k)
     );
 

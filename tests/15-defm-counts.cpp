@@ -40,9 +40,9 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     counter_fixed_effect(counter.get_counters(), 1, 2.0);
     counter_ones(counter.get_counters());
     counter_ones(counter.get_counters(), 0);
-    counter_transition(counter.get_counters(), {0, 3, 4});
-    counter_transition(counter.get_counters(), {0, 1, 4});
-    counter_transition(counter.get_counters(), {0, 3, 4}, 0);
+    counter_transition(counter.get_counters(), {0, 3, 4}, {});
+    counter_transition(counter.get_counters(), {0, 1, 4}, {});
+    counter_transition(counter.get_counters(), {0, 3, 4}, {}, 0);
     
 
     std::vector< double > ans_observed = counter.count_all();
