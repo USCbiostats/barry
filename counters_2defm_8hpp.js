@@ -17,6 +17,6 @@ var counters_2defm_8hpp =
     [ "DEFMSupport", "counters_2defm_8hpp.html#a15fca190888778da53799b1b53507703", null ],
     [ "counter_fixed_effect", "group__counters-network.html#ga5b37312b45651ac35a6f803d212968a9", null ],
     [ "counter_ones", "group__counters-network.html#gab063a94825b6b1f0c19e339275124c40", null ],
-    [ "counter_transition", "group__counters-network.html#ga6b5b5e5431d4a1c863ce45e5fb29385c", null ],
+    [ "counter_transition", "group__counters-network.html#gafef097dde3cf7f91575c809a1dc88961", null ],
     [ "rules_markov_fixed", "group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe", null ]
 ];

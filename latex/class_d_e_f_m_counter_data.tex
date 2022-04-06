@@ -14,11 +14,13 @@ Data class used to store arbitrary uint or double vectors.
 \item 
 \mbox{\hyperlink{class_d_e_f_m_counter_data_a5d370202642dddaad6d211288fb41f4d}{DEFMCounter\+Data}} ()
 \item 
-\mbox{\hyperlink{class_d_e_f_m_counter_data_a5f43d4f8a7da2f2d09c7ee766b137269}{DEFMCounter\+Data}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ size\+\_\+t $>$ indices\+\_\+, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ numbers\+\_\+, size\+\_\+t markov\+\_\+order\+\_\+)
+\mbox{\hyperlink{class_d_e_f_m_counter_data_a3737a43d9f76ab1c4181105daae738aa}{DEFMCounter\+Data}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ size\+\_\+t $>$ indices\+\_\+, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ numbers\+\_\+, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ bool $>$ logical\+\_\+)
 \item 
 size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_counter_data_a7c3684926b2bcdaa961b7005ac5d391c}{idx}} (size\+\_\+t \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}})
 \item 
 double \mbox{\hyperlink{class_d_e_f_m_counter_data_a911d07631ee0d00407d741efa436325b}{num}} (size\+\_\+t \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}})
+\item 
+bool \mbox{\hyperlink{class_d_e_f_m_counter_data_afcdb3411e5ef4d3140bccfce4f1cf698}{is\+\_\+true}} (size\+\_\+t \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}})
 \item 
 \mbox{\hyperlink{class_d_e_f_m_counter_data_a0b09b4a0c405b1e2f694d39136bf87f6}{$\sim$\+DEFMCounter\+Data}} ()
 \end{DoxyCompactItemize}
@@ -29,8 +31,8 @@ std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_d_e_f_m_counter_data_a17
 \item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{class_d_e_f_m_counter_data_a42bd6d1deaa0d800a878ba9fe87d8b18}{numbers}}
 \item 
-size\+\_\+t \mbox{\hyperlink{class_d_e_f_m_counter_data_a38769090a011ecf6d3f638d35445e07e}{markov\+\_\+order}}
-\begin{DoxyCompactList}\small\item\em Order of the markov process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+std\+::vector$<$ bool $>$ \mbox{\hyperlink{class_d_e_f_m_counter_data_a83c21423b25668b2343196f11fdc4630}{logical}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -51,11 +53,11 @@ Definition at line 70 of file defm.\+hpp.
 
 Definition at line 77 of file defm.\+hpp.
 
-\mbox{\Hypertarget{class_d_e_f_m_counter_data_a5f43d4f8a7da2f2d09c7ee766b137269}\label{class_d_e_f_m_counter_data_a5f43d4f8a7da2f2d09c7ee766b137269}} 
+\mbox{\Hypertarget{class_d_e_f_m_counter_data_a3737a43d9f76ab1c4181105daae738aa}\label{class_d_e_f_m_counter_data_a3737a43d9f76ab1c4181105daae738aa}} 
 \index{DEFMCounterData@{DEFMCounterData}!DEFMCounterData@{DEFMCounterData}}
 \index{DEFMCounterData@{DEFMCounterData}!DEFMCounterData@{DEFMCounterData}}
 \doxysubsubsection{\texorpdfstring{DEFMCounterData()}{DEFMCounterData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily DEFMCounter\+Data\+::\+DEFMCounter\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ size\+\_\+t $>$}]{indices\+\_\+,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$}]{numbers\+\_\+,  }\item[{size\+\_\+t}]{markov\+\_\+order\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily DEFMCounter\+Data\+::\+DEFMCounter\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ size\+\_\+t $>$}]{indices\+\_\+,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$}]{numbers\+\_\+,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ bool $>$}]{logical\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -69,7 +71,7 @@ Definition at line 78 of file defm.\+hpp.
 
 
 
-Definition at line 87 of file defm.\+hpp.
+Definition at line 89 of file defm.\+hpp.
 
 
 
@@ -82,7 +84,17 @@ Definition at line 87 of file defm.\+hpp.
 
 
 
-Definition at line 84 of file defm.\+hpp.
+Definition at line 85 of file defm.\+hpp.
+
+\mbox{\Hypertarget{class_d_e_f_m_counter_data_afcdb3411e5ef4d3140bccfce4f1cf698}\label{class_d_e_f_m_counter_data_afcdb3411e5ef4d3140bccfce4f1cf698}} 
+\index{DEFMCounterData@{DEFMCounterData}!is\_true@{is\_true}}
+\index{is\_true@{is\_true}!DEFMCounterData@{DEFMCounterData}}
+\doxysubsubsection{\texorpdfstring{is\_true()}{is\_true()}}
+{\footnotesize\ttfamily bool DEFMCounter\+Data\+::is\+\_\+true (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 87 of file defm.\+hpp.
 
 \mbox{\Hypertarget{class_d_e_f_m_counter_data_a911d07631ee0d00407d741efa436325b}\label{class_d_e_f_m_counter_data_a911d07631ee0d00407d741efa436325b}} 
 \index{DEFMCounterData@{DEFMCounterData}!num@{num}}
@@ -92,7 +104,7 @@ Definition at line 84 of file defm.\+hpp.
 
 
 
-Definition at line 85 of file defm.\+hpp.
+Definition at line 86 of file defm.\+hpp.
 
 
 
@@ -107,15 +119,11 @@ Definition at line 85 of file defm.\+hpp.
 
 Definition at line 73 of file defm.\+hpp.
 
-\mbox{\Hypertarget{class_d_e_f_m_counter_data_a38769090a011ecf6d3f638d35445e07e}\label{class_d_e_f_m_counter_data_a38769090a011ecf6d3f638d35445e07e}} 
-\index{DEFMCounterData@{DEFMCounterData}!markov\_order@{markov\_order}}
-\index{markov\_order@{markov\_order}!DEFMCounterData@{DEFMCounterData}}
-\doxysubsubsection{\texorpdfstring{markov\_order}{markov\_order}}
-{\footnotesize\ttfamily size\+\_\+t DEFMCounter\+Data\+::markov\+\_\+order}
-
-
-
-Order of the markov process. 
+\mbox{\Hypertarget{class_d_e_f_m_counter_data_a83c21423b25668b2343196f11fdc4630}\label{class_d_e_f_m_counter_data_a83c21423b25668b2343196f11fdc4630}} 
+\index{DEFMCounterData@{DEFMCounterData}!logical@{logical}}
+\index{logical@{logical}!DEFMCounterData@{DEFMCounterData}}
+\doxysubsubsection{\texorpdfstring{logical}{logical}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ DEFMCounter\+Data\+::logical}
 
 
 
