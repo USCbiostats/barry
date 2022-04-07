@@ -118,6 +118,7 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     model.get_model().print_stats(0u);
     model.get_model().print_stats(1u);
     model.get_model().print_stats(2u);
+    (void) model.get_model().get_stats_target();
     return 0;
     #endif
 

@@ -13429,77 +13429,83 @@ inline void counter_transition(
     else if (signs.size() != coords.size())
         throw std::length_error("Size of -coords- and -signs- must match.");
 
-    // Weighted by a feature of the array
-    if (covar_index >= 0)
-    {      
+    coords.push_back(static_cast<size_t>(covar_index));
 
-        coords.push_back(static_cast<size_t>(covar_index));
+    DEFM_COUNTER_LAMBDA(count_ones)
+    {
+        
+        auto dat = data.indices;
+        auto sgn = data.logical;
+        int covaridx = dat[dat.size() - 1u];
 
-        DEFM_COUNTER_LAMBDA(count_ones)
+        // Checking if the observation is in the stat. We 
+        const auto & array = Array.get_data();
+        size_t loc = i + j * Array.nrow();
+        size_t n_cells = dat.size() - 1u;
+
+
+        // Only one currently needs to be a zero for it
+        // to change
+        size_t n_now = 0;
+        bool baseline_value = false;
+        bool i_in_array = false;
+        for (size_t e = 0u; e < n_cells; ++e)
         {
-            
-            auto dat = data.indices;
-            auto sgn = data.logical;
 
-            // Checking if the observation is in the stat. We 
-            const auto & array = Array.get_data();
-            size_t loc = i + j * Array.nrow();
-            size_t n_cells = dat.size() - 1u;
-
-
-            // Only one currently needs to be a zero for it
-            // to change
-            size_t n_present = 0;
-            bool baseline_value = 0;
-            bool i_in_array = false;
-            for (size_t e = 0u; e < n_cells; ++e)
+            // Is the current cell in the list?
+            if (dat[e] == loc)
             {
-
-                // Is the current cell in the list?
-                if (dat[e] == loc)
-                {
-                    i_in_array = true;
-                    baseline_value = sgn[e];
-                }
-
-                if ((sgn[e] & (array[dat[e]] == 1)) | (!sgn[e] & (array[dat[e]] == 0)))
-                    n_present++;
-                
+                i_in_array = true;
+                baseline_value = sgn[e];
             }
 
-            // If i in array still false, then no change
-            if (!i_in_array)
-                return 0.0;
+            if ((sgn[e] & (array[dat[e]] == 1)) | (!sgn[e] & (array[dat[e]] == 0)))
+                n_now++;
+            
+        }
 
-            // If the difference is greater than one, then nothing
-            // happens
-            if (std::fabs(n_present - n_cells) > 1)
-                return 0.0;
+        // If i in array still false, then no change
+        if (!i_in_array)
+            return 0.0;
+        
+        size_t n_prev = n_now;
+        if (baseline_value)
+            n_prev--;
+        else
+            n_prev++;
 
-            double val = Array.D()(static_cast<size_t>(i), static_cast<size_t>(dat[n_cells]));
-            if (n_present == n_cells) // We now match (regardless)
-                return val;
+        // Computing stats
+        if (covaridx >= 0)
+        {
+            
+            double val = Array.D()(static_cast<size_t>(i), covaridx);
+            double value_now  = n_now == n_cells ?  val : 0.0;
+            double value_prev = n_prev == n_cells ? val : 0.0;
 
-            // We know we added one now, so we have two cases:
-            // false -> Now disagreen, so removed a counter
-            //   n_present > n_cells: Was above alreadu => 0.0;
-            //   n_present < n_cells: Used to match => -val;
-            // true -> Now agree so adding a counter
-            //   n_present > n_cells: Used to match => -val;
-            //   n_present < n_cells: Was below already => 0.0;
+            return value_now - value_prev;
+
+        } 
+        else
+        {
+
+            double value_now  = n_now == n_cells ? 1.0 : 0.0;
+            double value_prev = n_prev == n_cells ? 1.0 : 0.0;
+
+            return value_now - value_prev;
+
+        }
+
+    };
+
+    // Creating name of the structure
+    std::string name = "Motif";
+    size_t n_cells = coords.size() - (covar_index >= 0 ? 1u : 0u);
+    for (size_t d = 0u; d < n_cells; ++d)
+        name += (" "+ std::to_string(coords[d]));
 
 
-            if (!baseline_value)
-                return (n_present > n_cells) ? 0.0 : -val;
-            else
-                return (n_present > n_cells) ? -val: 0.0;
-
-        };
-
-        // Creating name of the structure
-        std::string name = "Motif";
-        for (size_t d = 0u; d < (coords.size() - 1u); ++d)
-            name += (" "+ std::to_string(coords[d]));
+    if (covar_index >= 0)
+    {
 
         counters->add_counter(
             count_ones, nullptr,
@@ -13510,77 +13516,15 @@ inline void counter_transition(
 
     } else {
 
-        DEFM_COUNTER_LAMBDA(count_ones)
-        {
-
-            auto dat = data.indices;
-            auto sgn = data.logical;
-
-            // Checking if the observation is in the stat. We 
-            const auto & array = Array.get_data();
-            size_t loc = i + j * Array.nrow();
-            size_t n_cells = dat.size();
-
-            // Only one currently needs to be a zero for it
-            // to change
-            size_t n_present = 0;
-            bool baseline_value = 0;
-            bool i_in_array = false;
-            for (size_t e = 0u; e < n_cells; ++e)
-            {
-
-                // Is the current cell in the list?
-                if (dat[e] == loc)
-                {
-                    i_in_array = true;
-                    baseline_value = sgn[e];
-                }
-
-                if ((sgn[e] & (array[dat[e]] == 1)) | (!sgn[e] & (array[dat[e]] == 0)))
-                    n_present++;
-                
-            }
-
-            // If i in array still false, then no change
-            if (!i_in_array)
-                return 0.0;
-
-            // If the difference is greater than one, then nothing
-            // happens
-            if (std::fabs(n_present - n_cells) > 1)
-                return 0.0;
-
-            if (n_present == n_cells) // We now match (regardless)
-                return 1.0;
-
-            // We know we added one now, so we have two cases:
-            // false -> Now disagreen, so removed a counter
-            //   n_present > n_cells: Was above alreadu => 0.0;
-            //   n_present < n_cells: Used to match => -val;
-            // true -> Now agree so adding a counter
-            //   n_present > n_cells: Used to match => -val;
-            //   n_present < n_cells: Was below already => 0.0;
-
-
-            if (!baseline_value)
-                return (n_present > n_cells) ? 0.0 : -1.0;
-            else
-                return (n_present > n_cells) ? -1.0: 0.0;   
-
-        };
-
-        // Creating name of the structure
-        std::string name = "Motif";
-        for (size_t d = 0u; d < coords.size(); ++d)
-            name += (" "+ std::to_string(coords[d]));
-
         counters->add_counter(
             count_ones, nullptr,
-            DEFMCounterData({coords}, {}, signs), 
+            DEFMCounterData(coords, {}, signs), 
             name, 
-            "Structural motif"
+            "Motif"
         );
+
     }
+    
 
     return;
 
