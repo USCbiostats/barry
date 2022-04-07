@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('defm-meat_8hpp_source.html',''); initR
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    ) {</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">size_t</span> nrow = <a class="code" href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a>.nrow();</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">size_t</span> ncol = <a class="code" href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a>.nrow();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">size_t</span> ncol = <a class="code" href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a>.ncol();</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">size_t</span> k    = <a class="code" href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a>.D().ncol();</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::vector&lt; double &gt; res(</div>
@@ -313,7 +313,7 @@ $(document).ready(function(){initNavTree('defm-meat_8hpp_source.html',''); initR
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="comment">// Filling-out the array</span></div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0u; k &lt; Y_ncol; ++k)</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> o = 0u; o &lt; (M_order + 1u); ++o)</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                    array(o, k) = *(Y + k * ID_length + start_i + n_proc * M_order + o);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                    array(o, k) = *(Y + k * ID_length + start_i + n_proc + o);</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="comment">// Adding to the model</span></div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            model_ord.push_back( model-&gt;add_array(array, <span class="keyword">true</span>) );</div>
@@ -387,14 +387,14 @@ $(document).ready(function(){initNavTree('defm-meat_8hpp_source.html',''); initR
 <div class="ttc" id="adefm-meat_8hpp_html_a865628274ad1aac9dbd4357f5f6d6bc1"><div class="ttname"><a href="defm-meat_8hpp.html#a865628274ad1aac9dbd4357f5f6d6bc1">keygen_defm</a></div><div class="ttdeci">std::vector&lt; double &gt; keygen_defm(const defmcounters::DEFMArray &amp;Array_)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00004">defm-meat.hpp:4</a></div></div>
 <div class="ttc" id="adefm-meat_8hpp_html_adf64635c1c487e9ea0eaad4fbffb34ac"><div class="ttname"><a href="defm-meat_8hpp.html#adf64635c1c487e9ea0eaad4fbffb34ac">DEFM_LOOP_ARRAYS</a></div><div class="ttdeci">#define DEFM_LOOP_ARRAYS(a)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00041">defm-meat.hpp:41</a></div></div>
 <div class="ttc" id="adefm-meat_8hpp_html_adfece462b32a0dea6b270efc91a7dd5c"><div class="ttname"><a href="defm-meat_8hpp.html#adfece462b32a0dea6b270efc91a7dd5c">DEFM_RANGES</a></div><div class="ttdeci">#define DEFM_RANGES(a)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00036">defm-meat.hpp:36</a></div></div>
-<div class="ttc" id="agroup__counters-network_html_ga31452452bf9dad7f6c5767dcabfb4dbe"><div class="ttname"><a href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">rules_markov_fixed</a></div><div class="ttdeci">void rules_markov_fixed(DEFMRules *rules, size_t markov_order)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00389">defm.hpp:389</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga31452452bf9dad7f6c5767dcabfb4dbe"><div class="ttname"><a href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">rules_markov_fixed</a></div><div class="ttdeci">void rules_markov_fixed(DEFMRules *rules, size_t markov_order)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00391">defm.hpp:391</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_d7a554d3e09ed8456d56450fe8436947.html">defm</a></li><li class="navelem"><a class="el" href="defm-meat_8hpp.html">defm-meat.hpp</a></li>
-    <li class="footer">Generated on Thu Apr 7 2022 07:24:11 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Apr 7 2022 08:20:55 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
