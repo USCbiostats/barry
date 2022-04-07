@@ -105,7 +105,7 @@ inline std::vector< double > keygen_defm(
     ) {
     
     size_t nrow = Array_.nrow();
-    size_t ncol = Array_.nrow();
+    size_t ncol = Array_.ncol();
     size_t k    = Array_.D().ncol();
 
     std::vector< double > res(
@@ -314,7 +314,7 @@ inline void DEFM::init()
             // Filling-out the array
             for (size_t k = 0u; k < Y_ncol; ++k)
                 for (size_t o = 0u; o < (M_order + 1u); ++o)
-                    array(o, k) = *(Y + k * ID_length + start_i + n_proc * M_order + o);
+                    array(o, k) = *(Y + k * ID_length + start_i + n_proc + o);
 
             // Adding to the model
             model_ord.push_back( model->add_array(array, true) );

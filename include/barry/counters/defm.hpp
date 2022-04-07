@@ -198,7 +198,7 @@ inline void counter_ones(
 
         DEFM_COUNTER_LAMBDA(counter_tmp)
         {
-            return Array.D()(static_cast<size_t>(i), data.idx(0u));
+            return Array.D()(Array.nrow() - 1u, data.idx(0u));
 
         };
 
@@ -245,7 +245,10 @@ inline void counter_transition(
     else if (signs.size() != coords.size())
         throw std::length_error("Size of -coords- and -signs- must match.");
 
-    coords.push_back(static_cast<size_t>(covar_index));
+    if (covar_index >= 0)
+        coords.push_back(static_cast<size_t>(covar_index));
+    else
+        coords.push_back(1000u);
 
     DEFM_COUNTER_LAMBDA(count_ones)
     {
@@ -258,7 +261,6 @@ inline void counter_transition(
         const auto & array = Array.get_data();
         size_t loc = i + j * Array.nrow();
         size_t n_cells = dat.size() - 1u;
-
 
         // Only one currently needs to be a zero for it
         // to change
@@ -291,10 +293,10 @@ inline void counter_transition(
             n_prev++;
 
         // Computing stats
-        if (covaridx >= 0)
+        if (covaridx < 1000)
         {
             
-            double val = Array.D()(static_cast<size_t>(i), covaridx);
+            double val = Array.D()(Array.nrow() - 1u, covaridx);
             double value_now  = n_now == n_cells ?  val : 0.0;
             double value_prev = n_prev == n_cells ? val : 0.0;
 
@@ -315,7 +317,7 @@ inline void counter_transition(
 
     // Creating name of the structure
     std::string name = "Motif";
-    size_t n_cells = coords.size() - (covar_index >= 0 ? 1u : 0u);
+    size_t n_cells = coords.size() - 1u;
     for (size_t d = 0u; d < n_cells; ++d)
         name += (" "+ std::to_string(coords[d]));
 
