@@ -7,6 +7,8 @@ BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
 
 CPPFLAGS= -std=c++17 -fopenmp -DBARRY_USE_OPENMP -Wall -pedantic -ftree-vectorize -march=native -ffast-math # only works with g++10
 
+CPPFLAGSV= -std=c++17 -Wall -pedantic
+
 check: main.o 
 	./main.o
 
@@ -18,7 +20,7 @@ checkv: mainv.o
 	valgrind --leak-check=full --track-origins=yes ./mainv.o #valgrind --tool=cachegrind ./main
 
 mainv.o: main.cpp
-	g++ $(CPPFLAGS) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o mainv.o
+	g++ $(CPPFLAGSV) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o mainv.o
 
 clean:
 	rm -f main*.o; rm -f *.gcov; rm -f *gcno; rm -f *gcda

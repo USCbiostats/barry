@@ -235,6 +235,8 @@ inline void counter_transition(
     DEFMCounters * counters,
     std::vector< size_t > coords,
     std::vector< bool > signs,
+    size_t m_order,
+    size_t n_y,
     int covar_index = -1
 )
 {
@@ -249,6 +251,24 @@ inline void counter_transition(
         coords.push_back(static_cast<size_t>(covar_index));
     else
         coords.push_back(1000u);
+
+    DEFM_COUNTER_LAMBDA(count_init)
+    {
+
+        auto indices = data.indices;
+
+        for (size_t i = 0u; i < (indices.size() - 1u); ++i)
+        {
+            int c = std::floor(indices[i] / Array.nrow());
+            int r = indices[i] - c * Array.nrow();
+
+            if (c >= Array.ncol())
+                throw std::range_error("The motif includes entries out of range.");
+        }
+            
+        return 0.0;
+        
+    };
 
     DEFM_COUNTER_LAMBDA(count_ones)
     {
@@ -316,17 +336,68 @@ inline void counter_transition(
     };
 
     // Creating name of the structure
-    std::string name = "Motif";
+    std::string name = "Motif {";
+
+
+    barry::BArrayDense<int> motif(m_order + 1u, n_y);
+    for (size_t i = 0u; i < m_order; ++i)
+        for (size_t j = 0u; j < n_y; ++j)
+            motif(i, j) = 0;
+
     size_t n_cells = coords.size() - 1u;
     for (size_t d = 0u; d < n_cells; ++d)
-        name += (" "+ std::to_string(coords[d]));
+    {
+        size_t c = std::floor(coords[d] / (m_order + 1u));
+        size_t r = coords[d] - c * (m_order + 1u);
+        motif(r, c) = signs[d] ? 1 : -1;
+        
+    }
 
+    // From
+    for (size_t i = 0u; i < m_order; ++i)
+    {
+        for (size_t j = 0u; j < n_y; ++j)
+        {
+
+            // Is it included?
+            if (motif(i,j) == 0)
+                continue;
+
+            // Is not the first?
+            if ((i != 0u) | (j == 0u))
+                name += ", ";
+
+            name += (
+                (motif(i,j) < 0 ? "-y" : "+y") +
+                std::to_string(i) + std::to_string(j) + ")"
+                );
+        }
+    }
+
+    if (m_order > 0u)
+        name += "} > ";
+
+    for (size_t j = 0u; j < n_y; ++j)
+    {
+
+        if (motif(m_order, j) == 0)
+            continue;
+
+        if (j != 0u)
+            name += ", ";
+
+        name += (
+            (motif(m_order, j) < 0 ? "-y" : "+y") +
+            std::to_string(m_order) + std::to_string(j) + ")"
+            );
+
+    }
 
     if (covar_index >= 0)
     {
 
         counters->add_counter(
-            count_ones, nullptr,
+            count_ones, count_init,
             DEFMCounterData(coords, {}, signs), 
             name + " with attr " + std::to_string(covar_index), 
             "Motif weighted by single attribute"
@@ -335,7 +406,7 @@ inline void counter_transition(
     } else {
 
         counters->add_counter(
-            count_ones, nullptr,
+            count_ones, count_init,
             DEFMCounterData(coords, {}, signs), 
             name, 
             "Motif"

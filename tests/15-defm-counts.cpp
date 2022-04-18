@@ -40,9 +40,9 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     counter_fixed_effect(counter.get_counters(), 1, 2.0);
     counter_ones(counter.get_counters());
     counter_ones(counter.get_counters(), 0);
-    counter_transition(counter.get_counters(), {0, 3, 4}, {});
-    counter_transition(counter.get_counters(), {0, 1, 4}, {});
-    counter_transition(counter.get_counters(), {0, 3, 4}, {}, 0);
+    counter_transition(counter.get_counters(), {0, 3, 4}, {}, 2, 3);
+    counter_transition(counter.get_counters(), {0, 1, 4}, {}, 2, 3);
+    counter_transition(counter.get_counters(), {0, 3, 4}, {}, 2, 3, 0);
     
 
     std::vector< double > ans_observed = counter.count_all();
@@ -111,6 +111,43 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     #undef GET_Y
 
     #endif
+
+
+    std::vector< int > id2(5, 1);
+    std::vector< int > Y2 = {
+        1, 1, 1, 0, 0,
+        0, 1, 1, 0, 0,
+        0, 1, 0, 0, 1,
+        0, 0, 1, 0, 0,
+        0, 1, 0, 0, 1,
+        0, 1, 0, 1, 1,
+        0, 1, 1, 0, 0,
+        0, 0, 0, 0, 1,
+        0, 1, 1, 1, 0,
+        0, 1, 0, 0, 1
+    };
+
+    std::vector< double > X2 = {.4, .1, 1, .1, 1};
+    DEFM model2(&id2[0u], &Y2[0u], &X2[0u], 5, 10, 1, 1);
+    for (size_t t = 0u; t < 9; ++t)
+        defmcounters::counter_transition(
+            model2.get_model().get_counters(),
+            {0 + 2 * t, 1 + 2 * t, 2 + 2 * t, 3 + 2 * t},
+            {true, false, false, true}, 1, 10
+            );
+
+    defmcounters::counter_transition(
+        model2.get_model().get_counters(),
+        {18,19,0,1}, {false, true, true, false}, 1, 10
+    );
+    
+    defmcounters::counter_ones(model2.get_model().get_counters());
+
+    model2.init();
+
+    std::vector< int > out_sim2(Y2.size(), -1);
+    std::vector< double > params2(model2.get_model().nterms(), 0.0);
+    model2.simulate(params2, &out_sim2[0u]);
 
     #ifndef CATCH_CONFIG_MAIN
     auto res = model.get_model().likelihood_total(par0, true);
