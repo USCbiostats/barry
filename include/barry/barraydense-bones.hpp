@@ -71,6 +71,7 @@ public:
      * @param source An unsigned vector ranging from 0 to N_
      * @param target An unsigned int vector ranging from 0 to M_
      * @param target When `true` tries to add repeated observations.
+     * @param value Cell_Type defaul fill-in value (zero, by default.)
      */
     ///@{
     
@@ -78,9 +79,9 @@ public:
     BArrayDense() : N(0u), M(0u), el(0u), el_rowsums(0u), el_colsums(0u) {};
     
     /** @brief Empty array */
-    BArrayDense (uint N_, uint M_) :
-        N(N_), M(M_), el(N_ * M_, 0),
-        el_rowsums(N_, 0), el_colsums(M_, 0) {};
+    BArrayDense (uint N_, uint M_, Cell_Type value = static_cast<Cell_Type>(0)) :
+        N(N_), M(M_), el(N_ * M_, value),
+        el_rowsums(N_, static_cast<Cell_Type>(value * M_)), el_colsums(M_, static_cast<Cell_Type>(value * N_)) {};
     
     /** @brief Edgelist with data */
     BArrayDense (
