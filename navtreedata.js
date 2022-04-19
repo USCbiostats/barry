@@ -60,7 +60,8 @@ var NAVTREEINDEX =
 "class_b_array_row.html#aafd516a2c987c24cd16d216e51ab1b55",
 "class_model.html#a2adac6eb2d37bd67d5f0222374ce193d",
 "counters-meat_8hpp.html#ae27e6ee1784a946a418d6115a337f50c",
-"group__counters-phylo.html#ga89539d88e4c611fb84e60dcb2689202d"
+"group__counters-phylo.html#ga4aa6855316673440f7ebff2d01e3ddca",
+"typedefs_8hpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

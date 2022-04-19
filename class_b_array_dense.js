@@ -1,7 +1,7 @@
 var class_b_array_dense =
 [
     [ "BArrayDense", "class_b_array_dense.html#ae399b8f3741f52478edfe88a2e986c75", null ],
-    [ "BArrayDense", "class_b_array_dense.html#a4c501b3f65f617e67dcd7970d18a9c69", null ],
+    [ "BArrayDense", "class_b_array_dense.html#af46a5574df8a35a47a18fb8322fba71b", null ],
     [ "BArrayDense", "class_b_array_dense.html#a008198a9e9fc649d2815c1d0e35a804d", null ],
     [ "BArrayDense", "class_b_array_dense.html#a515a406c9f18f6b5d72a4853031248c4", null ],
     [ "BArrayDense", "class_b_array_dense.html#a5be6f87f6024e889e5326ece87c0090d", null ],

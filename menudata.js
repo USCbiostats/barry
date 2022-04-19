@@ -168,4 +168,5 @@ var menudata={children:[
 {text:"p",url:"globals_defs.html#index_p"},
 {text:"r",url:"globals_defs.html#index_r"},
 {text:"s",url:"globals_defs.html#index_s"},
+{text:"u",url:"globals_defs.html#index_u"},
 {text:"z",url:"globals_defs.html#index_z"}]}]}]}]}
