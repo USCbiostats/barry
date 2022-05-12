@@ -26,8 +26,8 @@ var counters_2defm_8hpp =
     [ "DEFMRules", "counters_2defm_8hpp.html#a6d265c2bdf19affea1db1dfa2a8cbb3f", null ],
     [ "DEFMStatsCounter", "counters_2defm_8hpp.html#af8198b2184baee8a83e8ee69da487833", null ],
     [ "DEFMSupport", "counters_2defm_8hpp.html#a15fca190888778da53799b1b53507703", null ],
-    [ "counter_fixed_effect", "group__counters-network.html#ga5b37312b45651ac35a6f803d212968a9", null ],
-    [ "counter_ones", "group__counters-network.html#gab063a94825b6b1f0c19e339275124c40", null ],
-    [ "counter_transition", "group__counters-network.html#ga6887fa72495909e57445d0851775d487", null ],
+    [ "counter_fixed_effect", "group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57", null ],
+    [ "counter_ones", "group__counters-network.html#ga8b2d17f700dee8cdf744ad065d4d396c", null ],
+    [ "counter_transition", "group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598", null ],
     [ "rules_markov_fixed", "group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe", null ]
 ];
