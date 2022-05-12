@@ -188,7 +188,8 @@ Rule_fun_type<DEFMArray, DEFMRuleData> a = \
  */
 inline void counter_ones(
     DEFMCounters * counters,
-    int covar_index = -1
+    int covar_index = -1,
+    std::string vname = ""
 )
 {
 
@@ -205,7 +206,7 @@ inline void counter_ones(
         counters->add_counter(
             counter_tmp, nullptr,
             DEFMCounterData({static_cast<size_t>(covar_index)}, {}, {}), 
-            "# of ones x attr" + std::to_string(covar_index), 
+            "# of ones x " + ((vname != "")? vname : ("attr" + std::to_string(covar_index))), 
             "Overall number of ones"
         );
 
@@ -237,7 +238,8 @@ inline void counter_transition(
     std::vector< bool > signs,
     size_t m_order,
     size_t n_y,
-    int covar_index = -1
+    int covar_index = -1,
+    std::string vname = ""
 )
 {
 
@@ -370,6 +372,8 @@ inline void counter_transition(
     // If order is greater than zero, the starting point of the transtion
     for (size_t i = 0u; i < m_order; ++i)
     {
+
+        bool row_start = true;
         for (size_t j = 0u; j < n_y; ++j)
         {
 
@@ -378,7 +382,9 @@ inline void counter_transition(
                 continue;
 
             // Is not the first?
-            if ((i != 0u) | (j != 0u))
+            if (row_start)
+                row_start = false;
+            else
                 name += ", ";
 
             name += (motif(i,j) < 0 ? "y\u207B" : "y\u207A");
@@ -409,13 +415,16 @@ inline void counter_transition(
         name += "} \u21E8 {";
 
     // Looking onto the transtions
+    bool row_start = true;
     for (size_t j = 0u; j < n_y; ++j)
     {
 
         if (motif(m_order, j) == 0)
             continue;
 
-        if (j != 0u)
+        if (row_start)
+            row_start = false;
+        else
             name += ", ";
 
         name += (motif(m_order, j) < 0 ? "y\u207B" : "y\u207A" );
@@ -437,7 +446,7 @@ inline void counter_transition(
         counters->add_counter(
             count_ones, count_init,
             DEFMCounterData(coords, {}, signs), 
-            name + " with attr " + std::to_string(covar_index), 
+            name + " x " + ((vname != "")? vname : ("attr" + std::to_string(covar_index))), 
             "Motif weighted by single attribute"
         );
 
@@ -466,7 +475,8 @@ inline void counter_transition(
 inline void counter_fixed_effect(
     DEFMCounters * counters,
     int covar_index,
-    double k
+    double k,
+    std::string vname = ""
 )
 {
 
@@ -483,7 +493,8 @@ inline void counter_fixed_effect(
     counters->add_counter(
         count_tmp, count_init,
         DEFMCounterData({static_cast<size_t>(covar_index)}, {k}, {}), 
-        "Fixed effect feature " + std::to_string(covar_index) + "^" + std::to_string(k)
+        "Fixed effect feature (" +
+        ((vname != "")? vname : ("attr" + std::to_string(covar_index))) + ")^" + std::to_string(k)
     );
 
     return;
