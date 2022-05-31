@@ -75,6 +75,10 @@ public:
     const int * get_ID() const;
     const double * get_X() const;
 
+    barry::FreqTable<int> motif_census(
+        std::vector< size_t > idx
+    );
+
 };
 
 #endif
@@ -365,6 +369,44 @@ inline const double * DEFM::get_X() const
     return X;
 }
 
+
+inline barry::FreqTable<int> DEFM::motif_census(
+        std::vector< size_t > idx
+) {
+
+    // Checking all sizes
+    for (const auto & i : idx)
+        if (i >= Y_ncol)
+            throw std::range_error("The -idx- for motif accounting is out of range.");
+
+    barry::FreqTable<int> ans;
+    std::vector<int> array(idx.size() * (M_order + 1));
+
+    for (size_t i = 0u; i < N; ++i)
+    {
+
+        // Figuring out how many processes can we observe
+        DEFM_RANGES(i)
+        
+        DEFM_LOOP_ARRAYS(proc_n)
+        {
+
+            // Generating an integer array between the parts
+            size_t nele = 0u;
+
+            for (auto & k : idx)
+                for (size_t o = 0u; o < (M_order + 1u); ++o)
+                    array[nele++] = *(Y + k * ID_length + start_i + proc_n + o);
+
+            ans.add(array, nullptr);
+
+        }
+
+    }
+
+    return ans;
+
+}
 
 #undef DEFM_RANGES
 #undef DEFM_LOOP_ARRAYS

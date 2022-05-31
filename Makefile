@@ -19,4 +19,7 @@ prof:
 counts:
 	cloc include/** tests/*.cpp examples/
 
+barry.hpp: 
+	Rscript --verbose --vanilla barry-hpp.R
+
 

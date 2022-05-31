@@ -60,6 +60,10 @@ public:
     const int * get_ID() const;
     const double * get_X() const;
 
+    barry::FreqTable<int> motif_census(
+        std::vector< size_t > idx
+    );
+
 };
 
 #endif

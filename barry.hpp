@@ -608,7 +608,7 @@ public:
      */
     size_t size() const noexcept;
 
-    size_t make_hash(const std::vector< double > & x) const;
+    size_t make_hash(const std::vector< T > & x) const;
     
 };
 
@@ -793,7 +793,7 @@ inline size_t FreqTable<T>::size() const noexcept
 }
 
 template<typename T>
-inline size_t FreqTable<T>::make_hash(const std::vector< double > & x) const
+inline size_t FreqTable<T>::make_hash(const std::vector< T > & x) const
 {
 
     std::hash< T > hasher;
@@ -13384,7 +13384,12 @@ inline void counter_ones(
 
         DEFM_COUNTER_LAMBDA(counter_tmp)
         {
-            return Array.D()(Array.nrow() - 1u, data.idx(0u));
+
+            // Only count the current
+            if (i != (Array.nrow() - 1))
+                return 0.0;
+
+            return Array.D()(i, data.idx(0u));
 
         };
 
@@ -13397,7 +13402,15 @@ inline void counter_ones(
 
     } else {
 
-        DEFM_COUNTER_LAMBDA(count_ones) {return 1.0;};
+        DEFM_COUNTER_LAMBDA(count_ones)
+        {
+            
+            // Only count the current
+            if (i != (Array.nrow() - 1))
+                return 0.0;
+
+            return 1.0;
+        };
 
         counters->add_counter(
             count_ones, nullptr,
@@ -13523,7 +13536,7 @@ inline void counter_transition(
     };
 
     // Creating name of the structure
-    std::string name = "Motif {";
+    std::string name = "Motif ";
 
     // Creating an empty motif filled with zeros
     barry::BArrayDense<int> motif(m_order + 1u, n_y, 0);
@@ -13539,6 +13552,26 @@ inline void counter_transition(
         
     }
 
+    // Checking if any prior to the event
+    bool any_before_event = false;
+    
+    for (size_t i = 0u; i < m_order; ++i)
+    {
+        for (size_t j = 0u; j < n_y; ++j)
+        {
+            if (motif(i,j) != 0)
+            {
+                any_before_event = true;
+                break;
+            }
+
+        }
+    }
+    
+
+    if (any_before_event)
+        name += "{";
+
     #define UNI_SUB(a) \
         (\
             ((a) == 0) ? "\u2080" : (\
@@ -13552,7 +13585,6 @@ inline void counter_transition(
             ((a) == 8) ? "\u2088" : \
             "\u2089"))))))))\
         )
-
 
     // If order is greater than zero, the starting point of the transtion
     for (size_t i = 0u; i < m_order; ++i)
@@ -13592,12 +13624,11 @@ inline void counter_transition(
     #define UNI8S \u2088
     #define UNI9S \u2089
 
-
-
-
     // If it has starting point, then need to close.
-    if (m_order > 0u)
+    if (any_before_event & (m_order > 0u))
         name += "} \u21E8 {";
+    else
+        name += "{";
 
     // Looking onto the transtions
     bool row_start = true;
