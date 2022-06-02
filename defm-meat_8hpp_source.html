@@ -403,10 +403,52 @@ $(document).ready(function(){initNavTree('defm-meat_8hpp_source.html',''); initR
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;}</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="preprocessor">#undef DEFM_RANGES</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor">#undef DEFM_LOOP_ARRAYS</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="class_d_e_f_m.html#abf519be0cc1245fbaf71842ca5a53519">  308</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; double &gt; <a class="code" href="class_d_e_f_m.html#abf519be0cc1245fbaf71842ca5a53519">DEFM::logodds</a>(</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keyword">const</span> std::vector&lt; double &gt; &amp; par,</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordtype">size_t</span> i_,</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordtype">size_t</span> j_</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;) {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    std::vector&lt; double &gt; res(ID_length, std::nan(<span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; N; ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="comment">// Figuring out how many processes can we observe</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <a class="code" href="defm-meat_8hpp.html#adfece462b32a0dea6b270efc91a7dd5c">DEFM_RANGES</a>(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <a class="code" href="defm-meat_8hpp.html#adf64635c1c487e9ea0eaad4fbffb34ac">DEFM_LOOP_ARRAYS</a>(n_proc)</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="comment">// Creating the array for process n_proc and setting the data</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <a class="code" href="counters_2defm_8hpp.html#a0b423f2edc017f1bb06fe423cbd49b75">defmcounters::DEFMArray</a> array(M_order + 1u, Y_ncol);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            array.set_data(</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                <span class="keyword">new</span> defmcounters::DEFMData(&amp;array, X, (start_i + n_proc), X_ncol, ID_length),</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                <span class="keyword">true</span> <span class="comment">// Delete the data</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            );</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="comment">// Filling-out the array</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0u; k &lt; Y_ncol; ++k)</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> o = 0u; o &lt; (M_order + 1u); ++o)</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                    array(o, k) = *(Y + k * ID_length + start_i + n_proc + o);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            <span class="keywordtype">double</span> p_1 = model-&gt;conditional_prob(array, par, i_, j_);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            res[M_order + start_i + n_proc] = std::log(p_1/(1.0 - p_1));</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;}</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor">#undef DEFM_RANGES</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="preprocessor">#undef DEFM_LOOP_ARRAYS</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a6cb31aaad809d508e214b61785d7fb47"><div class="ttname"><a href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a></div><div class="ttdeci">Data_Type &amp; Array_</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00134">barray-meat.hpp:134</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a76c0b31eda093c9e1357ff71b5c54906"><div class="ttname"><a href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a></div><div class="ttdeci">return ans</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00449">barray-meat.hpp:449</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
@@ -417,6 +459,7 @@ $(document).ready(function(){initNavTree('defm-meat_8hpp_source.html',''); initR
 <div class="ttc" id="aclass_d_e_f_m_html_a5fe82e5e9020e3fc3371f759267eda93"><div class="ttname"><a href="class_d_e_f_m.html#a5fe82e5e9020e3fc3371f759267eda93">DEFM::get_n_rows</a></div><div class="ttdeci">size_t get_n_rows() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00249">defm-meat.hpp:249</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_html_a801a3b3101ebdbcd8e31b748b61d1ca3"><div class="ttname"><a href="class_d_e_f_m.html#a801a3b3101ebdbcd8e31b748b61d1ca3">DEFM::get_ID</a></div><div class="ttdeci">const int * get_ID() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00259">defm-meat.hpp:259</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_html_aa49c88cee0f036f1183269fe500bcc22"><div class="ttname"><a href="class_d_e_f_m.html#aa49c88cee0f036f1183269fe500bcc22">DEFM::get_X</a></div><div class="ttdeci">const double * get_X() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00264">defm-meat.hpp:264</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_html_abf519be0cc1245fbaf71842ca5a53519"><div class="ttname"><a href="class_d_e_f_m.html#abf519be0cc1245fbaf71842ca5a53519">DEFM::logodds</a></div><div class="ttdeci">std::vector&lt; double &gt; logodds(const std::vector&lt; double &gt; &amp;par, size_t i, size_t j)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00308">defm-meat.hpp:308</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_html_ac5ff9a6f9e6c69312207bd38860184da"><div class="ttname"><a href="class_d_e_f_m.html#ac5ff9a6f9e6c69312207bd38860184da">DEFM::get_n_obs</a></div><div class="ttdeci">size_t get_n_obs() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00234">defm-meat.hpp:234</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_html_aef1a45afb37071a7a0053efaf97c8368"><div class="ttname"><a href="class_d_e_f_m.html#aef1a45afb37071a7a0053efaf97c8368">DEFM::DEFM</a></div><div class="ttdeci">DEFM(const int *id, const int *y, const double *x, size_t id_length, size_t y_ncol, size_t x_ncol, size_t m_order)</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00110">defm-meat.hpp:110</a></div></div>
 <div class="ttc" id="aclass_d_e_f_m_html_af97885bc28233c5d73d353260a765907"><div class="ttname"><a href="class_d_e_f_m.html#af97885bc28233c5d73d353260a765907">DEFM::get_n_y</a></div><div class="ttdeci">size_t get_n_y() const</div><div class="ttdef"><b>Definition:</b> <a href="defm-meat_8hpp_source.html#l00229">defm-meat.hpp:229</a></div></div>
@@ -434,7 +477,7 @@ $(document).ready(function(){initNavTree('defm-meat_8hpp_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_d7a554d3e09ed8456d56450fe8436947.html">defm</a></li><li class="navelem"><a class="el" href="defm-meat_8hpp.html">defm-meat.hpp</a></li>
-    <li class="footer">Generated on Tue May 31 2022 22:17:20 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jun 2 2022 22:18:40 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

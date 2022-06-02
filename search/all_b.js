@@ -6,5 +6,6 @@ var searchData=
   ['likelihood_5fexhaust_396',['likelihood_exhaust',['../class_geese.html#af2d4bac42cc7c8287fb6853d50882115',1,'Geese']]],
   ['likelihood_5fjoint_397',['likelihood_joint',['../class_flock.html#a275193d11c7ce3b8ec5dc18c8fab3e2e',1,'Flock']]],
   ['likelihood_5ftotal_398',['likelihood_total',['../class_model.html#a849c382c401986612056d6fdf043deb4',1,'Model']]],
-  ['logical_399',['logical',['../class_d_e_f_m_counter_data.html#a83c21423b25668b2343196f11fdc4630',1,'DEFMCounterData']]]
+  ['logical_399',['logical',['../class_d_e_f_m_counter_data.html#a83c21423b25668b2343196f11fdc4630',1,'DEFMCounterData']]],
+  ['logodds_400',['logodds',['../class_d_e_f_m.html#abf519be0cc1245fbaf71842ca5a53519',1,'DEFM']]]
 ];
