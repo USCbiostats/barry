@@ -305,6 +305,48 @@ inline barry::FreqTable<int> DEFM::motif_census(
 
 }
 
+inline std::vector< double > DEFM::logodds(
+    const std::vector< double > & par,
+    size_t i_,
+    size_t j_
+) {
+    
+
+    std::vector< double > res(ID_length, std::nan(""));
+
+    for (size_t i = 0u; i < N; ++i)
+    {
+
+        // Figuring out how many processes can we observe
+        DEFM_RANGES(i)
+        
+        DEFM_LOOP_ARRAYS(n_proc)
+        {
+
+            // Creating the array for process n_proc and setting the data
+            defmcounters::DEFMArray array(M_order + 1u, Y_ncol);
+            array.set_data(
+                new defmcounters::DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
+                true // Delete the data
+            );
+
+            // Filling-out the array
+            for (size_t k = 0u; k < Y_ncol; ++k)
+                for (size_t o = 0u; o < (M_order + 1u); ++o)
+                    array(o, k) = *(Y + k * ID_length + start_i + n_proc + o);
+
+            double p_1 = model->conditional_prob(array, par, i_, j_);
+            res[M_order + start_i + n_proc] = std::log(p_1/(1.0 - p_1));
+
+        }
+
+    }
+
+    return res;
+
+
+}
+
 #undef DEFM_RANGES
 #undef DEFM_LOOP_ARRAYS
 

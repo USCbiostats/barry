@@ -64,6 +64,12 @@ public:
         std::vector< size_t > idx
     );
 
+    std::vector< double > logodds(
+        const std::vector< double > & par,
+        size_t i,
+        size_t j
+    );
+
 };
 
 #endif
