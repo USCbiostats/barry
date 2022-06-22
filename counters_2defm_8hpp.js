@@ -29,5 +29,7 @@ var counters_2defm_8hpp =
     [ "counter_fixed_effect", "group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57", null ],
     [ "counter_ones", "group__counters-network.html#ga8b2d17f700dee8cdf744ad065d4d396c", null ],
     [ "counter_transition", "group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598", null ],
+    [ "counter_transition_formula", "group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3", null ],
+    [ "defm_motif_parser", "counters_2defm_8hpp.html#adbc5fa791a6bc568b9c69c479814d48f", null ],
     [ "rules_markov_fixed", "group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe", null ]
 ];

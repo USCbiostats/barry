@@ -29,6 +29,7 @@ var group__counters_network =
     [ "counter_ostar2", "group__counters-network.html#gad2e83eeaed6f17346ac8ac1ca64b327a", null ],
     [ "counter_ostar2", "group__counters-network.html#ga218f364352e49e462d6f152ad848f9dc", null ],
     [ "counter_transition", "group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598", null ],
+    [ "counter_transition_formula", "group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3", null ],
     [ "counter_ttriads", "group__counters-network.html#gadadede01536081fb8b79e4d14368f946", null ],
     [ "counter_ttriads", "group__counters-network.html#ga465ebcc2edcdae4ff9cd7625f886681f", null ],
     [ "NETWORK_COUNTER", "group__counters-network.html#gad6539320de604e7c6e31e9fb152f70bd", null ],
