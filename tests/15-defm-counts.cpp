@@ -43,6 +43,10 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     counter_transition(counter.get_counters(), {0, 3, 4}, {}, 2, 3);
     counter_transition(counter.get_counters(), {0, 1, 4}, {}, 2, 3);
     counter_transition(counter.get_counters(), {0, 3, 4}, {}, 2, 3, 0);
+
+    // With formula
+    counter_transition_formula(counter.get_counters(), "{y0_0, 0y2_0} > {0y0, y2}", 2, 3);
+    counter_transition(counter.get_counters(), {0, 6, 2, 8}, {true, false, false, true}, 2, 3);
     
 
     std::vector< double > ans_observed = counter.count_all();
@@ -51,11 +55,13 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
         std::sqrt(31.5),
         -.26,
         std::pow(-.26, 2.0),
-        5.0,
-        5.0 * 31.5,
+        1.0,
+        31.5,
         1.0,
         0.0,
-        31.5
+        31.5, 
+        1.0, 
+        1.0
     };
     
     #ifdef CATCH_CONFIG_MAIN

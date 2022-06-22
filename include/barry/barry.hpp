@@ -14,6 +14,8 @@
 #include <string>
 #include <cstdint>
 #include <memory>
+#include <regex>
+#include <iterator>
 
 #ifdef BARRY_USE_OMP
 #include <omp.h>
