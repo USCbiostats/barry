@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entries_712',['Entries',['../class_entries.html',1,'']]]
+  ['entries_715',['Entries',['../class_entries.html',1,'']]]
 ];

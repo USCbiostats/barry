@@ -27,6 +27,7 @@ var counters_2defm_8hpp =
     [ "DEFMStatsCounter", "counters_2defm_8hpp.html#af8198b2184baee8a83e8ee69da487833", null ],
     [ "DEFMSupport", "counters_2defm_8hpp.html#a15fca190888778da53799b1b53507703", null ],
     [ "counter_fixed_effect", "group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57", null ],
+    [ "counter_logit_intercept", "group__counters-network.html#gae5c00a76d5d682ae0f0dcf823ed5aedf", null ],
     [ "counter_ones", "group__counters-network.html#ga8b2d17f700dee8cdf744ad065d4d396c", null ],
     [ "counter_transition", "group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598", null ],
     [ "counter_transition_formula", "group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3", null ],

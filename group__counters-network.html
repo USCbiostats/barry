@@ -107,6 +107,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ga8b2d17f700dee8cdf744ad065d4d396c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga8b2d17f700dee8cdf744ad065d4d396c">counter_ones</a> (<a class="el" href="counters_2defm_8hpp.html#aea94df8016172ecb8f941cabdf270a5b">DEFMCounters</a> *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, int covar_index=-1, std::string vname=&quot;&quot;)</td></tr>
 <tr class="memdesc:ga8b2d17f700dee8cdf744ad065d4d396c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevalence of ones.  <a href="group__counters-network.html#ga8b2d17f700dee8cdf744ad065d4d396c">More...</a><br /></td></tr>
 <tr class="separator:ga8b2d17f700dee8cdf744ad065d4d396c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae5c00a76d5d682ae0f0dcf823ed5aedf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#gae5c00a76d5d682ae0f0dcf823ed5aedf">counter_logit_intercept</a> (<a class="el" href="counters_2defm_8hpp.html#aea94df8016172ecb8f941cabdf270a5b">DEFMCounters</a> *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, size_t n_y, std::vector&lt; size_t &gt; which={}, int covar_index=-1, std::string vname=&quot;&quot;)</td></tr>
+<tr class="separator:gae5c00a76d5d682ae0f0dcf823ed5aedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4ecca51add42b1e0792241804d3a2598"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598">counter_transition</a> (<a class="el" href="counters_2defm_8hpp.html#aea94df8016172ecb8f941cabdf270a5b">DEFMCounters</a> *<a class="el" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, std::vector&lt; size_t &gt; coords, std::vector&lt; bool &gt; signs, size_t m_order, size_t n_y, int covar_index=-1, std::string vname=&quot;&quot;)</td></tr>
 <tr class="memdesc:ga4ecca51add42b1e0792241804d3a2598"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevalence of ones.  <a href="group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598">More...</a><br /></td></tr>
 <tr class="separator:ga4ecca51add42b1e0792241804d3a2598"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -554,7 +556,7 @@ template&lt;typename Tnet  = Network&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00758">758</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00837">837</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -819,6 +821,62 @@ template&lt;typename Tnet  = Network&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00312">312</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+
+</div>
+</div>
+<a id="gae5c00a76d5d682ae0f0dcf823ed5aedf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae5c00a76d5d682ae0f0dcf823ed5aedf">&#9670;&nbsp;</a></span>counter_logit_intercept()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void counter_logit_intercept </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="counters_2defm_8hpp.html#aea94df8016172ecb8f941cabdf270a5b">DEFMCounters</a> *&#160;</td>
+          <td class="paramname"><em>counters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; size_t &gt;&#160;</td>
+          <td class="paramname"><em>which</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>covar_index</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>vname</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00466">466</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -1342,7 +1400,7 @@ template&lt;typename Tnet  = Network&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00472">472</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00547">547</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -1413,7 +1471,7 @@ template&lt;typename Tnet  = Network&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00730">730</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00809">809</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -1533,7 +1591,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 
 <p>Number of edges. </p>
 
-<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00794">794</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="counters_2defm_8hpp_source.html#l00873">873</a> of file <a class="el" href="counters_2defm_8hpp_source.html">defm.hpp</a>.</p>
 
 </div>
 </div>
@@ -1542,7 +1600,7 @@ template&lt;typename Tnet  = Network&gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Jun 22 2022 22:03:34 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 14 2022 15:53:17 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
