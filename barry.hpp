@@ -13650,6 +13650,81 @@ inline void counter_ones(
 
 }
 
+inline void counter_logit_intercept(
+    DEFMCounters * counters,
+    size_t n_y,
+    std::vector< size_t > which = {},
+    int covar_index = -1,
+    std::string vname = ""
+) {
+
+    if (which.size() == 0u)
+    {
+        which.resize(n_y, 0u);
+        std::iota(which.begin(), which.end(), 0u);
+    } else {
+        for (auto w : which)
+            if (w >= n_y)
+                throw std::logic_error("Values in `which` are out of range.");
+    }
+
+    // Case when no interaction happens, whatsoever.
+    if (covar_index < 0)
+    {
+
+        DEFM_COUNTER_LAMBDA(tmp_counter)
+        {
+            if (i != (Array.nrow() - 1))
+                return 0.0;
+
+            if (j != data.idx(0u))
+                return 0.0;
+
+            return 1.0;
+        };
+
+        for (auto i : which)
+        {
+
+            counters->add_counter(
+                tmp_counter, nullptr,
+                DEFMCounterData({i}, {}, {}), 
+                "Logit intercept " + std::to_string(i), 
+                "Equal to one if the outcome " + std::to_string(i) + " is one. Equivalent to the logistic regression intercept."
+            );
+
+        }
+
+    } else {
+
+        DEFM_COUNTER_LAMBDA(tmp_counter)
+        {
+            if (i != Array.nrow())
+                return 0.0;
+
+            if (j != data.idx(0u))
+                return 0.0;
+
+            return Array.D()(i, j);
+        };
+
+        for (auto i : which)
+        {
+
+            counters->add_counter(
+                tmp_counter, nullptr,
+                DEFMCounterData({i}, {}, {}), 
+                "Logit intercept " + std::to_string(i) + " x " + ((vname != "")? vname : ("attr" + std::to_string(covar_index))), 
+                "Equal to one if the outcome " + std::to_string(i) + " is one. Equivalent to the logistic regression intercept."
+            );
+
+        }
+
+    }
+    
+
+}
+
 /**
  * @brief Prevalence of ones
  * 
@@ -13762,7 +13837,11 @@ inline void counter_transition(
     };
 
     // Creating name of the structure
-    std::string name = "Motif ";
+    std::string name;
+    if (coords.size() == 1u)
+        name = "";
+    else
+        name = "Motif ";
 
     // Creating an empty motif filled with zeros
     barry::BArrayDense<int> motif(m_order + 1u, n_y, 0);
