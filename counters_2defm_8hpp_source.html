@@ -431,7 +431,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            counter_tmp, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>({<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(covar_index)}, {}, {}), </div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            <span class="stringliteral">&quot;# of ones x &quot;</span> + ((vname != <span class="stringliteral">&quot;&quot;</span>)? vname : (<span class="stringliteral">&quot;attr&quot;</span> + std::to_string(covar_index))), </div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            <span class="stringliteral">&quot;Num. of ones x &quot;</span> + ((vname != <span class="stringliteral">&quot;&quot;</span>)? vname : (<span class="stringliteral">&quot;attr&quot;</span> + std::to_string(covar_index))), </div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            <span class="stringliteral">&quot;Overall number of ones&quot;</span></div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        );</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
@@ -450,7 +450,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            count_ones, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(),</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="stringliteral">&quot;# of ones&quot;</span>, </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="stringliteral">&quot;Num. of ones&quot;</span>, </div>
 <div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            <span class="stringliteral">&quot;Overall number of ones&quot;</span></div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        );</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    }</div>
@@ -676,192 +676,238 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;        }</div>
 <div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;    }</div>
 <div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    </div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160; </div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    <span class="keywordflow">if</span> (any_before_event)</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;{&quot;</span>;</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;<span class="preprocessor">    #ifdef BARRY_WITH_LATEX</span></div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;$&quot;</span>;</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;<span class="preprocessor">    #endif</span></div>
 <div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160; </div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;<span class="preprocessor">    #define UNI_SUB(a) \</span></div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;<span class="preprocessor">        (\</span></div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;<span class="preprocessor">            ((a) == 0) ? &quot;\u2080&quot;</span> : (\</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;            ((a) == 1) ? &quot;\u2081&quot; : (\</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            ((a) == 2) ? &quot;\u2082&quot; : (\</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;            ((a) == 3) ? &quot;\u2083&quot; : (\</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;            ((a) == 4) ? &quot;\u2084&quot; : (\</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            ((a) == 5) ? &quot;\u2085&quot; : (\</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;            ((a) == 6) ? &quot;\u2086&quot; : (\</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;            ((a) == 7) ? &quot;\u2087&quot; : (\</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;            ((a) == 8) ? &quot;\u2088&quot; : \</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;            &quot;\u2089&quot;))))))))\</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;        )</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160; </div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    <span class="comment">// If order is greater than zero, the starting point of the transtion</span></div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; m_order; ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    {</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160; </div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;        <span class="keywordtype">bool</span> row_start = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> = 0u; <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> &lt; n_y; ++<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        {</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160; </div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;            <span class="comment">// Is it included?</span></div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;            <span class="keywordflow">if</span> (motif(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) == 0)</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160; </div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;            <span class="comment">// Is not the first?</span></div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;            <span class="keywordflow">if</span> (row_start)</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                row_start = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160; </div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += (motif(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) &lt; 0 ? <span class="stringliteral">&quot;y\u207B&quot;</span> : <span class="stringliteral">&quot;y\u207A&quot;</span>);</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160; </div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;            <span class="keywordflow">if</span> (m_order &gt; 1)</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <a class="code" href="counters_2defm_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0">UNI_SUB</a>(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>);</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                </div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <a class="code" href="counters_2defm_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0">UNI_SUB</a>(<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>);</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;        }</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    }</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160; </div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;<span class="preprocessor">    #define UNI0S \u2080</span></div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;<span class="preprocessor">    #define UNI1S \u2081</span></div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;<span class="preprocessor">    #define UNI2S \u2082</span></div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;<span class="preprocessor">    #define UNI3S \u2083</span></div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;<span class="preprocessor">    #define UNI4S \u2084</span></div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;<span class="preprocessor">    #define UNI5S \u2085</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;<span class="preprocessor">    #define UNI6S \u2086</span></div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="preprocessor">    #define UNI7S \u2087</span></div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="preprocessor">    #define UNI8S \u2088</span></div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="preprocessor">    #define UNI9S \u2089</span></div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160; </div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="comment">// If it has starting point, then need to close.</span></div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    <span class="keywordflow">if</span> (any_before_event &amp; (m_order &gt; 0u))</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;} \u21E8 {&quot;</span>;</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;{&quot;</span>;</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160; </div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;    <span class="comment">// Looking onto the transtions</span></div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;    <span class="keywordtype">bool</span> row_start = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> = 0u; <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> &lt; n_y; ++<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    {</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    <span class="keywordflow">if</span> (any_before_event)</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;<span class="preprocessor">        #ifdef BARRY_WITH_LATEX</span></div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;(&quot;</span>;</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;{&quot;</span>;</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160; </div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    <span class="comment">// #define UNI_SUB(a) \</span></div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;<span class="comment">    //     (\</span></div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;<span class="comment">    //         ((a) == 0) ? &quot;\u2080&quot; : (\</span></div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;<span class="comment">    //         ((a) == 1) ? &quot;\u2081&quot; : (\</span></div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;<span class="comment">    //         ((a) == 2) ? &quot;\u2082&quot; : (\</span></div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;<span class="comment">    //         ((a) == 3) ? &quot;\u2083&quot; : (\</span></div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;<span class="comment">    //         ((a) == 4) ? &quot;\u2084&quot; : (\</span></div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;<span class="comment">    //         ((a) == 5) ? &quot;\u2085&quot; : (\</span></div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;<span class="comment">    //         ((a) == 6) ? &quot;\u2086&quot; : (\</span></div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;<span class="comment">    //         ((a) == 7) ? &quot;\u2087&quot; : (\</span></div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;<span class="comment">    //         ((a) == 8) ? &quot;\u2088&quot; : \</span></div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;<span class="comment">    //         &quot;\u2089&quot;))))))))\</span></div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;<span class="comment">    //     )</span></div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160; </div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;<span class="preprocessor">    #ifdef BARRY_WITH_LATEX</span></div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;<span class="preprocessor">        #define UNI_SUB(a) \</span></div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;<span class="preprocessor">            (\</span></div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;<span class="preprocessor">                ((a) == 0) ? &quot;_0&quot;</span> : (\</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                ((a) == 1) ? &quot;_1&quot; : (\</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                ((a) == 2) ? &quot;_2&quot; : (\</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                ((a) == 3) ? &quot;_3&quot; : (\</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                ((a) == 4) ? &quot;_4&quot; : (\</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                ((a) == 5) ? &quot;_5&quot; : (\</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                ((a) == 6) ? &quot;_6&quot; : (\</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;                ((a) == 7) ? &quot;_7&quot; : (\</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                ((a) == 8) ? &quot;_8&quot; : \</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                &quot;_9&quot;))))))))\</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;            )</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;<span class="preprocessor">    #else</span></div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;<span class="preprocessor">        #define UNI_SUB(a) \</span></div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;<span class="preprocessor">            (\</span></div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;<span class="preprocessor">                ((a) == 0) ? &quot;\u2080&quot;</span> : (\</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                ((a) == 1) ? &quot;\u2081&quot; : (\</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                ((a) == 2) ? &quot;\u2082&quot; : (\</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                ((a) == 3) ? &quot;\u2083&quot; : (\</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                ((a) == 4) ? &quot;\u2084&quot; : (\</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                ((a) == 5) ? &quot;\u2085&quot; : (\</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                ((a) == 6) ? &quot;\u2086&quot; : (\</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                ((a) == 7) ? &quot;\u2087&quot; : (\</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                ((a) == 8) ? &quot;\u2088&quot; : \</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                &quot;\u2089&quot;))))))))\</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;            )</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160; </div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;    <span class="comment">// If order is greater than zero, the starting point of the transtion</span></div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; m_order; ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>)</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    {</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160; </div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;        <span class="keywordtype">bool</span> row_start = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> = 0u; <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> &lt; n_y; ++<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;        {</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160; </div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;            <span class="comment">// Is it included?</span></div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;            <span class="keywordflow">if</span> (motif(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) == 0)</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160; </div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;        <span class="keywordflow">if</span> (motif(m_order, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) == 0)</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160; </div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;        <span class="keywordflow">if</span> (row_start)</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;            row_start = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160; </div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += (motif(m_order, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) &lt; 0 ? <span class="stringliteral">&quot;y\u207B&quot;</span> : <span class="stringliteral">&quot;y\u207A&quot;</span> );</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160; </div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;        <span class="keywordflow">if</span> (m_order &gt; 1)</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <a class="code" href="counters_2defm_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0">UNI_SUB</a>(m_order);</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160; </div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <a class="code" href="counters_2defm_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0">UNI_SUB</a>(<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>);</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160; </div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;    }</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160; </div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;<span class="preprocessor">    #undef UNI_SUB</span></div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;            <span class="comment">// Is not the first?</span></div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;            <span class="keywordflow">if</span> (row_start)</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                row_start = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160; </div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;<span class="preprocessor">            #ifdef BARRY_WITH_LATEX</span></div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += (motif(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) &lt; 0 ? <span class="stringliteral">&quot;y^-&quot;</span> : <span class="stringliteral">&quot;y^+&quot;</span>);</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;<span class="preprocessor">            #else</span></div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += (motif(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) &lt; 0 ? <span class="stringliteral">&quot;y\u207B&quot;</span> : <span class="stringliteral">&quot;y\u207A&quot;</span>);</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;<span class="preprocessor">            #endif</span></div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160; </div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;            <span class="keywordflow">if</span> (m_order &gt; 1)</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <a class="code" href="counters_2defm_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0">UNI_SUB</a>(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>);</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;                </div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <a class="code" href="counters_2defm_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0">UNI_SUB</a>(<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>);</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;        }</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    }</div>
 <div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160; </div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;}&quot;</span>;</div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160; </div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;    <span class="keywordflow">if</span> (covar_index &gt;= 0)</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;    {</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160; </div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;            count_ones, count_init,</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(coords, {}, signs), </div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> + <span class="stringliteral">&quot; x &quot;</span> + ((vname != <span class="stringliteral">&quot;&quot;</span>)? vname : (<span class="stringliteral">&quot;attr&quot;</span> + std::to_string(covar_index))), </div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;            <span class="stringliteral">&quot;Motif weighted by single attribute&quot;</span></div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;        );</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160; </div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <span class="comment">// If it has starting point, then need to close.</span></div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;    <span class="keywordflow">if</span> (any_before_event &amp; (m_order &gt; 0u))</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;<span class="preprocessor">        #ifdef BARRY_WITH_LATEX</span></div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;) -&gt; (&quot;</span>;</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;} \u21E8 {&quot;</span>;</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;<span class="preprocessor">        #ifdef BARRY_WITH_LATEX</span></div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;(&quot;</span>;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;{&quot;</span>;</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;<span class="preprocessor">        #endif</span></div>
 <div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160; </div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;            count_ones, count_init,</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(coords, {}, signs), </div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a>, </div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;            <span class="stringliteral">&quot;Motif&quot;</span></div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;        );</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160; </div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;    }</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;    </div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160; </div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160; </div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;}</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160; </div>
-<div class="line"><a name="l00809"></a><span class="lineno"><a class="line" href="group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3">  809</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3">counter_transition_formula</a>(</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    <a class="code" href="class_counters.html">DEFMCounters</a> * <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>,</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;    std::string formula,</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;    <span class="keywordtype">size_t</span> m_order,</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    <span class="keywordtype">size_t</span> n_y,</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    <span class="keywordtype">int</span> covar_index = -1,</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    std::string vname = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;) {</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160; </div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    std::vector&lt; size_t &gt; coords;</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;    std::vector&lt; bool &gt; signs;</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160; </div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#adbc5fa791a6bc568b9c69c479814d48f">defm_motif_parser</a>(</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;        formula, coords, signs, m_order, n_y</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    );</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160; </div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;    <a class="code" href="group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598">counter_transition</a>(</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, coords, signs, m_order, n_y, covar_index, vname</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;    );</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160; </div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;}</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160; </div>
-<div class="line"><a name="l00837"></a><span class="lineno"><a class="line" href="group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57">  837</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57">counter_fixed_effect</a>(</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;    <a class="code" href="class_counters.html">DEFMCounters</a> * <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>,</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;    <span class="keywordtype">int</span> covar_index,</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;    <span class="keywordtype">double</span> k,</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    std::string vname = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;)</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;{</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    <span class="comment">// Looking onto the transtions</span></div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    <span class="keywordtype">bool</span> row_start = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> = 0u; <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> &lt; n_y; ++<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    {</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160; </div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;        <span class="keywordflow">if</span> (motif(m_order, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) == 0)</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160; </div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;        <span class="keywordflow">if</span> (row_start)</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;            row_start = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160; </div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;<span class="preprocessor">        #ifdef BARRY_WITH_LATEX</span></div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += (motif(m_order, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) &lt; 0 ? <span class="stringliteral">&quot;y^-&quot;</span> : <span class="stringliteral">&quot;y^+&quot;</span> );</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += (motif(m_order, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) &lt; 0 ? <span class="stringliteral">&quot;y\u207B&quot;</span> : <span class="stringliteral">&quot;y\u207A&quot;</span> );</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160; </div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;        <span class="keywordflow">if</span> (m_order &gt; 1)</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <a class="code" href="counters_2defm_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0">UNI_SUB</a>(m_order);</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160; </div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <a class="code" href="counters_2defm_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0">UNI_SUB</a>(<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>);</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160; </div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    }</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160; </div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;<span class="preprocessor">    #undef UNI_SUB</span></div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160; </div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;<span class="preprocessor">    #ifdef BARRY_WITH_LATEX</span></div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;    <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;)$&quot;</span>;</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;<span class="preprocessor">    #else</span></div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;    <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> += <span class="stringliteral">&quot;}&quot;</span>;</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160; </div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    <span class="keywordflow">if</span> (covar_index &gt;= 0)</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;    {</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160; </div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;            count_ones, count_init,</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(coords, {}, signs), </div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a> + <span class="stringliteral">&quot; x &quot;</span> + ((vname != <span class="stringliteral">&quot;&quot;</span>)? vname : (<span class="stringliteral">&quot;attr&quot;</span> + std::to_string(covar_index))), </div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;            <span class="stringliteral">&quot;Motif weighted by single attribute&quot;</span></div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;        );</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160; </div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160; </div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;            count_ones, count_init,</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;            <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>(coords, {}, signs), </div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;            <a class="code" href="counters-meat_8hpp.html#a42cb6e97e822b37d4d982c1106a1b53e">name</a>, </div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            <span class="stringliteral">&quot;Motif&quot;</span></div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;        );</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160; </div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    }</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;    </div>
 <div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160; </div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">DEFM_COUNTER_LAMBDA</a>(count_init)</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;    {</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;        <span class="keywordflow">return</span> std::pow(Array.D()((<span class="keywordtype">size_t</span>) <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.idx(0u)), <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.num(0u));</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;    };</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160; </div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">DEFM_COUNTER_LAMBDA</a>(count_tmp)</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    {</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    };</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160; </div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;        count_tmp, count_init,</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;        <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>({<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(covar_index)}, {k}, {}), </div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;        <span class="stringliteral">&quot;Fixed effect feature (&quot;</span> +</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;        ((vname != <span class="stringliteral">&quot;&quot;</span>)? vname : (<span class="stringliteral">&quot;attr&quot;</span> + std::to_string(covar_index))) + <span class="stringliteral">&quot;)^&quot;</span> + std::to_string(k)</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    );</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160; </div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160; </div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;}</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160; </div>
+<div class="line"><a name="l00855"></a><span class="lineno"><a class="line" href="group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3">  855</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3">counter_transition_formula</a>(</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;    <a class="code" href="class_counters.html">DEFMCounters</a> * <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>,</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    std::string formula,</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;    <span class="keywordtype">size_t</span> m_order,</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;    <span class="keywordtype">size_t</span> n_y,</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;    <span class="keywordtype">int</span> covar_index = -1,</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;    std::string vname = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;) {</div>
 <div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160; </div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;}</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160; </div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00873"></a><span class="lineno"><a class="line" href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">  873</a></span>&#160;<span class="comment"></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">rules_markov_fixed</a>(</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;    <a class="code" href="class_rules.html">DEFMRules</a> * <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>,</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    <span class="keywordtype">size_t</span> markov_order</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;    ) {</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    </div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba">DEFM_RULE_LAMBDA</a>(no_self_tie) {</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &gt;= <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.idx(0u);</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    };</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    </div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;        no_self_tie,</div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;        <a class="code" href="class_d_e_f_m_rule_data.html">DEFMRuleData</a>({},{markov_order})</div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;        );</div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    </div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;}</div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160; </div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160; </div>
-<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160; </div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;    std::vector&lt; size_t &gt; coords;</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;    std::vector&lt; bool &gt; signs;</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160; </div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#adbc5fa791a6bc568b9c69c479814d48f">defm_motif_parser</a>(</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;        formula, coords, signs, m_order, n_y</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;    );</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160; </div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    <a class="code" href="group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598">counter_transition</a>(</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>, coords, signs, m_order, n_y, covar_index, vname</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    );</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160; </div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;}</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160; </div>
+<div class="line"><a name="l00883"></a><span class="lineno"><a class="line" href="group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57">  883</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57">counter_fixed_effect</a>(</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    <a class="code" href="class_counters.html">DEFMCounters</a> * <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>,</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;    <span class="keywordtype">int</span> covar_index,</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;    <span class="keywordtype">double</span> k,</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    std::string vname = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;)</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;{</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160; </div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">DEFM_COUNTER_LAMBDA</a>(count_init)</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;    {</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;        <span class="keywordflow">return</span> std::pow(Array.D()((<span class="keywordtype">size_t</span>) <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.idx(0u)), <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.num(0u));</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;    };</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160; </div>
+<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">DEFM_COUNTER_LAMBDA</a>(count_tmp)</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;    {</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;    };</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160; </div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;        count_tmp, count_init,</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;        <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>({<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(covar_index)}, {k}, {}), </div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;        <span class="stringliteral">&quot;Fixed effect feature (&quot;</span> +</div>
+<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;        ((vname != <span class="stringliteral">&quot;&quot;</span>)? vname : (<span class="stringliteral">&quot;attr&quot;</span> + std::to_string(covar_index))) + <span class="stringliteral">&quot;)^&quot;</span> + std::to_string(k)</div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;    );</div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160; </div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160; </div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;}</div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160; </div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00919"></a><span class="lineno"><a class="line" href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">  919</a></span>&#160;<span class="comment"></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">rules_markov_fixed</a>(</div>
+<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;    <a class="code" href="class_rules.html">DEFMRules</a> * <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>,</div>
+<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;    <span class="keywordtype">size_t</span> markov_order</div>
+<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;    ) {</div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;    </div>
+<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;    <a class="code" href="counters_2defm_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba">DEFM_RULE_LAMBDA</a>(no_self_tie) {</div>
+<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &gt;= <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.idx(0u);</div>
+<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;    };</div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;    </div>
+<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(</div>
+<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;        no_self_tie,</div>
+<div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;        <a class="code" href="class_d_e_f_m_rule_data.html">DEFMRuleData</a>({},{markov_order})</div>
+<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;        );</div>
+<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;    </div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;}</div>
+<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160; </div>
+<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160; </div>
+<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160; </div>
+<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
 <div class="ttc" id="abarry-configuration_8hpp_html_a2bd7dd8168e4165684de9dba0ae08469"><div class="ttname"><a href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a></div><div class="ttdeci">#define printf_barry</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00051">barry-configuration.hpp:51</a></div></div>
@@ -916,11 +962,11 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="ttc" id="acounters_2defm_8hpp_html_aea94df8016172ecb8f941cabdf270a5b"><div class="ttname"><a href="counters_2defm_8hpp.html#aea94df8016172ecb8f941cabdf270a5b">DEFMCounters</a></div><div class="ttdeci">Counters&lt; DEFMArray, DEFMCounterData &gt; DEFMCounters</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00341">defm.hpp:341</a></div></div>
 <div class="ttc" id="acounters_2defm_8hpp_html_af38626b20ade1bfb966140e1ac7bc06b"><div class="ttname"><a href="counters_2defm_8hpp.html#af38626b20ade1bfb966140e1ac7bc06b">DEFMCounter</a></div><div class="ttdeci">Counter&lt; DEFMArray, DEFMCounterData &gt; DEFMCounter</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00340">defm.hpp:340</a></div></div>
 <div class="ttc" id="acounters_2defm_8hpp_html_af8198b2184baee8a83e8ee69da487833"><div class="ttname"><a href="counters_2defm_8hpp.html#af8198b2184baee8a83e8ee69da487833">DEFMStatsCounter</a></div><div class="ttdeci">StatsCounter&lt; DEFMArray, DEFMCounterData &gt; DEFMStatsCounter</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00343">defm.hpp:343</a></div></div>
-<div class="ttc" id="agroup__counters-network_html_ga31452452bf9dad7f6c5767dcabfb4dbe"><div class="ttname"><a href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">rules_markov_fixed</a></div><div class="ttdeci">void rules_markov_fixed(DEFMRules *rules, size_t markov_order)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00873">defm.hpp:873</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga31452452bf9dad7f6c5767dcabfb4dbe"><div class="ttname"><a href="group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe">rules_markov_fixed</a></div><div class="ttdeci">void rules_markov_fixed(DEFMRules *rules, size_t markov_order)</div><div class="ttdoc">Number of edges.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00919">defm.hpp:919</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga4ecca51add42b1e0792241804d3a2598"><div class="ttname"><a href="group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598">counter_transition</a></div><div class="ttdeci">void counter_transition(DEFMCounters *counters, std::vector&lt; size_t &gt; coords, std::vector&lt; bool &gt; signs, size_t m_order, size_t n_y, int covar_index=-1, std::string vname=&quot;&quot;)</div><div class="ttdoc">Prevalence of ones.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00547">defm.hpp:547</a></div></div>
-<div class="ttc" id="agroup__counters-network_html_ga8321a4627b747748c9b8696dce3466f3"><div class="ttname"><a href="group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3">counter_transition_formula</a></div><div class="ttdeci">void counter_transition_formula(DEFMCounters *counters, std::string formula, size_t m_order, size_t n_y, int covar_index=-1, std::string vname=&quot;&quot;)</div><div class="ttdoc">Prevalence of ones.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00809">defm.hpp:809</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_ga8321a4627b747748c9b8696dce3466f3"><div class="ttname"><a href="group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3">counter_transition_formula</a></div><div class="ttdeci">void counter_transition_formula(DEFMCounters *counters, std::string formula, size_t m_order, size_t n_y, int covar_index=-1, std::string vname=&quot;&quot;)</div><div class="ttdoc">Prevalence of ones.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00855">defm.hpp:855</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_ga8b2d17f700dee8cdf744ad065d4d396c"><div class="ttname"><a href="group__counters-network.html#ga8b2d17f700dee8cdf744ad065d4d396c">counter_ones</a></div><div class="ttdeci">void counter_ones(DEFMCounters *counters, int covar_index=-1, std::string vname=&quot;&quot;)</div><div class="ttdoc">Prevalence of ones.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00413">defm.hpp:413</a></div></div>
-<div class="ttc" id="agroup__counters-network_html_gab02f9a2001b62c3ec1657e94e35eda57"><div class="ttname"><a href="group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57">counter_fixed_effect</a></div><div class="ttdeci">void counter_fixed_effect(DEFMCounters *counters, int covar_index, double k, std::string vname=&quot;&quot;)</div><div class="ttdoc">Prevalence of ones.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00837">defm.hpp:837</a></div></div>
+<div class="ttc" id="agroup__counters-network_html_gab02f9a2001b62c3ec1657e94e35eda57"><div class="ttname"><a href="group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57">counter_fixed_effect</a></div><div class="ttdeci">void counter_fixed_effect(DEFMCounters *counters, int covar_index, double k, std::string vname=&quot;&quot;)</div><div class="ttdoc">Prevalence of ones.</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00883">defm.hpp:883</a></div></div>
 <div class="ttc" id="agroup__counters-network_html_gae5c00a76d5d682ae0f0dcf823ed5aedf"><div class="ttname"><a href="group__counters-network.html#gae5c00a76d5d682ae0f0dcf823ed5aedf">counter_logit_intercept</a></div><div class="ttdeci">void counter_logit_intercept(DEFMCounters *counters, size_t n_y, std::vector&lt; size_t &gt; which={}, int covar_index=-1, std::string vname=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="counters_2defm_8hpp_source.html#l00466">defm.hpp:466</a></div></div>
 <div class="ttc" id="astatscounter-meat_8hpp_html_a782c48a908662b34845b6f654f929788"><div class="ttname"><a href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div><div class="ttdeci">counters</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00022">statscounter-meat.hpp:22</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a595e07a99f60f22a6a29e4fca291ea28"><div class="ttname"><a href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a></div><div class="ttdeci">rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00450">support-meat.hpp:450</a></div></div>
@@ -930,7 +976,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="counters_2defm_8hpp.html">defm.hpp</a></li>
-    <li class="footer">Generated on Thu Jul 14 2022 15:53:16 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Jul 14 2022 22:04:01 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
