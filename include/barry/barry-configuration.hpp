@@ -61,6 +61,12 @@
 #endif
 
 
+#ifdef BARRY_USE_LATEX
+    #define BARRY_WITH_LATEX
+#else
+    #undef BARRY_WITH_LATEX
+#endif
+
 // BARRY_DEBUG_LEVEL: See barry-debug.hpp
 
 // BARRY_PROGRESS_BAR_WIDTH: See progress.hpp

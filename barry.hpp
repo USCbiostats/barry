@@ -119,6 +119,12 @@ namespace barry {
 #endif
 
 
+#ifdef BARRY_USE_LATEX
+    #define BARRY_WITH_LATEX
+#else
+    #undef BARRY_WITH_LATEX
+#endif
+
 // BARRY_DEBUG_LEVEL: See barry-debug.hpp
 
 // BARRY_PROGRESS_BAR_WIDTH: See progress.hpp
@@ -13622,7 +13628,7 @@ inline void counter_ones(
         counters->add_counter(
             counter_tmp, nullptr,
             DEFMCounterData({static_cast<size_t>(covar_index)}, {}, {}), 
-            "# of ones x " + ((vname != "")? vname : ("attr" + std::to_string(covar_index))), 
+            "Num. of ones x " + ((vname != "")? vname : ("attr" + std::to_string(covar_index))), 
             "Overall number of ones"
         );
 
@@ -13641,7 +13647,7 @@ inline void counter_ones(
         counters->add_counter(
             count_ones, nullptr,
             DEFMCounterData(),
-            "# of ones", 
+            "Num. of ones", 
             "Overall number of ones"
         );
     }
@@ -13873,23 +13879,60 @@ inline void counter_transition(
         }
     }
     
+    #ifdef BARRY_WITH_LATEX
+        name += "$";
+    #endif
 
     if (any_before_event)
-        name += "{";
+        #ifdef BARRY_WITH_LATEX
+            name += "(";
+        #else
+            name += "{";
+        #endif
 
-    #define UNI_SUB(a) \
-        (\
-            ((a) == 0) ? "\u2080" : (\
-            ((a) == 1) ? "\u2081" : (\
-            ((a) == 2) ? "\u2082" : (\
-            ((a) == 3) ? "\u2083" : (\
-            ((a) == 4) ? "\u2084" : (\
-            ((a) == 5) ? "\u2085" : (\
-            ((a) == 6) ? "\u2086" : (\
-            ((a) == 7) ? "\u2087" : (\
-            ((a) == 8) ? "\u2088" : \
-            "\u2089"))))))))\
-        )
+    // #define UNI_SUB(a) \
+    //     (\
+    //         ((a) == 0) ? "\u2080" : (\
+    //         ((a) == 1) ? "\u2081" : (\
+    //         ((a) == 2) ? "\u2082" : (\
+    //         ((a) == 3) ? "\u2083" : (\
+    //         ((a) == 4) ? "\u2084" : (\
+    //         ((a) == 5) ? "\u2085" : (\
+    //         ((a) == 6) ? "\u2086" : (\
+    //         ((a) == 7) ? "\u2087" : (\
+    //         ((a) == 8) ? "\u2088" : \
+    //         "\u2089"))))))))\
+    //     )
+
+    #ifdef BARRY_WITH_LATEX
+        #define UNI_SUB(a) \
+            (\
+                ((a) == 0) ? "_0" : (\
+                ((a) == 1) ? "_1" : (\
+                ((a) == 2) ? "_2" : (\
+                ((a) == 3) ? "_3" : (\
+                ((a) == 4) ? "_4" : (\
+                ((a) == 5) ? "_5" : (\
+                ((a) == 6) ? "_6" : (\
+                ((a) == 7) ? "_7" : (\
+                ((a) == 8) ? "_8" : \
+                "_9"))))))))\
+            )
+    #else
+        #define UNI_SUB(a) \
+            (\
+                ((a) == 0) ? "\u2080" : (\
+                ((a) == 1) ? "\u2081" : (\
+                ((a) == 2) ? "\u2082" : (\
+                ((a) == 3) ? "\u2083" : (\
+                ((a) == 4) ? "\u2084" : (\
+                ((a) == 5) ? "\u2085" : (\
+                ((a) == 6) ? "\u2086" : (\
+                ((a) == 7) ? "\u2087" : (\
+                ((a) == 8) ? "\u2088" : \
+                "\u2089"))))))))\
+            )
+    #endif
 
     // If order is greater than zero, the starting point of the transtion
     for (size_t i = 0u; i < m_order; ++i)
@@ -13909,7 +13952,11 @@ inline void counter_transition(
             else
                 name += ", ";
 
-            name += (motif(i,j) < 0 ? "y\u207B" : "y\u207A");
+            #ifdef BARRY_WITH_LATEX
+                name += (motif(i,j) < 0 ? "y^-" : "y^+");
+            #else
+                name += (motif(i,j) < 0 ? "y\u207B" : "y\u207A");
+            #endif
 
             if (m_order > 1)
                 name += UNI_SUB(i);
@@ -13918,22 +13965,19 @@ inline void counter_transition(
         }
     }
 
-    #define UNI0S \u2080
-    #define UNI1S \u2081
-    #define UNI2S \u2082
-    #define UNI3S \u2083
-    #define UNI4S \u2084
-    #define UNI5S \u2085
-    #define UNI6S \u2086
-    #define UNI7S \u2087
-    #define UNI8S \u2088
-    #define UNI9S \u2089
-
     // If it has starting point, then need to close.
     if (any_before_event & (m_order > 0u))
-        name += "} \u21E8 {";
+        #ifdef BARRY_WITH_LATEX
+            name += ") -> (";
+        #else
+            name += "} \u21E8 {";
+        #endif
     else
-        name += "{";
+        #ifdef BARRY_WITH_LATEX
+            name += "(";
+        #else
+            name += "{";
+        #endif
 
     // Looking onto the transtions
     bool row_start = true;
@@ -13948,7 +13992,11 @@ inline void counter_transition(
         else
             name += ", ";
 
+        #ifdef BARRY_WITH_LATEX
+        name += (motif(m_order, j) < 0 ? "y^-" : "y^+" );
+        #else
         name += (motif(m_order, j) < 0 ? "y\u207B" : "y\u207A" );
+        #endif
 
         if (m_order > 1)
             name += UNI_SUB(m_order);
@@ -13959,7 +14007,11 @@ inline void counter_transition(
 
     #undef UNI_SUB
 
+    #ifdef BARRY_WITH_LATEX
+    name += ")$";
+    #else
     name += "}";
+    #endif
 
     if (covar_index >= 0)
     {
