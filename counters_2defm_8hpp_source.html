@@ -508,13 +508,13 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        <a class="code" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">DEFM_COUNTER_LAMBDA</a>(tmp_counter)</div>
 <div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        {</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != Array.nrow())</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> != Array.nrow() - 1)</div>
 <div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a> != <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.idx(0u))</div>
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            <span class="keywordflow">return</span> Array.D()(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>);</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            <span class="keywordflow">return</span> Array.D()(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.idx(1u));</div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        };</div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
 <div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : which)</div>
@@ -522,7 +522,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
 <div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                tmp_counter, <span class="keyword">nullptr</span>,</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>({<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>}, {}, {}), </div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a>({<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(covar_index)}, {}, {}), </div>
 <div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                <span class="stringliteral">&quot;Logit intercept &quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) + <span class="stringliteral">&quot; x &quot;</span> + ((vname != <span class="stringliteral">&quot;&quot;</span>)? vname : (<span class="stringliteral">&quot;attr&quot;</span> + std::to_string(covar_index))), </div>
 <div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                <span class="stringliteral">&quot;Equal to one if the outcome &quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) + <span class="stringliteral">&quot; is one. Equivalent to the logistic regression intercept.&quot;</span></div>
 <div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            );</div>
@@ -976,7 +976,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="counters_2defm_8hpp.html">defm.hpp</a></li>
-    <li class="footer">Generated on Thu Jul 14 2022 22:04:01 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 10 2022 22:51:10 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
