@@ -13705,13 +13705,13 @@ inline void counter_logit_intercept(
 
         DEFM_COUNTER_LAMBDA(tmp_counter)
         {
-            if (i != Array.nrow())
+            if (i != Array.nrow() - 1)
                 return 0.0;
 
             if (j != data.idx(0u))
                 return 0.0;
 
-            return Array.D()(i, j);
+            return Array.D()(i, data.idx(1u));
         };
 
         for (auto i : which)
@@ -13719,7 +13719,7 @@ inline void counter_logit_intercept(
 
             counters->add_counter(
                 tmp_counter, nullptr,
-                DEFMCounterData({i}, {}, {}), 
+                DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
                 "Logit intercept " + std::to_string(i) + " x " + ((vname != "")? vname : ("attr" + std::to_string(covar_index))), 
                 "Equal to one if the outcome " + std::to_string(i) + " is one. Equivalent to the logistic regression intercept."
             );

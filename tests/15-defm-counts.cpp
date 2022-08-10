@@ -43,6 +43,7 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     counter_transition(counter.get_counters(), {0, 3, 4}, {}, 2, 3);
     counter_transition(counter.get_counters(), {0, 1, 4}, {}, 2, 3);
     counter_transition(counter.get_counters(), {0, 3, 4}, {}, 2, 3, 0);
+    // counter_logit_intercept(counter.get_counters(), 3, {}, 0);
 
     // With formula
     counter_transition_formula(counter.get_counters(), "{y0_0, 0y2_0} > {0y0, y2}", 2, 3);
