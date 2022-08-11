@@ -23,6 +23,8 @@ private:
     size_t X_length;      ///< Length of the vector X
     size_t M_order;       ///< Markov order of the model
 
+    std::vector< std::string > Y_names;
+    std::vector< std::string > X_names;
     std::vector< size_t > start_end;
     std::vector< size_t > model_ord;
     ///@}
@@ -69,6 +71,14 @@ public:
         size_t i,
         size_t j
     );
+
+    void set_names(
+        std::vector< std::string > Y_names_,
+        std::vector< std::string > X_names_
+    );
+
+    const std::vector< std::string > & get_Y_names();
+    const std::vector< std::string > & get_X_names();
 
 };
 

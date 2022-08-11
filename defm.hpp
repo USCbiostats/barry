@@ -41,6 +41,8 @@ private:
     size_t X_length;      ///< Length of the vector X
     size_t M_order;       ///< Markov order of the model
 
+    std::vector< std::string > Y_names;
+    std::vector< std::string > X_names;
     std::vector< size_t > start_end;
     std::vector< size_t > model_ord;
     ///@}
@@ -87,6 +89,14 @@ public:
         size_t i,
         size_t j
     );
+
+    void set_names(
+        std::vector< std::string > Y_names_,
+        std::vector< std::string > X_names_
+    );
+
+    const std::vector< std::string > & get_Y_names();
+    const std::vector< std::string > & get_X_names();
 
 };
 
@@ -292,6 +302,13 @@ inline DEFM::DEFM(
 
     N++;
 
+    // Creating the names
+    for (auto i = 0u; i < Y_ncol; ++i)
+        Y_names.push_back(std::string("y") + std::to_string(i));
+
+    for (auto i = 0u; i < X_ncol; ++i)
+        X_names.push_back(std::string("X") + std::to_string(i));
+
     return;    
 
 }
@@ -457,6 +474,31 @@ inline std::vector< double > DEFM::logodds(
     return res;
 
 
+}
+
+inline void DEFM::set_names(
+    std::vector< std::string > Y_names_,
+    std::vector< std::string > X_names_
+) {
+
+    // Checking the length
+    if (Y_names_.size() != Y_ncol)
+        throw std::length_error("The length of Y_names_ doesn't match the number of dependent variables.");
+
+    if (X_names_.size() != X_ncol)
+        throw std::length_error("The length of X_names_ doesn't match the number of dependent variables.");
+
+    Y_names = Y_names_;
+    X_names = X_names_;
+
+}
+
+inline const std::vector<std::string > & DEFM::get_Y_names() {
+    return Y_names;
+}
+
+inline const std::vector<std::string > & DEFM::get_X_names() {
+    return X_names;
 }
 
 #undef DEFM_RANGES

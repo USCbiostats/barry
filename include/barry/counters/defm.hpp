@@ -413,7 +413,8 @@ Rule_fun_type<DEFMArray, DEFMRuleData> a = \
 inline void counter_ones(
     DEFMCounters * counters,
     int covar_index = -1,
-    std::string vname = ""
+    std::string vname = "",
+    const std::vector< std::string > * x_names = nullptr
 )
 {
 
@@ -432,10 +433,19 @@ inline void counter_ones(
 
         };
 
+
+        if (vname == "")
+        {
+            if (x_names != nullptr)
+                vname = x_names->operator[](covar_index);
+            else
+                vname = std::string("attr")+ std::to_string(covar_index);
+        }
+
         counters->add_counter(
             counter_tmp, nullptr,
             DEFMCounterData({static_cast<size_t>(covar_index)}, {}, {}), 
-            "Num. of ones x " + ((vname != "")? vname : ("attr" + std::to_string(covar_index))), 
+            "Num. of ones x " + vname, 
             "Overall number of ones"
         );
 
@@ -468,8 +478,11 @@ inline void counter_logit_intercept(
     size_t n_y,
     std::vector< size_t > which = {},
     int covar_index = -1,
-    std::string vname = ""
+    std::string vname = "",
+    const std::vector< std::string > * x_names = nullptr,
+    const std::vector< std::string > * y_names = nullptr
 ) {
+
 
     if (which.size() == 0u)
     {
@@ -499,11 +512,16 @@ inline void counter_logit_intercept(
         for (auto i : which)
         {
 
+            if (y_names != nullptr)
+                vname = y_names->operator[](i);
+            else
+                vname = std::to_string(i);
+
             counters->add_counter(
                 tmp_counter, nullptr,
                 DEFMCounterData({i}, {}, {}), 
-                "Logit intercept " + std::to_string(i), 
-                "Equal to one if the outcome " + std::to_string(i) + " is one. Equivalent to the logistic regression intercept."
+                "Logit intercept " + vname, 
+                "Equal to one if the outcome " + vname + " is one. Equivalent to the logistic regression intercept."
             );
 
         }
@@ -521,14 +539,28 @@ inline void counter_logit_intercept(
             return Array.D()(i, data.idx(1u));
         };
 
+        std::string yname;
         for (auto i : which)
         {
+
+            if (y_names != nullptr)
+                yname = y_names->operator[](i);
+            else
+                yname = std::to_string(i);
+
+            if (vname == "")
+            {
+                if (x_names != nullptr)
+                    vname = x_names->operator[](covar_index);
+                else
+                    vname = std::string("attr")+ std::to_string(covar_index);
+            }
 
             counters->add_counter(
                 tmp_counter, nullptr,
                 DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
-                "Logit intercept " + std::to_string(i) + " x " + ((vname != "")? vname : ("attr" + std::to_string(covar_index))), 
-                "Equal to one if the outcome " + std::to_string(i) + " is one. Equivalent to the logistic regression intercept."
+                "Logit intercept " + yname + " x " + vname, 
+                "Equal to one if the outcome " + yname + " is one. Equivalent to the logistic regression intercept."
             );
 
         }
@@ -551,7 +583,9 @@ inline void counter_transition(
     size_t m_order,
     size_t n_y,
     int covar_index = -1,
-    std::string vname = ""
+    std::string vname = "",
+    const std::vector< std::string > * x_names = nullptr,
+    const std::vector< std::string > * y_names = nullptr
 )
 {
 
@@ -759,17 +793,19 @@ inline void counter_transition(
             else
                 name += ", ";
 
+            if (y_names != nullptr)
+                name += y_names->operator[](j);
+            else
+                name += (std::string("y") + std::to_string(j));
+
             #ifdef BARRY_WITH_LATEX
-                name += (motif(i,j) < 0 ? "y^-" : "y^+");
+                name += (motif(i,j) < 0 ? "^-" : "^+");
             #else
-                name += (motif(i,j) < 0 ? "y\u207B" : "y\u207A");
+                name += (motif(i,j) < 0 ? "\u207B" : "\u207A");
             #endif
 
-            if (m_order > 1)
-                name += UNI_SUB(i);
-                
-            name += UNI_SUB(j);
         }
+
     }
 
     // If it has starting point, then need to close.
@@ -799,16 +835,17 @@ inline void counter_transition(
         else
             name += ", ";
 
+        if (y_names != nullptr)
+            name += y_names->operator[](j);
+        else
+            name += (std::string("y") + std::to_string(j));
+
         #ifdef BARRY_WITH_LATEX
-        name += (motif(m_order, j) < 0 ? "y^-" : "y^+" );
+        name += (motif(m_order, j) < 0 ? "^-" : "^+" );
         #else
-        name += (motif(m_order, j) < 0 ? "y\u207B" : "y\u207A" );
+        name += (motif(m_order, j) < 0 ? "\u207B" : "\u207A" );
         #endif
 
-        if (m_order > 1)
-            name += UNI_SUB(m_order);
-
-        name += UNI_SUB(j);
 
     }
 
@@ -823,10 +860,18 @@ inline void counter_transition(
     if (covar_index >= 0)
     {
 
+        if (vname == "")
+        {
+            if (x_names != nullptr)
+                vname = x_names->operator[](covar_index);
+            else
+                vname = std::string("attr")+ std::to_string(covar_index);
+        }
+
         counters->add_counter(
             count_ones, count_init,
             DEFMCounterData(coords, {}, signs), 
-            name + " x " + ((vname != "")? vname : ("attr" + std::to_string(covar_index))), 
+            name + " x " + vname, 
             "Motif weighted by single attribute"
         );
 
@@ -858,7 +903,9 @@ inline void counter_transition_formula(
     size_t m_order,
     size_t n_y,
     int covar_index = -1,
-    std::string vname = ""
+    std::string vname = "",
+    const std::vector< std::string > * x_names = nullptr,
+    const std::vector< std::string > * y_names = nullptr
 ) {
 
     std::vector< size_t > coords;
@@ -869,7 +916,8 @@ inline void counter_transition_formula(
     );
 
     counter_transition(
-        counters, coords, signs, m_order, n_y, covar_index, vname
+        counters, coords, signs, m_order, n_y, covar_index, vname,
+        x_names, y_names
     );
 
 }
@@ -884,7 +932,8 @@ inline void counter_fixed_effect(
     DEFMCounters * counters,
     int covar_index,
     double k,
-    std::string vname = ""
+    std::string vname = "",
+    const std::vector< std::string > * x_names = nullptr
 )
 {
 
@@ -898,11 +947,15 @@ inline void counter_fixed_effect(
         return 0.0;
     };
 
+    if (x_names != nullptr)
+        vname = x_names->operator[](covar_index);
+    else
+        vname = std::string("attr")+ std::to_string(covar_index);
+
     counters->add_counter(
         count_tmp, count_init,
         DEFMCounterData({static_cast<size_t>(covar_index)}, {k}, {}), 
-        "Fixed effect feature (" +
-        ((vname != "")? vname : ("attr" + std::to_string(covar_index))) + ")^" + std::to_string(k)
+        "Fixed effect feature (" + vname + ")^" + std::to_string(k)
     );
 
     return;
