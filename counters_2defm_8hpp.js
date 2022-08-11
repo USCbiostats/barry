@@ -16,11 +16,11 @@ var counters_2defm_8hpp =
     [ "DEFMRules", "counters_2defm_8hpp.html#a6d265c2bdf19affea1db1dfa2a8cbb3f", null ],
     [ "DEFMStatsCounter", "counters_2defm_8hpp.html#af8198b2184baee8a83e8ee69da487833", null ],
     [ "DEFMSupport", "counters_2defm_8hpp.html#a15fca190888778da53799b1b53507703", null ],
-    [ "counter_fixed_effect", "group__counters-network.html#gab02f9a2001b62c3ec1657e94e35eda57", null ],
-    [ "counter_logit_intercept", "group__counters-network.html#gae5c00a76d5d682ae0f0dcf823ed5aedf", null ],
-    [ "counter_ones", "group__counters-network.html#ga8b2d17f700dee8cdf744ad065d4d396c", null ],
-    [ "counter_transition", "group__counters-network.html#ga4ecca51add42b1e0792241804d3a2598", null ],
-    [ "counter_transition_formula", "group__counters-network.html#ga8321a4627b747748c9b8696dce3466f3", null ],
+    [ "counter_fixed_effect", "group__counters-network.html#ga74d93c11efb7162666fa2fe461e0d752", null ],
+    [ "counter_logit_intercept", "group__counters-network.html#ga8e24b6a576b9091b2c366ed4e424ec73", null ],
+    [ "counter_ones", "group__counters-network.html#ga5a83cfba69ea83fca5831478055bbc6a", null ],
+    [ "counter_transition", "group__counters-network.html#ga22ed6963a00ae95ec52b89661fa7ca39", null ],
+    [ "counter_transition_formula", "group__counters-network.html#gad8c9e9b4e4a57e96cd604e8e4832a272", null ],
     [ "defm_motif_parser", "counters_2defm_8hpp.html#adbc5fa791a6bc568b9c69c479814d48f", null ],
     [ "rules_markov_fixed", "group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe", null ]
 ];
