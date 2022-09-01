@@ -13,7 +13,7 @@ var class_d_e_f_m =
     [ "get_X_names", "class_d_e_f_m.html#a31e173fc1e5c52e3eef3e29002b1ca72", null ],
     [ "get_Y", "class_d_e_f_m.html#a2f0719ced96b4fb4aa26079f9a1c22b6", null ],
     [ "get_Y_names", "class_d_e_f_m.html#a2ce8a37f6d0556dc580874178b60e88e", null ],
-    [ "init", "class_d_e_f_m.html#a3a49994e3ecff9a0bfde8924900f98c8", null ],
+    [ "init", "class_d_e_f_m.html#a89055c9b4c84f875cdadf4d697e242ac", null ],
     [ "likelihood", "class_d_e_f_m.html#a5f2a5cb3137ca8ef5b2c1db97d604b54", null ],
     [ "logodds", "class_d_e_f_m.html#abf519be0cc1245fbaf71842ca5a53519", null ],
     [ "motif_census", "class_d_e_f_m.html#afff59ccea4acd2d2bfdb1ad9f3dd89cd", null ],
