@@ -160,6 +160,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a02ed8dec96bc528c8bc3d8cb3c4674a5"><td class="memTemplParams" colspan="2">template&lt;typename Ta  = double, typename Tb  = uint&gt; </td></tr>
 <tr class="memitem:a02ed8dec96bc528c8bc3d8cb3c4674a5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="typedefs_8hpp.html#a02ed8dec96bc528c8bc3d8cb3c4674a5">MapVec_type</a> = std::unordered_map&lt; std::vector&lt; Ta &gt;, Tb, <a class="el" href="structvec_hasher.html">vecHasher</a>&lt; Ta &gt; &gt;</td></tr>
 <tr class="separator:a02ed8dec96bc528c8bc3d8cb3c4674a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7c9679e747e2f653246fbd03f26cc1"><td class="memTemplParams" colspan="2">template&lt;typename Array_Type , typename Data_Type &gt; </td></tr>
+<tr class="memitem:aab7c9679e747e2f653246fbd03f26cc1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="typedefs_8hpp.html#aab7c9679e747e2f653246fbd03f26cc1">Hasher_fun_type</a> = std::function&lt; std::vector&lt; double &gt;(<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Array_Type &amp;, Data_Type *)&gt;</td></tr>
+<tr class="memdesc:aab7c9679e747e2f653246fbd03f26cc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hasher function used by the counter.  <a href="typedefs_8hpp.html#aab7c9679e747e2f653246fbd03f26cc1">More...</a><br /></td></tr>
+<tr class="separator:aab7c9679e747e2f653246fbd03f26cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a6a6ce8184bcdbb465486ebb7ca9ec76b"><td class="memTemplParams" colspan="2">template&lt;typename Array_Type , typename Data_Type &gt; </td></tr>
 <tr class="memitem:a6a6ce8184bcdbb465486ebb7ca9ec76b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="typedefs_8hpp.html#a6a6ce8184bcdbb465486ebb7ca9ec76b">Counter_fun_type</a> = std::function&lt; double(<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Array_Type &amp;, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, <a class="el" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>, Data_Type &amp;)&gt;</td></tr>
@@ -171,6 +175,9 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ab1d4f47a245caa5ee58da49231c054ca"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="typedefs_8hpp.html#ab1d4f47a245caa5ee58da49231c054ca">sort_array</a> (<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double *<a class="el" href="barraydense-meat_8hpp.html#a4f9d6b06db1b3136e48630969fea3b9a">v</a>, size_t start, size_t ncols, size_t nrows)</td></tr>
+<tr class="memdesc:ab1d4f47a245caa5ee58da49231c054ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ascending sorting an array.  <a href="typedefs_8hpp.html#ab1d4f47a245caa5ee58da49231c054ca">More...</a><br /></td></tr>
+<tr class="separator:ab1d4f47a245caa5ee58da49231c054ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9ddeecf87d68d3f44dd6a94b10aa786"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ab9ddeecf87d68d3f44dd6a94b10aa786"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="typedefs_8hpp.html#ab9ddeecf87d68d3f44dd6a94b10aa786">vec_inner_prod</a> (<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> T *a, <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> T *b, size_t n)</td></tr>
 <tr class="separator:ab9ddeecf87d68d3f44dd6a94b10aa786"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -257,7 +264,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 <dd>
 <code>Rule_fun_type</code> a bool. True if the cell is blocked. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00148">148</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00188">188</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -274,6 +281,33 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00052">52</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aab7c9679e747e2f653246fbd03f26cc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab7c9679e747e2f653246fbd03f26cc1">&#9670;&nbsp;</a></span>Hasher_fun_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Array_Type , typename Data_Type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="typedefs_8hpp.html#aab7c9679e747e2f653246fbd03f26cc1">Hasher_fun_type</a> =  std::function&lt;std::vector&lt;double&gt;(<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Array_Type &amp;, Data_Type *)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Hasher function used by the counter. </p>
+<p>Used to characterize the support of the array.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Array_Type</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00201">201</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -327,7 +361,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00151">151</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00191">191</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -348,6 +382,73 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ab1d4f47a245caa5ee58da49231c054ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d4f47a245caa5ee58da49231c054ca">&#9670;&nbsp;</a></span>sort_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; sort_array </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> double *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>ncols</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>nrows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ascending sorting an array. </p>
+<p>It will sort an array solving ties using the next column. Data is stored column-wise.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td></td></tr>
+    <tr><td class="paramname">nrows</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;size_t&gt; The sorting index. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00142">142</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a0520b46efb182c4254e257ff5c5e7394"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0520b46efb182c4254e257ff5c5e7394">&#9670;&nbsp;</a></span>vec_equal()</h2>
 
@@ -393,7 +494,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if all elements are equal. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00162">162</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00211">211</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -439,7 +540,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00180">180</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00229">229</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -485,7 +586,7 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00226">226</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00275">275</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -531,7 +632,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00203">203</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="typedefs_8hpp_source.html#l00252">252</a> of file <a class="el" href="typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -541,7 +642,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="typedefs_8hpp.html">typedefs.hpp</a></li>
-    <li class="footer">Generated on Thu Aug 11 2022 22:56:53 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Sep 1 2022 20:56:23 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['map_1282',['Map',['../barry-configuration_8hpp.html#a1bb64c776ba5e9fc373665103b1a1772',1,'barry-configuration.hpp']]],
-  ['mapvec_5ftype_1283',['MapVec_type',['../typedefs_8hpp.html#a02ed8dec96bc528c8bc3d8cb3c4674a5',1,'typedefs.hpp']]]
+  ['hasher_5ffun_5ftype_1312',['Hasher_fun_type',['../typedefs_8hpp.html#aab7c9679e747e2f653246fbd03f26cc1',1,'typedefs.hpp']]]
 ];

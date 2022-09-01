@@ -1,5 +1,14 @@
 \hypertarget{counters_2defm_8hpp}{}\doxysection{include/barry/counters/defm.hpp File Reference}
 \label{counters_2defm_8hpp}\index{include/barry/counters/defm.hpp@{include/barry/counters/defm.hpp}}
+{\ttfamily \#include \char`\"{}defm-\/formula.\+hpp\char`\"{}}\newline
+Include dependency graph for defm.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{counters_2defm_8hpp__incl}
+\end{center}
+\end{figure}
 This graph shows which files directly or indirectly include this file\+:
 \nopagebreak
 \begin{figure}[H]
@@ -19,6 +28,8 @@ class \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{counters_2defm_8hpp_a172b737bbafc10829969ae80428ae682}{MAKE\+\_\+\+DEFM\+\_\+\+HASHER}}(\mbox{\hyperlink{counters-meat_8hpp_ae5e519e3c6e76d1643b018f41666f7f6}{hasher}},  a,  cov)
 \item 
 \#define \mbox{\hyperlink{counters_2defm_8hpp_a7a02efb9a9ac7cb0f4b8659e2b2529e0}{UNI\+\_\+\+SUB}}(a)
 \end{DoxyCompactItemize}
@@ -66,8 +77,6 @@ typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{counters_2defm
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{counters_2defm_8hpp_adbc5fa791a6bc568b9c69c479814d48f}{defm\+\_\+motif\+\_\+parser}} (std\+::string formula, std\+::vector$<$ size\+\_\+t $>$ \&locations, std\+::vector$<$ bool $>$ \&signs, size\+\_\+t m\+\_\+order, size\+\_\+t y\+\_\+ncol)
-\begin{DoxyCompactList}\small\item\em Parses a motif formula. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__counters-network_ga5a83cfba69ea83fca5831478055bbc6a}{counter\+\_\+ones}} (\mbox{\hyperlink{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}{DEFMCounters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, int covar\+\_\+index=-\/1, std\+::string vname=\char`\"{}\char`\"{}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ std\+::string $>$ $\ast$x\+\_\+names=nullptr)
 \begin{DoxyCompactList}\small\item\em Prevalence of ones. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__counters-network_ga8e24b6a576b9091b2c366ed4e424ec73}{counter\+\_\+logit\+\_\+intercept}} (\mbox{\hyperlink{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}{DEFMCounters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t n\+\_\+y, std\+::vector$<$ size\+\_\+t $>$ which=\{\}, int covar\+\_\+index=-\/1, std\+::string vname=\char`\"{}\char`\"{}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ std\+::string $>$ $\ast$x\+\_\+names=nullptr, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ std\+::string $>$ $\ast$y\+\_\+names=nullptr)
@@ -100,7 +109,7 @@ void \mbox{\hyperlink{group__counters-network_ga31452452bf9dad7f6c5767dcabfb4dbe
 
 Function for definition of a network counter function 
 
-Definition at line 376 of file defm.\+hpp.
+Definition at line 174 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_a0de627ee2d314d645cf885c7cc0ee36b}\label{counters_2defm_8hpp_a0de627ee2d314d645cf885c7cc0ee36b}} 
 \index{defm.hpp@{defm.hpp}!DEFM\_COUNTER\_LAMBDA@{DEFM\_COUNTER\_LAMBDA}}
@@ -116,7 +125,7 @@ Definition at line 376 of file defm.\+hpp.
 \end{DoxyCode}
 Lambda function for definition of a network counter function 
 
-Definition at line 380 of file defm.\+hpp.
+Definition at line 178 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_af210bb3f47af7995ff200264370d9db6}\label{counters_2defm_8hpp_af210bb3f47af7995ff200264370d9db6}} 
 \index{defm.hpp@{defm.hpp}!DEFM\_RULE@{DEFM\_RULE}}
@@ -126,7 +135,7 @@ Definition at line 380 of file defm.\+hpp.
 
 Function for definition of a network counter function 
 
-Definition at line 391 of file defm.\+hpp.
+Definition at line 188 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_a94148d8866c1e18cbb02be5ba7d233ba}\label{counters_2defm_8hpp_a94148d8866c1e18cbb02be5ba7d233ba}} 
 \index{defm.hpp@{defm.hpp}!DEFM\_RULE\_LAMBDA@{DEFM\_RULE\_LAMBDA}}
@@ -142,7 +151,32 @@ Definition at line 391 of file defm.\+hpp.
 \end{DoxyCode}
 Lambda function for definition of a network counter function 
 
-Definition at line 395 of file defm.\+hpp.
+Definition at line 192 of file defm.\+hpp.
+
+\mbox{\Hypertarget{counters_2defm_8hpp_a172b737bbafc10829969ae80428ae682}\label{counters_2defm_8hpp_a172b737bbafc10829969ae80428ae682}} 
+\index{defm.hpp@{defm.hpp}!MAKE\_DEFM\_HASHER@{MAKE\_DEFM\_HASHER}}
+\index{MAKE\_DEFM\_HASHER@{MAKE\_DEFM\_HASHER}!defm.hpp@{defm.hpp}}
+\doxysubsubsection{\texorpdfstring{MAKE\_DEFM\_HASHER}{MAKE\_DEFM\_HASHER}}
+{\footnotesize\ttfamily \#define MAKE\+\_\+\+DEFM\+\_\+\+HASHER(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{counters-meat_8hpp_ae5e519e3c6e76d1643b018f41666f7f6}{hasher}},  }\item[{}]{a,  }\item[{}]{cov }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{            \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\_fun\_type<DEFMArray,DEFMCounterData>}} \mbox{\hyperlink{counters-meat_8hpp_ab4a15f6eefa25e046260b42a7d11e69e}{hasher}} = [cov](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{DEFMArray}} \& array, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounterData}} * d) \{ \(\backslash\)}
+\DoxyCodeLine{            std::vector< double > \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}; \(\backslash\)}
+\DoxyCodeLine{            \textcolor{comment}{/* Adding the column feature */} \(\backslash\)}
+\DoxyCodeLine{            for (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} < array.\mbox{\hyperlink{class_b_array_dense_aec8c0cf7730763fee4eddbd29bb2ec07}{nrow}}(); ++\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) \(\backslash\)}
+\DoxyCodeLine{                \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}.push\_back(array.\mbox{\hyperlink{class_b_array_dense_ab6f0132d00bf3380d3252e4c6ade1e69}{D}}()(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, cov)); \(\backslash\)}
+\DoxyCodeLine{            \textcolor{comment}{/* Adding the fixed dims */} \(\backslash\)}
+\DoxyCodeLine{            for (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}} < (array.\mbox{\hyperlink{class_b_array_dense_aec8c0cf7730763fee4eddbd29bb2ec07}{nrow}}() -\/ 1); ++\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}) \(\backslash\)}
+\DoxyCodeLine{                \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}} = 0u; \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}} < array.\mbox{\hyperlink{class_b_array_dense_a7beefb4d28ec3436911940254a002a75}{ncol}}(); ++\mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}) \(\backslash\)}
+\DoxyCodeLine{                    \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}.push\_back(array(\mbox{\hyperlink{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}{i}}, \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}})); \(\backslash\)}
+\DoxyCodeLine{            return \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}};\(\backslash\)}
+\DoxyCodeLine{        \};}
+
+\end{DoxyCode}
+
+
+Definition at line 157 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_a7a02efb9a9ac7cb0f4b8659e2b2529e0}\label{counters_2defm_8hpp_a7a02efb9a9ac7cb0f4b8659e2b2529e0}} 
 \index{defm.hpp@{defm.hpp}!UNI\_SUB@{UNI\_SUB}}
@@ -177,7 +211,7 @@ Definition at line 395 of file defm.\+hpp.
 
 
 
-Definition at line 247 of file defm.\+hpp.
+Definition at line 25 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_af38626b20ade1bfb966140e1ac7bc06b}\label{counters_2defm_8hpp_af38626b20ade1bfb966140e1ac7bc06b}} 
 \index{defm.hpp@{defm.hpp}!DEFMCounter@{DEFMCounter}}
@@ -187,7 +221,7 @@ Definition at line 247 of file defm.\+hpp.
 
 
 
-Definition at line 340 of file defm.\+hpp.
+Definition at line 121 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}\label{counters_2defm_8hpp_aea94df8016172ecb8f941cabdf270a5b}} 
 \index{defm.hpp@{defm.hpp}!DEFMCounters@{DEFMCounters}}
@@ -197,7 +231,7 @@ Definition at line 340 of file defm.\+hpp.
 
 
 
-Definition at line 341 of file defm.\+hpp.
+Definition at line 122 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_ae83192714c8d9333a678bae1534d18b2}\label{counters_2defm_8hpp_ae83192714c8d9333a678bae1534d18b2}} 
 \index{defm.hpp@{defm.hpp}!DEFMModel@{DEFMModel}}
@@ -207,7 +241,7 @@ Definition at line 341 of file defm.\+hpp.
 
 
 
-Definition at line 344 of file defm.\+hpp.
+Definition at line 125 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_a07c9dbf302b45bbd65051c8bd228798d}\label{counters_2defm_8hpp_a07c9dbf302b45bbd65051c8bd228798d}} 
 \index{defm.hpp@{defm.hpp}!DEFMRule@{DEFMRule}}
@@ -217,7 +251,7 @@ Definition at line 344 of file defm.\+hpp.
 
 
 
-Definition at line 345 of file defm.\+hpp.
+Definition at line 126 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}\label{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}} 
 \index{defm.hpp@{defm.hpp}!DEFMRules@{DEFMRules}}
@@ -227,7 +261,7 @@ Definition at line 345 of file defm.\+hpp.
 
 
 
-Definition at line 346 of file defm.\+hpp.
+Definition at line 127 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_af8198b2184baee8a83e8ee69da487833}\label{counters_2defm_8hpp_af8198b2184baee8a83e8ee69da487833}} 
 \index{defm.hpp@{defm.hpp}!DEFMStatsCounter@{DEFMStatsCounter}}
@@ -237,7 +271,7 @@ Definition at line 346 of file defm.\+hpp.
 
 
 
-Definition at line 343 of file defm.\+hpp.
+Definition at line 124 of file defm.\+hpp.
 
 \mbox{\Hypertarget{counters_2defm_8hpp_a15fca190888778da53799b1b53507703}\label{counters_2defm_8hpp_a15fca190888778da53799b1b53507703}} 
 \index{defm.hpp@{defm.hpp}!DEFMSupport@{DEFMSupport}}
@@ -247,60 +281,5 @@ Definition at line 343 of file defm.\+hpp.
 
 
 
-Definition at line 342 of file defm.\+hpp.
-
-
-
-\doxysubsection{Function Documentation}
-\mbox{\Hypertarget{counters_2defm_8hpp_adbc5fa791a6bc568b9c69c479814d48f}\label{counters_2defm_8hpp_adbc5fa791a6bc568b9c69c479814d48f}} 
-\index{defm.hpp@{defm.hpp}!defm\_motif\_parser@{defm\_motif\_parser}}
-\index{defm\_motif\_parser@{defm\_motif\_parser}!defm.hpp@{defm.hpp}}
-\doxysubsubsection{\texorpdfstring{defm\_motif\_parser()}{defm\_motif\_parser()}}
-{\footnotesize\ttfamily void defm\+\_\+motif\+\_\+parser (\begin{DoxyParamCaption}\item[{std\+::string}]{formula,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{locations,  }\item[{std\+::vector$<$ bool $>$ \&}]{signs,  }\item[{size\+\_\+t}]{m\+\_\+order,  }\item[{size\+\_\+t}]{y\+\_\+ncol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Parses a motif formula. 
-
-This function will take the formula and generate the corresponding input for defm\+::counter\+\_\+transition(). Formulas can be specified in the following ways\+:
-
-
-\begin{DoxyItemize}
-\item Intercept effect\+: \{...\} No transition, only including the current state.
-\item Transition effect\+: \{...\} $>$ \{...\} Includes current and previous states.
-\end{DoxyItemize}
-
-The general notation is {\ttfamily \mbox{[}0\mbox{]}y\mbox{[}column id\mbox{]}\+\_\+\mbox{[}row id\mbox{]}}. A preceeding zero means that the value of the cell is considered to be zero. The column id goes between 0 and the number of columns in the array -\/ 1 (so it is indexed from 0,) and the row id goes from 0 to m\+\_\+order.
-
-\doxysubsubsection*{Intercept effects}
-
-Intercept effects only involve a single set of curly brackets. Using the \textquotesingle{}greater-\/than\textquotesingle{} symbol (i.\+e., \textquotesingle{}$<$\textquotesingle{}) is only for transition effects. When specifying intercept effects, users can skip the {\ttfamily row\+\_\+id}, e.\+g., {\ttfamily y0\+\_\+0} is equivalent to {\ttfamily y0}. If the passed {\ttfamily row id} is different from the Markov order, i.\+e., {\ttfamily row\+\_\+id != m\+\_\+order}, then the function returns with an error.
-
-Examples\+:
-
-
-\begin{DoxyItemize}
-\item {\ttfamily \char`\"{}\{y0, 0y1\}\char`\"{}} is equivalent to set a motif with the first element equal to one and the second to zero.
-\end{DoxyItemize}
-
-\doxysubsubsection*{Transition effects}
-
-Transition effects can be specified using two sets of curly brackets and an greater-\/than symbol, i.\+e., {\ttfamily \{...\} $>$ \{...\}}. The first set of brackets, which we call LHS, can only hold {\ttfamily row id} that are less than {\ttfamily m\+\_\+order}.
-
-
-\begin{DoxyParams}{Parameters}
-{\em formula} & \\
-\hline
-{\em locations} & \\
-\hline
-{\em signs} & \\
-\hline
-{\em m\+\_\+order} & \\
-\hline
-{\em y\+\_\+ncol} & \\
-\hline
-\end{DoxyParams}
-
-
-Definition at line 47 of file defm.\+hpp.
+Definition at line 123 of file defm.\+hpp.
 

@@ -45,7 +45,9 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \mbox{\hype
 {\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type}} = \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}}$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$ $\ast$ $>$
 \item 
 {\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \mbox{\hyperlink{structvec_hasher}{vec\+Hasher}}$<$ Ta $>$ $>$
-\end{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}} = std\+::function$<$ std\+::vector$<$ double $>$(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, Data\+\_\+\+Type $\ast$)$>$
+\begin{DoxyCompactList}\small\item\em Hasher function used by the counter. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \textbf{ }\par
 \begin{DoxyCompactItemize}
 \item 
@@ -57,6 +59,8 @@ typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \mbox{\hype
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{typedefs_8hpp_ab1d4f47a245caa5ee58da49231c054ca}{sort\+\_\+array}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$\mbox{\hyperlink{barraydense-meat_8hpp_a4f9d6b06db1b3136e48630969fea3b9a}{v}}, size\+\_\+t start, size\+\_\+t ncols, size\+\_\+t nrows)
+\begin{DoxyCompactList}\small\item\em Ascending sorting an array. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{typedefs_8hpp_ab9ddeecf87d68d3f44dd6a94b10aa786}{vec\+\_\+inner\+\_\+prod}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} T $\ast$a, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} T $\ast$b, size\+\_\+t n)
 \item 
 template$<$$>$ double \mbox{\hyperlink{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd32026f1dc}{vec\+\_\+inner\+\_\+prod}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$a, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$b, size\+\_\+t n)
@@ -135,7 +139,7 @@ using \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\
 \end{DoxyReturn}
 
 
-Definition at line 148 of file typedefs.\+hpp.
+Definition at line 188 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}\label{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}} 
 \index{typedefs.hpp@{typedefs.hpp}!Counts\_type@{Counts\_type}}
@@ -146,6 +150,28 @@ Definition at line 148 of file typedefs.\+hpp.
 
 
 Definition at line 52 of file typedefs.\+hpp.
+
+\mbox{\Hypertarget{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}\label{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}} 
+\index{typedefs.hpp@{typedefs.hpp}!Hasher\_fun\_type@{Hasher\_fun\_type}}
+\index{Hasher\_fun\_type@{Hasher\_fun\_type}!typedefs.hpp@{typedefs.hpp}}
+\doxysubsubsection{\texorpdfstring{Hasher\_fun\_type}{Hasher\_fun\_type}}
+{\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
+using \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}} =  std\+::function$<$std\+::vector$<$double$>$(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, Data\+\_\+\+Type $\ast$)$>$}
+
+
+
+Hasher function used by the counter. 
+
+Used to characterize the support of the array.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Array\+\_\+\+Type} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 201 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}\label{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}} 
 \index{typedefs.hpp@{typedefs.hpp}!MapVec\_type@{MapVec\_type}}
@@ -178,7 +204,7 @@ using \mbox{\hyperlink{typedefs_8hpp_a93a0e903405ba5549990f0138386bfa4}{Rule\+\_
 
 
 
-Definition at line 151 of file typedefs.\+hpp.
+Definition at line 191 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}\label{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}} 
 \index{typedefs.hpp@{typedefs.hpp}!uint@{uint}}
@@ -193,6 +219,37 @@ Definition at line 18 of file typedefs.\+hpp.
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{typedefs_8hpp_ab1d4f47a245caa5ee58da49231c054ca}\label{typedefs_8hpp_ab1d4f47a245caa5ee58da49231c054ca}} 
+\index{typedefs.hpp@{typedefs.hpp}!sort\_array@{sort\_array}}
+\index{sort\_array@{sort\_array}!typedefs.hpp@{typedefs.hpp}}
+\doxysubsubsection{\texorpdfstring{sort\_array()}{sort\_array()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ sort\+\_\+array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$}]{v,  }\item[{size\+\_\+t}]{start,  }\item[{size\+\_\+t}]{ncols,  }\item[{size\+\_\+t}]{nrows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ascending sorting an array. 
+
+It will sort an array solving ties using the next column. Data is stored column-\/wise.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \\
+\hline
+{\em nrows} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$size\+\_\+t$>$ The sorting index. 
+\end{DoxyReturn}
+
+
+Definition at line 142 of file typedefs.\+hpp.
+
 \mbox{\Hypertarget{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}\label{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}} 
 \index{typedefs.hpp@{typedefs.hpp}!vec\_equal@{vec\_equal}}
 \index{vec\_equal@{vec\_equal}!typedefs.hpp@{typedefs.hpp}}
@@ -214,7 +271,7 @@ Compares if -\/a-\/ and -\/b-\/ are equal.
 \end{DoxyReturn}
 
 
-Definition at line 162 of file typedefs.\+hpp.
+Definition at line 211 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_aed8ddfe5ae95bf4d6f76221ce06566fb}\label{typedefs_8hpp_aed8ddfe5ae95bf4d6f76221ce06566fb}} 
 \index{typedefs.hpp@{typedefs.hpp}!vec\_equal\_approx@{vec\_equal\_approx}}
@@ -225,7 +282,7 @@ bool vec\+\_\+equal\+\_\+approx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink
 
 
 
-Definition at line 180 of file typedefs.\+hpp.
+Definition at line 229 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd32026f1dc}\label{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd32026f1dc}} 
 \index{typedefs.hpp@{typedefs.hpp}!vec\_inner\_prod@{vec\_inner\_prod}}
@@ -236,7 +293,7 @@ double vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink
 
 
 
-Definition at line 226 of file typedefs.\+hpp.
+Definition at line 275 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_ab9ddeecf87d68d3f44dd6a94b10aa786}\label{typedefs_8hpp_ab9ddeecf87d68d3f44dd6a94b10aa786}} 
 \index{typedefs.hpp@{typedefs.hpp}!vec\_inner\_prod@{vec\_inner\_prod}}
@@ -247,5 +304,5 @@ T vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barr
 
 
 
-Definition at line 203 of file typedefs.\+hpp.
+Definition at line 252 of file typedefs.\+hpp.
 

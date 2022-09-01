@@ -150,9 +150,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#a4094d738e4b56d89ed39f2428b91a09e">   75</a></span>&#160;    <a class="code" href="class_phylo_counter_data.html#a4094d738e4b56d89ed39f2428b91a09e">PhyloCounterData</a>(</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        std::vector&lt; uint &gt; <a class="code" href="counters-meat_8hpp.html#afb5ad8f08fd716bba9cf4c1760f11927">data_</a>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        std::vector&lt; uint &gt; <a class="code" href="counters-meat_8hpp.html#af17c9c018d7997cb11aef6a4da2969a7">data_</a>,</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        std::vector&lt; double &gt; * <a class="code" href="statscounter-meat_8hpp.html#a06420c7858d72514761c1cca0654f9c0">counters_</a> = <span class="keyword">nullptr</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        ) : <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>(<a class="code" href="counters-meat_8hpp.html#afb5ad8f08fd716bba9cf4c1760f11927">data_</a>), <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>(<a class="code" href="statscounter-meat_8hpp.html#a06420c7858d72514761c1cca0654f9c0">counters_</a>) {};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        ) : <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>(<a class="code" href="counters-meat_8hpp.html#af17c9c018d7997cb11aef6a4da2969a7">data_</a>), <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>(<a class="code" href="statscounter-meat_8hpp.html#a06420c7858d72514761c1cca0654f9c0">counters_</a>) {};</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_phylo_counter_data.html#af49e627a2b24ef4290889f30870aef5d">   80</a></span>&#160;    <a class="code" href="class_phylo_counter_data.html#af49e627a2b24ef4290889f30870aef5d">PhyloCounterData</a>() : <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>(0u) {};</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
@@ -229,7 +229,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    };</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>}),</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="stringliteral">&quot;Overall gains&quot;</span> + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    );</div>
@@ -285,7 +285,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    </div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : nfun)</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            tmp_count, tmp_init,</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>}),</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="stringliteral">&quot;Gains &quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        );</div>
@@ -353,7 +353,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    </div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : nfun)</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            tmp_count, tmp_init,</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, k}),</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            std::to_string(k) + <span class="stringliteral">&quot; genes gain &quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) +</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -419,7 +419,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    };</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    </div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>}),</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="stringliteral">&quot;Num. of genes changing&quot;</span> + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    );</div>
@@ -478,23 +478,23 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">if</span> (Array(k, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) == 1u)</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        {</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off) == 0u) &amp;&amp; (Array(k, off) == 0u))</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                res -= 1.0;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160; </div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        }</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    };</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    </div>
 <div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>}),</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        <span class="stringliteral">&quot;Preserve pseudo gene (&quot;</span> + </div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        std::to_string(nfunA) + <span class="stringliteral">&quot;, &quot;</span> +</div>
@@ -596,7 +596,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    };</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    </div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>}),</div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="stringliteral">&quot;Proportion of genes changing&quot;</span> + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    );</div>
@@ -632,17 +632,17 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        <a class="code" href="phylo_8hpp.html#a6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        </div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> s : Array.D_ptr()-&gt;states)</div>
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            <span class="keywordflow">if</span> (s)</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                res += 1.0;</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160; </div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        <span class="keywordflow">return</span> res * <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> * <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
 <div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160; </div>
 <div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    };</div>
 <div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    </div>
 <div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>}),</div>
 <div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;        <span class="stringliteral">&quot;Overall loses&quot;</span> + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    );</div>
@@ -700,7 +700,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    };</div>
 <div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160; </div>
 <div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, <a class="code" href="class_phylo_rule_dyn_data.html#a8866d1a7c84d608c2fb99d651ff83b31">lb</a>, <a class="code" href="class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346">ub</a>}),</div>
 <div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;        <span class="stringliteral">&quot;Genes with [&quot;</span> + std::to_string(<a class="code" href="class_phylo_rule_dyn_data.html#a8866d1a7c84d608c2fb99d651ff83b31">lb</a>) + <span class="stringliteral">&quot;, &quot;</span> + std::to_string(<a class="code" href="class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346">ub</a>) +</div>
 <div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;            <span class="stringliteral">&quot;] funs&quot;</span> + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -750,7 +750,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;    </div>
 <div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : nfun)</div>
 <div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;            tmp_count, tmp_init,</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;            tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;            <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>}),</div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;            <span class="stringliteral">&quot;Loss &quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;        );</div>
@@ -803,7 +803,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;    };</div>
 <div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160; </div>
 <div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>}),</div>
 <div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;        <span class="stringliteral">&quot;Overall changes&quot;</span> + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;    );</div>
@@ -843,7 +843,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;        </div>
 <div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;        <span class="comment">// Figuring out which is the first (reference) function</span></div>
 <div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> other = (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == funA)? funB : funA;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;        <span class="comment">// There are 4 cases: (first x second) x (had the second function)</span></div>
 <div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;        <span class="keywordflow">if</span> (Array(other, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>, <span class="keyword">false</span>) == 1u)</div>
 <div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;        { </div>
@@ -856,7 +856,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;                </div>
 <div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(other, off, <span class="keyword">false</span>) == 0u))</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;                    res -= 1.0;</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                </div>
 <div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;            }</div>
 <div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;          </div>
@@ -870,13 +870,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                </div>
 <div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off, <span class="keyword">false</span>) == 0u) &amp;&amp; (Array(other, off, <span class="keyword">false</span>) == 1u))</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                    res += 1.0;</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;              </div>
 <div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;            }</div>
 <div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;          </div>
 <div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;        }</div>
 <div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;        </div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160; </div>
 <div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    };</div>
 <div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160; </div>
@@ -889,7 +889,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;    };</div>
 <div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    </div>
 <div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, nfunA, nfunB}),</div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;        <span class="stringliteral">&quot;Subfun between &quot;</span> + std::to_string(nfunA) + <span class="stringliteral">&quot; and &quot;</span> +</div>
 <div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;            std::to_string(nfunB) + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -945,7 +945,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;    };</div>
 <div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;    </div>
 <div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, nfunA, nfunB}),</div>
 <div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;        <span class="stringliteral">&quot;Co-gains &quot;</span> + std::to_string(nfunA) + <span class="stringliteral">&quot; &amp; &quot;</span> + std::to_string(nfunB) +</div>
 <div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;            <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -1112,7 +1112,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;    };</div>
 <div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;    </div>
 <div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>}),</div>
 <div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;        <span class="stringliteral">&quot;Longest branch mutates&quot;</span> + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;    );</div>
@@ -1155,7 +1155,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;        </div>
 <div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;        <span class="comment">// Figuring out which is the first (reference) function</span></div>
-<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;        </div>
 <div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;        <span class="keywordflow">if</span> (Array(other, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) == 0u)</div>
 <div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;        {</div>
@@ -1163,7 +1163,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160; </div>
 <div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,off) == 0) &amp;&amp; (Array(other,off) == 1))</div>
-<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;                    res += 1.0;</div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160; </div>
 <div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;        }</div>
 <div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;        <span class="keywordflow">else</span></div>
@@ -1171,11 +1171,11 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160; </div>
 <div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,off) == 1) &amp;&amp; (Array(other,off) == 0))</div>
-<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;                    res -= 1.0;</div>
+<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;                </div>
 <div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;        }</div>
 <div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;             </div>
-<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160; </div>
 <div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;    };</div>
 <div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;    </div>
@@ -1187,7 +1187,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;    };</div>
 <div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160; </div>
 <div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, nfunA, nfunB}),</div>
 <div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;        <span class="stringliteral">&quot;Neofun between &quot;</span> + std::to_string(nfunA) + <span class="stringliteral">&quot; and &quot;</span> +</div>
 <div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;        std::to_string(nfunB) + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -1221,7 +1221,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;        </div>
 <div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;        <span class="comment">// Figuring out which is the first (reference) function</span></div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;        {</div>
 <div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160; </div>
@@ -1229,13 +1229,13 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160; </div>
 <div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;            <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off) == 0))</div>
-<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;                res += 1.0;</div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;            <span class="keywordflow">else</span> </div>
-<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;                res -= 1.0;</div>
+<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160; </div>
 <div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;        }</div>
 <div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160; </div>
-<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160; </div>
 <div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;    };</div>
 <div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;    </div>
@@ -1247,7 +1247,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;    };</div>
 <div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160; </div>
 <div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, nfunA}),</div>
 <div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;        <span class="stringliteral">&quot;Pairwise neofun function &quot;</span> + std::to_string(nfunA) +</div>
 <div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;        <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -1284,7 +1284,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;        <span class="keywordflow">if</span> (!Array.D_ptr()-&gt;states[funA] | Array.D_ptr()-&gt;states[funB]) </div>
 <div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160; </div>
-<div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160; </div>
 <div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> == funA)</div>
 <div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;        {</div>
@@ -1299,7 +1299,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01299"></a><span class="lineno"> 1299</span>&#160; </div>
 <div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, off) == 0u) &amp;&amp; (Array(funB, off) == 1u))</div>
-<div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160;                        res += 1.0;</div>
+<div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160;                        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l01302"></a><span class="lineno"> 1302</span>&#160; </div>
 <div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;                }</div>
 <div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160; </div>
@@ -1314,7 +1314,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160; </div>
 <div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, off) == 1u) &amp;&amp; (Array(funB, off) == 0u))</div>
-<div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;                        res -= 1.0;</div>
+<div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;                        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160; </div>
 <div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;                }</div>
 <div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160; </div>
@@ -1334,7 +1334,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160; </div>
 <div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, off) == 1u) &amp;&amp; (Array(funB, off) == 0u))</div>
-<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;                        res += 1.0;</div>
+<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;                        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160; </div>
 <div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;                }</div>
 <div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160; </div>
@@ -1349,7 +1349,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160; </div>
 <div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, off) == 0u) &amp;&amp; (Array(funB, off) == 1u))</div>
-<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;                        res -= 1.0;</div>
+<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;                        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160; </div>
 <div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;                }</div>
 <div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160; </div>
@@ -1357,7 +1357,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160; </div>
 <div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;        }</div>
 <div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160; </div>
-<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;        </div>
 <div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;    };</div>
 <div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;    </div>
@@ -1370,7 +1370,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;    };</div>
 <div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160; </div>
 <div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, nfunA, nfunB}),</div>
 <div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;        <span class="stringliteral">&quot;Neofun from &quot;</span> + std::to_string(nfunA) + <span class="stringliteral">&quot; to &quot;</span> +</div>
 <div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;        std::to_string(nfunB) + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -1415,12 +1415,12 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160; </div>
 <div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160;            <span class="comment">// Iterating through the sibs</span></div>
-<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;            <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;            <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> c = 0u; c &lt; Array.ncol(); ++c)</div>
 <div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;                <span class="keywordflow">if</span> ((c != <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(funB, c, <span class="keyword">false</span>) == 1u))</div>
-<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;                    res += 1.0;</div>
+<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160; </div>
-<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;            <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160; </div>
 <div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160; </div>
@@ -1430,12 +1430,12 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160; </div>
 <div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;            <span class="comment">// Iterating through the sibs</span></div>
-<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;            <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;            <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> c = 0u; c &lt; Array.ncol(); ++c)</div>
 <div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;                <span class="keywordflow">if</span> ((c != <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u))</div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;                    res += (Array(funB, c, <span class="keyword">false</span>) == 0u) ? 1.0 : -1.0;</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += (Array(funB, c, <span class="keyword">false</span>) == 0u) ? 1.0 : -1.0;</div>
 <div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160; </div>
-<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;            <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160; </div>
 <div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;        }</div>
 <div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160; </div>
@@ -1463,7 +1463,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;    };</div>
 <div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160; </div>
 <div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, nfunA, nfunB}),</div>
 <div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;        <span class="stringliteral">&quot;Coopt of &quot;</span> + std::to_string(nfunA) + <span class="stringliteral">&quot; by &quot;</span> +</div>
 <div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;        std::to_string(nfunB) + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -1583,7 +1583,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160;    };</div>
 <div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;    </div>
 <div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, k}),</div>
 <div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160;        std::to_string(k) + <span class="stringliteral">&quot; genes changing&quot;</span> + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160;    );</div>
@@ -1695,7 +1695,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01712"></a><span class="lineno"> 1712</span>&#160;    };</div>
 <div class="line"><a name="l01713"></a><span class="lineno"> 1713</span>&#160;    </div>
 <div class="line"><a name="l01714"></a><span class="lineno"> 1714</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01715"></a><span class="lineno"> 1715</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l01715"></a><span class="lineno"> 1715</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01716"></a><span class="lineno"> 1716</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, <span class="keyword">static_cast&lt;</span><a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a><span class="keyword">&gt;</span>(p * 100)}),</div>
 <div class="line"><a name="l01717"></a><span class="lineno"> 1717</span>&#160;        std::to_string(p) + <span class="stringliteral">&quot; prop genes changing&quot;</span> + <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
 <div class="line"><a name="l01718"></a><span class="lineno"> 1718</span>&#160;    );</div>
@@ -1730,18 +1730,18 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01751"></a><span class="lineno"> 1751</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01752"></a><span class="lineno"> 1752</span>&#160; </div>
 <div class="line"><a name="l01753"></a><span class="lineno"> 1753</span>&#160;        <span class="comment">// Now computing the change stats</span></div>
-<div class="line"><a name="l01754"></a><span class="lineno"> 1754</span>&#160;        <span class="keywordtype">double</span> res = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol()) - 1.0;</div>
+<div class="line"><a name="l01754"></a><span class="lineno"> 1754</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol()) - 1.0;</div>
 <div class="line"><a name="l01755"></a><span class="lineno"> 1755</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01756"></a><span class="lineno"> 1756</span>&#160;        {</div>
 <div class="line"><a name="l01757"></a><span class="lineno"> 1757</span>&#160;            <span class="keywordflow">if</span> (off  == <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)</div>
 <div class="line"><a name="l01758"></a><span class="lineno"> 1758</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01759"></a><span class="lineno"> 1759</span>&#160; </div>
 <div class="line"><a name="l01760"></a><span class="lineno"> 1760</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off) == 1u)</div>
-<div class="line"><a name="l01761"></a><span class="lineno"> 1761</span>&#160;                res -= 2.0;</div>
+<div class="line"><a name="l01761"></a><span class="lineno"> 1761</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 2.0;</div>
 <div class="line"><a name="l01762"></a><span class="lineno"> 1762</span>&#160;        }</div>
 <div class="line"><a name="l01763"></a><span class="lineno"> 1763</span>&#160; </div>
 <div class="line"><a name="l01764"></a><span class="lineno"> 1764</span>&#160; </div>
-<div class="line"><a name="l01765"></a><span class="lineno"> 1765</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l01765"></a><span class="lineno"> 1765</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l01766"></a><span class="lineno"> 1766</span>&#160;        </div>
 <div class="line"><a name="l01767"></a><span class="lineno"> 1767</span>&#160;    };</div>
 <div class="line"><a name="l01768"></a><span class="lineno"> 1768</span>&#160; </div>
@@ -1754,7 +1754,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01775"></a><span class="lineno"> 1775</span>&#160;    </div>
 <div class="line"><a name="l01776"></a><span class="lineno"> 1776</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> : nfun)</div>
 <div class="line"><a name="l01777"></a><span class="lineno"> 1777</span>&#160;        <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01778"></a><span class="lineno"> 1778</span>&#160;            tmp_count, tmp_init,</div>
+<div class="line"><a name="l01778"></a><span class="lineno"> 1778</span>&#160;            tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01779"></a><span class="lineno"> 1779</span>&#160;            <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>}),</div>
 <div class="line"><a name="l01780"></a><span class="lineno"> 1780</span>&#160;            <span class="stringliteral">&quot;First gain &quot;</span> + std::to_string(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) +</div>
 <div class="line"><a name="l01781"></a><span class="lineno"> 1781</span>&#160;                <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -1798,7 +1798,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01823"></a><span class="lineno"> 1823</span>&#160;    };</div>
 <div class="line"><a name="l01824"></a><span class="lineno"> 1824</span>&#160;    </div>
 <div class="line"><a name="l01825"></a><span class="lineno"> 1825</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01826"></a><span class="lineno"> 1826</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l01826"></a><span class="lineno"> 1826</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01827"></a><span class="lineno"> 1827</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>}),</div>
 <div class="line"><a name="l01828"></a><span class="lineno"> 1828</span>&#160;        <span class="stringliteral">&quot;Overall first gains&quot;</span> +</div>
 <div class="line"><a name="l01829"></a><span class="lineno"> 1829</span>&#160;            <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -1824,19 +1824,19 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01853"></a><span class="lineno"> 1853</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> funpar = Array.D_ptr()-&gt;states[<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>] == 1u;</div>
 <div class="line"><a name="l01854"></a><span class="lineno"> 1854</span>&#160; </div>
 <div class="line"><a name="l01855"></a><span class="lineno"> 1855</span>&#160;        <span class="comment">// All must be false</span></div>
-<div class="line"><a name="l01856"></a><span class="lineno"> 1856</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l01856"></a><span class="lineno"> 1856</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01857"></a><span class="lineno"> 1857</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01858"></a><span class="lineno"> 1858</span>&#160;        {</div>
 <div class="line"><a name="l01859"></a><span class="lineno"> 1859</span>&#160;            <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>)</div>
 <div class="line"><a name="l01860"></a><span class="lineno"> 1860</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01861"></a><span class="lineno"> 1861</span>&#160; </div>
 <div class="line"><a name="l01862"></a><span class="lineno"> 1862</span>&#160;            <span class="keywordflow">if</span> (funpar &gt; Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off))</div>
-<div class="line"><a name="l01863"></a><span class="lineno"> 1863</span>&#160;                res -= 1.0;</div>
+<div class="line"><a name="l01863"></a><span class="lineno"> 1863</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l01864"></a><span class="lineno"> 1864</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (funpar &lt; Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off))</div>
-<div class="line"><a name="l01865"></a><span class="lineno"> 1865</span>&#160;                res += 1.0;</div>
+<div class="line"><a name="l01865"></a><span class="lineno"> 1865</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l01866"></a><span class="lineno"> 1866</span>&#160;        }</div>
 <div class="line"><a name="l01867"></a><span class="lineno"> 1867</span>&#160;        </div>
-<div class="line"><a name="l01868"></a><span class="lineno"> 1868</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l01868"></a><span class="lineno"> 1868</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l01869"></a><span class="lineno"> 1869</span>&#160;        </div>
 <div class="line"><a name="l01870"></a><span class="lineno"> 1870</span>&#160;    };</div>
 <div class="line"><a name="l01871"></a><span class="lineno"> 1871</span>&#160; </div>
@@ -1847,18 +1847,18 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01876"></a><span class="lineno"> 1876</span>&#160;        <a class="code" href="phylo_8hpp.html#a6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l01877"></a><span class="lineno"> 1877</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01878"></a><span class="lineno"> 1878</span>&#160; </div>
-<div class="line"><a name="l01879"></a><span class="lineno"> 1879</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l01879"></a><span class="lineno"> 1879</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01880"></a><span class="lineno"> 1880</span>&#160;        <span class="keywordtype">double</span> n   = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
 <div class="line"><a name="l01881"></a><span class="lineno"> 1881</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> s : Array.D_ptr()-&gt;states)</div>
 <div class="line"><a name="l01882"></a><span class="lineno"> 1882</span>&#160;            <span class="keywordflow">if</span> (s)</div>
-<div class="line"><a name="l01883"></a><span class="lineno"> 1883</span>&#160;                res += n * (n - 1.0) / 2.0;</div>
+<div class="line"><a name="l01883"></a><span class="lineno"> 1883</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += n * (n - 1.0) / 2.0;</div>
 <div class="line"><a name="l01884"></a><span class="lineno"> 1884</span>&#160; </div>
-<div class="line"><a name="l01885"></a><span class="lineno"> 1885</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l01885"></a><span class="lineno"> 1885</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l01886"></a><span class="lineno"> 1886</span>&#160; </div>
 <div class="line"><a name="l01887"></a><span class="lineno"> 1887</span>&#160;    };</div>
 <div class="line"><a name="l01888"></a><span class="lineno"> 1888</span>&#160;    </div>
 <div class="line"><a name="l01889"></a><span class="lineno"> 1889</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l01890"></a><span class="lineno"> 1890</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l01890"></a><span class="lineno"> 1890</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l01891"></a><span class="lineno"> 1891</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>}),</div>
 <div class="line"><a name="l01892"></a><span class="lineno"> 1892</span>&#160;        <span class="stringliteral">&quot;Pairs of genes changing&quot;</span> +</div>
 <div class="line"><a name="l01893"></a><span class="lineno"> 1893</span>&#160;            <a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -1897,7 +1897,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01931"></a><span class="lineno"> 1931</span>&#160;        <span class="comment">// if (!parent_i &amp; !parent_k)</span></div>
 <div class="line"><a name="l01932"></a><span class="lineno"> 1932</span>&#160;        <span class="comment">//     return 0.0;</span></div>
 <div class="line"><a name="l01933"></a><span class="lineno"> 1933</span>&#160; </div>
-<div class="line"><a name="l01934"></a><span class="lineno"> 1934</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l01934"></a><span class="lineno"> 1934</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01935"></a><span class="lineno"> 1935</span>&#160;        <span class="comment">// Case 1: (0,0)</span></div>
 <div class="line"><a name="l01936"></a><span class="lineno"> 1936</span>&#160;        <span class="keywordflow">if</span> (!parent_i &amp; !parent_k)</div>
 <div class="line"><a name="l01937"></a><span class="lineno"> 1937</span>&#160;        {</div>
@@ -1912,7 +1912,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01946"></a><span class="lineno"> 1946</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01947"></a><span class="lineno"> 1947</span>&#160; </div>
 <div class="line"><a name="l01948"></a><span class="lineno"> 1948</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off) == 0u) &amp;&amp; (Array(k, off) == 0u))</div>
-<div class="line"><a name="l01949"></a><span class="lineno"> 1949</span>&#160;                    res -= 1.0;</div>
+<div class="line"><a name="l01949"></a><span class="lineno"> 1949</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l01950"></a><span class="lineno"> 1950</span>&#160; </div>
 <div class="line"><a name="l01951"></a><span class="lineno"> 1951</span>&#160;            }</div>
 <div class="line"><a name="l01952"></a><span class="lineno"> 1952</span>&#160; </div>
@@ -1930,7 +1930,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01964"></a><span class="lineno"> 1964</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01965"></a><span class="lineno"> 1965</span>&#160; </div>
 <div class="line"><a name="l01966"></a><span class="lineno"> 1966</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off) == 1u) &amp;&amp; (Array(k, off) == 0u))</div>
-<div class="line"><a name="l01967"></a><span class="lineno"> 1967</span>&#160;                    res += 1.0;</div>
+<div class="line"><a name="l01967"></a><span class="lineno"> 1967</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l01968"></a><span class="lineno"> 1968</span>&#160; </div>
 <div class="line"><a name="l01969"></a><span class="lineno"> 1969</span>&#160;            }</div>
 <div class="line"><a name="l01970"></a><span class="lineno"> 1970</span>&#160; </div>
@@ -1948,7 +1948,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01982"></a><span class="lineno"> 1982</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01983"></a><span class="lineno"> 1983</span>&#160; </div>
 <div class="line"><a name="l01984"></a><span class="lineno"> 1984</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off) == 0u) &amp;&amp; (Array(k, off) == 1u))</div>
-<div class="line"><a name="l01985"></a><span class="lineno"> 1985</span>&#160;                    res += 1.0;</div>
+<div class="line"><a name="l01985"></a><span class="lineno"> 1985</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l01986"></a><span class="lineno"> 1986</span>&#160; </div>
 <div class="line"><a name="l01987"></a><span class="lineno"> 1987</span>&#160;            }</div>
 <div class="line"><a name="l01988"></a><span class="lineno"> 1988</span>&#160; </div>
@@ -1966,12 +1966,12 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02000"></a><span class="lineno"> 2000</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l02001"></a><span class="lineno"> 2001</span>&#160; </div>
 <div class="line"><a name="l02002"></a><span class="lineno"> 2002</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, off) == 1u) &amp;&amp; (Array(k, off) == 1u))</div>
-<div class="line"><a name="l02003"></a><span class="lineno"> 2003</span>&#160;                    res += 1.0;</div>
+<div class="line"><a name="l02003"></a><span class="lineno"> 2003</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l02004"></a><span class="lineno"> 2004</span>&#160; </div>
 <div class="line"><a name="l02005"></a><span class="lineno"> 2005</span>&#160;            }</div>
 <div class="line"><a name="l02006"></a><span class="lineno"> 2006</span>&#160;        }</div>
 <div class="line"><a name="l02007"></a><span class="lineno"> 2007</span>&#160; </div>
-<div class="line"><a name="l02008"></a><span class="lineno"> 2008</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l02008"></a><span class="lineno"> 2008</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l02009"></a><span class="lineno"> 2009</span>&#160;        </div>
 <div class="line"><a name="l02010"></a><span class="lineno"> 2010</span>&#160;    };</div>
 <div class="line"><a name="l02011"></a><span class="lineno"> 2011</span>&#160; </div>
@@ -1992,7 +1992,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02026"></a><span class="lineno"> 2026</span>&#160;    };</div>
 <div class="line"><a name="l02027"></a><span class="lineno"> 2027</span>&#160;    </div>
 <div class="line"><a name="l02028"></a><span class="lineno"> 2028</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l02029"></a><span class="lineno"> 2029</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l02029"></a><span class="lineno"> 2029</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l02030"></a><span class="lineno"> 2030</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, nfunA, nfunB}),</div>
 <div class="line"><a name="l02031"></a><span class="lineno"> 2031</span>&#160;        <span class="stringliteral">&quot;Pariwise preserve (&quot;</span> + std::to_string(nfunA) + <span class="stringliteral">&quot;, &quot;</span> +</div>
 <div class="line"><a name="l02032"></a><span class="lineno"> 2032</span>&#160;            std::to_string(nfunB) + <span class="stringliteral">&quot;)&quot;</span> +<a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -2025,7 +2025,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02064"></a><span class="lineno"> 2064</span>&#160; </div>
 <div class="line"><a name="l02065"></a><span class="lineno"> 2065</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> k = (funA == <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) ? funB : funA;</div>
 <div class="line"><a name="l02066"></a><span class="lineno"> 2066</span>&#160; </div>
-<div class="line"><a name="l02067"></a><span class="lineno"> 2067</span>&#160;        <span class="keywordtype">double</span> res = 0.0;</div>
+<div class="line"><a name="l02067"></a><span class="lineno"> 2067</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l02068"></a><span class="lineno"> 2068</span>&#160;        <span class="keywordflow">if</span> (Array(k, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) == 1)</div>
 <div class="line"><a name="l02069"></a><span class="lineno"> 2069</span>&#160;        {</div>
 <div class="line"><a name="l02070"></a><span class="lineno"> 2070</span>&#160; </div>
@@ -2035,7 +2035,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02074"></a><span class="lineno"> 2074</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l02075"></a><span class="lineno"> 2075</span>&#160; </div>
 <div class="line"><a name="l02076"></a><span class="lineno"> 2076</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,off) == 0u) &amp;&amp; (Array(k,off) == 0u))</div>
-<div class="line"><a name="l02077"></a><span class="lineno"> 2077</span>&#160;                    res -= 1.0;</div>
+<div class="line"><a name="l02077"></a><span class="lineno"> 2077</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l02078"></a><span class="lineno"> 2078</span>&#160;            }</div>
 <div class="line"><a name="l02079"></a><span class="lineno"> 2079</span>&#160; </div>
 <div class="line"><a name="l02080"></a><span class="lineno"> 2080</span>&#160;        }</div>
@@ -2053,7 +2053,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02092"></a><span class="lineno"> 2092</span>&#160; </div>
 <div class="line"><a name="l02093"></a><span class="lineno"> 2093</span>&#160;                    <span class="comment">// j: (0,0)\&zwj;(1,0) -&gt; (1,0)\&zwj;(1,0), so less 1</span></div>
 <div class="line"><a name="l02094"></a><span class="lineno"> 2094</span>&#160;                    <span class="keywordflow">if</span> (Array(k, off) == 0u)</div>
-<div class="line"><a name="l02095"></a><span class="lineno"> 2095</span>&#160;                        res -= 1.0;</div>
+<div class="line"><a name="l02095"></a><span class="lineno"> 2095</span>&#160;                        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l02096"></a><span class="lineno"> 2096</span>&#160; </div>
 <div class="line"><a name="l02097"></a><span class="lineno"> 2097</span>&#160;                }</div>
 <div class="line"><a name="l02098"></a><span class="lineno"> 2098</span>&#160;                <span class="keywordflow">else</span></div>
@@ -2061,10 +2061,10 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02100"></a><span class="lineno"> 2100</span>&#160; </div>
 <div class="line"><a name="l02101"></a><span class="lineno"> 2101</span>&#160;                    <span class="keywordflow">if</span> (Array(k, off) == 1u) </div>
 <div class="line"><a name="l02102"></a><span class="lineno"> 2102</span>&#160;                    <span class="comment">// j: (0,0)\&zwj;(0,1) -&gt; (1,0)\&zwj;(0,1), so less 1</span></div>
-<div class="line"><a name="l02103"></a><span class="lineno"> 2103</span>&#160;                        res -= 1.0;</div>
+<div class="line"><a name="l02103"></a><span class="lineno"> 2103</span>&#160;                        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> -= 1.0;</div>
 <div class="line"><a name="l02104"></a><span class="lineno"> 2104</span>&#160;                    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l02105"></a><span class="lineno"> 2105</span>&#160;                    <span class="comment">// j: (0,0)\&zwj;(0,0) -&gt; (1,0)\&zwj;(0,0), so plus 1</span></div>
-<div class="line"><a name="l02106"></a><span class="lineno"> 2106</span>&#160;                        res += 1.0;</div>
+<div class="line"><a name="l02106"></a><span class="lineno"> 2106</span>&#160;                        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l02107"></a><span class="lineno"> 2107</span>&#160; </div>
 <div class="line"><a name="l02108"></a><span class="lineno"> 2108</span>&#160;                }</div>
 <div class="line"><a name="l02109"></a><span class="lineno"> 2109</span>&#160; </div>
@@ -2073,7 +2073,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02112"></a><span class="lineno"> 2112</span>&#160;        }</div>
 <div class="line"><a name="l02113"></a><span class="lineno"> 2113</span>&#160;        </div>
 <div class="line"><a name="l02114"></a><span class="lineno"> 2114</span>&#160; </div>
-<div class="line"><a name="l02115"></a><span class="lineno"> 2115</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l02115"></a><span class="lineno"> 2115</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l02116"></a><span class="lineno"> 2116</span>&#160;        </div>
 <div class="line"><a name="l02117"></a><span class="lineno"> 2117</span>&#160;    };</div>
 <div class="line"><a name="l02118"></a><span class="lineno"> 2118</span>&#160; </div>
@@ -2086,7 +2086,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02125"></a><span class="lineno"> 2125</span>&#160;    };</div>
 <div class="line"><a name="l02126"></a><span class="lineno"> 2126</span>&#160;    </div>
 <div class="line"><a name="l02127"></a><span class="lineno"> 2127</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(</div>
-<div class="line"><a name="l02128"></a><span class="lineno"> 2128</span>&#160;        tmp_count, tmp_init,</div>
+<div class="line"><a name="l02128"></a><span class="lineno"> 2128</span>&#160;        tmp_count, tmp_init, <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l02129"></a><span class="lineno"> 2129</span>&#160;        <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a>({<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>, nfunA, nfunB}),</div>
 <div class="line"><a name="l02130"></a><span class="lineno"> 2130</span>&#160;        <span class="stringliteral">&quot;First gain (either &quot;</span> + std::to_string(nfunA) + <span class="stringliteral">&quot; or &quot;</span> +</div>
 <div class="line"><a name="l02131"></a><span class="lineno"> 2131</span>&#160;            std::to_string(nfunB) + <span class="stringliteral">&quot;)&quot;</span> +<a class="code" href="phylo_8hpp.html#aada2ab762aee328264bd5b8ca9c677fb">get_last_name</a>(<a class="code" href="class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c">duplication</a>)</div>
@@ -2182,8 +2182,8 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
 <div class="ttc" id="aclass_b_array_dense_html"><div class="ttname"><a href="class_b_array_dense.html">BArrayDense</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-bones_8hpp_source.html#l00033">barraydense-bones.hpp:33</a></div></div>
 <div class="ttc" id="aclass_counter_html"><div class="ttname"><a href="class_counter.html">Counter</a></div><div class="ttdoc">A counter function based on change statistics.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00035">counters-bones.hpp:35</a></div></div>
-<div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00092">counters-bones.hpp:92</a></div></div>
-<div class="ttc" id="aclass_model_html"><div class="ttname"><a href="class_model.html">Model</a></div><div class="ttdoc">General framework for discrete exponential models. This class allows generating discrete exponential ...</div><div class="ttdef"><b>Definition:</b> <a href="model-bones_8hpp_source.html#l00044">model-bones.hpp:44</a></div></div>
+<div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00108">counters-bones.hpp:108</a></div></div>
+<div class="ttc" id="aclass_model_html"><div class="ttname"><a href="class_model.html">Model</a></div><div class="ttdoc">General framework for discrete exponential models. This class allows generating discrete exponential ...</div><div class="ttdef"><b>Definition:</b> <a href="model-bones_8hpp_source.html#l00034">model-bones.hpp:34</a></div></div>
 <div class="ttc" id="aclass_node_data_html"><div class="ttname"><a href="class_node_data.html">NodeData</a></div><div class="ttdoc">Data definition for the PhyloArray class.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00038">phylo.hpp:38</a></div></div>
 <div class="ttc" id="aclass_node_data_html_a02da5f097c105813216d87ef89ad7bd4"><div class="ttname"><a href="class_node_data.html#a02da5f097c105813216d87ef89ad7bd4">NodeData::blengths</a></div><div class="ttdeci">std::vector&lt; double &gt; blengths</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00044">phylo.hpp:44</a></div></div>
 <div class="ttc" id="aclass_node_data_html_a0a90191ba4c987afa3406f829967d8e2"><div class="ttname"><a href="class_node_data.html#a0a90191ba4c987afa3406f829967d8e2">NodeData::NodeData</a></div><div class="ttdeci">NodeData(const std::vector&lt; double &gt; &amp;blengths_, const std::vector&lt; bool &gt; &amp;states_, bool duplication_=true)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00058">phylo.hpp:58</a></div></div>
@@ -2218,8 +2218,9 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="ttc" id="aclass_support_html"><div class="ttname"><a href="class_support.html">Support</a></div><div class="ttdoc">Compute the support of sufficient statistics.</div><div class="ttdef"><b>Definition:</b> <a href="support-bones_8hpp_source.html#l00042">support-bones.hpp:42</a></div></div>
 <div class="ttc" id="aclass_support_html_a8af9d807ce23c9f7259138b5aebdda31"><div class="ttname"><a href="class_support.html#a8af9d807ce23c9f7259138b5aebdda31">Support::get_current_stats</a></div><div class="ttdeci">std::vector&lt; double &gt; * get_current_stats()</div><div class="ttdoc">List current statistics.</div></div>
 <div class="ttc" id="aclass_support_html_a8d2f10623d7d6e5d76fee837a23efa1f"><div class="ttname"><a href="class_support.html#a8d2f10623d7d6e5d76fee837a23efa1f">Support::get_rules_dyn</a></div><div class="ttdeci">Rules&lt; Array_Type, Data_Rule_Dyn_Type &gt; * get_rules_dyn()</div><div class="ttdoc">Vector of dynamic rules (to include/exclude a realizaton).</div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00080">counters-meat.hpp:80</a></div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_afb5ad8f08fd716bba9cf4c1760f11927"><div class="ttname"><a href="counters-meat_8hpp.html#afb5ad8f08fd716bba9cf4c1760f11927">data_</a></div><div class="ttdeci">Data_Type Counter_fun_type&lt; Array_Type, Data_Type &gt; Data_Type data_</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00163">counters-meat.hpp:163</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_a5e111f6687f261e4e28bd6528e7f5b48"><div class="ttname"><a href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a></div><div class="ttdeci">return res</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00263">counters-meat.hpp:263</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:83</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_af17c9c018d7997cb11aef6a4da2969a7"><div class="ttname"><a href="counters-meat_8hpp.html#af17c9c018d7997cb11aef6a4da2969a7">data_</a></div><div class="ttdeci">Data_Type Counter_fun_type&lt; Array_Type, Data_Type &gt; Hasher_fun_type&lt; Array_Type, Data_Type &gt; Data_Type data_</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00182">counters-meat.hpp:182</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_ga06b193f4d4ac04ebcd8535a4d1b61636"><div class="ttname"><a href="group__counters-phylo.html#ga06b193f4d4ac04ebcd8535a4d1b61636">counter_cogain</a></div><div class="ttdeci">void counter_cogain(PhyloCounters *counters, uint nfunA, uint nfunB, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Co-evolution (joint gain or loss)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00888">phylo.hpp:888</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_ga0b30b6172ca57ab66ca7c80fe3ef76fd"><div class="ttname"><a href="group__counters-phylo.html#ga0b30b6172ca57ab66ca7c80fe3ef76fd">counter_overall_gains</a></div><div class="ttdeci">void counter_overall_gains(PhyloCounters *counters, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Overall functional gains.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00155">phylo.hpp:155</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_ga22aa24b7cd557b55a5ebb0aeeff6c030"><div class="ttname"><a href="group__counters-phylo.html#ga22aa24b7cd557b55a5ebb0aeeff6c030">counter_subfun</a></div><div class="ttdeci">void counter_subfun(PhyloCounters *counters, uint nfunA, uint nfunB, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Total count of Sub-functionalization events.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00799">phylo.hpp:799</a></div></div>
@@ -2276,7 +2277,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
-    <li class="footer">Generated on Thu Aug 11 2022 22:56:53 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Sep 1 2022 20:56:23 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

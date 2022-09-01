@@ -1,0 +1,70 @@
+\hypertarget{defm-formula_8hpp}{}\doxysection{include/barry/counters/defm-\/formula.hpp File Reference}
+\label{defm-formula_8hpp}\index{include/barry/counters/defm-\/formula.hpp@{include/barry/counters/defm-\/formula.hpp}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{defm-formula_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{defm-formula_8hpp_adbc5fa791a6bc568b9c69c479814d48f}{defm\+\_\+motif\+\_\+parser}} (std\+::string formula, std\+::vector$<$ size\+\_\+t $>$ \&locations, std\+::vector$<$ bool $>$ \&signs, size\+\_\+t m\+\_\+order, size\+\_\+t y\+\_\+ncol)
+\begin{DoxyCompactList}\small\item\em Parses a motif formula. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{defm-formula_8hpp_adbc5fa791a6bc568b9c69c479814d48f}\label{defm-formula_8hpp_adbc5fa791a6bc568b9c69c479814d48f}} 
+\index{defm-\/formula.hpp@{defm-\/formula.hpp}!defm\_motif\_parser@{defm\_motif\_parser}}
+\index{defm\_motif\_parser@{defm\_motif\_parser}!defm-\/formula.hpp@{defm-\/formula.hpp}}
+\doxysubsubsection{\texorpdfstring{defm\_motif\_parser()}{defm\_motif\_parser()}}
+{\footnotesize\ttfamily void defm\+\_\+motif\+\_\+parser (\begin{DoxyParamCaption}\item[{std\+::string}]{formula,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{locations,  }\item[{std\+::vector$<$ bool $>$ \&}]{signs,  }\item[{size\+\_\+t}]{m\+\_\+order,  }\item[{size\+\_\+t}]{y\+\_\+ncol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parses a motif formula. 
+
+This function will take the formula and generate the corresponding input for defm\+::counter\+\_\+transition(). Formulas can be specified in the following ways\+:
+
+
+\begin{DoxyItemize}
+\item Intercept effect\+: \{...\} No transition, only including the current state.
+\item Transition effect\+: \{...\} $>$ \{...\} Includes current and previous states.
+\end{DoxyItemize}
+
+The general notation is {\ttfamily \mbox{[}0\mbox{]}y\mbox{[}column id\mbox{]}\+\_\+\mbox{[}row id\mbox{]}}. A preceeding zero means that the value of the cell is considered to be zero. The column id goes between 0 and the number of columns in the array -\/ 1 (so it is indexed from 0,) and the row id goes from 0 to m\+\_\+order.
+
+\doxysubsubsection*{Intercept effects}
+
+Intercept effects only involve a single set of curly brackets. Using the \textquotesingle{}greater-\/than\textquotesingle{} symbol (i.\+e., \textquotesingle{}$<$\textquotesingle{}) is only for transition effects. When specifying intercept effects, users can skip the {\ttfamily row\+\_\+id}, e.\+g., {\ttfamily y0\+\_\+0} is equivalent to {\ttfamily y0}. If the passed {\ttfamily row id} is different from the Markov order, i.\+e., {\ttfamily row\+\_\+id != m\+\_\+order}, then the function returns with an error.
+
+Examples\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \char`\"{}\{y0, 0y1\}\char`\"{}} is equivalent to set a motif with the first element equal to one and the second to zero.
+\end{DoxyItemize}
+
+\doxysubsubsection*{Transition effects}
+
+Transition effects can be specified using two sets of curly brackets and an greater-\/than symbol, i.\+e., {\ttfamily \{...\} $>$ \{...\}}. The first set of brackets, which we call LHS, can only hold {\ttfamily row id} that are less than {\ttfamily m\+\_\+order}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em formula} & \\
+\hline
+{\em locations} & \\
+\hline
+{\em signs} & \\
+\hline
+{\em m\+\_\+order} & \\
+\hline
+{\em y\+\_\+ncol} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 46 of file defm-\/formula.\+hpp.
+

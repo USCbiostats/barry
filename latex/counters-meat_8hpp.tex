@@ -17,6 +17,8 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \#define \mbox{\hyperlink{counters-meat_8hpp_a8840b9bea4ca8a4cea945955311a570e}{COUNTER\+\_\+\+TEMPLATE}}(a,  b)~    template \mbox{\hyperlink{counters-meat_8hpp_a29970b98b610a5fd7de278bc2880cae7}{COUNTER\+\_\+\+TEMPLATE\+\_\+\+ARGS}}() inline a \mbox{\hyperlink{counters-meat_8hpp_aa387f3508fdf8dce292c32102af2603c}{COUNTER\+\_\+\+TYPE}}()\+::b
 \item 
+\#define \mbox{\hyperlink{counters-meat_8hpp_a280a28059418e1ac77dfc3b16a435e7a}{TMP\+\_\+\+HASHER\+\_\+\+CALL}}~\mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$
+\item 
 \#define \mbox{\hyperlink{counters-meat_8hpp_ae27e6ee1784a946a418d6115a337f50c}{COUNTERS\+\_\+\+TYPE}}()~\mbox{\hyperlink{class_counters}{Counters}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$
 \item 
 \#define \mbox{\hyperlink{counters-meat_8hpp_a7729ab1d6cb3ac68f93ff37cbf0f1ec3}{COUNTERS\+\_\+\+TEMPLATE\+\_\+\+ARGS}}()~$<$typename Array\+\_\+\+Type, typename Data\+\_\+\+Type$>$
@@ -30,7 +32,11 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_a4db74fa58e4a90b598e4a6f38811e78c}{init\+\_\+fun}} (counter\+\_\+.\+init\+\_\+fun)
 \item 
+Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_a75e48ffb2bd94d728e6f1a8f5b0ed6d4}{hasher\+\_\+fun}} (counter\+\_\+.\+hasher\+\_\+fun)
+\item 
 Data\+\_\+\+Type \&\&\mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\+\_\+}} \mbox{\hyperlink{counters-meat_8hpp_a848e12b226863427414b3db19f0f0578}{init\+\_\+fun}} (std\+::move(counter\+\_\+.\+init\+\_\+fun))
+\item 
+Data\+\_\+\+Type \&\&\mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\+\_\+}} \mbox{\hyperlink{counters-meat_8hpp_afc300ca98dd09e4de220250a44983f74}{hasher\+\_\+fun}} (std\+::move(counter\+\_\+.\+hasher\+\_\+fun))
 \item 
 Data\+\_\+\+Type \&\&\mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\+\_\+}} \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}} (std\+::move(counter\+\_\+.\+data))
 \item 
@@ -54,11 +60,17 @@ Data\+\_\+\+Type \&\&\mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f7
 \item 
 \mbox{\hyperlink{counters-meat_8hpp_a7906149c0a00202c532f0610eb8ea084}{COUNTER\+\_\+\+TEMPLATE}} (std\+::string, get\+\_\+description)() \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
+\mbox{\hyperlink{counters-meat_8hpp_ac14f62013456d6f68a82556d96f7fbf7}{COUNTER\+\_\+\+TEMPLATE}} (void, set\+\_\+hasher)(\mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type
+\item 
+\mbox{\hyperlink{counters-meat_8hpp_ae0480e298269c6bd4dcee1502d1f0b18}{COUNTER\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{counters-meat_8hpp_a280a28059418e1ac77dfc3b16a435e7a}{TMP\+\_\+\+HASHER\+\_\+\+CALL}}, get\+\_\+hasher)()
+\item 
 \mbox{\hyperlink{counters-meat_8hpp_afa41a789dffd7e6c610d902757c887c1}{COUNTERS\+\_\+\+TEMPLATE}} (, \mbox{\hyperlink{class_counters}{Counters}})()
 \item 
 \mbox{\hyperlink{counters-meat_8hpp_ad22cba9227085528be5ac91f57aac653}{COUNTERS\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{counters-meat_8hpp_aa387f3508fdf8dce292c32102af2603c}{COUNTER\+\_\+\+TYPE}}() \&, operator\mbox{[}$\,$\mbox{]})(\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} idx)
 \item 
-Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_adba96382020cb775b4b32230b521de8d}{Counters}} (\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&\&\mbox{\hyperlink{support-meat_8hpp_aa79c6fa1f7864a8258e8f2c0a68b6d35}{counters\+\_\+}}) \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_ab4a15f6eefa25e046260b42a7d11e69e}{hasher}} (counter\+\_\+.\+hasher)
+\item 
+Data\+\_\+\+Type \&\&\mbox{\hyperlink{support-meat_8hpp_aa79c6fa1f7864a8258e8f2c0a68b6d35}{counters\+\_\+}} \mbox{\hyperlink{counters-meat_8hpp_ae5e519e3c6e76d1643b018f41666f7f6}{hasher}} (std\+::move(counter\+\_\+.\+hasher))
 \item 
 \mbox{\hyperlink{counters-meat_8hpp_a9577ec9310f1a84b33cad8721a25206c}{COUNTERS\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{counters-meat_8hpp_ae27e6ee1784a946a418d6115a337f50c}{COUNTERS\+\_\+\+TYPE}}(), operator=)(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type
 \item 
@@ -69,6 +81,18 @@ Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_adba96382020cb775b4b32230b5
 \mbox{\hyperlink{counters-meat_8hpp_ad2943d64f309fdd1193ed1bd84cccc6e}{COUNTERS\+\_\+\+TEMPLATE}} (std\+::vector$<$ std\+::string $>$, get\+\_\+names)() \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
 \mbox{\hyperlink{counters-meat_8hpp_a115ed909ab1f2cee7d9fd0eb587598bb}{COUNTERS\+\_\+\+TEMPLATE}} (std\+::vector$<$ std\+::string $>$, get\+\_\+descriptions)() \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
+\mbox{\hyperlink{counters-meat_8hpp_a90771969f8fe9be53b20203d33f6a8a7}{COUNTERS\+\_\+\+TEMPLATE}} (std\+::vector$<$ double $>$, gen\+\_\+hash)(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&array
+\item 
+\mbox{\hyperlink{counters-meat_8hpp_a6843fc68316315624815734c0edeb27a}{for}} (auto \&c\+:data)
+\item 
+\mbox{\hyperlink{counters-meat_8hpp_a79782c185898924470b8a4ec3c72ab5f}{if}} (\mbox{\hyperlink{counters-meat_8hpp_abf51d2d1d1db95f68ed44c896a4eec1c}{add\+\_\+dims}})
+\item 
+\mbox{\hyperlink{counters-meat_8hpp_a3f0323418dba862809a97490ecfbc290}{if}} (\mbox{\hyperlink{counters-meat_8hpp_ae5e519e3c6e76d1643b018f41666f7f6}{hasher}})
+\item 
+\mbox{\hyperlink{counters-meat_8hpp_aad00cb483160c346052d1ca08ec136ed}{if}} (res.\+size()==0u) res.\+push\+\_\+back(0.\+0)
+\item 
+\mbox{\hyperlink{counters-meat_8hpp_a83aee11478d5adcbf9d7cb99e8cc8a60}{COUNTERS\+\_\+\+TEMPLATE}} (void, add\+\_\+hash)(\mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -81,7 +105,7 @@ Data\+\_\+\+Type \&\&\mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f7
 \item 
 \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}{j}}
 \item 
-\mbox{\hyperlink{barray-meat_8hpp_a4725aca18f0b3220c56baad1a1ffc023}{return}} $\ast$ \mbox{\hyperlink{counters-meat_8hpp_a2dd4d78a0686fa444ac77760d7446ca3}{this}}
+Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_a43a4f45722a62357bc53b2abaaeb999f}{fun}}
 \item 
 Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_ada63845ba43e9bf4e10e4afba28e0915}{counter}}
 \item 
@@ -91,11 +115,19 @@ Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_a4c3b0c42e7e960fe3d847ee31a
 \item 
 Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \mbox{\hyperlink{counters-meat_8hpp_a75f789c12bebd743c636550d811dc23e}{init\+\_\+fun\+\_\+}}
 \item 
-Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_afb5ad8f08fd716bba9cf4c1760f11927}{data\+\_\+}}
+Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \mbox{\hyperlink{counters-meat_8hpp_a7c4ea5d2468020b3872c9c6a4c3b0442}{hasher\+\_\+fun\+\_\+}}
 \item 
-Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Data\+\_\+\+Type std\+::string \mbox{\hyperlink{counters-meat_8hpp_aabe971ac52c2492ee06de144544f9dc0}{name\+\_\+}}
+Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_af17c9c018d7997cb11aef6a4da2969a7}{data\+\_\+}}
 \item 
-Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Data\+\_\+\+Type std\+::string std\+::string \mbox{\hyperlink{counters-meat_8hpp_aa70708950a126cfccd5f3540d3aa23fb}{desc\+\_\+}}
+Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Data\+\_\+\+Type std\+::string \mbox{\hyperlink{counters-meat_8hpp_abb04fb263c779506595a61eaedf1f7ef}{name\+\_\+}}
+\item 
+Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ Data\+\_\+\+Type std\+::string std\+::string \mbox{\hyperlink{counters-meat_8hpp_a85048b7e05646aea9e927425a9dc2656}{desc\+\_\+}}
+\item 
+bool \mbox{\hyperlink{counters-meat_8hpp_abf51d2d1d1db95f68ed44c896a4eec1c}{add\+\_\+dims}}
+\item 
+\mbox{\hyperlink{barray-meat_8hpp_a4725aca18f0b3220c56baad1a1ffc023}{return}} \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}
+\item 
+Data\+\_\+\+Type \mbox{\hyperlink{counters-meat_8hpp_a7b9c38a045f3121f0a943d5b980ec17f}{fun\+\_\+}}
 \end{DoxyCompactItemize}
 
 
@@ -138,7 +170,7 @@ Definition at line 4 of file counters-\/meat.\+hpp.
 
 
 
-Definition at line 116 of file counters-\/meat.\+hpp.
+Definition at line 129 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_a7729ab1d6cb3ac68f93ff37cbf0f1ec3}\label{counters-meat_8hpp_a7729ab1d6cb3ac68f93ff37cbf0f1ec3}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE\_ARGS@{COUNTERS\_TEMPLATE\_ARGS}}
@@ -148,7 +180,7 @@ Definition at line 116 of file counters-\/meat.\+hpp.
 
 
 
-Definition at line 114 of file counters-\/meat.\+hpp.
+Definition at line 127 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_ae27e6ee1784a946a418d6115a337f50c}\label{counters-meat_8hpp_ae27e6ee1784a946a418d6115a337f50c}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TYPE@{COUNTERS\_TYPE}}
@@ -158,7 +190,17 @@ Definition at line 114 of file counters-\/meat.\+hpp.
 
 
 
-Definition at line 112 of file counters-\/meat.\+hpp.
+Definition at line 125 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_a280a28059418e1ac77dfc3b16a435e7a}\label{counters-meat_8hpp_a280a28059418e1ac77dfc3b16a435e7a}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!TMP\_HASHER\_CALL@{TMP\_HASHER\_CALL}}
+\index{TMP\_HASHER\_CALL@{TMP\_HASHER\_CALL}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{TMP\_HASHER\_CALL}{TMP\_HASHER\_CALL}}
+{\footnotesize\ttfamily \#define TMP\+\_\+\+HASHER\+\_\+\+CALL~\mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$}
+
+
+
+Definition at line 115 of file counters-\/meat.\+hpp.
 
 
 
@@ -172,25 +214,25 @@ Definition at line 112 of file counters-\/meat.\+hpp.
 \mbox{\Hypertarget{counters-meat_8hpp_a492798688a1a07a0e4859419c95f0d2f}\label{counters-meat_8hpp_a492798688a1a07a0e4859419c95f0d2f}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}}
 \index{COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/9]}}
 {\footnotesize\ttfamily COUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_counter}{Counter}}}]{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{counters-meat_8hpp_af34d8283c2939bc809d7928e5929b8ab}\label{counters-meat_8hpp_af34d8283c2939bc809d7928e5929b8ab}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}}
 \index{COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/9]}}
 {\footnotesize\ttfamily COUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_aa387f3508fdf8dce292c32102af2603c}{COUNTER\+\_\+\+TYPE}}() \&}]{,  }\item[{operator}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{counters-meat_8hpp_a9878227b77ad4dc1c5dc2dfe29116362}\label{counters-meat_8hpp_a9878227b77ad4dc1c5dc2dfe29116362}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}}
 \index{COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/9]}}
 {\footnotesize\ttfamily COUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_aa387f3508fdf8dce292c32102af2603c}{COUNTER\+\_\+\+TYPE}}()}]{,  }\item[{operator}]{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{counters-meat_8hpp_a4f4d29ea2c3f3dd911ee94420c97a44c}\label{counters-meat_8hpp_a4f4d29ea2c3f3dd911ee94420c97a44c}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}}
 \index{COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/9]}}
 {\footnotesize\ttfamily COUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{double}]{,  }\item[{count}]{ }\end{DoxyParamCaption}) \&}
 
 
@@ -200,96 +242,114 @@ $<$ Move assignment
 \mbox{\Hypertarget{counters-meat_8hpp_aa500953db0e6cf26c9739fc9259c9e6b}\label{counters-meat_8hpp_aa500953db0e6cf26c9739fc9259c9e6b}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}}
 \index{COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/9]}}
 {\footnotesize\ttfamily COUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{double}]{,  }\item[{init}]{ }\end{DoxyParamCaption}) \&}
 
 \mbox{\Hypertarget{counters-meat_8hpp_a7906149c0a00202c532f0610eb8ea084}\label{counters-meat_8hpp_a7906149c0a00202c532f0610eb8ea084}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}}
 \index{COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/9]}}
 {\footnotesize\ttfamily COUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{std\+::string}]{,  }\item[{get\+\_\+description}]{ }\end{DoxyParamCaption}) const}
 
 
 
-Definition at line 104 of file counters-\/meat.\+hpp.
+Definition at line 107 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_a054cd4bcee7091c631dec398c9e8f139}\label{counters-meat_8hpp_a054cd4bcee7091c631dec398c9e8f139}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}}
 \index{COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/9]}}
 {\footnotesize\ttfamily COUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{std\+::string}]{,  }\item[{get\+\_\+name}]{ }\end{DoxyParamCaption}) const}
 
 
 
-Definition at line 100 of file counters-\/meat.\+hpp.
+Definition at line 103 of file counters-\/meat.\+hpp.
 
-\mbox{\Hypertarget{counters-meat_8hpp_adba96382020cb775b4b32230b521de8d}\label{counters-meat_8hpp_adba96382020cb775b4b32230b521de8d}} 
-\index{counters-\/meat.hpp@{counters-\/meat.hpp}!Counters@{Counters}}
-\index{Counters@{Counters}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{Counters()}{Counters()}}
-{\footnotesize\ttfamily Data\+\_\+\+Type \mbox{\hyperlink{class_counters}{Counters}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_counters}{Counters}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$ \&\&}]{counters\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+\mbox{\Hypertarget{counters-meat_8hpp_ae0480e298269c6bd4dcee1502d1f0b18}\label{counters-meat_8hpp_ae0480e298269c6bd4dcee1502d1f0b18}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}}
+\index{COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [8/9]}}
+{\footnotesize\ttfamily COUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_a280a28059418e1ac77dfc3b16a435e7a}{TMP\+\_\+\+HASHER\+\_\+\+CALL}}}]{,  }\item[{get\+\_\+hasher}]{ }\end{DoxyParamCaption})}
 
 
 
-Definition at line 130 of file counters-\/meat.\+hpp.
+Definition at line 116 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_ac14f62013456d6f68a82556d96f7fbf7}\label{counters-meat_8hpp_ac14f62013456d6f68a82556d96f7fbf7}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}}
+\index{COUNTER\_TEMPLATE@{COUNTER\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{COUNTER\_TEMPLATE()}{COUNTER\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [9/9]}}
+{\footnotesize\ttfamily COUNTER\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{set\+\_\+hasher}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{counters-meat_8hpp_afa41a789dffd7e6c610d902757c887c1}\label{counters-meat_8hpp_afa41a789dffd7e6c610d902757c887c1}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}}
 \index{COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/9]}}
 {\footnotesize\ttfamily COUNTERS\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_counters}{Counters}}}]{ }\end{DoxyParamCaption})}
 
 
 
-Definition at line 119 of file counters-\/meat.\+hpp.
+Definition at line 132 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_ad22cba9227085528be5ac91f57aac653}\label{counters-meat_8hpp_ad22cba9227085528be5ac91f57aac653}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}}
 \index{COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/9]}}
 {\footnotesize\ttfamily COUNTERS\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_aa387f3508fdf8dce292c32102af2603c}{COUNTER\+\_\+\+TYPE}}() \&}]{,  }\item[{operator}]{\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
 
 
-Definition at line 121 of file counters-\/meat.\+hpp.
+Definition at line 134 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_a27d3af8d078df91895870365bf08a12e}\label{counters-meat_8hpp_a27d3af8d078df91895870365bf08a12e}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}}
 \index{COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/9]}}
 {\footnotesize\ttfamily COUNTERS\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_ae27e6ee1784a946a418d6115a337f50c}{COUNTERS\+\_\+\+TYPE}}() \&}]{,  }\item[{operator}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{counters-meat_8hpp_a9577ec9310f1a84b33cad8721a25206c}\label{counters-meat_8hpp_a9577ec9310f1a84b33cad8721a25206c}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}}
 \index{COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/9]}}
 {\footnotesize\ttfamily COUNTERS\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_ae27e6ee1784a946a418d6115a337f50c}{COUNTERS\+\_\+\+TYPE}}()}]{,  }\item[{operator}]{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{counters-meat_8hpp_a90771969f8fe9be53b20203d33f6a8a7}\label{counters-meat_8hpp_a90771969f8fe9be53b20203d33f6a8a7}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}}
+\index{COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/9]}}
+{\footnotesize\ttfamily COUNTERS\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{,  }\item[{gen\+\_\+hash}]{ }\end{DoxyParamCaption}) const \&}
 
 \mbox{\Hypertarget{counters-meat_8hpp_a115ed909ab1f2cee7d9fd0eb587598bb}\label{counters-meat_8hpp_a115ed909ab1f2cee7d9fd0eb587598bb}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}}
 \index{COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/9]}}
 {\footnotesize\ttfamily COUNTERS\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{,  }\item[{get\+\_\+descriptions}]{ }\end{DoxyParamCaption}) const}
 
 
 
-Definition at line 192 of file counters-\/meat.\+hpp.
+Definition at line 212 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_ad2943d64f309fdd1193ed1bd84cccc6e}\label{counters-meat_8hpp_ad2943d64f309fdd1193ed1bd84cccc6e}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}}
 \index{COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/9]}}
 {\footnotesize\ttfamily COUNTERS\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{,  }\item[{get\+\_\+names}]{ }\end{DoxyParamCaption}) const}
 
 
 
-Definition at line 181 of file counters-\/meat.\+hpp.
+Definition at line 201 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_a6f3d8e4abf8f71e3a119f50696e59669}\label{counters-meat_8hpp_a6f3d8e4abf8f71e3a119f50696e59669}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}}
 \index{COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [8/9]}}
 {\footnotesize\ttfamily COUNTERS\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{add\+\_\+counter}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{counters-meat_8hpp_a83aee11478d5adcbf9d7cb99e8cc8a60}\label{counters-meat_8hpp_a83aee11478d5adcbf9d7cb99e8cc8a60}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}}
+\index{COUNTERS\_TEMPLATE@{COUNTERS\_TEMPLATE}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{COUNTERS\_TEMPLATE()}{COUNTERS\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [9/9]}}
+{\footnotesize\ttfamily COUNTERS\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{add\+\_\+hash}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}\label{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!data@{data}}
@@ -309,7 +369,79 @@ Move constructor.
 
 
 
-Definition at line 31 of file counters-\/meat.\+hpp.
+Definition at line 32 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_a6843fc68316315624815734c0edeb27a}\label{counters-meat_8hpp_a6843fc68316315624815734c0edeb27a}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!for@{for}}
+\index{for@{for}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{for()}{for()}}
+{\footnotesize\ttfamily for (\begin{DoxyParamCaption}\item[{auto \&c\+:data}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 231 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_ab4a15f6eefa25e046260b42a7d11e69e}\label{counters-meat_8hpp_ab4a15f6eefa25e046260b42a7d11e69e}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!hasher@{hasher}}
+\index{hasher@{hasher}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{hasher()}{hasher()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Data\+\_\+\+Type hasher (\begin{DoxyParamCaption}\item[{counter\+\_\+.}]{hasher }\end{DoxyParamCaption})}
+
+
+
+Definition at line 141 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_ae5e519e3c6e76d1643b018f41666f7f6}\label{counters-meat_8hpp_ae5e519e3c6e76d1643b018f41666f7f6}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!hasher@{hasher}}
+\index{hasher@{hasher}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{hasher()}{hasher()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Data\+\_\+\+Type\&\& \mbox{\hyperlink{support-meat_8hpp_aa79c6fa1f7864a8258e8f2c0a68b6d35}{counters\+\_\+}} hasher (\begin{DoxyParamCaption}\item[{std\+::move(counter\+\_\+.\+hasher)}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 144 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_a75e48ffb2bd94d728e6f1a8f5b0ed6d4}\label{counters-meat_8hpp_a75e48ffb2bd94d728e6f1a8f5b0ed6d4}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!hasher\_fun@{hasher\_fun}}
+\index{hasher\_fun@{hasher\_fun}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{hasher\_fun()}{hasher\_fun()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Data\+\_\+\+Type hasher\+\_\+fun (\begin{DoxyParamCaption}\item[{counter\+\_\+.}]{hasher\+\_\+fun }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_afc300ca98dd09e4de220250a44983f74}\label{counters-meat_8hpp_afc300ca98dd09e4de220250a44983f74}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!hasher\_fun@{hasher\_fun}}
+\index{hasher\_fun@{hasher\_fun}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{hasher\_fun()}{hasher\_fun()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Data\+\_\+\+Type\&\& \mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\+\_\+}} hasher\+\_\+fun (\begin{DoxyParamCaption}\item[{std\+::move(counter\+\_\+.\+hasher\+\_\+fun)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{counters-meat_8hpp_a79782c185898924470b8a4ec3c72ab5f}\label{counters-meat_8hpp_a79782c185898924470b8a4ec3c72ab5f}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!if@{if}}
+\index{if@{if}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_abf51d2d1d1db95f68ed44c896a4eec1c}{add\+\_\+dims}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 246 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_a3f0323418dba862809a97490ecfbc290}\label{counters-meat_8hpp_a3f0323418dba862809a97490ecfbc290}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!if@{if}}
+\index{if@{if}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters-meat_8hpp_ae5e519e3c6e76d1643b018f41666f7f6}{hasher}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 253 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_aad00cb483160c346052d1ca08ec136ed}\label{counters-meat_8hpp_aad00cb483160c346052d1ca08ec136ed}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!if@{if}}
+\index{if@{if}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{res.}]{size() = {\ttfamily =0u} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{counters-meat_8hpp_a1b41f5b3bcbc505baab9ad780eafb740}\label{counters-meat_8hpp_a1b41f5b3bcbc505baab9ad780eafb740}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!init\_fun@{init\_fun}}
@@ -322,10 +454,6 @@ Definition at line 31 of file counters-\/meat.\+hpp.
 \index{init\_fun@{init\_fun}!counters-\/meat.hpp@{counters-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{init\_fun()}{init\_fun()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily Data\+\_\+\+Type init\+\_\+fun (\begin{DoxyParamCaption}\item[{counter\+\_\+.}]{init\+\_\+fun }\end{DoxyParamCaption})}
-
-
-
-Definition at line 13 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_a848e12b226863427414b3db19f0f0578}\label{counters-meat_8hpp_a848e12b226863427414b3db19f0f0578}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!init\_fun@{init\_fun}}
@@ -342,6 +470,22 @@ Definition at line 13 of file counters-\/meat.\+hpp.
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{counters-meat_8hpp_abf51d2d1d1db95f68ed44c896a4eec1c}\label{counters-meat_8hpp_abf51d2d1d1db95f68ed44c896a4eec1c}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!add\_dims@{add\_dims}}
+\index{add\_dims@{add\_dims}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{add\_dims}{add\_dims}}
+{\footnotesize\ttfamily bool add\+\_\+dims}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    std::vector<double> \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}}
+
+\end{DoxyCode}
+
+
+Definition at line 225 of file counters-\/meat.\+hpp.
+
 \mbox{\Hypertarget{counters-meat_8hpp_a4c3b0c42e7e960fe3d847ee31a0adc7c}\label{counters-meat_8hpp_a4c3b0c42e7e960fe3d847ee31a0adc7c}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!count\_fun\_@{count\_fun\_}}
 \index{count\_fun\_@{count\_fun\_}!counters-\/meat.hpp@{counters-\/meat.hpp}}
@@ -350,7 +494,7 @@ Definition at line 13 of file counters-\/meat.\+hpp.
 
 
 
-Definition at line 161 of file counters-\/meat.\+hpp.
+Definition at line 179 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_ada63845ba43e9bf4e10e4afba28e0915}\label{counters-meat_8hpp_ada63845ba43e9bf4e10e4afba28e0915}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!counter@{counter}}
@@ -367,7 +511,7 @@ Definition at line 161 of file counters-\/meat.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 152 of file counters-\/meat.\+hpp.
+Definition at line 170 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}\label{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!counter\_@{counter\_}}
@@ -383,6 +527,7 @@ Definition at line 152 of file counters-\/meat.\+hpp.
 \DoxyCodeLine{}
 \DoxyCodeLine{        this-\/>\mbox{\hyperlink{counters-meat_8hpp_ab77e9fc75f563d608979f664d3323a2f}{count\_fun}} = \mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\_}}.count\_fun;}
 \DoxyCodeLine{        this-\/>\mbox{\hyperlink{counters-meat_8hpp_a4db74fa58e4a90b598e4a6f38811e78c}{init\_fun}} = \mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\_}}.init\_fun;}
+\DoxyCodeLine{        this-\/>\mbox{\hyperlink{counters-meat_8hpp_a75e48ffb2bd94d728e6f1a8f5b0ed6d4}{hasher\_fun}} = \mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\_}}.hasher\_fun;}
 \DoxyCodeLine{}
 \DoxyCodeLine{        }
 \DoxyCodeLine{        this-\/>\mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}} = \mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\_}}.data;}
@@ -398,21 +543,21 @@ Definition at line 152 of file counters-\/meat.\+hpp.
 
 Definition at line 12 of file counters-\/meat.\+hpp.
 
-\mbox{\Hypertarget{counters-meat_8hpp_afb5ad8f08fd716bba9cf4c1760f11927}\label{counters-meat_8hpp_afb5ad8f08fd716bba9cf4c1760f11927}} 
+\mbox{\Hypertarget{counters-meat_8hpp_af17c9c018d7997cb11aef6a4da2969a7}\label{counters-meat_8hpp_af17c9c018d7997cb11aef6a4da2969a7}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!data\_@{data\_}}
 \index{data\_@{data\_}!counters-\/meat.hpp@{counters-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{data\_}{data\_}}
-{\footnotesize\ttfamily Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ Data\+\_\+\+Type data\+\_\+}
+{\footnotesize\ttfamily Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ Data\+\_\+\+Type data\+\_\+}
 
 
 
-Definition at line 163 of file counters-\/meat.\+hpp.
+Definition at line 182 of file counters-\/meat.\+hpp.
 
-\mbox{\Hypertarget{counters-meat_8hpp_aa70708950a126cfccd5f3540d3aa23fb}\label{counters-meat_8hpp_aa70708950a126cfccd5f3540d3aa23fb}} 
+\mbox{\Hypertarget{counters-meat_8hpp_a85048b7e05646aea9e927425a9dc2656}\label{counters-meat_8hpp_a85048b7e05646aea9e927425a9dc2656}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!desc\_@{desc\_}}
 \index{desc\_@{desc\_}!counters-\/meat.hpp@{counters-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{desc\_}{desc\_}}
-{\footnotesize\ttfamily Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ Data\+\_\+\+Type std\+::string std\+::string desc\+\_\+}
+{\footnotesize\ttfamily Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ Data\+\_\+\+Type std\+::string std\+::string desc\+\_\+}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
@@ -421,15 +566,59 @@ Definition at line 163 of file counters-\/meat.\+hpp.
 \DoxyCodeLine{    \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}}.push\_back(\mbox{\hyperlink{class_counter}{Counter<Array\_Type,Data\_Type>}}(}
 \DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_a4c3b0c42e7e960fe3d847ee31a0adc7c}{count\_fun\_}},}
 \DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_a75f789c12bebd743c636550d811dc23e}{init\_fun\_}},}
-\DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_afb5ad8f08fd716bba9cf4c1760f11927}{data\_}},}
-\DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_aabe971ac52c2492ee06de144544f9dc0}{name\_}},}
-\DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_aa70708950a126cfccd5f3540d3aa23fb}{desc\_}}}
+\DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_a7c4ea5d2468020b3872c9c6a4c3b0442}{hasher\_fun\_}},}
+\DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_af17c9c018d7997cb11aef6a4da2969a7}{data\_}},}
+\DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_abb04fb263c779506595a61eaedf1f7ef}{name\_}},}
+\DoxyCodeLine{        \mbox{\hyperlink{counters-meat_8hpp_a85048b7e05646aea9e927425a9dc2656}{desc\_}}}
 \DoxyCodeLine{    ))}
 
 \end{DoxyCode}
 
 
-Definition at line 165 of file counters-\/meat.\+hpp.
+Definition at line 184 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_a43a4f45722a62357bc53b2abaaeb999f}\label{counters-meat_8hpp_a43a4f45722a62357bc53b2abaaeb999f}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!fun@{fun}}
+\index{fun@{fun}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{fun}{fun}}
+{\footnotesize\ttfamily Data\+\_\+\+Type fun}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \mbox{\hyperlink{counters-meat_8hpp_a75e48ffb2bd94d728e6f1a8f5b0ed6d4}{hasher\_fun}} = \mbox{\hyperlink{counters-meat_8hpp_a43a4f45722a62357bc53b2abaaeb999f}{fun}}}
+
+\end{DoxyCode}
+
+
+Definition at line 111 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_a7b9c38a045f3121f0a943d5b980ec17f}\label{counters-meat_8hpp_a7b9c38a045f3121f0a943d5b980ec17f}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!fun\_@{fun\_}}
+\index{fun\_@{fun\_}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{fun\_}{fun\_}}
+{\footnotesize\ttfamily Data\+\_\+\+Type fun\+\_\+}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{counters-meat_8hpp_ab4a15f6eefa25e046260b42a7d11e69e}{hasher}} = \mbox{\hyperlink{counters-meat_8hpp_a7b9c38a045f3121f0a943d5b980ec17f}{fun\_}}}
+
+\end{DoxyCode}
+
+
+Definition at line 268 of file counters-\/meat.\+hpp.
+
+\mbox{\Hypertarget{counters-meat_8hpp_a7c4ea5d2468020b3872c9c6a4c3b0442}\label{counters-meat_8hpp_a7c4ea5d2468020b3872c9c6a4c3b0442}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!hasher\_fun\_@{hasher\_fun\_}}
+\index{hasher\_fun\_@{hasher\_fun\_}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{hasher\_fun\_}{hasher\_fun\_}}
+{\footnotesize\ttfamily Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ hasher\+\_\+fun\+\_\+}
+
+
+
+Definition at line 181 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}\label{counters-meat_8hpp_aa0ecde9bec2f4c6686780ccf4f5fe835}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!i@{i}}
@@ -439,7 +628,7 @@ Definition at line 165 of file counters-\/meat.\+hpp.
 
 
 
-Definition at line 80 of file counters-\/meat.\+hpp.
+Definition at line 83 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_a75f789c12bebd743c636550d811dc23e}\label{counters-meat_8hpp_a75f789c12bebd743c636550d811dc23e}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!init\_fun\_@{init\_fun\_}}
@@ -449,7 +638,7 @@ Definition at line 80 of file counters-\/meat.\+hpp.
 
 
 
-Definition at line 162 of file counters-\/meat.\+hpp.
+Definition at line 180 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}\label{counters-meat_8hpp_a1adc09117fb18eb79d260e4bd720ce41}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!j@{j}}
@@ -467,17 +656,17 @@ Definition at line 162 of file counters-\/meat.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 80 of file counters-\/meat.\+hpp.
+Definition at line 83 of file counters-\/meat.\+hpp.
 
-\mbox{\Hypertarget{counters-meat_8hpp_aabe971ac52c2492ee06de144544f9dc0}\label{counters-meat_8hpp_aabe971ac52c2492ee06de144544f9dc0}} 
+\mbox{\Hypertarget{counters-meat_8hpp_abb04fb263c779506595a61eaedf1f7ef}\label{counters-meat_8hpp_abb04fb263c779506595a61eaedf1f7ef}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!name\_@{name\_}}
 \index{name\_@{name\_}!counters-\/meat.hpp@{counters-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{name\_}{name\_}}
-{\footnotesize\ttfamily Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ Data\+\_\+\+Type std\+::string name\+\_\+}
+{\footnotesize\ttfamily Data\+\_\+\+Type \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}}$<$Array\+\_\+\+Type,Data\+\_\+\+Type$>$ Data\+\_\+\+Type std\+::string name\+\_\+}
 
 
 
-Definition at line 164 of file counters-\/meat.\+hpp.
+Definition at line 183 of file counters-\/meat.\+hpp.
 
 \mbox{\Hypertarget{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}\label{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!noexcept@{noexcept}}
@@ -497,6 +686,7 @@ Definition at line 164 of file counters-\/meat.\+hpp.
 \DoxyCodeLine{        }
 \DoxyCodeLine{        this-\/>\mbox{\hyperlink{counters-meat_8hpp_ab77e9fc75f563d608979f664d3323a2f}{count\_fun}} = std::move(\mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\_}}.count\_fun);}
 \DoxyCodeLine{        this-\/>\mbox{\hyperlink{counters-meat_8hpp_a4db74fa58e4a90b598e4a6f38811e78c}{init\_fun}} = std::move(\mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\_}}.init\_fun);}
+\DoxyCodeLine{        this-\/>\mbox{\hyperlink{counters-meat_8hpp_a75e48ffb2bd94d728e6f1a8f5b0ed6d4}{hasher\_fun}} = std::move(\mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\_}}.hasher\_fun);}
 \DoxyCodeLine{}
 \DoxyCodeLine{        }
 \DoxyCodeLine{        this-\/>\mbox{\hyperlink{counters-meat_8hpp_a42cb6e97e822b37d4d982c1106a1b53e}{name}} = std::move(\mbox{\hyperlink{counters-meat_8hpp_a3119b2fa04b5a2a25b36f78264fdf274}{counter\_}}.name);}
@@ -511,6 +701,16 @@ Definition at line 164 of file counters-\/meat.\+hpp.
 
 Definition at line 26 of file counters-\/meat.\+hpp.
 
+\mbox{\Hypertarget{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}\label{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}} 
+\index{counters-\/meat.hpp@{counters-\/meat.hpp}!res@{res}}
+\index{res@{res}!counters-\/meat.hpp@{counters-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{res}{res}}
+{\footnotesize\ttfamily \mbox{\hyperlink{barray-meat_8hpp_a4725aca18f0b3220c56baad1a1ffc023}{return}} res}
+
+
+
+Definition at line 263 of file counters-\/meat.\+hpp.
+
 \mbox{\Hypertarget{counters-meat_8hpp_a9717e7bbecb906637e86cef6da3d83c2}\label{counters-meat_8hpp_a9717e7bbecb906637e86cef6da3d83c2}} 
 \index{counters-\/meat.hpp@{counters-\/meat.hpp}!return@{return}}
 \index{return@{return}!counters-\/meat.hpp@{counters-\/meat.hpp}}
@@ -519,15 +719,5 @@ Definition at line 26 of file counters-\/meat.\+hpp.
 
 
 
-Definition at line 157 of file counters-\/meat.\+hpp.
-
-\mbox{\Hypertarget{counters-meat_8hpp_a2dd4d78a0686fa444ac77760d7446ca3}\label{counters-meat_8hpp_a2dd4d78a0686fa444ac77760d7446ca3}} 
-\index{counters-\/meat.hpp@{counters-\/meat.hpp}!this@{this}}
-\index{this@{this}!counters-\/meat.hpp@{counters-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{this}{this}}
-{\footnotesize\ttfamily \mbox{\hyperlink{barray-meat_8hpp_a4725aca18f0b3220c56baad1a1ffc023}{return}}$\ast$ this}
-
-
-
-Definition at line 138 of file counters-\/meat.\+hpp.
+Definition at line 175 of file counters-\/meat.\+hpp.
 

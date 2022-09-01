@@ -50,7 +50,7 @@ var dir_6e63e3665115632dc5d61b2d6d6c3354 =
     [ "freqtable.hpp", "freqtable_8hpp.html", [
       [ "FreqTable", "class_freq_table.html", "class_freq_table" ]
     ] ],
-    [ "model-bones.hpp", "model-bones_8hpp.html", "model-bones_8hpp" ],
+    [ "model-bones.hpp", "model-bones_8hpp.html", null ],
     [ "model-meat.hpp", "model-meat_8hpp.html", "model-meat_8hpp" ],
     [ "powerset-bones.hpp", "powerset-bones_8hpp.html", [
       [ "PowerSet", "class_power_set.html", "class_power_set" ]

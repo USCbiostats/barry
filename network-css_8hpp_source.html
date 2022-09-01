@@ -140,7 +140,7 @@ $(document).ready(function(){initNavTree('network-css_8hpp_source.html',''); ini
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="network-css_8hpp.html#ae47801cf60e9466153f4f32d9e5300ab">   42</a></span>&#160;<span class="preprocessor">#define CSS_APPEND(name) std::string name_ = (name);\</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">    for (uint i = 0u; i &lt; end_.size(); ++i) { \</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">    std::string tmpname = name_ + &quot; (&quot;</span> + std::to_string(i) + &quot;)&quot;;\</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    counters-&gt;add_counter(tmp_count, tmp_init,\</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    counters-&gt;add_counter(tmp_count, tmp_init, nullptr, \</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            tmpname);}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
@@ -768,7 +768,7 @@ $(document).ready(function(){initNavTree('network-css_8hpp_source.html',''); ini
 <div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;<span class="preprocessor">#undef CSS_NET_COUNTER_LAMBDA_INIT</span></div>
 <div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
-<div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00092">counters-bones.hpp:92</a></div></div>
+<div class="ttc" id="aclass_counters_html"><div class="ttname"><a href="class_counters.html">Counters</a></div><div class="ttdoc">Vector of counters.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00108">counters-bones.hpp:108</a></div></div>
 <div class="ttc" id="anetwork-css_8hpp_html_a15e5b3dd64b44ef5c91ce24dbbb3c86c"><div class="ttname"><a href="network-css_8hpp.html#a15e5b3dd64b44ef5c91ce24dbbb3c86c">counter_css_census02</a></div><div class="ttdeci">void counter_css_census02(NetCounters&lt; Tnet &gt; *counters, uint netsize, const std::vector&lt; uint &gt; &amp;end_)</div><div class="ttdef"><b>Definition:</b> <a href="network-css_8hpp_source.html#l00325">network-css.hpp:325</a></div></div>
 <div class="ttc" id="anetwork-css_8hpp_html_a1a4521849c6e9cb86e1e7c7fc4693218"><div class="ttname"><a href="network-css_8hpp.html#a1a4521849c6e9cb86e1e7c7fc4693218">counter_css_census08</a></div><div class="ttdeci">void counter_css_census08(NetCounters&lt; Tnet &gt; *counters, uint netsize, const std::vector&lt; uint &gt; &amp;end_)</div><div class="ttdef"><b>Definition:</b> <a href="network-css_8hpp_source.html#l00559">network-css.hpp:559</a></div></div>
 <div class="ttc" id="anetwork-css_8hpp_html_a1a93b12056b8197eb552669db9366bb9"><div class="ttname"><a href="network-css_8hpp.html#a1a93b12056b8197eb552669db9366bb9">counter_css_partially_false_recip_omiss</a></div><div class="ttdeci">void counter_css_partially_false_recip_omiss(NetCounters&lt; Tnet &gt; *counters, uint netsize, const std::vector&lt; uint &gt; &amp;end_)</div><div class="ttdoc">Counts errors of omission.</div><div class="ttdef"><b>Definition:</b> <a href="network-css_8hpp_source.html#l00110">network-css.hpp:110</a></div></div>
@@ -803,7 +803,7 @@ $(document).ready(function(){initNavTree('network-css_8hpp_source.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="network-css_8hpp.html">network-css.hpp</a></li>
-    <li class="footer">Generated on Thu Aug 11 2022 22:56:53 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Sep 1 2022 20:56:23 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

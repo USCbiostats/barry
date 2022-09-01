@@ -1,15 +1,12 @@
 var searchData=
 [
-  ['phyloarray_1293',['PhyloArray',['../phylo_8hpp.html#a62f661a25cbdbac960f6d00b7b42ff4a',1,'phylo.hpp']]],
-  ['phylocounter_1294',['PhyloCounter',['../phylo_8hpp.html#a70f35d038e8044ff5761831220d07290',1,'phylo.hpp']]],
-  ['phylocounters_1295',['PhyloCounters',['../phylo_8hpp.html#a7f579c2548e28d17881691a3abe7ecb5',1,'phylo.hpp']]],
-  ['phylomodel_1296',['PhyloModel',['../phylo_8hpp.html#a3747688acf3d8e264c2ce8b07e0eb804',1,'phylo.hpp']]],
-  ['phylopowerset_1297',['PhyloPowerSet',['../phylo_8hpp.html#a0d16a69c8b447a32a3aa4d4c041773cc',1,'phylo.hpp']]],
-  ['phylorule_1298',['PhyloRule',['../phylo_8hpp.html#a99bd6ef7a8380a0e669c1723e393429f',1,'phylo.hpp']]],
-  ['phyloruledata_1299',['PhyloRuleData',['../phylo_8hpp.html#ad7d1052d3cdcf6286b6d7907d1ec1eaf',1,'phylo.hpp']]],
-  ['phyloruledyn_1300',['PhyloRuleDyn',['../phylo_8hpp.html#ad782519ef733c9b109bf465fe942b36a',1,'phylo.hpp']]],
-  ['phylorules_1301',['PhyloRules',['../phylo_8hpp.html#a297f8535006c6b28acc097dddae016c3',1,'phylo.hpp']]],
-  ['phylorulesdyn_1302',['PhyloRulesDyn',['../phylo_8hpp.html#a6c0e95789675ee382f2a42a7da14fcf9',1,'phylo.hpp']]],
-  ['phylostatscounter_1303',['PhyloStatsCounter',['../phylo_8hpp.html#aca4644373aecf9b296ac8ac730470952',1,'phylo.hpp']]],
-  ['phylosupport_1304',['PhyloSupport',['../phylo_8hpp.html#a7261d5284bec3ec15fe7b038399a9c5a',1,'phylo.hpp']]]
+  ['netcounter_1315',['NetCounter',['../network_8hpp.html#a75ff9a7bece02dfc6d99fc2f7a35e463',1,'network.hpp']]],
+  ['netcounters_1316',['NetCounters',['../network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d',1,'network.hpp']]],
+  ['netmodel_1317',['NetModel',['../network_8hpp.html#a3689057a7a18f67f6839f3e1b2b6c140',1,'network.hpp']]],
+  ['netrule_1318',['NetRule',['../network_8hpp.html#ac8c9529b68fa80139a776663a7ee43a1',1,'network.hpp']]],
+  ['netrules_1319',['NetRules',['../network_8hpp.html#aa7fdf74711b0b97f984156cee30683c3',1,'network.hpp']]],
+  ['netstatscounter_1320',['NetStatsCounter',['../network_8hpp.html#aa601fca284af7d89c905f0077e350cc0',1,'network.hpp']]],
+  ['netsupport_1321',['NetSupport',['../network_8hpp.html#a8e585f661c3cacbff9653516b0babf00',1,'network.hpp']]],
+  ['network_1322',['Network',['../network_8hpp.html#ad0e1efde7782396b9f93c16ce892af05',1,'network.hpp']]],
+  ['networkdense_1323',['NetworkDense',['../network_8hpp.html#a9ba41d6263c31a6f9a92d45bc8b2ff87',1,'network.hpp']]]
 ];
