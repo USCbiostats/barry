@@ -14,6 +14,7 @@ var searchData=
   ['rule_5ffun_5fdefault_1086',['rule_fun_default',['../rules-bones_8hpp.html#aaeb0527576529579dd4cb51cb3ba73e0',1,'rules-bones.hpp']]],
   ['rule_5ffunction_1087',['RULE_FUNCTION',['../geese-bones_8hpp.html#a11c7dd7dca27f32547bb602f30ceb5e8',1,'geese-bones.hpp']]],
   ['rules_1088',['Rules',['../class_rules.html#a57f5ab44febba391b2a06d163d25b237',1,'Rules::Rules(const Rules&lt; Array_Type, Data_Type &gt; &amp;rules_)'],['../class_rules.html#aa78e9abf82ed8a0e4320d570191c8968',1,'Rules::Rules()']]],
-  ['rules_5fmarkov_5ffixed_1089',['rules_markov_fixed',['../group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe',1,'defm.hpp']]],
-  ['rules_5fzerodiag_1090',['rules_zerodiag',['../network_8hpp.html#ade7c09a084b266e48f9222c54fd12681',1,'network.hpp']]]
+  ['rules_5fdont_5fbecome_5fzero_1089',['rules_dont_become_zero',['../group__counters-network.html#gaa4dcfa59f1f552f744e2dcd20fa1b4ed',1,'defm.hpp']]],
+  ['rules_5fmarkov_5ffixed_1090',['rules_markov_fixed',['../group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe',1,'defm.hpp']]],
+  ['rules_5fzerodiag_1091',['rules_zerodiag',['../network_8hpp.html#ade7c09a084b266e48f9222c54fd12681',1,'network.hpp']]]
 ];

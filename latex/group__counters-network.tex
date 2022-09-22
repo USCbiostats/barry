@@ -86,7 +86,9 @@ template$<$$>$ void \mbox{\hyperlink{group__counters-network_gaaed28658f06c00172
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{group__counters-network_ga31452452bf9dad7f6c5767dcabfb4dbe}{rules\+\_\+markov\+\_\+fixed}} (\mbox{\hyperlink{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}{DEFMRules}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a595e07a99f60f22a6a29e4fca291ea28}{rules}}, size\+\_\+t markov\+\_\+order)
-\begin{DoxyCompactList}\small\item\em Number of edges. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Number of edges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counters-network_gaa4dcfa59f1f552f744e2dcd20fa1b4ed}{rules\+\_\+dont\+\_\+become\+\_\+zero}} (\mbox{\hyperlink{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}{DEFMRules}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a595e07a99f60f22a6a29e4fca291ea28}{rules}}, std\+::vector$<$ size\+\_\+t $>$ ids)
+\begin{DoxyCompactList}\small\item\em Blocks switching a one to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -214,7 +216,7 @@ Prevalence of ones.
 \end{DoxyParams}
 
 
-Definition at line 736 of file defm.\+hpp.
+Definition at line 737 of file defm.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_gabf5fddfd9b2200194527775478fa4bb3}\label{group__counters-network_gabf5fddfd9b2200194527775478fa4bb3}} 
 \index{DEFMArray counters@{DEFMArray counters}!counter\_idegree@{counter\_idegree}}
@@ -320,7 +322,7 @@ Definition at line 312 of file network.\+hpp.
 
 
 
-Definition at line 277 of file defm.\+hpp.
+Definition at line 278 of file defm.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_ga1605cc66474b3b960bddd7c0adebcfc7}\label{group__counters-network_ga1605cc66474b3b960bddd7c0adebcfc7}} 
 \index{DEFMArray counters@{DEFMArray counters}!counter\_mutual@{counter\_mutual}}
@@ -448,7 +450,7 @@ Prevalence of ones.
 \end{DoxyParams}
 
 
-Definition at line 210 of file defm.\+hpp.
+Definition at line 211 of file defm.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_gad2e83eeaed6f17346ac8ac1ca64b327a}\label{group__counters-network_gad2e83eeaed6f17346ac8ac1ca64b327a}} 
 \index{DEFMArray counters@{DEFMArray counters}!counter\_ostar2@{counter\_ostar2}}
@@ -491,7 +493,7 @@ Prevalence of ones.
 \end{DoxyParams}
 
 
-Definition at line 396 of file defm.\+hpp.
+Definition at line 397 of file defm.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_gad8c9e9b4e4a57e96cd604e8e4832a272}\label{group__counters-network_gad8c9e9b4e4a57e96cd604e8e4832a272}} 
 \index{DEFMArray counters@{DEFMArray counters}!counter\_transition\_formula@{counter\_transition\_formula}}
@@ -512,7 +514,7 @@ Prevalence of ones.
 \end{DoxyParams}
 
 
-Definition at line 705 of file defm.\+hpp.
+Definition at line 706 of file defm.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_gadadede01536081fb8b79e4d14368f946}\label{group__counters-network_gadadede01536081fb8b79e4d14368f946}} 
 \index{DEFMArray counters@{DEFMArray counters}!counter\_ttriads@{counter\_ttriads}}
@@ -546,6 +548,27 @@ Definition at line 441 of file network.\+hpp.
 
 Definition at line 999 of file network.\+hpp.
 
+\mbox{\Hypertarget{group__counters-network_gaa4dcfa59f1f552f744e2dcd20fa1b4ed}\label{group__counters-network_gaa4dcfa59f1f552f744e2dcd20fa1b4ed}} 
+\index{DEFMArray counters@{DEFMArray counters}!rules\_dont\_become\_zero@{rules\_dont\_become\_zero}}
+\index{rules\_dont\_become\_zero@{rules\_dont\_become\_zero}!DEFMArray counters@{DEFMArray counters}}
+\doxysubsubsection{\texorpdfstring{rules\_dont\_become\_zero()}{rules\_dont\_become\_zero()}}
+{\footnotesize\ttfamily void rules\+\_\+dont\+\_\+become\+\_\+zero (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{counters_2defm_8hpp_a6d265c2bdf19affea1db1dfa2a8cbb3f}{DEFMRules}} $\ast$}]{rules,  }\item[{std\+::vector$<$ size\+\_\+t $>$}]{ids }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Blocks switching a one to zero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rules} & \\
+\hline
+{\em ids} & Ids of the variables that will follow this rule. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 803 of file defm.\+hpp.
+
 \mbox{\Hypertarget{group__counters-network_ga31452452bf9dad7f6c5767dcabfb4dbe}\label{group__counters-network_ga31452452bf9dad7f6c5767dcabfb4dbe}} 
 \index{DEFMArray counters@{DEFMArray counters}!rules\_markov\_fixed@{rules\_markov\_fixed}}
 \index{rules\_markov\_fixed@{rules\_markov\_fixed}!DEFMArray counters@{DEFMArray counters}}
@@ -558,5 +581,5 @@ Number of edges.
 
 
 
-Definition at line 779 of file defm.\+hpp.
+Definition at line 780 of file defm.\+hpp.
 

@@ -22,5 +22,6 @@ var counters_2defm_8hpp =
     [ "counter_ones", "group__counters-network.html#ga5a83cfba69ea83fca5831478055bbc6a", null ],
     [ "counter_transition", "group__counters-network.html#ga22ed6963a00ae95ec52b89661fa7ca39", null ],
     [ "counter_transition_formula", "group__counters-network.html#gad8c9e9b4e4a57e96cd604e8e4832a272", null ],
+    [ "rules_dont_become_zero", "group__counters-network.html#gaa4dcfa59f1f552f744e2dcd20fa1b4ed", null ],
     [ "rules_markov_fixed", "group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe", null ]
 ];
