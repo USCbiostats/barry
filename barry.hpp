@@ -399,7 +399,47 @@ struct vecHasher
 
 template<typename Ta = double, typename Tb = uint> 
 using MapVec_type = std::unordered_map< std::vector< Ta >, Tb, vecHasher<Ta>>;
-  
+
+/**
+ * @brief Ascending sorting an array
+ * 
+ * It will sort an array solving ties using the next column. Data is
+ * stored column-wise.
+ * 
+ * @tparam T 
+ * @param v 
+ * @param nrows 
+ * @return std::vector<size_t> The sorting index.
+ */
+inline std::vector< size_t > sort_array(
+    const double * v,
+    size_t start,
+    size_t ncols,
+    size_t nrows
+    ) {
+
+    // initialize original index locations
+    std::vector<size_t> idx(nrows);
+    std::iota(idx.begin(), idx.end(), 0);
+
+    std::sort(idx.begin(), idx.end(),
+       [&v,nrows,ncols,start](size_t i1, size_t i2) {
+
+            for (size_t j = 0u; j < ncols; ++j)
+            {
+                if (*(v + (nrows * j + i1+start)) == *(v + (nrows * j + i2 + start)))
+                    continue;   
+                else 
+                    return *(v + (nrows * j + i1+start)) < *(v + (nrows * j + i2 + start));
+            }
+
+            return false;
+        });
+
+    return idx;
+
+}   
+
 
 // Mostly relevant in the case of the stats count functions -------------------
 template <typename Cell_Type, typename Data_Type> class BArray;
@@ -422,6 +462,15 @@ using Counter_fun_type = std::function<double(const Array_Type &, uint, uint, Da
 template <typename Array_Type, typename Data_Type>
 using Rule_fun_type = std::function<bool(const Array_Type &, uint, uint, Data_Type &)>;
 ///@}
+
+/**
+ * @brief Hasher function used by the counter
+ * @details Used to characterize the support of the array.
+ * 
+ * @tparam Array_Type 
+ */
+template <typename Array_Type, typename Data_Type>
+using Hasher_fun_type = std::function<std::vector<double>(const Array_Type &, Data_Type *)>;
 
 // Misc ------------------------------------------------------------------------
 /**
@@ -515,6 +564,7 @@ inline double vec_inner_prod(
 }
 
 #endif
+
 /*//////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -4856,6 +4906,8 @@ public:
     
     Counter_fun_type<Array_Type,Data_Type> count_fun;
     Counter_fun_type<Array_Type,Data_Type> init_fun;
+    Hasher_fun_type<Array_Type,Data_Type> hasher_fun;
+
     Data_Type data;
     std::string  name = "";
     std::string  desc = "";
@@ -4871,15 +4923,16 @@ public:
      * in the main data.
      */
     ///@{
-    Counter() : count_fun(nullptr), init_fun(nullptr) {};
+    Counter() : count_fun(nullptr), init_fun(nullptr), hasher_fun(nullptr) {};
     
     Counter(
         Counter_fun_type<Array_Type,Data_Type> count_fun_,
         Counter_fun_type<Array_Type,Data_Type> init_fun_,
+        Hasher_fun_type<Array_Type,Data_Type>  hasher_fun_,
         Data_Type                              data_,
         std::string                            name_        = "",   
         std::string                            desc_        = ""
-        ): count_fun(count_fun_), init_fun(init_fun_), data(data_),
+        ): count_fun(count_fun_), init_fun(init_fun_), hasher_fun(hasher_fun_), data(data_),
             name(name_), desc(desc_) {};
     
     Counter(const Counter<Array_Type,Data_Type> & counter_); ///< Copy constructor
@@ -4897,6 +4950,19 @@ public:
     double init(Array_Type & Array, uint i, uint j);
     std::string get_name() const;
     std::string get_description() const;
+
+    /**
+     * @brief Get and set the hasher function
+     * 
+     * The hasher function is used to characterize the support of the array.
+     * This way, if possible, the support enumeration is recycled.
+     * 
+     * @param fun 
+     */
+    ///@{
+    void set_hasher(Hasher_fun_type<Array_Type,Data_Type> fun);
+    Hasher_fun_type<Array_Type,Data_Type> get_hasher();
+    ///@}
     
 };
 
@@ -4912,6 +4978,7 @@ class Counters {
     
 private:
     std::vector< Counter<Array_Type,Data_Type > > data;
+    Hasher_fun_type<Array_Type,Data_Type> hasher;
     
 public: 
     
@@ -4972,6 +5039,7 @@ public:
     void add_counter(
         Counter_fun_type<Array_Type,Data_Type> count_fun_,
         Counter_fun_type<Array_Type,Data_Type> init_fun_,
+        Hasher_fun_type<Array_Type,Data_Type>  hasher_fun_,
         Data_Type                              data_,
         std::string                            name_        = "",   
         std::string                            desc_        = ""
@@ -4979,6 +5047,23 @@ public:
     
     std::vector< std::string > get_names() const;
     std::vector< std::string > get_descriptions() const;
+
+    /**
+     * @brief Generates a hash for the given array according to the counters.
+     * 
+     * @param array 
+     * @param add_dims When `true` (default) the dimmension of the array will
+     * be added to the hash.
+     * @return std::vector< double > That can be hashed later.
+     */
+    std::vector< double > gen_hash(
+      const Array_Type & array,
+      bool add_dims = true
+      );
+
+    void add_hash(
+      Hasher_fun_type<Array_Type,Data_Type> fun_
+    );
     
 };
 
@@ -5013,7 +5098,7 @@ public:
 
 COUNTER_TEMPLATE(,Counter)(
     const Counter<Array_Type,Data_Type> & counter_
-) : count_fun(counter_.count_fun), init_fun(counter_.init_fun) {
+) : count_fun(counter_.count_fun), init_fun(counter_.init_fun), hasher_fun(counter_.hasher_fun) {
 
     this->data = counter_.data;
     this->name = counter_.name;
@@ -5029,6 +5114,7 @@ COUNTER_TEMPLATE(,Counter)(
     ) noexcept :
     count_fun(std::move(counter_.count_fun)),
     init_fun(std::move(counter_.init_fun)),
+    hasher_fun(std::move(counter_.hasher_fun)),
     data(std::move(counter_.data)),
     name(std::move(counter_.name)),
     desc(std::move(counter_.desc))
@@ -5045,6 +5131,7 @@ COUNTER_TEMPLATE(COUNTER_TYPE(),operator=)(
 
         this->count_fun = counter_.count_fun;
         this->init_fun = counter_.init_fun;
+        this->hasher_fun = counter_.hasher_fun;
 
         
         this->data = counter_.data;
@@ -5069,6 +5156,7 @@ COUNTER_TEMPLATE(COUNTER_TYPE() &,operator=)(
         // Functions
         this->count_fun = std::move(counter_.count_fun);
         this->init_fun = std::move(counter_.init_fun);
+        this->hasher_fun = std::move(counter_.hasher_fun);
 
         // Descriptions
         this->name = std::move(counter_.name);
@@ -5108,6 +5196,16 @@ COUNTER_TEMPLATE(std::string, get_description)() const {
     return this->name;
 }
 
+COUNTER_TEMPLATE(void, set_hasher)(Hasher_fun_type<Array_Type,Data_Type> fun) {
+    hasher_fun = fun;
+}
+
+#define TMP_HASHER_CALL Hasher_fun_type<Array_Type,Data_Type>
+COUNTER_TEMPLATE(TMP_HASHER_CALL, get_hasher)() {
+    return hasher_fun;
+}
+#undef TMP_HASHER_CALL
+
 ////////////////////////////////////////////////////////////////////////////////
 // Counters
 ////////////////////////////////////////////////////////////////////////////////
@@ -5119,7 +5217,7 @@ COUNTER_TEMPLATE(std::string, get_description)() const {
 #define COUNTERS_TEMPLATE(a,b) \
     template COUNTERS_TEMPLATE_ARGS() inline a COUNTERS_TYPE()::b
 
-COUNTERS_TEMPLATE(, Counters)() : data(0u) {}
+COUNTERS_TEMPLATE(, Counters)() : data(0u), hasher(nullptr) {}
 
 COUNTERS_TEMPLATE(COUNTER_TYPE() &, operator[])(uint idx) {
 
@@ -5128,15 +5226,18 @@ COUNTERS_TEMPLATE(COUNTER_TYPE() &, operator[])(uint idx) {
 }
 
 COUNTERS_TEMPLATE(, Counters)(const Counters<Array_Type,Data_Type> & counter_) :
-    data(counter_.data) {}
+    data(counter_.data), hasher(counter_.hasher) {}
 
 COUNTERS_TEMPLATE(, Counters)(Counters<Array_Type,Data_Type> && counters_) noexcept :
-    data(std::move(counters_.data)) {}
+    data(std::move(counters_.data)), hasher(std::move(counters_.hasher)) {}
 
 COUNTERS_TEMPLATE(COUNTERS_TYPE(), operator=)(const Counters<Array_Type,Data_Type> & counter_) {
 
     if (this != &counter_)
+    {
         data = counter_.data;
+        hasher = counter_.hasher;
+    }
 
     return *this;
 
@@ -5145,8 +5246,10 @@ COUNTERS_TEMPLATE(COUNTERS_TYPE(), operator=)(const Counters<Array_Type,Data_Typ
 COUNTERS_TEMPLATE(COUNTERS_TYPE() &, operator=)(Counters<Array_Type,Data_Type> && counters_) noexcept 
 {
 
-    if (this != &counters_)
+    if (this != &counters_) {
         data = std::move(counters_.data);
+        hasher = std::move(counters_.hasher);
+    }
 
     return *this;
 
@@ -5163,6 +5266,7 @@ COUNTERS_TEMPLATE(void, add_counter)(Counter<Array_Type, Data_Type> counter)
 COUNTERS_TEMPLATE(void, add_counter)(
     Counter_fun_type<Array_Type,Data_Type> count_fun_,
     Counter_fun_type<Array_Type,Data_Type> init_fun_,
+    Hasher_fun_type<Array_Type,Data_Type>  hasher_fun_,
     Data_Type                              data_,
     std::string                            name_,
     std::string                            desc_
@@ -5172,6 +5276,7 @@ COUNTERS_TEMPLATE(void, add_counter)(
     data.push_back(Counter<Array_Type,Data_Type>(
         count_fun_,
         init_fun_,
+        hasher_fun_,
         data_,
         name_,
         desc_
@@ -5200,6 +5305,58 @@ COUNTERS_TEMPLATE(std::vector<std::string>, get_descriptions)() const
         out[i] = data.at(i).get_description();
 
     return out;
+
+}
+
+COUNTERS_TEMPLATE(std::vector<double>, gen_hash)(
+    const Array_Type & array,
+    bool add_dims
+)
+{
+    std::vector<double> res;
+    
+    // Iterating over the counters
+    for (auto & c: data)
+    {
+
+        // If there's a hasher function, then use it!
+        if (c.get_hasher())
+        {
+
+            for (auto v: c.get_hasher()(array, &(c.data)))
+                res.push_back(v);
+
+        }
+
+    }
+
+    // Do we need to add the dims?
+    if (add_dims)
+    {
+        res.push_back(array.nrow());
+        res.push_back(array.ncol());
+    }
+
+    // Ading the global hasher, if one exists
+    if (hasher)
+    {
+        for (auto i: hasher(array, nullptr))
+            res.push_back(i);
+    }
+
+    // We have to return something...
+    if (res.size() == 0u)
+        res.push_back(0.0);
+
+    return res;
+
+}
+
+COUNTERS_TEMPLATE(void, add_hash)(
+    Hasher_fun_type<Array_Type,Data_Type> fun_
+) {
+
+    hasher = fun_;
 
 }
 
@@ -6748,16 +6905,6 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::add_rule(
 #define BARRY_MODEL_BONES_HPP 1
 
 /**
- * @brief Array Hasher class (used for computing support)
- * 
- */
-template<typename Array_Type>
-inline std::vector< double > keygen_default(const Array_Type & Array_) {
-    return {static_cast<double>(Array_.nrow()), static_cast<double>(Array_.ncol())};
-}
-
-
-/**
  * @ingroup stat-models
  * @brief General framework for discrete exponential models.
  * This class allows generating discrete exponential models in the form of a linear
@@ -6856,10 +7003,6 @@ private:
     std::vector< double > normalizing_constants;
     std::vector< bool > first_calc_done;
 
-    /**@brief Function to extract features of the array to be hash
-    */
-    std::function<std::vector<double>(const Array_Type &)> keygen = nullptr;  
-
     bool delete_counters  = false;
     bool delete_rules     = false;
     bool delete_rules_dyn = false;
@@ -6931,7 +7074,6 @@ public:
     };
     
     void store_psets() noexcept;
-    void set_keygen(std::function<std::vector<double>(const Array_Type &)> keygen_);
     std::vector< double > gen_key(const Array_Type & Array_);
     
     /**
@@ -6947,6 +7089,7 @@ public:
         Data_Counter_Type                              data_        = nullptr
     );
     void set_counters(Counters<Array_Type,Data_Counter_Type> * counters_);
+    void add_hasher(Hasher_fun_type<Array_Type,Data_Counter_Type> fun_);
     ///@}
     
     /**
@@ -7285,9 +7428,6 @@ MODEL_TEMPLATE(,Model)() :
     // Rules are shared
     support_fun.set_rules(rules);
     support_fun.set_rules_dyn(rules_dyn);
-
-    // Checking with the hasher function: Is this present?
-    keygen = keygen_default<Array_Type>;
     
     return;
     
@@ -7318,10 +7458,7 @@ MODEL_TEMPLATE(,Model)(uint size_) :
     // Rules are shared
     support_fun.set_rules(rules);
     support_fun.set_rules_dyn(rules_dyn);
-    
-    // Checking with the hasher function: Is this present?
-    keygen = keygen_default<Array_Type>;
-    
+        
     return;
     
 }
@@ -7358,8 +7495,6 @@ MODEL_TEMPLATE(,Model)(
     support_fun.set_rules(rules);
     support_fun.set_rules_dyn(rules_dyn);
 
-    keygen = Model_.keygen;
-    
     return;
     
 }
@@ -7420,17 +7555,10 @@ MODEL_TEMPLATE(void, store_psets)() noexcept {
     return;
 }
 
-MODEL_TEMPLATE(void, set_keygen)(
-    std::function<std::vector<double>(const Array_Type &)> keygen_
-) {
-    keygen = keygen_;
-    return;
-}
-
 MODEL_TEMPLATE(std::vector< double >, gen_key)(
     const Array_Type & Array_
 ) {
-    return this->keygen(Array_);   
+    return this->counters->gen_hash(Array_);   
 }
 
 MODEL_TEMPLATE(void, add_counter)(
@@ -7472,6 +7600,14 @@ MODEL_TEMPLATE(void, set_counters)(
     
     return;
     
+}
+
+MODEL_TEMPLATE(void, add_hasher)(
+    Hasher_fun_type<Array_Type,Data_Counter_Type> fun_
+) {
+
+    counters->add_hash(fun_);
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7558,7 +7694,7 @@ MODEL_TEMPLATE(uint, add_array)(
     
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
-    std::vector< double > key = keygen(Array_);
+    std::vector< double > key = counters->gen_hash(Array_);
     MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
     if (force_new | (locator == keys2support.end()))
     {
@@ -7709,7 +7845,7 @@ MODEL_TEMPLATE(double, likelihood)(
     if (i < 0)
     {
 
-        std::vector< double > key = keygen(Array_);
+        std::vector< double > key = counters->gen_hash(Array_);
         MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
         if (locator == keys2support.end()) 
             throw std::range_error("This type of array has not been included in the model.");
@@ -8191,7 +8327,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
-    std::vector< double > key = keygen(Array_);
+    std::vector< double > key = counters->gen_hash(Array_);
     MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
     if (locator == keys2support.end())
     {
@@ -8974,7 +9110,7 @@ inline void counter_edges(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        count_edges, nullptr,
+        count_edges, nullptr, nullptr,
         NetCounterData(), 
         "Edge counts", 
         "Number of edges"
@@ -9018,7 +9154,7 @@ inline void counter_isolates(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Isolates",
         "Number of isolate vertices"
@@ -9057,7 +9193,7 @@ inline void counter_isolates(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Isolates", "Number of isolate vertices"
         );
@@ -9112,7 +9248,7 @@ inline void counter_mutual(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Reciprocity",
         "Number of mutual ties"
@@ -9141,7 +9277,7 @@ inline void counter_istar2(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Istar 2",
         "Indegree 2-star"
@@ -9177,7 +9313,7 @@ inline void counter_istar2(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Istar 2",
         "Indegree 2-star"
@@ -9206,7 +9342,7 @@ inline void counter_ostar2(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Ostar 2",
         "Outdegree 2-star"
@@ -9241,7 +9377,7 @@ inline void counter_ostar2(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Ostar 2",
         "Outdegree 2-star"
@@ -9333,7 +9469,7 @@ inline void counter_ttriads(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Balance",
         "Number of directed triangles"
@@ -9410,7 +9546,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Balance",
         "Number of directed triangles"
@@ -9468,7 +9604,7 @@ inline void counter_ctriads(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Cyclical triads"
     );
@@ -9533,7 +9669,7 @@ inline void counter_ctriads(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Cyclical triads"
     );
@@ -9560,7 +9696,7 @@ inline void counter_density(NetCounters<Tnet> * counters)
     // Preparing the counter data and returning. We make sure that the memory is 
     // released so we set delete_data = true.
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Density",
         "Proportion of present ties"
@@ -9590,7 +9726,7 @@ inline void counter_idegree15(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Indegree^(1.5)"
     );
@@ -9638,7 +9774,7 @@ inline void counter_idegree15(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Indegree^(1.5)"
     );
@@ -9667,7 +9803,7 @@ inline void counter_odegree15(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Outdegree^(1.5)"
     );
@@ -9710,7 +9846,7 @@ inline void counter_odegree15(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Outdegree^(1.5)"
     );
@@ -9756,7 +9892,7 @@ inline void counter_absdiff(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData({attr_id}, {alpha}),
         "Absdiff"
     );
@@ -9802,7 +9938,7 @@ inline void counter_diff(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData({attr_id}, {alpha, tail_head ? 1.0: -1.0}),
         "Absdiff^(" + std::to_string(alpha) + ")"
     );
@@ -9844,7 +9980,7 @@ inline void counter_nodeicov(
     };
     
     counters->add_counter(
-        tmp_count, init_single_attr<Tnet>,
+        tmp_count, init_single_attr<Tnet>, nullptr,
         NetCounterData({attr_id}, {}),
         "nodeicov", "Sum of ego attribute"
     );
@@ -9869,7 +10005,7 @@ inline void counter_nodeocov(
     };
     
     counters->add_counter(
-        tmp_count, init_single_attr<Tnet>,
+        tmp_count, init_single_attr<Tnet>, nullptr,
         NetCounterData({attr_id}, {}),
         "nodeocov", "Sum of alter attribute"
     );
@@ -9895,7 +10031,7 @@ inline void counter_nodecov(
     };
     
     counters->add_counter(
-        tmp_count, init_single_attr<Tnet>,
+        tmp_count, init_single_attr<Tnet>, nullptr,
         NetCounterData({attr_id}, {}),
         "nodecov", "Sum of nodes covariates"
     );
@@ -9925,7 +10061,7 @@ inline void counter_nodematch(
     // Preparing the counter data and returning. We make sure that the memory is 
     // released so we set delete_data = true.
     counters->add_counter(
-        tmp_count, init_single_attr<Tnet>,
+        tmp_count, init_single_attr<Tnet>, nullptr,
         NetCounterData({attr_id}, {}),
         "Homophily",
         "Number of homophilic ties"
@@ -9974,7 +10110,7 @@ inline void counter_idegree(
     
     for (auto iter = d.begin(); iter != d.end(); ++iter)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {}),
             "Nodes indeg " + std::to_string(*iter),
             "Number of nodes with indigree " + std::to_string(*iter)
@@ -10025,7 +10161,7 @@ inline void counter_idegree(
     
     for (auto iter = d.begin(); iter != d.end(); ++iter)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {}),
             "Nodes indeg " + std::to_string(*iter),
             "Number of nodes with indigree " + std::to_string(*iter)
@@ -10075,7 +10211,7 @@ inline void counter_odegree(
         
     for (auto iter = d.begin(); iter != d.end(); ++iter) 
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {}),
             "Nodes w/ outdeg " + std::to_string(*iter),
             "Number of nodes with outdegree " + std::to_string(*iter)
@@ -10127,7 +10263,7 @@ inline void counter_odegree(
         
     for (auto iter = d.begin(); iter != d.end(); ++iter) 
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {}),
             "Nodes w/ outdeg " + std::to_string(*iter),
             "Number of nodes with outdegree " + std::to_string(*iter)
@@ -10175,7 +10311,7 @@ inline void counter_degree(
     for (auto iter = d.begin(); iter != d.end(); ++iter)
     {
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {})
         );
     }
@@ -10236,7 +10372,7 @@ inline void counter_degree(
 #define CSS_APPEND(name) std::string name_ = (name);\
     for (uint i = 0u; i < end_.size(); ++i) { \
     std::string tmpname = name_ + " (" + std::to_string(i) + ")";\
-    counters->add_counter(tmp_count, tmp_init,\
+    counters->add_counter(tmp_count, tmp_init, nullptr, \
             NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\
             tmpname);}
 
@@ -11114,7 +11250,7 @@ inline void counter_overall_gains(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Overall gains" + get_last_name(duplication)
     );
@@ -11173,7 +11309,7 @@ inline void counter_gains(
     
     for (auto& i : nfun)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             PhyloCounterData({duplication, i}),
             "Gains " + std::to_string(i) + get_last_name(duplication)
         );
@@ -11244,7 +11380,7 @@ inline void counter_gains_k_offspring(
     
     for (auto& i : nfun)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             PhyloCounterData({duplication, i, k}),
             std::to_string(k) + " genes gain " + std::to_string(i) +
                 get_last_name(duplication)
@@ -11314,7 +11450,7 @@ inline void counter_genes_changing(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Num. of genes changing" + get_last_name(duplication)
     );
@@ -11392,7 +11528,7 @@ inline void counter_preserve_pseudogene(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Preserve pseudo gene (" + 
         std::to_string(nfunA) + ", " +
@@ -11498,7 +11634,7 @@ inline void counter_prop_genes_changing(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Proportion of genes changing" + get_last_name(duplication)
     );
@@ -11547,7 +11683,7 @@ inline void counter_overall_loss(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Overall loses" + get_last_name(duplication)
     );
@@ -11608,7 +11744,7 @@ inline void counter_maxfuns(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, lb, ub}),
         "Genes with [" + std::to_string(lb) + ", " + std::to_string(ub) +
             "] funs" + get_last_name(duplication)
@@ -11661,7 +11797,7 @@ inline void counter_loss(
     
     for (auto& i : nfun)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             PhyloCounterData({duplication, i}),
             "Loss " + std::to_string(i) + get_last_name(duplication)
         );
@@ -11717,7 +11853,7 @@ inline void counter_overall_changes(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Overall changes" + get_last_name(duplication)
     );
@@ -11807,7 +11943,7 @@ inline void counter_subfun(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Subfun between " + std::to_string(nfunA) + " and " +
             std::to_string(nfunB) + get_last_name(duplication)
@@ -11867,7 +12003,7 @@ inline void counter_cogain(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Co-gains " + std::to_string(nfunA) + " & " + std::to_string(nfunB) +
             get_last_name(duplication)
@@ -12035,7 +12171,7 @@ inline void counter_longest(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Longest branch mutates" + get_last_name(duplication)
     );
@@ -12114,7 +12250,7 @@ inline void counter_neofun(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Neofun between " + std::to_string(nfunA) + " and " +
         std::to_string(nfunB) + get_last_name(duplication)
@@ -12179,7 +12315,7 @@ inline void counter_pairwise_neofun_singlefun(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA}),
         "Pairwise neofun function " + std::to_string(nfunA) +
         get_last_name(duplication)
@@ -12306,7 +12442,7 @@ inline void counter_neofun_a2b(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Neofun from " + std::to_string(nfunA) + " to " +
         std::to_string(nfunB) + get_last_name(duplication)
@@ -12409,7 +12545,7 @@ inline void counter_co_opt(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Coopt of " + std::to_string(nfunA) + " by " +
         std::to_string(nfunB) + get_last_name(duplication)
@@ -12533,7 +12669,7 @@ inline void counter_k_genes_changing(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, k}),
         std::to_string(k) + " genes changing" + get_last_name(duplication)
     );
@@ -12649,7 +12785,7 @@ inline void counter_less_than_p_prop_genes_changing(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, static_cast<uint>(p * 100)}),
         std::to_string(p) + " prop genes changing" + get_last_name(duplication)
     );
@@ -12712,7 +12848,7 @@ inline void counter_gains_from_0(
     
     for (auto& i : nfun)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             PhyloCounterData({duplication, i}),
             "First gain " + std::to_string(i) +
                 get_last_name(duplication)
@@ -12760,7 +12896,7 @@ inline void counter_overall_gains_from_0(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Overall first gains" +
             get_last_name(duplication)
@@ -12824,7 +12960,7 @@ inline void counter_pairwise_overall_change(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Pairs of genes changing" +
             get_last_name(duplication)
@@ -12963,7 +13099,7 @@ inline void counter_pairwise_preserving(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Pariwise preserve (" + std::to_string(nfunA) + ", " +
             std::to_string(nfunB) + ")" +get_last_name(duplication)
@@ -13062,7 +13198,7 @@ inline void counter_pairwise_first_gain(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "First gain (either " + std::to_string(nfunA) + " or " +
             std::to_string(nfunB) + ")" +get_last_name(duplication)
@@ -13194,6 +13330,17 @@ inline void rule_dyn_limit_changes(
 #ifndef BARRAY_DEFM_H
 #define BARRAY_DEFM_H 1
 
+/*//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+ Start of -include/barry//counters/defm-formula.hpp-
+
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+#ifndef BARRY_DEFM_MOTIF_FORMULA_HPP
+#define BARRY_DEFM_MOTIF_FORMULA_HPP
 /**
  * @brief Parses a motif formula
  * 
@@ -13417,6 +13564,16 @@ inline void defm_motif_parser(
         );
     
 }
+#endif
+/*//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+ End of -include/barry//counters/defm-formula.hpp-
+
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
+
+
 
 /**
  * @ingroup counting 
@@ -13445,8 +13602,10 @@ public:
     DEFMArray * array; // Pointer to the owner of this data
     const double * covariates; ///< Vector of covariates (complete vector)
     size_t obs_start;    ///< Index of the observation in the data.
-    size_t X_ncol; ///< Number of covariates included in the model.
-    size_t X_nrow; ///< Number of covariates included in the model.
+    size_t X_ncol; ///< Number of columns in the array of covariates.
+    size_t X_nrow; ///< Number of rows in the array of covariates.
+    std::vector< size_t > covar_sort; /// Value where the sorting of the covariates is stored.
+    std::vector< size_t > covar_used; /// Vector indicating which covariates are included in the model
     
     DEFMData() {};
     
@@ -13476,6 +13635,7 @@ public:
     double operator()(size_t i, size_t j) const;
     double at(size_t i, size_t j) const;
     size_t ncol() const;
+    size_t nrow() const;
     void print() const;
     
     ~DEFMData() {};
@@ -13508,11 +13668,12 @@ public:
 };
 
 class DEFMRuleData {
-private: 
+public:
+
     std::vector< double > numbers;
     std::vector< size_t > indices;
 
-public:
+    bool init = false;
 
     double num(size_t i) {return numbers[i];};
     size_t idx(size_t i) {return indices[i];};
@@ -13548,6 +13709,10 @@ inline size_t DEFMData::ncol() const {
     return X_ncol;
 }
 
+inline size_t DEFMData::nrow() const {
+    return X_nrow;
+}
+
 inline void DEFMData::print() const {
 
     for (size_t i = 0u; i < array->nrow(); ++i)
@@ -13562,6 +13727,19 @@ inline void DEFMData::print() const {
 
 }
 
+#define MAKE_DEFM_HASHER(hasher,a,cov) Hasher_fun_type<DEFMArray,DEFMCounterData> hasher = [cov](const DEFMArray & array, DEFMCounterData * d) { \
+            std::vector< double > res; \
+            /* Adding the column feature */ \
+            for (size_t i = 0u; i < array.nrow(); ++i) \
+                res.push_back(array.D()(i, cov)); \
+            /* Adding the fixed dims */ \
+            for (size_t i = 0u; i < (array.nrow() - 1); ++i) \
+                for (size_t j = 0u; j < array.ncol(); ++j) \
+                    res.push_back(array(i, j)); \
+            return res;\
+        };
+    
+
 /**@name Macros for defining counters
   */
 ///@{
@@ -13575,7 +13753,6 @@ Counter_fun_type<DEFMArray, DEFMCounterData> a = \
     [](const DEFMArray & Array, uint i, uint j, DEFMCounterData & data)
 
 ///@}
-
 
 /**@name Macros for defining rules
   */
@@ -13613,7 +13790,9 @@ inline void counter_ones(
 
     // Weighted by a feature of the array
     if (covar_index >= 0)
-    {      
+    {   
+
+        MAKE_DEFM_HASHER(hasher, array, covar_index)
 
         DEFM_COUNTER_LAMBDA(counter_tmp)
         {
@@ -13636,11 +13815,13 @@ inline void counter_ones(
         }
 
         counters->add_counter(
-            counter_tmp, nullptr,
+            counter_tmp, nullptr, hasher,
             DEFMCounterData({static_cast<size_t>(covar_index)}, {}, {}), 
             "Num. of ones x " + vname, 
             "Overall number of ones"
         );
+
+
 
     } else {
 
@@ -13655,7 +13836,7 @@ inline void counter_ones(
         };
 
         counters->add_counter(
-            count_ones, nullptr,
+            count_ones, nullptr, nullptr,
             DEFMCounterData(),
             "Num. of ones", 
             "Overall number of ones"
@@ -13711,7 +13892,7 @@ inline void counter_logit_intercept(
                 vname = std::to_string(i);
 
             counters->add_counter(
-                tmp_counter, nullptr,
+                tmp_counter, nullptr, nullptr,
                 DEFMCounterData({i}, {}, {}), 
                 "Logit intercept " + vname, 
                 "Equal to one if the outcome " + vname + " is one. Equivalent to the logistic regression intercept."
@@ -13732,6 +13913,9 @@ inline void counter_logit_intercept(
             return Array.D()(i, data.idx(1u));
         };
 
+        MAKE_DEFM_HASHER(hasher, array, covar_index)
+        bool hasher_added = false;
+
         std::string yname;
         for (auto i : which)
         {
@@ -13749,12 +13933,25 @@ inline void counter_logit_intercept(
                     vname = std::string("attr")+ std::to_string(covar_index);
             }
 
-            counters->add_counter(
-                tmp_counter, nullptr,
-                DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
-                "Logit intercept " + yname + " x " + vname, 
-                "Equal to one if the outcome " + yname + " is one. Equivalent to the logistic regression intercept."
-            );
+            if (hasher_added)
+                counters->add_counter(
+                    tmp_counter, nullptr, nullptr,
+                    DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
+                    "Logit intercept " + yname + " x " + vname, 
+                    "Equal to one if the outcome " + yname + " is one. Equivalent to the logistic regression intercept."
+                );
+            else {
+
+                hasher_added = true;
+
+                counters->add_counter(
+                    tmp_counter, nullptr, hasher,
+                    DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
+                    "Logit intercept " + yname + " x " + vname, 
+                    "Equal to one if the outcome " + yname + " is one. Equivalent to the logistic regression intercept."
+                );
+
+            }
 
         }
 
@@ -13924,20 +14121,6 @@ inline void counter_transition(
             name += "{";
         #endif
 
-    // #define UNI_SUB(a) \
-    //     (\
-    //         ((a) == 0) ? "\u2080" : (\
-    //         ((a) == 1) ? "\u2081" : (\
-    //         ((a) == 2) ? "\u2082" : (\
-    //         ((a) == 3) ? "\u2083" : (\
-    //         ((a) == 4) ? "\u2084" : (\
-    //         ((a) == 5) ? "\u2085" : (\
-    //         ((a) == 6) ? "\u2086" : (\
-    //         ((a) == 7) ? "\u2087" : (\
-    //         ((a) == 8) ? "\u2088" : \
-    //         "\u2089"))))))))\
-    //     )
-
     #ifdef BARRY_WITH_LATEX
         #define UNI_SUB(a) \
             (\
@@ -14053,6 +14236,8 @@ inline void counter_transition(
     if (covar_index >= 0)
     {
 
+        MAKE_DEFM_HASHER(hasher, array, covar_index)
+
         if (vname == "")
         {
             if (x_names != nullptr)
@@ -14062,7 +14247,7 @@ inline void counter_transition(
         }
 
         counters->add_counter(
-            count_ones, count_init,
+            count_ones, count_init, hasher,
             DEFMCounterData(coords, {}, signs), 
             name + " x " + vname, 
             "Motif weighted by single attribute"
@@ -14071,7 +14256,7 @@ inline void counter_transition(
     } else {
 
         counters->add_counter(
-            count_ones, count_init,
+            count_ones, count_init, nullptr,
             DEFMCounterData(coords, {}, signs), 
             name, 
             "Motif"
@@ -14140,13 +14325,15 @@ inline void counter_fixed_effect(
         return 0.0;
     };
 
+    MAKE_DEFM_HASHER(hasher, array, covar_index)
+
     if (x_names != nullptr)
         vname = x_names->operator[](covar_index);
     else
         vname = std::string("attr")+ std::to_string(covar_index);
 
     counters->add_counter(
-        count_tmp, count_init,
+        count_tmp, count_init, hasher,
         DEFMCounterData({static_cast<size_t>(covar_index)}, {k}, {}), 
         "Fixed effect feature (" + vname + ")^" + std::to_string(k)
     );
@@ -14174,6 +14361,60 @@ inline void rules_markov_fixed(
     rules->add_rule(
         no_self_tie,
         DEFMRuleData({},{markov_order})
+        );
+    
+    return;
+}
+
+/**
+ * @brief Blocks switching a one to zero.
+ * 
+ * @param rules 
+ * @param ids Ids of the variables that will follow this rule.
+ */
+inline void rules_dont_become_zero(
+    DEFMRules * rules,
+    std::vector<size_t> ids
+    ) {
+    
+    
+    DEFM_RULE_LAMBDA(rule) {
+
+        if (i != (Array.nrow() - 1))
+            return true;
+
+        if (!data.init)
+        {
+            std::vector< size_t > tmp(Array.ncol(), 0u);
+
+            for (auto v : data.indices)
+            {
+                if (v >= Array.ncol())
+                    throw std::range_error("The specified id for `dont_become_zero` is out of range.");
+
+                tmp[v] = 1u;
+            }
+
+            data.indices.resize(Array.ncol());
+            for (size_t v = 0u; v < tmp.size(); ++v)
+                data.indices[v] = tmp[v];
+
+            data.init = true;
+        }
+
+        // If not considered, then continue
+        if (data.indices[j] == 0u)
+            return true;
+
+        // If the previous observation was one, then block this
+        return (Array(i - 1, j) == 1) &
+            (Array(i, j) == 1);
+
+    };
+    
+    rules->add_rule(
+        rule,
+        DEFMRuleData({},{ids})
         );
     
     return;

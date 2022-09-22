@@ -178,8 +178,10 @@ RULE_FUNCTION(rule_empty_free) {
 
 
 // Hasher
+
 inline std::vector< double > keygen_full(
-    const phylocounters::PhyloArray & array
+    const phylocounters::PhyloArray & array,
+    const phylocounters::PhyloCounterData * d
     ) {
 
     // Baseline data: nrows and columns
@@ -578,7 +580,6 @@ inline void Geese::init(unsigned int bar_width) {
         this->model = new phylocounters::PhyloModel();
 
         this->delete_support = true;
-
         this->model->add_hasher(keygen_full);
 
         this->model->store_psets();
@@ -1439,7 +1440,7 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
     }
 
     // These should not be necesary as they are already initialized.
-    // this->model->add_hasher(keygen_full);
+    // this->model->set_keygen(keygen_full);
     // this->model->store_psets();
 
     // Dealing with the nodes is a bit different -------------------------------
@@ -1596,8 +1597,10 @@ RULE_FUNCTION(rule_empty_free) {
 
 
 // Hasher
+
 inline std::vector< double > keygen_full(
-    const phylocounters::PhyloArray & array
+    const phylocounters::PhyloArray & array,
+    const phylocounters::PhyloCounterData * d
     ) {
 
     // Baseline data: nrows and columns

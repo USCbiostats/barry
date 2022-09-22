@@ -96,11 +96,12 @@ public:
 };
 
 class DEFMRuleData {
-private: 
+public:
+
     std::vector< double > numbers;
     std::vector< size_t > indices;
 
-public:
+    bool init = false;
 
     double num(size_t i) {return numbers[i];};
     size_t idx(size_t i) {return indices[i];};
@@ -788,6 +789,60 @@ inline void rules_markov_fixed(
     rules->add_rule(
         no_self_tie,
         DEFMRuleData({},{markov_order})
+        );
+    
+    return;
+}
+
+/**
+ * @brief Blocks switching a one to zero.
+ * 
+ * @param rules 
+ * @param ids Ids of the variables that will follow this rule.
+ */
+inline void rules_dont_become_zero(
+    DEFMRules * rules,
+    std::vector<size_t> ids
+    ) {
+    
+    
+    DEFM_RULE_LAMBDA(rule) {
+
+        if (i != (Array.nrow() - 1))
+            return true;
+
+        if (!data.init)
+        {
+            std::vector< size_t > tmp(Array.ncol(), 0u);
+
+            for (auto v : data.indices)
+            {
+                if (v >= Array.ncol())
+                    throw std::range_error("The specified id for `dont_become_zero` is out of range.");
+
+                tmp[v] = 1u;
+            }
+
+            data.indices.resize(Array.ncol());
+            for (size_t v = 0u; v < tmp.size(); ++v)
+                data.indices[v] = tmp[v];
+
+            data.init = true;
+        }
+
+        // If not considered, then continue
+        if (data.indices[j] == 0u)
+            return true;
+
+        // If the previous observation was one, then block this
+        return (Array(i - 1, j) == 1) &
+            (Array(i, j) == 1);
+
+    };
+    
+    rules->add_rule(
+        rule,
+        DEFMRuleData({},{ids})
         );
     
     return;

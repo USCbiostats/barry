@@ -125,18 +125,16 @@ public:
 
 inline std::vector< double > keygen_defm(
     const defmcounters::DEFMArray & Array_,
-    const defmcounters::DEFMCounterData * d
+    defmcounters::DEFMCounterData * data
     ) {
     
     size_t nrow = Array_.nrow();
     size_t ncol = Array_.ncol();
-    size_t k    = Array_.D().ncol();
 
     std::vector< double > res(
-        2u +                 // Rows + cols
-        ncol * (nrow - 1u) + // Markov cells
-        k * nrow             // Data
-        , 0.0);
+        2u +                // Rows + cols
+        ncol * (nrow - 1u) // Markov cells
+        );
 
     res[0u] = static_cast<double>(nrow);
     res[1u] = static_cast<double>(ncol);
@@ -146,11 +144,6 @@ inline std::vector< double > keygen_defm(
     for (size_t i = 0u; i < (nrow - 1); ++i)
         for (size_t j = 0u; j < ncol; ++j)
             res[iter++] = Array_(i, j);
-
-    // Adding the data
-    for (size_t i = 0u; i < nrow; ++i)
-        for (size_t j = 0u; j < k; ++j)
-            res[iter++] = Array_.D()(i, j);
 
     return res;
 
