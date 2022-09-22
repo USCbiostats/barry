@@ -127,7 +127,47 @@ struct vecHasher
 
 template<typename Ta = double, typename Tb = uint> 
 using MapVec_type = std::unordered_map< std::vector< Ta >, Tb, vecHasher<Ta>>;
-  
+
+/**
+ * @brief Ascending sorting an array
+ * 
+ * It will sort an array solving ties using the next column. Data is
+ * stored column-wise.
+ * 
+ * @tparam T 
+ * @param v 
+ * @param nrows 
+ * @return std::vector<size_t> The sorting index.
+ */
+inline std::vector< size_t > sort_array(
+    const double * v,
+    size_t start,
+    size_t ncols,
+    size_t nrows
+    ) {
+
+    // initialize original index locations
+    std::vector<size_t> idx(nrows);
+    std::iota(idx.begin(), idx.end(), 0);
+
+    std::sort(idx.begin(), idx.end(),
+       [&v,nrows,ncols,start](size_t i1, size_t i2) {
+
+            for (size_t j = 0u; j < ncols; ++j)
+            {
+                if (*(v + (nrows * j + i1+start)) == *(v + (nrows * j + i2 + start)))
+                    continue;   
+                else 
+                    return *(v + (nrows * j + i1+start)) < *(v + (nrows * j + i2 + start));
+            }
+
+            return false;
+        });
+
+    return idx;
+
+}   
+
 
 // Mostly relevant in the case of the stats count functions -------------------
 template <typename Cell_Type, typename Data_Type> class BArray;
@@ -150,6 +190,15 @@ using Counter_fun_type = std::function<double(const Array_Type &, uint, uint, Da
 template <typename Array_Type, typename Data_Type>
 using Rule_fun_type = std::function<bool(const Array_Type &, uint, uint, Data_Type &)>;
 ///@}
+
+/**
+ * @brief Hasher function used by the counter
+ * @details Used to characterize the support of the array.
+ * 
+ * @tparam Array_Type 
+ */
+template <typename Array_Type, typename Data_Type>
+using Hasher_fun_type = std::function<std::vector<double>(const Array_Type &, Data_Type *)>;
 
 // Misc ------------------------------------------------------------------------
 /**
@@ -241,5 +290,7 @@ inline double vec_inner_prod(
     return res;
 
 }
+
+#endif
 
 #endif

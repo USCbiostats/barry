@@ -42,7 +42,7 @@
 #define CSS_APPEND(name) std::string name_ = (name);\
     for (uint i = 0u; i < end_.size(); ++i) { \
     std::string tmpname = name_ + " (" + std::to_string(i) + ")";\
-    counters->add_counter(tmp_count, tmp_init,\
+    counters->add_counter(tmp_count, tmp_init, nullptr, \
             NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\
             tmpname);}
 

@@ -111,9 +111,6 @@ MODEL_TEMPLATE(,Model)() :
     // Rules are shared
     support_fun.set_rules(rules);
     support_fun.set_rules_dyn(rules_dyn);
-
-    // Checking with the hasher function: Is this present?
-    keygen = keygen_default<Array_Type>;
     
     return;
     
@@ -144,10 +141,7 @@ MODEL_TEMPLATE(,Model)(uint size_) :
     // Rules are shared
     support_fun.set_rules(rules);
     support_fun.set_rules_dyn(rules_dyn);
-    
-    // Checking with the hasher function: Is this present?
-    keygen = keygen_default<Array_Type>;
-    
+        
     return;
     
 }
@@ -184,8 +178,6 @@ MODEL_TEMPLATE(,Model)(
     support_fun.set_rules(rules);
     support_fun.set_rules_dyn(rules_dyn);
 
-    keygen = Model_.keygen;
-    
     return;
     
 }
@@ -246,17 +238,10 @@ MODEL_TEMPLATE(void, store_psets)() noexcept {
     return;
 }
 
-MODEL_TEMPLATE(void, set_keygen)(
-    std::function<std::vector<double>(const Array_Type &)> keygen_
-) {
-    keygen = keygen_;
-    return;
-}
-
 MODEL_TEMPLATE(std::vector< double >, gen_key)(
     const Array_Type & Array_
 ) {
-    return this->keygen(Array_);   
+    return this->counters->gen_hash(Array_);   
 }
 
 MODEL_TEMPLATE(void, add_counter)(
@@ -298,6 +283,14 @@ MODEL_TEMPLATE(void, set_counters)(
     
     return;
     
+}
+
+MODEL_TEMPLATE(void, add_hasher)(
+    Hasher_fun_type<Array_Type,Data_Counter_Type> fun_
+) {
+
+    counters->add_hash(fun_);
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -384,7 +377,7 @@ MODEL_TEMPLATE(uint, add_array)(
     
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
-    std::vector< double > key = keygen(Array_);
+    std::vector< double > key = counters->gen_hash(Array_);
     MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
     if (force_new | (locator == keys2support.end()))
     {
@@ -535,7 +528,7 @@ MODEL_TEMPLATE(double, likelihood)(
     if (i < 0)
     {
 
-        std::vector< double > key = keygen(Array_);
+        std::vector< double > key = counters->gen_hash(Array_);
         MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
         if (locator == keys2support.end()) 
             throw std::range_error("This type of array has not been included in the model.");
@@ -1017,7 +1010,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
-    std::vector< double > key = keygen(Array_);
+    std::vector< double > key = counters->gen_hash(Array_);
     MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
     if (locator == keys2support.end())
     {

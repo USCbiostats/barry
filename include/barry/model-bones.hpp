@@ -2,16 +2,6 @@
 #define BARRY_MODEL_BONES_HPP 1
 
 /**
- * @brief Array Hasher class (used for computing support)
- * 
- */
-template<typename Array_Type>
-inline std::vector< double > keygen_default(const Array_Type & Array_) {
-    return {static_cast<double>(Array_.nrow()), static_cast<double>(Array_.ncol())};
-}
-
-
-/**
  * @ingroup stat-models
  * @brief General framework for discrete exponential models.
  * This class allows generating discrete exponential models in the form of a linear
@@ -110,10 +100,6 @@ private:
     std::vector< double > normalizing_constants;
     std::vector< bool > first_calc_done;
 
-    /**@brief Function to extract features of the array to be hash
-    */
-    std::function<std::vector<double>(const Array_Type &)> keygen = nullptr;  
-
     bool delete_counters  = false;
     bool delete_rules     = false;
     bool delete_rules_dyn = false;
@@ -185,7 +171,6 @@ public:
     };
     
     void store_psets() noexcept;
-    void set_keygen(std::function<std::vector<double>(const Array_Type &)> keygen_);
     std::vector< double > gen_key(const Array_Type & Array_);
     
     /**
@@ -201,6 +186,7 @@ public:
         Data_Counter_Type                              data_        = nullptr
     );
     void set_counters(Counters<Array_Type,Data_Counter_Type> * counters_);
+    void add_hasher(Hasher_fun_type<Array_Type,Data_Counter_Type> fun_);
     ///@}
     
     /**

@@ -158,7 +158,7 @@ inline void counter_edges(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        count_edges, nullptr,
+        count_edges, nullptr, nullptr,
         NetCounterData(), 
         "Edge counts", 
         "Number of edges"
@@ -202,7 +202,7 @@ inline void counter_isolates(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Isolates",
         "Number of isolate vertices"
@@ -241,7 +241,7 @@ inline void counter_isolates(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Isolates", "Number of isolate vertices"
         );
@@ -296,7 +296,7 @@ inline void counter_mutual(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Reciprocity",
         "Number of mutual ties"
@@ -325,7 +325,7 @@ inline void counter_istar2(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Istar 2",
         "Indegree 2-star"
@@ -361,7 +361,7 @@ inline void counter_istar2(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Istar 2",
         "Indegree 2-star"
@@ -390,7 +390,7 @@ inline void counter_ostar2(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Ostar 2",
         "Outdegree 2-star"
@@ -425,7 +425,7 @@ inline void counter_ostar2(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Ostar 2",
         "Outdegree 2-star"
@@ -517,7 +517,7 @@ inline void counter_ttriads(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Balance",
         "Number of directed triangles"
@@ -594,7 +594,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Balance",
         "Number of directed triangles"
@@ -652,7 +652,7 @@ inline void counter_ctriads(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Cyclical triads"
     );
@@ -717,7 +717,7 @@ inline void counter_ctriads(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData(),
         "Cyclical triads"
     );
@@ -744,7 +744,7 @@ inline void counter_density(NetCounters<Tnet> * counters)
     // Preparing the counter data and returning. We make sure that the memory is 
     // released so we set delete_data = true.
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Density",
         "Proportion of present ties"
@@ -774,7 +774,7 @@ inline void counter_idegree15(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Indegree^(1.5)"
     );
@@ -822,7 +822,7 @@ inline void counter_idegree15(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Indegree^(1.5)"
     );
@@ -851,7 +851,7 @@ inline void counter_odegree15(NetCounters<Tnet> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Outdegree^(1.5)"
     );
@@ -894,7 +894,7 @@ inline void counter_odegree15(NetCounters<NetworkDense> * counters)
     };
     
     counters->add_counter(
-        tmp_count, nullptr,
+        tmp_count, nullptr, nullptr,
         NetCounterData(),
         "Outdegree^(1.5)"
     );
@@ -940,7 +940,7 @@ inline void counter_absdiff(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData({attr_id}, {alpha}),
         "Absdiff"
     );
@@ -986,7 +986,7 @@ inline void counter_diff(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         NetCounterData({attr_id}, {alpha, tail_head ? 1.0: -1.0}),
         "Absdiff^(" + std::to_string(alpha) + ")"
     );
@@ -1028,7 +1028,7 @@ inline void counter_nodeicov(
     };
     
     counters->add_counter(
-        tmp_count, init_single_attr<Tnet>,
+        tmp_count, init_single_attr<Tnet>, nullptr,
         NetCounterData({attr_id}, {}),
         "nodeicov", "Sum of ego attribute"
     );
@@ -1053,7 +1053,7 @@ inline void counter_nodeocov(
     };
     
     counters->add_counter(
-        tmp_count, init_single_attr<Tnet>,
+        tmp_count, init_single_attr<Tnet>, nullptr,
         NetCounterData({attr_id}, {}),
         "nodeocov", "Sum of alter attribute"
     );
@@ -1079,7 +1079,7 @@ inline void counter_nodecov(
     };
     
     counters->add_counter(
-        tmp_count, init_single_attr<Tnet>,
+        tmp_count, init_single_attr<Tnet>, nullptr,
         NetCounterData({attr_id}, {}),
         "nodecov", "Sum of nodes covariates"
     );
@@ -1109,7 +1109,7 @@ inline void counter_nodematch(
     // Preparing the counter data and returning. We make sure that the memory is 
     // released so we set delete_data = true.
     counters->add_counter(
-        tmp_count, init_single_attr<Tnet>,
+        tmp_count, init_single_attr<Tnet>, nullptr,
         NetCounterData({attr_id}, {}),
         "Homophily",
         "Number of homophilic ties"
@@ -1158,7 +1158,7 @@ inline void counter_idegree(
     
     for (auto iter = d.begin(); iter != d.end(); ++iter)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {}),
             "Nodes indeg " + std::to_string(*iter),
             "Number of nodes with indigree " + std::to_string(*iter)
@@ -1209,7 +1209,7 @@ inline void counter_idegree(
     
     for (auto iter = d.begin(); iter != d.end(); ++iter)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {}),
             "Nodes indeg " + std::to_string(*iter),
             "Number of nodes with indigree " + std::to_string(*iter)
@@ -1259,7 +1259,7 @@ inline void counter_odegree(
         
     for (auto iter = d.begin(); iter != d.end(); ++iter) 
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {}),
             "Nodes w/ outdeg " + std::to_string(*iter),
             "Number of nodes with outdegree " + std::to_string(*iter)
@@ -1311,7 +1311,7 @@ inline void counter_odegree(
         
     for (auto iter = d.begin(); iter != d.end(); ++iter) 
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {}),
             "Nodes w/ outdeg " + std::to_string(*iter),
             "Number of nodes with outdegree " + std::to_string(*iter)
@@ -1359,7 +1359,7 @@ inline void counter_degree(
     for (auto iter = d.begin(); iter != d.end(); ++iter)
     {
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             NetCounterData({*iter}, {})
         );
     }

@@ -1,229 +1,7 @@
 #ifndef BARRAY_DEFM_H
 #define BARRAY_DEFM_H 1
 
-/**
- * @brief Parses a motif formula
- * 
- * @details This function will take the formula and generate the corresponding
- * input for defm::counter_transition(). Formulas can be specified in the
- * following ways:
- * 
- * - Intercept effect: {...} No transition, only including the current state.
- * - Transition effect: {...} > {...} Includes current and previous states.
- * 
- * The general notation is `[0]y[column id]_[row id]`. A preceeding zero
- * means that the value of the cell is considered to be zero. The column
- * id goes between 0 and the number of columns in the array - 1 (so it
- * is indexed from 0,) and the row id goes from 0 to m_order.
- * 
- * ## Intercept effects
- * 
- * Intercept effects only involve a single set of curly brackets. Using the
- * 'greater-than' symbol (i.e., '<') is only for transition effects. When
- * specifying intercept effects, users can skip the `row_id`, e.g.,
- * `y0_0` is equivalent to `y0`. If the passed `row id` is different from
- * the Markov order, i.e., `row_id != m_order`, then the function returns
- * with an error. 
- * 
- * Examples:
- * 
- * - `"{y0, 0y1}"` is equivalent to set a motif with the first element equal
- * to one and the second to zero. 
- * 
- * ## Transition effects
- * 
- * Transition effects can be specified using two sets of curly brackets and
- * an greater-than symbol, i.e., `{...} > {...}`. The first set of brackets,
- * which we call LHS, can only hold `row id` that are less than `m_order`.
- * 
- * 
- * 
- * @param formula 
- * @param locations 
- * @param signs 
- * @param m_order 
- * @param y_ncol 
- */
-inline void defm_motif_parser(
-    std::string formula,
-    std::vector< size_t > & locations,
-    std::vector< bool > & signs,
-    size_t m_order,
-    size_t y_ncol
-)
-{
-    // Resetting the results
-    locations.clear();
-    signs.clear();
-
-    std::regex pattern_intercept(
-        "\\{\\s*0?y[0-9]+(_[0-9]+)?(\\s*,\\s*0?y[0-9]+(_[0-9]+)?)*\\s*\\}"
-        );
-    std::regex pattern_transition(
-        std::string("\\{\\s*0?y[0-9]+(_[0-9]+)?(\\s*,\\s*0?y[0-9]+(_[0-9]+)?)*\\}\\s*(>)\\s*") +
-        std::string("\\{\\s*0?y[0-9]+(_[0-9]+)?(\\s*,\\s*0?y[0-9]+(_[0-9]+)?)*\\s*\\}")
-        );
-
-    auto empty = std::sregex_iterator();
-
-    // This column-major vector indicates true if the variable has already been
-    // selected
-    std::vector< bool > selected((m_order + 1) * y_ncol, false);
-
-    std::smatch match;
-    std::regex_match(formula, match, pattern_transition);
-    if (!match.empty())
-    {
-
-        if (m_order == 0)
-            throw std::logic_error("Transition effects are only valid when the data is a markov process.");
-
-        // Will indicate where the arrow is located at
-        size_t arrow_position = match.position(4u);
-
-        // This pattern will match 
-        std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
-
-        auto iter = std::sregex_iterator(formula.begin(), formula.end(), pattern);
-
-        for (auto i = iter; i != empty; ++i)
-        {
-
-            // Baseline position
-            size_t current_location = i->position(0u);
-
-            // First value true/false
-            bool is_positive;
-            if (i->operator[](1u).str() == "")
-                is_positive = true;
-            else if (i->operator[](1u).str() == "0")
-                is_positive = false;
-            else
-                throw std::logic_error("The number preceding y should be either none or zero.");
-
-            // Variable position
-            size_t y_col = std::stoul(i->operator[](2u).str());
-            if (y_col >= y_ncol)
-                throw std::logic_error("The proposed column is out of range.");
-
-            // Time location
-            size_t y_row;
-            std::string tmp_str = i->operator[](4u).str();
-            if (m_order > 1)
-            {
-                // If missing, we replace with the location 
-                if (tmp_str == "")
-                {
-
-                    if (current_location > arrow_position)
-                        y_row = m_order;
-                    else
-                        throw std::logic_error("LHS of transition must specify time when m_order > 1");
-
-                } else
-                    y_row = std::stoul(tmp_str);
-
-                if (y_row > m_order)
-                    throw std::logic_error("The proposed row is out of range.");
-
-
-            } else {
-
-                // If missing, we replace with the location 
-                if (tmp_str != "")
-                    y_row = std::stoul(tmp_str);
-                else
-                    y_row = (current_location < arrow_position ? 0u: 1u);
-
-            }
-
-            if (selected[y_col * (m_order + 1) + y_row])
-                throw std::logic_error(
-                    "The term " + i->str() + " shows more than once in the formula.");
-
-            // Only the end of the chain can be located at position after the
-            // arrow
-            if ((current_location > arrow_position) && (y_row != m_order))
-                throw std::logic_error(
-                    "Only the row " + std::to_string(m_order) +
-                    " can be specified at the RHS of the motif."
-                    );
-
-            selected[y_col * (m_order + 1) + y_row] = true;
-
-            locations.push_back(y_col * (m_order + 1) + y_row);
-            signs.push_back(is_positive);
-            
-
-        }
-
-        return;
-
-    } 
-    
-    std::regex_match(formula, match, pattern_intercept);
-    if (!match.empty()){
-
-        // This pattern will match 
-        std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
-
-        auto iter = std::sregex_iterator(formula.begin(), formula.end(), pattern);
-
-        for (auto i = iter; i != empty; ++i)
-        {
-            
-            // First value true/false
-            bool is_positive;
-            if (i->operator[](1u).str() == "")
-                is_positive = true;
-            else if (i->operator[](1u).str() == "0")
-                is_positive = false;
-            else
-                throw std::logic_error("The number preceding y should be either none or zero.");
-
-            // Variable position
-            size_t y_col = std::stoul(i->operator[](2u).str());
-            if (y_col >= y_ncol)
-                throw std::logic_error("The proposed column is out of range.");
-
-            // Time location
-            size_t y_row;
-            if (i->operator[](4u).str() == "") // Assume is the last
-                y_row = m_order;
-            else {
-
-                y_row = std::stoul(i->operator[](4u).str());
-
-                if (y_row != m_order)
-                    throw std::logic_error(
-                        std::string("Intercept motifs cannot feature past events. ") +
-                        std::string("Only transition motifs can: {...} > {...}.")
-                        );
-
-            }
-
-            if (selected[y_col * (m_order + 1) + y_row])
-                throw std::logic_error(
-                    "The term " + i->str() + " shows more than once in the formula.");
-
-            selected[y_col * (m_order + 1) + y_row] = true;
-
-            locations.push_back(y_col * (m_order + 1) + y_row);
-            signs.push_back(is_positive);
-            
-
-        }
-
-        return;
-
-    } 
-    
-    throw std::logic_error(
-        "The motif specified in the formula: " + formula +
-        " has the wrong syntax."
-        );
-    
-}
+#include "defm-formula.hpp"
 
 /**
  * @ingroup counting 
@@ -252,8 +30,10 @@ public:
     DEFMArray * array; // Pointer to the owner of this data
     const double * covariates; ///< Vector of covariates (complete vector)
     size_t obs_start;    ///< Index of the observation in the data.
-    size_t X_ncol; ///< Number of covariates included in the model.
-    size_t X_nrow; ///< Number of covariates included in the model.
+    size_t X_ncol; ///< Number of columns in the array of covariates.
+    size_t X_nrow; ///< Number of rows in the array of covariates.
+    std::vector< size_t > covar_sort; /// Value where the sorting of the covariates is stored.
+    std::vector< size_t > covar_used; /// Vector indicating which covariates are included in the model
     
     DEFMData() {};
     
@@ -283,6 +63,7 @@ public:
     double operator()(size_t i, size_t j) const;
     double at(size_t i, size_t j) const;
     size_t ncol() const;
+    size_t nrow() const;
     void print() const;
     
     ~DEFMData() {};
@@ -355,6 +136,10 @@ inline size_t DEFMData::ncol() const {
     return X_ncol;
 }
 
+inline size_t DEFMData::nrow() const {
+    return X_nrow;
+}
+
 inline void DEFMData::print() const {
 
     for (size_t i = 0u; i < array->nrow(); ++i)
@@ -369,6 +154,19 @@ inline void DEFMData::print() const {
 
 }
 
+#define MAKE_DEFM_HASHER(hasher,a,cov) Hasher_fun_type<DEFMArray,DEFMCounterData> hasher = [cov](const DEFMArray & array, DEFMCounterData * d) { \
+            std::vector< double > res; \
+            /* Adding the column feature */ \
+            for (size_t i = 0u; i < array.nrow(); ++i) \
+                res.push_back(array.D()(i, cov)); \
+            /* Adding the fixed dims */ \
+            for (size_t i = 0u; i < (array.nrow() - 1); ++i) \
+                for (size_t j = 0u; j < array.ncol(); ++j) \
+                    res.push_back(array(i, j)); \
+            return res;\
+        };
+    
+
 /**@name Macros for defining counters
   */
 ///@{
@@ -382,7 +180,6 @@ Counter_fun_type<DEFMArray, DEFMCounterData> a = \
     [](const DEFMArray & Array, uint i, uint j, DEFMCounterData & data)
 
 ///@}
-
 
 /**@name Macros for defining rules
   */
@@ -420,7 +217,9 @@ inline void counter_ones(
 
     // Weighted by a feature of the array
     if (covar_index >= 0)
-    {      
+    {   
+
+        MAKE_DEFM_HASHER(hasher, array, covar_index)
 
         DEFM_COUNTER_LAMBDA(counter_tmp)
         {
@@ -443,11 +242,13 @@ inline void counter_ones(
         }
 
         counters->add_counter(
-            counter_tmp, nullptr,
+            counter_tmp, nullptr, hasher,
             DEFMCounterData({static_cast<size_t>(covar_index)}, {}, {}), 
             "Num. of ones x " + vname, 
             "Overall number of ones"
         );
+
+
 
     } else {
 
@@ -462,7 +263,7 @@ inline void counter_ones(
         };
 
         counters->add_counter(
-            count_ones, nullptr,
+            count_ones, nullptr, nullptr,
             DEFMCounterData(),
             "Num. of ones", 
             "Overall number of ones"
@@ -518,7 +319,7 @@ inline void counter_logit_intercept(
                 vname = std::to_string(i);
 
             counters->add_counter(
-                tmp_counter, nullptr,
+                tmp_counter, nullptr, nullptr,
                 DEFMCounterData({i}, {}, {}), 
                 "Logit intercept " + vname, 
                 "Equal to one if the outcome " + vname + " is one. Equivalent to the logistic regression intercept."
@@ -539,6 +340,9 @@ inline void counter_logit_intercept(
             return Array.D()(i, data.idx(1u));
         };
 
+        MAKE_DEFM_HASHER(hasher, array, covar_index)
+        bool hasher_added = false;
+
         std::string yname;
         for (auto i : which)
         {
@@ -556,12 +360,25 @@ inline void counter_logit_intercept(
                     vname = std::string("attr")+ std::to_string(covar_index);
             }
 
-            counters->add_counter(
-                tmp_counter, nullptr,
-                DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
-                "Logit intercept " + yname + " x " + vname, 
-                "Equal to one if the outcome " + yname + " is one. Equivalent to the logistic regression intercept."
-            );
+            if (hasher_added)
+                counters->add_counter(
+                    tmp_counter, nullptr, nullptr,
+                    DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
+                    "Logit intercept " + yname + " x " + vname, 
+                    "Equal to one if the outcome " + yname + " is one. Equivalent to the logistic regression intercept."
+                );
+            else {
+
+                hasher_added = true;
+
+                counters->add_counter(
+                    tmp_counter, nullptr, hasher,
+                    DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
+                    "Logit intercept " + yname + " x " + vname, 
+                    "Equal to one if the outcome " + yname + " is one. Equivalent to the logistic regression intercept."
+                );
+
+            }
 
         }
 
@@ -731,20 +548,6 @@ inline void counter_transition(
             name += "{";
         #endif
 
-    // #define UNI_SUB(a) \
-    //     (\
-    //         ((a) == 0) ? "\u2080" : (\
-    //         ((a) == 1) ? "\u2081" : (\
-    //         ((a) == 2) ? "\u2082" : (\
-    //         ((a) == 3) ? "\u2083" : (\
-    //         ((a) == 4) ? "\u2084" : (\
-    //         ((a) == 5) ? "\u2085" : (\
-    //         ((a) == 6) ? "\u2086" : (\
-    //         ((a) == 7) ? "\u2087" : (\
-    //         ((a) == 8) ? "\u2088" : \
-    //         "\u2089"))))))))\
-    //     )
-
     #ifdef BARRY_WITH_LATEX
         #define UNI_SUB(a) \
             (\
@@ -860,6 +663,8 @@ inline void counter_transition(
     if (covar_index >= 0)
     {
 
+        MAKE_DEFM_HASHER(hasher, array, covar_index)
+
         if (vname == "")
         {
             if (x_names != nullptr)
@@ -869,7 +674,7 @@ inline void counter_transition(
         }
 
         counters->add_counter(
-            count_ones, count_init,
+            count_ones, count_init, hasher,
             DEFMCounterData(coords, {}, signs), 
             name + " x " + vname, 
             "Motif weighted by single attribute"
@@ -878,7 +683,7 @@ inline void counter_transition(
     } else {
 
         counters->add_counter(
-            count_ones, count_init,
+            count_ones, count_init, nullptr,
             DEFMCounterData(coords, {}, signs), 
             name, 
             "Motif"
@@ -947,13 +752,15 @@ inline void counter_fixed_effect(
         return 0.0;
     };
 
+    MAKE_DEFM_HASHER(hasher, array, covar_index)
+
     if (x_names != nullptr)
         vname = x_names->operator[](covar_index);
     else
         vname = std::string("attr")+ std::to_string(covar_index);
 
     counters->add_counter(
-        count_tmp, count_init,
+        count_tmp, count_init, hasher,
         DEFMCounterData({static_cast<size_t>(covar_index)}, {k}, {}), 
         "Fixed effect feature (" + vname + ")^" + std::to_string(k)
     );

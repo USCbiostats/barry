@@ -37,6 +37,8 @@ public:
     
     Counter_fun_type<Array_Type,Data_Type> count_fun;
     Counter_fun_type<Array_Type,Data_Type> init_fun;
+    Hasher_fun_type<Array_Type,Data_Type> hasher_fun;
+
     Data_Type data;
     std::string  name = "";
     std::string  desc = "";
@@ -52,15 +54,16 @@ public:
      * in the main data.
      */
     ///@{
-    Counter() : count_fun(nullptr), init_fun(nullptr) {};
+    Counter() : count_fun(nullptr), init_fun(nullptr), hasher_fun(nullptr) {};
     
     Counter(
         Counter_fun_type<Array_Type,Data_Type> count_fun_,
         Counter_fun_type<Array_Type,Data_Type> init_fun_,
+        Hasher_fun_type<Array_Type,Data_Type>  hasher_fun_,
         Data_Type                              data_,
         std::string                            name_        = "",   
         std::string                            desc_        = ""
-        ): count_fun(count_fun_), init_fun(init_fun_), data(data_),
+        ): count_fun(count_fun_), init_fun(init_fun_), hasher_fun(hasher_fun_), data(data_),
             name(name_), desc(desc_) {};
     
     Counter(const Counter<Array_Type,Data_Type> & counter_); ///< Copy constructor
@@ -78,6 +81,19 @@ public:
     double init(Array_Type & Array, uint i, uint j);
     std::string get_name() const;
     std::string get_description() const;
+
+    /**
+     * @brief Get and set the hasher function
+     * 
+     * The hasher function is used to characterize the support of the array.
+     * This way, if possible, the support enumeration is recycled.
+     * 
+     * @param fun 
+     */
+    ///@{
+    void set_hasher(Hasher_fun_type<Array_Type,Data_Type> fun);
+    Hasher_fun_type<Array_Type,Data_Type> get_hasher();
+    ///@}
     
 };
 
@@ -93,6 +109,7 @@ class Counters {
     
 private:
     std::vector< Counter<Array_Type,Data_Type > > data;
+    Hasher_fun_type<Array_Type,Data_Type> hasher;
     
 public: 
     
@@ -153,6 +170,7 @@ public:
     void add_counter(
         Counter_fun_type<Array_Type,Data_Type> count_fun_,
         Counter_fun_type<Array_Type,Data_Type> init_fun_,
+        Hasher_fun_type<Array_Type,Data_Type>  hasher_fun_,
         Data_Type                              data_,
         std::string                            name_        = "",   
         std::string                            desc_        = ""
@@ -160,6 +178,23 @@ public:
     
     std::vector< std::string > get_names() const;
     std::vector< std::string > get_descriptions() const;
+
+    /**
+     * @brief Generates a hash for the given array according to the counters.
+     * 
+     * @param array 
+     * @param add_dims When `true` (default) the dimmension of the array will
+     * be added to the hash.
+     * @return std::vector< double > That can be hashed later.
+     */
+    std::vector< double > gen_hash(
+      const Array_Type & array,
+      bool add_dims = true
+      );
+
+    void add_hash(
+      Hasher_fun_type<Array_Type,Data_Type> fun_
+    );
     
 };
 

@@ -177,7 +177,7 @@ inline void counter_overall_gains(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Overall gains" + get_last_name(duplication)
     );
@@ -236,7 +236,7 @@ inline void counter_gains(
     
     for (auto& i : nfun)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             PhyloCounterData({duplication, i}),
             "Gains " + std::to_string(i) + get_last_name(duplication)
         );
@@ -307,7 +307,7 @@ inline void counter_gains_k_offspring(
     
     for (auto& i : nfun)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             PhyloCounterData({duplication, i, k}),
             std::to_string(k) + " genes gain " + std::to_string(i) +
                 get_last_name(duplication)
@@ -377,7 +377,7 @@ inline void counter_genes_changing(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Num. of genes changing" + get_last_name(duplication)
     );
@@ -455,7 +455,7 @@ inline void counter_preserve_pseudogene(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Preserve pseudo gene (" + 
         std::to_string(nfunA) + ", " +
@@ -561,7 +561,7 @@ inline void counter_prop_genes_changing(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Proportion of genes changing" + get_last_name(duplication)
     );
@@ -610,7 +610,7 @@ inline void counter_overall_loss(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Overall loses" + get_last_name(duplication)
     );
@@ -671,7 +671,7 @@ inline void counter_maxfuns(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, lb, ub}),
         "Genes with [" + std::to_string(lb) + ", " + std::to_string(ub) +
             "] funs" + get_last_name(duplication)
@@ -724,7 +724,7 @@ inline void counter_loss(
     
     for (auto& i : nfun)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             PhyloCounterData({duplication, i}),
             "Loss " + std::to_string(i) + get_last_name(duplication)
         );
@@ -780,7 +780,7 @@ inline void counter_overall_changes(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Overall changes" + get_last_name(duplication)
     );
@@ -870,7 +870,7 @@ inline void counter_subfun(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Subfun between " + std::to_string(nfunA) + " and " +
             std::to_string(nfunB) + get_last_name(duplication)
@@ -930,7 +930,7 @@ inline void counter_cogain(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Co-gains " + std::to_string(nfunA) + " & " + std::to_string(nfunB) +
             get_last_name(duplication)
@@ -1098,7 +1098,7 @@ inline void counter_longest(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Longest branch mutates" + get_last_name(duplication)
     );
@@ -1177,7 +1177,7 @@ inline void counter_neofun(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Neofun between " + std::to_string(nfunA) + " and " +
         std::to_string(nfunB) + get_last_name(duplication)
@@ -1242,7 +1242,7 @@ inline void counter_pairwise_neofun_singlefun(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA}),
         "Pairwise neofun function " + std::to_string(nfunA) +
         get_last_name(duplication)
@@ -1369,7 +1369,7 @@ inline void counter_neofun_a2b(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Neofun from " + std::to_string(nfunA) + " to " +
         std::to_string(nfunB) + get_last_name(duplication)
@@ -1472,7 +1472,7 @@ inline void counter_co_opt(
     };
 
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Coopt of " + std::to_string(nfunA) + " by " +
         std::to_string(nfunB) + get_last_name(duplication)
@@ -1596,7 +1596,7 @@ inline void counter_k_genes_changing(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, k}),
         std::to_string(k) + " genes changing" + get_last_name(duplication)
     );
@@ -1712,7 +1712,7 @@ inline void counter_less_than_p_prop_genes_changing(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, static_cast<uint>(p * 100)}),
         std::to_string(p) + " prop genes changing" + get_last_name(duplication)
     );
@@ -1775,7 +1775,7 @@ inline void counter_gains_from_0(
     
     for (auto& i : nfun)
         counters->add_counter(
-            tmp_count, tmp_init,
+            tmp_count, tmp_init, nullptr,
             PhyloCounterData({duplication, i}),
             "First gain " + std::to_string(i) +
                 get_last_name(duplication)
@@ -1823,7 +1823,7 @@ inline void counter_overall_gains_from_0(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Overall first gains" +
             get_last_name(duplication)
@@ -1887,7 +1887,7 @@ inline void counter_pairwise_overall_change(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication}),
         "Pairs of genes changing" +
             get_last_name(duplication)
@@ -2026,7 +2026,7 @@ inline void counter_pairwise_preserving(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "Pariwise preserve (" + std::to_string(nfunA) + ", " +
             std::to_string(nfunB) + ")" +get_last_name(duplication)
@@ -2125,7 +2125,7 @@ inline void counter_pairwise_first_gain(
     };
     
     counters->add_counter(
-        tmp_count, tmp_init,
+        tmp_count, tmp_init, nullptr,
         PhyloCounterData({duplication, nfunA, nfunB}),
         "First gain (either " + std::to_string(nfunA) + " or " +
             std::to_string(nfunB) + ")" +get_last_name(duplication)
