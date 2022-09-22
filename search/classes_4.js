@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['flock_724',['Flock',['../class_flock.html',1,'']]],
-  ['freqtable_725',['FreqTable',['../class_freq_table.html',1,'']]]
+  ['flock_725',['Flock',['../class_flock.html',1,'']]],
+  ['freqtable_726',['FreqTable',['../class_freq_table.html',1,'']]]
 ];
