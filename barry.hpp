@@ -13750,7 +13750,7 @@ inline double (a) (const DEFMArray & Array, uint i, uint j, DEFMCounterData & da
 /**Lambda function for definition of a network counter function*/
 #define DEFM_COUNTER_LAMBDA(a) \
 Counter_fun_type<DEFMArray, DEFMCounterData> a = \
-    [](const DEFMArray & Array, uint i, uint j, DEFMCounterData & data)
+    [](const DEFMArray & Array, uint i, uint j, DEFMCounterData & data) -> double
 
 ///@}
 
@@ -13764,7 +13764,7 @@ inline bool (a) (const DEFMArray & Array, uint i, uint j, bool & data)
 /**Lambda function for definition of a network counter function*/
 #define DEFM_RULE_LAMBDA(a) \
 Rule_fun_type<DEFMArray, DEFMRuleData> a = \
-[](const DEFMArray & Array, uint i, uint j, DEFMRuleData & data)
+[](const DEFMArray & Array, uint i, uint j, DEFMRuleData & data) -> bool
 ///@}
 
 /**
@@ -14407,8 +14407,8 @@ inline void rules_dont_become_zero(
             return true;
 
         // If the previous observation was one, then block this
-        return (Array(i - 1, j) == 1) &
-            (Array(i, j) == 1);
+        return (Array(i - 1, j) != 1) |
+            (Array(i, j) != 1);
 
     };
     
