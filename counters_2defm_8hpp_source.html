@@ -235,7 +235,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
 <div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a0de627ee2d314d645cf885c7cc0ee36b">  179</a></span>&#160;<span class="preprocessor">#define DEFM_COUNTER_LAMBDA(a) \</span></div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">Counter_fun_type&lt;DEFMArray, DEFMCounterData&gt; a = \</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">    [](const DEFMArray &amp; Array, uint i, uint j, DEFMCounterData &amp; data)</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">    [](const DEFMArray &amp; Array, uint i, uint j, DEFMCounterData &amp; data) -&gt; double</span></div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
@@ -244,7 +244,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
 <div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="counters_2defm_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba">  193</a></span>&#160;<span class="preprocessor">#define DEFM_RULE_LAMBDA(a) \</span></div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">Rule_fun_type&lt;DEFMArray, DEFMRuleData&gt; a = \</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">[](const DEFMArray &amp; Array, uint i, uint j, DEFMRuleData &amp; data)</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">[](const DEFMArray &amp; Array, uint i, uint j, DEFMRuleData &amp; data) -&gt; bool</span></div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="group__counters-network.html#ga5a83cfba69ea83fca5831478055bbc6a">  211</a></span>&#160;<span class="comment"></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__counters-network.html#ga5a83cfba69ea83fca5831478055bbc6a">counter_ones</a>(</div>
@@ -844,8 +844,8 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160; </div>
 <div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;        <span class="comment">// If the previous observation was one, then block this</span></div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;        <span class="keywordflow">return</span> (Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> - 1, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) == 1) &amp;</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            (Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) == 1);</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;        <span class="keywordflow">return</span> (Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> - 1, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) != 1) |</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;            (Array(<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>) != 1);</div>
 <div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160; </div>
 <div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;    };</div>
 <div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    </div>
@@ -938,7 +938,7 @@ $(document).ready(function(){initNavTree('counters_2defm_8hpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="counters_2defm_8hpp.html">defm.hpp</a></li>
-    <li class="footer">Generated on Thu Sep 22 2022 22:07:42 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Sep 22 2022 22:31:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
