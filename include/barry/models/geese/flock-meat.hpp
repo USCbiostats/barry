@@ -16,7 +16,7 @@ inline unsigned int Flock::add_data(
 
         model.set_rengine(&this->rengine, false);
 
-        model.set_keygen(keygen_full);
+        model.add_hasher(keygen_full);
         
         model.store_psets();
 

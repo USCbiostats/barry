@@ -49,9 +49,9 @@ BARRY_TEST_CASE("Constrained support", "[const-support]") {
     sup.add_rule(rule1);
 
     // Counters
-    barry::Counter<> count_n_ones(n_ones<>, nullptr, true);
-    barry::Counter<> count_n_zeros(n_zeros<>, n_zeros_init<>, true);
-    barry::Counter<> count_mutuals(n_mutual<>, nullptr, true);
+    barry::Counter<> count_n_ones(n_ones<>, nullptr, nullptr, true);
+    barry::Counter<> count_n_zeros(n_zeros<>, n_zeros_init<>, nullptr, true);
+    barry::Counter<> count_mutuals(n_mutual<>, nullptr, nullptr, true);
     
     sup.add_counter(count_n_ones);
     sup.add_counter(count_n_zeros);

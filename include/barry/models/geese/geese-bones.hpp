@@ -32,8 +32,10 @@ RULE_FUNCTION(rule_empty_free) {
 
 
 // Hasher
+
 inline std::vector< double > keygen_full(
-    const phylocounters::PhyloArray & array
+    const phylocounters::PhyloArray & array,
+    const phylocounters::PhyloCounterData * d
     ) {
 
     // Baseline data: nrows and columns

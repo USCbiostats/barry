@@ -124,7 +124,8 @@ public:
 #define DEFM_MEAT_HPP 1
 
 inline std::vector< double > keygen_defm(
-    const defmcounters::DEFMArray & Array_
+    const defmcounters::DEFMArray & Array_,
+    const defmcounters::DEFMCounterData * d
     ) {
     
     size_t nrow = Array_.nrow();
@@ -261,8 +262,8 @@ inline DEFM::DEFM(
 
     model->set_rengine(&(*(rengine)));
     model->store_psets();
-    std::function<std::vector<double>(const defmcounters::DEFMArray &)> kgen = keygen_defm;
-    model->set_keygen(kgen);
+    auto kgen = keygen_defm;
+    model->add_hasher(kgen);
 
     // Iterating for adding observations
     start_end.reserve(id_length);

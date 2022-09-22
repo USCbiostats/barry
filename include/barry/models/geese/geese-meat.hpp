@@ -109,8 +109,7 @@ inline void Geese::init(unsigned int bar_width) {
         this->model = new phylocounters::PhyloModel();
 
         this->delete_support = true;
-
-        this->model->set_keygen(keygen_full);
+        this->model->add_hasher(keygen_full);
 
         this->model->store_psets();
 

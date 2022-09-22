@@ -293,4 +293,3 @@ inline double vec_inner_prod(
 
 #endif
 
-#endif

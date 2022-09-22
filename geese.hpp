@@ -579,7 +579,7 @@ inline void Geese::init(unsigned int bar_width) {
 
         this->delete_support = true;
 
-        this->model->set_keygen(keygen_full);
+        this->model->add_hasher(keygen_full);
 
         this->model->store_psets();
 
@@ -1191,7 +1191,7 @@ inline Geese::Geese() {
     this->model           = new phylocounters::PhyloModel();
     this->delete_support  = true;
 
-    this->model->set_keygen(keygen_full);
+    this->model->add_hasher(keygen_full);
     this->model->store_psets();
 
     return;
@@ -1210,7 +1210,7 @@ inline Geese::Geese(
     this->model           = new phylocounters::PhyloModel();
     this->delete_support  = true;
 
-    this->model->set_keygen(keygen_full);
+    this->model->add_hasher(keygen_full);
     this->model->store_psets();
 
     // Check the lengths
@@ -1439,7 +1439,7 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
     }
 
     // These should not be necesary as they are already initialized.
-    // this->model->set_keygen(keygen_full);
+    // this->model->add_hasher(keygen_full);
     // this->model->store_psets();
 
     // Dealing with the nodes is a bit different -------------------------------
@@ -3121,7 +3121,7 @@ inline unsigned int Flock::add_data(
 
         model.set_rengine(&this->rengine, false);
 
-        model.set_keygen(keygen_full);
+        model.add_hasher(keygen_full);
         
         model.store_psets();
 
