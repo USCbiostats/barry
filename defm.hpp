@@ -414,8 +414,8 @@ inline barry::FreqTable<int> DEFM::motif_census(
             // Generating an integer array between the parts
             size_t nele = 0u;
 
-            for (auto & k : idx)
-                for (size_t o = 0u; o < (M_order + 1u); ++o)
+            for (size_t o = 0u; o < (M_order + 1u); ++o)
+                for (auto & k : idx)
                     array[nele++] = *(Y + k * ID_length + start_i + proc_n + o);
 
             ans.add(array, nullptr);
