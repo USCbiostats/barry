@@ -13660,9 +13660,9 @@ public:
     ): indices(indices_), numbers(numbers_), 
         logical(logical_) {};
 
-    size_t idx(size_t i) {return indices[i];};
-    double num(size_t i) {return numbers[i];};
-    bool is_true(size_t i) {return logical[i];};
+    size_t idx(size_t i) const {return indices[i];};
+    double num(size_t i) const {return numbers[i];};
+    bool is_true(size_t i) const {return logical[i];};
     
     ~DEFMCounterData() {};
     
@@ -13673,19 +13673,49 @@ public:
 
     std::vector< double > numbers;
     std::vector< size_t > indices;
+    std::vector< bool >   logical;
 
     bool init = false;
 
-    double num(size_t i) {return numbers[i];};
-    size_t idx(size_t i) {return indices[i];};
+    double num(size_t i) const {return numbers[i];};
+    size_t idx(size_t i) const {return indices[i];};
+    bool is_true(size_t i) const {return logical[i];};
 
     DEFMRuleData() {};
 
     DEFMRuleData(
         std::vector< double > numbers_,
-        std::vector< size_t > indices_
-    ) : numbers(numbers_), indices(indices_) {};
+        std::vector< size_t > indices_,
+        std::vector< bool > logical_
+    ) : numbers(numbers_), indices(indices_), logical(logical_) {};
 
+    DEFMRuleData(
+        std::vector< double > numbers_,
+        std::vector< size_t > indices_
+    ) : numbers(numbers_), indices(indices_), logical(numbers_.size()) {};
+
+};
+
+/**
+ * @weakgroup rules-phylo Phylo rules
+ * @brief Rules for phylogenetic modeling
+ * @param rules A pointer to a `PhyloRules` object (`Rules`<`PhyloArray`, `PhyloRuleData`>).
+ */
+///@{
+
+class DEFMRuleDynData : public DEFMRuleData {
+public:
+    const std::vector< double > * counts;
+    
+    DEFMRuleDynData(
+        const std::vector< double > * counts_,
+        std::vector< double > numbers_ = {},
+        std::vector< size_t > indices_ = {},
+        std::vector< bool > logical_ = {}
+        ) : DEFMRuleData(numbers_, indices_, logical_), counts(counts_) {};
+    
+    ~DEFMRuleDynData() {};
+    
 };
 
 /**
@@ -13694,11 +13724,18 @@ public:
 ///@{
 typedef Counter<DEFMArray, DEFMCounterData > DEFMCounter;
 typedef Counters<DEFMArray, DEFMCounterData> DEFMCounters;
-typedef Support<DEFMArray, DEFMCounterData, DEFMRuleData> DEFMSupport;
+typedef Support<DEFMArray, DEFMCounterData, DEFMRuleData,DEFMRuleDynData> DEFMSupport;
 typedef StatsCounter<DEFMArray, DEFMCounterData> DEFMStatsCounter;
-typedef Model<DEFMArray, DEFMCounterData,DEFMRuleData,DEFMRuleData> DEFMModel;
+typedef Model<DEFMArray, DEFMCounterData,DEFMRuleData,DEFMRuleDynData> DEFMModel;
+
+
 typedef Rule<DEFMArray, DEFMRuleData> DEFMRule;
 typedef Rules<DEFMArray, DEFMRuleData> DEFMRules;
+typedef Rule<DEFMArray, DEFMRuleDynData> DEFMRuleDyn;
+typedef Rules<DEFMArray, DEFMRuleDynData> DEFMRulesDyn;
+
+
+
 ///@}
 
 inline double DEFMData::operator()(size_t i, size_t j) const
@@ -13766,6 +13803,12 @@ inline bool (a) (const DEFMArray & Array, uint i, uint j, bool & data)
 #define DEFM_RULE_LAMBDA(a) \
 Rule_fun_type<DEFMArray, DEFMRuleData> a = \
 [](const DEFMArray & Array, uint i, uint j, DEFMRuleData & data) -> bool
+///@}
+
+/**Lambda function for definition of a network counter function*/
+#define DEFM_RULEDYN_LAMBDA(a) \
+Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
+[](const DEFMArray & Array, uint i, uint j, DEFMRuleDynData & data) -> bool
 ///@}
 
 /**
@@ -14374,15 +14417,12 @@ inline void rules_markov_fixed(
  * @param ids Ids of the variables that will follow this rule.
  */
 inline void rules_dont_become_zero(
-    DEFMRules * rules,
+    DEFMSupport * support,
     std::vector<size_t> ids
     ) {
     
     
     DEFM_RULE_LAMBDA(rule) {
-
-        if (i != (Array.nrow() - 1))
-            return true;
 
         if (!data.init)
         {
@@ -14407,15 +14447,49 @@ inline void rules_dont_become_zero(
         if (data.indices[j] == 0u)
             return true;
 
+        if (i == (Array.nrow() - 1))
+            return true;
+
         // If the previous observation was one, then block this
-        return (Array(i - 1, j) != 1) |
-            (Array(i, j) != 1);
+        return (Array(i + 1, j) != 0); // |
+            // (Array(i, j) != 1);
 
     };
     
-    rules->add_rule(
+    support->get_rules_dyn()->add_rule(
         rule,
-        DEFMRuleData({},{ids})
+        DEFMRuleDynData(nullptr, {}, {ids})
+        );
+    
+    return;
+}
+
+/**
+ * @brief Blocks switching a one to zero.
+ * 
+ * @param rules 
+ * @param ids Ids of the variables that will follow this rule.
+ */
+inline void rules_exclude_all_ones(
+    DEFMSupport * support
+    ) {
+    
+
+    DEFM_RULEDYN_LAMBDA(rule) {
+
+        if (!data.init)
+        {
+            data.init = true;
+            data.indices[0u] = (Array.nrow() * Array.ncol());
+        }
+
+        return Array.nnozero() != data.idx(0u);
+
+    };
+    
+    support->get_rules_dyn()->add_rule(
+        rule,
+        DEFMRuleDynData(nullptr, {}, {0u})
         );
     
     return;
