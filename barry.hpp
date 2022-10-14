@@ -6387,6 +6387,11 @@ SUPPORT_TEMPLATE(void, calc)(
     if (max_num_elements_ != 0u)
         this->max_num_elements = BARRY_MAX_NUM_ELEMENTS;
 
+    if (this->data.size() == 0u)
+    {
+        throw std::logic_error("The array has support of size 0 (i.e., empty support). This could be a problem in the rules (constraints).\n");
+    }
+
 
     return;
     
@@ -7734,6 +7739,8 @@ MODEL_TEMPLATE(uint, add_array)(
                     "A problem ocurred while trying to add the array (and recording the powerset). "
                 );
                 printf_barry("with error %s\n", e.what());
+                printf_barry("Here is the array that generated the error.\n");
+                Array_.print();
                 throw std::logic_error("");
                 
             }
@@ -7741,7 +7748,24 @@ MODEL_TEMPLATE(uint, add_array)(
         }
         else
         {
-            support_fun.calc();
+            try
+            {
+
+                support_fun.calc();
+                
+            }
+            catch (const std::exception& e)
+            {
+
+                printf_barry(
+                    "A problem ocurred while trying to add the array (and recording the powerset). "
+                );
+                printf_barry("with error %s\n", e.what());
+                printf_barry("Here is the array that generated the error.\n");
+                Array_.print();
+                throw std::logic_error("");
+
+            }
         }
         
         if (transform_model_fun)
@@ -7924,11 +7948,17 @@ MODEL_TEMPLATE(double, likelihood)(
 
     // Checking if passes the rules
     if (!support_fun.eval_rules_dyn(target_, 0u, 0u))
-        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+    {
+        throw std::range_error("The array is not in the support set.");
+    }
+        
 
     // Checking if this actually has a change of happening
     if (this->stats_support[loc].size() == 0u)
-        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+    {
+        // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+        throw std::logic_error("The support set for this array is empty.");
+    }
     
     // Checking if we have updated the normalizing constant or not
     if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
@@ -7978,13 +8008,19 @@ MODEL_TEMPLATE(double, likelihood)(
             tmp_target[t] = *(target_ + t);
 
         if (!support_fun.eval_rules_dyn(tmp_target, 0u, 0u))
-            return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+        {
+            throw std::range_error("The array is not in the support set.");
+            // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+        }
 
     }
 
     // Checking if this actually has a change of happening
     if (this->stats_support[loc].size() == 0u)
-        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+    {
+        // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+        throw std::logic_error("The support set for this array is empty.");
+    }
     
     // Checking if we have updated the normalizing constant or not
     if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
@@ -8178,18 +8214,23 @@ MODEL_TEMPLATE(void, print)() const
     // - Size of the support
     // - Terms involved
 
-    uint min_v = std::numeric_limits<uint>::infinity();
-    uint max_v = 0u;
+    int min_v = std::numeric_limits<int>::max();
+    int max_v = 0;
 
     for (const auto & stat : this->stats_support)
     {
-        if (stat.size() > max_v)
-            max_v = stat.size();
+
+        if (static_cast<int>(stat.size()) > max_v)
+            max_v = static_cast<int>(stat.size());
         
-        if (stat.size() < min_v)
-            min_v = stat.size();
+        if (static_cast<int>(stat.size()) < min_v)
+            min_v = static_cast<int>(stat.size());
 
     }  
+
+    // The vectors in the support reflec the size of nterms x entries
+    max_v /= static_cast<int>(nterms() + 1);
+    min_v /= static_cast<int>(nterms() + 1);
 
     printf_barry("Num. of Arrays     : %i\n", this->size());
     printf_barry("Support size       : %i\n", this->size_unique());
@@ -14447,18 +14488,20 @@ inline void rules_dont_become_zero(
         if (data.indices[j] == 0u)
             return true;
 
+        // The last observation is always included
         if (i == (Array.nrow() - 1))
             return true;
 
-        // If the previous observation was one, then block this
+        // This is now one, is the next different zero? If so,
+        // we can include it (1->1)
         return (Array(i + 1, j) != 0); // |
             // (Array(i, j) != 1);
 
     };
     
-    support->get_rules_dyn()->add_rule(
+    support->get_rules()->add_rule(
         rule,
-        DEFMRuleDynData(nullptr, {}, {ids})
+        DEFMRuleData({}, {ids})
         );
     
     return;

@@ -885,9 +885,9 @@ inline void rules_dont_become_zero(
 
     };
     
-    support->get_rules_dyn()->add_rule(
+    support->get_rules()->add_rule(
         rule,
-        DEFMRuleDynData(nullptr, {}, {ids})
+        DEFMRuleData({}, {ids})
         );
     
     return;

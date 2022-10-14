@@ -391,6 +391,11 @@ SUPPORT_TEMPLATE(void, calc)(
     if (max_num_elements_ != 0u)
         this->max_num_elements = BARRY_MAX_NUM_ELEMENTS;
 
+    if (this->data.size() == 0u)
+    {
+        throw std::logic_error("The array has support of size 0 (i.e., empty support). This could be a problem in the rules (constraints).\n");
+    }
+
 
     return;
     

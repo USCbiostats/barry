@@ -416,6 +416,8 @@ MODEL_TEMPLATE(uint, add_array)(
                     "A problem ocurred while trying to add the array (and recording the powerset). "
                 );
                 printf_barry("with error %s\n", e.what());
+                printf_barry("Here is the array that generated the error.\n");
+                Array_.print();
                 throw std::logic_error("");
                 
             }
@@ -423,7 +425,24 @@ MODEL_TEMPLATE(uint, add_array)(
         }
         else
         {
-            support_fun.calc();
+            try
+            {
+
+                support_fun.calc();
+                
+            }
+            catch (const std::exception& e)
+            {
+
+                printf_barry(
+                    "A problem ocurred while trying to add the array (and recording the powerset). "
+                );
+                printf_barry("with error %s\n", e.what());
+                printf_barry("Here is the array that generated the error.\n");
+                Array_.print();
+                throw std::logic_error("");
+
+            }
         }
         
         if (transform_model_fun)
@@ -606,11 +625,17 @@ MODEL_TEMPLATE(double, likelihood)(
 
     // Checking if passes the rules
     if (!support_fun.eval_rules_dyn(target_, 0u, 0u))
-        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+    {
+        throw std::range_error("The array is not in the support set.");
+    }
+        
 
     // Checking if this actually has a change of happening
     if (this->stats_support[loc].size() == 0u)
-        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+    {
+        // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+        throw std::logic_error("The support set for this array is empty.");
+    }
     
     // Checking if we have updated the normalizing constant or not
     if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
@@ -660,13 +685,19 @@ MODEL_TEMPLATE(double, likelihood)(
             tmp_target[t] = *(target_ + t);
 
         if (!support_fun.eval_rules_dyn(tmp_target, 0u, 0u))
-            return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+        {
+            throw std::range_error("The array is not in the support set.");
+            // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+        }
 
     }
 
     // Checking if this actually has a change of happening
     if (this->stats_support[loc].size() == 0u)
-        return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+    {
+        // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
+        throw std::logic_error("The support set for this array is empty.");
+    }
     
     // Checking if we have updated the normalizing constant or not
     if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
@@ -860,18 +891,23 @@ MODEL_TEMPLATE(void, print)() const
     // - Size of the support
     // - Terms involved
 
-    uint min_v = std::numeric_limits<uint>::infinity();
-    uint max_v = 0u;
+    int min_v = std::numeric_limits<int>::max();
+    int max_v = 0;
 
     for (const auto & stat : this->stats_support)
     {
-        if (stat.size() > max_v)
-            max_v = stat.size();
+
+        if (static_cast<int>(stat.size()) > max_v)
+            max_v = static_cast<int>(stat.size());
         
-        if (stat.size() < min_v)
-            min_v = stat.size();
+        if (static_cast<int>(stat.size()) < min_v)
+            min_v = static_cast<int>(stat.size());
 
     }  
+
+    // The vectors in the support reflec the size of nterms x entries
+    max_v /= static_cast<int>(nterms() + 1);
+    min_v /= static_cast<int>(nterms() + 1);
 
     printf_barry("Num. of Arrays     : %i\n", this->size());
     printf_barry("Support size       : %i\n", this->size_unique());
