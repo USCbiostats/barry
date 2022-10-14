@@ -23,6 +23,7 @@ var annotated_dup =
     [ "DEFMCounterData", "class_d_e_f_m_counter_data.html", "class_d_e_f_m_counter_data" ],
     [ "DEFMData", "class_d_e_f_m_data.html", "class_d_e_f_m_data" ],
     [ "DEFMRuleData", "class_d_e_f_m_rule_data.html", "class_d_e_f_m_rule_data" ],
+    [ "DEFMRuleDynData", "class_d_e_f_m_rule_dyn_data.html", "class_d_e_f_m_rule_dyn_data" ],
     [ "Entries", "class_entries.html", "class_entries" ],
     [ "Flock", "class_flock.html", "class_flock" ],
     [ "FreqTable", "class_freq_table.html", "class_freq_table" ],

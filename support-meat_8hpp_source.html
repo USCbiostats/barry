@@ -489,191 +489,196 @@ $(document).ready(function(){initNavTree('support-meat_8hpp_source.html',''); in
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">if</span> (max_num_elements_ != 0u)</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        this-&gt;max_num_elements = <a class="code" href="barry-configuration_8hpp.html#a4e96e4fea282b750197f31432abe3d97">BARRY_MAX_NUM_ELEMENTS</a>;</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;}</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.size() == 0u)</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;The array has support of size 0 (i.e., empty support). This could be a problem in the rules (constraints).\n&quot;</span>);</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    }</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
-<div class="line"><a name="l00399"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a6b902f0fff828f80c6ad4cd1b061396e">  399</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_counter)(</div>
-<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">  400</a></span>&#160;        <a class="code" href="class_counter.html">Counter&lt;Array_Type,Data_Counter_Type&gt;</a> <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;) {</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    </div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;}</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
-<div class="line"><a name="l00408"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a399aa4e3987a24a17a4d880ec2da3f19">  408</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, set_counters)(</div>
-<div class="line"><a name="l00409"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">  409</a></span>&#160;        <a class="code" href="class_counters.html">Counters&lt;Array_Type,Data_Counter_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;) {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    </div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="comment">// Cleaning up before replacing the memory</span></div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">delete_counters</a>)</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <span class="keyword">delete</span> <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>;</div>
-<div class="line"><a name="l00415"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">  415</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">delete_counters</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00416"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">  416</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a> = <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    </div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    </div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;}</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
-<div class="line"><a name="l00424"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#ab55baa5250655a2774497aab54287a73">  424</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_rule)(</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        <a class="code" href="class_rule.html">Rule&lt;Array_Type, Data_Rule_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;) {</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    </div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    </div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;}</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_rule)(</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <a class="code" href="class_rule.html">Rule&lt;Array_Type,Data_Rule_Type&gt;</a> <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;) {</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    </div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    </div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;}</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
-<div class="line"><a name="l00442"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a207333d0a9fef722cbc4fe1a6ea213e0">  442</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, set_rules)(</div>
-<div class="line"><a name="l00443"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">  443</a></span>&#160;        <a class="code" href="class_rules.html">Rules&lt;Array_Type,Data_Rule_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;) {</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    </div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="comment">// Cleaning up before replacing the memory</span></div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">delete_rules</a>)</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        <span class="keyword">delete</span> <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>;</div>
-<div class="line"><a name="l00449"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">  449</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">delete_rules</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00450"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">  450</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a> = <a class="code" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a>;</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    </div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    </div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;}</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
-<div class="line"><a name="l00456"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a5c4511c9c993029a647b0204a234220b">  456</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_rule_dyn)(</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        <a class="code" href="class_rule.html">Rule&lt;Array_Type, Data_Rule_Dyn_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;) {</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    </div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>-&gt;add_rule(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    </div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;}</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160; </div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_rule_dyn)(</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        <a class="code" href="class_rule.html">Rule&lt;Array_Type,Data_Rule_Dyn_Type&gt;</a> <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;) {</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    </div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>-&gt;add_rule(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;}</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160; </div>
-<div class="line"><a name="l00474"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a73d63a8eb320e6467b25423b8f853ae4">  474</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, set_rules_dyn)(</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        <a class="code" href="class_rules.html">Rules&lt;Array_Type,Data_Rule_Dyn_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a></div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;) {</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    </div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="comment">// Cleaning up before replacing the memory</span></div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#a2e7c4ddea9211859d1f7f6f288590e02">delete_rules_dyn</a>)</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <span class="keyword">delete</span> <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>;</div>
-<div class="line"><a name="l00481"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a2e7c4ddea9211859d1f7f6f288590e02">  481</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a2e7c4ddea9211859d1f7f6f288590e02">delete_rules_dyn</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00482"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">  482</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a> = <a class="code" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a>;</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    </div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    </div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;}</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
-<div class="line"><a name="l00488"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#ab6e87343112bea21f2281382c6932039">  488</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">bool</span>, eval_rules_dyn)(</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    <span class="keyword">const</span> std::vector&lt; double &gt; &amp; counts,</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;) {</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>-&gt;size() == 0u)</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    <span class="comment">// Swapping pointers for a while</span></div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    std::vector&lt; double &gt; tmpstats = <a class="code" href="statscounter-meat_8hpp.html#acda6567d00fd45cc346957cbe93d5a9c">current_stats</a>;</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#acda6567d00fd45cc346957cbe93d5a9c">current_stats</a> = counts;</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    <span class="keywordtype">bool</span> rule_res = <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>-&gt;operator()(<a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>);</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#acda6567d00fd45cc346957cbe93d5a9c">current_stats</a> = tmpstats;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    <span class="keywordflow">return</span> rule_res;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;}</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a6b902f0fff828f80c6ad4cd1b061396e">  404</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_counter)(</div>
+<div class="line"><a name="l00405"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">  405</a></span>&#160;        <a class="code" href="class_counter.html">Counter&lt;Array_Type,Data_Counter_Type&gt;</a> <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;) {</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    </div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;add_counter(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;}</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
+<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a399aa4e3987a24a17a4d880ec2da3f19">  413</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, set_counters)(</div>
+<div class="line"><a name="l00414"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">  414</a></span>&#160;        <a class="code" href="class_counters.html">Counters&lt;Array_Type,Data_Counter_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;) {</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="comment">// Cleaning up before replacing the memory</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">delete_counters</a>)</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keyword">delete</span> <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>;</div>
+<div class="line"><a name="l00420"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">  420</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">delete_counters</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00421"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">  421</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a> = <a class="code" href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a>;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    </div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    </div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;}</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
+<div class="line"><a name="l00429"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#ab55baa5250655a2774497aab54287a73">  429</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_rule)(</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <a class="code" href="class_rule.html">Rule&lt;Array_Type, Data_Rule_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;) {</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    </div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;}</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_rule)(</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <a class="code" href="class_rule.html">Rule&lt;Array_Type,Data_Rule_Type&gt;</a> <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;) {</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>-&gt;add_rule(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    </div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;}</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
+<div class="line"><a name="l00447"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a207333d0a9fef722cbc4fe1a6ea213e0">  447</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, set_rules)(</div>
+<div class="line"><a name="l00448"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">  448</a></span>&#160;        <a class="code" href="class_rules.html">Rules&lt;Array_Type,Data_Rule_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a></div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;) {</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <span class="comment">// Cleaning up before replacing the memory</span></div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">delete_rules</a>)</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="keyword">delete</span> <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>;</div>
+<div class="line"><a name="l00454"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">  454</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">delete_rules</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00455"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">  455</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a> = <a class="code" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a>;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    </div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;}</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160; </div>
+<div class="line"><a name="l00461"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a5c4511c9c993029a647b0204a234220b">  461</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_rule_dyn)(</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        <a class="code" href="class_rule.html">Rule&lt;Array_Type, Data_Rule_Dyn_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;) {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    </div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>-&gt;add_rule(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    </div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;}</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, add_rule_dyn)(</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        <a class="code" href="class_rule.html">Rule&lt;Array_Type,Data_Rule_Dyn_Type&gt;</a> <a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;) {</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    </div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>-&gt;add_rule(<a class="code" href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a>);</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    </div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;}</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160; </div>
+<div class="line"><a name="l00479"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a73d63a8eb320e6467b25423b8f853ae4">  479</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, set_rules_dyn)(</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <a class="code" href="class_rules.html">Rules&lt;Array_Type,Data_Rule_Dyn_Type&gt;</a> * <a class="code" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;) {</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    </div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <span class="comment">// Cleaning up before replacing the memory</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#a2e7c4ddea9211859d1f7f6f288590e02">delete_rules_dyn</a>)</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        <span class="keyword">delete</span> <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>;</div>
+<div class="line"><a name="l00486"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a2e7c4ddea9211859d1f7f6f288590e02">  486</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a2e7c4ddea9211859d1f7f6f288590e02">delete_rules_dyn</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00487"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">  487</a></span>&#160;    <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a> = <a class="code" href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a>;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    </div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    </div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;}</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
+<div class="line"><a name="l00493"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#ab6e87343112bea21f2281382c6932039">  493</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">bool</span>, eval_rules_dyn)(</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <span class="keyword">const</span> std::vector&lt; double &gt; &amp; counts,</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>,</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    <span class="keyword">const</span> <a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> &amp; <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;) {</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160; </div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>-&gt;size() == 0u)</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; </div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <span class="comment">// Swapping pointers for a while</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    std::vector&lt; double &gt; tmpstats = <a class="code" href="statscounter-meat_8hpp.html#acda6567d00fd45cc346957cbe93d5a9c">current_stats</a>;</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#acda6567d00fd45cc346957cbe93d5a9c">current_stats</a> = counts;</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;}</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="comment">// SUPPORT_TEMPLATE(bool, eval_rules_dyn)(</span></div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;<span class="comment">//     const double * counts,</span></div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="comment">//     const uint &amp; i,</span></div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;<span class="comment">//     const uint &amp; j</span></div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="comment">// ) {</span></div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;<span class="comment">//     if (rules_dyn-&gt;size() == 0u)</span></div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;<span class="comment">//         return true;</span></div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; </div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;<span class="comment">//     // Swapping pointers for a while</span></div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;<span class="comment">//     std::vector&lt; double &gt; tmpstats = current_stats;</span></div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;<span class="comment">//     current_stats = counts;</span></div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;<span class="comment">//     bool rule_res = rules_dyn-&gt;operator()(EmptyArray, i, j);</span></div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="comment">//     current_stats = tmpstats;</span></div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="comment">//     return rule_res;</span></div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <span class="keywordtype">bool</span> rule_res = <a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>-&gt;operator()(<a class="code" href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a>, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a>);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <a class="code" href="statscounter-meat_8hpp.html#acda6567d00fd45cc346957cbe93d5a9c">current_stats</a> = tmpstats;</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    <span class="keywordflow">return</span> rule_res;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160; </div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;}</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;<span class="comment">// SUPPORT_TEMPLATE(bool, eval_rules_dyn)(</span></div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;<span class="comment">//     const double * counts,</span></div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;<span class="comment">//     const uint &amp; i,</span></div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;<span class="comment">//     const uint &amp; j</span></div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;<span class="comment">// ) {</span></div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;<span class="comment">//     if (rules_dyn-&gt;size() == 0u)</span></div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="comment">//         return true;</span></div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="comment">//     // Swapping pointers for a while</span></div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;<span class="comment">//     std::vector&lt; double &gt; tmpstats = current_stats;</span></div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="comment">//     current_stats = counts;</span></div>
 <div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160; </div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="comment">// }</span></div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; </div>
-<div class="line"><a name="l00530"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#aa3609690e904e9e393d9338f7fd51c8c">  530</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(std::vector&lt; double &gt;, get_counts)() <span class="keyword">const</span> {</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    </div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.get_data(); </div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    </div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;}</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160; </div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;<span class="comment">// SUPPORT_TEMPLATE(const MapVec_type&lt;&gt; *, get_counts_ptr)() const {</span></div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    </div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;<span class="comment">//     return data.get_data_ptr();</span></div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;      </div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;<span class="comment">// }</span></div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160; </div>
-<div class="line"><a name="l00542"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a75d3ef0518990daa62016e24c25f16ee">  542</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(std::vector&lt; double &gt; *, get_current_stats)() {</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    <span class="keywordflow">return</span> &amp;this-&gt;<a class="code" href="statscounter-meat_8hpp.html#acda6567d00fd45cc346957cbe93d5a9c">current_stats</a>;</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;}</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160; </div>
-<div class="line"><a name="l00546"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#aecd932d8ed5f7c2942fda1c78bd80dcc">  546</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, print)() <span class="keyword">const</span> {</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    <span class="comment">// Starting from the name of the stats</span></div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Position of variables:\n&quot;</span>);</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; n_counters; ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) {</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;[% 2i] %s\n&quot;</span>, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;operator[](<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>).name.c_str());</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    }</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160; </div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.print();</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;}</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
-<div class="line"><a name="l00557"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a1eb60e59c64de610261436745c2deb00">  557</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keyword">const</span> <a class="code" href="class_freq_table.html">FreqTable&lt;double&gt;</a> &amp;, get_data)() <span class="keyword">const</span> {</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>;</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;}</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160; </div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;<span class="keyword">template</span> <a class="code" href="support-meat_8hpp.html#af990eb73b13b01bd931f82fab1bf2d01">SUPPORT_TEMPLATE_ARGS</a>()</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;inline <a class="code" href="class_counters.html">Counters</a>&lt;Array_Type,Data_Counter_Type&gt; * <a class="code" href="support-meat_8hpp.html#a86a2ec4c858bd43ec0a1d469592af52a">SUPPORT_TYPE</a>()::get_counters() {</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>;</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;}   </div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    </div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="comment">//     bool rule_res = rules_dyn-&gt;operator()(EmptyArray, i, j);</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;<span class="comment">//     current_stats = tmpstats;</span></div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160; </div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;<span class="comment">//     return rule_res;</span></div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160; </div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;<span class="comment">// }</span></div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160; </div>
+<div class="line"><a name="l00535"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#aa3609690e904e9e393d9338f7fd51c8c">  535</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(std::vector&lt; double &gt;, get_counts)() <span class="keyword">const</span> {</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    </div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.get_data(); </div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    </div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;}</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160; </div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;<span class="comment">// SUPPORT_TEMPLATE(const MapVec_type&lt;&gt; *, get_counts_ptr)() const {</span></div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    </div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;<span class="comment">//     return data.get_data_ptr();</span></div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;      </div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;<span class="comment">// }</span></div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160; </div>
+<div class="line"><a name="l00547"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a75d3ef0518990daa62016e24c25f16ee">  547</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(std::vector&lt; double &gt; *, get_current_stats)() {</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    <span class="keywordflow">return</span> &amp;this-&gt;<a class="code" href="statscounter-meat_8hpp.html#acda6567d00fd45cc346957cbe93d5a9c">current_stats</a>;</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;}</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
+<div class="line"><a name="l00551"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#aecd932d8ed5f7c2942fda1c78bd80dcc">  551</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keywordtype">void</span>, print)() <span class="keyword">const</span> {</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160; </div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    <span class="comment">// Starting from the name of the stats</span></div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Position of variables:\n&quot;</span>);</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a> &lt; n_counters; ++<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>) {</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;[% 2i] %s\n&quot;</span>, <a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>, <a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;operator[](<a class="code" href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a>).name.c_str());</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    }</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160; </div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.print();</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;}</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160; </div>
+<div class="line"><a name="l00562"></a><span class="lineno"><a class="line" href="support-meat_8hpp.html#a1eb60e59c64de610261436745c2deb00">  562</a></span>&#160;<a class="code" href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a>(<span class="keyword">const</span> <a class="code" href="class_freq_table.html">FreqTable&lt;double&gt;</a> &amp;, get_data)() <span class="keyword">const</span> {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;}</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;<span class="keyword">template</span> <a class="code" href="support-meat_8hpp.html#af990eb73b13b01bd931f82fab1bf2d01">SUPPORT_TEMPLATE_ARGS</a>()</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;inline <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Type&gt; * <a class="code" href="support-meat_8hpp.html#a86a2ec4c858bd43ec0a1d469592af52a">SUPPORT_TYPE</a>()::get_rules() {</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>;</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;}</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160; </div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;inline <a class="code" href="class_counters.html">Counters</a>&lt;Array_Type,Data_Counter_Type&gt; * <a class="code" href="support-meat_8hpp.html#a86a2ec4c858bd43ec0a1d469592af52a">SUPPORT_TYPE</a>()::get_counters() {</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;}   </div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    </div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;<span class="keyword">template</span> <a class="code" href="support-meat_8hpp.html#af990eb73b13b01bd931f82fab1bf2d01">SUPPORT_TEMPLATE_ARGS</a>()</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;inline <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Dyn_Type&gt; * <a class="code" href="support-meat_8hpp.html#a86a2ec4c858bd43ec0a1d469592af52a">SUPPORT_TYPE</a>()::get_rules_dyn() {</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;inline <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Type&gt; * <a class="code" href="support-meat_8hpp.html#a86a2ec4c858bd43ec0a1d469592af52a">SUPPORT_TYPE</a>()::get_rules() {</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a>;</div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;}</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160; </div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;<span class="preprocessor">#undef SUPPORT_TEMPLATE_ARGS</span></div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;<span class="preprocessor">#undef SUPPORT_TYPE</span></div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;<span class="preprocessor">#undef SUPPORT_TEMPLATE</span></div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160; </div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;<span class="keyword">template</span> <a class="code" href="support-meat_8hpp.html#af990eb73b13b01bd931f82fab1bf2d01">SUPPORT_TEMPLATE_ARGS</a>()</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;inline <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Dyn_Type&gt; * <a class="code" href="support-meat_8hpp.html#a86a2ec4c858bd43ec0a1d469592af52a">SUPPORT_TYPE</a>()::get_rules_dyn() {</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a>;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;}</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160; </div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;<span class="preprocessor">#undef SUPPORT_TEMPLATE_ARGS</span></div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;<span class="preprocessor">#undef SUPPORT_TYPE</span></div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="preprocessor">#undef SUPPORT_TEMPLATE</span></div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a3aa458046d0f897cceeddda6839e4446"><div class="ttname"><a href="barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446">N</a></div><div class="ttdeci">if(source.size() !=value.size()) throw std N</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00043">barray-meat.hpp:43</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a6cb31aaad809d508e214b61785d7fb47"><div class="ttname"><a href="barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47">Array_</a></div><div class="ttdeci">Data_Type &amp; Array_</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00134">barray-meat.hpp:134</a></div></div>
@@ -693,27 +698,27 @@ $(document).ready(function(){initNavTree('support-meat_8hpp_source.html',''); in
 <div class="ttc" id="acounters-meat_8hpp_html_aa0ecde9bec2f4c6686780ccf4f5fe835"><div class="ttname"><a href="counters-meat_8hpp.html#aa0ecde9bec2f4c6686780ccf4f5fe835">i</a></div><div class="ttdeci">uint i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:83</a></div></div>
 <div class="ttc" id="astatscounter-meat_8hpp_html_a850cc1cfc690a36f2478789fa123a6d3"><div class="ttname"><a href="statscounter-meat_8hpp.html#a850cc1cfc690a36f2478789fa123a6d3">EmptyArray</a></div><div class="ttdeci">EmptyArray</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00017">statscounter-meat.hpp:17</a></div></div>
 <div class="ttc" id="astatscounter-meat_8hpp_html_acda6567d00fd45cc346957cbe93d5a9c"><div class="ttname"><a href="statscounter-meat_8hpp.html#acda6567d00fd45cc346957cbe93d5a9c">current_stats</a></div><div class="ttdeci">current_stats</div><div class="ttdef"><b>Definition:</b> <a href="statscounter-meat_8hpp_source.html#l00019">statscounter-meat.hpp:19</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a193348dc03fb67a29c0fbac36e823588"><div class="ttname"><a href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a></div><div class="ttdeci">Data_Rule_Type * rules_</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00443">support-meat.hpp:444</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a2997e52d3d749b34d5a97042e4f520e5"><div class="ttname"><a href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a></div><div class="ttdeci">rules_dyn</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00482">support-meat.hpp:482</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a2e7c4ddea9211859d1f7f6f288590e02"><div class="ttname"><a href="support-meat_8hpp.html#a2e7c4ddea9211859d1f7f6f288590e02">delete_rules_dyn</a></div><div class="ttdeci">delete_rules_dyn</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00481">support-meat.hpp:481</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a595e07a99f60f22a6a29e4fca291ea28"><div class="ttname"><a href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a></div><div class="ttdeci">rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00450">support-meat.hpp:450</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a193348dc03fb67a29c0fbac36e823588"><div class="ttname"><a href="support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a></div><div class="ttdeci">Data_Rule_Type * rules_</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00448">support-meat.hpp:449</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a2997e52d3d749b34d5a97042e4f520e5"><div class="ttname"><a href="support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5">rules_dyn</a></div><div class="ttdeci">rules_dyn</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00487">support-meat.hpp:487</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a2e7c4ddea9211859d1f7f6f288590e02"><div class="ttname"><a href="support-meat_8hpp.html#a2e7c4ddea9211859d1f7f6f288590e02">delete_rules_dyn</a></div><div class="ttdeci">delete_rules_dyn</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00486">support-meat.hpp:486</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a595e07a99f60f22a6a29e4fca291ea28"><div class="ttname"><a href="support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28">rules</a></div><div class="ttdeci">rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00455">support-meat.hpp:455</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a655eb4a8cd63fef240cf2e240e0b4a92"><div class="ttname"><a href="support-meat_8hpp.html#a655eb4a8cd63fef240cf2e240e0b4a92">SUPPORT_TEMPLATE</a></div><div class="ttdeci">#define SUPPORT_TEMPLATE(a, b)</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00010">support-meat.hpp:10</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a73c7169e5f8a4a5554380af6d4ca2107"><div class="ttname"><a href="support-meat_8hpp.html#a73c7169e5f8a4a5554380af6d4ca2107">stats_bank</a></div><div class="ttdeci">std::vector&lt; Array_Type &gt; std::vector&lt; double &gt; * stats_bank</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00132">support-meat.hpp:133</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a782c48a908662b34845b6f654f929788"><div class="ttname"><a href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div><div class="ttdeci">counters</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00416">support-meat.hpp:416</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a782c48a908662b34845b6f654f929788"><div class="ttname"><a href="support-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a></div><div class="ttdeci">counters</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00421">support-meat.hpp:421</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a81e509685549f0b2bd6dce17d453383c"><div class="ttname"><a href="support-meat_8hpp.html#a81e509685549f0b2bd6dce17d453383c">hashes</a></div><div class="ttdeci">&amp; hashes[pos]</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00217">support-meat.hpp:217</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a86a2ec4c858bd43ec0a1d469592af52a"><div class="ttname"><a href="support-meat_8hpp.html#a86a2ec4c858bd43ec0a1d469592af52a">SUPPORT_TYPE</a></div><div class="ttdeci">#define SUPPORT_TYPE()</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00007">support-meat.hpp:7</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a89cc6daed3ad4d168d186db36f4f063d"><div class="ttname"><a href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">delete_rules</a></div><div class="ttdeci">delete_rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00449">support-meat.hpp:449</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_a89cc6daed3ad4d168d186db36f4f063d"><div class="ttname"><a href="support-meat_8hpp.html#a89cc6daed3ad4d168d186db36f4f063d">delete_rules</a></div><div class="ttdeci">delete_rules</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00454">support-meat.hpp:454</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a8cd8db93da5adaf7327496c53f1a133e"><div class="ttname"><a href="support-meat_8hpp.html#a8cd8db93da5adaf7327496c53f1a133e">change_stats_different</a></div><div class="ttdeci">unsigned int change_stats_different</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00158">support-meat.hpp:158</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a980099bf621a65db8f01ee0cabdcfc58"><div class="ttname"><a href="support-meat_8hpp.html#a980099bf621a65db8f01ee0cabdcfc58">calc_backend_sparse</a></div><div class="ttdeci">calc_backend_sparse(pos+1u, array_bank, stats_bank)</div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_a99bc64000138ec8cdb4a77888dff849f"><div class="ttname"><a href="support-meat_8hpp.html#a99bc64000138ec8cdb4a77888dff849f">tmp_chng</a></div><div class="ttdeci">double tmp_chng</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00157">support-meat.hpp:157</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_aa79c6fa1f7864a8258e8f2c0a68b6d35"><div class="ttname"><a href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div><div class="ttdeci">Data_Counter_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00409">support-meat.hpp:410</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_aa80d872ce00a593ea8f27137907b9cf3"><div class="ttname"><a href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div><div class="ttdeci">Data_Counter_Type f_</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00400">support-meat.hpp:401</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_aa79c6fa1f7864a8258e8f2c0a68b6d35"><div class="ttname"><a href="support-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div><div class="ttdeci">Data_Counter_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00414">support-meat.hpp:415</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_aa80d872ce00a593ea8f27137907b9cf3"><div class="ttname"><a href="support-meat_8hpp.html#aa80d872ce00a593ea8f27137907b9cf3">f_</a></div><div class="ttdeci">Data_Counter_Type f_</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00405">support-meat.hpp:406</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_aa90d256a87dd45ec1f1b398a11d21881"><div class="ttname"><a href="support-meat_8hpp.html#aa90d256a87dd45ec1f1b398a11d21881">coord_i</a></div><div class="ttdeci">const size_t &amp; coord_i</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00144">support-meat.hpp:144</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_ab38525a95e90bb46ae74d5fdda68a8e9"><div class="ttname"><a href="support-meat_8hpp.html#ab38525a95e90bb46ae74d5fdda68a8e9">calc_backend_dense</a></div><div class="ttdeci">calc_backend_dense(pos+1u, array_bank, stats_bank)</div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_ac3e9dc0da8cb5558062309c63a98bb41"><div class="ttname"><a href="support-meat_8hpp.html#ac3e9dc0da8cb5558062309c63a98bb41">if</a></div><div class="ttdeci">if(rules_dyn-&gt;size() &gt; 0u)</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00187">support-meat.hpp:187</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_ac507b5b05a329a72fa561a352608abdf"><div class="ttname"><a href="support-meat_8hpp.html#ac507b5b05a329a72fa561a352608abdf">array_bank</a></div><div class="ttdeci">std::vector&lt; Array_Type &gt; * array_bank</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00131">support-meat.hpp:131</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_ac5c22dcb010da5ba693bd700d0ba4fd6"><div class="ttname"><a href="support-meat_8hpp.html#ac5c22dcb010da5ba693bd700d0ba4fd6">coord_j</a></div><div class="ttdeci">const size_t &amp; coord_j</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00145">support-meat.hpp:145</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_ad39d911b94d7512d07b68ab7eac8164b"><div class="ttname"><a href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">delete_counters</a></div><div class="ttdeci">delete_counters</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00415">support-meat.hpp:415</a></div></div>
+<div class="ttc" id="asupport-meat_8hpp_html_ad39d911b94d7512d07b68ab7eac8164b"><div class="ttname"><a href="support-meat_8hpp.html#ad39d911b94d7512d07b68ab7eac8164b">delete_counters</a></div><div class="ttdeci">delete_counters</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00420">support-meat.hpp:420</a></div></div>
 <div class="ttc" id="asupport-meat_8hpp_html_af990eb73b13b01bd931f82fab1bf2d01"><div class="ttname"><a href="support-meat_8hpp.html#af990eb73b13b01bd931f82fab1bf2d01">SUPPORT_TEMPLATE_ARGS</a></div><div class="ttdeci">#define SUPPORT_TEMPLATE_ARGS()</div><div class="ttdef"><b>Definition:</b> <a href="support-meat_8hpp_source.html#l00004">support-meat.hpp:4</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="typedefs_8hpp.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00018">typedefs.hpp:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -722,7 +727,7 @@ $(document).ready(function(){initNavTree('support-meat_8hpp_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="support-meat_8hpp.html">support-meat.hpp</a></li>
-    <li class="footer">Generated on Wed Oct 12 2022 18:57:15 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Oct 14 2022 23:24:47 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

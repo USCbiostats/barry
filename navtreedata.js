@@ -33,6 +33,7 @@ var NAVTREE =
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
@@ -58,10 +59,10 @@ var NAVTREEINDEX =
 "annotated.html",
 "barrayrow-bones_8hpp.html",
 "class_b_array_row.html#aafd516a2c987c24cd16d216e51ab1b55",
-"class_geese.html#abb975286a0ab1fd438e5bb4427398993",
-"counters-meat_8hpp.html#a6843fc68316315624815734c0edeb27a",
-"group__counters-network.html#gad2e83eeaed6f17346ac8ac1ca64b327a",
-"support-meat_8hpp.html#ab6e87343112bea21f2281382c6932039"
+"class_geese.html#ab00af142f1f0e13b5c9d0cb7c8d41ee5",
+"counters-meat_8hpp.html#a4f4d29ea2c3f3dd911ee94420c97a44c",
+"group__counters-network.html#gadadede01536081fb8b79e4d14368f946",
+"support-meat_8hpp.html#a2b30b331b330f6192a8b9cbe800c5b65"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
