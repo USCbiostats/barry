@@ -36,7 +36,6 @@ var searchData=
   ['rules_5fdeleted_587',['rules_deleted',['../class_power_set.html#a08b6baf1e244e023d997ddaecbc2116f',1,'PowerSet']]],
   ['rules_5fdont_5fbecome_5fzero_588',['rules_dont_become_zero',['../group__counters-network.html#gad1d106d42f394a9f6272d7bdf043e127',1,'defm.hpp']]],
   ['rules_5fdyn_589',['rules_dyn',['../support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5',1,'support-meat.hpp']]],
-  ['rules_5fexclude_5fall_5fones_590',['rules_exclude_all_ones',['../group__counters-network.html#ga9dc32c25530dda4a3d9f312afb555962',1,'defm.hpp']]],
-  ['rules_5fmarkov_5ffixed_591',['rules_markov_fixed',['../group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe',1,'defm.hpp']]],
-  ['rules_5fzerodiag_592',['rules_zerodiag',['../network_8hpp.html#ade7c09a084b266e48f9222c54fd12681',1,'network.hpp']]]
+  ['rules_5fmarkov_5ffixed_590',['rules_markov_fixed',['../group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe',1,'defm.hpp']]],
+  ['rules_5fzerodiag_591',['rules_zerodiag',['../network_8hpp.html#ade7c09a084b266e48f9222c54fd12681',1,'network.hpp']]]
 ];
