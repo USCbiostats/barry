@@ -874,51 +874,19 @@ inline void rules_dont_become_zero(
         if (data.indices[j] == 0u)
             return true;
 
-        // The last observation is always included
-        if (i == (Array.nrow() - 1))
+        // The data outside of the markov chain is checked by other rule
+        if (i != (Array.nrow() - 1))
             return true;
 
         // This is now one, is the next different zero? If so,
         // we can include it (1->1)
-        return (Array(i + 1, j) != 0); // |
-            // (Array(i, j) != 1);
+        return (Array(i - 1, j) != 1) | (Array(i, j) != 1);
 
     };
     
     support->get_rules()->add_rule(
         rule,
         DEFMRuleData({}, {ids})
-        );
-    
-    return;
-}
-
-/**
- * @brief Blocks switching a one to zero.
- * 
- * @param rules 
- * @param ids Ids of the variables that will follow this rule.
- */
-inline void rules_exclude_all_ones(
-    DEFMSupport * support
-    ) {
-    
-
-    DEFM_RULEDYN_LAMBDA(rule) {
-
-        if (!data.init)
-        {
-            data.init = true;
-            data.indices[0u] = (Array.nrow() * Array.ncol());
-        }
-
-        return Array.nnozero() != data.idx(0u);
-
-    };
-    
-    support->get_rules_dyn()->add_rule(
-        rule,
-        DEFMRuleDynData(nullptr, {}, {0u})
         );
     
     return;

@@ -14488,14 +14488,13 @@ inline void rules_dont_become_zero(
         if (data.indices[j] == 0u)
             return true;
 
-        // The last observation is always included
-        if (i == (Array.nrow() - 1))
+        // The data outside of the markov chain is checked by other rule
+        if ((i + 1) < Array.nrow())
             return true;
 
         // This is now one, is the next different zero? If so,
         // we can include it (1->1)
-        return (Array(i + 1, j) != 0); // |
-            // (Array(i, j) != 1);
+        return (Array(i - 1, j) != 1) | (Array(i, j) != 1);
 
     };
     
