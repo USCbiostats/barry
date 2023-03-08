@@ -832,7 +832,7 @@ inline void rules_markov_fixed(
     rules->add_rule(
         no_self_tie,
         DEFMRuleData({},{markov_order}),
-        std::string("Markov model of order") + std::to_string(markov_order),
+        std::string("Markov model of order ") + std::to_string(markov_order),
         std::string("Blocks the first morder cells of the array.")
         );
     
@@ -849,7 +849,6 @@ inline void rules_dont_become_zero(
     DEFMSupport * support,
     std::vector<size_t> ids
     ) {
-    
     
     DEFM_RULE_LAMBDA(rule) {
 

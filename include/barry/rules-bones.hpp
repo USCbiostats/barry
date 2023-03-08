@@ -55,6 +55,9 @@ public:
 
     std::string & get_name();
     std::string & get_description();
+
+    std::string get_name() const;
+    std::string get_description() const;
     
 };
 
@@ -91,7 +94,7 @@ public:
     void add_rule(Rule<Array_Type, Data_Type> rule);
     void add_rule(
         Rule_fun_type<Array_Type,Data_Type> rule_,
-        Data_Type                           data_,,
+        Data_Type data_,
         std::string name_ = "",
         std::string description_ = ""
     );
