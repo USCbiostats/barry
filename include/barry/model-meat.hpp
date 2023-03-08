@@ -883,7 +883,8 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const
     
 }
 
-MODEL_TEMPLATE(void, print)() const
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::print() const
 {
 
     // Relevant information:
@@ -916,7 +917,19 @@ MODEL_TEMPLATE(void, print)() const
     printf_barry("Model terms (%i)   :\n", this->nterms());
     
     for (auto & cn : this->colnames())
+    {
         printf_barry(" - %s\n", cn.c_str());
+    }
+
+    if (this->nrules > 0u)
+    {
+        printf_barry("Model rules (%i)   :\n", this->nrules());
+    
+        for (auto & rn : rules->get_names())
+        {
+            printf_barry(" - %s\n", rn.c_str());
+        }
+    }
 
     return;
 
@@ -944,6 +957,13 @@ MODEL_TEMPLATE(uint, nterms)() const noexcept
         return transform_model_term_names.size();
     else
         return this->counters->size();
+
+}
+
+MODEL_TEMPLATE(uint, nrules)() const noexcept
+{
+ 
+    return this->rules->size();
 
 }
 

@@ -831,7 +831,9 @@ inline void rules_markov_fixed(
     
     rules->add_rule(
         no_self_tie,
-        DEFMRuleData({},{markov_order})
+        DEFMRuleData({},{markov_order}),
+        std::string("Markov model of order") + std::to_string(markov_order),
+        std::string("Blocks the first morder cells of the array.")
         );
     
     return;
@@ -886,7 +888,9 @@ inline void rules_dont_become_zero(
     
     support->get_rules()->add_rule(
         rule,
-        DEFMRuleData({}, {ids})
+        DEFMRuleData({}, {ids}),
+        std::string("Ones can't become zero"),
+        std::string("Blocks cells that have became equal to one.")
         );
     
     return;

@@ -38,6 +38,18 @@ inline bool Rule<Array_Type,Data_Type>::operator()(const Array_Type & a, uint i,
     return fun(a, i, j, dat);
 }
 
+template<typename Array_Type, typename Data_Type>
+inline std::string & Rule<Array_Type,Data_Type>::get_name()
+{
+    return name;
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::string & Rule<Array_Type,Data_Type>::get_description()
+{
+    return description;
+}
+
 template <typename Array_Type, typename Data_Type>
 inline void Rules<Array_Type,Data_Type>::add_rule(
         Rule<Array_Type, Data_Type> rule
@@ -51,12 +63,16 @@ inline void Rules<Array_Type,Data_Type>::add_rule(
 template <typename Array_Type, typename Data_Type>
 inline void Rules<Array_Type,Data_Type>::add_rule(
         Rule_fun_type<Array_Type,Data_Type> rule_,
-        Data_Type                           data_
+        Data_Type                           data_,
+        std::string name_,
+        std::string description_
 ) {
        
     data.push_back(Rule<Array_Type,Data_Type>(
         rule_,
-        data_
+        data_,
+        name_,
+        description_
     ));
     
     return;
@@ -126,6 +142,30 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
     free->shrink_to_fit();
 
     return;
+
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_names() const
+{
+
+    std::vector< std::string > out(this->size());
+    for (unsigned int i = 0u; i < out.size(); ++i)
+        out[i] = this->data.at(i).get_name();
+
+    return out;
+
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_descriptions() const
+{
+    
+    std::vector< std::string > out(this->size());
+    for (unsigned int i = 0u; i < out.size(); ++i)
+        out[i] = data.at(i).get_description();
+
+    return out;
 
 }
 
