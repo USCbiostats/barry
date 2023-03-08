@@ -910,22 +910,31 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     max_v /= static_cast<int>(nterms() + 1);
     min_v /= static_cast<int>(nterms() + 1);
 
-    printf_barry("Num. of Arrays     : %i\n", this->size());
-    printf_barry("Support size       : %i\n", this->size_unique());
-    printf_barry("Support size range : [%i, %i]\n", min_v, max_v);
-    printf_barry("Transform. Fun.    : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (%i)   :\n", this->nterms());
-    
+    printf_barry("Num. of Arrays       : %i\n", this->size());
+    printf_barry("Support size         : %i\n", this->size_unique());
+    printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
+    printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
+    printf_barry("Model terms (%i)     :\n", this->nterms());
     for (auto & cn : this->colnames())
     {
         printf_barry(" - %s\n", cn.c_str());
     }
 
-    if (this->nrules > 0u)
+    if (this->nrules() > 0u)
     {
-        printf_barry("Model rules (%i)   :\n", this->nrules());
+        printf_barry("Model rules (%i)     :\n", this->nrules());
     
         for (auto & rn : rules->get_names())
+        {
+            printf_barry(" - %s\n", rn.c_str());
+        }
+    }
+
+    if (this->nrules() > 0u)
+    {
+        printf_barry("Model rules dyn (%i):\n", this->nrules());
+    
+        for (auto & rn : rules_dyn->get_names())
         {
             printf_barry(" - %s\n", rn.c_str());
         }
@@ -964,6 +973,13 @@ MODEL_TEMPLATE(uint, nrules)() const noexcept
 {
  
     return this->rules->size();
+
+}
+
+MODEL_TEMPLATE(uint, nrules_dyn)() const noexcept
+{
+ 
+    return this->rules_dyn->size();
 
 }
 

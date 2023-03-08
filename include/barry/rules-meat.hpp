@@ -47,7 +47,19 @@ inline std::string & Rule<Array_Type,Data_Type>::get_name()
 template<typename Array_Type, typename Data_Type>
 inline std::string & Rule<Array_Type,Data_Type>::get_description()
 {
-    return description;
+    return desc;
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::string Rule<Array_Type,Data_Type>::get_name() const
+{
+    return name;
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::string Rule<Array_Type,Data_Type>::get_description() const
+{
+    return desc;
 }
 
 template <typename Array_Type, typename Data_Type>

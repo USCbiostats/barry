@@ -341,6 +341,7 @@ public:
     unsigned int size_unique() const noexcept;
     unsigned int nterms() const noexcept;
     unsigned int nrules() const noexcept;
+    unsigned int nrules_dyn() const noexcept;
     unsigned int support_size() const noexcept;
     std::vector< std::string > colnames() const;
     ///@}

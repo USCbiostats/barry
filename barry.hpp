@@ -7249,6 +7249,8 @@ public:
     unsigned int size() const noexcept;
     unsigned int size_unique() const noexcept;
     unsigned int nterms() const noexcept;
+    unsigned int nrules() const noexcept;
+    unsigned int nrules_dyn() const noexcept;
     unsigned int support_size() const noexcept;
     std::vector< std::string > colnames() const;
     ///@}
@@ -8206,7 +8208,8 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const
     
 }
 
-MODEL_TEMPLATE(void, print)() const
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::print() const
 {
 
     // Relevant information:
@@ -8232,14 +8235,35 @@ MODEL_TEMPLATE(void, print)() const
     max_v /= static_cast<int>(nterms() + 1);
     min_v /= static_cast<int>(nterms() + 1);
 
-    printf_barry("Num. of Arrays     : %i\n", this->size());
-    printf_barry("Support size       : %i\n", this->size_unique());
-    printf_barry("Support size range : [%i, %i]\n", min_v, max_v);
-    printf_barry("Transform. Fun.    : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (%i)   :\n", this->nterms());
-    
+    printf_barry("Num. of Arrays       : %i\n", this->size());
+    printf_barry("Support size         : %i\n", this->size_unique());
+    printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
+    printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
+    printf_barry("Model terms (%i)     :\n", this->nterms());
     for (auto & cn : this->colnames())
+    {
         printf_barry(" - %s\n", cn.c_str());
+    }
+
+    if (this->nrules() > 0u)
+    {
+        printf_barry("Model rules (%i)     :\n", this->nrules());
+    
+        for (auto & rn : rules->get_names())
+        {
+            printf_barry(" - %s\n", rn.c_str());
+        }
+    }
+
+    if (this->nrules() > 0u)
+    {
+        printf_barry("Model rules dyn (%i):\n", this->nrules());
+    
+        for (auto & rn : rules_dyn->get_names())
+        {
+            printf_barry(" - %s\n", rn.c_str());
+        }
+    }
 
     return;
 
@@ -8267,6 +8291,20 @@ MODEL_TEMPLATE(uint, nterms)() const noexcept
         return transform_model_term_names.size();
     else
         return this->counters->size();
+
+}
+
+MODEL_TEMPLATE(uint, nrules)() const noexcept
+{
+ 
+    return this->rules->size();
+
+}
+
+MODEL_TEMPLATE(uint, nrules_dyn)() const noexcept
+{
+ 
+    return this->rules_dyn->size();
 
 }
 
@@ -8726,6 +8764,9 @@ private:
     Rule_fun_type<Array_Type,Data_Type> fun;
     Data_Type dat;
     
+    std::string  name = "";
+    std::string  desc = "";
+    
 public:
 
     /**
@@ -8741,8 +8782,10 @@ public:
     Rule() : fun(rule_fun_default<Array_Type,Data_Type>) {};
     Rule(
         Rule_fun_type<Array_Type,Data_Type> fun_,
-        Data_Type dat_
-        ) : fun(fun_), dat(dat_) {};
+        Data_Type dat_,
+        std::string name_        = "",   
+        std::string desc_        = ""
+        ) : fun(fun_), dat(dat_), name(name_), desc(desc_) {};
     ///@}
 
     ~Rule() {};
@@ -8750,6 +8793,12 @@ public:
     Data_Type & D(); ///< Read/Write access to the data.
     
     bool operator()(const Array_Type & a, uint i, uint j);
+
+    std::string & get_name();
+    std::string & get_description();
+
+    std::string get_name() const;
+    std::string get_description() const;
     
 };
 
@@ -8786,7 +8835,9 @@ public:
     void add_rule(Rule<Array_Type, Data_Type> rule);
     void add_rule(
         Rule_fun_type<Array_Type,Data_Type> rule_,
-        Data_Type                           data_
+        Data_Type data_,
+        std::string name_ = "",
+        std::string description_ = ""
     );
     ///@}
 
@@ -8816,6 +8867,9 @@ public:
         std::vector< size_t > * free,
         std::vector< size_t > * locked = nullptr
     );
+
+    std::vector< std::string > get_names() const;
+    std::vector< std::string > get_descriptions() const;
     
 };
 
@@ -8879,6 +8933,30 @@ inline bool Rule<Array_Type,Data_Type>::operator()(const Array_Type & a, uint i,
     return fun(a, i, j, dat);
 }
 
+template<typename Array_Type, typename Data_Type>
+inline std::string & Rule<Array_Type,Data_Type>::get_name()
+{
+    return name;
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::string & Rule<Array_Type,Data_Type>::get_description()
+{
+    return desc;
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::string Rule<Array_Type,Data_Type>::get_name() const
+{
+    return name;
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::string Rule<Array_Type,Data_Type>::get_description() const
+{
+    return desc;
+}
+
 template <typename Array_Type, typename Data_Type>
 inline void Rules<Array_Type,Data_Type>::add_rule(
         Rule<Array_Type, Data_Type> rule
@@ -8892,12 +8970,16 @@ inline void Rules<Array_Type,Data_Type>::add_rule(
 template <typename Array_Type, typename Data_Type>
 inline void Rules<Array_Type,Data_Type>::add_rule(
         Rule_fun_type<Array_Type,Data_Type> rule_,
-        Data_Type                           data_
+        Data_Type                           data_,
+        std::string name_,
+        std::string description_
 ) {
        
     data.push_back(Rule<Array_Type,Data_Type>(
         rule_,
-        data_
+        data_,
+        name_,
+        description_
     ));
     
     return;
@@ -8967,6 +9049,30 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
     free->shrink_to_fit();
 
     return;
+
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_names() const
+{
+
+    std::vector< std::string > out(this->size());
+    for (unsigned int i = 0u; i < out.size(); ++i)
+        out[i] = this->data.at(i).get_name();
+
+    return out;
+
+}
+
+template<typename Array_Type, typename Data_Type>
+inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_descriptions() const
+{
+    
+    std::vector< std::string > out(this->size());
+    for (unsigned int i = 0u; i < out.size(); ++i)
+        out[i] = data.at(i).get_description();
+
+    return out;
 
 }
 
@@ -14445,7 +14551,9 @@ inline void rules_markov_fixed(
     
     rules->add_rule(
         no_self_tie,
-        DEFMRuleData({},{markov_order})
+        DEFMRuleData({},{markov_order}),
+        std::string("Markov model of order ") + std::to_string(markov_order),
+        std::string("Blocks the first morder cells of the array.")
         );
     
     return;
@@ -14461,7 +14569,6 @@ inline void rules_dont_become_zero(
     DEFMSupport * support,
     std::vector<size_t> ids
     ) {
-    
     
     DEFM_RULE_LAMBDA(rule) {
 
@@ -14489,7 +14596,7 @@ inline void rules_dont_become_zero(
             return true;
 
         // The data outside of the markov chain is checked by other rule
-        if ((i + 1) < Array.nrow())
+        if (i != (Array.nrow() - 1))
             return true;
 
         // This is now one, is the next different zero? If so,
@@ -14500,38 +14607,9 @@ inline void rules_dont_become_zero(
     
     support->get_rules()->add_rule(
         rule,
-        DEFMRuleData({}, {ids})
-        );
-    
-    return;
-}
-
-/**
- * @brief Blocks switching a one to zero.
- * 
- * @param rules 
- * @param ids Ids of the variables that will follow this rule.
- */
-inline void rules_exclude_all_ones(
-    DEFMSupport * support
-    ) {
-    
-
-    DEFM_RULEDYN_LAMBDA(rule) {
-
-        if (!data.init)
-        {
-            data.init = true;
-            data.indices[0u] = (Array.nrow() * Array.ncol());
-        }
-
-        return Array.nnozero() != data.idx(0u);
-
-    };
-    
-    support->get_rules_dyn()->add_rule(
-        rule,
-        DEFMRuleDynData(nullptr, {}, {0u})
+        DEFMRuleData({}, {ids}),
+        std::string("Ones can't become zero"),
+        std::string("Blocks cells that have became equal to one.")
         );
     
     return;
