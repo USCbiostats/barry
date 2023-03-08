@@ -35,6 +35,8 @@ var group__stat_models =
       [ "likelihood", "class_model.html#a64f75d5e8fda31a27e3bf2aeb95a81da", null ],
       [ "likelihood", "class_model.html#a6b7ca648f1b2f04967e0d3473ae13eab", null ],
       [ "likelihood_total", "class_model.html#a849c382c401986612056d6fdf043deb4", null ],
+      [ "nrules", "class_model.html#a01eb1b233a8c843e35a2904f64bdc177", null ],
+      [ "nrules_dyn", "class_model.html#a74a4d28065ca472960e6e821e18bfbf3", null ],
       [ "nterms", "class_model.html#a9d519dbe33fe258f09274243bd80b33a", null ],
       [ "operator=", "class_model.html#a4efbb1070a633381712aee3d2e5e8fb0", null ],
       [ "print", "class_model.html#a9b882a97407460beb9b97405fac98dd9", null ],
