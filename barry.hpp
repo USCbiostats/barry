@@ -8255,7 +8255,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
         }
     }
 
-    if (this->nrules() > 0u)
+    if (this->nrules_dyn() > 0u)
     {
         printf_barry("Model rules dyn (%i):\n", this->nrules());
     
