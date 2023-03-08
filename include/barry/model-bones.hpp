@@ -340,6 +340,7 @@ public:
     unsigned int size() const noexcept;
     unsigned int size_unique() const noexcept;
     unsigned int nterms() const noexcept;
+    unsigned int nrules() const noexcept;
     unsigned int support_size() const noexcept;
     std::vector< std::string > colnames() const;
     ///@}

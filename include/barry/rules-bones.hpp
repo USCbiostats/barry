@@ -23,6 +23,9 @@ private:
     Rule_fun_type<Array_Type,Data_Type> fun;
     Data_Type dat;
     
+    std::string  name = "";
+    std::string  desc = "";
+    
 public:
 
     /**
@@ -38,8 +41,10 @@ public:
     Rule() : fun(rule_fun_default<Array_Type,Data_Type>) {};
     Rule(
         Rule_fun_type<Array_Type,Data_Type> fun_,
-        Data_Type dat_
-        ) : fun(fun_), dat(dat_) {};
+        Data_Type dat_,
+        std::string name_        = "",   
+        std::string desc_        = ""
+        ) : fun(fun_), dat(dat_), name(name_), desc(desc_) {};
     ///@}
 
     ~Rule() {};
@@ -47,6 +52,9 @@ public:
     Data_Type & D(); ///< Read/Write access to the data.
     
     bool operator()(const Array_Type & a, uint i, uint j);
+
+    std::string & get_name();
+    std::string & get_description();
     
 };
 
@@ -83,7 +91,9 @@ public:
     void add_rule(Rule<Array_Type, Data_Type> rule);
     void add_rule(
         Rule_fun_type<Array_Type,Data_Type> rule_,
-        Data_Type                           data_
+        Data_Type                           data_,,
+        std::string name_ = "",
+        std::string description_ = ""
     );
     ///@}
 
@@ -113,6 +123,9 @@ public:
         std::vector< size_t > * free,
         std::vector< size_t > * locked = nullptr
     );
+
+    std::vector< std::string > get_names() const;
+    std::vector< std::string > get_descriptions() const;
     
 };
 
