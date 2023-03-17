@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['reduced_5fsequence_1288',['reduced_sequence',['../class_geese.html#aabcf5e284f7277109567a84ba615f97e',1,'Geese']]],
-  ['rengine_1289',['rengine',['../class_flock.html#a0e3ce6d007f667eea9f036cddb6789b6',1,'Flock']]],
-  ['report_1290',['report',['../barray-meat_8hpp.html#a1c97d677615ab6c6430f1a5908d3d248',1,'report():&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#a1c97d677615ab6c6430f1a5908d3d248',1,'report():&#160;barraydense-meat.hpp']]],
-  ['res_1291',['res',['../counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48',1,'counters-meat.hpp']]],
-  ['return_1292',['return',['../barraydense-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;barraydense-meat.hpp'],['../support-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;support-meat.hpp'],['../statscounter-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;statscounter-meat.hpp'],['../counters-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;counters-meat.hpp'],['../barray-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;barray-meat.hpp']]],
-  ['rhs_1293',['rhs',['../barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0',1,'barray-meat-operators.hpp']]],
-  ['row0_1294',['row0',['../barray-meat_8hpp.html#a13e95ea7fbf70d4bcac33c4b195e3e30',1,'barray-meat.hpp']]],
-  ['rules_1295',['rules',['../class_power_set.html#afa542ecc31858c8644d1e76078eb1713',1,'PowerSet::rules()'],['../support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28',1,'rules():&#160;support-meat.hpp']]],
-  ['rules_5f_1296',['rules_',['../support-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588',1,'support-meat.hpp']]],
-  ['rules_5fdeleted_1297',['rules_deleted',['../class_power_set.html#a08b6baf1e244e023d997ddaecbc2116f',1,'PowerSet']]],
-  ['rules_5fdyn_1298',['rules_dyn',['../support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5',1,'support-meat.hpp']]]
+  ['params_1335',['params',['../model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2',1,'model-meat.hpp']]],
+  ['params_5flast_1336',['params_last',['../class_model.html#a9b5a93723c718d4d9f710c5340c7ef0f',1,'Model']]],
+  ['parent_1337',['parent',['../class_node.html#ad8184598cdea70e4bbdfd76f2b0f9e85',1,'Node']]],
+  ['pos_1338',['pos',['../class_phylo_rule_dyn_data.html#a6c653f20ca848b0da97adca9790ad86e',1,'PhyloRuleDynData']]],
+  ['probability_1339',['probability',['../class_node.html#a867d5e07f62da01392a817042c77735f',1,'Node']]],
+  ['probs_1340',['probs',['../model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6',1,'model-meat.hpp']]],
+  ['pset_5farrays_1341',['pset_arrays',['../class_model.html#ab39eb3f5a95b9f142af51df3b30e76d7',1,'Model::pset_arrays()'],['../model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e',1,'pset_arrays():&#160;model-meat.hpp']]],
+  ['pset_5floc_1342',['pset_loc',['../class_geese.html#a0fffee17a5df7ec95858f8307144c3f9',1,'Geese']]],
+  ['pset_5fprobs_1343',['pset_probs',['../class_model.html#af67b0d6d0c8c4d2d7e898b50692d4f9a',1,'Model']]],
+  ['pset_5fstats_1344',['pset_stats',['../class_model.html#a69ca83eded62fd9c4e9133dc149430ae',1,'Model']]]
 ];

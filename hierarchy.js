@@ -26,9 +26,11 @@ var hierarchy =
     [ "Counters< Array_Type, Data_Type >", "class_counters.html", null ],
     [ "Counters< BArray< bool, bool >, bool >", "class_counters.html", null ],
     [ "Counters< BArray<>, bool >", "class_counters.html", null ],
-    [ "DEFM", "class_d_e_f_m.html", null ],
     [ "DEFMCounterData", "class_d_e_f_m_counter_data.html", null ],
     [ "DEFMData", "class_d_e_f_m_data.html", null ],
+    [ "barry::counters::defm::DEFMModel", null, [
+      [ "DEFM", "class_d_e_f_m.html", null ]
+    ] ],
     [ "DEFMRuleData", "class_d_e_f_m_rule_data.html", [
       [ "DEFMRuleDynData", "class_d_e_f_m_rule_dyn_data.html", null ]
     ] ],

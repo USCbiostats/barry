@@ -1,9 +1,16 @@
 var searchData=
 [
-  ['search_1299',['search',['../barray-meat_8hpp.html#a35e7b789344a67f5d492ebd1c05e261d',1,'barray-meat.hpp']]],
-  ['sequence_1300',['sequence',['../class_geese.html#ab815e9b33ce2cfb5757f86083f357152',1,'Geese']]],
-  ['source_1301',['source',['../class_entries.html#a6a7c589df4cd6ea98386466440dfdc98',1,'Entries::source()'],['../barray-meat_8hpp.html#ab3aa82e361912925fc1ecaf85e5041bf',1,'source():&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#a227ebd7e6c1eb60c240f4744c0b457a5',1,'source():&#160;barraydense-meat.hpp']]],
-  ['states_1302',['states',['../class_node_data.html#a33caaadde6afe892624501bdb0edaea6',1,'NodeData']]],
-  ['stats_5fbank_1303',['stats_bank',['../support-meat_8hpp.html#a73c7169e5f8a4a5554380af6d4ca2107',1,'support-meat.hpp']]],
-  ['subtree_5fprob_1304',['subtree_prob',['../class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d',1,'Node']]]
+  ['r_1345',['r',['../model-meat_8hpp.html#a880a49112fedae68e714341a9a082fb6',1,'model-meat.hpp']]],
+  ['reduced_5fsequence_1346',['reduced_sequence',['../class_geese.html#aabcf5e284f7277109567a84ba615f97e',1,'Geese']]],
+  ['rengine_1347',['rengine',['../class_model.html#aaccc1686d1d58f4fff36fb45b4e18422',1,'Model::rengine()'],['../class_flock.html#a0e3ce6d007f667eea9f036cddb6789b6',1,'Flock::rengine()']]],
+  ['report_1348',['report',['../barray-meat_8hpp.html#a1c97d677615ab6c6430f1a5908d3d248',1,'report():&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#a1c97d677615ab6c6430f1a5908d3d248',1,'report():&#160;barraydense-meat.hpp']]],
+  ['res_1349',['res',['../counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48',1,'counters-meat.hpp']]],
+  ['return_1350',['return',['../counters-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;counters-meat.hpp'],['../support-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;support-meat.hpp'],['../statscounter-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;statscounter-meat.hpp'],['../model-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;model-meat.hpp'],['../barraydense-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;barraydense-meat.hpp'],['../barray-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2',1,'return():&#160;barray-meat.hpp']]],
+  ['rhs_1351',['rhs',['../barray-meat-operators_8hpp.html#abc38d91637d0da432c721d98227dd8b0',1,'barray-meat-operators.hpp']]],
+  ['row0_1352',['row0',['../barray-meat_8hpp.html#a13e95ea7fbf70d4bcac33c4b195e3e30',1,'barray-meat.hpp']]],
+  ['rule_5ffun_5f_1353',['rule_fun_',['../model-meat_8hpp.html#ad3d009522a41d83535b5e753b0d8fbf8',1,'model-meat.hpp']]],
+  ['rules_1354',['rules',['../class_power_set.html#afa542ecc31858c8644d1e76078eb1713',1,'PowerSet::rules()'],['../class_model.html#a164a37ad8e2016e84b1873e64ba923f0',1,'Model::rules()'],['../model-meat_8hpp.html#a9182438a7dfb477d783232a9256027bb',1,'rules():&#160;model-meat.hpp'],['../support-meat_8hpp.html#a595e07a99f60f22a6a29e4fca291ea28',1,'rules():&#160;support-meat.hpp']]],
+  ['rules_5f_1355',['rules_',['../model-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588',1,'rules_():&#160;model-meat.hpp'],['../support-meat_8hpp.html#af9e399b166589474207166108d1b93d2',1,'rules_():&#160;support-meat.hpp']]],
+  ['rules_5fdeleted_1356',['rules_deleted',['../class_power_set.html#a08b6baf1e244e023d997ddaecbc2116f',1,'PowerSet']]],
+  ['rules_5fdyn_1357',['rules_dyn',['../class_model.html#a11d9090903bfe8b35db92fe2579c2de3',1,'Model::rules_dyn()'],['../model-meat_8hpp.html#aabe2227b11b09aa9567f8e6b282c3f57',1,'rules_dyn():&#160;model-meat.hpp'],['../support-meat_8hpp.html#a2997e52d3d749b34d5a97042e4f520e5',1,'rules_dyn():&#160;support-meat.hpp']]]
 ];
