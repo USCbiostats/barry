@@ -299,7 +299,7 @@ public:
     /**
      * @brief Prints information about the model
      */
-    void print() const;
+    virtual void print() const;
     
     Array_Type sample(const Array_Type & Array_, const std::vector<double> & params = {});
     Array_Type sample(const uint & i, const std::vector<double> & params);

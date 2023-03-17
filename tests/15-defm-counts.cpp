@@ -117,6 +117,8 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
 
     #undef GET_Y
 
+    model.print();
+
     #endif
 
 
