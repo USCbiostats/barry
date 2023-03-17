@@ -33,7 +33,7 @@ template<
     >
 class Model {
 
-private:
+protected:
     /**
      * @name Random number generation
      * @brief Random number generation

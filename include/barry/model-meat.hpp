@@ -87,8 +87,13 @@ inline double likelihood_(
 #define MODEL_TEMPLATE(a,b) \
     template MODEL_TEMPLATE_ARGS() inline a MODEL_TYPE()::b
 
-
-MODEL_TEMPLATE(,Model)() :
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::Model() :
     stats_support(0u),
     stats_support_n_arrays(0u),
     stats_target(0u), arrays2support(0u),
@@ -116,7 +121,15 @@ MODEL_TEMPLATE(,Model)() :
     
 }
 
-MODEL_TEMPLATE(,Model)(uint size_) :
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::Model(
+    uint size_
+    ) :
     stats_support(0u),
     stats_support_n_arrays(0u),
     stats_target(0u), arrays2support(0u), keys2support(0u), 
@@ -146,8 +159,15 @@ MODEL_TEMPLATE(,Model)(uint size_) :
     
 }
 
-MODEL_TEMPLATE(,Model)(
-    const MODEL_TYPE() & Model_) : 
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::Model(
+    const Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type> & Model_
+    ) : 
     stats_support(Model_.stats_support),
     stats_support_n_arrays(Model_.stats_support_n_arrays),
     stats_target(Model_.stats_target),
@@ -182,8 +202,15 @@ MODEL_TEMPLATE(,Model)(
     
 }
 
-MODEL_TEMPLATE(MODEL_TYPE() &, operator)=(
-    const MODEL_TYPE() & Model_
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type> & 
+    Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::operator=(
+    const Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type> & Model_
 ) {
     
     // Clearing
@@ -1005,7 +1032,13 @@ MODEL_TEMPLATE(std::vector< std::string >, colnames)() const
 
 }
     
-MODEL_TEMPLATE(Array_Type, sample)(
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
     const unsigned int & i,
     const std::vector<double> & params
 ) {
