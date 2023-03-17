@@ -1,11 +1,11 @@
 #ifndef DEFM_BONES_HPP
 #define DEFM_BONES_HPP 1
 
-class DEFM {
+class DEFM : public defmcounters::DEFMModel {
 private:
 
-    std::shared_ptr< std::mt19937 > rengine = nullptr;
-    std::shared_ptr< defmcounters::DEFMModel > model = nullptr;
+    // std::shared_ptr< std::mt19937 > rengine = nullptr;
+    // std::shared_ptr< defmcounters::DEFMModel > model = nullptr;
 
     /**
      * @brief Model data
@@ -44,7 +44,7 @@ public:
     ~DEFM() {};
 
     defmcounters::DEFMModel & get_model() {
-        return *model;
+        return *this;
     };
 
     void init();
