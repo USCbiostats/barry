@@ -364,12 +364,24 @@ inline void DEFM::set_names(
 
 }
 
-inline const std::vector<std::string > & DEFM::get_Y_names() {
+inline const std::vector<std::string > & DEFM::get_Y_names() const {
     return Y_names;
 }
 
-inline const std::vector<std::string > & DEFM::get_X_names() {
+inline const std::vector<std::string > & DEFM::get_X_names() const {
     return X_names;
+}
+
+inline void DEFM::print() const
+{
+    defmcounters::DEFMModel::print();
+    printf_barry("Model Y variables:\n");
+    for (const auto & y : get_Y_names())
+    {
+
+        printf_barry(" - %s\n", y.c_str());
+
+    }
 }
 
 #undef DEFM_RANGES

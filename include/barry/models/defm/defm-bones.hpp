@@ -77,8 +77,10 @@ public:
         std::vector< std::string > X_names_
     );
 
-    const std::vector< std::string > & get_Y_names();
-    const std::vector< std::string > & get_X_names();
+    const std::vector< std::string > & get_Y_names() const;
+    const std::vector< std::string > & get_X_names() const;
+
+    void print() const;
 
 };
 
