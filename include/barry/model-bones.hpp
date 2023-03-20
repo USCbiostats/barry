@@ -156,7 +156,7 @@ public:
         const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_
     );
 
-    ~Model() {
+    virtual ~Model() {
         if (delete_counters)
             delete counters;
 

@@ -59,7 +59,9 @@ public:
         size_t m_order
     );
 
-    ~DEFM() {};
+    // ~DEFM() {
+    //     defmcounters::DEFMModel::~Model();
+    // };
 
     defmcounters::DEFMModel & get_model() {
         return *this;

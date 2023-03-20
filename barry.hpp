@@ -7065,7 +7065,7 @@ public:
         const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_
     );
 
-    ~Model() {
+    virtual ~Model() {
         if (delete_counters)
             delete counters;
 
@@ -13840,7 +13840,7 @@ public:
         const std::vector< bool > logical_,
         bool is_motif_ = true
     ): indices(indices_), numbers(numbers_), 
-        logical(logical_), is_motif(is_motif) {};
+        logical(logical_), is_motif(is_motif_) {};
 
     size_t idx(size_t i) const {return indices[i];};
     double num(size_t i) const {return numbers[i];};
