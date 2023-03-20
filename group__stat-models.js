@@ -4,7 +4,7 @@ var group__stat_models =
       [ "Model", "class_model.html#ad1a83640422f8f2a9ea2d3f593bf3799", null ],
       [ "Model", "class_model.html#a1ee6f4435dbb9c96b81720838eb31189", null ],
       [ "Model", "class_model.html#a43b71b392309bd71ed7c49f783b8815b", null ],
-      [ "~Model", "class_model.html#aa9122e81cbe406bc84e98a95983c0a5d", null ],
+      [ "~Model", "class_model.html#a58dc9105b487e0e2d2cb3faa16397ae2", null ],
       [ "add_array", "class_model.html#adfae0a0516667eebe5afe3c3f3c9a146", null ],
       [ "add_counter", "class_model.html#a2326ca9975e29d3cf1902b6e60c613b9", null ],
       [ "add_counter", "class_model.html#a60bc7a1e36ed90ff0af62a3999b9d06f", null ],
