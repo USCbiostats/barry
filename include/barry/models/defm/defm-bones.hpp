@@ -82,6 +82,8 @@ public:
 
     void print() const;
 
+    std::vector< bool > is_motif();
+
 };
 
 #endif

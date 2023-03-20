@@ -13827,18 +13827,20 @@ public:
   * @brief Data class used to store arbitrary uint or double vectors */
 class DEFMCounterData {
 public:
-    
+
     std::vector< size_t > indices;
     std::vector< double > numbers;
     std::vector< bool >   logical;
+    bool is_motif; ///< If false, then is a logit intercept.
     
-    DEFMCounterData() : indices(0u), numbers(0u) {};
+    DEFMCounterData() : indices(0u), numbers(0u), logical(0u), is_motif(true) {};
     DEFMCounterData(
         const std::vector< size_t > indices_,
         const std::vector< double > numbers_,
-        const std::vector< bool > logical_
+        const std::vector< bool > logical_,
+        bool is_motif_ = true
     ): indices(indices_), numbers(numbers_), 
-        logical(logical_) {};
+        logical(logical_), is_motif(is_motif) {};
 
     size_t idx(size_t i) const {return indices[i];};
     double num(size_t i) const {return numbers[i];};
@@ -14040,7 +14042,7 @@ inline void counter_ones(
 
         counters->add_counter(
             counter_tmp, nullptr, hasher,
-            DEFMCounterData({static_cast<size_t>(covar_index)}, {}, {}), 
+            DEFMCounterData({static_cast<size_t>(covar_index)}, {}, {}, true), 
             "Num. of ones x " + vname, 
             "Overall number of ones"
         );
@@ -14059,9 +14061,12 @@ inline void counter_ones(
             return 1.0;
         };
 
+        DEFMCounterData dat;
+        dat.is_motif = true;
+
         counters->add_counter(
             count_ones, nullptr, nullptr,
-            DEFMCounterData(),
+            dat, // DEFMCounterData(),
             "Num. of ones", 
             "Overall number of ones"
         );
@@ -14117,7 +14122,7 @@ inline void counter_logit_intercept(
 
             counters->add_counter(
                 tmp_counter, nullptr, nullptr,
-                DEFMCounterData({i}, {}, {}), 
+                DEFMCounterData({i}, {}, {}, false), 
                 "Logit intercept " + vname, 
                 "Equal to one if the outcome " + vname + " is one. Equivalent to the logistic regression intercept."
             );
@@ -14160,7 +14165,7 @@ inline void counter_logit_intercept(
             if (hasher_added)
                 counters->add_counter(
                     tmp_counter, nullptr, nullptr,
-                    DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
+                    DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}, false), 
                     "Logit intercept " + yname + " x " + vname, 
                     "Equal to one if the outcome " + yname + " is one. Equivalent to the logistic regression intercept."
                 );
@@ -14170,7 +14175,7 @@ inline void counter_logit_intercept(
 
                 counters->add_counter(
                     tmp_counter, nullptr, hasher,
-                    DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}), 
+                    DEFMCounterData({i, static_cast<size_t>(covar_index)}, {}, {}, false), 
                     "Logit intercept " + yname + " x " + vname, 
                     "Equal to one if the outcome " + yname + " is one. Equivalent to the logistic regression intercept."
                 );
@@ -14472,7 +14477,7 @@ inline void counter_transition(
 
         counters->add_counter(
             count_ones, count_init, hasher,
-            DEFMCounterData(coords, {}, signs), 
+            DEFMCounterData(coords, {}, signs, coords.size() > 1u ? true : false), 
             name + " x " + vname, 
             "Motif weighted by single attribute"
         );
@@ -14481,7 +14486,7 @@ inline void counter_transition(
 
         counters->add_counter(
             count_ones, count_init, nullptr,
-            DEFMCounterData(coords, {}, signs), 
+            DEFMCounterData(coords, {}, signs, coords.size() > 1u ? true : false), 
             name, 
             "Motif"
         );
