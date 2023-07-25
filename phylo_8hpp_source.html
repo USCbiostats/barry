@@ -448,7 +448,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="comment">// At the beginning, all offspring are zero, so we need to</span></div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <span class="comment">// find at least one state = true.</span></div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keywordflow">if</span> (Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]] | Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u]])</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keywordflow">if</span> (Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]] || Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u]])</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <span class="keywordtype">double</span> n = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
@@ -470,7 +470,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a5ffdab09665dc9b260b5263cdca94295">i</a> != nfunA) &amp; (<a class="code" href="counters-meat_8hpp.html#a5ffdab09665dc9b260b5263cdca94295">i</a> != nfunB))</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <span class="keywordflow">if</span> (Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]] | Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u]])</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <span class="keywordflow">if</span> (Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]] || Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u]])</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = (<a class="code" href="counters-meat_8hpp.html#a5ffdab09665dc9b260b5263cdca94295">i</a> == nfunA) ? nfunB : nfunA;</div>
@@ -838,7 +838,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;        </div>
 <div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;        <span class="comment">// Are A and B existant? if not, no change</span></div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;        <span class="keywordflow">if</span> (!Array.D_ptr()-&gt;states[funA] | !Array.D_ptr()-&gt;states[funB])</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;        <span class="keywordflow">if</span> (!Array.D_ptr()-&gt;states[funA] || !Array.D_ptr()-&gt;states[funB])</div>
 <div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;        </div>
 <div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;        <span class="comment">// Figuring out which is the first (reference) function</span></div>
@@ -1281,7 +1281,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;        </div>
 <div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;        <span class="comment">// Checking the parent doesn&#39;t have funA or has funB</span></div>
-<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;        <span class="keywordflow">if</span> (!Array.D_ptr()-&gt;states[funA] | Array.D_ptr()-&gt;states[funB]) </div>
+<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;        <span class="keywordflow">if</span> (!Array.D_ptr()-&gt;states[funA] || Array.D_ptr()-&gt;states[funB]) </div>
 <div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160; </div>
 <div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
@@ -1403,7 +1403,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160; </div>
 <div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;        <span class="comment">// If the parent does not have the initial state, then it makes no sense</span></div>
-<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;        <span class="keywordflow">if</span> ((!Array.D_ptr()-&gt;states[funA]) | Array.D_ptr()-&gt;states[funB])</div>
+<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;        <span class="keywordflow">if</span> ((!Array.D_ptr()-&gt;states[funA]) || Array.D_ptr()-&gt;states[funB])</div>
 <div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160; </div>
 <div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;        <span class="comment">// Checking whether function A or function B changed</span></div>
@@ -2246,8 +2246,8 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="ttc" id="agroup__counters-phylo_html_gaea3d5f58d5042aa4b43d01662a7f0fca"><div class="ttname"><a href="group__counters-phylo.html#gaea3d5f58d5042aa4b43d01662a7f0fca">counter_neofun</a></div><div class="ttdeci">void counter_neofun(PhyloCounters *counters, uint nfunA, uint nfunB, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Total number of neofunctionalization events.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l01115">phylo.hpp:1115</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_gafe46e12da1a44fbe590b5ffc882760c8"><div class="ttname"><a href="group__counters-phylo.html#gafe46e12da1a44fbe590b5ffc882760c8">counter_pairwise_preserving</a></div><div class="ttdeci">void counter_pairwise_preserving(PhyloCounters *counters, uint nfunA, uint nfunB, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Used when all the functions are in 0 (like the root node prob.)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l01906">phylo.hpp:1906</a></div></div>
 <div class="ttc" id="agroup__rules-phylo_html_gad74275257f39acecc00b53448ad803ba"><div class="ttname"><a href="group__rules-phylo.html#gad74275257f39acecc00b53448ad803ba">rule_dyn_limit_changes</a></div><div class="ttdeci">void rule_dyn_limit_changes(PhyloSupport *support, uint pos, uint lb, uint ub, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Overall functional gains.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02177">phylo.hpp:2177</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_a9389e4770ba454a2e14f870491495cb2"><div class="ttname"><a href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a></div><div class="ttdeci">size_t k</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01213">model-meat.hpp:1213</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_aa79c6fa1f7864a8258e8f2c0a68b6d35"><div class="ttname"><a href="model-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div><div class="ttdeci">Data_Counter_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00299">model-meat.hpp:300</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_a9389e4770ba454a2e14f870491495cb2"><div class="ttname"><a href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a></div><div class="ttdeci">size_t k</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01260">model-meat.hpp:1260</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_aa79c6fa1f7864a8258e8f2c0a68b6d35"><div class="ttname"><a href="model-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div><div class="ttdeci">Data_Counter_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00335">model-meat.hpp:336</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a0d16a69c8b447a32a3aa4d4c041773cc"><div class="ttname"><a href="phylo_8hpp.html#a0d16a69c8b447a32a3aa4d4c041773cc">PhyloPowerSet</a></div><div class="ttdeci">PowerSet&lt; PhyloArray, PhyloRuleData &gt; PhyloPowerSet</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00119">phylo.hpp:119</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a24a353ed0e1af57ac94d0002ecadf4b8"><div class="ttname"><a href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a></div><div class="ttdeci">#define DEFAULT_DUPLICATION</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00005">phylo.hpp:5</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a27453fc0a40c5d37cb3da40837cd7604"><div class="ttname"><a href="phylo_8hpp.html#a27453fc0a40c5d37cb3da40837cd7604">DUPL_DUPL</a></div><div class="ttdeci">#define DUPL_DUPL</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00007">phylo.hpp:7</a></div></div>
@@ -2278,7 +2278,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
-    <li class="footer">Generated on Mon Mar 20 2023 22:39:54 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jul 25 2023 23:09:36 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
