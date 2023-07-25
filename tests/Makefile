@@ -5,7 +5,7 @@ BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
        cell-*.gcov powerset-*.gcov support-*.gcov \
        statscounter*.gcov statsdb*.gcov
 
-CPPFLAGS= -std=c++17 -fopenmp -DBARRY_USE_OPENMP -Wall -pedantic -ftree-vectorize -march=native -ffast-math # only works with g++10
+CPPFLAGS= -std=c++17 -fopenmp -DBARRY_USE_OPENMP -Wall -pedantic -ftree-vectorize -march=native -ffast-math -Wbool-operation # only works with g++10
 
 CPPFLAGSV= -std=c++17 -Wall -pedantic
 

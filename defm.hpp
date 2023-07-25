@@ -156,9 +156,9 @@ inline std::vector< double > keygen_defm(
 }
 
 #define DEFM_RANGES(a) \
-    size_t __CONCAT(start_,a) = start_end[a * 2u];\
-    size_t __CONCAT(end_,a)   = start_end[a * 2u + 1u];\
-    size_t __CONCAT(nobs_,a)  = __CONCAT(end_,i) - __CONCAT(start_,i) + 1u;
+    size_t start_i = start_end[a * 2u];\
+    size_t end_i   = start_end[a * 2u + 1u];\
+    size_t nobs_i  = end_i - start_i + 1u;
 
 #define DEFM_LOOP_ARRAYS(a) \
     for (size_t a = 0u; a < (nobs_i - M_order); ++a)

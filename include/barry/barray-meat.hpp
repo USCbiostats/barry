@@ -94,7 +94,7 @@ BARRAY_TEMPLATE(,BArray) (
     for (uint i = 0u; i < source.size(); ++i) {
       
         // Checking range
-        if ((source[i] >= N_) | (target[i] >= M_))
+        if ((source[i] >= N_) || (target[i] >= M_))
             throw std::range_error("Either source or target point to an element outside of the range by (N,M).");
         
         // Checking if it exists
@@ -1202,7 +1202,7 @@ BARRAY_TEMPLATE(void, print) (
   
     std::va_list args;
     va_start(args, fmt);
-    vprintf(fmt, args);
+    printf_barry(fmt, args);
     va_end(args);
 
     for (uint i = 0u; i < N; ++i)

@@ -33,10 +33,24 @@ inline double update_normalizing_constant(
         res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
 
     }
-    
-    // This will only evaluate if the option BARRY_CHECK_FINITE
-    // is defined
-    BARRY_ISFINITE(res)
+
+    #ifdef BARRY_DEBUG
+    if (std::isnan(res))
+        throw std::overflow_error(
+            std::string("NaN in update_normalizing_constant. ") +
+            std::string("res = ") + std::to_string(res) +
+            std::string(", k = ") + std::to_string(k) +
+            std::string(", n = ") + std::to_string(n)
+            );
+    if (std::isinf(res))
+        throw std::overflow_error(
+            std::string("Inf in update_normalizing_constant. ") +
+            std::string("res = ") + std::to_string(res) +
+            std::string(", k = ") + std::to_string(k) +
+            std::string(", n = ") + std::to_string(n)
+            );
+
+    #endif
 
     return res;
     
@@ -71,8 +85,30 @@ inline double likelihood_(
 
     double ans = numerator/normalizing_constant;
 
+    #ifdef BARRY_DEBUG
+    if (std::isnan(ans))
+        throw std::overflow_error(
+            std::string("NaN in likelihood_. ") +
+            std::string("numerator = ") + std::to_string(numerator) +
+            std::string(", normalizing_constant = ") +
+            std::to_string(normalizing_constant)
+            );
+    if (std::isinf(ans))
+        throw std::overflow_error(
+            std::string("Inf in likelihood_. ") +
+            std::string("numerator = ") + std::to_string(numerator) +
+            std::string(", normalizing_constant = ") +
+            std::to_string(normalizing_constant)
+            );
+
     if (ans > 1.0)
-        printf_barry("ooo\n");
+        throw std::overflow_error(
+            std::string("Likelihood > 1.0") +
+            std::string("numerator = ") + std::to_string(numerator) +
+            std::string(", normalizing_constant = ") +
+            std::to_string(normalizing_constant)
+            );
+    #endif
 
     return ans;
     
@@ -792,8 +828,6 @@ MODEL_TEMPLATE(double, likelihood_total)(
         
         #ifdef __OPENM 
         #pragma omp simd reduction(-:res)
-        #else
-        #pragma GCC ivdep
         #endif
         for (unsigned int i = 0u; i < params_last_size; ++i)
             res -= (std::log(normalizing_constants[i]) * this->stats_support_n_arrays[i]);
@@ -804,8 +838,6 @@ MODEL_TEMPLATE(double, likelihood_total)(
         size_t stats_target_size = stats_target.size();
         #ifdef __OPENM 
         #pragma omp simd reduction(*:res)
-        #else
-        #pragma GCC ivdep
         #endif
         for (unsigned int i = 0; i < stats_target_size; ++i)
             res *= std::exp(
@@ -1061,7 +1093,7 @@ inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_D
     size_t k = params.size();
 
     // Sampling an array
-    unsigned int j = 0u;
+    size_t j = 0u;
     std::vector< double > & probs = pset_probs[a];
     if ((probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
     // If precomputed, then no need to recalc support
@@ -1070,7 +1102,8 @@ inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_D
         while (cumprob < r)
             cumprob += probs[j++];
 
-        j--;
+        if (j > 0u)
+            j--;
 
     } else { 
        
@@ -1093,12 +1126,26 @@ inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_D
                 i_matches = array;
         }
 
+        #ifdef BARRY_DEBUG
+        if (i_matches < 0)
+            throw std::logic_error(
+                std::string(
+                    "Something went wrong when sampling from a different set of.") +
+                std::string("parameters. Please report this bug: ") +
+                std::string(" cumprob: ") + std::to_string(cumprob) +
+                std::string(" r: ") + std::to_string(r)
+                );
+        #endif
+
         j = i_matches;
         
     }
     
-
+    #ifdef BARRY_DEBUG
+    return this->pset_arrays.at(a).at(j);   
+    #else
     return this->pset_arrays[a][j];   
+    #endif
 
 }
 
@@ -1213,7 +1260,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
     size_t k = params.size();
 
     // Sampling an array
-    unsigned int j = 0u;
+    size_t j = 0u;
     std::vector< double > & probs = pset_probs[a];
     if ((probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
     // If precomputed, then no need to recalc support
@@ -1222,7 +1269,8 @@ MODEL_TEMPLATE(Array_Type, sample)(
         while (cumprob < r)
             cumprob += probs[j++];
 
-        j--;
+        if (j > 0u)
+            j--;
 
     } else { 
        
@@ -1245,12 +1293,27 @@ MODEL_TEMPLATE(Array_Type, sample)(
                 i_matches = array;
         }
 
+        #ifdef BARRY_DEBUG
+        if (i_matches < 0)
+            throw std::logic_error(
+                std::string(
+                    "Something went wrong when sampling from a different set of.") +
+                std::string("parameters. Please report this bug: ") +
+                std::string(" cumprob: ") + std::to_string(cumprob) +
+                std::string(" r: ") + std::to_string(r)
+                );
+        #endif
+
         j = i_matches;
         
     }
     
 
+    #ifdef BARRY_DEBUG
+    return this->pset_arrays.at(a).at(j);   
+    #else
     return this->pset_arrays[a][j];   
+    #endif
 
 }
 

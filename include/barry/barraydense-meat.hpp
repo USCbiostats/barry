@@ -960,7 +960,7 @@ BDENSE_TEMPLATE(void, print) (
   
     std::va_list args;
     va_start(args, fmt);
-    vprintf(fmt, args);
+    printf_barry(fmt, args);
     va_end(args);
 
     for (uint i = 0u; i < N; ++i)

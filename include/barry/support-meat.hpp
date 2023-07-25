@@ -240,8 +240,6 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
     {
         #ifdef __OPENMP
         #pragma omp simd
-        #else
-        #pragma GCC ivdep
         #endif
         for (uint n = 0u; n < n_counters; ++n) 
             current_stats[n] -= change_stats[pos * n_counters + n];
@@ -357,8 +355,6 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     {
         #ifdef __OPENMP
         #pragma omp simd
-        #else
-        #pragma GCC ivdep
         #endif
         for (uint n = 0u; n < n_counters; ++n) 
             current_stats[n] -= change_stats[pos * n_counters + n];

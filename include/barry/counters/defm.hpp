@@ -511,7 +511,7 @@ inline void counter_transition(
                 baseline_value = sgn[e];
             }
 
-            if ((sgn[e] & (array[dat[e]] == 1)) | (!sgn[e] & (array[dat[e]] == 0)))
+            if ((sgn[e] && (array[dat[e]] == 1)) || (!sgn[e] && (array[dat[e]] == 0)))
                 n_now++;
             
         }
@@ -886,7 +886,7 @@ inline void rules_dont_become_zero(
 
         // This is now one, is the next different zero? If so,
         // we can include it (1->1)
-        return (Array(i - 1, j) != 1) | (Array(i, j) != 1);
+        return (Array(i - 1, j) != 1) || (Array(i, j) != 1);
 
     };
     

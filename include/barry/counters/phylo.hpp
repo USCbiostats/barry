@@ -409,7 +409,7 @@ inline void counter_preserve_pseudogene(
 
         // At the beginning, all offspring are zero, so we need to
         // find at least one state = true.
-        if (Array.D_ptr()->states[data[1u]] | Array.D_ptr()->states[data[2u]])
+        if (Array.D_ptr()->states[data[1u]] || Array.D_ptr()->states[data[2u]])
             return 0.0;
 
         double n = static_cast<double>(Array.ncol());
@@ -431,7 +431,7 @@ inline void counter_preserve_pseudogene(
         if ((i != nfunA) & (i != nfunB))
             return 0.0;
 
-        if (Array.D_ptr()->states[data[1u]] | Array.D_ptr()->states[data[2u]])
+        if (Array.D_ptr()->states[data[1u]] || Array.D_ptr()->states[data[2u]])
             return 0.0;
 
         unsigned int k = (i == nfunA) ? nfunB : nfunA;
@@ -819,7 +819,7 @@ inline void counter_subfun(
             return 0.0;
         
         // Are A and B existant? if not, no change
-        if (!Array.D_ptr()->states[funA] | !Array.D_ptr()->states[funB])
+        if (!Array.D_ptr()->states[funA] || !Array.D_ptr()->states[funB])
             return 0.0;
         
         // Figuring out which is the first (reference) function
@@ -1280,7 +1280,7 @@ inline void counter_neofun_a2b(
             return 0.0;
         
         // Checking the parent doesn't have funA or has funB
-        if (!Array.D_ptr()->states[funA] | Array.D_ptr()->states[funB]) 
+        if (!Array.D_ptr()->states[funA] || Array.D_ptr()->states[funB]) 
             return 0.0;
 
         double res = 0.0;
@@ -1412,7 +1412,7 @@ inline void counter_co_opt(
             return 0.0;
 
         // If the parent does not have the initial state, then it makes no sense
-        if ((!Array.D_ptr()->states[funA]) | Array.D_ptr()->states[funB])
+        if ((!Array.D_ptr()->states[funA]) || Array.D_ptr()->states[funB])
             return 0.0;
 
         // Checking whether function A or function B changed
