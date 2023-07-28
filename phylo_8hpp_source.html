@@ -2156,28 +2156,34 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="line"><a name="l02211"></a><span class="lineno"> 2211</span>&#160;        <a class="code" href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a>(</div>
 <div class="line"><a name="l02212"></a><span class="lineno"> 2212</span>&#160;            support-&gt;<a class="code" href="class_support.html#a8af9d807ce23c9f7259138b5aebdda31">get_current_stats</a>(),</div>
 <div class="line"><a name="l02213"></a><span class="lineno"> 2213</span>&#160;            pos, lb, ub, duplication</div>
-<div class="line"><a name="l02214"></a><span class="lineno"> 2214</span>&#160;            )</div>
-<div class="line"><a name="l02215"></a><span class="lineno"> 2215</span>&#160;    );</div>
-<div class="line"><a name="l02216"></a><span class="lineno"> 2216</span>&#160;    </div>
-<div class="line"><a name="l02217"></a><span class="lineno"> 2217</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l02218"></a><span class="lineno"> 2218</span>&#160;  </div>
-<div class="line"><a name="l02219"></a><span class="lineno"> 2219</span>&#160;}</div>
-<div class="line"><a name="l02220"></a><span class="lineno"> 2220</span>&#160; </div>
-<div class="line"><a name="l02222"></a><span class="lineno"> 2222</span>&#160; </div>
-<div class="line"><a name="l02223"></a><span class="lineno"> 2223</span>&#160;<span class="preprocessor">#undef MAKE_DUPL_VARS</span></div>
-<div class="line"><a name="l02224"></a><span class="lineno"> 2224</span>&#160;<span class="preprocessor">#undef IS_EITHER</span></div>
-<div class="line"><a name="l02225"></a><span class="lineno"> 2225</span>&#160;<span class="preprocessor">#undef IS_DUPLICATION</span></div>
-<div class="line"><a name="l02226"></a><span class="lineno"> 2226</span>&#160;<span class="preprocessor">#undef IS_SPECIATION</span></div>
-<div class="line"><a name="l02227"></a><span class="lineno"> 2227</span>&#160;<span class="preprocessor">#undef IF_MATCHES</span></div>
-<div class="line"><a name="l02228"></a><span class="lineno"> 2228</span>&#160;<span class="preprocessor">#undef IF_NOTMATCHES</span></div>
-<div class="line"><a name="l02229"></a><span class="lineno"> 2229</span>&#160; </div>
-<div class="line"><a name="l02230"></a><span class="lineno"> 2230</span>&#160;<span class="preprocessor">#undef DEFAULT_DUPLICATION</span></div>
-<div class="line"><a name="l02231"></a><span class="lineno"> 2231</span>&#160;<span class="preprocessor">#undef DUPL_SPEC</span></div>
-<div class="line"><a name="l02232"></a><span class="lineno"> 2232</span>&#160;<span class="preprocessor">#undef DUPL_DUPL</span></div>
-<div class="line"><a name="l02233"></a><span class="lineno"> 2233</span>&#160;<span class="preprocessor">#undef DUPL_EITH</span></div>
-<div class="line"><a name="l02234"></a><span class="lineno"> 2234</span>&#160; </div>
+<div class="line"><a name="l02214"></a><span class="lineno"> 2214</span>&#160;            ),</div>
+<div class="line"><a name="l02215"></a><span class="lineno"> 2215</span>&#160;        std::string(<span class="stringliteral">&quot;Limiting changes in term &quot;</span>) + </div>
+<div class="line"><a name="l02216"></a><span class="lineno"> 2216</span>&#160;            std::to_string(pos) + <span class="stringliteral">&quot; to [&quot;</span> + std::to_string(lb) + <span class="stringliteral">&quot;, &quot;</span> +</div>
+<div class="line"><a name="l02217"></a><span class="lineno"> 2217</span>&#160;            std::to_string(ub) + <span class="stringliteral">&quot;]&quot;</span>,        </div>
+<div class="line"><a name="l02218"></a><span class="lineno"> 2218</span>&#160;        std::string(<span class="stringliteral">&quot;When the support is ennumerated, the number of changes in term &quot;</span>) + </div>
+<div class="line"><a name="l02219"></a><span class="lineno"> 2219</span>&#160;            std::to_string(pos) + <span class="stringliteral">&quot; is limited to [&quot;</span> + std::to_string(lb) + <span class="stringliteral">&quot;, &quot;</span> +</div>
+<div class="line"><a name="l02220"></a><span class="lineno"> 2220</span>&#160;            std::to_string(ub) + <span class="stringliteral">&quot;]&quot;</span></div>
+<div class="line"><a name="l02221"></a><span class="lineno"> 2221</span>&#160;    );</div>
+<div class="line"><a name="l02222"></a><span class="lineno"> 2222</span>&#160;    </div>
+<div class="line"><a name="l02223"></a><span class="lineno"> 2223</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l02224"></a><span class="lineno"> 2224</span>&#160;  </div>
+<div class="line"><a name="l02225"></a><span class="lineno"> 2225</span>&#160;}</div>
+<div class="line"><a name="l02226"></a><span class="lineno"> 2226</span>&#160; </div>
+<div class="line"><a name="l02228"></a><span class="lineno"> 2228</span>&#160; </div>
+<div class="line"><a name="l02229"></a><span class="lineno"> 2229</span>&#160;<span class="preprocessor">#undef MAKE_DUPL_VARS</span></div>
+<div class="line"><a name="l02230"></a><span class="lineno"> 2230</span>&#160;<span class="preprocessor">#undef IS_EITHER</span></div>
+<div class="line"><a name="l02231"></a><span class="lineno"> 2231</span>&#160;<span class="preprocessor">#undef IS_DUPLICATION</span></div>
+<div class="line"><a name="l02232"></a><span class="lineno"> 2232</span>&#160;<span class="preprocessor">#undef IS_SPECIATION</span></div>
+<div class="line"><a name="l02233"></a><span class="lineno"> 2233</span>&#160;<span class="preprocessor">#undef IF_MATCHES</span></div>
+<div class="line"><a name="l02234"></a><span class="lineno"> 2234</span>&#160;<span class="preprocessor">#undef IF_NOTMATCHES</span></div>
 <div class="line"><a name="l02235"></a><span class="lineno"> 2235</span>&#160; </div>
-<div class="line"><a name="l02236"></a><span class="lineno"> 2236</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l02236"></a><span class="lineno"> 2236</span>&#160;<span class="preprocessor">#undef DEFAULT_DUPLICATION</span></div>
+<div class="line"><a name="l02237"></a><span class="lineno"> 2237</span>&#160;<span class="preprocessor">#undef DUPL_SPEC</span></div>
+<div class="line"><a name="l02238"></a><span class="lineno"> 2238</span>&#160;<span class="preprocessor">#undef DUPL_DUPL</span></div>
+<div class="line"><a name="l02239"></a><span class="lineno"> 2239</span>&#160;<span class="preprocessor">#undef DUPL_EITH</span></div>
+<div class="line"><a name="l02240"></a><span class="lineno"> 2240</span>&#160; </div>
+<div class="line"><a name="l02241"></a><span class="lineno"> 2241</span>&#160; </div>
+<div class="line"><a name="l02242"></a><span class="lineno"> 2242</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_abbe66f29402555d707260862a10eb56e"><div class="ttname"><a href="barray-meat_8hpp.html#abbe66f29402555d707260862a10eb56e">j</a></div><div class="ttdeci">uint j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
 <div class="ttc" id="aclass_b_array_dense_html"><div class="ttname"><a href="class_b_array_dense.html">BArrayDense</a></div><div class="ttdoc">Baseline class for binary arrays.</div><div class="ttdef"><b>Definition:</b> <a href="barraydense-bones_8hpp_source.html#l00033">barraydense-bones.hpp:33</a></div></div>
@@ -2246,7 +2252,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div class="ttc" id="agroup__counters-phylo_html_gaea3d5f58d5042aa4b43d01662a7f0fca"><div class="ttname"><a href="group__counters-phylo.html#gaea3d5f58d5042aa4b43d01662a7f0fca">counter_neofun</a></div><div class="ttdeci">void counter_neofun(PhyloCounters *counters, uint nfunA, uint nfunB, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Total number of neofunctionalization events.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l01115">phylo.hpp:1115</a></div></div>
 <div class="ttc" id="agroup__counters-phylo_html_gafe46e12da1a44fbe590b5ffc882760c8"><div class="ttname"><a href="group__counters-phylo.html#gafe46e12da1a44fbe590b5ffc882760c8">counter_pairwise_preserving</a></div><div class="ttdeci">void counter_pairwise_preserving(PhyloCounters *counters, uint nfunA, uint nfunB, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Used when all the functions are in 0 (like the root node prob.)</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l01906">phylo.hpp:1906</a></div></div>
 <div class="ttc" id="agroup__rules-phylo_html_gad74275257f39acecc00b53448ad803ba"><div class="ttname"><a href="group__rules-phylo.html#gad74275257f39acecc00b53448ad803ba">rule_dyn_limit_changes</a></div><div class="ttdeci">void rule_dyn_limit_changes(PhyloSupport *support, uint pos, uint lb, uint ub, unsigned int duplication=DEFAULT_DUPLICATION)</div><div class="ttdoc">Overall functional gains.</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l02177">phylo.hpp:2177</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_a9389e4770ba454a2e14f870491495cb2"><div class="ttname"><a href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a></div><div class="ttdeci">size_t k</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01260">model-meat.hpp:1260</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_a9389e4770ba454a2e14f870491495cb2"><div class="ttname"><a href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a></div><div class="ttdeci">size_t k</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01275">model-meat.hpp:1275</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_aa79c6fa1f7864a8258e8f2c0a68b6d35"><div class="ttname"><a href="model-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div><div class="ttdeci">Data_Counter_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00335">model-meat.hpp:336</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a0d16a69c8b447a32a3aa4d4c041773cc"><div class="ttname"><a href="phylo_8hpp.html#a0d16a69c8b447a32a3aa4d4c041773cc">PhyloPowerSet</a></div><div class="ttdeci">PowerSet&lt; PhyloArray, PhyloRuleData &gt; PhyloPowerSet</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00119">phylo.hpp:119</a></div></div>
 <div class="ttc" id="aphylo_8hpp_html_a24a353ed0e1af57ac94d0002ecadf4b8"><div class="ttname"><a href="phylo_8hpp.html#a24a353ed0e1af57ac94d0002ecadf4b8">DEFAULT_DUPLICATION</a></div><div class="ttdeci">#define DEFAULT_DUPLICATION</div><div class="ttdef"><b>Definition:</b> <a href="phylo_8hpp_source.html#l00005">phylo.hpp:5</a></div></div>
@@ -2278,7 +2284,7 @@ $(document).ready(function(){initNavTree('phylo_8hpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_b3150c389b0f5b078392750f1ae70361.html">counters</a></li><li class="navelem"><a class="el" href="phylo_8hpp.html">phylo.hpp</a></li>
-    <li class="footer">Generated on Tue Jul 25 2023 23:09:36 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Jul 28 2023 21:46:42 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
