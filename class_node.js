@@ -12,6 +12,7 @@ var class_node =
     [ "annotations", "class_node.html#aea43a76094980788d1debd3e18ed8070", null ],
     [ "array", "class_node.html#a86d6575dd1ad7ab0cb02c6e6202b0608", null ],
     [ "arrays", "class_node.html#a269d78db10090d106c697d7c73bac9c7", null ],
+    [ "arrays_valid", "class_node.html#a14abb3b4fb402e806d25ebaabf3a85bd", null ],
     [ "duplication", "class_node.html#a3129939e8a58c055cb5ad8db8be6b10a", null ],
     [ "id", "class_node.html#adb90577d9d796c4ccbccf41ce2efc6c9", null ],
     [ "narray", "class_node.html#a9abaf3f1f5e9c5e383125946b04a15ac", null ],

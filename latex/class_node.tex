@@ -59,6 +59,8 @@ bool \mbox{\hyperlink{class_node_a3129939e8a58c055cb5ad8db8be6b10a}{duplication}
 \item 
 std\+::vector$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{phylocounters\+::\+Phylo\+Array}} $>$ \mbox{\hyperlink{class_node_a269d78db10090d106c697d7c73bac9c7}{arrays}} = \{\}
 \begin{DoxyCompactList}\small\item\em Arrays given all possible states. \end{DoxyCompactList}\item 
+std\+::vector$<$ bool $>$ \mbox{\hyperlink{class_node_a14abb3b4fb402e806d25ebaabf3a85bd}{arrays\+\_\+valid}} = \{\}
+\begin{DoxyCompactList}\small\item\em Whether the arrays are valid according to the rules of the model. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_node}{Node}} $\ast$ \mbox{\hyperlink{class_node_ad8184598cdea70e4bbdfd76f2b0f9e85}{parent}} = nullptr
 \begin{DoxyCompactList}\small\item\em Parent node. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ \mbox{\hyperlink{class_node_a4e7e9c69da2575cad9c5fb7865dd42c7}{offspring}} = \{\}
@@ -91,7 +93,7 @@ Definition at line 11 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 36 of file geese-\/node-\/bones.\+hpp.
+Definition at line 39 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_a9983fdcbdddeae8862fbd266536f5cff}\label{class_node_a9983fdcbdddeae8862fbd266536f5cff}} 
 \index{Node@{Node}!Node@{Node}}
@@ -101,7 +103,7 @@ Definition at line 36 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 56 of file geese-\/node-\/bones.\+hpp.
+Definition at line 59 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_a0c9bb1827ebcdb298c05e9b9bf04aac8}\label{class_node_a0c9bb1827ebcdb298c05e9b9bf04aac8}} 
 \index{Node@{Node}!Node@{Node}}
@@ -111,7 +113,7 @@ Definition at line 56 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 62 of file geese-\/node-\/bones.\+hpp.
+Definition at line 65 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_a7541702bb12f9dae3f6cbf83bddaed2a}\label{class_node_a7541702bb12f9dae3f6cbf83bddaed2a}} 
 \index{Node@{Node}!Node@{Node}}
@@ -121,7 +123,7 @@ Definition at line 62 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 69 of file geese-\/node-\/bones.\+hpp.
+Definition at line 72 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_ac9e4a04860b442c2034e24aa058db129}\label{class_node_ac9e4a04860b442c2034e24aa058db129}} 
 \index{Node@{Node}!Node@{Node}}
@@ -131,7 +133,7 @@ Definition at line 69 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 83 of file geese-\/node-\/bones.\+hpp.
+Definition at line 88 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_aa0840c3cb5c7159be6d992adecd2097c}\label{class_node_aa0840c3cb5c7159be6d992adecd2097c}} 
 \index{Node@{Node}!````~Node@{$\sim$Node}}
@@ -141,7 +143,7 @@ Definition at line 83 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 47 of file geese-\/node-\/bones.\+hpp.
+Definition at line 50 of file geese-\/node-\/bones.\+hpp.
 
 
 
@@ -154,7 +156,7 @@ Definition at line 47 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 97 of file geese-\/node-\/bones.\+hpp.
+Definition at line 104 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_af95aad82ea29953c3eaed6b761c4b13e}\label{class_node_af95aad82ea29953c3eaed6b761c4b13e}} 
 \index{Node@{Node}!is\_leaf@{is\_leaf}}
@@ -164,7 +166,7 @@ Definition at line 97 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 109 of file geese-\/node-\/bones.\+hpp.
+Definition at line 116 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_adebf92c47c8da4bf439173d44ad98abb}\label{class_node_adebf92c47c8da4bf439173d44ad98abb}} 
 \index{Node@{Node}!noffspring@{noffspring}}
@@ -174,7 +176,7 @@ Definition at line 109 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 103 of file geese-\/node-\/bones.\+hpp.
+Definition at line 110 of file geese-\/node-\/bones.\+hpp.
 
 
 
@@ -217,6 +219,20 @@ Arrays given all possible states.
 
 Definition at line 21 of file geese-\/node-\/bones.\+hpp.
 
+\mbox{\Hypertarget{class_node_a14abb3b4fb402e806d25ebaabf3a85bd}\label{class_node_a14abb3b4fb402e806d25ebaabf3a85bd}} 
+\index{Node@{Node}!arrays\_valid@{arrays\_valid}}
+\index{arrays\_valid@{arrays\_valid}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{arrays\_valid}{arrays\_valid}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ Node\+::arrays\+\_\+valid = \{\}}
+
+
+
+Whether the arrays are valid according to the rules of the model. 
+
+
+
+Definition at line 23 of file geese-\/node-\/bones.\+hpp.
+
 \mbox{\Hypertarget{class_node_a3129939e8a58c055cb5ad8db8be6b10a}\label{class_node_a3129939e8a58c055cb5ad8db8be6b10a}} 
 \index{Node@{Node}!duplication@{duplication}}
 \index{duplication@{duplication}!Node@{Node}}
@@ -253,7 +269,7 @@ ID of the array in the model.
 
 
 
-Definition at line 24 of file geese-\/node-\/bones.\+hpp.
+Definition at line 27 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_a4e7e9c69da2575cad9c5fb7865dd42c7}\label{class_node_a4e7e9c69da2575cad9c5fb7865dd42c7}} 
 \index{Node@{Node}!offspring@{offspring}}
@@ -267,7 +283,7 @@ Offspring nodes.
 
 
 
-Definition at line 23 of file geese-\/node-\/bones.\+hpp.
+Definition at line 26 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_ac58501488a47ad56989463668d062e8f}\label{class_node_ac58501488a47ad56989463668d062e8f}} 
 \index{Node@{Node}!ord@{ord}}
@@ -295,7 +311,7 @@ Parent node.
 
 
 
-Definition at line 22 of file geese-\/node-\/bones.\+hpp.
+Definition at line 25 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_a867d5e07f62da01392a817042c77735f}\label{class_node_a867d5e07f62da01392a817042c77735f}} 
 \index{Node@{Node}!probability@{probability}}
@@ -309,7 +325,7 @@ The probability of observing each state.
 
 
 
-Definition at line 28 of file geese-\/node-\/bones.\+hpp.
+Definition at line 31 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_afb0c9a29d8b65c33e9cec846e7d5811d}\label{class_node_afb0c9a29d8b65c33e9cec846e7d5811d}} 
 \index{Node@{Node}!subtree\_prob@{subtree\_prob}}
@@ -323,7 +339,7 @@ Induced subtree probabilities.
 
 
 
-Definition at line 27 of file geese-\/node-\/bones.\+hpp.
+Definition at line 30 of file geese-\/node-\/bones.\+hpp.
 
 \mbox{\Hypertarget{class_node_aa1bdec4e775fc578632e6a2dced9e251}\label{class_node_aa1bdec4e775fc578632e6a2dced9e251}} 
 \index{Node@{Node}!visited@{visited}}
@@ -333,7 +349,7 @@ Definition at line 27 of file geese-\/node-\/bones.\+hpp.
 
 
 
-Definition at line 25 of file geese-\/node-\/bones.\+hpp.
+Definition at line 28 of file geese-\/node-\/bones.\+hpp.
 
 
 
