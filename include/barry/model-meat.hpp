@@ -689,7 +689,15 @@ MODEL_TEMPLATE(double, likelihood)(
     // Checking if passes the rules
     if (!support_fun.eval_rules_dyn(target_, 0u, 0u))
     {
-        throw std::range_error("The array is not in the support set.");
+
+        // Concatenating the elements of target_ into aa single string
+        std::string target_str = "";
+        for (uint i = 0u; i < target_.size(); ++i)
+            target_str += std::to_string(target_[i]) + " ";
+
+        throw std::range_error(
+            "The array is not in the support set. The array's statistics are: " + target_str + std::string(".")
+            );
     }
         
 
@@ -749,7 +757,14 @@ MODEL_TEMPLATE(double, likelihood)(
 
         if (!support_fun.eval_rules_dyn(tmp_target, 0u, 0u))
         {
-            throw std::range_error("The array is not in the support set.");
+            // Concatenating the elements of target_ into aa single string
+            std::string target_str = "";
+            for (uint i = 0u; i < nterms(); ++i)
+                target_str += std::to_string((*target_ + i)) + " ";
+
+            throw std::range_error(
+                "The array is not in the support set. The array's statistics are: " + target_str + std::string(".")
+                );
             // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
         }
 

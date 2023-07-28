@@ -2211,7 +2211,13 @@ inline void rule_dyn_limit_changes(
         PhyloRuleDynData(
             support->get_current_stats(),
             pos, lb, ub, duplication
-            )
+            ),
+        std::string("Limiting changes in term ") + 
+            std::to_string(pos) + " to [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + "]",        
+        std::string("When the support is ennumerated, the number of changes in term ") + 
+            std::to_string(pos) + " is limited to [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + "]"
     );
     
     return;

@@ -142,6 +142,7 @@ inline double Geese::likelihood(
 
                 nstate++;
 
+                // Computing the likelihood of the event.
                 off_mult *= model->likelihood(
                     par0,
                     temp_stats,
