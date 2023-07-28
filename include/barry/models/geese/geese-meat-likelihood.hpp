@@ -61,6 +61,15 @@ inline double Geese::likelihood(
             // Starting the prob
             double totprob = 0.0;
 
+            // If the transition doesn't make sense, then we skip it.
+            // This is determined during the construction of the node, when
+            // the rule_dyn is called.
+            if (!node.arrays_valid[s])
+            {
+                node.subtree_prob[s] = 0.0;
+                continue;
+            }
+
             // Retrieving the sets of arrays
             const std::vector< phylocounters::PhyloArray > * psets =
                 model->get_pset(node.narray[s]);

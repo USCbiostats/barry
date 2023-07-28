@@ -19,6 +19,9 @@ public:
     bool                                     duplication;
 
     std::vector< phylocounters::PhyloArray > arrays    = {};      ///< Arrays given all possible states
+
+    std::vector< bool > arrays_valid = {}; ///< Whether the arrays are valid according to the rules of the model.
+
     Node *                                   parent    = nullptr; ///< Parent node
     std::vector< Node* >                     offspring = {};      ///< Offspring nodes
     std::vector< unsigned int >              narray    = {};      ///< ID of the array in the model
@@ -67,7 +70,9 @@ inline Node::Node(
     ) : id(id_), ord(ord_), annotations(annotations_), duplication(duplication_) {}
 
 inline Node::Node(Node && x) noexcept :
-    id(x.id), ord(x.ord), array(std::move(x.array)), annotations(std::move(x.annotations)),
+    id(x.id), ord(x.ord), array(std::move(x.array)),
+    arrays_valid(std::move(x.arrays_valid)), 
+    annotations(std::move(x.annotations)),
     duplication(x.duplication), arrays(std::move(x.arrays)),
     parent(std::move(x.parent)),
     offspring(std::move(x.offspring)),
@@ -81,7 +86,9 @@ inline Node::Node(Node && x) noexcept :
 }
 
 inline Node::Node(const Node & x) :
-    id(x.id), ord(x.ord), array(x.array), annotations(x.annotations),
+    id(x.id), ord(x.ord), array(x.array), 
+    arrays_valid(x.arrays_valid),
+    annotations(x.annotations),
     duplication(x.duplication), arrays(x.arrays),
     parent(x.parent),
     offspring(x.offspring),

@@ -433,8 +433,12 @@ MODEL_TEMPLATE(uint, add_array)(
     
     if (transform_model_fun)
     {
+        
         auto tmpcounts = counter_fun.count_all();
-        stats_target.push_back(transform_model_fun(&tmpcounts[0u], tmpcounts.size()));
+        stats_target.push_back(
+            transform_model_fun(&tmpcounts[0u], tmpcounts.size())
+            );
+
     } else
         stats_target.push_back(counter_fun.count_all());
     

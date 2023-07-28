@@ -62,11 +62,18 @@ inline void Geese::init_node(Node & n)
     {
 
         n.arrays.resize(states.size());
-
         n.narray.resize(states.size());
+        n.arrays_valid.resize(states.size(), false);
 
     }
     
+    // Here we have an issue: Some transitions may not be right
+    // under the dynamic rules. So not all states can be valid.
+    // The arrays and narrays need to be updated once the model
+    // is initialized.
+    //
+    // The later is especially true for leaf nodes, where the
+    // limitations are not known until the model is initialized.
     for (unsigned int s = 0u; s < states.size(); ++s)
     {
 
@@ -81,6 +88,9 @@ inline void Geese::init_node(Node & n)
 
         // Once the array is ready, we can add it to the model
         n.narray[s] = model->add_array(n.arrays[s]);
+
+        if (model->get_pset(n.narray[s])->size() != 0u)
+            n.arrays_valid[s] = true;
 
     }
 
@@ -634,7 +644,7 @@ inline void Geese::print() const
     // - Number of annotated leafs (0/1)
     printf_barry("GEESE\nINFO ABOUT PHYLOGENY\n");
     printf_barry("# of functions           : %i\n", this->nfuns());
-    printf_barry("# of nodes [int; leaf]   : [%i; %i]\n", this->nnodes(), this->nleafs());
+    printf_barry("# of nodes [int; leaf]   : [%i; %i]\n", this->nnodes() - this->nleafs(), this->nleafs());
     printf_barry("# of ann. [zeros; ones]  : [%i; %i]\n", this->n_zeros, this->n_ones);
     printf_barry("# of events [dupl; spec] : [%i; %i]\n", this->n_dupl_events, this->n_spec_events);
     printf_barry("Largest polytomy         : %i\n", parse_polytomies(false));
