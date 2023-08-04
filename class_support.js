@@ -1,7 +1,7 @@
 var class_support =
 [
     [ "Support", "class_support.html#a4197eb1067185aee7c79434f4d8e469c", null ],
-    [ "Support", "class_support.html#ad76463dc345fe38a78155bb9e238719f", null ],
+    [ "Support", "class_support.html#a4d0d11f25b9bd66121a629a2870c1e91", null ],
     [ "Support", "class_support.html#ae24e462f00c68fd4e603b61684fc0e6f", null ],
     [ "~Support", "class_support.html#ad4b178a6a9593273f72dccdba252b949", null ],
     [ "add_counter", "class_support.html#ab23c6d59f0b2fc3de6ca9a6a1c273fb0", null ],
@@ -9,8 +9,8 @@ var class_support =
     [ "add_rule", "class_support.html#a98650a3fd5c652922e00edc9163074e1", null ],
     [ "add_rule_dyn", "class_support.html#a71e963ffbb78d36ea75f96afc6a477e3", null ],
     [ "add_rule_dyn", "class_support.html#a1e29c5a5a603a704cf08ca7094dff9d7", null ],
-    [ "calc", "class_support.html#a432ed88600718e2646f91d9dda73875f", null ],
-    [ "eval_rules_dyn", "class_support.html#a8ff93720b9c545c2738406e10d38541d", null ],
+    [ "calc", "class_support.html#a1f72e55e9f2ffbd5bb07ccecfa6ad876", null ],
+    [ "eval_rules_dyn", "class_support.html#a0f3a2ffc8015a7967b5fc892cd2e3888", null ],
     [ "get_counters", "class_support.html#a1d9b587fdea50e25f0d5e4046c563c36", null ],
     [ "get_counts", "class_support.html#a47cc8dfe2705652a988cf77f0f27b43e", null ],
     [ "get_current_stats", "class_support.html#a8af9d807ce23c9f7259138b5aebdda31", null ],
@@ -35,8 +35,8 @@ var class_support =
     [ "delete_rules_dyn", "class_support.html#a186d2735c60ab0b0e5da69e1a5cce92b", null ],
     [ "hashes", "class_support.html#af10c9a101c751eb4d5d0b331d8ff0465", null ],
     [ "hashes_initialized", "class_support.html#a6f2e96153f42a5e4a7bebfa79adcc331", null ],
-    [ "M", "class_support.html#a0996a88d823b533f55c734b7bf526f4a", null ],
-    [ "max_num_elements", "class_support.html#ae191c14de35f91695704173d04945633", null ],
-    [ "N", "class_support.html#a33d391397682bc93e8a3f0e052d6e341", null ],
+    [ "M", "class_support.html#a2f9ae22fb7422025ccf7985ebad3a4fd", null ],
+    [ "max_num_elements", "class_support.html#adf702084b154c32f92cd90b642c09281", null ],
+    [ "N", "class_support.html#aa2ee591e2319d86b5b6057416efbd3f9", null ],
     [ "n_counters", "class_support.html#a5f6b17222ab5591a9120d16179f06062", null ]
 ];

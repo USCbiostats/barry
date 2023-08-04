@@ -50,5 +50,5 @@ var searchData=
   ['dupl_5fdupl_303',['DUPL_DUPL',['../phylo_8hpp.html#a27453fc0a40c5d37cb3da40837cd7604',1,'phylo.hpp']]],
   ['dupl_5feith_304',['DUPL_EITH',['../phylo_8hpp.html#a9462334dc2f422bd8443655470121fb6',1,'phylo.hpp']]],
   ['dupl_5fspec_305',['DUPL_SPEC',['../phylo_8hpp.html#a96286ccee51dec5b55af9de002bf8cfa',1,'phylo.hpp']]],
-  ['duplication_306',['duplication',['../class_node_data.html#a6c21d52091bb4fa6e3d431856da17caa',1,'NodeData::duplication()'],['../class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c',1,'PhyloRuleDynData::duplication()'],['../class_node.html#a3129939e8a58c055cb5ad8db8be6b10a',1,'Node::duplication()']]]
+  ['duplication_306',['duplication',['../class_node_data.html#a6c21d52091bb4fa6e3d431856da17caa',1,'NodeData::duplication()'],['../class_phylo_rule_dyn_data.html#a286657bd816f347cfe190bcb3a78ed27',1,'PhyloRuleDynData::duplication()'],['../class_node.html#a3129939e8a58c055cb5ad8db8be6b10a',1,'Node::duplication()']]]
 ];

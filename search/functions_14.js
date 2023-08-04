@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['zero_5fcol_1183',['zero_col',['../class_b_array.html#a0fa473027d00ec53ed08eaea03ac3ef7',1,'BArray::zero_col()'],['../class_b_array_dense.html#afb91f1eb1965efc5a3b2b872a4493e79',1,'BArrayDense::zero_col()']]],
-  ['zero_5frow_1184',['zero_row',['../class_b_array.html#a411085fcb7530669c72d9847340f1bac',1,'BArray::zero_row()'],['../class_b_array_dense.html#a38f3d1cdebd70259bd31a7195d08987a',1,'BArrayDense::zero_row()']]]
+  ['zero_5fcol_1182',['zero_col',['../class_b_array.html#a256b66d499284284486283de666d1022',1,'BArray::zero_col()'],['../class_b_array_dense.html#a9d5d4dfaafbf89e58346c07247646b2a',1,'BArrayDense::zero_col()']]],
+  ['zero_5frow_1183',['zero_row',['../class_b_array.html#a515c069e123eabc9b5b78ffe106d86bb',1,'BArray::zero_row()'],['../class_b_array_dense.html#a0ce76bf9727c4ae16de50551461a5df5',1,'BArrayDense::zero_row()']]]
 ];

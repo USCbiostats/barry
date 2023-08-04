@@ -1,10 +1,10 @@
 var class_phylo_rule_dyn_data =
 [
-    [ "PhyloRuleDynData", "class_phylo_rule_dyn_data.html#a31bb67f25d80909427ed18fd80c3752b", null ],
+    [ "PhyloRuleDynData", "class_phylo_rule_dyn_data.html#a8aa2df2ef1a21f17adceb2bcebd1305f", null ],
     [ "~PhyloRuleDynData", "class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90", null ],
     [ "counts", "class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98", null ],
-    [ "duplication", "class_phylo_rule_dyn_data.html#a28584dafe4c3cbc9454917b79398417c", null ],
-    [ "lb", "class_phylo_rule_dyn_data.html#a8866d1a7c84d608c2fb99d651ff83b31", null ],
-    [ "pos", "class_phylo_rule_dyn_data.html#a6c653f20ca848b0da97adca9790ad86e", null ],
-    [ "ub", "class_phylo_rule_dyn_data.html#a87bf5a3d08bfd7135b0d23b732c87346", null ]
+    [ "duplication", "class_phylo_rule_dyn_data.html#a286657bd816f347cfe190bcb3a78ed27", null ],
+    [ "lb", "class_phylo_rule_dyn_data.html#a7955a25d9290197da718c78f26c9b7ba", null ],
+    [ "pos", "class_phylo_rule_dyn_data.html#a8bcfdfaa0cd5beaedb486f91f1097644", null ],
+    [ "ub", "class_phylo_rule_dyn_data.html#ad92fa14927d33a5cffed37ee8c00a2a5", null ]
 ];

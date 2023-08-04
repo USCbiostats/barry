@@ -40,9 +40,9 @@ class \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}}
 \item 
 \#define \mbox{\hyperlink{phylo_8hpp_a6c20892d837efbb7da5227af44feca3c}{IF\+\_\+\+NOTMATCHES}}()
 \item 
-\#define \mbox{\hyperlink{phylo_8hpp_ac89fe9750bd62a338930ea730d23d0d2}{PHYLO\+\_\+\+COUNTER\+\_\+\+LAMBDA}}(\mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}})
+\#define \mbox{\hyperlink{phylo_8hpp_ac89fe9750bd62a338930ea730d23d0d2}{PHYLO\+\_\+\+COUNTER\+\_\+\+LAMBDA}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
 \begin{DoxyCompactList}\small\item\em Extension of a simple counter. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{phylo_8hpp_a4a7a35cddb61f74a0ec3cb3893cf78b1}{PHYLO\+\_\+\+RULE\+\_\+\+DYN\+\_\+\+LAMBDA}}(\mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}})
+\#define \mbox{\hyperlink{phylo_8hpp_a4a7a35cddb61f74a0ec3cb3893cf78b1}{PHYLO\+\_\+\+RULE\+\_\+\+DYN\+\_\+\+LAMBDA}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
 \item 
 \#define \mbox{\hyperlink{phylo_8hpp_a81c4979894537f31d3ecc06c5f6dd504}{PHYLO\+\_\+\+CHECK\+\_\+\+MISSING}}()
 \end{DoxyCompactItemize}
@@ -50,89 +50,89 @@ class \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}}
 \textbf{ }\par
 \begin{DoxyCompactItemize}
 \item 
-typedef std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $>$ \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}
+typedef std\+::vector$<$ std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ $>$ \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}}
 \end{DoxyCompactItemize}
 
 \begin{Indent}\textbf{ Convenient typedefs for Node objects.}\par
 \begin{DoxyCompactItemize}
 \item 
-typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{class_node_data}{Node\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}
+typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$ size\+\_\+t, \mbox{\hyperlink{class_node_data}{Node\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}
 \item 
-typedef \mbox{\hyperlink{class_counter}{Counter}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a70f35d038e8044ff5761831220d07290}{Phylo\+Counter}}
+typedef \mbox{\hyperlink{class_counter}{Counter}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a70f35d038e8044ff5761831220d07290}{Phylo\+Counter}}
 \item 
-typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}}
+typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}}
 \item 
-typedef \mbox{\hyperlink{class_rule}{Rule}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}{Phylo\+Rule}}
+typedef \mbox{\hyperlink{class_rule}{Rule}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}{Phylo\+Rule}}
 \item 
-typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}{Phylo\+Rules}}
+typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}{Phylo\+Rules}}
 \item 
-typedef \mbox{\hyperlink{class_rule}{Rule}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_ad782519ef733c9b109bf465fe942b36a}{Phylo\+Rule\+Dyn}}
+typedef \mbox{\hyperlink{class_rule}{Rule}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_ad782519ef733c9b109bf465fe942b36a}{Phylo\+Rule\+Dyn}}
 \item 
-typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a6c0e95789675ee382f2a42a7da14fcf9}{Phylo\+Rules\+Dyn}}
+typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a6c0e95789675ee382f2a42a7da14fcf9}{Phylo\+Rules\+Dyn}}
 \item 
-typedef \mbox{\hyperlink{class_support}{Support}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}}
+typedef \mbox{\hyperlink{class_support}{Support}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}}
 \item 
-typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}{Phylo\+Stats\+Counter}}
+typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}{Phylo\+Stats\+Counter}}
 \item 
-typedef \mbox{\hyperlink{class_model}{Model}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{Phylo\+Model}}
+typedef \mbox{\hyperlink{class_model}{Model}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{Phylo\+Model}}
 \item 
-typedef \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}{Phylo\+Power\+Set}}
+typedef \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}{Phylo\+Power\+Set}}
 \end{DoxyCompactItemize}
 \end{Indent}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::string \mbox{\hyperlink{phylo_8hpp_aada2ab762aee328264bd5b8ca9c677fb}{get\+\_\+last\+\_\+name}} (unsigned int d)
+std\+::string \mbox{\hyperlink{phylo_8hpp_ac2b3fdac968043baa290218fff498fb7}{get\+\_\+last\+\_\+name}} (size\+\_\+t d)
 \item 
-void \mbox{\hyperlink{group__counters-phylo_ga0b30b6172ca57ab66ca7c80fe3ef76fd}{counter\+\_\+overall\+\_\+gains}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga070ed0ed0630b50eee2461ccac78f69d}{counter\+\_\+overall\+\_\+gains}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Overall functional gains. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_gadf617caf15474389d73caf3370672d91}{counter\+\_\+gains}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ nfun, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga669c96297b70c3d3b746bc6f935f69bd}{counter\+\_\+gains}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ nfun, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Functional gains for a specific function ({\ttfamily nfun}). \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga5f4909dc6fb4d0e2de35c43e324ea586}{counter\+\_\+gains\+\_\+k\+\_\+offspring}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ nfun, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{model-meat_8hpp_a9389e4770ba454a2e14f870491495cb2}{k}}=1u, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_gab1eae5b376677d2727166acfcae02dd5}{counter\+\_\+gains\+\_\+k\+\_\+offspring}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ nfun, size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a9389e4770ba454a2e14f870491495cb2}{k}}=1u, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em k genes gain function nfun \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga3c7d3812dac0bda158601ee9b25f0ac3}{counter\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_gacc855d1a748d969a2b47070027542d7e}{counter\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with regular trees.) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_gad4d1e036b452d3fa7268f63c4637969a}{counter\+\_\+preserve\+\_\+pseudogene}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int nfunA, unsigned int nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_gac08f59b201e08d370e2accdc6fe13dfb}{counter\+\_\+preserve\+\_\+pseudogene}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Keeps track of how many pairs of genes preserve pseudostate. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_gac6ca46e26d1a64a7b7956bba55ecc453}{counter\+\_\+prop\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_gaa987ccee4bb4fb9fdb3dee75c9aeeb9c}{counter\+\_\+prop\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with regular trees.) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga89539d88e4c611fb84e60dcb2689202d}{counter\+\_\+overall\+\_\+loss}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_gaaf8fe80406711857da5625e9c043ba5f}{counter\+\_\+overall\+\_\+loss}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Overall functional loss. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_gab8267f636cac54ef64171b6b7b15251c}{counter\+\_\+maxfuns}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} lb, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} ub, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga8f4358fdd469fb8965a4d54aa5541c90}{counter\+\_\+maxfuns}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t lb, size\+\_\+t ub, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Cap the number of functions per gene. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga2c37ea0362e2cec9e28c8225d01f8245}{counter\+\_\+loss}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ nfun, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga97773f9c934ba96dd5095a9862fefa58}{counter\+\_\+loss}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ nfun, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Total count of losses for an specific function. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_gaa0c3d78f05f5789ac030ebb5655edd01}{counter\+\_\+overall\+\_\+changes}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga924a8403ffb38bf303cd8be56501a5a7}{counter\+\_\+overall\+\_\+changes}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Total number of changes. Use this statistic to account for \char`\"{}preservation\char`\"{}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga22aa24b7cd557b55a5ebb0aeeff6c030}{counter\+\_\+subfun}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_gaf8cf9dd42001eef26feaeeef4f4b485d}{counter\+\_\+subfun}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Total count of Sub-\/functionalization events. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga06b193f4d4ac04ebcd8535a4d1b61636}{counter\+\_\+cogain}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga3c147aaa27a5a286e42739bbc0d6bc61}{counter\+\_\+cogain}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Co-\/evolution (joint gain or loss) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga32a7d5bf639d776e6293ab466e204303}{counter\+\_\+longest}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga88cdb68e7cac77605950a3fa68e1290e}{counter\+\_\+longest}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Longest branch mutates (either by gain or by loss) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_gaea3d5f58d5042aa4b43d01662a7f0fca}{counter\+\_\+neofun}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga86731db3ef31476dad8c941a7578918e}{counter\+\_\+neofun}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga76bc99e444eee89d810b92407f4a1bd7}{counter\+\_\+pairwise\+\_\+neofun\+\_\+singlefun}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga524f80bb3e09a1276a35bb9cc33181dd}{counter\+\_\+pairwise\+\_\+neofun\+\_\+singlefun}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events sum\+\_\+u sum\+\_\+\{w $<$ u\} \mbox{[}x(u,a)$\ast$(1 -\/ x(w,a)) + (1 -\/ x(u,a)) $\ast$ x(w,a)\mbox{]} change stat\+: delta\{x(u,a)\+: 0-\/$>$1\} = 1 -\/ 2 $\ast$ x(w,a) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga4aa6855316673440f7ebff2d01e3ddca}{counter\+\_\+neofun\+\_\+a2b}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga439a4c22ec6c7ffc7c4b939f613c5e48}{counter\+\_\+neofun\+\_\+a2b}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga578ee88179c6ff445b597248527384cd}{counter\+\_\+co\+\_\+opt}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga1805a99af6aecf80be6740a304f0d210}{counter\+\_\+co\+\_\+opt}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Function co-\/opting. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga2dd8d6fd138f7783ef0143e496b4bec8}{counter\+\_\+k\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int \mbox{\hyperlink{model-meat_8hpp_a9389e4770ba454a2e14f870491495cb2}{k}}, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_gaeabf787349285aac150051d580ba527b}{counter\+\_\+k\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a9389e4770ba454a2e14f870491495cb2}{k}}, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Indicator function. Equals to one if $k$ genes changed and zero otherwise. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga6778ed9ac8fd3dacda838631863c5235}{counter\+\_\+less\+\_\+than\+\_\+p\+\_\+prop\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, double p, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga604871276f99c81110d6ccccb819d462}{counter\+\_\+less\+\_\+than\+\_\+p\+\_\+prop\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, double p, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Indicator function. Equals to one if $k$ genes changed and zero otherwise. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_gaa78da8ac544b21905eb005eaaa44a63b}{counter\+\_\+gains\+\_\+from\+\_\+0}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ nfun, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_gab51e9ac13f8a2973c2ee97507e1396ad}{counter\+\_\+gains\+\_\+from\+\_\+0}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ nfun, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga91794d3f86de419575d262e8c1b5e1ab}{counter\+\_\+overall\+\_\+gains\+\_\+from\+\_\+0}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga951736160894bb3ec4f6af52102115e6}{counter\+\_\+overall\+\_\+gains\+\_\+from\+\_\+0}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_ga8822f7130a6e6102085d533692a7e3b6}{counter\+\_\+pairwise\+\_\+overall\+\_\+change}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga763b5004c0689d170564a63afc068f68}{counter\+\_\+pairwise\+\_\+overall\+\_\+change}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_gafe46e12da1a44fbe590b5ffc882760c8}{counter\+\_\+pairwise\+\_\+preserving}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga6fa0b7c865ead863fc813dc883bc05ad}{counter\+\_\+pairwise\+\_\+preserving}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__counters-phylo_gab706c2a3ebefc7a9f3121031905bef22}{counter\+\_\+pairwise\+\_\+first\+\_\+gain}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunA, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} nfunB, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__counters-phylo_ga1387bfb20a263354e5d03ffc2e736e76}{counter\+\_\+pairwise\+\_\+first\+\_\+gain}} (\mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__rules-phylo_gad74275257f39acecc00b53448ad803ba}{rule\+\_\+dyn\+\_\+limit\+\_\+changes}} (\mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}} $\ast$support, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} pos, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} lb, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} ub, unsigned int duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
+void \mbox{\hyperlink{group__rules-phylo_ga1f6c181ff884a6cb29b5c3a3f7689d4f}{rule\+\_\+dyn\+\_\+limit\+\_\+changes}} (\mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}} $\ast$support, size\+\_\+t pos, size\+\_\+t lb, size\+\_\+t ub, size\+\_\+t duplication=\mbox{\hyperlink{phylo_8hpp_a24a353ed0e1af57ac94d0002ecadf4b8}{DEFAULT\+\_\+\+DUPLICATION}})
 \begin{DoxyCompactList}\small\item\em Overall functional gains. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -248,7 +248,7 @@ Definition at line 17 of file phylo.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    \textcolor{keywordtype}{bool} DPL = Array.D\_ptr()-\/>duplication; \(\backslash\)}
-\DoxyCodeLine{    unsigned \textcolor{keywordtype}{int} DATA\_AT = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}[0u];}
+\DoxyCodeLine{    size\_t DATA\_AT = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}[0u];}
 
 \end{DoxyCode}
 
@@ -275,12 +275,12 @@ Definition at line 139 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PHYLO\_COUNTER\_LAMBDA@{PHYLO\_COUNTER\_LAMBDA}}
 \index{PHYLO\_COUNTER\_LAMBDA@{PHYLO\_COUNTER\_LAMBDA}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PHYLO\_COUNTER\_LAMBDA}{PHYLO\_COUNTER\_LAMBDA}}
-{\footnotesize\ttfamily \#define PHYLO\+\_\+\+COUNTER\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define PHYLO\+\_\+\+COUNTER\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\_fun\_type<PhyloArray, PhyloCounterData>}} \mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}} = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{PhyloArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_a5ffdab09665dc9b260b5263cdca94295}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_phylo_counter_data}{PhyloCounterData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_ad7626021d4acb1dfc9419e667923a01f}{Counter\_fun\_type<PhyloArray, PhyloCounterData>}} \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = \(\backslash\)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{PhyloArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_phylo_counter_data}{PhyloCounterData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
 
 \end{DoxyCode}
 
@@ -295,12 +295,12 @@ Definition at line 133 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PHYLO\_RULE\_DYN\_LAMBDA@{PHYLO\_RULE\_DYN\_LAMBDA}}
 \index{PHYLO\_RULE\_DYN\_LAMBDA@{PHYLO\_RULE\_DYN\_LAMBDA}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PHYLO\_RULE\_DYN\_LAMBDA}{PHYLO\_RULE\_DYN\_LAMBDA}}
-{\footnotesize\ttfamily \#define PHYLO\+\_\+\+RULE\+\_\+\+DYN\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define PHYLO\+\_\+\+RULE\+\_\+\+DYN\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a93a0e903405ba5549990f0138386bfa4}{Rule\_fun\_type<PhyloArray, PhyloRuleDynData>}} \mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}} = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{PhyloArray}} \& Array, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{counters-meat_8hpp_a5ffdab09665dc9b260b5263cdca94295}{i}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{barray-meat_8hpp_abbe66f29402555d707260862a10eb56e}{j}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{PhyloRuleDynData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+\DoxyCodeLine{    \mbox{\hyperlink{typedefs_8hpp_a940d68f006f1ffee7f5b207bf61aefe4}{Rule\_fun\_type<PhyloArray, PhyloRuleDynData>}} \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = \(\backslash\)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{PhyloArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{PhyloRuleDynData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
 
 \end{DoxyCode}
 
@@ -310,11 +310,11 @@ Definition at line 136 of file phylo.\+hpp.
 
 
 \doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}\label{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}} 
+\mbox{\Hypertarget{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}\label{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloArray@{PhyloArray}}
 \index{PhyloArray@{PhyloArray}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloArray}{PhyloArray}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{class_node_data}{Node\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_b_array_dense}{BArray\+Dense}}$<$size\+\_\+t, \mbox{\hyperlink{class_node_data}{Node\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}}
 
 
 
@@ -324,7 +324,7 @@ Definition at line 106 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloCounter@{PhyloCounter}}
 \index{PhyloCounter@{PhyloCounter}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloCounter}{PhyloCounter}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counter}{Counter}}$<$\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a70f35d038e8044ff5761831220d07290}{Phylo\+Counter}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counter}{Counter}}$<$\mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a70f35d038e8044ff5761831220d07290}{Phylo\+Counter}}}
 
 
 
@@ -334,7 +334,7 @@ Definition at line 107 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloCounters@{PhyloCounters}}
 \index{PhyloCounters@{PhyloCounters}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloCounters}{PhyloCounters}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a7f579c2548e28d17881691a3abe7ecb5}{Phylo\+Counters}}}
 
 
 
@@ -344,7 +344,7 @@ Definition at line 108 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloModel@{PhyloModel}}
 \index{PhyloModel@{PhyloModel}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloModel}{PhyloModel}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_model}{Model}}$<$\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{Phylo\+Model}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_model}{Model}}$<$\mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a3747688acf3d8e264c2ce8b07e0eb804}{Phylo\+Model}}}
 
 
 
@@ -354,7 +354,7 @@ Definition at line 118 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloPowerSet@{PhyloPowerSet}}
 \index{PhyloPowerSet@{PhyloPowerSet}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloPowerSet}{PhyloPowerSet}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}{Phylo\+Power\+Set}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$\mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a0d16a69c8b447a32a3aa4d4c041773cc}{Phylo\+Power\+Set}}}
 
 
 
@@ -364,17 +364,17 @@ Definition at line 119 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloRule@{PhyloRule}}
 \index{PhyloRule@{PhyloRule}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloRule}{PhyloRule}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rule}{Rule}}$<$\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}},\mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}{Phylo\+Rule}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rule}{Rule}}$<$\mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}},\mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a99bd6ef7a8380a0e669c1723e393429f}{Phylo\+Rule}}}
 
 
 
 Definition at line 110 of file phylo.\+hpp.
 
-\mbox{\Hypertarget{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}\label{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}} 
+\mbox{\Hypertarget{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}\label{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}} 
 \index{phylo.hpp@{phylo.hpp}!PhyloRuleData@{PhyloRuleData}}
 \index{PhyloRuleData@{PhyloRuleData}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloRuleData}{PhyloRuleData}}
-{\footnotesize\ttfamily typedef std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $>$ \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}}
+{\footnotesize\ttfamily typedef std\+::vector$<$ std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ $>$ \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}}}
 
 
 
@@ -384,7 +384,7 @@ Definition at line 99 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloRuleDyn@{PhyloRuleDyn}}
 \index{PhyloRuleDyn@{PhyloRuleDyn}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloRuleDyn}{PhyloRuleDyn}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rule}{Rule}}$<$\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}},\mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_ad782519ef733c9b109bf465fe942b36a}{Phylo\+Rule\+Dyn}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rule}{Rule}}$<$\mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}},\mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_ad782519ef733c9b109bf465fe942b36a}{Phylo\+Rule\+Dyn}}}
 
 
 
@@ -394,7 +394,7 @@ Definition at line 113 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloRules@{PhyloRules}}
 \index{PhyloRules@{PhyloRules}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloRules}{PhyloRules}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rules}{Rules}}$<$\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}},\mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}{Phylo\+Rules}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rules}{Rules}}$<$\mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}},\mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a297f8535006c6b28acc097dddae016c3}{Phylo\+Rules}}}
 
 
 
@@ -404,7 +404,7 @@ Definition at line 111 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloRulesDyn@{PhyloRulesDyn}}
 \index{PhyloRulesDyn@{PhyloRulesDyn}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloRulesDyn}{PhyloRulesDyn}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rules}{Rules}}$<$\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}},\mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a6c0e95789675ee382f2a42a7da14fcf9}{Phylo\+Rules\+Dyn}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rules}{Rules}}$<$\mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}},\mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_a6c0e95789675ee382f2a42a7da14fcf9}{Phylo\+Rules\+Dyn}}}
 
 
 
@@ -414,7 +414,7 @@ Definition at line 114 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloStatsCounter@{PhyloStatsCounter}}
 \index{PhyloStatsCounter@{PhyloStatsCounter}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloStatsCounter}{PhyloStatsCounter}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}{Phylo\+Stats\+Counter}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$\mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}$>$ \mbox{\hyperlink{phylo_8hpp_aca4644373aecf9b296ac8ac730470952}{Phylo\+Stats\+Counter}}}
 
 
 
@@ -424,7 +424,7 @@ Definition at line 117 of file phylo.\+hpp.
 \index{phylo.hpp@{phylo.hpp}!PhyloSupport@{PhyloSupport}}
 \index{PhyloSupport@{PhyloSupport}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{PhyloSupport}{PhyloSupport}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_support}{Support}}$<$\mbox{\hyperlink{phylo_8hpp_a62f661a25cbdbac960f6d00b7b42ff4a}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_ad7d1052d3cdcf6286b6d7907d1ec1eaf}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_support}{Support}}$<$\mbox{\hyperlink{phylo_8hpp_ad7e08d5d1fbdde12e944951e5ebd234f}{Phylo\+Array}}, \mbox{\hyperlink{class_phylo_counter_data}{Phylo\+Counter\+Data}}, \mbox{\hyperlink{phylo_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{Phylo\+Rule\+Data}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{Phylo\+Rule\+Dyn\+Data}} $>$ \mbox{\hyperlink{phylo_8hpp_a7261d5284bec3ec15fe7b038399a9c5a}{Phylo\+Support}}}
 
 
 
@@ -433,11 +433,11 @@ Definition at line 116 of file phylo.\+hpp.
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{phylo_8hpp_aada2ab762aee328264bd5b8ca9c677fb}\label{phylo_8hpp_aada2ab762aee328264bd5b8ca9c677fb}} 
+\mbox{\Hypertarget{phylo_8hpp_ac2b3fdac968043baa290218fff498fb7}\label{phylo_8hpp_ac2b3fdac968043baa290218fff498fb7}} 
 \index{phylo.hpp@{phylo.hpp}!get\_last\_name@{get\_last\_name}}
 \index{get\_last\_name@{get\_last\_name}!phylo.hpp@{phylo.hpp}}
 \doxysubsubsection{\texorpdfstring{get\_last\_name()}{get\_last\_name()}}
-{\footnotesize\ttfamily std\+::string get\+\_\+last\+\_\+name (\begin{DoxyParamCaption}\item[{unsigned int}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::string get\+\_\+last\+\_\+name (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

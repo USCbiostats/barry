@@ -1,6 +1,6 @@
 var class_b_array_dense_cell =
 [
-    [ "BArrayDenseCell", "class_b_array_dense_cell.html#a5f3ed6c16732413d0c34ea656f14616a", null ],
+    [ "BArrayDenseCell", "class_b_array_dense_cell.html#ab23a4f2fc6e6fc71b0b84dabf29786e1", null ],
     [ "~BArrayDenseCell", "class_b_array_dense_cell.html#a78104cca4d951df7205c5ba7eae0d5d7", null ],
     [ "operator Cell_Type", "class_b_array_dense_cell.html#acf8c2cb86309fe7282068d621cbd1b53", null ],
     [ "operator*=", "class_b_array_dense_cell.html#ad7b1bcee31111351de4f6364e17d0c52", null ],

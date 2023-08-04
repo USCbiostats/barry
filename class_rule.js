@@ -8,5 +8,5 @@ var class_rule =
     [ "get_description", "class_rule.html#a76c738212116be06df98899b1e39e6bb", null ],
     [ "get_name", "class_rule.html#af394f21c78f5ba0a17e1d15715b2ebcf", null ],
     [ "get_name", "class_rule.html#acd7c75780842bbc13c412eba949cebcb", null ],
-    [ "operator()", "class_rule.html#aa4fd1f5c9da9e400c12822d5c0272f45", null ]
+    [ "operator()", "class_rule.html#a192721b8f6f2c92753f44ac92703deca", null ]
 ];

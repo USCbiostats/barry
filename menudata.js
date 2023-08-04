@@ -169,8 +169,7 @@ var menudata={children:[
 {text:"m",url:"globals_type.html#index_m"},
 {text:"n",url:"globals_type.html#index_n"},
 {text:"p",url:"globals_type.html#index_p"},
-{text:"r",url:"globals_type.html#index_r"},
-{text:"u",url:"globals_type.html#index_u"}]},
+{text:"r",url:"globals_type.html#index_r"}]},
 {text:"Macros",url:"globals_defs.html",children:[
 {text:"b",url:"globals_defs.html#index_b"},
 {text:"c",url:"globals_defs.html#index_c"},

@@ -12,7 +12,7 @@ Row or column of a {\ttfamily \mbox{\hyperlink{class_b_array}{BArray}}}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_b_array_vector_a56f27c99ab6c74ac1f665ed69abff0ef}{BArray\+Vector}} (\mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$\mbox{\hyperlink{barray-meat_8hpp_a6cb31aaad809d508e214b61785d7fb47}{Array\+\_\+}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&dim\+\_\+ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&i\+\_\+, bool \mbox{\hyperlink{barraydense-meat_8hpp_a8899aeefb231f239e7aecd22c54e0731}{check\+\_\+bounds}}=true)
+\mbox{\hyperlink{class_b_array_vector_a52942302369463387cb9329a2624ad46}{BArray\+Vector}} (\mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$\mbox{\hyperlink{barray-meat_8hpp_a6cb31aaad809d508e214b61785d7fb47}{Array\+\_\+}}, size\+\_\+t \&dim\+\_\+ size\+\_\+t \&i\+\_\+, bool \mbox{\hyperlink{barraydense-meat_8hpp_a8899aeefb231f239e7aecd22c54e0731}{check\+\_\+bounds}}=true)
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_b_array_vector_abad4f8e22e4279afea5fe2c1b72698cf}{$\sim$\+BArray\+Vector}} ()
 \item 
@@ -20,7 +20,7 @@ bool \mbox{\hyperlink{class_b_array_vector_a49db44323d58d8d9f1f5e0c96ff5ce93}{is
 \item 
 bool \mbox{\hyperlink{class_b_array_vector_ad822cf56f9e41631e2c0c44a1538efeb}{is\+\_\+col}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
-\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_vector_a62b4f5e9c030323c431bb799289076df}{size}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+size\+\_\+t \mbox{\hyperlink{class_b_array_vector_a2626a53bd35b18d8a1e4c6c631794db1}{size}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
 std\+::vector$<$ Cell\+\_\+\+Type $>$\+::const\+\_\+iterator \mbox{\hyperlink{class_b_array_vector_ac41c8bf35b91d569cd86a7750c202604}{begin}} () \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
@@ -62,12 +62,12 @@ Definition at line 11 of file barrayvector-\/bones.\+hpp.
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_b_array_vector_a56f27c99ab6c74ac1f665ed69abff0ef}\label{class_b_array_vector_a56f27c99ab6c74ac1f665ed69abff0ef}} 
+\mbox{\Hypertarget{class_b_array_vector_a52942302369463387cb9329a2624ad46}\label{class_b_array_vector_a52942302369463387cb9329a2624ad46}} 
 \index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!BArrayVector@{BArrayVector}}
 \index{BArrayVector@{BArrayVector}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{BArrayVector()}{BArrayVector()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type  = bool, typename Data\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{Array\+\_\+,  }\item[{\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&dim\+\_\+ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \&}]{i\+\_\+,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::\mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_array}{BArray}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$ $\ast$}]{Array\+\_\+,  }\item[{size\+\_\+t \&dim\+\_\+ size\+\_\+t \&}]{i\+\_\+,  }\item[{bool}]{check\+\_\+bounds = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -223,12 +223,12 @@ bool \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type
 
 Definition at line 185 of file barrayvector-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_b_array_vector_a62b4f5e9c030323c431bb799289076df}\label{class_b_array_vector_a62b4f5e9c030323c431bb799289076df}} 
+\mbox{\Hypertarget{class_b_array_vector_a2626a53bd35b18d8a1e4c6c631794db1}\label{class_b_array_vector_a2626a53bd35b18d8a1e4c6c631794db1}} 
 \index{BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}!size@{size}}
 \index{size@{size}!BArrayVector$<$ Cell\_Type, Data\_Type $>$@{BArrayVector$<$ Cell\_Type, Data\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{size()}{size()}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-\mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::size\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+size\+\_\+t \mbox{\hyperlink{class_b_array_vector}{BArray\+Vector}}$<$ Cell\+\_\+\+Type, Data\+\_\+\+Type $>$\+::size\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 

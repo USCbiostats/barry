@@ -12,6 +12,6 @@ var class_counters =
     [ "get_names", "class_counters.html#ab59400b23d6e8ed0d9f204ec468d255f", null ],
     [ "operator=", "class_counters.html#aae547b1d58082d9b968cd032977ce755", null ],
     [ "operator=", "class_counters.html#a61a8eeefb344d0c320ff0278cc2d8f71", null ],
-    [ "operator[]", "class_counters.html#a590d21b9ac889e51f090e06f1a314196", null ],
+    [ "operator[]", "class_counters.html#a17eb2e8eea7d6b146d4217099b3229aa", null ],
     [ "size", "class_counters.html#ad7980fd3757652e20b90ce1064e333c2", null ]
 ];

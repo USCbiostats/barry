@@ -1,6 +1,6 @@
 var class_b_array_vector =
 [
-    [ "BArrayVector", "class_b_array_vector.html#a56f27c99ab6c74ac1f665ed69abff0ef", null ],
+    [ "BArrayVector", "class_b_array_vector.html#a52942302369463387cb9329a2624ad46", null ],
     [ "~BArrayVector", "class_b_array_vector.html#abad4f8e22e4279afea5fe2c1b72698cf", null ],
     [ "begin", "class_b_array_vector.html#ac41c8bf35b91d569cd86a7750c202604", null ],
     [ "end", "class_b_array_vector.html#aed19a35baf8b35224cfaa28d90786ac7", null ],
@@ -13,5 +13,5 @@ var class_b_array_vector =
     [ "operator/=", "class_b_array_vector.html#a831f9c063fc541921b635fbffba24eff", null ],
     [ "operator=", "class_b_array_vector.html#ad424b06bbd4487149a5e1ee3ad01ba13", null ],
     [ "operator==", "class_b_array_vector.html#a2170ba905270556070d5b6697e65da90", null ],
-    [ "size", "class_b_array_vector.html#a62b4f5e9c030323c431bb799289076df", null ]
+    [ "size", "class_b_array_vector.html#a2626a53bd35b18d8a1e4c6c631794db1", null ]
 ];

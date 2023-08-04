@@ -36,41 +36,39 @@ struct \mbox{\hyperlink{structvec_hasher}{vec\+Hasher$<$ T $>$}}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef unsigned int \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}
+typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, size\+\_\+t $>$ $>$ \mbox{\hyperlink{typedefs_8hpp_a3aea7a9fde67a666803ef314b671b9b5}{Counts\+\_\+type}}
 \item 
-typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$ double $>$, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $>$ \mbox{\hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type}}
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a84308a04a60581533b3c5e796c8248f5}{Row\+\_\+type}} = \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}}$<$ size\+\_\+t, \mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$ $>$
 \item 
-{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row\+\_\+type}} = \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}}$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$ $>$
+{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_adfb2ee3c0edfa46d47dc24cbbfabb11b}{Col\+\_\+type}} = \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}}$<$ size\+\_\+t, \mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$ $\ast$ $>$
 \item 
-{\footnotesize template$<$typename Cell\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type}} = \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}}$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{class_cell}{Cell}}$<$ Cell\+\_\+\+Type $>$ $\ast$ $>$
-\item 
-{\footnotesize template$<$typename Ta  = double, typename Tb  = uint$>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \mbox{\hyperlink{structvec_hasher}{vec\+Hasher}}$<$ Ta $>$ $>$
+{\footnotesize template$<$typename Ta  = double, typename Tb  = size\+\_\+t$>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}} = std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \mbox{\hyperlink{structvec_hasher}{vec\+Hasher}}$<$ Ta $>$ $>$
 \item 
 {\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\+\_\+fun\+\_\+type}} = std\+::function$<$ std\+::vector$<$ double $>$(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, Data\+\_\+\+Type $\ast$)$>$
 \begin{DoxyCompactList}\small\item\em Hasher function used by the counter. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \textbf{ }\par
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}} = std\+::function$<$ double(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, Data\+\_\+\+Type \&)$>$
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_ad7626021d4acb1dfc9419e667923a01f}{Counter\+\_\+fun\+\_\+type}} = std\+::function$<$ double(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, size\+\_\+t, size\+\_\+t, Data\+\_\+\+Type \&)$>$
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_counter}{Counter}} and rule functions. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a93a0e903405ba5549990f0138386bfa4}{Rule\+\_\+fun\+\_\+type}} = std\+::function$<$ bool(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, Data\+\_\+\+Type \&)$>$
+{\footnotesize template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ }\\using \mbox{\hyperlink{typedefs_8hpp_a940d68f006f1ffee7f5b207bf61aefe4}{Rule\+\_\+fun\+\_\+type}} = std\+::function$<$ bool(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, size\+\_\+t, size\+\_\+t, Data\+\_\+\+Type \&)$>$
 \end{DoxyCompactItemize}
 
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{typedefs_8hpp_ab1d4f47a245caa5ee58da49231c054ca}{sort\+\_\+array}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$\mbox{\hyperlink{barraydense-meat_8hpp_a4f9d6b06db1b3136e48630969fea3b9a}{v}}, size\+\_\+t start, size\+\_\+t ncols, size\+\_\+t nrows)
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{typedefs_8hpp_ab1d4f47a245caa5ee58da49231c054ca}{sort\+\_\+array}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$\mbox{\hyperlink{barraydense-meat_8hpp_a6c8b6052a486478285dd9bdc81915af8}{v}}, size\+\_\+t start, size\+\_\+t ncols, size\+\_\+t nrows)
 \begin{DoxyCompactList}\small\item\em Ascending sorting an array. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{typedefs_8hpp_ab9ddeecf87d68d3f44dd6a94b10aa786}{vec\+\_\+inner\+\_\+prod}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} T $\ast$\mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} T $\ast$b, size\+\_\+t n)
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{typedefs_8hpp_ab9ddeecf87d68d3f44dd6a94b10aa786}{vec\+\_\+inner\+\_\+prod}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} T $\ast$\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} T $\ast$b, size\+\_\+t n)
 \item 
-template$<$$>$ double \mbox{\hyperlink{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd32026f1dc}{vec\+\_\+inner\+\_\+prod}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$\mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$b, size\+\_\+t n)
+template$<$$>$ double \mbox{\hyperlink{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd32026f1dc}{vec\+\_\+inner\+\_\+prod}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$b, size\+\_\+t n)
 \end{DoxyCompactItemize}
 \textbf{ }\par
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}{vec\+\_\+equal}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ T $>$ \&\mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ T $>$ \&b)
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}{vec\+\_\+equal}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ T $>$ \&\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ T $>$ \&b)
 \begin{DoxyCompactList}\small\item\em Compares if -\/a-\/ and -\/b-\/ are equal. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{typedefs_8hpp_aed8ddfe5ae95bf4d6f76221ce06566fb}{vec\+\_\+equal\+\_\+approx}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ T $>$ \&\mbox{\hyperlink{model-meat_8hpp_a0ea8a85723620c90be9fd2a693f12a59}{a}}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ T $>$ \&b, double eps=1e-\/100)
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{typedefs_8hpp_aed8ddfe5ae95bf4d6f76221ce06566fb}{vec\+\_\+equal\+\_\+approx}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ T $>$ \&\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ T $>$ \&b, double eps=1e-\/100)
 \end{DoxyCompactItemize}
 
 \doxysubsection*{Variables}
@@ -101,23 +99,23 @@ template$<$$>$ double \mbox{\hyperlink{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd320
 
 
 \doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}\label{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}} 
+\mbox{\Hypertarget{typedefs_8hpp_adfb2ee3c0edfa46d47dc24cbbfabb11b}\label{typedefs_8hpp_adfb2ee3c0edfa46d47dc24cbbfabb11b}} 
 \index{typedefs.hpp@{typedefs.hpp}!Col\_type@{Col\_type}}
 \index{Col\_type@{Col\_type}!typedefs.hpp@{typedefs.hpp}}
 \doxysubsubsection{\texorpdfstring{Col\_type}{Col\_type}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type $>$ \\
-using \mbox{\hyperlink{typedefs_8hpp_a3bb95a7612ee928fba42f33a96adb3eb}{Col\+\_\+type}} =  \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}}$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{class_cell}{Cell}}$<$Cell\+\_\+\+Type$>$$\ast$ $>$}
+using \mbox{\hyperlink{typedefs_8hpp_adfb2ee3c0edfa46d47dc24cbbfabb11b}{Col\+\_\+type}} =  \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}}$<$ size\+\_\+t, \mbox{\hyperlink{class_cell}{Cell}}$<$Cell\+\_\+\+Type$>$$\ast$ $>$}
 
 
 
-Definition at line 71 of file typedefs.\+hpp.
+Definition at line 70 of file typedefs.\+hpp.
 
-\mbox{\Hypertarget{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}\label{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}} 
+\mbox{\Hypertarget{typedefs_8hpp_ad7626021d4acb1dfc9419e667923a01f}\label{typedefs_8hpp_ad7626021d4acb1dfc9419e667923a01f}} 
 \index{typedefs.hpp@{typedefs.hpp}!Counter\_fun\_type@{Counter\_fun\_type}}
 \index{Counter\_fun\_type@{Counter\_fun\_type}!typedefs.hpp@{typedefs.hpp}}
 \doxysubsubsection{\texorpdfstring{Counter\_fun\_type}{Counter\_fun\_type}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-using \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\+\_\+fun\+\_\+type}} =  std\+::function$<$double(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, Data\+\_\+\+Type \&)$>$}
+using \mbox{\hyperlink{typedefs_8hpp_ad7626021d4acb1dfc9419e667923a01f}{Counter\+\_\+fun\+\_\+type}} =  std\+::function$<$double(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, size\+\_\+t, size\+\_\+t, Data\+\_\+\+Type \&)$>$}
 
 
 
@@ -127,7 +125,7 @@ using \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\
 \begin{DoxyParams}{Parameters}
 {\em Array\+\_\+\+Type} & a \mbox{\hyperlink{class_b_array}{BArray}} \\
 \hline
-{\em unit,uint} & Focal cell \\
+{\em unit,size\+\_\+t} & Focal cell \\
 \hline
 {\em Data\+\_\+\+Type} & Data associated with the function, for example, id of the attribute in the Array. \\
 \hline
@@ -139,17 +137,17 @@ using \mbox{\hyperlink{typedefs_8hpp_a6a6ce8184bcdbb465486ebb7ca9ec76b}{Counter\
 \end{DoxyReturn}
 
 
-Definition at line 188 of file typedefs.\+hpp.
+Definition at line 187 of file typedefs.\+hpp.
 
-\mbox{\Hypertarget{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}\label{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}} 
+\mbox{\Hypertarget{typedefs_8hpp_a3aea7a9fde67a666803ef314b671b9b5}\label{typedefs_8hpp_a3aea7a9fde67a666803ef314b671b9b5}} 
 \index{typedefs.hpp@{typedefs.hpp}!Counts\_type@{Counts\_type}}
 \index{Counts\_type@{Counts\_type}!typedefs.hpp@{typedefs.hpp}}
 \doxysubsubsection{\texorpdfstring{Counts\_type}{Counts\_type}}
-{\footnotesize\ttfamily typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$double$>$, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}} $>$ $>$ \mbox{\hyperlink{typedefs_8hpp_aee40fa17c1fddb63dd1f2b1470ade95b}{Counts\+\_\+type}}}
+{\footnotesize\ttfamily typedef std\+::vector$<$ std\+::pair$<$ std\+::vector$<$double$>$, size\+\_\+t $>$ $>$ \mbox{\hyperlink{typedefs_8hpp_a3aea7a9fde67a666803ef314b671b9b5}{Counts\+\_\+type}}}
 
 
 
-Definition at line 52 of file typedefs.\+hpp.
+Definition at line 51 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}\label{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}} 
 \index{typedefs.hpp@{typedefs.hpp}!Hasher\_fun\_type@{Hasher\_fun\_type}}
@@ -171,50 +169,40 @@ Used to characterize the support of the array.
 \end{DoxyTemplParams}
 
 
-Definition at line 201 of file typedefs.\+hpp.
+Definition at line 200 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}\label{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}} 
 \index{typedefs.hpp@{typedefs.hpp}!MapVec\_type@{MapVec\_type}}
 \index{MapVec\_type@{MapVec\_type}!typedefs.hpp@{typedefs.hpp}}
 \doxysubsubsection{\texorpdfstring{MapVec\_type}{MapVec\_type}}
-{\footnotesize\ttfamily template$<$typename Ta  = double, typename Tb  = uint$>$ \\
+{\footnotesize\ttfamily template$<$typename Ta  = double, typename Tb  = size\+\_\+t$>$ \\
 using \mbox{\hyperlink{typedefs_8hpp_a02ed8dec96bc528c8bc3d8cb3c4674a5}{Map\+Vec\+\_\+type}} =  std\+::unordered\+\_\+map$<$ std\+::vector$<$ Ta $>$, Tb, \mbox{\hyperlink{structvec_hasher}{vec\+Hasher}}$<$Ta$>$ $>$}
 
 
 
-Definition at line 129 of file typedefs.\+hpp.
+Definition at line 128 of file typedefs.\+hpp.
 
-\mbox{\Hypertarget{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}\label{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}} 
+\mbox{\Hypertarget{typedefs_8hpp_a84308a04a60581533b3c5e796c8248f5}\label{typedefs_8hpp_a84308a04a60581533b3c5e796c8248f5}} 
 \index{typedefs.hpp@{typedefs.hpp}!Row\_type@{Row\_type}}
 \index{Row\_type@{Row\_type}!typedefs.hpp@{typedefs.hpp}}
 \doxysubsubsection{\texorpdfstring{Row\_type}{Row\_type}}
 {\footnotesize\ttfamily template$<$typename Cell\+\_\+\+Type $>$ \\
-using \mbox{\hyperlink{typedefs_8hpp_a4deca4f3fb25a4da374818ab459b8b4a}{Row\+\_\+type}} =  \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}}$<$ \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{class_cell}{Cell}}$<$Cell\+\_\+\+Type$>$ $>$}
+using \mbox{\hyperlink{typedefs_8hpp_a84308a04a60581533b3c5e796c8248f5}{Row\+\_\+type}} =  \mbox{\hyperlink{barry-configuration_8hpp_a1bb64c776ba5e9fc373665103b1a1772}{Map}}$<$ size\+\_\+t, \mbox{\hyperlink{class_cell}{Cell}}$<$Cell\+\_\+\+Type$>$ $>$}
 
 
 
-Definition at line 68 of file typedefs.\+hpp.
+Definition at line 67 of file typedefs.\+hpp.
 
-\mbox{\Hypertarget{typedefs_8hpp_a93a0e903405ba5549990f0138386bfa4}\label{typedefs_8hpp_a93a0e903405ba5549990f0138386bfa4}} 
+\mbox{\Hypertarget{typedefs_8hpp_a940d68f006f1ffee7f5b207bf61aefe4}\label{typedefs_8hpp_a940d68f006f1ffee7f5b207bf61aefe4}} 
 \index{typedefs.hpp@{typedefs.hpp}!Rule\_fun\_type@{Rule\_fun\_type}}
 \index{Rule\_fun\_type@{Rule\_fun\_type}!typedefs.hpp@{typedefs.hpp}}
 \doxysubsubsection{\texorpdfstring{Rule\_fun\_type}{Rule\_fun\_type}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Type $>$ \\
-using \mbox{\hyperlink{typedefs_8hpp_a93a0e903405ba5549990f0138386bfa4}{Rule\+\_\+fun\+\_\+type}} =  std\+::function$<$bool(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}, Data\+\_\+\+Type \&)$>$}
+using \mbox{\hyperlink{typedefs_8hpp_a940d68f006f1ffee7f5b207bf61aefe4}{Rule\+\_\+fun\+\_\+type}} =  std\+::function$<$bool(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&, size\+\_\+t, size\+\_\+t, Data\+\_\+\+Type \&)$>$}
 
 
 
-Definition at line 191 of file typedefs.\+hpp.
-
-\mbox{\Hypertarget{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}\label{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}} 
-\index{typedefs.hpp@{typedefs.hpp}!uint@{uint}}
-\index{uint@{uint}!typedefs.hpp@{typedefs.hpp}}
-\doxysubsubsection{\texorpdfstring{uint}{uint}}
-{\footnotesize\ttfamily typedef unsigned int \mbox{\hyperlink{typedefs_8hpp_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}
-
-
-
-Definition at line 18 of file typedefs.\+hpp.
+Definition at line 190 of file typedefs.\+hpp.
 
 
 
@@ -248,7 +236,7 @@ std\+::vector$<$size\+\_\+t$>$ The sorting index.
 \end{DoxyReturn}
 
 
-Definition at line 142 of file typedefs.\+hpp.
+Definition at line 141 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}\label{typedefs_8hpp_a0520b46efb182c4254e257ff5c5e7394}} 
 \index{typedefs.hpp@{typedefs.hpp}!vec\_equal@{vec\_equal}}
@@ -271,7 +259,7 @@ Compares if -\/a-\/ and -\/b-\/ are equal.
 \end{DoxyReturn}
 
 
-Definition at line 211 of file typedefs.\+hpp.
+Definition at line 210 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_aed8ddfe5ae95bf4d6f76221ce06566fb}\label{typedefs_8hpp_aed8ddfe5ae95bf4d6f76221ce06566fb}} 
 \index{typedefs.hpp@{typedefs.hpp}!vec\_equal\_approx@{vec\_equal\_approx}}
@@ -282,7 +270,7 @@ bool vec\+\_\+equal\+\_\+approx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink
 
 
 
-Definition at line 229 of file typedefs.\+hpp.
+Definition at line 228 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd32026f1dc}\label{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd32026f1dc}} 
 \index{typedefs.hpp@{typedefs.hpp}!vec\_inner\_prod@{vec\_inner\_prod}}
@@ -293,7 +281,7 @@ double vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink
 
 
 
-Definition at line 275 of file typedefs.\+hpp.
+Definition at line 274 of file typedefs.\+hpp.
 
 \mbox{\Hypertarget{typedefs_8hpp_ab9ddeecf87d68d3f44dd6a94b10aa786}\label{typedefs_8hpp_ab9ddeecf87d68d3f44dd6a94b10aa786}} 
 \index{typedefs.hpp@{typedefs.hpp}!vec\_inner\_prod@{vec\_inner\_prod}}
@@ -304,5 +292,5 @@ T vec\+\_\+inner\+\_\+prod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barr
 
 
 
-Definition at line 252 of file typedefs.\+hpp.
+Definition at line 251 of file typedefs.\+hpp.
 

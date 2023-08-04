@@ -1,6 +1,6 @@
 var class_b_array_row =
 [
-    [ "BArrayRow", "class_b_array_row.html#aafd516a2c987c24cd16d216e51ab1b55", null ],
+    [ "BArrayRow", "class_b_array_row.html#a5b0e2233f44a43ae940f177f689e24b7", null ],
     [ "~BArrayRow", "class_b_array_row.html#af20fd4ceb7a065fdec62dd0bbdc184aa", null ],
     [ "operator BArrayRow< Cell_Type, Data_Type >", "class_b_array_row.html#a075b787aef7187352a83fb4ad9dc9ae5", null ],
     [ "operator*=", "class_b_array_row.html#ac77498cd5c1a8ea469118064e68865c5", null ],
