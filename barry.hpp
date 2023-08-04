@@ -110,7 +110,7 @@ namespace barry {
 #endif
 
 #ifndef BARRY_MAX_NUM_ELEMENTS
-    #define BARRY_MAX_NUM_ELEMENTS static_cast< size_t >(UINT_MAX/2u)
+    #define BARRY_MAX_NUM_ELEMENTS static_cast< size_t >(std::numeric_limits< size_t >::max() /2u)
 #endif
 
 #ifdef BARRY_USE_OMP
@@ -286,8 +286,7 @@ inline void Progress::end() {
 
 // Basic types
 // See this thread
-// https://stackoverflow.com/questions/35055042/difference-between-uint8-t-uint-fast8-t-and-uint-least8-t
-typedef unsigned int uint;
+// https://stackoverflow.com/questions/35055042/difference-between-size_t8-t-size_t-fast8-t-and-size_t-least8-t
 
 // Mostly relevant for the BArray definition -----------------------------------
 
@@ -321,15 +320,15 @@ namespace EXISTS {
 /***
   * A single count
   */
-typedef std::vector< std::pair< std::vector<double>, uint > > Counts_type;
+typedef std::vector< std::pair< std::vector<double>, size_t > > Counts_type;
 
 // class Counts_type
 // {
 // private:
-//     std::vector< std::uint_fast32_t > stats_counts;
+//     std::vector< std::size_t_fast32_t > stats_counts;
 //     std::vector< double > stats_values;
 //     size_t n_stats;
-//     unsigned int n_obs;
+//     size_t n_obs;
 // public:
 //     std::vector< double > operator()
 // }
@@ -337,10 +336,10 @@ typedef std::vector< std::pair< std::vector<double>, uint > > Counts_type;
 template <class Type_A > class Cell;
 
 template<typename Cell_Type>
-using Row_type = Map< uint, Cell<Cell_Type> >;
+using Row_type = Map< size_t, Cell<Cell_Type> >;
 
 template<typename Cell_Type>
-using Col_type = Map< uint, Cell<Cell_Type>* >;
+using Col_type = Map< size_t, Cell<Cell_Type>* >;
 
 /**
   * @brief A wrapper class to store `source`, `target`, `val` from a `BArray` object.
@@ -350,12 +349,12 @@ using Col_type = Map< uint, Cell<Cell_Type>* >;
 template<typename Cell_Type>
 class Entries {
 public:
-    std::vector< uint > source;
-    std::vector< uint > target;
+    std::vector< size_t > source;
+    std::vector< size_t > target;
     std::vector< Cell_Type > val;
     
     Entries() : source(0u), target(0u), val(0u) {};
-    Entries(uint n) {
+    Entries(size_t n) {
         source.reserve(n);
         target.reserve(n);
         val.reserve(n);
@@ -364,7 +363,7 @@ public:
     
     ~Entries() {};
     
-    void resize(uint n) {
+    void resize(size_t n) {
         source.resize(n);
         target.resize(n);
         val.resize(n);
@@ -388,7 +387,7 @@ struct vecHasher
         // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
         // << is a shift operator, something like lhs * 2^(rhs)
         if (dat.size() > 1u)
-            for (unsigned int i = 1u; i < dat.size(); ++i)
+            for (size_t i = 1u; i < dat.size(); ++i)
                 hash ^= hasher(dat[i]) + 0x9e3779b9 + (hash<<6) + (hash>>2);
         
         return hash;
@@ -397,7 +396,7 @@ struct vecHasher
 
 };
 
-template<typename Ta = double, typename Tb = uint> 
+template<typename Ta = double, typename Tb = size_t> 
 using MapVec_type = std::unordered_map< std::vector< Ta >, Tb, vecHasher<Ta>>;
 
 /**
@@ -449,7 +448,7 @@ template <typename Cell_Type, typename Data_Type> class BArrayDense;
 /**
  * @brief Counter and rule functions
  * @param Array_Type a BArray
- * @param unit, uint Focal cell
+ * @param unit, size_t Focal cell
  * @param Data_Type Data associated with the function, for example, id of the attribute
  *  in the Array.
  * @return `Counter_fun_type` a double (the change statistic)
@@ -457,10 +456,10 @@ template <typename Cell_Type, typename Data_Type> class BArrayDense;
  */
 ///@{
 template <typename Array_Type, typename Data_Type>
-using Counter_fun_type = std::function<double(const Array_Type &, uint, uint, Data_Type &)>;
+using Counter_fun_type = std::function<double(const Array_Type &, size_t, size_t, Data_Type &)>;
 
 template <typename Array_Type, typename Data_Type>
-using Rule_fun_type = std::function<bool(const Array_Type &, uint, uint, Data_Type &)>;
+using Rule_fun_type = std::function<bool(const Array_Type &, size_t, size_t, Data_Type &)>;
 ///@}
 
 /**
@@ -488,7 +487,7 @@ inline bool vec_equal(
     if (a.size() != b.size())
         throw std::length_error("-a- and -b- should have the same length.");
     
-    unsigned int i = 0;
+    size_t i = 0;
     while (a[i] == b[i]) {
         if (++i == a.size())
             return true;
@@ -507,7 +506,7 @@ inline bool vec_equal_approx(
     if (a.size() != b.size())
         throw std::length_error("-a- and -b- should have the same length.");
     
-    unsigned int i = 0;
+    size_t i = 0;
     while (static_cast<double>(std::fabs(a[i] - b[i])) < eps) {
         if (++i == a.size())
             return true;
@@ -533,7 +532,7 @@ inline T vec_inner_prod(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));
     
     return res;
@@ -556,7 +555,7 @@ inline double vec_inner_prod(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));
     
     return res;
@@ -645,7 +644,7 @@ private:
     typename std::unordered_map<size_t, size_t>::iterator iter;
         
 public:
-    // uint ncols;
+    // size_t ncols;
     FreqTable() {};
     ~FreqTable() {};
     
@@ -758,7 +757,7 @@ inline Counts_type FreqTable<T>::as_vector() const
 
     ans.reserve(index.size());
 
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
     {
         
         std::vector< double > tmp(k, 0.0);
@@ -767,9 +766,9 @@ inline Counts_type FreqTable<T>::as_vector() const
             tmp[j - 1u] = data[i * (k + 1) + j];
         
         ans.push_back(
-            std::make_pair<std::vector<double>,unsigned int>(
+            std::make_pair<std::vector<double>,size_t>(
                 std::move(tmp),
-                static_cast<unsigned int>(data[i * (k + 1u)])
+                static_cast<size_t>(data[i * (k + 1u)])
                 )
         );
 
@@ -819,24 +818,24 @@ template<typename T>
 inline void FreqTable<T>::print() const
 {
 
-    unsigned int grand_total = 0u;
+    size_t grand_total = 0u;
 
     printf_barry("%7s | %s\n", "Counts", "Stats");
 
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
     {
 
         printf_barry("%7i | ", static_cast<int>(data[i * (k + 1u)]));
 
-        for (unsigned int j = 1u; j < (k + 1u); ++j)
+        for (size_t j = 1u; j < (k + 1u); ++j)
             printf_barry(" %.2f", data[i * (k + 1) + j]);
         printf_barry("\n");
 
-        grand_total += static_cast<unsigned int>(data[i * (k + 1u)]);
+        grand_total += static_cast<size_t>(data[i * (k + 1u)]);
 
     }
 
-    printf_barry("Grand total: %i\n", grand_total);
+    printf_barry("Grand total: %li\n", grand_total);
 
     return;
 
@@ -861,7 +860,7 @@ inline size_t FreqTable<T>::make_hash(const std::vector< T > & x) const
     // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
     // << is a shift operator, something like lhs * 2^(rhs)
     if (x.size() > 1u)
-        for (unsigned int i = 1u; i < x.size(); ++i)
+        for (size_t i = 1u; i < x.size(); ++i)
             hash ^= hasher(x[i]) + 0x9e3779b9 + (hash<<6) + (hash>>2);
     
     return hash;
@@ -1000,7 +999,7 @@ template <> inline void Cell<double>::add(double x) {
     return;
 }
 
-template <> inline void Cell<unsigned int>::add(unsigned int x) {
+template <> inline void Cell<size_t>::add(size_t x) {
     value += x;
     return;
 }
@@ -1016,7 +1015,7 @@ template <> inline void Cell<bool>::add(bool x) {
 }
 
 template<> inline Cell< double >::Cell() : value(1.0), visited(false), active(true) {}
-template<> inline Cell< uint >::Cell() : value(1u), visited(false), active(true) {}
+template<> inline Cell< size_t >::Cell() : value(1u), visited(false), active(true) {}
 template<> inline Cell< int >::Cell() : value(1), visited(false), active(true) {}
 template<> inline Cell< bool >::Cell() : value(true), visited(false), active(true) {}
 
@@ -1061,7 +1060,7 @@ class BArrayCell_const;
  * `BArray` class objects are arbitrary arrays
  * in which non-empty cells hold data of type `Cell_Type`. The non-empty cells
  * are stored by row and indexed using `unordered_map`s, i.e.
- * `std::vector< std::unordered_map<unsigned int,Cell_Type> >`.
+ * `std::vector< std::unordered_map<size_t,Cell_Type> >`.
  *
  * @tparam Cell_Type Type of cell (any type).
  * @tparam Data_Type Data type of the array (bool default).
@@ -1073,9 +1072,9 @@ class BArray {
     // friend class Support<Cell_Type,Data_Type>;
     // friend class StatsCounter<Cell_Type,Data_Type>;
 private:
-    uint N;
-    uint M;
-    uint NCells = 0u;
+    size_t N;
+    size_t M;
+    size_t NCells = 0u;
     std::vector< Row_type< Cell_Type > > el_ij;
     std::vector< Col_type< Cell_Type > > el_ji;
     Data_Type * data = nullptr;
@@ -1102,7 +1101,7 @@ public:
      * @param N_ Number of rows
      * @param M_ Number of columns
      * @param source An unsigned vector ranging from 0 to N_
-     * @param target An unsigned int vector ranging from 0 to M_
+     * @param target An size_t vector ranging from 0 to M_
      * @param target When `true` tries to add repeated observations.
      */
     ///@{
@@ -1111,22 +1110,22 @@ public:
     BArray() : N(0u), M(0u), NCells(0u), el_ij(0u), el_ji(0u) {};
     
     /** @brief Empty array */
-    BArray (uint N_, uint M_) : N(N_), M(M_), NCells(0u), el_ij(N_), el_ji(M_) {};
+    BArray (size_t N_, size_t M_) : N(N_), M(M_), NCells(0u), el_ij(N_), el_ji(M_) {};
     
     /** @brief Edgelist with data */
     BArray (
-        uint N_, uint M_,
-        const std::vector< uint > & source,
-        const std::vector< uint > & target,
+        size_t N_, size_t M_,
+        const std::vector< size_t > & source,
+        const std::vector< size_t > & target,
         const std::vector< Cell_Type > & value,
         bool add = true
     );
     
     /** @brief Edgelist with no data (simpler) */
     BArray (
-        uint N_, uint M_,
-        const std::vector< uint > & source,
-        const std::vector< uint > & target,
+        size_t N_, size_t M_,
+        const std::vector< size_t > & source,
+        const std::vector< size_t > & target,
         bool add = true
     );
     
@@ -1168,14 +1167,14 @@ public:
     
     // Function to access the elements
     // bool check_cell
-    void out_of_range(uint i, uint j) const;
-    Cell_Type get_cell(uint i, uint j, bool check_bounds = true) const; 
-    std::vector< Cell_Type >      get_col_vec(uint i, bool check_bounds = true) const;
-    std::vector< Cell_Type >      get_row_vec(uint i, bool check_bounds = true) const;
-    void                          get_col_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
-    void                          get_row_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
-    const Row_type< Cell_Type > & row(uint i, bool check_bounds = true) const;
-    const Col_type< Cell_Type > & col(uint i, bool check_bounds = true) const;
+    void out_of_range(size_t i, size_t j) const;
+    Cell_Type get_cell(size_t i, size_t j, bool check_bounds = true) const; 
+    std::vector< Cell_Type >      get_col_vec(size_t i, bool check_bounds = true) const;
+    std::vector< Cell_Type >      get_row_vec(size_t i, bool check_bounds = true) const;
+    void                          get_col_vec(std::vector< Cell_Type > * x, size_t i, bool check_bounds = true) const;
+    void                          get_row_vec(std::vector< Cell_Type > * x, size_t i, bool check_bounds = true) const;
+    const Row_type< Cell_Type > & row(size_t i, bool check_bounds = true) const;
+    const Col_type< Cell_Type > & col(size_t i, bool check_bounds = true) const;
 
     /**
      * @brief Get the edgelist
@@ -1196,10 +1195,10 @@ public:
      * @param check_bounds If `false` avoids checking bounds.
      */
     ///@{
-    bool is_empty(uint i, uint j, bool check_bounds = true) const;
-    uint nrow() const noexcept;
-    uint ncol() const noexcept;
-    uint nnozero() const noexcept;
+    bool is_empty(size_t i, size_t j, bool check_bounds = true) const;
+    size_t nrow() const noexcept;
+    size_t ncol() const noexcept;
+    size_t nnozero() const noexcept;
     Cell<Cell_Type> default_val() const;
     ///@}
 
@@ -1213,39 +1212,39 @@ public:
      * cells exists/don't exist.
      */
     ///@{  
-    BArray<Cell_Type,Data_Type> & operator+=(const std::pair<uint, uint> & coords);
-    BArray<Cell_Type,Data_Type> & operator-=(const std::pair<uint, uint> & coords);
-    BArrayCell<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true);
-    const Cell_Type operator()(uint i, uint j, bool check_bounds = true) const;
+    BArray<Cell_Type,Data_Type> & operator+=(const std::pair<size_t, size_t> & coords);
+    BArray<Cell_Type,Data_Type> & operator-=(const std::pair<size_t, size_t> & coords);
+    BArrayCell<Cell_Type,Data_Type> operator()(size_t i, size_t j, bool check_bounds = true);
+    const Cell_Type operator()(size_t i, size_t j, bool check_bounds = true) const;
     
-    void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
+    void rm_cell(size_t i, size_t j, bool check_bounds = true, bool check_exists = true);
     
-    void insert_cell(uint i, uint j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
-    void insert_cell(uint i, uint j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
-    void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, Cell_Type v, bool check_bounds, bool check_exists);
     
     void swap_cells(
-        uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,
+        size_t i0, size_t j0, size_t i1, size_t j1, bool check_bounds = true,
         int check_exists = CHECK::BOTH,
         int * report     = nullptr
         );
     
-    void toggle_cell(uint i, uint j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
-    void toggle_lock(uint i, uint j, bool check_bounds = true);
+    void toggle_cell(size_t i, size_t j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
+    void toggle_lock(size_t i, size_t j, bool check_bounds = true);
     ///@}
     
     /**@name Column/row wise interchange*/
     ///@{
-    void swap_rows(uint i0, uint i1, bool check_bounds = true);
-    void swap_cols(uint j0, uint j1, bool check_bounds = true);
+    void swap_rows(size_t i0, size_t i1, bool check_bounds = true);
+    void swap_cols(size_t j0, size_t j1, bool check_bounds = true);
     
-    void zero_row(uint i, bool check_bounds = true);
-    void zero_col(uint j, bool check_bounds = true);
+    void zero_row(size_t i, bool check_bounds = true);
+    void zero_col(size_t j, bool check_bounds = true);
     ///@}
     
     void transpose();
     void clear(bool hard = true);
-    void resize(uint N_, uint M_);
+    void resize(size_t N_, size_t M_);
     void reserve();
 
     // Advances operators
@@ -1275,7 +1274,7 @@ public:
     // ///@{
     // operator BArray<double,bool>() const;
     // operator BArray<int,bool>() const;
-    // operator BArray<uint,bool>() const;
+    // operator BArray<size_t,bool>() const;
     // operator BArray<bool,bool>() const;
     // ///@}
 
@@ -1312,12 +1311,12 @@ class BArrayCell {
 private:
   
     BArray<Cell_Type,Data_Type> * Array;
-    uint i;
-    uint j;
+    size_t i;
+    size_t j;
   
 public:
   
-    BArrayCell(BArray<Cell_Type,Data_Type> * Array_, uint i_, uint j_, bool check_bounds = true) : 
+    BArrayCell(BArray<Cell_Type,Data_Type> * Array_, size_t i_, size_t j_, bool check_bounds = true) : 
     Array(Array_), i(i_), j(j_) {
 
         if (check_bounds)
@@ -1351,12 +1350,12 @@ class BArrayCell_const {
 private:
     
     const BArray<Cell_Type,Data_Type> * Array;
-    uint i;
-    uint j;
+    size_t i;
+    size_t j;
     
 public:
   
-    BArrayCell_const(const BArray<Cell_Type,Data_Type> * Array_, uint i_, uint j_, bool check_bounds = true) : 
+    BArrayCell_const(const BArray<Cell_Type,Data_Type> * Array_, size_t i_, size_t j_, bool check_bounds = true) : 
     Array(Array_), i(i_), j(j_) {
         if (check_bounds) {
 
@@ -1428,9 +1427,9 @@ Cell<Cell_Type> BArray<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(stat
 
 // Edgelist with data
 BARRAY_TEMPLATE(,BArray) (
-    uint N_, uint M_,
-    const std::vector< uint > & source,
-    const std::vector< uint > & target,
+    size_t N_, size_t M_,
+    const std::vector< size_t > & source,
+    const std::vector< size_t > & target,
     const std::vector< Cell_Type > & value,
     bool add
 ) {
@@ -1449,7 +1448,7 @@ BARRAY_TEMPLATE(,BArray) (
     
     
     // Writing the data
-    for (uint i = 0u; i < source.size(); ++i) {
+    for (size_t i = 0u; i < source.size(); ++i) {
       
         // Checking range
         bool empty = this->is_empty(source[i], target[i], true);
@@ -1470,9 +1469,9 @@ BARRAY_TEMPLATE(,BArray) (
 
 // Edgelist with data
 BARRAY_TEMPLATE(,BArray) (
-    uint N_, uint M_,
-    const std::vector< uint > & source,
-    const std::vector< uint > & target,
+    size_t N_, size_t M_,
+    const std::vector< size_t > & source,
+    const std::vector< size_t > & target,
     bool add
 ) {
   
@@ -1492,7 +1491,7 @@ BARRAY_TEMPLATE(,BArray) (
     
     
     // Writing the data
-    for (uint i = 0u; i < source.size(); ++i) {
+    for (size_t i = 0u; i < source.size(); ++i) {
       
         // Checking range
         if ((source[i] >= N_) || (target[i] >= M_))
@@ -1512,7 +1511,7 @@ BARRAY_TEMPLATE(,BArray) (
         
         // Adding the value and creating a pointer to it
         ROW(source[i]).emplace(
-            std::pair<uint, Cell< Cell_Type> >(
+            std::pair<size_t, Cell< Cell_Type> >(
                 target[i],
                 Cell< Cell_Type >(value[i], visited)
             )
@@ -1545,7 +1544,7 @@ BARRAY_TEMPLATE(,BArray) (
     std::copy(Array_.el_ji.begin(), Array_.el_ji.end(), std::back_inserter(el_ji));
 
     // Taking care of the pointers
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
 
         for (auto& r: row(i, false))
@@ -1591,7 +1590,7 @@ BARRAY_TEMPLATE(BARRAY_TYPE() &, operator=) (
         this->resize(Array_.N, Array_.M);
         
         // Entries
-        for (uint i = 0u; i < N; ++i)
+        for (size_t i = 0u; i < N; ++i)
         {
           
             if (Array_.nnozero() == nnozero())
@@ -1640,7 +1639,7 @@ BARRAY_TEMPLATE(,BArray) (
     this->resize(x.N, x.M);
     
     // Entries
-    for (uint i = 0u; i < N; ++i) {
+    for (size_t i = 0u; i < N; ++i) {
       
         if (x.nnozero() == nnozero())
             break;
@@ -1681,7 +1680,7 @@ BARRAY_TEMPLATE(BARRAY_TYPE() &, operator=) (
         this->resize(x.N, x.M);
         
         // Entries
-        for (uint i = 0u; i < N; ++i) {
+        for (size_t i = 0u; i < N; ++i) {
           
             if (x.nnozero() == nnozero())
                 break;
@@ -1798,8 +1797,8 @@ inline void BArray<Cell_Type,Data_Type>::flush_data()
 }
 
 BARRAY_TEMPLATE(void, out_of_range) (
-    uint i,
-    uint j
+    size_t i,
+    size_t j
 ) const {
 
     if (i >= N)
@@ -1811,8 +1810,8 @@ BARRAY_TEMPLATE(void, out_of_range) (
 }
     
 BARRAY_TEMPLATE(Cell_Type, get_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) const {
     
@@ -1834,7 +1833,7 @@ BARRAY_TEMPLATE(Cell_Type, get_cell) (
 }
 
 BARRAY_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -1852,7 +1851,7 @@ BARRAY_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
 
 BARRAY_TEMPLATE(void, get_row_vec) (
     std::vector< Cell_Type > * x,
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -1866,7 +1865,7 @@ BARRAY_TEMPLATE(void, get_row_vec) (
 }
 
 BARRAY_TEMPLATE(std::vector< Cell_Type >, get_col_vec) (
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -1884,7 +1883,7 @@ BARRAY_TEMPLATE(std::vector< Cell_Type >, get_col_vec) (
 
 BARRAY_TEMPLATE(void, get_col_vec) (
     std::vector<Cell_Type> * x,
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -1898,7 +1897,7 @@ BARRAY_TEMPLATE(void, get_col_vec) (
 }
 
 BARRAY_TEMPLATE(const Row_type< Cell_Type > &, row) (
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -1910,7 +1909,7 @@ BARRAY_TEMPLATE(const Row_type< Cell_Type > &, row) (
 }
 
 BARRAY_TEMPLATE(const Col_type< Cell_Type > &, col) (
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -1925,7 +1924,7 @@ BARRAY_TEMPLATE(Entries< Cell_Type >, get_entries) () const {
     
     Entries<Cell_Type> res(NCells);
     
-    for (uint i = 0u; i < N; ++i) {
+    for (size_t i = 0u; i < N; ++i) {
         
         if (ROW(i).size() == 0u)
             continue;
@@ -1941,8 +1940,8 @@ BARRAY_TEMPLATE(Entries< Cell_Type >, get_entries) () const {
 }
 
 BARRAY_TEMPLATE(bool, is_empty) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) const {
     
@@ -1962,17 +1961,17 @@ BARRAY_TEMPLATE(bool, is_empty) (
 }
 
 
-BARRAY_TEMPLATE(unsigned int, nrow) () const noexcept {
+BARRAY_TEMPLATE(size_t, nrow) () const noexcept {
     return N;
 }
 
 
-BARRAY_TEMPLATE(unsigned int, ncol) () const noexcept {
+BARRAY_TEMPLATE(size_t, ncol) () const noexcept {
     return M;
 }
 
 
-BARRAY_TEMPLATE(unsigned int, nnozero) () const noexcept {
+BARRAY_TEMPLATE(size_t, nnozero) () const noexcept {
     return NCells;
 }
 
@@ -1981,7 +1980,7 @@ BARRAY_TEMPLATE(Cell< Cell_Type >, default_val) () const {
 }
 
 BARRAY_TEMPLATE(BARRAY_TYPE() &, operator+=) (
-    const std::pair<uint,uint> & coords
+    const std::pair<size_t,size_t> & coords
 ) {
     
     this->insert_cell(
@@ -1996,7 +1995,7 @@ BARRAY_TEMPLATE(BARRAY_TYPE() &, operator+=) (
 }
 
 BARRAY_TEMPLATE(BARRAY_TYPE() &, operator-=) (
-    const std::pair<uint,uint> & coords
+    const std::pair<size_t,size_t> & coords
 ) {
     
     this->rm_cell(
@@ -2011,8 +2010,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE() &, operator-=) (
 
 template BARRAY_TEMPLATE_ARGS()
 inline BArrayCell<Cell_Type,Data_Type> BARRAY_TYPE()::operator()(  
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) {
     
@@ -2022,8 +2021,8 @@ inline BArrayCell<Cell_Type,Data_Type> BARRAY_TYPE()::operator()(
 
 template BARRAY_TEMPLATE_ARGS()
 inline const Cell_Type BARRAY_TYPE()::operator() (  
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) const {
     
@@ -2032,8 +2031,8 @@ inline const Cell_Type BARRAY_TYPE()::operator() (
 }
 
 BARRAY_TEMPLATE(void, rm_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds,
     bool check_exists
 ) {
@@ -2067,8 +2066,8 @@ BARRAY_TEMPLATE(void, rm_cell) (
 }
 
 BARRAY_TEMPLATE(void, insert_cell) (
-        uint i,
-        uint j,
+        size_t i,
+        size_t j,
         const Cell< Cell_Type> & v,
         bool check_bounds,
         bool check_exists
@@ -2082,7 +2081,7 @@ BARRAY_TEMPLATE(void, insert_cell) (
         // Checking if nothing here, then we move along
         if (ROW(i).size() == 0u) {
             
-            ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
+            ROW(i).insert(std::pair< size_t, Cell<Cell_Type>>(j, v));
             COL(j).emplace(i, &ROW(i)[j]);
             NCells++;
             return;
@@ -2092,7 +2091,7 @@ BARRAY_TEMPLATE(void, insert_cell) (
         // In this case, the row exists, but we are checking that the value is empty  
         if (ROW(i).find(j) == ROW(i).end()) {
             
-            ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v)); 
+            ROW(i).insert(std::pair< size_t, Cell<Cell_Type>>(j, v)); 
             COL(j).emplace(i, &ROW(i)[j]);
             NCells++;
             
@@ -2103,7 +2102,7 @@ BARRAY_TEMPLATE(void, insert_cell) (
         
     } else {
         
-        ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
+        ROW(i).insert(std::pair< size_t, Cell<Cell_Type>>(j, v));
         COL(j).emplace(i, &ROW(i)[j]);
         NCells++;
         
@@ -2114,8 +2113,8 @@ BARRAY_TEMPLATE(void, insert_cell) (
 }
 
 BARRAY_TEMPLATE(void, insert_cell) (
-        uint i,
-        uint j,
+        size_t i,
+        size_t j,
         Cell< Cell_Type> && v,
         bool check_bounds,
         bool check_exists
@@ -2129,7 +2128,7 @@ BARRAY_TEMPLATE(void, insert_cell) (
         // Checking if nothing here, then we move along
         if (ROW(i).size() == 0u) {
             
-            ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
+            ROW(i).insert(std::pair< size_t, Cell<Cell_Type>>(j, v));
             COL(j).emplace(i, &ROW(i)[j]);
             NCells++;
             return;
@@ -2139,7 +2138,7 @@ BARRAY_TEMPLATE(void, insert_cell) (
         // In this case, the row exists, but we are checking that the value is empty  
         if (ROW(i).find(j) == ROW(i).end()) {
             
-            ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v)); 
+            ROW(i).insert(std::pair< size_t, Cell<Cell_Type>>(j, v)); 
             COL(j).emplace(i, &ROW(i)[j]);
             NCells++;
             
@@ -2150,7 +2149,7 @@ BARRAY_TEMPLATE(void, insert_cell) (
         
     } else {
         
-        ROW(i).insert(std::pair< uint, Cell<Cell_Type>>(j, v));
+        ROW(i).insert(std::pair< size_t, Cell<Cell_Type>>(j, v));
         COL(j).emplace(i, &ROW(i)[j]);
         NCells++;
         
@@ -2161,8 +2160,8 @@ BARRAY_TEMPLATE(void, insert_cell) (
 }
 
 BARRAY_TEMPLATE(void, insert_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     Cell_Type v,
     bool check_bounds,
     bool check_exists
@@ -2173,8 +2172,8 @@ BARRAY_TEMPLATE(void, insert_cell) (
 }
 
 BARRAY_TEMPLATE(void, swap_cells) (
-    uint i0, uint j0,
-    uint i1, uint j1,
+    size_t i0, size_t j0,
+    size_t i1, size_t j1,
     bool check_bounds,
     int check_exists,
     int * report
@@ -2276,8 +2275,8 @@ BARRAY_TEMPLATE(void, swap_cells) (
 }
 
 BARRAY_TEMPLATE(void, toggle_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds,
     int check_exists
 ) {
@@ -2309,8 +2308,8 @@ BARRAY_TEMPLATE(void, toggle_cell) (
 }
 
 BARRAY_TEMPLATE(void, swap_rows) (
-    uint i0,
-    uint i1,
+    size_t i0,
+    size_t i1,
     bool check_bounds
 ) {
   
@@ -2355,8 +2354,8 @@ BARRAY_TEMPLATE(void, swap_rows) (
 
 // This swapping is more expensive overall
 BARRAY_TEMPLATE(void, swap_cols) (
-    uint j0,
-    uint j1,
+    size_t j0,
+    size_t j1,
     bool check_bounds
 ) {
   
@@ -2426,7 +2425,7 @@ BARRAY_TEMPLATE(void, swap_cols) (
 }
 
 BARRAY_TEMPLATE(void, zero_row) (
-    uint i,
+    size_t i,
     bool check_bounds
 ) {
   
@@ -2447,7 +2446,7 @@ BARRAY_TEMPLATE(void, zero_row) (
 }
 
 BARRAY_TEMPLATE(void, zero_col) (
-    uint j,
+    size_t j,
     bool check_bounds
 ) {
   
@@ -2476,9 +2475,9 @@ BARRAY_TEMPLATE(void, transpose) () {
     if      (N > M) el_ji.resize(N);
     else if (N < M) el_ij.resize(M);
     
-    // uint N0 = N, M0 = M;
+    // size_t N0 = N, M0 = M;
     int status;
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
         
         // Do we need to move anything?
@@ -2544,7 +2543,7 @@ BARRAY_TEMPLATE(void, clear) (
       
     } else {
         
-        for (unsigned int i = 0u; i < N; ++i)
+        for (size_t i = 0u; i < N; ++i)
             zero_row(i, false);
         
     }
@@ -2554,18 +2553,18 @@ BARRAY_TEMPLATE(void, clear) (
 }
 
 BARRAY_TEMPLATE(void, resize) (
-    uint N_,
-    uint M_
+    size_t N_,
+    size_t M_
 ) {
   
     // Removing rows
     if (N_ < N)
-        for (uint i = N_; i < N; ++i)
+        for (size_t i = N_; i < N; ++i)
             zero_row(i, false);
     
     // Removing cols
     if (M_ < M)
-        for (uint j = M_; j < M; ++j)
+        for (size_t j = M_; j < M; ++j)
             zero_col(j, false);
     
     // Resizing will invalidate pointers and values out of range
@@ -2586,10 +2585,10 @@ BARRAY_TEMPLATE(void, resize) (
 
 BARRAY_TEMPLATE(void, reserve) () {
 #ifdef BARRAY_USE_UNORDERED_MAP
-    for (uint i = 0u; i < N; i++)
+    for (size_t i = 0u; i < N; i++)
         ROW(i).reserve(M);
     
-    for (uint i = 0u; i < M; i++)
+    for (size_t i = 0u; i < M; i++)
         COL(i).reserve(N);
 #endif
     return;
@@ -2606,7 +2605,7 @@ BARRAY_TEMPLATE(void, print) (
     printf_barry(fmt, args);
     va_end(args);
 
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
 
         #ifdef BARRY_DEBUG_LEVEL
@@ -2616,7 +2615,7 @@ BARRAY_TEMPLATE(void, print) (
         #else
         printf_barry("[%3i,] ", i);
         #endif
-        for (uint j = 0u; j < M; ++j) {
+        for (size_t j = 0u; j < M; ++j) {
             if (this->is_empty(i, j, false))
                 printf_barry("    . ");
             else 
@@ -2818,8 +2817,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator+=) (
     // Must be compatible
     checkdim_(*this, rhs);
     
-    for (uint i = 0u; i < nrow(); ++i)
-        for (uint j = 0u; j < ncol(); ++j)
+    for (size_t i = 0u; i < nrow(); ++i)
+        for (size_t j = 0u; j < ncol(); ++j)
             this->operator()(i, j) += rhs.get_cell(i, j);
 
     return *this;
@@ -2829,8 +2828,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator+=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) {
-        for (uint j = 0u; j < ncol(); ++j) {
+    for (size_t i = 0u; i < nrow(); ++i) {
+        for (size_t j = 0u; j < ncol(); ++j) {
             this->operator()(i, j) += rhs;
         }
     }
@@ -2845,8 +2844,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator-=) (
     // Must be compatible
     checkdim_(*this, rhs);
     
-    for (uint i = 0u; i < nrow(); ++i) {
-        for (uint j = 0u; j < ncol(); ++j) {
+    for (size_t i = 0u; i < nrow(); ++i) {
+        for (size_t j = 0u; j < ncol(); ++j) {
             this->operator()(i, j) -= rhs.get_cell(i, j);
         }
     }
@@ -2858,8 +2857,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator-=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) {
-        for (uint j = 0u; j < ncol(); ++j) {
+    for (size_t i = 0u; i < nrow(); ++i) {
+        for (size_t j = 0u; j < ncol(); ++j) {
             this->operator()(i, j) -= rhs;
         }
     }
@@ -2871,7 +2870,7 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator*=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) {
+    for (size_t i = 0u; i < nrow(); ++i) {
 
         if (ROW(i).size() == 0u)
             continue;
@@ -2888,7 +2887,7 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator/=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) {
+    for (size_t i = 0u; i < nrow(); ++i) {
 
         if (ROW(i).size() == 0u)
             continue;
@@ -2969,9 +2968,9 @@ class BArrayDense {
     // friend class Support<Cell_Type,Data_Type>;
     // friend class StatsCounter<Cell_Type,Data_Type>;
 private:
-    uint N;
-    uint M;
-    // uint NCells = 0u;
+    size_t N;
+    size_t M;
+    // size_t NCells = 0u;
     std::vector< Cell_Type > el;
     std::vector< Cell_Type > el_rowsums;
     std::vector< Cell_Type > el_colsums;
@@ -2999,7 +2998,7 @@ public:
      * @param N_ Number of rows
      * @param M_ Number of columns
      * @param source An unsigned vector ranging from 0 to N_
-     * @param target An unsigned int vector ranging from 0 to M_
+     * @param target An size_t vector ranging from 0 to M_
      * @param target When `true` tries to add repeated observations.
      * @param value Cell_Type defaul fill-in value (zero, by default.)
      */
@@ -3009,25 +3008,25 @@ public:
     BArrayDense() : N(0u), M(0u), el(0u), el_rowsums(0u), el_colsums(0u) {};
     
     /** @brief Empty array */
-    BArrayDense (uint N_, uint M_, Cell_Type value = static_cast<Cell_Type>(0)) :
+    BArrayDense (size_t N_, size_t M_, Cell_Type value = static_cast<Cell_Type>(0)) :
         N(N_), M(M_), el(N_ * M_, value),
         el_rowsums(N_, static_cast<Cell_Type>(value * M_)), el_colsums(M_, static_cast<Cell_Type>(value * N_)) {};
     
     /** @brief Edgelist with data */
     BArrayDense (
-        uint N_,
-        uint M_,
-        const std::vector< uint > & source,
-        const std::vector< uint > & target,
+        size_t N_,
+        size_t M_,
+        const std::vector< size_t > & source,
+        const std::vector< size_t > & target,
         const std::vector< Cell_Type > & value,
         bool add = true
     );
     
     /** @brief Edgelist with no data (simpler) */
     BArrayDense (
-        uint N_, uint M_,
-        const std::vector< uint > & source,
-        const std::vector< uint > & target,
+        size_t N_, size_t M_,
+        const std::vector< size_t > & source,
+        const std::vector< size_t > & target,
         bool add = true
     );
     
@@ -3068,18 +3067,18 @@ public:
     
     // Function to access the elements
     // bool check_cell
-    void out_of_range(uint i, uint j) const;
-    Cell_Type get_cell(uint i, uint j, bool check_bounds = true) const; 
-    std::vector< Cell_Type >      get_col_vec(uint i, bool check_bounds = true) const;
-    std::vector< Cell_Type >      get_row_vec(uint i, bool check_bounds = true) const;
-    void                          get_col_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
-    void                          get_row_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
+    void out_of_range(size_t i, size_t j) const;
+    Cell_Type get_cell(size_t i, size_t j, bool check_bounds = true) const; 
+    std::vector< Cell_Type >      get_col_vec(size_t i, bool check_bounds = true) const;
+    std::vector< Cell_Type >      get_row_vec(size_t i, bool check_bounds = true) const;
+    void                          get_col_vec(std::vector< Cell_Type > * x, size_t i, bool check_bounds = true) const;
+    void                          get_row_vec(std::vector< Cell_Type > * x, size_t i, bool check_bounds = true) const;
     
-    BArrayDenseRow<Cell_Type,Data_Type> & row(uint i, bool check_bounds = true);
-    const BArrayDenseRow_const<Cell_Type,Data_Type> row(uint i, bool check_bounds = true) const;
+    BArrayDenseRow<Cell_Type,Data_Type> & row(size_t i, bool check_bounds = true);
+    const BArrayDenseRow_const<Cell_Type,Data_Type> row(size_t i, bool check_bounds = true) const;
 
-    BArrayDenseCol<Cell_Type,Data_Type> & col(uint j, bool check_bounds = true);
-    const BArrayDenseCol_const<Cell_Type,Data_Type> col(uint j, bool check_bounds = true) const;
+    BArrayDenseCol<Cell_Type,Data_Type> & col(size_t j, bool check_bounds = true);
+    const BArrayDenseCol_const<Cell_Type,Data_Type> col(size_t j, bool check_bounds = true) const;
 
     /**
      * @brief Get the edgelist
@@ -3100,10 +3099,10 @@ public:
      * @param check_bounds If `false` avoids checking bounds.
      */
     ///@{
-    bool is_empty(uint i, uint j, bool check_bounds = true) const;
-    uint nrow() const noexcept;
-    uint ncol() const noexcept;
-    uint nnozero() const noexcept;
+    bool is_empty(size_t i, size_t j, bool check_bounds = true) const;
+    size_t nrow() const noexcept;
+    size_t ncol() const noexcept;
+    size_t nnozero() const noexcept;
     Cell<Cell_Type> default_val() const;
     ///@}
 
@@ -3117,39 +3116,39 @@ public:
      * cells exists/don't exist.
      */
     ///@{  
-    BArrayDense<Cell_Type,Data_Type> & operator+=(const std::pair<uint, uint> & coords);
-    BArrayDense<Cell_Type,Data_Type> & operator-=(const std::pair<uint, uint> & coords);
-    BArrayDenseCell<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true);
-    const Cell_Type operator()(uint i, uint j, bool check_bounds = true) const;
+    BArrayDense<Cell_Type,Data_Type> & operator+=(const std::pair<size_t, size_t> & coords);
+    BArrayDense<Cell_Type,Data_Type> & operator-=(const std::pair<size_t, size_t> & coords);
+    BArrayDenseCell<Cell_Type,Data_Type> operator()(size_t i, size_t j, bool check_bounds = true);
+    const Cell_Type operator()(size_t i, size_t j, bool check_bounds = true) const;
     
-    void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
+    void rm_cell(size_t i, size_t j, bool check_bounds = true, bool check_exists = true);
     
-    void insert_cell(uint i, uint j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
-    // void insert_cell(uint i, uint j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
-    void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
+    // void insert_cell(size_t i, size_t j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, Cell_Type v, bool check_bounds, bool check_exists);
     
     void swap_cells(
-        uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,
+        size_t i0, size_t j0, size_t i1, size_t j1, bool check_bounds = true,
         int check_exists = CHECK::BOTH,
         int * report     = nullptr
         );
     
-    void toggle_cell(uint i, uint j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
-    void toggle_lock(uint i, uint j, bool check_bounds = true);
+    void toggle_cell(size_t i, size_t j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
+    void toggle_lock(size_t i, size_t j, bool check_bounds = true);
     ///@}
     
     /**@name Column/row wise interchange*/
     ///@{
-    void swap_rows(uint i0, uint i1, bool check_bounds = true);
-    void swap_cols(uint j0, uint j1, bool check_bounds = true);
+    void swap_rows(size_t i0, size_t i1, bool check_bounds = true);
+    void swap_cols(size_t j0, size_t j1, bool check_bounds = true);
     
-    void zero_row(uint i, bool check_bounds = true);
-    void zero_col(uint j, bool check_bounds = true);
+    void zero_row(size_t i, bool check_bounds = true);
+    void zero_col(size_t j, bool check_bounds = true);
     ///@}
     
     void transpose();
     void clear(bool hard = true);
-    void resize(uint N_, uint M_);
+    void resize(size_t N_, size_t M_);
     void reserve();
 
     // Advances operators
@@ -3179,15 +3178,15 @@ public:
     // ///@{
     // operator BArrayDense<double,bool>() const;
     // operator BArrayDense<int,bool>() const;
-    // operator BArrayDense<uint,bool>() const;
+    // operator BArrayDense<size_t,bool>() const;
     // operator BArrayDense<bool,bool>() const;
     // ///@}
     
     bool is_dense() const noexcept {return dense;};
 
     const std::vector< Cell_Type > & get_data() const;
-    const Cell_Type rowsum(unsigned int i) const;
-    const Cell_Type colsum(unsigned int i) const;
+    const Cell_Type rowsum(size_t i) const;
+    const Cell_Type colsum(size_t i) const;
 };
 
 #endif
@@ -3233,15 +3232,15 @@ class BArrayDenseCell {
 private:
   
     BArrayDense<Cell_Type,Data_Type> * dat;
-    uint i;
-    uint j;
+    size_t i;
+    size_t j;
   
 public:
   
     BArrayDenseCell(
         BArrayDense<Cell_Type,Data_Type> * Array_,
-        uint i_,
-        uint j_,
+        size_t i_,
+        size_t j_,
         bool check_bounds = true
         ) : 
     i(i_), j(j_)
@@ -3314,7 +3313,7 @@ class BArrayDenseRow {
 private:
     BArrayDense< Cell_Type,Data_Type > * array;
     Row_type< Cell_Type > row;
-    unsigned int index;
+    size_t index;
     bool row_filled = false; // after row is filled
 
     void fill_if_needed()
@@ -3322,7 +3321,7 @@ private:
         if (!row_filled)
         {
 
-            for (unsigned int j = 0u; j < array->M; ++j)
+            for (size_t j = 0u; j < array->M; ++j)
             {
                 
                 if (array->el[POS_N(index, j, array->N)] != ZERO_CELL)
@@ -3340,7 +3339,7 @@ public:
 
     BArrayDenseRow(
         BArrayDense< Cell_Type,Data_Type > & array_,
-        unsigned int i
+        size_t i
     ) : array(&array_), index(i) {};
 
     typename Row_type<Cell_Type>::iterator & begin()
@@ -3367,7 +3366,7 @@ public:
 
     };
 
-    std::pair<unsigned int,Cell<Cell_Type>> & operator()(unsigned int i)
+    std::pair<size_t,Cell<Cell_Type>> & operator()(size_t i)
     {
 
         fill_if_needed();
@@ -3384,16 +3383,16 @@ class BArrayDenseRow_const {
 private:
     const BArrayDense< Cell_Type,Data_Type > * array;
     Row_type< Cell_Type > row;
-    unsigned int index;
+    size_t index;
 
 public:
     BArrayDenseRow_const(
         const BArrayDense< Cell_Type,Data_Type > & array_,
-        unsigned int i
+        size_t i
     ) : array(&array_), index(i)
     {
 
-        for (unsigned int j = 0u; j < array->M; ++j)
+        for (size_t j = 0u; j < array->M; ++j)
         {
             
             if (array->el[POS_N(index, j, array->M)] != ZERO_CELL)
@@ -3421,7 +3420,7 @@ public:
         return row.size();
     };
 
-    const std::pair<unsigned int,Cell<Cell_Type>> operator()(unsigned int i) const
+    const std::pair<size_t,Cell<Cell_Type>> operator()(size_t i) const
     {
         return row[i];
     }
@@ -3466,7 +3465,7 @@ class BArrayDenseCol {
 private:
     BArrayDense< Cell_Type,Data_Type > * array;
     Col_type<Cell_Type> col;
-    unsigned int index;
+    size_t index;
     bool col_filled = false;
 
     void fill_if_needed()
@@ -3474,7 +3473,7 @@ private:
         if (!col_filled)
         {
 
-            for (unsigned int i = 0u; i < array->N; ++i)
+            for (size_t i = 0u; i < array->N; ++i)
             {
                 
                 if (array->el[POS_N(i, index, array->N)] != ZERO_CELL)
@@ -3490,7 +3489,7 @@ private:
 public:
     BArrayDenseCol(
         BArrayDense< Cell_Type,Data_Type > & array_,
-        unsigned int j
+        size_t j
     ) : array(&array_), index(j) {};
 
 
@@ -3512,7 +3511,7 @@ public:
         return col.size();
     };
 
-    std::pair<unsigned int,Cell_Type*> & operator()(unsigned int i)
+    std::pair<size_t,Cell_Type*> & operator()(size_t i)
     {
         fill_if_needed();
         return col[i];
@@ -3526,17 +3525,17 @@ class BArrayDenseCol_const {
     friend class BArrayDenseCell_const<Cell_Type,Data_Type>;
 private:
     const BArrayDense< Cell_Type,Data_Type > * array;
-    unsigned int index;
+    size_t index;
     Col_type<Cell_Type> col;
 
 public:
     BArrayDenseCol_const(
         const BArrayDense< Cell_Type,Data_Type > & array_,
-        unsigned int j
+        size_t j
     ) : array(&array_), index(j)
     {
 
-        for (unsigned int i = 0u; i < array->N; ++i)
+        for (size_t i = 0u; i < array->N; ++i)
         {
             
             if (array->el[POS_N(i, index, array->N)] != ZERO_CELL)
@@ -3562,7 +3561,7 @@ public:
         return col.size();
     };
 
-    const std::pair<unsigned int,Cell_Type*> operator()(unsigned int i) const
+    const std::pair<size_t,Cell_Type*> operator()(size_t i) const
     {
         return col[i];
     }
@@ -3634,10 +3633,10 @@ Cell_Type BArrayDense<Cell_Type,Data_Type>::Cell_default = static_cast< Cell_Typ
 
 // Edgelist with data
 BDENSE_TEMPLATE(,BArrayDense)(
-    uint N_,
-    uint M_,
-    const std::vector< uint > & source,
-    const std::vector< uint > & target,
+    size_t N_,
+    size_t M_,
+    const std::vector< size_t > & source,
+    const std::vector< size_t > & target,
     const std::vector< Cell_Type > & value,
     bool add
 ) {
@@ -3656,7 +3655,7 @@ BDENSE_TEMPLATE(,BArrayDense)(
     el_colsums.resize(M, ZERO_CELL);
     
     // Writing the data
-    for (uint i = 0u; i < source.size(); ++i)
+    for (size_t i = 0u; i < source.size(); ++i)
     {
       
         // Checking range
@@ -3692,9 +3691,9 @@ BDENSE_TEMPLATE(,BArrayDense)(
 
 // Edgelist without data
 BDENSE_TEMPLATE(, BArrayDense)(
-    uint N_, uint M_,
-    const std::vector< uint > & source,
-    const std::vector< uint > & target,
+    size_t N_, size_t M_,
+    const std::vector< size_t > & source,
+    const std::vector< size_t > & target,
     bool add
 ) {
   
@@ -3714,7 +3713,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
     el_colsums.resize(M, ZERO_CELL);
     
     // Writing the data
-    for (uint i = 0u; i < source.size(); ++i)
+    for (size_t i = 0u; i < source.size(); ++i)
     {
       
         // Checking range
@@ -3950,8 +3949,8 @@ BDENSE_TEMPLATE(const Data_Type &, D) () const {
 }
 
 BDENSE_TEMPLATE(void, out_of_range) (
-    uint i,
-    uint j
+    size_t i,
+    size_t j
 ) const {
 
     if (i >= N)
@@ -3964,8 +3963,8 @@ BDENSE_TEMPLATE(void, out_of_range) (
 }
     
 BDENSE_TEMPLATE(Cell_Type, get_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) const {
     
@@ -3978,7 +3977,7 @@ BDENSE_TEMPLATE(Cell_Type, get_cell) (
 }
 
 BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -3987,7 +3986,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
         out_of_range(i, 0u);
 
     std::vector< Cell_Type > ans(ncol(), static_cast< Cell_Type >(false));
-    for (uint j = 0u; j < M; ++j) 
+    for (size_t j = 0u; j < M; ++j) 
         ans[j] = el[POS(i, j)];
     
     return ans;
@@ -3996,7 +3995,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
 
 BDENSE_TEMPLATE(void, get_row_vec) (
     std::vector<Cell_Type> * x,
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -4004,13 +4003,13 @@ BDENSE_TEMPLATE(void, get_row_vec) (
     if (check_bounds) 
         out_of_range(i, 0u);
 
-    for (uint j = 0u; j < M; ++j) 
+    for (size_t j = 0u; j < M; ++j) 
         x->at(j) = el[POS(i, j)];
     
 }
 
 BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -4019,7 +4018,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
         out_of_range(0u, i);
 
     std::vector< Cell_Type > ans(nrow(), static_cast< Cell_Type >(false));
-    for (uint j = 0u; j < N; ++j) 
+    for (size_t j = 0u; j < N; ++j) 
         ans[j] = el[POS(j, i)];
     
     return ans;
@@ -4028,7 +4027,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
 
 BDENSE_TEMPLATE(void, get_col_vec) (
     std::vector<Cell_Type> * x,
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -4036,13 +4035,13 @@ BDENSE_TEMPLATE(void, get_col_vec) (
     if (check_bounds) 
         out_of_range(0u, i);
 
-    for (uint j = 0u; j < N; ++j) 
+    for (size_t j = 0u; j < N; ++j) 
         x->at(j) = el[POS(j, i)];//this->get_cell(iter->first, i, false);
     
 }
 template<typename Cell_Type, typename Data_Type>
 inline const BArrayDenseRow_const<Cell_Type,Data_Type> BDENSE_TYPE()::row(
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -4055,7 +4054,7 @@ inline const BArrayDenseRow_const<Cell_Type,Data_Type> BDENSE_TYPE()::row(
 
 template<typename Cell_Type, typename Data_Type>
 inline BArrayDenseRow<Cell_Type,Data_Type> & BDENSE_TYPE()::row(
-    uint i,
+    size_t i,
     bool check_bounds
 ) {
 
@@ -4069,7 +4068,7 @@ inline BArrayDenseRow<Cell_Type,Data_Type> & BDENSE_TYPE()::row(
 template<typename Cell_Type, typename Data_Type>
 inline const BArrayDenseCol_const<Cell_Type,Data_Type> 
 BArrayDense<Cell_Type,Data_Type>::col(
-    uint j,
+    size_t j,
     bool check_bounds
 ) const {
 
@@ -4083,7 +4082,7 @@ BArrayDense<Cell_Type,Data_Type>::col(
 template<typename Cell_Type, typename Data_Type>
 inline BArrayDenseCol<Cell_Type,Data_Type> & 
 BArrayDense<Cell_Type,Data_Type>::col(
-    uint j,
+    size_t j,
     bool check_bounds
 ) {
 
@@ -4096,13 +4095,13 @@ BArrayDense<Cell_Type,Data_Type>::col(
 
 BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
     
-    unsigned int nzero = this->nnozero();
+    size_t nzero = this->nnozero();
 
     Entries<Cell_Type> res(nzero);
     
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
-        for (uint j = 0u; j < M; ++j)
+        for (size_t j = 0u; j < M; ++j)
         {
 
             if (el[POS(i, j)] != BARRY_ZERO_DENSE)
@@ -4124,8 +4123,8 @@ BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
 }
 
 BDENSE_TEMPLATE(bool, is_empty)(
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) const {
     
@@ -4136,17 +4135,17 @@ BDENSE_TEMPLATE(bool, is_empty)(
     
 }
 
-BDENSE_TEMPLATE(unsigned int, nrow)() const noexcept {
+BDENSE_TEMPLATE(size_t, nrow)() const noexcept {
     return N;
 }
 
-BDENSE_TEMPLATE(unsigned int, ncol)() const noexcept {
+BDENSE_TEMPLATE(size_t, ncol)() const noexcept {
     return M;
 }
 
-BDENSE_TEMPLATE(unsigned int, nnozero)() const noexcept {
+BDENSE_TEMPLATE(size_t, nnozero)() const noexcept {
 
-    unsigned int nzero = 0u;
+    size_t nzero = 0u;
     for (auto & v : el)
         if (v != BARRY_ZERO_DENSE)
             nzero++;
@@ -4159,12 +4158,12 @@ BDENSE_TEMPLATE(Cell< Cell_Type>, default_val)() const {
 }
 
 BDENSE_TEMPLATE(BDENSE_TYPE() &, operator+=)(
-    const std::pair<uint,uint> & coords
+    const std::pair<size_t,size_t> & coords
 ) {
     
 
-    unsigned int i = coords.first;
-    unsigned int j = coords.second;
+    size_t i = coords.first;
+    size_t j = coords.second;
 
     out_of_range(i, j);
 
@@ -4177,11 +4176,11 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator+=)(
 }
 
 BDENSE_TEMPLATE(BDENSE_TYPE() &, operator-=)(
-    const std::pair<uint,uint> & coords
+    const std::pair<size_t,size_t> & coords
 ) {
     
-    unsigned int i = coords.first;
-    unsigned int j = coords.second;
+    size_t i = coords.first;
+    size_t j = coords.second;
 
     out_of_range(i, j);
 
@@ -4197,8 +4196,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator-=)(
 
 template BDENSE_TEMPLATE_ARGS()
 inline BArrayDenseCell<Cell_Type,Data_Type> BDENSE_TYPE()::operator()(  
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) {
     
@@ -4208,8 +4207,8 @@ inline BArrayDenseCell<Cell_Type,Data_Type> BDENSE_TYPE()::operator()(
 
 template BDENSE_TEMPLATE_ARGS()
 inline const Cell_Type BDENSE_TYPE()::operator()(  
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) const {
 
@@ -4221,8 +4220,8 @@ inline const Cell_Type BDENSE_TYPE()::operator()(
 }
 
 BDENSE_TEMPLATE(void, rm_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds,
     bool check_exists
 ) {
@@ -4243,8 +4242,8 @@ BDENSE_TEMPLATE(void, rm_cell) (
 }
 
 BDENSE_TEMPLATE(void, insert_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     const Cell< Cell_Type> & v,
     bool check_bounds,
     bool check_exists
@@ -4279,8 +4278,8 @@ BDENSE_TEMPLATE(void, insert_cell) (
 }
 
 BDENSE_TEMPLATE(void, insert_cell)(
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     Cell_Type v,
     bool check_bounds,
     bool check_exists
@@ -4312,8 +4311,8 @@ BDENSE_TEMPLATE(void, insert_cell)(
 }
 
 BDENSE_TEMPLATE(void, swap_cells) (
-        uint i0, uint j0,
-        uint i1, uint j1,
+        size_t i0, size_t j0,
+        size_t i1, size_t j1,
         bool check_bounds,
         int check_exists,
         int * report
@@ -4349,8 +4348,8 @@ BDENSE_TEMPLATE(void, swap_cells) (
 }
 
 BDENSE_TEMPLATE(void, toggle_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds,
     int check_exists
 ) {
@@ -4368,8 +4367,8 @@ BDENSE_TEMPLATE(void, toggle_cell) (
 }
 
 BDENSE_TEMPLATE(void, swap_rows) (
-    uint i0,
-    uint i1,
+    size_t i0,
+    size_t i1,
     bool check_bounds
 ) {
   
@@ -4386,7 +4385,7 @@ BDENSE_TEMPLATE(void, swap_rows) (
     
     // Swapping happens naturally, need to take care of the pointers
     // though
-    for (uint j = 0u; j < M; ++j)
+    for (size_t j = 0u; j < M; ++j)
         std::swap(el[POS(i0, j)], el[POS(i1, j)]);
 
     std::swap(el_rowsums[i0], el_rowsums[i1]);
@@ -4396,8 +4395,8 @@ BDENSE_TEMPLATE(void, swap_rows) (
 
 // This swapping is more expensive overall
 BDENSE_TEMPLATE(void, swap_cols) (
-    uint j0,
-    uint j1,
+    size_t j0,
+    size_t j1,
     bool check_bounds
 ) {
 
@@ -4414,7 +4413,7 @@ BDENSE_TEMPLATE(void, swap_cols) (
 
     // Swapping happens naturally, need to take care of the pointers
     // though
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
         std::swap(el[POS(i, j0)], el[POS(i, j1)]);
 
     std::swap(el_colsums[j0], el_colsums[j1]);
@@ -4423,7 +4422,7 @@ BDENSE_TEMPLATE(void, swap_cols) (
 }
 
 BDENSE_TEMPLATE(void, zero_row) (
-    uint i,
+    size_t i,
     bool check_bounds
     ) {
   
@@ -4434,7 +4433,7 @@ BDENSE_TEMPLATE(void, zero_row) (
         return;
 
     // Else, remove all elements
-    for (unsigned int col = 0u; col < M; col++) 
+    for (size_t col = 0u; col < M; col++) 
         rm_cell(i, col, false, false);
     
     return;
@@ -4442,7 +4441,7 @@ BDENSE_TEMPLATE(void, zero_row) (
 }
 
 BDENSE_TEMPLATE(void, zero_col) (
-    uint j,
+    size_t j,
     bool check_bounds
   ) {
   
@@ -4453,7 +4452,7 @@ BDENSE_TEMPLATE(void, zero_col) (
         return;
     
     // Else, remove all elements
-    for (unsigned int row = 0u; row < N; row++) 
+    for (size_t row = 0u; row < N; row++) 
         rm_cell(row, j, false, false);
     
     return;
@@ -4473,11 +4472,11 @@ BDENSE_TEMPLATE(void, transpose) () {
     // Start by flipping the switch 
     visited = !visited;
 
-    // uint N0 = N, M0 = M;
+    // size_t N0 = N, M0 = M;
     std::vector< Cell< Cell_Type > > tmp_el(std::move(el));
     el.resize(N * M, ZERO_CELL);
-    for (uint i = 0u; i < N; ++i) 
-        for (uint j = 0u; j < M; ++j)
+    for (size_t i = 0u; i < N; ++i) 
+        for (size_t j = 0u; j < M; ++j)
             std::swap(tmp_el[POS(i, j)], el[POS_N(j, i, M)]);
     
     // Swapping the values
@@ -4503,8 +4502,8 @@ BDENSE_TEMPLATE(void, clear) (
 }
 
 BDENSE_TEMPLATE(void, resize) (
-    uint N_,
-    uint M_
+    size_t N_,
+    size_t M_
 ) {
 
     // Moving stuff around
@@ -4513,13 +4512,13 @@ BDENSE_TEMPLATE(void, resize) (
     el_rowsums.resize(N_, ZERO_CELL);
     el_colsums.resize(M_, ZERO_CELL);
 
-    for (unsigned int i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
         // If reached the end
         if (i >= N_)
             break;
 
-        for (unsigned int j = 0u; j < M; ++j)
+        for (size_t j = 0u; j < M; ++j)
         {
 
             if (j >= M_)
@@ -4558,12 +4557,12 @@ BDENSE_TEMPLATE(void, print) (
     printf_barry(fmt, args);
     va_end(args);
 
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
 
-        printf_barry("[%3i,] ", i);
+        printf_barry("[%3li,] ", i);
 
-        for (uint j = 0u; j < M; ++j)
+        for (size_t j = 0u; j < M; ++j)
         {
 
             if (this->is_empty(i, j, false))
@@ -4586,12 +4585,12 @@ BDENSE_TEMPLATE(const std::vector< Cell_Type > &, get_data)() const
     return el;
 }
 
-BDENSE_TEMPLATE(const Cell_Type, rowsum)(unsigned int i) const
+BDENSE_TEMPLATE(const Cell_Type, rowsum)(size_t i) const
 {
     return el_rowsums[i];
 }
 
-BDENSE_TEMPLATE(const Cell_Type, colsum)(unsigned int j) const
+BDENSE_TEMPLATE(const Cell_Type, colsum)(size_t j) const
 {
     return el_colsums[j];
 }
@@ -4767,8 +4766,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE()&, operator+=) (
     // Must be compatible
     checkdim_(*this, rhs);
     
-    for (uint i = 0u; i < nrow(); ++i)
-        for (uint j = 0u; j < ncol(); ++j)
+    for (size_t i = 0u; i < nrow(); ++i)
+        for (size_t j = 0u; j < ncol(); ++j)
             this->operator()(i, j) += rhs.get_cell(i, j);
 
     return *this;
@@ -4778,8 +4777,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE()&, operator+=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) {
-        for (uint j = 0u; j < ncol(); ++j) {
+    for (size_t i = 0u; i < nrow(); ++i) {
+        for (size_t j = 0u; j < ncol(); ++j) {
             this->operator()(i, j) += rhs;
         }
     }
@@ -4794,8 +4793,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE()&, operator-=) (
     // Must be compatible
     checkdim_(*this, rhs);
     
-    for (uint i = 0u; i < nrow(); ++i) {
-        for (uint j = 0u; j < ncol(); ++j) {
+    for (size_t i = 0u; i < nrow(); ++i) {
+        for (size_t j = 0u; j < ncol(); ++j) {
             this->operator()(i, j) -= rhs.get_cell(i, j);
         }
     }
@@ -4807,8 +4806,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE()&, operator-=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) 
-        for (uint j = 0u; j < ncol(); ++j) 
+    for (size_t i = 0u; i < nrow(); ++i) 
+        for (size_t j = 0u; j < ncol(); ++j) 
             this->operator()(i, j) -= rhs;
         
     
@@ -4820,8 +4819,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE()&, operator*=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) 
-        for (uint j = 0u; j < nrow(); ++j)
+    for (size_t i = 0u; i < nrow(); ++i) 
+        for (size_t j = 0u; j < nrow(); ++j)
             el[POS(i, j)] *= rhs;
 
     return *this;
@@ -4831,8 +4830,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE()&, operator/=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) 
-        for (uint j = 0u; j < nrow(); ++j)
+    for (size_t i = 0u; i < nrow(); ++i) 
+        for (size_t j = 0u; j < nrow(); ++j)
             el[POS(i, j)] /= rhs;
 
     return *this;
@@ -4946,8 +4945,8 @@ public:
     /***
       * ! Main functions.
       */
-    double count(Array_Type & Array, uint i, uint j);
-    double init(Array_Type & Array, uint i, uint j);
+    double count(Array_Type & Array, size_t i, size_t j);
+    double init(Array_Type & Array, size_t i, size_t j);
     std::string get_name() const;
     std::string get_description() const;
 
@@ -5023,12 +5022,12 @@ public:
      * @param idx Id of the counter
      * @return Counter<Array_Type,Data_Type>* 
      */
-    Counter<Array_Type,Data_Type> & operator[](uint idx);
+    Counter<Array_Type,Data_Type> & operator[](size_t idx);
 
     /**
      * @brief Number of counters in the set.
      * 
-     * @return uint 
+     * @return size_t 
      */
     std::size_t size() const noexcept {
         return data.size();
@@ -5169,7 +5168,7 @@ COUNTER_TEMPLATE(COUNTER_TYPE() &,operator=)(
 
 } ///< Move assignment
 
-COUNTER_TEMPLATE(double, count)(Array_Type & Array, uint i, uint j)
+COUNTER_TEMPLATE(double, count)(Array_Type & Array, size_t i, size_t j)
 {
 
     if (count_fun == nullptr)
@@ -5179,7 +5178,7 @@ COUNTER_TEMPLATE(double, count)(Array_Type & Array, uint i, uint j)
 
 }
 
-COUNTER_TEMPLATE(double, init)(Array_Type & Array, uint i, uint j)
+COUNTER_TEMPLATE(double, init)(Array_Type & Array, size_t i, size_t j)
 {
 
     if (init_fun == nullptr)
@@ -5220,7 +5219,7 @@ COUNTER_TEMPLATE(TMP_HASHER_CALL, get_hasher)() {
 
 COUNTERS_TEMPLATE(, Counters)() : data(0u), hasher(nullptr) {}
 
-COUNTERS_TEMPLATE(COUNTER_TYPE() &, operator[])(uint idx) {
+COUNTERS_TEMPLATE(COUNTER_TYPE() &, operator[])(size_t idx) {
 
     return data[idx];
 
@@ -5291,7 +5290,7 @@ COUNTERS_TEMPLATE(std::vector<std::string>, get_names)() const
 {
 
     std::vector< std::string > out(this->size());
-    for (unsigned int i = 0u; i < out.size(); ++i)
+    for (size_t i = 0u; i < out.size(); ++i)
         out[i] = this->data.at(i).get_name();
 
     return out;
@@ -5302,7 +5301,7 @@ COUNTERS_TEMPLATE(std::vector<std::string>, get_descriptions)() const
 {
     
     std::vector< std::string > out(this->size());
-    for (unsigned int i = 0u; i < out.size(); ++i)
+    for (size_t i = 0u; i < out.size(); ++i)
         out[i] = data.at(i).get_description();
 
     return out;
@@ -5465,8 +5464,8 @@ public:
      * This function recurses through the entries of `Array` and at each step of
      * adding a new cell it uses the functions to list the statistics.
      */
-    void count_init(uint i, uint j);
-    void count_current(uint i, uint j);
+    void count_init(size_t i, size_t j);
+    void count_current(size_t i, size_t j);
     std::vector< double > count_all();
 
     Counters<Array_Type,Data_Type> * get_counters();
@@ -5561,7 +5560,7 @@ STATSCOUNTER_TEMPLATE(void, set_counters)(Counters<Array_Type,Data_Type> * count
     
 }
 
-STATSCOUNTER_TEMPLATE(void, count_init)(uint i,uint j)
+STATSCOUNTER_TEMPLATE(void, count_init)(size_t i,size_t j)
 {
     
     // Do we have any counter?
@@ -5572,18 +5571,18 @@ STATSCOUNTER_TEMPLATE(void, count_init)(uint i,uint j)
     // statistics.
     current_stats.resize(counters->size(), 0.0);
     // change_stats.resize(counters->size(), 0.0);
-    for (uint n = 0u; n < counters->size(); ++n) 
+    for (size_t n = 0u; n < counters->size(); ++n) 
         current_stats[n] = counters->operator[](n).init(EmptyArray, i, j);
     
     return;
 }
 
-STATSCOUNTER_TEMPLATE(void, count_current)(uint i, uint j)
+STATSCOUNTER_TEMPLATE(void, count_current)(size_t i, size_t j)
 {
     
     // Iterating through the functions, and updating the set of
     // statistics.
-    for (uint n = 0u; n < counters->size(); ++n) {
+    for (size_t n = 0u; n < counters->size(); ++n) {
         // change_stats[n]   = counters->operator[](n).count(EmptyArray, i, j);
         // current_stats[n] += change_stats[n];
         current_stats[n] += counters->operator[](n).count(EmptyArray, i, j);
@@ -5626,7 +5625,7 @@ inline std::vector< double > StatsCounter<Array_Type,Data_Type>::count_all_spars
     #endif
     
     // Start iterating through the data
-    for (uint i = 0; i < Array->nrow(); ++i)
+    for (size_t i = 0; i < Array->nrow(); ++i)
     {
         
         const auto & row = Array->row(i, false);
@@ -5697,10 +5696,10 @@ inline std::vector< double > StatsCounter<Array_Type,Data_Type>::count_all_dense
     #endif
     
     // Start iterating through the data
-    for (unsigned int i = 0u; i < Array->nrow(); ++i)
+    for (size_t i = 0u; i < Array->nrow(); ++i)
     {
 
-        for (unsigned int j = 0u; j < Array->ncol(); ++j)
+        for (size_t j = 0u; j < Array->ncol(); ++j)
         {
             // We only insert if it is different from zero
             if (Array->is_empty(i,j))
@@ -5825,13 +5824,13 @@ class Support {
     
 private:
     void calc_backend_sparse(
-        uint pos = 0u,
+        size_t pos = 0u,
         std::vector< Array_Type > * array_bank = nullptr,
         std::vector< double > * stats_bank = nullptr
     );
 
     void calc_backend_dense(
-        uint pos = 0u,
+        size_t pos = 0u,
         std::vector< Array_Type > * array_bank = nullptr,
         std::vector< double > * stats_bank = nullptr
     );
@@ -5847,11 +5846,11 @@ private:
     
 public:
     
-    uint N, M;
+    size_t N, M;
     bool delete_counters  = true;
     bool delete_rules     = true;
     bool delete_rules_dyn = true;
-    uint max_num_elements = BARRY_MAX_NUM_ELEMENTS;
+    size_t max_num_elements = BARRY_MAX_NUM_ELEMENTS;
     
     // Temp variables to reduce memory allocation
     std::vector< double >                current_stats;
@@ -5875,7 +5874,7 @@ public:
     
     /**@brief Constructor specifying the dimensions of the array (empty).
       */
-    Support(uint N_, uint M_) :
+    Support(size_t N_, size_t M_) :
         EmptyArray(N_, M_),
         counters(new Counters<Array_Type,Data_Counter_Type>()),
         rules(new Rules<Array_Type,Data_Rule_Type>()),
@@ -5940,8 +5939,8 @@ public:
     void add_rule_dyn(Rule<Array_Type, Data_Rule_Dyn_Type> * f_);
     void add_rule_dyn(Rule<Array_Type,Data_Rule_Dyn_Type> f_);
     void set_rules_dyn(Rules<Array_Type,Data_Rule_Dyn_Type> * rules_);
-    bool eval_rules_dyn(const std::vector<double> & counts, const uint & i, const uint & j);
-    // bool eval_rules_dyn(const double * counts, const uint & i, const uint & j);
+    bool eval_rules_dyn(const std::vector<double> & counts, const size_t & i, const size_t & j);
+    // bool eval_rules_dyn(const double * counts, const size_t & i, const size_t & j);
     ///@}
 
     /**
@@ -5960,7 +5959,7 @@ public:
     void calc(
         std::vector< Array_Type > * array_bank = nullptr,
         std::vector< double > * stats_bank = nullptr,
-        unsigned int max_num_elements_ = 0u
+        size_t max_num_elements_ = 0u
     );
     
     std::vector< double > get_counts() const;
@@ -6027,7 +6026,7 @@ SUPPORT_TEMPLATE(void, init_support)(
     if (EmptyArray.nnozero() > 0u)
     {
 
-        for (uint i = 0u; i < coordiantes_n_free; ++i)
+        for (size_t i = 0u; i < coordiantes_n_free; ++i)
             EmptyArray.rm_cell(
                 coordinates_free[i * 2u],
                 coordinates_free[i * 2u + 1u],
@@ -6038,7 +6037,7 @@ SUPPORT_TEMPLATE(void, init_support)(
 
     // Looked coordinates should still be removed if these are
     // equivalent to zero
-    for (unsigned int i = 0u; i < coordiantes_n_locked; ++i)
+    for (size_t i = 0u; i < coordiantes_n_locked; ++i)
     {
 
         if (static_cast<int>(EmptyArray(
@@ -6072,7 +6071,7 @@ SUPPORT_TEMPLATE(void, init_support)(
         current_stats.resize(n_counters, 0.0);
 
         // Initialize counters
-        for (uint n = 0u; n < n_counters; ++n)
+        for (size_t n = 0u; n < n_counters; ++n)
         {
 
             current_stats[n] = counters->operator[](n).init(
@@ -6123,7 +6122,7 @@ SUPPORT_TEMPLATE(void, reset_array)(const Array_Type & Array_) {
 }
 
 SUPPORT_TEMPLATE(void, calc_backend_sparse)(
-        uint pos,
+        size_t pos,
         std::vector< Array_Type > * array_bank,
         std::vector< double > * stats_bank
     ) {
@@ -6151,8 +6150,8 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
     // Counting
     // std::vector< double > change_stats(counters.size());
     double tmp_chng;
-    unsigned int change_stats_different = hashes_initialized[pos] ? 0u : 1u;
-    for (uint n = 0u; n < n_counters; ++n)
+    size_t change_stats_different = hashes_initialized[pos] ? 0u : 1u;
+    for (size_t n = 0u; n < n_counters; ++n)
     {
 
         tmp_chng = counters->operator[](n).count(
@@ -6237,7 +6236,7 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
         #ifdef __OPENMP
         #pragma omp simd
         #endif
-        for (uint n = 0u; n < n_counters; ++n) 
+        for (size_t n = 0u; n < n_counters; ++n) 
             current_stats[n] -= change_stats[pos * n_counters + n];
     }
         
@@ -6247,7 +6246,7 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
 }
 
 SUPPORT_TEMPLATE(void, calc_backend_dense)(
-        uint pos,
+        size_t pos,
         std::vector< Array_Type > * array_bank,
         std::vector< double > * stats_bank
     ) {
@@ -6270,8 +6269,8 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     // Counting
     // std::vector< double > change_stats(counters.size());
     double tmp_chng;
-    unsigned int change_stats_different = hashes_initialized[pos] ? 0u : 1u;
-    for (uint n = 0u; n < n_counters; ++n)
+    size_t change_stats_different = hashes_initialized[pos] ? 0u : 1u;
+    for (size_t n = 0u; n < n_counters; ++n)
     {
 
         tmp_chng = counters->operator[](n).count(
@@ -6352,7 +6351,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
         #ifdef __OPENMP
         #pragma omp simd
         #endif
-        for (uint n = 0u; n < n_counters; ++n) 
+        for (size_t n = 0u; n < n_counters; ++n) 
             current_stats[n] -= change_stats[pos * n_counters + n];
     }
     
@@ -6363,7 +6362,7 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
 SUPPORT_TEMPLATE(void, calc)(
         std::vector< Array_Type > * array_bank,
         std::vector< double > * stats_bank,
-        unsigned int max_num_elements_
+        size_t max_num_elements_
 ) {
 
     if (max_num_elements_ != 0u)
@@ -6484,8 +6483,8 @@ SUPPORT_TEMPLATE(void, set_rules_dyn)(
 
 SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
     const std::vector< double > & counts,
-    const uint & i,
-    const uint & j
+    const size_t & i,
+    const size_t & j
 ) {
 
     if (rules_dyn->size() == 0u)
@@ -6504,8 +6503,8 @@ SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
 
 // SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
 //     const double * counts,
-//     const uint & i,
-//     const uint & j
+//     const size_t & i,
+//     const size_t & j
 // ) {
 
 //     if (rules_dyn->size() == 0u)
@@ -6544,8 +6543,8 @@ SUPPORT_TEMPLATE(void, print)() const {
 
     // Starting from the name of the stats
     printf_barry("Position of variables:\n");
-    for (uint i = 0u; i < n_counters; ++i) {
-        printf_barry("[% 2i] %s\n", i, counters->operator[](i).name.c_str());
+    for (size_t i = 0u; i < n_counters; ++i) {
+        printf_barry("[% 2li] %s\n", i, counters->operator[](i).name.c_str());
     }
 
     data.print();
@@ -6607,15 +6606,15 @@ template <typename Array_Type = BArray<>, typename Data_Rule_Type = bool>
 class PowerSet {
     
 private:
-    void calc_backend_sparse(uint pos = 0u);  
-    void calc_backend_dense(uint pos = 0u);  
+    void calc_backend_sparse(size_t pos = 0u);  
+    void calc_backend_dense(size_t pos = 0u);  
 
 public:
     Array_Type                         EmptyArray;
     std::vector< Array_Type >          data;
     Rules<Array_Type,Data_Rule_Type> * rules;
 
-    uint N, M;
+    size_t N, M;
     bool rules_deleted   = false;
 
     // Tempvars
@@ -6631,7 +6630,7 @@ public:
     ///@{
     PowerSet() : 
     EmptyArray(), data(0u), rules(new Rules<Array_Type,Data_Rule_Type>()), N(0u), M(0u) {};
-    PowerSet(uint N_, uint M_) :
+    PowerSet(size_t N_, size_t M_) :
         EmptyArray(N_, M_), data(0u),
         rules(new Rules<Array_Type,Data_Rule_Type>()), N(N_), M(M_) {};
     PowerSet(const Array_Type & array);
@@ -6641,7 +6640,7 @@ public:
     
     void init_support();
     void calc();
-    void reset(uint N_, uint M_);
+    void reset(size_t N_, size_t M_);
     
     /**
      * @name Wrappers for the `Rules` member. 
@@ -6664,7 +6663,7 @@ public:
     typename std::vector< Array_Type >::iterator begin() {return data.begin();};
     typename std::vector< Array_Type >::iterator end() {return data.end();};
     std::size_t size() const noexcept {return data.size();};
-    const Array_Type& operator[](const unsigned int & i) const {return data.at(i);};
+    const Array_Type& operator[](const size_t & i) const {return data.at(i);};
     ///@}
     
 };
@@ -6724,7 +6723,7 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support()
         if (EmptyArray.is_dense())
         {
 
-            for (uint i = 0u; i < n_free; ++i) 
+            for (size_t i = 0u; i < n_free; ++i) 
                 EmptyArray(
                     coordinates_free[i * 2u],
                     coordinates_free[i * 2u + 1u]
@@ -6734,7 +6733,7 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support()
         else
         {
 
-            for (uint i = 0u; i < n_free; ++i) 
+            for (size_t i = 0u; i < n_free; ++i) 
                 EmptyArray.rm_cell(
                     coordinates_free[i * 2u],
                     coordinates_free[i * 2u + 1u],
@@ -6761,7 +6760,7 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support()
 
 template <typename Array_Type, typename Data_Rule_Type>
 inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_sparse(
-    uint pos
+    size_t pos
 )
 {
     
@@ -6799,7 +6798,7 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_sparse(
 
 template <typename Array_Type, typename Data_Rule_Type>
 inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_dense(
-    uint pos
+    size_t pos
 )
 {
     
@@ -6848,8 +6847,8 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc() {
 
 template <typename Array_Type, typename Data_Rule_Type>
 inline void PowerSet<Array_Type,Data_Rule_Type>::reset(
-        uint N_,
-        uint M_
+        size_t N_,
+        size_t M_
 ) {
     
     data.empty();
@@ -6965,16 +6964,16 @@ protected:
      */
     ///@{
     std::vector< std::vector< double > > stats_support;          ///< Sufficient statistics of the model (support)
-    std::vector< uint >                  stats_support_n_arrays; ///< Number of arrays included per support.
+    std::vector< size_t >                  stats_support_n_arrays; ///< Number of arrays included per support.
     std::vector< std::vector< double > > stats_target;           ///< Target statistics of the model
-    std::vector< uint >                  arrays2support;
+    std::vector< size_t >                  arrays2support;
     ///@}
 
     /**
       * @brief Map of types of arrays to support sets
       * @details This is of the same length as the vector `stats_target`.
       */
-    MapVec_type< double, uint > keys2support;
+    MapVec_type< double, size_t > keys2support;
 
     /**
      * @name Container space for the powerset (and its sufficient stats_target)
@@ -7019,12 +7018,12 @@ protected:
      * 
      * The function should return `void` and receive the following arguments:
      * - `data` Pointer to the first element of the set of sufficient statistics
-     * - `k` unsigned int indicating the number of sufficient statistics
+     * - `k` size_t indicating the number of sufficient statistics
      * 
      * @returns
      * Nothing, but it will modify the model data.
      */
-    std::function<std::vector<double>(double *, unsigned int k)>
+    std::function<std::vector<double>(double *, size_t k)>
         transform_model_fun = nullptr;
 
     std::vector< std::string > transform_model_term_names;
@@ -7041,7 +7040,7 @@ public:
         
     };
 
-    void set_seed(unsigned int s) {
+    void set_seed(size_t s) {
 
         if (rengine == nullptr)
         {
@@ -7055,7 +7054,7 @@ public:
     ///@}
         
     Model();
-    Model(uint size_);
+    Model(size_t size_);
     Model(const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_);
     Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & operator=(
         const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_
@@ -7127,7 +7126,7 @@ public:
      * 
      * @return The number of the array.
      */
-    uint add_array(const Array_Type & Array_, bool force_new = false);
+    size_t add_array(const Array_Type & Array_, bool force_new = false);
     
     
     /**
@@ -7144,7 +7143,7 @@ public:
     ///@{
     double likelihood(
         const std::vector<double> & params,
-        const uint & i,
+        const size_t & i,
         bool as_log = false
     );
     
@@ -7158,14 +7157,14 @@ public:
     double likelihood(
         const std::vector<double> & params,
         const std::vector<double> & target_,
-        const uint & i,
+        const size_t & i,
         bool as_log = false
     );
 
     double likelihood(
         const std::vector<double> & params,
         const double * target_,
-        const uint & i,
+        const size_t & i,
         bool as_log = false
     );
     
@@ -7186,20 +7185,20 @@ public:
     ///@{
     double get_norm_const(
         const std::vector< double > & params,
-        const uint & i,
+        const size_t & i,
         bool as_log = false
     );
 
     const std::vector< Array_Type > * get_pset(
-        const uint & i
+        const size_t & i
     );
 
     const std::vector< double > * get_pset_stats(
-        const uint & i
+        const size_t & i
     );
     ///@}
     
-    void print_stats(uint i) const;
+    void print_stats(size_t i) const;
 
     /**
      * @brief Prints information about the model
@@ -7207,7 +7206,7 @@ public:
     virtual void print() const;
     
     Array_Type sample(const Array_Type & Array_, const std::vector<double> & params = {});
-    Array_Type sample(const uint & i, const std::vector<double> & params);
+    Array_Type sample(const size_t & i, const std::vector<double> & params);
     
     /**
      * @brief Conditional probability ("Gibbs sampler")
@@ -7225,8 +7224,8 @@ public:
     double conditional_prob(
         const Array_Type & Array_,
         const std::vector< double > & params,
-        unsigned int i,
-        unsigned int j
+        size_t i,
+        size_t j
     );
     
     /**
@@ -7242,12 +7241,12 @@ public:
      * @return `nterms()` returns the number of terms in the model.
      */
     ///@{
-    unsigned int size() const noexcept;
-    unsigned int size_unique() const noexcept;
-    unsigned int nterms() const noexcept;
-    unsigned int nrules() const noexcept;
-    unsigned int nrules_dyn() const noexcept;
-    unsigned int support_size() const noexcept;
+    size_t size() const noexcept;
+    size_t size_unique() const noexcept;
+    size_t nterms() const noexcept;
+    size_t nrules() const noexcept;
+    size_t nrules_dyn() const noexcept;
+    size_t support_size() const noexcept;
     std::vector< std::string > colnames() const;
     ///@}
 
@@ -7271,7 +7270,7 @@ public:
     ///@{
     std::vector< std::vector< double > > * get_stats_target();
     std::vector< std::vector< double > > * get_stats_support();
-    std::vector< unsigned int > * get_arrays2support();
+    std::vector< size_t > * get_arrays2support();
     std::vector< std::vector< Array_Type > > * get_pset_arrays();
     std::vector< std::vector<double> > * get_pset_stats();  ///< Statistics of the support(s)
     std::vector< std::vector<double> > * get_pset_probs(); 
@@ -7288,12 +7287,12 @@ public:
      */
     ///@{
     void set_transform_model(
-        std::function<std::vector<double>(double*,unsigned int)> fun,
+        std::function<std::vector<double>(double*,size_t)> fun,
         std::vector< std::string > names
         );
     std::vector<double> transform_model(
         double * data,
-        unsigned int k
+        size_t k
     );
     ///@}
 
@@ -7342,13 +7341,13 @@ inline double update_normalizing_constant(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
     {
 
         double tmp = 0.0;
         const double * support_n = support + i * k + 1u;
         
-        for (unsigned int j = 0u; j < (k - 1u); ++j)
+        for (size_t j = 0u; j < (k - 1u); ++j)
             tmp += (*(support_n + j)) * (*(params + j));
         
         res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
@@ -7396,7 +7395,7 @@ inline double likelihood_(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int j = 0u; j < params.size(); ++j)
+    for (size_t j = 0u; j < params.size(); ++j)
         numerator += *(stats_target + j) * params[j];
 
     if (!log_)
@@ -7485,7 +7484,7 @@ template <
     typename Data_Rule_Dyn_Type
     >
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::Model(
-    uint size_
+    size_t size_
     ) :
     stats_support(0u),
     stats_support_n_arrays(0u),
@@ -7744,7 +7743,7 @@ MODEL_TEMPLATE(void, set_rules_dyn)(
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-MODEL_TEMPLATE(uint, add_array)(
+MODEL_TEMPLATE(size_t, add_array)(
     const Array_Type & Array_,
     bool force_new
 ) {
@@ -7754,15 +7753,19 @@ MODEL_TEMPLATE(uint, add_array)(
     
     if (transform_model_fun)
     {
+        
         auto tmpcounts = counter_fun.count_all();
-        stats_target.push_back(transform_model_fun(&tmpcounts[0u], tmpcounts.size()));
+        stats_target.push_back(
+            transform_model_fun(&tmpcounts[0u], tmpcounts.size())
+            );
+
     } else
         stats_target.push_back(counter_fun.count_all());
     
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
     std::vector< double > key = counters->gen_hash(Array_);
-    MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
+    MapVec_type< double, size_t >::const_iterator locator = keys2support.find(key);
     if (force_new | (locator == keys2support.end()))
     {
         
@@ -7877,7 +7880,7 @@ MODEL_TEMPLATE(uint, add_array)(
 
 MODEL_TEMPLATE(double, likelihood)(
     const std::vector<double> & params,
-    const uint & i,
+    const size_t & i,
     bool as_log
 ) {
     
@@ -7885,7 +7888,7 @@ MODEL_TEMPLATE(double, likelihood)(
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    unsigned int idx = arrays2support[i];
+    size_t idx = arrays2support[i];
 
     // Checking if this actually has a change of happening
     if (this->stats_support[idx].size() == 0u)
@@ -7932,9 +7935,11 @@ MODEL_TEMPLATE(double, likelihood)(
     {
 
         std::vector< double > key = counters->gen_hash(Array_);
-        MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
+        MapVec_type< double, size_t >::const_iterator locator = keys2support.find(key);
         if (locator == keys2support.end()) 
-            throw std::range_error("This type of array has not been included in the model.");
+            throw std::range_error(
+                "This type of array has not been included in the model."
+                );
 
         loc = locator->second;
 
@@ -7942,8 +7947,10 @@ MODEL_TEMPLATE(double, likelihood)(
     else
     {
 
-        if (static_cast<uint>(i) >= arrays2support.size())
-            throw std::range_error("This type of array has not been included in the model.");
+        if (static_cast<size_t>(i) >= arrays2support.size())
+            throw std::range_error(
+                "This type of array has not been included in the model."
+                );
 
         loc = arrays2support[i];
 
@@ -7997,7 +8004,7 @@ MODEL_TEMPLATE(double, likelihood)(
 MODEL_TEMPLATE(double, likelihood)(
     const std::vector<double> & params,
     const std::vector<double> & target_,
-    const uint & i,
+    const size_t & i,
     bool as_log
 ) {
     
@@ -8005,12 +8012,22 @@ MODEL_TEMPLATE(double, likelihood)(
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    uint loc = arrays2support[i];
+    size_t loc = arrays2support[i];
 
     // Checking if passes the rules
     if (!support_fun.eval_rules_dyn(target_, 0u, 0u))
     {
-        throw std::range_error("The array is not in the support set.");
+
+        // Concatenating the elements of target_ into aa single string
+        std::string target_str = "";
+        for (size_t i = 0u; i < target_.size(); ++i)
+            target_str += std::to_string(target_[i]) + " ";
+
+        throw std::range_error(
+            "The array is not in the support set. The array's statistics are: " +
+            target_str +
+            std::string(".")
+            );
     }
         
 
@@ -8050,7 +8067,7 @@ MODEL_TEMPLATE(double, likelihood)(
 MODEL_TEMPLATE(double, likelihood)(
     const std::vector<double> & params,
     const double * target_,
-    const uint & i,
+    const size_t & i,
     bool as_log
 ) {
     
@@ -8058,7 +8075,7 @@ MODEL_TEMPLATE(double, likelihood)(
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    uint loc = arrays2support[i];
+    size_t loc = arrays2support[i];
 
     // Checking if passes the rules
     if (support_fun.get_rules_dyn()->size() > 0u)
@@ -8070,7 +8087,14 @@ MODEL_TEMPLATE(double, likelihood)(
 
         if (!support_fun.eval_rules_dyn(tmp_target, 0u, 0u))
         {
-            throw std::range_error("The array is not in the support set.");
+            // Concatenating the elements of target_ into aa single string
+            std::string target_str = "";
+            for (size_t i = 0u; i < nterms(); ++i)
+                target_str += std::to_string((*target_ + i)) + " ";
+
+            throw std::range_error(
+                "The array is not in the support set. The array's statistics are: " + target_str + std::string(".")
+                );
             // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
         }
 
@@ -8116,7 +8140,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
     
     size_t params_last_size = params_last.size();
 
-    for (uint i = 0u; i < params_last_size; ++i)
+    for (size_t i = 0u; i < params_last_size; ++i)
     {
 
         if (!first_calc_done[i] || !vec_equal_approx(params, params_last[i]) )
@@ -8140,7 +8164,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
     if (as_log)
     {
 
-        for (uint i = 0; i < stats_target.size(); ++i) 
+        for (size_t i = 0; i < stats_target.size(); ++i) 
             res += vec_inner_prod(
                 &stats_target[i][0u],
                 &params[0u],
@@ -8150,7 +8174,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
         #ifdef __OPENM 
         #pragma omp simd reduction(-:res)
         #endif
-        for (unsigned int i = 0u; i < params_last_size; ++i)
+        for (size_t i = 0u; i < params_last_size; ++i)
             res -= (std::log(normalizing_constants[i]) * this->stats_support_n_arrays[i]);
 
     } else {
@@ -8160,7 +8184,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
         #ifdef __OPENM 
         #pragma omp simd reduction(*:res)
         #endif
-        for (unsigned int i = 0; i < stats_target_size; ++i)
+        for (size_t i = 0; i < stats_target_size; ++i)
             res *= std::exp(
                 vec_inner_prod(
                     &stats_target[i][0u],
@@ -8177,7 +8201,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
 
 MODEL_TEMPLATE(double, get_norm_const)(
     const std::vector<double> & params,
-    const uint & i,
+    const size_t & i,
     bool as_log
 ) {
     
@@ -8212,7 +8236,7 @@ MODEL_TEMPLATE(double, get_norm_const)(
 }
 
 MODEL_TEMPLATE(const std::vector< Array_Type > *, get_pset)(
-    const uint & i
+    const size_t & i
 ) {
 
     if (i >= arrays2support.size())
@@ -8224,7 +8248,7 @@ MODEL_TEMPLATE(const std::vector< Array_Type > *, get_pset)(
 }
 
 MODEL_TEMPLATE(const std::vector< double > *, get_pset_stats)(
-    const uint & i
+    const size_t & i
 ) {
 
     if (i >= arrays2support.size())
@@ -8234,7 +8258,7 @@ MODEL_TEMPLATE(const std::vector< double > *, get_pset_stats)(
 
 }
 
-MODEL_TEMPLATE(void, print_stats)(uint i) const
+MODEL_TEMPLATE(void, print_stats)(size_t i) const
 {
     
     if (i >= arrays2support.size())
@@ -8245,14 +8269,14 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const
     size_t k       = nterms();
     size_t nunique = S.size() / (k + 1u);
 
-    for (uint l = 0u; l < nunique; ++l)
+    for (size_t l = 0u; l < nunique; ++l)
     {
 
         printf_barry("% 5i ", l);
 
         printf_barry("counts: %.0f motif: ", S[l * (k + 1u)]);
         
-        for (unsigned int j = 0u; j < k; ++j)
+        for (size_t j = 0u; j < k; ++j)
             printf_barry("%.2f, ", S[l * (k + 1) + j + 1]);
 
         printf_barry("\n");
@@ -8290,11 +8314,11 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     max_v /= static_cast<int>(nterms() + 1);
     min_v /= static_cast<int>(nterms() + 1);
 
-    printf_barry("Num. of Arrays       : %i\n", this->size());
-    printf_barry("Support size         : %i\n", this->size_unique());
+    printf_barry("Num. of Arrays       : %li\n", this->size());
+    printf_barry("Support size         : %li\n", this->size_unique());
     printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (%i)     :\n", this->nterms());
+    printf_barry("Model terms (%li)     :\n", this->nterms());
     for (auto & cn : this->colnames())
     {
         printf_barry(" - %s\n", cn.c_str());
@@ -8302,7 +8326,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules() > 0u)
     {
-        printf_barry("Model rules (%i)     :\n", this->nrules());
+        printf_barry("Model rules (%li)     :\n", this->nrules());
     
         for (auto & rn : rules->get_names())
         {
@@ -8312,7 +8336,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules_dyn() > 0u)
     {
-        printf_barry("Model rules dyn (%i):\n", this->nrules());
+        printf_barry("Model rules dyn (%li):\n", this->nrules());
     
         for (auto & rn : rules_dyn->get_names())
         {
@@ -8324,14 +8348,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
 }
 
-MODEL_TEMPLATE(uint, size)() const noexcept
+MODEL_TEMPLATE(size_t, size)() const noexcept
 {
     // INITIALIZED()
     return this->stats_target.size();
 
 }
 
-MODEL_TEMPLATE(uint, size_unique)() const noexcept
+MODEL_TEMPLATE(size_t, size_unique)() const noexcept
 {
 
     // INITIALIZED()
@@ -8339,7 +8363,7 @@ MODEL_TEMPLATE(uint, size_unique)() const noexcept
 
 } 
 
-MODEL_TEMPLATE(uint, nterms)() const noexcept
+MODEL_TEMPLATE(size_t, nterms)() const noexcept
 {
  
     if (transform_model_fun)
@@ -8349,25 +8373,25 @@ MODEL_TEMPLATE(uint, nterms)() const noexcept
 
 }
 
-MODEL_TEMPLATE(uint, nrules)() const noexcept
+MODEL_TEMPLATE(size_t, nrules)() const noexcept
 {
  
     return this->rules->size();
 
 }
 
-MODEL_TEMPLATE(uint, nrules_dyn)() const noexcept
+MODEL_TEMPLATE(size_t, nrules_dyn)() const noexcept
 {
  
     return this->rules_dyn->size();
 
 }
 
-MODEL_TEMPLATE(uint, support_size)() const noexcept
+MODEL_TEMPLATE(size_t, support_size)() const noexcept
 {
 
     // INITIALIZED()
-    uint tot = 0u;
+    size_t tot = 0u;
     for (auto& a : stats_support)
         tot += a.size();
 
@@ -8392,7 +8416,7 @@ template <
     typename Data_Rule_Dyn_Type
     >
 inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
-    const unsigned int & i,
+    const size_t & i,
     const std::vector<double> & params
 ) {
 
@@ -8404,7 +8428,7 @@ inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_D
         throw std::range_error("The requested support is out of range");
 
     // Getting the index
-    unsigned int a = arrays2support[i];
+    size_t a = arrays2support[i];
     
     // Generating a random
     std::uniform_real_distribution<> urand(0, 1);
@@ -8484,7 +8508,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
     std::vector< double > key = counters->gen_hash(Array_);
-    MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
+    MapVec_type< double, size_t >::const_iterator locator = keys2support.find(key);
     if (locator == keys2support.end())
     {
         // throw std::out_of_range("Sampling from an array that has no support in the model.");
@@ -8571,7 +8595,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
         i = locator->second;
 
     // Getting the index
-    unsigned int a = arrays2support[i];
+    size_t a = arrays2support[i];
     
     // Generating a random
     std::uniform_real_distribution<> urand(0, 1);
@@ -8641,8 +8665,8 @@ MODEL_TEMPLATE(Array_Type, sample)(
 MODEL_TEMPLATE(double, conditional_prob)(
     const Array_Type & Array_,
     const std::vector< double > & params,
-    unsigned int i,
-    unsigned int j
+    size_t i,
+    size_t j
 ) {
 
     // Generating a copy of the array so we can update
@@ -8653,7 +8677,7 @@ MODEL_TEMPLATE(double, conditional_prob)(
 
     // Computing the change stats_target
     std::vector< double > tmp_counts(counters->size());
-    for (unsigned int ii = 0u; ii < tmp_counts.size(); ++ii)
+    for (size_t ii = 0u; ii < tmp_counts.size(); ++ii)
         tmp_counts[ii] = counters->operator[](ii).count(A, i, j);
 
     // If there is a transformation function, it needs to be
@@ -8704,7 +8728,7 @@ MODEL_TEMPLATE(std::vector< std::vector< double > > *, get_stats_support)()
     return &stats_support;
 }
 
-MODEL_TEMPLATE(std::vector< unsigned int > *, get_arrays2support)()
+MODEL_TEMPLATE(std::vector< size_t > *, get_arrays2support)()
 {
     return &arrays2support;
 }
@@ -8722,7 +8746,7 @@ MODEL_TEMPLATE(std::vector< std::vector<double> > *, get_pset_probs)() {
 }
 
 MODEL_TEMPLATE(void, set_transform_model)(
-    std::function<std::vector<double>(double *,unsigned int)> fun,
+    std::function<std::vector<double>(double *,size_t)> fun,
     std::vector< std::string > names
     )
 {
@@ -8835,7 +8859,7 @@ MODEL_TEMPLATE(void, set_transform_model)(
 #define BARRY_RULES_BONES_HPP 1
 
 template <typename Array_Type, typename Data_Type>
-bool rule_fun_default(const Array_Type * array, uint i, uint j, Data_Type * dat) {
+bool rule_fun_default(const Array_Type * array, size_t i, size_t j, Data_Type * dat) {
     return false;
 }
 
@@ -8884,7 +8908,7 @@ public:
 
     Data_Type & D(); ///< Read/Write access to the data.
     
-    bool operator()(const Array_Type & a, uint i, uint j);
+    bool operator()(const Array_Type & a, size_t i, size_t j);
 
     std::string & get_name();
     std::string & get_description();
@@ -8914,7 +8938,7 @@ public:
 
     ~Rules() {};
 
-    uint size() const noexcept {
+    size_t size() const noexcept {
         return data.size();
     };
     
@@ -8943,7 +8967,7 @@ public:
      * @return false If the cell is free
      */
 
-    bool operator()(const Array_Type & a, uint i, uint j);
+    bool operator()(const Array_Type & a, size_t i, size_t j);
     
     /**
      * @brief Computes the sequence of free and locked cells in an BArray
@@ -8962,6 +8986,14 @@ public:
 
     std::vector< std::string > get_names() const;
     std::vector< std::string > get_descriptions() const;
+
+    // Iterator
+    typename std::vector< Rule<Array_Type,Data_Type> >::iterator begin() {
+        return data.begin();
+    };
+    typename std::vector< Rule<Array_Type,Data_Type> >::iterator end() {
+        return data.end();
+    };
     
 };
 
@@ -9021,7 +9053,13 @@ Rules<Array_Type,Data_Type> Rules<Array_Type,Data_Type>::operator=(
 }
 
 template<typename Array_Type, typename Data_Type>
-inline bool Rule<Array_Type,Data_Type>::operator()(const Array_Type & a, uint i, uint j) {
+inline Data_Type & Rule<Array_Type,Data_Type>::D()
+{
+    return dat;
+}
+
+template<typename Array_Type, typename Data_Type>
+inline bool Rule<Array_Type,Data_Type>::operator()(const Array_Type & a, size_t i, size_t j) {
     return fun(a, i, j, dat);
 }
 
@@ -9080,7 +9118,7 @@ inline void Rules<Array_Type,Data_Type>::add_rule(
 
 template <typename Array_Type, typename Data_Type>
 inline bool Rules<Array_Type,Data_Type>::operator()(
-    const Array_Type & a, uint i, uint j
+    const Array_Type & a, size_t i, size_t j
 ) {
     
     if (data.size()==0u)
@@ -9102,17 +9140,17 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
 ) {
 
     
-    uint N = a.nrow();
-    uint K = a.ncol();
+    size_t N = a.nrow();
+    size_t K = a.ncol();
     
     // Reserving some space
     (void) free->empty();
     (void) free->reserve(2u * N * K);
     
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
 
-        for (uint j = 0u; j < K; ++j)
+        for (size_t j = 0u; j < K; ++j)
         {
 
             // Locked cells are skipped
@@ -9149,7 +9187,7 @@ inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_names() const
 {
 
     std::vector< std::string > out(this->size());
-    for (unsigned int i = 0u; i < out.size(); ++i)
+    for (size_t i = 0u; i < out.size(); ++i)
         out[i] = this->data.at(i).get_name();
 
     return out;
@@ -9161,7 +9199,7 @@ inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_descriptions()
 {
     
     std::vector< std::string > out(this->size());
-    for (unsigned int i = 0u; i < out.size(); ++i)
+    for (size_t i = 0u; i < out.size(); ++i)
         out[i] = data.at(i).get_description();
 
     return out;
@@ -9244,22 +9282,22 @@ public:
 };
 
 /**
-  * @brief Data class used to store arbitrary uint or double vectors */
+  * @brief Data class used to store arbitrary size_t or double vectors */
 class NetCounterData {
 public:
     
-    std::vector< uint > indices;
+    std::vector< size_t > indices;
     std::vector< double > numbers;
     
     NetCounterData() : indices(0u), numbers(0u) {};
     NetCounterData(
-        const std::vector< uint > indices_,
+        const std::vector< size_t > indices_,
         const std::vector< double > numbers_
     ): indices(indices_), numbers(numbers_) {};
     
     ~NetCounterData() {};
     
-    // const uint get_uint
+    // const size_t get_size_t
     
 };
 
@@ -9305,16 +9343,16 @@ using NetRules =  Rules<Tnet, bool>;
 /**Function for definition of a network counter function*/
 #define NETWORK_COUNTER(a) \
 template<typename Tnet = Network>\
-inline double (a) (const Tnet & Array, uint i, uint j, NetCounterData & data)
+inline double (a) (const Tnet & Array, size_t i, size_t j, NetCounterData & data)
 
 /**Lambda function for definition of a network counter function*/
 #define NETWORK_COUNTER_LAMBDA(a) \
 Counter_fun_type<Tnet, NetCounterData> a = \
-    [](const Tnet & Array, uint i, uint j, NetCounterData & data)
+    [](const Tnet & Array, size_t i, size_t j, NetCounterData & data)
 
 #define NETWORKDENSE_COUNTER_LAMBDA(a) \
 Counter_fun_type<NetworkDense, NetCounterData> a = \
-    [](const NetworkDense & Array, uint i, uint j, NetCounterData & data)
+    [](const NetworkDense & Array, size_t i, size_t j, NetCounterData & data)
 ///@}
 
 
@@ -9324,12 +9362,12 @@ Counter_fun_type<NetworkDense, NetCounterData> a = \
 /**Function for definition of a network counter function*/
 #define NETWORK_RULE(a) \
 template<typename Tnet = Network>\
-inline bool (a) (const Tnet & Array, uint i, uint j, bool & data)
+inline bool (a) (const Tnet & Array, size_t i, size_t j, bool & data)
 
 /**Lambda function for definition of a network counter function*/
 #define NETWORK_RULE_LAMBDA(a) \
 Rule_fun_type<Tnet, bool> a = \
-[](const Tnet & Array, uint i, uint j, bool & data)
+[](const Tnet & Array, size_t i, size_t j, bool & data)
 ///@}
 
 /**
@@ -9535,7 +9573,7 @@ inline void counter_istar2(NetCounters<NetworkDense> * counters)
         // Need to check the receiving, if he/she is getting a new set of stars
         // when looking at triads
         // int indeg = 1;
-        // for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        // for (size_t k = 0u; k < Array.nrow(); ++k)
         // {
         //     if (i == k)
         //         continue;
@@ -9602,7 +9640,7 @@ inline void counter_ostar2(NetCounters<NetworkDense> * counters)
         // Need to check the receiving, if he/she is getting a new set of stars
         // when looking at triads
         // int nties = 0;
-        // for (unsigned int k = 0u; k < Array.ncol(); ++k)
+        // for (size_t k = 0u; k < Array.ncol(); ++k)
         // {
         //     if (Array(i, k) != BARRY_ZERO_NETWORK_DENSE)
         //         ++nties;
@@ -9727,7 +9765,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
     {
 
         const auto & dat = Array.get_data();
-        unsigned int N = Array.nrow();
+        size_t N = Array.nrow();
 
         // Self ties do not count
         if (i == j)
@@ -9739,7 +9777,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
 
         
         double ans = 0.0;
-        for (unsigned int k = 0u; k < N; ++k)
+        for (size_t k = 0u; k < N; ++k)
         {
 
             // In all cases k receives, so if not, then continue
@@ -9868,7 +9906,7 @@ inline void counter_ctriads(NetCounters<NetworkDense> * counters)
         #ifdef __OPENM 
         #pragma omp simd reduction(+:ans)
         #endif
-        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        for (size_t k = 0u; k < Array.nrow(); ++k)
         {
 
             // If isolated, then next
@@ -9982,7 +10020,7 @@ inline void counter_idegree15(NetCounters<NetworkDense> * counters)
         
         // In case of the first, we need to add
         int ideg = 0;
-        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        for (size_t k = 0u; k < Array.nrow(); ++k)
         {
             if (k == j)
                 continue;
@@ -10059,7 +10097,7 @@ inline void counter_odegree15(NetCounters<NetworkDense> * counters)
         
         // In case of the first, we need to add
         int odeg = 0;
-        for (unsigned int k = 0u; k < Array.ncol(); ++k)
+        for (size_t k = 0u; k < Array.ncol(); ++k)
         {
 
             if (k == i)
@@ -10099,7 +10137,7 @@ inline void counter_odegree15(NetCounters<NetworkDense> * counters)
 template<typename Tnet = Network>
 inline void counter_absdiff(
     NetCounters<Tnet> * counters,
-    uint attr_id,
+    size_t attr_id,
     double alpha = 1.0
 ) {
     
@@ -10144,7 +10182,7 @@ inline void counter_absdiff(
 template<typename Tnet = Network>
 inline void counter_diff(
     NetCounters<Tnet> * counters,
-    uint attr_id,
+    size_t attr_id,
     double alpha     = 1.0,
     double tail_head = true
 ) {
@@ -10207,7 +10245,7 @@ NETWORK_COUNTER(init_single_attr)
 template<typename Tnet = Network>
 inline void counter_nodeicov(
     NetCounters<Tnet> * counters,
-    uint attr_id
+    size_t attr_id
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -10232,7 +10270,7 @@ inline void counter_nodeicov(
 template<typename Tnet = Network>
 inline void counter_nodeocov(
     NetCounters<Tnet> * counters,
-    uint attr_id
+    size_t attr_id
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -10257,7 +10295,7 @@ inline void counter_nodeocov(
 template<typename Tnet = Network>
 inline void counter_nodecov(
     NetCounters<Tnet> * counters,
-    uint attr_id
+    size_t attr_id
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -10282,7 +10320,7 @@ inline void counter_nodecov(
 template<typename Tnet = Network>
 inline void counter_nodematch(
     NetCounters<Tnet> * counters,
-    uint attr_id
+    size_t attr_id
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -10314,13 +10352,13 @@ inline void counter_nodematch(
 template<typename Tnet = Network>
 inline void counter_idegree(
     NetCounters<Tnet> * counters,
-    std::vector< uint > d
+    std::vector< size_t > d
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
         
-        uint d = Array.col(j).size();
+        size_t d = Array.col(j).size();
         if (d == NET_C_DATA_IDX(0u))
             return 1.0;
         else if (d == (NET_C_DATA_IDX(0u) + 1))
@@ -10361,14 +10399,14 @@ inline void counter_idegree(
 template<>
 inline void counter_idegree(
     NetCounters<NetworkDense> * counters,
-    std::vector< uint > d
+    std::vector< size_t > d
 ) {
 
     NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
     {
         
-        unsigned int indeg = 0u;
-        for (unsigned int k = 0u; k < Array.nrow(); ++k)
+        size_t indeg = 0u;
+        for (size_t k = 0u; k < Array.nrow(); ++k)
             if (Array(k, j) != BARRY_ZERO_NETWORK_DENSE)
                 indeg++;
 
@@ -10414,13 +10452,13 @@ inline void counter_idegree(
 template<typename Tnet = Network>
 inline void counter_odegree(
     NetCounters<Tnet> * counters,
-    std::vector<uint> d
+    std::vector<size_t> d
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count)
     {
         
-        uint d = Array.row(i).size();
+        size_t d = Array.row(i).size();
         if (d == NET_C_DATA_IDX(0u))
             return 1.0;
         else if (d == (NET_C_DATA_IDX(0u) + 1))
@@ -10462,14 +10500,14 @@ inline void counter_odegree(
 template<>
 inline void counter_odegree(
     NetCounters<NetworkDense> * counters,
-    std::vector<uint> d
+    std::vector<size_t> d
 ) {
     
     NETWORKDENSE_COUNTER_LAMBDA(tmp_count)
     {
         
-        uint d = 0;
-        for (unsigned int k = 0u; k < Array.ncol(); ++k)
+        size_t d = 0;
+        for (size_t k = 0u; k < Array.ncol(); ++k)
             if (Array(i, k) != BARRY_ZERO_NETWORK_DENSE)
                 d++;
         
@@ -10517,12 +10555,12 @@ inline void counter_odegree(
 template<typename Tnet = Network>
 inline void counter_degree(
     NetCounters<Tnet> * counters,
-    std::vector<uint> d
+    std::vector<size_t> d
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
         
-        uint d = Array.row(i).size();
+        size_t d = Array.row(i).size();
         if (d == NET_C_DATA_IDX(0u))
             return 1.0;
         else if (d == (NET_C_DATA_IDX(0u) + 1))
@@ -10573,9 +10611,9 @@ inline void counter_degree(
 // s: Start of the i-th network
 // e: end of the i-th network
 #define CSS_SIZE() \
-    uint n = data.indices[0u]; \
-    uint s = data.indices[1u]; \
-    uint e = data.indices[2u];
+    size_t n = data.indices[0u]; \
+    size_t s = data.indices[1u]; \
+    size_t e = data.indices[2u];
 
 // Variables in case that the current cell corresponds to the True
 #define CSS_CASE_TRUTH() if ((i < n) && (j < n)) 
@@ -10602,13 +10640,13 @@ inline void counter_degree(
     | (data.indices.at(2) > Array.ncol())) \
         throw std::range_error("The network does not match the prescribed size."); 
 
-#define CSS_CHECK_SIZE() for (uint i = 0u; i < end_.size(); ++i) {\
+#define CSS_CHECK_SIZE() for (size_t i = 0u; i < end_.size(); ++i) {\
     if (i == 0u) continue; \
     else if (end_[i] < end_[i-1u]) \
         throw std::logic_error("Endpoints should be specified in order.");}
 
 #define CSS_APPEND(name) std::string name_ = (name);\
-    for (uint i = 0u; i < end_.size(); ++i) { \
+    for (size_t i = 0u; i < end_.size(); ++i) { \
     std::string tmpname = name_ + " (" + std::to_string(i) + ")";\
     counters->add_counter(tmp_count, tmp_init, nullptr, \
             NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\
@@ -10630,8 +10668,8 @@ inline void counter_degree(
 template<typename Tnet = Network>
 inline void counter_css_partially_false_recip_commi(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -10677,8 +10715,8 @@ inline void counter_css_partially_false_recip_commi(
 template<typename Tnet = Network>
 inline void counter_css_partially_false_recip_omiss(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -10721,8 +10759,8 @@ inline void counter_css_partially_false_recip_omiss(
 template<typename Tnet = Network>
 inline void counter_css_completely_false_recip_comiss(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -10761,8 +10799,8 @@ inline void counter_css_completely_false_recip_comiss(
 template<typename Tnet = Network>
 inline void counter_css_completely_false_recip_omiss(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -10801,8 +10839,8 @@ inline void counter_css_completely_false_recip_omiss(
 template<typename Tnet = Network>
 inline void counter_css_mixed_recip(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -10842,8 +10880,8 @@ inline void counter_css_mixed_recip(
 template<typename Tnet = Network>
 inline void counter_css_census01(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -10892,8 +10930,8 @@ inline void counter_css_census01(
 template<typename Tnet = Network>
 inline void counter_css_census02(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -10931,8 +10969,8 @@ inline void counter_css_census02(
 template<typename Tnet = Network>
 inline void counter_css_census03(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -10970,8 +11008,8 @@ inline void counter_css_census03(
 template<typename Tnet = Network>
 inline void counter_css_census04(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -11009,8 +11047,8 @@ inline void counter_css_census04(
 template<typename Tnet = Network>
 inline void counter_css_census05(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -11048,8 +11086,8 @@ inline void counter_css_census05(
 template<typename Tnet = Network>
 inline void counter_css_census06(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -11087,8 +11125,8 @@ inline void counter_css_census06(
 template<typename Tnet = Network>
 inline void counter_css_census07(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -11126,8 +11164,8 @@ inline void counter_css_census07(
 template<typename Tnet = Network>
 inline void counter_css_census08(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -11165,8 +11203,8 @@ inline void counter_css_census08(
 template<typename Tnet = Network>
 inline void counter_css_census09(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -11204,8 +11242,8 @@ inline void counter_css_census09(
 template<typename Tnet = Network>
 inline void counter_css_census10(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -11276,7 +11314,11 @@ inline void rules_zerodiag(NetRules<Tnet> * rules) {
         return i != j;
     };
     
-    rules->add_rule(no_self_tie, false);
+    rules->add_rule(
+        no_self_tie, false,
+        "No self-ties",
+        "No self-ties"
+        );
     
     return;
 }
@@ -11321,7 +11363,7 @@ inline void rules_zerodiag(NetRules<Tnet> * rules) {
 
 #define MAKE_DUPL_VARS() \
     bool DPL = Array.D_ptr()->duplication; \
-    unsigned int DATA_AT = data[0u];
+    size_t DATA_AT = data[0u];
 
 #define IS_EITHER()      (DATA_AT == DUPL_EITH)
 #define IS_DUPLICATION() ((DATA_AT == DUPL_DUPL) & (DPL))
@@ -11376,30 +11418,30 @@ public:
   
 };
 
-// typedef std::vector< uint > PhyloCounterData;
+// typedef std::vector< size_t > PhyloCounterData;
 class PhyloCounterData {
 private:
-    std::vector< uint > data;
+    std::vector< size_t > data;
     std::vector< double > * counters;
 
 public:
     PhyloCounterData(
-        std::vector< uint > data_,
+        std::vector< size_t > data_,
         std::vector< double > * counters_ = nullptr
         ) : data(data_), counters(counters_) {};
 
     PhyloCounterData() : data(0u) {};
 
-    uint at(uint d) {return data.at(d);};
-    uint operator()(uint d) {return data.at(d);};
-    uint operator[](uint d) {return data[d];};
-    void reserve(uint x) {return data.reserve(x);};
-    void push_back(uint x) {return data.push_back(x);};
+    size_t at(size_t d) {return data.at(d);};
+    size_t operator()(size_t d) {return data.at(d);};
+    size_t operator[](size_t d) {return data[d];};
+    void reserve(size_t x) {return data.reserve(x);};
+    void push_back(size_t x) {return data.push_back(x);};
     void shrink_to_fit()  {return data.shrink_to_fit();};
-    uint size() {return data.size();};
+    size_t size() {return data.size();};
 
-    std::vector< uint >::iterator begin() {return data.begin();};
-    std::vector< uint >::iterator end() {return data.end();};
+    std::vector< size_t >::iterator begin() {return data.begin();};
+    std::vector< size_t >::iterator end() {return data.end();};
 
     bool empty() {return data.empty();};
     std::vector< double > * get_counters() {return counters;};
@@ -11407,14 +11449,14 @@ public:
 };
 
 
-typedef std::vector< std::pair< uint, uint > > PhyloRuleData;
+typedef std::vector< std::pair< size_t, size_t > > PhyloRuleData;
 class PhyloRuleDynData;
 
 /**
  * @name Convenient typedefs for Node objects.
  * */
 ///@{
-typedef BArrayDense<uint, NodeData> PhyloArray;
+typedef BArrayDense<size_t, NodeData> PhyloArray;
 typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
 typedef Counters< PhyloArray, PhyloCounterData> PhyloCounters;
 
@@ -11442,15 +11484,15 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
  * 
  */
 #define PHYLO_COUNTER_LAMBDA(a) Counter_fun_type<PhyloArray, PhyloCounterData> a = \
-    [](const PhyloArray & Array, uint i, uint j, PhyloCounterData & data)
+    [](const PhyloArray & Array, size_t i, size_t j, PhyloCounterData & data)
 
 #define PHYLO_RULE_DYN_LAMBDA(a) Rule_fun_type<PhyloArray, PhyloRuleDynData> a = \
-    [](const PhyloArray & Array, uint i, uint j, PhyloRuleDynData & data)
+    [](const PhyloArray & Array, size_t i, size_t j, PhyloRuleDynData & data)
 
 #define PHYLO_CHECK_MISSING() if (Array.D_ptr() == nullptr) \
     throw std::logic_error("The array data is nullptr."); \
     
-inline std::string get_last_name(unsigned int d) {return ((d == 1u)? " at duplication" : ((d == 0u)? " at speciation" : ""));}
+inline std::string get_last_name(size_t d) {return ((d == 1u)? " at duplication" : ((d == 0u)? " at speciation" : ""));}
 
 /**
  * @weakgroup counters-phylo Phylo counters
@@ -11465,7 +11507,7 @@ inline std::string get_last_name(unsigned int d) {return ((d == 1u)? " at duplic
  */
 inline void counter_overall_gains(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -11503,8 +11545,8 @@ inline void counter_overall_gains(
  */
 inline void counter_gains(
     PhyloCounters * counters,
-    std::vector<uint> nfun,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    std::vector<size_t> nfun,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -11563,9 +11605,9 @@ inline void counter_gains(
  */
 inline void counter_gains_k_offspring(
     PhyloCounters * counters,
-    std::vector<uint> nfun,
-    uint k = 1u,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    std::vector<size_t> nfun,
+    size_t k = 1u,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -11593,7 +11635,7 @@ inline void counter_gains_k_offspring(
 
         // Making the counts
         int counts = 0;
-        for (uint k = 0u; k < Array.ncol(); ++k)
+        for (size_t k = 0u; k < Array.ncol(); ++k)
             if (k != j)
             {
                 if (Array(i, k, false) == 1u)
@@ -11635,7 +11677,7 @@ inline void counter_gains_k_offspring(
  */
 inline void counter_genes_changing(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -11671,7 +11713,7 @@ inline void counter_genes_changing(
             return 0.0;
 
         // Need to check the other functions
-        for (uint k = 0u; k < Array.nrow(); ++k)
+        for (size_t k = 0u; k < Array.nrow(); ++k)
         {
 
             // Nah, this gene was already different.
@@ -11704,9 +11746,9 @@ inline void counter_genes_changing(
  */
 inline void counter_preserve_pseudogene(
     PhyloCounters * counters,
-    unsigned int nfunA,
-    unsigned int nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -11745,7 +11787,7 @@ inline void counter_preserve_pseudogene(
         if (Array.D_ptr()->states[data[1u]] || Array.D_ptr()->states[data[2u]])
             return 0.0;
 
-        unsigned int k = (i == nfunA) ? nfunB : nfunA;
+        size_t k = (i == nfunA) ? nfunB : nfunA;
 
         if (Array(k, j) == 1u)
             return 0.0;
@@ -11786,7 +11828,7 @@ inline void counter_preserve_pseudogene(
  */
 inline void counter_prop_genes_changing(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -11821,7 +11863,7 @@ inline void counter_prop_genes_changing(
         bool j_diverges = false;
         const std::vector< bool > & par_state = Array.D_ptr()->states;
 
-        for (unsigned int f = 0u; f < Array.nrow(); ++f)
+        for (size_t f = 0u; f < Array.nrow(); ++f)
         {
 
             // Was the gene annotation different from the parent?
@@ -11835,7 +11877,7 @@ inline void counter_prop_genes_changing(
 
 
         bool j_used_to_diverge = false;
-        for (unsigned int f = 0u; f < Array.nrow(); ++f)
+        for (size_t f = 0u; f < Array.nrow(); ++f)
         {
 
             if (f == i)
@@ -11888,7 +11930,7 @@ inline void counter_prop_genes_changing(
  */
 inline void counter_overall_loss(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
     )
 {
   
@@ -11936,9 +11978,9 @@ inline void counter_overall_loss(
  */
 inline void counter_maxfuns(
     PhyloCounters * counters,
-    uint            lb,
-    uint            ub,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t            lb,
+    size_t            ub,
+    size_t duplication = DEFAULT_DUPLICATION
  )
  {
 
@@ -11998,8 +12040,8 @@ inline void counter_maxfuns(
  */
 inline void counter_loss(
     PhyloCounters * counters,
-    std::vector<uint> nfun,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    std::vector<size_t> nfun,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -12050,7 +12092,7 @@ inline void counter_loss(
  */
 inline void counter_overall_changes(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -12080,7 +12122,7 @@ inline void counter_overall_changes(
         // As many chances to change as offspring
         double noff   = static_cast<double> (Array.ncol());
         double counts = 0.0;
-        for (uint k = 0u; k < Array.nrow(); ++k)
+        for (size_t k = 0u; k < Array.nrow(); ++k)
             if (Array.D_ptr()->states[k])
                 counts += noff;
 
@@ -12109,9 +12151,9 @@ inline void counter_overall_changes(
  */
 inline void counter_subfun(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -12134,13 +12176,13 @@ inline void counter_subfun(
             return 0.0;
         
         // Figuring out which is the first (reference) function
-        uint other = (i == funA)? funB : funA;
+        size_t other = (i == funA)? funB : funA;
         double res = 0.0;
         // There are 4 cases: (first x second) x (had the second function)
         if (Array(other, j, false) == 1u)
         { 
           
-            for (uint off = 0u; off < Array.ncol(); ++off)
+            for (size_t off = 0u; off < Array.ncol(); ++off)
             {
                 
                 // Not on self
@@ -12154,7 +12196,7 @@ inline void counter_subfun(
           
         } else {
           
-            for (uint off = 0u; off < Array.ncol(); ++off)
+            for (size_t off = 0u; off < Array.ncol(); ++off)
             {
               
                 // Not on self
@@ -12198,9 +12240,9 @@ inline void counter_subfun(
  */
 inline void counter_cogain(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -12221,7 +12263,7 @@ inline void counter_cogain(
         if (!Array.D_ptr()->states[d1] && !Array.D_ptr()->states[d2])
         {
 
-            uint other = (i == d1)? d2 : d1;
+            size_t other = (i == d1)? d2 : d1;
 
             if (Array(other, j, false) == 1u)
                 return 1.0;
@@ -12255,7 +12297,7 @@ inline void counter_cogain(
 /** @brief Longest branch mutates (either by gain or by loss) */
 inline void counter_longest(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
     )
 {
   
@@ -12366,11 +12408,11 @@ inline void counter_longest(
             );
           
         // Finding the longest branch (or branches) --
-        uint longest_idx = 0u;
+        size_t longest_idx = 0u;
         double diff      = 0.0;
         data.reserve(Array.ncol()); 
         data.push_back(0u);
-        for (uint ii = 1u; ii < Array.ncol(); ++ii)
+        for (size_t ii = 1u; ii < Array.ncol(); ++ii)
         {
             
             diff = Array.D_ptr()->blengths[longest_idx] - Array.D_ptr()->blengths[ii];
@@ -12396,7 +12438,7 @@ inline void counter_longest(
         
         // Starting the counter, since all in zero, then this will be equal to
         // the number of functions in 1 x number of longest branches
-        for (uint ii = 0u; ii < Array.nrow(); ++ii)
+        for (size_t ii = 0u; ii < Array.nrow(); ++ii)
         {
             
             if (Array.D_ptr()->states[ii])
@@ -12425,9 +12467,9 @@ inline void counter_longest(
  */
 inline void counter_neofun(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -12446,7 +12488,7 @@ inline void counter_neofun(
             return 0.0;
         
         // Checking if the parent has both functions
-        uint other = (i == funA)? funB : funA;
+        size_t other = (i == funA)? funB : funA;
         bool parent_i     = Array.D_ptr()->states[i];
         bool parent_other = Array.D_ptr()->states[other];
         
@@ -12506,8 +12548,8 @@ inline void counter_neofun(
  */
 inline void counter_pairwise_neofun_singlefun(
     PhyloCounters * counters,
-    uint nfunA,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -12570,9 +12612,9 @@ inline void counter_pairwise_neofun_singlefun(
  */
 inline void counter_neofun_a2b(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -12583,8 +12625,8 @@ inline void counter_neofun_a2b(
         IF_NOTMATCHES()
             return 0.0;
         
-        const uint & funA = data[1u];
-        const uint & funB = data[2u];
+        const size_t & funA = data[1u];
+        const size_t & funB = data[2u];
 
         // Checking scope
         if ((i != funA) && (i != funB))
@@ -12703,9 +12745,9 @@ inline void counter_neofun_a2b(
  */
 inline void counter_co_opt(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB, 
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB, 
+    size_t duplication = DEFAULT_DUPLICATION
 ) {
   
     PHYLO_COUNTER_LAMBDA(tmp_count)
@@ -12715,8 +12757,8 @@ inline void counter_co_opt(
         IF_NOTMATCHES()
             return 0.0;
         
-        const unsigned int funA = data[1u];
-        const unsigned int funB = data[2u];
+        const size_t funA = data[1u];
+        const size_t funB = data[2u];
 
         // If the change is out of scope, then nothing to do
         if ((i != funA) & (i != funB))
@@ -12801,8 +12843,8 @@ inline void counter_co_opt(
  */
 inline void counter_k_genes_changing(
     PhyloCounters * counters,
-    unsigned int k,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t k,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -12922,7 +12964,7 @@ inline void counter_k_genes_changing(
 inline void counter_less_than_p_prop_genes_changing(
     PhyloCounters * counters,
     double p,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -12956,10 +12998,10 @@ inline void counter_less_than_p_prop_genes_changing(
         bool j_diverges = false;
         const std::vector< bool > & par_state = Array.D_ptr()->states;
 
-        for (unsigned int o = 0u; o < Array.ncol(); ++o)
+        for (size_t o = 0u; o < Array.ncol(); ++o)
         {
 
-            for (unsigned int f = 0u; f < Array.nrow(); ++f)
+            for (size_t f = 0u; f < Array.nrow(); ++f)
             {
 
                 // Was the gene annotation different from the parent?
@@ -12980,7 +13022,7 @@ inline void counter_less_than_p_prop_genes_changing(
 
 
         bool j_used_to_diverge = false;
-        for (unsigned int f = 0u; f < Array.nrow(); ++f)
+        for (size_t f = 0u; f < Array.nrow(); ++f)
         {
 
             if (f == i)
@@ -13024,7 +13066,7 @@ inline void counter_less_than_p_prop_genes_changing(
     
     counters->add_counter(
         tmp_count, tmp_init, nullptr,
-        PhyloCounterData({duplication, static_cast<uint>(p * 100)}),
+        PhyloCounterData({duplication, static_cast<size_t>(p * 100)}),
         std::to_string(p) + " prop genes changing" + get_last_name(duplication)
     );
   
@@ -13037,8 +13079,8 @@ inline void counter_less_than_p_prop_genes_changing(
  */
 inline void counter_gains_from_0(
     PhyloCounters * counters,
-    std::vector< uint > nfun,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    std::vector< size_t > nfun,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -13103,7 +13145,7 @@ inline void counter_gains_from_0(
  */
 inline void counter_overall_gains_from_0(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -13151,7 +13193,7 @@ inline void counter_overall_gains_from_0(
  */
 inline void counter_pairwise_overall_change(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -13161,7 +13203,7 @@ inline void counter_pairwise_overall_change(
         IF_NOTMATCHES()
             return 0.0;
 
-        unsigned int funpar = Array.D_ptr()->states[i] == 1u;
+        size_t funpar = Array.D_ptr()->states[i] == 1u;
 
         // All must be false
         double res = 0.0;
@@ -13216,9 +13258,9 @@ inline void counter_pairwise_overall_change(
  */
 inline void counter_pairwise_preserving(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -13234,7 +13276,7 @@ inline void counter_pairwise_preserving(
         if ((funA != i) && (funB != i))
             return 0.0;
 
-        unsigned int k = (funA == i) ? funB : funA;
+        size_t k = (funA == i) ? funB : funA;
 
         bool parent_i = Array.D_ptr()->states[i];
         bool parent_k = Array.D_ptr()->states[k];
@@ -13355,9 +13397,9 @@ inline void counter_pairwise_preserving(
  */
 inline void counter_pairwise_first_gain(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -13373,7 +13415,7 @@ inline void counter_pairwise_first_gain(
         if ((funA != i) && (funB != i))
             return 0.0;
 
-        unsigned int k = (funA == i) ? funB : funA;
+        size_t k = (funA == i) ? funB : funA;
 
         double res = 0.0;
         if (Array(k, j) == 1)
@@ -13458,17 +13500,17 @@ inline void counter_pairwise_first_gain(
 class PhyloRuleDynData {
 public:
     const std::vector< double > * counts;
-    uint pos;
-    uint lb;
-    uint ub;
-    uint duplication;
+    size_t pos;
+    size_t lb;
+    size_t ub;
+    size_t duplication;
 
     PhyloRuleDynData(
         const std::vector< double > * counts_,
-        uint pos_,
-        uint lb_,
-        uint ub_,
-        uint duplication_
+        size_t pos_,
+        size_t lb_,
+        size_t ub_,
+        size_t duplication_
         ) :
         counts(counts_), pos(pos_), lb(lb_), ub(ub_), duplication(duplication_) {};
     
@@ -13487,17 +13529,17 @@ public:
  */
 inline void rule_dyn_limit_changes(
     PhyloSupport * support,
-    uint pos,
-    uint lb,
-    uint ub,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t pos,
+    size_t lb,
+    size_t ub,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
     PHYLO_RULE_DYN_LAMBDA(tmp_rule)
     {
 
-        unsigned int rule_type = data.duplication;
+        size_t rule_type = data.duplication;
         if (rule_type != DUPL_EITH)
         {
 
@@ -13522,7 +13564,13 @@ inline void rule_dyn_limit_changes(
         PhyloRuleDynData(
             support->get_current_stats(),
             pos, lb, ub, duplication
-            )
+            ),
+        std::string("Limiting changes in term ") + 
+            std::to_string(pos) + " to [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + "]",        
+        std::string("When the support is ennumerated, the number of changes in term ") + 
+            std::to_string(pos) + " is limited to [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + "]"
     );
     
     return;
@@ -13881,7 +13929,7 @@ public:
 };
 
 /**
-  * @brief Data class used to store arbitrary uint or double vectors */
+  * @brief Data class used to store arbitrary size_t or double vectors */
 class DEFMCounterData {
 public:
 
@@ -14022,12 +14070,12 @@ inline void DEFMData::print() const {
 ///@{
 /**Function for definition of a network counter function*/
 #define DEFM_COUNTER(a) \
-inline double (a) (const DEFMArray & Array, uint i, uint j, DEFMCounterData & data)
+inline double (a) (const DEFMArray & Array, size_t i, size_t j, DEFMCounterData & data)
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_COUNTER_LAMBDA(a) \
 Counter_fun_type<DEFMArray, DEFMCounterData> a = \
-    [](const DEFMArray & Array, uint i, uint j, DEFMCounterData & data) -> double
+    [](const DEFMArray & Array, size_t i, size_t j, DEFMCounterData & data) -> double
 
 ///@}
 
@@ -14036,18 +14084,18 @@ Counter_fun_type<DEFMArray, DEFMCounterData> a = \
 ///@{
 /**Function for definition of a network counter function*/
 #define DEFM_RULE(a) \
-inline bool (a) (const DEFMArray & Array, uint i, uint j, bool & data)
+inline bool (a) (const DEFMArray & Array, size_t i, size_t j, bool & data)
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_RULE_LAMBDA(a) \
 Rule_fun_type<DEFMArray, DEFMRuleData> a = \
-[](const DEFMArray & Array, uint i, uint j, DEFMRuleData & data) -> bool
+[](const DEFMArray & Array, size_t i, size_t j, DEFMRuleData & data) -> bool
 ///@}
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_RULEDYN_LAMBDA(a) \
 Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
-[](const DEFMArray & Array, uint i, uint j, DEFMRuleDynData & data) -> bool
+[](const DEFMArray & Array, size_t i, size_t j, DEFMRuleDynData & data) -> bool
 ///@}
 
 /**
@@ -14734,17 +14782,17 @@ namespace phylocounters = barry::counters::phylo;
 namespace defmcounters = barry::counters::defm;
 
 #define COUNTER_FUNCTION(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
-    inline double (a) (const Array_Type & Array, uint i, uint j, Data_Type & data)\
+    inline double (a) (const Array_Type & Array, size_t i, size_t j, Data_Type & data)\
 
 #define COUNTER_LAMBDA(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
     Counter_fun_type<Array_Type, Data_Type> a = \
-    [](const Array_Type & Array, uint i, uint j, Data_Type & data)
+    [](const Array_Type & Array, size_t i, size_t j, Data_Type & data)
 
 #define RULE_FUNCTION(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
-    inline bool (a) (const Array_Type & Array, uint i, uint j, Data_Type & data)\
+    inline bool (a) (const Array_Type & Array, size_t i, size_t j, Data_Type & data)\
 
 #define RULE_LAMBDA(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
     Rule_fun_type<Array_Type, Data_Type> a = \
-    [](const Array_Type & Array, uint i, uint j, Data_Type & data)
+    [](const Array_Type & Array, size_t i, size_t j, Data_Type & data)
 
 #endif

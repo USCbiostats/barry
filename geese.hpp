@@ -26,21 +26,24 @@
 class Node {
 public:
 
-    unsigned int id; ///< Id of the node (as specified in the input)
-    unsigned int ord; ///< Order in which the node was created
+    size_t id; ///< Id of the node (as specified in the input)
+    size_t ord; ///< Order in which the node was created
 
-    phylocounters::PhyloArray array;
-    std::vector< unsigned int >              annotations;         ///< Observed annotations (only defined for Geese)
-    bool                                     duplication;
+    phylocounters::PhyloArray array;       ///< Array of the node
+    std::vector< size_t >     annotations; ///< Observed annotations (only defined for Geese)
+    bool                      duplication;
 
-    std::vector< phylocounters::PhyloArray > arrays    = {};      ///< Arrays given all possible states
-    Node *                                   parent    = nullptr; ///< Parent node
-    std::vector< Node* >                     offspring = {};      ///< Offspring nodes
-    std::vector< unsigned int >              narray    = {};      ///< ID of the array in the model
-    bool                                     visited   = false;
+    std::vector< phylocounters::PhyloArray > arrays = {}; ///< Arrays given all possible states
 
-    std::vector< double >                    subtree_prob;        ///< Induced subtree probabilities
-    std::vector< double >                    probability;         ///< The probability of observing each state
+    std::vector< bool > arrays_valid = {}; ///< Whether the arrays are valid according to the rules of the model.
+
+    Node *                parent    = nullptr; ///< Parent node
+    std::vector< Node* >  offspring = {};      ///< Offspring nodes
+    std::vector< size_t > narray    = {};      ///< ID of the array in the model
+    bool                  visited   = false;
+
+    std::vector< double > subtree_prob; ///< Induced subtree probabilities
+    std::vector< double > probability;  ///< The probability of observing each state
     
     /**
      * @name Construct a new Node object
@@ -48,9 +51,9 @@ public:
      */
     ///@{
     
-    Node() : ord(UINT_MAX) {};
-    Node(unsigned int id_, unsigned int ord_, bool duplication_);
-    Node(unsigned int id_, unsigned int ord_, std::vector< unsigned int > annotations_, bool duplication_);
+    Node() : ord(std::numeric_limits< size_t >::max()) {};
+    Node(size_t id_, size_t ord_, bool duplication_);
+    Node(size_t id_, size_t ord_, std::vector< size_t > annotations_, bool duplication_);
     
     // Move constructor
     Node(Node && x) noexcept;
@@ -63,27 +66,29 @@ public:
 
     int get_parent() const;
 
-    unsigned int noffspring() const noexcept;
+    size_t noffspring() const noexcept;
     bool is_leaf() const noexcept;
 
 };
 
-inline Node::Node(unsigned int id_, unsigned int ord_, bool duplication_)
+inline Node::Node(size_t id_, size_t ord_, bool duplication_)
     : id(id_), ord(ord_), duplication(duplication_) {
 
     return;
 }
 
 inline Node::Node(
-    unsigned int id_,
-    unsigned int ord_,
-    std::vector< unsigned int > annotations_,
+    size_t id_,
+    size_t ord_,
+    std::vector< size_t > annotations_,
     bool duplication_
     ) : id(id_), ord(ord_), annotations(annotations_), duplication(duplication_) {}
 
 inline Node::Node(Node && x) noexcept :
-    id(x.id), ord(x.ord), array(std::move(x.array)), annotations(std::move(x.annotations)),
+    id(x.id), ord(x.ord), array(std::move(x.array)),
+    annotations(std::move(x.annotations)),
     duplication(x.duplication), arrays(std::move(x.arrays)),
+    arrays_valid(std::move(x.arrays_valid)), 
     parent(std::move(x.parent)),
     offspring(std::move(x.offspring)),
     narray(std::move(x.narray)),
@@ -96,8 +101,10 @@ inline Node::Node(Node && x) noexcept :
 }
 
 inline Node::Node(const Node & x) :
-    id(x.id), ord(x.ord), array(x.array), annotations(x.annotations),
+    id(x.id), ord(x.ord), array(x.array), 
+    annotations(x.annotations),
     duplication(x.duplication), arrays(x.arrays),
+    arrays_valid(x.arrays_valid),
     parent(x.parent),
     offspring(x.offspring),
     narray(x.narray),
@@ -115,7 +122,7 @@ inline int Node::get_parent() const {
     else
         return static_cast<int>(parent->id);
 }
-inline unsigned int Node::noffspring() const noexcept {
+inline size_t Node::noffspring() const noexcept {
 
     return this->offspring.size();
 
@@ -192,7 +199,7 @@ inline std::vector< double > keygen_full(
 
     // State of the parent
     dat.push_back(0.0);
-    unsigned int count = 0u;
+    size_t count = 0u;
     for (bool i : array.D_ptr()->states) {
         dat[dat.size() - 1u] += (i ? 1.0 : 0.0) * pow(10, static_cast<double>(count));
         count++;
@@ -205,11 +212,11 @@ inline std::vector< double > keygen_full(
 }
 
 inline bool vec_diff(
-    const std::vector< unsigned int > & s,
-    const std::vector< unsigned int > & a
+    const std::vector< size_t > & s,
+    const std::vector< size_t > & a
 ) {
 
-    for (unsigned int i = 0u; i < a.size(); ++i)
+    for (size_t i = 0u; i < a.size(); ++i)
         if ((a[i] != 9u) && (a[i] != s[i]))
             return true;
 
@@ -243,23 +250,23 @@ private:
     std::mt19937 *                     rengine = nullptr;
     phylocounters::PhyloModel *        model   = nullptr;
     std::vector< std::vector< bool > > states;
-    unsigned int n_zeros       = 0u; ///< Number of zeros
-    unsigned int n_ones        = 0u; ///< Number of ones
-    unsigned int n_dupl_events = 0u; ///< Number of duplication events
-    unsigned int n_spec_events = 0u; ///< Number of speciation events
+    size_t n_zeros       = 0u; ///< Number of zeros
+    size_t n_ones        = 0u; ///< Number of ones
+    size_t n_dupl_events = 0u; ///< Number of duplication events
+    size_t n_spec_events = 0u; ///< Number of speciation events
     ///@}
 
 public:
 
     // Data
-    unsigned int                       nfunctions;
-    std::map< unsigned int, Node >     nodes;
-    barry::MapVec_type< unsigned int > map_to_nodes;
+    size_t                       nfunctions;
+    std::map< size_t, Node >     nodes;
+    barry::MapVec_type< size_t > map_to_nodes;
     std::vector< std::vector< std::vector< size_t > > > pset_loc;    ///< Locations of columns
 
     // Tree-traversal sequence
-    std::vector< unsigned int > sequence;
-    std::vector< unsigned int > reduced_sequence;  
+    std::vector< size_t > sequence;
+    std::vector< size_t > reduced_sequence;  
 
     // Admin-related objects
     bool initialized     = false;
@@ -289,8 +296,8 @@ public:
     Geese();
 
     Geese(
-        std::vector< std::vector<unsigned int> > & annotations,
-        std::vector< unsigned int > &              geneid,
+        std::vector< std::vector<size_t> > & annotations,
+        std::vector< size_t > &              geneid,
         std::vector< int > &                       parent,
         std::vector< bool > &                      duplication
         );
@@ -311,11 +318,11 @@ public:
 
     ~Geese();
 
-    void init(unsigned int bar_width = BARRY_PROGRESS_BAR_WIDTH);
+    void init(size_t bar_width = BARRY_PROGRESS_BAR_WIDTH);
 
     void inherit_support(const Geese & model_, bool delete_support_ = false);
 
-    // Node * operator()(unsigned int & nodeid);
+    // Node * operator()(size_t & nodeid);
     void calc_sequence(Node * n = nullptr);
     void calc_reduced_sequence();
 
@@ -329,8 +336,8 @@ public:
 
     std::vector< double > get_probabilities() const;
 
-    void set_seed(const unsigned int & s);
-    std::vector< std::vector< unsigned int > > simulate(
+    void set_seed(const size_t & s);
+    std::vector< std::vector< size_t > > simulate(
         const std::vector< double > & par
         );
 
@@ -340,14 +347,14 @@ public:
      * polytomies.
      */
     ///@{
-    unsigned int nfuns() const noexcept;             ///< Number of functions analyzed
-    unsigned int nnodes() const noexcept;            ///< Number of nodes (interior + leaf)
-    unsigned int nleafs() const noexcept;            ///< Number of leaf
-    unsigned int nterms() const;                     ///< Number of terms included
-    unsigned int support_size() const noexcept;      ///< Number of unique sets of sufficient stats.
-    std::vector< unsigned int > nannotations() const noexcept;      ///< Number of annotations.
+    size_t nfuns() const noexcept;             ///< Number of functions analyzed
+    size_t nnodes() const noexcept;            ///< Number of nodes (interior + leaf)
+    size_t nleafs() const noexcept;            ///< Number of leaf
+    size_t nterms() const;                     ///< Number of terms included
+    size_t support_size() const noexcept;      ///< Number of unique sets of sufficient stats.
+    std::vector< size_t > nannotations() const noexcept;      ///< Number of annotations.
     std::vector< std::string > colnames() const;     ///< Names of the terms in the model.
-    unsigned int parse_polytomies(
+    size_t parse_polytomies(
         bool verb = true,
         std::vector< size_t > * dist = nullptr
         ) const noexcept;  ///< Check polytomies and return the largest.
@@ -394,12 +401,12 @@ public:
     std::vector< std::vector<double> > predict_backend(
         const std::vector< double > & par,
         bool use_reduced_sequence,
-        const std::vector< uint > & preorder
+        const std::vector< size_t > & preorder
         );
 
     std::vector< std::vector< double > > predict_exhaust_backend(
         const std::vector< double > & par,
-        const std::vector< uint > & preorder
+        const std::vector< size_t > & preorder
         );
 
     std::vector< std::vector< double > > predict_exhaust(
@@ -409,14 +416,14 @@ public:
     std::vector< std::vector< double > > predict_sim(
         const std::vector< double > & par,
         bool only_annotated       = false,
-        unsigned int nsims        = 10000u
+        size_t nsims        = 10000u
         );
     ///@}
 
     void init_node(Node & n);
     void update_annotations(
-        unsigned int nodeid,
-        std::vector< unsigned int > newann
+        size_t nodeid,
+        std::vector< size_t > newann
     );
 
     /**
@@ -446,7 +453,7 @@ public:
      * @return std::vector< std::vector< bool > > of length `2^P`.
      */
     std::vector< std::vector< bool > > get_states() const;  
-    std::vector< unsigned int >        get_annotated_nodes() const; ///< Returns the ids of the nodes with at least one annotation
+    std::vector< size_t >        get_annotated_nodes() const; ///< Returns the ids of the nodes with at least one annotation
 
 };
 
@@ -480,7 +487,7 @@ inline void Geese::init_node(Node & n)
     // Creating the phyloarray, nfunctions x noffspring
     n.array = phylocounters::PhyloArray(nfunctions, n.offspring.size());
 
-    std::vector< bool > tmp_state = vector_caster<bool,uint>(n.annotations);
+    std::vector< bool > tmp_state = vector_caster<bool,size_t>(n.annotations);
 
     std::vector< double > blen(n.offspring.size(), 1.0);
 
@@ -494,11 +501,11 @@ inline void Geese::init_node(Node & n)
     n.subtree_prob.resize(states.size(), 1.0);
 
     // Adding the data, first through functions
-    for (unsigned int k = 0u; k < nfunctions; ++k)
+    for (size_t k = 0u; k < nfunctions; ++k)
     {
 
         // Then through the offspring
-        unsigned int j = 0;
+        size_t j = 0;
         for (auto& o : n.offspring)
         {
 
@@ -533,16 +540,23 @@ inline void Geese::init_node(Node & n)
     {
 
         n.arrays.resize(states.size());
-
         n.narray.resize(states.size());
+        n.arrays_valid.resize(states.size(), false);
 
     }
     
-    for (unsigned int s = 0u; s < states.size(); ++s)
+    // Here we have an issue: Some transitions may not be right
+    // under the dynamic rules. So not all states can be valid.
+    // The arrays and narrays need to be updated once the model
+    // is initialized.
+    //
+    // The later is especially true for leaf nodes, where the
+    // limitations are not known until the model is initialized.
+    phylocounters::PhyloStatsCounter stats_counter;
+    stats_counter.set_counters(model->get_counters());
+    for (size_t s = 0u; s < states.size(); ++s)
     {
 
-        // [2022-02-11]: (IMPORTANT COMMENT!)
-        // n.arrays[s] = phylocounters::PhyloArray(n.array.nrow(), n.array.ncol());
         n.arrays[s] = phylocounters::PhyloArray(n.array, false);
 
         n.arrays[s].set_data(
@@ -550,8 +564,29 @@ inline void Geese::init_node(Node & n)
             true
         );
 
-        // Once the array is ready, we can add it to the model
+
+        // Checking the rule. We need to make sure the counts match
+        // the counts of the current array.
+        if (model->get_rules_dyn() != nullptr)
+        {
+            // Once the array is ready, we can add it to the model
+            stats_counter.reset_array(&n.arrays[s]);
+            auto counts = stats_counter.count_all();
+
+            phylocounters::PhyloRulesDyn dyn_rule(*model->get_rules_dyn());
+            for (auto & r : dyn_rule)
+                r.D().counts = &counts;
+
+            // Finally, we can check if it can bee added. If not,
+            // then we need to skip it.
+            if (!dyn_rule(n.arrays[s], 0u, 0u))
+                continue;
+        }
+
         n.narray[s] = model->add_array(n.arrays[s]);
+
+        if (model->get_pset(n.narray[s])->size() != 0u)
+            n.arrays_valid[s] = true;
 
     }
 
@@ -571,7 +606,7 @@ inline Geese::~Geese() {
 
 }
 
-inline void Geese::init(unsigned int bar_width) {
+inline void Geese::init(size_t bar_width) {
 
     // Initializing the model, if it is null
     if (this->model == nullptr)
@@ -598,7 +633,7 @@ inline void Geese::init(unsigned int bar_width) {
 
     states.reserve(pset.data.size());
 
-    unsigned int i = 0u;
+    size_t i = 0u;
 
     for (auto& iter : pset.data)
     {
@@ -667,7 +702,7 @@ inline void Geese::init(unsigned int bar_width) {
     auto sup_arrays = model->get_pset_arrays();
 
     pset_loc.resize(sup_arrays->size());
-    std::vector< unsigned int > tmpstate(nfunctions);
+    std::vector< size_t > tmpstate(nfunctions);
 
     for (auto s = 0u; s < sup_arrays->size(); ++s)
     {
@@ -726,8 +761,8 @@ inline void Geese::inherit_support(const Geese & model_, bool delete_support_)
 }
 
 inline void Geese::update_annotations(
-    unsigned int nodeid,
-    std::vector< unsigned int > newann
+    size_t nodeid,
+    std::vector< size_t > newann
 ) {
 
     // This can only be done if it has been initialized
@@ -814,7 +849,7 @@ inline void Geese::calc_reduced_sequence()
         if (n.is_leaf())
         {
 
-            for (unsigned int k = 0u; k < nfuns(); ++k)
+            for (size_t k = 0u; k < nfuns(); ++k)
                 if (n.annotations[k] != 9u)
                 {
 
@@ -867,24 +902,24 @@ inline std::vector< double > Geese::get_probabilities() const
     
 }
 
-inline unsigned int Geese::nfuns() const noexcept
+inline size_t Geese::nfuns() const noexcept
 {
 
     return this->nfunctions;
 
 }
 
-inline unsigned int Geese::nnodes() const noexcept
+inline size_t Geese::nnodes() const noexcept
 {
 
     return this->nodes.size();
 
 }
 
-inline unsigned int Geese::nleafs() const noexcept
+inline size_t Geese::nleafs() const noexcept
 {
 
-    unsigned int n = 0u;
+    size_t n = 0u;
 
     for (auto& iter : this->nodes)
         if (iter.second.is_leaf())
@@ -893,7 +928,7 @@ inline unsigned int Geese::nleafs() const noexcept
     return n;
 }
 
-inline unsigned int Geese::nterms() const
+inline size_t Geese::nterms() const
 {
 
     INITIALIZED()
@@ -901,7 +936,7 @@ inline unsigned int Geese::nterms() const
 
 }
 
-inline unsigned int Geese::support_size() const noexcept
+inline size_t Geese::support_size() const noexcept
 {
 
     if (model == nullptr)
@@ -911,10 +946,10 @@ inline unsigned int Geese::support_size() const noexcept
     
 }
 
-inline std::vector< unsigned int > Geese::nannotations() const noexcept
+inline std::vector< size_t > Geese::nannotations() const noexcept
 {
 
-    std::vector< unsigned int > ans = {this->n_zeros, this->n_ones};
+    std::vector< size_t > ans = {this->n_zeros, this->n_ones};
 
     return ans;
 
@@ -927,20 +962,20 @@ inline std::vector< std::string > Geese::colnames() const
 
 }
 
-inline unsigned int Geese::parse_polytomies(
+inline size_t Geese::parse_polytomies(
     bool verb,
     std::vector< size_t > * dist
 ) const noexcept
 {
 
-    unsigned int largest = 0u;
+    size_t largest = 0u;
     for (const auto& n : this->nodes)
     {
 
         if (n.second.is_leaf())
             continue;
 
-        unsigned int noff = n.second.noffspring();
+        size_t noff = n.second.noffspring();
 
         if (dist)
             dist->push_back(noff);
@@ -949,7 +984,7 @@ inline unsigned int Geese::parse_polytomies(
         {
 
             if (verb)
-                printf_barry("Node id: %i has polytomy size %i\n", n.second.id, noff);
+                printf_barry("Node id: %li has polytomy size %li\n", n.second.id, noff);
                 
         }
 
@@ -989,12 +1024,12 @@ inline std::vector< std::vector<double> > Geese::observed_counts()
 
         phylocounters::PhyloArray tmparray(nfuns(), n.second.offspring.size());
 
-        uint j = 0u;
+        size_t j = 0u;
 
         for (auto& o : n.second.offspring)
         {
 
-            for (uint k = 0u; k < nfuns(); ++k)
+            for (size_t k = 0u; k < nfuns(); ++k)
             {
 
                 if (o->annotations.at(k) != 0)
@@ -1012,7 +1047,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts()
 
         }
 
-        std::vector< bool > tmp_state = vector_caster<bool,uint>(
+        std::vector< bool > tmp_state = vector_caster<bool,size_t>(
             n.second.annotations
             );
 
@@ -1054,9 +1089,9 @@ inline void Geese::print_observed_counts()
 
         phylocounters::PhyloArray tmparray(nfuns(), n.second.offspring.size());
 
-        uint j = 0u;
+        size_t j = 0u;
         for (auto& o : n.second.offspring) {
-            for (uint k = 0u; k < nfuns(); ++k) {
+            for (size_t k = 0u; k < nfuns(); ++k) {
                 if (o->annotations.at(k) != 0) {
                     tmparray.insert_cell(
                         k, j, o->annotations.at(k), false, false
@@ -1066,7 +1101,7 @@ inline void Geese::print_observed_counts()
             ++j;
         }
 
-        std::vector< bool > tmp_state =vector_caster<bool,uint>(n.second.annotations);
+        std::vector< bool > tmp_state =vector_caster<bool,size_t>(n.second.annotations);
         std::vector< double > blen(n.second.offspring.size(), 1.0);
         tmparray.set_data(
             new phylocounters::NodeData(blen, tmp_state, n.second.duplication),
@@ -1079,8 +1114,8 @@ inline void Geese::print_observed_counts()
         // Printing
         auto dpl = n.second.duplication ? "duplication" : "speciation";
         printf_barry("----------\n");
-        printf_barry("nodeid: % 3i (%s)\nstate: [", n.second.id, dpl);
-        for (uint f = 0u; f < nfuns(); ++f)
+        printf_barry("nodeid: % 3li (%s)\nstate: [", n.second.id, dpl);
+        for (size_t f = 0u; f < nfuns(); ++f)
             printf_barry("%i, ", (tmparray.D_ptr()->states[f] ? 1 : 0));
 
         printf_barry("]; Array:\n");
@@ -1104,11 +1139,11 @@ inline void Geese::print() const
     // - Number of nodes and leafs
     // - Number of annotated leafs (0/1)
     printf_barry("GEESE\nINFO ABOUT PHYLOGENY\n");
-    printf_barry("# of functions           : %i\n", this->nfuns());
-    printf_barry("# of nodes [int; leaf]   : [%i; %i]\n", this->nnodes(), this->nleafs());
-    printf_barry("# of ann. [zeros; ones]  : [%i; %i]\n", this->n_zeros, this->n_ones);
-    printf_barry("# of events [dupl; spec] : [%i; %i]\n", this->n_dupl_events, this->n_spec_events);
-    printf_barry("Largest polytomy         : %i\n", parse_polytomies(false));
+    printf_barry("# of functions           : %li\n", this->nfuns());
+    printf_barry("# of nodes [int; leaf]   : [%li; %li]\n", this->nnodes() - this->nleafs(), this->nleafs());
+    printf_barry("# of ann. [zeros; ones]  : [%li; %li]\n", this->n_zeros, this->n_ones);
+    printf_barry("# of events [dupl; spec] : [%li; %li]\n", this->n_dupl_events, this->n_spec_events);
+    printf_barry("Largest polytomy         : %li\n", parse_polytomies(false));
     printf_barry("\nINFO ABOUT THE SUPPORT\n");
     this->model->print();
 
@@ -1136,14 +1171,14 @@ inline std::vector< std::vector< bool > > Geese::get_states() const {
     return this->states;
 }
 
-inline std::vector< unsigned int > Geese::get_annotated_nodes() const {
+inline std::vector< size_t > Geese::get_annotated_nodes() const {
 
-    std::vector< unsigned int > ids(0u);
+    std::vector< size_t > ids(0u);
     for (auto & n : nodes)
     {
 
         // Counting non-9 annotations
-        for (unsigned int f = 0u; f < nfuns(); ++f)
+        for (size_t f = 0u; f < nfuns(); ++f)
         {
             // If it has one non-9, then add it to the list
             // and continue to the next node.
@@ -1199,10 +1234,10 @@ inline Geese::Geese() {
 }
 
 inline Geese::Geese(
-    std::vector< std::vector<unsigned int> > & annotations,
-    std::vector< unsigned int > &              geneid,
-    std::vector< int > &                       parent,
-    std::vector< bool > &                      duplication
+    std::vector< std::vector<size_t> > & annotations,
+    std::vector< size_t > &              geneid,
+    std::vector< int > &                 parent,
+    std::vector< bool > &                duplication
 ) {
 
     // In order to start...
@@ -1220,21 +1255,23 @@ inline Geese::Geese(
 
     nfunctions = annotations.at(0u).size();
 
-    // unsigned int n = annotations.size();
+    // size_t n = annotations.size();
     for (auto& iter : annotations)
     {
 
         if (iter.size() != nfunctions)
-            throw std::length_error("Not all the annotations have the same length");
+            throw std::length_error(
+                "Not all the annotations have the same length"
+                );
 
     }
 
     // Grouping up the data by parents -----------------------------------------
-    for (unsigned int i = 0u; i < geneid.size(); ++i)
+    for (size_t i = 0u; i < geneid.size(); ++i)
     {
 
         // Temp vector with the annotations
-        std::vector< unsigned int > & funs(annotations.at(i));
+        std::vector< size_t > & funs(annotations.at(i));
 
         // Case 1: Not the root node, and the parent does not exists
         if ((parent.at(i) >= 0) && (nodes.find(parent.at(i)) == nodes.end()))
@@ -1243,7 +1280,7 @@ inline Geese::Geese(
             // Adding parent
             auto key_par = nodes.insert({
                 parent.at(i),
-                Node(parent.at(i), UINT_MAX, true)
+                Node(parent.at(i), std::numeric_limits< size_t >::max(), true)
             });
 
             // Case 1a: i does not exists
@@ -1331,7 +1368,7 @@ inline Geese::Geese(
         Node & node = n.second;
 
         // Checking variable
-        if (node.ord == UINT_MAX)
+        if (node.ord == std::numeric_limits< size_t >::max())
         {
 
             const char *fmt = "Node id %i was not included in geneid.";
@@ -1522,15 +1559,7 @@ inline Geese::Geese(Geese && x) noexcept :
 
 }
 
-// // Copy assignment
-// inline Geese & Geese::operator=(const Geese & model_) {
 
-// }
-
-// // Move assignment
-// inline Geese & Geese::operator=(Geese && model_) noexcept {
-
-// }
 
 #endif
 /*//////////////////////////////////////////////////////////////////////////////
@@ -1611,7 +1640,7 @@ inline std::vector< double > keygen_full(
 
     // State of the parent
     dat.push_back(0.0);
-    unsigned int count = 0u;
+    size_t count = 0u;
     for (bool i : array.D_ptr()->states) {
         dat[dat.size() - 1u] += (i ? 1.0 : 0.0) * pow(10, static_cast<double>(count));
         count++;
@@ -1624,11 +1653,11 @@ inline std::vector< double > keygen_full(
 }
 
 inline bool vec_diff(
-    const std::vector< unsigned int > & s,
-    const std::vector< unsigned int > & a
+    const std::vector< size_t > & s,
+    const std::vector< size_t > & a
 ) {
 
-    for (unsigned int i = 0u; i < a.size(); ++i)
+    for (size_t i = 0u; i < a.size(); ++i)
         if ((a[i] != 9u) && (a[i] != s[i]))
             return true;
 
@@ -1662,23 +1691,23 @@ private:
     std::mt19937 *                     rengine = nullptr;
     phylocounters::PhyloModel *        model   = nullptr;
     std::vector< std::vector< bool > > states;
-    unsigned int n_zeros       = 0u; ///< Number of zeros
-    unsigned int n_ones        = 0u; ///< Number of ones
-    unsigned int n_dupl_events = 0u; ///< Number of duplication events
-    unsigned int n_spec_events = 0u; ///< Number of speciation events
+    size_t n_zeros       = 0u; ///< Number of zeros
+    size_t n_ones        = 0u; ///< Number of ones
+    size_t n_dupl_events = 0u; ///< Number of duplication events
+    size_t n_spec_events = 0u; ///< Number of speciation events
     ///@}
 
 public:
 
     // Data
-    unsigned int                       nfunctions;
-    std::map< unsigned int, Node >     nodes;
-    barry::MapVec_type< unsigned int > map_to_nodes;
+    size_t                       nfunctions;
+    std::map< size_t, Node >     nodes;
+    barry::MapVec_type< size_t > map_to_nodes;
     std::vector< std::vector< std::vector< size_t > > > pset_loc;    ///< Locations of columns
 
     // Tree-traversal sequence
-    std::vector< unsigned int > sequence;
-    std::vector< unsigned int > reduced_sequence;  
+    std::vector< size_t > sequence;
+    std::vector< size_t > reduced_sequence;  
 
     // Admin-related objects
     bool initialized     = false;
@@ -1708,8 +1737,8 @@ public:
     Geese();
 
     Geese(
-        std::vector< std::vector<unsigned int> > & annotations,
-        std::vector< unsigned int > &              geneid,
+        std::vector< std::vector<size_t> > & annotations,
+        std::vector< size_t > &              geneid,
         std::vector< int > &                       parent,
         std::vector< bool > &                      duplication
         );
@@ -1730,11 +1759,11 @@ public:
 
     ~Geese();
 
-    void init(unsigned int bar_width = BARRY_PROGRESS_BAR_WIDTH);
+    void init(size_t bar_width = BARRY_PROGRESS_BAR_WIDTH);
 
     void inherit_support(const Geese & model_, bool delete_support_ = false);
 
-    // Node * operator()(unsigned int & nodeid);
+    // Node * operator()(size_t & nodeid);
     void calc_sequence(Node * n = nullptr);
     void calc_reduced_sequence();
 
@@ -1748,8 +1777,8 @@ public:
 
     std::vector< double > get_probabilities() const;
 
-    void set_seed(const unsigned int & s);
-    std::vector< std::vector< unsigned int > > simulate(
+    void set_seed(const size_t & s);
+    std::vector< std::vector< size_t > > simulate(
         const std::vector< double > & par
         );
 
@@ -1759,14 +1788,14 @@ public:
      * polytomies.
      */
     ///@{
-    unsigned int nfuns() const noexcept;             ///< Number of functions analyzed
-    unsigned int nnodes() const noexcept;            ///< Number of nodes (interior + leaf)
-    unsigned int nleafs() const noexcept;            ///< Number of leaf
-    unsigned int nterms() const;                     ///< Number of terms included
-    unsigned int support_size() const noexcept;      ///< Number of unique sets of sufficient stats.
-    std::vector< unsigned int > nannotations() const noexcept;      ///< Number of annotations.
+    size_t nfuns() const noexcept;             ///< Number of functions analyzed
+    size_t nnodes() const noexcept;            ///< Number of nodes (interior + leaf)
+    size_t nleafs() const noexcept;            ///< Number of leaf
+    size_t nterms() const;                     ///< Number of terms included
+    size_t support_size() const noexcept;      ///< Number of unique sets of sufficient stats.
+    std::vector< size_t > nannotations() const noexcept;      ///< Number of annotations.
     std::vector< std::string > colnames() const;     ///< Names of the terms in the model.
-    unsigned int parse_polytomies(
+    size_t parse_polytomies(
         bool verb = true,
         std::vector< size_t > * dist = nullptr
         ) const noexcept;  ///< Check polytomies and return the largest.
@@ -1813,12 +1842,12 @@ public:
     std::vector< std::vector<double> > predict_backend(
         const std::vector< double > & par,
         bool use_reduced_sequence,
-        const std::vector< uint > & preorder
+        const std::vector< size_t > & preorder
         );
 
     std::vector< std::vector< double > > predict_exhaust_backend(
         const std::vector< double > & par,
-        const std::vector< uint > & preorder
+        const std::vector< size_t > & preorder
         );
 
     std::vector< std::vector< double > > predict_exhaust(
@@ -1828,14 +1857,14 @@ public:
     std::vector< std::vector< double > > predict_sim(
         const std::vector< double > & par,
         bool only_annotated       = false,
-        unsigned int nsims        = 10000u
+        size_t nsims        = 10000u
         );
     ///@}
 
     void init_node(Node & n);
     void update_annotations(
-        unsigned int nodeid,
-        std::vector< unsigned int > newann
+        size_t nodeid,
+        std::vector< size_t > newann
     );
 
     /**
@@ -1865,7 +1894,7 @@ public:
      * @return std::vector< std::vector< bool > > of length `2^P`.
      */
     std::vector< std::vector< bool > > get_states() const;  
-    std::vector< unsigned int >        get_annotated_nodes() const; ///< Returns the ids of the nodes with at least one annotation
+    std::vector< size_t >        get_annotated_nodes() const; ///< Returns the ids of the nodes with at least one annotation
 
 };
 
@@ -1901,7 +1930,7 @@ inline double Geese::likelihood(
     Node * n_off;
 
     // Following the prunning sequence
-    std::vector< unsigned int > * preseq;
+    std::vector< size_t > * preseq;
 
     if (use_reduced_sequence)
     {
@@ -1932,11 +1961,20 @@ inline double Geese::likelihood(
         Node & node = nodes[i];
 
         // Iterating through states
-        for (unsigned int s = 0u; s < states.size(); ++s)
+        for (size_t s = 0u; s < states.size(); ++s)
         {
 
             // Starting the prob
             double totprob = 0.0;
+
+            // If the transition doesn't make sense, then we skip it.
+            // This is determined during the construction of the node, when
+            // the rule_dyn is called.
+            if (!node.arrays_valid[s])
+            {
+                node.subtree_prob[s] = 0.0;
+                continue;
+            }
 
             // Retrieving the sets of arrays
             const std::vector< phylocounters::PhyloArray > * psets =
@@ -1950,8 +1988,8 @@ inline double Geese::likelihood(
                 ];
             
             // Summation over all possible values of X
-            unsigned int nstate = 0u;
-            unsigned int narray = 0u;
+            size_t nstate = 0u;
+            size_t narray = 0u;
             for (auto x = psets->begin(); x != psets->end(); ++x)
             {
 
@@ -2019,6 +2057,7 @@ inline double Geese::likelihood(
 
                 nstate++;
 
+                // Computing the likelihood of the event.
                 off_mult *= model->likelihood(
                     par0,
                     temp_stats,
@@ -2039,7 +2078,7 @@ inline double Geese::likelihood(
         if (node.parent == nullptr)
         {
 
-            for (unsigned int s = 0u; s < states.size(); ++s)
+            for (size_t s = 0u; s < states.size(); ++s)
             {
 
                 double tmpll = 1.0;
@@ -2120,7 +2159,7 @@ inline double Geese::likelihood_exhaust(
     for (auto& n : nodes)
     {
 
-        for (unsigned int i = 0u; i < nfuns(); ++i)
+        for (size_t i = 0u; i < nfuns(); ++i)
             base(i, n.second.ord) = n.second.annotations[i];
             
     }
@@ -2133,14 +2172,14 @@ inline double Geese::likelihood_exhaust(
     pset.calc();
 
     // Inverse sequence
-    std::vector< unsigned int > preorder(this->sequence);
+    std::vector< size_t > preorder(this->sequence);
     std::reverse(preorder.begin(), preorder.end());
 
     double totprob = 0.0;
     
     // This vector says whether the probability has to be included in 
     // the final likelihood or not.
-    for (unsigned int p = 0u; p < pset.size(); ++p)
+    for (size_t p = 0u; p < pset.size(); ++p)
     {
         
         // ith state
@@ -2148,7 +2187,7 @@ inline double Geese::likelihood_exhaust(
         
         // Following the sequence
         double prob = 1.0;
-        std::vector< unsigned int > tmpstates(this->nfuns());
+        std::vector< size_t > tmpstates(this->nfuns());
 
         Node * node;
         for (auto& i : preorder)
@@ -2175,7 +2214,7 @@ inline double Geese::likelihood_exhaust(
 
             std::vector< double > bl(node->offspring.size(), 1.0);
 
-            std::vector< bool > sl = vector_caster<bool,unsigned int>(tmpstates);
+            std::vector< bool > sl = vector_caster<bool,size_t>(tmpstates);
 
             transition.set_data(
                 new phylocounters::NodeData(bl, sl, node->duplication),
@@ -2183,10 +2222,10 @@ inline double Geese::likelihood_exhaust(
             );
 
             // Filling the array
-            for (unsigned int a = 0u; a < nfuns(); ++a)
+            for (size_t a = 0u; a < nfuns(); ++a)
             {
 
-                for (unsigned int o = 0u; o < node->offspring.size(); ++o)
+                for (size_t o = 0u; o < node->offspring.size(); ++o)
                 {
 
                     if (s->get_cell(a, node->offspring[o]->id) == 1u)
@@ -2233,11 +2272,11 @@ inline double Geese::likelihood_exhaust(
 #ifndef GEESE_MEAT_SIMULATE_HPP
 #define GEESE_MEAT_SIMULATE_HPP 1
 
-inline void Geese::set_seed(const unsigned int & s) {
+inline void Geese::set_seed(const size_t & s) {
     rengine->seed(s);
 }
 
-inline std::vector< std::vector< unsigned int > > Geese::simulate(
+inline std::vector< std::vector< size_t > > Geese::simulate(
     const std::vector< double > & par
     ) {
 
@@ -2253,33 +2292,50 @@ inline std::vector< std::vector< unsigned int > > Geese::simulate(
     }
 
     // Making room 
-    std::vector< std::vector< unsigned int > > res(nodes.size());
+    std::vector< std::vector< size_t > > res(nodes.size());
 
     // Inverse sequence
-    std::vector< unsigned int > preorder(this->sequence);
+    std::vector< size_t > preorder(this->sequence);
     std::reverse(preorder.begin(), preorder.end());
 
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(states.size(), 1.0);
-    for (unsigned int i = 0u; i < rootp.size(); ++i)
+    const Node & rootnode = nodes[preorder[0u]];
+    for (size_t i = 0u; i < rootp.size(); ++i)
     {
-        for (unsigned int j = 0u; j < nfuns(); ++j)
+
+        if (!rootnode.arrays_valid[i])
+        {
+            rootp[i] = 0.0;
+            continue;
+        }
+
+        for (size_t j = 0u; j < nfuns(); ++j)
             rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);
     }
 
     // Preparing the random number generator
     std::uniform_real_distribution<> urand(0, 1);
     double r         = urand(*rengine);
-    unsigned int idx = 0u;
+    size_t idx = 0u;
     double cumprob = rootp[idx];
     while ((idx < rootp.size()) && (cumprob < r))
     {
         cumprob += rootp[++idx];
     }
+
+    #ifdef BARRY_DEBUG
+    
+    // auto totprob = std::accumulate(rootp.begin(), rootp.end(), 0.0);
+    // if (totprob < 0.9999999999999999 || totprob > 1.0000000000000001)
+    //     throw std::runtime_error("Root probabilities do not sum to 1!"
+    //         " (totprob = " + std::to_string(totprob) + ")");
+    
+    #endif
     
     // We now know the state of the root
     res[nodes[preorder[0u]].ord] =
-        vector_caster< unsigned int, bool>(states[idx]);
+        vector_caster< size_t, bool>(states[idx]);
 
     // Going in the opposite direction
     for (auto& i : preorder)
@@ -2291,15 +2347,15 @@ inline std::vector< std::vector< unsigned int > > Geese::simulate(
         const Node & n = nodes[i];
 
         // Getting the state of the node      
-        unsigned int l = map_to_nodes[res[n.ord]];
+        size_t l = map_to_nodes[res[n.ord]];
 
         // Given the state of the current node, sample the state of the
         // offspring, all based on the current state
-        auto z = n.narray;
+        // auto z = n.narray;
         auto tmp = model->sample(n.narray[l], par0);
 
         // Iterating through the offspring to assign the state
-        for (unsigned int j = 0u; j < n.offspring.size(); ++j)
+        for (size_t j = 0u; j < n.offspring.size(); ++j)
             res[n.offspring[j]->ord] = tmp.get_col_vec(j, false);
 
     }
@@ -2335,7 +2391,7 @@ inline std::vector< std::vector< unsigned int > > Geese::simulate(
 inline std::vector< std::vector<double> > Geese::predict_backend(
     const std::vector< double > & par,
     bool use_reduced_sequence,
-    const std::vector< uint > & preorder
+    const std::vector< size_t > & preorder
 )
 {
 
@@ -2349,34 +2405,47 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(this->states.size(), 1.0);
-    for (unsigned int s = 0u; s < rootp.size(); ++s)
+    for (size_t s = 0u; s < rootp.size(); ++s)
     {
 
-        for (unsigned int f = 0u; f < nfuns(); ++f)
+        for (size_t f = 0u; f < nfuns(); ++f)
             rootp[s] *= states[s][f] ? par_root[f] : (1.0 - par_root[f]);
         
     }
 
     // Making room 
     std::vector< std::vector<double> > res(
-        nnodes(), std::vector<double>(nfuns()));
+        nnodes(), std::vector<double>(nfuns())
+        );
 
     // Step 1: Computing the probability at the root node
     std::vector< double > tmp_prob(nfuns(), 0.0);
-    unsigned int root_id = preorder[0u];
+    size_t root_id = preorder[0u];
     Node * tmp_node      = &nodes[root_id];
     tmp_node->probability.resize(states.size(), 0.0);
     double tmp_likelihood = likelihood(par, false, use_reduced_sequence);
 
-    for (unsigned int s = 0u; s < states.size(); ++s)
+    for (size_t s = 0u; s < states.size(); ++s)
     {
+
+        // This is mostly relevant when the root is connected
+        // to a leaf node, where the array may not be valid 
+        // according to the dynamic rules, i.e., gains/loses.
+        // If 2 genes have a function, the root state is zero,
+        // and the rule is no more than one gain, then the
+        // state is not valid.
+        if (!tmp_node->arrays_valid[s])
+        {
+            tmp_node->probability[s] = 0.0;
+            continue;
+        }
 
         // Overall state probability P(x_s | D)
         tmp_node->probability[s] = tmp_node->subtree_prob[s] * rootp[s] /
             tmp_likelihood;
 
         // Marginalizing the probabilities P(x_sf | D)
-        for (unsigned int f = 0u; f < nfuns(); ++f)
+        for (size_t f = 0u; f < nfuns(); ++f)
         {
 
             // Since the probability, the expected value, is for
@@ -2415,8 +2484,15 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         }
 
         // Iterating through the parent states
-        for (unsigned int s = 0u; s < states.size(); ++s)
+        for (size_t s = 0u; s < states.size(); ++s)
         {
+
+            // Only if it is valid: See the same block applied to the root
+            if (!parent.arrays_valid[s])
+            {
+                parent.probability[s] = 0.0;
+                continue;
+            }
 
             // Retrieving powerset of stats and arrays
             // it is not const since we will flip the states back and forth
@@ -2424,7 +2500,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             const auto & pset_arrays = model->get_pset(parent.narray[s]);
             const std::vector<double> * pset_target = model->get_pset_stats(parent.narray[s]);
 
-            for (unsigned int p = 0u; p < pset_arrays->size(); ++p)
+            for (size_t p = 0u; p < pset_arrays->size(); ++p)
             {
 
                 // Corresponding graph and target stats
@@ -2443,7 +2519,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 // Everything below just need to be computed only once
                 // and thus, if already added, no need to go through all of this!
                 double everything_below_p = 1.0;
-                for (unsigned int off = 0u; off < parent.offspring.size(); ++off)
+                for (size_t off = 0u; off < parent.offspring.size(); ++off)
                 {
 
                     // Below leafs, the everything below is 1.
@@ -2453,7 +2529,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                         // But we can only includ it if the current state actually
                         // matches the leaf data (otherwise the prob is 0)
                         const auto & off_ann = parent.offspring[off]->annotations;
-                        for (unsigned int f = 0u; f < nfuns(); ++f)
+                        for (size_t f = 0u; f < nfuns(); ++f)
                         {
 
                             if ((off_ann[f] != 9u) && (off_ann[f] != array_p(f, off)))
@@ -2474,7 +2550,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                         // Getting the offspring state, and how it maps, only
                         // if it is not an offspring
                         const auto & off_state = array_p.get_col_vec(off);
-                        unsigned int loc = this->map_to_nodes[off_state];
+                        size_t loc = this->map_to_nodes[off_state];
 
                         everything_below_p *= parent.offspring[off]->subtree_prob[loc];
 
@@ -2502,9 +2578,14 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         } // end for states
 
         // Marginalizing at the state level
-        for (unsigned int s = 0u; s < states.size(); ++s)
+        for (size_t s = 0u; s < states.size(); ++s)
         {
-            for (unsigned int p = 0u; p < everything_above[s].size(); ++p)
+
+            // Only if it is valid
+            if (!parent.arrays_valid[s])
+                continue;
+
+            for (size_t p = 0u; p < everything_above[s].size(); ++p)
             {
 
                 // p-th pset
@@ -2513,11 +2594,11 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 // Updating the probability (it is the product)
                 everything_above[s][p] *= everything_below[s][p];
 
-                for (unsigned int off = 0u; off < parent.offspring.size(); ++off)
+                for (size_t off = 0u; off < parent.offspring.size(); ++off)
                 {
 
                     // Figuring out the state of the offspring
-                    unsigned int off_s = this->map_to_nodes[pset_p.get_col_vec(off)];
+                    size_t off_s = this->map_to_nodes[pset_p.get_col_vec(off)];
                     parent.offspring[off]->probability[off_s] += everything_above[s][p];
 
 
@@ -2530,17 +2611,21 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         // gene function level.
         for (const auto & off : parent.offspring)
         {
-            for (unsigned int s = 0u; s < states.size(); ++s)
+            for (size_t s = 0u; s < states.size(); ++s)
             {
 
-                for (unsigned int f = 0u; f < nfuns(); ++f)
+                // Only if it is valid
+                if (!parent.arrays_valid[s])
+                    continue;
+
+                for (size_t f = 0u; f < nfuns(); ++f)
                     if (states[s][f]) 
                         res[off->ord][f] += off->probability[s];
 
             }
 
             // Checking that probabilities add up to one
-            for (unsigned int f = 0u; f < nfuns(); ++f)
+            for (size_t f = 0u; f < nfuns(); ++f)
             {
                 if ((res[off->ord][f] > 1.00001) || (res[off->ord][f] < -.0000009))
                 {
@@ -2581,7 +2666,7 @@ inline std::vector< std::vector<double> > Geese::predict(
     INITIALIZED()
 
     // Inverse sequence
-    std::vector< unsigned int > preorder;
+    std::vector< size_t > preorder;
     if (only_annotated)
         preorder = this->reduced_sequence;
     else
@@ -2611,7 +2696,7 @@ inline std::vector< std::vector<double> > Geese::predict(
     if (leave_one_out)
     {
 
-        std::vector< unsigned int > default_empty(nfuns(), 9u);
+        std::vector< size_t > default_empty(nfuns(), 9u);
         for (auto& n : nodes)
         {
 
@@ -2701,7 +2786,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
 
 
     // Generating the sequence preorder sequence -------------------------------
-    std::vector< unsigned int > preorder(this->sequence);
+    std::vector< size_t > preorder(this->sequence);
     std::reverse(preorder.begin(), preorder.end());
 
     std::vector< std::vector< double > > res = predict_exhaust_backend(
@@ -2709,8 +2794,8 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
         );
 
     // Looping to do LOO
-    std::vector< unsigned int > annotated_ids = this->get_annotated_nodes();
-    std::vector< unsigned int > missing_vec(nfuns(), 9u);
+    std::vector< size_t > annotated_ids = this->get_annotated_nodes();
+    std::vector< size_t > missing_vec(nfuns(), 9u);
     for (auto & i : annotated_ids) {
 
         Node & n = nodes[i];
@@ -2731,7 +2816,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
 inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 
     const std::vector< double > & par,
-    const std::vector< unsigned int > & preorder
+    const std::vector< size_t > & preorder
 ) {
 
     // Processing the probabilities --------------------------------------------
@@ -2750,7 +2835,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
     for (auto& n : nodes)
     {
 
-        for (unsigned int f = 0u; f < nfuns(); ++f)
+        for (size_t f = 0u; f < nfuns(); ++f)
             base(f, n.second.ord) = n.second.annotations[f];
 
     }
@@ -2767,7 +2852,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
     
     // This vector says whether the probability has to be included in 
     // the final likelihood or not.
-    for (unsigned int p = 0u; p < pset.size(); ++p)
+    for (size_t p = 0u; p < pset.size(); ++p)
     {
         
         // ith state
@@ -2791,7 +2876,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
             if (n.parent == nullptr)
             {
 
-                for (unsigned int f = 0u; f < nfuns(); ++f)
+                for (size_t f = 0u; f < nfuns(); ++f)
                     current_prob *= par_state[f] ? par_root[f] : (1.0 - par_root[f]);
 
             }
@@ -2801,14 +2886,14 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
             phylocounters::PhyloArray tmparray(n.array, true);
 
             // Updating the state of the parent
-            for (unsigned int f = 0u; f < nfuns(); ++f)
+            for (size_t f = 0u; f < nfuns(); ++f)
                 tmparray.D_ptr()->states[f] = par_state[f] == 1u;
 
             // Updating offspring annotations
             int loc = 0;
             for (auto & off : n.offspring) {
                 
-                for (unsigned int f = 0u; f < nfuns(); ++f)
+                for (size_t f = 0u; f < nfuns(); ++f)
                 {
 
                     if (s->operator()(f, off->ord) == 1u)
@@ -2831,7 +2916,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
         
         // Adding to the overall probability
         for (auto & n: nodes)
-            for (unsigned int j = 0u; j < nfuns(); ++j)
+            for (size_t j = 0u; j < nfuns(); ++j)
                 expected[n.second.ord +  j * nnodes()] += s->operator()(j, n.second.ord) * current_prob/
                     baseline_likelihood;
         
@@ -2843,7 +2928,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
     for (auto & n: nodes)
     {
         res[n.second.ord] = zerovec;
-        for (unsigned int i = 0u; i < nfuns(); ++i)
+        for (size_t i = 0u; i < nfuns(); ++i)
             res[n.second.ord][i] = expected[n.second.ord +  i * nnodes()];
     }
 
@@ -2877,14 +2962,14 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 inline std::vector< std::vector<double> > Geese::predict_sim(
     const std::vector< double > & par,
     bool use_reduced_sequence,
-    unsigned int nsims
+    size_t nsims
 )
 {
 
     INITIALIZED()
 
     // Preparing
-    std::vector< std::vector< unsigned int > > tmp;
+    std::vector< std::vector< size_t > > tmp;
 
     std::vector< double > zerovec(nfuns(), 0.0);
     std::vector< std::vector< double > > res_vec(nnodes(), zerovec);
@@ -2894,7 +2979,7 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
     // whether we have all the annotations for the conditional prob.
     auto annotated = this->get_annotated_nodes();
 
-    for (unsigned int i = 0u; i < nsims; ++i)
+    for (size_t i = 0u; i < nsims; ++i)
     {
 
         // Generating a sample
@@ -2917,7 +3002,7 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
 
                 const auto & ord     = nodes[id].ord; 
                 const auto & n_w_ann = nodes[id].annotations;
-                for (unsigned int f = 0u; f < nfuns(); ++f)
+                for (size_t f = 0u; f < nfuns(); ++f)
                 {
                     // No checking missings
                     if (n_w_ann[f] == 9u)
@@ -2940,7 +3025,7 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
             if (!includeit)
                 continue;
 
-            for (unsigned int f = 0u; f < nfuns(); ++f)
+            for (size_t f = 0u; f < nfuns(); ++f)
                 if (tmp[n.ord][f] == 1)
                     ++res_vec[n.ord][f];
 
@@ -2952,10 +3037,10 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
 
     // Once the simulations have finalized, we can then approximate
     // probabilities
-    for (unsigned int i = 0u; i < nnodes(); ++i)
+    for (size_t i = 0u; i < nnodes(); ++i)
     {
         // printf_barry("We used %i counts for node %i.\n", counts[i], i);
-        for (unsigned int f = 0u; f < nfuns(); ++f)
+        for (size_t f = 0u; f < nfuns(); ++f)
             res_vec[i][f] /= (static_cast< double >(counts[i]) + 1e-10);
     }
     
@@ -3001,7 +3086,7 @@ class Flock {
 public:
 
     std::vector< Geese > dat;
-    unsigned int         nfunctions  = 0u;
+    size_t         nfunctions  = 0u;
     bool                 initialized = false;
     
     // Common components
@@ -3018,11 +3103,11 @@ public:
      * @param geneid see Geese.
      * @param parent see Geese.
      * @param duplication see Geese.
-     * @return unsigned int The number of tree in the model (starting from zero).
+     * @return size_t The number of tree in the model (starting from zero).
      */
-    unsigned int add_data(
-        std::vector< std::vector<unsigned int> > & annotations,
-        std::vector< unsigned int > &              geneid,
+    size_t add_data(
+        std::vector< std::vector<size_t> > & annotations,
+        std::vector< size_t > &              geneid,
         std::vector< int > &                       parent,
         std::vector< bool > &                      duplication
     );
@@ -3032,9 +3117,9 @@ public:
      * 
      * @param s Passed to the `rengine.seed()` member object.
      */
-    void set_seed(const unsigned int & s);
+    void set_seed(const size_t & s);
 
-    void init(unsigned int bar_width = BARRY_PROGRESS_BAR_WIDTH);
+    void init(size_t bar_width = BARRY_PROGRESS_BAR_WIDTH);
     
     // void add_geese(Geese x);
     phylocounters::PhyloCounters * get_counters();
@@ -3062,14 +3147,14 @@ public:
      * @name Information about the model 
      */
     ///@{
-    unsigned int nfuns() const noexcept;
-    unsigned int ntrees() const noexcept;
-    std::vector< unsigned int > nnodes() const noexcept;
-    std::vector< unsigned int > nleafs() const noexcept;
-    unsigned int nterms() const;
-    unsigned int support_size() const noexcept;
+    size_t nfuns() const noexcept;
+    size_t ntrees() const noexcept;
+    std::vector< size_t > nnodes() const noexcept;
+    std::vector< size_t > nleafs() const noexcept;
+    size_t nterms() const;
+    size_t support_size() const noexcept;
     std::vector< std::string > colnames() const;
-    unsigned int parse_polytomies(
+    size_t parse_polytomies(
         bool verb = true,
         std::vector< size_t > * dist = nullptr
         ) const noexcept;  ///< Check polytomies and return the largest.
@@ -3083,7 +3168,7 @@ public:
      * @param check_bounds When true, it will check bounds.
      * @return Geese*
      */
-    Geese * operator()(unsigned int i, bool check_bounds = true);
+    Geese * operator()(size_t i, bool check_bounds = true);
 
 };
 
@@ -3111,9 +3196,9 @@ public:
 
 // #include "flock-bones.hpp"
 
-inline unsigned int Flock::add_data(
-    std::vector< std::vector<unsigned int> > & annotations,
-    std::vector< unsigned int > &              geneid,
+inline size_t Flock::add_data(
+    std::vector< std::vector<size_t> > & annotations,
+    std::vector< size_t > &              geneid,
     std::vector< int > &                       parent,
     std::vector< bool > &                      duplication
 ) {
@@ -3147,14 +3232,14 @@ inline unsigned int Flock::add_data(
 
 }
 
-inline void Flock::set_seed(const unsigned int & s)
+inline void Flock::set_seed(const size_t & s)
 {
 
     this->rengine.seed(s);
 
 }
 
-inline void Flock::init(unsigned int bar_width)
+inline void Flock::init(size_t bar_width)
 {
 
     // For some strange reason, pointing to model during
@@ -3272,24 +3357,24 @@ inline double Flock::likelihood_joint(
 
 }
 
-inline unsigned int Flock::nfuns() const noexcept
+inline size_t Flock::nfuns() const noexcept
 {
 
     return this->nfunctions;
 
 }
 
-inline unsigned int Flock::ntrees() const noexcept
+inline size_t Flock::ntrees() const noexcept
 {
 
     return this->dat.size();
 
 }
 
-inline std::vector< unsigned int > Flock::nnodes() const noexcept
+inline std::vector< size_t > Flock::nnodes() const noexcept
 {
 
-    std::vector< unsigned int > res;
+    std::vector< size_t > res;
 
     res.reserve(this->ntrees());
 
@@ -3300,10 +3385,10 @@ inline std::vector< unsigned int > Flock::nnodes() const noexcept
 
 }
 
-inline std::vector< unsigned int > Flock::nleafs() const noexcept
+inline std::vector< size_t > Flock::nleafs() const noexcept
 {
 
-    std::vector< unsigned int > res;
+    std::vector< size_t > res;
 
     res.reserve(this->ntrees());
 
@@ -3314,7 +3399,7 @@ inline std::vector< unsigned int > Flock::nleafs() const noexcept
 
 }
 
-inline unsigned int Flock::nterms() const
+inline size_t Flock::nterms() const
 {
 
     INITIALIZED()
@@ -3322,7 +3407,7 @@ inline unsigned int Flock::nterms() const
 
 }
 
-inline unsigned int Flock::support_size() const noexcept
+inline size_t Flock::support_size() const noexcept
 {
 
     return this->model.support_size();
@@ -3336,13 +3421,13 @@ inline std::vector< std::string > Flock::colnames() const
 
 }
 
-inline unsigned int Flock::parse_polytomies(
+inline size_t Flock::parse_polytomies(
     bool verb,
     std::vector< size_t > * dist
 ) const noexcept
 {
 
-    unsigned int ans = 0;
+    size_t ans = 0;
 
     int i = 0;
 
@@ -3352,7 +3437,7 @@ inline unsigned int Flock::parse_polytomies(
         if (verb)
             printf_barry("Checking tree %i\n", i);
 
-        unsigned int tmp = d.parse_polytomies(verb, dist);
+        size_t tmp = d.parse_polytomies(verb, dist);
 
         if (tmp > ans)
             ans = tmp;
@@ -3372,13 +3457,13 @@ inline void Flock::print() const
     // - Total number of annotations.
 
     // Computing total number of annotations and events
-    unsigned int nzeros = 0u;
+    size_t nzeros = 0u;
 
-    unsigned int nones  = 0u;
+    size_t nones  = 0u;
 
-    unsigned int ndpl   = 0u;
+    size_t ndpl   = 0u;
 
-    unsigned int nspe   = 0u;
+    size_t nspe   = 0u;
 
     for (const auto & tree : this->dat)
     {
@@ -3391,15 +3476,15 @@ inline void Flock::print() const
 
     printf_barry("FLOCK (GROUP OF GEESE)\nINFO ABOUT THE PHYLOGENIES\n");
     
-    printf_barry("# of phylogenies         : %i\n", ntrees());
+    printf_barry("# of phylogenies         : %li\n", ntrees());
     
-    printf_barry("# of functions           : %i\n", nfuns());
+    printf_barry("# of functions           : %li\n", nfuns());
     
-    printf_barry("# of ann. [zeros; ones]  : [%i; %i]\n", nzeros, nones);
+    printf_barry("# of ann. [zeros; ones]  : [%li; %li]\n", nzeros, nones);
     
-    printf_barry("# of events [dupl; spec] : [%i; %i]\n", ndpl, nspe);
+    printf_barry("# of events [dupl; spec] : [%li; %li]\n", ndpl, nspe);
     
-    printf_barry("Largest polytomy         : %i\n", parse_polytomies(false));
+    printf_barry("Largest polytomy         : %li\n", parse_polytomies(false));
     
     printf_barry("\nINFO ABOUT THE SUPPORT\n");
     
@@ -3407,7 +3492,7 @@ inline void Flock::print() const
 
 }
 
-inline Geese* Flock::operator()(unsigned int i, bool check_bounds)
+inline Geese* Flock::operator()(size_t i, bool check_bounds)
 {
 
     if (check_bounds && i >= ntrees())
