@@ -11,15 +11,15 @@ template <typename Array_Type = BArray<>, typename Data_Rule_Type = bool>
 class PowerSet {
     
 private:
-    void calc_backend_sparse(uint pos = 0u);  
-    void calc_backend_dense(uint pos = 0u);  
+    void calc_backend_sparse(size_t pos = 0u);  
+    void calc_backend_dense(size_t pos = 0u);  
 
 public:
     Array_Type                         EmptyArray;
     std::vector< Array_Type >          data;
     Rules<Array_Type,Data_Rule_Type> * rules;
 
-    uint N, M;
+    size_t N, M;
     bool rules_deleted   = false;
 
     // Tempvars
@@ -35,7 +35,7 @@ public:
     ///@{
     PowerSet() : 
     EmptyArray(), data(0u), rules(new Rules<Array_Type,Data_Rule_Type>()), N(0u), M(0u) {};
-    PowerSet(uint N_, uint M_) :
+    PowerSet(size_t N_, size_t M_) :
         EmptyArray(N_, M_), data(0u),
         rules(new Rules<Array_Type,Data_Rule_Type>()), N(N_), M(M_) {};
     PowerSet(const Array_Type & array);
@@ -45,7 +45,7 @@ public:
     
     void init_support();
     void calc();
-    void reset(uint N_, uint M_);
+    void reset(size_t N_, size_t M_);
     
     /**
      * @name Wrappers for the `Rules` member. 
@@ -68,7 +68,7 @@ public:
     typename std::vector< Array_Type >::iterator begin() {return data.begin();};
     typename std::vector< Array_Type >::iterator end() {return data.end();};
     std::size_t size() const noexcept {return data.size();};
-    const Array_Type& operator[](const unsigned int & i) const {return data.at(i);};
+    const Array_Type& operator[](const size_t & i) const {return data.at(i);};
     ///@}
     
 };

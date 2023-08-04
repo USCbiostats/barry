@@ -16,7 +16,7 @@ inline void BArrayVector<Cell_Type,Data_Type>::init_vec() {
     } else {
 
         for (const auto& a : Array->el_ji[i])
-            vec.push_back(std::make_pair<uint, Cell<Cell_Type>>(a.first, *(a.second)));
+            vec.push_back(std::make_pair<size_t, Cell<Cell_Type>>(a.first, *(a.second)));
 
     }
 
@@ -36,7 +36,7 @@ inline bool BArrayVector<Cell_Type,Data_Type>::is_col() const noexcept {
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline uint BArrayVector<Cell_Type,Data_Type>::size() const noexcept {
+inline size_t BArrayVector<Cell_Type,Data_Type>::size() const noexcept {
 
     if (dim == 0u)
         return Array->el_ij[i].size();
@@ -68,8 +68,8 @@ inline std::vector< Cell_Type >::const_iterator BArrayVector<Cell_Type,Data_Type
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayVector<Cell_Type,Data_Type>::operator=(const Cell_Type & val) {
     
-    uint k = 0u;
-    uint N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
+    size_t k = 0u;
+    size_t N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
     
     if (dim == 0u)
     {
@@ -90,8 +90,8 @@ inline void BArrayVector<Cell_Type,Data_Type>::operator=(const Cell_Type & val) 
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayVector<Cell_Type,Data_Type>::operator+=(const Cell_Type & val) {
     
-    uint k = 0u;
-    uint N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
+    size_t k = 0u;
+    size_t N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
     
     if (dim == 0u)
     {
@@ -111,8 +111,8 @@ inline void BArrayVector<Cell_Type,Data_Type>::operator+=(const Cell_Type & val)
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayVector<Cell_Type,Data_Type>::operator-=(const Cell_Type & val) {
     
-    uint k = 0u;
-    uint N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
+    size_t k = 0u;
+    size_t N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
     
     if (dim == 0u)
     {
@@ -132,8 +132,8 @@ inline void BArrayVector<Cell_Type,Data_Type>::operator-=(const Cell_Type & val)
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayVector<Cell_Type,Data_Type>::operator*=(const Cell_Type & val) {
     
-    uint k = 0u;
-    uint N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
+    size_t k = 0u;
+    size_t N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
     
     if (dim == 0u)
     {
@@ -153,8 +153,8 @@ inline void BArrayVector<Cell_Type,Data_Type>::operator*=(const Cell_Type & val)
 template<typename Cell_Type,typename Data_Type>
 inline void BArrayVector<Cell_Type,Data_Type>::operator/=(const Cell_Type & val) {
     
-    uint k = 0u;
-    uint N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
+    size_t k = 0u;
+    size_t N_ = (dim == 0u) ? Array->nrow() : Array->ncol();
     
     if (dim == 0u)
     {
@@ -186,7 +186,7 @@ inline bool BArrayVector<Cell_Type,Data_Type>::operator==(const Cell_Type & val)
 
     if (dim == 0u)
     {
-        for (uint j = 0u; j < Array->ncol(); ++j)
+        for (size_t j = 0u; j < Array->ncol(); ++j)
         {
             if (Array(i, j) != val)
                 return false;
@@ -195,7 +195,7 @@ inline bool BArrayVector<Cell_Type,Data_Type>::operator==(const Cell_Type & val)
 
     } else {
 
-        for (uint j = 0u; j < Array->nrow(); ++j)
+        for (size_t j = 0u; j < Array->nrow(); ++j)
         {
             if (Array(j, i) != val)
                 return false;
@@ -223,7 +223,7 @@ inline bool BArrayVector_const<Cell_Type,Data_Type>::operator==(const Cell_Type 
     
     if (dim == 0u)
     {
-        for (uint j = 0u; j < Array->ncol(); ++j)
+        for (size_t j = 0u; j < Array->ncol(); ++j)
         {
             if (Array(i, j) != val)
                 return false;
@@ -232,7 +232,7 @@ inline bool BArrayVector_const<Cell_Type,Data_Type>::operator==(const Cell_Type 
 
     } else {
 
-        for (uint j = 0u; j < Array->nrow(); ++j)
+        for (size_t j = 0u; j < Array->nrow(); ++j)
         {
             if (Array(j, i) != val)
                 return false;
@@ -255,7 +255,7 @@ inline bool BArrayVector_const<Cell_Type,Data_Type>::operator<(const Cell_Type &
     
     if (dim == 0u)
     {
-        for (uint j = 0u; j < Array->ncol(); ++j)
+        for (size_t j = 0u; j < Array->ncol(); ++j)
         {
             if (Array(i, j) >= val)
                 return false;
@@ -264,7 +264,7 @@ inline bool BArrayVector_const<Cell_Type,Data_Type>::operator<(const Cell_Type &
 
     } else {
 
-        for (uint j = 0u; j < Array->nrow(); ++j)
+        for (size_t j = 0u; j < Array->nrow(); ++j)
         {
             if (Array(j, i) >= val)
                 return false;
@@ -282,7 +282,7 @@ inline bool BArrayVector_const<Cell_Type,Data_Type>::operator<=(const Cell_Type 
     
     if (dim == 0u)
     {
-        for (uint j = 0u; j < Array->ncol(); ++j)
+        for (size_t j = 0u; j < Array->ncol(); ++j)
         {
             if (Array(i, j) > val)
                 return false;
@@ -291,7 +291,7 @@ inline bool BArrayVector_const<Cell_Type,Data_Type>::operator<=(const Cell_Type 
 
     } else {
 
-        for (uint j = 0u; j < Array->nrow(); ++j)
+        for (size_t j = 0u; j < Array->nrow(); ++j)
         {
             if (Array(j, i) > val)
                 return false;

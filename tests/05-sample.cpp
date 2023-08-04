@@ -23,7 +23,7 @@ BARRY_TEST_CASE("Sampling networks (with Model)", "[sampling w model]") {
     std::vector<double> par = {-2, 2*0};
     m.set_seed(133);
 
-    unsigned int nsamp = 1e4;
+    size_t nsamp = 1e4;
     std::vector< Network > nets;
     nets.reserve(nsamp);
     Network total(4u, 4u);

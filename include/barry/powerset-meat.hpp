@@ -34,7 +34,7 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support()
         if (EmptyArray.is_dense())
         {
 
-            for (uint i = 0u; i < n_free; ++i) 
+            for (size_t i = 0u; i < n_free; ++i) 
                 EmptyArray(
                     coordinates_free[i * 2u],
                     coordinates_free[i * 2u + 1u]
@@ -44,7 +44,7 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support()
         else
         {
 
-            for (uint i = 0u; i < n_free; ++i) 
+            for (size_t i = 0u; i < n_free; ++i) 
                 EmptyArray.rm_cell(
                     coordinates_free[i * 2u],
                     coordinates_free[i * 2u + 1u],
@@ -71,7 +71,7 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::init_support()
 
 template <typename Array_Type, typename Data_Rule_Type>
 inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_sparse(
-    uint pos
+    size_t pos
 )
 {
     
@@ -109,7 +109,7 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_sparse(
 
 template <typename Array_Type, typename Data_Rule_Type>
 inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_dense(
-    uint pos
+    size_t pos
 )
 {
     
@@ -158,8 +158,8 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc() {
 
 template <typename Array_Type, typename Data_Rule_Type>
 inline void PowerSet<Array_Type,Data_Rule_Type>::reset(
-        uint N_,
-        uint M_
+        size_t N_,
+        size_t M_
 ) {
     
     data.empty();

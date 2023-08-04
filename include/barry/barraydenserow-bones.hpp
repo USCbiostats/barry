@@ -13,7 +13,7 @@ class BArrayDenseRow {
 private:
     BArrayDense< Cell_Type,Data_Type > * array;
     Row_type< Cell_Type > row;
-    unsigned int index;
+    size_t index;
     bool row_filled = false; // after row is filled
 
     void fill_if_needed()
@@ -21,7 +21,7 @@ private:
         if (!row_filled)
         {
 
-            for (unsigned int j = 0u; j < array->M; ++j)
+            for (size_t j = 0u; j < array->M; ++j)
             {
                 
                 if (array->el[POS_N(index, j, array->N)] != ZERO_CELL)
@@ -39,7 +39,7 @@ public:
 
     BArrayDenseRow(
         BArrayDense< Cell_Type,Data_Type > & array_,
-        unsigned int i
+        size_t i
     ) : array(&array_), index(i) {};
 
     typename Row_type<Cell_Type>::iterator & begin()
@@ -66,7 +66,7 @@ public:
 
     };
 
-    std::pair<unsigned int,Cell<Cell_Type>> & operator()(unsigned int i)
+    std::pair<size_t,Cell<Cell_Type>> & operator()(size_t i)
     {
 
         fill_if_needed();
@@ -83,16 +83,16 @@ class BArrayDenseRow_const {
 private:
     const BArrayDense< Cell_Type,Data_Type > * array;
     Row_type< Cell_Type > row;
-    unsigned int index;
+    size_t index;
 
 public:
     BArrayDenseRow_const(
         const BArrayDense< Cell_Type,Data_Type > & array_,
-        unsigned int i
+        size_t i
     ) : array(&array_), index(i)
     {
 
-        for (unsigned int j = 0u; j < array->M; ++j)
+        for (size_t j = 0u; j < array->M; ++j)
         {
             
             if (array->el[POS_N(index, j, array->M)] != ZERO_CELL)
@@ -120,7 +120,7 @@ public:
         return row.size();
     };
 
-    const std::pair<unsigned int,Cell<Cell_Type>> operator()(unsigned int i) const
+    const std::pair<size_t,Cell<Cell_Type>> operator()(size_t i) const
     {
         return row[i];
     }

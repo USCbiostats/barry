@@ -15,7 +15,7 @@ class Flock {
 public:
 
     std::vector< Geese > dat;
-    unsigned int         nfunctions  = 0u;
+    size_t         nfunctions  = 0u;
     bool                 initialized = false;
     
     // Common components
@@ -32,11 +32,11 @@ public:
      * @param geneid see Geese.
      * @param parent see Geese.
      * @param duplication see Geese.
-     * @return unsigned int The number of tree in the model (starting from zero).
+     * @return size_t The number of tree in the model (starting from zero).
      */
-    unsigned int add_data(
-        std::vector< std::vector<unsigned int> > & annotations,
-        std::vector< unsigned int > &              geneid,
+    size_t add_data(
+        std::vector< std::vector<size_t> > & annotations,
+        std::vector< size_t > &              geneid,
         std::vector< int > &                       parent,
         std::vector< bool > &                      duplication
     );
@@ -46,9 +46,9 @@ public:
      * 
      * @param s Passed to the `rengine.seed()` member object.
      */
-    void set_seed(const unsigned int & s);
+    void set_seed(const size_t & s);
 
-    void init(unsigned int bar_width = BARRY_PROGRESS_BAR_WIDTH);
+    void init(size_t bar_width = BARRY_PROGRESS_BAR_WIDTH);
     
     // void add_geese(Geese x);
     phylocounters::PhyloCounters * get_counters();
@@ -76,14 +76,14 @@ public:
      * @name Information about the model 
      */
     ///@{
-    unsigned int nfuns() const noexcept;
-    unsigned int ntrees() const noexcept;
-    std::vector< unsigned int > nnodes() const noexcept;
-    std::vector< unsigned int > nleafs() const noexcept;
-    unsigned int nterms() const;
-    unsigned int support_size() const noexcept;
+    size_t nfuns() const noexcept;
+    size_t ntrees() const noexcept;
+    std::vector< size_t > nnodes() const noexcept;
+    std::vector< size_t > nleafs() const noexcept;
+    size_t nterms() const;
+    size_t support_size() const noexcept;
     std::vector< std::string > colnames() const;
-    unsigned int parse_polytomies(
+    size_t parse_polytomies(
         bool verb = true,
         std::vector< size_t > * dist = nullptr
         ) const noexcept;  ///< Check polytomies and return the largest.
@@ -97,7 +97,7 @@ public:
      * @param check_bounds When true, it will check bounds.
      * @return Geese*
      */
-    Geese * operator()(unsigned int i, bool check_bounds = true);
+    Geese * operator()(size_t i, bool check_bounds = true);
 
 };
 

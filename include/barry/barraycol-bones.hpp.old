@@ -9,11 +9,11 @@ private:
   
     BArray<Cell_Type,Data_Type> * Array;
     std::vector< Cell<Cell_Type> > iter_vec;
-    uint i;
+    size_t i;
   
 public:
   
-    BArrayCol(BArray<Cell_Type,Data_Type> * Array_, uint i_, bool check_bounds = true) : 
+    BArrayCol(BArray<Cell_Type,Data_Type> * Array_, size_t i_, bool check_bounds = true) : 
     Array(Array_), i(i_) {
         if (check_bounds) {
 
@@ -43,11 +43,11 @@ class BArrayCol_const {
 private:
   
     const BArray<Cell_Type,Data_Type> * Array;
-    uint i;
+    size_t i;
   
 public:
   
-    BArrayCol(const BArray<Cell_Type,Data_Type> * Array_, uint i_, bool check_bounds = true) : 
+    BArrayCol(const BArray<Cell_Type,Data_Type> * Array_, size_t i_, bool check_bounds = true) : 
     Array(Array_), i(i_) {
         if (check_bounds) {
 

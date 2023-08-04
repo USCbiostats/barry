@@ -13,7 +13,7 @@ class BArrayDenseCol {
 private:
     BArrayDense< Cell_Type,Data_Type > * array;
     Col_type<Cell_Type> col;
-    unsigned int index;
+    size_t index;
     bool col_filled = false;
 
     void fill_if_needed()
@@ -21,7 +21,7 @@ private:
         if (!col_filled)
         {
 
-            for (unsigned int i = 0u; i < array->N; ++i)
+            for (size_t i = 0u; i < array->N; ++i)
             {
                 
                 if (array->el[POS_N(i, index, array->N)] != ZERO_CELL)
@@ -37,7 +37,7 @@ private:
 public:
     BArrayDenseCol(
         BArrayDense< Cell_Type,Data_Type > & array_,
-        unsigned int j
+        size_t j
     ) : array(&array_), index(j) {};
 
 
@@ -59,7 +59,7 @@ public:
         return col.size();
     };
 
-    std::pair<unsigned int,Cell_Type*> & operator()(unsigned int i)
+    std::pair<size_t,Cell_Type*> & operator()(size_t i)
     {
         fill_if_needed();
         return col[i];
@@ -73,17 +73,17 @@ class BArrayDenseCol_const {
     friend class BArrayDenseCell_const<Cell_Type,Data_Type>;
 private:
     const BArrayDense< Cell_Type,Data_Type > * array;
-    unsigned int index;
+    size_t index;
     Col_type<Cell_Type> col;
 
 public:
     BArrayDenseCol_const(
         const BArrayDense< Cell_Type,Data_Type > & array_,
-        unsigned int j
+        size_t j
     ) : array(&array_), index(j)
     {
 
-        for (unsigned int i = 0u; i < array->N; ++i)
+        for (size_t i = 0u; i < array->N; ++i)
         {
             
             if (array->el[POS_N(i, index, array->N)] != ZERO_CELL)
@@ -109,7 +109,7 @@ public:
         return col.size();
     };
 
-    const std::pair<unsigned int,Cell_Type*> operator()(unsigned int i) const
+    const std::pair<size_t,Cell_Type*> operator()(size_t i) const
     {
         return col[i];
     }

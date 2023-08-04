@@ -13,7 +13,7 @@
 // public:
 //     BCol() : dat(new Col_type<Cell_Type>()) {};
 //     BCol(Col_type<Cell_Type> & dat_);
-//     BCol(BArray<Cell_Type,Data_Type> & array_, uint col);
+//     BCol(BArray<Cell_Type,Data_Type> & array_, size_t col);
 //     ~BCol();
 
 //     std::vector< Cell_Type > as_vector() const;
@@ -33,7 +33,7 @@
 
 // template<typename Cell_Type, typename Data_Type>
 // inline BCol<Cell_Type,Data_Type>::BCol(
-//     BArray<Cell_Type,Data_Type> & array_, uint col
+//     BArray<Cell_Type,Data_Type> & array_, size_t col
 //     ) {
 
 //     delete = true;

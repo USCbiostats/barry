@@ -44,7 +44,7 @@ template <> inline void Cell<double>::add(double x) {
     return;
 }
 
-template <> inline void Cell<unsigned int>::add(unsigned int x) {
+template <> inline void Cell<size_t>::add(size_t x) {
     value += x;
     return;
 }
@@ -60,7 +60,7 @@ template <> inline void Cell<bool>::add(bool x) {
 }
 
 template<> inline Cell< double >::Cell() : value(1.0), visited(false), active(true) {}
-template<> inline Cell< uint >::Cell() : value(1u), visited(false), active(true) {}
+template<> inline Cell< size_t >::Cell() : value(1u), visited(false), active(true) {}
 template<> inline Cell< int >::Cell() : value(1), visited(false), active(true) {}
 template<> inline Cell< bool >::Cell() : value(true), visited(false), active(true) {}
 

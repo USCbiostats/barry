@@ -12,9 +12,9 @@ class BArrayVector {
 private:
   
     BArray<Cell_Type,Data_Type> * Array;
-    std::vector< std::pair< uint, Cell_Type > > vec;
-    uint dim;
-    uint i;
+    std::vector< std::pair< size_t, Cell_Type > > vec;
+    size_t dim;
+    size_t i;
 
     void init_vec();
     bool vec_initialized = false;
@@ -31,8 +31,8 @@ public:
      */
     BArrayVector(
         BArray<Cell_Type,Data_Type> * Array_,
-        uint & dim_
-        uint & i_,
+        size_t & dim_
+        size_t & i_,
         bool check_bounds = true
         ) : 
     Array(Array_), vec(0u), dim(dim_), i(i_) {
@@ -54,7 +54,7 @@ public:
 
     bool is_row() const noexcept;
     bool is_col() const noexcept;
-    uint size() const noexcept;
+    size_t size() const noexcept;
     std::vector< Cell_Type >::const_iterator begin() noexcept;
     std::vector< Cell_Type >::const_iterator end() noexcept;
 
@@ -74,9 +74,9 @@ class BArrayVector_const {
 private:
     
     const BArray<Cell_Type,Data_Type> * Array;
-    std::vector< std::pair< uint, Cell_Type > > vec;
-    uint dim;
-    uint i;
+    std::vector< std::pair< size_t, Cell_Type > > vec;
+    size_t dim;
+    size_t i;
 
     void init_vec();
     bool vec_initialized = false;
@@ -85,8 +85,8 @@ public:
   
     BArrayVector_const(
         const BArray<Cell_Type,Data_Type> * Array_,
-        uint & dim_
-        uint & i_,
+        size_t & dim_
+        size_t & i_,
         bool check_bounds = true
         ) : 
     Array(Array_), vec(0u), dim(dim_), i(i_) {
@@ -109,7 +109,7 @@ public:
 
     bool is_row() const noexcept;
     bool is_col() const noexcept;
-    uint size() const noexcept;
+    size_t size() const noexcept;
     std::vector< Cell_Type >::const_iterator begin() noexcept;
     std::vector< Cell_Type >::const_iterator end() noexcept;
     

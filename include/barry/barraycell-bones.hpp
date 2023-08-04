@@ -8,12 +8,12 @@ class BArrayCell {
 private:
   
     BArray<Cell_Type,Data_Type> * Array;
-    uint i;
-    uint j;
+    size_t i;
+    size_t j;
   
 public:
   
-    BArrayCell(BArray<Cell_Type,Data_Type> * Array_, uint i_, uint j_, bool check_bounds = true) : 
+    BArrayCell(BArray<Cell_Type,Data_Type> * Array_, size_t i_, size_t j_, bool check_bounds = true) : 
     Array(Array_), i(i_), j(j_) {
 
         if (check_bounds)
@@ -47,12 +47,12 @@ class BArrayCell_const {
 private:
     
     const BArray<Cell_Type,Data_Type> * Array;
-    uint i;
-    uint j;
+    size_t i;
+    size_t j;
     
 public:
   
-    BArrayCell_const(const BArray<Cell_Type,Data_Type> * Array_, uint i_, uint j_, bool check_bounds = true) : 
+    BArrayCell_const(const BArray<Cell_Type,Data_Type> * Array_, size_t i_, size_t j_, bool check_bounds = true) : 
     Array(Array_), i(i_), j(j_) {
         if (check_bounds) {
 

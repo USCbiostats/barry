@@ -18,8 +18,8 @@ inline Geese::Geese() {
 }
 
 inline Geese::Geese(
-    std::vector< std::vector<unsigned int> > & annotations,
-    std::vector< unsigned int > &              geneid,
+    std::vector< std::vector<size_t> > & annotations,
+    std::vector< size_t > &              geneid,
     std::vector< int > &                       parent,
     std::vector< bool > &                      duplication
 ) {
@@ -39,7 +39,7 @@ inline Geese::Geese(
 
     nfunctions = annotations.at(0u).size();
 
-    // unsigned int n = annotations.size();
+    // size_t n = annotations.size();
     for (auto& iter : annotations)
     {
 
@@ -49,11 +49,11 @@ inline Geese::Geese(
     }
 
     // Grouping up the data by parents -----------------------------------------
-    for (unsigned int i = 0u; i < geneid.size(); ++i)
+    for (size_t i = 0u; i < geneid.size(); ++i)
     {
 
         // Temp vector with the annotations
-        std::vector< unsigned int > & funs(annotations.at(i));
+        std::vector< size_t > & funs(annotations.at(i));
 
         // Case 1: Not the root node, and the parent does not exists
         if ((parent.at(i) >= 0) && (nodes.find(parent.at(i)) == nodes.end()))
@@ -62,7 +62,7 @@ inline Geese::Geese(
             // Adding parent
             auto key_par = nodes.insert({
                 parent.at(i),
-                Node(parent.at(i), UINT_MAX, true)
+                Node(parent.at(i), std::numeric_limits< size_t >::max(), true)
             });
 
             // Case 1a: i does not exists
@@ -150,7 +150,7 @@ inline Geese::Geese(
         Node & node = n.second;
 
         // Checking variable
-        if (node.ord == UINT_MAX)
+        if (node.ord == std::numeric_limits< size_t >::max())
         {
 
             const char *fmt = "Node id %i was not included in geneid.";
@@ -341,14 +341,6 @@ inline Geese::Geese(Geese && x) noexcept :
 
 }
 
-// // Copy assignment
-// inline Geese & Geese::operator=(const Geese & model_) {
 
-// }
-
-// // Move assignment
-// inline Geese & Geese::operator=(Geese && model_) noexcept {
-
-// }
 
 #endif

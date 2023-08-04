@@ -24,7 +24,7 @@ inline double Geese::likelihood(
     Node * n_off;
 
     // Following the prunning sequence
-    std::vector< unsigned int > * preseq;
+    std::vector< size_t > * preseq;
 
     if (use_reduced_sequence)
     {
@@ -55,7 +55,7 @@ inline double Geese::likelihood(
         Node & node = nodes[i];
 
         // Iterating through states
-        for (unsigned int s = 0u; s < states.size(); ++s)
+        for (size_t s = 0u; s < states.size(); ++s)
         {
 
             // Starting the prob
@@ -82,8 +82,8 @@ inline double Geese::likelihood(
                 ];
             
             // Summation over all possible values of X
-            unsigned int nstate = 0u;
-            unsigned int narray = 0u;
+            size_t nstate = 0u;
+            size_t narray = 0u;
             for (auto x = psets->begin(); x != psets->end(); ++x)
             {
 
@@ -172,7 +172,7 @@ inline double Geese::likelihood(
         if (node.parent == nullptr)
         {
 
-            for (unsigned int s = 0u; s < states.size(); ++s)
+            for (size_t s = 0u; s < states.size(); ++s)
             {
 
                 double tmpll = 1.0;

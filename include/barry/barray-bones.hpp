@@ -19,7 +19,7 @@ class BArrayCell_const;
  * `BArray` class objects are arbitrary arrays
  * in which non-empty cells hold data of type `Cell_Type`. The non-empty cells
  * are stored by row and indexed using `unordered_map`s, i.e.
- * `std::vector< std::unordered_map<unsigned int,Cell_Type> >`.
+ * `std::vector< std::unordered_map<size_t,Cell_Type> >`.
  *
  * @tparam Cell_Type Type of cell (any type).
  * @tparam Data_Type Data type of the array (bool default).
@@ -31,9 +31,9 @@ class BArray {
     // friend class Support<Cell_Type,Data_Type>;
     // friend class StatsCounter<Cell_Type,Data_Type>;
 private:
-    uint N;
-    uint M;
-    uint NCells = 0u;
+    size_t N;
+    size_t M;
+    size_t NCells = 0u;
     std::vector< Row_type< Cell_Type > > el_ij;
     std::vector< Col_type< Cell_Type > > el_ji;
     Data_Type * data = nullptr;
@@ -60,7 +60,7 @@ public:
      * @param N_ Number of rows
      * @param M_ Number of columns
      * @param source An unsigned vector ranging from 0 to N_
-     * @param target An unsigned int vector ranging from 0 to M_
+     * @param target An size_t vector ranging from 0 to M_
      * @param target When `true` tries to add repeated observations.
      */
     ///@{
@@ -69,22 +69,22 @@ public:
     BArray() : N(0u), M(0u), NCells(0u), el_ij(0u), el_ji(0u) {};
     
     /** @brief Empty array */
-    BArray (uint N_, uint M_) : N(N_), M(M_), NCells(0u), el_ij(N_), el_ji(M_) {};
+    BArray (size_t N_, size_t M_) : N(N_), M(M_), NCells(0u), el_ij(N_), el_ji(M_) {};
     
     /** @brief Edgelist with data */
     BArray (
-        uint N_, uint M_,
-        const std::vector< uint > & source,
-        const std::vector< uint > & target,
+        size_t N_, size_t M_,
+        const std::vector< size_t > & source,
+        const std::vector< size_t > & target,
         const std::vector< Cell_Type > & value,
         bool add = true
     );
     
     /** @brief Edgelist with no data (simpler) */
     BArray (
-        uint N_, uint M_,
-        const std::vector< uint > & source,
-        const std::vector< uint > & target,
+        size_t N_, size_t M_,
+        const std::vector< size_t > & source,
+        const std::vector< size_t > & target,
         bool add = true
     );
     
@@ -126,14 +126,14 @@ public:
     
     // Function to access the elements
     // bool check_cell
-    void out_of_range(uint i, uint j) const;
-    Cell_Type get_cell(uint i, uint j, bool check_bounds = true) const; 
-    std::vector< Cell_Type >      get_col_vec(uint i, bool check_bounds = true) const;
-    std::vector< Cell_Type >      get_row_vec(uint i, bool check_bounds = true) const;
-    void                          get_col_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
-    void                          get_row_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
-    const Row_type< Cell_Type > & row(uint i, bool check_bounds = true) const;
-    const Col_type< Cell_Type > & col(uint i, bool check_bounds = true) const;
+    void out_of_range(size_t i, size_t j) const;
+    Cell_Type get_cell(size_t i, size_t j, bool check_bounds = true) const; 
+    std::vector< Cell_Type >      get_col_vec(size_t i, bool check_bounds = true) const;
+    std::vector< Cell_Type >      get_row_vec(size_t i, bool check_bounds = true) const;
+    void                          get_col_vec(std::vector< Cell_Type > * x, size_t i, bool check_bounds = true) const;
+    void                          get_row_vec(std::vector< Cell_Type > * x, size_t i, bool check_bounds = true) const;
+    const Row_type< Cell_Type > & row(size_t i, bool check_bounds = true) const;
+    const Col_type< Cell_Type > & col(size_t i, bool check_bounds = true) const;
 
     /**
      * @brief Get the edgelist
@@ -154,10 +154,10 @@ public:
      * @param check_bounds If `false` avoids checking bounds.
      */
     ///@{
-    bool is_empty(uint i, uint j, bool check_bounds = true) const;
-    uint nrow() const noexcept;
-    uint ncol() const noexcept;
-    uint nnozero() const noexcept;
+    bool is_empty(size_t i, size_t j, bool check_bounds = true) const;
+    size_t nrow() const noexcept;
+    size_t ncol() const noexcept;
+    size_t nnozero() const noexcept;
     Cell<Cell_Type> default_val() const;
     ///@}
 
@@ -171,39 +171,39 @@ public:
      * cells exists/don't exist.
      */
     ///@{  
-    BArray<Cell_Type,Data_Type> & operator+=(const std::pair<uint, uint> & coords);
-    BArray<Cell_Type,Data_Type> & operator-=(const std::pair<uint, uint> & coords);
-    BArrayCell<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true);
-    const Cell_Type operator()(uint i, uint j, bool check_bounds = true) const;
+    BArray<Cell_Type,Data_Type> & operator+=(const std::pair<size_t, size_t> & coords);
+    BArray<Cell_Type,Data_Type> & operator-=(const std::pair<size_t, size_t> & coords);
+    BArrayCell<Cell_Type,Data_Type> operator()(size_t i, size_t j, bool check_bounds = true);
+    const Cell_Type operator()(size_t i, size_t j, bool check_bounds = true) const;
     
-    void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
+    void rm_cell(size_t i, size_t j, bool check_bounds = true, bool check_exists = true);
     
-    void insert_cell(uint i, uint j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
-    void insert_cell(uint i, uint j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
-    void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, Cell_Type v, bool check_bounds, bool check_exists);
     
     void swap_cells(
-        uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,
+        size_t i0, size_t j0, size_t i1, size_t j1, bool check_bounds = true,
         int check_exists = CHECK::BOTH,
         int * report     = nullptr
         );
     
-    void toggle_cell(uint i, uint j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
-    void toggle_lock(uint i, uint j, bool check_bounds = true);
+    void toggle_cell(size_t i, size_t j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
+    void toggle_lock(size_t i, size_t j, bool check_bounds = true);
     ///@}
     
     /**@name Column/row wise interchange*/
     ///@{
-    void swap_rows(uint i0, uint i1, bool check_bounds = true);
-    void swap_cols(uint j0, uint j1, bool check_bounds = true);
+    void swap_rows(size_t i0, size_t i1, bool check_bounds = true);
+    void swap_cols(size_t j0, size_t j1, bool check_bounds = true);
     
-    void zero_row(uint i, bool check_bounds = true);
-    void zero_col(uint j, bool check_bounds = true);
+    void zero_row(size_t i, bool check_bounds = true);
+    void zero_col(size_t j, bool check_bounds = true);
     ///@}
     
     void transpose();
     void clear(bool hard = true);
-    void resize(uint N_, uint M_);
+    void resize(size_t N_, size_t M_);
     void reserve();
 
     // Advances operators
@@ -233,7 +233,7 @@ public:
     // ///@{
     // operator BArray<double,bool>() const;
     // operator BArray<int,bool>() const;
-    // operator BArray<uint,bool>() const;
+    // operator BArray<size_t,bool>() const;
     // operator BArray<bool,bool>() const;
     // ///@}
 

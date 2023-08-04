@@ -2,7 +2,7 @@
 #define BARRY_RULES_BONES_HPP 1
 
 template <typename Array_Type, typename Data_Type>
-bool rule_fun_default(const Array_Type * array, uint i, uint j, Data_Type * dat) {
+bool rule_fun_default(const Array_Type * array, size_t i, size_t j, Data_Type * dat) {
     return false;
 }
 
@@ -51,7 +51,7 @@ public:
 
     Data_Type & D(); ///< Read/Write access to the data.
     
-    bool operator()(const Array_Type & a, uint i, uint j);
+    bool operator()(const Array_Type & a, size_t i, size_t j);
 
     std::string & get_name();
     std::string & get_description();
@@ -81,7 +81,7 @@ public:
 
     ~Rules() {};
 
-    uint size() const noexcept {
+    size_t size() const noexcept {
         return data.size();
     };
     
@@ -110,7 +110,7 @@ public:
      * @return false If the cell is free
      */
 
-    bool operator()(const Array_Type & a, uint i, uint j);
+    bool operator()(const Array_Type & a, size_t i, size_t j);
     
     /**
      * @brief Computes the sequence of free and locked cells in an BArray

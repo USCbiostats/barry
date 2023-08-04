@@ -17,7 +17,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
 
 
     // Generating the sequence preorder sequence -------------------------------
-    std::vector< unsigned int > preorder(this->sequence);
+    std::vector< size_t > preorder(this->sequence);
     std::reverse(preorder.begin(), preorder.end());
 
     std::vector< std::vector< double > > res = predict_exhaust_backend(
@@ -25,8 +25,8 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
         );
 
     // Looping to do LOO
-    std::vector< unsigned int > annotated_ids = this->get_annotated_nodes();
-    std::vector< unsigned int > missing_vec(nfuns(), 9u);
+    std::vector< size_t > annotated_ids = this->get_annotated_nodes();
+    std::vector< size_t > missing_vec(nfuns(), 9u);
     for (auto & i : annotated_ids) {
 
         Node & n = nodes[i];
@@ -47,7 +47,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust(
 inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 
     const std::vector< double > & par,
-    const std::vector< unsigned int > & preorder
+    const std::vector< size_t > & preorder
 ) {
 
     // Processing the probabilities --------------------------------------------
@@ -66,7 +66,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
     for (auto& n : nodes)
     {
 
-        for (unsigned int f = 0u; f < nfuns(); ++f)
+        for (size_t f = 0u; f < nfuns(); ++f)
             base(f, n.second.ord) = n.second.annotations[f];
 
     }
@@ -83,7 +83,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
     
     // This vector says whether the probability has to be included in 
     // the final likelihood or not.
-    for (unsigned int p = 0u; p < pset.size(); ++p)
+    for (size_t p = 0u; p < pset.size(); ++p)
     {
         
         // ith state
@@ -107,7 +107,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
             if (n.parent == nullptr)
             {
 
-                for (unsigned int f = 0u; f < nfuns(); ++f)
+                for (size_t f = 0u; f < nfuns(); ++f)
                     current_prob *= par_state[f] ? par_root[f] : (1.0 - par_root[f]);
 
             }
@@ -117,14 +117,14 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
             phylocounters::PhyloArray tmparray(n.array, true);
 
             // Updating the state of the parent
-            for (unsigned int f = 0u; f < nfuns(); ++f)
+            for (size_t f = 0u; f < nfuns(); ++f)
                 tmparray.D_ptr()->states[f] = par_state[f] == 1u;
 
             // Updating offspring annotations
             int loc = 0;
             for (auto & off : n.offspring) {
                 
-                for (unsigned int f = 0u; f < nfuns(); ++f)
+                for (size_t f = 0u; f < nfuns(); ++f)
                 {
 
                     if (s->operator()(f, off->ord) == 1u)
@@ -147,7 +147,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
         
         // Adding to the overall probability
         for (auto & n: nodes)
-            for (unsigned int j = 0u; j < nfuns(); ++j)
+            for (size_t j = 0u; j < nfuns(); ++j)
                 expected[n.second.ord +  j * nnodes()] += s->operator()(j, n.second.ord) * current_prob/
                     baseline_likelihood;
         
@@ -159,7 +159,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
     for (auto & n: nodes)
     {
         res[n.second.ord] = zerovec;
-        for (unsigned int i = 0u; i < nfuns(); ++i)
+        for (size_t i = 0u; i < nfuns(); ++i)
             res[n.second.ord][i] = expected[n.second.ord +  i * nnodes()];
     }
 

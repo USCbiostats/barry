@@ -83,8 +83,8 @@ BARRY_TEST_CASE("Transformation of models", "[transformation]")
     model2.add_array(net);
 
     // This transformation reverses the order of the terms
-    std::function<std::vector<double>(double *,unsigned int)> tfun = []
-    (double * dat, unsigned int k) {
+    std::function<std::vector<double>(double *,size_t)> tfun = []
+    (double * dat, size_t k) {
 
         std::vector< double > v(k);
 
@@ -134,8 +134,8 @@ BARRY_TEST_CASE("Transformation of models", "[transformation]")
     model3.add_array(net);
 
     // This transformation reverses the order of the terms
-    std::function<std::vector<double>(double *,unsigned int)> tfun2 = []
-    (double * dat, unsigned int k) {
+    std::function<std::vector<double>(double *,size_t)> tfun2 = []
+    (double * dat, size_t k) {
 
         // Removing the edge variable
         auto k_new = k - 1;

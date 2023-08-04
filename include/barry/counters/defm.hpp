@@ -71,7 +71,7 @@ public:
 };
 
 /**
-  * @brief Data class used to store arbitrary uint or double vectors */
+  * @brief Data class used to store arbitrary size_t or double vectors */
 class DEFMCounterData {
 public:
 
@@ -212,12 +212,12 @@ inline void DEFMData::print() const {
 ///@{
 /**Function for definition of a network counter function*/
 #define DEFM_COUNTER(a) \
-inline double (a) (const DEFMArray & Array, uint i, uint j, DEFMCounterData & data)
+inline double (a) (const DEFMArray & Array, size_t i, size_t j, DEFMCounterData & data)
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_COUNTER_LAMBDA(a) \
 Counter_fun_type<DEFMArray, DEFMCounterData> a = \
-    [](const DEFMArray & Array, uint i, uint j, DEFMCounterData & data) -> double
+    [](const DEFMArray & Array, size_t i, size_t j, DEFMCounterData & data) -> double
 
 ///@}
 
@@ -226,18 +226,18 @@ Counter_fun_type<DEFMArray, DEFMCounterData> a = \
 ///@{
 /**Function for definition of a network counter function*/
 #define DEFM_RULE(a) \
-inline bool (a) (const DEFMArray & Array, uint i, uint j, bool & data)
+inline bool (a) (const DEFMArray & Array, size_t i, size_t j, bool & data)
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_RULE_LAMBDA(a) \
 Rule_fun_type<DEFMArray, DEFMRuleData> a = \
-[](const DEFMArray & Array, uint i, uint j, DEFMRuleData & data) -> bool
+[](const DEFMArray & Array, size_t i, size_t j, DEFMRuleData & data) -> bool
 ///@}
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_RULEDYN_LAMBDA(a) \
 Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
-[](const DEFMArray & Array, uint i, uint j, DEFMRuleDynData & data) -> bool
+[](const DEFMArray & Array, size_t i, size_t j, DEFMRuleDynData & data) -> bool
 ///@}
 
 /**

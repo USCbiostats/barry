@@ -129,7 +129,7 @@ BARRY_TEST_CASE("Computing support for networks", "[support]")
     auto counts1 = counter2.count_all();
 
     std::vector< double > diff(counts1.size(), 0.0);
-    for (unsigned int i = 0; i < counts0.size(); ++i)
+    for (size_t i = 0; i < counts0.size(); ++i)
         diff[i] = counts1[i] - counts0[i];
 
     double logistic_prob0 = 1.0/

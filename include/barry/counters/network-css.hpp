@@ -5,9 +5,9 @@
 // s: Start of the i-th network
 // e: end of the i-th network
 #define CSS_SIZE() \
-    uint n = data.indices[0u]; \
-    uint s = data.indices[1u]; \
-    uint e = data.indices[2u];
+    size_t n = data.indices[0u]; \
+    size_t s = data.indices[1u]; \
+    size_t e = data.indices[2u];
 
 // Variables in case that the current cell corresponds to the True
 #define CSS_CASE_TRUTH() if ((i < n) && (j < n)) 
@@ -34,13 +34,13 @@
     | (data.indices.at(2) > Array.ncol())) \
         throw std::range_error("The network does not match the prescribed size."); 
 
-#define CSS_CHECK_SIZE() for (uint i = 0u; i < end_.size(); ++i) {\
+#define CSS_CHECK_SIZE() for (size_t i = 0u; i < end_.size(); ++i) {\
     if (i == 0u) continue; \
     else if (end_[i] < end_[i-1u]) \
         throw std::logic_error("Endpoints should be specified in order.");}
 
 #define CSS_APPEND(name) std::string name_ = (name);\
-    for (uint i = 0u; i < end_.size(); ++i) { \
+    for (size_t i = 0u; i < end_.size(); ++i) { \
     std::string tmpname = name_ + " (" + std::to_string(i) + ")";\
     counters->add_counter(tmp_count, tmp_init, nullptr, \
             NetCounterData({netsize, i == 0u ? netsize : end_[i-1], end_[i]}, {}),\
@@ -62,8 +62,8 @@
 template<typename Tnet = Network>
 inline void counter_css_partially_false_recip_commi(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -109,8 +109,8 @@ inline void counter_css_partially_false_recip_commi(
 template<typename Tnet = Network>
 inline void counter_css_partially_false_recip_omiss(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -153,8 +153,8 @@ inline void counter_css_partially_false_recip_omiss(
 template<typename Tnet = Network>
 inline void counter_css_completely_false_recip_comiss(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -193,8 +193,8 @@ inline void counter_css_completely_false_recip_comiss(
 template<typename Tnet = Network>
 inline void counter_css_completely_false_recip_omiss(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -233,8 +233,8 @@ inline void counter_css_completely_false_recip_omiss(
 template<typename Tnet = Network>
 inline void counter_css_mixed_recip(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
     
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -274,8 +274,8 @@ inline void counter_css_mixed_recip(
 template<typename Tnet = Network>
 inline void counter_css_census01(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count)
@@ -324,8 +324,8 @@ inline void counter_css_census01(
 template<typename Tnet = Network>
 inline void counter_css_census02(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -363,8 +363,8 @@ inline void counter_css_census02(
 template<typename Tnet = Network>
 inline void counter_css_census03(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -402,8 +402,8 @@ inline void counter_css_census03(
 template<typename Tnet = Network>
 inline void counter_css_census04(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -441,8 +441,8 @@ inline void counter_css_census04(
 template<typename Tnet = Network>
 inline void counter_css_census05(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -480,8 +480,8 @@ inline void counter_css_census05(
 template<typename Tnet = Network>
 inline void counter_css_census06(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -519,8 +519,8 @@ inline void counter_css_census06(
 template<typename Tnet = Network>
 inline void counter_css_census07(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -558,8 +558,8 @@ inline void counter_css_census07(
 template<typename Tnet = Network>
 inline void counter_css_census08(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -597,8 +597,8 @@ inline void counter_css_census08(
 template<typename Tnet = Network>
 inline void counter_css_census09(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {
@@ -636,8 +636,8 @@ inline void counter_css_census09(
 template<typename Tnet = Network>
 inline void counter_css_census10(
     NetCounters<Tnet> * counters,
-    uint netsize,
-    const std::vector< uint > & end_
+    size_t netsize,
+    const std::vector< size_t > & end_
 ) {
 
     NETWORK_COUNTER_LAMBDA(tmp_count) {

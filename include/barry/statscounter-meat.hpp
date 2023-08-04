@@ -63,7 +63,7 @@ STATSCOUNTER_TEMPLATE(void, set_counters)(Counters<Array_Type,Data_Type> * count
     
 }
 
-STATSCOUNTER_TEMPLATE(void, count_init)(uint i,uint j)
+STATSCOUNTER_TEMPLATE(void, count_init)(size_t i,size_t j)
 {
     
     // Do we have any counter?
@@ -74,18 +74,18 @@ STATSCOUNTER_TEMPLATE(void, count_init)(uint i,uint j)
     // statistics.
     current_stats.resize(counters->size(), 0.0);
     // change_stats.resize(counters->size(), 0.0);
-    for (uint n = 0u; n < counters->size(); ++n) 
+    for (size_t n = 0u; n < counters->size(); ++n) 
         current_stats[n] = counters->operator[](n).init(EmptyArray, i, j);
     
     return;
 }
 
-STATSCOUNTER_TEMPLATE(void, count_current)(uint i, uint j)
+STATSCOUNTER_TEMPLATE(void, count_current)(size_t i, size_t j)
 {
     
     // Iterating through the functions, and updating the set of
     // statistics.
-    for (uint n = 0u; n < counters->size(); ++n) {
+    for (size_t n = 0u; n < counters->size(); ++n) {
         // change_stats[n]   = counters->operator[](n).count(EmptyArray, i, j);
         // current_stats[n] += change_stats[n];
         current_stats[n] += counters->operator[](n).count(EmptyArray, i, j);
@@ -128,7 +128,7 @@ inline std::vector< double > StatsCounter<Array_Type,Data_Type>::count_all_spars
     #endif
     
     // Start iterating through the data
-    for (uint i = 0; i < Array->nrow(); ++i)
+    for (size_t i = 0; i < Array->nrow(); ++i)
     {
         
         const auto & row = Array->row(i, false);
@@ -199,10 +199,10 @@ inline std::vector< double > StatsCounter<Array_Type,Data_Type>::count_all_dense
     #endif
     
     // Start iterating through the data
-    for (unsigned int i = 0u; i < Array->nrow(); ++i)
+    for (size_t i = 0u; i < Array->nrow(); ++i)
     {
 
-        for (unsigned int j = 0u; j < Array->ncol(); ++j)
+        for (size_t j = 0u; j < Array->ncol(); ++j)
         {
             // We only insert if it is different from zero
             if (Array->is_empty(i,j))

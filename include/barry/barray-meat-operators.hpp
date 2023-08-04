@@ -36,8 +36,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator+=) (
     // Must be compatible
     checkdim_(*this, rhs);
     
-    for (uint i = 0u; i < nrow(); ++i)
-        for (uint j = 0u; j < ncol(); ++j)
+    for (size_t i = 0u; i < nrow(); ++i)
+        for (size_t j = 0u; j < ncol(); ++j)
             this->operator()(i, j) += rhs.get_cell(i, j);
 
     return *this;
@@ -47,8 +47,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator+=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) {
-        for (uint j = 0u; j < ncol(); ++j) {
+    for (size_t i = 0u; i < nrow(); ++i) {
+        for (size_t j = 0u; j < ncol(); ++j) {
             this->operator()(i, j) += rhs;
         }
     }
@@ -63,8 +63,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator-=) (
     // Must be compatible
     checkdim_(*this, rhs);
     
-    for (uint i = 0u; i < nrow(); ++i) {
-        for (uint j = 0u; j < ncol(); ++j) {
+    for (size_t i = 0u; i < nrow(); ++i) {
+        for (size_t j = 0u; j < ncol(); ++j) {
             this->operator()(i, j) -= rhs.get_cell(i, j);
         }
     }
@@ -76,8 +76,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator-=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) {
-        for (uint j = 0u; j < ncol(); ++j) {
+    for (size_t i = 0u; i < nrow(); ++i) {
+        for (size_t j = 0u; j < ncol(); ++j) {
             this->operator()(i, j) -= rhs;
         }
     }
@@ -89,7 +89,7 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator*=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) {
+    for (size_t i = 0u; i < nrow(); ++i) {
 
         if (ROW(i).size() == 0u)
             continue;
@@ -106,7 +106,7 @@ BARRAY_TEMPLATE(BARRAY_TYPE()&, operator/=) (
     const Cell_Type& rhs
 ) {
 
-    for (uint i = 0u; i < nrow(); ++i) {
+    for (size_t i = 0u; i < nrow(); ++i) {
 
         if (ROW(i).size() == 0u)
             continue;

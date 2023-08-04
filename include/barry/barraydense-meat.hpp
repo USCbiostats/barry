@@ -39,10 +39,10 @@ Cell_Type BArrayDense<Cell_Type,Data_Type>::Cell_default = static_cast< Cell_Typ
 
 // Edgelist with data
 BDENSE_TEMPLATE(,BArrayDense)(
-    uint N_,
-    uint M_,
-    const std::vector< uint > & source,
-    const std::vector< uint > & target,
+    size_t N_,
+    size_t M_,
+    const std::vector< size_t > & source,
+    const std::vector< size_t > & target,
     const std::vector< Cell_Type > & value,
     bool add
 ) {
@@ -61,7 +61,7 @@ BDENSE_TEMPLATE(,BArrayDense)(
     el_colsums.resize(M, ZERO_CELL);
     
     // Writing the data
-    for (uint i = 0u; i < source.size(); ++i)
+    for (size_t i = 0u; i < source.size(); ++i)
     {
       
         // Checking range
@@ -97,9 +97,9 @@ BDENSE_TEMPLATE(,BArrayDense)(
 
 // Edgelist without data
 BDENSE_TEMPLATE(, BArrayDense)(
-    uint N_, uint M_,
-    const std::vector< uint > & source,
-    const std::vector< uint > & target,
+    size_t N_, size_t M_,
+    const std::vector< size_t > & source,
+    const std::vector< size_t > & target,
     bool add
 ) {
   
@@ -119,7 +119,7 @@ BDENSE_TEMPLATE(, BArrayDense)(
     el_colsums.resize(M, ZERO_CELL);
     
     // Writing the data
-    for (uint i = 0u; i < source.size(); ++i)
+    for (size_t i = 0u; i < source.size(); ++i)
     {
       
         // Checking range
@@ -355,8 +355,8 @@ BDENSE_TEMPLATE(const Data_Type &, D) () const {
 }
 
 BDENSE_TEMPLATE(void, out_of_range) (
-    uint i,
-    uint j
+    size_t i,
+    size_t j
 ) const {
 
     if (i >= N)
@@ -369,8 +369,8 @@ BDENSE_TEMPLATE(void, out_of_range) (
 }
     
 BDENSE_TEMPLATE(Cell_Type, get_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) const {
     
@@ -383,7 +383,7 @@ BDENSE_TEMPLATE(Cell_Type, get_cell) (
 }
 
 BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -392,7 +392,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
         out_of_range(i, 0u);
 
     std::vector< Cell_Type > ans(ncol(), static_cast< Cell_Type >(false));
-    for (uint j = 0u; j < M; ++j) 
+    for (size_t j = 0u; j < M; ++j) 
         ans[j] = el[POS(i, j)];
     
     return ans;
@@ -401,7 +401,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
 
 BDENSE_TEMPLATE(void, get_row_vec) (
     std::vector<Cell_Type> * x,
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -409,13 +409,13 @@ BDENSE_TEMPLATE(void, get_row_vec) (
     if (check_bounds) 
         out_of_range(i, 0u);
 
-    for (uint j = 0u; j < M; ++j) 
+    for (size_t j = 0u; j < M; ++j) 
         x->at(j) = el[POS(i, j)];
     
 }
 
 BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -424,7 +424,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
         out_of_range(0u, i);
 
     std::vector< Cell_Type > ans(nrow(), static_cast< Cell_Type >(false));
-    for (uint j = 0u; j < N; ++j) 
+    for (size_t j = 0u; j < N; ++j) 
         ans[j] = el[POS(j, i)];
     
     return ans;
@@ -433,7 +433,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
 
 BDENSE_TEMPLATE(void, get_col_vec) (
     std::vector<Cell_Type> * x,
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -441,13 +441,13 @@ BDENSE_TEMPLATE(void, get_col_vec) (
     if (check_bounds) 
         out_of_range(0u, i);
 
-    for (uint j = 0u; j < N; ++j) 
+    for (size_t j = 0u; j < N; ++j) 
         x->at(j) = el[POS(j, i)];//this->get_cell(iter->first, i, false);
     
 }
 template<typename Cell_Type, typename Data_Type>
 inline const BArrayDenseRow_const<Cell_Type,Data_Type> BDENSE_TYPE()::row(
-    uint i,
+    size_t i,
     bool check_bounds
 ) const {
 
@@ -460,7 +460,7 @@ inline const BArrayDenseRow_const<Cell_Type,Data_Type> BDENSE_TYPE()::row(
 
 template<typename Cell_Type, typename Data_Type>
 inline BArrayDenseRow<Cell_Type,Data_Type> & BDENSE_TYPE()::row(
-    uint i,
+    size_t i,
     bool check_bounds
 ) {
 
@@ -474,7 +474,7 @@ inline BArrayDenseRow<Cell_Type,Data_Type> & BDENSE_TYPE()::row(
 template<typename Cell_Type, typename Data_Type>
 inline const BArrayDenseCol_const<Cell_Type,Data_Type> 
 BArrayDense<Cell_Type,Data_Type>::col(
-    uint j,
+    size_t j,
     bool check_bounds
 ) const {
 
@@ -488,7 +488,7 @@ BArrayDense<Cell_Type,Data_Type>::col(
 template<typename Cell_Type, typename Data_Type>
 inline BArrayDenseCol<Cell_Type,Data_Type> & 
 BArrayDense<Cell_Type,Data_Type>::col(
-    uint j,
+    size_t j,
     bool check_bounds
 ) {
 
@@ -501,13 +501,13 @@ BArrayDense<Cell_Type,Data_Type>::col(
 
 BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
     
-    unsigned int nzero = this->nnozero();
+    size_t nzero = this->nnozero();
 
     Entries<Cell_Type> res(nzero);
     
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
-        for (uint j = 0u; j < M; ++j)
+        for (size_t j = 0u; j < M; ++j)
         {
 
             if (el[POS(i, j)] != BARRY_ZERO_DENSE)
@@ -529,8 +529,8 @@ BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
 }
 
 BDENSE_TEMPLATE(bool, is_empty)(
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) const {
     
@@ -541,17 +541,17 @@ BDENSE_TEMPLATE(bool, is_empty)(
     
 }
 
-BDENSE_TEMPLATE(unsigned int, nrow)() const noexcept {
+BDENSE_TEMPLATE(size_t, nrow)() const noexcept {
     return N;
 }
 
-BDENSE_TEMPLATE(unsigned int, ncol)() const noexcept {
+BDENSE_TEMPLATE(size_t, ncol)() const noexcept {
     return M;
 }
 
-BDENSE_TEMPLATE(unsigned int, nnozero)() const noexcept {
+BDENSE_TEMPLATE(size_t, nnozero)() const noexcept {
 
-    unsigned int nzero = 0u;
+    size_t nzero = 0u;
     for (auto & v : el)
         if (v != BARRY_ZERO_DENSE)
             nzero++;
@@ -564,12 +564,12 @@ BDENSE_TEMPLATE(Cell< Cell_Type>, default_val)() const {
 }
 
 BDENSE_TEMPLATE(BDENSE_TYPE() &, operator+=)(
-    const std::pair<uint,uint> & coords
+    const std::pair<size_t,size_t> & coords
 ) {
     
 
-    unsigned int i = coords.first;
-    unsigned int j = coords.second;
+    size_t i = coords.first;
+    size_t j = coords.second;
 
     out_of_range(i, j);
 
@@ -582,11 +582,11 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator+=)(
 }
 
 BDENSE_TEMPLATE(BDENSE_TYPE() &, operator-=)(
-    const std::pair<uint,uint> & coords
+    const std::pair<size_t,size_t> & coords
 ) {
     
-    unsigned int i = coords.first;
-    unsigned int j = coords.second;
+    size_t i = coords.first;
+    size_t j = coords.second;
 
     out_of_range(i, j);
 
@@ -602,8 +602,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator-=)(
 
 template BDENSE_TEMPLATE_ARGS()
 inline BArrayDenseCell<Cell_Type,Data_Type> BDENSE_TYPE()::operator()(  
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) {
     
@@ -613,8 +613,8 @@ inline BArrayDenseCell<Cell_Type,Data_Type> BDENSE_TYPE()::operator()(
 
 template BDENSE_TEMPLATE_ARGS()
 inline const Cell_Type BDENSE_TYPE()::operator()(  
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds
 ) const {
 
@@ -626,8 +626,8 @@ inline const Cell_Type BDENSE_TYPE()::operator()(
 }
 
 BDENSE_TEMPLATE(void, rm_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds,
     bool check_exists
 ) {
@@ -648,8 +648,8 @@ BDENSE_TEMPLATE(void, rm_cell) (
 }
 
 BDENSE_TEMPLATE(void, insert_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     const Cell< Cell_Type> & v,
     bool check_bounds,
     bool check_exists
@@ -684,8 +684,8 @@ BDENSE_TEMPLATE(void, insert_cell) (
 }
 
 BDENSE_TEMPLATE(void, insert_cell)(
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     Cell_Type v,
     bool check_bounds,
     bool check_exists
@@ -717,8 +717,8 @@ BDENSE_TEMPLATE(void, insert_cell)(
 }
 
 BDENSE_TEMPLATE(void, swap_cells) (
-        uint i0, uint j0,
-        uint i1, uint j1,
+        size_t i0, size_t j0,
+        size_t i1, size_t j1,
         bool check_bounds,
         int check_exists,
         int * report
@@ -754,8 +754,8 @@ BDENSE_TEMPLATE(void, swap_cells) (
 }
 
 BDENSE_TEMPLATE(void, toggle_cell) (
-    uint i,
-    uint j,
+    size_t i,
+    size_t j,
     bool check_bounds,
     int check_exists
 ) {
@@ -773,8 +773,8 @@ BDENSE_TEMPLATE(void, toggle_cell) (
 }
 
 BDENSE_TEMPLATE(void, swap_rows) (
-    uint i0,
-    uint i1,
+    size_t i0,
+    size_t i1,
     bool check_bounds
 ) {
   
@@ -791,7 +791,7 @@ BDENSE_TEMPLATE(void, swap_rows) (
     
     // Swapping happens naturally, need to take care of the pointers
     // though
-    for (uint j = 0u; j < M; ++j)
+    for (size_t j = 0u; j < M; ++j)
         std::swap(el[POS(i0, j)], el[POS(i1, j)]);
 
     std::swap(el_rowsums[i0], el_rowsums[i1]);
@@ -801,8 +801,8 @@ BDENSE_TEMPLATE(void, swap_rows) (
 
 // This swapping is more expensive overall
 BDENSE_TEMPLATE(void, swap_cols) (
-    uint j0,
-    uint j1,
+    size_t j0,
+    size_t j1,
     bool check_bounds
 ) {
 
@@ -819,7 +819,7 @@ BDENSE_TEMPLATE(void, swap_cols) (
 
     // Swapping happens naturally, need to take care of the pointers
     // though
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
         std::swap(el[POS(i, j0)], el[POS(i, j1)]);
 
     std::swap(el_colsums[j0], el_colsums[j1]);
@@ -828,7 +828,7 @@ BDENSE_TEMPLATE(void, swap_cols) (
 }
 
 BDENSE_TEMPLATE(void, zero_row) (
-    uint i,
+    size_t i,
     bool check_bounds
     ) {
   
@@ -839,7 +839,7 @@ BDENSE_TEMPLATE(void, zero_row) (
         return;
 
     // Else, remove all elements
-    for (unsigned int col = 0u; col < M; col++) 
+    for (size_t col = 0u; col < M; col++) 
         rm_cell(i, col, false, false);
     
     return;
@@ -847,7 +847,7 @@ BDENSE_TEMPLATE(void, zero_row) (
 }
 
 BDENSE_TEMPLATE(void, zero_col) (
-    uint j,
+    size_t j,
     bool check_bounds
   ) {
   
@@ -858,7 +858,7 @@ BDENSE_TEMPLATE(void, zero_col) (
         return;
     
     // Else, remove all elements
-    for (unsigned int row = 0u; row < N; row++) 
+    for (size_t row = 0u; row < N; row++) 
         rm_cell(row, j, false, false);
     
     return;
@@ -878,11 +878,11 @@ BDENSE_TEMPLATE(void, transpose) () {
     // Start by flipping the switch 
     visited = !visited;
 
-    // uint N0 = N, M0 = M;
+    // size_t N0 = N, M0 = M;
     std::vector< Cell< Cell_Type > > tmp_el(std::move(el));
     el.resize(N * M, ZERO_CELL);
-    for (uint i = 0u; i < N; ++i) 
-        for (uint j = 0u; j < M; ++j)
+    for (size_t i = 0u; i < N; ++i) 
+        for (size_t j = 0u; j < M; ++j)
             std::swap(tmp_el[POS(i, j)], el[POS_N(j, i, M)]);
     
     // Swapping the values
@@ -908,8 +908,8 @@ BDENSE_TEMPLATE(void, clear) (
 }
 
 BDENSE_TEMPLATE(void, resize) (
-    uint N_,
-    uint M_
+    size_t N_,
+    size_t M_
 ) {
 
     // Moving stuff around
@@ -918,13 +918,13 @@ BDENSE_TEMPLATE(void, resize) (
     el_rowsums.resize(N_, ZERO_CELL);
     el_colsums.resize(M_, ZERO_CELL);
 
-    for (unsigned int i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
         // If reached the end
         if (i >= N_)
             break;
 
-        for (unsigned int j = 0u; j < M; ++j)
+        for (size_t j = 0u; j < M; ++j)
         {
 
             if (j >= M_)
@@ -963,12 +963,12 @@ BDENSE_TEMPLATE(void, print) (
     printf_barry(fmt, args);
     va_end(args);
 
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
 
-        printf_barry("[%3i,] ", i);
+        printf_barry("[%3li,] ", i);
 
-        for (uint j = 0u; j < M; ++j)
+        for (size_t j = 0u; j < M; ++j)
         {
 
             if (this->is_empty(i, j, false))
@@ -991,12 +991,12 @@ BDENSE_TEMPLATE(const std::vector< Cell_Type > &, get_data)() const
     return el;
 }
 
-BDENSE_TEMPLATE(const Cell_Type, rowsum)(unsigned int i) const
+BDENSE_TEMPLATE(const Cell_Type, rowsum)(size_t i) const
 {
     return el_rowsums[i];
 }
 
-BDENSE_TEMPLATE(const Cell_Type, colsum)(unsigned int j) const
+BDENSE_TEMPLATE(const Cell_Type, colsum)(size_t j) const
 {
     return el_colsums[j];
 }

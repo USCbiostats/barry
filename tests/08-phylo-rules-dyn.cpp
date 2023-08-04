@@ -56,7 +56,7 @@ BARRY_TEST_CASE("Phylo dynamic rules", "[phylo-dyn-rules]") {
     S2.print();
 
     // Computing differences
-    unsigned int matches = 0u;
+    size_t matches = 0u;
 
     const auto& s = S.get_data().get_index();
     auto D1 = S.get_data().get_data();

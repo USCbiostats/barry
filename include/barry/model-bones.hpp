@@ -60,16 +60,16 @@ protected:
      */
     ///@{
     std::vector< std::vector< double > > stats_support;          ///< Sufficient statistics of the model (support)
-    std::vector< uint >                  stats_support_n_arrays; ///< Number of arrays included per support.
+    std::vector< size_t >                  stats_support_n_arrays; ///< Number of arrays included per support.
     std::vector< std::vector< double > > stats_target;           ///< Target statistics of the model
-    std::vector< uint >                  arrays2support;
+    std::vector< size_t >                  arrays2support;
     ///@}
 
     /**
       * @brief Map of types of arrays to support sets
       * @details This is of the same length as the vector `stats_target`.
       */
-    MapVec_type< double, uint > keys2support;
+    MapVec_type< double, size_t > keys2support;
 
     /**
      * @name Container space for the powerset (and its sufficient stats_target)
@@ -114,12 +114,12 @@ protected:
      * 
      * The function should return `void` and receive the following arguments:
      * - `data` Pointer to the first element of the set of sufficient statistics
-     * - `k` unsigned int indicating the number of sufficient statistics
+     * - `k` size_t indicating the number of sufficient statistics
      * 
      * @returns
      * Nothing, but it will modify the model data.
      */
-    std::function<std::vector<double>(double *, unsigned int k)>
+    std::function<std::vector<double>(double *, size_t k)>
         transform_model_fun = nullptr;
 
     std::vector< std::string > transform_model_term_names;
@@ -136,7 +136,7 @@ public:
         
     };
 
-    void set_seed(unsigned int s) {
+    void set_seed(size_t s) {
 
         if (rengine == nullptr)
         {
@@ -150,7 +150,7 @@ public:
     ///@}
         
     Model();
-    Model(uint size_);
+    Model(size_t size_);
     Model(const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_);
     Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & operator=(
         const Model<Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type> & Model_
@@ -222,7 +222,7 @@ public:
      * 
      * @return The number of the array.
      */
-    uint add_array(const Array_Type & Array_, bool force_new = false);
+    size_t add_array(const Array_Type & Array_, bool force_new = false);
     
     
     /**
@@ -239,7 +239,7 @@ public:
     ///@{
     double likelihood(
         const std::vector<double> & params,
-        const uint & i,
+        const size_t & i,
         bool as_log = false
     );
     
@@ -253,14 +253,14 @@ public:
     double likelihood(
         const std::vector<double> & params,
         const std::vector<double> & target_,
-        const uint & i,
+        const size_t & i,
         bool as_log = false
     );
 
     double likelihood(
         const std::vector<double> & params,
         const double * target_,
-        const uint & i,
+        const size_t & i,
         bool as_log = false
     );
     
@@ -281,20 +281,20 @@ public:
     ///@{
     double get_norm_const(
         const std::vector< double > & params,
-        const uint & i,
+        const size_t & i,
         bool as_log = false
     );
 
     const std::vector< Array_Type > * get_pset(
-        const uint & i
+        const size_t & i
     );
 
     const std::vector< double > * get_pset_stats(
-        const uint & i
+        const size_t & i
     );
     ///@}
     
-    void print_stats(uint i) const;
+    void print_stats(size_t i) const;
 
     /**
      * @brief Prints information about the model
@@ -302,7 +302,7 @@ public:
     virtual void print() const;
     
     Array_Type sample(const Array_Type & Array_, const std::vector<double> & params = {});
-    Array_Type sample(const uint & i, const std::vector<double> & params);
+    Array_Type sample(const size_t & i, const std::vector<double> & params);
     
     /**
      * @brief Conditional probability ("Gibbs sampler")
@@ -320,8 +320,8 @@ public:
     double conditional_prob(
         const Array_Type & Array_,
         const std::vector< double > & params,
-        unsigned int i,
-        unsigned int j
+        size_t i,
+        size_t j
     );
     
     /**
@@ -337,12 +337,12 @@ public:
      * @return `nterms()` returns the number of terms in the model.
      */
     ///@{
-    unsigned int size() const noexcept;
-    unsigned int size_unique() const noexcept;
-    unsigned int nterms() const noexcept;
-    unsigned int nrules() const noexcept;
-    unsigned int nrules_dyn() const noexcept;
-    unsigned int support_size() const noexcept;
+    size_t size() const noexcept;
+    size_t size_unique() const noexcept;
+    size_t nterms() const noexcept;
+    size_t nrules() const noexcept;
+    size_t nrules_dyn() const noexcept;
+    size_t support_size() const noexcept;
     std::vector< std::string > colnames() const;
     ///@}
 
@@ -366,7 +366,7 @@ public:
     ///@{
     std::vector< std::vector< double > > * get_stats_target();
     std::vector< std::vector< double > > * get_stats_support();
-    std::vector< unsigned int > * get_arrays2support();
+    std::vector< size_t > * get_arrays2support();
     std::vector< std::vector< Array_Type > > * get_pset_arrays();
     std::vector< std::vector<double> > * get_pset_stats();  ///< Statistics of the support(s)
     std::vector< std::vector<double> > * get_pset_probs(); 
@@ -383,12 +383,12 @@ public:
      */
     ///@{
     void set_transform_model(
-        std::function<std::vector<double>(double*,unsigned int)> fun,
+        std::function<std::vector<double>(double*,size_t)> fun,
         std::vector< std::string > names
         );
     std::vector<double> transform_model(
         double * data,
-        unsigned int k
+        size_t k
     );
     ///@}
 

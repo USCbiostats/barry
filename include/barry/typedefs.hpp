@@ -14,8 +14,7 @@
 
 // Basic types
 // See this thread
-// https://stackoverflow.com/questions/35055042/difference-between-uint8-t-uint-fast8-t-and-uint-least8-t
-typedef unsigned int uint;
+// https://stackoverflow.com/questions/35055042/difference-between-size_t8-t-size_t-fast8-t-and-size_t-least8-t
 
 // Mostly relevant for the BArray definition -----------------------------------
 
@@ -49,15 +48,15 @@ namespace EXISTS {
 /***
   * A single count
   */
-typedef std::vector< std::pair< std::vector<double>, uint > > Counts_type;
+typedef std::vector< std::pair< std::vector<double>, size_t > > Counts_type;
 
 // class Counts_type
 // {
 // private:
-//     std::vector< std::uint_fast32_t > stats_counts;
+//     std::vector< std::size_t_fast32_t > stats_counts;
 //     std::vector< double > stats_values;
 //     size_t n_stats;
-//     unsigned int n_obs;
+//     size_t n_obs;
 // public:
 //     std::vector< double > operator()
 // }
@@ -65,10 +64,10 @@ typedef std::vector< std::pair< std::vector<double>, uint > > Counts_type;
 template <class Type_A > class Cell;
 
 template<typename Cell_Type>
-using Row_type = Map< uint, Cell<Cell_Type> >;
+using Row_type = Map< size_t, Cell<Cell_Type> >;
 
 template<typename Cell_Type>
-using Col_type = Map< uint, Cell<Cell_Type>* >;
+using Col_type = Map< size_t, Cell<Cell_Type>* >;
 
 /**
   * @brief A wrapper class to store `source`, `target`, `val` from a `BArray` object.
@@ -78,12 +77,12 @@ using Col_type = Map< uint, Cell<Cell_Type>* >;
 template<typename Cell_Type>
 class Entries {
 public:
-    std::vector< uint > source;
-    std::vector< uint > target;
+    std::vector< size_t > source;
+    std::vector< size_t > target;
     std::vector< Cell_Type > val;
     
     Entries() : source(0u), target(0u), val(0u) {};
-    Entries(uint n) {
+    Entries(size_t n) {
         source.reserve(n);
         target.reserve(n);
         val.reserve(n);
@@ -92,7 +91,7 @@ public:
     
     ~Entries() {};
     
-    void resize(uint n) {
+    void resize(size_t n) {
         source.resize(n);
         target.resize(n);
         val.resize(n);
@@ -116,7 +115,7 @@ struct vecHasher
         // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
         // << is a shift operator, something like lhs * 2^(rhs)
         if (dat.size() > 1u)
-            for (unsigned int i = 1u; i < dat.size(); ++i)
+            for (size_t i = 1u; i < dat.size(); ++i)
                 hash ^= hasher(dat[i]) + 0x9e3779b9 + (hash<<6) + (hash>>2);
         
         return hash;
@@ -125,7 +124,7 @@ struct vecHasher
 
 };
 
-template<typename Ta = double, typename Tb = uint> 
+template<typename Ta = double, typename Tb = size_t> 
 using MapVec_type = std::unordered_map< std::vector< Ta >, Tb, vecHasher<Ta>>;
 
 /**
@@ -177,7 +176,7 @@ template <typename Cell_Type, typename Data_Type> class BArrayDense;
 /**
  * @brief Counter and rule functions
  * @param Array_Type a BArray
- * @param unit, uint Focal cell
+ * @param unit, size_t Focal cell
  * @param Data_Type Data associated with the function, for example, id of the attribute
  *  in the Array.
  * @return `Counter_fun_type` a double (the change statistic)
@@ -185,10 +184,10 @@ template <typename Cell_Type, typename Data_Type> class BArrayDense;
  */
 ///@{
 template <typename Array_Type, typename Data_Type>
-using Counter_fun_type = std::function<double(const Array_Type &, uint, uint, Data_Type &)>;
+using Counter_fun_type = std::function<double(const Array_Type &, size_t, size_t, Data_Type &)>;
 
 template <typename Array_Type, typename Data_Type>
-using Rule_fun_type = std::function<bool(const Array_Type &, uint, uint, Data_Type &)>;
+using Rule_fun_type = std::function<bool(const Array_Type &, size_t, size_t, Data_Type &)>;
 ///@}
 
 /**
@@ -216,7 +215,7 @@ inline bool vec_equal(
     if (a.size() != b.size())
         throw std::length_error("-a- and -b- should have the same length.");
     
-    unsigned int i = 0;
+    size_t i = 0;
     while (a[i] == b[i]) {
         if (++i == a.size())
             return true;
@@ -235,7 +234,7 @@ inline bool vec_equal_approx(
     if (a.size() != b.size())
         throw std::length_error("-a- and -b- should have the same length.");
     
-    unsigned int i = 0;
+    size_t i = 0;
     while (static_cast<double>(std::fabs(a[i] - b[i])) < eps) {
         if (++i == a.size())
             return true;
@@ -261,7 +260,7 @@ inline T vec_inner_prod(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));
     
     return res;
@@ -284,7 +283,7 @@ inline double vec_inner_prod(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));
     
     return res;

@@ -7,7 +7,7 @@ BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
     using namespace barry::counters::phylo;
 
     // More interesting experiment
-    std::vector< std::vector<uint> > ann = {
+    std::vector< std::vector<size_t> > ann = {
         {9, 9, 9},
         {9, 9, 9},
         {9, 0, 0},
@@ -16,9 +16,9 @@ BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
     };
     // ann.resize(3u, {9, 9});
 
-    // std::vector< uint > geneid = {0, 1, 2, 3, 4};
+    // std::vector< size_t > geneid = {0, 1, 2, 3, 4};
     // std::vector< int >  parent = {4, 3, 3, 4, -1};
-    std::vector< uint > geneid = {0, 1, 2, 3, 4};
+    std::vector< size_t > geneid = {0, 1, 2, 3, 4};
     std::vector< int >  parent = {-1, 0, 0, 1, 1};
 
     std::vector< bool > duplication(geneid.size(), true);

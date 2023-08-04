@@ -75,8 +75,8 @@ public:
      * This function recurses through the entries of `Array` and at each step of
      * adding a new cell it uses the functions to list the statistics.
      */
-    void count_init(uint i, uint j);
-    void count_current(uint i, uint j);
+    void count_init(size_t i, size_t j);
+    void count_current(size_t i, size_t j);
     std::vector< double > count_all();
 
     Counters<Array_Type,Data_Type> * get_counters();

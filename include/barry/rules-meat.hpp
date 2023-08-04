@@ -34,7 +34,7 @@ Rules<Array_Type,Data_Type> Rules<Array_Type,Data_Type>::operator=(
 }
 
 template<typename Array_Type, typename Data_Type>
-inline bool Rule<Array_Type,Data_Type>::operator()(const Array_Type & a, uint i, uint j) {
+inline bool Rule<Array_Type,Data_Type>::operator()(const Array_Type & a, size_t i, size_t j) {
     return fun(a, i, j, dat);
 }
 
@@ -93,7 +93,7 @@ inline void Rules<Array_Type,Data_Type>::add_rule(
 
 template <typename Array_Type, typename Data_Type>
 inline bool Rules<Array_Type,Data_Type>::operator()(
-    const Array_Type & a, uint i, uint j
+    const Array_Type & a, size_t i, size_t j
 ) {
     
     if (data.size()==0u)
@@ -115,17 +115,17 @@ inline void Rules<Array_Type,Data_Type>::get_seq(
 ) {
 
     
-    uint N = a.nrow();
-    uint K = a.ncol();
+    size_t N = a.nrow();
+    size_t K = a.ncol();
     
     // Reserving some space
     (void) free->empty();
     (void) free->reserve(2u * N * K);
     
-    for (uint i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < N; ++i)
     {
 
-        for (uint j = 0u; j < K; ++j)
+        for (size_t j = 0u; j < K; ++j)
         {
 
             // Locked cells are skipped
@@ -162,7 +162,7 @@ inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_names() const
 {
 
     std::vector< std::string > out(this->size());
-    for (unsigned int i = 0u; i < out.size(); ++i)
+    for (size_t i = 0u; i < out.size(); ++i)
         out[i] = this->data.at(i).get_name();
 
     return out;
@@ -174,7 +174,7 @@ inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_descriptions()
 {
     
     std::vector< std::string > out(this->size());
-    for (unsigned int i = 0u; i < out.size(); ++i)
+    for (size_t i = 0u; i < out.size(); ++i)
         out[i] = data.at(i).get_description();
 
     return out;

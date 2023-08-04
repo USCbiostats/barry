@@ -52,7 +52,7 @@
 #endif
 
 #ifndef BARRY_MAX_NUM_ELEMENTS
-    #define BARRY_MAX_NUM_ELEMENTS static_cast< size_t >(UINT_MAX/2u)
+    #define BARRY_MAX_NUM_ELEMENTS static_cast< size_t >(std::numeric_limits< size_t >::max() /2u)
 #endif
 
 #ifdef BARRY_USE_OMP

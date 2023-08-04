@@ -72,10 +72,10 @@ BARRY_TEST_CASE("Constrained support", "[const-support]") {
     barry::MapVec_type<double> observed(0u);
     size_t n_stats  = 3u;
     size_t n_unique = counts.size() / (n_stats + 1u);
-    for (unsigned int i = 0u; i < n_unique; ++i)
+    for (size_t i = 0u; i < n_unique; ++i)
     {
         std::vector< double > tmp(n_stats);
-        for (unsigned int j = 0u; j < n_stats; ++j)
+        for (size_t j = 0u; j < n_stats; ++j)
             tmp[j] = counts[i * (n_stats + 1u) + j + 1u];
 
         observed.insert({tmp, counts[i * (n_stats + 1)]});

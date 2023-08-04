@@ -21,13 +21,13 @@ inline double update_normalizing_constant(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
     {
 
         double tmp = 0.0;
         const double * support_n = support + i * k + 1u;
         
-        for (unsigned int j = 0u; j < (k - 1u); ++j)
+        for (size_t j = 0u; j < (k - 1u); ++j)
             tmp += (*(support_n + j)) * (*(params + j));
         
         res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
@@ -75,7 +75,7 @@ inline double likelihood_(
     #else
     #pragma GCC ivdep
     #endif
-    for (unsigned int j = 0u; j < params.size(); ++j)
+    for (size_t j = 0u; j < params.size(); ++j)
         numerator += *(stats_target + j) * params[j];
 
     if (!log_)
@@ -164,7 +164,7 @@ template <
     typename Data_Rule_Dyn_Type
     >
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::Model(
-    uint size_
+    size_t size_
     ) :
     stats_support(0u),
     stats_support_n_arrays(0u),
@@ -423,7 +423,7 @@ MODEL_TEMPLATE(void, set_rules_dyn)(
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-MODEL_TEMPLATE(uint, add_array)(
+MODEL_TEMPLATE(size_t, add_array)(
     const Array_Type & Array_,
     bool force_new
 ) {
@@ -445,7 +445,7 @@ MODEL_TEMPLATE(uint, add_array)(
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
     std::vector< double > key = counters->gen_hash(Array_);
-    MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
+    MapVec_type< double, size_t >::const_iterator locator = keys2support.find(key);
     if (force_new | (locator == keys2support.end()))
     {
         
@@ -560,7 +560,7 @@ MODEL_TEMPLATE(uint, add_array)(
 
 MODEL_TEMPLATE(double, likelihood)(
     const std::vector<double> & params,
-    const uint & i,
+    const size_t & i,
     bool as_log
 ) {
     
@@ -568,7 +568,7 @@ MODEL_TEMPLATE(double, likelihood)(
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    unsigned int idx = arrays2support[i];
+    size_t idx = arrays2support[i];
 
     // Checking if this actually has a change of happening
     if (this->stats_support[idx].size() == 0u)
@@ -615,7 +615,7 @@ MODEL_TEMPLATE(double, likelihood)(
     {
 
         std::vector< double > key = counters->gen_hash(Array_);
-        MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
+        MapVec_type< double, size_t >::const_iterator locator = keys2support.find(key);
         if (locator == keys2support.end()) 
             throw std::range_error("This type of array has not been included in the model.");
 
@@ -625,7 +625,7 @@ MODEL_TEMPLATE(double, likelihood)(
     else
     {
 
-        if (static_cast<uint>(i) >= arrays2support.size())
+        if (static_cast<size_t>(i) >= arrays2support.size())
             throw std::range_error("This type of array has not been included in the model.");
 
         loc = arrays2support[i];
@@ -680,7 +680,7 @@ MODEL_TEMPLATE(double, likelihood)(
 MODEL_TEMPLATE(double, likelihood)(
     const std::vector<double> & params,
     const std::vector<double> & target_,
-    const uint & i,
+    const size_t & i,
     bool as_log
 ) {
     
@@ -688,7 +688,7 @@ MODEL_TEMPLATE(double, likelihood)(
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    uint loc = arrays2support[i];
+    size_t loc = arrays2support[i];
 
     // Checking if passes the rules
     if (!support_fun.eval_rules_dyn(target_, 0u, 0u))
@@ -696,7 +696,7 @@ MODEL_TEMPLATE(double, likelihood)(
 
         // Concatenating the elements of target_ into aa single string
         std::string target_str = "";
-        for (uint i = 0u; i < target_.size(); ++i)
+        for (size_t i = 0u; i < target_.size(); ++i)
             target_str += std::to_string(target_[i]) + " ";
 
         throw std::range_error(
@@ -741,7 +741,7 @@ MODEL_TEMPLATE(double, likelihood)(
 MODEL_TEMPLATE(double, likelihood)(
     const std::vector<double> & params,
     const double * target_,
-    const uint & i,
+    const size_t & i,
     bool as_log
 ) {
     
@@ -749,7 +749,7 @@ MODEL_TEMPLATE(double, likelihood)(
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    uint loc = arrays2support[i];
+    size_t loc = arrays2support[i];
 
     // Checking if passes the rules
     if (support_fun.get_rules_dyn()->size() > 0u)
@@ -763,7 +763,7 @@ MODEL_TEMPLATE(double, likelihood)(
         {
             // Concatenating the elements of target_ into aa single string
             std::string target_str = "";
-            for (uint i = 0u; i < nterms(); ++i)
+            for (size_t i = 0u; i < nterms(); ++i)
                 target_str += std::to_string((*target_ + i)) + " ";
 
             throw std::range_error(
@@ -814,7 +814,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
     
     size_t params_last_size = params_last.size();
 
-    for (uint i = 0u; i < params_last_size; ++i)
+    for (size_t i = 0u; i < params_last_size; ++i)
     {
 
         if (!first_calc_done[i] || !vec_equal_approx(params, params_last[i]) )
@@ -838,7 +838,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
     if (as_log)
     {
 
-        for (uint i = 0; i < stats_target.size(); ++i) 
+        for (size_t i = 0; i < stats_target.size(); ++i) 
             res += vec_inner_prod(
                 &stats_target[i][0u],
                 &params[0u],
@@ -848,7 +848,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
         #ifdef __OPENM 
         #pragma omp simd reduction(-:res)
         #endif
-        for (unsigned int i = 0u; i < params_last_size; ++i)
+        for (size_t i = 0u; i < params_last_size; ++i)
             res -= (std::log(normalizing_constants[i]) * this->stats_support_n_arrays[i]);
 
     } else {
@@ -858,7 +858,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
         #ifdef __OPENM 
         #pragma omp simd reduction(*:res)
         #endif
-        for (unsigned int i = 0; i < stats_target_size; ++i)
+        for (size_t i = 0; i < stats_target_size; ++i)
             res *= std::exp(
                 vec_inner_prod(
                     &stats_target[i][0u],
@@ -875,7 +875,7 @@ MODEL_TEMPLATE(double, likelihood_total)(
 
 MODEL_TEMPLATE(double, get_norm_const)(
     const std::vector<double> & params,
-    const uint & i,
+    const size_t & i,
     bool as_log
 ) {
     
@@ -910,7 +910,7 @@ MODEL_TEMPLATE(double, get_norm_const)(
 }
 
 MODEL_TEMPLATE(const std::vector< Array_Type > *, get_pset)(
-    const uint & i
+    const size_t & i
 ) {
 
     if (i >= arrays2support.size())
@@ -922,7 +922,7 @@ MODEL_TEMPLATE(const std::vector< Array_Type > *, get_pset)(
 }
 
 MODEL_TEMPLATE(const std::vector< double > *, get_pset_stats)(
-    const uint & i
+    const size_t & i
 ) {
 
     if (i >= arrays2support.size())
@@ -932,7 +932,7 @@ MODEL_TEMPLATE(const std::vector< double > *, get_pset_stats)(
 
 }
 
-MODEL_TEMPLATE(void, print_stats)(uint i) const
+MODEL_TEMPLATE(void, print_stats)(size_t i) const
 {
     
     if (i >= arrays2support.size())
@@ -943,14 +943,14 @@ MODEL_TEMPLATE(void, print_stats)(uint i) const
     size_t k       = nterms();
     size_t nunique = S.size() / (k + 1u);
 
-    for (uint l = 0u; l < nunique; ++l)
+    for (size_t l = 0u; l < nunique; ++l)
     {
 
         printf_barry("% 5i ", l);
 
         printf_barry("counts: %.0f motif: ", S[l * (k + 1u)]);
         
-        for (unsigned int j = 0u; j < k; ++j)
+        for (size_t j = 0u; j < k; ++j)
             printf_barry("%.2f, ", S[l * (k + 1) + j + 1]);
 
         printf_barry("\n");
@@ -988,11 +988,11 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     max_v /= static_cast<int>(nterms() + 1);
     min_v /= static_cast<int>(nterms() + 1);
 
-    printf_barry("Num. of Arrays       : %i\n", this->size());
-    printf_barry("Support size         : %i\n", this->size_unique());
+    printf_barry("Num. of Arrays       : %li\n", this->size());
+    printf_barry("Support size         : %li\n", this->size_unique());
     printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (%i)     :\n", this->nterms());
+    printf_barry("Model terms (%li)     :\n", this->nterms());
     for (auto & cn : this->colnames())
     {
         printf_barry(" - %s\n", cn.c_str());
@@ -1000,7 +1000,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules() > 0u)
     {
-        printf_barry("Model rules (%i)     :\n", this->nrules());
+        printf_barry("Model rules (%li)     :\n", this->nrules());
     
         for (auto & rn : rules->get_names())
         {
@@ -1010,7 +1010,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules_dyn() > 0u)
     {
-        printf_barry("Model rules dyn (%i):\n", this->nrules());
+        printf_barry("Model rules dyn (%li):\n", this->nrules());
     
         for (auto & rn : rules_dyn->get_names())
         {
@@ -1022,14 +1022,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
 }
 
-MODEL_TEMPLATE(uint, size)() const noexcept
+MODEL_TEMPLATE(size_t, size)() const noexcept
 {
     // INITIALIZED()
     return this->stats_target.size();
 
 }
 
-MODEL_TEMPLATE(uint, size_unique)() const noexcept
+MODEL_TEMPLATE(size_t, size_unique)() const noexcept
 {
 
     // INITIALIZED()
@@ -1037,7 +1037,7 @@ MODEL_TEMPLATE(uint, size_unique)() const noexcept
 
 } 
 
-MODEL_TEMPLATE(uint, nterms)() const noexcept
+MODEL_TEMPLATE(size_t, nterms)() const noexcept
 {
  
     if (transform_model_fun)
@@ -1047,25 +1047,25 @@ MODEL_TEMPLATE(uint, nterms)() const noexcept
 
 }
 
-MODEL_TEMPLATE(uint, nrules)() const noexcept
+MODEL_TEMPLATE(size_t, nrules)() const noexcept
 {
  
     return this->rules->size();
 
 }
 
-MODEL_TEMPLATE(uint, nrules_dyn)() const noexcept
+MODEL_TEMPLATE(size_t, nrules_dyn)() const noexcept
 {
  
     return this->rules_dyn->size();
 
 }
 
-MODEL_TEMPLATE(uint, support_size)() const noexcept
+MODEL_TEMPLATE(size_t, support_size)() const noexcept
 {
 
     // INITIALIZED()
-    uint tot = 0u;
+    size_t tot = 0u;
     for (auto& a : stats_support)
         tot += a.size();
 
@@ -1090,7 +1090,7 @@ template <
     typename Data_Rule_Dyn_Type
     >
 inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
-    const unsigned int & i,
+    const size_t & i,
     const std::vector<double> & params
 ) {
 
@@ -1102,7 +1102,7 @@ inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_D
         throw std::range_error("The requested support is out of range");
 
     // Getting the index
-    unsigned int a = arrays2support[i];
+    size_t a = arrays2support[i];
     
     // Generating a random
     std::uniform_real_distribution<> urand(0, 1);
@@ -1182,7 +1182,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
     // If the data hasn't been analyzed earlier, then we need to compute
     // the support
     std::vector< double > key = counters->gen_hash(Array_);
-    MapVec_type< double, uint >::const_iterator locator = keys2support.find(key);
+    MapVec_type< double, size_t >::const_iterator locator = keys2support.find(key);
     if (locator == keys2support.end())
     {
         // throw std::out_of_range("Sampling from an array that has no support in the model.");
@@ -1269,7 +1269,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
         i = locator->second;
 
     // Getting the index
-    unsigned int a = arrays2support[i];
+    size_t a = arrays2support[i];
     
     // Generating a random
     std::uniform_real_distribution<> urand(0, 1);
@@ -1339,8 +1339,8 @@ MODEL_TEMPLATE(Array_Type, sample)(
 MODEL_TEMPLATE(double, conditional_prob)(
     const Array_Type & Array_,
     const std::vector< double > & params,
-    unsigned int i,
-    unsigned int j
+    size_t i,
+    size_t j
 ) {
 
     // Generating a copy of the array so we can update
@@ -1351,7 +1351,7 @@ MODEL_TEMPLATE(double, conditional_prob)(
 
     // Computing the change stats_target
     std::vector< double > tmp_counts(counters->size());
-    for (unsigned int ii = 0u; ii < tmp_counts.size(); ++ii)
+    for (size_t ii = 0u; ii < tmp_counts.size(); ++ii)
         tmp_counts[ii] = counters->operator[](ii).count(A, i, j);
 
     // If there is a transformation function, it needs to be
@@ -1402,7 +1402,7 @@ MODEL_TEMPLATE(std::vector< std::vector< double > > *, get_stats_support)()
     return &stats_support;
 }
 
-MODEL_TEMPLATE(std::vector< unsigned int > *, get_arrays2support)()
+MODEL_TEMPLATE(std::vector< size_t > *, get_arrays2support)()
 {
     return &arrays2support;
 }
@@ -1420,7 +1420,7 @@ MODEL_TEMPLATE(std::vector< std::vector<double> > *, get_pset_probs)() {
 }
 
 MODEL_TEMPLATE(void, set_transform_model)(
-    std::function<std::vector<double>(double *,unsigned int)> fun,
+    std::function<std::vector<double>(double *,size_t)> fun,
     std::vector< std::string > names
     )
 {

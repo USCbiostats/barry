@@ -13,7 +13,7 @@ BARRY_TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     using namespace phylocounters;
 
     // More interesting experiment
-    std::vector< std::vector<uint> > ann = {
+    std::vector< std::vector<size_t> > ann = {
         {9, 9, 1, 0},
         {9, 9, 1, 0},
         {9, 0, 1, 0},
@@ -22,9 +22,9 @@ BARRY_TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     };
     // ann.resize(3u, {9, 9});
 
-    // std::vector< uint > geneid = {0, 1, 2, 3, 4};
+    // std::vector< size_t > geneid = {0, 1, 2, 3, 4};
     // std::vector< int >  parent = {4, 3, 3, 4, -1};
-    std::vector< uint > geneid = {0, 1, 2, 3, 4};
+    std::vector< size_t > geneid = {0, 1, 2, 3, 4};
     std::vector< int >  parent = {-1, 0, 0, 1, 1};
 
     std::vector< bool > duplication(geneid.size(), true);
@@ -107,7 +107,7 @@ BARRY_TEST_CASE("Flock likelihood", "[flock-likelihood]") {
 
     // Measuring time
     auto start = std::chrono::system_clock::now();
-    // for (uint i = 0u; i < 500; ++i)
+    // for (size_t i = 0u; i < 500; ++i)
     //     model2.likelihood(params, true);
     auto end = std::chrono::system_clock::now();
     // std::chrono::duration<double> diff0 = end-start;
@@ -116,7 +116,7 @@ BARRY_TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     std::mt19937 ren;
 
     // start = std::chrono::system_clock::now();
-    // for (uint i = 0u; i < 500; ++i)
+    // for (size_t i = 0u; i < 500; ++i)
     //     model2.likelihood(params, false);
     // end = std::chrono::system_clock::now();
     // std::chrono::duration<double> diff1 = end-start;
@@ -125,7 +125,7 @@ BARRY_TEST_CASE("Flock likelihood", "[flock-likelihood]") {
     // std::cout << "Total time (trun seq): " << diff0.count() << std::endl;
 
     start = std::chrono::system_clock::now();
-    for (uint i = 0u; i < 5000; ++i)
+    for (size_t i = 0u; i < 5000; ++i)
     {
         params[std::floor(std::fabs(rand(ren) * params.size()))] = rand(ren) * 2;
         aflock.likelihood_joint(params, true);

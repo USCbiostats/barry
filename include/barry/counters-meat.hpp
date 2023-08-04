@@ -80,7 +80,7 @@ COUNTER_TEMPLATE(COUNTER_TYPE() &,operator=)(
 
 } ///< Move assignment
 
-COUNTER_TEMPLATE(double, count)(Array_Type & Array, uint i, uint j)
+COUNTER_TEMPLATE(double, count)(Array_Type & Array, size_t i, size_t j)
 {
 
     if (count_fun == nullptr)
@@ -90,7 +90,7 @@ COUNTER_TEMPLATE(double, count)(Array_Type & Array, uint i, uint j)
 
 }
 
-COUNTER_TEMPLATE(double, init)(Array_Type & Array, uint i, uint j)
+COUNTER_TEMPLATE(double, init)(Array_Type & Array, size_t i, size_t j)
 {
 
     if (init_fun == nullptr)
@@ -131,7 +131,7 @@ COUNTER_TEMPLATE(TMP_HASHER_CALL, get_hasher)() {
 
 COUNTERS_TEMPLATE(, Counters)() : data(0u), hasher(nullptr) {}
 
-COUNTERS_TEMPLATE(COUNTER_TYPE() &, operator[])(uint idx) {
+COUNTERS_TEMPLATE(COUNTER_TYPE() &, operator[])(size_t idx) {
 
     return data[idx];
 
@@ -202,7 +202,7 @@ COUNTERS_TEMPLATE(std::vector<std::string>, get_names)() const
 {
 
     std::vector< std::string > out(this->size());
-    for (unsigned int i = 0u; i < out.size(); ++i)
+    for (size_t i = 0u; i < out.size(); ++i)
         out[i] = this->data.at(i).get_name();
 
     return out;
@@ -213,7 +213,7 @@ COUNTERS_TEMPLATE(std::vector<std::string>, get_descriptions)() const
 {
     
     std::vector< std::string > out(this->size());
-    for (unsigned int i = 0u; i < out.size(); ++i)
+    for (size_t i = 0u; i < out.size(); ++i)
         out[i] = data.at(i).get_description();
 
     return out;

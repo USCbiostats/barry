@@ -30,7 +30,7 @@ private:
     typename std::unordered_map<size_t, size_t>::iterator iter;
         
 public:
-    // uint ncols;
+    // size_t ncols;
     FreqTable() {};
     ~FreqTable() {};
     
@@ -143,7 +143,7 @@ inline Counts_type FreqTable<T>::as_vector() const
 
     ans.reserve(index.size());
 
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
     {
         
         std::vector< double > tmp(k, 0.0);
@@ -152,9 +152,9 @@ inline Counts_type FreqTable<T>::as_vector() const
             tmp[j - 1u] = data[i * (k + 1) + j];
         
         ans.push_back(
-            std::make_pair<std::vector<double>,unsigned int>(
+            std::make_pair<std::vector<double>,size_t>(
                 std::move(tmp),
-                static_cast<unsigned int>(data[i * (k + 1u)])
+                static_cast<size_t>(data[i * (k + 1u)])
                 )
         );
 
@@ -204,24 +204,24 @@ template<typename T>
 inline void FreqTable<T>::print() const
 {
 
-    unsigned int grand_total = 0u;
+    size_t grand_total = 0u;
 
     printf_barry("%7s | %s\n", "Counts", "Stats");
 
-    for (unsigned int i = 0u; i < n; ++i)
+    for (size_t i = 0u; i < n; ++i)
     {
 
         printf_barry("%7i | ", static_cast<int>(data[i * (k + 1u)]));
 
-        for (unsigned int j = 1u; j < (k + 1u); ++j)
+        for (size_t j = 1u; j < (k + 1u); ++j)
             printf_barry(" %.2f", data[i * (k + 1) + j]);
         printf_barry("\n");
 
-        grand_total += static_cast<unsigned int>(data[i * (k + 1u)]);
+        grand_total += static_cast<size_t>(data[i * (k + 1u)]);
 
     }
 
-    printf_barry("Grand total: %i\n", grand_total);
+    printf_barry("Grand total: %li\n", grand_total);
 
     return;
 
@@ -246,7 +246,7 @@ inline size_t FreqTable<T>::make_hash(const std::vector< T > & x) const
     // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
     // << is a shift operator, something like lhs * 2^(rhs)
     if (x.size() > 1u)
-        for (unsigned int i = 1u; i < x.size(); ++i)
+        for (size_t i = 1u; i < x.size(); ++i)
             hash ^= hasher(x[i]) + 0x9e3779b9 + (hash<<6) + (hash>>2);
     
     return hash;

@@ -7,7 +7,7 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
     using namespace barry::counters::phylo;
 
     // More interesting experiment
-    std::vector< std::vector<uint> > ann = {
+    std::vector< std::vector<size_t> > ann = {
         {9, 9},
         {9, 9},
         {9, 0},
@@ -15,7 +15,7 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
         {0, 9}
     };
     
-    std::vector< uint > geneid = {0, 1, 2, 3, 4};
+    std::vector< size_t > geneid = {0, 1, 2, 3, 4};
     std::vector< int >  parent = {-1, 0, 0, 1, 1};
     /**
      * 0__1 (9, 9)__3 (1, 1)
@@ -112,7 +112,7 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
     // GO:0006744
     
     // Listing the data
-    std::vector< std::vector< uint > > ann_R = {
+    std::vector< std::vector< size_t > > ann_R = {
         {9}, {9}, {9}, {1}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9},
         {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9},
         {0}, {0}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9},
@@ -123,7 +123,7 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
         {9}, {9}, {9}, {9}, {9}
     };
 
-    std::vector< uint > geneid_R = {
+    std::vector< size_t > geneid_R = {
         59, 1, 2, 3, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74,
         75, 76, 77, 78, 4, 5, 6, 79, 7, 8, 80, 9, 10, 81, 82, 11, 12, 83, 13, 14,
         15, 16, 84, 17, 18, 19, 85, 86, 20, 21, 22, 23, 24, 87, 25, 26, 88, 89, 90,
@@ -218,7 +218,7 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
     #endif
 
     // Another tricky case -----------------------------------------------------
-    std::vector< std::vector< uint > > ann_R2 = {
+    std::vector< std::vector< size_t > > ann_R2 = {
         {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9},
         {9}, {9}, {9}, {9}, {9}, {0}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9},
         {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9}, {9},
@@ -241,7 +241,7 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
         {9}, {9}, {9}, {9}, {9}, {9}
     };
 
-    std::vector< uint > geneid_R2 = {
+    std::vector< size_t > geneid_R2 = {
         145, 146, 147, 148, 149, 150, 151, 152, 153, 1, 2, 154, 155, 156, 157,
         158, 159, 160, 161, 3, 4, 5, 6, 162, 7, 8, 163, 164, 165, 166, 9, 10,
         11, 167, 12, 13, 14, 168, 15, 16, 17, 18, 169, 19, 20, 21, 170, 171,

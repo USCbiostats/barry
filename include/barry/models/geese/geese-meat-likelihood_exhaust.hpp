@@ -31,7 +31,7 @@ inline double Geese::likelihood_exhaust(
     for (auto& n : nodes)
     {
 
-        for (unsigned int i = 0u; i < nfuns(); ++i)
+        for (size_t i = 0u; i < nfuns(); ++i)
             base(i, n.second.ord) = n.second.annotations[i];
             
     }
@@ -44,14 +44,14 @@ inline double Geese::likelihood_exhaust(
     pset.calc();
 
     // Inverse sequence
-    std::vector< unsigned int > preorder(this->sequence);
+    std::vector< size_t > preorder(this->sequence);
     std::reverse(preorder.begin(), preorder.end());
 
     double totprob = 0.0;
     
     // This vector says whether the probability has to be included in 
     // the final likelihood or not.
-    for (unsigned int p = 0u; p < pset.size(); ++p)
+    for (size_t p = 0u; p < pset.size(); ++p)
     {
         
         // ith state
@@ -59,7 +59,7 @@ inline double Geese::likelihood_exhaust(
         
         // Following the sequence
         double prob = 1.0;
-        std::vector< unsigned int > tmpstates(this->nfuns());
+        std::vector< size_t > tmpstates(this->nfuns());
 
         Node * node;
         for (auto& i : preorder)
@@ -86,7 +86,7 @@ inline double Geese::likelihood_exhaust(
 
             std::vector< double > bl(node->offspring.size(), 1.0);
 
-            std::vector< bool > sl = vector_caster<bool,unsigned int>(tmpstates);
+            std::vector< bool > sl = vector_caster<bool,size_t>(tmpstates);
 
             transition.set_data(
                 new phylocounters::NodeData(bl, sl, node->duplication),
@@ -94,10 +94,10 @@ inline double Geese::likelihood_exhaust(
             );
 
             // Filling the array
-            for (unsigned int a = 0u; a < nfuns(); ++a)
+            for (size_t a = 0u; a < nfuns(); ++a)
             {
 
-                for (unsigned int o = 0u; o < node->offspring.size(); ++o)
+                for (size_t o = 0u; o < node->offspring.size(); ++o)
                 {
 
                     if (s->get_cell(a, node->offspring[o]->id) == 1u)

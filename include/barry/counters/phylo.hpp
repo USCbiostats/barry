@@ -10,7 +10,7 @@
 
 #define MAKE_DUPL_VARS() \
     bool DPL = Array.D_ptr()->duplication; \
-    unsigned int DATA_AT = data[0u];
+    size_t DATA_AT = data[0u];
 
 #define IS_EITHER()      (DATA_AT == DUPL_EITH)
 #define IS_DUPLICATION() ((DATA_AT == DUPL_DUPL) & (DPL))
@@ -65,30 +65,30 @@ public:
   
 };
 
-// typedef std::vector< uint > PhyloCounterData;
+// typedef std::vector< size_t > PhyloCounterData;
 class PhyloCounterData {
 private:
-    std::vector< uint > data;
+    std::vector< size_t > data;
     std::vector< double > * counters;
 
 public:
     PhyloCounterData(
-        std::vector< uint > data_,
+        std::vector< size_t > data_,
         std::vector< double > * counters_ = nullptr
         ) : data(data_), counters(counters_) {};
 
     PhyloCounterData() : data(0u) {};
 
-    uint at(uint d) {return data.at(d);};
-    uint operator()(uint d) {return data.at(d);};
-    uint operator[](uint d) {return data[d];};
-    void reserve(uint x) {return data.reserve(x);};
-    void push_back(uint x) {return data.push_back(x);};
+    size_t at(size_t d) {return data.at(d);};
+    size_t operator()(size_t d) {return data.at(d);};
+    size_t operator[](size_t d) {return data[d];};
+    void reserve(size_t x) {return data.reserve(x);};
+    void push_back(size_t x) {return data.push_back(x);};
     void shrink_to_fit()  {return data.shrink_to_fit();};
-    uint size() {return data.size();};
+    size_t size() {return data.size();};
 
-    std::vector< uint >::iterator begin() {return data.begin();};
-    std::vector< uint >::iterator end() {return data.end();};
+    std::vector< size_t >::iterator begin() {return data.begin();};
+    std::vector< size_t >::iterator end() {return data.end();};
 
     bool empty() {return data.empty();};
     std::vector< double > * get_counters() {return counters;};
@@ -96,14 +96,14 @@ public:
 };
 
 
-typedef std::vector< std::pair< uint, uint > > PhyloRuleData;
+typedef std::vector< std::pair< size_t, size_t > > PhyloRuleData;
 class PhyloRuleDynData;
 
 /**
  * @name Convenient typedefs for Node objects.
  * */
 ///@{
-typedef BArrayDense<uint, NodeData> PhyloArray;
+typedef BArrayDense<size_t, NodeData> PhyloArray;
 typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
 typedef Counters< PhyloArray, PhyloCounterData> PhyloCounters;
 
@@ -131,15 +131,15 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
  * 
  */
 #define PHYLO_COUNTER_LAMBDA(a) Counter_fun_type<PhyloArray, PhyloCounterData> a = \
-    [](const PhyloArray & Array, uint i, uint j, PhyloCounterData & data)
+    [](const PhyloArray & Array, size_t i, size_t j, PhyloCounterData & data)
 
 #define PHYLO_RULE_DYN_LAMBDA(a) Rule_fun_type<PhyloArray, PhyloRuleDynData> a = \
-    [](const PhyloArray & Array, uint i, uint j, PhyloRuleDynData & data)
+    [](const PhyloArray & Array, size_t i, size_t j, PhyloRuleDynData & data)
 
 #define PHYLO_CHECK_MISSING() if (Array.D_ptr() == nullptr) \
     throw std::logic_error("The array data is nullptr."); \
     
-inline std::string get_last_name(unsigned int d) {return ((d == 1u)? " at duplication" : ((d == 0u)? " at speciation" : ""));}
+inline std::string get_last_name(size_t d) {return ((d == 1u)? " at duplication" : ((d == 0u)? " at speciation" : ""));}
 
 /**
  * @weakgroup counters-phylo Phylo counters
@@ -154,7 +154,7 @@ inline std::string get_last_name(unsigned int d) {return ((d == 1u)? " at duplic
  */
 inline void counter_overall_gains(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -192,8 +192,8 @@ inline void counter_overall_gains(
  */
 inline void counter_gains(
     PhyloCounters * counters,
-    std::vector<uint> nfun,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    std::vector<size_t> nfun,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -252,9 +252,9 @@ inline void counter_gains(
  */
 inline void counter_gains_k_offspring(
     PhyloCounters * counters,
-    std::vector<uint> nfun,
-    uint k = 1u,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    std::vector<size_t> nfun,
+    size_t k = 1u,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -282,7 +282,7 @@ inline void counter_gains_k_offspring(
 
         // Making the counts
         int counts = 0;
-        for (uint k = 0u; k < Array.ncol(); ++k)
+        for (size_t k = 0u; k < Array.ncol(); ++k)
             if (k != j)
             {
                 if (Array(i, k, false) == 1u)
@@ -324,7 +324,7 @@ inline void counter_gains_k_offspring(
  */
 inline void counter_genes_changing(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -360,7 +360,7 @@ inline void counter_genes_changing(
             return 0.0;
 
         // Need to check the other functions
-        for (uint k = 0u; k < Array.nrow(); ++k)
+        for (size_t k = 0u; k < Array.nrow(); ++k)
         {
 
             // Nah, this gene was already different.
@@ -393,9 +393,9 @@ inline void counter_genes_changing(
  */
 inline void counter_preserve_pseudogene(
     PhyloCounters * counters,
-    unsigned int nfunA,
-    unsigned int nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -434,7 +434,7 @@ inline void counter_preserve_pseudogene(
         if (Array.D_ptr()->states[data[1u]] || Array.D_ptr()->states[data[2u]])
             return 0.0;
 
-        unsigned int k = (i == nfunA) ? nfunB : nfunA;
+        size_t k = (i == nfunA) ? nfunB : nfunA;
 
         if (Array(k, j) == 1u)
             return 0.0;
@@ -475,7 +475,7 @@ inline void counter_preserve_pseudogene(
  */
 inline void counter_prop_genes_changing(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -510,7 +510,7 @@ inline void counter_prop_genes_changing(
         bool j_diverges = false;
         const std::vector< bool > & par_state = Array.D_ptr()->states;
 
-        for (unsigned int f = 0u; f < Array.nrow(); ++f)
+        for (size_t f = 0u; f < Array.nrow(); ++f)
         {
 
             // Was the gene annotation different from the parent?
@@ -524,7 +524,7 @@ inline void counter_prop_genes_changing(
 
 
         bool j_used_to_diverge = false;
-        for (unsigned int f = 0u; f < Array.nrow(); ++f)
+        for (size_t f = 0u; f < Array.nrow(); ++f)
         {
 
             if (f == i)
@@ -577,7 +577,7 @@ inline void counter_prop_genes_changing(
  */
 inline void counter_overall_loss(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
     )
 {
   
@@ -625,9 +625,9 @@ inline void counter_overall_loss(
  */
 inline void counter_maxfuns(
     PhyloCounters * counters,
-    uint            lb,
-    uint            ub,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t            lb,
+    size_t            ub,
+    size_t duplication = DEFAULT_DUPLICATION
  )
  {
 
@@ -687,8 +687,8 @@ inline void counter_maxfuns(
  */
 inline void counter_loss(
     PhyloCounters * counters,
-    std::vector<uint> nfun,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    std::vector<size_t> nfun,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -739,7 +739,7 @@ inline void counter_loss(
  */
 inline void counter_overall_changes(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -769,7 +769,7 @@ inline void counter_overall_changes(
         // As many chances to change as offspring
         double noff   = static_cast<double> (Array.ncol());
         double counts = 0.0;
-        for (uint k = 0u; k < Array.nrow(); ++k)
+        for (size_t k = 0u; k < Array.nrow(); ++k)
             if (Array.D_ptr()->states[k])
                 counts += noff;
 
@@ -798,9 +798,9 @@ inline void counter_overall_changes(
  */
 inline void counter_subfun(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -823,13 +823,13 @@ inline void counter_subfun(
             return 0.0;
         
         // Figuring out which is the first (reference) function
-        uint other = (i == funA)? funB : funA;
+        size_t other = (i == funA)? funB : funA;
         double res = 0.0;
         // There are 4 cases: (first x second) x (had the second function)
         if (Array(other, j, false) == 1u)
         { 
           
-            for (uint off = 0u; off < Array.ncol(); ++off)
+            for (size_t off = 0u; off < Array.ncol(); ++off)
             {
                 
                 // Not on self
@@ -843,7 +843,7 @@ inline void counter_subfun(
           
         } else {
           
-            for (uint off = 0u; off < Array.ncol(); ++off)
+            for (size_t off = 0u; off < Array.ncol(); ++off)
             {
               
                 // Not on self
@@ -887,9 +887,9 @@ inline void counter_subfun(
  */
 inline void counter_cogain(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -910,7 +910,7 @@ inline void counter_cogain(
         if (!Array.D_ptr()->states[d1] && !Array.D_ptr()->states[d2])
         {
 
-            uint other = (i == d1)? d2 : d1;
+            size_t other = (i == d1)? d2 : d1;
 
             if (Array(other, j, false) == 1u)
                 return 1.0;
@@ -944,7 +944,7 @@ inline void counter_cogain(
 /** @brief Longest branch mutates (either by gain or by loss) */
 inline void counter_longest(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
     )
 {
   
@@ -1055,11 +1055,11 @@ inline void counter_longest(
             );
           
         // Finding the longest branch (or branches) --
-        uint longest_idx = 0u;
+        size_t longest_idx = 0u;
         double diff      = 0.0;
         data.reserve(Array.ncol()); 
         data.push_back(0u);
-        for (uint ii = 1u; ii < Array.ncol(); ++ii)
+        for (size_t ii = 1u; ii < Array.ncol(); ++ii)
         {
             
             diff = Array.D_ptr()->blengths[longest_idx] - Array.D_ptr()->blengths[ii];
@@ -1085,7 +1085,7 @@ inline void counter_longest(
         
         // Starting the counter, since all in zero, then this will be equal to
         // the number of functions in 1 x number of longest branches
-        for (uint ii = 0u; ii < Array.nrow(); ++ii)
+        for (size_t ii = 0u; ii < Array.nrow(); ++ii)
         {
             
             if (Array.D_ptr()->states[ii])
@@ -1114,9 +1114,9 @@ inline void counter_longest(
  */
 inline void counter_neofun(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -1135,7 +1135,7 @@ inline void counter_neofun(
             return 0.0;
         
         // Checking if the parent has both functions
-        uint other = (i == funA)? funB : funA;
+        size_t other = (i == funA)? funB : funA;
         bool parent_i     = Array.D_ptr()->states[i];
         bool parent_other = Array.D_ptr()->states[other];
         
@@ -1195,8 +1195,8 @@ inline void counter_neofun(
  */
 inline void counter_pairwise_neofun_singlefun(
     PhyloCounters * counters,
-    uint nfunA,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -1259,9 +1259,9 @@ inline void counter_pairwise_neofun_singlefun(
  */
 inline void counter_neofun_a2b(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -1272,8 +1272,8 @@ inline void counter_neofun_a2b(
         IF_NOTMATCHES()
             return 0.0;
         
-        const uint & funA = data[1u];
-        const uint & funB = data[2u];
+        const size_t & funA = data[1u];
+        const size_t & funB = data[2u];
 
         // Checking scope
         if ((i != funA) && (i != funB))
@@ -1392,9 +1392,9 @@ inline void counter_neofun_a2b(
  */
 inline void counter_co_opt(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB, 
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB, 
+    size_t duplication = DEFAULT_DUPLICATION
 ) {
   
     PHYLO_COUNTER_LAMBDA(tmp_count)
@@ -1404,8 +1404,8 @@ inline void counter_co_opt(
         IF_NOTMATCHES()
             return 0.0;
         
-        const unsigned int funA = data[1u];
-        const unsigned int funB = data[2u];
+        const size_t funA = data[1u];
+        const size_t funB = data[2u];
 
         // If the change is out of scope, then nothing to do
         if ((i != funA) & (i != funB))
@@ -1490,8 +1490,8 @@ inline void counter_co_opt(
  */
 inline void counter_k_genes_changing(
     PhyloCounters * counters,
-    unsigned int k,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t k,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -1611,7 +1611,7 @@ inline void counter_k_genes_changing(
 inline void counter_less_than_p_prop_genes_changing(
     PhyloCounters * counters,
     double p,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -1645,10 +1645,10 @@ inline void counter_less_than_p_prop_genes_changing(
         bool j_diverges = false;
         const std::vector< bool > & par_state = Array.D_ptr()->states;
 
-        for (unsigned int o = 0u; o < Array.ncol(); ++o)
+        for (size_t o = 0u; o < Array.ncol(); ++o)
         {
 
-            for (unsigned int f = 0u; f < Array.nrow(); ++f)
+            for (size_t f = 0u; f < Array.nrow(); ++f)
             {
 
                 // Was the gene annotation different from the parent?
@@ -1669,7 +1669,7 @@ inline void counter_less_than_p_prop_genes_changing(
 
 
         bool j_used_to_diverge = false;
-        for (unsigned int f = 0u; f < Array.nrow(); ++f)
+        for (size_t f = 0u; f < Array.nrow(); ++f)
         {
 
             if (f == i)
@@ -1713,7 +1713,7 @@ inline void counter_less_than_p_prop_genes_changing(
     
     counters->add_counter(
         tmp_count, tmp_init, nullptr,
-        PhyloCounterData({duplication, static_cast<uint>(p * 100)}),
+        PhyloCounterData({duplication, static_cast<size_t>(p * 100)}),
         std::to_string(p) + " prop genes changing" + get_last_name(duplication)
     );
   
@@ -1726,8 +1726,8 @@ inline void counter_less_than_p_prop_genes_changing(
  */
 inline void counter_gains_from_0(
     PhyloCounters * counters,
-    std::vector< uint > nfun,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    std::vector< size_t > nfun,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -1792,7 +1792,7 @@ inline void counter_gains_from_0(
  */
 inline void counter_overall_gains_from_0(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -1840,7 +1840,7 @@ inline void counter_overall_gains_from_0(
  */
 inline void counter_pairwise_overall_change(
     PhyloCounters * counters,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -1850,7 +1850,7 @@ inline void counter_pairwise_overall_change(
         IF_NOTMATCHES()
             return 0.0;
 
-        unsigned int funpar = Array.D_ptr()->states[i] == 1u;
+        size_t funpar = Array.D_ptr()->states[i] == 1u;
 
         // All must be false
         double res = 0.0;
@@ -1905,9 +1905,9 @@ inline void counter_pairwise_overall_change(
  */
 inline void counter_pairwise_preserving(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -1923,7 +1923,7 @@ inline void counter_pairwise_preserving(
         if ((funA != i) && (funB != i))
             return 0.0;
 
-        unsigned int k = (funA == i) ? funB : funA;
+        size_t k = (funA == i) ? funB : funA;
 
         bool parent_i = Array.D_ptr()->states[i];
         bool parent_k = Array.D_ptr()->states[k];
@@ -2044,9 +2044,9 @@ inline void counter_pairwise_preserving(
  */
 inline void counter_pairwise_first_gain(
     PhyloCounters * counters,
-    uint nfunA,
-    uint nfunB,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
@@ -2062,7 +2062,7 @@ inline void counter_pairwise_first_gain(
         if ((funA != i) && (funB != i))
             return 0.0;
 
-        unsigned int k = (funA == i) ? funB : funA;
+        size_t k = (funA == i) ? funB : funA;
 
         double res = 0.0;
         if (Array(k, j) == 1)
@@ -2147,17 +2147,17 @@ inline void counter_pairwise_first_gain(
 class PhyloRuleDynData {
 public:
     const std::vector< double > * counts;
-    uint pos;
-    uint lb;
-    uint ub;
-    uint duplication;
+    size_t pos;
+    size_t lb;
+    size_t ub;
+    size_t duplication;
 
     PhyloRuleDynData(
         const std::vector< double > * counts_,
-        uint pos_,
-        uint lb_,
-        uint ub_,
-        uint duplication_
+        size_t pos_,
+        size_t lb_,
+        size_t ub_,
+        size_t duplication_
         ) :
         counts(counts_), pos(pos_), lb(lb_), ub(ub_), duplication(duplication_) {};
     
@@ -2176,17 +2176,17 @@ public:
  */
 inline void rule_dyn_limit_changes(
     PhyloSupport * support,
-    uint pos,
-    uint lb,
-    uint ub,
-    unsigned int duplication = DEFAULT_DUPLICATION
+    size_t pos,
+    size_t lb,
+    size_t ub,
+    size_t duplication = DEFAULT_DUPLICATION
 )
 {
   
     PHYLO_RULE_DYN_LAMBDA(tmp_rule)
     {
 
-        unsigned int rule_type = data.duplication;
+        size_t rule_type = data.duplication;
         if (rule_type != DUPL_EITH)
         {
 

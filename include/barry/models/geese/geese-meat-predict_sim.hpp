@@ -6,14 +6,14 @@
 inline std::vector< std::vector<double> > Geese::predict_sim(
     const std::vector< double > & par,
     bool use_reduced_sequence,
-    unsigned int nsims
+    size_t nsims
 )
 {
 
     INITIALIZED()
 
     // Preparing
-    std::vector< std::vector< unsigned int > > tmp;
+    std::vector< std::vector< size_t > > tmp;
 
     std::vector< double > zerovec(nfuns(), 0.0);
     std::vector< std::vector< double > > res_vec(nnodes(), zerovec);
@@ -23,7 +23,7 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
     // whether we have all the annotations for the conditional prob.
     auto annotated = this->get_annotated_nodes();
 
-    for (unsigned int i = 0u; i < nsims; ++i)
+    for (size_t i = 0u; i < nsims; ++i)
     {
 
         // Generating a sample
@@ -46,7 +46,7 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
 
                 const auto & ord     = nodes[id].ord; 
                 const auto & n_w_ann = nodes[id].annotations;
-                for (unsigned int f = 0u; f < nfuns(); ++f)
+                for (size_t f = 0u; f < nfuns(); ++f)
                 {
                     // No checking missings
                     if (n_w_ann[f] == 9u)
@@ -69,7 +69,7 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
             if (!includeit)
                 continue;
 
-            for (unsigned int f = 0u; f < nfuns(); ++f)
+            for (size_t f = 0u; f < nfuns(); ++f)
                 if (tmp[n.ord][f] == 1)
                     ++res_vec[n.ord][f];
 
@@ -81,10 +81,10 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
 
     // Once the simulations have finalized, we can then approximate
     // probabilities
-    for (unsigned int i = 0u; i < nnodes(); ++i)
+    for (size_t i = 0u; i < nnodes(); ++i)
     {
         // printf_barry("We used %i counts for node %i.\n", counts[i], i);
-        for (unsigned int f = 0u; f < nfuns(); ++f)
+        for (size_t f = 0u; f < nfuns(); ++f)
             res_vec[i][f] /= (static_cast< double >(counts[i]) + 1e-10);
     }
     

@@ -3,9 +3,9 @@
 
 // #include "flock-bones.hpp"
 
-inline unsigned int Flock::add_data(
-    std::vector< std::vector<unsigned int> > & annotations,
-    std::vector< unsigned int > &              geneid,
+inline size_t Flock::add_data(
+    std::vector< std::vector<size_t> > & annotations,
+    std::vector< size_t > &              geneid,
     std::vector< int > &                       parent,
     std::vector< bool > &                      duplication
 ) {
@@ -39,14 +39,14 @@ inline unsigned int Flock::add_data(
 
 }
 
-inline void Flock::set_seed(const unsigned int & s)
+inline void Flock::set_seed(const size_t & s)
 {
 
     this->rengine.seed(s);
 
 }
 
-inline void Flock::init(unsigned int bar_width)
+inline void Flock::init(size_t bar_width)
 {
 
     // For some strange reason, pointing to model during
@@ -164,24 +164,24 @@ inline double Flock::likelihood_joint(
 
 }
 
-inline unsigned int Flock::nfuns() const noexcept
+inline size_t Flock::nfuns() const noexcept
 {
 
     return this->nfunctions;
 
 }
 
-inline unsigned int Flock::ntrees() const noexcept
+inline size_t Flock::ntrees() const noexcept
 {
 
     return this->dat.size();
 
 }
 
-inline std::vector< unsigned int > Flock::nnodes() const noexcept
+inline std::vector< size_t > Flock::nnodes() const noexcept
 {
 
-    std::vector< unsigned int > res;
+    std::vector< size_t > res;
 
     res.reserve(this->ntrees());
 
@@ -192,10 +192,10 @@ inline std::vector< unsigned int > Flock::nnodes() const noexcept
 
 }
 
-inline std::vector< unsigned int > Flock::nleafs() const noexcept
+inline std::vector< size_t > Flock::nleafs() const noexcept
 {
 
-    std::vector< unsigned int > res;
+    std::vector< size_t > res;
 
     res.reserve(this->ntrees());
 
@@ -206,7 +206,7 @@ inline std::vector< unsigned int > Flock::nleafs() const noexcept
 
 }
 
-inline unsigned int Flock::nterms() const
+inline size_t Flock::nterms() const
 {
 
     INITIALIZED()
@@ -214,7 +214,7 @@ inline unsigned int Flock::nterms() const
 
 }
 
-inline unsigned int Flock::support_size() const noexcept
+inline size_t Flock::support_size() const noexcept
 {
 
     return this->model.support_size();
@@ -228,13 +228,13 @@ inline std::vector< std::string > Flock::colnames() const
 
 }
 
-inline unsigned int Flock::parse_polytomies(
+inline size_t Flock::parse_polytomies(
     bool verb,
     std::vector< size_t > * dist
 ) const noexcept
 {
 
-    unsigned int ans = 0;
+    size_t ans = 0;
 
     int i = 0;
 
@@ -244,7 +244,7 @@ inline unsigned int Flock::parse_polytomies(
         if (verb)
             printf_barry("Checking tree %i\n", i);
 
-        unsigned int tmp = d.parse_polytomies(verb, dist);
+        size_t tmp = d.parse_polytomies(verb, dist);
 
         if (tmp > ans)
             ans = tmp;
@@ -264,13 +264,13 @@ inline void Flock::print() const
     // - Total number of annotations.
 
     // Computing total number of annotations and events
-    unsigned int nzeros = 0u;
+    size_t nzeros = 0u;
 
-    unsigned int nones  = 0u;
+    size_t nones  = 0u;
 
-    unsigned int ndpl   = 0u;
+    size_t ndpl   = 0u;
 
-    unsigned int nspe   = 0u;
+    size_t nspe   = 0u;
 
     for (const auto & tree : this->dat)
     {
@@ -283,15 +283,15 @@ inline void Flock::print() const
 
     printf_barry("FLOCK (GROUP OF GEESE)\nINFO ABOUT THE PHYLOGENIES\n");
     
-    printf_barry("# of phylogenies         : %i\n", ntrees());
+    printf_barry("# of phylogenies         : %li\n", ntrees());
     
-    printf_barry("# of functions           : %i\n", nfuns());
+    printf_barry("# of functions           : %li\n", nfuns());
     
-    printf_barry("# of ann. [zeros; ones]  : [%i; %i]\n", nzeros, nones);
+    printf_barry("# of ann. [zeros; ones]  : [%li; %li]\n", nzeros, nones);
     
-    printf_barry("# of events [dupl; spec] : [%i; %i]\n", ndpl, nspe);
+    printf_barry("# of events [dupl; spec] : [%li; %li]\n", ndpl, nspe);
     
-    printf_barry("Largest polytomy         : %i\n", parse_polytomies(false));
+    printf_barry("Largest polytomy         : %li\n", parse_polytomies(false));
     
     printf_barry("\nINFO ABOUT THE SUPPORT\n");
     
@@ -299,7 +299,7 @@ inline void Flock::print() const
 
 }
 
-inline Geese* Flock::operator()(unsigned int i, bool check_bounds)
+inline Geese* Flock::operator()(size_t i, bool check_bounds)
 {
 
     if (check_bounds && i >= ntrees())

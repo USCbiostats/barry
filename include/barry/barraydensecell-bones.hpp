@@ -22,15 +22,15 @@ class BArrayDenseCell {
 private:
   
     BArrayDense<Cell_Type,Data_Type> * dat;
-    uint i;
-    uint j;
+    size_t i;
+    size_t j;
   
 public:
   
     BArrayDenseCell(
         BArrayDense<Cell_Type,Data_Type> * Array_,
-        uint i_,
-        uint j_,
+        size_t i_,
+        size_t j_,
         bool check_bounds = true
         ) : 
     i(i_), j(j_)

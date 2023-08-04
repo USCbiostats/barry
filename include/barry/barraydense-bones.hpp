@@ -39,9 +39,9 @@ class BArrayDense {
     // friend class Support<Cell_Type,Data_Type>;
     // friend class StatsCounter<Cell_Type,Data_Type>;
 private:
-    uint N;
-    uint M;
-    // uint NCells = 0u;
+    size_t N;
+    size_t M;
+    // size_t NCells = 0u;
     std::vector< Cell_Type > el;
     std::vector< Cell_Type > el_rowsums;
     std::vector< Cell_Type > el_colsums;
@@ -69,7 +69,7 @@ public:
      * @param N_ Number of rows
      * @param M_ Number of columns
      * @param source An unsigned vector ranging from 0 to N_
-     * @param target An unsigned int vector ranging from 0 to M_
+     * @param target An size_t vector ranging from 0 to M_
      * @param target When `true` tries to add repeated observations.
      * @param value Cell_Type defaul fill-in value (zero, by default.)
      */
@@ -79,25 +79,25 @@ public:
     BArrayDense() : N(0u), M(0u), el(0u), el_rowsums(0u), el_colsums(0u) {};
     
     /** @brief Empty array */
-    BArrayDense (uint N_, uint M_, Cell_Type value = static_cast<Cell_Type>(0)) :
+    BArrayDense (size_t N_, size_t M_, Cell_Type value = static_cast<Cell_Type>(0)) :
         N(N_), M(M_), el(N_ * M_, value),
         el_rowsums(N_, static_cast<Cell_Type>(value * M_)), el_colsums(M_, static_cast<Cell_Type>(value * N_)) {};
     
     /** @brief Edgelist with data */
     BArrayDense (
-        uint N_,
-        uint M_,
-        const std::vector< uint > & source,
-        const std::vector< uint > & target,
+        size_t N_,
+        size_t M_,
+        const std::vector< size_t > & source,
+        const std::vector< size_t > & target,
         const std::vector< Cell_Type > & value,
         bool add = true
     );
     
     /** @brief Edgelist with no data (simpler) */
     BArrayDense (
-        uint N_, uint M_,
-        const std::vector< uint > & source,
-        const std::vector< uint > & target,
+        size_t N_, size_t M_,
+        const std::vector< size_t > & source,
+        const std::vector< size_t > & target,
         bool add = true
     );
     
@@ -138,18 +138,18 @@ public:
     
     // Function to access the elements
     // bool check_cell
-    void out_of_range(uint i, uint j) const;
-    Cell_Type get_cell(uint i, uint j, bool check_bounds = true) const; 
-    std::vector< Cell_Type >      get_col_vec(uint i, bool check_bounds = true) const;
-    std::vector< Cell_Type >      get_row_vec(uint i, bool check_bounds = true) const;
-    void                          get_col_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
-    void                          get_row_vec(std::vector< Cell_Type > * x, uint i, bool check_bounds = true) const;
+    void out_of_range(size_t i, size_t j) const;
+    Cell_Type get_cell(size_t i, size_t j, bool check_bounds = true) const; 
+    std::vector< Cell_Type >      get_col_vec(size_t i, bool check_bounds = true) const;
+    std::vector< Cell_Type >      get_row_vec(size_t i, bool check_bounds = true) const;
+    void                          get_col_vec(std::vector< Cell_Type > * x, size_t i, bool check_bounds = true) const;
+    void                          get_row_vec(std::vector< Cell_Type > * x, size_t i, bool check_bounds = true) const;
     
-    BArrayDenseRow<Cell_Type,Data_Type> & row(uint i, bool check_bounds = true);
-    const BArrayDenseRow_const<Cell_Type,Data_Type> row(uint i, bool check_bounds = true) const;
+    BArrayDenseRow<Cell_Type,Data_Type> & row(size_t i, bool check_bounds = true);
+    const BArrayDenseRow_const<Cell_Type,Data_Type> row(size_t i, bool check_bounds = true) const;
 
-    BArrayDenseCol<Cell_Type,Data_Type> & col(uint j, bool check_bounds = true);
-    const BArrayDenseCol_const<Cell_Type,Data_Type> col(uint j, bool check_bounds = true) const;
+    BArrayDenseCol<Cell_Type,Data_Type> & col(size_t j, bool check_bounds = true);
+    const BArrayDenseCol_const<Cell_Type,Data_Type> col(size_t j, bool check_bounds = true) const;
 
     /**
      * @brief Get the edgelist
@@ -170,10 +170,10 @@ public:
      * @param check_bounds If `false` avoids checking bounds.
      */
     ///@{
-    bool is_empty(uint i, uint j, bool check_bounds = true) const;
-    uint nrow() const noexcept;
-    uint ncol() const noexcept;
-    uint nnozero() const noexcept;
+    bool is_empty(size_t i, size_t j, bool check_bounds = true) const;
+    size_t nrow() const noexcept;
+    size_t ncol() const noexcept;
+    size_t nnozero() const noexcept;
     Cell<Cell_Type> default_val() const;
     ///@}
 
@@ -187,39 +187,39 @@ public:
      * cells exists/don't exist.
      */
     ///@{  
-    BArrayDense<Cell_Type,Data_Type> & operator+=(const std::pair<uint, uint> & coords);
-    BArrayDense<Cell_Type,Data_Type> & operator-=(const std::pair<uint, uint> & coords);
-    BArrayDenseCell<Cell_Type,Data_Type> operator()(uint i, uint j, bool check_bounds = true);
-    const Cell_Type operator()(uint i, uint j, bool check_bounds = true) const;
+    BArrayDense<Cell_Type,Data_Type> & operator+=(const std::pair<size_t, size_t> & coords);
+    BArrayDense<Cell_Type,Data_Type> & operator-=(const std::pair<size_t, size_t> & coords);
+    BArrayDenseCell<Cell_Type,Data_Type> operator()(size_t i, size_t j, bool check_bounds = true);
+    const Cell_Type operator()(size_t i, size_t j, bool check_bounds = true) const;
     
-    void rm_cell(uint i, uint j, bool check_bounds = true, bool check_exists = true);
+    void rm_cell(size_t i, size_t j, bool check_bounds = true, bool check_exists = true);
     
-    void insert_cell(uint i, uint j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
-    // void insert_cell(uint i, uint j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
-    void insert_cell(uint i, uint j, Cell_Type v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
+    // void insert_cell(size_t i, size_t j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, Cell_Type v, bool check_bounds, bool check_exists);
     
     void swap_cells(
-        uint i0, uint j0, uint i1, uint j1, bool check_bounds = true,
+        size_t i0, size_t j0, size_t i1, size_t j1, bool check_bounds = true,
         int check_exists = CHECK::BOTH,
         int * report     = nullptr
         );
     
-    void toggle_cell(uint i, uint j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
-    void toggle_lock(uint i, uint j, bool check_bounds = true);
+    void toggle_cell(size_t i, size_t j, bool check_bounds = true, int check_exists = EXISTS::UKNOWN);
+    void toggle_lock(size_t i, size_t j, bool check_bounds = true);
     ///@}
     
     /**@name Column/row wise interchange*/
     ///@{
-    void swap_rows(uint i0, uint i1, bool check_bounds = true);
-    void swap_cols(uint j0, uint j1, bool check_bounds = true);
+    void swap_rows(size_t i0, size_t i1, bool check_bounds = true);
+    void swap_cols(size_t j0, size_t j1, bool check_bounds = true);
     
-    void zero_row(uint i, bool check_bounds = true);
-    void zero_col(uint j, bool check_bounds = true);
+    void zero_row(size_t i, bool check_bounds = true);
+    void zero_col(size_t j, bool check_bounds = true);
     ///@}
     
     void transpose();
     void clear(bool hard = true);
-    void resize(uint N_, uint M_);
+    void resize(size_t N_, size_t M_);
     void reserve();
 
     // Advances operators
@@ -249,15 +249,15 @@ public:
     // ///@{
     // operator BArrayDense<double,bool>() const;
     // operator BArrayDense<int,bool>() const;
-    // operator BArrayDense<uint,bool>() const;
+    // operator BArrayDense<size_t,bool>() const;
     // operator BArrayDense<bool,bool>() const;
     // ///@}
     
     bool is_dense() const noexcept {return dense;};
 
     const std::vector< Cell_Type > & get_data() const;
-    const Cell_Type rowsum(unsigned int i) const;
-    const Cell_Type colsum(unsigned int i) const;
+    const Cell_Type rowsum(size_t i) const;
+    const Cell_Type colsum(size_t i) const;
 };
 
 #endif

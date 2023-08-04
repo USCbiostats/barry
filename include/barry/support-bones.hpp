@@ -43,13 +43,13 @@ class Support {
     
 private:
     void calc_backend_sparse(
-        uint pos = 0u,
+        size_t pos = 0u,
         std::vector< Array_Type > * array_bank = nullptr,
         std::vector< double > * stats_bank = nullptr
     );
 
     void calc_backend_dense(
-        uint pos = 0u,
+        size_t pos = 0u,
         std::vector< Array_Type > * array_bank = nullptr,
         std::vector< double > * stats_bank = nullptr
     );
@@ -65,11 +65,11 @@ private:
     
 public:
     
-    uint N, M;
+    size_t N, M;
     bool delete_counters  = true;
     bool delete_rules     = true;
     bool delete_rules_dyn = true;
-    uint max_num_elements = BARRY_MAX_NUM_ELEMENTS;
+    size_t max_num_elements = BARRY_MAX_NUM_ELEMENTS;
     
     // Temp variables to reduce memory allocation
     std::vector< double >                current_stats;
@@ -93,7 +93,7 @@ public:
     
     /**@brief Constructor specifying the dimensions of the array (empty).
       */
-    Support(uint N_, uint M_) :
+    Support(size_t N_, size_t M_) :
         EmptyArray(N_, M_),
         counters(new Counters<Array_Type,Data_Counter_Type>()),
         rules(new Rules<Array_Type,Data_Rule_Type>()),
@@ -158,8 +158,8 @@ public:
     void add_rule_dyn(Rule<Array_Type, Data_Rule_Dyn_Type> * f_);
     void add_rule_dyn(Rule<Array_Type,Data_Rule_Dyn_Type> f_);
     void set_rules_dyn(Rules<Array_Type,Data_Rule_Dyn_Type> * rules_);
-    bool eval_rules_dyn(const std::vector<double> & counts, const uint & i, const uint & j);
-    // bool eval_rules_dyn(const double * counts, const uint & i, const uint & j);
+    bool eval_rules_dyn(const std::vector<double> & counts, const size_t & i, const size_t & j);
+    // bool eval_rules_dyn(const double * counts, const size_t & i, const size_t & j);
     ///@}
 
     /**
@@ -178,7 +178,7 @@ public:
     void calc(
         std::vector< Array_Type > * array_bank = nullptr,
         std::vector< double > * stats_bank = nullptr,
-        unsigned int max_num_elements_ = 0u
+        size_t max_num_elements_ = 0u
     );
     
     std::vector< double > get_counts() const;
