@@ -617,7 +617,9 @@ MODEL_TEMPLATE(double, likelihood)(
         std::vector< double > key = counters->gen_hash(Array_);
         MapVec_type< double, size_t >::const_iterator locator = keys2support.find(key);
         if (locator == keys2support.end()) 
-            throw std::range_error("This type of array has not been included in the model.");
+            throw std::range_error(
+                "This type of array has not been included in the model."
+                );
 
         loc = locator->second;
 
@@ -626,7 +628,9 @@ MODEL_TEMPLATE(double, likelihood)(
     {
 
         if (static_cast<size_t>(i) >= arrays2support.size())
-            throw std::range_error("This type of array has not been included in the model.");
+            throw std::range_error(
+                "This type of array has not been included in the model."
+                );
 
         loc = arrays2support[i];
 
@@ -700,7 +704,9 @@ MODEL_TEMPLATE(double, likelihood)(
             target_str += std::to_string(target_[i]) + " ";
 
         throw std::range_error(
-            "The array is not in the support set. The array's statistics are: " + target_str + std::string(".")
+            "The array is not in the support set. The array's statistics are: " +
+            target_str +
+            std::string(".")
             );
     }
         

@@ -30,7 +30,8 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Making room 
     std::vector< std::vector<double> > res(
-        nnodes(), std::vector<double>(nfuns()));
+        nnodes(), std::vector<double>(nfuns())
+        );
 
     // Step 1: Computing the probability at the root node
     std::vector< double > tmp_prob(nfuns(), 0.0);
@@ -41,6 +42,18 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     for (size_t s = 0u; s < states.size(); ++s)
     {
+
+        // This is mostly relevant when the root is connected
+        // to a leaf node, where the array may not be valid 
+        // according to the dynamic rules, i.e., gains/loses.
+        // If 2 genes have a function, the root state is zero,
+        // and the rule is no more than one gain, then the
+        // state is not valid.
+        if (!tmp_node->arrays_valid[s])
+        {
+            tmp_node->probability[s] = 0.0;
+            continue;
+        }
 
         // Overall state probability P(x_s | D)
         tmp_node->probability[s] = tmp_node->subtree_prob[s] * rootp[s] /
@@ -88,6 +101,13 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         // Iterating through the parent states
         for (size_t s = 0u; s < states.size(); ++s)
         {
+
+            // Only if it is valid: See the same block applied to the root
+            if (!parent.arrays_valid[s])
+            {
+                parent.probability[s] = 0.0;
+                continue;
+            }
 
             // Retrieving powerset of stats and arrays
             // it is not const since we will flip the states back and forth
@@ -175,6 +195,11 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         // Marginalizing at the state level
         for (size_t s = 0u; s < states.size(); ++s)
         {
+
+            // Only if it is valid
+            if (!parent.arrays_valid[s])
+                continue;
+
             for (size_t p = 0u; p < everything_above[s].size(); ++p)
             {
 
@@ -203,6 +228,10 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         {
             for (size_t s = 0u; s < states.size(); ++s)
             {
+
+                // Only if it is valid
+                if (!parent.arrays_valid[s])
+                    continue;
 
                 for (size_t f = 0u; f < nfuns(); ++f)
                     if (states[s][f]) 

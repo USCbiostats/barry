@@ -45,3 +45,5 @@ main.cachegrind.out: main.o
 13.o: 13-likelihood-benchmark.cpp
 	$(CPP) $(CPPFLAGS) -O2 -g 13-likelihood-benchmark.cpp -o 13.o
 
+10.o: 10-geese-predict.cpp
+	$(CPP) $(CPPFLAGS) -O2 -g 10-geese-predict.cpp -o 10.o

@@ -129,6 +129,14 @@ public:
 
     std::vector< std::string > get_names() const;
     std::vector< std::string > get_descriptions() const;
+
+    // Iterator
+    typename std::vector< Rule<Array_Type,Data_Type> >::iterator begin() {
+        return data.begin();
+    };
+    typename std::vector< Rule<Array_Type,Data_Type> >::iterator end() {
+        return data.end();
+    };
     
 };
 

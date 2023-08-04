@@ -1384,7 +1384,11 @@ inline void rules_zerodiag(NetRules<Tnet> * rules) {
         return i != j;
     };
     
-    rules->add_rule(no_self_tie, false);
+    rules->add_rule(
+        no_self_tie, false,
+        "No self-ties",
+        "No self-ties"
+        );
     
     return;
 }

@@ -34,6 +34,12 @@ Rules<Array_Type,Data_Type> Rules<Array_Type,Data_Type>::operator=(
 }
 
 template<typename Array_Type, typename Data_Type>
+inline Data_Type & Rule<Array_Type,Data_Type>::D()
+{
+    return dat;
+}
+
+template<typename Array_Type, typename Data_Type>
 inline bool Rule<Array_Type,Data_Type>::operator()(const Array_Type & a, size_t i, size_t j) {
     return fun(a, i, j, dat);
 }

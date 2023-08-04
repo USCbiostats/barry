@@ -14,21 +14,21 @@ public:
     size_t id; ///< Id of the node (as specified in the input)
     size_t ord; ///< Order in which the node was created
 
-    phylocounters::PhyloArray array;
-    std::vector< size_t >              annotations;         ///< Observed annotations (only defined for Geese)
-    bool                                     duplication;
+    phylocounters::PhyloArray array;       ///< Array of the node
+    std::vector< size_t >     annotations; ///< Observed annotations (only defined for Geese)
+    bool                      duplication;
 
-    std::vector< phylocounters::PhyloArray > arrays    = {};      ///< Arrays given all possible states
+    std::vector< phylocounters::PhyloArray > arrays = {}; ///< Arrays given all possible states
 
     std::vector< bool > arrays_valid = {}; ///< Whether the arrays are valid according to the rules of the model.
 
-    Node *                                   parent    = nullptr; ///< Parent node
-    std::vector< Node* >                     offspring = {};      ///< Offspring nodes
-    std::vector< size_t >              narray    = {};      ///< ID of the array in the model
-    bool                                     visited   = false;
+    Node *                parent    = nullptr; ///< Parent node
+    std::vector< Node* >  offspring = {};      ///< Offspring nodes
+    std::vector< size_t > narray    = {};      ///< ID of the array in the model
+    bool                  visited   = false;
 
-    std::vector< double >                    subtree_prob;        ///< Induced subtree probabilities
-    std::vector< double >                    probability;         ///< The probability of observing each state
+    std::vector< double > subtree_prob; ///< Induced subtree probabilities
+    std::vector< double > probability;  ///< The probability of observing each state
     
     /**
      * @name Construct a new Node object

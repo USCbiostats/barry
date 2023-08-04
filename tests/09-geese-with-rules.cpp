@@ -1,7 +1,7 @@
 #include "tests.hpp"
 #include "../include/barry/models/geese.hpp"
 
-TEST_CASE("Geese model with rules", "[geese with rules]") {
+BARRY_TEST_CASE("Geese model with rules", "[geese with rules]") {
 // int main() {
 
     using namespace barry::counters::phylo;

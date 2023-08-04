@@ -29,8 +29,16 @@ inline std::vector< std::vector< size_t > > Geese::simulate(
 
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(states.size(), 1.0);
+    const Node & rootnode = nodes[preorder[0u]];
     for (size_t i = 0u; i < rootp.size(); ++i)
     {
+
+        if (!rootnode.arrays_valid[i])
+        {
+            rootp[i] = 0.0;
+            continue;
+        }
+
         for (size_t j = 0u; j < nfuns(); ++j)
             rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);
     }
@@ -44,6 +52,15 @@ inline std::vector< std::vector< size_t > > Geese::simulate(
     {
         cumprob += rootp[++idx];
     }
+
+    #ifdef BARRY_DEBUG
+    
+    // auto totprob = std::accumulate(rootp.begin(), rootp.end(), 0.0);
+    // if (totprob < 0.9999999999999999 || totprob > 1.0000000000000001)
+    //     throw std::runtime_error("Root probabilities do not sum to 1!"
+    //         " (totprob = " + std::to_string(totprob) + ")");
+    
+    #endif
     
     // We now know the state of the root
     res[nodes[preorder[0u]].ord] =
@@ -63,7 +80,7 @@ inline std::vector< std::vector< size_t > > Geese::simulate(
 
         // Given the state of the current node, sample the state of the
         // offspring, all based on the current state
-        auto z = n.narray;
+        // auto z = n.narray;
         auto tmp = model->sample(n.narray[l], par0);
 
         // Iterating through the offspring to assign the state

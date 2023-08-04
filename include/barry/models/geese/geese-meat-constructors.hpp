@@ -20,8 +20,8 @@ inline Geese::Geese() {
 inline Geese::Geese(
     std::vector< std::vector<size_t> > & annotations,
     std::vector< size_t > &              geneid,
-    std::vector< int > &                       parent,
-    std::vector< bool > &                      duplication
+    std::vector< int > &                 parent,
+    std::vector< bool > &                duplication
 ) {
 
     // In order to start...
@@ -44,7 +44,9 @@ inline Geese::Geese(
     {
 
         if (iter.size() != nfunctions)
-            throw std::length_error("Not all the annotations have the same length");
+            throw std::length_error(
+                "Not all the annotations have the same length"
+                );
 
     }
 

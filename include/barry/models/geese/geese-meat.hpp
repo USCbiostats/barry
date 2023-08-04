@@ -74,11 +74,11 @@ inline void Geese::init_node(Node & n)
     //
     // The later is especially true for leaf nodes, where the
     // limitations are not known until the model is initialized.
+    phylocounters::PhyloStatsCounter stats_counter;
+    stats_counter.set_counters(model->get_counters());
     for (size_t s = 0u; s < states.size(); ++s)
     {
 
-        // [2022-02-11]: (IMPORTANT COMMENT!)
-        // n.arrays[s] = phylocounters::PhyloArray(n.array.nrow(), n.array.ncol());
         n.arrays[s] = phylocounters::PhyloArray(n.array, false);
 
         n.arrays[s].set_data(
@@ -86,7 +86,25 @@ inline void Geese::init_node(Node & n)
             true
         );
 
-        // Once the array is ready, we can add it to the model
+
+        // Checking the rule. We need to make sure the counts match
+        // the counts of the current array.
+        if (model->get_rules_dyn() != nullptr)
+        {
+            // Once the array is ready, we can add it to the model
+            stats_counter.reset_array(&n.arrays[s]);
+            auto counts = stats_counter.count_all();
+
+            phylocounters::PhyloRulesDyn dyn_rule(*model->get_rules_dyn());
+            for (auto & r : dyn_rule)
+                r.D().counts = &counts;
+
+            // Finally, we can check if it can bee added. If not,
+            // then we need to skip it.
+            if (!dyn_rule(n.arrays[s], 0u, 0u))
+                continue;
+        }
+
         n.narray[s] = model->add_array(n.arrays[s]);
 
         if (model->get_pset(n.narray[s])->size() != 0u)
