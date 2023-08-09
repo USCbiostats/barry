@@ -151,12 +151,29 @@ inline double Geese::likelihood(
 
                 nstate++;
 
-                // Computing the likelihood of the event.
-                off_mult *= model->likelihood(
-                    par0,
-                    temp_stats,
-                    node.narray[s]
-                );
+                // Use try catch in the following line
+                try {
+                    off_mult *= model->likelihood(
+                        par0,
+                        temp_stats,
+                        node.narray[s]
+                    );
+                } catch (std::exception & e) {
+
+                    auto err = std::string(e.what());
+
+                    std::string state_str = "";
+                    for (const auto & ss : states[s])
+                        state_str += std::to_string(ss) + " ";
+
+                    err = "Error computing the likelihood at node " +
+                        std::to_string(node.id) + " with state " + state_str +
+                        ". Error message:\n" +
+                        err;
+
+                    throw std::runtime_error(err);
+                    
+                }
 
                 // Adding to the total probabilities
                 totprob += off_mult;
