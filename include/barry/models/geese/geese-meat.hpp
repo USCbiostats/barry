@@ -121,7 +121,7 @@ inline void Geese::init_node(Node & n)
                 "The array to be added was in the following state:";
                 
             std::string state_str = "";
-            for (auto & ss : states[s])
+            for (const auto & ss : states[s])
                 state_str += std::to_string(ss) + " ";
 
             err += state_str + "\n";
