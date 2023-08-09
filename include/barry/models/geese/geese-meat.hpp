@@ -105,7 +105,32 @@ inline void Geese::init_node(Node & n)
                 continue;
         }
 
-        n.narray[s] = model->add_array(n.arrays[s]);
+        // Use try catch to run the following lines of code
+        // only if the array is valid.
+        try
+        {
+            n.narray[s] = model->add_array(n.arrays[s]);
+        }
+        catch (const std::exception & e)
+        {
+            auto err = std::string(e.what());
+
+            err = "Array " + std::to_string(n.id) +
+                " cannot be added to the model with error:\n" + err +
+                "\n. This is likely due to a dynamic rule. " +
+                "The array to be added was in the following state:";
+                
+            std::string state_str = "";
+            for (auto & ss : states[s])
+                state_str += std::to_string(ss) + " ";
+
+            err += state_str + "\n";
+
+            throw std::runtime_error(err);
+            
+        }
+
+        // n.narray[s] = model->add_array(n.arrays[s]);
 
         if (model->get_pset(n.narray[s])->size() != 0u)
             n.arrays_valid[s] = true;
