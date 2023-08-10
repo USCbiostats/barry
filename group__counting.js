@@ -8,12 +8,6 @@ var group__counting =
       [ "directed", "class_network_data.html#a5e67b89f22ad1151680a5f4428c6c780", null ],
       [ "vertex_attr", "class_network_data.html#a3dc3e5549abc6daa85f30dbdc504ecac", null ]
     ] ],
-    [ "NodeData", "class_node_data.html", [
-      [ "NodeData", "class_node_data.html#a0a90191ba4c987afa3406f829967d8e2", null ],
-      [ "blengths", "class_node_data.html#a02da5f097c105813216d87ef89ad7bd4", null ],
-      [ "duplication", "class_node_data.html#a6c21d52091bb4fa6e3d431856da17caa", null ],
-      [ "states", "class_node_data.html#a33caaadde6afe892624501bdb0edaea6", null ]
-    ] ],
     [ "Counter", "class_counter.html", [
       [ "Counter", "class_counter.html#a56c2f4ad875497dea97934cd3ddebc81", null ],
       [ "Counter", "class_counter.html#ad41ae754c90343630b4742b430f1375c", null ],
@@ -34,5 +28,39 @@ var group__counting =
       [ "hasher_fun", "class_counter.html#a5f9ea0546d2b4d8b31a959bf98dc6f2d", null ],
       [ "init_fun", "class_counter.html#abb4e0b67e6489d438918495651baa5a8", null ],
       [ "name", "class_counter.html#aebf838d0d2bd0b44233f17f2f7cb8142", null ]
-    ] ]
+    ] ],
+    [ "IF_MATCHES", "group__counting.html#gaadfa3455c6a85615e658a4f8e17dbc47", null ],
+    [ "IF_NOTMATCHES", "group__counting.html#ga6c20892d837efbb7da5227af44feca3c", null ],
+    [ "IS_DUPLICATION", "group__counting.html#ga86dd8a06889c073afb9dbd5a2afcaabb", null ],
+    [ "IS_EITHER", "group__counting.html#ga100f75e7828db28578049b1b57f4f8c7", null ],
+    [ "IS_SPECIATION", "group__counting.html#ga52f210beb7fe1b575b77a3286c502b96", null ],
+    [ "MAKE_DUPL_VARS", "group__counting.html#gaa723b014f0985d974ac55ce671689f65", null ],
+    [ "PHYLO_CHECK_MISSING", "group__counting.html#ga81c4979894537f31d3ecc06c5f6dd504", null ],
+    [ "PHYLO_COUNTER_LAMBDA", "group__counting.html#gac89fe9750bd62a338930ea730d23d0d2", null ],
+    [ "PHYLO_RULE_DYN_LAMBDA", "group__counting.html#ga4a7a35cddb61f74a0ec3cb3893cf78b1", null ],
+    [ "counter_co_opt", "group__counting.html#ga39768a8cbb21e6b775c382568a4f98f9", null ],
+    [ "counter_cogain", "group__counting.html#ga9d57bfb85ca8ab5a943e46b461e42aea", null ],
+    [ "counter_gains", "group__counting.html#ga8972c27d6e3dfa3fb980afce91dbd582", null ],
+    [ "counter_gains_from_0", "group__counting.html#ga8f28f78a8170fcd27f8888bfd2f99d52", null ],
+    [ "counter_gains_k_offspring", "group__counting.html#gac5bf2141645db356fbd1333d56ce8444", null ],
+    [ "counter_genes_changing", "group__counting.html#ga347aabd9065d9ff8352e58fb282b8fd2", null ],
+    [ "counter_k_genes_changing", "group__counting.html#ga1f7678ddbb9f9084cb5fe1c79f205558", null ],
+    [ "counter_less_than_p_prop_genes_changing", "group__counting.html#gaa6fbd08ef13dbe4b29a68e9200113feb", null ],
+    [ "counter_longest", "group__counting.html#gac356c5c159d2f37088b162ed04c362ad", null ],
+    [ "counter_loss", "group__counting.html#ga6de412cdee1ec990e62edcb29c118824", null ],
+    [ "counter_maxfuns", "group__counting.html#gae0453a90fb7c8668a6845fe850477cc7", null ],
+    [ "counter_neofun", "group__counting.html#gacd47917bea8489de870d1fc58f5c7076", null ],
+    [ "counter_neofun_a2b", "group__counting.html#ga1bf540113edfb5f96f2138370b6f77f6", null ],
+    [ "counter_overall_changes", "group__counting.html#ga23beb6a43e5da922f7c364714a95a89e", null ],
+    [ "counter_overall_gains", "group__counting.html#ga17277bd554ecacf1bc45165564723722", null ],
+    [ "counter_overall_gains_from_0", "group__counting.html#gac2eb4b7941b56f783eff66f5acfc656c", null ],
+    [ "counter_overall_loss", "group__counting.html#ga8f65b1cc27fb2f27eb5525b5b36c19f8", null ],
+    [ "counter_pairwise_first_gain", "group__counting.html#gaf3bb2dd1c9db36df1d010cc691573243", null ],
+    [ "counter_pairwise_neofun_singlefun", "group__counting.html#gaa7de3c183a65a0701cbce03545421c7d", null ],
+    [ "counter_pairwise_overall_change", "group__counting.html#ga8f177ab499b4fe4c4e091e972a933d2b", null ],
+    [ "counter_pairwise_preserving", "group__counting.html#gaaa5028dec97170c740ea270f19be9f77", null ],
+    [ "counter_preserve_pseudogene", "group__counting.html#gaa8f376142a4cd889fede792686654d16", null ],
+    [ "counter_prop_genes_changing", "group__counting.html#ga893edd882c9f9e72c4ee97a0576f36a6", null ],
+    [ "counter_subfun", "group__counting.html#ga23c694532337cb12a77a64f3202a14cf", null ],
+    [ "get_last_name", "group__counting.html#gac2b3fdac968043baa290218fff498fb7", null ]
 ];

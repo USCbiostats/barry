@@ -5,10 +5,78 @@
 \item 
 class \mbox{\hyperlink{class_network_data}{Network\+Data}}
 \begin{DoxyCompactList}\small\item\em Data class for Networks. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{class_node_data}{Node\+Data}}
-\begin{DoxyCompactList}\small\item\em Data definition for the {\ttfamily Phylo\+Array} class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_counter}{Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+Type $>$}}
 \begin{DoxyCompactList}\small\item\em A counter function based on change statistics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__counting_gaa723b014f0985d974ac55ce671689f65}{MAKE\+\_\+\+DUPL\+\_\+\+VARS}}()
+\item 
+\#define \mbox{\hyperlink{group__counting_ga100f75e7828db28578049b1b57f4f8c7}{IS\+\_\+\+EITHER}}()~(DATA\+\_\+\+AT == \mbox{\hyperlink{class_geese_a0bbca4599569a83d430236de7609c1d9}{Geese\+::etype\+\_\+either}})
+\item 
+\#define \mbox{\hyperlink{group__counting_ga86dd8a06889c073afb9dbd5a2afcaabb}{IS\+\_\+\+DUPLICATION}}()~((DATA\+\_\+\+AT == \mbox{\hyperlink{class_geese_aa29209e43a6aa74020f7477eb920e2b0}{Geese\+::etype\+\_\+duplication}}) \& (DPL))
+\item 
+\#define \mbox{\hyperlink{group__counting_ga52f210beb7fe1b575b77a3286c502b96}{IS\+\_\+\+SPECIATION}}()~((DATA\+\_\+\+AT == \mbox{\hyperlink{class_geese_ad361c35852cafe14af2858b36da75bc1}{Geese\+::etype\+\_\+speciation}}) \& (!DPL))
+\item 
+\#define \mbox{\hyperlink{group__counting_gaadfa3455c6a85615e658a4f8e17dbc47}{IF\+\_\+\+MATCHES}}()
+\item 
+\#define \mbox{\hyperlink{group__counting_ga6c20892d837efbb7da5227af44feca3c}{IF\+\_\+\+NOTMATCHES}}()
+\item 
+\#define \mbox{\hyperlink{group__counting_gac89fe9750bd62a338930ea730d23d0d2}{PHYLO\+\_\+\+COUNTER\+\_\+\+LAMBDA}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
+\begin{DoxyCompactList}\small\item\em Extension of a simple counter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__counting_ga4a7a35cddb61f74a0ec3cb3893cf78b1}{PHYLO\+\_\+\+RULE\+\_\+\+DYN\+\_\+\+LAMBDA}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
+\item 
+\#define \mbox{\hyperlink{group__counting_ga81c4979894537f31d3ecc06c5f6dd504}{PHYLO\+\_\+\+CHECK\+\_\+\+MISSING}}()
+\item 
+std\+::string \mbox{\hyperlink{group__counting_gac2b3fdac968043baa290218fff498fb7}{get\+\_\+last\+\_\+name}} (size\+\_\+t d)
+\item 
+void \mbox{\hyperlink{group__counting_ga17277bd554ecacf1bc45165564723722}{counter\+\_\+overall\+\_\+gains}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Overall functional gains. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga8972c27d6e3dfa3fb980afce91dbd582}{counter\+\_\+gains}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ nfun, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Functional gains for a specific function ({\ttfamily nfun}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gac5bf2141645db356fbd1333d56ce8444}{counter\+\_\+gains\+\_\+k\+\_\+offspring}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ nfun, size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a9389e4770ba454a2e14f870491495cb2}{k}}=1u, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em k genes gain function nfun \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga347aabd9065d9ff8352e58fb282b8fd2}{counter\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with regular trees.) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gaa8f376142a4cd889fede792686654d16}{counter\+\_\+preserve\+\_\+pseudogene}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Keeps track of how many pairs of genes preserve pseudostate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga893edd882c9f9e72c4ee97a0576f36a6}{counter\+\_\+prop\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with regular trees.) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga8f65b1cc27fb2f27eb5525b5b36c19f8}{counter\+\_\+overall\+\_\+loss}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Overall functional loss. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gae0453a90fb7c8668a6845fe850477cc7}{counter\+\_\+maxfuns}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t lb, size\+\_\+t ub, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Cap the number of functions per gene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga6de412cdee1ec990e62edcb29c118824}{counter\+\_\+loss}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ nfun, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Total count of losses for an specific function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga23beb6a43e5da922f7c364714a95a89e}{counter\+\_\+overall\+\_\+changes}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Total number of changes. Use this statistic to account for \char`\"{}preservation\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga23c694532337cb12a77a64f3202a14cf}{counter\+\_\+subfun}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Total count of Sub-\/functionalization events. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga9d57bfb85ca8ab5a943e46b461e42aea}{counter\+\_\+cogain}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Co-\/evolution (joint gain or loss) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gac356c5c159d2f37088b162ed04c362ad}{counter\+\_\+longest}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Longest branch mutates (either by gain or by loss) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gacd47917bea8489de870d1fc58f5c7076}{counter\+\_\+neofun}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gaa7de3c183a65a0701cbce03545421c7d}{counter\+\_\+pairwise\+\_\+neofun\+\_\+singlefun}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events sum\+\_\+u sum\+\_\+\{w $<$ u\} \mbox{[}x(u,a)$\ast$(1 -\/ x(w,a)) + (1 -\/ x(u,a)) $\ast$ x(w,a)\mbox{]} change stat\+: delta\{x(u,a)\+: 0-\/$>$1\} = 1 -\/ 2 $\ast$ x(w,a) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga1bf540113edfb5f96f2138370b6f77f6}{counter\+\_\+neofun\+\_\+a2b}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Total number of neofunctionalization events. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga39768a8cbb21e6b775c382568a4f98f9}{counter\+\_\+co\+\_\+opt}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Function co-\/opting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga1f7678ddbb9f9084cb5fe1c79f205558}{counter\+\_\+k\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a9389e4770ba454a2e14f870491495cb2}{k}}, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Indicator function. Equals to one if $k$ genes changed and zero otherwise. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gaa6fbd08ef13dbe4b29a68e9200113feb}{counter\+\_\+less\+\_\+than\+\_\+p\+\_\+prop\+\_\+genes\+\_\+changing}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, double p, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Indicator function. Equals to one if $k$ genes changed and zero otherwise. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga8f28f78a8170fcd27f8888bfd2f99d52}{counter\+\_\+gains\+\_\+from\+\_\+0}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, std\+::vector$<$ size\+\_\+t $>$ nfun, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gac2eb4b7941b56f783eff66f5acfc656c}{counter\+\_\+overall\+\_\+gains\+\_\+from\+\_\+0}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_ga8f177ab499b4fe4c4e091e972a933d2b}{counter\+\_\+pairwise\+\_\+overall\+\_\+change}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gaaa5028dec97170c740ea270f19be9f77}{counter\+\_\+pairwise\+\_\+preserving}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counting_gaf3bb2dd1c9db36df1d010cc691573243}{counter\+\_\+pairwise\+\_\+first\+\_\+gain}} (\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$\mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}, size\+\_\+t nfunA, size\+\_\+t nfunB, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Used when all the functions are in 0 (like the root node prob.) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -21,3 +89,484 @@ In particular, let the motif be defined as $s(y)$, with $y$ as the binary array.
 where $s^+_{ij}(y)$ and $s^-_{ij}(y)$ represent the motif statistic with and without the ij-\/cell. For example, in the case of networks, the change statistic for the number of edges is always 1.
 
 To count statistics in an array, the \mbox{[}\mbox{\hyperlink{class_counter}{Counter}}\mbox{]} class will empty the array, initialize the counters, and then start counting while adding at each step a single cell, until matching the original array. 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__counting_gaadfa3455c6a85615e658a4f8e17dbc47}\label{group__counting_gaadfa3455c6a85615e658a4f8e17dbc47}} 
+\index{Counting@{Counting}!IF\_MATCHES@{IF\_MATCHES}}
+\index{IF\_MATCHES@{IF\_MATCHES}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{IF\_MATCHES}{IF\_MATCHES}}
+{\footnotesize\ttfamily \#define IF\+\_\+\+MATCHES(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \mbox{\hyperlink{group__counting_gaa723b014f0985d974ac55ce671689f65}{MAKE\_DUPL\_VARS}}() \(\backslash\)}
+\DoxyCodeLine{    if (\mbox{\hyperlink{group__counting_ga100f75e7828db28578049b1b57f4f8c7}{IS\_EITHER}}() | \mbox{\hyperlink{group__counting_ga86dd8a06889c073afb9dbd5a2afcaabb}{IS\_DUPLICATION}}() | \mbox{\hyperlink{group__counting_ga52f210beb7fe1b575b77a3286c502b96}{IS\_SPECIATION}}())}
+
+\end{DoxyCode}
+
+
+Definition at line 20 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga6c20892d837efbb7da5227af44feca3c}\label{group__counting_ga6c20892d837efbb7da5227af44feca3c}} 
+\index{Counting@{Counting}!IF\_NOTMATCHES@{IF\_NOTMATCHES}}
+\index{IF\_NOTMATCHES@{IF\_NOTMATCHES}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{IF\_NOTMATCHES}{IF\_NOTMATCHES}}
+{\footnotesize\ttfamily \#define IF\+\_\+\+NOTMATCHES(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \mbox{\hyperlink{group__counting_gaa723b014f0985d974ac55ce671689f65}{MAKE\_DUPL\_VARS}}() \(\backslash\)}
+\DoxyCodeLine{    if (!\mbox{\hyperlink{group__counting_ga100f75e7828db28578049b1b57f4f8c7}{IS\_EITHER}}() \& !\mbox{\hyperlink{group__counting_ga86dd8a06889c073afb9dbd5a2afcaabb}{IS\_DUPLICATION}}() \& !\mbox{\hyperlink{group__counting_ga52f210beb7fe1b575b77a3286c502b96}{IS\_SPECIATION}}())}
+
+\end{DoxyCode}
+
+
+Definition at line 22 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga86dd8a06889c073afb9dbd5a2afcaabb}\label{group__counting_ga86dd8a06889c073afb9dbd5a2afcaabb}} 
+\index{Counting@{Counting}!IS\_DUPLICATION@{IS\_DUPLICATION}}
+\index{IS\_DUPLICATION@{IS\_DUPLICATION}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{IS\_DUPLICATION}{IS\_DUPLICATION}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+DUPLICATION(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~((DATA\+\_\+\+AT == \mbox{\hyperlink{class_geese_aa29209e43a6aa74020f7477eb920e2b0}{Geese\+::etype\+\_\+duplication}}) \& (DPL))}
+
+
+
+Definition at line 17 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga100f75e7828db28578049b1b57f4f8c7}\label{group__counting_ga100f75e7828db28578049b1b57f4f8c7}} 
+\index{Counting@{Counting}!IS\_EITHER@{IS\_EITHER}}
+\index{IS\_EITHER@{IS\_EITHER}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{IS\_EITHER}{IS\_EITHER}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+EITHER(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~(DATA\+\_\+\+AT == \mbox{\hyperlink{class_geese_a0bbca4599569a83d430236de7609c1d9}{Geese\+::etype\+\_\+either}})}
+
+
+
+Definition at line 16 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga52f210beb7fe1b575b77a3286c502b96}\label{group__counting_ga52f210beb7fe1b575b77a3286c502b96}} 
+\index{Counting@{Counting}!IS\_SPECIATION@{IS\_SPECIATION}}
+\index{IS\_SPECIATION@{IS\_SPECIATION}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{IS\_SPECIATION}{IS\_SPECIATION}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+SPECIATION(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~((DATA\+\_\+\+AT == \mbox{\hyperlink{class_geese_ad361c35852cafe14af2858b36da75bc1}{Geese\+::etype\+\_\+speciation}}) \& (!DPL))}
+
+
+
+Definition at line 18 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gaa723b014f0985d974ac55ce671689f65}\label{group__counting_gaa723b014f0985d974ac55ce671689f65}} 
+\index{Counting@{Counting}!MAKE\_DUPL\_VARS@{MAKE\_DUPL\_VARS}}
+\index{MAKE\_DUPL\_VARS@{MAKE\_DUPL\_VARS}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{MAKE\_DUPL\_VARS}{MAKE\_DUPL\_VARS}}
+{\footnotesize\ttfamily \#define MAKE\+\_\+\+DUPL\+\_\+\+VARS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordtype}{bool} DPL = Array.D\_ptr()-\/>duplication; \(\backslash\)}
+\DoxyCodeLine{    size\_t DATA\_AT = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}[0u];}
+
+\end{DoxyCode}
+Details about the available counters for {\ttfamily Phylo\+Array} objects can be found in the \mbox{\hyperlink{group__counters-phylo}{Phylo counters}} section. 
+
+Definition at line 12 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga81c4979894537f31d3ecc06c5f6dd504}\label{group__counting_ga81c4979894537f31d3ecc06c5f6dd504}} 
+\index{Counting@{Counting}!PHYLO\_CHECK\_MISSING@{PHYLO\_CHECK\_MISSING}}
+\index{PHYLO\_CHECK\_MISSING@{PHYLO\_CHECK\_MISSING}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{PHYLO\_CHECK\_MISSING}{PHYLO\_CHECK\_MISSING}}
+{\footnotesize\ttfamily \#define PHYLO\+\_\+\+CHECK\+\_\+\+MISSING(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (Array.D\_ptr() == \textcolor{keyword}{nullptr}) \(\backslash\)}
+\DoxyCodeLine{    throw std::logic\_error(\textcolor{stringliteral}{"{}The array data is nullptr."{}}); \(\backslash\)}
+
+\end{DoxyCode}
+
+
+Definition at line 42 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gac89fe9750bd62a338930ea730d23d0d2}\label{group__counting_gac89fe9750bd62a338930ea730d23d0d2}} 
+\index{Counting@{Counting}!PHYLO\_COUNTER\_LAMBDA@{PHYLO\_COUNTER\_LAMBDA}}
+\index{PHYLO\_COUNTER\_LAMBDA@{PHYLO\_COUNTER\_LAMBDA}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{PHYLO\_COUNTER\_LAMBDA}{PHYLO\_COUNTER\_LAMBDA}}
+{\footnotesize\ttfamily \#define PHYLO\+\_\+\+COUNTER\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    barry::Counter\_fun\_type<PhyloArray, PhyloCounterData> \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = \(\backslash\)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{geese-types_8hpp_a3f0cae5b6ac5c728612da24e8aa3b5f6}{PhyloArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_phylo_counter_data}{PhyloCounterData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+
+\end{DoxyCode}
+
+
+Extension of a simple counter. 
+
+It allows specifying extra arguments, in particular, the corresponding sets of rows to which this statistic may be relevant. This could be important in the case of, for example, counting correlation type statistics between function 1 and 2, and between function 1 and 3. 
+
+Definition at line 36 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga4a7a35cddb61f74a0ec3cb3893cf78b1}\label{group__counting_ga4a7a35cddb61f74a0ec3cb3893cf78b1}} 
+\index{Counting@{Counting}!PHYLO\_RULE\_DYN\_LAMBDA@{PHYLO\_RULE\_DYN\_LAMBDA}}
+\index{PHYLO\_RULE\_DYN\_LAMBDA@{PHYLO\_RULE\_DYN\_LAMBDA}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{PHYLO\_RULE\_DYN\_LAMBDA}{PHYLO\_RULE\_DYN\_LAMBDA}}
+{\footnotesize\ttfamily \#define PHYLO\+\_\+\+RULE\+\_\+\+DYN\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    barry::Rule\_fun\_type<PhyloArray, PhyloRuleDynData> \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = \(\backslash\)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{geese-types_8hpp_a3f0cae5b6ac5c728612da24e8aa3b5f6}{PhyloArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{PhyloRuleDynData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+
+\end{DoxyCode}
+
+
+Definition at line 39 of file counters.\+hpp.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__counting_ga39768a8cbb21e6b775c382568a4f98f9}\label{group__counting_ga39768a8cbb21e6b775c382568a4f98f9}} 
+\index{Counting@{Counting}!counter\_co\_opt@{counter\_co\_opt}}
+\index{counter\_co\_opt@{counter\_co\_opt}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_co\_opt()}{counter\_co\_opt()}}
+{\footnotesize\ttfamily void counter\+\_\+co\+\_\+opt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{nfunA,  }\item[{size\+\_\+t}]{nfunB,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function co-\/opting. 
+
+Function co-\/opting of functions A and B happens when, for example, function B is gained as a new featured leveraging what function A already does; without losing function A. The sufficient statistic is defined as follows\+: \[ x_{pa}(1 - x_{pb})\sum_{i<j}\left[x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p + x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p\right] \] This algorithm implements the change statistic. 
+
+Definition at line 1296 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga9d57bfb85ca8ab5a943e46b461e42aea}\label{group__counting_ga9d57bfb85ca8ab5a943e46b461e42aea}} 
+\index{Counting@{Counting}!counter\_cogain@{counter\_cogain}}
+\index{counter\_cogain@{counter\_cogain}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_cogain()}{counter\_cogain()}}
+{\footnotesize\ttfamily void counter\+\_\+cogain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{nfunA,  }\item[{size\+\_\+t}]{nfunB,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Co-\/evolution (joint gain or loss) 
+
+Needs to specify pairs of functions ({\ttfamily nfunA}, {\ttfamily nfunB}). 
+
+Definition at line 791 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga8972c27d6e3dfa3fb980afce91dbd582}\label{group__counting_ga8972c27d6e3dfa3fb980afce91dbd582}} 
+\index{Counting@{Counting}!counter\_gains@{counter\_gains}}
+\index{counter\_gains@{counter\_gains}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_gains()}{counter\_gains()}}
+{\footnotesize\ttfamily void counter\+\_\+gains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{std\+::vector$<$ size\+\_\+t $>$}]{nfun,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Functional gains for a specific function ({\ttfamily nfun}). 
+
+
+
+Definition at line 96 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga8f28f78a8170fcd27f8888bfd2f99d52}\label{group__counting_ga8f28f78a8170fcd27f8888bfd2f99d52}} 
+\index{Counting@{Counting}!counter\_gains\_from\_0@{counter\_gains\_from\_0}}
+\index{counter\_gains\_from\_0@{counter\_gains\_from\_0}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_gains\_from\_0()}{counter\_gains\_from\_0()}}
+{\footnotesize\ttfamily void counter\+\_\+gains\+\_\+from\+\_\+0 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{std\+::vector$<$ size\+\_\+t $>$}]{nfun,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Used when all the functions are in 0 (like the root node prob.) 
+
+Needs to specify function a. 
+
+Definition at line 1630 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gac5bf2141645db356fbd1333d56ce8444}\label{group__counting_gac5bf2141645db356fbd1333d56ce8444}} 
+\index{Counting@{Counting}!counter\_gains\_k\_offspring@{counter\_gains\_k\_offspring}}
+\index{counter\_gains\_k\_offspring@{counter\_gains\_k\_offspring}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_gains\_k\_offspring()}{counter\_gains\_k\_offspring()}}
+{\footnotesize\ttfamily void counter\+\_\+gains\+\_\+k\+\_\+offspring (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{std\+::vector$<$ size\+\_\+t $>$}]{nfun,  }\item[{size\+\_\+t}]{k = {\ttfamily 1u},  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+k genes gain function nfun 
+
+
+
+Definition at line 156 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga347aabd9065d9ff8352e58fb282b8fd2}\label{group__counting_ga347aabd9065d9ff8352e58fb282b8fd2}} 
+\index{Counting@{Counting}!counter\_genes\_changing@{counter\_genes\_changing}}
+\index{counter\_genes\_changing@{counter\_genes\_changing}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_genes\_changing()}{counter\_genes\_changing()}}
+{\footnotesize\ttfamily void counter\+\_\+genes\+\_\+changing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with regular trees.) 
+
+
+
+Definition at line 228 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga1f7678ddbb9f9084cb5fe1c79f205558}\label{group__counting_ga1f7678ddbb9f9084cb5fe1c79f205558}} 
+\index{Counting@{Counting}!counter\_k\_genes\_changing@{counter\_k\_genes\_changing}}
+\index{counter\_k\_genes\_changing@{counter\_k\_genes\_changing}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_k\_genes\_changing()}{counter\_k\_genes\_changing()}}
+{\footnotesize\ttfamily void counter\+\_\+k\+\_\+genes\+\_\+changing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{k,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicator function. Equals to one if $k$ genes changed and zero otherwise. 
+
+
+
+Definition at line 1394 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gaa6fbd08ef13dbe4b29a68e9200113feb}\label{group__counting_gaa6fbd08ef13dbe4b29a68e9200113feb}} 
+\index{Counting@{Counting}!counter\_less\_than\_p\_prop\_genes\_changing@{counter\_less\_than\_p\_prop\_genes\_changing}}
+\index{counter\_less\_than\_p\_prop\_genes\_changing@{counter\_less\_than\_p\_prop\_genes\_changing}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_less\_than\_p\_prop\_genes\_changing()}{counter\_less\_than\_p\_prop\_genes\_changing()}}
+{\footnotesize\ttfamily void counter\+\_\+less\+\_\+than\+\_\+p\+\_\+prop\+\_\+genes\+\_\+changing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{double}]{p,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicator function. Equals to one if $k$ genes changed and zero otherwise. 
+
+$<$ How many genes diverge the parent
+
+Definition at line 1514 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gac356c5c159d2f37088b162ed04c362ad}\label{group__counting_gac356c5c159d2f37088b162ed04c362ad}} 
+\index{Counting@{Counting}!counter\_longest@{counter\_longest}}
+\index{counter\_longest@{counter\_longest}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_longest()}{counter\_longest()}}
+{\footnotesize\ttfamily void counter\+\_\+longest (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Longest branch mutates (either by gain or by loss) 
+
+
+
+Definition at line 848 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga6de412cdee1ec990e62edcb29c118824}\label{group__counting_ga6de412cdee1ec990e62edcb29c118824}} 
+\index{Counting@{Counting}!counter\_loss@{counter\_loss}}
+\index{counter\_loss@{counter\_loss}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_loss()}{counter\_loss()}}
+{\footnotesize\ttfamily void counter\+\_\+loss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{std\+::vector$<$ size\+\_\+t $>$}]{nfun,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Total count of losses for an specific function. 
+
+
+
+Definition at line 591 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gae0453a90fb7c8668a6845fe850477cc7}\label{group__counting_gae0453a90fb7c8668a6845fe850477cc7}} 
+\index{Counting@{Counting}!counter\_maxfuns@{counter\_maxfuns}}
+\index{counter\_maxfuns@{counter\_maxfuns}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_maxfuns()}{counter\_maxfuns()}}
+{\footnotesize\ttfamily void counter\+\_\+maxfuns (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{lb,  }\item[{size\+\_\+t}]{ub,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cap the number of functions per gene. 
+
+
+
+Definition at line 529 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gacd47917bea8489de870d1fc58f5c7076}\label{group__counting_gacd47917bea8489de870d1fc58f5c7076}} 
+\index{Counting@{Counting}!counter\_neofun@{counter\_neofun}}
+\index{counter\_neofun@{counter\_neofun}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_neofun()}{counter\_neofun()}}
+{\footnotesize\ttfamily void counter\+\_\+neofun (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{nfunA,  }\item[{size\+\_\+t}]{nfunB,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Total number of neofunctionalization events. 
+
+Needs to specify pairs of function. 
+
+Definition at line 1018 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga1bf540113edfb5f96f2138370b6f77f6}\label{group__counting_ga1bf540113edfb5f96f2138370b6f77f6}} 
+\index{Counting@{Counting}!counter\_neofun\_a2b@{counter\_neofun\_a2b}}
+\index{counter\_neofun\_a2b@{counter\_neofun\_a2b}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_neofun\_a2b()}{counter\_neofun\_a2b()}}
+{\footnotesize\ttfamily void counter\+\_\+neofun\+\_\+a2b (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{nfunA,  }\item[{size\+\_\+t}]{nfunB,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Total number of neofunctionalization events. 
+
+Needs to specify pairs of function. 
+
+Definition at line 1163 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga23beb6a43e5da922f7c364714a95a89e}\label{group__counting_ga23beb6a43e5da922f7c364714a95a89e}} 
+\index{Counting@{Counting}!counter\_overall\_changes@{counter\_overall\_changes}}
+\index{counter\_overall\_changes@{counter\_overall\_changes}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_overall\_changes()}{counter\_overall\_changes()}}
+{\footnotesize\ttfamily void counter\+\_\+overall\+\_\+changes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Total number of changes. Use this statistic to account for \char`\"{}preservation\char`\"{}. 
+
+
+
+Definition at line 643 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga17277bd554ecacf1bc45165564723722}\label{group__counting_ga17277bd554ecacf1bc45165564723722}} 
+\index{Counting@{Counting}!counter\_overall\_gains@{counter\_overall\_gains}}
+\index{counter\_overall\_gains@{counter\_overall\_gains}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_overall\_gains()}{counter\_overall\_gains()}}
+{\footnotesize\ttfamily void counter\+\_\+overall\+\_\+gains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overall functional gains. 
+
+Total number of gains (irrespective of the function). 
+
+Definition at line 58 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gac2eb4b7941b56f783eff66f5acfc656c}\label{group__counting_gac2eb4b7941b56f783eff66f5acfc656c}} 
+\index{Counting@{Counting}!counter\_overall\_gains\_from\_0@{counter\_overall\_gains\_from\_0}}
+\index{counter\_overall\_gains\_from\_0@{counter\_overall\_gains\_from\_0}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_overall\_gains\_from\_0()}{counter\_overall\_gains\_from\_0()}}
+{\footnotesize\ttfamily void counter\+\_\+overall\+\_\+gains\+\_\+from\+\_\+0 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Used when all the functions are in 0 (like the root node prob.) 
+
+Needs to specify function a. 
+
+Definition at line 1696 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga8f65b1cc27fb2f27eb5525b5b36c19f8}\label{group__counting_ga8f65b1cc27fb2f27eb5525b5b36c19f8}} 
+\index{Counting@{Counting}!counter\_overall\_loss@{counter\_overall\_loss}}
+\index{counter\_overall\_loss@{counter\_overall\_loss}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_overall\_loss()}{counter\_overall\_loss()}}
+{\footnotesize\ttfamily void counter\+\_\+overall\+\_\+loss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overall functional loss. 
+
+
+
+Definition at line 481 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gaf3bb2dd1c9db36df1d010cc691573243}\label{group__counting_gaf3bb2dd1c9db36df1d010cc691573243}} 
+\index{Counting@{Counting}!counter\_pairwise\_first\_gain@{counter\_pairwise\_first\_gain}}
+\index{counter\_pairwise\_first\_gain@{counter\_pairwise\_first\_gain}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_pairwise\_first\_gain()}{counter\_pairwise\_first\_gain()}}
+{\footnotesize\ttfamily void counter\+\_\+pairwise\+\_\+first\+\_\+gain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{nfunA,  }\item[{size\+\_\+t}]{nfunB,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Used when all the functions are in 0 (like the root node prob.) 
+
+Needs to specify function a. sum x(a)$^\wedge$3(1-\/x(b))$^\wedge$3 + x(b)$^\wedge$3(1-\/x(a))$^\wedge$3 + x(a)$^\wedge$3 $\ast$ x(b)$^\wedge$3 + (1 -\/ x(a))$^\wedge$3 $\ast$ (1-\/x(b))$^\wedge$3 
+
+Definition at line 1948 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gaa7de3c183a65a0701cbce03545421c7d}\label{group__counting_gaa7de3c183a65a0701cbce03545421c7d}} 
+\index{Counting@{Counting}!counter\_pairwise\_neofun\_singlefun@{counter\_pairwise\_neofun\_singlefun}}
+\index{counter\_pairwise\_neofun\_singlefun@{counter\_pairwise\_neofun\_singlefun}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_pairwise\_neofun\_singlefun()}{counter\_pairwise\_neofun\_singlefun()}}
+{\footnotesize\ttfamily void counter\+\_\+pairwise\+\_\+neofun\+\_\+singlefun (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{nfunA,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Total number of neofunctionalization events sum\+\_\+u sum\+\_\+\{w $<$ u\} \mbox{[}x(u,a)$\ast$(1 -\/ x(w,a)) + (1 -\/ x(u,a)) $\ast$ x(w,a)\mbox{]} change stat\+: delta\{x(u,a)\+: 0-\/$>$1\} = 1 -\/ 2 $\ast$ x(w,a) 
+
+
+
+Definition at line 1099 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga8f177ab499b4fe4c4e091e972a933d2b}\label{group__counting_ga8f177ab499b4fe4c4e091e972a933d2b}} 
+\index{Counting@{Counting}!counter\_pairwise\_overall\_change@{counter\_pairwise\_overall\_change}}
+\index{counter\_pairwise\_overall\_change@{counter\_pairwise\_overall\_change}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_pairwise\_overall\_change()}{counter\_pairwise\_overall\_change()}}
+{\footnotesize\ttfamily void counter\+\_\+pairwise\+\_\+overall\+\_\+change (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Used when all the functions are in 0 (like the root node prob.) 
+
+Needs to specify function a. 
+
+Definition at line 1744 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gaaa5028dec97170c740ea270f19be9f77}\label{group__counting_gaaa5028dec97170c740ea270f19be9f77}} 
+\index{Counting@{Counting}!counter\_pairwise\_preserving@{counter\_pairwise\_preserving}}
+\index{counter\_pairwise\_preserving@{counter\_pairwise\_preserving}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_pairwise\_preserving()}{counter\_pairwise\_preserving()}}
+{\footnotesize\ttfamily void counter\+\_\+pairwise\+\_\+preserving (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{nfunA,  }\item[{size\+\_\+t}]{nfunB,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Used when all the functions are in 0 (like the root node prob.) 
+
+Needs to specify function a. sum x(a)$^\wedge$3(1-\/x(b))$^\wedge$3 + x(b)$^\wedge$3(1-\/x(a))$^\wedge$3 + x(a)$^\wedge$3 $\ast$ x(b)$^\wedge$3 + (1 -\/ x(a))$^\wedge$3 $\ast$ (1-\/x(b))$^\wedge$3 
+
+Definition at line 1809 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gaa8f376142a4cd889fede792686654d16}\label{group__counting_gaa8f376142a4cd889fede792686654d16}} 
+\index{Counting@{Counting}!counter\_preserve\_pseudogene@{counter\_preserve\_pseudogene}}
+\index{counter\_preserve\_pseudogene@{counter\_preserve\_pseudogene}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_preserve\_pseudogene()}{counter\_preserve\_pseudogene()}}
+{\footnotesize\ttfamily void counter\+\_\+preserve\+\_\+pseudogene (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{nfunA,  }\item[{size\+\_\+t}]{nfunB,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Keeps track of how many pairs of genes preserve pseudostate. 
+
+
+
+Definition at line 297 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga893edd882c9f9e72c4ee97a0576f36a6}\label{group__counting_ga893edd882c9f9e72c4ee97a0576f36a6}} 
+\index{Counting@{Counting}!counter\_prop\_genes\_changing@{counter\_prop\_genes\_changing}}
+\index{counter\_prop\_genes\_changing@{counter\_prop\_genes\_changing}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_prop\_genes\_changing()}{counter\_prop\_genes\_changing()}}
+{\footnotesize\ttfamily void counter\+\_\+prop\+\_\+genes\+\_\+changing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with regular trees.) 
+
+
+
+Definition at line 379 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_ga23c694532337cb12a77a64f3202a14cf}\label{group__counting_ga23c694532337cb12a77a64f3202a14cf}} 
+\index{Counting@{Counting}!counter\_subfun@{counter\_subfun}}
+\index{counter\_subfun@{counter\_subfun}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{counter\_subfun()}{counter\_subfun()}}
+{\footnotesize\ttfamily void counter\+\_\+subfun (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{geese-types_8hpp_a23d267147d3dde4bbbd4c298f0aed64d}{Phylo\+Counters}} $\ast$}]{counters,  }\item[{size\+\_\+t}]{nfunA,  }\item[{size\+\_\+t}]{nfunB,  }\item[{size\+\_\+t}]{duplication = {\ttfamily \mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Total count of Sub-\/functionalization events. 
+
+It requires to specify data = \{funA, funB\} 
+
+Definition at line 702 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gac2b3fdac968043baa290218fff498fb7}\label{group__counting_gac2b3fdac968043baa290218fff498fb7}} 
+\index{Counting@{Counting}!get\_last\_name@{get\_last\_name}}
+\index{get\_last\_name@{get\_last\_name}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{get\_last\_name()}{get\_last\_name()}}
+{\footnotesize\ttfamily std\+::string get\+\_\+last\+\_\+name (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 45 of file counters.\+hpp.
+

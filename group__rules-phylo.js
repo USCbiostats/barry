@@ -5,16 +5,6 @@ var group__rules_phylo =
       [ "~DEFMRuleDynData", "class_d_e_f_m_rule_dyn_data.html#ad64e7379376d678c0d7795be221c5e3e", null ],
       [ "counts", "class_d_e_f_m_rule_dyn_data.html#a7b639c0b73814eec9015b82f7e2d8439", null ]
     ] ],
-    [ "PhyloRuleDynData", "class_phylo_rule_dyn_data.html", [
-      [ "PhyloRuleDynData", "class_phylo_rule_dyn_data.html#a8aa2df2ef1a21f17adceb2bcebd1305f", null ],
-      [ "~PhyloRuleDynData", "class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90", null ],
-      [ "operator()", "class_phylo_rule_dyn_data.html#a505ba8bf68f823ce441dc6deb63c8aee", null ],
-      [ "counts", "class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98", null ],
-      [ "duplication", "class_phylo_rule_dyn_data.html#a286657bd816f347cfe190bcb3a78ed27", null ],
-      [ "lb", "class_phylo_rule_dyn_data.html#a7955a25d9290197da718c78f26c9b7ba", null ],
-      [ "pos", "class_phylo_rule_dyn_data.html#a8bcfdfaa0cd5beaedb486f91f1097644", null ],
-      [ "ub", "class_phylo_rule_dyn_data.html#ad92fa14927d33a5cffed37ee8c00a2a5", null ]
-    ] ],
     [ "DEFM_COUNTER", "group__rules-phylo.html#gaceda72b2e1b110e80235df9dbac17351", null ],
     [ "DEFM_COUNTER_LAMBDA", "group__rules-phylo.html#ga0de627ee2d314d645cf885c7cc0ee36b", null ],
     [ "DEFM_RULE", "group__rules-phylo.html#gaf210bb3f47af7995ff200264370d9db6", null ],
@@ -34,5 +24,5 @@ var group__rules_phylo =
     [ "nrow", "group__rules-phylo.html#ga8d35cccda96180f18d4f87f3831e68d9", null ],
     [ "operator()", "group__rules-phylo.html#ga66b7a40df357b79514dcbc4accfe679d", null ],
     [ "print", "group__rules-phylo.html#gae1617d2f94e8595c8fde0c6013e21a2d", null ],
-    [ "rule_dyn_limit_changes", "group__rules-phylo.html#ga1f6c181ff884a6cb29b5c3a3f7689d4f", null ]
+    [ "rule_dyn_limit_changes", "group__rules-phylo.html#ga0773b2dbf4673181e45c93632a5f9cc3", null ]
 ];

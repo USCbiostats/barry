@@ -4,11 +4,11 @@ var class_flock =
     [ "~Flock", "class_flock.html#ab5ed0567a8721dd114763267f9fa3bdf", null ],
     [ "add_data", "class_flock.html#a5e882cb60a36398180557662731d3c11", null ],
     [ "colnames", "class_flock.html#a0fb9c1d463b2cd19a966aa85d5511a92", null ],
-    [ "get_counters", "class_flock.html#ae9c604362348f2e2e3a22da623a406f6", null ],
-    [ "get_model", "class_flock.html#aa14c83224ad920619fabd9b39ee794ba", null ],
+    [ "get_counters", "class_flock.html#a1010aa9fb40acb618c604c531e2528bb", null ],
+    [ "get_model", "class_flock.html#a9692be014117ae093ce160462dbde0d2", null ],
     [ "get_stats_support", "class_flock.html#ab5f4c94b0484772321b3856debdf3a58", null ],
     [ "get_stats_target", "class_flock.html#a26462201318e4bf34756a2a14e2cc3fb", null ],
-    [ "get_support_fun", "class_flock.html#a9eceaf72a6c59f8801375cba69efdae5", null ],
+    [ "get_support_fun", "class_flock.html#add876188b5f16af037525e71eaf7fc05", null ],
     [ "init", "class_flock.html#a5ddef5ec4a7b150a354db11bb6b0c593", null ],
     [ "likelihood_joint", "class_flock.html#a275193d11c7ce3b8ec5dc18c8fab3e2e", null ],
     [ "nfuns", "class_flock.html#a55cf3311be1c2129466a666bbe90a3fb", null ],
@@ -23,7 +23,7 @@ var class_flock =
     [ "support_size", "class_flock.html#ad0f1cd362bc6a2dfbb81fa2abeff59cc", null ],
     [ "dat", "class_flock.html#af493163235db2dcb44b8c5e615f52bdb", null ],
     [ "initialized", "class_flock.html#aad9b90040d349a23b33e09292bb964db", null ],
-    [ "model", "class_flock.html#a9f0bdc92f4e69c1d9e88dd80bce61e9b", null ],
+    [ "model", "class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640", null ],
     [ "nfunctions", "class_flock.html#afe255f66684b6607197954152686584a", null ],
     [ "rengine", "class_flock.html#a0e3ce6d007f667eea9f036cddb6789b6", null ]
 ];
