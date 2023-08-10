@@ -8318,7 +8318,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     printf_barry("Support size         : %li\n", this->size_unique());
     printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (%li)     :\n", this->nterms());
+    printf_barry("Model terms (%li)    :\n", this->nterms());
     for (auto & cn : this->colnames())
     {
         printf_barry(" - %s\n", cn.c_str());
@@ -8336,7 +8336,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules_dyn() > 0u)
     {
-        printf_barry("Model rules dyn (%li):\n", this->nrules());
+        printf_barry("Model rules dyn (%li):\n", this->nrules_dyn());
     
         for (auto & rn : rules_dyn->get_names())
         {

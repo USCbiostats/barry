@@ -2160,6 +2160,11 @@ public:
         size_t duplication_
         ) :
         counts(counts_), pos(pos_), lb(lb_), ub(ub_), duplication(duplication_) {};
+
+    const double operator()() const
+    {
+        return (*counts)[pos];
+    }
     
     ~PhyloRuleDynData() {};
     
@@ -2197,9 +2202,9 @@ inline void rule_dyn_limit_changes(
                 
         }
 
-        if (data.counts->operator[](data.pos) < data.lb)
+        if (data() < data.lb)
             return false;
-        else if (data.counts->operator[](data.pos) > data.ub)
+        else if (data() > data.ub)
             return false;
         else
             return true;
@@ -2212,12 +2217,16 @@ inline void rule_dyn_limit_changes(
             support->get_current_stats(),
             pos, lb, ub, duplication
             ),
-        std::string("Limiting changes in term ") + 
-            std::to_string(pos) + " to [" + std::to_string(lb) + ", " +
-            std::to_string(ub) + "]",        
-        std::string("When the support is ennumerated, the number of changes in term ") + 
-            std::to_string(pos) + " is limited to [" + std::to_string(lb) + ", " +
-            std::to_string(ub) + "]"
+        std::string("Limiting changes in '") + 
+            support->get_counters()->get_names()[pos] +
+            "' to [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + std::string("]") +
+            get_last_name(duplication),        
+        std::string("When the support is ennumerated, the number of changes in '") + 
+            support->get_counters()->get_names()[pos] +
+            std::to_string(pos) + "' is limited to [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + "]" +
+            get_last_name(duplication)
     );
     
     return;
