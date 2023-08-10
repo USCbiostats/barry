@@ -2,6 +2,7 @@ var class_phylo_rule_dyn_data =
 [
     [ "PhyloRuleDynData", "class_phylo_rule_dyn_data.html#a8aa2df2ef1a21f17adceb2bcebd1305f", null ],
     [ "~PhyloRuleDynData", "class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90", null ],
+    [ "operator()", "class_phylo_rule_dyn_data.html#a505ba8bf68f823ce441dc6deb63c8aee", null ],
     [ "counts", "class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98", null ],
     [ "duplication", "class_phylo_rule_dyn_data.html#a286657bd816f347cfe190bcb3a78ed27", null ],
     [ "lb", "class_phylo_rule_dyn_data.html#a7955a25d9290197da718c78f26c9b7ba", null ],

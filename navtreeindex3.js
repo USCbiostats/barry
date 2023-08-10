@@ -150,12 +150,13 @@ var NAVTREEINDEX3 =
 "class_phylo_counter_data.html#afa54115f466487be24c6642dfb48b3e4":[2,0,33,8],
 "class_phylo_rule_dyn_data.html":[0,2,1],
 "class_phylo_rule_dyn_data.html#a02bf73d09a11120ca08686d939b53d90":[0,2,1,1],
-"class_phylo_rule_dyn_data.html#a286657bd816f347cfe190bcb3a78ed27":[0,2,1,3],
-"class_phylo_rule_dyn_data.html#a7955a25d9290197da718c78f26c9b7ba":[0,2,1,4],
+"class_phylo_rule_dyn_data.html#a286657bd816f347cfe190bcb3a78ed27":[0,2,1,4],
+"class_phylo_rule_dyn_data.html#a505ba8bf68f823ce441dc6deb63c8aee":[0,2,1,2],
+"class_phylo_rule_dyn_data.html#a7955a25d9290197da718c78f26c9b7ba":[0,2,1,5],
 "class_phylo_rule_dyn_data.html#a8aa2df2ef1a21f17adceb2bcebd1305f":[0,2,1,0],
-"class_phylo_rule_dyn_data.html#a8bcfdfaa0cd5beaedb486f91f1097644":[0,2,1,5],
-"class_phylo_rule_dyn_data.html#ad92fa14927d33a5cffed37ee8c00a2a5":[0,2,1,6],
-"class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98":[0,2,1,2],
+"class_phylo_rule_dyn_data.html#a8bcfdfaa0cd5beaedb486f91f1097644":[0,2,1,6],
+"class_phylo_rule_dyn_data.html#ad92fa14927d33a5cffed37ee8c00a2a5":[0,2,1,7],
+"class_phylo_rule_dyn_data.html#aff6f21653d7f96e8c5399c9556da6f98":[0,2,1,3],
 "class_power_set.html":[2,0,35],
 "class_power_set.html#a017d35750d824f8e9ce7e03b996c4d4c":[2,0,35,21],
 "class_power_set.html#a08b6baf1e244e023d997ddaecbc2116f":[2,0,35,24],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "class_support.html#a6f2e96153f42a5e4a7bebfa79adcc331":[2,0,40,34],
 "class_support.html#a71e963ffbb78d36ea75f96afc6a477e3":[2,0,40,7],
 "class_support.html#a792ae05c77c18919a30dd5e2a9d44bf1":[2,0,40,15],
-"class_support.html#a7981b38d84ec4782ff139a2d6c1a7871":[2,0,40,24],
-"class_support.html#a8af9d807ce23c9f7259138b5aebdda31":[2,0,40,13]
+"class_support.html#a7981b38d84ec4782ff139a2d6c1a7871":[2,0,40,24]
 };
