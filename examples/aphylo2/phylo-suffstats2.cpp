@@ -96,13 +96,13 @@ int main() {
     Geese model2(ann2, geneid2, parent2);
 
     // Adding terms
-    phylocounters::counter_cogain(&model2.counters, 0, 1);
-    phylocounters::counter_cogain(&model2.counters, 0, 2);
-    phylocounters::counter_cogain(&model2.counters, 1, 2);
-    phylocounters::counter_subfun(&model2.counters, 1, 2);
-    phylocounters::counter_subfun(&model2.counters, 1, 0);
-    phylocounters::counter_subfun(&model2.counters, 0, 2);
-    phylocounters::counter_maxfuns(&model2.counters, 2, 2);
+    ::counter_cogain(&model2.counters, 0, 1);
+    ::counter_cogain(&model2.counters, 0, 2);
+    ::counter_cogain(&model2.counters, 1, 2);
+    ::counter_subfun(&model2.counters, 1, 2);
+    ::counter_subfun(&model2.counters, 1, 0);
+    ::counter_subfun(&model2.counters, 0, 2);
+    ::counter_maxfuns(&model2.counters, 2, 2);
 
     model2.init();
     model2.set_seed(1121);

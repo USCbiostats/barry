@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 #include "../include/barry.hpp"
+#include "../include/barry/models/geese.hpp"
 
 using namespace Rcpp;
 
@@ -15,21 +16,21 @@ List counter_phylo(
     ) {
   
   // Initializing the node 
-  phylocounters::PhyloArray tree(nfun, noffspring);
-  phylocounters::NodeData data(as<Vec<double>>(blenghts), as<Vec<bool>>(x)); 
+  geese::PhyloArray tree(nfun, noffspring);
+  geese::NodeData data(as<Vec<double>>(blenghts), as<Vec<bool>>(x)); 
   tree.set_data(&data, false);
   
   // Setting counters, one per function
-  phylocounters::PhyloSupport support(&tree);
+  geese::PhyloSupport support(&tree);
   
   // Adding counters
-  phylocounters::counter_gains(support.counters, 0u);
-  phylocounters::counter_gains(support.counters, 1u);
-  phylocounters::counter_loss(support.counters, 0u);
-  phylocounters::counter_loss(support.counters, 1u);
-  phylocounters::counter_subfun(support.counters, 0u, 1u);
-  phylocounters::counter_cogain(support.counters, 0u, 1u);
-  phylocounters::counter_longest(support.counters);
+  geese::counter_gains(support.counters, 0u);
+  geese::counter_gains(support.counters, 1u);
+  geese::counter_loss(support.counters, 0u);
+  geese::counter_loss(support.counters, 1u);
+  geese::counter_subfun(support.counters, 0u, 1u);
+  geese::counter_cogain(support.counters, 0u, 1u);
+  geese::counter_longest(support.counters);
   
   // Computing and retrieving
   std::vector< std::vector< double > > observed(0u);

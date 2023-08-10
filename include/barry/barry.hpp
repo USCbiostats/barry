@@ -79,15 +79,11 @@ namespace barry {
         namespace network {
             #include "counters/network.hpp"
         }
-        namespace defm {
-            #include "counters/defm.hpp"
-        }
     }
     
 }
 
 namespace netcounters = barry::counters::network;
-namespace defmcounters = barry::counters::defm;
 
 #define COUNTER_FUNCTION(a) template <typename Array_Type = barry::BArray<>, typename Data_Type = bool> \
     inline double (a) (const Array_Type & Array, size_t i, size_t j, Data_Type & data)\

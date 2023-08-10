@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ostream>
 #include "../include/barry/barry.hpp"
+#include "../include/barry/models/geese.hpp"
 
 template<typename T>
 inline void print(const std::vector< T > & x) {
@@ -20,7 +21,7 @@ inline void print(const std::vector< T > & x) {
  * 4. Parent state of function 1.
  */
 inline std::vector< double > keygen_phylo(
-    const phylocounters::PhyloArray & Array_
+    const geese::PhyloArray & Array_
   ) {
   return {
     (double) Array_.nrow(), (double) Array_.ncol(),
@@ -59,11 +60,11 @@ int main() {
    * so the arrays are of two by to (two functions x two siblings)
    */
   std::cout << "Creating arrays" << std::endl;
-  phylocounters::PhyloArray n0(2,2);
-  phylocounters::PhyloArray n1(2,2);
-  phylocounters::PhyloArray n2(2,2);
-  phylocounters::PhyloArray n3(2,2);
-  phylocounters::PhyloArray n4(2,2);
+  geese::PhyloArray n0(2,2);
+  geese::PhyloArray n1(2,2);
+  geese::PhyloArray n2(2,2);
+  geese::PhyloArray n3(2,2);
+  geese::PhyloArray n4(2,2);
 
 
   /* We now start the counter. To differentiate objects, we use the
@@ -71,7 +72,7 @@ int main() {
    * and returns a vector.
    */
   std::cout << "Preparing the model" << std::endl;
-  phylocounters::PhyloModel model;
+  geese::PhyloModel model;
   model.set_keygen(keygen_phylo);
 
   // Activating the storage of powersets (because we'll need it!)
@@ -79,23 +80,23 @@ int main() {
 
   std::cout << "Adding counters" << std::endl;
   // Adding terms (gains/losses for each)
-  phylocounters::counter_gains(&model.counters, {0, 1});
-  phylocounters::counter_loss(&model.counters, {0, 1});
+  geese::counter_gains(&model.counters, {0, 1});
+  geese::counter_loss(&model.counters, {0, 1});
 
   // Now it is interesting: neofun and subfun
-  phylocounters::counter_neofun(&model.counters, 0, 1);
-  phylocounters::counter_subfun(&model.counters, 0, 1);
+  geese::counter_neofun(&model.counters, 0, 1);
+  geese::counter_subfun(&model.counters, 0, 1);
 
   /* We set the last argument as true so that the destructor takes care
    * of the cleaning once the arrays are deleted.
    * Branch lengths are 1
    */
   std::cout << "Adding nodes" << std::endl;
-  n0.set_data(new phylocounters::NodeData({1u}, {false,false} ), true);
-  n1.set_data(new phylocounters::NodeData({1u}, {true,false} ), true);
-  n2.set_data(new phylocounters::NodeData({1u}, {false,true} ), true);
-  n3.set_data(new phylocounters::NodeData({1u}, {true,true} ), true);
-  n4.set_data(new phylocounters::NodeData({1u}, {true,true} ), true);
+  n0.set_data(new geese::NodeData({1u}, {false,false} ), true);
+  n1.set_data(new geese::NodeData({1u}, {true,false} ), true);
+  n2.set_data(new geese::NodeData({1u}, {false,true} ), true);
+  n3.set_data(new geese::NodeData({1u}, {true,true} ), true);
+  n4.set_data(new geese::NodeData({1u}, {true,true} ), true);
 
   // Adding the data!
   std::cout << "Adding the data" << std::endl;

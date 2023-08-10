@@ -10,7 +10,7 @@
 
 BARRY_TEST_CASE("Flock likelihood", "[flock-likelihood]") {
 
-    using namespace phylocounters;
+    using namespace geese;
 
     // More interesting experiment
     std::vector< std::vector<size_t> > ann = {

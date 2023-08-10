@@ -38,7 +38,6 @@ BARRY_TEST_CASE("Computing support for NetworkDense (with Model)", "[support w m
   std::vector< double > p1 = {0.34609, 0.81370, 0.79881, 0.96398, 0.48765, 0.13675, 0.47716, 0.11797, 0.13809, 0.69155, 0.07703};
   std::vector< double > logs_expected = {-61.79280, -48.59951};
   
-  // phylocounters::PhyloArray node(4, 2);
   netcounters::NetworkDense net(4, 4, {2}, {3});
   net.set_data(new netcounters::NetworkData({0,0,1,0}), true);
   
