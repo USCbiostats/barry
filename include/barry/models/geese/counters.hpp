@@ -1,25 +1,6 @@
 #ifndef BARRAY_PHYLO_H
 #define BARRAY_PHYLO_H 1
 
-// Default value that is used for the counters.
-#define DEFAULT_DUPLICATION 1u
-#define DUPL_SPEC 0u
-#define DUPL_DUPL 1u
-#define DUPL_EITH 2u
-
-
-#define MAKE_DUPL_VARS() \
-    bool DPL = Array.D_ptr()->duplication; \
-    size_t DATA_AT = data[0u];
-
-#define IS_EITHER()      (DATA_AT == DUPL_EITH)
-#define IS_DUPLICATION() ((DATA_AT == DUPL_DUPL) & (DPL))
-#define IS_SPECIATION()  ((DATA_AT == DUPL_SPEC) & (!DPL))
-
-#define IF_MATCHES() MAKE_DUPL_VARS() \
-    if (IS_EITHER() | IS_DUPLICATION() | IS_SPECIATION())
-#define IF_NOTMATCHES() MAKE_DUPL_VARS() \
-    if (!IS_EITHER() & !IS_DUPLICATION() & !IS_SPECIATION())
 
 
 /**
@@ -28,96 +9,18 @@
  * objects can be found in the \ref counters-phylo section.
  */
 ///@{
+#define MAKE_DUPL_VARS() \
+    bool DPL = Array.D_ptr()->duplication; \
+    size_t DATA_AT = data[0u];
 
-/**
- * @brief Data definition for the `PhyloArray` class.
- * 
- * This holds basic information about a given node.
- * 
- */
-class NodeData {
-public:
-  
-    /**
-     * Branch length.
-     */
-    std::vector< double > blengths = {};
-    
-    /**
-     * State of the parent node.
-     */
-    std::vector< bool > states = {};
-    
-    /**
-     * 
-     */
-    bool duplication = true;
-    
-    // NodeData() : blengths(0u), states(0u) {};
-    
-    NodeData(
-        const std::vector< double > & blengths_,
-        const std::vector< bool > & states_,
-        bool duplication_ = true
-    ) : blengths(blengths_), states(states_), duplication(duplication_) {};
-    
-    // ~NodeData() {};
-  
-};
+#define IS_EITHER()      (DATA_AT == Geese::etype_either)
+#define IS_DUPLICATION() ((DATA_AT == Geese::etype_duplication) & (DPL))
+#define IS_SPECIATION()  ((DATA_AT == Geese::etype_speciation) & (!DPL))
 
-// typedef std::vector< size_t > PhyloCounterData;
-class PhyloCounterData {
-private:
-    std::vector< size_t > data;
-    std::vector< double > * counters;
-
-public:
-    PhyloCounterData(
-        std::vector< size_t > data_,
-        std::vector< double > * counters_ = nullptr
-        ) : data(data_), counters(counters_) {};
-
-    PhyloCounterData() : data(0u) {};
-
-    size_t at(size_t d) {return data.at(d);};
-    size_t operator()(size_t d) {return data.at(d);};
-    size_t operator[](size_t d) {return data[d];};
-    void reserve(size_t x) {return data.reserve(x);};
-    void push_back(size_t x) {return data.push_back(x);};
-    void shrink_to_fit()  {return data.shrink_to_fit();};
-    size_t size() {return data.size();};
-
-    std::vector< size_t >::iterator begin() {return data.begin();};
-    std::vector< size_t >::iterator end() {return data.end();};
-
-    bool empty() {return data.empty();};
-    std::vector< double > * get_counters() {return counters;};
-
-};
-
-
-typedef std::vector< std::pair< size_t, size_t > > PhyloRuleData;
-class PhyloRuleDynData;
-
-/**
- * @name Convenient typedefs for Node objects.
- * */
-///@{
-typedef BArrayDense<size_t, NodeData> PhyloArray;
-typedef Counter<PhyloArray, PhyloCounterData > PhyloCounter;
-typedef Counters< PhyloArray, PhyloCounterData> PhyloCounters;
-
-typedef Rule<PhyloArray,PhyloRuleData> PhyloRule;
-typedef Rules<PhyloArray,PhyloRuleData> PhyloRules;
-
-typedef Rule<PhyloArray,PhyloRuleDynData> PhyloRuleDyn;
-typedef Rules<PhyloArray,PhyloRuleDynData> PhyloRulesDyn;
-
-typedef Support<PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData > PhyloSupport;
-typedef StatsCounter<PhyloArray, PhyloCounterData> PhyloStatsCounter;
-typedef Model<PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData > PhyloModel;
-typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
-///@}
+#define IF_MATCHES() MAKE_DUPL_VARS() \
+    if (IS_EITHER() | IS_DUPLICATION() | IS_SPECIATION())
+#define IF_NOTMATCHES() MAKE_DUPL_VARS() \
+    if (!IS_EITHER() & !IS_DUPLICATION() & !IS_SPECIATION())
 
 
 /**
@@ -130,10 +33,10 @@ typedef PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
  * 
  * 
  */
-#define PHYLO_COUNTER_LAMBDA(a) Counter_fun_type<PhyloArray, PhyloCounterData> a = \
+#define PHYLO_COUNTER_LAMBDA(a) barry::Counter_fun_type<PhyloArray, PhyloCounterData> a = \
     [](const PhyloArray & Array, size_t i, size_t j, PhyloCounterData & data)
 
-#define PHYLO_RULE_DYN_LAMBDA(a) Rule_fun_type<PhyloArray, PhyloRuleDynData> a = \
+#define PHYLO_RULE_DYN_LAMBDA(a) barry::Rule_fun_type<PhyloArray, PhyloRuleDynData> a = \
     [](const PhyloArray & Array, size_t i, size_t j, PhyloRuleDynData & data)
 
 #define PHYLO_CHECK_MISSING() if (Array.D_ptr() == nullptr) \
@@ -154,7 +57,7 @@ inline std::string get_last_name(size_t d) {return ((d == 1u)? " at duplication"
  */
 inline void counter_overall_gains(
     PhyloCounters * counters,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -193,7 +96,7 @@ inline void counter_overall_gains(
 inline void counter_gains(
     PhyloCounters * counters,
     std::vector<size_t> nfun,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -254,7 +157,7 @@ inline void counter_gains_k_offspring(
     PhyloCounters * counters,
     std::vector<size_t> nfun,
     size_t k = 1u,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -324,7 +227,7 @@ inline void counter_gains_k_offspring(
  */
 inline void counter_genes_changing(
     PhyloCounters * counters,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -395,7 +298,7 @@ inline void counter_preserve_pseudogene(
     PhyloCounters * counters,
     size_t nfunA,
     size_t nfunB,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -475,7 +378,7 @@ inline void counter_preserve_pseudogene(
  */
 inline void counter_prop_genes_changing(
     PhyloCounters * counters,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -577,7 +480,7 @@ inline void counter_prop_genes_changing(
  */
 inline void counter_overall_loss(
     PhyloCounters * counters,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
     )
 {
   
@@ -627,7 +530,7 @@ inline void counter_maxfuns(
     PhyloCounters * counters,
     size_t            lb,
     size_t            ub,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
  )
  {
 
@@ -688,7 +591,7 @@ inline void counter_maxfuns(
 inline void counter_loss(
     PhyloCounters * counters,
     std::vector<size_t> nfun,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -739,7 +642,7 @@ inline void counter_loss(
  */
 inline void counter_overall_changes(
     PhyloCounters * counters,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -800,7 +703,7 @@ inline void counter_subfun(
     PhyloCounters * counters,
     size_t nfunA,
     size_t nfunB,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -889,7 +792,7 @@ inline void counter_cogain(
     PhyloCounters * counters,
     size_t nfunA,
     size_t nfunB,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -944,7 +847,7 @@ inline void counter_cogain(
 /** @brief Longest branch mutates (either by gain or by loss) */
 inline void counter_longest(
     PhyloCounters * counters,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
     )
 {
   
@@ -1116,7 +1019,7 @@ inline void counter_neofun(
     PhyloCounters * counters,
     size_t nfunA,
     size_t nfunB,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -1196,7 +1099,7 @@ inline void counter_neofun(
 inline void counter_pairwise_neofun_singlefun(
     PhyloCounters * counters,
     size_t nfunA,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -1261,7 +1164,7 @@ inline void counter_neofun_a2b(
     PhyloCounters * counters,
     size_t nfunA,
     size_t nfunB,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -1394,7 +1297,7 @@ inline void counter_co_opt(
     PhyloCounters * counters,
     size_t nfunA,
     size_t nfunB, 
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 ) {
   
     PHYLO_COUNTER_LAMBDA(tmp_count)
@@ -1491,7 +1394,7 @@ inline void counter_co_opt(
 inline void counter_k_genes_changing(
     PhyloCounters * counters,
     size_t k,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -1611,7 +1514,7 @@ inline void counter_k_genes_changing(
 inline void counter_less_than_p_prop_genes_changing(
     PhyloCounters * counters,
     double p,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -1727,7 +1630,7 @@ inline void counter_less_than_p_prop_genes_changing(
 inline void counter_gains_from_0(
     PhyloCounters * counters,
     std::vector< size_t > nfun,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -1792,7 +1695,7 @@ inline void counter_gains_from_0(
  */
 inline void counter_overall_gains_from_0(
     PhyloCounters * counters,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -1840,7 +1743,7 @@ inline void counter_overall_gains_from_0(
  */
 inline void counter_pairwise_overall_change(
     PhyloCounters * counters,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -1907,7 +1810,7 @@ inline void counter_pairwise_preserving(
     PhyloCounters * counters,
     size_t nfunA,
     size_t nfunB,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -2046,7 +1949,7 @@ inline void counter_pairwise_first_gain(
     PhyloCounters * counters,
     size_t nfunA,
     size_t nfunB,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -2143,33 +2046,6 @@ inline void counter_pairwise_first_gain(
  * @param rules A pointer to a `PhyloRules` object (`Rules`<`PhyloArray`, `PhyloRuleData`>).
  */
 ///@{
-
-class PhyloRuleDynData {
-public:
-    const std::vector< double > * counts;
-    size_t pos;
-    size_t lb;
-    size_t ub;
-    size_t duplication;
-
-    PhyloRuleDynData(
-        const std::vector< double > * counts_,
-        size_t pos_,
-        size_t lb_,
-        size_t ub_,
-        size_t duplication_
-        ) :
-        counts(counts_), pos(pos_), lb(lb_), ub(ub_), duplication(duplication_) {};
-
-    const double operator()() const
-    {
-        return (*counts)[pos];
-    }
-    
-    ~PhyloRuleDynData() {};
-    
-};
-
 /**
  * @brief Overall functional gains
  * @param support Support of a model.
@@ -2184,7 +2060,7 @@ inline void rule_dyn_limit_changes(
     size_t pos,
     size_t lb,
     size_t ub,
-    size_t duplication = DEFAULT_DUPLICATION
+    size_t duplication = Geese::etype_default
 )
 {
   
@@ -2192,12 +2068,12 @@ inline void rule_dyn_limit_changes(
     {
 
         size_t rule_type = data.duplication;
-        if (rule_type != DUPL_EITH)
+        if (rule_type != Geese::etype_either)
         {
 
-            if (Array.D_ptr()->duplication & (rule_type != DUPL_DUPL))
+            if (Array.D_ptr()->duplication & (rule_type != Geese::etype_duplication))
                 return true;
-            else if (!Array.D_ptr()->duplication & (rule_type != DUPL_SPEC))
+            else if (!Array.D_ptr()->duplication & (rule_type != Geese::etype_speciation))
                 return true;
                 
         }
@@ -2210,6 +2086,19 @@ inline void rule_dyn_limit_changes(
             return true;
       
     };
+
+    // Checking whether the rule makes sense (dupl)
+    if (duplication != Geese::etype_either)
+    {
+        if (support->get_counters()->operator[](pos).data[0] != duplication)
+            throw std::logic_error(
+                "The rule is not compatible with the duplication type of the model." +
+                std::string("The rule is for ") + get_last_name(duplication) +
+                std::string(" but the term is for ") + get_last_name(
+                    support->get_counters()->operator[](pos).data[0]
+                    )
+        );
+    }
     
     support->get_rules_dyn()->add_rule(
         tmp_rule,
@@ -2241,11 +2130,6 @@ inline void rule_dyn_limit_changes(
 #undef IS_SPECIATION
 #undef IF_MATCHES
 #undef IF_NOTMATCHES
-
-#undef DEFAULT_DUPLICATION
-#undef DUPL_SPEC
-#undef DUPL_DUPL
-#undef DUPL_EITH
 
 
 #endif

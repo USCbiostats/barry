@@ -7,14 +7,14 @@ inline void Geese::init_node(Node & n)
 {
 
     // Creating the phyloarray, nfunctions x noffspring
-    n.array = phylocounters::PhyloArray(nfunctions, n.offspring.size());
+    n.array = PhyloArray(nfunctions, n.offspring.size());
 
     std::vector< bool > tmp_state = vector_caster<bool,size_t>(n.annotations);
 
     std::vector< double > blen(n.offspring.size(), 1.0);
 
     n.array.set_data(
-        new phylocounters::NodeData(blen, tmp_state, n.duplication),
+        new NodeData(blen, tmp_state, n.duplication),
         true
     );
 
@@ -74,15 +74,15 @@ inline void Geese::init_node(Node & n)
     //
     // The later is especially true for leaf nodes, where the
     // limitations are not known until the model is initialized.
-    phylocounters::PhyloStatsCounter stats_counter;
+    PhyloStatsCounter stats_counter;
     stats_counter.set_counters(model->get_counters());
     for (size_t s = 0u; s < states.size(); ++s)
     {
 
-        n.arrays[s] = phylocounters::PhyloArray(n.array, false);
+        n.arrays[s] = PhyloArray(n.array, false);
 
         n.arrays[s].set_data(
-            new phylocounters::NodeData(blen, states[s], n.duplication),
+            new NodeData(blen, states[s], n.duplication),
             true
         );
 
@@ -95,7 +95,7 @@ inline void Geese::init_node(Node & n)
             stats_counter.reset_array(&n.arrays[s]);
             auto counts = stats_counter.count_all();
 
-            phylocounters::PhyloRulesDyn dyn_rule(*model->get_rules_dyn());
+            PhyloRulesDyn dyn_rule(*model->get_rules_dyn());
             for (auto & r : dyn_rule)
                 r.D().counts = &counts;
 
@@ -159,7 +159,7 @@ inline void Geese::init(size_t bar_width) {
     if (this->model == nullptr)
     {
 
-        this->model = new phylocounters::PhyloModel();
+        this->model = new PhyloModel();
 
         this->delete_support = true;
         this->model->add_hasher(keygen_full);
@@ -174,7 +174,7 @@ inline void Geese::init(size_t bar_width) {
         this->model->set_rengine(this->rengine, false);
 
     // All combinations of the function
-    phylocounters::PhyloPowerSet pset(nfunctions, 1u);
+    PhyloPowerSet pset(nfunctions, 1u);
 
     pset.calc();
 
@@ -553,7 +553,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts()
     ans.reserve(nnodes());
 
     // Creating counter
-    phylocounters::PhyloStatsCounter tmpcount;
+    PhyloStatsCounter tmpcount;
 
     tmpcount.set_counters(this->model->get_counters());
 
@@ -569,7 +569,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts()
 
         }
 
-        phylocounters::PhyloArray tmparray(nfuns(), n.second.offspring.size());
+        PhyloArray tmparray(nfuns(), n.second.offspring.size());
 
         size_t j = 0u;
 
@@ -601,7 +601,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts()
         std::vector< double > blen(n.second.offspring.size(), 1.0);
 
         tmparray.set_data(
-            new phylocounters::NodeData(blen, tmp_state, n.second.duplication),
+            new NodeData(blen, tmp_state, n.second.duplication),
             true
         );
 
@@ -623,7 +623,7 @@ inline void Geese::print_observed_counts()
     ans.reserve(nnodes());
 
     // Creating counter
-    phylocounters::PhyloStatsCounter tmpcount;
+    PhyloStatsCounter tmpcount;
     tmpcount.set_counters(this->model->get_counters());
 
     // Iterating through the nodes
@@ -634,7 +634,7 @@ inline void Geese::print_observed_counts()
             continue;
         }
 
-        phylocounters::PhyloArray tmparray(nfuns(), n.second.offspring.size());
+        PhyloArray tmparray(nfuns(), n.second.offspring.size());
 
         size_t j = 0u;
         for (auto& o : n.second.offspring) {
@@ -651,7 +651,7 @@ inline void Geese::print_observed_counts()
         std::vector< bool > tmp_state =vector_caster<bool,size_t>(n.second.annotations);
         std::vector< double > blen(n.second.offspring.size(), 1.0);
         tmparray.set_data(
-            new phylocounters::NodeData(blen, tmp_state, n.second.duplication),
+            new NodeData(blen, tmp_state, n.second.duplication),
             true
         );
 
@@ -701,16 +701,16 @@ inline std::mt19937 * Geese::get_rengine()
     return this->rengine;
 }
 
-inline phylocounters::PhyloCounters * Geese::get_counters()
+inline PhyloCounters * Geese::get_counters()
 {
     return this->model->get_counters();
 }
 
-inline phylocounters::PhyloModel * Geese::get_model() {
+inline PhyloModel * Geese::get_model() {
     return this->model;
 }
 
-inline phylocounters::PhyloSupport * Geese::get_support_fun() {
+inline PhyloSupport * Geese::get_support_fun() {
     return this->model->get_support_fun();
 }
 

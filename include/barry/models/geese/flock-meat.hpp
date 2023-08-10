@@ -97,7 +97,7 @@ inline void Flock::init(size_t bar_width)
     
 }
 
-inline phylocounters::PhyloCounters * Flock::get_counters()
+inline PhyloCounters * Flock::get_counters()
 {
 
     if (dat.size() == 0u)
@@ -107,7 +107,7 @@ inline phylocounters::PhyloCounters * Flock::get_counters()
 
 }
 
-inline phylocounters::PhyloSupport *  Flock::get_support_fun()
+inline PhyloSupport *  Flock::get_support_fun()
 {
 
     return this->model.get_support_fun();
@@ -128,7 +128,7 @@ inline std::vector< std::vector< double > > *  Flock::get_stats_target()
 
 }
 
-inline phylocounters::PhyloModel *  Flock::get_model()
+inline PhyloModel *  Flock::get_model()
 {
 
     return &this->model;

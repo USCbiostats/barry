@@ -62,7 +62,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 
     // Computing all combinations ----------------------------------------------
     // The base PhyloArray will store the original set of annotations.
-    phylocounters::PhyloArray base(nfuns(), nnodes());
+    PhyloArray base(nfuns(), nnodes());
     for (auto& n : nodes)
     {
 
@@ -71,10 +71,10 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 
     }
 
-    phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
+    PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
     pset.add_rule(
-            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>,
-            phylocounters::PhyloRuleData()
+            rule_empty_free<PhyloArray,PhyloRuleData>,
+            PhyloRuleData()
             );
     pset.calc();
     
@@ -87,7 +87,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
     {
         
         // ith state
-        const phylocounters::PhyloArray * s = &pset[p];
+        const PhyloArray * s = &pset[p];
         
         // Computing the likelihood of the state s        
         double current_prob = 1.0;
@@ -114,7 +114,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
         
             // Generating a copy of the observed array
             // (data is copied so that we can chage the state of the parent)
-            phylocounters::PhyloArray tmparray(n.array, true);
+            PhyloArray tmparray(n.array, true);
 
             // Updating the state of the parent
             for (size_t f = 0u; f < nfuns(); ++f)

@@ -8,7 +8,7 @@ inline Geese::Geese() {
     // In order to start...
     this->rengine         = new std::mt19937;
     this->delete_rengine  = true;
-    this->model           = new phylocounters::PhyloModel();
+    this->model           = new PhyloModel();
     this->delete_support  = true;
 
     this->model->add_hasher(keygen_full);
@@ -27,7 +27,7 @@ inline Geese::Geese(
     // In order to start...
     this->rengine         = new std::mt19937;
     this->delete_rengine  = true;
-    this->model           = new phylocounters::PhyloModel();
+    this->model           = new PhyloModel();
     this->delete_support  = true;
 
     this->model->add_hasher(keygen_full);
@@ -240,7 +240,7 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
 
         if (model_.model != nullptr)
         {
-            model = new phylocounters::PhyloModel(*(model_.model));
+            model = new PhyloModel(*(model_.model));
             delete_support = true;
         }
 
@@ -325,7 +325,7 @@ inline Geese::Geese(Geese && x) noexcept :
     if (x.delete_support)
     {
 
-        model = new phylocounters::PhyloModel(*x.model);
+        model = new PhyloModel(*x.model);
         delete_support = true;
 
     } else {

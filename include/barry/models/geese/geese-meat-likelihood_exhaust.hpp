@@ -27,7 +27,7 @@ inline double Geese::likelihood_exhaust(
         throw std::overflow_error("Too many functions! Exhaust calculation of likelihood cannot be done for such cases.");
 
     // Computing all combinations ----------------------------------------------
-    phylocounters::PhyloArray base(nfuns(), nnodes());
+    PhyloArray base(nfuns(), nnodes());
     for (auto& n : nodes)
     {
 
@@ -36,10 +36,10 @@ inline double Geese::likelihood_exhaust(
             
     }
 
-    phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
+    PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
     pset.add_rule(
-            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>,
-            phylocounters::PhyloRuleData()
+            rule_empty_free<PhyloArray,PhyloRuleData>,
+            PhyloRuleData()
             );
     pset.calc();
 
@@ -55,7 +55,7 @@ inline double Geese::likelihood_exhaust(
     {
         
         // ith state
-        const phylocounters::PhyloArray * s = &pset[p];
+        const PhyloArray * s = &pset[p];
         
         // Following the sequence
         double prob = 1.0;
@@ -82,14 +82,14 @@ inline double Geese::likelihood_exhaust(
                 continue;
 
             // Computing the transition
-            phylocounters::PhyloArray transition(nfuns(), node->offspring.size());
+            PhyloArray transition(nfuns(), node->offspring.size());
 
             std::vector< double > bl(node->offspring.size(), 1.0);
 
             std::vector< bool > sl = vector_caster<bool,size_t>(tmpstates);
 
             transition.set_data(
-                new phylocounters::NodeData(bl, sl, node->duplication),
+                new NodeData(bl, sl, node->duplication),
                 true
             );
 

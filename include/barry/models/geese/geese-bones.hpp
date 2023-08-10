@@ -34,8 +34,8 @@ RULE_FUNCTION(rule_empty_free) {
 // Hasher
 
 inline std::vector< double > keygen_full(
-    const phylocounters::PhyloArray & array,
-    const phylocounters::PhyloCounterData * d
+    const PhyloArray & array,
+    const PhyloCounterData * d
     ) {
 
     // Baseline data: nrows and columns
@@ -79,6 +79,28 @@ class Flock;
  * \ref counters-phylo section.
  *
  */
+/**
+ * @brief Class representing a phylogenetic tree model with annotations.
+ * 
+ * The `Geese` class represents a phylogenetic tree model with annotations. It
+ * includes a total of `N + 1` nodes, the `+ 1` being the root node. The class
+ * provides methods for initializing the model, calculating the likelihood,
+ * simulating trees, and making predictions. 
+ * 
+ * The class includes shared objects within a `Geese` object, such as `rengine`,
+ * `model`, `states`, `n_zeros`, `n_ones`, `n_dupl_events`, and `n_spec_events`.
+ * It also includes information about the type of event, such as `etype_default`,
+ * `etype_speciation`, `etype_duplication`, and `etype_either`.
+ * 
+ * The class provides constructors, a destructor, and methods for initializing
+ * the model, inheriting support, calculating the sequence, calculating the
+ * reduced sequence, calculating the likelihood, calculating the likelihood
+ * exhaustively, getting probabilities, setting the seed, simulating trees,
+ * parsing polytomies, getting observed counts, printing observed counts,
+ * printing information about the GEESE, and making predictions.
+ * 
+ * @see Flock
+ */
 class Geese {
     friend Flock;
 private:
@@ -95,7 +117,7 @@ private:
      */
     ///@{
     std::mt19937 *                     rengine = nullptr;
-    phylocounters::PhyloModel *        model   = nullptr;
+    PhyloModel *        model   = nullptr;
     std::vector< std::vector< bool > > states;
     size_t n_zeros       = 0u; ///< Number of zeros
     size_t n_ones        = 0u; ///< Number of ones
@@ -119,6 +141,23 @@ public:
     bool initialized     = false;
     bool delete_rengine  = false;
     bool delete_support  = false;
+
+    // Information about the type of event
+    
+    /***
+     * @name Information about the type of event
+     * @details
+     * The type of event is stored in the `etype` member. The possible values
+     * are `etype_default`, `etype_speciation`, `etype_duplication`, and
+     * `etype_either`.
+     * 
+    */
+    ///@{
+    static const size_t etype_default     = 1ul;
+    static const size_t etype_speciation  = 0ul;
+    static const size_t etype_duplication = 1ul;
+    static const size_t etype_either      = 2ul;
+    ///@}
 
     /**
      * @name Construct a new Geese object
@@ -145,8 +184,8 @@ public:
     Geese(
         std::vector< std::vector<size_t> > & annotations,
         std::vector< size_t > &              geneid,
-        std::vector< int > &                       parent,
-        std::vector< bool > &                      duplication
+        std::vector< int > &                 parent,
+        std::vector< bool > &                duplication
         );
 
     // Copy constructor
@@ -286,9 +325,9 @@ public:
      */
     ///@{
     std::mt19937 *                     get_rengine();
-    phylocounters::PhyloCounters *     get_counters();
-    phylocounters::PhyloModel *        get_model();
-    phylocounters::PhyloSupport *      get_support_fun();
+    PhyloCounters *     get_counters();
+    PhyloModel *        get_model();
+    PhyloSupport *      get_support_fun();
     ///@}
     
     /**

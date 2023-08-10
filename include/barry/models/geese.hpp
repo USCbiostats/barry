@@ -2,8 +2,7 @@
 #ifndef GEESE_HPP
 #define GEESE_HPP 1
 
-// #include "../barry.hpp"
-
+#include "geese/geese-types.hpp"
 #include "geese/geese-node-bones.hpp"
 #include "geese/geese-bones.hpp"
 #include "geese/geese-meat.hpp"
@@ -17,5 +16,10 @@
 
 #include "geese/flock-bones.hpp"
 #include "geese/flock-meat.hpp"
+
+namespace phylocounters {
+  #include "geese/counters.hpp"
+}
+
 
 #endif

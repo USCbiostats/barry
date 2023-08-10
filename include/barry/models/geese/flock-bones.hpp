@@ -20,7 +20,7 @@ public:
     
     // Common components
     std::mt19937              rengine;
-    phylocounters::PhyloModel model = phylocounters::PhyloModel();
+    PhyloModel model = PhyloModel();
 
     Flock() {};
     ~Flock() {};
@@ -51,11 +51,11 @@ public:
     void init(size_t bar_width = BARRY_PROGRESS_BAR_WIDTH);
     
     // void add_geese(Geese x);
-    phylocounters::PhyloCounters * get_counters();
-    phylocounters::PhyloSupport *  get_support_fun();
+    PhyloCounters * get_counters();
+    PhyloSupport *  get_support_fun();
     std::vector< std::vector< double > > * get_stats_support();
     std::vector< std::vector< double > > * get_stats_target();
-    phylocounters::PhyloModel *  get_model();
+    PhyloModel *  get_model();
 
     /**
      * @brief Returns the joint likelihood of the model

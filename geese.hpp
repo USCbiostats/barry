@@ -2,7 +2,140 @@
 #ifndef GEESE_HPP
 #define GEESE_HPP 1
 
-// #include "../barry.hpp"
+/*//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+ Start of -include/barry/models/geese/geese-types.hpp-
+
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+#ifndef GEESE_TYPES_HPP
+#define GEESE_TYPES_HPP
+/**
+ * @name Convenient typedefs for Node objects.
+ * */
+/**
+ * @brief Data definition for the `PhyloArray` class.
+ * 
+ * This holds basic information about a given node.
+ * 
+ */
+class NodeData {
+public:
+  
+    /**
+     * Branch length.
+     */
+    std::vector< double > blengths = {};
+    
+    /**
+     * State of the parent node.
+     */
+    std::vector< bool > states = {};
+    
+    /**
+     * 
+     */
+    bool duplication = true;
+    
+    // NodeData() : blengths(0u), states(0u) {};
+    
+    NodeData(
+        const std::vector< double > & blengths_,
+        const std::vector< bool > & states_,
+        bool duplication_ = true
+    ) : blengths(blengths_), states(states_), duplication(duplication_) {};
+    
+    // ~NodeData() {};
+  
+};
+
+class PhyloCounterData {
+private:
+    std::vector< size_t > data;
+    std::vector< double > * counters;
+
+public:
+    PhyloCounterData(
+        std::vector< size_t > data_,
+        std::vector< double > * counters_ = nullptr
+        ) : data(data_), counters(counters_) {};
+
+    PhyloCounterData() : data(0u) {};
+
+    size_t at(size_t d) {return data.at(d);};
+    size_t operator()(size_t d) {return data.at(d);};
+    size_t operator[](size_t d) {return data[d];};
+    void reserve(size_t x) {return data.reserve(x);};
+    void push_back(size_t x) {return data.push_back(x);};
+    void shrink_to_fit()  {return data.shrink_to_fit();};
+    size_t size() {return data.size();};
+
+    std::vector< size_t >::iterator begin() {return data.begin();};
+    std::vector< size_t >::iterator end() {return data.end();};
+
+    bool empty() {return data.empty();};
+    std::vector< double > * get_counters() {return counters;};
+
+};
+
+class PhyloRuleDynData {
+public:
+    const std::vector< double > * counts;
+    size_t pos;
+    size_t lb;
+    size_t ub;
+    size_t duplication;
+
+    PhyloRuleDynData(
+        const std::vector< double > * counts_,
+        size_t pos_,
+        size_t lb_,
+        size_t ub_,
+        size_t duplication_
+        ) :
+        counts(counts_), pos(pos_), lb(lb_), ub(ub_), duplication(duplication_) {};
+
+    const double operator()() const
+    {
+        return (*counts)[pos];
+    }
+    
+    ~PhyloRuleDynData() {};
+    
+};
+
+
+typedef std::vector< std::pair< size_t, size_t > > PhyloRuleData;
+
+///@{
+typedef barry::BArrayDense<size_t, NodeData> PhyloArray;
+typedef barry::Counter<PhyloArray, PhyloCounterData > PhyloCounter;
+typedef barry::Counters< PhyloArray, PhyloCounterData> PhyloCounters;
+
+typedef barry::Rule<PhyloArray,PhyloRuleData> PhyloRule;
+typedef barry::Rules<PhyloArray,PhyloRuleData> PhyloRules;
+
+typedef barry::Rule<PhyloArray,PhyloRuleDynData> PhyloRuleDyn;
+typedef barry::Rules<PhyloArray,PhyloRuleDynData> PhyloRulesDyn;
+
+typedef barry::Support<PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData > PhyloSupport;
+typedef barry::StatsCounter<PhyloArray, PhyloCounterData> PhyloStatsCounter;
+typedef barry::Model<PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData > PhyloModel;
+typedef barry::PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
+///@}
+
+#endif
+/*//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+ End of -include/barry/models/geese/geese-types.hpp-
+
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
+
 
 /*//////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -29,11 +162,11 @@ public:
     size_t id; ///< Id of the node (as specified in the input)
     size_t ord; ///< Order in which the node was created
 
-    phylocounters::PhyloArray array;       ///< Array of the node
+    PhyloArray array;       ///< Array of the node
     std::vector< size_t >     annotations; ///< Observed annotations (only defined for Geese)
     bool                      duplication;
 
-    std::vector< phylocounters::PhyloArray > arrays = {}; ///< Arrays given all possible states
+    std::vector< PhyloArray > arrays = {}; ///< Arrays given all possible states
 
     std::vector< bool > arrays_valid = {}; ///< Whether the arrays are valid according to the rules of the model.
 
@@ -187,8 +320,8 @@ RULE_FUNCTION(rule_empty_free) {
 // Hasher
 
 inline std::vector< double > keygen_full(
-    const phylocounters::PhyloArray & array,
-    const phylocounters::PhyloCounterData * d
+    const PhyloArray & array,
+    const PhyloCounterData * d
     ) {
 
     // Baseline data: nrows and columns
@@ -232,6 +365,28 @@ class Flock;
  * \ref counters-phylo section.
  *
  */
+/**
+ * @brief Class representing a phylogenetic tree model with annotations.
+ * 
+ * The `Geese` class represents a phylogenetic tree model with annotations. It
+ * includes a total of `N + 1` nodes, the `+ 1` being the root node. The class
+ * provides methods for initializing the model, calculating the likelihood,
+ * simulating trees, and making predictions. 
+ * 
+ * The class includes shared objects within a `Geese` object, such as `rengine`,
+ * `model`, `states`, `n_zeros`, `n_ones`, `n_dupl_events`, and `n_spec_events`.
+ * It also includes information about the type of event, such as `etype_default`,
+ * `etype_speciation`, `etype_duplication`, and `etype_either`.
+ * 
+ * The class provides constructors, a destructor, and methods for initializing
+ * the model, inheriting support, calculating the sequence, calculating the
+ * reduced sequence, calculating the likelihood, calculating the likelihood
+ * exhaustively, getting probabilities, setting the seed, simulating trees,
+ * parsing polytomies, getting observed counts, printing observed counts,
+ * printing information about the GEESE, and making predictions.
+ * 
+ * @see Flock
+ */
 class Geese {
     friend Flock;
 private:
@@ -248,7 +403,7 @@ private:
      */
     ///@{
     std::mt19937 *                     rengine = nullptr;
-    phylocounters::PhyloModel *        model   = nullptr;
+    PhyloModel *        model   = nullptr;
     std::vector< std::vector< bool > > states;
     size_t n_zeros       = 0u; ///< Number of zeros
     size_t n_ones        = 0u; ///< Number of ones
@@ -272,6 +427,23 @@ public:
     bool initialized     = false;
     bool delete_rengine  = false;
     bool delete_support  = false;
+
+    // Information about the type of event
+    
+    /***
+     * @name Information about the type of event
+     * @details
+     * The type of event is stored in the `etype` member. The possible values
+     * are `etype_default`, `etype_speciation`, `etype_duplication`, and
+     * `etype_either`.
+     * 
+    */
+    ///@{
+    static const size_t etype_default     = 1ul;
+    static const size_t etype_speciation  = 0ul;
+    static const size_t etype_duplication = 1ul;
+    static const size_t etype_either      = 2ul;
+    ///@}
 
     /**
      * @name Construct a new Geese object
@@ -298,8 +470,8 @@ public:
     Geese(
         std::vector< std::vector<size_t> > & annotations,
         std::vector< size_t > &              geneid,
-        std::vector< int > &                       parent,
-        std::vector< bool > &                      duplication
+        std::vector< int > &                 parent,
+        std::vector< bool > &                duplication
         );
 
     // Copy constructor
@@ -439,9 +611,9 @@ public:
      */
     ///@{
     std::mt19937 *                     get_rengine();
-    phylocounters::PhyloCounters *     get_counters();
-    phylocounters::PhyloModel *        get_model();
-    phylocounters::PhyloSupport *      get_support_fun();
+    PhyloCounters *     get_counters();
+    PhyloModel *        get_model();
+    PhyloSupport *      get_support_fun();
     ///@}
     
     /**
@@ -485,14 +657,14 @@ inline void Geese::init_node(Node & n)
 {
 
     // Creating the phyloarray, nfunctions x noffspring
-    n.array = phylocounters::PhyloArray(nfunctions, n.offspring.size());
+    n.array = PhyloArray(nfunctions, n.offspring.size());
 
     std::vector< bool > tmp_state = vector_caster<bool,size_t>(n.annotations);
 
     std::vector< double > blen(n.offspring.size(), 1.0);
 
     n.array.set_data(
-        new phylocounters::NodeData(blen, tmp_state, n.duplication),
+        new NodeData(blen, tmp_state, n.duplication),
         true
     );
 
@@ -552,15 +724,15 @@ inline void Geese::init_node(Node & n)
     //
     // The later is especially true for leaf nodes, where the
     // limitations are not known until the model is initialized.
-    phylocounters::PhyloStatsCounter stats_counter;
+    PhyloStatsCounter stats_counter;
     stats_counter.set_counters(model->get_counters());
     for (size_t s = 0u; s < states.size(); ++s)
     {
 
-        n.arrays[s] = phylocounters::PhyloArray(n.array, false);
+        n.arrays[s] = PhyloArray(n.array, false);
 
         n.arrays[s].set_data(
-            new phylocounters::NodeData(blen, states[s], n.duplication),
+            new NodeData(blen, states[s], n.duplication),
             true
         );
 
@@ -573,7 +745,7 @@ inline void Geese::init_node(Node & n)
             stats_counter.reset_array(&n.arrays[s]);
             auto counts = stats_counter.count_all();
 
-            phylocounters::PhyloRulesDyn dyn_rule(*model->get_rules_dyn());
+            PhyloRulesDyn dyn_rule(*model->get_rules_dyn());
             for (auto & r : dyn_rule)
                 r.D().counts = &counts;
 
@@ -599,7 +771,7 @@ inline void Geese::init_node(Node & n)
                 "The array to be added was in the following state:";
                 
             std::string state_str = "";
-            for (auto & ss : states[s])
+            for (const auto & ss : states[s])
                 state_str += std::to_string(ss) + " ";
 
             err += state_str + "\n";
@@ -637,7 +809,7 @@ inline void Geese::init(size_t bar_width) {
     if (this->model == nullptr)
     {
 
-        this->model = new phylocounters::PhyloModel();
+        this->model = new PhyloModel();
 
         this->delete_support = true;
         this->model->add_hasher(keygen_full);
@@ -652,7 +824,7 @@ inline void Geese::init(size_t bar_width) {
         this->model->set_rengine(this->rengine, false);
 
     // All combinations of the function
-    phylocounters::PhyloPowerSet pset(nfunctions, 1u);
+    PhyloPowerSet pset(nfunctions, 1u);
 
     pset.calc();
 
@@ -1031,7 +1203,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts()
     ans.reserve(nnodes());
 
     // Creating counter
-    phylocounters::PhyloStatsCounter tmpcount;
+    PhyloStatsCounter tmpcount;
 
     tmpcount.set_counters(this->model->get_counters());
 
@@ -1047,7 +1219,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts()
 
         }
 
-        phylocounters::PhyloArray tmparray(nfuns(), n.second.offspring.size());
+        PhyloArray tmparray(nfuns(), n.second.offspring.size());
 
         size_t j = 0u;
 
@@ -1079,7 +1251,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts()
         std::vector< double > blen(n.second.offspring.size(), 1.0);
 
         tmparray.set_data(
-            new phylocounters::NodeData(blen, tmp_state, n.second.duplication),
+            new NodeData(blen, tmp_state, n.second.duplication),
             true
         );
 
@@ -1101,7 +1273,7 @@ inline void Geese::print_observed_counts()
     ans.reserve(nnodes());
 
     // Creating counter
-    phylocounters::PhyloStatsCounter tmpcount;
+    PhyloStatsCounter tmpcount;
     tmpcount.set_counters(this->model->get_counters());
 
     // Iterating through the nodes
@@ -1112,7 +1284,7 @@ inline void Geese::print_observed_counts()
             continue;
         }
 
-        phylocounters::PhyloArray tmparray(nfuns(), n.second.offspring.size());
+        PhyloArray tmparray(nfuns(), n.second.offspring.size());
 
         size_t j = 0u;
         for (auto& o : n.second.offspring) {
@@ -1129,7 +1301,7 @@ inline void Geese::print_observed_counts()
         std::vector< bool > tmp_state =vector_caster<bool,size_t>(n.second.annotations);
         std::vector< double > blen(n.second.offspring.size(), 1.0);
         tmparray.set_data(
-            new phylocounters::NodeData(blen, tmp_state, n.second.duplication),
+            new NodeData(blen, tmp_state, n.second.duplication),
             true
         );
 
@@ -1179,16 +1351,16 @@ inline std::mt19937 * Geese::get_rengine()
     return this->rengine;
 }
 
-inline phylocounters::PhyloCounters * Geese::get_counters()
+inline PhyloCounters * Geese::get_counters()
 {
     return this->model->get_counters();
 }
 
-inline phylocounters::PhyloModel * Geese::get_model() {
+inline PhyloModel * Geese::get_model() {
     return this->model;
 }
 
-inline phylocounters::PhyloSupport * Geese::get_support_fun() {
+inline PhyloSupport * Geese::get_support_fun() {
     return this->model->get_support_fun();
 }
 
@@ -1249,7 +1421,7 @@ inline Geese::Geese() {
     // In order to start...
     this->rengine         = new std::mt19937;
     this->delete_rengine  = true;
-    this->model           = new phylocounters::PhyloModel();
+    this->model           = new PhyloModel();
     this->delete_support  = true;
 
     this->model->add_hasher(keygen_full);
@@ -1268,7 +1440,7 @@ inline Geese::Geese(
     // In order to start...
     this->rengine         = new std::mt19937;
     this->delete_rengine  = true;
-    this->model           = new phylocounters::PhyloModel();
+    this->model           = new PhyloModel();
     this->delete_support  = true;
 
     this->model->add_hasher(keygen_full);
@@ -1481,7 +1653,7 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
 
         if (model_.model != nullptr)
         {
-            model = new phylocounters::PhyloModel(*(model_.model));
+            model = new PhyloModel(*(model_.model));
             delete_support = true;
         }
 
@@ -1566,7 +1738,7 @@ inline Geese::Geese(Geese && x) noexcept :
     if (x.delete_support)
     {
 
-        model = new phylocounters::PhyloModel(*x.model);
+        model = new PhyloModel(*x.model);
         delete_support = true;
 
     } else {
@@ -1653,8 +1825,8 @@ RULE_FUNCTION(rule_empty_free) {
 // Hasher
 
 inline std::vector< double > keygen_full(
-    const phylocounters::PhyloArray & array,
-    const phylocounters::PhyloCounterData * d
+    const PhyloArray & array,
+    const PhyloCounterData * d
     ) {
 
     // Baseline data: nrows and columns
@@ -1698,6 +1870,28 @@ class Flock;
  * \ref counters-phylo section.
  *
  */
+/**
+ * @brief Class representing a phylogenetic tree model with annotations.
+ * 
+ * The `Geese` class represents a phylogenetic tree model with annotations. It
+ * includes a total of `N + 1` nodes, the `+ 1` being the root node. The class
+ * provides methods for initializing the model, calculating the likelihood,
+ * simulating trees, and making predictions. 
+ * 
+ * The class includes shared objects within a `Geese` object, such as `rengine`,
+ * `model`, `states`, `n_zeros`, `n_ones`, `n_dupl_events`, and `n_spec_events`.
+ * It also includes information about the type of event, such as `etype_default`,
+ * `etype_speciation`, `etype_duplication`, and `etype_either`.
+ * 
+ * The class provides constructors, a destructor, and methods for initializing
+ * the model, inheriting support, calculating the sequence, calculating the
+ * reduced sequence, calculating the likelihood, calculating the likelihood
+ * exhaustively, getting probabilities, setting the seed, simulating trees,
+ * parsing polytomies, getting observed counts, printing observed counts,
+ * printing information about the GEESE, and making predictions.
+ * 
+ * @see Flock
+ */
 class Geese {
     friend Flock;
 private:
@@ -1714,7 +1908,7 @@ private:
      */
     ///@{
     std::mt19937 *                     rengine = nullptr;
-    phylocounters::PhyloModel *        model   = nullptr;
+    PhyloModel *        model   = nullptr;
     std::vector< std::vector< bool > > states;
     size_t n_zeros       = 0u; ///< Number of zeros
     size_t n_ones        = 0u; ///< Number of ones
@@ -1738,6 +1932,23 @@ public:
     bool initialized     = false;
     bool delete_rengine  = false;
     bool delete_support  = false;
+
+    // Information about the type of event
+    
+    /***
+     * @name Information about the type of event
+     * @details
+     * The type of event is stored in the `etype` member. The possible values
+     * are `etype_default`, `etype_speciation`, `etype_duplication`, and
+     * `etype_either`.
+     * 
+    */
+    ///@{
+    static const size_t etype_default     = 1ul;
+    static const size_t etype_speciation  = 0ul;
+    static const size_t etype_duplication = 1ul;
+    static const size_t etype_either      = 2ul;
+    ///@}
 
     /**
      * @name Construct a new Geese object
@@ -1764,8 +1975,8 @@ public:
     Geese(
         std::vector< std::vector<size_t> > & annotations,
         std::vector< size_t > &              geneid,
-        std::vector< int > &                       parent,
-        std::vector< bool > &                      duplication
+        std::vector< int > &                 parent,
+        std::vector< bool > &                duplication
         );
 
     // Copy constructor
@@ -1905,9 +2116,9 @@ public:
      */
     ///@{
     std::mt19937 *                     get_rengine();
-    phylocounters::PhyloCounters *     get_counters();
-    phylocounters::PhyloModel *        get_model();
-    phylocounters::PhyloSupport *      get_support_fun();
+    PhyloCounters *     get_counters();
+    PhyloModel *        get_model();
+    PhyloSupport *      get_support_fun();
     ///@}
     
     /**
@@ -2002,7 +2213,7 @@ inline double Geese::likelihood(
             }
 
             // Retrieving the sets of arrays
-            const std::vector< phylocounters::PhyloArray > * psets =
+            const std::vector< PhyloArray > * psets =
                 model->get_pset(node.narray[s]);
 
             const std::vector<double> * psets_stats =
@@ -2082,12 +2293,29 @@ inline double Geese::likelihood(
 
                 nstate++;
 
-                // Computing the likelihood of the event.
-                off_mult *= model->likelihood(
-                    par0,
-                    temp_stats,
-                    node.narray[s]
-                );
+                // Use try catch in the following line
+                try {
+                    off_mult *= model->likelihood(
+                        par0,
+                        temp_stats,
+                        node.narray[s]
+                    );
+                } catch (std::exception & e) {
+
+                    auto err = std::string(e.what());
+
+                    std::string state_str = "";
+                    for (const auto & ss : states[s])
+                        state_str += std::to_string(ss) + " ";
+
+                    err = "Error computing the likelihood at node " +
+                        std::to_string(node.id) + " with state " + state_str +
+                        ". Error message:\n" +
+                        err;
+
+                    throw std::runtime_error(err);
+                    
+                }
 
                 // Adding to the total probabilities
                 totprob += off_mult;
@@ -2180,7 +2408,7 @@ inline double Geese::likelihood_exhaust(
         throw std::overflow_error("Too many functions! Exhaust calculation of likelihood cannot be done for such cases.");
 
     // Computing all combinations ----------------------------------------------
-    phylocounters::PhyloArray base(nfuns(), nnodes());
+    PhyloArray base(nfuns(), nnodes());
     for (auto& n : nodes)
     {
 
@@ -2189,10 +2417,10 @@ inline double Geese::likelihood_exhaust(
             
     }
 
-    phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
+    PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
     pset.add_rule(
-            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>,
-            phylocounters::PhyloRuleData()
+            rule_empty_free<PhyloArray,PhyloRuleData>,
+            PhyloRuleData()
             );
     pset.calc();
 
@@ -2208,7 +2436,7 @@ inline double Geese::likelihood_exhaust(
     {
         
         // ith state
-        const phylocounters::PhyloArray * s = &pset[p];
+        const PhyloArray * s = &pset[p];
         
         // Following the sequence
         double prob = 1.0;
@@ -2235,14 +2463,14 @@ inline double Geese::likelihood_exhaust(
                 continue;
 
             // Computing the transition
-            phylocounters::PhyloArray transition(nfuns(), node->offspring.size());
+            PhyloArray transition(nfuns(), node->offspring.size());
 
             std::vector< double > bl(node->offspring.size(), 1.0);
 
             std::vector< bool > sl = vector_caster<bool,size_t>(tmpstates);
 
             transition.set_data(
-                new phylocounters::NodeData(bl, sl, node->duplication),
+                new NodeData(bl, sl, node->duplication),
                 true
             );
 
@@ -2499,7 +2727,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         // Creating space.
         std::vector< std::vector< double > > everything_below(states.size());
         std::vector< std::vector< double > > everything_above(states.size());
-        std::vector< std::vector< phylocounters::PhyloArray > > psets(states.size());
+        std::vector< std::vector< PhyloArray > > psets(states.size());
 
         // Making space for the offspring
         for (auto & off : parent.offspring)
@@ -2529,12 +2757,12 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             {
 
                 // Corresponding graph and target stats
-                const phylocounters::PhyloArray & array_p = pset_arrays->at(p);
+                const PhyloArray & array_p = pset_arrays->at(p);
                 std::vector<double> target_p(n_pars, 0.0);
                 for (size_t par_i = 0u; par_i < target_p.size(); ++par_i)
                     target_p[par_i] = pset_target->operator[](p * n_pars + par_i);
 
-                phylocounters::PhyloArray tmp_array(nfuns(), array_p.ncol());
+                PhyloArray tmp_array(nfuns(), array_p.ncol());
                 tmp_array += array_p;
 
                 // Adding to the map, we only do this during the first run,
@@ -2856,7 +3084,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 
     // Computing all combinations ----------------------------------------------
     // The base PhyloArray will store the original set of annotations.
-    phylocounters::PhyloArray base(nfuns(), nnodes());
+    PhyloArray base(nfuns(), nnodes());
     for (auto& n : nodes)
     {
 
@@ -2865,10 +3093,10 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 
     }
 
-    phylocounters::PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
+    PhyloPowerSet pset(base);//this->nfuns(), this->nnodes());
     pset.add_rule(
-            rule_empty_free<phylocounters::PhyloArray,phylocounters::PhyloRuleData>,
-            phylocounters::PhyloRuleData()
+            rule_empty_free<PhyloArray,PhyloRuleData>,
+            PhyloRuleData()
             );
     pset.calc();
     
@@ -2881,7 +3109,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
     {
         
         // ith state
-        const phylocounters::PhyloArray * s = &pset[p];
+        const PhyloArray * s = &pset[p];
         
         // Computing the likelihood of the state s        
         double current_prob = 1.0;
@@ -2908,7 +3136,7 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
         
             // Generating a copy of the observed array
             // (data is copied so that we can chage the state of the parent)
-            phylocounters::PhyloArray tmparray(n.array, true);
+            PhyloArray tmparray(n.array, true);
 
             // Updating the state of the parent
             for (size_t f = 0u; f < nfuns(); ++f)
@@ -3116,7 +3344,7 @@ public:
     
     // Common components
     std::mt19937              rengine;
-    phylocounters::PhyloModel model = phylocounters::PhyloModel();
+    PhyloModel model = PhyloModel();
 
     Flock() {};
     ~Flock() {};
@@ -3147,11 +3375,11 @@ public:
     void init(size_t bar_width = BARRY_PROGRESS_BAR_WIDTH);
     
     // void add_geese(Geese x);
-    phylocounters::PhyloCounters * get_counters();
-    phylocounters::PhyloSupport *  get_support_fun();
+    PhyloCounters * get_counters();
+    PhyloSupport *  get_support_fun();
     std::vector< std::vector< double > > * get_stats_support();
     std::vector< std::vector< double > > * get_stats_target();
-    phylocounters::PhyloModel *  get_model();
+    PhyloModel *  get_model();
 
     /**
      * @brief Returns the joint likelihood of the model
@@ -3315,7 +3543,7 @@ inline void Flock::init(size_t bar_width)
     
 }
 
-inline phylocounters::PhyloCounters * Flock::get_counters()
+inline PhyloCounters * Flock::get_counters()
 {
 
     if (dat.size() == 0u)
@@ -3325,7 +3553,7 @@ inline phylocounters::PhyloCounters * Flock::get_counters()
 
 }
 
-inline phylocounters::PhyloSupport *  Flock::get_support_fun()
+inline PhyloSupport *  Flock::get_support_fun()
 {
 
     return this->model.get_support_fun();
@@ -3346,7 +3574,7 @@ inline std::vector< std::vector< double > > *  Flock::get_stats_target()
 
 }
 
-inline phylocounters::PhyloModel *  Flock::get_model()
+inline PhyloModel *  Flock::get_model()
 {
 
     return &this->model;
@@ -3536,6 +3764,2163 @@ inline Geese* Flock::operator()(size_t i, bool check_bounds)
 ////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////*/
 
+
+
+namespace phylocounters {
+/*//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+ Start of -include/barry/models/geese/counters.hpp-
+
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+#ifndef BARRAY_PHYLO_H
+#define BARRAY_PHYLO_H 1
+
+
+
+/**
+ * @ingroup counting
+ * @details Details about the available counters for `PhyloArray`
+ * objects can be found in the \ref counters-phylo section.
+ */
+///@{
+#define MAKE_DUPL_VARS() \
+    bool DPL = Array.D_ptr()->duplication; \
+    size_t DATA_AT = data[0u];
+
+#define IS_EITHER()      (DATA_AT == Geese::etype_either)
+#define IS_DUPLICATION() ((DATA_AT == Geese::etype_duplication) & (DPL))
+#define IS_SPECIATION()  ((DATA_AT == Geese::etype_speciation) & (!DPL))
+
+#define IF_MATCHES() MAKE_DUPL_VARS() \
+    if (IS_EITHER() | IS_DUPLICATION() | IS_SPECIATION())
+#define IF_NOTMATCHES() MAKE_DUPL_VARS() \
+    if (!IS_EITHER() & !IS_DUPLICATION() & !IS_SPECIATION())
+
+
+/**
+ * @brief Extension of a simple counter.
+ * 
+ * It allows specifying extra arguments, in particular, the corresponding
+ * sets of rows to which this statistic may be relevant. This could be important
+ * in the case of, for example, counting correlation type statistics between
+ * function 1 and 2, and between function 1 and 3.
+ * 
+ * 
+ */
+#define PHYLO_COUNTER_LAMBDA(a) barry::Counter_fun_type<PhyloArray, PhyloCounterData> a = \
+    [](const PhyloArray & Array, size_t i, size_t j, PhyloCounterData & data)
+
+#define PHYLO_RULE_DYN_LAMBDA(a) barry::Rule_fun_type<PhyloArray, PhyloRuleDynData> a = \
+    [](const PhyloArray & Array, size_t i, size_t j, PhyloRuleDynData & data)
+
+#define PHYLO_CHECK_MISSING() if (Array.D_ptr() == nullptr) \
+    throw std::logic_error("The array data is nullptr."); \
+    
+inline std::string get_last_name(size_t d) {return ((d == 1u)? " at duplication" : ((d == 0u)? " at speciation" : ""));}
+
+/**
+ * @weakgroup counters-phylo Phylo counters
+ * @brief Counters for phylogenetic modeling
+ * @param counters A pointer to a `PhyloCounters` object (`Counters`<`PhyloArray`, `PhyloCounterData`>).
+ */
+///@{
+// -----------------------------------------------------------------------------
+/**
+ * @brief Overall functional gains
+ * @details Total number of gains (irrespective of the function).
+ */
+inline void counter_overall_gains(
+    PhyloCounters * counters,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+        PHYLO_CHECK_MISSING();
+        
+        return 0.0;
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+        IF_NOTMATCHES()
+            return 0.0;
+      
+        return Array.D_ptr()->states[i] ? 0.0 : 1.0;
+      
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication}),
+        "Overall gains" + get_last_name(duplication)
+    );
+
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Functional gains for a specific function (`nfun`).
+ */
+inline void counter_gains(
+    PhyloCounters * counters,
+    std::vector<size_t> nfun,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        double ngains = 0.0;
+        auto   k = data[1u];
+        auto   s = Array.D_ptr()->states[k];
+
+        if (s)
+            return 0.0;
+
+        for (auto o = 0u; o < Array.ncol(); ++o)
+        {
+            if (!s && (Array(k,o) == 1u))
+                ngains += 1.0;
+        }
+        
+        return ngains;
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Is there any gain?
+        if (Array.D_ptr()->states[i])
+            return 0.0;
+
+        IF_MATCHES()
+            return (i == data[1u]) ? 1.0 : 0.0;
+        
+        return 0.0;
+
+    };
+    
+    for (auto& i : nfun)
+        counters->add_counter(
+            tmp_count, tmp_init, nullptr,
+            PhyloCounterData({duplication, i}),
+            "Gains " + std::to_string(i) + get_last_name(duplication)
+        );
+    
+    return;
+  
+}
+
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief k genes gain function nfun
+ */
+inline void counter_gains_k_offspring(
+    PhyloCounters * counters,
+    std::vector<size_t> nfun,
+    size_t k = 1u,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+      PHYLO_CHECK_MISSING();
+      return 0.0;
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Is this relevant?
+        if (i != data[1u])
+            return 0.0;
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // Is there any gain?
+        if (Array.D_ptr()->states[i])
+            return 0.0;
+
+        // Making the counts
+        int counts = 0;
+        for (size_t k = 0u; k < Array.ncol(); ++k)
+            if (k != j)
+            {
+                if (Array(i, k, false) == 1u)
+                    ++counts;
+            }
+
+        // Three cases: base on the diff
+        int diff = static_cast<int>(data[2u]) - counts + 1;
+        // (a) counts were 1 below k, then +1
+        if (diff == 1)
+            return -1.0;
+            // (b) counts were equal to k, then -1
+        else if (diff == 0)
+        {
+            return 1.0;
+        } else 
+            // (c) Otherwise, nothing happens
+            return 0.0;
+      
+
+    };
+    
+    for (auto& i : nfun)
+        counters->add_counter(
+            tmp_count, tmp_init, nullptr,
+            PhyloCounterData({duplication, i, k}),
+            std::to_string(k) + " genes gain " + std::to_string(i) +
+                get_last_name(duplication)
+        );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Keeps track of how many genes are changing (either 0, 1, or 2 if dealing
+ * with regular trees.)
+ */
+inline void counter_genes_changing(
+    PhyloCounters * counters,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        PHYLO_CHECK_MISSING();
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // At the beginning, all offspring are zero, so we need to
+        // find at least one state = true.
+        for (auto s : Array.D_ptr()->states)
+        {
+
+            if (s) 
+                // Yup, we are loosing a function, so break
+                return static_cast<double>(Array.ncol());
+            
+        }
+
+        return 0.0;
+      
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Checking the type of event
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // Need to check the other functions
+        for (size_t k = 0u; k < Array.nrow(); ++k)
+        {
+
+            // Nah, this gene was already different.
+            if ((k != i) && (Array.D_ptr()->states[k] != (Array(k, j, false) == 1u)))
+                return 0.0;
+            
+
+        }
+
+        // Nope, this gene is now matching its parent, so we need to 
+        // take it out from the count of genes that have changed.
+        return Array.D_ptr()->states[i] ? -1.0 : 1.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication}),
+        "Num. of genes changing" + get_last_name(duplication)
+    );
+
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Keeps track of how many pairs of genes preserve pseudostate.
+ */
+inline void counter_preserve_pseudogene(
+    PhyloCounters * counters,
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        PHYLO_CHECK_MISSING();
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // At the beginning, all offspring are zero, so we need to
+        // find at least one state = true.
+        if (Array.D_ptr()->states[data[1u]] || Array.D_ptr()->states[data[2u]])
+            return 0.0;
+
+        double n = static_cast<double>(Array.ncol());
+        return n * (n - 1.0) / 2.0;
+      
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Checking the type of event
+        IF_NOTMATCHES()
+            return 0.0;
+
+        auto nfunA = data[1u];
+        auto nfunB = data[2u];
+
+        if ((i != nfunA) & (i != nfunB))
+            return 0.0;
+
+        if (Array.D_ptr()->states[data[1u]] || Array.D_ptr()->states[data[2u]])
+            return 0.0;
+
+        size_t k = (i == nfunA) ? nfunB : nfunA;
+
+        if (Array(k, j) == 1u)
+            return 0.0;
+
+        double res = 0.0;
+        for (auto off = 0u; off < Array.ncol(); ++off)
+        {
+            if (off == j)
+                continue;
+
+            if ((Array(i, off) == 0u) && (Array(k, off) == 0u))
+                res -= 1.0;
+
+        }
+
+        return res;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication}),
+        "Preserve pseudo gene (" + 
+        std::to_string(nfunA) + ", " +
+        std::to_string(nfunB) + ")" + get_last_name(duplication)
+    );
+
+    
+    return;
+  
+}
+
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Keeps track of how many genes are changing (either 0, 1, or 2 if dealing
+ * with regular trees.)
+ */
+inline void counter_prop_genes_changing(
+    PhyloCounters * counters,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        PHYLO_CHECK_MISSING();
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // At the beginning, all offspring are zero, so we need to
+        // find at least one state = true.
+        for (auto s : Array.D_ptr()->states)
+        {
+            if (s)
+                return 1.0;
+        }
+        
+        return 0.0;
+      
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Checking the type of event
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        // Setup
+        bool j_diverges = false;
+        const std::vector< bool > & par_state = Array.D_ptr()->states;
+
+        for (size_t f = 0u; f < Array.nrow(); ++f)
+        {
+
+            // Was the gene annotation different from the parent?
+            if (par_state[f] != (Array(f,j) == 1u))
+            {
+                j_diverges = true;
+                break;
+            }
+
+        }
+
+
+        bool j_used_to_diverge = false;
+        for (size_t f = 0u; f < Array.nrow(); ++f)
+        {
+
+            if (f == i)
+            {
+                if (par_state[f])
+                {
+                    j_used_to_diverge = true;
+                    break;
+                }
+            }
+            else
+            {
+
+                if (par_state[f] != (Array(f,j) == 1u))
+                {
+                    j_used_to_diverge = true;
+                    break;
+                }
+
+            }
+
+        }
+
+        // Case 1: j hasn't changed
+        if ((!j_used_to_diverge & !j_diverges) | (j_used_to_diverge & j_diverges))
+            return 0.0;
+        // Case 2: j NOW diverges
+        else if (j_diverges)
+            return 1.0/Array.ncol();
+        // Case 3: j USED to diverge, so no more
+        else
+            return -1.0/Array.ncol();
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication}),
+        "Proportion of genes changing" + get_last_name(duplication)
+    );
+
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Overall functional loss
+ */
+inline void counter_overall_loss(
+    PhyloCounters * counters,
+    size_t duplication = Geese::etype_default
+    )
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        if (!Array.D_ptr()->states[i])
+            return 0.0;
+
+        IF_MATCHES()
+            return -1.0;
+        else 
+            return 0.0;
+        
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        double res = 0.0;
+        for (auto s : Array.D_ptr()->states)
+            if (s)
+                res += 1.0;
+
+        return res * static_cast<double>(Array.ncol());
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication}),
+        "Overall loses" + get_last_name(duplication)
+    );
+    
+    return;
+
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Cap the number of functions per gene
+ */
+inline void counter_maxfuns(
+    PhyloCounters * counters,
+    size_t            lb,
+    size_t            ub,
+    size_t duplication = Geese::etype_default
+ )
+ {
+
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+        PHYLO_CHECK_MISSING();    
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // At first, all are zero, so we need to check if the lower
+        // bound is zero
+        if (data[1u] == 0)
+            return static_cast<double>(Array.ncol());
+        
+        return 0.0;
+
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        int count = Array.colsum(j);
+        int ub    = data[2u];
+        
+        // It now matches
+        if (count == static_cast<int>(data[1u]))
+            return 1.0;
+
+        // Was within, but now outside
+        if (count > ub && ((count - ub) == 1))
+            return -1.0;
+
+        // Otherwise nothing happens.
+        return 0.0;
+
+    };
+
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, lb, ub}),
+        "Genes with [" + std::to_string(lb) + ", " + std::to_string(ub) +
+            "] funs" + get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+  
+// -----------------------------------------------------------------------------
+/**
+ * @brief Total count of losses for an specific function.
+ */
+inline void counter_loss(
+    PhyloCounters * counters,
+    std::vector<size_t> nfun,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        if (!Array.D_ptr()->states[i])
+            return 0.0;
+        
+        return (i == data[1u]) ? -1.0 : 0.0;
+
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+        PHYLO_CHECK_MISSING();
+
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        auto f = data[1u];
+
+        if (!Array.D_ptr()->states[f])
+            return 0.0;
+        
+        return static_cast<double>(Array.ncol());
+
+    };
+    
+    for (auto& i : nfun)
+        counters->add_counter(
+            tmp_count, tmp_init, nullptr,
+            PhyloCounterData({duplication, i}),
+            "Loss " + std::to_string(i) + get_last_name(duplication)
+        );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Total number of changes. Use this statistic to account for "preservation"
+ */
+inline void counter_overall_changes(
+    PhyloCounters * counters,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        if (Array.D_ptr()->states[i])
+            return -1.0;
+        else 
+            return 1.0;
+
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        PHYLO_CHECK_MISSING();
+
+
+        // Since we start with all the array at zero,
+        // As many chances to change as offspring
+        double noff   = static_cast<double> (Array.ncol());
+        double counts = 0.0;
+        for (size_t k = 0u; k < Array.nrow(); ++k)
+            if (Array.D_ptr()->states[k])
+                counts += noff;
+
+        return counts;
+
+        
+
+    };
+
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication}),
+        "Overall changes" + get_last_name(duplication)
+    );
+    
+    
+    return;
+  
+}
+
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Total count of Sub-functionalization events.
+ * @details It requires to specify data = {funA, funB}
+ */
+inline void counter_subfun(
+    PhyloCounters * counters,
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Is this node duplication?
+        IF_NOTMATCHES()
+            return 0.0;
+
+        auto funA = data[1u];
+        auto funB = data[2u];
+        
+        // Are we looking at either of the relevant functions?
+        if ((funA != i) && (funB != i))
+            return 0.0;
+        
+        // Are A and B existant? if not, no change
+        if (!Array.D_ptr()->states[funA] || !Array.D_ptr()->states[funB])
+            return 0.0;
+        
+        // Figuring out which is the first (reference) function
+        size_t other = (i == funA)? funB : funA;
+        double res = 0.0;
+        // There are 4 cases: (first x second) x (had the second function)
+        if (Array(other, j, false) == 1u)
+        { 
+          
+            for (size_t off = 0u; off < Array.ncol(); ++off)
+            {
+                
+                // Not on self
+                if (off == j)
+                    continue;
+                
+                if ((Array(i, off, false) == 1u) && (Array(other, off, false) == 0u))
+                    res -= 1.0;
+                
+            }
+          
+        } else {
+          
+            for (size_t off = 0u; off < Array.ncol(); ++off)
+            {
+              
+                // Not on self
+                if (off == j)
+                    continue;
+                
+                if ((Array(i, off, false) == 0u) && (Array(other, off, false) == 1u))
+                    res += 1.0;
+              
+            }
+          
+        }
+        
+        return res;
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+        PHYLO_CHECK_MISSING();
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, nfunA, nfunB}),
+        "Subfun between " + std::to_string(nfunA) + " and " +
+            std::to_string(nfunB) + get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Co-evolution (joint gain or loss)
+ * @details Needs to specify pairs of functions (`nfunA`, `nfunB`).
+ */
+inline void counter_cogain(
+    PhyloCounters * counters,
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        auto d1 = data[1u];
+        auto d2 = data[2u];
+      
+        // Is the function in scope relevant?
+        if ((i != d1) && (i != d2))
+            return 0.0;
+        
+        // None should have it
+        if (!Array.D_ptr()->states[d1] && !Array.D_ptr()->states[d2])
+        {
+
+            size_t other = (i == d1)? d2 : d1;
+
+            if (Array(other, j, false) == 1u)
+                return 1.0;
+            else
+                return 0.0;
+
+        } else 
+            return 0.0;
+
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, nfunA, nfunB}),
+        "Co-gains " + std::to_string(nfunA) + " & " + std::to_string(nfunB) +
+            get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/** @brief Longest branch mutates (either by gain or by loss) */
+inline void counter_longest(
+    PhyloCounters * counters,
+    size_t duplication = Geese::etype_default
+    )
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // Figuring out which match
+        std::vector< bool> is_longest(Array.ncol(), false);
+        bool j_mutates = false;
+        int nmutate = 0;
+        int nmutate_longest = 0;
+
+        auto states  = Array.D_ptr()->states;
+        
+        for (auto off = 0u; off < Array.ncol(); ++off)
+        {
+
+            // On the fly, figuring out if it is longest
+            for (auto & l : data)
+                if (l == off)
+                    is_longest[off] = true;
+
+            for (auto f = 0u; f < Array.nrow(); ++f)
+            {
+                if ((Array(f, off) == 1u) != states[f])
+                {
+                    
+                    // If it happens that j != off and is not longest
+                    // then return 0 (a not longest was mutating prev)
+                    if (is_longest[off] && (off != j))
+                        return 0.0;
+
+                    if (off == j)
+                        j_mutates = true;
+
+                    if (is_longest[j])
+                        nmutate_longest++;
+                    else
+                        nmutate++;
+
+                    break;
+                }
+
+            }
+        }
+
+        // There was already more than one in difference
+        // so nothing to change
+        if (std::fabs(nmutate - nmutate_longest) > 1)
+            return 0.0;
+
+        // Figuring out previously
+        bool j_mutates_prev = false;
+        for (auto f = 0u; f < Array.nrow(); ++f)
+        {
+            // Checking the previous function... was it
+            // different before?
+            if ((f == i) && states[i])
+            {
+                j_mutates_prev = true;
+                break;
+            }
+            else if ((Array(f, j) == 1u) != states[f])
+            {
+                j_mutates_prev = true;
+                break;
+            }
+
+        }
+
+        // Adjusting the previous count
+        auto nmutate_prev         = nmutate;
+        auto nmutate_longest_prev = nmutate_longest;
+        if (j_mutates & !j_mutates_prev)
+        {
+            if (is_longest[j])
+                nmutate_longest_prev--;
+            else
+                nmutate_prev--;
+        }
+        else if (!j_mutates & j_mutates)
+        {
+            if (is_longest[j])
+                nmutate_longest_prev++;
+            else
+                nmutate_prev++;
+
+        }
+        
+        // Just compute the change statistic directly
+        return
+            ( ((nmutate == 0) & (nmutate_longest > 0)) ? 1.0 : 0.0 ) +
+            ( ((nmutate_prev == 0) & (nmutate_longest_prev > 0)) ? 1.0 : 0.0 );
+
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+        PHYLO_CHECK_MISSING();
+        
+        if (Array.D_ptr()->blengths.size() != Array.ncol())
+            throw std::logic_error(
+                "longest should be initialized with a vec of size Array.ncol()."
+            );
+          
+        // Finding the longest branch (or branches) --
+        size_t longest_idx = 0u;
+        double diff      = 0.0;
+        data.reserve(Array.ncol()); 
+        data.push_back(0u);
+        for (size_t ii = 1u; ii < Array.ncol(); ++ii)
+        {
+            
+            diff = Array.D_ptr()->blengths[longest_idx] - Array.D_ptr()->blengths[ii];
+            if (diff > 0.0)
+                continue;
+            else if (diff < 0.0)
+            {
+
+                data.empty();
+                data.push_back(ii);
+                longest_idx = ii;
+
+            }
+            else if (diff == 0.0)
+                data.push_back(ii);
+            
+        }
+
+        data.shrink_to_fit();
+        
+        if (data.size() == 0u)
+            throw std::logic_error("The data on the longest branch has size 0.");
+        
+        // Starting the counter, since all in zero, then this will be equal to
+        // the number of functions in 1 x number of longest branches
+        for (size_t ii = 0u; ii < Array.nrow(); ++ii)
+        {
+            
+            if (Array.D_ptr()->states[ii])
+                return (1.0 * static_cast<double>(data.size()));
+
+        }
+        
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication}),
+        "Longest branch mutates" + get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+//------------------------------------------------------------------------------
+/**
+ * @brief Total number of neofunctionalization events 
+ * @details Needs to specify pairs of function.
+ */
+inline void counter_neofun(
+    PhyloCounters * counters,
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Is this node duplication?
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        auto funA = data[1u];
+        auto funB = data[2u];
+
+        // Is the function in scope relevant?
+        if ((i != funA) && (i != funB))
+            return 0.0;
+        
+        // Checking if the parent has both functions
+        size_t other = (i == funA)? funB : funA;
+        bool parent_i     = Array.D_ptr()->states[i];
+        bool parent_other = Array.D_ptr()->states[other];
+        
+        if (!parent_i & !parent_other) 
+            return 0.0;
+        else if (parent_i & parent_other) 
+            return 0.0;
+        
+        // Figuring out which is the first (reference) function
+        double res = 0.0;
+        
+        if (Array(other, j) == 0u)
+        {
+
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+                if ((Array(i,off) == 0) && (Array(other,off) == 1))
+                    res += 1.0;
+
+        }
+        else
+        {
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+                if ((Array(i,off) == 1) && (Array(other,off) == 0))
+                    res -= 1.0;
+                
+        }
+             
+        return res;
+
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        return 0.0;
+
+    };
+
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, nfunA, nfunB}),
+        "Neofun between " + std::to_string(nfunA) + " and " +
+        std::to_string(nfunB) + get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+//------------------------------------------------------------------------------
+/**
+ * @brief Total number of neofunctionalization events 
+ * sum_u sum_{w < u} [x(u,a)*(1 - x(w,a)) + (1 - x(u,a)) * x(w,a)]
+ * change stat: delta{x(u,a): 0->1} = 1 - 2 * x(w,a)
+ */
+inline void counter_pairwise_neofun_singlefun(
+    PhyloCounters * counters,
+    size_t nfunA,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Is this node duplication?
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        // Is the function in scope relevant?
+        if (i != data[1u])
+            return 0.0;
+        
+        // Checking if the parent has the function
+        if (Array.D_ptr()->states[i])
+            return 0.0;
+        
+        // Figuring out which is the first (reference) function
+        double res = 0.0;
+        for (auto off = 0u; off < Array.ncol(); ++off)
+        {
+
+            if (off == j)
+                continue;
+
+            if ((Array(i, off) == 0))
+                res += 1.0;
+            else 
+                res -= 1.0;
+
+        }
+
+        return res;
+
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        return 0.0;
+
+    };
+
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, nfunA}),
+        "Pairwise neofun function " + std::to_string(nfunA) +
+        get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+//------------------------------------------------------------------------------
+/**
+ * @brief Total number of neofunctionalization events 
+ * @details Needs to specify pairs of function.
+ */
+inline void counter_neofun_a2b(
+    PhyloCounters * counters,
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Is this node duplication?
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        const size_t & funA = data[1u];
+        const size_t & funB = data[2u];
+
+        // Checking scope
+        if ((i != funA) && (i != funB))
+            return 0.0;
+        
+        // Checking the parent doesn't have funA or has funB
+        if (!Array.D_ptr()->states[funA] || Array.D_ptr()->states[funB]) 
+            return 0.0;
+
+        double res = 0.0;
+
+        if (i == funA)
+        {
+
+            if (Array(funB, j) == 0u)
+            {
+
+                for (auto off = 0u; off < Array.ncol(); ++off)
+                {
+
+                    if (off == j)
+                        continue;
+
+                    if ((Array(funA, off) == 0u) && (Array(funB, off) == 1u))
+                        res += 1.0;
+
+                }
+
+            }
+            else
+            {
+
+                for (auto off = 0u; off < Array.ncol(); ++off)
+                {
+                    
+                    if (off == j)
+                        continue;
+
+                    if ((Array(funA, off) == 1u) && (Array(funB, off) == 0u))
+                        res -= 1.0;
+
+                }
+
+            }
+
+        }
+        else
+        {
+
+            if (Array(funA, j) == 0u)
+            {
+
+                for (auto off = 0u; off < Array.ncol(); ++off)
+                {
+
+                    if (off == j)
+                        continue;
+
+                    if ((Array(funA, off) == 1u) && (Array(funB, off) == 0u))
+                        res += 1.0;
+
+                }
+
+            }
+            else
+            {
+
+                for (auto off = 0u; off < Array.ncol(); ++off)
+                {
+                    
+                    if (off == j)
+                        continue;
+
+                    if ((Array(funA, off) == 0u) && (Array(funB, off) == 1u))
+                        res -= 1.0;
+
+                }
+
+            }
+
+        }
+
+        return res;
+        
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+
+        PHYLO_CHECK_MISSING();
+        return 0.0;
+
+    };
+
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, nfunA, nfunB}),
+        "Neofun from " + std::to_string(nfunA) + " to " +
+        std::to_string(nfunB) + get_last_name(duplication)
+    );
+    
+    return;
+    
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Function co-opting
+ * @details Function co-opting of functions A and B happens when, for example,
+ * function B is gained as a new featured leveraging what function A already does;
+ * without losing function A. The sufficient statistic is defined as follows:
+ * \f[
+ * x_{pa}(1 - x_{pb})\sum_{i<j}\left[x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p + x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p\right]
+ * \f]
+ * This algorithm implements the change statistic.
+ */
+inline void counter_co_opt(
+    PhyloCounters * counters,
+    size_t nfunA,
+    size_t nfunB, 
+    size_t duplication = Geese::etype_default
+) {
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    { 
+
+        // Checking whether this is for duplication or not
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        const size_t funA = data[1u];
+        const size_t funB = data[2u];
+
+        // If the change is out of scope, then nothing to do
+        if ((i != funA) & (i != funB))
+            return 0.0;
+
+        // If the parent does not have the initial state, then it makes no sense
+        if ((!Array.D_ptr()->states[funA]) || Array.D_ptr()->states[funB])
+            return 0.0;
+
+        // Checking whether function A or function B changed
+        if (i == funA) {
+
+            // What was the state of the other function? If B is present, then
+            // nothing changes.
+            if (Array(funB, j, false) == 1u) 
+                return 0.0;
+
+            // Iterating through the sibs
+            double res = 0.0;
+            for (auto c = 0u; c < Array.ncol(); ++c)
+                if ((c != j) && (Array(funA, c, false) == 1u) && (Array(funB, c, false) == 1u))
+                    res += 1.0;
+
+            return res;
+
+        } else {
+
+            // What was the state of the other function? If A is not present, then
+            // nothing changes.
+            if (Array(funA, j, false) == 0u) 
+                return 0.0;
+
+            // Iterating through the sibs
+            double res = 0.0;
+            for (auto c = 0u; c < Array.ncol(); ++c)
+                if ((c != j) && (Array(funA, c, false) == 1u))
+                    res += (Array(funB, c, false) == 0u) ? 1.0 : -1.0;
+
+            return res;
+
+        }
+
+        
+
+    };
+    
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        if (data.size() != 3u)
+            throw std::length_error("The counter data should be of length 2.");
+
+        if (data[1u] == data[2u])
+            throw std::logic_error("Functions A and B should be different from each other.");
+
+        if (data[1u] >= Array.nrow())
+            throw std::length_error("Function A in counter out of range.");
+
+        if (data[2u] >= Array.nrow())
+            throw std::length_error("Function B in counter out of range.");
+
+        return 0.0;
+
+    };
+
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, nfunA, nfunB}),
+        "Coopt of " + std::to_string(nfunA) + " by " +
+        std::to_string(nfunB) + get_last_name(duplication)
+    );
+    
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Indicator function. Equals to one if \f$k\f$ genes changed and zero
+ * otherwise.
+ */
+inline void counter_k_genes_changing(
+    PhyloCounters * counters,
+    size_t k,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        PHYLO_CHECK_MISSING();
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // At the beginning, all offspring are zero, so we need to
+        // find at least one state = true.
+        for (auto s : Array.D_ptr()->states)
+            if (s)
+                return Array.ncol() == data[1u] ? 1.0 : 0.0;
+
+        return data[1u] == 0 ? 1.0 : 0.0;
+      
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Checking the type of event
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        // How many genes diverge the parent
+        int              count = 0; 
+        bool        j_diverges = false;
+        const auto & par_state = Array.D_ptr()->states;
+
+        int k = static_cast<int>(data[1u]);
+
+        for (auto o = 0u; o < Array.ncol(); ++o)
+        {
+
+            for (auto f = 0u; f < Array.nrow(); ++f)
+            {
+
+                // Was the gene annotation different from the parent?
+                if ((Array(f, o) == 1u) != par_state[f])
+                {
+
+                    if (o == j)
+                        j_diverges = true;
+
+                    count++;
+                    break;
+
+                }
+
+            }
+
+        }
+
+        // Counts will only be relevant if (count - k) > 1. Otherwise,
+        // having the j gene changed is not relevant
+        if (std::abs(count - k) > 1)
+            return 0.0;
+
+        // Did it used to diverge?
+        bool j_used_to_diverge = false;
+        for (auto f = 0u; f < Array.nrow(); ++f)
+        {
+
+            if (f == i)
+            {
+                if (par_state[f]) // Since it is now true, it used to diverge
+                {
+                    j_used_to_diverge = true;
+                    break;
+                }
+            }
+            else
+            {
+
+                if (par_state[f] != (Array(f,j) == 1u))
+                {
+                    j_used_to_diverge = true;
+                    break;
+                }
+
+            }
+
+        }
+
+        auto count_prev = count;
+        // Case 1: j hasn't changed
+        if ((!j_used_to_diverge & !j_diverges) | (j_used_to_diverge & j_diverges))
+            return 0.0;
+        // Case 2: j NOW diverges
+        else if (j_diverges)
+            count_prev--;
+        // Case 3: j USED to diverge
+        else
+            count_prev++;
+
+        return (count == k ? 1.0 : 0.0) - (count_prev == k ? 1.0 : 0.0);
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, k}),
+        std::to_string(k) + " genes changing" + get_last_name(duplication)
+    );
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Indicator function. Equals to one if \f$k\f$ genes changed and zero
+ * otherwise.
+ */
+inline void counter_less_than_p_prop_genes_changing(
+    PhyloCounters * counters,
+    double p,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_init)
+    {
+        
+        PHYLO_CHECK_MISSING();
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        for (auto s : Array.D_ptr()->states)
+            if (s)
+                return data[1u] == 100 ? 1.0 : 0.0;
+
+        // Only one if it was specified it was zero
+        return 1.0;
+      
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        // Checking the type of event
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        // Setup
+        double count = 0.0; ///< How many genes diverge the parent
+
+        bool j_diverges = false;
+        const std::vector< bool > & par_state = Array.D_ptr()->states;
+
+        for (size_t o = 0u; o < Array.ncol(); ++o)
+        {
+
+            for (size_t f = 0u; f < Array.nrow(); ++f)
+            {
+
+                // Was the gene annotation different from the parent?
+                if ((Array(f, o) == 1u) != par_state[f])
+                {
+
+                    if (o == j)
+                        j_diverges = true;
+
+                    count += 1.0;
+                    break;
+
+                }
+
+            }
+
+        }
+
+
+        bool j_used_to_diverge = false;
+        for (size_t f = 0u; f < Array.nrow(); ++f)
+        {
+
+            if (f == i)
+            {
+                if (par_state[f])
+                {
+                    j_used_to_diverge = true;
+                    break;
+                }
+            }
+            else
+            {
+
+                if (par_state[f] != (Array(f,j) == 1u))
+                {
+                    j_used_to_diverge = true;
+                    break;
+                }
+
+            }
+
+        }
+
+        auto count_prev = count;
+        // Case 1: j hasn't changed
+        if ((!j_used_to_diverge & !j_diverges) | (j_used_to_diverge & j_diverges))
+            return 0.0;
+        // Case 2: j NOW diverges
+        else if (j_diverges)
+            count_prev -= 1.0;
+        // Case 3: j USED to diverge
+        else
+            count_prev += 1.0;
+
+        double ncol = static_cast<double>(Array.ncol());
+        double p    = static_cast<double>(data[1u]) / 100.0;
+
+        return ((count/ncol) <= p ? 1.0 : 0.0) - ((count_prev/ncol) <= p ? 1.0 : 0.0);
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, static_cast<size_t>(p * 100)}),
+        std::to_string(p) + " prop genes changing" + get_last_name(duplication)
+    );
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Used when all the functions are in 0 (like the root node prob.)
+ * @details Needs to specify function a.
+ */
+inline void counter_gains_from_0(
+    PhyloCounters * counters,
+    std::vector< size_t > nfun,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // All must be false
+        for (auto s : Array.D_ptr()->states)
+        {
+
+            if (s)
+                return 0.0;
+
+        }
+
+        // Is this the function?
+        if (i != data[1u])
+            return 0.0;
+
+        // Now computing the change stats
+        double res = static_cast<double>(Array.ncol()) - 1.0;
+        for (auto off = 0u; off < Array.ncol(); ++off)
+        {
+            if (off  == j)
+                continue;
+
+            if (Array(i, off) == 1u)
+                res -= 2.0;
+        }
+
+
+        return res;
+        
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        return 0.0;
+
+    };
+    
+    for (auto& i : nfun)
+        counters->add_counter(
+            tmp_count, tmp_init, nullptr,
+            PhyloCounterData({duplication, i}),
+            "First gain " + std::to_string(i) +
+                get_last_name(duplication)
+        );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Used when all the functions are in 0 (like the root node prob.)
+ * @details Needs to specify function a.
+ */
+inline void counter_overall_gains_from_0(
+    PhyloCounters * counters,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // All must be false
+        for (auto s : Array.D_ptr()->states)
+        {
+
+            if (s)
+                return 0.0;
+
+        }
+
+        return 1.0;
+        
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication}),
+        "Overall first gains" +
+            get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Used when all the functions are in 0 (like the root node prob.)
+ * @details Needs to specify function a.
+ */
+inline void counter_pairwise_overall_change(
+    PhyloCounters * counters,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        size_t funpar = Array.D_ptr()->states[i] == 1u;
+
+        // All must be false
+        double res = 0.0;
+        for (auto off = 0u; off < Array.ncol(); ++off)
+        {
+            if (off == j)
+                continue;
+
+            if (funpar > Array(i, off))
+                res -= 1.0;
+            else if (funpar < Array(i, off))
+                res += 1.0;
+        }
+        
+        return res;
+        
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        double res = 0.0;
+        double n   = static_cast<double>(Array.ncol());
+        for (auto s : Array.D_ptr()->states)
+            if (s)
+                res += n * (n - 1.0) / 2.0;
+
+        return res;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication}),
+        "Pairs of genes changing" +
+            get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Used when all the functions are in 0 (like the root node prob.)
+ * @details Needs to specify function a.
+ * sum x(a)^3(1-x(b))^3 + x(b)^3(1-x(a))^3 + x(a)^3 * x(b)^3 + (1 - x(a))^3 * (1-x(b))^3
+ */
+inline void counter_pairwise_preserving(
+    PhyloCounters * counters,
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // Not in the scope
+        auto funA = data[1u];
+        auto funB = data[2u];
+        if ((funA != i) && (funB != i))
+            return 0.0;
+
+        size_t k = (funA == i) ? funB : funA;
+
+        bool parent_i = Array.D_ptr()->states[i];
+        bool parent_k = Array.D_ptr()->states[k];
+
+        // if (!parent_i & !parent_k)
+        //     return 0.0;
+
+        double res = 0.0;
+        // Case 1: (0,0)
+        if (!parent_i & !parent_k)
+        {
+
+            if (Array(k, j) == 1u)
+                return 0.0; 
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+            {
+
+                if (off == j)
+                    continue;
+
+                if ((Array(i, off) == 0u) && (Array(k, off) == 0u))
+                    res -= 1.0;
+
+            }
+
+        }
+        else if (parent_i & !parent_k)
+        {
+
+            if (Array(k, j) == 1u)
+                return 0.0; 
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+            {
+
+                if (off == j)
+                    continue;
+
+                if ((Array(i, off) == 1u) && (Array(k, off) == 0u))
+                    res += 1.0;
+
+            }
+
+        }
+        else if (!parent_i & parent_k)
+        {
+
+            if (Array(k, j) == 0u)
+                return 0.0; 
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+            {
+
+                if (off == j)
+                    continue;
+
+                if ((Array(i, off) == 0u) && (Array(k, off) == 1u))
+                    res += 1.0;
+
+            }
+
+        }
+        else
+        {
+
+            if (Array(k, j) == 0u)
+                return 0.0; 
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+            {
+
+                if (off == j)
+                    continue;
+
+                if ((Array(i, off) == 1u) && (Array(k, off) == 1u))
+                    res += 1.0;
+
+            }
+        }
+
+        return res;
+        
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+
+        IF_NOTMATCHES()
+            return 0.0;
+        
+        PHYLO_CHECK_MISSING();
+        
+        double n = static_cast< double >(Array.ncol());
+        if (!Array.D_ptr()->states[data[1u]] && !Array.D_ptr()->states[data[2u]])
+            return n * (n - 1.0) / 2.0;
+
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, nfunA, nfunB}),
+        "Pariwise preserve (" + std::to_string(nfunA) + ", " +
+            std::to_string(nfunB) + ")" +get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+// -----------------------------------------------------------------------------
+/**
+ * @brief Used when all the functions are in 0 (like the root node prob.)
+ * @details Needs to specify function a.
+ * sum x(a)^3(1-x(b))^3 + x(b)^3(1-x(a))^3 + x(a)^3 * x(b)^3 + (1 - x(a))^3 * (1-x(b))^3
+ */
+inline void counter_pairwise_first_gain(
+    PhyloCounters * counters,
+    size_t nfunA,
+    size_t nfunB,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_COUNTER_LAMBDA(tmp_count)
+    {
+
+        IF_NOTMATCHES()
+            return 0.0;
+
+        // Not in the scope
+        auto funA = data[1u];
+        auto funB = data[2u];
+        if ((funA != i) && (funB != i))
+            return 0.0;
+
+        size_t k = (funA == i) ? funB : funA;
+
+        double res = 0.0;
+        if (Array(k, j) == 1)
+        {
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+            {
+                if (off == j)
+                    continue;
+
+                if ((Array(i,off) == 0u) && (Array(k,off) == 0u))
+                    res -= 1.0;
+            }
+
+        }
+        else
+        {
+
+            for (auto off = 0u; off < Array.ncol(); ++off)
+            {
+
+                if (off == j)
+                    continue;
+
+                if ((Array(i, off) == 1u))
+                {
+
+                    // j: (0,0)\(1,0) -> (1,0)\(1,0), so less 1
+                    if (Array(k, off) == 0u)
+                        res -= 1.0;
+
+                }
+                else
+                {
+
+                    if (Array(k, off) == 1u) 
+                    // j: (0,0)\(0,1) -> (1,0)\(0,1), so less 1
+                        res -= 1.0;
+                    else
+                    // j: (0,0)\(0,0) -> (1,0)\(0,0), so plus 1
+                        res += 1.0;
+
+                }
+
+            }
+
+        }
+        
+
+        return res;
+        
+    };
+
+    PHYLO_COUNTER_LAMBDA(tmp_init) {
+
+        PHYLO_CHECK_MISSING();
+        
+        return 0.0;
+
+    };
+    
+    counters->add_counter(
+        tmp_count, tmp_init, nullptr,
+        PhyloCounterData({duplication, nfunA, nfunB}),
+        "First gain (either " + std::to_string(nfunA) + " or " +
+            std::to_string(nfunB) + ")" +get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+///@}
+
+/**
+ * @weakgroup rules-phylo Phylo rules
+ * @brief Rules for phylogenetic modeling
+ * @param rules A pointer to a `PhyloRules` object (`Rules`<`PhyloArray`, `PhyloRuleData`>).
+ */
+///@{
+/**
+ * @brief Overall functional gains
+ * @param support Support of a model.
+ * @param pos Position of the focal statistic.
+ * @param lb Lower bound
+ * @param ub Upper bound
+ * @details 
+ * @return (void) adds a rule limiting the support of the model.
+ */
+inline void rule_dyn_limit_changes(
+    PhyloSupport * support,
+    size_t pos,
+    size_t lb,
+    size_t ub,
+    size_t duplication = Geese::etype_default
+)
+{
+  
+    PHYLO_RULE_DYN_LAMBDA(tmp_rule)
+    {
+
+        size_t rule_type = data.duplication;
+        if (rule_type != Geese::etype_either)
+        {
+
+            if (Array.D_ptr()->duplication & (rule_type != Geese::etype_duplication))
+                return true;
+            else if (!Array.D_ptr()->duplication & (rule_type != Geese::etype_speciation))
+                return true;
+                
+        }
+
+        if (data() < data.lb)
+            return false;
+        else if (data() > data.ub)
+            return false;
+        else
+            return true;
+      
+    };
+
+    // Checking whether the rule makes sense (dupl)
+    if (duplication != Geese::etype_either)
+    {
+        if (support->get_counters()->operator[](pos).data[0] != duplication)
+            throw std::logic_error(
+                "The rule is not compatible with the duplication type of the model." +
+                std::string("The rule is for ") + get_last_name(duplication) +
+                std::string(" but the term is for ") + get_last_name(
+                    support->get_counters()->operator[](pos).data[0]
+                    )
+        );
+    }
+    
+    support->get_rules_dyn()->add_rule(
+        tmp_rule,
+        PhyloRuleDynData(
+            support->get_current_stats(),
+            pos, lb, ub, duplication
+            ),
+        std::string("Limiting changes in '") + 
+            support->get_counters()->get_names()[pos] +
+            "' to [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + std::string("]") +
+            get_last_name(duplication),        
+        std::string("When the support is ennumerated, the number of changes in '") + 
+            support->get_counters()->get_names()[pos] +
+            std::to_string(pos) + "' is limited to [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + "]" +
+            get_last_name(duplication)
+    );
+    
+    return;
+  
+}
+
+///@}
+
+#undef MAKE_DUPL_VARS
+#undef IS_EITHER
+#undef IS_DUPLICATION
+#undef IS_SPECIATION
+#undef IF_MATCHES
+#undef IF_NOTMATCHES
+
+
+#endif
+/*//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+ End of -include/barry/models/geese/counters.hpp-
+
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
+
+
+}
 
 
 #endif

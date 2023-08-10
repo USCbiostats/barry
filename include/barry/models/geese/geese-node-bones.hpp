@@ -14,11 +14,11 @@ public:
     size_t id; ///< Id of the node (as specified in the input)
     size_t ord; ///< Order in which the node was created
 
-    phylocounters::PhyloArray array;       ///< Array of the node
+    PhyloArray array;       ///< Array of the node
     std::vector< size_t >     annotations; ///< Observed annotations (only defined for Geese)
     bool                      duplication;
 
-    std::vector< phylocounters::PhyloArray > arrays = {}; ///< Arrays given all possible states
+    std::vector< PhyloArray > arrays = {}; ///< Arrays given all possible states
 
     std::vector< bool > arrays_valid = {}; ///< Whether the arrays are valid according to the rules of the model.
 

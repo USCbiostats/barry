@@ -71,7 +71,7 @@ inline double Geese::likelihood(
             }
 
             // Retrieving the sets of arrays
-            const std::vector< phylocounters::PhyloArray > * psets =
+            const std::vector< PhyloArray > * psets =
                 model->get_pset(node.narray[s]);
 
             const std::vector<double> * psets_stats =

@@ -4,7 +4,7 @@
 BARRY_TEST_CASE("Geese model with rules", "[geese with rules]") {
 // int main() {
 
-    using namespace barry::counters::phylo;
+    using namespace phylocounters;
 
     // More interesting experiment
     std::vector< std::vector<size_t> > ann = {
