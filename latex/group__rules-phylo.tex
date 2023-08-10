@@ -18,60 +18,108 @@ Collaboration diagram for Phylo rules\+:
 \item 
 class \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{group__rules-phylo_ga172b737bbafc10829969ae80428ae682}{MAKE\+\_\+\+DEFM\+\_\+\+HASHER}}(\mbox{\hyperlink{counters-meat_8hpp_a51327367202f40175dea83db9095a0da}{hasher}},  \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}},  cov)
-\item 
-\#define \mbox{\hyperlink{group__rules-phylo_gac6f3765d01ec78962d3bacb6d9934331}{DEFM\+\_\+\+RULEDYN\+\_\+\+LAMBDA}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
-\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{group__rules-phylo_ga0773b2dbf4673181e45c93632a5f9cc3}{rule\+\_\+dyn\+\_\+limit\+\_\+changes}} (\mbox{\hyperlink{geese-types_8hpp_ae66aa4dbb13f90c073bc0d5c3df58d83}{Phylo\+Support}} $\ast$support, size\+\_\+t pos, size\+\_\+t lb, size\+\_\+t ub, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
-\begin{DoxyCompactList}\small\item\em Overall functional gains. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{group__rules-phylo_ga66b7a40df357b79514dcbc4accfe679d}{DEFMData\+::operator()}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
-\begin{DoxyCompactList}\small\item\em Access to the row (i) colum (j) data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__rules-phylo_gaa0a9abe59bcd6b7bf7943af55804487d}{DEFMData\+::\+DEFMData}} ()
+\begin{DoxyCompactList}\small\item\em Vector indicating which covariates are included in the model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__rules-phylo_ga565c76b50a702e1cf86206d625fe512b}{DEFMData\+::\+DEFMData}} (\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}} $\ast$array\+\_\+, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$covariates\+\_\+, size\+\_\+t obs\+\_\+start\+\_\+, size\+\_\+t X\+\_\+ncol\+\_\+, size\+\_\+t X\+\_\+nrow\+\_\+)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group__rules-phylo_gab2a20858a209c975a4a3ca341f33f9c2}{DEFMData\+::at}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
 size\+\_\+t \mbox{\hyperlink{group__rules-phylo_ga8e70fc57678680180582741e5865fff2}{DEFMData\+::ncol}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
 size\+\_\+t \mbox{\hyperlink{group__rules-phylo_ga8d35cccda96180f18d4f87f3831e68d9}{DEFMData\+::nrow}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
 \item 
 void \mbox{\hyperlink{group__rules-phylo_gae1617d2f94e8595c8fde0c6013e21a2d}{DEFMData\+::print}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
+\mbox{\hyperlink{group__rules-phylo_ga637f2c896da37c0f3a72bd0174ca718c}{DEFMData\+::$\sim$\+DEFMData}} ()
+\item 
+\mbox{\hyperlink{group__rules-phylo_ga5d370202642dddaad6d211288fb41f4d}{DEFMCounter\+Data\+::\+DEFMCounter\+Data}} ()
+\item 
+\mbox{\hyperlink{group__rules-phylo_gadd378b812c5aed4989605ee216c0cdb2}{DEFMCounter\+Data\+::\+DEFMCounter\+Data}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ size\+\_\+t $>$ indices\+\_\+, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ numbers\+\_\+, \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ bool $>$ logical\+\_\+, bool is\+\_\+motif\+\_\+=true)
+\item 
+size\+\_\+t \mbox{\hyperlink{group__rules-phylo_ga7f779ce019f2eaa30af381500384d393}{DEFMCounter\+Data\+::idx}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
+double \mbox{\hyperlink{group__rules-phylo_ga2145b3b46a20bf7ea646f0a76e4b74b8}{DEFMCounter\+Data\+::num}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
+bool \mbox{\hyperlink{group__rules-phylo_ga6366be3b3f9e1d0bfd1455f0eee20429}{DEFMCounter\+Data\+::is\+\_\+true}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
+\mbox{\hyperlink{group__rules-phylo_ga0b09b4a0c405b1e2f694d39136bf87f6}{DEFMCounter\+Data\+::$\sim$\+DEFMCounter\+Data}} ()
+\item 
+double \mbox{\hyperlink{group__rules-phylo_ga492f81abc80e4de779c95ec8956b5e38}{DEFMRule\+Data\+::num}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
+size\+\_\+t \mbox{\hyperlink{group__rules-phylo_gad92a95c8a2097d1a4cb0cf766409791c}{DEFMRule\+Data\+::idx}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
+bool \mbox{\hyperlink{group__rules-phylo_ga6bdc61aa25a629863002c9fb98a2acee}{DEFMRule\+Data\+::is\+\_\+true}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\item 
+\mbox{\hyperlink{group__rules-phylo_gafb84c6ffe48f80056b15e0ae6bad4b3a}{DEFMRule\+Data\+::\+DEFMRule\+Data}} ()
+\item 
+\mbox{\hyperlink{group__rules-phylo_ga9b5f63e38cfd56a22a2c00b1b11904bb}{DEFMRule\+Data\+::\+DEFMRule\+Data}} (std\+::vector$<$ double $>$ numbers\+\_\+, std\+::vector$<$ size\+\_\+t $>$ indices\+\_\+, std\+::vector$<$ bool $>$ logical\+\_\+)
+\item 
+\mbox{\hyperlink{group__rules-phylo_ga97709e387171f34facb5410f1d726f9b}{DEFMRule\+Data\+::\+DEFMRule\+Data}} (std\+::vector$<$ double $>$ numbers\+\_\+, std\+::vector$<$ size\+\_\+t $>$ indices\+\_\+)
+\item 
+\mbox{\hyperlink{group__rules-phylo_ga292bf598632c9832614a9ea2a988cf36}{DEFMRule\+Dyn\+Data\+::\+DEFMRule\+Dyn\+Data}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ $\ast$counts\+\_\+, std\+::vector$<$ double $>$ numbers\+\_\+=\{\}, std\+::vector$<$ size\+\_\+t $>$ indices\+\_\+=\{\}, std\+::vector$<$ bool $>$ logical\+\_\+=\{\})
+\item 
+\mbox{\hyperlink{group__rules-phylo_gad64e7379376d678c0d7795be221c5e3e}{DEFMRule\+Dyn\+Data\+::$\sim$\+DEFMRule\+Dyn\+Data}} ()
+\item 
+void \mbox{\hyperlink{group__rules-phylo_ga0773b2dbf4673181e45c93632a5f9cc3}{rule\+\_\+dyn\+\_\+limit\+\_\+changes}} (\mbox{\hyperlink{geese-types_8hpp_ae66aa4dbb13f90c073bc0d5c3df58d83}{Phylo\+Support}} $\ast$support, size\+\_\+t pos, size\+\_\+t lb, size\+\_\+t ub, size\+\_\+t duplication=\mbox{\hyperlink{class_geese_aff47a7a24431f0ee1ba9b40b3cd93557}{Geese\+::etype\+\_\+default}})
+\begin{DoxyCompactList}\small\item\em Overall functional gains. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}} $\ast$ \mbox{\hyperlink{group__rules-phylo_ga17038d453f18a0db9169ada226512674}{DEFMData\+::array}}
+\item 
+\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$ \mbox{\hyperlink{group__rules-phylo_ga8f6950493a55ebf9772ae4a5869b7a33}{DEFMData\+::covariates}}
+\begin{DoxyCompactList}\small\item\em Vector of covariates (complete vector) \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__rules-phylo_ga89a3ee0a0a27f78c47b010d5498e1fd2}{DEFMData\+::obs\+\_\+start}}
+\begin{DoxyCompactList}\small\item\em Index of the observation in the data. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__rules-phylo_ga13a6688217231167d87c033db3803209}{DEFMData\+::\+X\+\_\+ncol}}
+\begin{DoxyCompactList}\small\item\em Number of columns in the array of covariates. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__rules-phylo_gadf8ebba08c3c2b590494ed738c76482a}{DEFMData\+::\+X\+\_\+nrow}}
+\begin{DoxyCompactList}\small\item\em Number of rows in the array of covariates. \end{DoxyCompactList}\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{group__rules-phylo_ga23b387e03361640aa03c710bb6bf0a57}{DEFMData\+::covar\+\_\+sort}}
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{group__rules-phylo_ga39494985671923d407e5c987662bd826}{DEFMData\+::covar\+\_\+used}}
+\begin{DoxyCompactList}\small\item\em Value where the sorting of the covariates is stored. \end{DoxyCompactList}\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{group__rules-phylo_ga1798d8ea93c677ed7fbfb91a6fc568dd}{DEFMCounter\+Data\+::indices}}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{group__rules-phylo_ga42bd6d1deaa0d800a878ba9fe87d8b18}{DEFMCounter\+Data\+::numbers}}
+\item 
+std\+::vector$<$ bool $>$ \mbox{\hyperlink{group__rules-phylo_ga83c21423b25668b2343196f11fdc4630}{DEFMCounter\+Data\+::logical}}
+\item 
+bool \mbox{\hyperlink{group__rules-phylo_ga34a1cd60ddd3aba7ff8145678d2827fe}{DEFMCounter\+Data\+::is\+\_\+motif}}
+\begin{DoxyCompactList}\small\item\em If false, then is a logit intercept. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{group__rules-phylo_ga66f4ba8b2047a943a426e555a9b63937}{DEFMRule\+Data\+::numbers}}
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{group__rules-phylo_ga1d86306bc0d6299ecae2554e226809c1}{DEFMRule\+Data\+::indices}}
+\item 
+std\+::vector$<$ bool $>$ \mbox{\hyperlink{group__rules-phylo_ga8843c9a811b759251788fbedb2e65dde}{DEFMRule\+Data\+::logical}}
+\item 
+bool \mbox{\hyperlink{group__rules-phylo_ga87c654a27ccf0b679f804cb05f63f7e5}{DEFMRule\+Data\+::init}} = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}
+\item 
+\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ $\ast$ \mbox{\hyperlink{group__rules-phylo_ga7b639c0b73814eec9015b82f7e2d8439}{DEFMRule\+Dyn\+Data\+::counts}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Convenient typedefs for network objects.}
 \begin{DoxyCompactItemize}
 \item 
-typedef \mbox{\hyperlink{class_counter}{Counter}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gaf38626b20ade1bfb966140e1ac7bc06b}{DEFMCounter}}
+typedef barry\+::\+Counter$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gaf30ebbed148db068e31eaba91b5977a7}{DEFMCounter}}
 \item 
-typedef \mbox{\hyperlink{class_counters}{Counters}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gaea94df8016172ecb8f941cabdf270a5b}{DEFMCounters}}
+typedef barry\+::\+Counters$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_ga5c89d811265cdc84066476226ea138a8}{DEFMCounters}}
 \item 
-typedef \mbox{\hyperlink{class_support}{Support}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gaec854f61f6d5c0dc7c73c06f5a30c743}{DEFMSupport}}
+typedef barry\+::\+Support$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gaec94c2fbe37383fd6695bc2d60863077}{DEFMSupport}}
 \item 
-typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gaf8198b2184baee8a83e8ee69da487833}{DEFMStats\+Counter}}
+typedef barry\+::\+Stats\+Counter$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_ga1b4873975ddde98ef40c841c6d3b447e}{DEFMStats\+Counter}}
 \item 
-typedef \mbox{\hyperlink{class_model}{Model}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_ga4d42c37a0dfb10efa624a402c514efc4}{DEFMModel}}
+typedef barry\+::\+Model$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_ga9716da2197dde4338078d890e7ffcf05}{DEFMModel}}
 \item 
-typedef \mbox{\hyperlink{class_rule}{Rule}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_ga07c9dbf302b45bbd65051c8bd228798d}{DEFMRule}}
+typedef barry\+::\+Rule$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gae7ef10f17b5ca193abec479ea233212f}{DEFMRule}}
 \item 
-typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_ga6d265c2bdf19affea1db1dfa2a8cbb3f}{DEFMRules}}
+typedef barry\+::\+Rules$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gaae5b274ab680fe97a6da3615ad08b45b}{DEFMRules}}
 \item 
-typedef \mbox{\hyperlink{class_rule}{Rule}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_ga47820e9766f8caa6df3d07d95a746703}{DEFMRule\+Dyn}}
+typedef barry\+::\+Rule$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_ga9a767b57f79612eb39de35038ee2d0ea}{DEFMRule\+Dyn}}
 \item 
-typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gab736974df00c9784eb699c5b3c982120}{DEFMRules\+Dyn}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Macros for defining counters}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{group__rules-phylo_gaceda72b2e1b110e80235df9dbac17351}{DEFM\+\_\+\+COUNTER}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})~inline double (\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}) (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}} \& Array, size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})
-\item 
-\#define \mbox{\hyperlink{group__rules-phylo_ga0de627ee2d314d645cf885c7cc0ee36b}{DEFM\+\_\+\+COUNTER\+\_\+\+LAMBDA}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
-\end{DoxyCompactItemize}
-\doxysubsection*{Macros for defining rules}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{group__rules-phylo_gaf210bb3f47af7995ff200264370d9db6}{DEFM\+\_\+\+RULE}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})~inline bool (\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}) (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}} \& Array, size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, bool \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})
-\item 
-\#define \mbox{\hyperlink{group__rules-phylo_ga94148d8866c1e18cbb02be5ba7d233ba}{DEFM\+\_\+\+RULE\+\_\+\+LAMBDA}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
+typedef barry\+::\+Rules$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_ga38a5a5b78ba2b492093f0744a1166acb}{DEFMRules\+Dyn}}
 \end{DoxyCompactItemize}
 
 
@@ -85,196 +133,243 @@ typedef \mbox{\hyperlink{class_rules}{Rules}}$<$ \mbox{\hyperlink{counters_2defm
 \end{DoxyParams}
 
 
-\doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{group__rules-phylo_gaceda72b2e1b110e80235df9dbac17351}\label{group__rules-phylo_gaceda72b2e1b110e80235df9dbac17351}} 
-\index{Phylo rules@{Phylo rules}!DEFM\_COUNTER@{DEFM\_COUNTER}}
-\index{DEFM\_COUNTER@{DEFM\_COUNTER}!Phylo rules@{Phylo rules}}
-\doxysubsubsection{\texorpdfstring{DEFM\_COUNTER}{DEFM\_COUNTER}}
-{\footnotesize\ttfamily \#define DEFM\+\_\+\+COUNTER(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})~inline double (\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}) (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}} \& Array, size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
-
-Function for definition of a network counter function 
-
-Definition at line 214 of file defm.\+hpp.
-
-\mbox{\Hypertarget{group__rules-phylo_ga0de627ee2d314d645cf885c7cc0ee36b}\label{group__rules-phylo_ga0de627ee2d314d645cf885c7cc0ee36b}} 
-\index{Phylo rules@{Phylo rules}!DEFM\_COUNTER\_LAMBDA@{DEFM\_COUNTER\_LAMBDA}}
-\index{DEFM\_COUNTER\_LAMBDA@{DEFM\_COUNTER\_LAMBDA}!Phylo rules@{Phylo rules}}
-\doxysubsubsection{\texorpdfstring{DEFM\_COUNTER\_LAMBDA}{DEFM\_COUNTER\_LAMBDA}}
-{\footnotesize\ttfamily \#define DEFM\+\_\+\+COUNTER\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})}
-
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{typedefs_8hpp_ad7626021d4acb1dfc9419e667923a01f}{Counter\_fun\_type<DEFMArray, DEFMCounterData>}} \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{DEFMArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounterData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}) -\/> double}
-
-\end{DoxyCode}
-Lambda function for definition of a network counter function 
-
-Definition at line 218 of file defm.\+hpp.
-
-\mbox{\Hypertarget{group__rules-phylo_gaf210bb3f47af7995ff200264370d9db6}\label{group__rules-phylo_gaf210bb3f47af7995ff200264370d9db6}} 
-\index{Phylo rules@{Phylo rules}!DEFM\_RULE@{DEFM\_RULE}}
-\index{DEFM\_RULE@{DEFM\_RULE}!Phylo rules@{Phylo rules}}
-\doxysubsubsection{\texorpdfstring{DEFM\_RULE}{DEFM\_RULE}}
-{\footnotesize\ttfamily \#define DEFM\+\_\+\+RULE(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})~inline bool (\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}) (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}} \& Array, size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, bool \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
-
-Function for definition of a network counter function 
-
-Definition at line 228 of file defm.\+hpp.
-
-\mbox{\Hypertarget{group__rules-phylo_ga94148d8866c1e18cbb02be5ba7d233ba}\label{group__rules-phylo_ga94148d8866c1e18cbb02be5ba7d233ba}} 
-\index{Phylo rules@{Phylo rules}!DEFM\_RULE\_LAMBDA@{DEFM\_RULE\_LAMBDA}}
-\index{DEFM\_RULE\_LAMBDA@{DEFM\_RULE\_LAMBDA}!Phylo rules@{Phylo rules}}
-\doxysubsubsection{\texorpdfstring{DEFM\_RULE\_LAMBDA}{DEFM\_RULE\_LAMBDA}}
-{\footnotesize\ttfamily \#define DEFM\+\_\+\+RULE\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})}
-
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{typedefs_8hpp_a940d68f006f1ffee7f5b207bf61aefe4}{Rule\_fun\_type<DEFMArray, DEFMRuleData>}} \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = \(\backslash\)}
-\DoxyCodeLine{[](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{DEFMArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRuleData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}) -\/> bool}
-
-\end{DoxyCode}
-Lambda function for definition of a network counter function 
-
-Definition at line 232 of file defm.\+hpp.
-
-\mbox{\Hypertarget{group__rules-phylo_gac6f3765d01ec78962d3bacb6d9934331}\label{group__rules-phylo_gac6f3765d01ec78962d3bacb6d9934331}} 
-\index{Phylo rules@{Phylo rules}!DEFM\_RULEDYN\_LAMBDA@{DEFM\_RULEDYN\_LAMBDA}}
-\index{DEFM\_RULEDYN\_LAMBDA@{DEFM\_RULEDYN\_LAMBDA}!Phylo rules@{Phylo rules}}
-\doxysubsubsection{\texorpdfstring{DEFM\_RULEDYN\_LAMBDA}{DEFM\_RULEDYN\_LAMBDA}}
-{\footnotesize\ttfamily \#define DEFM\+\_\+\+RULEDYN\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})}
-
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{typedefs_8hpp_a940d68f006f1ffee7f5b207bf61aefe4}{Rule\_fun\_type<DEFMArray, DEFMRuleDynData>}} \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = \(\backslash\)}
-\DoxyCodeLine{[](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{DEFMArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRuleDynData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}) -\/> bool}
-
-\end{DoxyCode}
-Lambda function for definition of a network counter function 
-
-Definition at line 238 of file defm.\+hpp.
-
-\mbox{\Hypertarget{group__rules-phylo_ga172b737bbafc10829969ae80428ae682}\label{group__rules-phylo_ga172b737bbafc10829969ae80428ae682}} 
-\index{Phylo rules@{Phylo rules}!MAKE\_DEFM\_HASHER@{MAKE\_DEFM\_HASHER}}
-\index{MAKE\_DEFM\_HASHER@{MAKE\_DEFM\_HASHER}!Phylo rules@{Phylo rules}}
-\doxysubsubsection{\texorpdfstring{MAKE\_DEFM\_HASHER}{MAKE\_DEFM\_HASHER}}
-{\footnotesize\ttfamily \#define MAKE\+\_\+\+DEFM\+\_\+\+HASHER(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{counters-meat_8hpp_a51327367202f40175dea83db9095a0da}{hasher}},  }\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}},  }\item[{}]{cov }\end{DoxyParamCaption})}
-
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{            \mbox{\hyperlink{typedefs_8hpp_aab7c9679e747e2f653246fbd03f26cc1}{Hasher\_fun\_type<DEFMArray,DEFMCounterData>}} \mbox{\hyperlink{counters-meat_8hpp_ab4a15f6eefa25e046260b42a7d11e69e}{hasher}} = [cov](\textcolor{keyword}{const} \mbox{\hyperlink{class_b_array_dense}{DEFMArray}} \& array, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounterData}} * d) \{ \(\backslash\)}
-\DoxyCodeLine{            std::vector< double > \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}; \(\backslash\)}
-\DoxyCodeLine{            \textcolor{comment}{/* Adding the column feature */} \(\backslash\)}
-\DoxyCodeLine{            for (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} < array.\mbox{\hyperlink{class_b_array_dense_a525c028e44f7619b3edb540c85c0eaf5}{nrow}}(); ++\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \(\backslash\)}
-\DoxyCodeLine{                \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}.push\_back(array.\mbox{\hyperlink{class_b_array_dense_ab6f0132d00bf3380d3252e4c6ade1e69}{D}}()(\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, cov)); \(\backslash\)}
-\DoxyCodeLine{            \textcolor{comment}{/* Adding the fixed dims */} \(\backslash\)}
-\DoxyCodeLine{            for (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} < (array.\mbox{\hyperlink{class_b_array_dense_a525c028e44f7619b3edb540c85c0eaf5}{nrow}}() -\/ 1); ++\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \(\backslash\)}
-\DoxyCodeLine{                \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} = 0u; \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} < array.\mbox{\hyperlink{class_b_array_dense_a3d63c3c7c3f63a7f7b3c76bf5f8d9667}{ncol}}(); ++\mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}) \(\backslash\)}
-\DoxyCodeLine{                    \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}.push\_back(array(\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}})); \(\backslash\)}
-\DoxyCodeLine{            return \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}};\(\backslash\)}
-\DoxyCodeLine{        \};}
-
-\end{DoxyCode}
-
-
-Definition at line 197 of file defm.\+hpp.
-
-
-
 \doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{group__rules-phylo_gaf38626b20ade1bfb966140e1ac7bc06b}\label{group__rules-phylo_gaf38626b20ade1bfb966140e1ac7bc06b}} 
+\mbox{\Hypertarget{group__rules-phylo_gaf30ebbed148db068e31eaba91b5977a7}\label{group__rules-phylo_gaf30ebbed148db068e31eaba91b5977a7}} 
 \index{Phylo rules@{Phylo rules}!DEFMCounter@{DEFMCounter}}
 \index{DEFMCounter@{DEFMCounter}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMCounter}{DEFMCounter}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counter}{Counter}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gaf38626b20ade1bfb966140e1ac7bc06b}{DEFMCounter}}}
+{\footnotesize\ttfamily typedef barry\+::\+Counter$<$\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}} $>$ \mbox{\hyperlink{group__rules-phylo_gaf30ebbed148db068e31eaba91b5977a7}{DEFMCounter}}}
 
 
 
-Definition at line 154 of file defm.\+hpp.
+Definition at line 143 of file defm-\/types.\+hpp.
 
-\mbox{\Hypertarget{group__rules-phylo_gaea94df8016172ecb8f941cabdf270a5b}\label{group__rules-phylo_gaea94df8016172ecb8f941cabdf270a5b}} 
+\mbox{\Hypertarget{group__rules-phylo_ga5c89d811265cdc84066476226ea138a8}\label{group__rules-phylo_ga5c89d811265cdc84066476226ea138a8}} 
 \index{Phylo rules@{Phylo rules}!DEFMCounters@{DEFMCounters}}
 \index{DEFMCounters@{DEFMCounters}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMCounters}{DEFMCounters}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_counters}{Counters}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_gaea94df8016172ecb8f941cabdf270a5b}{DEFMCounters}}}
+{\footnotesize\ttfamily typedef barry\+::\+Counters$<$\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_ga5c89d811265cdc84066476226ea138a8}{DEFMCounters}}}
 
 
 
-Definition at line 155 of file defm.\+hpp.
+Definition at line 144 of file defm-\/types.\+hpp.
 
-\mbox{\Hypertarget{group__rules-phylo_ga4d42c37a0dfb10efa624a402c514efc4}\label{group__rules-phylo_ga4d42c37a0dfb10efa624a402c514efc4}} 
+\mbox{\Hypertarget{group__rules-phylo_ga9716da2197dde4338078d890e7ffcf05}\label{group__rules-phylo_ga9716da2197dde4338078d890e7ffcf05}} 
 \index{Phylo rules@{Phylo rules}!DEFMModel@{DEFMModel}}
 \index{DEFMModel@{DEFMModel}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMModel}{DEFMModel}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_model}{Model}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}},\mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}},\mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_ga4d42c37a0dfb10efa624a402c514efc4}{DEFMModel}}}
+{\footnotesize\ttfamily typedef barry\+::\+Model$<$\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}},\mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}},\mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_ga9716da2197dde4338078d890e7ffcf05}{DEFMModel}}}
 
 
 
-Definition at line 158 of file defm.\+hpp.
+Definition at line 147 of file defm-\/types.\+hpp.
 
-\mbox{\Hypertarget{group__rules-phylo_ga07c9dbf302b45bbd65051c8bd228798d}\label{group__rules-phylo_ga07c9dbf302b45bbd65051c8bd228798d}} 
+\mbox{\Hypertarget{group__rules-phylo_gae7ef10f17b5ca193abec479ea233212f}\label{group__rules-phylo_gae7ef10f17b5ca193abec479ea233212f}} 
 \index{Phylo rules@{Phylo rules}!DEFMRule@{DEFMRule}}
 \index{DEFMRule@{DEFMRule}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMRule}{DEFMRule}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rule}{Rule}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_ga07c9dbf302b45bbd65051c8bd228798d}{DEFMRule}}}
+{\footnotesize\ttfamily typedef barry\+::\+Rule$<$\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_gae7ef10f17b5ca193abec479ea233212f}{DEFMRule}}}
 
 
 
-Definition at line 161 of file defm.\+hpp.
+Definition at line 150 of file defm-\/types.\+hpp.
 
-\mbox{\Hypertarget{group__rules-phylo_ga47820e9766f8caa6df3d07d95a746703}\label{group__rules-phylo_ga47820e9766f8caa6df3d07d95a746703}} 
+\mbox{\Hypertarget{group__rules-phylo_ga9a767b57f79612eb39de35038ee2d0ea}\label{group__rules-phylo_ga9a767b57f79612eb39de35038ee2d0ea}} 
 \index{Phylo rules@{Phylo rules}!DEFMRuleDyn@{DEFMRuleDyn}}
 \index{DEFMRuleDyn@{DEFMRuleDyn}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMRuleDyn}{DEFMRuleDyn}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rule}{Rule}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_ga47820e9766f8caa6df3d07d95a746703}{DEFMRule\+Dyn}}}
+{\footnotesize\ttfamily typedef barry\+::\+Rule$<$\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_ga9a767b57f79612eb39de35038ee2d0ea}{DEFMRule\+Dyn}}}
 
 
 
-Definition at line 163 of file defm.\+hpp.
+Definition at line 152 of file defm-\/types.\+hpp.
 
-\mbox{\Hypertarget{group__rules-phylo_ga6d265c2bdf19affea1db1dfa2a8cbb3f}\label{group__rules-phylo_ga6d265c2bdf19affea1db1dfa2a8cbb3f}} 
+\mbox{\Hypertarget{group__rules-phylo_gaae5b274ab680fe97a6da3615ad08b45b}\label{group__rules-phylo_gaae5b274ab680fe97a6da3615ad08b45b}} 
 \index{Phylo rules@{Phylo rules}!DEFMRules@{DEFMRules}}
 \index{DEFMRules@{DEFMRules}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMRules}{DEFMRules}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rules}{Rules}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_ga6d265c2bdf19affea1db1dfa2a8cbb3f}{DEFMRules}}}
+{\footnotesize\ttfamily typedef barry\+::\+Rules$<$\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_gaae5b274ab680fe97a6da3615ad08b45b}{DEFMRules}}}
 
 
 
-Definition at line 162 of file defm.\+hpp.
+Definition at line 151 of file defm-\/types.\+hpp.
 
-\mbox{\Hypertarget{group__rules-phylo_gab736974df00c9784eb699c5b3c982120}\label{group__rules-phylo_gab736974df00c9784eb699c5b3c982120}} 
+\mbox{\Hypertarget{group__rules-phylo_ga38a5a5b78ba2b492093f0744a1166acb}\label{group__rules-phylo_ga38a5a5b78ba2b492093f0744a1166acb}} 
 \index{Phylo rules@{Phylo rules}!DEFMRulesDyn@{DEFMRulesDyn}}
 \index{DEFMRulesDyn@{DEFMRulesDyn}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMRulesDyn}{DEFMRulesDyn}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_rules}{Rules}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_gab736974df00c9784eb699c5b3c982120}{DEFMRules\+Dyn}}}
+{\footnotesize\ttfamily typedef barry\+::\+Rules$<$\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_ga38a5a5b78ba2b492093f0744a1166acb}{DEFMRules\+Dyn}}}
 
 
 
-Definition at line 164 of file defm.\+hpp.
+Definition at line 153 of file defm-\/types.\+hpp.
 
-\mbox{\Hypertarget{group__rules-phylo_gaf8198b2184baee8a83e8ee69da487833}\label{group__rules-phylo_gaf8198b2184baee8a83e8ee69da487833}} 
+\mbox{\Hypertarget{group__rules-phylo_ga1b4873975ddde98ef40c841c6d3b447e}\label{group__rules-phylo_ga1b4873975ddde98ef40c841c6d3b447e}} 
 \index{Phylo rules@{Phylo rules}!DEFMStatsCounter@{DEFMStatsCounter}}
 \index{DEFMStatsCounter@{DEFMStatsCounter}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMStatsCounter}{DEFMStatsCounter}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_stats_counter}{Stats\+Counter}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_gaf8198b2184baee8a83e8ee69da487833}{DEFMStats\+Counter}}}
+{\footnotesize\ttfamily typedef barry\+::\+Stats\+Counter$<$\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_ga1b4873975ddde98ef40c841c6d3b447e}{DEFMStats\+Counter}}}
 
 
 
-Definition at line 157 of file defm.\+hpp.
+Definition at line 146 of file defm-\/types.\+hpp.
 
-\mbox{\Hypertarget{group__rules-phylo_gaec854f61f6d5c0dc7c73c06f5a30c743}\label{group__rules-phylo_gaec854f61f6d5c0dc7c73c06f5a30c743}} 
+\mbox{\Hypertarget{group__rules-phylo_gaec94c2fbe37383fd6695bc2d60863077}\label{group__rules-phylo_gaec94c2fbe37383fd6695bc2d60863077}} 
 \index{Phylo rules@{Phylo rules}!DEFMSupport@{DEFMSupport}}
 \index{DEFMSupport@{DEFMSupport}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMSupport}{DEFMSupport}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_support}{Support}}$<$\mbox{\hyperlink{counters_2defm_8hpp_a0b423f2edc017f1bb06fe423cbd49b75}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}},\mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_gaec854f61f6d5c0dc7c73c06f5a30c743}{DEFMSupport}}}
+{\footnotesize\ttfamily typedef barry\+::\+Support$<$\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}, \mbox{\hyperlink{class_d_e_f_m_counter_data}{DEFMCounter\+Data}}, \mbox{\hyperlink{class_d_e_f_m_rule_data}{DEFMRule\+Data}},\mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}$>$ \mbox{\hyperlink{group__rules-phylo_gaec94c2fbe37383fd6695bc2d60863077}{DEFMSupport}}}
 
 
 
-Definition at line 156 of file defm.\+hpp.
+Definition at line 145 of file defm-\/types.\+hpp.
 
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__rules-phylo_gab2a20858a209c975a4a3ca341f33f9c2}\label{group__rules-phylo_gab2a20858a209c975a4a3ca341f33f9c2}} 
+\index{Phylo rules@{Phylo rules}!at@{at}}
+\index{at@{at}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily double DEFMData\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{group__rules-phylo_ga5d370202642dddaad6d211288fb41f4d}\label{group__rules-phylo_ga5d370202642dddaad6d211288fb41f4d}} 
+\index{Phylo rules@{Phylo rules}!DEFMCounterData@{DEFMCounterData}}
+\index{DEFMCounterData@{DEFMCounterData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{DEFMCounterData()}{DEFMCounterData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily DEFMCounter\+Data\+::\+DEFMCounter\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 72 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_gadd378b812c5aed4989605ee216c0cdb2}\label{group__rules-phylo_gadd378b812c5aed4989605ee216c0cdb2}} 
+\index{Phylo rules@{Phylo rules}!DEFMCounterData@{DEFMCounterData}}
+\index{DEFMCounterData@{DEFMCounterData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{DEFMCounterData()}{DEFMCounterData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily DEFMCounter\+Data\+::\+DEFMCounter\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ size\+\_\+t $>$}]{indices\+\_\+,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$}]{numbers\+\_\+,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ bool $>$}]{logical\+\_\+,  }\item[{bool}]{is\+\_\+motif\+\_\+ = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 73 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_gaa0a9abe59bcd6b7bf7943af55804487d}\label{group__rules-phylo_gaa0a9abe59bcd6b7bf7943af55804487d}} 
+\index{Phylo rules@{Phylo rules}!DEFMData@{DEFMData}}
+\index{DEFMData@{DEFMData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{DEFMData()}{DEFMData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily DEFMData\+::\+DEFMData (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Vector indicating which covariates are included in the model. 
+
+
+
+Definition at line 27 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga565c76b50a702e1cf86206d625fe512b}\label{group__rules-phylo_ga565c76b50a702e1cf86206d625fe512b}} 
+\index{Phylo rules@{Phylo rules}!DEFMData@{DEFMData}}
+\index{DEFMData@{DEFMData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{DEFMData()}{DEFMData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily DEFMData\+::\+DEFMData (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}} $\ast$}]{array\+\_\+,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double $\ast$}]{covariates\+\_\+,  }\item[{size\+\_\+t}]{obs\+\_\+start\+\_\+,  }\item[{size\+\_\+t}]{X\+\_\+ncol\+\_\+,  }\item[{size\+\_\+t}]{X\+\_\+nrow\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em covariates\+\_\+} & Pointer to the attribute data. \\
+\hline
+{\em obs\+\_\+start\+\_\+} & Location of the current observation in the covariates vector \\
+\hline
+{\em X\+\_\+ncol\+\_\+} & Number of columns (covariates.) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_gafb84c6ffe48f80056b15e0ae6bad4b3a}\label{group__rules-phylo_gafb84c6ffe48f80056b15e0ae6bad4b3a}} 
+\index{Phylo rules@{Phylo rules}!DEFMRuleData@{DEFMRuleData}}
+\index{DEFMRuleData@{DEFMRuleData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{DEFMRuleData()}{DEFMRuleData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily DEFMRule\+Data\+::\+DEFMRule\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 102 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga97709e387171f34facb5410f1d726f9b}\label{group__rules-phylo_ga97709e387171f34facb5410f1d726f9b}} 
+\index{Phylo rules@{Phylo rules}!DEFMRuleData@{DEFMRuleData}}
+\index{DEFMRuleData@{DEFMRuleData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{DEFMRuleData()}{DEFMRuleData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily DEFMRule\+Data\+::\+DEFMRule\+Data (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{numbers\+\_\+,  }\item[{std\+::vector$<$ size\+\_\+t $>$}]{indices\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 110 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga9b5f63e38cfd56a22a2c00b1b11904bb}\label{group__rules-phylo_ga9b5f63e38cfd56a22a2c00b1b11904bb}} 
+\index{Phylo rules@{Phylo rules}!DEFMRuleData@{DEFMRuleData}}
+\index{DEFMRuleData@{DEFMRuleData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{DEFMRuleData()}{DEFMRuleData()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily DEFMRule\+Data\+::\+DEFMRule\+Data (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{numbers\+\_\+,  }\item[{std\+::vector$<$ size\+\_\+t $>$}]{indices\+\_\+,  }\item[{std\+::vector$<$ bool $>$}]{logical\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 104 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga292bf598632c9832614a9ea2a988cf36}\label{group__rules-phylo_ga292bf598632c9832614a9ea2a988cf36}} 
+\index{Phylo rules@{Phylo rules}!DEFMRuleDynData@{DEFMRuleDynData}}
+\index{DEFMRuleDynData@{DEFMRuleDynData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{DEFMRuleDynData()}{DEFMRuleDynData()}}
+{\footnotesize\ttfamily DEFMRule\+Dyn\+Data\+::\+DEFMRule\+Dyn\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ $\ast$}]{counts\+\_\+,  }\item[{std\+::vector$<$ double $>$}]{numbers\+\_\+ = {\ttfamily \{\}},  }\item[{std\+::vector$<$ size\+\_\+t $>$}]{indices\+\_\+ = {\ttfamily \{\}},  }\item[{std\+::vector$<$ bool $>$}]{logical\+\_\+ = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 128 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga7f779ce019f2eaa30af381500384d393}\label{group__rules-phylo_ga7f779ce019f2eaa30af381500384d393}} 
+\index{Phylo rules@{Phylo rules}!idx@{idx}}
+\index{idx@{idx}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{idx()}{idx()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily size\+\_\+t DEFMCounter\+Data\+::idx (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 81 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_gad92a95c8a2097d1a4cb0cf766409791c}\label{group__rules-phylo_gad92a95c8a2097d1a4cb0cf766409791c}} 
+\index{Phylo rules@{Phylo rules}!idx@{idx}}
+\index{idx@{idx}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{idx()}{idx()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily size\+\_\+t DEFMRule\+Data\+::idx (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 99 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga6366be3b3f9e1d0bfd1455f0eee20429}\label{group__rules-phylo_ga6366be3b3f9e1d0bfd1455f0eee20429}} 
+\index{Phylo rules@{Phylo rules}!is\_true@{is\_true}}
+\index{is\_true@{is\_true}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{is\_true()}{is\_true()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool DEFMCounter\+Data\+::is\+\_\+true (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 83 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga6bdc61aa25a629863002c9fb98a2acee}\label{group__rules-phylo_ga6bdc61aa25a629863002c9fb98a2acee}} 
+\index{Phylo rules@{Phylo rules}!is\_true@{is\_true}}
+\index{is\_true@{is\_true}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{is\_true()}{is\_true()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool DEFMRule\+Data\+::is\+\_\+true (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 100 of file defm-\/types.\+hpp.
+
 \mbox{\Hypertarget{group__rules-phylo_ga8e70fc57678680180582741e5865fff2}\label{group__rules-phylo_ga8e70fc57678680180582741e5865fff2}} 
 \index{Phylo rules@{Phylo rules}!ncol@{ncol}}
 \index{ncol@{ncol}!Phylo rules@{Phylo rules}}
@@ -283,7 +378,7 @@ Definition at line 156 of file defm.\+hpp.
 
 
 
-Definition at line 175 of file defm.\+hpp.
+Definition at line 25 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga8d35cccda96180f18d4f87f3831e68d9}\label{group__rules-phylo_ga8d35cccda96180f18d4f87f3831e68d9}} 
 \index{Phylo rules@{Phylo rules}!nrow@{nrow}}
@@ -293,31 +388,27 @@ Definition at line 175 of file defm.\+hpp.
 
 
 
-Definition at line 179 of file defm.\+hpp.
+Definition at line 29 of file counters.\+hpp.
 
-\mbox{\Hypertarget{group__rules-phylo_ga66b7a40df357b79514dcbc4accfe679d}\label{group__rules-phylo_ga66b7a40df357b79514dcbc4accfe679d}} 
-\index{Phylo rules@{Phylo rules}!operator()@{operator()}}
-\index{operator()@{operator()}!Phylo rules@{Phylo rules}}
-\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
-{\footnotesize\ttfamily double DEFMData\+::operator() (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i,  }\item[{size\+\_\+t}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Access to the row (i) colum (j) data. 
+\mbox{\Hypertarget{group__rules-phylo_ga2145b3b46a20bf7ea646f0a76e4b74b8}\label{group__rules-phylo_ga2145b3b46a20bf7ea646f0a76e4b74b8}} 
+\index{Phylo rules@{Phylo rules}!num@{num}}
+\index{num@{num}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{num()}{num()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily double DEFMCounter\+Data\+::num (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
-\begin{DoxyParams}{Parameters}
-{\em i} & \\
-\hline
-{\em j} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-double 
-\end{DoxyReturn}
+
+Definition at line 82 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga492f81abc80e4de779c95ec8956b5e38}\label{group__rules-phylo_ga492f81abc80e4de779c95ec8956b5e38}} 
+\index{Phylo rules@{Phylo rules}!num@{num}}
+\index{num@{num}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{num()}{num()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily double DEFMRule\+Data\+::num (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
-Definition at line 170 of file defm.\+hpp.
+
+Definition at line 98 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gae1617d2f94e8595c8fde0c6013e21a2d}\label{group__rules-phylo_gae1617d2f94e8595c8fde0c6013e21a2d}} 
 \index{Phylo rules@{Phylo rules}!print@{print}}
@@ -327,7 +418,7 @@ Definition at line 170 of file defm.\+hpp.
 
 
 
-Definition at line 183 of file defm.\+hpp.
+Definition at line 33 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga0773b2dbf4673181e45c93632a5f9cc3}\label{group__rules-phylo_ga0773b2dbf4673181e45c93632a5f9cc3}} 
 \index{Phylo rules@{Phylo rules}!rule\_dyn\_limit\_changes@{rule\_dyn\_limit\_changes}}
@@ -356,4 +447,221 @@ Overall functional gains.
 
 
 Definition at line 2058 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga0b09b4a0c405b1e2f694d39136bf87f6}\label{group__rules-phylo_ga0b09b4a0c405b1e2f694d39136bf87f6}} 
+\index{Phylo rules@{Phylo rules}!````~DEFMCounterData@{$\sim$DEFMCounterData}}
+\index{````~DEFMCounterData@{$\sim$DEFMCounterData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{$\sim$DEFMCounterData()}{~DEFMCounterData()}}
+{\footnotesize\ttfamily DEFMCounter\+Data\+::$\sim$\+DEFMCounter\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 85 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga637f2c896da37c0f3a72bd0174ca718c}\label{group__rules-phylo_ga637f2c896da37c0f3a72bd0174ca718c}} 
+\index{Phylo rules@{Phylo rules}!````~DEFMData@{$\sim$DEFMData}}
+\index{````~DEFMData@{$\sim$DEFMData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{$\sim$DEFMData()}{~DEFMData()}}
+{\footnotesize\ttfamily DEFMData\+::$\sim$\+DEFMData (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 58 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_gad64e7379376d678c0d7795be221c5e3e}\label{group__rules-phylo_gad64e7379376d678c0d7795be221c5e3e}} 
+\index{Phylo rules@{Phylo rules}!````~DEFMRuleDynData@{$\sim$DEFMRuleDynData}}
+\index{````~DEFMRuleDynData@{$\sim$DEFMRuleDynData}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{$\sim$DEFMRuleDynData()}{~DEFMRuleDynData()}}
+{\footnotesize\ttfamily DEFMRule\+Dyn\+Data\+::$\sim$\+DEFMRule\+Dyn\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 135 of file defm-\/types.\+hpp.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{group__rules-phylo_ga17038d453f18a0db9169ada226512674}\label{group__rules-phylo_ga17038d453f18a0db9169ada226512674}} 
+\index{Phylo rules@{Phylo rules}!array@{array}}
+\index{array@{array}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{array}{array}}
+{\footnotesize\ttfamily \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}}$\ast$ DEFMData\+::array}
+
+
+
+Definition at line 19 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga7b639c0b73814eec9015b82f7e2d8439}\label{group__rules-phylo_ga7b639c0b73814eec9015b82f7e2d8439}} 
+\index{Phylo rules@{Phylo rules}!counts@{counts}}
+\index{counts@{counts}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{counts}{counts}}
+{\footnotesize\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$$\ast$ DEFMRule\+Dyn\+Data\+::counts}
+
+
+
+Definition at line 126 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga23b387e03361640aa03c710bb6bf0a57}\label{group__rules-phylo_ga23b387e03361640aa03c710bb6bf0a57}} 
+\index{Phylo rules@{Phylo rules}!covar\_sort@{covar\_sort}}
+\index{covar\_sort@{covar\_sort}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{covar\_sort}{covar\_sort}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ DEFMData\+::covar\+\_\+sort}
+
+
+
+Definition at line 24 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga39494985671923d407e5c987662bd826}\label{group__rules-phylo_ga39494985671923d407e5c987662bd826}} 
+\index{Phylo rules@{Phylo rules}!covar\_used@{covar\_used}}
+\index{covar\_used@{covar\_used}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{covar\_used}{covar\_used}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ DEFMData\+::covar\+\_\+used}
+
+
+
+Value where the sorting of the covariates is stored. 
+
+
+
+Definition at line 25 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga8f6950493a55ebf9772ae4a5869b7a33}\label{group__rules-phylo_ga8f6950493a55ebf9772ae4a5869b7a33}} 
+\index{Phylo rules@{Phylo rules}!covariates@{covariates}}
+\index{covariates@{covariates}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{covariates}{covariates}}
+{\footnotesize\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} double$\ast$ DEFMData\+::covariates}
+
+
+
+Vector of covariates (complete vector) 
+
+
+
+Definition at line 20 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga1798d8ea93c677ed7fbfb91a6fc568dd}\label{group__rules-phylo_ga1798d8ea93c677ed7fbfb91a6fc568dd}} 
+\index{Phylo rules@{Phylo rules}!indices@{indices}}
+\index{indices@{indices}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{indices}{indices}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ DEFMCounter\+Data\+::indices}
+
+
+
+Definition at line 67 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga1d86306bc0d6299ecae2554e226809c1}\label{group__rules-phylo_ga1d86306bc0d6299ecae2554e226809c1}} 
+\index{Phylo rules@{Phylo rules}!indices@{indices}}
+\index{indices@{indices}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{indices}{indices}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ DEFMRule\+Data\+::indices}
+
+
+
+Definition at line 93 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga87c654a27ccf0b679f804cb05f63f7e5}\label{group__rules-phylo_ga87c654a27ccf0b679f804cb05f63f7e5}} 
+\index{Phylo rules@{Phylo rules}!init@{init}}
+\index{init@{init}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{init}{init}}
+{\footnotesize\ttfamily bool DEFMRule\+Data\+::init = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}
+
+
+
+Definition at line 96 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga34a1cd60ddd3aba7ff8145678d2827fe}\label{group__rules-phylo_ga34a1cd60ddd3aba7ff8145678d2827fe}} 
+\index{Phylo rules@{Phylo rules}!is\_motif@{is\_motif}}
+\index{is\_motif@{is\_motif}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{is\_motif}{is\_motif}}
+{\footnotesize\ttfamily bool DEFMCounter\+Data\+::is\+\_\+motif}
+
+
+
+If false, then is a logit intercept. 
+
+
+
+Definition at line 70 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga83c21423b25668b2343196f11fdc4630}\label{group__rules-phylo_ga83c21423b25668b2343196f11fdc4630}} 
+\index{Phylo rules@{Phylo rules}!logical@{logical}}
+\index{logical@{logical}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{logical}{logical}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ DEFMCounter\+Data\+::logical}
+
+
+
+Definition at line 69 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga8843c9a811b759251788fbedb2e65dde}\label{group__rules-phylo_ga8843c9a811b759251788fbedb2e65dde}} 
+\index{Phylo rules@{Phylo rules}!logical@{logical}}
+\index{logical@{logical}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{logical}{logical}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ DEFMRule\+Data\+::logical}
+
+
+
+Definition at line 94 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga42bd6d1deaa0d800a878ba9fe87d8b18}\label{group__rules-phylo_ga42bd6d1deaa0d800a878ba9fe87d8b18}} 
+\index{Phylo rules@{Phylo rules}!numbers@{numbers}}
+\index{numbers@{numbers}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{numbers}{numbers}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ DEFMCounter\+Data\+::numbers}
+
+
+
+Definition at line 68 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga66f4ba8b2047a943a426e555a9b63937}\label{group__rules-phylo_ga66f4ba8b2047a943a426e555a9b63937}} 
+\index{Phylo rules@{Phylo rules}!numbers@{numbers}}
+\index{numbers@{numbers}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{numbers}{numbers}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ DEFMRule\+Data\+::numbers}
+
+
+
+Definition at line 92 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga89a3ee0a0a27f78c47b010d5498e1fd2}\label{group__rules-phylo_ga89a3ee0a0a27f78c47b010d5498e1fd2}} 
+\index{Phylo rules@{Phylo rules}!obs\_start@{obs\_start}}
+\index{obs\_start@{obs\_start}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{obs\_start}{obs\_start}}
+{\footnotesize\ttfamily size\+\_\+t DEFMData\+::obs\+\_\+start}
+
+
+
+Index of the observation in the data. 
+
+
+
+Definition at line 21 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_ga13a6688217231167d87c033db3803209}\label{group__rules-phylo_ga13a6688217231167d87c033db3803209}} 
+\index{Phylo rules@{Phylo rules}!X\_ncol@{X\_ncol}}
+\index{X\_ncol@{X\_ncol}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{X\_ncol}{X\_ncol}}
+{\footnotesize\ttfamily size\+\_\+t DEFMData\+::\+X\+\_\+ncol}
+
+
+
+Number of columns in the array of covariates. 
+
+
+
+Definition at line 22 of file defm-\/types.\+hpp.
+
+\mbox{\Hypertarget{group__rules-phylo_gadf8ebba08c3c2b590494ed738c76482a}\label{group__rules-phylo_gadf8ebba08c3c2b590494ed738c76482a}} 
+\index{Phylo rules@{Phylo rules}!X\_nrow@{X\_nrow}}
+\index{X\_nrow@{X\_nrow}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{X\_nrow}{X\_nrow}}
+{\footnotesize\ttfamily size\+\_\+t DEFMData\+::\+X\+\_\+nrow}
+
+
+
+Number of rows in the array of covariates. 
+
+
+
+Definition at line 23 of file defm-\/types.\+hpp.
 

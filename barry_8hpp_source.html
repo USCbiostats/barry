@@ -173,31 +173,27 @@ $(document).ready(function(){initNavTree('barry_8hpp_source.html',''); initResiz
 <div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="namespacebarry_1_1counters_1_1network.html">   79</a></span>&#160;        <span class="keyword">namespace </span>network {</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">            #include &quot;<a class="code" href="network_8hpp.html">counters/network.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="namespacebarry_1_1counters_1_1defm.html">   82</a></span>&#160;        <span class="keyword">namespace </span>defm {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">            #include &quot;<a class="code" href="counters_2defm_8hpp.html">counters/defm.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacebarry_1_1counters_1_1network.html">netcounters</a> = <a class="code" href="namespacebarry_1_1counters_1_1network.html">barry::counters::network</a>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacebarry_1_1counters_1_1defm.html">defmcounters</a> = <a class="code" href="namespacebarry_1_1counters_1_1defm.html">barry::counters::defm</a>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="barry_8hpp.html#ae7fbc217bad33cff559b1fc41375a8ff">   92</a></span>&#160;<span class="preprocessor">#define COUNTER_FUNCTION(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">    inline double (a) (const Array_Type &amp; Array, size_t i, size_t j, Data_Type &amp; data)\</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span> </div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="barry_8hpp.html#a0dd594d2194ac0aa72b14cc42077331b">   95</a></span>&#160;<span class="preprocessor">#define COUNTER_LAMBDA(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">    Counter_fun_type&lt;Array_Type, Data_Type&gt; a = \</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">    [](const Array_Type &amp; Array, size_t i, size_t j, Data_Type &amp; data)</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="barry_8hpp.html#aca4359c3356b25fb710d4dbc93d8d5a8">   99</a></span>&#160;<span class="preprocessor">#define RULE_FUNCTION(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">    inline bool (a) (const Array_Type &amp; Array, size_t i, size_t j, Data_Type &amp; data)\</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor"></span> </div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="barry_8hpp.html#a65e3788fca9f405ff460ff7cfbad63f3">  102</a></span>&#160;<span class="preprocessor">#define RULE_LAMBDA(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">    Rule_fun_type&lt;Array_Type, Data_Type&gt; a = \</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">    [](const Array_Type &amp; Array, size_t i, size_t j, Data_Type &amp; data)</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacebarry_1_1counters_1_1network.html">netcounters</a> = <a class="code" href="namespacebarry_1_1counters_1_1network.html">barry::counters::network</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="barry_8hpp.html#ae7fbc217bad33cff559b1fc41375a8ff">   88</a></span>&#160;<span class="preprocessor">#define COUNTER_FUNCTION(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">    inline double (a) (const Array_Type &amp; Array, size_t i, size_t j, Data_Type &amp; data)\</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="barry_8hpp.html#a0dd594d2194ac0aa72b14cc42077331b">   91</a></span>&#160;<span class="preprocessor">#define COUNTER_LAMBDA(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">    Counter_fun_type&lt;Array_Type, Data_Type&gt; a = \</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">    [](const Array_Type &amp; Array, size_t i, size_t j, Data_Type &amp; data)</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="barry_8hpp.html#aca4359c3356b25fb710d4dbc93d8d5a8">   95</a></span>&#160;<span class="preprocessor">#define RULE_FUNCTION(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">    inline bool (a) (const Array_Type &amp; Array, size_t i, size_t j, Data_Type &amp; data)\</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="barry_8hpp.html#a65e3788fca9f405ff460ff7cfbad63f3">   98</a></span>&#160;<span class="preprocessor">#define RULE_LAMBDA(a) template &lt;typename Array_Type = barry::BArray&lt;&gt;, typename Data_Type = bool&gt; \</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">    Rule_fun_type&lt;Array_Type, Data_Type&gt; a = \</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">    [](const Array_Type &amp; Array, size_t i, size_t j, Data_Type &amp; data)</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarray-bones_8hpp_html"><div class="ttname"><a href="barray-bones_8hpp.html">barray-bones.hpp</a></div></div>
 <div class="ttc" id="abarray-meat-operators_8hpp_html"><div class="ttname"><a href="barray-meat-operators_8hpp.html">barray-meat-operators.hpp</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html"><div class="ttname"><a href="barray-meat_8hpp.html">barray-meat.hpp</a></div></div>
@@ -215,11 +211,9 @@ $(document).ready(function(){initNavTree('barry_8hpp_source.html',''); initResiz
 <div class="ttc" id="acell-meat_8hpp_html"><div class="ttname"><a href="cell-meat_8hpp.html">cell-meat.hpp</a></div></div>
 <div class="ttc" id="acounters-bones_8hpp_html"><div class="ttname"><a href="counters-bones_8hpp.html">counters-bones.hpp</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html"><div class="ttname"><a href="counters-meat_8hpp.html">counters-meat.hpp</a></div></div>
-<div class="ttc" id="acounters_2defm_8hpp_html"><div class="ttname"><a href="counters_2defm_8hpp.html">defm.hpp</a></div></div>
 <div class="ttc" id="afreqtable_8hpp_html"><div class="ttname"><a href="freqtable_8hpp.html">freqtable.hpp</a></div></div>
 <div class="ttc" id="amodel-bones_8hpp_html"><div class="ttname"><a href="model-bones_8hpp.html">model-bones.hpp</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html"><div class="ttname"><a href="model-meat_8hpp.html">model-meat.hpp</a></div></div>
-<div class="ttc" id="anamespacebarry_1_1counters_1_1defm_html"><div class="ttname"><a href="namespacebarry_1_1counters_1_1defm.html">barry::counters::defm</a></div><div class="ttdef"><b>Definition:</b> <a href="barry_8hpp_source.html#l00082">barry.hpp:82</a></div></div>
 <div class="ttc" id="anamespacebarry_1_1counters_1_1network_html"><div class="ttname"><a href="namespacebarry_1_1counters_1_1network.html">barry::counters::network</a></div><div class="ttdef"><b>Definition:</b> <a href="barry_8hpp_source.html#l00079">barry.hpp:79</a></div></div>
 <div class="ttc" id="anamespacebarry_html"><div class="ttname"><a href="namespacebarry.html">barry</a></div><div class="ttdoc">barry: Your go-to motif accountant</div><div class="ttdef"><b>Definition:</b> <a href="barry_8hpp_source.html#l00034">barry.hpp:34</a></div></div>
 <div class="ttc" id="anetwork_8hpp_html"><div class="ttname"><a href="network_8hpp.html">network.hpp</a></div></div>
@@ -239,7 +233,7 @@ $(document).ready(function(){initNavTree('barry_8hpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barry_8hpp.html">barry.hpp</a></li>
-    <li class="footer">Generated on Thu Aug 10 2023 20:19:39 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Aug 10 2023 23:10:54 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -15,7 +15,7 @@ var searchData=
   ['ans_12',['ans',['../barraydense-meat_8hpp.html#a2e094024a44e50938f0b8faecb5a82d8',1,'ans(ncol(), static_cast&lt; Cell_Type &gt;(false)):&#160;barraydense-meat.hpp'],['../barray-meat_8hpp.html#a12eee12d7ad4ae646f30b21cd540cc2e',1,'ans(ncol(),(Cell_Type) false):&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906',1,'ans():&#160;barraydense-meat.hpp'],['../barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906',1,'ans():&#160;barray-meat.hpp']]],
   ['array_13',['array',['../class_node.html#a131bbc9fe67a5bcc5aa9b9c44103bd3b',1,'Node']]],
   ['array_14',['Array',['../class_const_b_array_row_iter.html#ae7f5ef61225621953a664e73c6153ed3',1,'ConstBArrayRowIter']]],
-  ['array_15',['array',['../class_d_e_f_m_data.html#a17038d453f18a0db9169ada226512674',1,'DEFMData']]],
+  ['array_15',['array',['../group__rules-phylo.html#ga17038d453f18a0db9169ada226512674',1,'DEFMData']]],
   ['array_5f_16',['Array_',['../barray-meat_8hpp.html#a6cb31aaad809d508e214b61785d7fb47',1,'barray-meat.hpp']]],
   ['array_5fbank_17',['array_bank',['../support-meat_8hpp.html#ac507b5b05a329a72fa561a352608abdf',1,'support-meat.hpp']]],
   ['arrays_18',['arrays',['../class_node.html#a35299481d61e0d97349166ecee249990',1,'Node']]],
@@ -24,5 +24,5 @@ var searchData=
   ['as_5fone_21',['AS_ONE',['../namespace_e_x_i_s_t_s.html#a735e5ca6565905e84346e3ff62842a0a',1,'EXISTS']]],
   ['as_5fvector_22',['as_vector',['../class_freq_table.html#a1898e62605d8753e170189936d403e05',1,'FreqTable']]],
   ['as_5fzero_23',['AS_ZERO',['../namespace_e_x_i_s_t_s.html#a03d550dd049f50f852b8fb4caa48238a',1,'EXISTS']]],
-  ['at_24',['at',['../class_phylo_counter_data.html#a95e7b29a0d2029d77ee4a0a61f91a826',1,'PhyloCounterData::at()'],['../class_d_e_f_m_data.html#ab2a20858a209c975a4a3ca341f33f9c2',1,'DEFMData::at()']]]
+  ['at_24',['at',['../class_phylo_counter_data.html#a95e7b29a0d2029d77ee4a0a61f91a826',1,'PhyloCounterData::at()'],['../group__rules-phylo.html#gab2a20858a209c975a4a3ca341f33f9c2',1,'DEFMData::at()']]]
 ];
