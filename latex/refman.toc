@@ -699,11 +699,12 @@
 \contentsline {subsubsection}{\numberline {8.28.3.28}predict\_exhaust\_backend()}{167}{subsubsection.8.28.3.28}%
 \contentsline {subsubsection}{\numberline {8.28.3.29}predict\_sim()}{167}{subsubsection.8.28.3.29}%
 \contentsline {subsubsection}{\numberline {8.28.3.30}print()}{168}{subsubsection.8.28.3.30}%
-\contentsline {subsubsection}{\numberline {8.28.3.31}print\_observed\_counts()}{168}{subsubsection.8.28.3.31}%
-\contentsline {subsubsection}{\numberline {8.28.3.32}set\_seed()}{168}{subsubsection.8.28.3.32}%
-\contentsline {subsubsection}{\numberline {8.28.3.33}simulate()}{168}{subsubsection.8.28.3.33}%
-\contentsline {subsubsection}{\numberline {8.28.3.34}support\_size()}{168}{subsubsection.8.28.3.34}%
-\contentsline {subsubsection}{\numberline {8.28.3.35}update\_annotations()}{169}{subsubsection.8.28.3.35}%
+\contentsline {subsubsection}{\numberline {8.28.3.31}print\_nodes()}{168}{subsubsection.8.28.3.31}%
+\contentsline {subsubsection}{\numberline {8.28.3.32}print\_observed\_counts()}{168}{subsubsection.8.28.3.32}%
+\contentsline {subsubsection}{\numberline {8.28.3.33}set\_seed()}{168}{subsubsection.8.28.3.33}%
+\contentsline {subsubsection}{\numberline {8.28.3.34}simulate()}{168}{subsubsection.8.28.3.34}%
+\contentsline {subsubsection}{\numberline {8.28.3.35}support\_size()}{168}{subsubsection.8.28.3.35}%
+\contentsline {subsubsection}{\numberline {8.28.3.36}update\_annotations()}{169}{subsubsection.8.28.3.36}%
 \contentsline {subsection}{\numberline {8.28.4}Member Data Documentation}{169}{subsection.8.28.4}%
 \contentsline {subsubsection}{\numberline {8.28.4.1}delete\_rengine}{169}{subsubsection.8.28.4.1}%
 \contentsline {subsubsection}{\numberline {8.28.4.2}delete\_support}{169}{subsubsection.8.28.4.2}%
@@ -712,7 +713,7 @@
 \contentsline {subsubsection}{\numberline {8.28.4.5}etype\_either}{170}{subsubsection.8.28.4.5}%
 \contentsline {subsubsection}{\numberline {8.28.4.6}etype\_speciation}{170}{subsubsection.8.28.4.6}%
 \contentsline {subsubsection}{\numberline {8.28.4.7}initialized}{170}{subsubsection.8.28.4.7}%
-\contentsline {subsubsection}{\numberline {8.28.4.8}map\_to\_nodes}{170}{subsubsection.8.28.4.8}%
+\contentsline {subsubsection}{\numberline {8.28.4.8}map\_to\_state\_id}{170}{subsubsection.8.28.4.8}%
 \contentsline {subsubsection}{\numberline {8.28.4.9}nfunctions}{170}{subsubsection.8.28.4.9}%
 \contentsline {subsubsection}{\numberline {8.28.4.10}nodes}{170}{subsubsection.8.28.4.10}%
 \contentsline {subsubsection}{\numberline {8.28.4.11}pset\_loc}{171}{subsubsection.8.28.4.11}%
@@ -836,21 +837,20 @@
 \contentsline {subsubsection}{\numberline {8.32.4.1}annotations}{201}{subsubsection.8.32.4.1}%
 \contentsline {subsubsection}{\numberline {8.32.4.2}array}{201}{subsubsection.8.32.4.2}%
 \contentsline {subsubsection}{\numberline {8.32.4.3}arrays}{202}{subsubsection.8.32.4.3}%
-\contentsline {subsubsection}{\numberline {8.32.4.4}arrays\_valid}{202}{subsubsection.8.32.4.4}%
-\contentsline {subsubsection}{\numberline {8.32.4.5}duplication}{202}{subsubsection.8.32.4.5}%
-\contentsline {subsubsection}{\numberline {8.32.4.6}id}{202}{subsubsection.8.32.4.6}%
-\contentsline {subsubsection}{\numberline {8.32.4.7}narray}{202}{subsubsection.8.32.4.7}%
-\contentsline {subsubsection}{\numberline {8.32.4.8}offspring}{203}{subsubsection.8.32.4.8}%
-\contentsline {subsubsection}{\numberline {8.32.4.9}ord}{203}{subsubsection.8.32.4.9}%
-\contentsline {subsubsection}{\numberline {8.32.4.10}parent}{203}{subsubsection.8.32.4.10}%
-\contentsline {subsubsection}{\numberline {8.32.4.11}probability}{203}{subsubsection.8.32.4.11}%
-\contentsline {subsubsection}{\numberline {8.32.4.12}subtree\_prob}{203}{subsubsection.8.32.4.12}%
-\contentsline {subsubsection}{\numberline {8.32.4.13}visited}{204}{subsubsection.8.32.4.13}%
+\contentsline {subsubsection}{\numberline {8.32.4.4}duplication}{202}{subsubsection.8.32.4.4}%
+\contentsline {subsubsection}{\numberline {8.32.4.5}id}{202}{subsubsection.8.32.4.5}%
+\contentsline {subsubsection}{\numberline {8.32.4.6}narray}{202}{subsubsection.8.32.4.6}%
+\contentsline {subsubsection}{\numberline {8.32.4.7}offspring}{202}{subsubsection.8.32.4.7}%
+\contentsline {subsubsection}{\numberline {8.32.4.8}ord}{203}{subsubsection.8.32.4.8}%
+\contentsline {subsubsection}{\numberline {8.32.4.9}parent}{203}{subsubsection.8.32.4.9}%
+\contentsline {subsubsection}{\numberline {8.32.4.10}probability}{203}{subsubsection.8.32.4.10}%
+\contentsline {subsubsection}{\numberline {8.32.4.11}subtree\_prob}{203}{subsubsection.8.32.4.11}%
+\contentsline {subsubsection}{\numberline {8.32.4.12}visited}{203}{subsubsection.8.32.4.12}%
 \contentsline {section}{\numberline {8.33}Node\discretionary {\mbox {\scriptsize $\DOTSB \leftarrow \joinrel \rhook $}}{}{}Data Class Reference}{204}{section.8.33}%
 \contentsline {subsection}{\numberline {8.33.1}Detailed Description}{204}{subsection.8.33.1}%
 \contentsline {subsection}{\numberline {8.33.2}Constructor \& Destructor Documentation}{204}{subsection.8.33.2}%
 \contentsline {subsubsection}{\numberline {8.33.2.1}NodeData()}{204}{subsubsection.8.33.2.1}%
-\contentsline {subsection}{\numberline {8.33.3}Member Data Documentation}{205}{subsection.8.33.3}%
+\contentsline {subsection}{\numberline {8.33.3}Member Data Documentation}{204}{subsection.8.33.3}%
 \contentsline {subsubsection}{\numberline {8.33.3.1}blengths}{205}{subsubsection.8.33.3.1}%
 \contentsline {subsubsection}{\numberline {8.33.3.2}duplication}{205}{subsubsection.8.33.3.2}%
 \contentsline {subsubsection}{\numberline {8.33.3.3}states}{205}{subsubsection.8.33.3.3}%
