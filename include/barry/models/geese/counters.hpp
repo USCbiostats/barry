@@ -18,9 +18,9 @@
 #define IS_SPECIATION()  ((DATA_AT == Geese::etype_speciation) & (!DPL))
 
 #define IF_MATCHES() MAKE_DUPL_VARS() \
-    if (IS_EITHER() | IS_DUPLICATION() | IS_SPECIATION())
+    if (IS_EITHER() || IS_DUPLICATION() || IS_SPECIATION())
 #define IF_NOTMATCHES() MAKE_DUPL_VARS() \
-    if (!IS_EITHER() & !IS_DUPLICATION() & !IS_SPECIATION())
+    if (!IS_EITHER() && !IS_DUPLICATION() && !IS_SPECIATION())
 
 
 /**
@@ -115,7 +115,7 @@ inline void counter_gains(
 
         for (auto o = 0u; o < Array.ncol(); ++o)
         {
-            if (!s && (Array(k,o) == 1u))
+            if (Array(k, o) == 1u)
                 ngains += 1.0;
         }
         

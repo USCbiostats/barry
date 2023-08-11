@@ -44,6 +44,9 @@ BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
     
     #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(ans0a - ans1a) < .0000001);
+    #else
+    std::cout << "a. Likelihood: " << ans0a << std::endl;
+    std::cout << "a. Likelihood(exhaust): " << ans1a << std::endl;
     #endif
 
     // Updating an annotation --------------------------------------------------
@@ -71,6 +74,9 @@ BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
 
     #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(ans0b - ans1b) < .0000001);
+    #else
+    std::cout << "b. Likelihood: " << ans0b << std::endl;
+    std::cout << "b. Likelihood(exhaust): " << ans1b << std::endl;
     #endif
 
     // Going back

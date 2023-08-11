@@ -69,13 +69,13 @@ inline std::vector< std::vector< size_t > > Geese::simulate(
 
         const Node & n = nodes[i];
 
-        // Getting the state of the node      
-        size_t l = map_to_nodes[res[n.ord]];
+        // Getting the id of the state
+        size_t lth_state = map_to_state_id[res[n.ord]];
 
         // Given the state of the current node, sample the state of the
         // offspring, all based on the current state
         // auto z = n.narray;
-        auto tmp = model->sample(n.narray[l], par0);
+        auto tmp = model->sample(n.narray[lth_state], par0);
 
         // Iterating through the offspring to assign the state
         for (size_t j = 0u; j < n.offspring.size(); ++j)

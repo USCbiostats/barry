@@ -130,7 +130,8 @@ public:
     // Data
     size_t                       nfunctions;
     std::map< size_t, Node >     nodes;
-    barry::MapVec_type< size_t > map_to_nodes;
+    
+    barry::MapVec_type< size_t > map_to_state_id;
     std::vector< std::vector< std::vector< size_t > > > pset_loc;    ///< Locations of columns
 
     // Tree-traversal sequence
@@ -254,6 +255,8 @@ public:
      * @brief Prints information about the GEESE
      */
     void print() const;
+    void print_nodes() const;
+
 
     /**
      * @name Geese prediction

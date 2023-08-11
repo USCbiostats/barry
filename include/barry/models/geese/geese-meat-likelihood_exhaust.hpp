@@ -110,7 +110,7 @@ inline double Geese::likelihood_exhaust(
             prob *= this->model->likelihood(
                 par0,
                 transition,
-                node->narray[this->map_to_nodes[tmpstates]],
+                node->narray[this->map_to_state_id[tmpstates]],
                 false
                 );
 

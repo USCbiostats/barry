@@ -91,6 +91,7 @@ inline Geese::Geese(
                 nodes[geneid.at(i)].annotations = funs;
                 nodes[geneid.at(i)].parent      = &nodes[parent.at(i)];
                 nodes[geneid.at(i)].ord         = i;
+                nodes[geneid.at(i)].id          = geneid.at(i);
 
                 nodes[parent.at(i)].offspring.push_back(
                     &nodes[geneid.at(i)]
@@ -129,6 +130,7 @@ inline Geese::Geese(
                 nodes[geneid.at(i)].duplication = duplication.at(i);
                 nodes[geneid.at(i)].annotations = funs;
                 nodes[geneid.at(i)].ord         = i;
+                nodes[geneid.at(i)].id          = geneid.at(i);
 
                 if (parent.at(i) >= 0)
                 {
@@ -221,7 +223,7 @@ inline Geese::Geese(const Geese & model_, bool copy_data) :
     n_spec_events(model_.n_spec_events),
     nfunctions(model_.nfunctions),
     nodes(model_.nodes),
-    map_to_nodes(model_.map_to_nodes),
+    map_to_state_id(model_.map_to_state_id),
     pset_loc(model_.pset_loc),
     sequence(model_.sequence),
     reduced_sequence(model_.reduced_sequence),
@@ -302,7 +304,7 @@ inline Geese::Geese(Geese && x) noexcept :
     n_spec_events(std::move(x.n_spec_events)),
     nfunctions(x.nfunctions),
     nodes(std::move(x.nodes)),
-    map_to_nodes(std::move(x.map_to_nodes)),
+    map_to_state_id(std::move(x.map_to_state_id)),
     pset_loc(std::move(x.pset_loc)),
     sequence(std::move(x.sequence)),
     reduced_sequence(std::move(x.reduced_sequence)),

@@ -354,7 +354,7 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
     // Printing the biggest differences between ansR2_vec and ansR2_sim_vec
     for (size_t i = 0u; i < ansR2_vec.size(); ++i) 
     {
-        if (std::abs(ansR2_vec[i] - ansR2_sim_vec[i]) > .1)
+        if (std::abs(ansR2_vec[i] - ansR2_sim_vec[i]) > .01)
         {
             std::cout << "i: " << i <<
                 " ansR2_vec[i]: " << ansR2_vec[i] <<
@@ -366,7 +366,7 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
     // For now, we are excluding comparison of 149, as it is the only one
     // that is not close enough. This is probably due to the fact that
     // the simulation is not long enough.
-    ansR2_sim_vec[149] = ansR2_vec[149];
+    // ansR2_sim_vec[149] = ansR2_vec[149];
 
     #ifdef CATCH_CONFIG_MAIN
         #ifndef BARRY_VALGRIND
