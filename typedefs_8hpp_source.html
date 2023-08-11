@@ -264,84 +264,96 @@ $(document).ready(function(){initNavTree('typedefs_8hpp_source.html',''); initRe
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;) {</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    </div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>.size() != b.size())</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;-a- and -b- should have the same length.&quot;</span>);</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>] == b[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>]) {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">if</span> (++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>.size())</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="typedefs_8hpp.html#aed8ddfe5ae95bf4d6f76221ce06566fb">  228</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="typedefs_8hpp.html#aed8ddfe5ae95bf4d6f76221ce06566fb">vec_equal_approx</a>(</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keyword">const</span> std::vector&lt; T &gt; &amp; <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>,</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keyword">const</span> std::vector&lt; T &gt; &amp; b,</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordtype">double</span> eps = 1e-100</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;) {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>.size() != b.size())</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;-a- and -b- should have the same length.&quot;</span>);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    </div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(std::fabs(<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>] - b[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>])) &lt; eps) {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">if</span> (++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>.size())</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    </div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#ifdef __OPENM</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor">#pragma omp declare simd</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="typedefs_8hpp.html#ab9ddeecf87d68d3f44dd6a94b10aa786">  251</a></span>&#160;<span class="keyword">inline</span> T <a class="code" href="typedefs_8hpp.html#ab9ddeecf87d68d3f44dd6a94b10aa786">vec_inner_prod</a>(</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keyword">const</span> T * <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>,</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keyword">const</span> T * b,</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordtype">size_t</span> n</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;) {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    </div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor">    #ifdef __OPENM </span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">    #pragma omp simd reduction(+:res)</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">    #else</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">    #pragma GCC ivdep</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">    #endif</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; n; ++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>)</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += (*(<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> + <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) * *(b + <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>));</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor">#ifdef __OPENM</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="preprocessor">#pragma omp declare simd</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="typedefs_8hpp.html#af6f9c021aa2e49b1cb82fbd32026f1dc">  274</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="typedefs_8hpp.html#ab9ddeecf87d68d3f44dd6a94b10aa786">vec_inner_prod</a>(</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> * <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>,</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> * b,</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordtype">size_t</span> n</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;) {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="preprocessor">    #ifdef __OPENMP</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">    #pragma omp simd reduction(+:res)</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor">    #else</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor">    #pragma GCC ivdep</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="preprocessor">    #endif</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; n; ++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>)</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += (*(<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> + <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) * *(b + <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>));</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        std::string err = <span class="stringliteral">&quot;-a- and -b- should have the same length. length(a) = &quot;</span> +</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            std::to_string(<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>.size()) + <span class="stringliteral">&quot; and length(b) = &quot;</span> + std::to_string(b.size()) +</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            std::string(<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">throw</span> std::length_error(err);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>] == b[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>]) {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">if</span> (++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>.size())</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;}</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="typedefs_8hpp.html#aed8ddfe5ae95bf4d6f76221ce06566fb">  235</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="typedefs_8hpp.html#aed8ddfe5ae95bf4d6f76221ce06566fb">vec_equal_approx</a>(</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keyword">const</span> std::vector&lt; T &gt; &amp; <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>,</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keyword">const</span> std::vector&lt; T &gt; &amp; b,</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">double</span> eps = 1e-100</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;) {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>.size() != b.size())</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        std::string err = <span class="stringliteral">&quot;-a- and -b- should have the same length. length(a) = &quot;</span> +</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            std::to_string(<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>.size()) + <span class="stringliteral">&quot; and length(b) = &quot;</span> + std::to_string(b.size()) +</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            std::string(<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">throw</span> std::length_error(err);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(std::fabs(<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>] - b[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>])) &lt; eps) {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">if</span> (++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>.size())</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#ifdef __OPENM</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#pragma omp declare simd</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00263"></a><span class="lineno"><a class="line" href="typedefs_8hpp.html#ab9ddeecf87d68d3f44dd6a94b10aa786">  263</a></span>&#160;<span class="keyword">inline</span> T <a class="code" href="typedefs_8hpp.html#ab9ddeecf87d68d3f44dd6a94b10aa786">vec_inner_prod</a>(</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keyword">const</span> T * <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>,</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keyword">const</span> T * b,</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordtype">size_t</span> n</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor">    #ifdef __OPENM </span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="preprocessor">    #pragma omp simd reduction(+:res)</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">    #else</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">    #pragma GCC ivdep</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; n; ++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += (*(<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> + <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) * *(b + <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>));</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#ifdef __OPENM</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor">#pragma omp declare simd</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="typedefs_8hpp.html#af6f9c021aa2e49b1cb82fbd32026f1dc">  286</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="typedefs_8hpp.html#ab9ddeecf87d68d3f44dd6a94b10aa786">vec_inner_prod</a>(</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> * <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>,</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> * b,</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">size_t</span> n</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;) {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">    #ifdef __OPENMP</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">    #pragma omp simd reduction(+:res)</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="preprocessor">    #else</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="preprocessor">    #pragma GCC ivdep</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; n; ++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>)</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += (*(<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> + <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) * *(b + <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>));</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;}</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
 <div class="ttc" id="abarray-meat_8hpp_html_a68092a422ff07aad4217ee7e8785a7d7"><div class="ttname"><a href="barray-meat_8hpp.html#a68092a422ff07aad4217ee7e8785a7d7">i1</a></div><div class="ttdeci">size_t size_t i1</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00776">barray-meat.hpp:776</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a6c8b6052a486478285dd9bdc81915af8"><div class="ttname"><a href="barray-meat_8hpp.html#a6c8b6052a486478285dd9bdc81915af8">v</a></div><div class="ttdeci">size_t const Cell&lt; Cell_Type &gt; &amp; v</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00671">barray-meat.hpp:671</a></div></div>
 <div class="ttc" id="abarry-configuration_8hpp_html"><div class="ttname"><a href="barry-configuration_8hpp.html">barry-configuration.hpp</a></div></div>
@@ -387,17 +399,17 @@ $(document).ready(function(){initNavTree('typedefs_8hpp_source.html',''); initRe
 <div class="ttc" id="atypedefs_8hpp_html_a940d68f006f1ffee7f5b207bf61aefe4"><div class="ttname"><a href="typedefs_8hpp.html#a940d68f006f1ffee7f5b207bf61aefe4">Rule_fun_type</a></div><div class="ttdeci">std::function&lt; bool(const Array_Type &amp;, size_t, size_t, Data_Type &amp;)&gt; Rule_fun_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00190">typedefs.hpp:190</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_aab7c9679e747e2f653246fbd03f26cc1"><div class="ttname"><a href="typedefs_8hpp.html#aab7c9679e747e2f653246fbd03f26cc1">Hasher_fun_type</a></div><div class="ttdeci">std::function&lt; std::vector&lt; double &gt;(const Array_Type &amp;, Data_Type *)&gt; Hasher_fun_type</div><div class="ttdoc">Hasher function used by the counter.</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00200">typedefs.hpp:200</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_ab1d4f47a245caa5ee58da49231c054ca"><div class="ttname"><a href="typedefs_8hpp.html#ab1d4f47a245caa5ee58da49231c054ca">sort_array</a></div><div class="ttdeci">std::vector&lt; size_t &gt; sort_array(const double *v, size_t start, size_t ncols, size_t nrows)</div><div class="ttdoc">Ascending sorting an array.</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00141">typedefs.hpp:141</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_ab9ddeecf87d68d3f44dd6a94b10aa786"><div class="ttname"><a href="typedefs_8hpp.html#ab9ddeecf87d68d3f44dd6a94b10aa786">vec_inner_prod</a></div><div class="ttdeci">T vec_inner_prod(const T *a, const T *b, size_t n)</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00251">typedefs.hpp:251</a></div></div>
+<div class="ttc" id="atypedefs_8hpp_html_ab9ddeecf87d68d3f44dd6a94b10aa786"><div class="ttname"><a href="typedefs_8hpp.html#ab9ddeecf87d68d3f44dd6a94b10aa786">vec_inner_prod</a></div><div class="ttdeci">T vec_inner_prod(const T *a, const T *b, size_t n)</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00263">typedefs.hpp:263</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_ad7626021d4acb1dfc9419e667923a01f"><div class="ttname"><a href="typedefs_8hpp.html#ad7626021d4acb1dfc9419e667923a01f">Counter_fun_type</a></div><div class="ttdeci">std::function&lt; double(const Array_Type &amp;, size_t, size_t, Data_Type &amp;)&gt; Counter_fun_type</div><div class="ttdoc">Counter and rule functions.</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00187">typedefs.hpp:187</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html_adfb2ee3c0edfa46d47dc24cbbfabb11b"><div class="ttname"><a href="typedefs_8hpp.html#adfb2ee3c0edfa46d47dc24cbbfabb11b">Col_type</a></div><div class="ttdeci">Map&lt; size_t, Cell&lt; Cell_Type &gt; * &gt; Col_type</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00070">typedefs.hpp:70</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_aed8ddfe5ae95bf4d6f76221ce06566fb"><div class="ttname"><a href="typedefs_8hpp.html#aed8ddfe5ae95bf4d6f76221ce06566fb">vec_equal_approx</a></div><div class="ttdeci">bool vec_equal_approx(const std::vector&lt; T &gt; &amp;a, const std::vector&lt; T &gt; &amp;b, double eps=1e-100)</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00228">typedefs.hpp:228</a></div></div>
+<div class="ttc" id="atypedefs_8hpp_html_aed8ddfe5ae95bf4d6f76221ce06566fb"><div class="ttname"><a href="typedefs_8hpp.html#aed8ddfe5ae95bf4d6f76221ce06566fb">vec_equal_approx</a></div><div class="ttdeci">bool vec_equal_approx(const std::vector&lt; T &gt; &amp;a, const std::vector&lt; T &gt; &amp;b, double eps=1e-100)</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00235">typedefs.hpp:235</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="typedefs_8hpp.html">typedefs.hpp</a></li>
-    <li class="footer">Generated on Thu Aug 10 2023 23:10:55 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 11 2023 15:36:01 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

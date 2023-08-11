@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('group__counting.html',''); initResizab
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">Counting</div>  </div>
 </div><!--header-->
@@ -109,11 +109,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A counter function based on change statistics.  <a href="class_counter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ga66b7a40df357b79514dcbc4accfe679d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counting.html#ga66b7a40df357b79514dcbc4accfe679d">DEFMData::operator()</a> (size_t <a class="el" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, size_t <a class="el" href="statscounter-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
-<tr class="memdesc:ga66b7a40df357b79514dcbc4accfe679d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access to the row (i) colum (j) data.  <a href="group__counting.html#ga66b7a40df357b79514dcbc4accfe679d">More...</a><br /></td></tr>
-<tr class="separator:ga66b7a40df357b79514dcbc4accfe679d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga172b737bbafc10829969ae80428ae682"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counting.html#ga172b737bbafc10829969ae80428ae682">MAKE_DEFM_HASHER</a>(<a class="el" href="counters-meat_8hpp.html#a51327367202f40175dea83db9095a0da">hasher</a>,  <a class="el" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>,  cov)</td></tr>
+<tr class="separator:ga172b737bbafc10829969ae80428ae682"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa723b014f0985d974ac55ce671689f65"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counting.html#gaa723b014f0985d974ac55ce671689f65">MAKE_DUPL_VARS</a>()</td></tr>
 <tr class="separator:gaa723b014f0985d974ac55ce671689f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga100f75e7828db28578049b1b57f4f8c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counting.html#ga100f75e7828db28578049b1b57f4f8c7">IS_EITHER</a>()&#160;&#160;&#160;(DATA_AT == <a class="el" href="class_geese.html#a0bbca4599569a83d430236de7609c1d9">Geese::etype_either</a>)</td></tr>
@@ -320,6 +319,60 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga172b737bbafc10829969ae80428ae682"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga172b737bbafc10829969ae80428ae682">&#9670;&nbsp;</a></span>MAKE_DEFM_HASHER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAKE_DEFM_HASHER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="counters-meat_8hpp.html#a51327367202f40175dea83db9095a0da">hasher</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">cov&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    barry::Hasher_fun_type&lt;DEFMArray,DEFMCounterData&gt; \</div>
+<div class="line">    hasher = [cov](<span class="keyword">const</span> <a class="code" href="defm-types_8hpp.html#a3ed5e2f1747dd4f4893565699469438f">DEFMArray</a> &amp; array, <a class="code" href="class_d_e_f_m_counter_data.html">DEFMCounterData</a> * d) { \</div>
+<div class="line">        std::vector&lt; double &gt; <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>; \</div>
+<div class="line">        <span class="comment">/* Adding the column feature */</span> \</div>
+<div class="line">        for (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; array.nrow(); ++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) \</div>
+<div class="line">            <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.push_back(array.D()(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, cov)); \</div>
+<div class="line">        <span class="comment">/* Adding the fixed dims */</span> \</div>
+<div class="line">        for (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; (array.nrow() - 1); ++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) \</div>
+<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u; <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> &lt; array.ncol(); ++<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) \</div>
+<div class="line">                <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.push_back(array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)); \</div>
+<div class="line">        return <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;\</div>
+<div class="line">    };</div>
+<div class="ttc" id="abarray-meat_8hpp_html_abf2d9f657468255c5b9964ea2b6e9e15"><div class="ttname"><a href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a></div><div class="ttdeci">size_t j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
+<div class="ttc" id="aclass_d_e_f_m_counter_data_html"><div class="ttname"><a href="class_d_e_f_m_counter_data.html">DEFMCounterData</a></div><div class="ttdoc">Data class used to store arbitrary size_t or double vectors.</div><div class="ttdef"><b>Definition:</b> <a href="defm-types_8hpp_source.html#l00064">defm-types.hpp:64</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_a5e111f6687f261e4e28bd6528e7f5b48"><div class="ttname"><a href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a></div><div class="ttdeci">return res</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00263">counters-meat.hpp:263</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_a981162f997bbddbdcaf8234da58a6094"><div class="ttname"><a href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a></div><div class="ttdeci">size_t i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:83</a></div></div>
+<div class="ttc" id="adefm-types_8hpp_html_a3ed5e2f1747dd4f4893565699469438f"><div class="ttname"><a href="defm-types_8hpp.html#a3ed5e2f1747dd4f4893565699469438f">DEFMArray</a></div><div class="ttdeci">barry::BArrayDense&lt; int, DEFMData &gt; DEFMArray</div><div class="ttdef"><b>Definition:</b> <a href="defm-types_8hpp_source.html#l00005">defm-types.hpp:3</a></div></div>
+</div><!-- fragment --><p>Details on the available counters for <code>DEFMworkData</code> can be found in the <a class="el" href="group__counters-network.html">Network counters</a> section. </p>
+
+<p class="definition">Definition at line <a class="el" href="defm_2counters_8hpp_source.html#l00021">21</a> of file <a class="el" href="defm_2counters_8hpp_source.html">counters.hpp</a>.</p>
+
+</div>
+</div>
 <a id="gaa723b014f0985d974ac55ce671689f65"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaa723b014f0985d974ac55ce671689f65">&#9670;&nbsp;</a></span>MAKE_DUPL_VARS</h2>
 
@@ -381,9 +434,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    barry::Counter_fun_type&lt;PhyloArray, PhyloCounterData&gt; <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> = \</div>
 <div class="line">    [](<span class="keyword">const</span> <a class="code" href="geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6">PhyloArray</a> &amp; Array, <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a> &amp; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
-<div class="ttc" id="abarray-meat_8hpp_html_abf2d9f657468255c5b9964ea2b6e9e15"><div class="ttname"><a href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a></div><div class="ttdeci">size_t j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
 <div class="ttc" id="aclass_phylo_counter_data_html"><div class="ttname"><a href="class_phylo_counter_data.html">PhyloCounterData</a></div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00042">geese-types.hpp:42</a></div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_a981162f997bbddbdcaf8234da58a6094"><div class="ttname"><a href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a></div><div class="ttdeci">size_t i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:83</a></div></div>
 <div class="ttc" id="ageese-types_8hpp_html_a3f0cae5b6ac5c728612da24e8aa3b5f6"><div class="ttname"><a href="geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6">PhyloArray</a></div><div class="ttdeci">barry::BArrayDense&lt; size_t, NodeData &gt; PhyloArray</div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00101">geese-types.hpp:101</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a81e02a278aaeae99b5dbef355ee6dd2f"><div class="ttname"><a href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a></div><div class="ttdeci">size_t a</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01278">model-meat.hpp:1278</a></div></div>
 </div><!-- fragment -->
@@ -1577,61 +1628,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga66b7a40df357b79514dcbc4accfe679d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga66b7a40df357b79514dcbc4accfe679d">&#9670;&nbsp;</a></span>operator()()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double DEFMData::operator() </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>i</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>j</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Access to the row (i) colum (j) data. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i</td><td></td></tr>
-    <tr><td class="paramname">j</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>double</dd></dl>
-<p>Details on the available counters for <code>DEFMworkData</code> can be found in the <a class="el" href="group__counters-network.html">Network counters</a> section. </p>
-
-<p class="definition">Definition at line <a class="el" href="defm_2counters_8hpp_source.html#l00020">20</a> of file <a class="el" href="defm_2counters_8hpp_source.html">counters.hpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Aug 10 2023 23:10:55 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 11 2023 15:36:01 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -2,7 +2,7 @@ var searchData=
 [
   ['m_446',['M',['../class_power_set.html#abfbefec5e1bbda8282ca3fcba2bb4b8e',1,'PowerSet::M()'],['../class_support.html#a2f9ae22fb7422025ccf7985ebad3a4fd',1,'Support::M()'],['../barraydense-meat_8hpp.html#adb61ad66dabc2db1f586c93e095ef9d3',1,'M(Array_.M):&#160;barraydense-meat.hpp'],['../barray-meat_8hpp.html#aad05f78187c942f9dd521605fa81f1ba',1,'M():&#160;barray-meat.hpp'],['../barraydense-meat_8hpp.html#aad05f78187c942f9dd521605fa81f1ba',1,'M():&#160;barraydense-meat.hpp'],['../barray-meat_8hpp.html#a96d6e901dc162f711d087a519d039923',1,'M(Array_.M):&#160;barray-meat.hpp']]],
   ['m_5f_447',['M_',['../barraydense-meat_8hpp.html#a03805ce272b080e69e3ca359e75cfbfa',1,'M_():&#160;barraydense-meat.hpp'],['../barray-meat_8hpp.html#a03805ce272b080e69e3ca359e75cfbfa',1,'M_():&#160;barray-meat.hpp']]],
-  ['make_5fdefm_5fhasher_448',['MAKE_DEFM_HASHER',['../defm_2counters_8hpp.html#a172b737bbafc10829969ae80428ae682',1,'counters.hpp']]],
+  ['make_5fdefm_5fhasher_448',['MAKE_DEFM_HASHER',['../group__counting.html#ga172b737bbafc10829969ae80428ae682',1,'counters.hpp']]],
   ['make_5fdupl_5fvars_449',['MAKE_DUPL_VARS',['../group__counting.html#gaa723b014f0985d974ac55ce671689f65',1,'counters.hpp']]],
   ['make_5fhash_450',['make_hash',['../class_freq_table.html#abc101211fdc1ce95e9e5c9fa1560b698',1,'FreqTable']]],
   ['map_451',['Map',['../barry-configuration_8hpp.html#a1bb64c776ba5e9fc373665103b1a1772',1,'barry-configuration.hpp']]],

@@ -33,7 +33,7 @@ var searchData=
   ['get_5findex_364',['get_index',['../class_freq_table.html#aaedc785570175889a224d6ebaab6ffa7',1,'FreqTable']]],
   ['get_5flast_5fname_365',['get_last_name',['../group__counting.html#gac2b3fdac968043baa290218fff498fb7',1,'counters.hpp']]],
   ['get_5fm_5forder_366',['get_m_order',['../class_d_e_f_m.html#a53cd79b604f4f469600949f0ec080581',1,'DEFM']]],
-  ['get_5fmodel_367',['get_model',['../class_flock.html#a9692be014117ae093ce160462dbde0d2',1,'Flock::get_model()'],['../class_geese.html#a78ebb104f51d3a2caa6e171730d10df3',1,'Geese::get_model()'],['../class_d_e_f_m.html#a2dad416ff830b091afdc5c78054fd010',1,'DEFM::get_model()']]],
+  ['get_5fmodel_367',['get_model',['../class_flock.html#a9692be014117ae093ce160462dbde0d2',1,'Flock::get_model()'],['../class_geese.html#a78ebb104f51d3a2caa6e171730d10df3',1,'Geese::get_model()'],['../class_d_e_f_m.html#a91bb6f5ed03573bb7d90003ec9f6eeca',1,'DEFM::get_model()']]],
   ['get_5fn_5fcovars_368',['get_n_covars',['../class_d_e_f_m.html#a1d7601ba671a46690fe598d75873c0dd',1,'DEFM']]],
   ['get_5fn_5fobs_369',['get_n_obs',['../class_d_e_f_m.html#ac5ff9a6f9e6c69312207bd38860184da',1,'DEFM']]],
   ['get_5fn_5frows_370',['get_n_rows',['../class_d_e_f_m.html#a5fe82e5e9020e3fc3371f759267eda93',1,'DEFM']]],

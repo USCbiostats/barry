@@ -31,6 +31,7 @@ var group__rules_phylo =
     [ "nrow", "group__rules-phylo.html#ga8d35cccda96180f18d4f87f3831e68d9", null ],
     [ "num", "group__rules-phylo.html#ga2145b3b46a20bf7ea646f0a76e4b74b8", null ],
     [ "num", "group__rules-phylo.html#ga492f81abc80e4de779c95ec8956b5e38", null ],
+    [ "operator()", "group__rules-phylo.html#ga66b7a40df357b79514dcbc4accfe679d", null ],
     [ "print", "group__rules-phylo.html#gae1617d2f94e8595c8fde0c6013e21a2d", null ],
     [ "rule_dyn_limit_changes", "group__rules-phylo.html#ga0773b2dbf4673181e45c93632a5f9cc3", null ],
     [ "~DEFMCounterData", "group__rules-phylo.html#ga0b09b4a0c405b1e2f694d39136bf87f6", null ],

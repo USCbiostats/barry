@@ -3,7 +3,7 @@ var class_d_e_f_m =
     [ "DEFM", "class_d_e_f_m.html#aef1a45afb37071a7a0053efaf97c8368", null ],
     [ "get_ID", "class_d_e_f_m.html#a801a3b3101ebdbcd8e31b748b61d1ca3", null ],
     [ "get_m_order", "class_d_e_f_m.html#a53cd79b604f4f469600949f0ec080581", null ],
-    [ "get_model", "class_d_e_f_m.html#a2dad416ff830b091afdc5c78054fd010", null ],
+    [ "get_model", "class_d_e_f_m.html#a91bb6f5ed03573bb7d90003ec9f6eeca", null ],
     [ "get_n_covars", "class_d_e_f_m.html#a1d7601ba671a46690fe598d75873c0dd", null ],
     [ "get_n_obs", "class_d_e_f_m.html#ac5ff9a6f9e6c69312207bd38860184da", null ],
     [ "get_n_rows", "class_d_e_f_m.html#a5fe82e5e9020e3fc3371f759267eda93", null ],

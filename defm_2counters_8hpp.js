@@ -5,7 +5,7 @@ var defm_2counters_8hpp =
     [ "DEFM_RULE", "defm_2counters_8hpp.html#af210bb3f47af7995ff200264370d9db6", null ],
     [ "DEFM_RULE_LAMBDA", "defm_2counters_8hpp.html#a94148d8866c1e18cbb02be5ba7d233ba", null ],
     [ "DEFM_RULEDYN_LAMBDA", "defm_2counters_8hpp.html#ac6f3765d01ec78962d3bacb6d9934331", null ],
-    [ "MAKE_DEFM_HASHER", "defm_2counters_8hpp.html#a172b737bbafc10829969ae80428ae682", null ],
+    [ "MAKE_DEFM_HASHER", "group__counting.html#ga172b737bbafc10829969ae80428ae682", null ],
     [ "UNI_SUB", "defm_2counters_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0", null ],
     [ "counter_fixed_effect", "group__counters-network.html#ga74d93c11efb7162666fa2fe461e0d752", null ],
     [ "counter_logit_intercept", "group__counters-network.html#ga8e24b6a576b9091b2c366ed4e424ec73", null ],

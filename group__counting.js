@@ -34,6 +34,7 @@ var group__counting =
     [ "IS_DUPLICATION", "group__counting.html#ga86dd8a06889c073afb9dbd5a2afcaabb", null ],
     [ "IS_EITHER", "group__counting.html#ga100f75e7828db28578049b1b57f4f8c7", null ],
     [ "IS_SPECIATION", "group__counting.html#ga52f210beb7fe1b575b77a3286c502b96", null ],
+    [ "MAKE_DEFM_HASHER", "group__counting.html#ga172b737bbafc10829969ae80428ae682", null ],
     [ "MAKE_DUPL_VARS", "group__counting.html#gaa723b014f0985d974ac55ce671689f65", null ],
     [ "PHYLO_CHECK_MISSING", "group__counting.html#ga81c4979894537f31d3ecc06c5f6dd504", null ],
     [ "PHYLO_COUNTER_LAMBDA", "group__counting.html#gac89fe9750bd62a338930ea730d23d0d2", null ],
@@ -62,6 +63,5 @@ var group__counting =
     [ "counter_preserve_pseudogene", "group__counting.html#gaa8f376142a4cd889fede792686654d16", null ],
     [ "counter_prop_genes_changing", "group__counting.html#ga893edd882c9f9e72c4ee97a0576f36a6", null ],
     [ "counter_subfun", "group__counting.html#ga23c694532337cb12a77a64f3202a14cf", null ],
-    [ "get_last_name", "group__counting.html#gac2b3fdac968043baa290218fff498fb7", null ],
-    [ "operator()", "group__counting.html#ga66b7a40df357b79514dcbc4accfe679d", null ]
+    [ "get_last_name", "group__counting.html#gac2b3fdac968043baa290218fff498fb7", null ]
 ];
