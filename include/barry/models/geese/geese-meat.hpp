@@ -85,25 +85,6 @@ inline void Geese::init_node(Node & n)
             true
         );
 
-
-        // // Checking the rule. We need to make sure the counts match
-        // // the counts of the current array.
-        // if (model->get_rules_dyn() != nullptr)
-        // {
-        //     // Once the array is ready, we can add it to the model
-        //     stats_counter.reset_array(&n.arrays[s]);
-        //     auto counts = stats_counter.count_all();
-
-        //     PhyloRulesDyn dyn_rule(*model->get_rules_dyn());
-        //     for (auto & r : dyn_rule)
-        //         r.D().counts = &counts;
-
-        //     // Finally, we can check if it can bee added. If not,
-        //     // then we need to skip it.
-        //     if (!dyn_rule(n.arrays[s], 0u, 0u))
-        //         continue;
-        // }
-
         // Use try catch to run the following lines of code
         // only if the array is valid.
         try
