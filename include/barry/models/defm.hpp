@@ -10,9 +10,9 @@
 namespace defm {
 
   #include "defm/defm-types.hpp"
+  #include "defm/counters.hpp"
   #include "defm/defm-bones.hpp"
   #include "defm/defm-meat.hpp"
-  #include "defm/counters.hpp"
 
 }
 

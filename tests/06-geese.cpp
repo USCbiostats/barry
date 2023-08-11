@@ -4,7 +4,7 @@
 BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
 {
 
-    using namespace barry::counters::phylo;
+    using namespace geese;
 
     // More interesting experiment
     std::vector< std::vector<size_t> > ann = {

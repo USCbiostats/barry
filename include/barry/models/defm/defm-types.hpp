@@ -114,6 +114,34 @@ public:
 
 };
 
+
+inline double DEFMData::operator()(size_t i, size_t j) const
+{
+    return *(covariates + (obs_start + j * X_nrow + i));
+}
+
+inline size_t DEFMData::ncol() const {
+    return X_ncol;
+}
+
+inline size_t DEFMData::nrow() const {
+    return X_nrow;
+}
+
+inline void DEFMData::print() const {
+
+    for (size_t i = 0u; i < array->nrow(); ++i)
+    {
+
+        printf_barry("row %li (%li): ", i, obs_start + i);
+        for (size_t j = 0u; j < X_ncol; ++j)
+            printf_barry("% 5.2f, ", operator()(i, j));
+        printf_barry("\n");
+        
+    }
+
+}
+
 /**
  * @weakgroup rules-phylo Phylo rules
  * @brief Rules for phylogenetic modeling

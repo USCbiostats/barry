@@ -213,7 +213,14 @@ inline bool vec_equal(
 ) {
     
     if (a.size() != b.size())
-        throw std::length_error("-a- and -b- should have the same length.");
+    {
+        
+        std::string err = "-a- and -b- should have the same length. length(a) = " +
+            std::to_string(a.size()) + " and length(b) = " + std::to_string(b.size()) +
+            std::string(".");
+        throw std::length_error(err);
+
+    }
     
     size_t i = 0;
     while (a[i] == b[i]) {
@@ -232,7 +239,12 @@ inline bool vec_equal_approx(
 ) {
     
     if (a.size() != b.size())
-        throw std::length_error("-a- and -b- should have the same length.");
+    {
+        std::string err = "-a- and -b- should have the same length. length(a) = " +
+            std::to_string(a.size()) + " and length(b) = " + std::to_string(b.size()) +
+            std::string(".");
+        throw std::length_error(err);
+    }
     
     size_t i = 0;
     while (static_cast<double>(std::fabs(a[i] - b[i])) < eps) {

@@ -1,8 +1,9 @@
 #include "tests.hpp"
+#include "../include/barry/models/geese.hpp"
 
 BARRY_TEST_CASE("Phylo counts work", "[phylo counts]") {
 
-    using namespace barry::counters::phylo;
+    using namespace geese;
   
     /** PhyloArrays to check:
      * 

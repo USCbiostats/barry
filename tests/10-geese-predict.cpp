@@ -4,7 +4,7 @@
 
 BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
 
-    using namespace barry::counters::phylo;
+    using namespace geese;
 
     // More interesting experiment
     std::vector< std::vector<size_t> > ann = {
@@ -167,7 +167,7 @@ BARRY_TEST_CASE("Geese model prediction", "[geese prediction]") {
     counter_loss(model_R.get_counters(), {0}, 0u);
 
     rule_dyn_limit_changes(model_R.get_support_fun(), 0, 0, 4, 1u);
-    rule_dyn_limit_changes(model_R.get_support_fun(), 0, 0, 4, 0u);
+    rule_dyn_limit_changes(model_R.get_support_fun(), 1, 0, 4, 0u);
 
     model_R.init();
 

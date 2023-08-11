@@ -4,7 +4,7 @@
 
 BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
 
-    using namespace barry::counters::defm;
+    using namespace defm;
   
     /** Array to check:
      * - Smoke
@@ -87,9 +87,9 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     model.get_model().store_psets();
     
     // Generating the model specification
-    defmcounters::counter_ones(model.get_model().get_counters());
-    defmcounters::counter_ones(model.get_model().get_counters(), 0);
-    defmcounters::counter_fixed_effect(model.get_model().get_counters(), 0, 1.0);
+    counter_ones(model.get_model().get_counters());
+    counter_ones(model.get_model().get_counters(), 0);
+    counter_fixed_effect(model.get_model().get_counters(), 0, 1.0);
 
     model.init();
 
@@ -139,18 +139,18 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     std::vector< double > X2 = {.4, .1, 1, .1, 1};
     DEFM model2(&id2[0u], &Y2[0u], &X2[0u], 5, 10, 1, 1);
     for (size_t t = 0u; t < 9; ++t)
-        defmcounters::counter_transition(
+        counter_transition(
             model2.get_model().get_counters(),
             {0 + 2 * t, 1 + 2 * t, 2 + 2 * t, 3 + 2 * t},
             {true, false, false, true}, 1, 10
             );
 
-    defmcounters::counter_transition(
+    counter_transition(
         model2.get_model().get_counters(),
         {18,19,0,1}, {false, true, true, false}, 1, 10
     );
     
-    defmcounters::counter_ones(model2.get_model().get_counters());
+    counter_ones(model2.get_model().get_counters());
 
     model2.init();
 

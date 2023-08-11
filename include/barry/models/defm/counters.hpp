@@ -17,45 +17,20 @@
 
 ///@}
 
-inline double DEFMData::operator()(size_t i, size_t j) const
-{
-    return *(covariates + (obs_start + j * X_nrow + i));
-}
 
-inline size_t DEFMData::ncol() const {
-    return X_ncol;
-}
+#define MAKE_DEFM_HASHER(hasher,a,cov) barry::Hasher_fun_type<DEFMArray,DEFMCounterData> \
+    hasher = [cov](const DEFMArray & array, DEFMCounterData * d) { \
+        std::vector< double > res; \
+        /* Adding the column feature */ \
+        for (size_t i = 0u; i < array.nrow(); ++i) \
+            res.push_back(array.D()(i, cov)); \
+        /* Adding the fixed dims */ \
+        for (size_t i = 0u; i < (array.nrow() - 1); ++i) \
+            for (size_t j = 0u; j < array.ncol(); ++j) \
+                res.push_back(array(i, j)); \
+        return res;\
+    };
 
-inline size_t DEFMData::nrow() const {
-    return X_nrow;
-}
-
-inline void DEFMData::print() const {
-
-    for (size_t i = 0u; i < array->nrow(); ++i)
-    {
-
-        printf_barry("row %li (%li): ", i, obs_start + i);
-        for (size_t j = 0u; j < X_ncol; ++j)
-            printf_barry("% 5.2f, ", operator()(i, j));
-        printf_barry("\n");
-        
-    }
-
-}
-
-#define MAKE_DEFM_HASHER(hasher,a,cov) Hasher_fun_type<DEFMArray,DEFMCounterData> hasher = [cov](const DEFMArray & array, DEFMCounterData * d) { \
-            std::vector< double > res; \
-            /* Adding the column feature */ \
-            for (size_t i = 0u; i < array.nrow(); ++i) \
-                res.push_back(array.D()(i, cov)); \
-            /* Adding the fixed dims */ \
-            for (size_t i = 0u; i < (array.nrow() - 1); ++i) \
-                for (size_t j = 0u; j < array.ncol(); ++j) \
-                    res.push_back(array(i, j)); \
-            return res;\
-        };
-    
 
 /**@name Macros for defining counters
   */
@@ -66,7 +41,7 @@ inline double (a) (const DEFMArray & Array, size_t i, size_t j, DEFMCounterData 
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_COUNTER_LAMBDA(a) \
-Counter_fun_type<DEFMArray, DEFMCounterData> a = \
+barry::Counter_fun_type<DEFMArray, DEFMCounterData> a = \
     [](const DEFMArray & Array, size_t i, size_t j, DEFMCounterData & data) -> double
 
 ///@}
@@ -80,13 +55,13 @@ inline bool (a) (const DEFMArray & Array, size_t i, size_t j, bool & data)
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_RULE_LAMBDA(a) \
-Rule_fun_type<DEFMArray, DEFMRuleData> a = \
+barry::Rule_fun_type<DEFMArray, DEFMRuleData> a = \
 [](const DEFMArray & Array, size_t i, size_t j, DEFMRuleData & data) -> bool
 ///@}
 
 /**Lambda function for definition of a network counter function*/
 #define DEFM_RULEDYN_LAMBDA(a) \
-Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
+barry::Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
 [](const DEFMArray & Array, size_t i, size_t j, DEFMRuleDynData & data) -> bool
 ///@}
 

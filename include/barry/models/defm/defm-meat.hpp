@@ -2,8 +2,8 @@
 #define DEFM_MEAT_HPP 1
 
 inline std::vector< double > keygen_defm(
-    const defmcounters::DEFMArray & Array_,
-    defmcounters::DEFMCounterData * data
+    const DEFMArray & Array_,
+    DEFMCounterData * data
     ) {
     
     size_t nrow = Array_.nrow();
@@ -43,7 +43,7 @@ inline void DEFM::simulate(
     size_t model_num = 0u; 
     size_t n_entry = M_order * Y_ncol;
     auto idx = this->get_arrays2support();
-    defmcounters::DEFMArray last_array;
+    DEFMArray last_array;
     for (size_t i = 0u; i < N; ++i)
     {
 
@@ -67,14 +67,14 @@ inline void DEFM::simulate(
             // Otherwise, we need to continue using the previous data!
             {
                 // Removing the previous row
-                defmcounters::DEFMArray tmp_array(M_order + 1u, Y_ncol);
+                DEFMArray tmp_array(M_order + 1u, Y_ncol);
                 for (size_t t_i = 1u; t_i < (M_order + 1u); ++t_i)
                     for (size_t t_j = 0u; t_j < Y_ncol; ++t_j)
                         tmp_array(t_i - 1u, t_j) = last_array(t_i, t_j);
 
                 // Setting the data
                 tmp_array.set_data(
-                    new defmcounters::DEFMData(&tmp_array, X, (start_i + proc_n), X_ncol, ID_length),
+                    new DEFMData(&tmp_array, X, (start_i + proc_n), X_ncol, ID_length),
                     true // Delete the data
                 );
 
@@ -189,7 +189,7 @@ inline void DEFM::init()
 {
 
     // Adding the rule
-    defmcounters::rules_markov_fixed(this->get_rules(), M_order);
+    rules_markov_fixed(this->get_rules(), M_order);
 
     // Creating the arrays
     for (size_t i = 0u; i < N; ++i)
@@ -206,9 +206,9 @@ inline void DEFM::init()
         {
 
             // Creating the array for process n_proc and setting the data
-            defmcounters::DEFMArray array(M_order + 1u, Y_ncol);
+            DEFMArray array(M_order + 1u, Y_ncol);
             array.set_data(
-                new defmcounters::DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
+                new DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
                 true // Delete the data
             );
 
@@ -324,9 +324,9 @@ inline std::vector< double > DEFM::logodds(
         {
 
             // Creating the array for process n_proc and setting the data
-            defmcounters::DEFMArray array(M_order + 1u, Y_ncol);
+            DEFMArray array(M_order + 1u, Y_ncol);
             array.set_data(
-                new defmcounters::DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
+                new DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
                 true // Delete the data
             );
 
@@ -374,7 +374,7 @@ inline const std::vector<std::string > & DEFM::get_X_names() const {
 
 inline void DEFM::print() const
 {
-    defmcounters::DEFMModel::print();
+    DEFMModel::print();
     printf_barry("Model Y variables (%i):\n", static_cast<int>(get_n_y()));
     int ny = 0;
     for (const auto & y : get_Y_names())
@@ -388,7 +388,7 @@ inline void DEFM::print() const
 inline std::vector< bool > DEFM::is_motif()
 {
     std::vector< bool > res(0u);
-    auto * counterss = defmcounters::DEFMModel::get_counters();
+    auto * counterss = DEFMModel::get_counters();
     for (size_t i = 0u; i < counters->size(); ++i)
         res.push_back(counterss->operator[](i).data.is_motif);
 

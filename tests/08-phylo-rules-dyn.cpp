@@ -1,7 +1,7 @@
 #include "../include/barry/barry.hpp"
-// #include "../include/barry/models/geese.hpp"
+#include "../include/barry/models/geese.hpp"
 
-using namespace barry::counters::phylo;
+using namespace geese;
 
 // Rule definition --Notice this has to be initialized with the
 // counter itself.

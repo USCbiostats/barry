@@ -57,11 +57,11 @@ src <- readLines(paste0(rel, "barry.hpp"), warn = FALSE)
 src_new <- unfolder(src, rel)
 writeLines(src_new, "barry.hpp")
 
-# Geese core
-rel <- "include/barry/models/"
-src <- readLines(paste0(rel, "geese.hpp"), warn = FALSE)
-src_new <- unfolder(src, rel)
-writeLines(src_new, "geese.hpp")
+# # Geese core
+# rel <- "include/barry/models/"
+# src <- readLines(paste0(rel, "geese.hpp"), warn = FALSE)
+# src_new <- unfolder(src, rel)
+# writeLines(src_new, "geese.hpp")
 
 # DEFM core
 rel <- "include/barry/models/"
