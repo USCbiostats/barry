@@ -45,7 +45,7 @@ inline std::vector< double > keygen_full(
     };
 
     // State of the parent
-    dat.push_back(0.0);
+    dat.push_back(1000000.0);
     size_t count = 0u;
     for (bool i : array.D_ptr()->states) {
         dat[dat.size() - 1u] += (i ? 1.0 : 0.0) * pow(10, static_cast<double>(count));

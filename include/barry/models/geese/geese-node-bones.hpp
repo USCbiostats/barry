@@ -20,8 +20,6 @@ public:
 
     std::vector< PhyloArray > arrays = {}; ///< Arrays given all possible states
 
-    std::vector< bool > arrays_valid = {}; ///< Whether the arrays are valid according to the rules of the model.
-
     Node *                parent    = nullptr; ///< Parent node
     std::vector< Node* >  offspring = {};      ///< Offspring nodes
     std::vector< size_t > narray    = {};      ///< ID of the array in the model
@@ -73,7 +71,6 @@ inline Node::Node(Node && x) noexcept :
     id(x.id), ord(x.ord), array(std::move(x.array)),
     annotations(std::move(x.annotations)),
     duplication(x.duplication), arrays(std::move(x.arrays)),
-    arrays_valid(std::move(x.arrays_valid)), 
     parent(std::move(x.parent)),
     offspring(std::move(x.offspring)),
     narray(std::move(x.narray)),
@@ -89,7 +86,6 @@ inline Node::Node(const Node & x) :
     id(x.id), ord(x.ord), array(x.array), 
     annotations(x.annotations),
     duplication(x.duplication), arrays(x.arrays),
-    arrays_valid(x.arrays_valid),
     parent(x.parent),
     offspring(x.offspring),
     narray(x.narray),

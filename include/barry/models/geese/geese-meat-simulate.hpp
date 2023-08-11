@@ -29,18 +29,12 @@ inline std::vector< std::vector< size_t > > Geese::simulate(
 
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(states.size(), 1.0);
-    const Node & rootnode = nodes[preorder[0u]];
     for (size_t i = 0u; i < rootp.size(); ++i)
     {
 
-        if (!rootnode.arrays_valid[i])
-        {
-            rootp[i] = 0.0;
-            continue;
-        }
-
         for (size_t j = 0u; j < nfuns(); ++j)
             rootp[i] *= states[i][j] ? par_root[j] : (1.0 - par_root[j]);
+
     }
 
     // Preparing the random number generator

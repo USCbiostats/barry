@@ -63,7 +63,6 @@ inline void Geese::init_node(Node & n)
 
         n.arrays.resize(states.size());
         n.narray.resize(states.size());
-        n.arrays_valid.resize(states.size(), false);
 
     }
     
@@ -74,8 +73,8 @@ inline void Geese::init_node(Node & n)
     //
     // The later is especially true for leaf nodes, where the
     // limitations are not known until the model is initialized.
-    PhyloStatsCounter stats_counter;
-    stats_counter.set_counters(model->get_counters());
+    // PhyloStatsCounter stats_counter;
+    // stats_counter.set_counters(model->get_counters());
     for (size_t s = 0u; s < states.size(); ++s)
     {
 
@@ -87,23 +86,23 @@ inline void Geese::init_node(Node & n)
         );
 
 
-        // Checking the rule. We need to make sure the counts match
-        // the counts of the current array.
-        if (model->get_rules_dyn() != nullptr)
-        {
-            // Once the array is ready, we can add it to the model
-            stats_counter.reset_array(&n.arrays[s]);
-            auto counts = stats_counter.count_all();
+        // // Checking the rule. We need to make sure the counts match
+        // // the counts of the current array.
+        // if (model->get_rules_dyn() != nullptr)
+        // {
+        //     // Once the array is ready, we can add it to the model
+        //     stats_counter.reset_array(&n.arrays[s]);
+        //     auto counts = stats_counter.count_all();
 
-            PhyloRulesDyn dyn_rule(*model->get_rules_dyn());
-            for (auto & r : dyn_rule)
-                r.D().counts = &counts;
+        //     PhyloRulesDyn dyn_rule(*model->get_rules_dyn());
+        //     for (auto & r : dyn_rule)
+        //         r.D().counts = &counts;
 
-            // Finally, we can check if it can bee added. If not,
-            // then we need to skip it.
-            if (!dyn_rule(n.arrays[s], 0u, 0u))
-                continue;
-        }
+        //     // Finally, we can check if it can bee added. If not,
+        //     // then we need to skip it.
+        //     if (!dyn_rule(n.arrays[s], 0u, 0u))
+        //         continue;
+        // }
 
         // Use try catch to run the following lines of code
         // only if the array is valid.
@@ -129,11 +128,6 @@ inline void Geese::init_node(Node & n)
             throw std::runtime_error(err);
             
         }
-
-        // n.narray[s] = model->add_array(n.arrays[s]);
-
-        if (model->get_pset(n.narray[s])->size() != 0u)
-            n.arrays_valid[s] = true;
 
     }
 
