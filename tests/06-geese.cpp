@@ -93,4 +93,65 @@ BARRY_TEST_CASE("Phylo model likelihood", "[phylo likelihood]")
     std::cout << "Likelihood(baseline): " << ans0a << std::endl;
     std::cout << "Likelihood(changed) : " << ans0b << std::endl;
 
+    // Case for the jmor tree --------------------------------------------------
+    // More interesting experiment
+    std::vector< std::vector<size_t> > ann_jmor = {
+        {0}, // a (leaf)
+        {1}, // b (leaf)
+        {1}, // c (leaf)
+        {9}, // d (interior)
+        {9}  // e (root)
+    };
+    // ann.resize(3u, {9, 9});
+
+    std::vector< size_t > geneid_jmor = {0, 1, 2, 3, 4};
+    std::vector< int >  parent_jmor = {3, 3, 4, 4, -1};
+
+    std::vector< bool > duplication_jmor(geneid_jmor.size(), true);
+
+    Geese model_jmor(ann_jmor, geneid_jmor, parent_jmor, duplication_jmor);
+
+    counter_gains(model_jmor.get_counters(), {0});
+    counter_loss(model_jmor.get_counters(), {0});
+
+    model_jmor.init();
+
+    std::vector<double> params_jmor = {
+        -2, // Theta gains
+        -4, // Theta losses
+        -6  // Theta root
+        };
+
+    double par_gain = params_jmor[0];
+    double par_loss = params_jmor[1];
+    double par_root = 1.0/(1.0 + std::exp(-params_jmor[2]));
+
+    // Normalizing constant (one for each parent state: 0, 1)
+    double eta_0 = std::exp(2.0 * par_gain) + 2.0 * std::exp(par_gain) + 1.0;
+    double eta_1 = 1.0 + 2.0 * std::exp(par_loss) + std::exp(2.0 * par_loss);
+
+    // The manual calculation of the jmor likelihood
+    double ans0_jmor = 
+        par_root * (
+            std::exp(par_loss) / eta_1 * std::exp(par_gain) / eta_0 +
+            std::exp(par_loss) / std::pow(eta_1, 2.0)
+        ) + 
+        (1.0 - par_root) * (
+            std::pow((std::exp(par_gain)/eta_0), 2.0) +
+            std::exp(2.0 * par_gain) / eta_0 * std::exp(par_loss) / eta_1 
+        );
+
+    double ans1_jmor = model_jmor.likelihood(params_jmor);
+
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE(std::abs(ans0_jmor - ans1_jmor) < .0000001);
+    #else
+    std::cout << "Etas (eta_0, eta_1)      : " << eta_0 << ", " << eta_1 << std::endl;
+    std::cout << "Likelihood(jmor)         : " << ans1_jmor << std::endl;
+    std::cout << "Likelihood(jmor, manual) : " << ans0_jmor << std::endl;
+    #endif
+
+
+
+
 }
