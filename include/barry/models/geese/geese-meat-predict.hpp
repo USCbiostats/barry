@@ -34,9 +34,9 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         );
 
     // Step 1: Computing the probability at the root node
-    std::vector< double > tmp_prob(nfuns(), 0.0);
+    std::vector< double > tmp_prob(nfuns(), 0.0); 
     size_t root_id = preorder[0u];
-    Node * tmp_node      = &nodes[root_id];
+    Node * tmp_node = &nodes[root_id];
     tmp_node->probability.resize(states.size(), 0.0);
     double tmp_likelihood = likelihood(par, false, use_reduced_sequence);
 
@@ -57,6 +57,9 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             throw std::runtime_error("Probability is not finite");
         }
             
+            
+
+        
 
         // Marginalizing the probabilities P(x_sf | D)
         for (size_t f = 0u; f < nfuns(); ++f)
@@ -90,7 +93,9 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         std::vector< std::vector< double > > everything_below(states.size());
         std::vector< std::vector< double > > everything_above(states.size());
         
-        // All combinations of the offspring
+        // All combinations of the the parent states
+        // So psets[s] = combinations of offspring given state s.
+        //    psets[s][i] = The ith combination of offspring given state s.
         std::vector< std::vector< PhyloArray > > psets(states.size());
 
         // Making space for the offspring
@@ -105,11 +110,12 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         {
 
             // Retrieving powerset of stats and arrays
-            // it is not const since we will flip the states back and forth
-            // to generate the key
             const auto & pset_arrays = model->get_pset(parent.narray[s]);
-            const std::vector<double> * pset_target = model->get_pset_stats(parent.narray[s]);
+            const std::vector<double> * pset_target = model->get_pset_stats(
+                parent.narray[s]
+                );
 
+            // Going over all possible combinations given parent is state s
             for (size_t p = 0u; p < pset_arrays->size(); ++p)
             {
 
@@ -118,9 +124,6 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 std::vector<double> target_p(n_pars, 0.0);
                 for (size_t par_i = 0u; par_i < target_p.size(); ++par_i)
                     target_p[par_i] = pset_target->operator[](p * n_pars + par_i);
-
-                // PhyloArray tmp_array(nfuns(), array_p.ncol());
-                // tmp_array += array_p;
 
                 // Adding to the map, we only do this during the first run,
                 // afterwards, we need to actually look for the array.
@@ -191,7 +194,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             
         } // end for states
 
-        // Marginalizing at the state level for each pffspring
+        // Marginalizing at the state level for each offspring
         for (size_t s = 0u; s < states.size(); ++s)
         {
 
@@ -208,8 +211,17 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 {
 
                     // Figuring out the state of the offspring
-                    size_t off_s = this->map_to_state_id[pset_p.get_col_vec(off)];
+                    auto cvec = pset_p.get_col_vec(off);
+                    size_t off_s = this->map_to_state_id[cvec];
                     parent.offspring[off]->probability[off_s] += everything_above[s][p];
+
+                    // We integrate over the offspring itsefl
+                    for (size_t f = 0u; f < nfuns(); ++f)
+                    {
+                        if (cvec[f] == 1u)
+                            res[parent.offspring[off]->ord][f] += everything_above[s][p];
+                    }
+                    
 
 
                 }
@@ -221,14 +233,14 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         // gene function level.
         for (const auto & off : parent.offspring)
         {
-            for (size_t s = 0u; s < states.size(); ++s)
-            {
+            // for (size_t s = 0u; s < states.size(); ++s)
+            // {
 
-                for (size_t f = 0u; f < nfuns(); ++f)
-                    if (states[s][f]) 
-                        res[off->ord][f] += off->probability[s];
+            //     for (size_t f = 0u; f < nfuns(); ++f)
+            //         if (states[s][f]) 
+            //             res[off->ord][f] += off->probability[s];
 
-            }
+            // }
 
             // Checking that probabilities add up to one
             for (size_t f = 0u; f < nfuns(); ++f)

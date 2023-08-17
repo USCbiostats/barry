@@ -703,11 +703,11 @@ inline void Geese::print_nodes() const
             // Print with ']' if last element
             if (&a == &n.second.annotations.back())
             {
-                printf_barry("%i] -- ", a);
+                printf_barry("%li] -- ", a);
             }
             else
             {
-                printf_barry("%i, ", a);
+                printf_barry("%li, ", a);
             }
         }
 

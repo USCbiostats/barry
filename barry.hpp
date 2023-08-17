@@ -3966,9 +3966,15 @@ BDENSE_TEMPLATE(void, out_of_range) (
 ) const {
 
     if (i >= N)
-        throw std::range_error("The row is out of range.");
-    else if (j >= M)
-        throw std::range_error("The column is out of range.");
+    {
+        std::string err_msg = "The row is out of range: " + std::to_string(i) + " >= " + std::to_string(N);
+        throw std::range_error(err_msg);
+
+    } else if (j >= M)
+    {
+        std::string err_msg = "The column is out of range: " + std::to_string(j) + " >= " + std::to_string(M);
+        throw std::range_error(err_msg);
+    }
 
     return;
 
@@ -8284,7 +8290,7 @@ MODEL_TEMPLATE(void, print_stats)(size_t i) const
     for (size_t l = 0u; l < nunique; ++l)
     {
 
-        printf_barry("% 5i ", l);
+        printf_barry("% 5li ", l);
 
         printf_barry("counts: %.0f motif: ", S[l * (k + 1u)]);
         
