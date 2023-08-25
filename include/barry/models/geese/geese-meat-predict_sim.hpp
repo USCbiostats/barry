@@ -70,8 +70,8 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
                 continue;
 
             for (size_t f = 0u; f < nfuns(); ++f)
-                if (tmp[n.ord][f] == 1)
-                    ++res_vec[n.ord][f];
+                if (tmp[n.ord][f] == 1u)
+                    res_vec[n.ord][f] += 1.0;
 
             ++counts[n.ord];
 
@@ -83,7 +83,14 @@ inline std::vector< std::vector<double> > Geese::predict_sim(
     // probabilities
     for (size_t i = 0u; i < nnodes(); ++i)
     {
-        // printf_barry("We used %i counts for node %i.\n", counts[i], i);
+
+        // if no counts, then continue
+        if (counts[i] == 0u)
+            continue;
+
+        #ifdef BARRY_DEBUG
+        printf_barry("We used %i counts for node %i.\n", counts[i], i);
+        #endif
         for (size_t f = 0u; f < nfuns(); ++f)
             res_vec[i][f] /= (static_cast< double >(counts[i]) + 1e-10);
     }

@@ -148,7 +148,7 @@ inline Counts_type FreqTable<T>::as_vector() const
         
         std::vector< double > tmp(k, 0.0);
 
-        for (unsigned j = 1u; j < (k + 1u); ++j)
+        for (size_t j = 1u; j < (k + 1u); ++j)
             tmp[j - 1u] = data[i * (k + 1) + j];
         
         ans.push_back(

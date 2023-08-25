@@ -147,7 +147,9 @@ inline Geese::Geese(
 
     }
 
-    // Verifying that all have the variable ord
+    // Verifying that all have the variable ord, and that
+    // ord does not repeat
+    std::vector< size_t > ord_count(geneid.size(), 0u);
     for (auto& n : nodes)
     {
 
@@ -197,6 +199,17 @@ inline Geese::Geese(
                 this->n_dupl_events++;
             else
                 this->n_spec_events++;
+
+        }
+
+        if (++ord_count[node.ord] > 1u)
+        {
+
+            const char *fmt = "Node id %i's ord was repeated.";
+            int sz = std::snprintf(nullptr, 0, fmt, node.id);
+            std::vector<char> buf(sz + 1);
+            std::snprintf(&buf[0], buf.size(), fmt, node.id);
+            throw std::logic_error(&buf[0]);
 
         }
 
