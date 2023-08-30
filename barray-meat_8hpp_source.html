@@ -1298,47 +1298,79 @@ $(document).ready(function(){initNavTree('barray-meat_8hpp_source.html',''); ini
 <div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;    ...</div>
 <div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;) <span class="keyword">const</span> {</div>
 <div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;  </div>
-<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;    std::va_list args;</div>
-<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#aecf9a9be8105efb1454cd8c1ef6cb1c5">va_start</a>(args, fmt);</div>
-<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(fmt, args);</div>
-<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a36af1f79dd6adf0809c21e76535034d5">va_end</a>(args);</div>
-<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160; </div>
-<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; <a class="code" href="barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446">N</a>; ++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>)</div>
-<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;    {</div>
+<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160; </div>
+<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;    std::va_list args;</div>
+<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#aecf9a9be8105efb1454cd8c1ef6cb1c5">va_start</a>(args, fmt);</div>
+<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;    print_n(<a class="code" href="barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446">N</a>, <a class="code" href="barray-meat_8hpp.html#aad05f78187c942f9dd521605fa81f1ba">M</a>, fmt, args);</div>
+<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a36af1f79dd6adf0809c21e76535034d5">va_end</a>(args);    </div>
+<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;    </div>
+<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160; </div>
-<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;<span class="preprocessor">        #ifdef BARRY_DEBUG_LEVEL</span></div>
-<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;<span class="preprocessor">            #if BARRY_DEBUG_LEVEL &gt; 1</span></div>
-<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;                <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;%s [%3i,]&quot;</span>, BARRY_DEBUG_HEADER, <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>);</div>
-<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;<span class="preprocessor">            #endif</span></div>
-<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;<span class="preprocessor">        #else</span></div>
-<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;[%3i,] &quot;</span>, <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>);</div>
-<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;<span class="preprocessor">        #endif</span></div>
-<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u; <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> &lt; <a class="code" href="barray-meat_8hpp.html#aad05f78187c942f9dd521605fa81f1ba">M</a>; ++<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) {</div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;            <span class="keywordflow">if</span> (this-&gt;is_empty(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>))</div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;                <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;    . &quot;</span>);</div>
-<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;            <span class="keywordflow">else</span> </div>
-<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;                <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot; %.2f &quot;</span>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(this-&gt;get_cell(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>)));</div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;            </div>
-<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;        }</div>
+<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;}</div>
+<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160; </div>
+<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;<a class="code" href="barray-meat_8hpp.html#af13a653838bf7594b0fb9f15f8a49218">BARRAY_TEMPLATE</a>(<span class="keywordtype">void</span>, print_n) (</div>
+<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;    <span class="keywordtype">size_t</span> nrow,</div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;    <span class="keywordtype">size_t</span> ncol,</div>
+<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> * fmt,</div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;    ...</div>
+<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;) <span class="keyword">const</span> {</div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160; </div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;    <span class="keywordflow">if</span> (nrow &gt; <a class="code" href="barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446">N</a>)</div>
+<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;        nrow = <a class="code" href="barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446">N</a>;</div>
+<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160; </div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;    <span class="keywordflow">if</span> (ncol &gt; <a class="code" href="barray-meat_8hpp.html#aad05f78187c942f9dd521605fa81f1ba">M</a>)</div>
+<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;        ncol = <a class="code" href="barray-meat_8hpp.html#aad05f78187c942f9dd521605fa81f1ba">M</a>;</div>
 <div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160; </div>
-<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160; </div>
-<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;    }</div>
-<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;    </div>
-<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;    </div>
-<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160; </div>
-<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;}</div>
-<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160; </div>
-<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;<span class="preprocessor">#undef ROW</span></div>
-<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;<span class="preprocessor">#undef COL</span></div>
-<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160; </div>
-<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;<span class="preprocessor">#undef BARRAY_TYPE</span></div>
-<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;<span class="preprocessor">#undef BARRAY_TEMPLATE_ARGS</span></div>
-<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;<span class="preprocessor">#undef BARRAY_TEMPLATE</span></div>
-<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160; </div>
-<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160; </div>
+<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;    std::va_list args;</div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#aecf9a9be8105efb1454cd8c1ef6cb1c5">va_start</a>(args, fmt);</div>
+<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(fmt, args);</div>
+<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a36af1f79dd6adf0809c21e76535034d5">va_end</a>(args);</div>
+<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160; </div>
+<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; nrow; ++<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>)</div>
+<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;    {</div>
+<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160; </div>
+<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;<span class="preprocessor">        #ifdef BARRY_DEBUG_LEVEL</span></div>
+<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;<span class="preprocessor">            #if BARRY_DEBUG_LEVEL &gt; 1</span></div>
+<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;                <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;%s [%3i,]&quot;</span>, BARRY_DEBUG_HEADER, <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>);</div>
+<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;<span class="preprocessor">            #endif</span></div>
+<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;[%3i,] &quot;</span>, <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>);</div>
+<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u; <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> &lt; ncol; ++<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) {</div>
+<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;            <span class="keywordflow">if</span> (this-&gt;is_empty(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>))</div>
+<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;                <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;    . &quot;</span>);</div>
+<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;            <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;                <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot; %.2f &quot;</span>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(this-&gt;get_cell(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>)));</div>
+<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;            </div>
+<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;        }</div>
+<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160; </div>
+<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160; </div>
+<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;    }</div>
+<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160; </div>
+<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;    <span class="keywordflow">if</span> (nrow &lt; <a class="code" href="barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446">N</a>)</div>
+<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;Skipping %lu rows. &quot;</span>, nrow);</div>
+<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160; </div>
+<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;    <span class="keywordflow">if</span> (ncol &lt; <a class="code" href="barray-meat_8hpp.html#aad05f78187c942f9dd521605fa81f1ba">M</a>)</div>
+<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;Skipping %lu columns. &quot;</span>, ncol);</div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160; </div>
+<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;    <span class="keywordflow">if</span> (nrow &lt; <a class="code" href="barray-meat_8hpp.html#a3aa458046d0f897cceeddda6839e4446">N</a> || ncol &lt; <a class="code" href="barray-meat_8hpp.html#aad05f78187c942f9dd521605fa81f1ba">M</a>)</div>
+<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;    </div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;    </div>
+<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160; </div>
+<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;}</div>
+<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160; </div>
+<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;<span class="preprocessor">#undef ROW</span></div>
+<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;<span class="preprocessor">#undef COL</span></div>
+<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160; </div>
+<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;<span class="preprocessor">#undef BARRAY_TYPE</span></div>
+<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;<span class="preprocessor">#undef BARRAY_TEMPLATE_ARGS</span></div>
+<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;<span class="preprocessor">#undef BARRAY_TEMPLATE</span></div>
+<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160; </div>
+<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160; </div>
 <div class="ttc" id="abarray-meat-operators_8hpp_html_a16b15c19feaca0a6aa77abb6865710ef"><div class="ttname"><a href="barray-meat-operators_8hpp.html#a16b15c19feaca0a6aa77abb6865710ef">this</a></div><div class="ttdeci">return * this</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat-operators_8hpp_source.html#l00043">barray-meat-operators.hpp:43</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a03805ce272b080e69e3ca359e75cfbfa"><div class="ttname"><a href="barray-meat_8hpp.html#a03805ce272b080e69e3ca359e75cfbfa">M_</a></div><div class="ttdeci">size_t M_</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00030">barray-meat.hpp:30</a></div></div>
 <div class="ttc" id="abarray-meat_8hpp_html_a0ec5672666ecb34f75fde928d0b4f664"><div class="ttname"><a href="barray-meat_8hpp.html#a0ec5672666ecb34f75fde928d0b4f664">source</a></div><div class="ttdeci">size_t const std::vector&lt; size_t &gt; &amp; source</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00031">barray-meat.hpp:31</a></div></div>
@@ -1412,7 +1444,7 @@ $(document).ready(function(){initNavTree('barray-meat_8hpp_source.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barray-meat_8hpp.html">barray-meat.hpp</a></li>
-    <li class="footer">Generated on Fri Aug 25 2023 21:43:13 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Aug 30 2023 21:48:44 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
