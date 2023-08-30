@@ -1200,12 +1200,35 @@ BARRAY_TEMPLATE(void, print) (
     ...
 ) const {
   
+
+    std::va_list args;
+    va_start(args, fmt);
+    print_n(N, M, fmt, args);
+    va_end(args);    
+    
+    return;
+
+}
+
+BARRAY_TEMPLATE(void, print_n) (
+    size_t nrow,
+    size_t ncol,
+    const char * fmt,
+    ...
+) const {
+
+    if (nrow > N)
+        nrow = N;
+
+    if (ncol > M)
+        ncol = M;
+
     std::va_list args;
     va_start(args, fmt);
     printf_barry(fmt, args);
     va_end(args);
 
-    for (size_t i = 0u; i < N; ++i)
+    for (size_t i = 0u; i < nrow; ++i)
     {
 
         #ifdef BARRY_DEBUG_LEVEL
@@ -1215,7 +1238,7 @@ BARRAY_TEMPLATE(void, print) (
         #else
         printf_barry("[%3i,] ", i);
         #endif
-        for (size_t j = 0u; j < M; ++j) {
+        for (size_t j = 0u; j < ncol; ++j) {
             if (this->is_empty(i, j, false))
                 printf_barry("    . ");
             else 
@@ -1226,6 +1249,15 @@ BARRAY_TEMPLATE(void, print) (
         printf_barry("\n");
 
     }
+
+    if (nrow < N)
+        printf_barry("Skipping %lu rows. ", nrow);
+
+    if (ncol < M)
+        printf_barry("Skipping %lu columns. ", ncol);
+
+    if (nrow < N || ncol < M)
+        printf_barry("\n");
     
     
     return;

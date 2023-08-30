@@ -211,6 +211,7 @@ public:
     
     // Misc
     void print(const char * fmt = nullptr, ...) const;
+    void print_n(size_t nrow, size_t ncol, const char * fmt = nullptr, ...) const;
 
     /**
      * @name Arithmetic operators
