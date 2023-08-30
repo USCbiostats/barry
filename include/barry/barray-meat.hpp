@@ -1251,10 +1251,10 @@ BARRAY_TEMPLATE(void, print_n) (
     }
 
     if (nrow < N)
-        printf_barry("Skipping %lu rows. ", nrow);
+        printf_barry("Skipping %lu rows. ", N - nrow);
 
     if (ncol < M)
-        printf_barry("Skipping %lu columns. ", ncol);
+        printf_barry("Skipping %lu columns. ", M - ncol);
 
     if (nrow < N || ncol < M)
         printf_barry("\n");
