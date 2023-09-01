@@ -16,6 +16,9 @@ check: main.o
 main.o: %.cpp
 	$(CPP) $(CPPFLAGS) -O2 main.cpp -g -o main.o 
 
+mainsan.o: %.cpp
+	$(CPP) $(CPPFLAGS) -Lfsanitize=address -O1 main.cpp -g -o mainsan.o
+
 checkv: mainv.o
 	valgrind --leak-check=full --track-origins=yes ./mainv.o #valgrind --tool=cachegrind ./main
 

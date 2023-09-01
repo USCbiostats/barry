@@ -159,11 +159,11 @@ inline Geese::Geese(
         if (node.ord == std::numeric_limits< size_t >::max())
         {
 
-            const char *fmt = "Node id %i was not included in geneid.";
-            int sz = std::snprintf(nullptr, 0, fmt, node.id);
-            std::vector<char> buf(sz + 1);
-            std::snprintf(&buf[0], buf.size(), fmt, node.id);
-            throw std::logic_error(&buf[0]);
+            std::string msg = "Node id " +
+                std::to_string(node.id) +
+                " does not have an ord.";
+
+            throw std::logic_error(msg);
 
         }
 
@@ -171,11 +171,11 @@ inline Geese::Geese(
         if (node.duplication != duplication[node.ord])
         {
 
-            const char *fmt = "Node id %i's duplication was not properly recorded.";
-            int sz = std::snprintf(nullptr, 0, fmt, node.id);
-            std::vector<char> buf(sz + 1);
-            std::snprintf(&buf[0], buf.size(), fmt, node.id);
-            throw std::logic_error(&buf[0]);
+            std::string msg = "Node id " +
+                std::to_string(node.id) +
+                "'s duplication was not properly recorded.";
+
+            throw std::logic_error(msg);
 
         }
 
@@ -205,11 +205,10 @@ inline Geese::Geese(
         if (++ord_count[node.ord] > 1u)
         {
 
-            const char *fmt = "Node id %i's ord was repeated.";
-            int sz = std::snprintf(nullptr, 0, fmt, node.id);
-            std::vector<char> buf(sz + 1);
-            std::snprintf(&buf[0], buf.size(), fmt, node.id);
-            throw std::logic_error(&buf[0]);
+            std::string msg = "Node id " +
+                std::to_string(node.id) +
+                "'s ord was repeated.";
+            throw std::logic_error(msg);
 
         }
 
