@@ -26,13 +26,13 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a0b1e41f4d7a8b19929df16f281821710}{SUPPORT\+\_\+\+TEMPLATE}} (void, reset\+\_\+array)()
 \item 
-\mbox{\hyperlink{support-meat_8hpp_a2b30b331b330f6192a8b9cbe800c5b65}{SUPPORT\+\_\+\+TEMPLATE}} (void, reset\+\_\+array)(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&\mbox{\hyperlink{barray-meat_8hpp_a6cb31aaad809d508e214b61785d7fb47}{Array\+\_\+}})
+\mbox{\hyperlink{support-meat_8hpp_a2b30b331b330f6192a8b9cbe800c5b65}{SUPPORT\+\_\+\+TEMPLATE}} (void, reset\+\_\+array)(const Array\+\_\+\+Type \&Array\+\_\+)
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a1114f70b614e14e61537aa79391ac383}{SUPPORT\+\_\+\+TEMPLATE}} (void, \mbox{\hyperlink{support-meat_8hpp_a980099bf621a65db8f01ee0cabdcfc58}{calc\+\_\+backend\+\_\+sparse}})(size\+\_\+t pos
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a980099bf621a65db8f01ee0cabdcfc58}{calc\+\_\+backend\+\_\+sparse}} (pos+1u, \mbox{\hyperlink{support-meat_8hpp_ac507b5b05a329a72fa561a352608abdf}{array\+\_\+bank}}, \mbox{\hyperlink{support-meat_8hpp_a73c7169e5f8a4a5554380af6d4ca2107}{stats\+\_\+bank}})
 \item 
-\mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} \mbox{\hyperlink{support-meat_8hpp_a4f9c27ca3c5376e1c3a6b3eb05c0958d}{insert\+\_\+cell}} (\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}, \mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}, Empty\+Array.\+default\+\_\+val().\mbox{\hyperlink{barraydense-meat_8hpp_a25da7f8f495a913ff7de52dd9efb59d3}{value}}, \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}, \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}})
+\mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} \mbox{\hyperlink{support-meat_8hpp_a4f9c27ca3c5376e1c3a6b3eb05c0958d}{insert\+\_\+cell}} (\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}, \mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}, Empty\+Array.\+default\+\_\+val().value, false, false)
 \item 
 \mbox{\hyperlink{support-meat_8hpp_adb2646d07331a5a92442af63011a1d53}{for}} (size\+\_\+t n=0u;n$<$ n\+\_\+counters;++n)
 \item 
@@ -40,7 +40,7 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a2e7d16a6d5b063a5b390419c643b35a2}{if}} (\mbox{\hyperlink{support-meat_8hpp_ac507b5b05a329a72fa561a352608abdf}{array\+\_\+bank}} !=nullptr) \mbox{\hyperlink{support-meat_8hpp_ac507b5b05a329a72fa561a352608abdf}{array\+\_\+bank}} -\/$>$ \mbox{\hyperlink{model-meat_8hpp_ac76d416dfa2e5dceea5f830850ea25ac}{push\+\_\+back}}(\mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}})
 \item 
-\mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} \mbox{\hyperlink{support-meat_8hpp_a374b4083f6045b49bcde35a8da4d5e80}{rm\+\_\+cell}} (\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}, \mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}, \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}, \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}})
+\mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} \mbox{\hyperlink{support-meat_8hpp_a374b4083f6045b49bcde35a8da4d5e80}{rm\+\_\+cell}} (\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}, \mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}, false, false)
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a1fcea6eb1c3a87ac95c8c20f7d03226a}{if}} (\mbox{\hyperlink{support-meat_8hpp_a47579cc9c4950eb2de30d46059fb786f}{change\+\_\+stats\+\_\+different}} $>$ 0u)
 \item 
@@ -48,7 +48,7 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \mbox{\hyperlink{support-meat_8hpp_ab38525a95e90bb46ae74d5fdda68a8e9}{calc\+\_\+backend\+\_\+dense}} (pos+1u, \mbox{\hyperlink{support-meat_8hpp_ac507b5b05a329a72fa561a352608abdf}{array\+\_\+bank}}, \mbox{\hyperlink{support-meat_8hpp_a73c7169e5f8a4a5554380af6d4ca2107}{stats\+\_\+bank}})
 \item 
-\mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} \mbox{\hyperlink{support-meat_8hpp_ab532d2e43799a4eda296996fae57a22f}{insert\+\_\+cell}} (\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}, \mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}, 1, \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}, \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}})
+\mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} \mbox{\hyperlink{support-meat_8hpp_ab532d2e43799a4eda296996fae57a22f}{insert\+\_\+cell}} (\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}, \mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}, 1, false, false)
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a443889459cbfaf8645b8589bb35d77e8}{SUPPORT\+\_\+\+TEMPLATE}} (void, calc)(std
 \item 
@@ -64,15 +64,15 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a73d63a8eb320e6467b25423b8f853ae4}{SUPPORT\+\_\+\+TEMPLATE}} (void, \mbox{\hyperlink{model-meat_8hpp_ae09eaba6614a37ca52770bbaf18a876c}{set\+\_\+rules\+\_\+dyn}})(\mbox{\hyperlink{class_rules}{Rules}}$<$ Array\+\_\+\+Type
 \item 
-\mbox{\hyperlink{support-meat_8hpp_ab6e87343112bea21f2281382c6932039}{SUPPORT\+\_\+\+TEMPLATE}} (bool, eval\+\_\+rules\+\_\+dyn)(\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std
+\mbox{\hyperlink{support-meat_8hpp_ab6e87343112bea21f2281382c6932039}{SUPPORT\+\_\+\+TEMPLATE}} (bool, eval\+\_\+rules\+\_\+dyn)(const std
 \item 
-\mbox{\hyperlink{support-meat_8hpp_aa3609690e904e9e393d9338f7fd51c8c}{SUPPORT\+\_\+\+TEMPLATE}} (std\+::vector$<$ double $>$, get\+\_\+counts)() \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\mbox{\hyperlink{support-meat_8hpp_aa3609690e904e9e393d9338f7fd51c8c}{SUPPORT\+\_\+\+TEMPLATE}} (std\+::vector$<$ double $>$, get\+\_\+counts)() const
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a75d3ef0518990daa62016e24c25f16ee}{SUPPORT\+\_\+\+TEMPLATE}} (std\+::vector$<$ double $>$ $\ast$, get\+\_\+current\+\_\+stats)()
 \item 
-\mbox{\hyperlink{support-meat_8hpp_aecd932d8ed5f7c2942fda1c78bd80dcc}{SUPPORT\+\_\+\+TEMPLATE}} (void, print)() \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\mbox{\hyperlink{support-meat_8hpp_aecd932d8ed5f7c2942fda1c78bd80dcc}{SUPPORT\+\_\+\+TEMPLATE}} (void, print)() const
 \item 
-\mbox{\hyperlink{support-meat_8hpp_a1eb60e59c64de610261436745c2deb00}{SUPPORT\+\_\+\+TEMPLATE}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ double $>$ \&, get\+\_\+data)() \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+\mbox{\hyperlink{support-meat_8hpp_a1eb60e59c64de610261436745c2deb00}{SUPPORT\+\_\+\+TEMPLATE}} (const \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ double $>$ \&, get\+\_\+data)() const
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -81,9 +81,9 @@ std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{support-meat_8hpp
 \item 
 std\+::vector$<$ Array\+\_\+\+Type $>$ std\+::vector$<$ double $>$ $\ast$ \mbox{\hyperlink{support-meat_8hpp_a73c7169e5f8a4a5554380af6d4ca2107}{stats\+\_\+bank}}
 \item 
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} size\+\_\+t \& \mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}} = coordinates\+\_\+free\mbox{[}pos $\ast$ 2u\mbox{]}
+const size\+\_\+t \& \mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}} = coordinates\+\_\+free\mbox{[}pos $\ast$ 2u\mbox{]}
 \item 
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} size\+\_\+t \& \mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}} = coordinates\+\_\+free\mbox{[}pos $\ast$ 2u + 1u\mbox{]}
+const size\+\_\+t \& \mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}} = coordinates\+\_\+free\mbox{[}pos $\ast$ 2u + 1u\mbox{]}
 \item 
 double \mbox{\hyperlink{support-meat_8hpp_a99bc64000138ec8cdb4a77888dff849f}{tmp\+\_\+chng}}
 \item 
@@ -99,17 +99,17 @@ size\+\_\+t \mbox{\hyperlink{support-meat_8hpp_a47579cc9c4950eb2de30d46059fb786f
 \item 
 \mbox{\hyperlink{model-meat_8hpp_a69b87f58d3fa400f5d9b076072530f69}{Data\+\_\+\+Counter\+\_\+\+Type}} $\ast$ \mbox{\hyperlink{support-meat_8hpp_aa79c6fa1f7864a8258e8f2c0a68b6d35}{counters\+\_\+}}
 \item 
-\mbox{\hyperlink{support-meat_8hpp_ad39d911b94d7512d07b68ab7eac8164b}{delete\+\_\+counters}} = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}
+\mbox{\hyperlink{support-meat_8hpp_ad39d911b94d7512d07b68ab7eac8164b}{delete\+\_\+counters}} = false
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}} = \mbox{\hyperlink{support-meat_8hpp_aa79c6fa1f7864a8258e8f2c0a68b6d35}{counters\+\_\+}}
 \item 
 \mbox{\hyperlink{model-meat_8hpp_ab662732874257647dc631846c67da586}{Data\+\_\+\+Rule\+\_\+\+Type}} $\ast$ \mbox{\hyperlink{support-meat_8hpp_af9e399b166589474207166108d1b93d2}{rules\+\_\+}}
 \item 
-\mbox{\hyperlink{support-meat_8hpp_a89cc6daed3ad4d168d186db36f4f063d}{delete\+\_\+rules}} = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}
+\mbox{\hyperlink{support-meat_8hpp_a89cc6daed3ad4d168d186db36f4f063d}{delete\+\_\+rules}} = false
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a595e07a99f60f22a6a29e4fca291ea28}{rules}} = \mbox{\hyperlink{support-meat_8hpp_af9e399b166589474207166108d1b93d2}{rules\+\_\+}}
 \item 
-\mbox{\hyperlink{support-meat_8hpp_a2e7c4ddea9211859d1f7f6f288590e02}{delete\+\_\+rules\+\_\+dyn}} = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}
+\mbox{\hyperlink{support-meat_8hpp_a2e7c4ddea9211859d1f7f6f288590e02}{delete\+\_\+rules\+\_\+dyn}} = false
 \item 
 \mbox{\hyperlink{support-meat_8hpp_a2997e52d3d749b34d5a97042e4f520e5}{rules\+\_\+dyn}} = \mbox{\hyperlink{support-meat_8hpp_af9e399b166589474207166108d1b93d2}{rules\+\_\+}}
 \end{DoxyCompactItemize}
@@ -229,19 +229,19 @@ Definition at line 187 of file support-\/meat.\+hpp.
 \index{support-\/meat.hpp@{support-\/meat.hpp}!insert\_cell@{insert\_cell}}
 \index{insert\_cell@{insert\_cell}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{insert\_cell()}{insert\_cell()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} insert\+\_\+cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}}]{,  }\item[{\mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}}]{,  }\item[{1}]{,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}]{,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} insert\+\_\+cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}}]{,  }\item[{\mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}}]{,  }\item[{1}]{,  }\item[{false}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{support-meat_8hpp_a4f9c27ca3c5376e1c3a6b3eb05c0958d}\label{support-meat_8hpp_a4f9c27ca3c5376e1c3a6b3eb05c0958d}} 
 \index{support-\/meat.hpp@{support-\/meat.hpp}!insert\_cell@{insert\_cell}}
 \index{insert\_cell@{insert\_cell}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{insert\_cell()}{insert\_cell()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} insert\+\_\+cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}}]{,  }\item[{\mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}}]{,  }\item[{Empty\+Array.\+default\+\_\+val().}]{value,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}]{,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} insert\+\_\+cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}}]{,  }\item[{\mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}}]{,  }\item[{Empty\+Array.\+default\+\_\+val().}]{value,  }\item[{false}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{support-meat_8hpp_a374b4083f6045b49bcde35a8da4d5e80}\label{support-meat_8hpp_a374b4083f6045b49bcde35a8da4d5e80}} 
 \index{support-\/meat.hpp@{support-\/meat.hpp}!rm\_cell@{rm\_cell}}
 \index{rm\_cell@{rm\_cell}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{rm\_cell()}{rm\_cell()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} rm\+\_\+cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}}]{,  }\item[{\mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}}]{,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}]{,  }\item[{\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{statscounter-meat_8hpp_a850cc1cfc690a36f2478789fa123a6d3}{Empty\+Array}} rm\+\_\+cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{support-meat_8hpp_aa90d256a87dd45ec1f1b398a11d21881}{coord\+\_\+i}}}]{,  }\item[{\mbox{\hyperlink{support-meat_8hpp_ac5c22dcb010da5ba693bd700d0ba4fd6}{coord\+\_\+j}}}]{,  }\item[{false}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{support-meat_8hpp_ab6e87343112bea21f2281382c6932039}\label{support-meat_8hpp_ab6e87343112bea21f2281382c6932039}} 
 \index{support-\/meat.hpp@{support-\/meat.hpp}!SUPPORT\_TEMPLATE@{SUPPORT\_TEMPLATE}}
@@ -257,7 +257,7 @@ Definition at line 489 of file support-\/meat.\+hpp.
 \index{support-\/meat.hpp@{support-\/meat.hpp}!SUPPORT\_TEMPLATE@{SUPPORT\_TEMPLATE}}
 \index{SUPPORT\_TEMPLATE@{SUPPORT\_TEMPLATE}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{SUPPORT\_TEMPLATE()}{SUPPORT\_TEMPLATE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/17]}}
-{\footnotesize\ttfamily SUPPORT\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ double $>$ \&}]{,  }\item[{get\+\_\+data}]{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily SUPPORT\+\_\+\+TEMPLATE (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ double $>$ \&}]{,  }\item[{get\+\_\+data}]{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -408,7 +408,7 @@ Definition at line 158 of file support-\/meat.\+hpp.
 \index{support-\/meat.hpp@{support-\/meat.hpp}!coord\_i@{coord\_i}}
 \index{coord\_i@{coord\_i}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{coord\_i}{coord\_i}}
-{\footnotesize\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} size\+\_\+t \& coord\+\_\+i = coordinates\+\_\+free\mbox{[}pos $\ast$ 2u\mbox{]}}
+{\footnotesize\ttfamily const size\+\_\+t \& coord\+\_\+i = coordinates\+\_\+free\mbox{[}pos $\ast$ 2u\mbox{]}}
 
 
 
@@ -418,7 +418,7 @@ Definition at line 144 of file support-\/meat.\+hpp.
 \index{support-\/meat.hpp@{support-\/meat.hpp}!coord\_j@{coord\_j}}
 \index{coord\_j@{coord\_j}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{coord\_j}{coord\_j}}
-{\footnotesize\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} size\+\_\+t \& coord\+\_\+j = coordinates\+\_\+free\mbox{[}pos $\ast$ 2u + 1u\mbox{]}}
+{\footnotesize\ttfamily const size\+\_\+t \& coord\+\_\+j = coordinates\+\_\+free\mbox{[}pos $\ast$ 2u + 1u\mbox{]}}
 
 
 
@@ -457,7 +457,7 @@ Definition at line 410 of file support-\/meat.\+hpp.
 \index{support-\/meat.hpp@{support-\/meat.hpp}!delete\_counters@{delete\_counters}}
 \index{delete\_counters@{delete\_counters}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{delete\_counters}{delete\_counters}}
-{\footnotesize\ttfamily delete\+\_\+counters = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}
+{\footnotesize\ttfamily delete\+\_\+counters = false}
 
 
 
@@ -467,7 +467,7 @@ Definition at line 416 of file support-\/meat.\+hpp.
 \index{support-\/meat.hpp@{support-\/meat.hpp}!delete\_rules@{delete\_rules}}
 \index{delete\_rules@{delete\_rules}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{delete\_rules}{delete\_rules}}
-{\footnotesize\ttfamily delete\+\_\+rules = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}
+{\footnotesize\ttfamily delete\+\_\+rules = false}
 
 
 
@@ -477,7 +477,7 @@ Definition at line 450 of file support-\/meat.\+hpp.
 \index{support-\/meat.hpp@{support-\/meat.hpp}!delete\_rules\_dyn@{delete\_rules\_dyn}}
 \index{delete\_rules\_dyn@{delete\_rules\_dyn}!support-\/meat.hpp@{support-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{delete\_rules\_dyn}{delete\_rules\_dyn}}
-{\footnotesize\ttfamily delete\+\_\+rules\+\_\+dyn = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}
+{\footnotesize\ttfamily delete\+\_\+rules\+\_\+dyn = false}
 
 
 
@@ -494,7 +494,7 @@ Definition at line 482 of file support-\/meat.\+hpp.
 \DoxyCodeLine{\{}
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordflow}{if} (\mbox{\hyperlink{support-meat_8hpp_a47579cc9c4950eb2de30d46059fb786f}{change\_stats\_different}} > 0u)}
-\DoxyCodeLine{            \mbox{\hyperlink{support-meat_8hpp_a81e509685549f0b2bd6dce17d453383c}{hashes}}[pos] = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}.add(\mbox{\hyperlink{statscounter-meat_8hpp_acda6567d00fd45cc346957cbe93d5a9c}{current\_stats}}, \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{            \mbox{\hyperlink{support-meat_8hpp_a81e509685549f0b2bd6dce17d453383c}{hashes}}[pos] = \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}}.add(\mbox{\hyperlink{statscounter-meat_8hpp_acda6567d00fd45cc346957cbe93d5a9c}{current\_stats}}, \textcolor{keyword}{nullptr})}
 
 \end{DoxyCode}
 

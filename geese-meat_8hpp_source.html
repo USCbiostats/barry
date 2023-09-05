@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// Then through the offspring</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; o : n.<a class="code" href="class_node.html#a4e7e9c69da2575cad9c5fb7865dd42c7">offspring</a>)</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keywordflow">if</span> (o-&gt;annotations[<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>] != 0)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    n.<a class="code" href="class_node.html#a131bbc9fe67a5bcc5aa9b9c44103bd3b">array</a>.insert_cell(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, o-&gt;annotations[<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>], <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    n.<a class="code" href="class_node.html#a131bbc9fe67a5bcc5aa9b9c44103bd3b">array</a>.insert_cell(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, o-&gt;annotations[<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>], <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">else</span></div>
@@ -145,11 +145,11 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="comment">// with the actual value as it is the powerset that matters. Using</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="comment">// nine instead will block the cell and stop the routine for computing</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="comment">// the values correctly</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                n.<a class="code" href="class_node.html#a131bbc9fe67a5bcc5aa9b9c44103bd3b">array</a>.insert_cell(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, 9u, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                n.<a class="code" href="class_node.html#a131bbc9fe67a5bcc5aa9b9c44103bd3b">array</a>.insert_cell(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, 9u, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            ++<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            ++<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
@@ -260,11 +260,11 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        states.push_back(std::vector&lt; bool &gt;(<a class="code" href="class_geese.html#a406dae6306f50ff635eb8769475b6af2">nfunctions</a>, <span class="keyword">false</span>));</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u; <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> &lt; <a class="code" href="class_geese.html#a406dae6306f50ff635eb8769475b6af2">nfunctions</a>; ++<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u; <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> &lt; <a class="code" href="class_geese.html#a406dae6306f50ff635eb8769475b6af2">nfunctions</a>; ++<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        {</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">if</span> (!iter.is_empty(<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, 0u, <span class="keyword">false</span>))</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                states[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>][<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">if</span> (!iter.is_empty(<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, 0u, <span class="keyword">false</span>))</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                states[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>][<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>] = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
@@ -277,7 +277,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">if</span> (bar_width &gt; 0u)</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;Initializing nodes in Geese (this could take a while)...\n&quot;</span>);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Initializing nodes in Geese (this could take a while)...\n&quot;</span>);</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        barry::Progress prog_bar(this-&gt;<a class="code" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">nnodes</a>(), bar_width);</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
@@ -522,21 +522,21 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    </div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;}</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
-<div class="line"><a name="l00427"></a><span class="lineno"><a class="line" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">  427</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">Geese::nfuns</a>() <a class="code" href="barray-meat_8hpp.html#a621af3c0dec41dfe162b53db6c08e729">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00427"></a><span class="lineno"><a class="line" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">  427</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">Geese::nfuns</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;{</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160; </div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_geese.html#a406dae6306f50ff635eb8769475b6af2">nfunctions</a>;</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">  434</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">Geese::nnodes</a>() <a class="code" href="barray-meat_8hpp.html#a621af3c0dec41dfe162b53db6c08e729">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">  434</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">Geese::nnodes</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;{</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_geese.html#acf138e23f487c0cbb15d51c9f6f8ab5c">nodes</a>.size();</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;}</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
-<div class="line"><a name="l00441"></a><span class="lineno"><a class="line" href="class_geese.html#a8b632b4d4221713365bfa61a8a4b7f3f">  441</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_geese.html#a8b632b4d4221713365bfa61a8a4b7f3f">Geese::nleafs</a>() <a class="code" href="barray-meat_8hpp.html#a621af3c0dec41dfe162b53db6c08e729">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00441"></a><span class="lineno"><a class="line" href="class_geese.html#a8b632b4d4221713365bfa61a8a4b7f3f">  441</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_geese.html#a8b632b4d4221713365bfa61a8a4b7f3f">Geese::nleafs</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;{</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="keywordtype">size_t</span> n = 0u;</div>
@@ -556,7 +556,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;}</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160; </div>
-<div class="line"><a name="l00461"></a><span class="lineno"><a class="line" href="class_geese.html#a37cc90facde24d50e7dfac12c4314f38">  461</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_geese.html#a37cc90facde24d50e7dfac12c4314f38">Geese::support_size</a>() <a class="code" href="barray-meat_8hpp.html#a621af3c0dec41dfe162b53db6c08e729">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00461"></a><span class="lineno"><a class="line" href="class_geese.html#a37cc90facde24d50e7dfac12c4314f38">  461</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_geese.html#a37cc90facde24d50e7dfac12c4314f38">Geese::support_size</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
 <div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;{</div>
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    <span class="keywordflow">if</span> (model == <span class="keyword">nullptr</span>)</div>
@@ -566,12 +566,12 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    </div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;}</div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160; </div>
-<div class="line"><a name="l00471"></a><span class="lineno"><a class="line" href="class_geese.html#abfec2a7462cc949246a68d540827205f">  471</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; size_t &gt; <a class="code" href="class_geese.html#abfec2a7462cc949246a68d540827205f">Geese::nannotations</a>() <a class="code" href="barray-meat_8hpp.html#a621af3c0dec41dfe162b53db6c08e729">const</a> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00471"></a><span class="lineno"><a class="line" href="class_geese.html#abfec2a7462cc949246a68d540827205f">  471</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; size_t &gt; <a class="code" href="class_geese.html#abfec2a7462cc949246a68d540827205f">Geese::nannotations</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;{</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160; </div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    std::vector&lt; size_t &gt; <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a> = {this-&gt;n_zeros, this-&gt;n_ones};</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    std::vector&lt; size_t &gt; ans = {this-&gt;n_zeros, this-&gt;n_ones};</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160; </div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <span class="keywordflow">return</span> ans;</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;}</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
@@ -604,7 +604,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        {</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            <span class="keywordflow">if</span> (verb)</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;Node id: %li has polytomy size %li\n&quot;</span>, n.second.id, noff);</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Node id: %li has polytomy size %li\n&quot;</span>, n.second.id, noff);</div>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                </div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        }</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
@@ -621,9 +621,9 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;{</div>
 <div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160; </div>
 <div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    <span class="comment">// Making room for the output</span></div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    std::vector&lt;std::vector&lt;double&gt;&gt; <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    std::vector&lt;std::vector&lt;double&gt;&gt; ans;</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.reserve(<a class="code" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">nnodes</a>());</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    ans.reserve(<a class="code" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">nnodes</a>());</div>
 <div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; </div>
 <div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <span class="comment">// Creating counter</span></div>
 <div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    <a class="code" href="geese-types_8hpp.html#aaa0d31fa9451a9d932757a6e8b2e63a5">PhyloStatsCounter</a> tmpcount;</div>
@@ -637,14 +637,14 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        <span class="keywordflow">if</span> (n.second.is_leaf())</div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;        {</div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160; </div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.push_back({});</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            ans.push_back({});</div>
 <div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160; </div>
 <div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        }</div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160; </div>
 <div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        <a class="code" href="geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6">PhyloArray</a> tmparray(<a class="code" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">nfuns</a>(), n.second.offspring.size());</div>
 <div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160; </div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u;</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u;</div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
 <div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; o : n.second.offspring)</div>
 <div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        {</div>
@@ -656,14 +656,14 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;                {</div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160; </div>
 <div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                    tmparray.insert_cell(</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;                        <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, o-&gt;annotations.at(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>), <span class="keyword">false</span>, <a class="code" href="barray-meat_8hpp.html#ad716ef2b93f5b18b847c03c7911159e2">false</a></div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;                        <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, o-&gt;annotations.at(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>), <span class="keyword">false</span>, false</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;                        );</div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160; </div>
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;                }</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            }</div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160; </div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            ++<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>;</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            ++<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>;</div>
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160; </div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        }</div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160; </div>
@@ -680,11 +680,11 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        tmpcount.reset_array(&amp;tmparray);</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.push_back(tmpcount.count_all());</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        ans.push_back(tmpcount.count_all());</div>
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160; </div>
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    }</div>
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160; </div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>;</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;    <span class="keywordflow">return</span> ans;</div>
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160; </div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;}</div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160; </div>
@@ -692,8 +692,8 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;{</div>
 <div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160; </div>
 <div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    <span class="comment">// Making room for the output</span></div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    std::vector&lt;std::vector&lt;double&gt;&gt; <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>;</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.reserve(<a class="code" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">nnodes</a>());</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    std::vector&lt;std::vector&lt;double&gt;&gt; ans;</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    ans.reserve(<a class="code" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">nnodes</a>());</div>
 <div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160; </div>
 <div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    <span class="comment">// Creating counter</span></div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    <a class="code" href="geese-types_8hpp.html#aaa0d31fa9451a9d932757a6e8b2e63a5">PhyloStatsCounter</a> tmpcount;</div>
@@ -703,22 +703,22 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; n : <a class="code" href="class_geese.html#acf138e23f487c0cbb15d51c9f6f8ab5c">nodes</a>) {</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160; </div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        <span class="keywordflow">if</span> (n.second.is_leaf()) {</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            <a class="code" href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a>.push_back({});</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            ans.push_back({});</div>
 <div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;        }</div>
 <div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160; </div>
 <div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        <a class="code" href="geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6">PhyloArray</a> tmparray(<a class="code" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">nfuns</a>(), n.second.offspring.size());</div>
 <div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160; </div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u;</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u;</div>
 <div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; o : n.second.offspring) {</div>
 <div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = 0u; <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> &lt; <a class="code" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">nfuns</a>(); ++<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>) {</div>
 <div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                <span class="keywordflow">if</span> (o-&gt;annotations.at(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>) != 0) {</div>
 <div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;                    tmparray.insert_cell(</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                        <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, o-&gt;annotations.at(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>), <span class="keyword">false</span>, <a class="code" href="barray-meat_8hpp.html#ad716ef2b93f5b18b847c03c7911159e2">false</a></div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                        <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, o-&gt;annotations.at(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>), <span class="keyword">false</span>, false</div>
 <div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;                        );</div>
 <div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;                }</div>
 <div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;            }</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            ++<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>;</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            ++<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>;</div>
 <div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;        }</div>
 <div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160; </div>
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        std::vector&lt; bool &gt; tmp_state =vector_caster&lt;bool,size_t&gt;(n.second.annotations);</div>
@@ -733,17 +733,17 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160; </div>
 <div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;        <span class="comment">// Printing</span></div>
 <div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;        <span class="keyword">auto</span> dpl = n.second.duplication ? <span class="stringliteral">&quot;duplication&quot;</span> : <span class="stringliteral">&quot;speciation&quot;</span>;</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;----------\n&quot;</span>);</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;nodeid: % 3li (%s)\nstate: [&quot;</span>, n.second.id, dpl);</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;----------\n&quot;</span>);</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;nodeid: % 3li (%s)\nstate: [&quot;</span>, n.second.id, dpl);</div>
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> f = 0u; f &lt; <a class="code" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">nfuns</a>(); ++f)</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;            <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;%i, &quot;</span>, (tmparray.D_ptr()-&gt;states[f] ? 1 : 0));</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%i, &quot;</span>, (tmparray.D_ptr()-&gt;states[f] ? 1 : 0));</div>
 <div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160; </div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;]; Array:\n&quot;</span>);</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;]; Array:\n&quot;</span>);</div>
 <div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;        tmparray.print();</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;Counts: &quot;</span>);</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Counts: &quot;</span>);</div>
 <div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; c : counts)</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;%.2f, &quot;</span>, c);</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%.2f, &quot;</span>, c);</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160; </div>
 <div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    }</div>
 <div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160; </div>
@@ -758,13 +758,13 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    <span class="comment">// - Number of functions</span></div>
 <div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <span class="comment">// - Number of nodes and leafs</span></div>
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <span class="comment">// - Number of annotated leafs (0/1)</span></div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;GEESE\nINFO ABOUT PHYLOGENY\n&quot;</span>);</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;# of functions           : %li\n&quot;</span>, this-&gt;<a class="code" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">nfuns</a>());</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;# of nodes [int; leaf]   : [%li; %li]\n&quot;</span>, this-&gt;<a class="code" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">nnodes</a>() - this-&gt;<a class="code" href="class_geese.html#a8b632b4d4221713365bfa61a8a4b7f3f">nleafs</a>(), this-&gt;<a class="code" href="class_geese.html#a8b632b4d4221713365bfa61a8a4b7f3f">nleafs</a>());</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;# of ann. [zeros; ones]  : [%li; %li]\n&quot;</span>, this-&gt;n_zeros, this-&gt;n_ones);</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;# of events [dupl; spec] : [%li; %li]\n&quot;</span>, this-&gt;n_dupl_events, this-&gt;n_spec_events);</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;Largest polytomy         : %li\n&quot;</span>, <a class="code" href="class_geese.html#a426c18f23411953e2b10455049d9731b">parse_polytomies</a>(<span class="keyword">false</span>));</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;\nINFO ABOUT THE SUPPORT\n&quot;</span>);</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;GEESE\nINFO ABOUT PHYLOGENY\n&quot;</span>);</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of functions           : %li\n&quot;</span>, this-&gt;<a class="code" href="class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81">nfuns</a>());</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of nodes [int; leaf]   : [%li; %li]\n&quot;</span>, this-&gt;<a class="code" href="class_geese.html#a50453216e1b1968c19c3da0a703bffcf">nnodes</a>() - this-&gt;<a class="code" href="class_geese.html#a8b632b4d4221713365bfa61a8a4b7f3f">nleafs</a>(), this-&gt;<a class="code" href="class_geese.html#a8b632b4d4221713365bfa61a8a4b7f3f">nleafs</a>());</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of ann. [zeros; ones]  : [%li; %li]\n&quot;</span>, this-&gt;n_zeros, this-&gt;n_ones);</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of events [dupl; spec] : [%li; %li]\n&quot;</span>, this-&gt;n_dupl_events, this-&gt;n_spec_events);</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Largest polytomy         : %li\n&quot;</span>, <a class="code" href="class_geese.html#a426c18f23411953e2b10455049d9731b">parse_polytomies</a>(<span class="keyword">false</span>));</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;\nINFO ABOUT THE SUPPORT\n&quot;</span>);</div>
 <div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    this-&gt;model-&gt;print();</div>
 <div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160; </div>
 <div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;}</div>
@@ -772,14 +772,14 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00674"></a><span class="lineno"><a class="line" href="class_geese.html#ac5fb815ff3aa9fd5160286bd428e0cb0">  674</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_geese.html#ac5fb815ff3aa9fd5160286bd428e0cb0">Geese::print_nodes</a>()<span class="keyword"> const</span></div>
 <div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160; </div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;GEESE\nINFO ABOUT NODES\n&quot;</span>);</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;GEESE\nINFO ABOUT NODES\n&quot;</span>);</div>
 <div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160; </div>
 <div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp; n: <a class="code" href="class_geese.html#acf138e23f487c0cbb15d51c9f6f8ab5c">nodes</a>)</div>
 <div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    {            </div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;% 4li - Id: %li -- &quot;</span>, n.second.ord, n.second.id);</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;% 4li - Id: %li -- &quot;</span>, n.second.ord, n.second.id);</div>
 <div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160; </div>
 <div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        <span class="comment">// Node type</span></div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(</div>
 <div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            <span class="stringliteral">&quot;node type: %s -- &quot;</span>,</div>
 <div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;            n.second.is_leaf() ? </div>
 <div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;                std::string(<span class="stringliteral">&quot;leaf&quot;</span>).c_str() :</div>
@@ -787,7 +787,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;            );</div>
 <div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        </div>
 <div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        <span class="comment">// Event type</span></div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(</div>
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;            <span class="stringliteral">&quot;event type: %s -- &quot;</span>,</div>
 <div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;            n.second.duplication ?</div>
 <div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                std::string(<span class="stringliteral">&quot;duplication&quot;</span>).c_str() :</div>
@@ -795,47 +795,47 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            );</div>
 <div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160; </div>
 <div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;        <span class="comment">// Annotations</span></div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;ann: [&quot;</span>);</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;ann: [&quot;</span>);</div>
 <div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp; <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>: n.second.annotations)</div>
 <div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;        {</div>
 <div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;            <span class="comment">// Print with &#39;]&#39; if last element</span></div>
 <div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;            <span class="keywordflow">if</span> (&amp;<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> == &amp;n.second.annotations.back())</div>
 <div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;            {</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;%li] -- &quot;</span>, <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>);</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%li] -- &quot;</span>, <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>);</div>
 <div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;            }</div>
 <div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;            {</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;%li, &quot;</span>, <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>);</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%li, &quot;</span>, <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>);</div>
 <div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;            }</div>
 <div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;        }</div>
 <div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160; </div>
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        <span class="comment">// Parent information</span></div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;        <span class="keywordflow">if</span> (n.second.parent == <span class="keyword">nullptr</span>)</div>
 <div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;        {</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;            <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;parent id: (none) -- &quot;</span>);</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;parent id: (none) -- &quot;</span>);</div>
 <div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;            <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;parent id: %li -- &quot;</span>, n.second.parent-&gt;id);</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;parent id: %li -- &quot;</span>, n.second.parent-&gt;id);</div>
 <div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;        }</div>
 <div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160; </div>
 <div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;        <span class="comment">// Offspring information</span></div>
 <div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;        <span class="keywordflow">if</span> (n.second.offspring.size() &gt; 0u)</div>
 <div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        {</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;            <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;off ids: [&quot;</span>);</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;off ids: [&quot;</span>);</div>
 <div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp; o: n.second.offspring)</div>
 <div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;            {</div>
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                <span class="comment">// Same as in previous loop</span></div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                <span class="keywordflow">if</span> (&amp;o == &amp;n.second.offspring.back())</div>
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;                {</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;%li].&quot;</span>, o-&gt;id);</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%li].&quot;</span>, o-&gt;id);</div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                }</div>
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;                {</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                    <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;%li, &quot;</span>, o-&gt;id);</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;%li, &quot;</span>, o-&gt;id);</div>
 <div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                }</div>
 <div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            }</div>
 <div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;        }</div>
 <div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160; </div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        <a class="code" href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160; </div>
 <div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;    }</div>
 <div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160; </div>
@@ -889,11 +889,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160; </div>
 <div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160; </div>
 <div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="abarray-meat_8hpp_html_a621af3c0dec41dfe162b53db6c08e729"><div class="ttname"><a href="barray-meat_8hpp.html#a621af3c0dec41dfe162b53db6c08e729">const</a></div><div class="ttdeci">size_t j const</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00402">barray-meat.hpp:402</a></div></div>
-<div class="ttc" id="abarray-meat_8hpp_html_a76c0b31eda093c9e1357ff71b5c54906"><div class="ttname"><a href="barray-meat_8hpp.html#a76c0b31eda093c9e1357ff71b5c54906">ans</a></div><div class="ttdeci">return ans</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00449">barray-meat.hpp:449</a></div></div>
-<div class="ttc" id="abarray-meat_8hpp_html_abf2d9f657468255c5b9964ea2b6e9e15"><div class="ttname"><a href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a></div><div class="ttdeci">size_t j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
-<div class="ttc" id="abarray-meat_8hpp_html_ad716ef2b93f5b18b847c03c7911159e2"><div class="ttname"><a href="barray-meat_8hpp.html#ad716ef2b93f5b18b847c03c7911159e2">false</a></div><div class="ttdeci">row false</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l01042">barray-meat.hpp:1042</a></div></div>
-<div class="ttc" id="abarraydense-meat_8hpp_html_a00b73a8f3a98e5645f1f67828c6f4220"><div class="ttname"><a href="barraydense-meat_8hpp.html#a00b73a8f3a98e5645f1f67828c6f4220">printf_barry</a></div><div class="ttdeci">printf_barry(fmt, args)</div></div>
+<div class="ttc" id="abarry-configuration_8hpp_html_a2bd7dd8168e4165684de9dba0ae08469"><div class="ttname"><a href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a></div><div class="ttdeci">#define printf_barry</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00051">barry-configuration.hpp:51</a></div></div>
 <div class="ttc" id="aclass_geese_html"><div class="ttname"><a href="class_geese.html">Geese</a></div><div class="ttdoc">Annotated Phylo Model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00104">geese-bones.hpp:104</a></div></div>
 <div class="ttc" id="aclass_geese_html_a055c8aa95172d070c6f9864651bc9d79"><div class="ttname"><a href="class_geese.html#a055c8aa95172d070c6f9864651bc9d79">Geese::reduced_sequence</a></div><div class="ttdeci">std::vector&lt; size_t &gt; reduced_sequence</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00139">geese-bones.hpp:139</a></div></div>
 <div class="ttc" id="aclass_geese_html_a08873639292543015324d3c3768e900f"><div class="ttname"><a href="class_geese.html#a08873639292543015324d3c3768e900f">Geese::get_states</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; bool &gt; &gt; get_states() const</div><div class="ttdoc">Powerset of a gene's possible states.</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat_8hpp_source.html#l00765">geese-meat.hpp:765</a></div></div>
@@ -946,6 +942,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="ttc" id="aclass_node_html_afb0c9a29d8b65c33e9cec846e7d5811d"><div class="ttname"><a href="class_node.html#afb0c9a29d8b65c33e9cec846e7d5811d">Node::subtree_prob</a></div><div class="ttdeci">std::vector&lt; double &gt; subtree_prob</div><div class="ttdoc">Induced subtree probabilities.</div><div class="ttdef"><b>Definition:</b> <a href="geese-node-bones_8hpp_source.html#l00028">geese-node-bones.hpp:28</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_a5e111f6687f261e4e28bd6528e7f5b48"><div class="ttname"><a href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a></div><div class="ttdeci">return res</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00263">counters-meat.hpp:263</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_a981162f997bbddbdcaf8234da58a6094"><div class="ttname"><a href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a></div><div class="ttdeci">size_t i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:83</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_abf2d9f657468255c5b9964ea2b6e9e15"><div class="ttname"><a href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a></div><div class="ttdeci">size_t size_t j</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:84</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_ae763aeff9df78ca7be5f904fa4bbdc09"><div class="ttname"><a href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div><div class="ttdeci">Data_Type &amp;&amp;counter_ noexcept</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00026">counters-meat.hpp:27</a></div></div>
 <div class="ttc" id="ageese-bones_8hpp_html_a08888c91f4cab1da64c8f8bf10b59c40"><div class="ttname"><a href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a></div><div class="ttdeci">#define INITIALIZED()</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00022">geese-bones.hpp:22</a></div></div>
 <div class="ttc" id="ageese-bones_8hpp_html_a710215a1e2035a2d367c731229afed19"><div class="ttname"><a href="geese-bones_8hpp.html#a710215a1e2035a2d367c731229afed19">keygen_full</a></div><div class="ttdeci">std::vector&lt; double &gt; keygen_full(const PhyloArray &amp;array, const PhyloCounterData *d)</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00036">geese-bones.hpp:36</a></div></div>
@@ -963,7 +960,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-meat_8hpp.html">geese-meat.hpp</a></li>
-    <li class="footer">Generated on Fri Sep 1 2023 17:48:17 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Sep 5 2023 18:49:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

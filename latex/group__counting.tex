@@ -174,8 +174,8 @@ Definition at line 18 of file counters.\+hpp.
 \DoxyCodeLine{            \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}.push\_back(array.D()(\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, cov)); \(\backslash\)}
 \DoxyCodeLine{        \textcolor{comment}{/* Adding the fixed dims */} \(\backslash\)}
 \DoxyCodeLine{        for (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} < (array.nrow() -\/ 1); ++\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \(\backslash\)}
-\DoxyCodeLine{            \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} = 0u; \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} < array.ncol(); ++\mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}) \(\backslash\)}
-\DoxyCodeLine{                \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}.push\_back(array(\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}})); \(\backslash\)}
+\DoxyCodeLine{            \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} < array.ncol(); ++\mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}) \(\backslash\)}
+\DoxyCodeLine{                \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}}.push\_back(array(\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}})); \(\backslash\)}
 \DoxyCodeLine{        return \mbox{\hyperlink{counters-meat_8hpp_a5e111f6687f261e4e28bd6528e7f5b48}{res}};\(\backslash\)}
 \DoxyCodeLine{    \};}
 
@@ -193,7 +193,7 @@ Definition at line 21 of file counters.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    \textcolor{keywordtype}{bool} DPL = Array.D\_ptr()-\/>duplication; \(\backslash\)}
-\DoxyCodeLine{    size\_t DATA\_AT = \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}}[0u];}
+\DoxyCodeLine{    size\_t DATA\_AT = \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}}[0u];}
 
 \end{DoxyCode}
 Details about the available counters for {\ttfamily Phylo\+Array} objects can be found in the \mbox{\hyperlink{group__counters-phylo}{Phylo counters}} section. 
@@ -225,7 +225,7 @@ Definition at line 42 of file counters.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    barry::Counter\_fun\_type<PhyloArray, PhyloCounterData> \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{geese-types_8hpp_a3f0cae5b6ac5c728612da24e8aa3b5f6}{PhyloArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_phylo_counter_data}{PhyloCounterData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{geese-types_8hpp_a3f0cae5b6ac5c728612da24e8aa3b5f6}{PhyloArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_phylo_counter_data}{PhyloCounterData}} \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
 
 \end{DoxyCode}
 
@@ -245,7 +245,7 @@ Definition at line 36 of file counters.\+hpp.
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    barry::Rule\_fun\_type<PhyloArray, PhyloRuleDynData> \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = \(\backslash\)}
-\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{geese-types_8hpp_a3f0cae5b6ac5c728612da24e8aa3b5f6}{PhyloArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{barray-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{PhyloRuleDynData}} \& \mbox{\hyperlink{barray-meat_8hpp_a511ae0b1c13f95e5f08f1a0dd3da3d93}{data}})}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{geese-types_8hpp_a3f0cae5b6ac5c728612da24e8aa3b5f6}{PhyloArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{class_phylo_rule_dyn_data}{PhyloRuleDynData}} \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
 
 \end{DoxyCode}
 

@@ -57,12 +57,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"barrayrow-bones_8hpp.html",
-"class_b_array_row.html#a827c1da4aa6438e70cc48108b852735b",
-"class_model.html#a3f13aa5080ce580a11892cf6a69fee64",
-"counters-meat_8hpp.html#a43a4f45722a62357bc53b2abaaeb999f",
-"group__counters-network.html#ga74d93c11efb7162666fa2fe461e0d752",
-"model-meat_8hpp.html#a2648076475c82f8bfed17e9c46b36f68"
+"class_b_array_dense.html#ac9bffd75ad8701f67c5c148583d38246",
+"class_freq_table.html#aaedc785570175889a224d6ebaab6ffa7",
+"class_rules.html#aca68edc31c5043d58dc70e0e601cca7a",
+"globals_defs.html",
+"group__rules-phylo.html#ga66b7a40df357b79514dcbc4accfe679d",
+"support-meat_8hpp.html#a1fcea6eb1c3a87ac95c8c20f7d03226a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

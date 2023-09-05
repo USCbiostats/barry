@@ -112,15 +112,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6b7d23cb3ac065b4fd4553108871be99"><td class="memItemLeft" align="right" valign="top">Data_Type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#a6b7d23cb3ac065b4fd4553108871be99">D</a> ()</td></tr>
 <tr class="memdesc:a6b7d23cb3ac065b4fd4553108871be99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read/Write access to the data.  <a href="class_rule.html#a6b7d23cb3ac065b4fd4553108871be99">More...</a><br /></td></tr>
 <tr class="separator:a6b7d23cb3ac065b4fd4553108871be99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a192721b8f6f2c92753f44ac92703deca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#a192721b8f6f2c92753f44ac92703deca">operator()</a> (<a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Array_Type &amp;<a class="el" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>, size_t <a class="el" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, size_t <a class="el" href="statscounter-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</td></tr>
+<tr class="memitem:a192721b8f6f2c92753f44ac92703deca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#a192721b8f6f2c92753f44ac92703deca">operator()</a> (const Array_Type &amp;<a class="el" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>, size_t <a class="el" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, size_t <a class="el" href="statscounter-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</td></tr>
 <tr class="separator:a192721b8f6f2c92753f44ac92703deca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af394f21c78f5ba0a17e1d15715b2ebcf"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#af394f21c78f5ba0a17e1d15715b2ebcf">get_name</a> ()</td></tr>
 <tr class="separator:af394f21c78f5ba0a17e1d15715b2ebcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbf6150c845f416ed853e763ed1483fc"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#adbf6150c845f416ed853e763ed1483fc">get_description</a> ()</td></tr>
 <tr class="separator:adbf6150c845f416ed853e763ed1483fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd7c75780842bbc13c412eba949cebcb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#acd7c75780842bbc13c412eba949cebcb">get_name</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
+<tr class="memitem:acd7c75780842bbc13c412eba949cebcb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#acd7c75780842bbc13c412eba949cebcb">get_name</a> () const</td></tr>
 <tr class="separator:acd7c75780842bbc13c412eba949cebcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76c738212116be06df98899b1e39e6bb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#a76c738212116be06df98899b1e39e6bb">get_description</a> () <a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a></td></tr>
+<tr class="memitem:a76c738212116be06df98899b1e39e6bb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rule.html#a76c738212116be06df98899b1e39e6bb">get_description</a> () const</td></tr>
 <tr class="separator:a76c738212116be06df98899b1e39e6bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Construct a new Rule object</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Construct a new <a class="el" href="class_rule.html" title="Rule for determining if a cell should be included in a sequence.">Rule</a> object</p>
@@ -410,7 +410,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
         <tr>
           <td class="memname">bool <a class="el" href="class_rule.html">Rule</a>&lt; Array_Type, Data_Type &gt;::operator() </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="barraydense-meat_8hpp.html#a92b303b76a3f942ea819498907d5e83c">const</a> Array_Type &amp;&#160;</td>
+          <td class="paramtype">const Array_Type &amp;&#160;</td>
           <td class="paramname"><em>a</em>, </td>
         </tr>
         <tr>
@@ -452,7 +452,7 @@ template&lt;typename Array_Type , typename Data_Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_rule.html">Rule</a></li>
-    <li class="footer">Generated on Fri Sep 1 2023 17:48:17 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Sep 5 2023 18:49:59 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

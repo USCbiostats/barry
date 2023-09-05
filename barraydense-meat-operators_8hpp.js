@@ -1,8 +1,8 @@
 var barraydense_meat_operators_8hpp =
 [
     [ "BDENSE_TEMPLATE", "barraydense-meat-operators_8hpp.html#a6efd613571f7d786981173a9f217ad39", null ],
-    [ "BDENSE_TEMPLATE_ARGS", "barraydense-meat-operators_8hpp.html#af7590b67a6e365b0cb316f90fb9e3383", null ],
-    [ "BDENSE_TYPE", "barraydense-meat-operators_8hpp.html#ae99abc4214d49e4687514babd6af95f2", null ],
+    [ "BDENSE_TEMPLATE_ARGS", "barraydense-meat-operators_8hpp.html#a7cf9e244326563007fd13d874b915038", null ],
+    [ "BDENSE_TYPE", "barraydense-meat-operators_8hpp.html#ac48721248450bd4f50a33fd08307f526", null ],
     [ "COL", "barraydense-meat-operators_8hpp.html#ac2a0f8cf6ac7fdad243406f6e3ea0605", null ],
     [ "POS", "barraydense-meat-operators_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9", null ],
     [ "POS_N", "barraydense-meat-operators_8hpp.html#a1715b9a21ce267cafd44c884fc4bb72c", null ],

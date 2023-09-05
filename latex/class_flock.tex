@@ -18,7 +18,7 @@ A \mbox{\hyperlink{class_flock}{Flock}} is a group of \mbox{\hyperlink{class_gee
 \item 
 size\+\_\+t \mbox{\hyperlink{class_flock_a5e882cb60a36398180557662731d3c11}{add\+\_\+data}} (std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ \&annotations, std\+::vector$<$ size\+\_\+t $>$ \&geneid, std\+::vector$<$ int $>$ \&parent, std\+::vector$<$ bool $>$ \&duplication)
 \begin{DoxyCompactList}\small\item\em Add a tree to the flock. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_flock_a15ba537520410f84e924b0eab0a893f4}{set\+\_\+seed}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} size\+\_\+t \&s)
+void \mbox{\hyperlink{class_flock_a15ba537520410f84e924b0eab0a893f4}{set\+\_\+seed}} (const size\+\_\+t \&s)
 \begin{DoxyCompactList}\small\item\em Set the seed of the model. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_flock_a5ddef5ec4a7b150a354db11bb6b0c593}{init}} (size\+\_\+t bar\+\_\+width=\mbox{\hyperlink{progress_8hpp_a736e2557ded6975dbf117eedf62ea66c}{BARRY\+\_\+\+PROGRESS\+\_\+\+BAR\+\_\+\+WIDTH}})
 \item 
@@ -32,30 +32,30 @@ std\+::vector$<$ std\+::vector$<$ double $>$ $>$ $\ast$ \mbox{\hyperlink{class_f
 \item 
 \mbox{\hyperlink{geese-types_8hpp_a295e1042dd5ede0902719e8ba9756561}{Phylo\+Model}} $\ast$ \mbox{\hyperlink{class_flock_a9692be014117ae093ce160462dbde0d2}{get\+\_\+model}} ()
 \item 
-double \mbox{\hyperlink{class_flock_a275193d11c7ce3b8ec5dc18c8fab3e2e}{likelihood\+\_\+joint}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=\mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}, bool use\+\_\+reduced\+\_\+sequence=true)
+double \mbox{\hyperlink{class_flock_a275193d11c7ce3b8ec5dc18c8fab3e2e}{likelihood\+\_\+joint}} (const std\+::vector$<$ double $>$ \&par, bool as\+\_\+log=false, bool use\+\_\+reduced\+\_\+sequence=true)
 \begin{DoxyCompactList}\small\item\em Returns the joint likelihood of the model. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_geese}{Geese}} $\ast$ \mbox{\hyperlink{class_flock_a00fde307995418d36deeedbc78f29a7a}{operator()}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, bool \mbox{\hyperlink{barraydense-meat_8hpp_a8899aeefb231f239e7aecd22c54e0731}{check\+\_\+bounds}}=true)
+\mbox{\hyperlink{class_geese}{Geese}} $\ast$ \mbox{\hyperlink{class_flock_a00fde307995418d36deeedbc78f29a7a}{operator()}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, bool check\+\_\+bounds=true)
 \begin{DoxyCompactList}\small\item\em Access the i-\/th geese element. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Information about the model}\par
 \begin{DoxyCompactItemize}
 \item 
-size\+\_\+t \mbox{\hyperlink{class_flock_a55cf3311be1c2129466a666bbe90a3fb}{nfuns}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+size\+\_\+t \mbox{\hyperlink{class_flock_a55cf3311be1c2129466a666bbe90a3fb}{nfuns}} () const \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
-size\+\_\+t \mbox{\hyperlink{class_flock_ae47e9d235c3e3e6f3bb574772f2463d0}{ntrees}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+size\+\_\+t \mbox{\hyperlink{class_flock_ae47e9d235c3e3e6f3bb574772f2463d0}{ntrees}} () const \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
-std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_flock_ae1f4eb8ade1c7f369e1f1eddbced3b2b}{nnodes}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_flock_ae1f4eb8ade1c7f369e1f1eddbced3b2b}{nnodes}} () const \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
-std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_flock_a68af1602108455f9d339bc4c2994e9ab}{nleafs}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_flock_a68af1602108455f9d339bc4c2994e9ab}{nleafs}} () const \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
-size\+\_\+t \mbox{\hyperlink{class_flock_a71d5966ea3fda9e2baedf76be6c837c6}{nterms}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+size\+\_\+t \mbox{\hyperlink{class_flock_a71d5966ea3fda9e2baedf76be6c837c6}{nterms}} () const
 \item 
-size\+\_\+t \mbox{\hyperlink{class_flock_ad0f1cd362bc6a2dfbb81fa2abeff59cc}{support\+\_\+size}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+size\+\_\+t \mbox{\hyperlink{class_flock_ad0f1cd362bc6a2dfbb81fa2abeff59cc}{support\+\_\+size}} () const \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
-std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_flock_a0fb9c1d463b2cd19a966aa85d5511a92}{colnames}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_flock_a0fb9c1d463b2cd19a966aa85d5511a92}{colnames}} () const
 \item 
-size\+\_\+t \mbox{\hyperlink{class_flock_a58f2282d4cd764e9912c94b613aa58d2}{parse\+\_\+polytomies}} (bool verb=true, std\+::vector$<$ size\+\_\+t $>$ $\ast$dist=nullptr) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+size\+\_\+t \mbox{\hyperlink{class_flock_a58f2282d4cd764e9912c94b613aa58d2}{parse\+\_\+polytomies}} (bool verb=true, std\+::vector$<$ size\+\_\+t $>$ $\ast$dist=nullptr) const \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \begin{DoxyCompactList}\small\item\em Check polytomies and return the largest. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_flock_a5ddb72e66fc90f45335e8752e290dc3e}{print}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+void \mbox{\hyperlink{class_flock_a5ddb72e66fc90f45335e8752e290dc3e}{print}} () const
 \end{DoxyCompactItemize}
 \end{Indent}
 \doxysubsection*{Public Attributes}
@@ -65,7 +65,7 @@ std\+::vector$<$ \mbox{\hyperlink{class_geese}{Geese}} $>$ \mbox{\hyperlink{clas
 \item 
 size\+\_\+t \mbox{\hyperlink{class_flock_afe255f66684b6607197954152686584a}{nfunctions}} = 0u
 \item 
-bool \mbox{\hyperlink{class_flock_aad9b90040d349a23b33e09292bb964db}{initialized}} = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}
+bool \mbox{\hyperlink{class_flock_aad9b90040d349a23b33e09292bb964db}{initialized}} = false
 \item 
 std\+::mt19937 \mbox{\hyperlink{class_flock_a0e3ce6d007f667eea9f036cddb6789b6}{rengine}}
 \item 
@@ -208,7 +208,7 @@ Definition at line 49 of file flock-\/meat.\+hpp.
 \index{Flock@{Flock}!likelihood\_joint@{likelihood\_joint}}
 \index{likelihood\_joint@{likelihood\_joint}!Flock@{Flock}}
 \doxysubsubsection{\texorpdfstring{likelihood\_joint()}{likelihood\_joint()}}
-{\footnotesize\ttfamily double Flock\+::likelihood\+\_\+joint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily double Flock\+::likelihood\+\_\+joint (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{par,  }\item[{bool}]{as\+\_\+log = {\ttfamily false},  }\item[{bool}]{use\+\_\+reduced\+\_\+sequence = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -332,7 +332,7 @@ Definition at line 258 of file flock-\/meat.\+hpp.
 \index{Flock@{Flock}!set\_seed@{set\_seed}}
 \index{set\_seed@{set\_seed}!Flock@{Flock}}
 \doxysubsubsection{\texorpdfstring{set\_seed()}{set\_seed()}}
-{\footnotesize\ttfamily void Flock\+::set\+\_\+seed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} size\+\_\+t \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Flock\+::set\+\_\+seed (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -374,7 +374,7 @@ Definition at line 17 of file flock-\/bones.\+hpp.
 \index{Flock@{Flock}!initialized@{initialized}}
 \index{initialized@{initialized}!Flock@{Flock}}
 \doxysubsubsection{\texorpdfstring{initialized}{initialized}}
-{\footnotesize\ttfamily bool Flock\+::initialized = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}
+{\footnotesize\ttfamily bool Flock\+::initialized = false}
 
 
 

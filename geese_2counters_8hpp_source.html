@@ -176,7 +176,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">double</span> ngains = 0.0;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">auto</span>   <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">auto</span>   <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">auto</span>   s = Array.D_ptr()-&gt;states[<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>];</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">if</span> (s)</div>
@@ -200,7 +200,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="group__counting.html#gaadfa3455c6a85615e658a4f8e17dbc47">IF_MATCHES</a>()</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]) ? 1.0 : 0.0;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u]) ? 1.0 : 0.0;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        </div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
@@ -239,7 +239,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    {</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="comment">// Is this relevant?</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u])</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u])</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <a class="code" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
@@ -252,14 +252,14 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="comment">// Making the counts</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordtype">int</span> counts = 0;</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = 0u; <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> &lt; Array.ncol(); ++<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>)</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> != <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> != <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            {</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <span class="keywordflow">if</span> (Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <span class="keyword">false</span>) == 1u)</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    ++counts;</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            }</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="comment">// Three cases: base on the diff</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordtype">int</span> diff = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u]) - counts + 1;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordtype">int</span> diff = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u]) - counts + 1;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="comment">// (a) counts were 1 below k, then +1</span></div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">if</span> (diff == 1)</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">return</span> -1.0;</div>
@@ -329,7 +329,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        {</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="comment">// Nah, this gene was already different.</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">if</span> ((<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> != <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) &amp;&amp; (Array.D_ptr()-&gt;states[<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>] != (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 1u)))</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">if</span> ((<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> != <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) &amp;&amp; (Array.D_ptr()-&gt;states[<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>] != (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 1u)))</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            </div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
@@ -371,7 +371,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="comment">// At the beginning, all offspring are zero, so we need to</span></div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="comment">// find at least one state = true.</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">if</span> (Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]] || Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u]])</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">if</span> (Array.D_ptr()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u]] || Array.D_ptr()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u]])</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="keywordtype">double</span> n = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
@@ -387,24 +387,24 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <a class="code" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keyword">auto</span> nfunA = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keyword">auto</span> nfunB = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u];</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keyword">auto</span> nfunA = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keyword">auto</span> nfunB = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u];</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != nfunA) &amp; (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != nfunB))</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keywordflow">if</span> (Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]] || Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u]])</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keywordflow">if</span> (Array.D_ptr()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u]] || Array.D_ptr()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u]])</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == nfunA) ? nfunB : nfunA;</div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u)</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u)</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off) == 0u) &amp;&amp; (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, off) == 0u))</div>
@@ -472,7 +472,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        {</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            <span class="comment">// Was the gene annotation different from the parent?</span></div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <span class="keywordflow">if</span> (par_state[f] != (Array(f,<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u))</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <span class="keywordflow">if</span> (par_state[f] != (Array(f,<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u))</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            {</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                j_diverges = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                <span class="keywordflow">break</span>;</div>
@@ -496,7 +496,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            {</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                <span class="keywordflow">if</span> (par_state[f] != (Array(f,<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u))</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                <span class="keywordflow">if</span> (par_state[f] != (Array(f,<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u))</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                {</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                    j_used_to_diverge = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                    <span class="keywordflow">break</span>;</div>
@@ -593,7 +593,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160; </div>
 <div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        <span class="comment">// At first, all are zero, so we need to check if the lower</span></div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        <span class="comment">// bound is zero</span></div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u] == 0)</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u] == 0)</div>
 <div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
 <div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        </div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
@@ -606,11 +606,11 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        <a class="code" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160; </div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        <span class="keywordtype">int</span> count = Array.colsum(<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>);</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        <span class="keywordtype">int</span> ub    = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u];</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        <span class="keywordtype">int</span> count = Array.colsum(<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>);</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        <span class="keywordtype">int</span> ub    = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u];</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        </div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        <span class="comment">// It now matches</span></div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        <span class="keywordflow">if</span> (count == <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]))</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        <span class="keywordflow">if</span> (count == <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u]))</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            <span class="keywordflow">return</span> 1.0;</div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160; </div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        <span class="comment">// Was within, but now outside</span></div>
@@ -650,7 +650,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        <span class="keywordflow">if</span> (!Array.D_ptr()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>])</div>
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        </div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        <span class="keywordflow">return</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]) ? -1.0 : 0.0;</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        <span class="keywordflow">return</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u]) ? -1.0 : 0.0;</div>
 <div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160; </div>
 <div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    };</div>
 <div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    </div>
@@ -662,7 +662,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;        <a class="code" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        </div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;        <span class="keyword">auto</span> f = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;        <span class="keyword">auto</span> f = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
 <div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160; </div>
 <div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;        <span class="keywordflow">if</span> (!Array.D_ptr()-&gt;states[f])</div>
 <div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
@@ -753,8 +753,8 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        <a class="code" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160; </div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <span class="keyword">auto</span> funA = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;        <span class="keyword">auto</span> funB = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u];</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <span class="keyword">auto</span> funA = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;        <span class="keyword">auto</span> funB = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u];</div>
 <div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;        </div>
 <div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;        <span class="comment">// Are we looking at either of the relevant functions?</span></div>
 <div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;        <span class="keywordflow">if</span> ((funA != <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) &amp;&amp; (funB != <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>))</div>
@@ -768,14 +768,14 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        <span class="keywordtype">size_t</span> other = (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == funA)? funB : funA;</div>
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;        <span class="comment">// There are 4 cases: (first x second) x (had the second function)</span></div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        <span class="keywordflow">if</span> (Array(other, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 1u)</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;        <span class="keywordflow">if</span> (Array(other, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 1u)</div>
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        { </div>
 <div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;          </div>
 <div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;            {</div>
 <div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;                </div>
 <div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                <span class="comment">// Not on self</span></div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                </div>
 <div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(other, off, <span class="keyword">false</span>) == 0u))</div>
@@ -789,7 +789,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;            {</div>
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;              </div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                <span class="comment">// Not on self</span></div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                </div>
 <div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off, <span class="keyword">false</span>) == 0u) &amp;&amp; (Array(other, off, <span class="keyword">false</span>) == 1u))</div>
@@ -837,8 +837,8 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;        <a class="code" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160; </div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;        <span class="keyword">auto</span> d1 = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;        <span class="keyword">auto</span> d2 = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u];</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;        <span class="keyword">auto</span> d1 = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;        <span class="keyword">auto</span> d2 = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u];</div>
 <div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;      </div>
 <div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;        <span class="comment">// Is the function in scope relevant?</span></div>
 <div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != d1) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != d2))</div>
@@ -850,7 +850,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160; </div>
 <div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;            <span class="keywordtype">size_t</span> other = (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == d1)? d2 : d1;</div>
 <div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160; </div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;            <span class="keywordflow">if</span> (Array(other, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 1u)</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;            <span class="keywordflow">if</span> (Array(other, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 1u)</div>
 <div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;                <span class="keywordflow">return</span> 1.0;</div>
 <div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
@@ -903,7 +903,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;        {</div>
 <div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160; </div>
 <div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;            <span class="comment">// On the fly, figuring out if it is longest</span></div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp; l : <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>)</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp; l : <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>)</div>
 <div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;                <span class="keywordflow">if</span> (l == off)</div>
 <div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;                    is_longest[off] = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160; </div>
@@ -914,13 +914,13 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;                    </div>
 <div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;                    <span class="comment">// If it happens that j != off and is not longest</span></div>
 <div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;                    <span class="comment">// then return 0 (a not longest was mutating prev)</span></div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;                    <span class="keywordflow">if</span> (is_longest[off] &amp;&amp; (off != <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>))</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;                    <span class="keywordflow">if</span> (is_longest[off] &amp;&amp; (off != <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>))</div>
 <div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;                        <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160; </div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;                        j_mutates = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160; </div>
-<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;                    <span class="keywordflow">if</span> (is_longest[<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>])</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;                    <span class="keywordflow">if</span> (is_longest[<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>])</div>
 <div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;                        nmutate_longest++;</div>
 <div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;                    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;                        nmutate++;</div>
@@ -947,7 +947,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;                j_mutates_prev = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;                <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;            }</div>
-<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Array(f, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u) != states[f])</div>
+<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((Array(f, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u) != states[f])</div>
 <div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;            {</div>
 <div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;                j_mutates_prev = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;                <span class="keywordflow">break</span>;</div>
@@ -960,14 +960,14 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;        <span class="keyword">auto</span> nmutate_longest_prev = nmutate_longest;</div>
 <div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;        <span class="keywordflow">if</span> (j_mutates &amp; !j_mutates_prev)</div>
 <div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;        {</div>
-<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;            <span class="keywordflow">if</span> (is_longest[<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>])</div>
+<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;            <span class="keywordflow">if</span> (is_longest[<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>])</div>
 <div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;                nmutate_longest_prev--;</div>
 <div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;                nmutate_prev--;</div>
 <div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;        }</div>
 <div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!j_mutates &amp; j_mutates)</div>
 <div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;        {</div>
-<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;            <span class="keywordflow">if</span> (is_longest[<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>])</div>
+<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;            <span class="keywordflow">if</span> (is_longest[<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>])</div>
 <div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;                nmutate_longest_prev++;</div>
 <div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;                nmutate_prev++;</div>
@@ -994,8 +994,8 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;        <span class="comment">// Finding the longest branch (or branches) --</span></div>
 <div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;        <span class="keywordtype">size_t</span> longest_idx = 0u;</div>
 <div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;        <span class="keywordtype">double</span> diff      = 0.0;</div>
-<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;        <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.reserve(Array.ncol()); </div>
-<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;        <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.push_back(0u);</div>
+<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.reserve(Array.ncol()); </div>
+<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.push_back(0u);</div>
 <div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> ii = 1u; ii &lt; Array.ncol(); ++ii)</div>
 <div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;        {</div>
 <div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;            </div>
@@ -1005,19 +1005,19 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (diff &lt; 0.0)</div>
 <div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;            {</div>
 <div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160; </div>
-<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;                <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.empty();</div>
-<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;                <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.push_back(ii);</div>
+<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.empty();</div>
+<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.push_back(ii);</div>
 <div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;                longest_idx = ii;</div>
 <div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160; </div>
 <div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;            }</div>
 <div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (diff == 0.0)</div>
-<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;                <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.push_back(ii);</div>
+<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;                <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.push_back(ii);</div>
 <div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;            </div>
 <div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;        }</div>
 <div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160; </div>
-<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;        <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.shrink_to_fit();</div>
+<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.shrink_to_fit();</div>
 <div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;        </div>
-<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.size() == 0u)</div>
+<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.size() == 0u)</div>
 <div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;            <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;The data on the longest branch has size 0.&quot;</span>);</div>
 <div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160;        </div>
 <div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160;        <span class="comment">// Starting the counter, since all in zero, then this will be equal to</span></div>
@@ -1026,7 +1026,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;        {</div>
 <div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;            </div>
 <div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;            <span class="keywordflow">if</span> (Array.D_ptr()-&gt;states[ii])</div>
-<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;                <span class="keywordflow">return</span> (1.0 * <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.size()));</div>
+<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;                <span class="keywordflow">return</span> (1.0 * <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.size()));</div>
 <div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160; </div>
 <div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;        }</div>
 <div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;        </div>
@@ -1060,8 +1060,8 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;        <a class="code" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160;        </div>
-<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;        <span class="keyword">auto</span> funA = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
-<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;        <span class="keyword">auto</span> funB = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u];</div>
+<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;        <span class="keyword">auto</span> funA = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
+<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;        <span class="keyword">auto</span> funB = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u];</div>
 <div class="line"><a name="l01035"></a><span class="lineno"> 1035</span>&#160; </div>
 <div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;        <span class="comment">// Is the function in scope relevant?</span></div>
 <div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != funA) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != funB))</div>
@@ -1080,7 +1080,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;        <span class="comment">// Figuring out which is the first (reference) function</span></div>
 <div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;        </div>
-<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;        <span class="keywordflow">if</span> (Array(other, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
+<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;        <span class="keywordflow">if</span> (Array(other, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
 <div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;        {</div>
 <div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160; </div>
 <div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160; </div>
@@ -1136,7 +1136,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;        </div>
 <div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;        <span class="comment">// Is the function in scope relevant?</span></div>
-<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u])</div>
+<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u])</div>
 <div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;        </div>
 <div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;        <span class="comment">// Checking if the parent has the function</span></div>
@@ -1148,7 +1148,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;        {</div>
 <div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160; </div>
-<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;            <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;            <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160; </div>
 <div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;            <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off) == 0))</div>
@@ -1196,8 +1196,8 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;        <a class="code" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;        </div>
-<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp; funA = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
-<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp; funB = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u];</div>
+<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp; funA = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
+<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp; funB = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u];</div>
 <div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160; </div>
 <div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;        <span class="comment">// Checking scope</span></div>
 <div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != funA) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != funB))</div>
@@ -1212,13 +1212,13 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> == funA)</div>
 <div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;        {</div>
 <div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160; </div>
-<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;            <span class="keywordflow">if</span> (Array(funB, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
+<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;            <span class="keywordflow">if</span> (Array(funB, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
 <div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;            {</div>
 <div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160; </div>
 <div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;                {</div>
 <div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160; </div>
-<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160; </div>
 <div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, off) == 0u) &amp;&amp; (Array(funB, off) == 1u))</div>
@@ -1233,7 +1233,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;                {</div>
 <div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;                    </div>
-<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160; </div>
 <div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, off) == 1u) &amp;&amp; (Array(funB, off) == 0u))</div>
@@ -1247,13 +1247,13 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;        {</div>
 <div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160; </div>
-<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;            <span class="keywordflow">if</span> (Array(funA, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
+<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;            <span class="keywordflow">if</span> (Array(funA, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
 <div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;            {</div>
 <div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160; </div>
 <div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;                {</div>
 <div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160; </div>
-<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160; </div>
 <div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, off) == 1u) &amp;&amp; (Array(funB, off) == 0u))</div>
@@ -1268,7 +1268,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;                {</div>
 <div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;                    </div>
-<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;                    <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;                        <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160; </div>
 <div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;                    <span class="keywordflow">if</span> ((Array(funA, off) == 0u) &amp;&amp; (Array(funB, off) == 1u))</div>
@@ -1318,8 +1318,8 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01307"></a><span class="lineno"> 1307</span>&#160;        <a class="code" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</div>
 <div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;        </div>
-<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> funA = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
-<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> funB = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u];</div>
+<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> funA = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
+<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> funB = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u];</div>
 <div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160; </div>
 <div class="line"><a name="l01313"></a><span class="lineno"> 1313</span>&#160;        <span class="comment">// If the change is out of scope, then nothing to do</span></div>
 <div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != funA) &amp; (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != funB))</div>
@@ -1334,13 +1334,13 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160; </div>
 <div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;            <span class="comment">// What was the state of the other function? If B is present, then</span></div>
 <div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;            <span class="comment">// nothing changes.</span></div>
-<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;            <span class="keywordflow">if</span> (Array(funB, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 1u) </div>
+<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;            <span class="keywordflow">if</span> (Array(funB, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 1u) </div>
 <div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160; </div>
 <div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;            <span class="comment">// Iterating through the sibs</span></div>
 <div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;            <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> c = 0u; c &lt; Array.ncol(); ++c)</div>
-<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;                <span class="keywordflow">if</span> ((c != <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(funB, c, <span class="keyword">false</span>) == 1u))</div>
+<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;                <span class="keywordflow">if</span> ((c != <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u) &amp;&amp; (Array(funB, c, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += 1.0;</div>
 <div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160; </div>
 <div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
@@ -1349,13 +1349,13 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160; </div>
 <div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;            <span class="comment">// What was the state of the other function? If A is not present, then</span></div>
 <div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;            <span class="comment">// nothing changes.</span></div>
-<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;            <span class="keywordflow">if</span> (Array(funA, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 0u) </div>
+<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;            <span class="keywordflow">if</span> (Array(funA, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>) == 0u) </div>
 <div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;                <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160; </div>
 <div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;            <span class="comment">// Iterating through the sibs</span></div>
 <div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;            <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> c = 0u; c &lt; Array.ncol(); ++c)</div>
-<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;                <span class="keywordflow">if</span> ((c != <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u))</div>
+<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;                <span class="keywordflow">if</span> ((c != <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) &amp;&amp; (Array(funA, c, <span class="keyword">false</span>) == 1u))</div>
 <div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;                    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> += (Array(funB, c, <span class="keyword">false</span>) == 0u) ? 1.0 : -1.0;</div>
 <div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160; </div>
 <div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
@@ -1369,16 +1369,16 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;    <a class="code" href="group__counting.html#gac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(tmp_init) {</div>
 <div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160; </div>
 <div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;        <a class="code" href="group__counting.html#ga81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
-<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.size() != 3u)</div>
+<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.size() != 3u)</div>
 <div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;The counter data should be of length 2.&quot;</span>);</div>
 <div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160; </div>
-<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u] == <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u])</div>
+<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u] == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u])</div>
 <div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;            <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Functions A and B should be different from each other.&quot;</span>);</div>
 <div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160; </div>
-<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u] &gt;= Array.nrow())</div>
+<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u] &gt;= Array.nrow())</div>
 <div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Function A in counter out of range.&quot;</span>);</div>
 <div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160; </div>
-<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u] &gt;= Array.nrow())</div>
+<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u] &gt;= Array.nrow())</div>
 <div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;            <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Function B in counter out of range.&quot;</span>);</div>
 <div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160; </div>
 <div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
@@ -1417,9 +1417,9 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;        <span class="comment">// find at least one state = true.</span></div>
 <div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> s : Array.D_ptr()-&gt;states)</div>
 <div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;            <span class="keywordflow">if</span> (s)</div>
-<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;                <span class="keywordflow">return</span> Array.ncol() == <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u] ? 1.0 : 0.0;</div>
+<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;                <span class="keywordflow">return</span> Array.ncol() == <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u] ? 1.0 : 0.0;</div>
 <div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160; </div>
-<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u] == 0 ? 1.0 : 0.0;</div>
+<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u] == 0 ? 1.0 : 0.0;</div>
 <div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;      </div>
 <div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;    };</div>
 <div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160; </div>
@@ -1435,7 +1435,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;        <span class="keywordtype">bool</span>        j_diverges = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp; par_state = Array.D_ptr()-&gt;states;</div>
 <div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160; </div>
-<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]);</div>
+<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u]);</div>
 <div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160; </div>
 <div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> o = 0u; o &lt; Array.ncol(); ++o)</div>
 <div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;        {</div>
@@ -1447,7 +1447,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;                <span class="keywordflow">if</span> ((Array(f, o) == 1u) != par_state[f])</div>
 <div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;                {</div>
 <div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160; </div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;                    <span class="keywordflow">if</span> (o == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;                    <span class="keywordflow">if</span> (o == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;                        j_diverges = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160; </div>
 <div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;                    count++;</div>
@@ -1480,7 +1480,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;            {</div>
 <div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160; </div>
-<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;                <span class="keywordflow">if</span> (par_state[f] != (Array(f,<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u))</div>
+<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;                <span class="keywordflow">if</span> (par_state[f] != (Array(f,<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u))</div>
 <div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;                {</div>
 <div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;                    j_used_to_diverge = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;                    <span class="keywordflow">break</span>;</div>
@@ -1531,7 +1531,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160; </div>
 <div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> s : Array.D_ptr()-&gt;states)</div>
 <div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;            <span class="keywordflow">if</span> (s)</div>
-<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u] == 100 ? 1.0 : 0.0;</div>
+<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u] == 100 ? 1.0 : 0.0;</div>
 <div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160; </div>
 <div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;        <span class="comment">// Only one if it was specified it was zero</span></div>
 <div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;        <span class="keywordflow">return</span> 1.0;</div>
@@ -1561,7 +1561,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;                <span class="keywordflow">if</span> ((Array(f, o) == 1u) != par_state[f])</div>
 <div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;                {</div>
 <div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160; </div>
-<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;                    <span class="keywordflow">if</span> (o == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;                    <span class="keywordflow">if</span> (o == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;                        j_diverges = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160; </div>
 <div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;                    count += 1.0;</div>
@@ -1589,7 +1589,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;            {</div>
 <div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160; </div>
-<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;                <span class="keywordflow">if</span> (par_state[f] != (Array(f,<a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u))</div>
+<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;                <span class="keywordflow">if</span> (par_state[f] != (Array(f,<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u))</div>
 <div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;                {</div>
 <div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;                    j_used_to_diverge = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;                    <span class="keywordflow">break</span>;</div>
@@ -1611,7 +1611,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160;            count_prev += 1.0;</div>
 <div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160; </div>
 <div class="line"><a name="l01610"></a><span class="lineno"> 1610</span>&#160;        <span class="keywordtype">double</span> ncol = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol());</div>
-<div class="line"><a name="l01611"></a><span class="lineno"> 1611</span>&#160;        <span class="keywordtype">double</span> p    = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]) / 100.0;</div>
+<div class="line"><a name="l01611"></a><span class="lineno"> 1611</span>&#160;        <span class="keywordtype">double</span> p    = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u]) / 100.0;</div>
 <div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160; </div>
 <div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;        <span class="keywordflow">return</span> ((count/ncol) &lt;= p ? 1.0 : 0.0) - ((count_prev/ncol) &lt;= p ? 1.0 : 0.0);</div>
 <div class="line"><a name="l01614"></a><span class="lineno"> 1614</span>&#160; </div>
@@ -1649,14 +1649,14 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;        }</div>
 <div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160; </div>
 <div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;        <span class="comment">// Is this the function?</span></div>
-<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u])</div>
+<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> != <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u])</div>
 <div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160; </div>
 <div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;        <span class="comment">// Now computing the change stats</span></div>
 <div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(Array.ncol()) - 1.0;</div>
 <div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;        {</div>
-<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;            <span class="keywordflow">if</span> (off  == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;            <span class="keywordflow">if</span> (off  == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01662"></a><span class="lineno"> 1662</span>&#160; </div>
 <div class="line"><a name="l01663"></a><span class="lineno"> 1663</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off) == 1u)</div>
@@ -1750,7 +1750,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01759"></a><span class="lineno"> 1759</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
 <div class="line"><a name="l01760"></a><span class="lineno"> 1760</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01761"></a><span class="lineno"> 1761</span>&#160;        {</div>
-<div class="line"><a name="l01762"></a><span class="lineno"> 1762</span>&#160;            <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01762"></a><span class="lineno"> 1762</span>&#160;            <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01763"></a><span class="lineno"> 1763</span>&#160;                <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01764"></a><span class="lineno"> 1764</span>&#160; </div>
 <div class="line"><a name="l01765"></a><span class="lineno"> 1765</span>&#160;            <span class="keywordflow">if</span> (funpar &gt; Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off))</div>
@@ -1807,8 +1807,8 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01821"></a><span class="lineno"> 1821</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01822"></a><span class="lineno"> 1822</span>&#160; </div>
 <div class="line"><a name="l01823"></a><span class="lineno"> 1823</span>&#160;        <span class="comment">// Not in the scope</span></div>
-<div class="line"><a name="l01824"></a><span class="lineno"> 1824</span>&#160;        <span class="keyword">auto</span> funA = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
-<div class="line"><a name="l01825"></a><span class="lineno"> 1825</span>&#160;        <span class="keyword">auto</span> funB = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u];</div>
+<div class="line"><a name="l01824"></a><span class="lineno"> 1824</span>&#160;        <span class="keyword">auto</span> funA = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
+<div class="line"><a name="l01825"></a><span class="lineno"> 1825</span>&#160;        <span class="keyword">auto</span> funB = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u];</div>
 <div class="line"><a name="l01826"></a><span class="lineno"> 1826</span>&#160;        <span class="keywordflow">if</span> ((funA != <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) &amp;&amp; (funB != <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>))</div>
 <div class="line"><a name="l01827"></a><span class="lineno"> 1827</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01828"></a><span class="lineno"> 1828</span>&#160; </div>
@@ -1825,13 +1825,13 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01839"></a><span class="lineno"> 1839</span>&#160;        <span class="keywordflow">if</span> (!parent_i &amp; !parent_k)</div>
 <div class="line"><a name="l01840"></a><span class="lineno"> 1840</span>&#160;        {</div>
 <div class="line"><a name="l01841"></a><span class="lineno"> 1841</span>&#160; </div>
-<div class="line"><a name="l01842"></a><span class="lineno"> 1842</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u)</div>
+<div class="line"><a name="l01842"></a><span class="lineno"> 1842</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u)</div>
 <div class="line"><a name="l01843"></a><span class="lineno"> 1843</span>&#160;                <span class="keywordflow">return</span> 0.0; </div>
 <div class="line"><a name="l01844"></a><span class="lineno"> 1844</span>&#160; </div>
 <div class="line"><a name="l01845"></a><span class="lineno"> 1845</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01846"></a><span class="lineno"> 1846</span>&#160;            {</div>
 <div class="line"><a name="l01847"></a><span class="lineno"> 1847</span>&#160; </div>
-<div class="line"><a name="l01848"></a><span class="lineno"> 1848</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01848"></a><span class="lineno"> 1848</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01849"></a><span class="lineno"> 1849</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01850"></a><span class="lineno"> 1850</span>&#160; </div>
 <div class="line"><a name="l01851"></a><span class="lineno"> 1851</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off) == 0u) &amp;&amp; (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, off) == 0u))</div>
@@ -1843,13 +1843,13 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01857"></a><span class="lineno"> 1857</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (parent_i &amp; !parent_k)</div>
 <div class="line"><a name="l01858"></a><span class="lineno"> 1858</span>&#160;        {</div>
 <div class="line"><a name="l01859"></a><span class="lineno"> 1859</span>&#160; </div>
-<div class="line"><a name="l01860"></a><span class="lineno"> 1860</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u)</div>
+<div class="line"><a name="l01860"></a><span class="lineno"> 1860</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1u)</div>
 <div class="line"><a name="l01861"></a><span class="lineno"> 1861</span>&#160;                <span class="keywordflow">return</span> 0.0; </div>
 <div class="line"><a name="l01862"></a><span class="lineno"> 1862</span>&#160; </div>
 <div class="line"><a name="l01863"></a><span class="lineno"> 1863</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01864"></a><span class="lineno"> 1864</span>&#160;            {</div>
 <div class="line"><a name="l01865"></a><span class="lineno"> 1865</span>&#160; </div>
-<div class="line"><a name="l01866"></a><span class="lineno"> 1866</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01866"></a><span class="lineno"> 1866</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01867"></a><span class="lineno"> 1867</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01868"></a><span class="lineno"> 1868</span>&#160; </div>
 <div class="line"><a name="l01869"></a><span class="lineno"> 1869</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off) == 1u) &amp;&amp; (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, off) == 0u))</div>
@@ -1861,13 +1861,13 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01875"></a><span class="lineno"> 1875</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!parent_i &amp; parent_k)</div>
 <div class="line"><a name="l01876"></a><span class="lineno"> 1876</span>&#160;        {</div>
 <div class="line"><a name="l01877"></a><span class="lineno"> 1877</span>&#160; </div>
-<div class="line"><a name="l01878"></a><span class="lineno"> 1878</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
+<div class="line"><a name="l01878"></a><span class="lineno"> 1878</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
 <div class="line"><a name="l01879"></a><span class="lineno"> 1879</span>&#160;                <span class="keywordflow">return</span> 0.0; </div>
 <div class="line"><a name="l01880"></a><span class="lineno"> 1880</span>&#160; </div>
 <div class="line"><a name="l01881"></a><span class="lineno"> 1881</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01882"></a><span class="lineno"> 1882</span>&#160;            {</div>
 <div class="line"><a name="l01883"></a><span class="lineno"> 1883</span>&#160; </div>
-<div class="line"><a name="l01884"></a><span class="lineno"> 1884</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01884"></a><span class="lineno"> 1884</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01885"></a><span class="lineno"> 1885</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01886"></a><span class="lineno"> 1886</span>&#160; </div>
 <div class="line"><a name="l01887"></a><span class="lineno"> 1887</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off) == 0u) &amp;&amp; (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, off) == 1u))</div>
@@ -1879,13 +1879,13 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01893"></a><span class="lineno"> 1893</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l01894"></a><span class="lineno"> 1894</span>&#160;        {</div>
 <div class="line"><a name="l01895"></a><span class="lineno"> 1895</span>&#160; </div>
-<div class="line"><a name="l01896"></a><span class="lineno"> 1896</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
+<div class="line"><a name="l01896"></a><span class="lineno"> 1896</span>&#160;            <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 0u)</div>
 <div class="line"><a name="l01897"></a><span class="lineno"> 1897</span>&#160;                <span class="keywordflow">return</span> 0.0; </div>
 <div class="line"><a name="l01898"></a><span class="lineno"> 1898</span>&#160; </div>
 <div class="line"><a name="l01899"></a><span class="lineno"> 1899</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01900"></a><span class="lineno"> 1900</span>&#160;            {</div>
 <div class="line"><a name="l01901"></a><span class="lineno"> 1901</span>&#160; </div>
-<div class="line"><a name="l01902"></a><span class="lineno"> 1902</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01902"></a><span class="lineno"> 1902</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01903"></a><span class="lineno"> 1903</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01904"></a><span class="lineno"> 1904</span>&#160; </div>
 <div class="line"><a name="l01905"></a><span class="lineno"> 1905</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off) == 1u) &amp;&amp; (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, off) == 1u))</div>
@@ -1907,7 +1907,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01921"></a><span class="lineno"> 1921</span>&#160;        <a class="code" href="group__counting.html#ga81c4979894537f31d3ecc06c5f6dd504">PHYLO_CHECK_MISSING</a>();</div>
 <div class="line"><a name="l01922"></a><span class="lineno"> 1922</span>&#160;        </div>
 <div class="line"><a name="l01923"></a><span class="lineno"> 1923</span>&#160;        <span class="keywordtype">double</span> n = <span class="keyword">static_cast&lt;</span> <span class="keywordtype">double</span> <span class="keyword">&gt;</span>(Array.ncol());</div>
-<div class="line"><a name="l01924"></a><span class="lineno"> 1924</span>&#160;        <span class="keywordflow">if</span> (!Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u]] &amp;&amp; !Array.D_ptr()-&gt;states[<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u]])</div>
+<div class="line"><a name="l01924"></a><span class="lineno"> 1924</span>&#160;        <span class="keywordflow">if</span> (!Array.D_ptr()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u]] &amp;&amp; !Array.D_ptr()-&gt;states[<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u]])</div>
 <div class="line"><a name="l01925"></a><span class="lineno"> 1925</span>&#160;            <span class="keywordflow">return</span> n * (n - 1.0) / 2.0;</div>
 <div class="line"><a name="l01926"></a><span class="lineno"> 1926</span>&#160; </div>
 <div class="line"><a name="l01927"></a><span class="lineno"> 1927</span>&#160;        <span class="keywordflow">return</span> 0.0;</div>
@@ -1941,20 +1941,20 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01960"></a><span class="lineno"> 1960</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01961"></a><span class="lineno"> 1961</span>&#160; </div>
 <div class="line"><a name="l01962"></a><span class="lineno"> 1962</span>&#160;        <span class="comment">// Not in the scope</span></div>
-<div class="line"><a name="l01963"></a><span class="lineno"> 1963</span>&#160;        <span class="keyword">auto</span> funA = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[1u];</div>
-<div class="line"><a name="l01964"></a><span class="lineno"> 1964</span>&#160;        <span class="keyword">auto</span> funB = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>[2u];</div>
+<div class="line"><a name="l01963"></a><span class="lineno"> 1963</span>&#160;        <span class="keyword">auto</span> funA = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[1u];</div>
+<div class="line"><a name="l01964"></a><span class="lineno"> 1964</span>&#160;        <span class="keyword">auto</span> funB = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>[2u];</div>
 <div class="line"><a name="l01965"></a><span class="lineno"> 1965</span>&#160;        <span class="keywordflow">if</span> ((funA != <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) &amp;&amp; (funB != <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>))</div>
 <div class="line"><a name="l01966"></a><span class="lineno"> 1966</span>&#160;            <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l01967"></a><span class="lineno"> 1967</span>&#160; </div>
 <div class="line"><a name="l01968"></a><span class="lineno"> 1968</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = (funA == <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>) ? funB : funA;</div>
 <div class="line"><a name="l01969"></a><span class="lineno"> 1969</span>&#160; </div>
 <div class="line"><a name="l01970"></a><span class="lineno"> 1970</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 0.0;</div>
-<div class="line"><a name="l01971"></a><span class="lineno"> 1971</span>&#160;        <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1)</div>
+<div class="line"><a name="l01971"></a><span class="lineno"> 1971</span>&#160;        <span class="keywordflow">if</span> (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) == 1)</div>
 <div class="line"><a name="l01972"></a><span class="lineno"> 1972</span>&#160;        {</div>
 <div class="line"><a name="l01973"></a><span class="lineno"> 1973</span>&#160; </div>
 <div class="line"><a name="l01974"></a><span class="lineno"> 1974</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01975"></a><span class="lineno"> 1975</span>&#160;            {</div>
-<div class="line"><a name="l01976"></a><span class="lineno"> 1976</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01976"></a><span class="lineno"> 1976</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01977"></a><span class="lineno"> 1977</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01978"></a><span class="lineno"> 1978</span>&#160; </div>
 <div class="line"><a name="l01979"></a><span class="lineno"> 1979</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>,off) == 0u) &amp;&amp; (Array(<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>,off) == 0u))</div>
@@ -1968,7 +1968,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l01987"></a><span class="lineno"> 1987</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> off = 0u; off &lt; Array.ncol(); ++off)</div>
 <div class="line"><a name="l01988"></a><span class="lineno"> 1988</span>&#160;            {</div>
 <div class="line"><a name="l01989"></a><span class="lineno"> 1989</span>&#160; </div>
-<div class="line"><a name="l01990"></a><span class="lineno"> 1990</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
+<div class="line"><a name="l01990"></a><span class="lineno"> 1990</span>&#160;                <span class="keywordflow">if</span> (off == <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l01991"></a><span class="lineno"> 1991</span>&#160;                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l01992"></a><span class="lineno"> 1992</span>&#160; </div>
 <div class="line"><a name="l01993"></a><span class="lineno"> 1993</span>&#160;                <span class="keywordflow">if</span> ((Array(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, off) == 1u))</div>
@@ -2033,7 +2033,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l02067"></a><span class="lineno"> 2067</span>&#160;    <a class="code" href="group__counting.html#ga4a7a35cddb61f74a0ec3cb3893cf78b1">PHYLO_RULE_DYN_LAMBDA</a>(tmp_rule)</div>
 <div class="line"><a name="l02068"></a><span class="lineno"> 2068</span>&#160;    {</div>
 <div class="line"><a name="l02069"></a><span class="lineno"> 2069</span>&#160; </div>
-<div class="line"><a name="l02070"></a><span class="lineno"> 2070</span>&#160;        <span class="keywordtype">size_t</span> rule_type = <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.duplication;</div>
+<div class="line"><a name="l02070"></a><span class="lineno"> 2070</span>&#160;        <span class="keywordtype">size_t</span> rule_type = <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.duplication;</div>
 <div class="line"><a name="l02071"></a><span class="lineno"> 2071</span>&#160;        <span class="keywordflow">if</span> (rule_type != <a class="code" href="class_geese.html#a0bbca4599569a83d430236de7609c1d9">Geese::etype_either</a>)</div>
 <div class="line"><a name="l02072"></a><span class="lineno"> 2072</span>&#160;        {</div>
 <div class="line"><a name="l02073"></a><span class="lineno"> 2073</span>&#160; </div>
@@ -2044,9 +2044,9 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l02078"></a><span class="lineno"> 2078</span>&#160;                </div>
 <div class="line"><a name="l02079"></a><span class="lineno"> 2079</span>&#160;        }</div>
 <div class="line"><a name="l02080"></a><span class="lineno"> 2080</span>&#160; </div>
-<div class="line"><a name="l02081"></a><span class="lineno"> 2081</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>() &lt; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.lb)</div>
+<div class="line"><a name="l02081"></a><span class="lineno"> 2081</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>() &lt; <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.lb)</div>
 <div class="line"><a name="l02082"></a><span class="lineno"> 2082</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l02083"></a><span class="lineno"> 2083</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>() &gt; <a class="code" href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a>.ub)</div>
+<div class="line"><a name="l02083"></a><span class="lineno"> 2083</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>() &gt; <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>.ub)</div>
 <div class="line"><a name="l02084"></a><span class="lineno"> 2084</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l02085"></a><span class="lineno"> 2085</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l02086"></a><span class="lineno"> 2086</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -2098,8 +2098,6 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="line"><a name="l02133"></a><span class="lineno"> 2133</span>&#160; </div>
 <div class="line"><a name="l02134"></a><span class="lineno"> 2134</span>&#160; </div>
 <div class="line"><a name="l02135"></a><span class="lineno"> 2135</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="abarray-meat_8hpp_html_a511ae0b1c13f95e5f08f1a0dd3da3d93"><div class="ttname"><a href="barray-meat_8hpp.html#a511ae0b1c13f95e5f08f1a0dd3da3d93">data</a></div><div class="ttdeci">data</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00354">barray-meat.hpp:354</a></div></div>
-<div class="ttc" id="abarray-meat_8hpp_html_abf2d9f657468255c5b9964ea2b6e9e15"><div class="ttname"><a href="barray-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a></div><div class="ttdeci">size_t j</div><div class="ttdef"><b>Definition:</b> <a href="barray-meat_8hpp_source.html#l00414">barray-meat.hpp:414</a></div></div>
 <div class="ttc" id="aclass_geese_html_a0bbca4599569a83d430236de7609c1d9"><div class="ttname"><a href="class_geese.html#a0bbca4599569a83d430236de7609c1d9">Geese::etype_either</a></div><div class="ttdeci">static const size_t etype_either</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00160">geese-bones.hpp:160</a></div></div>
 <div class="ttc" id="aclass_geese_html_aa29209e43a6aa74020f7477eb920e2b0"><div class="ttname"><a href="class_geese.html#aa29209e43a6aa74020f7477eb920e2b0">Geese::etype_duplication</a></div><div class="ttdeci">static const size_t etype_duplication</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00159">geese-bones.hpp:159</a></div></div>
 <div class="ttc" id="aclass_geese_html_ad361c35852cafe14af2858b36da75bc1"><div class="ttname"><a href="class_geese.html#ad361c35852cafe14af2858b36da75bc1">Geese::etype_speciation</a></div><div class="ttdeci">static const size_t etype_speciation</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00158">geese-bones.hpp:158</a></div></div>
@@ -2107,7 +2105,9 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div class="ttc" id="aclass_phylo_counter_data_html"><div class="ttname"><a href="class_phylo_counter_data.html">PhyloCounterData</a></div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00042">geese-types.hpp:42</a></div></div>
 <div class="ttc" id="aclass_phylo_rule_dyn_data_html"><div class="ttname"><a href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a></div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00071">geese-types.hpp:71</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_a5e111f6687f261e4e28bd6528e7f5b48"><div class="ttname"><a href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a></div><div class="ttdeci">return res</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00263">counters-meat.hpp:263</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_a6fc02db1fc3ce220c7c5e2999822ecf7"><div class="ttname"><a href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a></div><div class="ttdeci">Data_Type &amp;&amp;counter_ data(std::move(counter_.data))</div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_a981162f997bbddbdcaf8234da58a6094"><div class="ttname"><a href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a></div><div class="ttdeci">size_t i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:83</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_abf2d9f657468255c5b9964ea2b6e9e15"><div class="ttname"><a href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a></div><div class="ttdeci">size_t size_t j</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:84</a></div></div>
 <div class="ttc" id="ageese-types_8hpp_html_a23d267147d3dde4bbbd4c298f0aed64d"><div class="ttname"><a href="geese-types_8hpp.html#a23d267147d3dde4bbbd4c298f0aed64d">PhyloCounters</a></div><div class="ttdeci">barry::Counters&lt; PhyloArray, PhyloCounterData &gt; PhyloCounters</div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00103">geese-types.hpp:103</a></div></div>
 <div class="ttc" id="ageese-types_8hpp_html_ae66aa4dbb13f90c073bc0d5c3df58d83"><div class="ttname"><a href="geese-types_8hpp.html#ae66aa4dbb13f90c073bc0d5c3df58d83">PhyloSupport</a></div><div class="ttdeci">barry::Support&lt; PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData &gt; PhyloSupport</div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00111">geese-types.hpp:111</a></div></div>
 <div class="ttc" id="agroup__counting_html_ga17277bd554ecacf1bc45165564723722"><div class="ttname"><a href="group__counting.html#ga17277bd554ecacf1bc45165564723722">counter_overall_gains</a></div><div class="ttdeci">void counter_overall_gains(PhyloCounters *counters, size_t duplication=Geese::etype_default)</div><div class="ttdoc">Overall functional gains.</div><div class="ttdef"><b>Definition:</b> <a href="geese_2counters_8hpp_source.html#l00058">counters.hpp:58</a></div></div>
@@ -2149,7 +2149,7 @@ $(document).ready(function(){initNavTree('geese_2counters_8hpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese_2counters_8hpp.html">counters.hpp</a></li>
-    <li class="footer">Generated on Fri Sep 1 2023 17:48:17 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Sep 5 2023 18:49:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

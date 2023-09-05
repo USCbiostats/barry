@@ -26,16 +26,16 @@ void \mbox{\hyperlink{class_power_set_a8eefc9606c6339938a8d9adcd0d7e153}{init\+\
 \item 
 void \mbox{\hyperlink{class_power_set_ad3b707294498105b2cc1a04017cc96d2}{calc}} ()
 \item 
-void \mbox{\hyperlink{class_power_set_af7d11e5c37d3a69b5e526c67632c646c}{reset}} (size\+\_\+t N\+\_\+, size\+\_\+t \mbox{\hyperlink{barraydense-meat_8hpp_a03805ce272b080e69e3ca359e75cfbfa}{M\+\_\+}})
+void \mbox{\hyperlink{class_power_set_af7d11e5c37d3a69b5e526c67632c646c}{reset}} (size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+)
 \end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Construct and destroy a Power\+Set object}\par
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_power_set_a095815ccc44c88e0da73d92c6b5cf5f3}{Power\+Set}} ()
 \item 
-\mbox{\hyperlink{class_power_set_ad25c0d16623800a432a953cd9953c644}{Power\+Set}} (size\+\_\+t N\+\_\+, size\+\_\+t \mbox{\hyperlink{barraydense-meat_8hpp_a03805ce272b080e69e3ca359e75cfbfa}{M\+\_\+}})
+\mbox{\hyperlink{class_power_set_ad25c0d16623800a432a953cd9953c644}{Power\+Set}} (size\+\_\+t N\+\_\+, size\+\_\+t M\+\_\+)
 \item 
-\mbox{\hyperlink{class_power_set_acc20a68ff11aa1891d9a0676ed50808f}{Power\+Set}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&array)
+\mbox{\hyperlink{class_power_set_acc20a68ff11aa1891d9a0676ed50808f}{Power\+Set}} (const Array\+\_\+\+Type \&array)
 \item 
 \mbox{\hyperlink{class_power_set_a89a176c9517e81a066adffad3c46aba5}{$\sim$\+Power\+Set}} ()
 \end{DoxyCompactItemize}
@@ -51,17 +51,17 @@ void \mbox{\hyperlink{class_power_set_a3c9f2ab6184688d9879c6555b4c3e813}{add\+\_
 \begin{Indent}\textbf{ Getter functions}\par
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_power_set_a99cf1aa56e63a16c023bf7057b0b9288}{get\+\_\+data\+\_\+ptr}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+const std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$ \mbox{\hyperlink{class_power_set_a99cf1aa56e63a16c023bf7057b0b9288}{get\+\_\+data\+\_\+ptr}} () const
 \item 
-std\+::vector$<$ Array\+\_\+\+Type $>$ \mbox{\hyperlink{class_power_set_a4de44631d9a7967db4dd791d42166115}{get\+\_\+data}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+std\+::vector$<$ Array\+\_\+\+Type $>$ \mbox{\hyperlink{class_power_set_a4de44631d9a7967db4dd791d42166115}{get\+\_\+data}} () const
 \item 
 std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \mbox{\hyperlink{class_power_set_abed9d58db924366d8a38baf168131fc3}{begin}} ()
 \item 
 std\+::vector$<$ Array\+\_\+\+Type $>$\+::iterator \mbox{\hyperlink{class_power_set_ac734ed684aa314b722a05d423c607a38}{end}} ()
 \item 
-std\+::size\+\_\+t \mbox{\hyperlink{class_power_set_a9a92b7c43517e11f3245a7ae89a578ef}{size}} () \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
+std\+::size\+\_\+t \mbox{\hyperlink{class_power_set_a9a92b7c43517e11f3245a7ae89a578ef}{size}} () const \mbox{\hyperlink{counters-meat_8hpp_ae763aeff9df78ca7be5f904fa4bbdc09}{noexcept}}
 \item 
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \& \mbox{\hyperlink{class_power_set_ab237095aa18a4997a3cec61d64cfe1dc}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} size\+\_\+t \&\mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}}
+const Array\+\_\+\+Type \& \mbox{\hyperlink{class_power_set_ab237095aa18a4997a3cec61d64cfe1dc}{operator\mbox{[}$\,$\mbox{]}}} (const size\+\_\+t \&\mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) const
 \end{DoxyCompactItemize}
 \end{Indent}
 \doxysubsection*{Public Attributes}
@@ -77,7 +77,7 @@ size\+\_\+t \mbox{\hyperlink{class_power_set_a0d23e8e17d30ac0dcb740634bf817ac7}{
 \item 
 size\+\_\+t \mbox{\hyperlink{class_power_set_abfbefec5e1bbda8282ca3fcba2bb4b8e}{M}}
 \item 
-bool \mbox{\hyperlink{class_power_set_a08b6baf1e244e023d997ddaecbc2116f}{rules\+\_\+deleted}} = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}
+bool \mbox{\hyperlink{class_power_set_a08b6baf1e244e023d997ddaecbc2116f}{rules\+\_\+deleted}} = false
 \item 
 std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_power_set_a1ccab9487dde1f4d1961983eb28c0976}{coordinates\+\_\+free}}
 \item 
@@ -136,7 +136,7 @@ Definition at line 38 of file powerset-\/bones.\+hpp.
 \index{PowerSet@{PowerSet}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{PowerSet()}{PowerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type $>$ \\
-\mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, \mbox{\hyperlink{model-meat_8hpp_ab662732874257647dc631846c67da586}{Data\+\_\+\+Rule\+\_\+\+Type}} $>$\+::\mbox{\hyperlink{class_power_set}{Power\+Set}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type \&}]{array }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, \mbox{\hyperlink{model-meat_8hpp_ab662732874257647dc631846c67da586}{Data\+\_\+\+Rule\+\_\+\+Type}} $>$\+::\mbox{\hyperlink{class_power_set}{Power\+Set}} (\begin{DoxyParamCaption}\item[{const Array\+\_\+\+Type \&}]{array }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -227,7 +227,7 @@ Definition at line 67 of file powerset-\/bones.\+hpp.
 \index{get\_data\_ptr@{get\_data\_ptr}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{get\_data\_ptr()}{get\_data\_ptr()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} std\+::vector$<$ Array\+\_\+\+Type $>$$\ast$ \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, \mbox{\hyperlink{model-meat_8hpp_ab662732874257647dc631846c67da586}{Data\+\_\+\+Rule\+\_\+\+Type}} $>$\+::get\+\_\+data\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+const std\+::vector$<$ Array\+\_\+\+Type $>$$\ast$ \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, \mbox{\hyperlink{model-meat_8hpp_ab662732874257647dc631846c67da586}{Data\+\_\+\+Rule\+\_\+\+Type}} $>$\+::get\+\_\+data\+\_\+ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -249,7 +249,7 @@ Definition at line 19 of file powerset-\/meat.\+hpp.
 \index{operator\mbox{[}\mbox{]}@{operator[]}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
-\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} Array\+\_\+\+Type\& \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, \mbox{\hyperlink{model-meat_8hpp_ab662732874257647dc631846c67da586}{Data\+\_\+\+Rule\+\_\+\+Type}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{barraydense-meat_8hpp_a92b303b76a3f942ea819498907d5e83c}{const}} size\+\_\+t \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+const Array\+\_\+\+Type\& \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, \mbox{\hyperlink{model-meat_8hpp_ab662732874257647dc631846c67da586}{Data\+\_\+\+Rule\+\_\+\+Type}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -384,7 +384,7 @@ Definition at line 20 of file powerset-\/bones.\+hpp.
 \index{rules\_deleted@{rules\_deleted}!PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$@{PowerSet$<$ Array\_Type, Data\_Rule\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{rules\_deleted}{rules\_deleted}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type  = BArray$<$$>$, typename Data\+\_\+\+Rule\+\_\+\+Type  = bool$>$ \\
-bool \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, \mbox{\hyperlink{model-meat_8hpp_ab662732874257647dc631846c67da586}{Data\+\_\+\+Rule\+\_\+\+Type}} $>$\+::rules\+\_\+deleted = \mbox{\hyperlink{barraydense-meat_8hpp_ae6c865df784842196d411c1466b01686}{false}}}
+bool \mbox{\hyperlink{class_power_set}{Power\+Set}}$<$ Array\+\_\+\+Type, \mbox{\hyperlink{model-meat_8hpp_ab662732874257647dc631846c67da586}{Data\+\_\+\+Rule\+\_\+\+Type}} $>$\+::rules\+\_\+deleted = false}
 
 
 
