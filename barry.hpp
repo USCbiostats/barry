@@ -1423,13 +1423,6 @@ class Cell_const;
 #ifndef BARRY_BARRAY_MEAT_HPP
 #define BARRY_BARRAY_MEAT_HPP 
 
-#define BARRAY_TYPE() BArray<Cell_Type, Data_Type>
-
-#define BARRAY_TEMPLATE_ARGS() <typename Cell_Type, typename Data_Type>
-
-#define BARRAY_TEMPLATE(a,b) \
-    template BARRAY_TEMPLATE_ARGS() inline a BARRAY_TYPE()::b
-
 #define ROW(a) this->el_ij[a]
 #define COL(a) this->el_ji[a]
 
@@ -1439,7 +1432,7 @@ Cell<Cell_Type> BArray<Cell_Type,Data_Type>::Cell_default = Cell<Cell_Type>(stat
 
 
 // Edgelist with data
-BARRAY_TEMPLATE(,BArray) (
+template<typename Cell_Type, typename Data_Type> inline BArray<Cell_Type, Data_Type>::BArray (
     size_t N_, size_t M_,
     const std::vector< size_t > & source,
     const std::vector< size_t > & target,
@@ -1481,7 +1474,8 @@ BARRAY_TEMPLATE(,BArray) (
 }
 
 // Edgelist with data
-BARRAY_TEMPLATE(,BArray) (
+template<typename Cell_Type, typename Data_Type>
+inline BArray<Cell_Type, Data_Type>::BArray (
     size_t N_, size_t M_,
     const std::vector< size_t > & source,
     const std::vector< size_t > & target,
@@ -1543,7 +1537,8 @@ BARRAY_TEMPLATE(,BArray) (
   
 }
 
-BARRAY_TEMPLATE(,BArray) (
+template<typename Cell_Type, typename Data_Type>
+inline BArray<Cell_Type, Data_Type>::BArray (
     const BArray<Cell_Type,Data_Type> & Array_,
     bool copy_data
 ) : N(Array_.N), M(Array_.M)
@@ -1591,7 +1586,8 @@ BARRAY_TEMPLATE(,BArray) (
   
 }
 
-BARRAY_TEMPLATE(BARRAY_TYPE() &, operator=) (
+template<typename Cell_Type, typename Data_Type>
+inline BArray<Cell_Type, Data_Type> &  BArray<Cell_Type, Data_Type>:: operator= (
     const BArray<Cell_Type,Data_Type> & Array_
 ) {
   
@@ -1640,8 +1636,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE() &, operator=) (
   
 }
 
-BARRAY_TEMPLATE(,BArray) (
-    BARRAY_TYPE() && x
+template<typename Cell_Type, typename Data_Type> inline BArray<Cell_Type, Data_Type>::BArray (
+    BArray<Cell_Type, Data_Type> && x
   ) noexcept :
   N(0u), M(0u), NCells(0u),
   data(nullptr),
@@ -1682,8 +1678,8 @@ BARRAY_TEMPLATE(,BArray) (
 
 }
 
-BARRAY_TEMPLATE(BARRAY_TYPE() &, operator=) (
-    BARRAY_TYPE() && x
+template<typename Cell_Type, typename Data_Type> inline BArray<Cell_Type, Data_Type> &  BArray<Cell_Type, Data_Type>:: operator= (
+    BArray<Cell_Type, Data_Type> && x
 ) noexcept {
   
     // Clearing
@@ -1731,8 +1727,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE() &, operator=) (
   
 }
 
-BARRAY_TEMPLATE(bool, operator==) (
-    const BARRAY_TYPE() & Array_
+template<typename Cell_Type, typename Data_Type> inline bool  BArray<Cell_Type, Data_Type>:: operator== (
+    const BArray<Cell_Type, Data_Type> & Array_
 ) {
     
     // Dimension and number of cells used
@@ -1749,7 +1745,7 @@ BARRAY_TEMPLATE(bool, operator==) (
     return true;
 }
 
-BARRAY_TEMPLATE(,~BArray) () {
+template<typename Cell_Type, typename Data_Type> inline BArray<Cell_Type, Data_Type>::~BArray () {
     
     if (delete_data && (data != nullptr))
         delete data;
@@ -1757,7 +1753,7 @@ BARRAY_TEMPLATE(,~BArray) () {
     return;
 }
 
-BARRAY_TEMPLATE(void, set_data) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: set_data (
     Data_Type * data_, bool delete_data_
 ) {  
 
@@ -1771,7 +1767,7 @@ BARRAY_TEMPLATE(void, set_data) (
     
 }
 
-BARRAY_TEMPLATE(Data_Type *, D_ptr) ()
+template<typename Cell_Type, typename Data_Type> inline Data_Type *  BArray<Cell_Type, Data_Type>:: D_ptr ()
 {
     return this->data;
 }
@@ -1782,7 +1778,7 @@ inline const Data_Type * BArray<Cell_Type,Data_Type>::D_ptr() const
     return this->data;
 }
 
-BARRAY_TEMPLATE(Data_Type &, D) ()
+template<typename Cell_Type, typename Data_Type> inline Data_Type &  BArray<Cell_Type, Data_Type>:: D ()
 {
     return *this->data;
 }
@@ -1809,7 +1805,7 @@ inline void BArray<Cell_Type,Data_Type>::flush_data()
 
 }
 
-BARRAY_TEMPLATE(void, out_of_range) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: out_of_range (
     size_t i,
     size_t j
 ) const {
@@ -1822,7 +1818,7 @@ BARRAY_TEMPLATE(void, out_of_range) (
 
 }
     
-BARRAY_TEMPLATE(Cell_Type, get_cell) (
+template<typename Cell_Type, typename Data_Type> inline Cell_Type  BArray<Cell_Type, Data_Type>:: get_cell (
     size_t i,
     size_t j,
     bool check_bounds
@@ -1845,7 +1841,7 @@ BARRAY_TEMPLATE(Cell_Type, get_cell) (
     
 }
 
-BARRAY_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
+template<typename Cell_Type, typename Data_Type> inline std::vector< Cell_Type >  BArray<Cell_Type, Data_Type>:: get_row_vec (
     size_t i,
     bool check_bounds
 ) const {
@@ -1862,7 +1858,7 @@ BARRAY_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
     return ans;
 }
 
-BARRAY_TEMPLATE(void, get_row_vec) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: get_row_vec (
     std::vector< Cell_Type > * x,
     size_t i,
     bool check_bounds
@@ -1877,7 +1873,7 @@ BARRAY_TEMPLATE(void, get_row_vec) (
     
 }
 
-BARRAY_TEMPLATE(std::vector< Cell_Type >, get_col_vec) (
+template<typename Cell_Type, typename Data_Type> inline std::vector< Cell_Type >  BArray<Cell_Type, Data_Type>:: get_col_vec (
     size_t i,
     bool check_bounds
 ) const {
@@ -1894,7 +1890,7 @@ BARRAY_TEMPLATE(std::vector< Cell_Type >, get_col_vec) (
 
 }
 
-BARRAY_TEMPLATE(void, get_col_vec) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: get_col_vec (
     std::vector<Cell_Type> * x,
     size_t i,
     bool check_bounds
@@ -1909,7 +1905,7 @@ BARRAY_TEMPLATE(void, get_col_vec) (
     
 }
 
-BARRAY_TEMPLATE(const Row_type< Cell_Type > &, row) (
+template<typename Cell_Type, typename Data_Type> inline const Row_type< Cell_Type > &  BArray<Cell_Type, Data_Type>:: row (
     size_t i,
     bool check_bounds
 ) const {
@@ -1921,7 +1917,7 @@ BARRAY_TEMPLATE(const Row_type< Cell_Type > &, row) (
 
 }
 
-BARRAY_TEMPLATE(const Col_type< Cell_Type > &, col) (
+template<typename Cell_Type, typename Data_Type> inline const Col_type< Cell_Type > &  BArray<Cell_Type, Data_Type>:: col (
     size_t i,
     bool check_bounds
 ) const {
@@ -1933,7 +1929,7 @@ BARRAY_TEMPLATE(const Col_type< Cell_Type > &, col) (
     
 }
 
-BARRAY_TEMPLATE(Entries< Cell_Type >, get_entries) () const {
+template<typename Cell_Type, typename Data_Type> inline Entries< Cell_Type >  BArray<Cell_Type, Data_Type>:: get_entries () const {
     
     Entries<Cell_Type> res(NCells);
     
@@ -1952,7 +1948,7 @@ BARRAY_TEMPLATE(Entries< Cell_Type >, get_entries) () const {
     return res;
 }
 
-BARRAY_TEMPLATE(bool, is_empty) (
+template<typename Cell_Type, typename Data_Type> inline bool  BArray<Cell_Type, Data_Type>:: is_empty (
     size_t i,
     size_t j,
     bool check_bounds
@@ -1974,25 +1970,25 @@ BARRAY_TEMPLATE(bool, is_empty) (
 }
 
 
-BARRAY_TEMPLATE(size_t, nrow) () const noexcept {
+template<typename Cell_Type, typename Data_Type> inline size_t  BArray<Cell_Type, Data_Type>:: nrow () const noexcept {
     return N;
 }
 
 
-BARRAY_TEMPLATE(size_t, ncol) () const noexcept {
+template<typename Cell_Type, typename Data_Type> inline size_t  BArray<Cell_Type, Data_Type>:: ncol () const noexcept {
     return M;
 }
 
 
-BARRAY_TEMPLATE(size_t, nnozero) () const noexcept {
+template<typename Cell_Type, typename Data_Type> inline size_t  BArray<Cell_Type, Data_Type>:: nnozero () const noexcept {
     return NCells;
 }
 
-BARRAY_TEMPLATE(Cell< Cell_Type >, default_val) () const {
+template<typename Cell_Type, typename Data_Type> inline Cell< Cell_Type >  BArray<Cell_Type, Data_Type>:: default_val () const {
     return this->Cell_default;
 }
 
-BARRAY_TEMPLATE(BARRAY_TYPE() &, operator+=) (
+template<typename Cell_Type, typename Data_Type> inline BArray<Cell_Type, Data_Type> &  BArray<Cell_Type, Data_Type>:: operator+= (
     const std::pair<size_t,size_t> & coords
 ) {
     
@@ -2007,7 +2003,7 @@ BARRAY_TEMPLATE(BARRAY_TYPE() &, operator+=) (
     
 }
 
-BARRAY_TEMPLATE(BARRAY_TYPE() &, operator-=) (
+template<typename Cell_Type, typename Data_Type> inline BArray<Cell_Type, Data_Type> &  BArray<Cell_Type, Data_Type>:: operator-= (
     const std::pair<size_t,size_t> & coords
 ) {
     
@@ -2021,8 +2017,8 @@ BARRAY_TEMPLATE(BARRAY_TYPE() &, operator-=) (
     
 }
 
-template BARRAY_TEMPLATE_ARGS()
-inline BArrayCell<Cell_Type,Data_Type> BARRAY_TYPE()::operator()(  
+template<typename Cell_Type, typename Data_Type>
+inline BArrayCell<Cell_Type,Data_Type> BArray<Cell_Type, Data_Type>::operator()(  
     size_t i,
     size_t j,
     bool check_bounds
@@ -2032,8 +2028,8 @@ inline BArrayCell<Cell_Type,Data_Type> BARRAY_TYPE()::operator()(
     
 }
 
-template BARRAY_TEMPLATE_ARGS()
-inline const Cell_Type BARRAY_TYPE()::operator() (  
+template<typename Cell_Type, typename Data_Type>
+inline const Cell_Type BArray<Cell_Type, Data_Type>::operator() (  
     size_t i,
     size_t j,
     bool check_bounds
@@ -2043,7 +2039,7 @@ inline const Cell_Type BARRAY_TYPE()::operator() (
     
 }
 
-BARRAY_TEMPLATE(void, rm_cell) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: rm_cell (
     size_t i,
     size_t j,
     bool check_bounds,
@@ -2078,7 +2074,7 @@ BARRAY_TEMPLATE(void, rm_cell) (
     
 }
 
-BARRAY_TEMPLATE(void, insert_cell) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: insert_cell (
         size_t i,
         size_t j,
         const Cell< Cell_Type> & v,
@@ -2125,7 +2121,7 @@ BARRAY_TEMPLATE(void, insert_cell) (
     
 }
 
-BARRAY_TEMPLATE(void, insert_cell) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: insert_cell (
         size_t i,
         size_t j,
         Cell< Cell_Type> && v,
@@ -2172,7 +2168,7 @@ BARRAY_TEMPLATE(void, insert_cell) (
     
 }
 
-BARRAY_TEMPLATE(void, insert_cell) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: insert_cell (
     size_t i,
     size_t j,
     Cell_Type v,
@@ -2184,7 +2180,7 @@ BARRAY_TEMPLATE(void, insert_cell) (
 
 }
 
-BARRAY_TEMPLATE(void, swap_cells) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: swap_cells (
     size_t i0, size_t j0,
     size_t i1, size_t j1,
     bool check_bounds,
@@ -2287,7 +2283,7 @@ BARRAY_TEMPLATE(void, swap_cells) (
     return;
 }
 
-BARRAY_TEMPLATE(void, toggle_cell) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: toggle_cell (
     size_t i,
     size_t j,
     bool check_bounds,
@@ -2320,7 +2316,7 @@ BARRAY_TEMPLATE(void, toggle_cell) (
     
 }
 
-BARRAY_TEMPLATE(void, swap_rows) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: swap_rows (
     size_t i0,
     size_t i1,
     bool check_bounds
@@ -2366,7 +2362,7 @@ BARRAY_TEMPLATE(void, swap_rows) (
 }
 
 // This swapping is more expensive overall
-BARRAY_TEMPLATE(void, swap_cols) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: swap_cols (
     size_t j0,
     size_t j1,
     bool check_bounds
@@ -2437,7 +2433,7 @@ BARRAY_TEMPLATE(void, swap_cols) (
     return;
 }
 
-BARRAY_TEMPLATE(void, zero_row) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: zero_row (
     size_t i,
     bool check_bounds
 ) {
@@ -2458,7 +2454,7 @@ BARRAY_TEMPLATE(void, zero_row) (
   
 }
 
-BARRAY_TEMPLATE(void, zero_col) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: zero_col (
     size_t j,
     bool check_bounds
 ) {
@@ -2479,7 +2475,7 @@ BARRAY_TEMPLATE(void, zero_col) (
   
 }
 
-BARRAY_TEMPLATE(void, transpose) () {
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: transpose () {
   
     // Start by flipping the switch 
     visited = !visited;
@@ -2540,7 +2536,7 @@ BARRAY_TEMPLATE(void, transpose) () {
 
 }
 
-BARRAY_TEMPLATE(void, clear) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: clear (
     bool hard
 ) {
     
@@ -2565,7 +2561,7 @@ BARRAY_TEMPLATE(void, clear) (
     
 }
 
-BARRAY_TEMPLATE(void, resize) (
+template<typename Cell_Type, typename Data_Type> inline void  BArray<Cell_Type, Data_Type>:: resize (
     size_t N_,
     size_t M_
 ) {
@@ -2596,7 +2592,8 @@ BARRAY_TEMPLATE(void, resize) (
 
 }
 
-BARRAY_TEMPLATE(void, reserve) () {
+template<typename Cell_Type, typename Data_Type>
+inline void  BArray<Cell_Type, Data_Type>:: reserve () {
 #ifdef BARRAY_USE_UNORDERED_MAP
     for (size_t i = 0u; i < N; i++)
         ROW(i).reserve(M);
@@ -2608,7 +2605,8 @@ BARRAY_TEMPLATE(void, reserve) () {
   
 }
 
-BARRAY_TEMPLATE(void, print) (
+template<typename Cell_Type, typename Data_Type>
+inline void  BArray<Cell_Type, Data_Type>:: print (
     const char * fmt,
     ...
 ) const {
@@ -2623,7 +2621,8 @@ BARRAY_TEMPLATE(void, print) (
 
 }
 
-BARRAY_TEMPLATE(void, print_n) (
+template<typename Cell_Type, typename Data_Type>
+inline void  BArray<Cell_Type, Data_Type>:: print_n (
     size_t nrow,
     size_t ncol,
     const char * fmt,
@@ -2679,10 +2678,6 @@ BARRAY_TEMPLATE(void, print_n) (
 
 #undef ROW
 #undef COL
-
-#undef BARRAY_TYPE
-#undef BARRAY_TEMPLATE_ARGS
-#undef BARRAY_TEMPLATE
 
 #endif
 
@@ -3659,13 +3654,6 @@ template<typename Cell_Type, typename Data_Type>
 class BArrayDenseCell;
 
 
-#define BDENSE_TYPE() BArrayDense<Cell_Type, Data_Type>
-
-#define BDENSE_TEMPLATE_ARGS() <typename Cell_Type, typename Data_Type>
-
-#define BDENSE_TEMPLATE(a,b) \
-    template BDENSE_TEMPLATE_ARGS() inline a BDENSE_TYPE()::b
-
 #define ROW(a) this->el_ij[a]
 #define COL(a) this->el_ji[a]
 #define POS(a,b) (b)*N + (a)
@@ -3677,7 +3665,8 @@ Cell_Type BArrayDense<Cell_Type,Data_Type>::Cell_default = static_cast< Cell_Typ
 #define ZERO_CELL static_cast<Cell_Type>(0.0)
 
 // Edgelist with data
-BDENSE_TEMPLATE(,BArrayDense)(
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDense<Cell_Type, Data_Type>::BArrayDense(
     size_t N_,
     size_t M_,
     const std::vector< size_t > & source,
@@ -3735,7 +3724,8 @@ BDENSE_TEMPLATE(,BArrayDense)(
 }
 
 // Edgelist without data
-BDENSE_TEMPLATE(, BArrayDense)(
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDense<Cell_Type, Data_Type>:: BArrayDense(
     size_t N_, size_t M_,
     const std::vector< size_t > & source,
     const std::vector< size_t > & target,
@@ -3790,8 +3780,9 @@ BDENSE_TEMPLATE(, BArrayDense)(
   
 }
 
-BDENSE_TEMPLATE(, BArrayDense)(
-    const BDENSE_TYPE() & Array_,
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDense<Cell_Type, Data_Type>:: BArrayDense(
+    const BArrayDense<Cell_Type, Data_Type> & Array_,
     bool copy_data
 ) : N(Array_.N), M(Array_.M){
   
@@ -3830,8 +3821,9 @@ BDENSE_TEMPLATE(, BArrayDense)(
   
 }
 
-BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=) (
-    const BDENSE_TYPE() & Array_
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDense<Cell_Type,Data_Type> & BArrayDense<Cell_Type, Data_Type>::operator=(
+    const BArrayDense<Cell_Type, Data_Type> & Array_
 ) {
   
     // Clearing
@@ -3876,8 +3868,9 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=) (
   
 }
 
-BDENSE_TEMPLATE(, BArrayDense)(
-    BDENSE_TYPE() && x
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDense<Cell_Type, Data_Type>:: BArrayDense(
+    BArrayDense<Cell_Type, Data_Type> && x
     ) noexcept :
     N(std::move(x.N)), M(std::move(x.M)),
     // NCells(std::move(x.NCells)),
@@ -3893,8 +3886,9 @@ BDENSE_TEMPLATE(, BArrayDense)(
 
 }
 
-BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=)(
-    BDENSE_TYPE() && x
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDense<Cell_Type,Data_Type> & BArrayDense<Cell_Type, Data_Type>::operator=(
+    BArrayDense<Cell_Type, Data_Type> && x
 ) noexcept {
   
     // Clearing
@@ -3936,8 +3930,9 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator=)(
   
 }
 
-BDENSE_TEMPLATE(bool, operator==) (
-    const BDENSE_TYPE() & Array_
+template<typename Cell_Type, typename Data_Type>
+inline bool BArrayDense<Cell_Type, Data_Type>::operator== (
+    const BArrayDense<Cell_Type, Data_Type> & Array_
 ) {
     
     // Dimension and number of cells used
@@ -3954,7 +3949,8 @@ BDENSE_TEMPLATE(bool, operator==) (
     return true;
 }
 
-BDENSE_TEMPLATE(, ~BArrayDense) () {
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDense<Cell_Type, Data_Type>::~BArrayDense () {
     
     if (delete_data && (data != nullptr))
         delete data;
@@ -3962,7 +3958,8 @@ BDENSE_TEMPLATE(, ~BArrayDense) () {
     return;
 }
 
-BDENSE_TEMPLATE(void, set_data) (
+template<typename Cell_Type, typename Data_Type>
+inline void BArrayDense<Cell_Type, Data_Type>::set_data (
     Data_Type * data_,
     bool delete_data_
 ) {  
@@ -3977,23 +3974,28 @@ BDENSE_TEMPLATE(void, set_data) (
     
 }
 
-BDENSE_TEMPLATE(Data_Type *, D_ptr) () {
+template<typename Cell_Type, typename Data_Type>
+inline Data_Type * BArrayDense<Cell_Type, Data_Type>::D_ptr () {
     return this->data;
 }
 
-BDENSE_TEMPLATE(const Data_Type *, D_ptr) () const {
+template<typename Cell_Type, typename Data_Type>
+inline const Data_Type * BArrayDense<Cell_Type, Data_Type>::D_ptr () const {
     return this->data;
 }
 
-BDENSE_TEMPLATE(Data_Type &, D) () {
+template<typename Cell_Type, typename Data_Type>
+ inline Data_Type & BArrayDense<Cell_Type, Data_Type>::D () {
     return *this->data;
 }
 
-BDENSE_TEMPLATE(const Data_Type &, D) () const {
+template<typename Cell_Type, typename Data_Type>
+inline const Data_Type & BArrayDense<Cell_Type, Data_Type>::D () const {
     return *this->data;
 }
 
-BDENSE_TEMPLATE(void, out_of_range) (
+template<typename Cell_Type, typename Data_Type>
+inline void BArrayDense<Cell_Type, Data_Type>::out_of_range (
     size_t i,
     size_t j
 ) const {
@@ -4013,7 +4015,8 @@ BDENSE_TEMPLATE(void, out_of_range) (
 
 }
     
-BDENSE_TEMPLATE(Cell_Type, get_cell) (
+template<typename Cell_Type, typename Data_Type>
+inline Cell_Type BArrayDense<Cell_Type, Data_Type>::get_cell (
     size_t i,
     size_t j,
     bool check_bounds
@@ -4027,7 +4030,8 @@ BDENSE_TEMPLATE(Cell_Type, get_cell) (
     
 }
 
-BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
+template<typename Cell_Type, typename Data_Type>
+inline std::vector< Cell_Type > BArrayDense<Cell_Type, Data_Type>::get_row_vec (
     size_t i,
     bool check_bounds
 ) const {
@@ -4044,7 +4048,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_row_vec) (
 
 }
 
-BDENSE_TEMPLATE(void, get_row_vec) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: get_row_vec (
     std::vector<Cell_Type> * x,
     size_t i,
     bool check_bounds
@@ -4059,7 +4063,7 @@ BDENSE_TEMPLATE(void, get_row_vec) (
     
 }
 
-BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
+template<typename Cell_Type, typename Data_Type> inline std::vector< Cell_Type > BArrayDense<Cell_Type, Data_Type>:: get_col_vec(
     size_t i,
     bool check_bounds
 ) const {
@@ -4076,7 +4080,7 @@ BDENSE_TEMPLATE(std::vector< Cell_Type >, get_col_vec)(
 
 }
 
-BDENSE_TEMPLATE(void, get_col_vec) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: get_col_vec (
     std::vector<Cell_Type> * x,
     size_t i,
     bool check_bounds
@@ -4091,7 +4095,7 @@ BDENSE_TEMPLATE(void, get_col_vec) (
     
 }
 template<typename Cell_Type, typename Data_Type>
-inline const BArrayDenseRow_const<Cell_Type,Data_Type> BDENSE_TYPE()::row(
+inline const BArrayDenseRow_const<Cell_Type,Data_Type> BArrayDense<Cell_Type, Data_Type>::row(
     size_t i,
     bool check_bounds
 ) const {
@@ -4104,7 +4108,7 @@ inline const BArrayDenseRow_const<Cell_Type,Data_Type> BDENSE_TYPE()::row(
 }
 
 template<typename Cell_Type, typename Data_Type>
-inline BArrayDenseRow<Cell_Type,Data_Type> & BDENSE_TYPE()::row(
+inline BArrayDenseRow<Cell_Type,Data_Type> & BArrayDense<Cell_Type, Data_Type>::row(
     size_t i,
     bool check_bounds
 ) {
@@ -4144,7 +4148,7 @@ BArrayDense<Cell_Type,Data_Type>::col(
 
 }
 
-BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
+template<typename Cell_Type, typename Data_Type> inline Entries< Cell_Type > BArrayDense<Cell_Type, Data_Type>:: get_entries() const {
     
     size_t nzero = this->nnozero();
 
@@ -4173,7 +4177,7 @@ BDENSE_TEMPLATE(Entries< Cell_Type >, get_entries)() const {
 
 }
 
-BDENSE_TEMPLATE(bool, is_empty)(
+template<typename Cell_Type, typename Data_Type> inline bool BArrayDense<Cell_Type, Data_Type>:: is_empty(
     size_t i,
     size_t j,
     bool check_bounds
@@ -4186,15 +4190,15 @@ BDENSE_TEMPLATE(bool, is_empty)(
     
 }
 
-BDENSE_TEMPLATE(size_t, nrow)() const noexcept {
+template<typename Cell_Type, typename Data_Type> inline size_t BArrayDense<Cell_Type, Data_Type>:: nrow() const noexcept {
     return N;
 }
 
-BDENSE_TEMPLATE(size_t, ncol)() const noexcept {
+template<typename Cell_Type, typename Data_Type> inline size_t BArrayDense<Cell_Type, Data_Type>:: ncol() const noexcept {
     return M;
 }
 
-BDENSE_TEMPLATE(size_t, nnozero)() const noexcept {
+template<typename Cell_Type, typename Data_Type> inline size_t BArrayDense<Cell_Type, Data_Type>:: nnozero() const noexcept {
 
     size_t nzero = 0u;
     for (auto & v : el)
@@ -4204,11 +4208,13 @@ BDENSE_TEMPLATE(size_t, nnozero)() const noexcept {
     return nzero;
 }
 
-BDENSE_TEMPLATE(Cell< Cell_Type>, default_val)() const {
+template<typename Cell_Type, typename Data_Type>
+inline Cell< Cell_Type> BArrayDense<Cell_Type, Data_Type>::default_val() const {
     return this->Cell_default;
 }
 
-BDENSE_TEMPLATE(BDENSE_TYPE() &, operator+=)(
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDense<Cell_Type,Data_Type> & BArrayDense<Cell_Type, Data_Type>::operator+=(
     const std::pair<size_t,size_t> & coords
 ) {
     
@@ -4226,7 +4232,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator+=)(
     
 }
 
-BDENSE_TEMPLATE(BDENSE_TYPE() &, operator-=)(
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDense<Cell_Type,Data_Type> & BArrayDense<Cell_Type, Data_Type>::operator-=(
     const std::pair<size_t,size_t> & coords
 ) {
     
@@ -4245,8 +4252,8 @@ BDENSE_TEMPLATE(BDENSE_TYPE() &, operator-=)(
     
 }
 
-template BDENSE_TEMPLATE_ARGS()
-inline BArrayDenseCell<Cell_Type,Data_Type> BDENSE_TYPE()::operator()(  
+template<typename Cell_Type, typename Data_Type>
+inline BArrayDenseCell<Cell_Type,Data_Type> BArrayDense<Cell_Type, Data_Type>::operator()(  
     size_t i,
     size_t j,
     bool check_bounds
@@ -4256,8 +4263,8 @@ inline BArrayDenseCell<Cell_Type,Data_Type> BDENSE_TYPE()::operator()(
     
 }
 
-template BDENSE_TEMPLATE_ARGS()
-inline const Cell_Type BDENSE_TYPE()::operator()(  
+template<typename Cell_Type, typename Data_Type>
+inline const Cell_Type BArrayDense<Cell_Type, Data_Type>::operator()(  
     size_t i,
     size_t j,
     bool check_bounds
@@ -4270,7 +4277,8 @@ inline const Cell_Type BDENSE_TYPE()::operator()(
     
 }
 
-BDENSE_TEMPLATE(void, rm_cell) (
+template<typename Cell_Type, typename Data_Type>
+inline void BArrayDense<Cell_Type, Data_Type>::rm_cell (
     size_t i,
     size_t j,
     bool check_bounds,
@@ -4292,7 +4300,8 @@ BDENSE_TEMPLATE(void, rm_cell) (
 
 }
 
-BDENSE_TEMPLATE(void, insert_cell) (
+template<typename Cell_Type, typename Data_Type>
+inline void BArrayDense<Cell_Type, Data_Type>::insert_cell (
     size_t i,
     size_t j,
     const Cell< Cell_Type> & v,
@@ -4328,7 +4337,7 @@ BDENSE_TEMPLATE(void, insert_cell) (
     
 }
 
-BDENSE_TEMPLATE(void, insert_cell)(
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: insert_cell(
     size_t i,
     size_t j,
     Cell_Type v,
@@ -4361,7 +4370,7 @@ BDENSE_TEMPLATE(void, insert_cell)(
 
 }
 
-BDENSE_TEMPLATE(void, swap_cells) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: swap_cells (
         size_t i0, size_t j0,
         size_t i1, size_t j1,
         bool check_bounds,
@@ -4398,7 +4407,7 @@ BDENSE_TEMPLATE(void, swap_cells) (
 
 }
 
-BDENSE_TEMPLATE(void, toggle_cell) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: toggle_cell (
     size_t i,
     size_t j,
     bool check_bounds,
@@ -4417,7 +4426,7 @@ BDENSE_TEMPLATE(void, toggle_cell) (
     
 }
 
-BDENSE_TEMPLATE(void, swap_rows) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: swap_rows (
     size_t i0,
     size_t i1,
     bool check_bounds
@@ -4445,7 +4454,7 @@ BDENSE_TEMPLATE(void, swap_rows) (
 }
 
 // This swapping is more expensive overall
-BDENSE_TEMPLATE(void, swap_cols) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: swap_cols (
     size_t j0,
     size_t j1,
     bool check_bounds
@@ -4472,7 +4481,7 @@ BDENSE_TEMPLATE(void, swap_cols) (
     return;
 }
 
-BDENSE_TEMPLATE(void, zero_row) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: zero_row (
     size_t i,
     bool check_bounds
     ) {
@@ -4491,7 +4500,7 @@ BDENSE_TEMPLATE(void, zero_row) (
   
 }
 
-BDENSE_TEMPLATE(void, zero_col) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: zero_col (
     size_t j,
     bool check_bounds
   ) {
@@ -4510,7 +4519,7 @@ BDENSE_TEMPLATE(void, zero_col) (
   
 }
 
-BDENSE_TEMPLATE(void, transpose) () {
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: transpose () {
   
     // if (NCells == 0u)
     // {
@@ -4538,7 +4547,7 @@ BDENSE_TEMPLATE(void, transpose) () {
 
 }
 
-BDENSE_TEMPLATE(void, clear) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: clear (
     bool hard
 ) {
     
@@ -4552,7 +4561,7 @@ BDENSE_TEMPLATE(void, clear) (
     
 }
 
-BDENSE_TEMPLATE(void, resize) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: resize (
     size_t N_,
     size_t M_
 ) {
@@ -4588,7 +4597,7 @@ BDENSE_TEMPLATE(void, resize) (
 
 }
 
-BDENSE_TEMPLATE(void, reserve) () {
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: reserve () {
 
     el.reserve(N * M);
     el_rowsums.reserve(N);
@@ -4597,7 +4606,7 @@ BDENSE_TEMPLATE(void, reserve) () {
   
 }
 
-BDENSE_TEMPLATE(void, print) (
+template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Type, Data_Type>:: print (
     const char * fmt,
     ...
 ) const
@@ -4631,17 +4640,17 @@ BDENSE_TEMPLATE(void, print) (
     
 }
 
-BDENSE_TEMPLATE(const std::vector< Cell_Type > &, get_data)() const
+template<typename Cell_Type, typename Data_Type> inline const std::vector< Cell_Type > & BArrayDense<Cell_Type, Data_Type>:: get_data() const
 {
     return el;
 }
 
-BDENSE_TEMPLATE(const Cell_Type, rowsum)(size_t i) const
+template<typename Cell_Type, typename Data_Type> inline const Cell_Type BArrayDense<Cell_Type, Data_Type>:: rowsum(size_t i) const
 {
     return el_rowsums[i];
 }
 
-BDENSE_TEMPLATE(const Cell_Type, colsum)(size_t j) const
+template<typename Cell_Type, typename Data_Type> inline const Cell_Type BArrayDense<Cell_Type, Data_Type>:: colsum(size_t j) const
 {
     return el_colsums[j];
 }
@@ -4651,9 +4660,6 @@ BDENSE_TEMPLATE(const Cell_Type, colsum)(size_t j) const
 #undef POS
 #undef POS_N
 
-#undef BDENSE_TYPE
-#undef BDENSE_TEMPLATE_ARGS
-#undef BDENSE_TEMPLATE
 #undef ZERO_CELL
 
 #endif
