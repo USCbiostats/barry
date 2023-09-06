@@ -542,7 +542,11 @@ inline T vec_inner_prod(
     #ifdef __OPENM 
     #pragma omp simd reduction(+:res)
     #else
-    #pragma GCC ivdep
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
     #endif
     for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));
@@ -565,7 +569,11 @@ inline double vec_inner_prod(
     #ifdef __OPENMP
     #pragma omp simd reduction(+:res)
     #else
-    #pragma GCC ivdep
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
     #endif
     for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));
@@ -4716,9 +4724,9 @@ inline void BArrayDenseCell<Cell_Type,Data_Type>::operator=(const Cell_Type & va
 
     #ifdef BARRY_DEBUG
     Cell_Type old      =  dat->el.at(POS(i,j));
-    dat->elat.(POS(i,j))  =  val;
-    dat->el_rowsumsat.(i) += (val - old);
-    dat->el_colsumsat.(j) += (val - old);
+    dat->el.at(POS(i,j))  =  val;
+    dat->el_rowsums.at(i) += (val - old);
+    dat->el_colsums.at(j) += (val - old);
     #else
     Cell_Type old      =  dat->el[POS(i,j)];
     dat->el[POS(i,j)]  =  val;
@@ -4747,6 +4755,9 @@ template<typename Cell_Type,typename Data_Type>
 inline void BArrayDenseCell<Cell_Type,Data_Type>::operator-=(const Cell_Type & val) {
     
     #ifdef BARRY_DEBUG
+    dat->el.at(POS(i,j))  -= val;
+    dat->el_rowsums.at(i) -= val;
+    dat->el_colsums.at(j) -= val;
     #else
     dat->el[POS(i,j)]  -= val;
     dat->el_rowsums[i] -= val;
@@ -7433,7 +7444,11 @@ inline double update_normalizing_constant(
     #ifdef __OPENMP
     #pragma omp simd reduction(+:res) 
     #else
-    #pragma GCC ivdep
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
     #endif
     for (size_t i = 0u; i < n; ++i)
     {
@@ -7487,7 +7502,11 @@ inline double likelihood_(
     #ifdef __OPENMP
     #pragma omp simd reduction(+:numerator)
     #else
-    #pragma GCC ivdep
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
     #endif
     for (size_t j = 0u; j < params.size(); ++j)
         numerator += *(stats_target + j) * params[j];

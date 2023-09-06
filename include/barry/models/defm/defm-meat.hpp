@@ -102,19 +102,44 @@ inline void DEFM::simulate(
 }
 
 inline DEFM::DEFM(
-    const int * id,
-    const int * y,
-    const double * x,
+    int * id,
+    int * y,
+    double * x,
     size_t id_length,
     size_t y_ncol,
     size_t x_ncol,
-    size_t m_order
+    size_t m_order,
+    bool copy_data
 ) {
 
     // Pointers
-    ID = id;
-    Y  = y;
-    X  = x;
+    if (copy_data)
+    {
+
+        ID_shared = std::make_shared< std::vector<int> >(id_length);
+        Y_shared  = std::make_shared< std::vector<int> >(id_length * y_ncol);
+        X_shared  = std::make_shared< std::vector<double> >(id_length * x_ncol);
+
+        for (size_t i = 0u; i < id_length; ++i)
+            ID_shared->at(i) = *(id + i);
+
+        for (size_t i = 0u; i < (id_length * y_ncol); ++i)
+            Y_shared->at(i) = *(y + i);
+
+        for (size_t i = 0u; i < (id_length * x_ncol); ++i)
+            X_shared->at(i) = *(x + i);
+
+        ID = &ID_shared->at(0u);
+        Y  = &Y_shared->at(0u);
+        X  = &X_shared->at(0u);
+
+    } else {
+
+        ID = id;
+        Y  = y;
+        X  = x;
+
+    }
 
     // Overall dimmensions
     ID_length = id_length;

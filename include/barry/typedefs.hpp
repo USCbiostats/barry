@@ -270,7 +270,11 @@ inline T vec_inner_prod(
     #ifdef __OPENM 
     #pragma omp simd reduction(+:res)
     #else
-    #pragma GCC ivdep
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
     #endif
     for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));
@@ -293,7 +297,11 @@ inline double vec_inner_prod(
     #ifdef __OPENMP
     #pragma omp simd reduction(+:res)
     #else
-    #pragma GCC ivdep
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
     #endif
     for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));

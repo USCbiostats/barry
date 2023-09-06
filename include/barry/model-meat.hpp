@@ -19,7 +19,11 @@ inline double update_normalizing_constant(
     #ifdef __OPENMP
     #pragma omp simd reduction(+:res) 
     #else
-    #pragma GCC ivdep
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
     #endif
     for (size_t i = 0u; i < n; ++i)
     {
@@ -73,7 +77,11 @@ inline double likelihood_(
     #ifdef __OPENMP
     #pragma omp simd reduction(+:numerator)
     #else
-    #pragma GCC ivdep
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
     #endif
     for (size_t j = 0u; j < params.size(); ++j)
         numerator += *(stats_target + j) * params[j];

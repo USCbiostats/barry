@@ -11,9 +11,14 @@ private:
      * @brief Model data
      */
     ///@{
-    const int * Y = nullptr;    ///< Outcome variable
-    const int * ID = nullptr;   ///< Individual ids
-    const double * X = nullptr; ///< Covariates
+    int * Y = nullptr;    ///< Outcome variable
+    int * ID = nullptr;   ///< Individual ids
+    double * X = nullptr; ///< Covariates
+
+    // In case we need a copy of the data
+    std::shared_ptr<std::vector< int >> Y_shared;   ///< Outcome variable
+    std::shared_ptr<std::vector< int >> ID_shared;  ///< Individual ids
+    std::shared_ptr<std::vector< double >> X_shared;///< Covariates
     
     size_t N;             ///< Number of agents/individuals
     size_t ID_length;     ///< Length of the vector IDs
@@ -32,17 +37,27 @@ private:
 public:
 
     DEFM(
-        const int * id,
-        const int * y,
-        const double * x,
+        int * id,
+        int * y,
+        double * x,
         size_t id_length,
         size_t y_ncol,
         size_t x_ncol,
-        size_t m_order
+        size_t m_order,
+        bool copy_data = true
     );
 
     // ~DEFM() {
+
+    //     if (n_owners-- == 1)
+    //     {
+    //         delete[] Y;
+    //         delete[] ID;
+    //         delete[] X;
+    //     }
+
     //     DEFMModel::~Model();
+
     // };
 
     DEFMModel & get_model() {
