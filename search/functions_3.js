@@ -4,7 +4,7 @@ var searchData=
   ['d_5fptr_951',['D_ptr',['../class_b_array.html#a278123bc0685719bf72d550e9c7a87e9',1,'BArray::D_ptr()'],['../class_b_array.html#a419059dd3a2fb4ad185c5267b51e0732',1,'BArray::D_ptr() const'],['../class_b_array_dense.html#aaa7ab789f8ec1ae2d38681cb5505d32f',1,'BArrayDense::D_ptr()'],['../class_b_array_dense.html#a0c0ed225bc5c51a954302aba123a8597',1,'BArrayDense::D_ptr() const']]],
   ['data_952',['data',['../counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7',1,'counters-meat.hpp']]],
   ['default_5fval_953',['default_val',['../class_b_array.html#a1e4efac293adb1462c8921a07691fee5',1,'BArray::default_val()'],['../class_b_array_dense.html#a05ebd0ba7834d796b5db3c2a5ee935e6',1,'BArrayDense::default_val()']]],
-  ['defm_954',['DEFM',['../class_d_e_f_m.html#aef1a45afb37071a7a0053efaf97c8368',1,'DEFM']]],
+  ['defm_954',['DEFM',['../class_d_e_f_m.html#a0dcf0086af7f4edd3ee7498b18a99646',1,'DEFM']]],
   ['defm_5fmotif_5fparser_955',['defm_motif_parser',['../formula_8hpp.html#adbc5fa791a6bc568b9c69c479814d48f',1,'formula.hpp']]],
   ['defmcounterdata_956',['DEFMCounterData',['../group__rules-phylo.html#gadd378b812c5aed4989605ee216c0cdb2',1,'DEFMCounterData::DEFMCounterData(const std::vector&lt; size_t &gt; indices_, const std::vector&lt; double &gt; numbers_, const std::vector&lt; bool &gt; logical_, bool is_motif_=true)'],['../group__rules-phylo.html#ga5d370202642dddaad6d211288fb41f4d',1,'DEFMCounterData::DEFMCounterData()']]],
   ['defmdata_957',['DEFMData',['../group__rules-phylo.html#gaa0a9abe59bcd6b7bf7943af55804487d',1,'DEFMData::DEFMData()'],['../group__rules-phylo.html#ga565c76b50a702e1cf86206d625fe512b',1,'DEFMData::DEFMData(DEFMArray *array_, const double *covariates_, size_t obs_start_, size_t X_ncol_, size_t X_nrow_)']]],
