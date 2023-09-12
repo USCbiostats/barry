@@ -327,10 +327,10 @@ public:
      * @return `get_support_fun()` returns the computed support of the model.
      */
     ///@{
-    std::mt19937 *                     get_rengine();
-    PhyloCounters *     get_counters();
-    PhyloModel *        get_model();
-    PhyloSupport *      get_support_fun();
+    std::mt19937 *  get_rengine();
+    PhyloCounters * get_counters();
+    PhyloModel *    get_model();
+    PhyloSupport *  get_support_fun();
     ///@}
     
     /**
@@ -342,7 +342,8 @@ public:
      * @return std::vector< std::vector< bool > > of length `2^P`.
      */
     std::vector< std::vector< bool > > get_states() const;  
-    std::vector< size_t >        get_annotated_nodes() const; ///< Returns the ids of the nodes with at least one annotation
+    std::vector< size_t > get_annotated_nodes() const; ///< Returns the ids of the nodes with at least one annotation
+    std::vector< size_t > get_annotations() const; ///< Returns the annotations of the nodes with at least one annotation
 
 };
 

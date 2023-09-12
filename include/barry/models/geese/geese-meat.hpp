@@ -789,5 +789,33 @@ inline std::vector< size_t > Geese::get_annotated_nodes() const {
 
 }
 
+inline std::vector< size_t > Geese::get_annotations() const {
+    
+        // Makeing space for the annotations
+        std::vector< size_t > ann(this->nfuns() * this->nnodes(), 9u);
+        size_t nrows = this->nnodes();
+        for (auto & n : nodes)
+        {
+    
+            // Getting the location
+            size_t row = n.second.ord;
+
+            // Counting non-9 annotations
+            for (size_t f = 0u; f < nfuns(); ++f)
+            {
+                // If it has one non-9, then add it to the list
+                // and continue to the next node.
+                if (n.second.annotations[f] != 9u) {
+                    ann[f * nrows + row] = n.second.annotations[f];
+                }
+            }
+
+    
+        }
+    
+        return ann;
+    
+}
+
 
 #endif

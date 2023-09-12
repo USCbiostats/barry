@@ -359,7 +359,6 @@ inline std::vector< std::vector<double> > Geese::predict(
         }
 
     }
-
     
     return res;
 
