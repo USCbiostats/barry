@@ -10,7 +10,9 @@
     size_t s      = data.indices[1u]; \
     size_t e      = data.indices[2u]; \
     size_t ctype  = data.indices[3u]; \
-    size_t ego_id = data.indices[4u];
+    size_t ego_id = data.indices[4u]; \
+    if (ctype > 2) \
+        throw std::range_error("Counter type should be 0, 1, or 2.");
 
 // Check whether ego_id is involved in the current cell
 // ctype: Type of counter
@@ -22,7 +24,7 @@
         if (ctype == 1u) { /* Only if perceiver */ \
             if ((i_ != ego_id) && (j_ != ego_id)) return 0.0; \
         } else if (ctype == 2u) { /* Only if not perceiver */ \
-            if ((j_ == ego_id) || (j_ == ego_id)) return 0.0; \
+            if ((i_ == ego_id) || (j_ == ego_id)) return 0.0; \
         } \
     };
 
@@ -356,8 +358,22 @@ inline void counter_css_census01(
         CSS_CHECK_SIZE_INIT()
         double n_dbl = static_cast<double>(data.indices[0u]);
 
+        // Discount in case of the type of counter
+        size_t ctype = data.indices[3u];
+
+        if (ctype == 1u) /* Only perceiver */
+        {
+
+            return (n_dbl - 1.0) * (Array.D().directed ? 2.0 : 1.0);
+
+        } else if (ctype == 2u) /* All but the perceiver */
+        {
+            // We remove the perceiver from the eq.
+            n_dbl -= 1.0;
+        }
+
         // At the beginning is all zero
-        return n_dbl * (n_dbl - 1.0)/2.0;
+        return n_dbl * (n_dbl - 1.0)/ (Array.D().directed ? 1.0 : 2.0);
 
     };
     
