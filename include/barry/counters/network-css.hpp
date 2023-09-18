@@ -364,7 +364,7 @@ inline void counter_css_census01(
         if (ctype == 1u) /* Only perceiver */
         {
 
-            return (n_dbl - 1.0) * (Array.D().directed ? 2.0 : 1.0);
+            return (n_dbl - 1.0); // * (Array.D().directed ? 2.0 : 1.0);
 
         } else if (ctype == 2u) /* All but the perceiver */
         {
@@ -373,7 +373,7 @@ inline void counter_css_census01(
         }
 
         // At the beginning is all zero
-        return n_dbl * (n_dbl - 1.0)/ (Array.D().directed ? 1.0 : 2.0);
+        return n_dbl * (n_dbl - 1.0); // / (Array.D().directed ? 1.0 : 2.0);
 
     };
     
