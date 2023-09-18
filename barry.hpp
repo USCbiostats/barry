@@ -11092,7 +11092,7 @@ inline void counter_css_census01(
         }
 
         // At the beginning is all zero
-        return n_dbl * (n_dbl - 1.0); // / (Array.D().directed ? 1.0 : 2.0);
+        return n_dbl * (n_dbl - 1.0) / 2.0; // / (Array.D().directed ? 1.0 : 2.0);
 
     };
     
