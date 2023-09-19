@@ -87,6 +87,8 @@ public:
 
     std::vector< bool > is_motif();
 
+    bool get_column_major() const noexcept;
+
 };
 
 #endif

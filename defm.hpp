@@ -1303,6 +1303,8 @@ public:
 
     std::vector< bool > is_motif();
 
+    bool get_column_major() const noexcept;
+
 };
 
 #endif
@@ -1438,7 +1440,7 @@ inline DEFM::DEFM(
     size_t m_order,
     bool copy_data,
     bool column_major
-) {
+) : column_major(column_major) {
 
     // Pointers
     if (copy_data)
@@ -1770,6 +1772,11 @@ inline std::vector< bool > DEFM::is_motif()
         res.push_back(counterss->operator[](i).data.is_motif);
 
     return res;
+}
+
+inline bool DEFM::get_column_major() const noexcept
+{
+    return column_major;
 }
 
 #undef DEFM_RANGES
