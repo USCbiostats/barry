@@ -1220,34 +1220,32 @@ inline void rules_dont_become_zero(
 class DEFM : public DEFMModel {
 private:
 
-    // std::shared_ptr< std::mt19937 > rengine = nullptr;
-    // std::shared_ptr< DEFMModel > model = nullptr;
-
     /**
      * @brief Model data
      */
     ///@{
-    int * Y = nullptr;    ///< Outcome variable
-    int * ID = nullptr;   ///< Individual ids
-    double * X = nullptr; ///< Covariates
+    int * Y           = nullptr; ///< Outcome variable
+    int * ID          = nullptr; ///< Individual ids
+    double * X        = nullptr; ///< Covariates
+    bool column_major = true;    ///< Whether the data is column major or not
 
     // In case we need a copy of the data
-    std::shared_ptr<std::vector< int >> Y_shared;   ///< Outcome variable
-    std::shared_ptr<std::vector< int >> ID_shared;  ///< Individual ids
-    std::shared_ptr<std::vector< double >> X_shared;///< Covariates
+    std::shared_ptr<std::vector< int >> Y_shared;    ///< Outcome variable
+    std::shared_ptr<std::vector< int >> ID_shared;   ///< Individual ids
+    std::shared_ptr<std::vector< double >> X_shared; ///< Covariates
     
-    size_t N;             ///< Number of agents/individuals
-    size_t ID_length;     ///< Length of the vector IDs
-    size_t Y_ncol;        ///< Number of columns in the response
-    size_t Y_length;      ///< Length of the vector Y
-    size_t X_ncol;        ///< Number of columns in the features
-    size_t X_length;      ///< Length of the vector X
-    size_t M_order;       ///< Markov order of the model
+    size_t N;         ///< Number of agents/individuals
+    size_t ID_length; ///< Length of the vector IDs
+    size_t Y_ncol;    ///< Number of columns in the response
+    size_t Y_length;  ///< Length of the vector Y
+    size_t X_ncol;    ///< Number of columns in the features
+    size_t X_length;  ///< Length of the vector X
+    size_t M_order;   ///< Markov order of the model
 
-    std::vector< std::string > Y_names;
-    std::vector< std::string > X_names;
-    std::vector< size_t > start_end;
-    std::vector< size_t > model_ord;
+    std::vector< std::string > Y_names; ///< Names of the response variables
+    std::vector< std::string > X_names; ///< Names of the covariates
+    std::vector< size_t > start_end;    ///< Start and end of each observation
+    std::vector< size_t > model_ord;    ///< Order of the model
     ///@}
 
 public:
@@ -1260,21 +1258,9 @@ public:
         size_t y_ncol,
         size_t x_ncol,
         size_t m_order,
-        bool copy_data = true
+        bool copy_data = true,
+        bool column_major = true
     );
-
-    // ~DEFM() {
-
-    //     if (n_owners-- == 1)
-    //     {
-    //         delete[] Y;
-    //         delete[] ID;
-    //         delete[] X;
-    //     }
-
-    //     DEFMModel::~Model();
-
-    // };
 
     DEFMModel & get_model() {
         return *this;
@@ -1450,7 +1436,8 @@ inline DEFM::DEFM(
     size_t y_ncol,
     size_t x_ncol,
     size_t m_order,
-    bool copy_data
+    bool copy_data,
+    bool column_major
 ) {
 
     // Pointers
@@ -1557,6 +1544,24 @@ inline void DEFM::init()
     // Adding the rule
     rules_markov_fixed(this->get_rules(), M_order);
 
+    // Element access will be contingent on the column major
+    std::function<size_t(size_t,size_t,size_t,size_t)> element_access;
+
+    if (this->column_major)
+    {
+
+        element_access = [](size_t i, size_t j, size_t nrow, size_t) -> size_t {
+            return i + j * nrow;
+        };
+
+    } else {
+
+        element_access = [](size_t i, size_t j, size_t, size_t ncol) -> size_t {
+            return j + i * ncol;
+        };
+
+    }
+
     // Creating the arrays
     for (size_t i = 0u; i < N; ++i)
     {
@@ -1581,7 +1586,13 @@ inline void DEFM::init()
             // Filling-out the array
             for (size_t k = 0u; k < Y_ncol; ++k)
                 for (size_t o = 0u; o < (M_order + 1u); ++o)
-                    array(o, k) = *(Y + k * ID_length + start_i + n_proc + o);
+                    // array(o, k) = *(Y + k * ID_length + start_i + n_proc + o);
+                    array(o, k) = *(Y + element_access(
+                        start_i + n_proc + o, // Row
+                        k,                    // Column
+                        ID_length,            // N_row
+                        Y_ncol                // N_col
+                        ));
 
             // Adding to the model
             model_ord.push_back( this->add_array(array, true) );

@@ -4,34 +4,32 @@
 class DEFM : public DEFMModel {
 private:
 
-    // std::shared_ptr< std::mt19937 > rengine = nullptr;
-    // std::shared_ptr< DEFMModel > model = nullptr;
-
     /**
      * @brief Model data
      */
     ///@{
-    int * Y = nullptr;    ///< Outcome variable
-    int * ID = nullptr;   ///< Individual ids
-    double * X = nullptr; ///< Covariates
+    int * Y           = nullptr; ///< Outcome variable
+    int * ID          = nullptr; ///< Individual ids
+    double * X        = nullptr; ///< Covariates
+    bool column_major = true;    ///< Whether the data is column major or not
 
     // In case we need a copy of the data
-    std::shared_ptr<std::vector< int >> Y_shared;   ///< Outcome variable
-    std::shared_ptr<std::vector< int >> ID_shared;  ///< Individual ids
-    std::shared_ptr<std::vector< double >> X_shared;///< Covariates
+    std::shared_ptr<std::vector< int >> Y_shared;    ///< Outcome variable
+    std::shared_ptr<std::vector< int >> ID_shared;   ///< Individual ids
+    std::shared_ptr<std::vector< double >> X_shared; ///< Covariates
     
-    size_t N;             ///< Number of agents/individuals
-    size_t ID_length;     ///< Length of the vector IDs
-    size_t Y_ncol;        ///< Number of columns in the response
-    size_t Y_length;      ///< Length of the vector Y
-    size_t X_ncol;        ///< Number of columns in the features
-    size_t X_length;      ///< Length of the vector X
-    size_t M_order;       ///< Markov order of the model
+    size_t N;         ///< Number of agents/individuals
+    size_t ID_length; ///< Length of the vector IDs
+    size_t Y_ncol;    ///< Number of columns in the response
+    size_t Y_length;  ///< Length of the vector Y
+    size_t X_ncol;    ///< Number of columns in the features
+    size_t X_length;  ///< Length of the vector X
+    size_t M_order;   ///< Markov order of the model
 
-    std::vector< std::string > Y_names;
-    std::vector< std::string > X_names;
-    std::vector< size_t > start_end;
-    std::vector< size_t > model_ord;
+    std::vector< std::string > Y_names; ///< Names of the response variables
+    std::vector< std::string > X_names; ///< Names of the covariates
+    std::vector< size_t > start_end;    ///< Start and end of each observation
+    std::vector< size_t > model_ord;    ///< Order of the model
     ///@}
 
 public:
@@ -44,21 +42,9 @@ public:
         size_t y_ncol,
         size_t x_ncol,
         size_t m_order,
-        bool copy_data = true
+        bool copy_data = true,
+        bool column_major = true
     );
-
-    // ~DEFM() {
-
-    //     if (n_owners-- == 1)
-    //     {
-    //         delete[] Y;
-    //         delete[] ID;
-    //         delete[] X;
-    //     }
-
-    //     DEFMModel::~Model();
-
-    // };
 
     DEFMModel & get_model() {
         return *this;

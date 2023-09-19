@@ -109,7 +109,8 @@ inline DEFM::DEFM(
     size_t y_ncol,
     size_t x_ncol,
     size_t m_order,
-    bool copy_data
+    bool copy_data,
+    bool column_major
 ) {
 
     // Pointers
@@ -216,6 +217,24 @@ inline void DEFM::init()
     // Adding the rule
     rules_markov_fixed(this->get_rules(), M_order);
 
+    // Element access will be contingent on the column major
+    std::function<size_t(size_t,size_t,size_t,size_t)> element_access;
+
+    if (this->column_major)
+    {
+
+        element_access = [](size_t i, size_t j, size_t nrow, size_t) -> size_t {
+            return i + j * nrow;
+        };
+
+    } else {
+
+        element_access = [](size_t i, size_t j, size_t, size_t ncol) -> size_t {
+            return j + i * ncol;
+        };
+
+    }
+
     // Creating the arrays
     for (size_t i = 0u; i < N; ++i)
     {
@@ -240,7 +259,13 @@ inline void DEFM::init()
             // Filling-out the array
             for (size_t k = 0u; k < Y_ncol; ++k)
                 for (size_t o = 0u; o < (M_order + 1u); ++o)
-                    array(o, k) = *(Y + k * ID_length + start_i + n_proc + o);
+                    // array(o, k) = *(Y + k * ID_length + start_i + n_proc + o);
+                    array(o, k) = *(Y + element_access(
+                        start_i + n_proc + o, // Row
+                        k,                    // Column
+                        ID_length,            // N_row
+                        Y_ncol                // N_col
+                        ));
 
             // Adding to the model
             model_ord.push_back( this->add_array(array, true) );
