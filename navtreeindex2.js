@@ -1,6 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"class_freq_table.html#a7ed627807a61c484243636137609abcd":[2,0,26,1],
 "class_freq_table.html#aaedc785570175889a224d6ebaab6ffa7":[2,0,26,6],
 "class_freq_table.html#abc101211fdc1ce95e9e5c9fa1560b698":[2,0,26,7],
 "class_freq_table.html#acd7b10dbea3f6aebd9cb029ddf13c603":[2,0,26,2],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "class_rules.html#aa76d96c2316bc4a2a26bf4ec7b8d9463":[2,0,38,2],
 "class_rules.html#aa78e9abf82ed8a0e4320d570191c8968":[2,0,38,0],
 "class_rules.html#aabb924e02b27fb3e7768822c9b7bd629":[2,0,38,4],
-"class_rules.html#ab23bf6958f7bf6a869ef51122d82a624":[2,0,38,8]
+"class_rules.html#ab23bf6958f7bf6a869ef51122d82a624":[2,0,38,8],
+"class_rules.html#ab2d0135fc9db635459e42e4337b7dc03":[2,0,38,6]
 };

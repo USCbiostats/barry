@@ -15,7 +15,6 @@ var class_d_e_f_m =
     [ "get_Y_names", "class_d_e_f_m.html#ac2838f23edfbd6208cba474cc1c1bdac", null ],
     [ "init", "class_d_e_f_m.html#a3a49994e3ecff9a0bfde8924900f98c8", null ],
     [ "is_motif", "class_d_e_f_m.html#a00d1143d98595f9eeac7d7d5f631b0ac", null ],
-    [ "likelihood", "class_d_e_f_m.html#a5f2a5cb3137ca8ef5b2c1db97d604b54", null ],
     [ "logodds", "class_d_e_f_m.html#abf519be0cc1245fbaf71842ca5a53519", null ],
     [ "motif_census", "class_d_e_f_m.html#afff59ccea4acd2d2bfdb1ad9f3dd89cd", null ],
     [ "print", "class_d_e_f_m.html#aca46a3cd14e79acfdf0dae42b008a293", null ],
