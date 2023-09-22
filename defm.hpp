@@ -1268,7 +1268,6 @@ public:
 
     void init();
 
-    double likelihood(std::vector< double > & par, bool as_log = false);
     void simulate(std::vector< double > par, int * y_out);
 
     size_t get_n_y() const;
