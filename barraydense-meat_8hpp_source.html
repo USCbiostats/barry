@@ -860,8 +860,8 @@ $(document).ready(function(){initNavTree('barraydense-meat_8hpp_source.html','')
 <div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;    Cell_Type val0 = el[<a class="code" href="barraydense-meat_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9">POS</a>(i0,j0)];</div>
 <div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    Cell_Type val1 = el[<a class="code" href="barraydense-meat_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9">POS</a>(i1,j1)];</div>
 <div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160; </div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    <a class="code" href="support-meat_8hpp.html#a374b4083f6045b49bcde35a8da4d5e80">rm_cell</a>(i0, j0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    <a class="code" href="support-meat_8hpp.html#a374b4083f6045b49bcde35a8da4d5e80">rm_cell</a>(i1, j1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;    rm_cell(i0, j0, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    rm_cell(i1, j1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;    </div>
 <div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;    <span class="comment">// Inserting the cells by reference, these will be deleted afterwards</span></div>
 <div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;    <a class="code" href="model-meat_8hpp.html#a4caf204372c3c29af6d87e56708bdba1">insert_cell</a>(i0, j0, val1, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
@@ -884,7 +884,7 @@ $(document).ready(function(){initNavTree('barraydense-meat_8hpp_source.html','')
 <div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;    <span class="keywordflow">if</span> (el[<a class="code" href="barraydense-meat_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9">POS</a>(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>,<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)] == <a class="code" href="barraydense-meat_8hpp.html#a51b85d6bd8e8ab46aa8578ad029fbc54">ZERO_CELL</a>)</div>
 <div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;        <a class="code" href="model-meat_8hpp.html#a4caf204372c3c29af6d87e56708bdba1">insert_cell</a>(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>,<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>,1,<span class="keyword">false</span>,<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;        <a class="code" href="support-meat_8hpp.html#a374b4083f6045b49bcde35a8da4d5e80">rm_cell</a>(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>,<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>,<span class="keyword">false</span>,<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;        rm_cell(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>,<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>,<span class="keyword">false</span>,<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    </div>
 <div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    </div>
@@ -958,7 +958,7 @@ $(document).ready(function(){initNavTree('barraydense-meat_8hpp_source.html','')
 <div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160; </div>
 <div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;    <span class="comment">// Else, remove all elements</span></div>
 <div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> col = 0u; col &lt; M; col++) </div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;        <a class="code" href="support-meat_8hpp.html#a374b4083f6045b49bcde35a8da4d5e80">rm_cell</a>(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, col, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;        rm_cell(<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, col, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;    </div>
 <div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;  </div>
@@ -977,7 +977,7 @@ $(document).ready(function(){initNavTree('barraydense-meat_8hpp_source.html','')
 <div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    </div>
 <div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    <span class="comment">// Else, remove all elements</span></div>
 <div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> row = 0u; row &lt; N; row++) </div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        <a class="code" href="support-meat_8hpp.html#a374b4083f6045b49bcde35a8da4d5e80">rm_cell</a>(row, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        rm_cell(row, <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;    </div>
 <div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;  </div>
@@ -1192,14 +1192,13 @@ $(document).ready(function(){initNavTree('barraydense-meat_8hpp_source.html','')
 <div class="ttc" id="acounters-meat_8hpp_html_ae763aeff9df78ca7be5f904fa4bbdc09"><div class="ttname"><a href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div><div class="ttdeci">Data_Type &amp;&amp;counter_ noexcept</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00026">counters-meat.hpp:27</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a4caf204372c3c29af6d87e56708bdba1"><div class="ttname"><a href="model-meat_8hpp.html#a4caf204372c3c29af6d87e56708bdba1">insert_cell</a></div><div class="ttdeci">A insert_cell(i, j, A.default_val(), true, false)</div></div>
 <div class="ttc" id="anamespace_e_x_i_s_t_s_html_a256db431572e1e7f26f8dfa6c9cae9bd"><div class="ttname"><a href="namespace_e_x_i_s_t_s.html#a256db431572e1e7f26f8dfa6c9cae9bd">EXISTS::BOTH</a></div><div class="ttdeci">const int BOTH</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00038">typedefs.hpp:38</a></div></div>
-<div class="ttc" id="asupport-meat_8hpp_html_a374b4083f6045b49bcde35a8da4d5e80"><div class="ttname"><a href="support-meat_8hpp.html#a374b4083f6045b49bcde35a8da4d5e80">rm_cell</a></div><div class="ttdeci">EmptyArray rm_cell(coord_i, coord_j, false, false)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barraydense-meat_8hpp.html">barraydense-meat.hpp</a></li>
-    <li class="footer">Generated on Fri Sep 22 2023 22:26:42 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Sep 25 2023 17:57:09 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
