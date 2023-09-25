@@ -91,6 +91,13 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_sparse(
         );
 
     data.push_back(EmptyArray);
+
+    #ifdef BARRY_USER_INTERRUPT
+    if (data.size() % 1000u == 0u)
+    {
+        #BARRY_USER_INTERRUPT
+    }
+    #endif
     
     // Again, we only pass it to the next level iff the next level is not
     // passed the last step.

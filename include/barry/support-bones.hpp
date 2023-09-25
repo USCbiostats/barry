@@ -63,6 +63,8 @@ private:
     Rules<Array_Type,Data_Rule_Type> *       rules;      ///< Vector of static rules (cells to iterate).
     Rules<Array_Type,Data_Rule_Dyn_Type> *   rules_dyn;  ///< Vector of dynamic rules (to include/exclude a realizaton).
     
+    size_t iter_counter = 0u; ///< Number of iterations (internal use only).
+
 public:
     
     size_t N, M;

@@ -905,16 +905,16 @@ inline void counter_transition(
     #else
         #define UNI_SUB(a) \
             (\
-                ((a) == 0) ? "\u2080" : (\
-                ((a) == 1) ? "\u2081" : (\
-                ((a) == 2) ? "\u2082" : (\
-                ((a) == 3) ? "\u2083" : (\
-                ((a) == 4) ? "\u2084" : (\
-                ((a) == 5) ? "\u2085" : (\
-                ((a) == 6) ? "\u2086" : (\
-                ((a) == 7) ? "\u2087" : (\
-                ((a) == 8) ? "\u2088" : \
-                "\u2089"))))))))\
+                ((a) == 0) ? u8"\u2080" : (\
+                ((a) == 1) ? u8"\u2081" : (\
+                ((a) == 2) ? u8"\u2082" : (\
+                ((a) == 3) ? u8"\u2083" : (\
+                ((a) == 4) ? u8"\u2084" : (\
+                ((a) == 5) ? u8"\u2085" : (\
+                ((a) == 6) ? u8"\u2086" : (\
+                ((a) == 7) ? u8"\u2087" : (\
+                ((a) == 8) ? u8"\u2088" : \
+                u8"\u2089"))))))))\
             )
     #endif
 
@@ -944,7 +944,7 @@ inline void counter_transition(
             #ifdef BARRY_WITH_LATEX
                 name += (motif(i,j) < 0 ? "^-" : "^+");
             #else
-                name += (motif(i,j) < 0 ? "\u207B" : "\u207A");
+                name += (motif(i,j) < 0 ? u8"\u207B" : u8"\u207A");
             #endif
 
         }
@@ -986,7 +986,7 @@ inline void counter_transition(
         #ifdef BARRY_WITH_LATEX
         name += (motif(m_order, j) < 0 ? "^-" : "^+" );
         #else
-        name += (motif(m_order, j) < 0 ? "\u207B" : "\u207A" );
+        name += (motif(m_order, j) < 0 ? u8"\u207B" : u8"\u207A" );
         #endif
 
 

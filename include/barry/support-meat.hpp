@@ -1,19 +1,14 @@
 #ifndef BARRY_SUPPORT_MEAT
 #define BARRY_SUPPORT_MEAT_HPP 1
 
-#define SUPPORT_TEMPLATE_ARGS() <typename Array_Type, typename \
-    Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-
-#define SUPPORT_TYPE() Support<Array_Type,Data_Counter_Type,Data_Rule_Type,\
-    Data_Rule_Dyn_Type>
-
-#define SUPPORT_TEMPLATE(a,b) template SUPPORT_TEMPLATE_ARGS() \
-    inline a SUPPORT_TYPE()::b
-
-SUPPORT_TEMPLATE(void, init_support)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::init_support(
     std::vector< Array_Type > * array_bank,
     std::vector< double > * stats_bank
 ) {
+
+    // Resetting the counter
+    this->iter_counter = 0u;
     
     // Computing the locations
     coordinates_free.clear();
@@ -109,15 +104,18 @@ SUPPORT_TEMPLATE(void, init_support)(
         std::copy(current_stats.begin(), current_stats.end(), std::back_inserter(*stats_bank));
 
     return;
+
 }
 
-SUPPORT_TEMPLATE(void, reset_array)() {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::reset_array() {
     
     data.clear();
     
 }
 
-SUPPORT_TEMPLATE(void, reset_array)(const Array_Type & Array_) {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::reset_array(const Array_Type & Array_) {
     
     data.clear();
     EmptyArray = Array_;
@@ -126,12 +124,20 @@ SUPPORT_TEMPLATE(void, reset_array)(const Array_Type & Array_) {
     
 }
 
-SUPPORT_TEMPLATE(void, calc_backend_sparse)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::calc_backend_sparse(
         size_t pos,
         std::vector< Array_Type > * array_bank,
         std::vector< double > * stats_bank
     ) {
     
+    #ifdef BARRY_USER_INTERRUPT
+    if (++iter_counter % 1000u == 0u)
+    {
+        #BARRY_USER_INTERRUPT
+    }
+    #endif
+
     // Did we reached the end??
     if (pos >= coordiantes_n_free)
         return;
@@ -250,11 +256,19 @@ SUPPORT_TEMPLATE(void, calc_backend_sparse)(
     
 }
 
-SUPPORT_TEMPLATE(void, calc_backend_dense)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::calc_backend_dense(
         size_t pos,
         std::vector< Array_Type > * array_bank,
         std::vector< double > * stats_bank
     ) {
+
+    #ifdef BARRY_USER_INTERRUPT
+    if (++iter_counter % 1000u == 0u)
+    {
+        #BARRY_USER_INTERRUPT
+    }
+    #endif
     
     // Did we reached the end??
     if (pos >= coordiantes_n_free)
@@ -364,7 +378,8 @@ SUPPORT_TEMPLATE(void, calc_backend_dense)(
     
 }
 
-SUPPORT_TEMPLATE(void, calc)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::calc(
         std::vector< Array_Type > * array_bank,
         std::vector< double > * stats_bank,
         size_t max_num_elements_
@@ -397,7 +412,8 @@ SUPPORT_TEMPLATE(void, calc)(
     
 }
 
-SUPPORT_TEMPLATE(void, add_counter)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::add_counter(
         Counter<Array_Type,Data_Counter_Type> f_
 ) {
     
@@ -406,7 +422,8 @@ SUPPORT_TEMPLATE(void, add_counter)(
     
 }
 
-SUPPORT_TEMPLATE(void, set_counters)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::set_counters(
         Counters<Array_Type,Data_Counter_Type> * counters_
 ) {
     
@@ -422,7 +439,8 @@ SUPPORT_TEMPLATE(void, set_counters)(
 
 /////////////////////////////
 
-SUPPORT_TEMPLATE(void, add_rule)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::add_rule(
         Rule<Array_Type, Data_Rule_Type> * f_
 ) {
     
@@ -431,7 +449,8 @@ SUPPORT_TEMPLATE(void, add_rule)(
     
 }
 
-SUPPORT_TEMPLATE(void, add_rule)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::add_rule(
         Rule<Array_Type,Data_Rule_Type> f_
 ) {
     
@@ -440,7 +459,8 @@ SUPPORT_TEMPLATE(void, add_rule)(
     
 }
 
-SUPPORT_TEMPLATE(void, set_rules)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::set_rules(
         Rules<Array_Type,Data_Rule_Type> * rules_
 ) {
     
@@ -454,7 +474,8 @@ SUPPORT_TEMPLATE(void, set_rules)(
     
 }
 
-SUPPORT_TEMPLATE(void, add_rule_dyn)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::add_rule_dyn(
         Rule<Array_Type, Data_Rule_Dyn_Type> * f_
 ) {
     
@@ -463,7 +484,8 @@ SUPPORT_TEMPLATE(void, add_rule_dyn)(
     
 }
 
-SUPPORT_TEMPLATE(void, add_rule_dyn)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::add_rule_dyn(
         Rule<Array_Type,Data_Rule_Dyn_Type> f_
 ) {
     
@@ -472,7 +494,8 @@ SUPPORT_TEMPLATE(void, add_rule_dyn)(
     
 }
 
-SUPPORT_TEMPLATE(void, set_rules_dyn)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::set_rules_dyn(
         Rules<Array_Type,Data_Rule_Dyn_Type> * rules_
 ) {
     
@@ -486,7 +509,8 @@ SUPPORT_TEMPLATE(void, set_rules_dyn)(
     
 }
 
-SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline bool Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::eval_rules_dyn(
     const std::vector< double > & counts,
     const size_t & i,
     const size_t & j
@@ -506,7 +530,8 @@ SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
 
 }
 
-// SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
+// template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+//inline bool Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::eval_rules_dyn(
 //     const double * counts,
 //     const size_t & i,
 //     const size_t & j
@@ -528,23 +553,27 @@ SUPPORT_TEMPLATE(bool, eval_rules_dyn)(
 
 //////////////////////////
 
-SUPPORT_TEMPLATE(std::vector< double >, get_counts)() const {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline std::vector< double > Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_counts() const {
     
     return data.get_data(); 
     
 }
 
-// SUPPORT_TEMPLATE(const MapVec_type<> *, get_counts_ptr)() const {
+// template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+// inline const MapVec_type<> * Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_counts_ptr() const {
     
 //     return data.get_data_ptr();
       
 // }
 
-SUPPORT_TEMPLATE(std::vector< double > *, get_current_stats)() {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline std::vector< double > * Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_current_stats() {
     return &this->current_stats;
 }
 
-SUPPORT_TEMPLATE(void, print)() const {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::print() const {
 
     // Starting from the name of the stats
     printf_barry("Position of variables:\n");
@@ -555,27 +584,25 @@ SUPPORT_TEMPLATE(void, print)() const {
     data.print();
 }
 
-SUPPORT_TEMPLATE(const FreqTable<double> &, get_data)() const {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline const FreqTable<double> & Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_data() const {
     return this->data;
 }
 
-template SUPPORT_TEMPLATE_ARGS()
-inline Counters<Array_Type,Data_Counter_Type> * SUPPORT_TYPE()::get_counters() {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Counters<Array_Type,Data_Counter_Type> * Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_counters() {
     return this->counters;
 }   
     
-template SUPPORT_TEMPLATE_ARGS()
-inline Rules<Array_Type,Data_Rule_Type> * SUPPORT_TYPE()::get_rules() {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Rules<Array_Type,Data_Rule_Type> * Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_rules() {
     return this->rules;
 }
 
-template SUPPORT_TEMPLATE_ARGS()
-inline Rules<Array_Type,Data_Rule_Dyn_Type> * SUPPORT_TYPE()::get_rules_dyn() {
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline Rules<Array_Type,Data_Rule_Dyn_Type> * Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_rules_dyn() {
     return this->rules_dyn;
 }
 
-#undef SUPPORT_TEMPLATE_ARGS
-#undef SUPPORT_TYPE
-#undef SUPPORT_TEMPLATE
 
 #endif
