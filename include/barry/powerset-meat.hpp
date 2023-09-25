@@ -95,7 +95,7 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_sparse(
     #ifdef BARRY_USER_INTERRUPT
     if (data.size() % 1000u == 0u)
     {
-        #BARRY_USER_INTERRUPT
+        BARRY_USER_INTERRUPT
     }
     #endif
     

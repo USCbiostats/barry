@@ -6236,7 +6236,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
     #ifdef BARRY_USER_INTERRUPT
     if (++iter_counter % 1000u == 0u)
     {
-        #BARRY_USER_INTERRUPT
+        BARRY_USER_INTERRUPT
     }
     #endif
 
@@ -6368,7 +6368,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
     #ifdef BARRY_USER_INTERRUPT
     if (++iter_counter % 1000u == 0u)
     {
-        #BARRY_USER_INTERRUPT
+        BARRY_USER_INTERRUPT
     }
     #endif
     
@@ -6918,7 +6918,7 @@ inline void PowerSet<Array_Type, Data_Rule_Type>::calc_backend_sparse(
     #ifdef BARRY_USER_INTERRUPT
     if (data.size() % 1000u == 0u)
     {
-        #BARRY_USER_INTERRUPT
+        BARRY_USER_INTERRUPT
     }
     #endif
     
