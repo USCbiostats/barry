@@ -258,7 +258,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; iter : pset.data)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        states.push_back(std::vector&lt; bool &gt;(<a class="code" href="class_geese.html#a406dae6306f50ff635eb8769475b6af2">nfunctions</a>, <span class="keyword">false</span>));</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        states.emplace_back(std::vector&lt; bool &gt;(<a class="code" href="class_geese.html#a406dae6306f50ff635eb8769475b6af2">nfunctions</a>, <span class="keyword">false</span>));</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        </div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> = 0u; <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> &lt; <a class="code" href="class_geese.html#a406dae6306f50ff635eb8769475b6af2">nfunctions</a>; ++<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>)</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        {</div>
@@ -637,7 +637,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        <span class="keywordflow">if</span> (n.second.is_leaf())</div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;        {</div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160; </div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            ans.push_back({});</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            ans.emplace_back(std::vector&lt;double&gt;({}));</div>
 <div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160; </div>
 <div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        }</div>
@@ -703,7 +703,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; n : <a class="code" href="class_geese.html#acf138e23f487c0cbb15d51c9f6f8ab5c">nodes</a>) {</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160; </div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        <span class="keywordflow">if</span> (n.second.is_leaf()) {</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            ans.push_back({});</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            ans.emplace_back(std::vector&lt; double &gt;({}));</div>
 <div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;        }</div>
 <div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160; </div>
@@ -989,7 +989,7 @@ $(document).ready(function(){initNavTree('geese-meat_8hpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-meat_8hpp.html">geese-meat.hpp</a></li>
-    <li class="footer">Generated on Mon Sep 25 2023 17:57:10 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Sep 26 2023 18:17:44 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
