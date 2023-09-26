@@ -50,7 +50,7 @@ support\+\_\+fun \mbox{\hyperlink{model-meat_8hpp_ae09eaba6614a37ca52770bbaf18a8
 \item 
 \mbox{\hyperlink{model-meat_8hpp_a4313848fe00827e075bdad6e44a3b81d}{MODEL\+\_\+\+TEMPLATE}} (size\+\_\+t, add\+\_\+array)(const Array\+\_\+\+Type \&Array\+\_\+
 \item 
-\mbox{\hyperlink{model-meat_8hpp_a95eeb80ec2bed8dfe7cfe4c62f5beee9}{if}} (transform\+\_\+model\+\_\+fun) = transform\+\_\+model\+\_\+fun(\&\mbox{\hyperlink{model-meat_8hpp_a43199108fae59bf79c8d73559aac2cbd}{tmp\+\_\+counts}}\mbox{[}0u\mbox{]}, \mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{tmp\+\_\+counts.\+size}}())
+\mbox{\hyperlink{model-meat_8hpp_a95eeb80ec2bed8dfe7cfe4c62f5beee9}{if}} (transform\+\_\+model\+\_\+fun) = transform\+\_\+model\+\_\+fun(\&\mbox{\hyperlink{model-meat_8hpp_aaf06149bb923f3f75878c8217fd5c94e}{tmp\+\_\+counts}}\mbox{[}0u\mbox{]}, \mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{tmp\+\_\+counts.\+size}}())
 \item 
 \mbox{\hyperlink{model-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} stats\+\_\+target \mbox{\hyperlink{model-meat_8hpp_acd4c62abc3c4daf9fb8a68d8e4bd1634}{push\+\_\+back}} (counter\+\_\+fun.\+count\+\_\+all())
 \item 
@@ -94,7 +94,7 @@ std\+::uniform\+\_\+real\+\_\+distribution \mbox{\hyperlink{model-meat_8hpp_ac41
 \item 
 \mbox{\hyperlink{model-meat_8hpp_a9d60367e064d8367dc84b5de42870332}{if}} ((\mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{probs.\+size}}() $>$ 0u) \&\&(\mbox{\hyperlink{typedefs_8hpp_aed8ddfe5ae95bf4d6f76221ce06566fb}{vec\+\_\+equal\+\_\+approx}}(\mbox{\hyperlink{model-meat_8hpp_a8b812351f601758974ca8a5020a8f7f2}{params}}, params\+\_\+last\mbox{[}\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}\mbox{]})))
 \item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{model-meat_8hpp_ade0c4a5bb093e62686d62f2dd009bd25}{temp\+\_\+stats}} (\mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{params.\+size}}())
+\mbox{\hyperlink{model-meat_8hpp_a131b560d408069dcb92dd037e4bc5eb8}{temp\+\_\+stats}} \mbox{\hyperlink{model-meat_8hpp_a4f77465f435b5af47b19d1ac4a7c3638}{reserve}} (\mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{params.\+size}}())
 \item 
 \mbox{\hyperlink{model-meat_8hpp_a0d7d60577ad0b6507f74f18ab2eccab9}{for}} (size\+\_\+t array=0u;array$<$ \mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{probs.\+size}}();++array)
 \item 
@@ -102,9 +102,11 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{model-meat_8hpp_ade0c4a5bb093e62686
 \item 
 A \mbox{\hyperlink{model-meat_8hpp_a4caf204372c3c29af6d87e56708bdba1}{insert\+\_\+cell}} (\mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, A.\+default\+\_\+val(), true, false)
 \item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{model-meat_8hpp_a43199108fae59bf79c8d73559aac2cbd}{tmp\+\_\+counts}} (\mbox{\hyperlink{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$\mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{size}}())
+\mbox{\hyperlink{model-meat_8hpp_aaf06149bb923f3f75878c8217fd5c94e}{tmp\+\_\+counts}} \mbox{\hyperlink{model-meat_8hpp_a0851b3fce6040febb01e2484ed9f4f54}{reserve}} (\mbox{\hyperlink{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$\mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{size}}())
 \item 
-\mbox{\hyperlink{model-meat_8hpp_a9ef4985dfa4bd1115422568aac975f7e}{return}} (1.\+0+std\+::exp(-\/\mbox{\hyperlink{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd32026f1dc}{vec\+\_\+inner\+\_\+prod}}$<$ double $>$(\&\mbox{\hyperlink{model-meat_8hpp_a8b812351f601758974ca8a5020a8f7f2}{params}}\mbox{[}0u\mbox{]}, \&\mbox{\hyperlink{model-meat_8hpp_a43199108fae59bf79c8d73559aac2cbd}{tmp\+\_\+counts}}\mbox{[}0u\mbox{]}, \mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{params.\+size}}())))
+\mbox{\hyperlink{model-meat_8hpp_a486b5b9c20df6e6446d4928b06eeb401}{for}} (size\+\_\+t ii=0u;ii$<$ \mbox{\hyperlink{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$\mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{size}}();++ii) \mbox{\hyperlink{model-meat_8hpp_ac76d416dfa2e5dceea5f830850ea25ac}{tmp\+\_\+counts.\+push\+\_\+back}}(\mbox{\hyperlink{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}} -\/$>$ operator\mbox{[}$\,$\mbox{]}(ii).count(A, \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}))
+\item 
+\mbox{\hyperlink{model-meat_8hpp_a9ef4985dfa4bd1115422568aac975f7e}{return}} (1.\+0+std\+::exp(-\/\mbox{\hyperlink{typedefs_8hpp_af6f9c021aa2e49b1cb82fbd32026f1dc}{vec\+\_\+inner\+\_\+prod}}$<$ double $>$(\&\mbox{\hyperlink{model-meat_8hpp_a8b812351f601758974ca8a5020a8f7f2}{params}}\mbox{[}0u\mbox{]}, \&\mbox{\hyperlink{model-meat_8hpp_aaf06149bb923f3f75878c8217fd5c94e}{tmp\+\_\+counts}}\mbox{[}0u\mbox{]}, \mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{params.\+size}}())))
 \item 
 \mbox{\hyperlink{model-meat_8hpp_a1e31bdab44335dab4b1ccc082a624fdd}{MODEL\+\_\+\+TEMPLATE}} (const std\+::mt19937 $\ast$, get\+\_\+rengine)() const
 \item 
@@ -177,11 +179,15 @@ std\+::vector$<$ double $>$ \& \mbox{\hyperlink{model-meat_8hpp_ab14bb4f5b80bcef
 \item 
 \mbox{\hyperlink{model-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}}
 \item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{model-meat_8hpp_a131b560d408069dcb92dd037e4bc5eb8}{temp\+\_\+stats}}
+\item 
 const std\+::vector$<$ double $>$ \& \mbox{\hyperlink{model-meat_8hpp_ada7a2adf3edef6b8859ce756bd31e4b6}{stats}} = pset\+\_\+stats\mbox{[}\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}\mbox{]}
 \item 
 int \mbox{\hyperlink{model-meat_8hpp_a091414baaf8fc6076ca08c2c0ede7066}{i\+\_\+matches}} = -\/1
 \item 
 \mbox{\hyperlink{model-meat_8hpp_a9ef4985dfa4bd1115422568aac975f7e}{return}} \mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}} \mbox{\hyperlink{model-meat_8hpp_adb446932e2140e5a8c0420d63fe1300e}{pset\+\_\+arrays}} \mbox{[}\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}\mbox{]}\mbox{[}\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}\mbox{]}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{model-meat_8hpp_aaf06149bb923f3f75878c8217fd5c94e}{tmp\+\_\+counts}}
 \item 
 template \mbox{\hyperlink{model-meat_8hpp_a69b87f58d3fa400f5d9b076072530f69}{Data\+\_\+\+Counter\+\_\+\+Type}}
 \item 
@@ -238,12 +244,18 @@ Definition at line 125 of file model-\/meat.\+hpp.
 \mbox{\Hypertarget{model-meat_8hpp_a0d7d60577ad0b6507f74f18ab2eccab9}\label{model-meat_8hpp_a0d7d60577ad0b6507f74f18ab2eccab9}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!for@{for}}
 \index{for@{for}!model-\/meat.hpp@{model-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{for()}{for()}}
+\doxysubsubsection{\texorpdfstring{for()}{for()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily for (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Definition at line 1315 of file model-\/meat.\+hpp.
+Definition at line 1317 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{model-meat_8hpp_a486b5b9c20df6e6446d4928b06eeb401}\label{model-meat_8hpp_a486b5b9c20df6e6446d4928b06eeb401}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!for@{for}}
+\index{for@{for}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{for()}{for()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily for (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{ii = {\ttfamily 0u;ii$<$~\mbox{\hyperlink{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$\mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{size}}();++ii} }\end{DoxyParamCaption}) -\/$>$  operator\mbox{[}$\,$\mbox{]}(ii).count(A, \mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}))}
 
 \mbox{\Hypertarget{model-meat_8hpp_a9d60367e064d8367dc84b5de42870332}\label{model-meat_8hpp_a9d60367e064d8367dc84b5de42870332}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!if@{if}}
@@ -253,7 +265,7 @@ Definition at line 1315 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1298 of file model-\/meat.\+hpp.
+Definition at line 1299 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a6cfd9e26f1cf22d9338dcd14ca5c79ea}\label{model-meat_8hpp_a6cfd9e26f1cf22d9338dcd14ca5c79ea}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!if@{if}}
@@ -273,13 +285,13 @@ Definition at line 457 of file model-\/meat.\+hpp.
 
 When computing with the powerset, we need to grow the corresponding vectors on the fly
 
-Definition at line 1200 of file model-\/meat.\+hpp.
+Definition at line 1201 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a95eeb80ec2bed8dfe7cfe4c62f5beee9}\label{model-meat_8hpp_a95eeb80ec2bed8dfe7cfe4c62f5beee9}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!if@{if}}
 \index{if@{if}!model-\/meat.hpp@{model-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{if()}{if()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{transform\+\_\+model\+\_\+fun}]{ }\end{DoxyParamCaption}) = transform\+\_\+model\+\_\+fun(\&\mbox{\hyperlink{model-meat_8hpp_a43199108fae59bf79c8d73559aac2cbd}{tmp\+\_\+counts}}\mbox{[}0u\mbox{]}, \mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{tmp\+\_\+counts.\+size}}())}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{transform\+\_\+model\+\_\+fun}]{ }\end{DoxyParamCaption}) = transform\+\_\+model\+\_\+fun(\&\mbox{\hyperlink{model-meat_8hpp_aaf06149bb923f3f75878c8217fd5c94e}{tmp\+\_\+counts}}\mbox{[}0u\mbox{]}, \mbox{\hyperlink{model-meat_8hpp_a8d73b944a5569bd842f636e4b9d420f6}{tmp\+\_\+counts.\+size}}())}
 
 
 
@@ -315,7 +327,7 @@ Definition at line 63 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1384 of file model-\/meat.\+hpp.
+Definition at line 1387 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_ab641b7bc7272c4426934798c36ba8a0a}\label{model-meat_8hpp_ab641b7bc7272c4426934798c36ba8a0a}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -325,7 +337,7 @@ Definition at line 1384 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 926 of file model-\/meat.\+hpp.
+Definition at line 927 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a82a1c61788b7e2226b7f327459c9fa5f}\label{model-meat_8hpp_a82a1c61788b7e2226b7f327459c9fa5f}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -335,7 +347,7 @@ Definition at line 926 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 938 of file model-\/meat.\+hpp.
+Definition at line 939 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a344cf38d0b829e04052739fcd74e3b8b}\label{model-meat_8hpp_a344cf38d0b829e04052739fcd74e3b8b}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -351,7 +363,7 @@ Definition at line 938 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 890 of file model-\/meat.\+hpp.
+Definition at line 891 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a69985c178fd1b57b91edc5dbca8346cc}\label{model-meat_8hpp_a69985c178fd1b57b91edc5dbca8346cc}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -371,7 +383,7 @@ Definition at line 569 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 824 of file model-\/meat.\+hpp.
+Definition at line 825 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a4313848fe00827e075bdad6e44a3b81d}\label{model-meat_8hpp_a4313848fe00827e075bdad6e44a3b81d}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -387,7 +399,7 @@ Definition at line 824 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1064 of file model-\/meat.\+hpp.
+Definition at line 1065 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_aac59f97992c595558b6ad71a9492307a}\label{model-meat_8hpp_aac59f97992c595558b6ad71a9492307a}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -397,7 +409,7 @@ Definition at line 1064 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1071 of file model-\/meat.\+hpp.
+Definition at line 1072 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_af5b02507fce3d744269f176971bae312}\label{model-meat_8hpp_af5b02507fce3d744269f176971bae312}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -407,7 +419,7 @@ Definition at line 1071 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1054 of file model-\/meat.\+hpp.
+Definition at line 1055 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a88a4aa1f8ed9dcb310e6fce3fcaabbbf}\label{model-meat_8hpp_a88a4aa1f8ed9dcb310e6fce3fcaabbbf}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -417,7 +429,7 @@ Definition at line 1054 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1039 of file model-\/meat.\+hpp.
+Definition at line 1040 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a52a1bc3c373a11f1e39cf895b547d245}\label{model-meat_8hpp_a52a1bc3c373a11f1e39cf895b547d245}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -427,7 +439,7 @@ Definition at line 1039 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1046 of file model-\/meat.\+hpp.
+Definition at line 1047 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_ac7ef7b93e5e6e393497f8c1810efe18e}\label{model-meat_8hpp_ac7ef7b93e5e6e393497f8c1810efe18e}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -437,7 +449,7 @@ Definition at line 1046 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1078 of file model-\/meat.\+hpp.
+Definition at line 1079 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_ac56fba67597d2f9ef96aee188d371615}\label{model-meat_8hpp_ac56fba67597d2f9ef96aee188d371615}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -457,7 +469,7 @@ Definition at line 312 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1419 of file model-\/meat.\+hpp.
+Definition at line 1422 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a3770fd8c8b8d3649a101c80e77cf5092}\label{model-meat_8hpp_a3770fd8c8b8d3649a101c80e77cf5092}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -467,7 +479,7 @@ Definition at line 1419 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1090 of file model-\/meat.\+hpp.
+Definition at line 1091 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a1b4ab38ad856016e67ff1975c140089e}\label{model-meat_8hpp_a1b4ab38ad856016e67ff1975c140089e}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -477,7 +489,7 @@ Definition at line 1090 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1424 of file model-\/meat.\+hpp.
+Definition at line 1427 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a3d6c96b5bf647f75c79ca488d7c9d607}\label{model-meat_8hpp_a3d6c96b5bf647f75c79ca488d7c9d607}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -487,7 +499,7 @@ Definition at line 1424 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1432 of file model-\/meat.\+hpp.
+Definition at line 1435 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a05d64a51381043e545359fd19d01d98a}\label{model-meat_8hpp_a05d64a51381043e545359fd19d01d98a}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -497,7 +509,7 @@ Definition at line 1432 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1428 of file model-\/meat.\+hpp.
+Definition at line 1431 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a4eee01b8ead8e269f8af5ba2142efa30}\label{model-meat_8hpp_a4eee01b8ead8e269f8af5ba2142efa30}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -507,7 +519,7 @@ Definition at line 1428 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1414 of file model-\/meat.\+hpp.
+Definition at line 1417 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_abdedbda5f86170e660b4bb11c4827887}\label{model-meat_8hpp_abdedbda5f86170e660b4bb11c4827887}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -517,7 +529,7 @@ Definition at line 1414 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1409 of file model-\/meat.\+hpp.
+Definition at line 1412 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_ab640e4bcb5db39ca9edfc88c37167b78}\label{model-meat_8hpp_ab640e4bcb5db39ca9edfc88c37167b78}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -551,7 +563,7 @@ Definition at line 1409 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 949 of file model-\/meat.\+hpp.
+Definition at line 950 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_add5291bac410eb587280c3df28a23135}\label{model-meat_8hpp_add5291bac410eb587280c3df28a23135}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -579,7 +591,7 @@ Definition at line 949 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1436 of file model-\/meat.\+hpp.
+Definition at line 1439 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a5fb312eb5849165f1459d10af2a9d1c4}\label{model-meat_8hpp_a5fb312eb5849165f1459d10af2a9d1c4}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!MODEL\_TEMPLATE@{MODEL\_TEMPLATE}}
@@ -602,6 +614,18 @@ Definition at line 305 of file model-\/meat.\+hpp.
 \index{push\_back@{push\_back}!model-\/meat.hpp@{model-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily arrays2support push\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{model-meat_8hpp_acf8eccc22a7b9dcde5a2ba1ad4d5e6ea}{locator}}-\/$>$}]{second }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{model-meat_8hpp_a0851b3fce6040febb01e2484ed9f4f54}\label{model-meat_8hpp_a0851b3fce6040febb01e2484ed9f4f54}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!reserve@{reserve}}
+\index{reserve@{reserve}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{reserve()}{reserve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{model-meat_8hpp_aaf06149bb923f3f75878c8217fd5c94e}{tmp\+\_\+counts}} reserve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$}]{size() }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{model-meat_8hpp_a4f77465f435b5af47b19d1ac4a7c3638}\label{model-meat_8hpp_a4f77465f435b5af47b19d1ac4a7c3638}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!reserve@{reserve}}
+\index{reserve@{reserve}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{reserve()}{reserve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{model-meat_8hpp_a131b560d408069dcb92dd037e4bc5eb8}{temp\+\_\+stats}} reserve (\begin{DoxyParamCaption}\item[{params.}]{size() }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{model-meat_8hpp_a9ef4985dfa4bd1115422568aac975f7e}\label{model-meat_8hpp_a9ef4985dfa4bd1115422568aac975f7e}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!return@{return}}
@@ -633,18 +657,6 @@ Definition at line 305 of file model-\/meat.\+hpp.
 \doxysubsubsection{\texorpdfstring{size()}{size()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{model-meat_8hpp_a9ef4985dfa4bd1115422568aac975f7e}{return}} arrays2support size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{model-meat_8hpp_ade0c4a5bb093e62686d62f2dd009bd25}\label{model-meat_8hpp_ade0c4a5bb093e62686d62f2dd009bd25}} 
-\index{model-\/meat.hpp@{model-\/meat.hpp}!temp\_stats@{temp\_stats}}
-\index{temp\_stats@{temp\_stats}!model-\/meat.hpp@{model-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{temp\_stats()}{temp\_stats()}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$ temp\+\_\+stats (\begin{DoxyParamCaption}\item[{params.}]{size() }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{model-meat_8hpp_a43199108fae59bf79c8d73559aac2cbd}\label{model-meat_8hpp_a43199108fae59bf79c8d73559aac2cbd}} 
-\index{model-\/meat.hpp@{model-\/meat.hpp}!tmp\_counts@{tmp\_counts}}
-\index{tmp\_counts@{tmp\_counts}!model-\/meat.hpp@{model-\/meat.hpp}}
-\doxysubsubsection{\texorpdfstring{tmp\_counts()}{tmp\_counts()}}
-{\footnotesize\ttfamily std\+::vector$<$ double $>$ tmp\+\_\+counts (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{statscounter-meat_8hpp_a782c48a908662b34845b6f654f929788}{counters}}-\/$>$}]{size() }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{model-meat_8hpp_a298affefd54bd00274c6af4dd64053be}\label{model-meat_8hpp_a298affefd54bd00274c6af4dd64053be}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!update\_normalizing\_constant@{update\_normalizing\_constant}}
 \index{update\_normalizing\_constant@{update\_normalizing\_constant}!model-\/meat.hpp@{model-\/meat.hpp}}
@@ -672,7 +684,7 @@ Definition at line 9 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1286 of file model-\/meat.\+hpp.
+Definition at line 1287 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a2648076475c82f8bfed17e9c46b36f68}\label{model-meat_8hpp_a2648076475c82f8bfed17e9c46b36f68}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!count\_fun\_@{count\_fun\_}}
@@ -731,7 +743,7 @@ Definition at line 343 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1291 of file model-\/meat.\+hpp.
+Definition at line 1292 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_add877eae455a35aea9e5c7de9c6f2dbb}\label{model-meat_8hpp_add877eae455a35aea9e5c7de9c6f2dbb}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!data\_@{data\_}}
@@ -762,7 +774,7 @@ Definition at line 329 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1404 of file model-\/meat.\+hpp.
+Definition at line 1407 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_ab662732874257647dc631846c67da586}\label{model-meat_8hpp_ab662732874257647dc631846c67da586}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!Data\_Rule\_Type@{Data\_Rule\_Type}}
@@ -772,7 +784,7 @@ Definition at line 1404 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1404 of file model-\/meat.\+hpp.
+Definition at line 1407 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_aa497331abaad5b5e074d2c8069c82095}\label{model-meat_8hpp_aa497331abaad5b5e074d2c8069c82095}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!delete\_rules@{delete\_rules}}
@@ -809,7 +821,7 @@ Definition at line 425 of file model-\/meat.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 1308 of file model-\/meat.\+hpp.
+Definition at line 1309 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a32e3aa42c9a0f6e84cda0c6d011e56f0}\label{model-meat_8hpp_a32e3aa42c9a0f6e84cda0c6d011e56f0}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!force\_new@{force\_new}}
@@ -854,7 +866,7 @@ Definition at line 360 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1194 of file model-\/meat.\+hpp.
+Definition at line 1195 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a091414baaf8fc6076ca08c2c0ede7066}\label{model-meat_8hpp_a091414baaf8fc6076ca08c2c0ede7066}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!i\_matches@{i\_matches}}
@@ -864,7 +876,7 @@ Definition at line 1194 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1314 of file model-\/meat.\+hpp.
+Definition at line 1316 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_aa9ebe808e2d37ce1008f4e98fe5c5c6b}\label{model-meat_8hpp_aa9ebe808e2d37ce1008f4e98fe5c5c6b}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!init\_fun\_@{init\_fun\_}}
@@ -884,7 +896,7 @@ Definition at line 328 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1296 of file model-\/meat.\+hpp.
+Definition at line 1297 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a9389e4770ba454a2e14f870491495cb2}\label{model-meat_8hpp_a9389e4770ba454a2e14f870491495cb2}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!k@{k}}
@@ -894,7 +906,7 @@ Definition at line 1296 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1293 of file model-\/meat.\+hpp.
+Definition at line 1294 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_af101e9ca6306855e019e0e18f0690468}\label{model-meat_8hpp_af101e9ca6306855e019e0e18f0690468}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!key@{key}}
@@ -933,7 +945,7 @@ Definition at line 456 of file model-\/meat.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 1187 of file model-\/meat.\+hpp.
+Definition at line 1188 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_ab14bb4f5b80bcefa0fc098e58e5b44f6}\label{model-meat_8hpp_ab14bb4f5b80bcefa0fc098e58e5b44f6}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!probs@{probs}}
@@ -943,7 +955,7 @@ Definition at line 1187 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1297 of file model-\/meat.\+hpp.
+Definition at line 1298 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_adb446932e2140e5a8c0420d63fe1300e}\label{model-meat_8hpp_adb446932e2140e5a8c0420d63fe1300e}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!pset\_arrays@{pset\_arrays}}
@@ -953,7 +965,7 @@ Definition at line 1297 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1348 of file model-\/meat.\+hpp.
+Definition at line 1350 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a880a49112fedae68e714341a9a082fb6}\label{model-meat_8hpp_a880a49112fedae68e714341a9a082fb6}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!r@{r}}
@@ -963,7 +975,7 @@ Definition at line 1348 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1290 of file model-\/meat.\+hpp.
+Definition at line 1291 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a9717e7bbecb906637e86cef6da3d83c2}\label{model-meat_8hpp_a9717e7bbecb906637e86cef6da3d83c2}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!return@{return}}
@@ -1038,7 +1050,7 @@ Definition at line 424 of file model-\/meat.\+hpp.
 
 
 
-Definition at line 1312 of file model-\/meat.\+hpp.
+Definition at line 1314 of file model-\/meat.\+hpp.
 
 \mbox{\Hypertarget{model-meat_8hpp_a067bec3fe3db997771ba2ce3868cbda7}\label{model-meat_8hpp_a067bec3fe3db997771ba2ce3868cbda7}} 
 \index{model-\/meat.hpp@{model-\/meat.hpp}!stats\_support\_n\_arrays@{stats\_support\_n\_arrays}}
@@ -1049,4 +1061,24 @@ Definition at line 1312 of file model-\/meat.\+hpp.
 
 
 Definition at line 560 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{model-meat_8hpp_a131b560d408069dcb92dd037e4bc5eb8}\label{model-meat_8hpp_a131b560d408069dcb92dd037e4bc5eb8}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!temp\_stats@{temp\_stats}}
+\index{temp\_stats@{temp\_stats}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{temp\_stats}{temp\_stats}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ temp\+\_\+stats}
+
+
+
+Definition at line 1312 of file model-\/meat.\+hpp.
+
+\mbox{\Hypertarget{model-meat_8hpp_aaf06149bb923f3f75878c8217fd5c94e}\label{model-meat_8hpp_aaf06149bb923f3f75878c8217fd5c94e}} 
+\index{model-\/meat.hpp@{model-\/meat.hpp}!tmp\_counts@{tmp\_counts}}
+\index{tmp\_counts@{tmp\_counts}!model-\/meat.hpp@{model-\/meat.hpp}}
+\doxysubsubsection{\texorpdfstring{tmp\_counts}{tmp\_counts}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ tmp\+\_\+counts}
+
+
+
+Definition at line 1369 of file model-\/meat.\+hpp.
 

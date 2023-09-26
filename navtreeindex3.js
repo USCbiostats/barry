@@ -246,8 +246,8 @@ var NAVTREEINDEX3 =
 "geese_2counters_8hpp_source.html":[3,0,0,0,1,1,0],
 "geese_8hpp.html":[3,0,0,0,1,3],
 "geese_8hpp_source.html":[3,0,0,0,1,3],
-"globals.html":[3,1,0,0],
 "globals.html":[3,1,0],
+"globals.html":[3,1,0,0],
 "globals_b.html":[3,1,0,1],
 "globals_c.html":[3,1,0,2]
 };
