@@ -185,7 +185,7 @@ COUNTERS_TEMPLATE(void, add_counter)(
 )
 {
   
-    data.push_back(Counter<Array_Type,Data_Type>(
+    data.emplace_back(Counter<Array_Type,Data_Type>(
         count_fun_,
         init_fun_,
         hasher_fun_,

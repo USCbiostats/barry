@@ -16,7 +16,7 @@ inline void BArrayVector<Cell_Type,Data_Type>::init_vec() {
     } else {
 
         for (const auto& a : Array->el_ji[i])
-            vec.push_back(std::make_pair<size_t, Cell<Cell_Type>>(a.first, *(a.second)));
+            vec.emplace_back(std::make_pair<size_t, Cell<Cell_Type>>(a.first, *(a.second)));
 
     }
 

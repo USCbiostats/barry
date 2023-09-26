@@ -30,7 +30,7 @@ inline size_t Flock::add_data(
     }
 
     // Generating the Geese object
-    dat.push_back(Geese(annotations, geneid, parent, duplication));
+    dat.emplace_back(Geese(annotations, geneid, parent, duplication));
 
     if (dat.size() == 1u)
         this->nfunctions = dat[0].nfuns();

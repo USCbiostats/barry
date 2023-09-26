@@ -490,7 +490,7 @@ inline void counter_transition(
         #ifdef BARRY_WITH_LATEX
             name += ") -> (";
         #else
-            name += "} \u21E8 {";
+            name += std::string("}") + u8"\u21E8" + std::string("{");
         #endif
     else
         #ifdef BARRY_WITH_LATEX

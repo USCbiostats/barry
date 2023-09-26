@@ -201,10 +201,10 @@ inline DEFM::DEFM(
 
     // Creating the names
     for (auto i = 0u; i < Y_ncol; ++i)
-        Y_names.push_back(std::string("y") + std::to_string(i));
+        Y_names.emplace_back(std::string("y") + std::to_string(i));
 
     for (auto i = 0u; i < X_ncol; ++i)
-        X_names.push_back(std::string("X") + std::to_string(i));
+        X_names.emplace_back(std::string("X") + std::to_string(i));
 
     return;    
 

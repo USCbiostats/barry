@@ -160,7 +160,7 @@ inline void Geese::init(size_t bar_width) {
     for (auto& iter : pset.data)
     {
 
-        states.push_back(std::vector< bool >(nfunctions, false));
+        states.emplace_back(std::vector< bool >(nfunctions, false));
         
         for (auto j = 0u; j < nfunctions; ++j)
         {
@@ -539,7 +539,7 @@ inline std::vector< std::vector<double> > Geese::observed_counts()
         if (n.second.is_leaf())
         {
 
-            ans.push_back({});
+            ans.emplace_back(std::vector<double>({}));
             continue;
 
         }
@@ -605,7 +605,7 @@ inline void Geese::print_observed_counts()
     for (auto& n : nodes) {
 
         if (n.second.is_leaf()) {
-            ans.push_back({});
+            ans.emplace_back(std::vector< double >({}));
             continue;
         }
 

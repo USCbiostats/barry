@@ -5378,7 +5378,7 @@ COUNTERS_TEMPLATE(void, add_counter)(
 )
 {
   
-    data.push_back(Counter<Array_Type,Data_Type>(
+    data.emplace_back(Counter<Array_Type,Data_Type>(
         count_fun_,
         init_fun_,
         hasher_fun_,
@@ -7904,7 +7904,7 @@ MODEL_TEMPLATE(size_t, add_array)(
     {
         
         auto tmpcounts = counter_fun.count_all();
-        stats_target.push_back(
+        stats_target.emplace_back(
             transform_model_fun(&tmpcounts[0u], tmpcounts.size())
             );
 
