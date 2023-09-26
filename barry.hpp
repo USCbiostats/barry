@@ -5394,9 +5394,10 @@ COUNTERS_TEMPLATE(void, add_counter)(
 COUNTERS_TEMPLATE(std::vector<std::string>, get_names)() const
 {
 
-    std::vector< std::string > out(this->size());
-    for (size_t i = 0u; i < out.size(); ++i)
-        out[i] = this->data.at(i).get_name();
+    std::vector< std::string > out;
+    out.reserve(this->size());
+    for (size_t i = 0u; i < this->size(); ++i)
+        out.push_back(this->data.at(i).get_name());
 
     return out;
 
@@ -5405,9 +5406,10 @@ COUNTERS_TEMPLATE(std::vector<std::string>, get_names)() const
 COUNTERS_TEMPLATE(std::vector<std::string>, get_descriptions)() const
 {
     
-    std::vector< std::string > out(this->size());
-    for (size_t i = 0u; i < out.size(); ++i)
-        out[i] = data.at(i).get_description();
+    std::vector< std::string > out;
+    out.reserve(this->size());
+    for (size_t i = 0u; i < this->size(); ++i)
+        out.push_back(data.at(i).get_description());
 
     return out;
 
@@ -8230,9 +8232,10 @@ MODEL_TEMPLATE(double, likelihood)(
     if (support_fun.get_rules_dyn()->size() > 0u)
     {
 
-        std::vector< double > tmp_target(nterms(), 0.0);
+        std::vector< double > tmp_target;
+        tmp_target.reserve(nterms());
         for (size_t t = 0u; t < nterms(); ++t)
-            tmp_target[t] = *(target_ + t);
+            tmp_target.push_back(*(target_ + t));
 
         if (!support_fun.eval_rules_dyn(tmp_target, 0u, 0u))
         {
@@ -8769,7 +8772,8 @@ MODEL_TEMPLATE(Array_Type, sample)(
     } else { 
        
         probs.resize(pset_arrays[a].size());
-        std::vector< double > temp_stats(params.size());
+        std::vector< double > temp_stats;
+        temp_stats.reserve(params.size());
         const std::vector< double > & stats = pset_stats[a];
 
         int i_matches = -1;
@@ -8778,7 +8782,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
             // Filling out the parameters
             for (auto p = 0u; p < params.size(); ++p)
-                temp_stats[p] = stats[array * k + p];
+                temp_stats.push_back(stats[array * k + p]);
 
             probs[array] = this->likelihood(params, temp_stats, i, false);
             cumprob += probs[array];
@@ -8825,9 +8829,10 @@ MODEL_TEMPLATE(double, conditional_prob)(
     A.insert_cell(i, j, A.default_val(), true, false);
 
     // Computing the change stats_target
-    std::vector< double > tmp_counts(counters->size());
-    for (size_t ii = 0u; ii < tmp_counts.size(); ++ii)
-        tmp_counts[ii] = counters->operator[](ii).count(A, i, j);
+    std::vector< double > tmp_counts;
+    tmp_counts.reserve(counters->size());
+    for (size_t ii = 0u; ii < counters->size(); ++ii)
+        tmp_counts.push_back(counters->operator[](ii).count(A, i, j));
 
     // If there is a transformation function, it needs to be
     // applied before dealing with the likelihood.
@@ -8951,7 +8956,7 @@ MODEL_TEMPLATE(void, set_transform_model)(
         // Applying it to the support
         for (auto s = 0u; s < pset_arrays.size(); ++s)
         {
-            std::vector< double > new_stats(0u);
+            std::vector< double > new_stats;
 
             for (auto a = 0u; a < pset_arrays[s].size(); ++a)
             {
@@ -9335,9 +9340,10 @@ template<typename Array_Type, typename Data_Type>
 inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_names() const
 {
 
-    std::vector< std::string > out(this->size());
+    std::vector< std::string > out;
+    out.reserve(this->size());
     for (size_t i = 0u; i < out.size(); ++i)
-        out[i] = this->data.at(i).get_name();
+        out.push_back(this->data.at(i).get_name());
 
     return out;
 
@@ -9347,9 +9353,10 @@ template<typename Array_Type, typename Data_Type>
 inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_descriptions() const
 {
     
-    std::vector< std::string > out(this->size());
+    std::vector< std::string > out;
+    out.reserve(this->size());
     for (size_t i = 0u; i < out.size(); ++i)
-        out[i] = data.at(i).get_description();
+        out.push_back(data.at(i).get_description());
 
     return out;
 

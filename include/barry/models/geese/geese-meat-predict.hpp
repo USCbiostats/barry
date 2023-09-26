@@ -90,13 +90,17 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             continue;
 
         // Creating space.
-        std::vector< std::vector< double > > everything_below(states.size());
-        std::vector< std::vector< double > > everything_above(states.size());
+        std::vector< std::vector< double > > everything_below;
+        std::vector< std::vector< double > > everything_above;
+
+        everything_below.reserve(states.size());
+        everything_above.reserve(states.size());
         
         // All combinations of the the parent states
         // So psets[s] = combinations of offspring given state s.
         //    psets[s][i] = The ith combination of offspring given state s.
-        std::vector< std::vector< PhyloArray > > psets(states.size());
+        std::vector< std::vector< PhyloArray > > psets;
+        psets.reserve(states.size());
 
         // Making space for the offspring
         for (auto & off : parent.offspring)
@@ -108,6 +112,9 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         // Iterating through the parent states
         for (size_t s = 0u; s < states.size(); ++s)
         {
+            std::vector< double > below;
+            std::vector< double > above;
+            std::vector< PhyloArray > pset;
 
             // Retrieving powerset of stats and arrays
             const auto & pset_arrays = model->get_pset(parent.narray[s]);
@@ -175,15 +182,15 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 if (!in_the_set)
                     continue;
 
-                psets[s].push_back(array_p); // Generating a copy
+                pset.push_back(array_p); // Generating a copy
                 
                 // - With focal node, conditioning on it beening status s.
                 // - But the offspring probabilities are the central ones here.
                 // - So the saved values are for computing P(x_offspring | Data)
-                everything_below[s].push_back(everything_below_p);
+                below.push_back(everything_below_p);
 
                 // The first run, we only need to grow the list
-                everything_above[s].push_back(
+                above.push_back(
                     model->likelihood(
                         par_terms, target_p, parent.narray[s], false
                     ) *  parent.probability[s] / parent.subtree_prob[s]
@@ -191,6 +198,12 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
 
             } // end for psets
+
+            // Storing the psets
+            psets.push_back(std::move(pset));
+            everything_below.push_back(std::move(below));
+            everything_above.push_back(std::move(above));
+
             
         } // end for states
 

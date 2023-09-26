@@ -167,9 +167,10 @@ template<typename Array_Type, typename Data_Type>
 inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_names() const
 {
 
-    std::vector< std::string > out(this->size());
+    std::vector< std::string > out;
+    out.reserve(this->size());
     for (size_t i = 0u; i < out.size(); ++i)
-        out[i] = this->data.at(i).get_name();
+        out.push_back(this->data.at(i).get_name());
 
     return out;
 
@@ -179,9 +180,10 @@ template<typename Array_Type, typename Data_Type>
 inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_descriptions() const
 {
     
-    std::vector< std::string > out(this->size());
+    std::vector< std::string > out;
+    out.reserve(this->size());
     for (size_t i = 0u; i < out.size(); ++i)
-        out[i] = data.at(i).get_description();
+        out.push_back(data.at(i).get_description());
 
     return out;
 

@@ -1337,19 +1337,20 @@ inline std::vector< double > keygen_defm(
     size_t nrow = Array_.nrow();
     size_t ncol = Array_.ncol();
 
-    std::vector< double > res(
+    std::vector< double > res;
+    res.reserve(
         2u +                // Rows + cols
         ncol * (nrow - 1u) // Markov cells
         );
 
-    res[0u] = static_cast<double>(nrow);
-    res[1u] = static_cast<double>(ncol);
+    res.push_back(static_cast<double>(nrow));
+    res.push_back(static_cast<double>(ncol));
 
-    size_t iter = 2u;
+    // size_t iter = 2u;
     // Adding the cells
     for (size_t i = 0u; i < (nrow - 1); ++i)
         for (size_t j = 0u; j < ncol; ++j)
-            res[iter++] = Array_(i, j);
+            res.push_back(Array_(i, j));
 
     return res;
 

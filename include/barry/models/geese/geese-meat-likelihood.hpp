@@ -136,9 +136,10 @@ inline double Geese::likelihood(
                 }
 
                 // Multiplying by P(x|x_n), the transition probability
-                std::vector< double > temp_stats(par0.size(), 0.0);
+                std::vector< double > temp_stats;
+                temp_stats.reserve(par0.size());
                 for (auto p = 0u; p < par0.size(); ++p)
-                    temp_stats[p] = psets_stats->operator[](par0.size() * nstate + p);
+                    temp_stats.push_back(psets_stats->operator[](par0.size() * nstate + p));
 
                 nstate++;
 

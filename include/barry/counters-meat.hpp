@@ -201,9 +201,10 @@ COUNTERS_TEMPLATE(void, add_counter)(
 COUNTERS_TEMPLATE(std::vector<std::string>, get_names)() const
 {
 
-    std::vector< std::string > out(this->size());
-    for (size_t i = 0u; i < out.size(); ++i)
-        out[i] = this->data.at(i).get_name();
+    std::vector< std::string > out;
+    out.reserve(this->size());
+    for (size_t i = 0u; i < this->size(); ++i)
+        out.push_back(this->data.at(i).get_name());
 
     return out;
 
@@ -212,9 +213,10 @@ COUNTERS_TEMPLATE(std::vector<std::string>, get_names)() const
 COUNTERS_TEMPLATE(std::vector<std::string>, get_descriptions)() const
 {
     
-    std::vector< std::string > out(this->size());
-    for (size_t i = 0u; i < out.size(); ++i)
-        out[i] = data.at(i).get_description();
+    std::vector< std::string > out;
+    out.reserve(this->size());
+    for (size_t i = 0u; i < this->size(); ++i)
+        out.push_back(data.at(i).get_description());
 
     return out;
 
