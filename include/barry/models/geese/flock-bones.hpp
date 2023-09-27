@@ -15,8 +15,8 @@ class Flock {
 public:
 
     std::vector< Geese > dat;
-    size_t         nfunctions  = 0u;
-    bool                 initialized = false;
+    size_t nfunctions  = 0u;
+    bool initialized = false;
     
     // Common components
     std::mt19937              rengine;
@@ -69,7 +69,8 @@ public:
     double likelihood_joint(
         const std::vector< double > & par,
         bool as_log = false,
-        bool use_reduced_sequence = true
+        bool use_reduced_sequence = true,
+        BARRY_NCORES_ARG(=1)
     );
 
     /**
