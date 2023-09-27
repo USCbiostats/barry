@@ -3,6 +3,7 @@ var geese_types_8hpp =
     [ "NodeData", "class_node_data.html", "class_node_data" ],
     [ "PhyloCounterData", "class_phylo_counter_data.html", "class_phylo_counter_data" ],
     [ "PhyloRuleDynData", "class_phylo_rule_dyn_data.html", "class_phylo_rule_dyn_data" ],
+    [ "POS", "geese-types_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9", null ],
     [ "PhyloArray", "geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6", null ],
     [ "PhyloCounter", "geese-types_8hpp.html#aa13d1499132f5fb228d2b2077672b376", null ],
     [ "PhyloCounters", "geese-types_8hpp.html#a23d267147d3dde4bbbd4c298f0aed64d", null ],

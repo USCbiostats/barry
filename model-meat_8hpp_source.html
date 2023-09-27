@@ -180,9 +180,9 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        numerator += *(stats_target + <a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>) * <a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>[<a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>];</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">if</span> (!log_)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        numerator = exp(numerator <a class="code" href="barry-configuration_8hpp.html#aa8fd3df3585111e6734d97092df83f57">BARRY_SAFE_EXP</a>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        numerator = std::exp(numerator <a class="code" href="barry-configuration_8hpp.html#aa8fd3df3585111e6734d97092df83f57">BARRY_SAFE_EXP</a>);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> numerator <a class="code" href="barry-configuration_8hpp.html#aa8fd3df3585111e6734d97092df83f57">BARRY_SAFE_EXP</a> - log(normalizing_constant);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> numerator <a class="code" href="barry-configuration_8hpp.html#aa8fd3df3585111e6734d97092df83f57">BARRY_SAFE_EXP</a> - std::log(normalizing_constant);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">double</span> ans = numerator/normalizing_constant;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
@@ -1230,7 +1230,7 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;    } <span class="keywordflow">else</span> { </div>
 <div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;       </div>
 <div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;        <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>.resize(<a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>[<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>].<a class="code" href="model-meat_8hpp.html#a8d73b944a5569bd842f636e4b9d420f6">size</a>());</div>
-<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;        std::vector&lt; double &gt; <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>(<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>.size());</div>
+<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;        std::vector&lt; double &gt; <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>(<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>.size());</div>
 <div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;        <span class="keyword">const</span> std::vector&lt; double &gt; &amp; <a class="code" href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6">stats</a> = pset_stats[<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>];</div>
 <div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160; </div>
 <div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> = -1;</div>
@@ -1239,9 +1239,9 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160; </div>
 <div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;            <span class="comment">// Filling out the parameters</span></div>
 <div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> p = 0u; p &lt; <a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>.size(); ++p)</div>
-<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;                <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>[p] = <a class="code" href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6">stats</a>[array * <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + p];</div>
+<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;                <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>[p] = <a class="code" href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6">stats</a>[array * <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + p];</div>
 <div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160; </div>
-<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;            <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>[array] = this-&gt;likelihood(<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>, <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>, <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;            <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>[array] = this-&gt;likelihood(<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>, <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>, <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;            <a class="code" href="model-meat_8hpp.html#aeea68eecbfe5f35e520ebf20c508dd10">cumprob</a> += <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>[array];</div>
 <div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160; </div>
 <div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> == -1 &amp;&amp; <a class="code" href="model-meat_8hpp.html#aeea68eecbfe5f35e520ebf20c508dd10">cumprob</a> &gt;= <a class="code" href="model-meat_8hpp.html#a880a49112fedae68e714341a9a082fb6">r</a>)</div>
@@ -1395,224 +1395,223 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="line"><a name="l01309"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a0544c3fe466e421738dae463968b70ba"> 1309</a></span>&#160;    } <span class="keywordflow">else</span> { </div>
 <div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;       </div>
 <div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;        <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>.resize(<a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>[<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>].<a class="code" href="model-meat_8hpp.html#a8d73b944a5569bd842f636e4b9d420f6">size</a>());</div>
-<div class="line"><a name="l01312"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8"> 1312</a></span>&#160;        std::vector&lt; double &gt; <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>;</div>
-<div class="line"><a name="l01313"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a4f77465f435b5af47b19d1ac4a7c3638"> 1313</a></span>&#160;        <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>.reserve(<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>.size());</div>
-<div class="line"><a name="l01314"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6"> 1314</a></span>&#160;        <span class="keyword">const</span> std::vector&lt; double &gt; &amp; <a class="code" href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6">stats</a> = pset_stats[<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>];</div>
-<div class="line"><a name="l01315"></a><span class="lineno"> 1315</span>&#160; </div>
-<div class="line"><a name="l01316"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066"> 1316</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> = -1;</div>
-<div class="line"><a name="l01317"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a0d7d60577ad0b6507f74f18ab2eccab9"> 1317</a></span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> array = 0u; array &lt; <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>.size(); ++array)</div>
-<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;        {</div>
-<div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160; </div>
-<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;            <span class="comment">// Filling out the parameters</span></div>
-<div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> p = 0u; p &lt; <a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>.size(); ++p)</div>
-<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;                <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>.push_back(<a class="code" href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6">stats</a>[array * <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + p]);</div>
-<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160; </div>
-<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;            <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>[array] = this-&gt;likelihood(<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>, <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>, <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160;            <a class="code" href="model-meat_8hpp.html#aeea68eecbfe5f35e520ebf20c508dd10">cumprob</a> += <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>[array];</div>
-<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160; </div>
-<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> == -1 &amp;&amp; <a class="code" href="model-meat_8hpp.html#aeea68eecbfe5f35e520ebf20c508dd10">cumprob</a> &gt;= <a class="code" href="model-meat_8hpp.html#a880a49112fedae68e714341a9a082fb6">r</a>)</div>
-<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;                <a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> = array;</div>
-<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;        }</div>
-<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160; </div>
-<div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;<span class="preprocessor">        #ifdef BARRY_DEBUG</span></div>
-<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> &lt; 0)</div>
-<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;            <span class="keywordflow">throw</span> std::logic_error(</div>
-<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;                std::string(</div>
-<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;                    <span class="stringliteral">&quot;Something went wrong when sampling from a different set of.&quot;</span>) +</div>
-<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;                std::string(<span class="stringliteral">&quot;parameters. Please report this bug: &quot;</span>) +</div>
-<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;                std::string(<span class="stringliteral">&quot; cumprob: &quot;</span>) + std::to_string(<a class="code" href="model-meat_8hpp.html#aeea68eecbfe5f35e520ebf20c508dd10">cumprob</a>) +</div>
-<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;                std::string(<span class="stringliteral">&quot; r: &quot;</span>) + std::to_string(<a class="code" href="model-meat_8hpp.html#a880a49112fedae68e714341a9a082fb6">r</a>)</div>
-<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;                );</div>
-<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;<span class="preprocessor">        #endif</span></div>
-<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160; </div>
-<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;        <a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a> = <a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a>;</div>
-<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;        </div>
-<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;    }</div>
-<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;    </div>
-<div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160; </div>
-<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;<span class="preprocessor">    #ifdef BARRY_DEBUG</span></div>
-<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>.at(a).at(<a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>);   </div>
-<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;<span class="preprocessor">    #else</span></div>
-<div class="line"><a name="l01350"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e"> 1350</a></span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>[<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>][<a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>];   </div>
-<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;<span class="preprocessor">    #endif</span></div>
-<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160; </div>
-<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;}</div>
-<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160; </div>
-<div class="line"><a name="l01355"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a344cf38d0b829e04052739fcd74e3b8b"> 1355</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(<span class="keywordtype">double</span>, conditional_prob)(</div>
-<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;    <span class="keyword">const</span> Array_Type &amp; Array_,</div>
-<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;    <span class="keyword">const</span> std::vector&lt; double &gt; &amp; <a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>,</div>
-<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>,</div>
-<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a></div>
-<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;) {</div>
-<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160; </div>
-<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;    <span class="comment">// Generating a copy of the array so we can update</span></div>
-<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;    Array_Type A(Array_, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160; </div>
-<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;    <span class="comment">// Making sure we add it first</span></div>
-<div class="line"><a name="l01366"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a4caf204372c3c29af6d87e56708bdba1"> 1366</a></span>&#160;    A.insert_cell(<a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>, A.default_val(), <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160; </div>
-<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;    <span class="comment">// Computing the change stats_target</span></div>
-<div class="line"><a name="l01369"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e"> 1369</a></span>&#160;    std::vector&lt; double &gt; <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>;</div>
-<div class="line"><a name="l01370"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a0851b3fce6040febb01e2484ed9f4f54"> 1370</a></span>&#160;    <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>.reserve(<a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;size());</div>
-<div class="line"><a name="l01371"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a486b5b9c20df6e6446d4928b06eeb401"> 1371</a></span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> ii = 0u; ii &lt; <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;size(); ++ii)</div>
-<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;        <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>.push_back(<a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;operator[](ii).count(A, <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>));</div>
-<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160; </div>
-<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;    <span class="comment">// If there is a transformation function, it needs to be</span></div>
-<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;    <span class="comment">// applied before dealing with the likelihood.</span></div>
-<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;    <span class="keywordflow">if</span> (transform_model_fun)</div>
-<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;        <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a> = transform_model_fun(&amp;<a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>[0u], <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>.size());</div>
-<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160; </div>
-<div class="line"><a name="l01379"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a9ef4985dfa4bd1115422568aac975f7e"> 1379</a></span>&#160;    <span class="keywordflow">return</span> 1.0/</div>
-<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;        (1.0 + std::exp(-vec_inner_prod&lt;double&gt;(</div>
-<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;            &amp;<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>[0u], &amp;<a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>[0u], <a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>.size()</div>
-<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;            )));</div>
-<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160; </div>
-<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;    </div>
-<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;}</div>
-<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160; </div>
-<div class="line"><a name="l01387"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a1e31bdab44335dab4b1ccc082a624fdd"> 1387</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(<span class="keyword">const</span> std::mt19937 *, get_rengine)() <span class="keyword">const</span> {</div>
-<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;    <span class="keywordflow">return</span> this-&gt;rengine;</div>
-<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;}</div>
-<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160; </div>
-<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;<span class="keyword">template</span> <a class="code" href="model-meat_8hpp.html#a9ed2eed6ed65139cb28aabdeffd4c159">MODEL_TEMPLATE_ARGS</a>()</div>
-<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;inline <a class="code" href="class_counters.html">Counters</a>&lt;Array_Type,<a class="code" href="model-meat_8hpp.html#a69b87f58d3fa400f5d9b076072530f69">Data_Counter_Type</a>&gt; * <a class="code" href="model-meat_8hpp.html#acc393c765ed15f1e43f163e69da4e06c">MODEL_TYPE</a>()::get_counters() {</div>
-<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>;</div>
-<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160;}</div>
-<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160; </div>
-<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;<span class="keyword">template</span> <a class="code" href="model-meat_8hpp.html#a9ed2eed6ed65139cb28aabdeffd4c159">MODEL_TEMPLATE_ARGS</a>()</div>
-<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;inline <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,<a class="code" href="model-meat_8hpp.html#ab662732874257647dc631846c67da586">Data_Rule_Type</a>&gt; * <a class="code" href="model-meat_8hpp.html#acc393c765ed15f1e43f163e69da4e06c">MODEL_TYPE</a>()::get_rules() {</div>
-<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="model-meat_8hpp.html#a9182438a7dfb477d783232a9256027bb">rules</a>;</div>
-<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160;}</div>
-<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160; </div>
-<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;<span class="keyword">template</span> <a class="code" href="model-meat_8hpp.html#a9ed2eed6ed65139cb28aabdeffd4c159">MODEL_TEMPLATE_ARGS</a>()</div>
-<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;inline <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Dyn_Type&gt; * <a class="code" href="model-meat_8hpp.html#acc393c765ed15f1e43f163e69da4e06c">MODEL_TYPE</a>()::get_rules_dyn() {</div>
-<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="model-meat_8hpp.html#aabe2227b11b09aa9567f8e6b282c3f57">rules_dyn</a>;</div>
-<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160;}</div>
-<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160; </div>
-<div class="line"><a name="l01406"></a><span class="lineno"> 1406</span>&#160;<span class="keyword">template</span> <a class="code" href="model-meat_8hpp.html#a9ed2eed6ed65139cb28aabdeffd4c159">MODEL_TEMPLATE_ARGS</a>()</div>
-<div class="line"><a name="l01407"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a69b87f58d3fa400f5d9b076072530f69"> 1407</a></span>&#160;inline <a class="code" href="class_support.html">Support</a>&lt;Array_Type,<a class="code" href="model-meat_8hpp.html#a69b87f58d3fa400f5d9b076072530f69">Data_Counter_Type</a>,<a class="code" href="model-meat_8hpp.html#ab662732874257647dc631846c67da586">Data_Rule_Type</a>,Data_Rule_Dyn_Type&gt; *</div>
-<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;<a class="code" href="model-meat_8hpp.html#acc393c765ed15f1e43f163e69da4e06c">MODEL_TYPE</a>()::get_support_fun() {</div>
-<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;    <span class="keywordflow">return</span> &amp;this-&gt;support_fun;</div>
-<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;}</div>
-<div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160; </div>
-<div class="line"><a name="l01412"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#abdedbda5f86170e660b4bb11c4827887"> 1412</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt; double &gt; &gt; *, get_stats_target)()</div>
-<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;{</div>
-<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;    <span class="keywordflow">return</span> &amp;stats_target;</div>
-<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160;}</div>
-<div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160; </div>
-<div class="line"><a name="l01417"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a4eee01b8ead8e269f8af5ba2142efa30"> 1417</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt; double &gt; &gt; *, get_stats_support)()</div>
-<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;{</div>
-<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;    <span class="keywordflow">return</span> &amp;stats_support;</div>
-<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160;}</div>
-<div class="line"><a name="l01421"></a><span class="lineno"> 1421</span>&#160; </div>
-<div class="line"><a name="l01422"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a98accc2669eb478ed64f9f7434e417f3"> 1422</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; size_t &gt; *, get_arrays2support)()</div>
-<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;{</div>
-<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;    <span class="keywordflow">return</span> &amp;arrays2support;</div>
-<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160;}</div>
-<div class="line"><a name="l01426"></a><span class="lineno"> 1426</span>&#160; </div>
-<div class="line"><a name="l01427"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a1b4ab38ad856016e67ff1975c140089e"> 1427</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt; Array_Type &gt; &gt; *, get_pset_arrays)() {</div>
-<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;    <span class="keywordflow">return</span> &amp;<a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>;</div>
-<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;}</div>
-<div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160; </div>
-<div class="line"><a name="l01431"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a05d64a51381043e545359fd19d01d98a"> 1431</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt;double&gt; &gt; *, get_pset_stats)() {</div>
-<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;    <span class="keywordflow">return</span> &amp;pset_stats;</div>
-<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;}</div>
-<div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160; </div>
-<div class="line"><a name="l01435"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a3d6c96b5bf647f75c79ca488d7c9d607"> 1435</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt;double&gt; &gt; *, get_pset_probs)() {</div>
-<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;    <span class="keywordflow">return</span> &amp;pset_probs;</div>
-<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160;}</div>
-<div class="line"><a name="l01438"></a><span class="lineno"> 1438</span>&#160; </div>
-<div class="line"><a name="l01439"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#ab15b13990207319d7cfdd25be5a04105"> 1439</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(<span class="keywordtype">void</span>, set_transform_model)(</div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;    std::function&lt;std::vector&lt;double&gt;(<span class="keywordtype">double</span> *,<span class="keywordtype">size_t</span>)&gt; <a class="code" href="counters-meat_8hpp.html#a43a4f45722a62357bc53b2abaaeb999f">fun</a>,</div>
-<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;    std::vector&lt; std::string &gt; names</div>
-<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;    )</div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;{</div>
-<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160; </div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;    <span class="keywordflow">if</span> (transform_model_fun)</div>
-<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;A transformation function for the model has already been established.&quot;</span>);</div>
-<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;    </div>
-<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;    transform_model_fun = <a class="code" href="counters-meat_8hpp.html#a43a4f45722a62357bc53b2abaaeb999f">fun</a>;</div>
-<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160;    transform_model_term_names = names;</div>
-<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160; </div>
-<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;size(); </div>
-<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160; </div>
-<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;    <span class="comment">// Applying over the support</span></div>
-<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp; s : stats_support)</div>
-<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160;    {</div>
-<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160; </div>
-<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;        <span class="comment">// Making room for the new support</span></div>
-<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;        std::vector&lt; double &gt; s_new(0u);</div>
-<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160;        s_new.reserve(s.size());</div>
-<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160; </div>
-<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160;        <span class="keywordtype">size_t</span> n = s.size() / (<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + 1u);</div>
-<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160; </div>
-<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;        <span class="comment">// Iterating through the unique sets</span></div>
-<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0; <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; n; ++<a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>)</div>
-<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160;        {</div>
-<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160; </div>
-<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;            <span class="comment">// Appending size</span></div>
-<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;            s_new.push_back(s[<a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> * (<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + 1u)]);</div>
-<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160; </div>
-<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;            <span class="comment">// Applying transformation and adding to the new set</span></div>
-<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;            <span class="keyword">auto</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = transform_model_fun(&amp;s[<a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> * (<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + 1u) + 1u], <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>);</div>
-<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160; </div>
-<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.size() != transform_model_term_names.size())</div>
-<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160;                <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;The transform vector from -transform_model_fun- does not match the size of -transform_model_term_names-.&quot;</span>);</div>
-<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160; </div>
-<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;            std::copy(<a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.begin(), <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.end(), std::back_inserter(s_new));</div>
-<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160; </div>
-<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;        }</div>
-<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160; </div>
-<div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;        <span class="comment">// Exchanging with the original</span></div>
-<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;        std::swap(s, s_new);</div>
-<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160; </div>
-<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;    }</div>
-<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160; </div>
-<div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;    <span class="comment">// Applying over the target statistics</span></div>
-<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp; s : stats_target)</div>
-<div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160;        s = transform_model_fun(&amp;s[0u], <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>);</div>
-<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160; </div>
-<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;    <span class="comment">// Checking if there is support included</span></div>
-<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;    <span class="keywordflow">if</span> (with_pset)</div>
-<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160;    {</div>
-<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160; </div>
-<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;        <span class="comment">// Applying it to the support</span></div>
-<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> s = 0u; s &lt; <a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>.size(); ++s)</div>
-<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;        {</div>
-<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160;            std::vector&lt; double &gt; new_stats;</div>
-<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160; </div>
-<div class="line"><a name="l01498"></a><span class="lineno"> 1498</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> = 0u; <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> &lt; <a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>[s].size(); ++<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>)</div>
-<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;            {</div>
-<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160;                <span class="comment">// Computing the transformed version of the data</span></div>
-<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;                <span class="keyword">auto</span> tmpstats = transform_model_fun(</div>
-<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;                    &amp;pset_stats[s][<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> * <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>], <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a></div>
-<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160;                    );</div>
-<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160; </div>
-<div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;                <span class="comment">// Storing the new values</span></div>
-<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> p = 0u; p &lt; <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>; ++p)</div>
-<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;                    new_stats.push_back(tmpstats[p]);</div>
-<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;            }</div>
-<div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160; </div>
-<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;            <span class="comment">// Updating the dataset</span></div>
-<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;            std::swap(pset_stats[s], new_stats);</div>
-<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160; </div>
-<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;        }</div>
-<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160; </div>
-<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160;    }</div>
-<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160; </div>
-<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;    <span class="comment">// And, resizing the last set of parameters</span></div>
-<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp; p : params_last)</div>
-<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;        p.resize(transform_model_term_names.size());</div>
-<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160; </div>
-<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160; </div>
-<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160;}</div>
-<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160; </div>
-<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;<span class="preprocessor">#undef MODEL_TEMPLATE</span></div>
-<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;<span class="preprocessor">#undef MODEL_TEMPLATE_ARGS</span></div>
-<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;<span class="preprocessor">#undef MODEL_TYPE</span></div>
-<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160; </div>
-<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01312"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25"> 1312</a></span>&#160;        std::vector&lt; double &gt; <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>(<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>.size());</div>
+<div class="line"><a name="l01313"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6"> 1313</a></span>&#160;        <span class="keyword">const</span> std::vector&lt; double &gt; &amp; <a class="code" href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6">stats</a> = pset_stats[<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>];</div>
+<div class="line"><a name="l01314"></a><span class="lineno"> 1314</span>&#160; </div>
+<div class="line"><a name="l01315"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066"> 1315</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> = -1;</div>
+<div class="line"><a name="l01316"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a0d7d60577ad0b6507f74f18ab2eccab9"> 1316</a></span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> array = 0u; array &lt; <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>.size(); ++array)</div>
+<div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;        {</div>
+<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160; </div>
+<div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;            <span class="comment">// Filling out the parameters</span></div>
+<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> p = 0u; p &lt; <a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>.size(); ++p)</div>
+<div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;                <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>[p] = <a class="code" href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6">stats</a>[array * <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + p];</div>
+<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160; </div>
+<div class="line"><a name="l01323"></a><span class="lineno"> 1323</span>&#160;            <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>[array] = this-&gt;likelihood(<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>, <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>, <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l01324"></a><span class="lineno"> 1324</span>&#160;            <a class="code" href="model-meat_8hpp.html#aeea68eecbfe5f35e520ebf20c508dd10">cumprob</a> += <a class="code" href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a>[array];</div>
+<div class="line"><a name="l01325"></a><span class="lineno"> 1325</span>&#160; </div>
+<div class="line"><a name="l01326"></a><span class="lineno"> 1326</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> == -1 &amp;&amp; <a class="code" href="model-meat_8hpp.html#aeea68eecbfe5f35e520ebf20c508dd10">cumprob</a> &gt;= <a class="code" href="model-meat_8hpp.html#a880a49112fedae68e714341a9a082fb6">r</a>)</div>
+<div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;                <a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> = array;</div>
+<div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;        }</div>
+<div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160; </div>
+<div class="line"><a name="l01330"></a><span class="lineno"> 1330</span>&#160;<span class="preprocessor">        #ifdef BARRY_DEBUG</span></div>
+<div class="line"><a name="l01331"></a><span class="lineno"> 1331</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a> &lt; 0)</div>
+<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;            <span class="keywordflow">throw</span> std::logic_error(</div>
+<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;                std::string(</div>
+<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;                    <span class="stringliteral">&quot;Something went wrong when sampling from a different set of.&quot;</span>) +</div>
+<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;                std::string(<span class="stringliteral">&quot;parameters. Please report this bug: &quot;</span>) +</div>
+<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;                std::string(<span class="stringliteral">&quot; cumprob: &quot;</span>) + std::to_string(<a class="code" href="model-meat_8hpp.html#aeea68eecbfe5f35e520ebf20c508dd10">cumprob</a>) +</div>
+<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;                std::string(<span class="stringliteral">&quot; r: &quot;</span>) + std::to_string(<a class="code" href="model-meat_8hpp.html#a880a49112fedae68e714341a9a082fb6">r</a>)</div>
+<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;                );</div>
+<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160; </div>
+<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;        <a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a> = <a class="code" href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a>;</div>
+<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;        </div>
+<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;    }</div>
+<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;    </div>
+<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160; </div>
+<div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;<span class="preprocessor">    #ifdef BARRY_DEBUG</span></div>
+<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>.at(a).at(<a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>);   </div>
+<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;<span class="preprocessor">    #else</span></div>
+<div class="line"><a name="l01349"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e"> 1349</a></span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>[<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>][<a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>];   </div>
+<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160; </div>
+<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;}</div>
+<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160; </div>
+<div class="line"><a name="l01354"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a344cf38d0b829e04052739fcd74e3b8b"> 1354</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(<span class="keywordtype">double</span>, conditional_prob)(</div>
+<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;    <span class="keyword">const</span> Array_Type &amp; Array_,</div>
+<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;    <span class="keyword">const</span> std::vector&lt; double &gt; &amp; <a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>,</div>
+<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>,</div>
+<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a></div>
+<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;) {</div>
+<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160; </div>
+<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;    <span class="comment">// Generating a copy of the array so we can update</span></div>
+<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;    Array_Type A(Array_, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160; </div>
+<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;    <span class="comment">// Making sure we add it first</span></div>
+<div class="line"><a name="l01365"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a4caf204372c3c29af6d87e56708bdba1"> 1365</a></span>&#160;    A.insert_cell(<a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>, A.default_val(), <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160; </div>
+<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;    <span class="comment">// Computing the change stats_target</span></div>
+<div class="line"><a name="l01368"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e"> 1368</a></span>&#160;    std::vector&lt; double &gt; <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>;</div>
+<div class="line"><a name="l01369"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a0851b3fce6040febb01e2484ed9f4f54"> 1369</a></span>&#160;    <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>.reserve(<a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;size());</div>
+<div class="line"><a name="l01370"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a486b5b9c20df6e6446d4928b06eeb401"> 1370</a></span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> ii = 0u; ii &lt; <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;size(); ++ii)</div>
+<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;        <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>.push_back(<a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;operator[](ii).count(A, <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>, <a class="code" href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a>));</div>
+<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160; </div>
+<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;    <span class="comment">// If there is a transformation function, it needs to be</span></div>
+<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;    <span class="comment">// applied before dealing with the likelihood.</span></div>
+<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;    <span class="keywordflow">if</span> (transform_model_fun)</div>
+<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;        <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a> = transform_model_fun(&amp;<a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>[0u], <a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>.size());</div>
+<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160; </div>
+<div class="line"><a name="l01378"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a9ef4985dfa4bd1115422568aac975f7e"> 1378</a></span>&#160;    <span class="keywordflow">return</span> 1.0/</div>
+<div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;        (1.0 + std::exp(-vec_inner_prod&lt;double&gt;(</div>
+<div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;            &amp;<a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>[0u], &amp;<a class="code" href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a>[0u], <a class="code" href="model-meat_8hpp.html#a8b812351f601758974ca8a5020a8f7f2">params</a>.size()</div>
+<div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160;            )));</div>
+<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160; </div>
+<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;    </div>
+<div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160;}</div>
+<div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160; </div>
+<div class="line"><a name="l01386"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a1e31bdab44335dab4b1ccc082a624fdd"> 1386</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(<span class="keyword">const</span> std::mt19937 *, get_rengine)() <span class="keyword">const</span> {</div>
+<div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160;    <span class="keywordflow">return</span> this-&gt;rengine;</div>
+<div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;}</div>
+<div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160; </div>
+<div class="line"><a name="l01390"></a><span class="lineno"> 1390</span>&#160;<span class="keyword">template</span> <a class="code" href="model-meat_8hpp.html#a9ed2eed6ed65139cb28aabdeffd4c159">MODEL_TEMPLATE_ARGS</a>()</div>
+<div class="line"><a name="l01391"></a><span class="lineno"> 1391</span>&#160;inline <a class="code" href="class_counters.html">Counters</a>&lt;Array_Type,<a class="code" href="model-meat_8hpp.html#a69b87f58d3fa400f5d9b076072530f69">Data_Counter_Type</a>&gt; * <a class="code" href="model-meat_8hpp.html#acc393c765ed15f1e43f163e69da4e06c">MODEL_TYPE</a>()::get_counters() {</div>
+<div class="line"><a name="l01392"></a><span class="lineno"> 1392</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>;</div>
+<div class="line"><a name="l01393"></a><span class="lineno"> 1393</span>&#160;}</div>
+<div class="line"><a name="l01394"></a><span class="lineno"> 1394</span>&#160; </div>
+<div class="line"><a name="l01395"></a><span class="lineno"> 1395</span>&#160;<span class="keyword">template</span> <a class="code" href="model-meat_8hpp.html#a9ed2eed6ed65139cb28aabdeffd4c159">MODEL_TEMPLATE_ARGS</a>()</div>
+<div class="line"><a name="l01396"></a><span class="lineno"> 1396</span>&#160;inline <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,<a class="code" href="model-meat_8hpp.html#ab662732874257647dc631846c67da586">Data_Rule_Type</a>&gt; * <a class="code" href="model-meat_8hpp.html#acc393c765ed15f1e43f163e69da4e06c">MODEL_TYPE</a>()::get_rules() {</div>
+<div class="line"><a name="l01397"></a><span class="lineno"> 1397</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="model-meat_8hpp.html#a9182438a7dfb477d783232a9256027bb">rules</a>;</div>
+<div class="line"><a name="l01398"></a><span class="lineno"> 1398</span>&#160;}</div>
+<div class="line"><a name="l01399"></a><span class="lineno"> 1399</span>&#160; </div>
+<div class="line"><a name="l01400"></a><span class="lineno"> 1400</span>&#160;<span class="keyword">template</span> <a class="code" href="model-meat_8hpp.html#a9ed2eed6ed65139cb28aabdeffd4c159">MODEL_TEMPLATE_ARGS</a>()</div>
+<div class="line"><a name="l01401"></a><span class="lineno"> 1401</span>&#160;inline <a class="code" href="class_rules.html">Rules</a>&lt;Array_Type,Data_Rule_Dyn_Type&gt; * <a class="code" href="model-meat_8hpp.html#acc393c765ed15f1e43f163e69da4e06c">MODEL_TYPE</a>()::get_rules_dyn() {</div>
+<div class="line"><a name="l01402"></a><span class="lineno"> 1402</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="model-meat_8hpp.html#aabe2227b11b09aa9567f8e6b282c3f57">rules_dyn</a>;</div>
+<div class="line"><a name="l01403"></a><span class="lineno"> 1403</span>&#160;}</div>
+<div class="line"><a name="l01404"></a><span class="lineno"> 1404</span>&#160; </div>
+<div class="line"><a name="l01405"></a><span class="lineno"> 1405</span>&#160;<span class="keyword">template</span> <a class="code" href="model-meat_8hpp.html#a9ed2eed6ed65139cb28aabdeffd4c159">MODEL_TEMPLATE_ARGS</a>()</div>
+<div class="line"><a name="l01406"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a69b87f58d3fa400f5d9b076072530f69"> 1406</a></span>&#160;inline <a class="code" href="class_support.html">Support</a>&lt;Array_Type,<a class="code" href="model-meat_8hpp.html#a69b87f58d3fa400f5d9b076072530f69">Data_Counter_Type</a>,<a class="code" href="model-meat_8hpp.html#ab662732874257647dc631846c67da586">Data_Rule_Type</a>,Data_Rule_Dyn_Type&gt; *</div>
+<div class="line"><a name="l01407"></a><span class="lineno"> 1407</span>&#160;<a class="code" href="model-meat_8hpp.html#acc393c765ed15f1e43f163e69da4e06c">MODEL_TYPE</a>()::get_support_fun() {</div>
+<div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;    <span class="keywordflow">return</span> &amp;this-&gt;support_fun;</div>
+<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;}</div>
+<div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160; </div>
+<div class="line"><a name="l01411"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#abdedbda5f86170e660b4bb11c4827887"> 1411</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt; double &gt; &gt; *, get_stats_target)()</div>
+<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;{</div>
+<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;    <span class="keywordflow">return</span> &amp;stats_target;</div>
+<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;}</div>
+<div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160; </div>
+<div class="line"><a name="l01416"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a4eee01b8ead8e269f8af5ba2142efa30"> 1416</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt; double &gt; &gt; *, get_stats_support)()</div>
+<div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;{</div>
+<div class="line"><a name="l01418"></a><span class="lineno"> 1418</span>&#160;    <span class="keywordflow">return</span> &amp;stats_support;</div>
+<div class="line"><a name="l01419"></a><span class="lineno"> 1419</span>&#160;}</div>
+<div class="line"><a name="l01420"></a><span class="lineno"> 1420</span>&#160; </div>
+<div class="line"><a name="l01421"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a98accc2669eb478ed64f9f7434e417f3"> 1421</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; size_t &gt; *, get_arrays2support)()</div>
+<div class="line"><a name="l01422"></a><span class="lineno"> 1422</span>&#160;{</div>
+<div class="line"><a name="l01423"></a><span class="lineno"> 1423</span>&#160;    <span class="keywordflow">return</span> &amp;arrays2support;</div>
+<div class="line"><a name="l01424"></a><span class="lineno"> 1424</span>&#160;}</div>
+<div class="line"><a name="l01425"></a><span class="lineno"> 1425</span>&#160; </div>
+<div class="line"><a name="l01426"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a1b4ab38ad856016e67ff1975c140089e"> 1426</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt; Array_Type &gt; &gt; *, get_pset_arrays)() {</div>
+<div class="line"><a name="l01427"></a><span class="lineno"> 1427</span>&#160;    <span class="keywordflow">return</span> &amp;<a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>;</div>
+<div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;}</div>
+<div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160; </div>
+<div class="line"><a name="l01430"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a05d64a51381043e545359fd19d01d98a"> 1430</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt;double&gt; &gt; *, get_pset_stats)() {</div>
+<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;    <span class="keywordflow">return</span> &amp;pset_stats;</div>
+<div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;}</div>
+<div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160; </div>
+<div class="line"><a name="l01434"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#a3d6c96b5bf647f75c79ca488d7c9d607"> 1434</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(std::vector&lt; std::vector&lt;double&gt; &gt; *, get_pset_probs)() {</div>
+<div class="line"><a name="l01435"></a><span class="lineno"> 1435</span>&#160;    <span class="keywordflow">return</span> &amp;pset_probs;</div>
+<div class="line"><a name="l01436"></a><span class="lineno"> 1436</span>&#160;}</div>
+<div class="line"><a name="l01437"></a><span class="lineno"> 1437</span>&#160; </div>
+<div class="line"><a name="l01438"></a><span class="lineno"><a class="line" href="model-meat_8hpp.html#ab15b13990207319d7cfdd25be5a04105"> 1438</a></span>&#160;<a class="code" href="model-meat_8hpp.html#af3f082842116f298fabd101d2727d773">MODEL_TEMPLATE</a>(<span class="keywordtype">void</span>, set_transform_model)(</div>
+<div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;    std::function&lt;std::vector&lt;double&gt;(<span class="keywordtype">double</span> *,<span class="keywordtype">size_t</span>)&gt; <a class="code" href="counters-meat_8hpp.html#a43a4f45722a62357bc53b2abaaeb999f">fun</a>,</div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;    std::vector&lt; std::string &gt; names</div>
+<div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;    )</div>
+<div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;{</div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160; </div>
+<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;    <span class="keywordflow">if</span> (transform_model_fun)</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;A transformation function for the model has already been established.&quot;</span>);</div>
+<div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;    </div>
+<div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;    transform_model_fun = <a class="code" href="counters-meat_8hpp.html#a43a4f45722a62357bc53b2abaaeb999f">fun</a>;</div>
+<div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;    transform_model_term_names = names;</div>
+<div class="line"><a name="l01449"></a><span class="lineno"> 1449</span>&#160; </div>
+<div class="line"><a name="l01450"></a><span class="lineno"> 1450</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> = <a class="code" href="statscounter-meat_8hpp.html#a782c48a908662b34845b6f654f929788">counters</a>-&gt;size(); </div>
+<div class="line"><a name="l01451"></a><span class="lineno"> 1451</span>&#160; </div>
+<div class="line"><a name="l01452"></a><span class="lineno"> 1452</span>&#160;    <span class="comment">// Applying over the support</span></div>
+<div class="line"><a name="l01453"></a><span class="lineno"> 1453</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp; s : stats_support)</div>
+<div class="line"><a name="l01454"></a><span class="lineno"> 1454</span>&#160;    {</div>
+<div class="line"><a name="l01455"></a><span class="lineno"> 1455</span>&#160; </div>
+<div class="line"><a name="l01456"></a><span class="lineno"> 1456</span>&#160;        <span class="comment">// Making room for the new support</span></div>
+<div class="line"><a name="l01457"></a><span class="lineno"> 1457</span>&#160;        std::vector&lt; double &gt; s_new(0u);</div>
+<div class="line"><a name="l01458"></a><span class="lineno"> 1458</span>&#160;        s_new.reserve(s.size());</div>
+<div class="line"><a name="l01459"></a><span class="lineno"> 1459</span>&#160; </div>
+<div class="line"><a name="l01460"></a><span class="lineno"> 1460</span>&#160;        <span class="keywordtype">size_t</span> n = s.size() / (<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + 1u);</div>
+<div class="line"><a name="l01461"></a><span class="lineno"> 1461</span>&#160; </div>
+<div class="line"><a name="l01462"></a><span class="lineno"> 1462</span>&#160;        <span class="comment">// Iterating through the unique sets</span></div>
+<div class="line"><a name="l01463"></a><span class="lineno"> 1463</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> = 0; <a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &lt; n; ++<a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>)</div>
+<div class="line"><a name="l01464"></a><span class="lineno"> 1464</span>&#160;        {</div>
+<div class="line"><a name="l01465"></a><span class="lineno"> 1465</span>&#160; </div>
+<div class="line"><a name="l01466"></a><span class="lineno"> 1466</span>&#160;            <span class="comment">// Appending size</span></div>
+<div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;            s_new.push_back(s[<a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> * (<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + 1u)]);</div>
+<div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160; </div>
+<div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;            <span class="comment">// Applying transformation and adding to the new set</span></div>
+<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;            <span class="keyword">auto</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = transform_model_fun(&amp;s[<a class="code" href="model-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> * (<a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a> + 1u) + 1u], <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>);</div>
+<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160; </div>
+<div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.size() != transform_model_term_names.size())</div>
+<div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;                <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;The transform vector from -transform_model_fun- does not match the size of -transform_model_term_names-.&quot;</span>);</div>
+<div class="line"><a name="l01474"></a><span class="lineno"> 1474</span>&#160; </div>
+<div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;            std::copy(<a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.begin(), <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.end(), std::back_inserter(s_new));</div>
+<div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160; </div>
+<div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;        }</div>
+<div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160; </div>
+<div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;        <span class="comment">// Exchanging with the original</span></div>
+<div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;        std::swap(s, s_new);</div>
+<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160; </div>
+<div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;    }</div>
+<div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160; </div>
+<div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;    <span class="comment">// Applying over the target statistics</span></div>
+<div class="line"><a name="l01485"></a><span class="lineno"> 1485</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp; s : stats_target)</div>
+<div class="line"><a name="l01486"></a><span class="lineno"> 1486</span>&#160;        s = transform_model_fun(&amp;s[0u], <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>);</div>
+<div class="line"><a name="l01487"></a><span class="lineno"> 1487</span>&#160; </div>
+<div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;    <span class="comment">// Checking if there is support included</span></div>
+<div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;    <span class="keywordflow">if</span> (with_pset)</div>
+<div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;    {</div>
+<div class="line"><a name="l01491"></a><span class="lineno"> 1491</span>&#160; </div>
+<div class="line"><a name="l01492"></a><span class="lineno"> 1492</span>&#160;        <span class="comment">// Applying it to the support</span></div>
+<div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> s = 0u; s &lt; <a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>.size(); ++s)</div>
+<div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;        {</div>
+<div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;            std::vector&lt; double &gt; new_stats;</div>
+<div class="line"><a name="l01496"></a><span class="lineno"> 1496</span>&#160; </div>
+<div class="line"><a name="l01497"></a><span class="lineno"> 1497</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> = 0u; <a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> &lt; <a class="code" href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a>[s].size(); ++<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a>)</div>
+<div class="line"><a name="l01498"></a><span class="lineno"> 1498</span>&#160;            {</div>
+<div class="line"><a name="l01499"></a><span class="lineno"> 1499</span>&#160;                <span class="comment">// Computing the transformed version of the data</span></div>
+<div class="line"><a name="l01500"></a><span class="lineno"> 1500</span>&#160;                <span class="keyword">auto</span> tmpstats = transform_model_fun(</div>
+<div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;                    &amp;pset_stats[s][<a class="code" href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a> * <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>], <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a></div>
+<div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;                    );</div>
+<div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160; </div>
+<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;                <span class="comment">// Storing the new values</span></div>
+<div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> p = 0u; p &lt; <a class="code" href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a>; ++p)</div>
+<div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;                    new_stats.push_back(tmpstats[p]);</div>
+<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;            }</div>
+<div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160; </div>
+<div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160;            <span class="comment">// Updating the dataset</span></div>
+<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;            std::swap(pset_stats[s], new_stats);</div>
+<div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160; </div>
+<div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;        }</div>
+<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160; </div>
+<div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;    }</div>
+<div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160; </div>
+<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;    <span class="comment">// And, resizing the last set of parameters</span></div>
+<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp; p : params_last)</div>
+<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;        p.resize(transform_model_term_names.size());</div>
+<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160; </div>
+<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160; </div>
+<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160;}</div>
+<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160; </div>
+<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;<span class="preprocessor">#undef MODEL_TEMPLATE</span></div>
+<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;<span class="preprocessor">#undef MODEL_TEMPLATE_ARGS</span></div>
+<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;<span class="preprocessor">#undef MODEL_TYPE</span></div>
+<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160; </div>
+<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarry-configuration_8hpp_html_a2bd7dd8168e4165684de9dba0ae08469"><div class="ttname"><a href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a></div><div class="ttdeci">#define printf_barry</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00051">barry-configuration.hpp:51</a></div></div>
 <div class="ttc" id="abarry-configuration_8hpp_html_aa8fd3df3585111e6734d97092df83f57"><div class="ttname"><a href="barry-configuration_8hpp.html#aa8fd3df3585111e6734d97092df83f57">BARRY_SAFE_EXP</a></div><div class="ttdeci">#define BARRY_SAFE_EXP</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00033">barry-configuration.hpp:33</a></div></div>
 <div class="ttc" id="aclass_counter_html"><div class="ttname"><a href="class_counter.html">Counter</a></div><div class="ttdoc">A counter function based on change statistics.</div><div class="ttdef"><b>Definition:</b> <a href="counters-bones_8hpp_source.html#l00035">counters-bones.hpp:35</a></div></div>
@@ -1647,15 +1646,14 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="ttc" id="acounters-meat_8hpp_html_a5e111f6687f261e4e28bd6528e7f5b48"><div class="ttname"><a href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a></div><div class="ttdeci">return res</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00265">counters-meat.hpp:265</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_ae763aeff9df78ca7be5f904fa4bbdc09"><div class="ttname"><a href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div><div class="ttdeci">Data_Type &amp;&amp;counter_ noexcept</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00026">counters-meat.hpp:27</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a067bec3fe3db997771ba2ce3868cbda7"><div class="ttname"><a href="model-meat_8hpp.html#a067bec3fe3db997771ba2ce3868cbda7">stats_support_n_arrays</a></div><div class="ttdeci">stats_support_n_arrays[locator-&gt;second]</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00560">model-meat.hpp:560</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_a091414baaf8fc6076ca08c2c0ede7066"><div class="ttname"><a href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a></div><div class="ttdeci">int i_matches</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01316">model-meat.hpp:1316</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_a131b560d408069dcb92dd037e4bc5eb8"><div class="ttname"><a href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a></div><div class="ttdeci">std::vector&lt; double &gt; temp_stats</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01312">model-meat.hpp:1312</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_a091414baaf8fc6076ca08c2c0ede7066"><div class="ttname"><a href="model-meat_8hpp.html#a091414baaf8fc6076ca08c2c0ede7066">i_matches</a></div><div class="ttdeci">int i_matches</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01315">model-meat.hpp:1315</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a193348dc03fb67a29c0fbac36e823588"><div class="ttname"><a href="model-meat_8hpp.html#a193348dc03fb67a29c0fbac36e823588">rules_</a></div><div class="ttdeci">Data_Rule_Type * rules_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00379">model-meat.hpp:380</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a2648076475c82f8bfed17e9c46b36f68"><div class="ttname"><a href="model-meat_8hpp.html#a2648076475c82f8bfed17e9c46b36f68">count_fun_</a></div><div class="ttdeci">Data_Counter_Type count_fun_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00327">model-meat.hpp:327</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a298affefd54bd00274c6af4dd64053be"><div class="ttname"><a href="model-meat_8hpp.html#a298affefd54bd00274c6af4dd64053be">update_normalizing_constant</a></div><div class="ttdeci">double update_normalizing_constant(const double *params, const double *support, size_t k, size_t n)</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00009">model-meat.hpp:9</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a32e3aa42c9a0f6e84cda0c6d011e56f0"><div class="ttname"><a href="model-meat_8hpp.html#a32e3aa42c9a0f6e84cda0c6d011e56f0">force_new</a></div><div class="ttdeci">bool force_new</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00436">model-meat.hpp:437</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a39e00005b35af5a31ce2677c113cfdff"><div class="ttname"><a href="model-meat_8hpp.html#a39e00005b35af5a31ce2677c113cfdff">j</a></div><div class="ttdeci">size_t j</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01297">model-meat.hpp:1297</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a40cd8ec3301c44ffdc24b74e8e4eadc5"><div class="ttname"><a href="model-meat_8hpp.html#a40cd8ec3301c44ffdc24b74e8e4eadc5">likelihood_</a></div><div class="ttdeci">double likelihood_(const double *stats_target, const std::vector&lt; double &gt; &amp;params, const double normalizing_constant, size_t n_params, bool log_=false)</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00063">model-meat.hpp:63</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_a69b87f58d3fa400f5d9b076072530f69"><div class="ttname"><a href="model-meat_8hpp.html#a69b87f58d3fa400f5d9b076072530f69">Data_Counter_Type</a></div><div class="ttdeci">template Data_Counter_Type</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01407">model-meat.hpp:1407</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_a69b87f58d3fa400f5d9b076072530f69"><div class="ttname"><a href="model-meat_8hpp.html#a69b87f58d3fa400f5d9b076072530f69">Data_Counter_Type</a></div><div class="ttdeci">template Data_Counter_Type</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01406">model-meat.hpp:1406</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a7eb7ba1e03825c85183cb90dc0635de4"><div class="ttname"><a href="model-meat_8hpp.html#a7eb7ba1e03825c85183cb90dc0635de4">counter</a></div><div class="ttdeci">Data_Counter_Type &amp; counter</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00319">model-meat.hpp:320</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a81e02a278aaeae99b5dbef355ee6dd2f"><div class="ttname"><a href="model-meat_8hpp.html#a81e02a278aaeae99b5dbef355ee6dd2f">a</a></div><div class="ttdeci">size_t a</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01287">model-meat.hpp:1287</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a880a49112fedae68e714341a9a082fb6"><div class="ttname"><a href="model-meat_8hpp.html#a880a49112fedae68e714341a9a082fb6">r</a></div><div class="ttdeci">double r</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01291">model-meat.hpp:1291</a></div></div>
@@ -1671,18 +1669,19 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="ttc" id="amodel-meat_8hpp_html_aa79c6fa1f7864a8258e8f2c0a68b6d35"><div class="ttname"><a href="model-meat_8hpp.html#aa79c6fa1f7864a8258e8f2c0a68b6d35">counters_</a></div><div class="ttdeci">Data_Counter_Type * counters_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00343">model-meat.hpp:344</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_aa9ebe808e2d37ce1008f4e98fe5c5c6b"><div class="ttname"><a href="model-meat_8hpp.html#aa9ebe808e2d37ce1008f4e98fe5c5c6b">init_fun_</a></div><div class="ttdeci">Data_Counter_Type Counter_fun_type&lt; Array_Type, Data_Counter_Type &gt; init_fun_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00328">model-meat.hpp:328</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_aabe2227b11b09aa9567f8e6b282c3f57"><div class="ttname"><a href="model-meat_8hpp.html#aabe2227b11b09aa9567f8e6b282c3f57">rules_dyn</a></div><div class="ttdeci">this rules_dyn</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00424">model-meat.hpp:424</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_aaf06149bb923f3f75878c8217fd5c94e"><div class="ttname"><a href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a></div><div class="ttdeci">std::vector&lt; double &gt; tmp_counts</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01369">model-meat.hpp:1369</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_aaf06149bb923f3f75878c8217fd5c94e"><div class="ttname"><a href="model-meat_8hpp.html#aaf06149bb923f3f75878c8217fd5c94e">tmp_counts</a></div><div class="ttdeci">std::vector&lt; double &gt; tmp_counts</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01368">model-meat.hpp:1368</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_ab14bb4f5b80bcefa0fc098e58e5b44f6"><div class="ttname"><a href="model-meat_8hpp.html#ab14bb4f5b80bcefa0fc098e58e5b44f6">probs</a></div><div class="ttdeci">std::vector&lt; double &gt; &amp; probs</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01298">model-meat.hpp:1298</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_ab636ea2105a33446971af2dc40618a47"><div class="ttname"><a href="model-meat_8hpp.html#ab636ea2105a33446971af2dc40618a47">set_rules</a></div><div class="ttdeci">support_fun set_rules(rules)</div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_ab662732874257647dc631846c67da586"><div class="ttname"><a href="model-meat_8hpp.html#ab662732874257647dc631846c67da586">Data_Rule_Type</a></div><div class="ttdeci">template Data_Rule_Type</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01407">model-meat.hpp:1407</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_ab662732874257647dc631846c67da586"><div class="ttname"><a href="model-meat_8hpp.html#ab662732874257647dc631846c67da586">Data_Rule_Type</a></div><div class="ttdeci">template Data_Rule_Type</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01406">model-meat.hpp:1406</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_ab8ef6c3e79d05d9438b72a41339d7842"><div class="ttname"><a href="model-meat_8hpp.html#ab8ef6c3e79d05d9438b72a41339d7842">fun_</a></div><div class="ttdeci">Data_Counter_Type fun_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00360">model-meat.hpp:361</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_ac41994c414d968a397a48b933272453f"><div class="ttname"><a href="model-meat_8hpp.html#ac41994c414d968a397a48b933272453f">urand</a></div><div class="ttdeci">std::uniform_real_distribution urand(0, 1)</div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_acc393c765ed15f1e43f163e69da4e06c"><div class="ttname"><a href="model-meat_8hpp.html#acc393c765ed15f1e43f163e69da4e06c">MODEL_TYPE</a></div><div class="ttdeci">#define MODEL_TYPE()</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00125">model-meat.hpp:125</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_acf8eccc22a7b9dcde5a2ba1ad4d5e6ea"><div class="ttname"><a href="model-meat_8hpp.html#acf8eccc22a7b9dcde5a2ba1ad4d5e6ea">locator</a></div><div class="ttdeci">MapVec_type&lt; double, size_t &gt;::const_iterator locator</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00456">model-meat.hpp:456</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_ad3d009522a41d83535b5e753b0d8fbf8"><div class="ttname"><a href="model-meat_8hpp.html#ad3d009522a41d83535b5e753b0d8fbf8">rule_fun_</a></div><div class="ttdeci">Data_Rule_Dyn_Type rule_fun_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00404">model-meat.hpp:404</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_ada7a2adf3edef6b8859ce756bd31e4b6"><div class="ttname"><a href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6">stats</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; stats</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01314">model-meat.hpp:1314</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_adb446932e2140e5a8c0420d63fe1300e"><div class="ttname"><a href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a></div><div class="ttdeci">return this pset_arrays[a][j]</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01350">model-meat.hpp:1350</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_ada7a2adf3edef6b8859ce756bd31e4b6"><div class="ttname"><a href="model-meat_8hpp.html#ada7a2adf3edef6b8859ce756bd31e4b6">stats</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; stats</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01313">model-meat.hpp:1313</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_adb446932e2140e5a8c0420d63fe1300e"><div class="ttname"><a href="model-meat_8hpp.html#adb446932e2140e5a8c0420d63fe1300e">pset_arrays</a></div><div class="ttdeci">return this pset_arrays[a][j]</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01349">model-meat.hpp:1349</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_add877eae455a35aea9e5c7de9c6f2dbb"><div class="ttname"><a href="model-meat_8hpp.html#add877eae455a35aea9e5c7de9c6f2dbb">data_</a></div><div class="ttdeci">Data_Counter_Type Counter_fun_type&lt; Array_Type, Data_Counter_Type &gt; Data_Counter_Type data_</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00329">model-meat.hpp:330</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_ade0c4a5bb093e62686d62f2dd009bd25"><div class="ttname"><a href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a></div><div class="ttdeci">std::vector&lt; double &gt; temp_stats(params.size())</div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_ae09eaba6614a37ca52770bbaf18a876c"><div class="ttname"><a href="model-meat_8hpp.html#ae09eaba6614a37ca52770bbaf18a876c">set_rules_dyn</a></div><div class="ttdeci">support_fun set_rules_dyn(rules_dyn)</div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_aeea68eecbfe5f35e520ebf20c508dd10"><div class="ttname"><a href="model-meat_8hpp.html#aeea68eecbfe5f35e520ebf20c508dd10">cumprob</a></div><div class="ttdeci">double cumprob</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01292">model-meat.hpp:1292</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_af101e9ca6306855e019e0e18f0690468"><div class="ttname"><a href="model-meat_8hpp.html#af101e9ca6306855e019e0e18f0690468">key</a></div><div class="ttdeci">std::vector&lt; double &gt; key</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00455">model-meat.hpp:455</a></div></div>
@@ -1700,7 +1699,7 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="model-meat_8hpp.html">model-meat.hpp</a></li>
-    <li class="footer">Generated on Wed Sep 27 2023 05:06:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Sep 27 2023 05:36:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

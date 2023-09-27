@@ -234,10 +234,10 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                }</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="comment">// Multiplying by P(x|x_n), the transition probability</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                std::vector&lt; double &gt; <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>.reserve(par0.size());</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                std::vector&lt; double &gt; <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>.reserve(par0.size());</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">auto</span> p = 0u; p &lt; par0.size(); ++p)</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>.push_back(psets_stats-&gt;operator[](par0.size() * nstate + p));</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>.push_back(psets_stats-&gt;operator[](par0.size() * nstate + p));</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                nstate++;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
@@ -245,7 +245,7 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    off_mult *= model-&gt;likelihood(</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        par0,</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        <a class="code" href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a>,</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        <a class="code" href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a>,</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        node.<a class="code" href="class_node.html#a7406ddf66776b1af2d53993aa256b9b2">narray</a>[s]</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                    );</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                } <span class="keywordflow">catch</span> (std::exception &amp; e) {</div>
@@ -326,15 +326,15 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div class="ttc" id="acounters-meat_8hpp_html_a981162f997bbddbdcaf8234da58a6094"><div class="ttname"><a href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a></div><div class="ttdeci">size_t i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:83</a></div></div>
 <div class="ttc" id="ageese-bones_8hpp_html"><div class="ttname"><a href="geese-bones_8hpp.html">geese-bones.hpp</a></div></div>
 <div class="ttc" id="ageese-bones_8hpp_html_a08888c91f4cab1da64c8f8bf10b59c40"><div class="ttname"><a href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a></div><div class="ttdeci">#define INITIALIZED()</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00022">geese-bones.hpp:22</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_a131b560d408069dcb92dd037e4bc5eb8"><div class="ttname"><a href="model-meat_8hpp.html#a131b560d408069dcb92dd037e4bc5eb8">temp_stats</a></div><div class="ttdeci">std::vector&lt; double &gt; temp_stats</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01312">model-meat.hpp:1312</a></div></div>
 <div class="ttc" id="amodel-meat_8hpp_html_a9389e4770ba454a2e14f870491495cb2"><div class="ttname"><a href="model-meat_8hpp.html#a9389e4770ba454a2e14f870491495cb2">k</a></div><div class="ttdeci">size_t k</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l01294">model-meat.hpp:1294</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_ade0c4a5bb093e62686d62f2dd009bd25"><div class="ttname"><a href="model-meat_8hpp.html#ade0c4a5bb093e62686d62f2dd009bd25">temp_stats</a></div><div class="ttdeci">std::vector&lt; double &gt; temp_stats(params.size())</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-meat-likelihood_8hpp.html">geese-meat-likelihood.hpp</a></li>
-    <li class="footer">Generated on Wed Sep 27 2023 05:06:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Sep 27 2023 05:36:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
