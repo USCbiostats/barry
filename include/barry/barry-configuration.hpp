@@ -55,7 +55,7 @@
     #define BARRY_MAX_NUM_ELEMENTS static_cast< size_t >(std::numeric_limits< size_t >::max() /2u)
 #endif
 
-#ifdef BARRY_USE_OMP
+#ifdef __OPENMP
     #define BARRY_WITH_OMP
     #include <omp.h>
 #endif

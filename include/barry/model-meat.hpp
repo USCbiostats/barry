@@ -13,11 +13,11 @@ inline double update_normalizing_constant(
     size_t n
 )
 {
-    
-    double res = 0.0;
+    std::vector< double > resv(n);
     
     #ifdef __OPENMP
-    #pragma omp simd reduction(+:res) 
+    omp_set_num_threads(omp_get_num_procs());
+    #pragma omp parallel for shared(resv)
     #else
         #ifdef __GNUC__
             #ifndef __clang__
@@ -31,12 +31,35 @@ inline double update_normalizing_constant(
         double tmp = 0.0;
         const double * support_n = support + i * k + 1u;
         
+        #ifdef __OPENMP
+        #pragma omp simd reduction(+:tmp)
+        #else
+            #ifdef __GNUC__
+                #ifndef __clang__
+                #pragma GCC ivdep
+                #endif
+            #endif
+        #endif
         for (size_t j = 0u; j < (k - 1u); ++j)
             tmp += (*(support_n + j)) * (*(params + j));
         
-        res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
+        resv[i] = std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
 
     }
+
+    // Accumulate resv to a double res
+    double res = 0.0;
+    #ifdef __OPENMP
+    #pragma omp parallel for simd reduction(+:res)
+    #else
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
+    #endif
+    for (size_t i = 0u; i < n; ++i)
+        res += resv[i];
 
     #ifdef BARRY_DEBUG
     if (std::isnan(res))
@@ -75,6 +98,7 @@ inline double likelihood_(
     
     // Computing the numerator
     #ifdef __OPENMP
+    omp_set_num_threads(omp_get_num_procs());
     #pragma omp simd reduction(+:numerator)
     #else
         #ifdef __GNUC__

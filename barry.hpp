@@ -17,8 +17,12 @@
 #include <regex>
 #include <iterator>
 
-#ifdef BARRY_USE_OMP
+#ifdef __OPENMP
 #include <omp.h>
+
+// Set the number of threads to match the number of cores
+// in the machine
+
 #endif
 
 #ifndef BARRY_HPP
@@ -113,7 +117,7 @@ namespace barry {
     #define BARRY_MAX_NUM_ELEMENTS static_cast< size_t >(std::numeric_limits< size_t >::max() /2u)
 #endif
 
-#ifdef BARRY_USE_OMP
+#ifdef __OPENMP
     #define BARRY_WITH_OMP
     #include <omp.h>
 #endif
@@ -3171,9 +3175,9 @@ public:
     
     void rm_cell(size_t i, size_t j, bool check_bounds = true, bool check_exists = true);
     
-    void insert_cell(size_t i, size_t j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, const Cell< Cell_Type > & v, bool check_bounds, bool);
     // void insert_cell(size_t i, size_t j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
-    void insert_cell(size_t i, size_t j, Cell_Type v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, Cell_Type v, bool check_bounds, bool);
     
     void swap_cells(
         size_t i0, size_t j0, size_t i1, size_t j1, bool check_bounds = true,
@@ -3795,13 +3799,16 @@ inline BArrayDense<Cell_Type, Data_Type>:: BArrayDense(
 ) : N(Array_.N), M(Array_.M){
   
     // Dimensions
-    el.resize(0u);
-    el_rowsums.resize(0u);
-    el_colsums.resize(0u);
+    el = Array_.el;
+    el_rowsums = Array_.el_rowsums;
+    el_colsums = Array_.el_colsums;
+    // el.resize(0u);
+    // el_rowsums.resize(0u);
+    // el_colsums.resize(0u);
     
-    std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
-    std::copy(Array_.el_rowsums.begin(), Array_.el_rowsums.end(), std::back_inserter(el_rowsums));
-    std::copy(Array_.el_colsums.begin(), Array_.el_colsums.end(), std::back_inserter(el_colsums));
+    // std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
+    // std::copy(Array_.el_rowsums.begin(), Array_.el_rowsums.end(), std::back_inserter(el_rowsums));
+    // std::copy(Array_.el_colsums.begin(), Array_.el_colsums.end(), std::back_inserter(el_colsums));
 
     // this->NCells  = Array_.NCells;
     this->visited = Array_.visited;
@@ -3838,14 +3845,17 @@ inline BArrayDense<Cell_Type,Data_Type> & BArrayDense<Cell_Type, Data_Type>::ope
     if (this != &Array_)
     {
       
-        el.resize(0u);
-        el_rowsums.resize(0u);
-        el_colsums.resize(0u);
+        el = Array_.el;
+        el_rowsums = Array_.el_rowsums;
+        el_colsums = Array_.el_colsums;
+        // el.resize(0u);
+        // el_rowsums.resize(0u);
+        // el_colsums.resize(0u);
         
-        // Entries
-        std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
-        std::copy(Array_.el_rowsums.begin(), Array_.el_rowsums.end(), std::back_inserter(el_rowsums));
-        std::copy(Array_.el_colsums.begin(), Array_.el_colsums.end(), std::back_inserter(el_colsums));
+        // // Entries
+        // std::copy(Array_.el.begin(), Array_.el.end(), std::back_inserter(el));
+        // std::copy(Array_.el_rowsums.begin(), Array_.el_rowsums.end(), std::back_inserter(el_rowsums));
+        // std::copy(Array_.el_colsums.begin(), Array_.el_colsums.end(), std::back_inserter(el_colsums));
 
 
         // this->NCells = Array_.NCells;
@@ -4048,9 +4058,10 @@ inline std::vector< Cell_Type > BArrayDense<Cell_Type, Data_Type>::get_row_vec (
     if (check_bounds) 
         out_of_range(i, 0u);
 
-    std::vector< Cell_Type > ans(ncol(), static_cast< Cell_Type >(false));
+    std::vector< Cell_Type > ans;
+    ans.reserve(ncol());
     for (size_t j = 0u; j < M; ++j) 
-        ans[j] = el[POS(i, j)];
+        ans.push_back(el[POS(i, j)]);
     
     return ans;
 
@@ -4067,7 +4078,7 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
         out_of_range(i, 0u);
 
     for (size_t j = 0u; j < M; ++j) 
-        x->at(j) = el[POS(i, j)];
+        x->operator[](j) = el[POS(i, j)];
     
 }
 
@@ -4080,9 +4091,10 @@ template<typename Cell_Type, typename Data_Type> inline std::vector< Cell_Type >
     if (check_bounds) 
         out_of_range(0u, i);
 
-    std::vector< Cell_Type > ans(nrow(), static_cast< Cell_Type >(false));
+    std::vector< Cell_Type > ans;
+    ans.reserve(nrow()); 
     for (size_t j = 0u; j < N; ++j) 
-        ans[j] = el[POS(j, i)];
+        ans.push_back(el[POS(j, i)]);
     
     return ans;
 
@@ -4099,7 +4111,7 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
         out_of_range(0u, i);
 
     for (size_t j = 0u; j < N; ++j) 
-        x->at(j) = el[POS(j, i)];//this->get_cell(iter->first, i, false);
+        x->operator[](j) = el[POS(j, i)];//this->get_cell(iter->first, i, false);
     
 }
 template<typename Cell_Type, typename Data_Type>
@@ -4297,7 +4309,7 @@ inline void BArrayDense<Cell_Type, Data_Type>::rm_cell (
     if (check_bounds)
         out_of_range(i,j);
 
-    BARRY_UNUSED(check_exists)
+    // BARRY_UNUSED(check_exists)
         
     // Remove the pointer first (so it wont point to empty)
     el_rowsums[i] -= el[POS(i, j)];
@@ -4314,13 +4326,11 @@ inline void BArrayDense<Cell_Type, Data_Type>::insert_cell (
     size_t j,
     const Cell< Cell_Type> & v,
     bool check_bounds,
-    bool check_exists
+    bool
 ) { 
     
     if (check_bounds)
         out_of_range(i,j); 
-    
-    BARRY_UNUSED(check_exists)
 
     if (el[POS(i,j)] == BARRY_ZERO_DENSE)
     {
@@ -4350,13 +4360,11 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
     size_t j,
     Cell_Type v,
     bool check_bounds,
-    bool check_exists
+    bool
 ) {
     
     if (check_bounds)
         out_of_range(i,j);
-
-    BARRY_UNUSED(check_exists)
         
     if (el[POS(i,j)] == BARRY_ZERO_DENSE)
     {
@@ -7476,11 +7484,11 @@ inline double update_normalizing_constant(
     size_t n
 )
 {
-    
-    double res = 0.0;
+    std::vector< double > resv(n);
     
     #ifdef __OPENMP
-    #pragma omp simd reduction(+:res) 
+    omp_set_num_threads(omp_get_num_procs());
+    #pragma omp parallel for
     #else
         #ifdef __GNUC__
             #ifndef __clang__
@@ -7494,12 +7502,35 @@ inline double update_normalizing_constant(
         double tmp = 0.0;
         const double * support_n = support + i * k + 1u;
         
+        #ifdef __OPENMP
+        #pragma omp simd reduction(+:tmp)
+        #else
+            #ifdef __GNUC__
+                #ifndef __clang__
+                #pragma GCC ivdep
+                #endif
+            #endif
+        #endif
         for (size_t j = 0u; j < (k - 1u); ++j)
             tmp += (*(support_n + j)) * (*(params + j));
         
-        res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
+        resv[i] = std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
 
     }
+
+    // Accumulate resv to a double res
+    double res = 0.0;
+    #ifdef __OPENMP
+    #pragma omp parallel for simd reduction(+:res)
+    #else
+        #ifdef __GNUC__
+            #ifndef __clang__
+            #pragma GCC ivdep
+            #endif
+        #endif
+    #endif
+    for (size_t i = 0u; i < n; ++i)
+        res += resv[i];
 
     #ifdef BARRY_DEBUG
     if (std::isnan(res))
@@ -7538,6 +7569,7 @@ inline double likelihood_(
     
     // Computing the numerator
     #ifdef __OPENMP
+    omp_set_num_threads(omp_get_num_procs());
     #pragma omp simd reduction(+:numerator)
     #else
         #ifdef __GNUC__
@@ -7546,13 +7578,14 @@ inline double likelihood_(
             #endif
         #endif
     #endif
+    #pragma code_align(32)
     for (size_t j = 0u; j < params.size(); ++j)
         numerator += *(stats_target + j) * params[j];
 
     if (!log_)
-        numerator = exp(numerator BARRY_SAFE_EXP);
+        numerator = std::exp(numerator BARRY_SAFE_EXP);
     else
-        return numerator BARRY_SAFE_EXP - log(normalizing_constant);
+        return numerator BARRY_SAFE_EXP - std::log(normalizing_constant);
 
     double ans = numerator/normalizing_constant;
 
@@ -8772,8 +8805,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
     } else { 
        
         probs.resize(pset_arrays[a].size());
-        std::vector< double > temp_stats;
-        temp_stats.reserve(params.size());
+        std::vector< double > temp_stats(params.size());
         const std::vector< double > & stats = pset_stats[a];
 
         int i_matches = -1;
@@ -8782,7 +8814,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
             // Filling out the parameters
             for (auto p = 0u; p < params.size(); ++p)
-                temp_stats.push_back(stats[array * k + p]);
+                temp_stats[p] = stats[array * k + p];
 
             probs[array] = this->likelihood(params, temp_stats, i, false);
             cumprob += probs[array];
