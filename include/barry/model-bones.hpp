@@ -240,33 +240,38 @@ public:
     double likelihood(
         const std::vector<double> & params,
         const size_t & i,
-        bool as_log = false
+        bool as_log = false,
+        BARRY_NCORES_ARG(=2)
     );
     
     double likelihood(
         const std::vector<double> & params,
         const Array_Type & Array_,
         int i = -1,
-        bool as_log = false
+        bool as_log = false,
+        BARRY_NCORES_ARG(=2)
     );
     
     double likelihood(
         const std::vector<double> & params,
         const std::vector<double> & target_,
         const size_t & i,
-        bool as_log = false
+        bool as_log = false,
+        BARRY_NCORES_ARG(=2)
     );
 
     double likelihood(
         const std::vector<double> & params,
         const double * target_,
         const size_t & i,
-        bool as_log = false
+        bool as_log = false,
+        BARRY_NCORES_ARG(=2)
     );
     
     double likelihood_total(
         const std::vector<double> & params,
-        bool as_log = false
+        bool as_log = false,
+        BARRY_NCORES_ARG(=2)
     );
     ///@}
 

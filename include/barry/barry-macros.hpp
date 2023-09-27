@@ -9,4 +9,11 @@
 
 #define BARRY_UNUSED(expr) do { (void)(expr); } while (0);
 
+#if defined(_OPENMP) || defined(__OPENMP)
+#define BARRY_NCORES_ARG(default) size_t ncores default
+#else 
+#define BARRY_NCORES_ARG(default) size_t 
+#endif
+
+
 #endif
