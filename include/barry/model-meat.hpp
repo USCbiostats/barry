@@ -87,9 +87,9 @@ inline double likelihood_(
         numerator += *(stats_target + j) * params[j];
 
     if (!log_)
-        numerator = exp(numerator BARRY_SAFE_EXP);
+        numerator = std::exp(numerator BARRY_SAFE_EXP);
     else
-        return numerator BARRY_SAFE_EXP - log(normalizing_constant);
+        return numerator BARRY_SAFE_EXP - std::log(normalizing_constant);
 
     double ans = numerator/normalizing_constant;
 
@@ -1309,8 +1309,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
     } else { 
        
         probs.resize(pset_arrays[a].size());
-        std::vector< double > temp_stats;
-        temp_stats.reserve(params.size());
+        std::vector< double > temp_stats(params.size());
         const std::vector< double > & stats = pset_stats[a];
 
         int i_matches = -1;
@@ -1319,7 +1318,7 @@ MODEL_TEMPLATE(Array_Type, sample)(
 
             // Filling out the parameters
             for (auto p = 0u; p < params.size(); ++p)
-                temp_stats.push_back(stats[array * k + p]);
+                temp_stats[p] = stats[array * k + p];
 
             probs[array] = this->likelihood(params, temp_stats, i, false);
             cumprob += probs[array];

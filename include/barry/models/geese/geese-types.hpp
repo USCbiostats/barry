@@ -1,5 +1,8 @@
 #ifndef GEESE_TYPES_HPP
 #define GEESE_TYPES_HPP
+
+#define POS(a,b) (b)*N + (a)
+
 /**
  * @name Convenient typedefs for Node objects.
  * */
@@ -113,5 +116,42 @@ typedef barry::StatsCounter<PhyloArray, PhyloCounterData> PhyloStatsCounter;
 typedef barry::Model<PhyloArray, PhyloCounterData, PhyloRuleData, PhyloRuleDynData > PhyloModel;
 typedef barry::PowerSet<PhyloArray, PhyloRuleData> PhyloPowerSet;
 ///@}
+
+// template<> 
+// inline void PhyloArray::insert_cell(
+//     size_t i,
+//     size_t j,
+//     const Cell< size_t > & v,
+//     bool check_bounds,
+//     bool
+// ) {
+
+//     if (check_bounds)
+//         out_of_range(i,j); 
+
+//     auto & elptr = el[POS(i,j)];
+
+//     if (elptr == 0u)
+//     {
+
+//         el_rowsums[i] += v.value;
+//         el_colsums[j] += v.value;
+        
+//     } 
+//     else
+//     {
+
+//         el_rowsums[i] += (v.value - elptr);
+//         el_colsums[j] += (v.value - elptr);
+
+//     }
+
+//     elptr = v.value;
+
+//     return;
+
+// }
+
+#undef POS
 
 #endif
