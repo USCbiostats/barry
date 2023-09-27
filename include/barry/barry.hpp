@@ -17,8 +17,12 @@
 #include <regex>
 #include <iterator>
 
-#ifdef BARRY_USE_OMP
+#ifdef __OPENMP
 #include <omp.h>
+
+// Set the number of threads to match the number of cores
+// in the machine
+
 #endif
 
 #ifndef BARRY_HPP
