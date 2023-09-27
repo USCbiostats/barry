@@ -194,9 +194,9 @@ public:
     
     void rm_cell(size_t i, size_t j, bool check_bounds = true, bool check_exists = true);
     
-    void insert_cell(size_t i, size_t j, const Cell< Cell_Type > & v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, const Cell< Cell_Type > & v, bool check_bounds, bool);
     // void insert_cell(size_t i, size_t j, Cell< Cell_Type > && v, bool check_bounds, bool check_exists);
-    void insert_cell(size_t i, size_t j, Cell_Type v, bool check_bounds, bool check_exists);
+    void insert_cell(size_t i, size_t j, Cell_Type v, bool check_bounds, bool);
     
     void swap_cells(
         size_t i0, size_t j0, size_t i1, size_t j1, bool check_bounds = true,

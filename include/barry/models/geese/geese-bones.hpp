@@ -41,21 +41,20 @@ inline std::vector< double > keygen_full(
     // Baseline data: nrows and columns
     std::vector< double > dat = {
         static_cast<double>(array.nrow()) * 100000 +
-         static_cast<double>(array.ncol())
+         static_cast<double>(array.ncol()),
+         1000000.0, // state of the parent
+         array.D_ptr()->duplication ? 1.0 : 0.0 // type of the parent
     };
 
     // State of the parent
-    dat.push_back(1000000.0);
-    size_t count = 0u;
+    double pow10 = 1.0;
     for (bool i : array.D_ptr()->states) {
-        dat[dat.size() - 1u] += (i ? 1.0 : 0.0) * pow(10, static_cast<double>(count));
-        count++;
+        dat[1u] += (i ? 1.0 : 0.0) * pow10;
+        pow10 *= 10.0;
     }
 
-    // Type of the parent
-    dat.push_back(array.D_ptr()->duplication ? 1.0 : 0.0);
-
     return dat;
+    
 }
 
 inline bool vec_diff(

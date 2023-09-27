@@ -170,7 +170,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                         // Getting the offspring state, and how it maps, only
                         // if it is not an offspring
                         const auto & off_state = array_p.get_col_vec(off);
-                        size_t loc = this->map_to_state_id[off_state];
+                        size_t loc = this->map_to_state_id.find(off_state)->second;
 
                         everything_below_p *= parent.offspring[off]->subtree_prob[loc];
 
