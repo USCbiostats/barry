@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uni_5fsub_1444',['UNI_SUB',['../defm_2counters_8hpp.html#a7a02efb9a9ac7cb0f4b8659e2b2529e0',1,'counters.hpp']]]
+  ['zero_5fcell_1400',['ZERO_CELL',['../barraydense-meat_8hpp.html#a51b85d6bd8e8ab46aa8578ad029fbc54',1,'ZERO_CELL():&#160;barraydense-meat.hpp'],['../barraydensecol-bones_8hpp.html#a51b85d6bd8e8ab46aa8578ad029fbc54',1,'ZERO_CELL():&#160;barraydensecol-bones.hpp'],['../barraydenserow-bones_8hpp.html#a51b85d6bd8e8ab46aa8578ad029fbc54',1,'ZERO_CELL():&#160;barraydenserow-bones.hpp']]]
 ];

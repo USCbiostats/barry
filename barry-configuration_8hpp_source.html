@@ -135,7 +135,7 @@ $(document).ready(function(){initNavTree('barry-configuration_8hpp_source.html',
 <div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="barry-configuration_8hpp.html#a4e96e4fea282b750197f31432abe3d97">   55</a></span>&#160;<span class="preprocessor">    #define BARRY_MAX_NUM_ELEMENTS static_cast&lt; size_t &gt;(std::numeric_limits&lt; size_t &gt;::max() /2u)</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#ifdef BARRY_USE_OMP</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#if defined(__OPENMP) || defined(_OPENMP)</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">    #define BARRY_WITH_OMP</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">    #include &lt;omp.h&gt;</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('barry-configuration_8hpp_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barry-configuration_8hpp.html">barry-configuration.hpp</a></li>
-    <li class="footer">Generated on Wed Sep 27 2023 05:36:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Sep 27 2023 22:53:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

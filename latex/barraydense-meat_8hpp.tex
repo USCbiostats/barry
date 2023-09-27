@@ -11,13 +11,13 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{barraydense-meat_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}{ROW}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ij\mbox{[}\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}\mbox{]}
+\#define \mbox{\hyperlink{barraydense-meat_8hpp_a391c25765afb3eb7b8288b21dd2eb16b}{ROW}}(a)~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ij\mbox{[}a\mbox{]}
 \item 
-\#define \mbox{\hyperlink{barraydense-meat_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}{COL}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ji\mbox{[}\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}\mbox{]}
+\#define \mbox{\hyperlink{barraydense-meat_8hpp_ac2a0f8cf6ac7fdad243406f6e3ea0605}{COL}}(a)~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ji\mbox{[}a\mbox{]}
 \item 
-\#define \mbox{\hyperlink{barraydense-meat_8hpp_abf33b097799b4bfe44ec4477c592b0b9}{POS}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}},  b)~(b)$\ast$N + (\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
+\#define \mbox{\hyperlink{barraydense-meat_8hpp_abf33b097799b4bfe44ec4477c592b0b9}{POS}}(a,  b)~(b)$\ast$N + (a)
 \item 
-\#define \mbox{\hyperlink{barraydense-meat_8hpp_a1715b9a21ce267cafd44c884fc4bb72c}{POS\+\_\+N}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}},  b,  c)~(b)$\ast$(c) + (\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
+\#define \mbox{\hyperlink{barraydense-meat_8hpp_a1715b9a21ce267cafd44c884fc4bb72c}{POS\+\_\+N}}(a,  b,  c)~(b)$\ast$(c) + (a)
 \item 
 \#define \mbox{\hyperlink{barraydense-meat_8hpp_a51b85d6bd8e8ab46aa8578ad029fbc54}{ZERO\+\_\+\+CELL}}~static\+\_\+cast$<$Cell\+\_\+\+Type$>$(0.\+0)
 \end{DoxyCompactItemize}
@@ -28,7 +28,7 @@ This graph shows which files directly or indirectly include this file\+:
 \index{barraydense-\/meat.hpp@{barraydense-\/meat.hpp}!COL@{COL}}
 \index{COL@{COL}!barraydense-\/meat.hpp@{barraydense-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{COL}{COL}}
-{\footnotesize\ttfamily \#define COL(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ji\mbox{[}\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}\mbox{]}}
+{\footnotesize\ttfamily \#define COL(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ji\mbox{[}a\mbox{]}}
 
 
 
@@ -38,7 +38,7 @@ Definition at line 24 of file barraydense-\/meat.\+hpp.
 \index{barraydense-\/meat.hpp@{barraydense-\/meat.hpp}!POS@{POS}}
 \index{POS@{POS}!barraydense-\/meat.hpp@{barraydense-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{POS}{POS}}
-{\footnotesize\ttfamily \#define POS(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}},  }\item[{}]{b }\end{DoxyParamCaption})~(b)$\ast$N + (\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})}
+{\footnotesize\ttfamily \#define POS(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(b)$\ast$N + (a)}
 
 
 
@@ -48,7 +48,7 @@ Definition at line 25 of file barraydense-\/meat.\+hpp.
 \index{barraydense-\/meat.hpp@{barraydense-\/meat.hpp}!POS\_N@{POS\_N}}
 \index{POS\_N@{POS\_N}!barraydense-\/meat.hpp@{barraydense-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{POS\_N}{POS\_N}}
-{\footnotesize\ttfamily \#define POS\+\_\+N(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}},  }\item[{}]{b,  }\item[{}]{c }\end{DoxyParamCaption})~(b)$\ast$(c) + (\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})}
+{\footnotesize\ttfamily \#define POS\+\_\+N(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b,  }\item[{}]{c }\end{DoxyParamCaption})~(b)$\ast$(c) + (a)}
 
 
 
@@ -58,7 +58,7 @@ Definition at line 26 of file barraydense-\/meat.\+hpp.
 \index{barraydense-\/meat.hpp@{barraydense-\/meat.hpp}!ROW@{ROW}}
 \index{ROW@{ROW}!barraydense-\/meat.hpp@{barraydense-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{ROW}{ROW}}
-{\footnotesize\ttfamily \#define ROW(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ij\mbox{[}\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}}\mbox{]}}
+{\footnotesize\ttfamily \#define ROW(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~\mbox{\hyperlink{barray-meat-operators_8hpp_a16b15c19feaca0a6aa77abb6865710ef}{this}}-\/$>$el\+\_\+ij\mbox{[}a\mbox{]}}
 
 
 

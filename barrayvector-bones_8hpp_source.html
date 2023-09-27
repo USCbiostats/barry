@@ -119,14 +119,14 @@ $(document).ready(function(){initNavTree('barrayvector-bones_8hpp_source.html','
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">size_t</span> &amp; i_,</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">bool</span> check_bounds = <span class="keyword">true</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        ) : </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    Array(Array_), vec(0u), dim(dim_), <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>(i_) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    Array(Array_), vec(0u), dim(dim_), <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>(i_) {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> (dim &gt; 1u)</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">throw</span> std::range_error(<span class="stringliteral">&quot;-dim_- should be either 0 (row) or 1 (col).&quot;</span>);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (check_bounds) {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">if</span> ((dim == 0u) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &gt;= Array-&gt;<a class="code" href="class_b_array.html#ad8a523ba6c56ff7dcfdb3f347b14dba7">nrow</a>()))</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">if</span> ((dim == 0u) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> &gt;= Array-&gt;<a class="code" href="class_b_array.html#ad8a523ba6c56ff7dcfdb3f347b14dba7">nrow</a>()))</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Row out of range.&quot;</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">if</span> ((dim == 1u) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> &gt;= Array-&gt;<a class="code" href="class_b_array.html#aa7df74a6aeae045e323bbed571b8560b">ncol</a>()))</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Col out of range.&quot;</span>);</div>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('barrayvector-bones_8hpp_source.html','
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_b_array.html">BArray&lt;Cell_Type,Data_Type&gt;</a> * Array;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::vector&lt; std::pair&lt; size_t, Cell_Type &gt; &gt; vec;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">size_t</span> dim;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> init_vec();</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">bool</span> vec_initialized = <span class="keyword">false</span>;</div>
@@ -173,14 +173,14 @@ $(document).ready(function(){initNavTree('barrayvector-bones_8hpp_source.html','
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">size_t</span> &amp; i_,</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">bool</span> check_bounds = <span class="keyword">true</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        ) : </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    Array(Array_), vec(0u), dim(dim_), <a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a>(i_) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    Array(Array_), vec(0u), dim(dim_), <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>(i_) {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span> (dim &gt; 1u)</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">throw</span> std::range_error(<span class="stringliteral">&quot;-dim_- should be either 0 (row) or 1 (col).&quot;</span>);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (check_bounds) {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">if</span> ((dim == 0u) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a> &gt;= Array-&gt;<a class="code" href="class_b_array.html#ad8a523ba6c56ff7dcfdb3f347b14dba7">nrow</a>()))</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">if</span> ((dim == 0u) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> &gt;= Array-&gt;<a class="code" href="class_b_array.html#ad8a523ba6c56ff7dcfdb3f347b14dba7">nrow</a>()))</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Row out of range.&quot;</span>);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">if</span> ((dim == 1u) &amp;&amp; (<a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a> &gt;= Array-&gt;<a class="code" href="class_b_array.html#aa7df74a6aeae045e323bbed571b8560b">ncol</a>()))</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;Col out of range.&quot;</span>);</div>
@@ -223,8 +223,8 @@ $(document).ready(function(){initNavTree('barrayvector-bones_8hpp_source.html','
 <div class="ttc" id="aclass_b_array_vector_html_ac41c8bf35b91d569cd86a7750c202604"><div class="ttname"><a href="class_b_array_vector.html#ac41c8bf35b91d569cd86a7750c202604">BArrayVector::begin</a></div><div class="ttdeci">std::vector&lt; Cell_Type &gt;::const_iterator begin() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="barrayvector-meat_8hpp_source.html#l00050">barrayvector-meat.hpp:50</a></div></div>
 <div class="ttc" id="aclass_b_array_vector_html_ad822cf56f9e41631e2c0c44a1538efeb"><div class="ttname"><a href="class_b_array_vector.html#ad822cf56f9e41631e2c0c44a1538efeb">BArrayVector::is_col</a></div><div class="ttdeci">bool is_col() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="barrayvector-meat_8hpp_source.html#l00034">barrayvector-meat.hpp:34</a></div></div>
 <div class="ttc" id="aclass_b_array_vector_html_aed19a35baf8b35224cfaa28d90786ac7"><div class="ttname"><a href="class_b_array_vector.html#aed19a35baf8b35224cfaa28d90786ac7">BArrayVector::end</a></div><div class="ttdeci">std::vector&lt; Cell_Type &gt;::const_iterator end() noexcept</div><div class="ttdef"><b>Definition:</b> <a href="barrayvector-meat_8hpp_source.html#l00064">barrayvector-meat.hpp:64</a></div></div>
-<div class="ttc" id="acounters-meat_8hpp_html_a981162f997bbddbdcaf8234da58a6094"><div class="ttname"><a href="counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094">i</a></div><div class="ttdeci">size_t i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:83</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_abf2d9f657468255c5b9964ea2b6e9e15"><div class="ttname"><a href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a></div><div class="ttdeci">size_t size_t j</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:84</a></div></div>
+<div class="ttc" id="acounters-meat_8hpp_html_ae46bd26d7133dfe98f8cec7c5ac5c7a1"><div class="ttname"><a href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a></div><div class="ttdeci">size_t i</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00083">counters-meat.hpp:83</a></div></div>
 <div class="ttc" id="acounters-meat_8hpp_html_ae763aeff9df78ca7be5f904fa4bbdc09"><div class="ttname"><a href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div><div class="ttdeci">Data_Type &amp;&amp;counter_ noexcept</div><div class="ttdef"><b>Definition:</b> <a href="counters-meat_8hpp_source.html#l00026">counters-meat.hpp:27</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -232,7 +232,7 @@ $(document).ready(function(){initNavTree('barrayvector-bones_8hpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="barrayvector-bones_8hpp.html">barrayvector-bones.hpp</a></li>
-    <li class="footer">Generated on Wed Sep 27 2023 05:36:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Sep 27 2023 22:53:06 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

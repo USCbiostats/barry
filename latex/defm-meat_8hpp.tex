@@ -11,9 +11,9 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{defm-meat_8hpp_adfece462b32a0dea6b270efc91a7dd5c}{DEFM\+\_\+\+RANGES}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
+\#define \mbox{\hyperlink{defm-meat_8hpp_adfece462b32a0dea6b270efc91a7dd5c}{DEFM\+\_\+\+RANGES}}(a)
 \item 
-\#define \mbox{\hyperlink{defm-meat_8hpp_adf64635c1c487e9ea0eaad4fbffb34ac}{DEFM\+\_\+\+LOOP\+\_\+\+ARRAYS}}(\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})~    \mbox{\hyperlink{statscounter-meat_8hpp_ab4f852818ab1c2fe5cca0279a984d5dc}{for}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = 0u; \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} $<$ (nobs\+\_\+i -\/ M\+\_\+order); ++\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})
+\#define \mbox{\hyperlink{defm-meat_8hpp_adf64635c1c487e9ea0eaad4fbffb34ac}{DEFM\+\_\+\+LOOP\+\_\+\+ARRAYS}}(a)~    \mbox{\hyperlink{statscounter-meat_8hpp_ab4f852818ab1c2fe5cca0279a984d5dc}{for}} (size\+\_\+t a = 0u; a $<$ (nobs\+\_\+i -\/ M\+\_\+order); ++a)
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -27,7 +27,7 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{defm-meat_8hpp_ab617df27c82ead20c04
 \index{defm-\/meat.hpp@{defm-\/meat.hpp}!DEFM\_LOOP\_ARRAYS@{DEFM\_LOOP\_ARRAYS}}
 \index{DEFM\_LOOP\_ARRAYS@{DEFM\_LOOP\_ARRAYS}!defm-\/meat.hpp@{defm-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{DEFM\_LOOP\_ARRAYS}{DEFM\_LOOP\_ARRAYS}}
-{\footnotesize\ttfamily \#define DEFM\+\_\+\+LOOP\+\_\+\+ARRAYS(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})~    \mbox{\hyperlink{statscounter-meat_8hpp_ab4f852818ab1c2fe5cca0279a984d5dc}{for}} (size\+\_\+t \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} = 0u; \mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} $<$ (nobs\+\_\+i -\/ M\+\_\+order); ++\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}})}
+{\footnotesize\ttfamily \#define DEFM\+\_\+\+LOOP\+\_\+\+ARRAYS(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~    \mbox{\hyperlink{statscounter-meat_8hpp_ab4f852818ab1c2fe5cca0279a984d5dc}{for}} (size\+\_\+t a = 0u; a $<$ (nobs\+\_\+i -\/ M\+\_\+order); ++a)}
 
 
 
@@ -37,12 +37,12 @@ Definition at line 36 of file defm-\/meat.\+hpp.
 \index{defm-\/meat.hpp@{defm-\/meat.hpp}!DEFM\_RANGES@{DEFM\_RANGES}}
 \index{DEFM\_RANGES@{DEFM\_RANGES}!defm-\/meat.hpp@{defm-\/meat.hpp}}
 \doxysubsubsection{\texorpdfstring{DEFM\_RANGES}{DEFM\_RANGES}}
-{\footnotesize\ttfamily \#define DEFM\+\_\+\+RANGES(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define DEFM\+\_\+\+RANGES(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordtype}{size\_t} start\_i = start\_end[\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} * 2u];\(\backslash\)}
-\DoxyCodeLine{    size\_t end\_i   = start\_end[\mbox{\hyperlink{model-meat_8hpp_a81e02a278aaeae99b5dbef355ee6dd2f}{a}} * 2u + 1u];\(\backslash\)}
+\DoxyCodeLine{    \textcolor{keywordtype}{size\_t} start\_i = start\_end[a * 2u];\(\backslash\)}
+\DoxyCodeLine{    size\_t end\_i   = start\_end[a * 2u + 1u];\(\backslash\)}
 \DoxyCodeLine{    size\_t nobs\_i  = end\_i -\/ start\_i + 1u;}
 
 \end{DoxyCode}

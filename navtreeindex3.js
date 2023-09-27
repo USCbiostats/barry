@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"class_rules.html#ab2d0135fc9db635459e42e4337b7dc03":[2,0,38,6],
 "class_rules.html#ab87544febb8301772164570708bd708e":[2,0,38,11],
 "class_rules.html#aca68edc31c5043d58dc70e0e601cca7a":[2,0,38,5],
 "class_stats_counter.html":[2,0,39],
@@ -98,7 +99,6 @@ var NAVTREEINDEX3 =
 "counters-meat_8hpp.html#a90771969f8fe9be53b20203d33f6a8a7":[3,0,0,0,27,21],
 "counters-meat_8hpp.html#a9577ec9310f1a84b33cad8721a25206c":[3,0,0,0,27,20],
 "counters-meat_8hpp.html#a9717e7bbecb906637e86cef6da3d83c2":[3,0,0,0,27,55],
-"counters-meat_8hpp.html#a981162f997bbddbdcaf8234da58a6094":[3,0,0,0,27,49],
 "counters-meat_8hpp.html#a9878227b77ad4dc1c5dc2dfe29116362":[3,0,0,0,27,10],
 "counters-meat_8hpp.html#aa387f3508fdf8dce292c32102af2603c":[3,0,0,0,27,2],
 "counters-meat_8hpp.html#aa500953db0e6cf26c9739fc9259c9e6b":[3,0,0,0,27,12],
@@ -111,10 +111,11 @@ var NAVTREEINDEX3 =
 "counters-meat_8hpp.html#ac14f62013456d6f68a82556d96f7fbf7":[3,0,0,0,27,16],
 "counters-meat_8hpp.html#ad2943d64f309fdd1193ed1bd84cccc6e":[3,0,0,0,27,23],
 "counters-meat_8hpp.html#ada63845ba43e9bf4e10e4afba28e0915":[3,0,0,0,27,42],
-"counters-meat_8hpp.html#add877eae455a35aea9e5c7de9c6f2dbb":[3,0,0,0,27,44],
 "counters-meat_8hpp.html#ae0480e298269c6bd4dcee1502d1f0b18":[3,0,0,0,27,15],
 "counters-meat_8hpp.html#ae27e6ee1784a946a418d6115a337f50c":[3,0,0,0,27,5],
+"counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1":[3,0,0,0,27,49],
 "counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09":[3,0,0,0,27,53],
+"counters-meat_8hpp.html#af17c9c018d7997cb11aef6a4da2969a7":[3,0,0,0,27,44],
 "counters-meat_8hpp.html#af34d8283c2939bc809d7928e5929b8ab":[3,0,0,0,27,9],
 "counters-meat_8hpp.html#afa41a789dffd7e6c610d902757c887c1":[3,0,0,0,27,17],
 "counters-meat_8hpp.html#afc300ca98dd09e4de220250a44983f74":[3,0,0,0,27,32],
@@ -247,7 +248,6 @@ var NAVTREEINDEX3 =
 "geese_2counters_8hpp_source.html":[3,0,0,0,1,1,0],
 "geese_8hpp.html":[3,0,0,0,1,3],
 "geese_8hpp_source.html":[3,0,0,0,1,3],
-"globals.html":[3,1,0],
 "globals.html":[3,1,0,0],
-"globals_b.html":[3,1,0,1]
+"globals.html":[3,1,0]
 };

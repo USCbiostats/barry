@@ -1,5 +1,6 @@
 var barry_macros_8hpp =
 [
+    [ "BARRY_NCORES_ARG", "barry-macros_8hpp.html#a1ca54136450bf509406c9def89692fc6", null ],
     [ "BARRY_ONE", "barry-macros_8hpp.html#ad63ca4d357e75f0c4cd3a7eda3e079b5", null ],
     [ "BARRY_ONE_DENSE", "barry-macros_8hpp.html#af3dfeaadbd4886431a66b1bd69a687fc", null ],
     [ "BARRY_UNUSED", "barry-macros_8hpp.html#abdbb6194e397040509635a85186d0d23", null ],

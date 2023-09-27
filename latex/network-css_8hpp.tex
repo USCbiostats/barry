@@ -15,11 +15,11 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 \#define \mbox{\hyperlink{network-css_8hpp_a3a492b987e7d2b4af02a436ef4860b8c}{CSS\+\_\+\+MATCH\+\_\+\+TYPE}}()
 \item 
-\#define \mbox{\hyperlink{network-css_8hpp_a95751730bfbf23e60dc6d99a0926c8cd}{CSS\+\_\+\+CASE\+\_\+\+TRUTH}}()~\mbox{\hyperlink{model-meat_8hpp_a9d60367e064d8367dc84b5de42870332}{if}} ((\mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} $<$ n) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $<$ n))
+\#define \mbox{\hyperlink{network-css_8hpp_a95751730bfbf23e60dc6d99a0926c8cd}{CSS\+\_\+\+CASE\+\_\+\+TRUTH}}()~\mbox{\hyperlink{counters-meat_8hpp_aad00cb483160c346052d1ca08ec136ed}{if}} ((\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} $<$ n) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $<$ n))
 \item 
 \#define \mbox{\hyperlink{network-css_8hpp_ae8e03eb6b9f8c2da28b22016510d3171}{CSS\+\_\+\+TRUE\+\_\+\+CELLS}}()
 \item 
-\#define \mbox{\hyperlink{network-css_8hpp_ae34e3408c6bb6787262ac80b8d49cc42}{CSS\+\_\+\+CASE\+\_\+\+PERCEIVED}}()~\mbox{\hyperlink{model-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} \mbox{\hyperlink{model-meat_8hpp_a9d60367e064d8367dc84b5de42870332}{if}} (((\mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} $>$= s) \&\& (\mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} $<$ e)) \& ((\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $>$= s) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $<$ e)))
+\#define \mbox{\hyperlink{network-css_8hpp_ae34e3408c6bb6787262ac80b8d49cc42}{CSS\+\_\+\+CASE\+\_\+\+PERCEIVED}}()~else \mbox{\hyperlink{counters-meat_8hpp_aad00cb483160c346052d1ca08ec136ed}{if}} (((\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} $<$ e)) \& ((\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $>$= s) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $<$ e)))
 \item 
 \#define \mbox{\hyperlink{network-css_8hpp_a84d551a21be3ac412d3cdee5f51755da}{CSS\+\_\+\+PERCEIVED\+\_\+\+CELLS}}()
 \item 
@@ -78,11 +78,11 @@ This graph shows which files directly or indirectly include this file\+:
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    std::string \mbox{\hyperlink{counters-meat_8hpp_abb04fb263c779506595a61eaedf1f7ef}{name\_}} = (\mbox{\hyperlink{counters-meat_8hpp_a42cb6e97e822b37d4d982c1106a1b53e}{name}});\(\backslash\)}
-\DoxyCodeLine{    for (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} < end\_.size(); ++\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \{ \(\backslash\)}
-\DoxyCodeLine{    std::string tmpname = \mbox{\hyperlink{counters-meat_8hpp_abb04fb263c779506595a61eaedf1f7ef}{name\_}} + \textcolor{stringliteral}{"{} ("{}} + std::to\_string(\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) + \textcolor{stringliteral}{"{})"{}} + \(\backslash\)}
+\DoxyCodeLine{    for (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} < end\_.size(); ++\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}) \{ \(\backslash\)}
+\DoxyCodeLine{    std::string tmpname = \mbox{\hyperlink{counters-meat_8hpp_abb04fb263c779506595a61eaedf1f7ef}{name\_}} + \textcolor{stringliteral}{"{} ("{}} + std::to\_string(\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}) + \textcolor{stringliteral}{"{})"{}} + \(\backslash\)}
 \DoxyCodeLine{    ((counter\_type == 1u) ? \textcolor{stringliteral}{"{} (only perceiver)"{}} : ((counter\_type == 2u)? \textcolor{stringliteral}{"{} (only alters)"{}}: \textcolor{stringliteral}{"{}"{}}));\(\backslash\)}
 \DoxyCodeLine{    counters-\/>add\_counter(tmp\_count, tmp\_init, \textcolor{keyword}{nullptr}, \(\backslash\)}
-\DoxyCodeLine{            \mbox{\hyperlink{class_net_counter_data}{NetCounterData}}(\{netsize, \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} == 0u ? netsize : end\_[\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}-\/1], end\_[\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}], counter\_type, \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}\}, \{\}),\(\backslash\)}
+\DoxyCodeLine{            \mbox{\hyperlink{class_net_counter_data}{NetCounterData}}(\{netsize, \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} == 0u ? netsize : end\_[\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}-\/1], end\_[\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}], counter\_type, \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}\}, \{\}),\(\backslash\)}
 \DoxyCodeLine{            tmpname);\}}
 
 \end{DoxyCode}
@@ -104,7 +104,7 @@ Definition at line 66 of file network-\/css.\+hpp.
 \index{network-\/css.hpp@{network-\/css.hpp}!CSS\_CASE\_PERCEIVED@{CSS\_CASE\_PERCEIVED}}
 \index{CSS\_CASE\_PERCEIVED@{CSS\_CASE\_PERCEIVED}!network-\/css.hpp@{network-\/css.hpp}}
 \doxysubsubsection{\texorpdfstring{CSS\_CASE\_PERCEIVED}{CSS\_CASE\_PERCEIVED}}
-{\footnotesize\ttfamily \#define CSS\+\_\+\+CASE\+\_\+\+PERCEIVED(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{model-meat_8hpp_a0544c3fe466e421738dae463968b70ba}{else}} \mbox{\hyperlink{model-meat_8hpp_a9d60367e064d8367dc84b5de42870332}{if}} (((\mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} $>$= s) \&\& (\mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} $<$ e)) \& ((\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $>$= s) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $<$ e)))}
+{\footnotesize\ttfamily \#define CSS\+\_\+\+CASE\+\_\+\+PERCEIVED(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~else \mbox{\hyperlink{counters-meat_8hpp_aad00cb483160c346052d1ca08ec136ed}{if}} (((\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} $>$= s) \&\& (\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} $<$ e)) \& ((\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $>$= s) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $<$ e)))}
 
 
 
@@ -114,7 +114,7 @@ Definition at line 48 of file network-\/css.\+hpp.
 \index{network-\/css.hpp@{network-\/css.hpp}!CSS\_CASE\_TRUTH@{CSS\_CASE\_TRUTH}}
 \index{CSS\_CASE\_TRUTH@{CSS\_CASE\_TRUTH}!network-\/css.hpp@{network-\/css.hpp}}
 \doxysubsubsection{\texorpdfstring{CSS\_CASE\_TRUTH}{CSS\_CASE\_TRUTH}}
-{\footnotesize\ttfamily \#define CSS\+\_\+\+CASE\+\_\+\+TRUTH(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{model-meat_8hpp_a9d60367e064d8367dc84b5de42870332}{if}} ((\mbox{\hyperlink{model-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} $<$ n) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $<$ n))}
+{\footnotesize\ttfamily \#define CSS\+\_\+\+CASE\+\_\+\+TRUTH(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{counters-meat_8hpp_aad00cb483160c346052d1ca08ec136ed}{if}} ((\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} $<$ n) \&\& (\mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} $<$ n))}
 
 
 
@@ -128,9 +128,9 @@ Definition at line 32 of file network-\/css.\+hpp.
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} < end\_.size(); ++\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}) \{\(\backslash\)}
-\DoxyCodeLine{    if (\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} == 0u) \textcolor{keywordflow}{continue}; \(\backslash\)}
-\DoxyCodeLine{    else \textcolor{keywordflow}{if} (end\_[\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}] < end\_[\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}-\/1u]) \(\backslash\)}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} = 0u; \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} < end\_.size(); ++\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}) \{\(\backslash\)}
+\DoxyCodeLine{    if (\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} == 0u) \textcolor{keywordflow}{continue}; \(\backslash\)}
+\DoxyCodeLine{    else \textcolor{keywordflow}{if} (end\_[\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}] < end\_[\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}-\/1u]) \(\backslash\)}
 \DoxyCodeLine{        throw std::logic\_error(\textcolor{stringliteral}{"{}Endpoints should be specified in order."{}});\}}
 
 \end{DoxyCode}
@@ -203,12 +203,12 @@ Definition at line 89 of file network-\/css.\+hpp.
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordtype}{size\_t} i\_ = \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} -\/ s; \(\backslash\)}
+\DoxyCodeLine{    \textcolor{keywordtype}{size\_t} i\_ = \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} -\/ s; \(\backslash\)}
 \DoxyCodeLine{    size\_t j\_ = \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} -\/ s; \(\backslash\)}
 \DoxyCodeLine{    CSS\_MATCH\_TYPE() \(\backslash\)}
-\DoxyCodeLine{    double tji = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} -\/ s, \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} -\/ s, \textcolor{keyword}{false})); \(\backslash\)}
-\DoxyCodeLine{    double pji = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keyword}{false})); \(\backslash\)}
-\DoxyCodeLine{    double tij = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} -\/ s, \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} -\/ s, \textcolor{keyword}{false}));}
+\DoxyCodeLine{    double tji = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} -\/ s, \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} -\/ s, \textcolor{keyword}{false})); \(\backslash\)}
+\DoxyCodeLine{    double pji = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}, \textcolor{keyword}{false})); \(\backslash\)}
+\DoxyCodeLine{    double tij = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} -\/ s, \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} -\/ s, \textcolor{keyword}{false}));}
 
 \end{DoxyCode}
 
@@ -244,12 +244,12 @@ Definition at line 8 of file network-\/css.\+hpp.
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{    \textcolor{keywordtype}{size\_t} i\_ = \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}; \(\backslash\)}
+\DoxyCodeLine{    \textcolor{keywordtype}{size\_t} i\_ = \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}; \(\backslash\)}
 \DoxyCodeLine{    size\_t j\_ = \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}; \(\backslash\)}
 \DoxyCodeLine{    CSS\_MATCH\_TYPE() \(\backslash\)}
-\DoxyCodeLine{    double tji = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}}, \textcolor{keyword}{false})); \(\backslash\)}
-\DoxyCodeLine{    double pij = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} + s, \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} + s, \textcolor{keyword}{false})); \(\backslash\)}
-\DoxyCodeLine{    double pji = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} + s, \mbox{\hyperlink{counters-meat_8hpp_a981162f997bbddbdcaf8234da58a6094}{i}} + s, \textcolor{keyword}{false}));}
+\DoxyCodeLine{    double tji = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}, \textcolor{keyword}{false})); \(\backslash\)}
+\DoxyCodeLine{    double pij = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} + s, \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} + s, \textcolor{keyword}{false})); \(\backslash\)}
+\DoxyCodeLine{    double pji = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(Array(\mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}} + s, \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}} + s, \textcolor{keyword}{false}));}
 
 \end{DoxyCode}
 
