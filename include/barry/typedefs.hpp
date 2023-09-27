@@ -294,7 +294,7 @@ inline double vec_inner_prod(
 ) {
     
     double res = 0.0;
-    #ifdef __OPENMP
+    #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp simd reduction(+:res)
     #else
         #ifdef __GNUC__

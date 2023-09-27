@@ -244,7 +244,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
     
     if (change_stats_different > 0u)
     {
-        #ifdef __OPENMP
+        #if defined(__OPENMP) || defined(_OPENMP)
         #pragma omp simd
         #endif
         for (size_t n = 0u; n < n_counters; ++n) 
@@ -367,7 +367,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
     
     if (change_stats_different > 0u)
     {
-        #ifdef __OPENMP
+        #if defined(__OPENMP) || defined(_OPENMP)
         #pragma omp simd
         #endif
         for (size_t n = 0u; n < n_counters; ++n) 

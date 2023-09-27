@@ -17,7 +17,7 @@
 #include <regex>
 #include <iterator>
 
-#ifdef __OPENMP
+#if defined(__OPENMP) || defined(_OPENMP)
 #include <omp.h>
 
 // Set the number of threads to match the number of cores
