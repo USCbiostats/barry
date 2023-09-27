@@ -914,7 +914,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
                 params.size()
                 ) BARRY_SAFE_EXP;
         
-        #ifdef __OPENM 
+        #if defined(__OPENMP) || defined(_OPENMP) 
         #pragma omp simd reduction(-:res)
         #endif
         for (size_t i = 0u; i < params_last_size; ++i)
@@ -924,7 +924,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         
         res = 1.0;
         size_t stats_target_size = stats_target.size();
-        #ifdef __OPENM 
+        #if defined(__OPENMP) || defined(_OPENMP) 
         #pragma omp simd reduction(*:res)
         #endif
         for (size_t i = 0; i < stats_target_size; ++i)

@@ -673,7 +673,7 @@ inline void counter_ctriads(NetCounters<NetworkDense> * counters)
         
         // i->j->k->i
         double ans = 0.0;
-        #ifdef __OPENM 
+        #if defined(__OPENMP) || defined(_OPENMP) 
         #pragma omp simd reduction(+:ans)
         #endif
         for (size_t k = 0u; k < Array.nrow(); ++k)
