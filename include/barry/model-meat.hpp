@@ -15,8 +15,7 @@ inline double update_normalizing_constant(
 {
     std::vector< double > resv(n);
     
-    #ifdef __OPENMP
-    omp_set_num_threads(omp_get_num_procs());
+    #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp parallel for shared(resv)
     #else
         #ifdef __GNUC__
@@ -31,7 +30,7 @@ inline double update_normalizing_constant(
         double tmp = 0.0;
         const double * support_n = support + i * k + 1u;
         
-        #ifdef __OPENMP
+        #if defined(__OPENMP) || defined(_OPENMP)
         #pragma omp simd reduction(+:tmp)
         #else
             #ifdef __GNUC__
@@ -49,7 +48,7 @@ inline double update_normalizing_constant(
 
     // Accumulate resv to a double res
     double res = 0.0;
-    #ifdef __OPENMP
+    #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp parallel for simd reduction(+:res)
     #else
         #ifdef __GNUC__
@@ -97,8 +96,7 @@ inline double likelihood_(
     double numerator = 0.0;
     
     // Computing the numerator
-    #ifdef __OPENMP
-    omp_set_num_threads(omp_get_num_procs());
+    #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp simd reduction(+:numerator)
     #else
         #ifdef __GNUC__
@@ -595,6 +593,10 @@ MODEL_TEMPLATE(double, likelihood)(
     const size_t & i,
     bool as_log
 ) {
+
+    #if defined(__OPENMP) || defined(_OPENMP)
+    omp_set_num_threads(omp_get_num_procs());
+    #endif
     
     // Checking if the index exists
     if (i >= arrays2support.size())
