@@ -10,7 +10,7 @@ var class_flock =
     [ "get_stats_target", "class_flock.html#a26462201318e4bf34756a2a14e2cc3fb", null ],
     [ "get_support_fun", "class_flock.html#add876188b5f16af037525e71eaf7fc05", null ],
     [ "init", "class_flock.html#a5ddef5ec4a7b150a354db11bb6b0c593", null ],
-    [ "likelihood_joint", "class_flock.html#a7bcad6b3c794cefc1b4bb613d13ddf71", null ],
+    [ "likelihood_joint", "class_flock.html#add7c442fe0471c790c1945f7abbc2e56", null ],
     [ "nfuns", "class_flock.html#a55cf3311be1c2129466a666bbe90a3fb", null ],
     [ "nleafs", "class_flock.html#a68af1602108455f9d339bc4c2994e9ab", null ],
     [ "nnodes", "class_flock.html#ae1f4eb8ade1c7f369e1f1eddbced3b2b", null ],

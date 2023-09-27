@@ -1002,7 +1002,7 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;                params.size()</div>
 <div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;                ) <a class="code" href="barry-configuration_8hpp.html#aa8fd3df3585111e6734d97092df83f57">BARRY_SAFE_EXP</a>;</div>
 <div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;        </div>
-<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;<span class="preprocessor">        #ifdef __OPENM </span></div>
+<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;<span class="preprocessor">        #if defined(__OPENMP) || defined(_OPENMP) </span></div>
 <div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;<span class="preprocessor">        #pragma omp simd reduction(-:res)</span></div>
 <div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;<span class="preprocessor">        #endif</span></div>
 <div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> = 0u; <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> &lt; params_last_size; ++<a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>)</div>
@@ -1012,7 +1012,7 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;        </div>
 <div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a> = 1.0;</div>
 <div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;        <span class="keywordtype">size_t</span> stats_target_size = stats_target.size();</div>
-<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;<span class="preprocessor">        #ifdef __OPENM </span></div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;<span class="preprocessor">        #if defined(__OPENMP) || defined(_OPENMP) </span></div>
 <div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;<span class="preprocessor">        #pragma omp simd reduction(*:res)</span></div>
 <div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;<span class="preprocessor">        #endif</span></div>
 <div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> = 0; <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> &lt; stats_target_size; ++<a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>)</div>
@@ -1781,7 +1781,7 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="model-meat_8hpp.html">model-meat.hpp</a></li>
-    <li class="footer">Generated on Wed Sep 27 2023 22:53:07 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Sep 27 2023 23:39:58 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

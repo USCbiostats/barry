@@ -130,9 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a26462201318e4bf34756a2a14e2cc3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9692be014117ae093ce160462dbde0d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="geese-types_8hpp.html#a295e1042dd5ede0902719e8ba9756561">PhyloModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a9692be014117ae093ce160462dbde0d2">get_model</a> ()</td></tr>
 <tr class="separator:a9692be014117ae093ce160462dbde0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bcad6b3c794cefc1b4bb613d13ddf71"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a7bcad6b3c794cefc1b4bb613d13ddf71">likelihood_joint</a> (const std::vector&lt; double &gt; &amp;par, bool as_log=false, bool use_reduced_sequence=true,)</td></tr>
-<tr class="memdesc:a7bcad6b3c794cefc1b4bb613d13ddf71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the joint likelihood of the model.  <a href="class_flock.html#a7bcad6b3c794cefc1b4bb613d13ddf71">More...</a><br /></td></tr>
-<tr class="separator:a7bcad6b3c794cefc1b4bb613d13ddf71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add7c442fe0471c790c1945f7abbc2e56"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#add7c442fe0471c790c1945f7abbc2e56">likelihood_joint</a> (const std::vector&lt; double &gt; &amp;par, bool as_log=false, bool use_reduced_sequence=true, size_t ncores=1u)</td></tr>
+<tr class="memdesc:add7c442fe0471c790c1945f7abbc2e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the joint likelihood of the model.  <a href="class_flock.html#add7c442fe0471c790c1945f7abbc2e56">More...</a><br /></td></tr>
+<tr class="separator:add7c442fe0471c790c1945f7abbc2e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00fde307995418d36deeedbc78f29a7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_geese.html">Geese</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flock.html#a00fde307995418d36deeedbc78f29a7a">operator()</a> (size_t <a class="el" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>, bool check_bounds=true)</td></tr>
 <tr class="memdesc:a00fde307995418d36deeedbc78f29a7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the i-th geese element.  <a href="class_flock.html#a00fde307995418d36deeedbc78f29a7a">More...</a><br /></td></tr>
 <tr class="separator:a00fde307995418d36deeedbc78f29a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -483,8 +483,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7bcad6b3c794cefc1b4bb613d13ddf71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bcad6b3c794cefc1b4bb613d13ddf71">&#9670;&nbsp;</a></span>likelihood_joint()</h2>
+<a id="add7c442fe0471c790c1945f7abbc2e56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add7c442fe0471c790c1945f7abbc2e56">&#9670;&nbsp;</a></span>likelihood_joint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -508,7 +508,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>use_reduced_sequence</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>use_reduced_sequence</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>ncores</em> = <code>1u</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -942,7 +948,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_flock.html">Flock</a></li>
-    <li class="footer">Generated on Wed Sep 27 2023 22:53:07 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Sep 27 2023 23:39:59 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
