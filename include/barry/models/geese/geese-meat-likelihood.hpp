@@ -7,7 +7,7 @@ inline double Geese::likelihood(
     const std::vector< double > & par,
     bool as_log,
     bool use_reduced_sequence,
-    BARRY_NCORES_ARG()
+    size_t ncores
 ) {
 
     INITIALIZED()
@@ -150,6 +150,7 @@ inline double Geese::likelihood(
                         par0,
                         temp_stats,
                         node.narray[s],
+                        as_log,
                         ncores
                     );
                 } catch (std::exception & e) {

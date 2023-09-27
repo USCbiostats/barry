@@ -256,7 +256,7 @@ inline bool vec_equal_approx(
 }
 ///@}
 
-#ifdef __OPENM
+#if defined(__OPENMP) || defined(_OPENMP)
 #pragma omp declare simd
 #endif
 template <typename T>
@@ -267,7 +267,7 @@ inline T vec_inner_prod(
 ) {
     
     double res = 0.0;
-    #ifdef __OPENM 
+    #if defined(__OPENMP) || defined(_OPENMP) 
     #pragma omp simd reduction(+:res)
     #else
         #ifdef __GNUC__
@@ -283,7 +283,7 @@ inline T vec_inner_prod(
 
 }
 
-#ifdef __OPENM
+#if defined(__OPENMP) || defined(_OPENMP)
 #pragma omp declare simd
 #endif
 template <>
