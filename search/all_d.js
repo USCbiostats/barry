@@ -12,7 +12,7 @@ var searchData=
   ['net_5fc_5fdata_5fidx_435',['NET_C_DATA_IDX',['../network_8hpp.html#aa75d9c31d709148061626dc54a07723a',1,'network.hpp']]],
   ['net_5fc_5fdata_5fnum_436',['NET_C_DATA_NUM',['../network_8hpp.html#ad5ead8d8915b0536a4d5a6c3ef5001fb',1,'network.hpp']]],
   ['netcounter_437',['NetCounter',['../network_8hpp.html#a75ff9a7bece02dfc6d99fc2f7a35e463',1,'network.hpp']]],
-  ['netcounterdata_438',['NetCounterData',['../class_net_counter_data.html#ac3a5083286ad4fad43e6b6d5db1f7caa',1,'NetCounterData::NetCounterData()'],['../class_net_counter_data.html#ab31cb46020bc0b3a6d5c6a6be4173e20',1,'NetCounterData::NetCounterData(const std::vector&lt; size_t &gt; indices_, const std::vector&lt; double &gt; numbers_)'],['../class_net_counter_data.html',1,'NetCounterData']]],
+  ['netcounterdata_438',['NetCounterData',['../class_net_counter_data.html#ac3a5083286ad4fad43e6b6d5db1f7caa',1,'NetCounterData::NetCounterData()'],['../class_net_counter_data.html#ac1c2ef5a7d68f69e2bc492a6018d17ca',1,'NetCounterData::NetCounterData(const std::vector&lt; size_t &gt; &amp;indices_, const std::vector&lt; double &gt; &amp;numbers_)'],['../class_net_counter_data.html',1,'NetCounterData']]],
   ['netcounters_439',['NetCounters',['../network_8hpp.html#a93d69933a4fa28f3460e7647ac03860d',1,'network.hpp']]],
   ['netmodel_440',['NetModel',['../network_8hpp.html#a3689057a7a18f67f6839f3e1b2b6c140',1,'network.hpp']]],
   ['netrule_441',['NetRule',['../network_8hpp.html#ac8c9529b68fa80139a776663a7ee43a1',1,'network.hpp']]],
