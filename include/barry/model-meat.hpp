@@ -7,27 +7,28 @@
  */
 
 inline double update_normalizing_constant(
-    const double * params,
+    const std::vector<double> & params,
     const double * support,
     size_t k,
     size_t n
 )
 {
-    std::vector< double > resv(n);
     double res = 0.0;
     
     if (n > 1000u)
     {
 
+        std::vector< double > resv(n, 0.0);
+
         #if defined(__OPENMP) || defined(_OPENMP)
-        #pragma omp parallel for shared(resv)
+        #pragma omp parallel for shared(resv) firstprivate(params, n, k) 
         #elif defined(__GNUC__) && !defined(__clang__)
             #pragma GCC ivdep
         #endif
         for (size_t j = 0u; j < (k - 1u); ++j)
         {
 
-            double p = *(params + j);
+            const double p = params[j];
             
             #if defined(__OPENMP) || defined(_OPENMP)
             #pragma omp simd 
@@ -59,15 +60,11 @@ inline double update_normalizing_constant(
             const double * support_n = support + i * k + 1u;
             
             for (size_t j = 0u; j < (k - 1u); ++j)
-                tmp += (*(support_n + j)) * (*(params + j));
+                tmp += (*(support_n + j)) * params[j];
             
-            resv[i] = std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
+            res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
 
         }
-
-        // Accumulate resv to a double res
-        for (size_t i = 0u; i < n; ++i)
-            res += resv[i];
 
 
     }
@@ -631,7 +628,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[idx].size() / k;
 
         normalizing_constants[idx] = update_normalizing_constant(
-            &params[0u], &stats_support[idx][0u], k, n
+            params, &stats_support[idx][0u], k, n
         );
         
         params_last[idx] = params;
@@ -713,7 +710,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[loc].size() / k;
         
         normalizing_constants[loc] = update_normalizing_constant(
-            &params[0u], &stats_support[loc][0u], k, n
+            params, &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -785,7 +782,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[loc].size() / k;
 
         normalizing_constants[loc] = update_normalizing_constant(
-            &params[0u], &stats_support[loc][0u], k, n
+            params, &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -859,7 +856,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[loc].size() / k;
 
         normalizing_constants[loc] = update_normalizing_constant(
-            &params[0u], &stats_support[loc][0u], k, n
+            params, &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -900,7 +897,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
             
             first_calc_done[i] = true;
             normalizing_constants[i] = update_normalizing_constant(
-                &params[0u], &stats_support[i][0u], k, n
+                params, &stats_support[i][0u], k, n
             );
             
             params_last[i] = params;
@@ -971,7 +968,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[id].size() / k;
 
         normalizing_constants[id] = update_normalizing_constant(
-            &params[0u], &stats_support[id][0u], k, n
+            params, &stats_support[id][0u], k, n
         );
         
         params_last[id] = params;
