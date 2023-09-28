@@ -22,8 +22,6 @@ inline double Geese::likelihood(
 
     double ll = 0.0;
 
-    Node * n_off;
-
     // Following the prunning sequence
     std::vector< size_t > * preseq;
 
@@ -60,38 +58,47 @@ inline double Geese::likelihood(
         {
 
             // Starting the prob
-            double totprob = 0.0;
+            size_t array_id = node.narray[s];
 
             // Retrieving the sets of arrays
-            const std::vector< PhyloArray > * psets =
-                model->get_pset(node.narray[s]);
+            const std::vector< PhyloArray > & psets =
+                *(model->get_pset(array_id));
 
-            const std::vector<double> * psets_stats =
-                model->get_pset_stats(node.narray[s]);
+            const std::vector<double> & psets_stats =
+                *(model->get_pset_stats(array_id));
 
             std::vector< std::vector< size_t > > & locations = pset_loc[
-                arrays2support->operator[](node.narray[s])
+                arrays2support->operator[](array_id)
                 ];
             
             // Summation over all possible values of X
+            const auto & node_offspring = node.offspring;
+            std::vector< double > totprob_n(psets.size(), 0.0);
             size_t nstate = 0u;
-            size_t narray = 0u;
-            for (auto x = psets->begin(); x != psets->end(); ++x)
+            #if defined(_OPENMP) || defined(__OPENMP)
+            #pragma omp parallel for num_threads(ncores) \
+                shared(locations, psets, psets_stats, totprob_n) \
+                firstprivate(nfunctions, par0, node_offspring, array_id)
+            #endif
+            for (size_t n = 0u; n < psets.size(); ++n) // x = psets->begin(); x != psets->end(); ++x)
             {
 
-                if (!x->is_dense())
+                // Retrieving the pset
+                const auto & x = psets[n];
+
+                if (!x.is_dense())
                     throw std::logic_error("This is only supported for dense arrays.");
 
-                std::vector< size_t > & location_x = locations[narray++];
+                const std::vector< size_t > & location_x = locations[n];
 
                 // Extracting the possible values of each offspring
                 double off_mult = 1.0;
 
-                for (auto o = 0u; o < x->ncol(); ++o)
+                for (auto o = 0u; o < x.ncol(); ++o)
                 {
 
                     // Setting the node
-                    n_off = node.offspring[o];
+                    const Node * n_off = node_offspring[o];
                     
                     // In the case that the offspring is a leaf, then we need to
                     // check whether the state makes sense.
@@ -102,7 +109,7 @@ inline double Geese::likelihood(
                             if (n_off->annotations[f] != 9u)
                             {
 
-                                if (x->operator()(f, o) != n_off->annotations[f])
+                                if (x(f, o) != n_off->annotations[f])
                                 {
 
                                     off_mult = -1.0;
@@ -123,7 +130,7 @@ inline double Geese::likelihood(
                     }
 
                     // Retrieving the location to the respective set of probabilities
-                    off_mult *= node.offspring[o]->subtree_prob[location_x[o]];
+                    off_mult *= n_off->subtree_prob[location_x[o]];
 
                 }
 
@@ -140,7 +147,7 @@ inline double Geese::likelihood(
                 std::vector< double > temp_stats;
                 temp_stats.reserve(par0.size());
                 for (auto p = 0u; p < par0.size(); ++p)
-                    temp_stats.push_back(psets_stats->operator[](par0.size() * nstate + p));
+                    temp_stats.push_back(psets_stats[par0.size() * nstate + p]);
 
                 nstate++;
 
@@ -149,9 +156,8 @@ inline double Geese::likelihood(
                     off_mult *= model->likelihood(
                         par0,
                         temp_stats,
-                        node.narray[s],
-                        false,
-                        ncores
+                        array_id,
+                        false
                     );
                 } catch (std::exception & e) {
 
@@ -171,12 +177,13 @@ inline double Geese::likelihood(
                 }
 
                 // Adding to the total probabilities
-                totprob += off_mult;
+                totprob_n[n] = off_mult;
 
             }
 
             // Setting the probability at the node
-            node.subtree_prob[s] = totprob;
+            for (size_t n = 0u; n < psets.size(); ++n)
+                node.subtree_prob[s] += totprob_n[n];
 
         }
 

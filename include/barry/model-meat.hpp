@@ -20,11 +20,11 @@ inline double update_normalizing_constant(
 
         std::vector< double > resv(n, 0.0);
 
-        #if defined(__OPENMP) || defined(_OPENMP)
-        #pragma omp parallel for shared(resv) firstprivate(params, n, k) 
-        #elif defined(__GNUC__) && !defined(__clang__)
-            #pragma GCC ivdep
-        #endif
+        // #if defined(__OPENMP) || defined(_OPENMP)
+        // #pragma omp parallel for shared(resv) firstprivate(params, n, k)
+        // #elif defined(__GNUC__) && !defined(__clang__)
+        //     #pragma GCC ivdep
+        // #endif
         for (size_t j = 0u; j < (k - 1u); ++j)
         {
 
@@ -600,13 +600,8 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::likelihood(
     const std::vector<double> & params,
     const size_t & i,
-    bool as_log,
-    BARRY_NCORES_ARG()
+    bool as_log
 ) {
-
-    #if defined(__OPENMP) || defined(_OPENMP)
-    omp_set_num_threads(ncores);
-    #endif
     
     // Checking if the index exists
     if (i >= arrays2support.size())
@@ -650,13 +645,8 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     const std::vector<double> & params,
     const Array_Type & Array_,
     int i,
-    bool as_log,
-    BARRY_NCORES_ARG()
+    bool as_log
 ) {
-
-    #if defined(__OPENMP) || defined(_OPENMP)
-    omp_set_num_threads(ncores);
-    #endif
     
     // Key of the support set to use
     int loc;
@@ -736,13 +726,8 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     const std::vector<double> & params,
     const std::vector<double> & target_,
     const size_t & i,
-    bool as_log,
-    BARRY_NCORES_ARG()
+    bool as_log
 ) {
-
-    #if defined(__OPENMP) || defined(_OPENMP)
-    omp_set_num_threads(ncores);
-    #endif
     
     // Checking if the index exists
     if (i >= arrays2support.size())
@@ -804,13 +789,8 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     const std::vector<double> & params,
     const double * target_,
     const size_t & i,
-    bool as_log,
-    BARRY_NCORES_ARG()
+    bool as_log
 ) {
-
-    #if defined(__OPENMP) || defined(_OPENMP)
-    omp_set_num_threads(ncores);
-    #endif
     
     // Checking if the index exists
     if (i >= arrays2support.size())
@@ -879,13 +859,12 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     bool as_log,
     BARRY_NCORES_ARG()
 ) {
-
-    #if defined(__OPENMP) || defined(_OPENMP)
-    omp_set_num_threads(ncores);
-    #endif
     
     size_t params_last_size = params_last.size();
 
+    // #if defined(__OPENMP) || defined(_OPENMP)
+    // #pragma omp parallel for num_threads(ncores)
+    // #endif
     for (size_t i = 0u; i < params_last_size; ++i)
     {
 
