@@ -3684,20 +3684,12 @@ inline BArrayDense<Cell_Type, Data_Type>::BArrayDense(
     const std::vector< size_t > & target,
     const std::vector< Cell_Type > & value,
     bool add
-) {
+) : N(N_), M(M_), el(N_ * M_, ZERO_CELL), el_rowsums(N_, ZERO_CELL), el_colsums(M_, ZERO_CELL) {
   
     if (source.size() != target.size())
         throw std::length_error("-source- and -target- don't match on length.");
     if (source.size() != value.size())
         throw std::length_error("-sorce- and -value- don't match on length.");
-    
-    // Initializing
-    N = N_;
-    M = M_;
-
-    el.resize(N * M, ZERO_CELL);
-    el_rowsums.resize(N, ZERO_CELL);
-    el_colsums.resize(M, ZERO_CELL);
     
     // Writing the data
     for (size_t i = 0u; i < source.size(); ++i)
@@ -3741,7 +3733,7 @@ inline BArrayDense<Cell_Type, Data_Type>:: BArrayDense(
     const std::vector< size_t > & source,
     const std::vector< size_t > & target,
     bool add
-) {
+) : N(N_), M(M_), el(N_ * M_, ZERO_CELL), el_rowsums(N_, ZERO_CELL), el_colsums(M_, ZERO_CELL) {
   
     std::vector< Cell_Type > value(source.size(), static_cast<Cell_Type>(1.0));
 
@@ -3749,14 +3741,7 @@ inline BArrayDense<Cell_Type, Data_Type>:: BArrayDense(
         throw std::length_error("-source- and -target- don't match on length.");
     if (source.size() != value.size())
         throw std::length_error("-sorce- and -value- don't match on length.");
-    
-    // Initializing
-    N = N_;
-    M = M_;
 
-    el.resize(N * M, ZERO_CELL);
-    el_rowsums.resize(N, ZERO_CELL);
-    el_colsums.resize(M, ZERO_CELL);
     
     // Writing the data
     for (size_t i = 0u; i < source.size(); ++i)
@@ -5385,7 +5370,7 @@ COUNTERS_TEMPLATE(void, add_counter)(
 )
 {
   
-    data.emplace_back(Counter<Array_Type,Data_Type>(
+    data.push_back(Counter<Array_Type,Data_Type>(
         count_fun_,
         init_fun_,
         hasher_fun_,
@@ -7482,41 +7467,40 @@ public:
  */
 
 inline double update_normalizing_constant(
-    const double * params,
+    const std::vector<double> & params,
     const double * support,
     size_t k,
     size_t n
 )
 {
-    std::vector< double > resv(n);
+    double res = 0.0;
     
     if (n > 1000u)
     {
 
+        std::vector< double > resv(n, 0.0);
+
         #if defined(__OPENMP) || defined(_OPENMP)
-        #pragma omp parallel for shared(resv)
+        #pragma omp parallel for shared(resv) firstprivate(params, n, k) 
         #elif defined(__GNUC__) && !defined(__clang__)
             #pragma GCC ivdep
         #endif
         for (size_t j = 0u; j < (k - 1u); ++j)
         {
 
-            double p = *(params + j);
-            double tmp = 0.0;
-            const double * support_n = support + i * k + 1u;
+            const double p = params[j];
             
             #if defined(__OPENMP) || defined(_OPENMP)
-            #pragma omp simd reduction(+:tmp)
+            #pragma omp simd 
             #elif defined(__GNUC__) && !defined(__clang__)
                 #pragma GCC ivdep
             #endif
             for (size_t i = 0u; i < n; ++i)
-                resv[i] += (*(support_n + j)) * p;
+                resv[i] += (*(support + i * k + 1u + j)) * p;
 
         }
 
-        // Accumulate resv to a double res
-        double res = 0.0;
+        // Accumulate resv to a double res        
         #if defined(__OPENMP) || defined(_OPENMP)
         #pragma omp simd reduction(+:res)
         #elif defined(__GNUC__) && !defined(__clang__)
@@ -7536,16 +7520,11 @@ inline double update_normalizing_constant(
             const double * support_n = support + i * k + 1u;
             
             for (size_t j = 0u; j < (k - 1u); ++j)
-                tmp += (*(support_n + j)) * (*(params + j));
+                tmp += (*(support_n + j)) * params[j];
             
-            resv[i] = std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
+            res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
 
         }
-
-        // Accumulate resv to a double res
-        double res = 0.0;
-        for (size_t i = 0u; i < n; ++i)
-            res += resv[i];
 
 
     }
@@ -8109,7 +8088,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[idx].size() / k;
 
         normalizing_constants[idx] = update_normalizing_constant(
-            &params[0u], &stats_support[idx][0u], k, n
+            params, &stats_support[idx][0u], k, n
         );
         
         params_last[idx] = params;
@@ -8191,7 +8170,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[loc].size() / k;
         
         normalizing_constants[loc] = update_normalizing_constant(
-            &params[0u], &stats_support[loc][0u], k, n
+            params, &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -8263,7 +8242,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[loc].size() / k;
 
         normalizing_constants[loc] = update_normalizing_constant(
-            &params[0u], &stats_support[loc][0u], k, n
+            params, &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -8337,7 +8316,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[loc].size() / k;
 
         normalizing_constants[loc] = update_normalizing_constant(
-            &params[0u], &stats_support[loc][0u], k, n
+            params, &stats_support[loc][0u], k, n
         );
         
         params_last[loc] = params;
@@ -8378,7 +8357,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
             
             first_calc_done[i] = true;
             normalizing_constants[i] = update_normalizing_constant(
-                &params[0u], &stats_support[i][0u], k, n
+                params, &stats_support[i][0u], k, n
             );
             
             params_last[i] = params;
@@ -8449,7 +8428,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support[id].size() / k;
 
         normalizing_constants[id] = update_normalizing_constant(
-            &params[0u], &stats_support[id][0u], k, n
+            params, &stats_support[id][0u], k, n
         );
         
         params_last[id] = params;
@@ -9542,8 +9521,8 @@ public:
     
     NetCounterData() : indices(0u), numbers(0u) {};
     NetCounterData(
-        const std::vector< size_t > indices_,
-        const std::vector< double > numbers_
+        const std::vector< size_t > & indices_,
+        const std::vector< double > & numbers_
     ): indices(indices_), numbers(numbers_) {};
     
     ~NetCounterData() {};

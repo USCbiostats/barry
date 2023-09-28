@@ -61,8 +61,8 @@ public:
     
     NetCounterData() : indices(0u), numbers(0u) {};
     NetCounterData(
-        const std::vector< size_t > indices_,
-        const std::vector< double > numbers_
+        const std::vector< size_t > & indices_,
+        const std::vector< double > & numbers_
     ): indices(indices_), numbers(numbers_) {};
     
     ~NetCounterData() {};
