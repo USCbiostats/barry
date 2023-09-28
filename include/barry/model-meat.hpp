@@ -764,7 +764,6 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     // Checking if this actually has a change of happening
     if (this->stats_support[loc].size() == 0u)
     {
-        // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
         throw std::logic_error("The support set for this array is empty.");
     }
     
@@ -832,7 +831,6 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
             throw std::range_error(
                 "The array is not in the support set. The array's statistics are: " + target_str + std::string(".")
                 );
-            // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
         }
 
     }
@@ -840,7 +838,6 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     // Checking if this actually has a change of happening
     if (this->stats_support[loc].size() == 0u)
     {
-        // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
         throw std::logic_error("The support set for this array is empty.");
     }
     
