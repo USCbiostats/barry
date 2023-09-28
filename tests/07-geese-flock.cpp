@@ -64,7 +64,7 @@ BARRY_TEST_CASE("Flock likelihood", "[flock-likelihood]") {
 
     aflock.init();
 
-    double ans1 = aflock.likelihood_joint(params, true);
+    double ans1 = aflock.likelihood_joint(params, true, true, 2u);
     #ifdef CATCH_CONFIG_MAIN
     REQUIRE(std::abs(ans0 - ans1) < .00000001);
     #endif
