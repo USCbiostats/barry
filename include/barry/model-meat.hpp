@@ -14,51 +14,64 @@ inline double update_normalizing_constant(
 )
 {
     std::vector< double > resv(n);
+    double res = 0.0;
     
-    #if defined(__OPENMP) || defined(_OPENMP)
-    #pragma omp parallel for shared(resv)
-    #else
-        #ifdef __GNUC__
-            #ifndef __clang__
-            #pragma GCC ivdep
-            #endif
-        #endif
-    #endif
-    for (size_t i = 0u; i < n; ++i)
+    if (n > 1000u)
     {
 
-        double tmp = 0.0;
-        const double * support_n = support + i * k + 1u;
-        
         #if defined(__OPENMP) || defined(_OPENMP)
-        #pragma omp simd reduction(+:tmp)
-        #else
-            #ifdef __GNUC__
-                #ifndef __clang__
-                #pragma GCC ivdep
-                #endif
-            #endif
+        #pragma omp parallel for shared(resv)
+        #elif defined(__GNUC__) && !defined(__clang__)
+            #pragma GCC ivdep
         #endif
         for (size_t j = 0u; j < (k - 1u); ++j)
-            tmp += (*(support_n + j)) * (*(params + j));
-        
-        resv[i] = std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
+        {
+
+            double p = *(params + j);
+            
+            #if defined(__OPENMP) || defined(_OPENMP)
+            #pragma omp simd 
+            #elif defined(__GNUC__) && !defined(__clang__)
+                #pragma GCC ivdep
+            #endif
+            for (size_t i = 0u; i < n; ++i)
+                resv[i] += (*(support + i * k + 1u + j)) * p;
+
+        }
+
+        // Accumulate resv to a double res        
+        #if defined(__OPENMP) || defined(_OPENMP)
+        #pragma omp simd reduction(+:res)
+        #elif defined(__GNUC__) && !defined(__clang__)
+            #pragma GCC ivdep
+        #endif
+        for (size_t i = 0u; i < n; ++i)
+        {
+            res += std::exp(resv[i] BARRY_SAFE_EXP) * (*(support + i * k));
+        }
+
+    } else {
+
+        for (size_t i = 0u; i < n; ++i)
+        {
+
+            double tmp = 0.0;
+            const double * support_n = support + i * k + 1u;
+            
+            for (size_t j = 0u; j < (k - 1u); ++j)
+                tmp += (*(support_n + j)) * (*(params + j));
+            
+            resv[i] = std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
+
+        }
+
+        // Accumulate resv to a double res
+        for (size_t i = 0u; i < n; ++i)
+            res += resv[i];
+
 
     }
 
-    // Accumulate resv to a double res
-    double res = 0.0;
-    #if defined(__OPENMP) || defined(_OPENMP)
-    #pragma omp parallel for simd reduction(+:res)
-    #else
-        #ifdef __GNUC__
-            #ifndef __clang__
-            #pragma GCC ivdep
-            #endif
-        #endif
-    #endif
-    for (size_t i = 0u; i < n; ++i)
-        res += resv[i];
 
     #ifdef BARRY_DEBUG
     if (std::isnan(res))
@@ -98,12 +111,8 @@ inline double likelihood_(
     // Computing the numerator
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp simd reduction(+:numerator)
-    #else
-        #ifdef __GNUC__
-            #ifndef __clang__
-            #pragma GCC ivdep
-            #endif
-        #endif
+    #elif defined(__GNUC__) && !defined(__clang__)
+        #pragma GCC ivdep
     #endif
     for (size_t j = 0u; j < params.size(); ++j)
         numerator += *(stats_target + j) * params[j];

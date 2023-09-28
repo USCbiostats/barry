@@ -39,20 +39,12 @@ inline BArrayDense<Cell_Type, Data_Type>::BArrayDense(
     const std::vector< size_t > & target,
     const std::vector< Cell_Type > & value,
     bool add
-) {
+) : N(N_), M(M_), el(N_ * M_, ZERO_CELL), el_rowsums(N_, ZERO_CELL), el_colsums(M_, ZERO_CELL) {
   
     if (source.size() != target.size())
         throw std::length_error("-source- and -target- don't match on length.");
     if (source.size() != value.size())
         throw std::length_error("-sorce- and -value- don't match on length.");
-    
-    // Initializing
-    N = N_;
-    M = M_;
-
-    el.resize(N * M, ZERO_CELL);
-    el_rowsums.resize(N, ZERO_CELL);
-    el_colsums.resize(M, ZERO_CELL);
     
     // Writing the data
     for (size_t i = 0u; i < source.size(); ++i)
@@ -96,7 +88,7 @@ inline BArrayDense<Cell_Type, Data_Type>:: BArrayDense(
     const std::vector< size_t > & source,
     const std::vector< size_t > & target,
     bool add
-) {
+) : N(N_), M(M_), el(N_ * M_, ZERO_CELL), el_rowsums(N_, ZERO_CELL), el_colsums(M_, ZERO_CELL) {
   
     std::vector< Cell_Type > value(source.size(), static_cast<Cell_Type>(1.0));
 
@@ -104,14 +96,7 @@ inline BArrayDense<Cell_Type, Data_Type>:: BArrayDense(
         throw std::length_error("-source- and -target- don't match on length.");
     if (source.size() != value.size())
         throw std::length_error("-sorce- and -value- don't match on length.");
-    
-    // Initializing
-    N = N_;
-    M = M_;
 
-    el.resize(N * M, ZERO_CELL);
-    el_rowsums.resize(N, ZERO_CELL);
-    el_colsums.resize(M, ZERO_CELL);
     
     // Writing the data
     for (size_t i = 0u; i < source.size(); ++i)

@@ -150,7 +150,7 @@ inline double Geese::likelihood(
                         par0,
                         temp_stats,
                         node.narray[s],
-                        as_log,
+                        false,
                         ncores
                     );
                 } catch (std::exception & e) {
