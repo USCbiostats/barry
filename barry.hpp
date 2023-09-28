@@ -532,7 +532,7 @@ inline bool vec_equal_approx(
 }
 ///@}
 
-#ifdef __OPENM
+#if defined(__OPENMP) || defined(_OPENMP)
 #pragma omp declare simd
 #endif
 template <typename T>
@@ -543,14 +543,10 @@ inline T vec_inner_prod(
 ) {
     
     double res = 0.0;
-    #ifdef __OPENM 
+    #if defined(__OPENMP) || defined(_OPENMP) 
     #pragma omp simd reduction(+:res)
-    #else
-        #ifdef __GNUC__
-            #ifndef __clang__
-            #pragma GCC ivdep
-            #endif
-        #endif
+    #elif defined(__GNUC__) && !defined(__clang__)
+        #pragma GCC ivdep
     #endif
     for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));
@@ -559,7 +555,7 @@ inline T vec_inner_prod(
 
 }
 
-#ifdef __OPENM
+#if defined(__OPENMP) || defined(_OPENMP)
 #pragma omp declare simd
 #endif
 template <>
@@ -572,12 +568,8 @@ inline double vec_inner_prod(
     double res = 0.0;
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp simd reduction(+:res)
-    #else
-        #ifdef __GNUC__
-            #ifndef __clang__
-            #pragma GCC ivdep
-            #endif
-        #endif
+    #elif defined(__GNUC__) && !defined(__clang__)
+        #pragma GCC ivdep
     #endif
     for (size_t i = 0u; i < n; ++i)
         res += (*(a + i) * *(b + i));
@@ -620,7 +612,7 @@ inline double vec_inner_prod(
 #if defined(_OPENMP) || defined(__OPENMP)
 #define BARRY_NCORES_ARG(default) size_t ncores default
 #else 
-#define BARRY_NCORES_ARG(default) size_t 
+#define BARRY_NCORES_ARG(default) size_t ncores default
 #endif
 
 
@@ -7498,50 +7490,66 @@ inline double update_normalizing_constant(
 {
     std::vector< double > resv(n);
     
-    #if defined(__OPENMP) || defined(_OPENMP)
-    #pragma omp parallel for shared(resv)
-    #else
-        #ifdef __GNUC__
-            #ifndef __clang__
-            #pragma GCC ivdep
-            #endif
-        #endif
-    #endif
-    for (size_t i = 0u; i < n; ++i)
+    if (n > 1000u)
     {
 
-        double tmp = 0.0;
-        const double * support_n = support + i * k + 1u;
-        
         #if defined(__OPENMP) || defined(_OPENMP)
-        #pragma omp simd reduction(+:tmp)
-        #else
-            #ifdef __GNUC__
-                #ifndef __clang__
-                #pragma GCC ivdep
-                #endif
-            #endif
+        #pragma omp parallel for shared(resv)
+        #elif defined(__GNUC__) && !defined(__clang__)
+            #pragma GCC ivdep
         #endif
         for (size_t j = 0u; j < (k - 1u); ++j)
-            tmp += (*(support_n + j)) * (*(params + j));
-        
-        resv[i] = std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
+        {
+
+            double p = *(params + j);
+            double tmp = 0.0;
+            const double * support_n = support + i * k + 1u;
+            
+            #if defined(__OPENMP) || defined(_OPENMP)
+            #pragma omp simd reduction(+:tmp)
+            #elif defined(__GNUC__) && !defined(__clang__)
+                #pragma GCC ivdep
+            #endif
+            for (size_t i = 0u; i < n; ++i)
+                resv[i] += (*(support_n + j)) * p;
+
+        }
+
+        // Accumulate resv to a double res
+        double res = 0.0;
+        #if defined(__OPENMP) || defined(_OPENMP)
+        #pragma omp simd reduction(+:res)
+        #elif defined(__GNUC__) && !defined(__clang__)
+            #pragma GCC ivdep
+        #endif
+        for (size_t i = 0u; i < n; ++i)
+        {
+            res += std::exp(resv[i] BARRY_SAFE_EXP) * (*(support + i * k));
+        }
+
+    } else {
+
+        for (size_t i = 0u; i < n; ++i)
+        {
+
+            double tmp = 0.0;
+            const double * support_n = support + i * k + 1u;
+            
+            for (size_t j = 0u; j < (k - 1u); ++j)
+                tmp += (*(support_n + j)) * (*(params + j));
+            
+            resv[i] = std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
+
+        }
+
+        // Accumulate resv to a double res
+        double res = 0.0;
+        for (size_t i = 0u; i < n; ++i)
+            res += resv[i];
+
 
     }
 
-    // Accumulate resv to a double res
-    double res = 0.0;
-    #if defined(__OPENMP) || defined(_OPENMP)
-    #pragma omp parallel for simd reduction(+:res)
-    #else
-        #ifdef __GNUC__
-            #ifndef __clang__
-            #pragma GCC ivdep
-            #endif
-        #endif
-    #endif
-    for (size_t i = 0u; i < n; ++i)
-        res += resv[i];
 
     #ifdef BARRY_DEBUG
     if (std::isnan(res))
@@ -7581,12 +7589,8 @@ inline double likelihood_(
     // Computing the numerator
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp simd reduction(+:numerator)
-    #else
-        #ifdef __GNUC__
-            #ifndef __clang__
-            #pragma GCC ivdep
-            #endif
-        #endif
+    #elif defined(__GNUC__) && !defined(__clang__)
+        #pragma GCC ivdep
     #endif
     for (size_t j = 0u; j < params.size(); ++j)
         numerator += *(stats_target + j) * params[j];
@@ -8247,7 +8251,6 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     // Checking if this actually has a change of happening
     if (this->stats_support[loc].size() == 0u)
     {
-        // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
         throw std::logic_error("The support set for this array is empty.");
     }
     
@@ -8315,7 +8318,6 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
             throw std::range_error(
                 "The array is not in the support set. The array's statistics are: " + target_str + std::string(".")
                 );
-            // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
         }
 
     }
@@ -8323,7 +8325,6 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     // Checking if this actually has a change of happening
     if (this->stats_support[loc].size() == 0u)
     {
-        // return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
         throw std::logic_error("The support set for this array is empty.");
     }
     
@@ -8397,7 +8398,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
                 params.size()
                 ) BARRY_SAFE_EXP;
         
-        #ifdef __OPENM 
+        #if defined(__OPENMP) || defined(_OPENMP) 
         #pragma omp simd reduction(-:res)
         #endif
         for (size_t i = 0u; i < params_last_size; ++i)
@@ -8407,7 +8408,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         
         res = 1.0;
         size_t stats_target_size = stats_target.size();
-        #ifdef __OPENM 
+        #if defined(__OPENMP) || defined(_OPENMP) 
         #pragma omp simd reduction(*:res)
         #endif
         for (size_t i = 0; i < stats_target_size; ++i)
@@ -10153,7 +10154,7 @@ inline void counter_ctriads(NetCounters<NetworkDense> * counters)
         
         // i->j->k->i
         double ans = 0.0;
-        #ifdef __OPENM 
+        #if defined(__OPENMP) || defined(_OPENMP) 
         #pragma omp simd reduction(+:ans)
         #endif
         for (size_t k = 0u; k < Array.nrow(); ++k)
