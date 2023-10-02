@@ -14,7 +14,7 @@ inline void pset_loop(
     const std::vector<std::vector<bool>> & states,
     const std::vector< PhyloArray > & psets,
     const std::vector<double> & psets_stats,
-    std::vector< std::vector< size_t > > & locations,
+    const std::vector< std::vector< size_t > > & locations,
     const std::vector<geese::Node *> & node_offspring
 ) 
 {
@@ -73,17 +73,11 @@ inline void pset_loop(
     if (off_mult < 0.0)
         return;
 
-    // Multiplying by P(x|x_n), the transition probability
-    std::vector< double > temp_stats;
-    temp_stats.reserve(par0.size());
-    for (auto p = 0u; p < par0.size(); ++p)
-        temp_stats.push_back(psets_stats[par0.size() * n + p]);
-
     // Use try catch in the following line
     try {
 
         off_mult *= barry::likelihood_(
-            &temp_stats[0u],
+            &psets_stats[par0.size() * n],
             par0,
             norm_const_i,
             par0.size(),
@@ -223,8 +217,13 @@ inline double Geese::likelihood(
 
             // Setting the probability at the node
             node.subtree_prob[s] = 0.0;
+            auto & nsp = node.subtree_prob[s];
+            #if defined(_OPENMP) || defined(__OPENMP)
+            #pragma omp simd reduction(+:nsp)
+            #endif
             for (size_t n = 0u; n < psets.size(); ++n)
-                node.subtree_prob[s] += totprob_n[n];
+                nsp += totprob_n[n];
+
 
         }
 
