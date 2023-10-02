@@ -26,7 +26,7 @@ inline double Geese::likelihood(
 
     // Updating normalizing constants
     if (!no_update_normalizing_constant)
-        model->update_normalizing_constants(par0);
+        model->update_normalizing_constants(par0, ncores);
 
     // Following the prunning sequence
     const std::vector< size_t > & preseq = use_reduced_sequence ?
@@ -65,6 +65,10 @@ inline double Geese::likelihood(
             std::vector< std::vector< size_t > > & locations = pset_loc[
                 arrays2support->operator[](array_id)
                 ];
+
+            // Making sure parallelization makes sense
+            if (psets.size() < 1000)
+                ncores = 1u;
             
             // Summation over all possible values of X
             const auto & node_offspring = node.offspring;

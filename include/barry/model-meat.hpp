@@ -152,11 +152,16 @@ template <
     typename Data_Rule_Dyn_Type
     >
 inline void Model<Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::update_normalizing_constants(
-    const std::vector< double > & params
+    const std::vector< double > & params,
+    size_t ncores
 ) {
+
+    // Barrier to make sure paralelization makes sense
+    if ((ncores > 1u) && (stats_support.size() < 1000u))
+        ncores = 1u;
     
     #if defined(__OPENMP) || defined(_OPENMP)
-    #pragma omp parallel for firstprivate(params) \
+    #pragma omp parallel for firstprivate(params) num_threads(ncores) \
         shared(stats_support, normalizing_constants, first_calc_done)
     #endif
     for (size_t i = 0u; i < stats_support.size(); ++i)
