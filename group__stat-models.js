@@ -54,7 +54,7 @@ var group__stat_models =
       [ "store_psets", "class_model.html#a3e8c4587b259d60fcf7c70c7e3f55082", null ],
       [ "support_size", "class_model.html#a98e5f6188b1d3235efa61b72f4562741", null ],
       [ "transform_model", "class_model.html#a9f17772e230a4790ee6b7d028eca7e26", null ],
-      [ "update_normalizing_constants", "class_model.html#afb85b30793f8acf8ccbc1601df063a0d", null ],
+      [ "update_normalizing_constants", "class_model.html#a2fbb49bd54c3631b53170ac5f17669a0", null ],
       [ "arrays2support", "class_model.html#a5b0b8822d67fc79a7b7f341e35c46988", null ],
       [ "counter_fun", "class_model.html#a1c7792e1ca105ef8599b56b302823962", null ],
       [ "counters", "class_model.html#aeea40760779cd097dbebd645399be966", null ],
