@@ -20,11 +20,6 @@ inline double update_normalizing_constant(
 
         std::vector< double > resv(n, 0.0);
 
-        // #if defined(__OPENMP) || defined(_OPENMP)
-        // #pragma omp parallel for shared(resv) firstprivate(params, n, k)
-        // #elif defined(__GNUC__) && !defined(__clang__)
-        //     #pragma GCC ivdep
-        // #endif
         for (size_t j = 0u; j < (k - 1u); ++j)
         {
 
@@ -162,7 +157,8 @@ inline void Model<Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_T
     
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp parallel for firstprivate(params) num_threads(ncores) \
-        shared(stats_support, normalizing_constants, first_calc_done)
+        shared(stats_support, normalizing_constants, first_calc_done) \
+        default(none)
     #endif
     for (size_t i = 0u; i < stats_support.size(); ++i)
     {
@@ -897,10 +893,6 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
 ) {
     
     size_t params_last_size = params_last.size();
-
-    // #if defined(__OPENMP) || defined(_OPENMP)
-    // #pragma omp parallel for num_threads(ncores)
-    // #endif
 
     if (!no_update_normconst)
     {
