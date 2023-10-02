@@ -1,3 +1,4 @@
+#undef _OPENMP
 #ifndef CATCH_CONFIG_MAIN
 // #include "/opt/intel/oneapi/advisor/2022.0.0/include/advisor-annotate.h"
 #include <chrono>

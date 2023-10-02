@@ -189,6 +189,7 @@ inline double Geese::likelihood(
             }
 
             // Setting the probability at the node
+            node.subtree_prob[s] = 0.0;
             for (size_t n = 0u; n < psets.size(); ++n)
                 node.subtree_prob[s] += totprob_n[n];
 
