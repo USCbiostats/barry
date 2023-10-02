@@ -3,6 +3,115 @@
 
 #include "geese-bones.hpp"
 
+inline void pset_loop(
+    size_t n,
+    size_t s,
+    size_t nfunctions,
+    const size_t node_id,
+    double norm_const_i,
+    std::vector< double > & totprob_n,
+    const std::vector< double > & par0,
+    const std::vector<std::vector<bool>> & states,
+    const std::vector< PhyloArray > & psets,
+    const std::vector<double> & psets_stats,
+    std::vector< std::vector< size_t > > & locations,
+    const std::vector<geese::Node *> & node_offspring
+) 
+{
+    // Retrieving the pset
+    const auto & x = psets[n];
+
+    if (!x.is_dense())
+        throw std::logic_error("This is only supported for dense arrays.");
+
+    const std::vector< size_t > & location_x = locations[n];
+
+    // Extracting the possible values of each offspring
+    double off_mult = 1.0;
+
+    for (auto o = 0u; o < x.ncol(); ++o)
+    {
+
+        // Setting the node
+        const Node * n_off = node_offspring[o];
+        
+        // In the case that the offspring is a leaf, then we need to
+        // check whether the state makes sense.
+        if (n_off->is_leaf())
+        {
+            for (auto f = 0u; f < nfunctions; ++f)
+            {
+                if (n_off->annotations[f] != 9u)
+                {
+
+                    if (x(f, o) != n_off->annotations[f])
+                    {
+
+                        off_mult = -1.0;
+                        break;
+
+                    }
+                    
+                }
+
+            }
+
+            // Going out
+            if (off_mult < 0)
+                break;
+    
+            continue;
+
+        }
+
+        // Retrieving the location to the respective set of probabilities
+        off_mult *= n_off->subtree_prob[location_x[o]];
+
+    }
+
+    // Is this state valid?
+    if (off_mult < 0.0)
+        return;
+
+    // Multiplying by P(x|x_n), the transition probability
+    std::vector< double > temp_stats;
+    temp_stats.reserve(par0.size());
+    for (auto p = 0u; p < par0.size(); ++p)
+        temp_stats.push_back(psets_stats[par0.size() * n + p]);
+
+    // Use try catch in the following line
+    try {
+
+        off_mult *= barry::likelihood_(
+            &temp_stats[0u],
+            par0,
+            norm_const_i,
+            par0.size(),
+            false
+        );
+
+    } catch (std::exception & e) {
+
+        auto err = std::string(e.what());
+
+        std::string state_str = "";
+        for (const auto & ss : states[s])
+            state_str += std::to_string(ss) + " ";
+
+        err = "Error computing the likelihood at node " +
+            std::to_string(node_id) + " with state " + state_str +
+            ". Error message:\n" +
+            err;
+
+        throw std::runtime_error(err);
+        
+    }
+
+    // Adding to the total probabilities
+    totprob_n[n] = off_mult;
+
+}
+
 inline double Geese::likelihood(
     const std::vector< double > & par,
     bool as_log,
@@ -35,7 +144,7 @@ inline double Geese::likelihood(
     // The first time it is called, it need to generate the corresponding
     // hashes of the columns so it is fast to access then (saves time
     // hashing and looking in the map.)
-    const auto arrays2support = model->get_arrays2support();
+    const auto & arrays2support = *(model->get_arrays2support());
     const auto & normconst = model->get_normalizing_constants();
 
     for (auto& i : preseq)
@@ -47,6 +156,7 @@ inline double Geese::likelihood(
 
         // Since we are using this a lot...
         Node & node = nodes[i];
+        const size_t node_id  = node.id;
 
         // Iterating through states
         for (size_t s = 0u; s < states.size(); ++s)
@@ -54,6 +164,8 @@ inline double Geese::likelihood(
 
             // Starting the prob
             size_t array_id = node.narray[s];
+            size_t support_id = arrays2support[array_id];
+            double norm_const_i = normconst[support_id];
 
             // Retrieving the sets of arrays
             const std::vector< PhyloArray > & psets =
@@ -62,9 +174,7 @@ inline double Geese::likelihood(
             const std::vector<double> & psets_stats =
                 *(model->get_pset_stats(array_id));
 
-            std::vector< std::vector< size_t > > & locations = pset_loc[
-                arrays2support->operator[](array_id)
-                ];
+            std::vector< std::vector< size_t > > & locations = pset_loc[support_id];
 
             // Making sure parallelization makes sense
             if (psets.size() < 1000)
@@ -74,106 +184,42 @@ inline double Geese::likelihood(
             const auto & node_offspring = node.offspring;
             std::vector< double > totprob_n(psets.size(), 0.0);
             #if defined(_OPENMP) || defined(__OPENMP)
-            #pragma omp parallel for num_threads(ncores) \
-                shared(locations, psets, psets_stats, totprob_n) \
-                firstprivate(nfunctions, par0, node_offspring, array_id, normconst)
-            #endif
-            for (size_t n = 0u; n < psets.size(); ++n) // x = psets->begin(); x != psets->end(); ++x)
+            if (ncores > 1u)
             {
-
-                // Retrieving the pset
-                const auto & x = psets[n];
-
-                if (!x.is_dense())
-                    throw std::logic_error("This is only supported for dense arrays.");
-
-                const std::vector< size_t > & location_x = locations[n];
-
-                // Extracting the possible values of each offspring
-                double off_mult = 1.0;
-
-                for (auto o = 0u; o < x.ncol(); ++o)
+                #pragma omp parallel for num_threads(ncores) \
+                    shared(\
+                        locations, psets, psets_stats, totprob_n, node, states,\
+                        par0, node_offspring, nfunctions, array_id, norm_const_i, \
+                        s, node_id) default(none)
+                for (size_t n = 0u; n < psets.size(); ++n) 
                 {
-
-                    // Setting the node
-                    const Node * n_off = node_offspring[o];
-                    
-                    // In the case that the offspring is a leaf, then we need to
-                    // check whether the state makes sense.
-                    if (n_off->is_leaf())
-                    {
-                        for (auto f = 0u; f < nfunctions; ++f)
-                        {
-                            if (n_off->annotations[f] != 9u)
-                            {
-
-                                if (x(f, o) != n_off->annotations[f])
-                                {
-
-                                    off_mult = -1.0;
-                                    break;
-
-                                }
-                                
-                            }
-
-                        }
-
-                        // Going out
-                        if (off_mult < 0)
-                            break;
-                
-                        continue;
-
-                    }
-
-                    // Retrieving the location to the respective set of probabilities
-                    off_mult *= n_off->subtree_prob[location_x[o]];
-
-                }
-
-                // Is this state valid?
-                if (off_mult < 0.0)
-                    continue;
-
-                // Multiplying by P(x|x_n), the transition probability
-                std::vector< double > temp_stats;
-                temp_stats.reserve(par0.size());
-                for (auto p = 0u; p < par0.size(); ++p)
-                    temp_stats.push_back(psets_stats[par0.size() * n + p]);
-
-                // Use try catch in the following line
-                try {
-
-                    off_mult *= barry::likelihood_(
-                        &temp_stats[0u],
-                        par0,
-                        normconst[arrays2support->operator[](array_id)],
-                        par0.size(),
-                        false
+                    pset_loop(
+                        n, s, nfunctions, node_id, norm_const_i, totprob_n,
+                        par0, states, psets, psets_stats, locations, 
+                        node_offspring
                     );
-
-                } catch (std::exception & e) {
-
-                    auto err = std::string(e.what());
-
-                    std::string state_str = "";
-                    for (const auto & ss : states[s])
-                        state_str += std::to_string(ss) + " ";
-
-                    err = "Error computing the likelihood at node " +
-                        std::to_string(node.id) + " with state " + state_str +
-                        ". Error message:\n" +
-                        err;
-
-                    throw std::runtime_error(err);
-                    
                 }
-
-                // Adding to the total probabilities
-                totprob_n[n] = off_mult;
-
+            } else {
+                for (size_t n = 0u; n < psets.size(); ++n) 
+                {
+                    pset_loop(
+                        n, s, nfunctions, node_id, norm_const_i, totprob_n,
+                        par0, states, psets, psets_stats, locations, 
+                        node_offspring
+                    );
+                }
             }
+            #else
+            for (size_t n = 0u; n < psets.size(); ++n) 
+            {
+                pset_loop(
+                    n, s, nfunctions, node_id, norm_const_i, totprob_n,
+                    par0, states, psets, psets_stats, locations, 
+                    node_offspring
+                );
+            }
+            #endif
+            
 
             // Setting the probability at the node
             node.subtree_prob[s] = 0.0;
