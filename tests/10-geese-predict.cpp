@@ -1,3 +1,4 @@
+#undef _OPENMP
 #include "tests.hpp"
 
 #include "../include/barry/models/geese.hpp"

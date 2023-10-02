@@ -7,9 +7,11 @@ inline double Geese::likelihood(
     const std::vector< double > & par,
     bool as_log,
     bool use_reduced_sequence,
-    size_t ncores
+    size_t ncores,
+    bool no_update_normalizing_constant
 ) {
 
+    // Checking whether the model is initialized
     INITIALIZED()
 
     // Splitting the probabilities
@@ -21,6 +23,10 @@ inline double Geese::likelihood(
         p = std::exp(p)/(std::exp(p) + 1);
 
     double ll = 0.0;
+
+    // Updating normalizing constants
+    if (!no_update_normalizing_constant)
+        model->update_normalizing_constants(par0);
 
     // Following the prunning sequence
     std::vector< size_t > * preseq;
@@ -157,7 +163,8 @@ inline double Geese::likelihood(
                         par0,
                         temp_stats,
                         array_id,
-                        false
+                        false,
+                        true
                     );
                 } catch (std::exception & e) {
 

@@ -147,17 +147,20 @@ inline double Flock::likelihood_joint(
 
     double ans = as_log ? 0.0: 1.0;
 
+    std::vector< double > par0(par.begin(), par.end() - nfunctions);
+    model.update_normalizing_constants(par0);
+
     if (as_log) {
 
         for (auto& d : this->dat) 
-            ans += d.likelihood(par, as_log, use_reduced_sequence, ncores);
+            ans += d.likelihood(par, as_log, use_reduced_sequence, ncores, true);
 
     }
     else
     {
 
         for (auto& d : this->dat) 
-            ans *= d.likelihood(par, as_log, use_reduced_sequence, ncores);
+            ans *= d.likelihood(par, as_log, use_reduced_sequence, ncores, true);
             
     }
     

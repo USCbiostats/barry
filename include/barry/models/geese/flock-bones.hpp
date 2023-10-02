@@ -19,7 +19,7 @@ public:
     bool initialized = false;
     
     // Common components
-    std::mt19937              rengine;
+    std::mt19937 rengine;
     PhyloModel model = PhyloModel();
 
     Flock() {};
@@ -37,8 +37,8 @@ public:
     size_t add_data(
         std::vector< std::vector<size_t> > & annotations,
         std::vector< size_t > &              geneid,
-        std::vector< int > &                       parent,
-        std::vector< bool > &                      duplication
+        std::vector< int > &                 parent,
+        std::vector< bool > &                duplication
     );
 
     /**

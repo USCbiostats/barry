@@ -156,6 +156,37 @@ template <
     typename Data_Rule_Type,
     typename Data_Rule_Dyn_Type
     >
+inline void Model<Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::update_normalizing_constants(
+    const std::vector< double > & params
+) {
+    
+    #if defined(__OPENMP) || defined(_OPENMP)
+    #pragma omp parallel for firstprivate(params) \
+        shared(stats_support, normalizing_constants, first_calc_done)
+    #endif
+    for (size_t i = 0u; i < stats_support.size(); ++i)
+    {
+
+        size_t k = params.size() + 1u;
+        size_t n = stats_support[i].size() / k;
+
+        first_calc_done[i] = true;
+        normalizing_constants[i] = update_normalizing_constant(
+            params, &stats_support[i][0u], k, n
+        );
+
+    }
+
+    return;
+    
+}
+
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::Model() :
     stats_support(0u),
     stats_support_n_arrays(0u),
@@ -600,7 +631,8 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::likelihood(
     const std::vector<double> & params,
     const size_t & i,
-    bool as_log
+    bool as_log,
+    bool no_update_normconst
 ) {
     
     // Checking if the index exists
@@ -614,7 +646,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         return as_log ? -std::numeric_limits<double>::infinity() : 0.0;
     
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[idx] || !vec_equal_approx(params, params_last[idx]) )
+    if (!no_update_normconst && (!first_calc_done[idx] || !vec_equal_approx(params, params_last[idx])))
     {
         
         first_calc_done[idx] = true;
@@ -645,7 +677,8 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     const std::vector<double> & params,
     const Array_Type & Array_,
     int i,
-    bool as_log
+    bool as_log,
+    bool no_update_normconst
 ) {
     
     // Key of the support set to use
@@ -691,7 +724,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         target_ = transform_model_fun(&target_[0u], target_.size());
 
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) )
+    if (!no_update_normconst && (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc])) )
     {
         
         first_calc_done[loc] = true;
@@ -726,7 +759,8 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     const std::vector<double> & params,
     const std::vector<double> & target_,
     const size_t & i,
-    bool as_log
+    bool as_log,
+    bool no_update_normconst
 ) {
     
     // Checking if the index exists
@@ -759,7 +793,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     }
     
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
+    if (!no_update_normconst && (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc])) ) {
         
         first_calc_done[loc] = true;
         
@@ -789,7 +823,8 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     const std::vector<double> & params,
     const double * target_,
     const size_t & i,
-    bool as_log
+    bool as_log,
+    bool no_update_normconst
 ) {
     
     // Checking if the index exists
@@ -828,7 +863,7 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     }
     
     // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) ) {
+    if (!no_update_normconst && (!first_calc_done[loc] || !vec_equal_approx(params, params_last[loc]) )) {
         
         first_calc_done[loc] = true;
         
@@ -857,7 +892,8 @@ template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Ty
 inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::likelihood_total(
     const std::vector<double> & params,
     bool as_log,
-    BARRY_NCORES_ARG()
+    BARRY_NCORES_ARG(),
+    bool no_update_normconst
 ) {
     
     size_t params_last_size = params_last.size();
@@ -865,24 +901,33 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     // #if defined(__OPENMP) || defined(_OPENMP)
     // #pragma omp parallel for num_threads(ncores)
     // #endif
-    for (size_t i = 0u; i < params_last_size; ++i)
-    {
 
-        if (!first_calc_done[i] || !vec_equal_approx(params, params_last[i]) )
+    if (!no_update_normconst)
+    {
+        #if defined(__OPENMP) || defined(_OPENMP)
+        #pragma omp parallel for num_threads(ncores) \
+            shared(normalizing_constants, params_last, first_calc_done, stats_support) \
+            firstprivate(params)
+        #endif
+        for (size_t i = 0u; i < params_last_size; ++i)
         {
 
-            size_t k = params.size() + 1u;
-            size_t n = stats_support[i].size() / k;
-            
-            first_calc_done[i] = true;
-            normalizing_constants[i] = update_normalizing_constant(
-                params, &stats_support[i][0u], k, n
-            );
-            
-            params_last[i] = params;
-            
-        }
+            if (!first_calc_done[i] || !vec_equal_approx(params, params_last[i]) )
+            {
 
+                size_t k = params.size() + 1u;
+                size_t n = stats_support[i].size() / k;
+                
+                first_calc_done[i] = true;
+                normalizing_constants[i] = update_normalizing_constant(
+                    params, &stats_support[i][0u], k, n
+                );
+                
+                params_last[i] = params;
+                
+            }
+
+        }
     }
     
     double res = 0.0;
