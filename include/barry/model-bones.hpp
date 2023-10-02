@@ -60,9 +60,9 @@ protected:
      */
     ///@{
     std::vector< std::vector< double > > stats_support;          ///< Sufficient statistics of the model (support)
-    std::vector< size_t >                  stats_support_n_arrays; ///< Number of arrays included per support.
+    std::vector< size_t >                stats_support_n_arrays; ///< Number of arrays included per support.
     std::vector< std::vector< double > > stats_target;           ///< Target statistics of the model
-    std::vector< size_t >                  arrays2support;
+    std::vector< size_t >                arrays2support;
     ///@}
 
     /**
@@ -125,6 +125,14 @@ protected:
     std::vector< std::string > transform_model_term_names;
     
 public:
+
+    /**
+     * @brief Computes the normalizing constant for a given set of parameters
+     * @details This function will compute the normalizing constant for a given
+     * set of parameters. It will also update the `normalizing_constants` member
+     * variable.
+    */
+    void update_normalizing_constants(const std::vector< double > & params);
     
     void set_rengine(std::mt19937 * rengine_, bool delete_ = false) {
 
@@ -240,34 +248,39 @@ public:
     double likelihood(
         const std::vector<double> & params,
         const size_t & i,
-        bool as_log = false
+        bool as_log = false,
+        bool no_update_normconst = false
     );
     
     double likelihood(
         const std::vector<double> & params,
         const Array_Type & Array_,
         int i = -1,
-        bool as_log = false
+        bool as_log = false,
+        bool no_update_normconst = false
     );
     
     double likelihood(
         const std::vector<double> & params,
         const std::vector<double> & target_,
         const size_t & i,
-        bool as_log = false
+        bool as_log = false,
+        bool no_update_normconst = false
     );
 
     double likelihood(
         const std::vector<double> & params,
         const double * target_,
         const size_t & i,
-        bool as_log = false
+        bool as_log = false,
+        bool no_update_normconst = false
     );
     
     double likelihood_total(
         const std::vector<double> & params,
         bool as_log = false,
-        BARRY_NCORES_ARG(=2)
+        BARRY_NCORES_ARG(=2),
+        bool no_update_normconst = false
     );
     ///@}
 
