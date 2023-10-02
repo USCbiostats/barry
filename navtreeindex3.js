@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"class_rules.html#ab23bf6958f7bf6a869ef51122d82a624":[2,0,38,8],
 "class_rules.html#ab2d0135fc9db635459e42e4337b7dc03":[2,0,38,6],
 "class_rules.html#ab87544febb8301772164570708bd708e":[2,0,38,11],
 "class_rules.html#aca68edc31c5043d58dc70e0e601cca7a":[2,0,38,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "geese_2counters_8hpp_source.html":[3,0,0,0,1,1,0],
 "geese_8hpp.html":[3,0,0,0,1,3],
 "geese_8hpp_source.html":[3,0,0,0,1,3],
-"globals.html":[3,1,0,0],
-"globals.html":[3,1,0]
+"globals.html":[3,1,0,0]
 };

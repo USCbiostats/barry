@@ -19,7 +19,7 @@ var class_geese =
     [ "inherit_support", "class_geese.html#aa95abe540b9977592bcc88e77619d070", null ],
     [ "init", "class_geese.html#a4eec9d20198fde392b7c5ee0060eff05", null ],
     [ "init_node", "class_geese.html#a3855898a556e2ac1d30529d3bc35f13a", null ],
-    [ "likelihood", "class_geese.html#a557dc9484bbdaf212a6ae2ac8ed3c54c", null ],
+    [ "likelihood", "class_geese.html#aaebe0a849859319e2670c54311296f7a", null ],
     [ "likelihood_exhaust", "class_geese.html#af2d4bac42cc7c8287fb6853d50882115", null ],
     [ "nannotations", "class_geese.html#abfec2a7462cc949246a68d540827205f", null ],
     [ "nfuns", "class_geese.html#ae569fc1b0ade56fc3ccc4d35214fca81", null ],

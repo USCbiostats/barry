@@ -59,8 +59,8 @@ var NAVTREEINDEX =
 "annotated.html",
 "class_b_array_dense.html#abff8ef2f4bcd467ebbbb8ac3089fcd52",
 "class_freq_table.html#a7ed627807a61c484243636137609abcd",
-"class_rules.html#ab2d0135fc9db635459e42e4337b7dc03",
-"globals_b.html",
+"class_rules.html#ab23bf6958f7bf6a869ef51122d82a624",
+"globals.html",
 "group__rules-phylo.html#ga8843c9a811b759251788fbedb2e65dde"
 ];
 
