@@ -101,7 +101,7 @@ inline double likelihood_(
     double numerator = 0.0;
     
     // Computing the numerator
-    for (size_t j = 0u; j < params.size(); ++j)
+    for (size_t j = 0u; j < n_params; ++j)
         numerator += *(stats_target + j) * params[j];
 
     if (!log_)
