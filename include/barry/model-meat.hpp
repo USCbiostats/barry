@@ -106,11 +106,6 @@ inline double likelihood_(
     double numerator = 0.0;
     
     // Computing the numerator
-    #if defined(__OPENMP) || defined(_OPENMP)
-    #pragma omp simd reduction(+:numerator)
-    #elif defined(__GNUC__) && !defined(__clang__)
-        #pragma GCC ivdep
-    #endif
     for (size_t j = 0u; j < params.size(); ++j)
         numerator += *(stats_target + j) * params[j];
 
@@ -970,39 +965,10 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_norm_const(
-    const std::vector<double> & params,
-    const size_t & i,
-    bool as_log
-) {
+inline std::vector< double > &
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_normalizing_constants() {
     
-    // Checking if the index exists
-    if (i >= arrays2support.size())
-        throw std::range_error("The requested support is out of range");
-
-    const auto id = arrays2support[i];
-    
-    // Checking if we have updated the normalizing constant or not
-    if (!first_calc_done[id] || !vec_equal_approx(params, params_last[id]) )
-    {
-        
-        first_calc_done[id] = true;
-        
-        size_t k = params.size() + 1u;
-        size_t n = stats_support[id].size() / k;
-
-        normalizing_constants[id] = update_normalizing_constant(
-            params, &stats_support[id][0u], k, n
-        );
-        
-        params_last[id] = params;
-        
-    }
-    
-    return as_log ? 
-        std::log(normalizing_constants[id]) :
-        normalizing_constants[id]
-        ;
+    return normalizing_constants;
     
 }
 
