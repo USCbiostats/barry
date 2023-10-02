@@ -29,27 +29,16 @@ inline double Geese::likelihood(
         model->update_normalizing_constants(par0);
 
     // Following the prunning sequence
-    std::vector< size_t > * preseq;
-
-    if (use_reduced_sequence)
-    {
-
-        preseq = &this->reduced_sequence;
-
-    }
-    else
-    {   
-
-        preseq = &this->sequence;
-
-    }
+    const std::vector< size_t > & preseq = use_reduced_sequence ?
+        this->reduced_sequence : this->sequence;
 
     // The first time it is called, it need to generate the corresponding
     // hashes of the columns so it is fast to access then (saves time
     // hashing and looking in the map.)
-    auto arrays2support = model->get_arrays2support();
+    const auto arrays2support = model->get_arrays2support();
+    const auto & normconst = model->get_normalizing_constants();
 
-    for (auto& i : *preseq)
+    for (auto& i : preseq)
     {
 
         // We cannot compute probability at the leaf, we need to continue
@@ -80,11 +69,10 @@ inline double Geese::likelihood(
             // Summation over all possible values of X
             const auto & node_offspring = node.offspring;
             std::vector< double > totprob_n(psets.size(), 0.0);
-            size_t nstate = 0u;
             #if defined(_OPENMP) || defined(__OPENMP)
             #pragma omp parallel for num_threads(ncores) \
                 shared(locations, psets, psets_stats, totprob_n) \
-                firstprivate(nfunctions, par0, node_offspring, array_id)
+                firstprivate(nfunctions, par0, node_offspring, array_id, normconst)
             #endif
             for (size_t n = 0u; n < psets.size(); ++n) // x = psets->begin(); x != psets->end(); ++x)
             {
@@ -142,30 +130,25 @@ inline double Geese::likelihood(
 
                 // Is this state valid?
                 if (off_mult < 0.0)
-                {
-
-                    ++nstate;
                     continue;
-                    
-                }
 
                 // Multiplying by P(x|x_n), the transition probability
                 std::vector< double > temp_stats;
                 temp_stats.reserve(par0.size());
                 for (auto p = 0u; p < par0.size(); ++p)
-                    temp_stats.push_back(psets_stats[par0.size() * nstate + p]);
-
-                nstate++;
+                    temp_stats.push_back(psets_stats[par0.size() * n + p]);
 
                 // Use try catch in the following line
                 try {
-                    off_mult *= model->likelihood(
+
+                    off_mult *= barry::likelihood_(
+                        &temp_stats[0u],
                         par0,
-                        temp_stats,
-                        array_id,
-                        false,
-                        true
+                        normconst[arrays2support->operator[](array_id)],
+                        par0.size(),
+                        false
                     );
+
                 } catch (std::exception & e) {
 
                     auto err = std::string(e.what());
@@ -221,7 +204,7 @@ inline double Geese::likelihood(
     // In the case that the sequence is empty, then it means
     // that we are looking at a completely unnanotated tree,
     // thus the likelihood should be one
-    if (preseq->size() == 0u)
+    if (preseq.size() == 0u)
         return as_log ? -std::numeric_limits<double>::infinity() : 1.0;
 
 

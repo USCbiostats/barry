@@ -293,11 +293,7 @@ public:
      * constant.
      */
     ///@{
-    double get_norm_const(
-        const std::vector< double > & params,
-        const size_t & i,
-        bool as_log = false
-    );
+    std::vector< double > & get_normalizing_constants();
 
     const std::vector< Array_Type > * get_pset(
         const size_t & i
