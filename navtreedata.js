@@ -61,7 +61,7 @@ var NAVTREEINDEX =
 "class_freq_table.html#a7ed627807a61c484243636137609abcd",
 "class_rules.html#ab23bf6958f7bf6a869ef51122d82a624",
 "globals.html",
-"group__rules-phylo.html#ga8843c9a811b759251788fbedb2e65dde"
+"group__rules-phylo.html#ga87c654a27ccf0b679f804cb05f63f7e5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
