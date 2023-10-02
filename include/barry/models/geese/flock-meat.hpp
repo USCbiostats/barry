@@ -148,7 +148,7 @@ inline double Flock::likelihood_joint(
     double ans = as_log ? 0.0: 1.0;
 
     std::vector< double > par0(par.begin(), par.end() - nfunctions);
-    model.update_normalizing_constants(par0);
+    model.update_normalizing_constants(par0, ncores);
 
     if (as_log) {
 

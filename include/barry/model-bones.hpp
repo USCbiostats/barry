@@ -132,7 +132,10 @@ public:
      * set of parameters. It will also update the `normalizing_constants` member
      * variable.
     */
-    void update_normalizing_constants(const std::vector< double > & params);
+    void update_normalizing_constants(
+        const std::vector< double > & params,
+        BARRY_NCORES_ARG(=1)
+        );
     
     void set_rengine(std::mt19937 * rengine_, bool delete_ = false) {
 
