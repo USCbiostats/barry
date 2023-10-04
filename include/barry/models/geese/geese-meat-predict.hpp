@@ -78,7 +78,11 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Storing the final prob
     res[nodes[root_id].ord] = tmp_prob;
-    size_t n_pars = par_terms.size();
+    
+    // Retrieving the powersets probabilities
+    const auto & pset_probs = *(model->get_pset_probs());
+    const auto & arrays2support = *(model->get_arrays2support());
+    const auto & pset_locations = *(model->get_pset_locations());
 
     // This will start from the root node and go down
     for (auto & i : preorder)
@@ -116,11 +120,12 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             std::vector< double > above;
             std::vector< PhyloArray > pset;
 
+            // Array id in the support and support id of the array
+            size_t array_id   = parent.narray[s];
+            size_t support_id = arrays2support[array_id];
+
             // Retrieving powerset of stats and arrays
-            const auto & pset_arrays = model->get_pset(parent.narray[s]);
-            const double * pset_target = model->get_pset_stats(
-                parent.narray[s]
-                );
+            const auto & pset_arrays   = model->get_pset(array_id);
 
             // Going over all possible combinations given parent is state s
             for (size_t p = 0u; p < pset_arrays->size(); ++p)
@@ -128,9 +133,6 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
                 // Corresponding graph and target stats
                 const PhyloArray & array_p = pset_arrays->at(p);
-                std::vector<double> target_p(n_pars, 0.0);
-                for (size_t par_i = 0u; par_i < target_p.size(); ++par_i)
-                    target_p[par_i] = *(pset_target + (p * n_pars + par_i));
 
                 // Adding to the map, we only do this during the first run,
                 // afterwards, we need to actually look for the array.
@@ -191,9 +193,11 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
                 // The first run, we only need to grow the list
                 above.push_back(
-                    model->likelihood(
-                        par_terms, target_p, parent.narray[s], false
-                    ) *  parent.probability[s] / parent.subtree_prob[s]
+                    pset_probs[pset_locations[support_id]]
+                    // model->likelihood(
+                    //     par_terms, target_p, parent.narray[s], false
+                    // )
+                    *  parent.probability[s] / parent.subtree_prob[s]
                 );
 
 
@@ -246,14 +250,6 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         // gene function level.
         for (const auto & off : parent.offspring)
         {
-            // for (size_t s = 0u; s < states.size(); ++s)
-            // {
-
-            //     for (size_t f = 0u; f < nfuns(); ++f)
-            //         if (states[s][f]) 
-            //             res[off->ord][f] += off->probability[s];
-
-            // }
 
             // Checking that probabilities add up to one
             for (size_t f = 0u; f < nfuns(); ++f)
@@ -320,6 +316,8 @@ inline std::vector< std::vector<double> > Geese::predict(
 
     }
 
+    std::vector< double > par0(par.begin(), par.end() - nfuns());
+    model->update_pset_probs(par0, 1u);
 
     // In this case, we need to update the predictions, mostly of the annotated
     // leaf nodes. Because of 

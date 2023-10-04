@@ -15,7 +15,7 @@ inline void pset_loop(
     const std::vector< PhyloArray > & psets,
     const std::vector< std::vector< size_t > > & locations,
     const std::vector<geese::Node *> & node_offspring,
-    const std::vector< double > & psetprobs
+    const double * psetprobs
 ) 
 {
     // Retrieving the pset
@@ -76,7 +76,7 @@ inline void pset_loop(
     // Use try catch in the following line
     try {
 
-        off_mult *= psetprobs[n];
+        off_mult *= *(psetprobs + n);
 
     } catch (std::exception & e) {
 
@@ -134,6 +134,7 @@ inline double Geese::likelihood(
     // hashing and looking in the map.)
     const auto & arrays2support = *(model->get_arrays2support());
     const auto & psetprobs      = *(model->get_pset_probs());
+    const auto & pset_locations = *(model->get_pset_locations());
 
     for (auto& i : preseq)
     {
@@ -172,7 +173,7 @@ inline double Geese::likelihood(
                 pset_loop(
                     n, s, nfunctions, node_id, array_id, totprob_n,
                     par0, states, psets, locations, 
-                    node_offspring, psetprobs[arrays2support[array_id]]
+                    node_offspring, &psetprobs[pset_locations[support_id]]
                 );
             }            
 

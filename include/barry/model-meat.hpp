@@ -221,7 +221,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     size_t n_params = params.size();
     pset_probs.resize(
-        pset_sizes_acc.back() + 
+        pset_locations.back() + 
         pset_sizes.back()
         );
 
@@ -235,7 +235,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     {
 
         // When does the pset starts
-        size_t pset_start = pset_sizes_acc[s];
+        size_t pset_start = pset_locations[s];
 
         // Looping over observations of the pset
         for (size_t a = 0u; a < pset_sizes[s]; ++a)
@@ -377,7 +377,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::M
     pset_stats(Model_.pset_stats),
     pset_probs(Model_.pset_probs),
     pset_sizes(Model_.pset_sizes),
-    pset_sizes_acc(Model_.pset_sizes_acc),
+    pset_locations(Model_.pset_locations),
     counters(new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters))),
     rules(new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules))),
     rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn))),
@@ -440,7 +440,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type> &
         pset_stats                 = Model_.pset_stats;
         pset_probs                 = Model_.pset_probs;
         pset_sizes                 = Model_.pset_sizes;
-        pset_sizes_acc             = Model_.pset_sizes_acc;
+        pset_locations             = Model_.pset_locations;
         counters                   = new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters));
         rules                      = new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules));
         rules_dyn                  = new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn));
@@ -659,7 +659,7 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::add_arr
                 
                 support_fun.calc(
                     &(pset_arrays[pset_arrays.size() - 1u]),
-                    &(pset_stats[0u])
+                    &pset_stats
                 );
                 
             }
@@ -677,15 +677,18 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::add_arr
             }
 
             // Recording the number of elements
-            pset_sizes.push_back(
-                (pset_stats.size() - pset_stats_size) / (counter_fun.size() + 1u)
+            pset_locations.push_back(
+                pset_locations.size() == 0u ?
+                    0u :
+                    pset_locations.back() + pset_sizes.back()
                 );
 
-            pset_sizes_acc.push_back(
-                pset_sizes_acc.size() == 0u ?
-                    0u :
-                    pset_sizes_acc.back() + pset_sizes.back()
+            pset_sizes.push_back(
+                (pset_stats.size() - pset_stats_size) / (counter_fun.size())
                 );
+                
+                
+
             
         }
         else
@@ -1177,9 +1180,7 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pse
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    return &pset_stats[
-        pset_sizes_acc[arrays2support[i]] * (counter_fun.size() + 1u)
-        ];
+    return &pset_stats[pset_locations[arrays2support[i]] * counter_fun.size()];
 
 }
 
@@ -1380,15 +1381,13 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
     double r = urand(*rengine);
     double cumprob = 0.0;
 
-    size_t k = params.size();
-
     // Sampling an array
     size_t j = 0u;
-    const double * probs = pset_probs[pset_sizes_acc[a]];
     if ((pset_probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
     // If precomputed, then no need to recalc support
     {
 
+        const double * probs = &pset_probs[pset_locations[a]];
         while (cumprob < r)
             cumprob += *(probs + j++);
 
@@ -1397,27 +1396,9 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
 
     } else { 
        
-        // probs.resize(pset_arrays[a].size());
-        // std::vector< double > temp_stats(params.size());
-        // const std::vector< double > & stats = pset_stats[a];
-
-        // int i_matches = -1;
-        // for (size_t array = 0u; array < probs.size(); ++array)
-        // {
-
-        //     // Filling out the parameters
-        //     for (auto p = 0u; p < params.size(); ++p)
-        //         temp_stats[p] = stats[array * k + p];
-
-        //     probs[array] = this->likelihood(params, temp_stats, i, false);
-        //     cumprob += probs[array];
-
-        //     if (i_matches == -1 && cumprob >= r)
-        //         i_matches = array;
-        // }
-
         update_pset_probs(params, 1u);
 
+        const double * probs = &pset_probs[pset_locations[a]];
         while (cumprob < r)
             cumprob += *(probs + j++);
 
@@ -1434,8 +1415,6 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
                 std::string(" r: ") + std::to_string(r)
                 );
         #endif
-
-        j = i_matches;
         
     }
     
@@ -1493,7 +1472,7 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
                 
                 support_fun.calc(
                     &(pset_arrays[pset_arrays.size() - 1u]),
-                    &(pset_stats[0u])
+                    &pset_stats
                 );
                 
             }
@@ -1509,15 +1488,19 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
             }
 
             // Recording the number of elements
-            pset_sizes.push_back(
-                (pset_stats.size() - pset_stats_size) / (counter_fun.size() + 1u)
+            pset_locations.push_back(
+                pset_locations.size() == 0u ?
+                    0u :
+                    pset_locations.back() + pset_sizes.back()
                 );
 
-            pset_sizes_acc.push_back(
-                pset_sizes_acc.size() == 0u ?
-                    0u :
-                    pset_sizes_acc.back() + pset_sizes.back()
+            pset_sizes.push_back(
+                (pset_stats.size() - pset_stats_size) / (counter_fun.size())
                 );
+
+            // Increasing the space to store probabilities
+            pset_probs.resize(pset_probs.size() + pset_sizes.back());
+
             
         }
         else
@@ -1600,33 +1583,33 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
 
     // Sampling an array
     size_t j = 0u;
-    std::vector< double > & probs = pset_probs[a];
-    if ((probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
+    double * probs = &pset_probs[ pset_locations[a] ];
+    if (first_calc_done[a] && (vec_equal_approx(params, params_last[a])))
     // If precomputed, then no need to recalc support
     {
 
         while (cumprob < r)
-            cumprob += probs[j++];
+            cumprob += *(probs + j++);
 
         if (j > 0u)
             j--;
 
     } else { 
        
-        probs.resize(pset_arrays[a].size());
+        // probs.resize(pset_arrays[a].size());
         std::vector< double > temp_stats(params.size());
-        const std::vector< double > & stats = pset_stats[a];
+        const double * stats = &pset_stats[pset_locations[a] * k];
 
         int i_matches = -1;
-        for (size_t array = 0u; array < probs.size(); ++array)
+        for (size_t array = 0u; array < pset_sizes[a]; ++array)
         {
 
             // Filling out the parameters
             for (auto p = 0u; p < params.size(); ++p)
                 temp_stats[p] = stats[array * k + p];
 
-            probs[array] = this->likelihood(params, temp_stats, i, false);
-            cumprob += probs[array];
+            *(probs + array) = this->likelihood(params, temp_stats, i, false);
+            cumprob += *(probs + array);
 
             if (i_matches == -1 && cumprob >= r)
                 i_matches = array;
@@ -1644,7 +1627,7 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
         #endif
 
         j = i_matches;
-        
+        first_calc_done[a] = true;
     }
     
 
@@ -1763,13 +1746,45 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pse
     return &pset_stats;
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< std::vector<double> > *
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline std::vector<double> *
 Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pset_probs() {
     return &pset_probs;
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline std::vector< size_t > * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_pset_sizes()
+{
+    return &pset_sizes;
+}
+
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline std::vector< size_t > * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_pset_locations()
+{
+    return &pset_locations;
+}
+
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
 inline void
 Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::set_transform_model(
     std::function<std::vector<double>(double *,size_t)> fun,
@@ -1856,12 +1871,13 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::set_tra
         for (auto s = 0u; s < pset_arrays.size(); ++s)
         {
             std::vector< double > new_stats;
+            size_t pset_stats_loc = pset_locations[s] * k;
 
             for (auto a = 0u; a < pset_arrays[s].size(); ++a)
             {
                 // Computing the transformed version of the data
                 auto tmpstats = transform_model_fun(
-                    &pset_stats[s][a * k], k
+                    &pset_stats[pset_stats_loc + a * k], k
                     );
 
                 // Storing the new values
@@ -1870,7 +1886,8 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::set_tra
             }
 
             // Updating the dataset
-            std::swap(pset_stats[s], new_stats);
+            for (size_t stat = 0u; stat < new_stats.size(); ++stat)
+                pset_stats[pset_stats_loc + stat] = new_stats[stat];
 
         }
 

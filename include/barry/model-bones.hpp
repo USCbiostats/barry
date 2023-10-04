@@ -85,7 +85,7 @@ protected:
     std::vector< double > pset_stats;     ///< Statistics of the support(s)
     std::vector< double > pset_probs;     ///< Probabilities of the support(s)
     std::vector< size_t > pset_sizes;     ///< Number of vectors included in the support.
-    std::vector< size_t > pset_sizes_acc; ///< Accumulated number of vectors included in the support.
+    std::vector< size_t > pset_locations; ///< Accumulated number of vectors included in the support.
     ///@}
     
     /**
@@ -399,8 +399,10 @@ public:
     std::vector< size_t > * get_stats_support_sizes_acc(); ///< Accumulated number of vectors included in the support.
     std::vector< size_t > * get_arrays2support();
     std::vector< std::vector< Array_Type > > * get_pset_arrays();
-    std::vector<double> * get_pset_stats();  ///< Statistics of the support(s)
-    std::vector< std::vector<double> > * get_pset_probs(); 
+    std::vector< double > * get_pset_stats();  ///< Statistics of the support(s)
+    std::vector< double > * get_pset_probs(); 
+    std::vector< size_t > * get_pset_sizes();
+    std::vector< size_t > * get_pset_locations();
     ///@}
 
     /**
