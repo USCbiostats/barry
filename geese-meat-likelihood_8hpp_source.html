@@ -269,7 +269,7 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            std::vector&lt; std::vector&lt; size_t &gt; &gt; &amp; locations = <a class="code" href="class_geese.html#a0fffee17a5df7ec95858f8307144c3f9">pset_loc</a>[support_id];</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="comment">// Making sure parallelization makes sense</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">if</span> (psets.size() &lt; 1000)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">if</span> (psets.size() &lt; 128)</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                ncores = 1u;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            </div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="comment">// Summation over all possible values of X</span></div>
@@ -377,14 +377,14 @@ $(document).ready(function(){initNavTree('geese-meat-likelihood_8hpp_source.html
 <div class="ttc" id="ageese-bones_8hpp_html"><div class="ttname"><a href="geese-bones_8hpp.html">geese-bones.hpp</a></div></div>
 <div class="ttc" id="ageese-bones_8hpp_html_a08888c91f4cab1da64c8f8bf10b59c40"><div class="ttname"><a href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a></div><div class="ttdeci">#define INITIALIZED()</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00022">geese-bones.hpp:22</a></div></div>
 <div class="ttc" id="ageese-meat-likelihood_8hpp_html_a226e3a40afafec1f83caf7183e8f97af"><div class="ttname"><a href="geese-meat-likelihood_8hpp.html#a226e3a40afafec1f83caf7183e8f97af">pset_loop</a></div><div class="ttdeci">void pset_loop(size_t n, size_t s, size_t nfunctions, const size_t node_id, double norm_const_i, std::vector&lt; double &gt; &amp;totprob_n, const std::vector&lt; double &gt; &amp;par0, const std::vector&lt; std::vector&lt; bool &gt;&gt; &amp;states, const std::vector&lt; PhyloArray &gt; &amp;psets, const std::vector&lt; double &gt; &amp;psets_stats, const std::vector&lt; std::vector&lt; size_t &gt; &gt; &amp;locations, const std::vector&lt; geese::Node * &gt; &amp;node_offspring)</div><div class="ttdef"><b>Definition:</b> <a href="geese-meat-likelihood_8hpp_source.html#l00006">geese-meat-likelihood.hpp:6</a></div></div>
-<div class="ttc" id="amodel-meat_8hpp_html_a40cd8ec3301c44ffdc24b74e8e4eadc5"><div class="ttname"><a href="model-meat_8hpp.html#a40cd8ec3301c44ffdc24b74e8e4eadc5">likelihood_</a></div><div class="ttdeci">double likelihood_(const double *stats_target, const std::vector&lt; double &gt; &amp;params, const double normalizing_constant, size_t n_params, bool log_=false)</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00090">model-meat.hpp:90</a></div></div>
+<div class="ttc" id="amodel-meat_8hpp_html_a40cd8ec3301c44ffdc24b74e8e4eadc5"><div class="ttname"><a href="model-meat_8hpp.html#a40cd8ec3301c44ffdc24b74e8e4eadc5">likelihood_</a></div><div class="ttdeci">double likelihood_(const double *stats_target, const std::vector&lt; double &gt; &amp;params, const double normalizing_constant, size_t n_params, bool log_=false)</div><div class="ttdef"><b>Definition:</b> <a href="model-meat_8hpp_source.html#l00071">model-meat.hpp:71</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="geese-meat-likelihood_8hpp.html">geese-meat-likelihood.hpp</a></li>
-    <li class="footer">Generated on Tue Oct 3 2023 05:21:14 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Oct 4 2023 04:34:15 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

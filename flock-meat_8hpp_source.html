@@ -248,193 +248,215 @@ $(document).ready(function(){initNavTree('flock-meat_8hpp_source.html',''); init
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    std::vector&lt; double &gt; par0(par.begin(), par.end() - <a class="code" href="class_flock.html#afe255f66684b6607197954152686584a">nfunctions</a>);</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">model</a>.update_normalizing_constants(par0, ncores);</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">if</span> (as_log) {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>) </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            ans += d.likelihood(par, as_log, use_reduced_sequence, ncores, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>) </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            ans *= d.likelihood(par, as_log, use_reduced_sequence, ncores, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">return</span> ans;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">// Figuring out core distribution</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">size_t</span> nsubcores = ncores &gt; 2u ? ncores - 2u : 1u;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    ncores = ncores - nsubcores;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">if</span> (as_log) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> (ncores &gt; 1u)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">            #if defined(_OPENMP) || defined(__OPENMP)</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">            #pragma omp parallel for reduction(+:ans) num_threads(ncores)</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">            #endif</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>) </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                ans += d.likelihood(par, as_log, use_reduced_sequence, nsubcores, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>) </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                ans += d.likelihood(par, as_log, use_reduced_sequence, nsubcores, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">  171</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">Flock::nfuns</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;{</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#afe255f66684b6607197954152686584a">nfunctions</a>;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">  178</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">Flock::ntrees</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;{</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>.size();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="class_flock.html#ae1f4eb8ade1c7f369e1f1eddbced3b2b">  185</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; size_t &gt; <a class="code" href="class_flock.html#ae1f4eb8ade1c7f369e1f1eddbced3b2b">Flock::nnodes</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;{</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    std::vector&lt; size_t &gt; <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.reserve(this-&gt;<a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">ntrees</a>());</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; d : <a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>)</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.push_back(d.nnodes());</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="class_flock.html#a68af1602108455f9d339bc4c2994e9ab">  199</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; size_t &gt; <a class="code" href="class_flock.html#a68af1602108455f9d339bc4c2994e9ab">Flock::nleafs</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;{</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    std::vector&lt; size_t &gt; <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.reserve(this-&gt;<a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">ntrees</a>());</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; d : <a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>)</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.push_back(d.nleafs());</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
-<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="class_flock.html#a71d5966ea3fda9e2baedf76be6c837c6">  213</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#a71d5966ea3fda9e2baedf76be6c837c6">Flock::nterms</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a>()</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">model</a>.nterms() + this-&gt;<a class="code" href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">nfuns</a>();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">if</span> (ncores &gt; 1u) </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">            #if defined(_OPENMP) || defined(__OPENMP)</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">            #pragma omp parallel for reduction(*:ans) num_threads(ncores)</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">            #endif</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>) </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                ans *= d.likelihood(par, as_log, use_reduced_sequence, nsubcores, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>) </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                ans *= d.likelihood(par, as_log, use_reduced_sequence, nsubcores, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> ans;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;}</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">  193</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">Flock::nfuns</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;{</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#afe255f66684b6607197954152686584a">nfunctions</a>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">  200</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">Flock::ntrees</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>.size();</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="class_flock.html#ae1f4eb8ade1c7f369e1f1eddbced3b2b">  207</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; size_t &gt; <a class="code" href="class_flock.html#ae1f4eb8ade1c7f369e1f1eddbced3b2b">Flock::nnodes</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;{</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    std::vector&lt; size_t &gt; <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.reserve(this-&gt;<a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">ntrees</a>());</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; d : <a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.push_back(d.nnodes());</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="class_flock.html#ad0f1cd362bc6a2dfbb81fa2abeff59cc">  221</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#ad0f1cd362bc6a2dfbb81fa2abeff59cc">Flock::support_size</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="class_flock.html#a68af1602108455f9d339bc4c2994e9ab">  221</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; size_t &gt; <a class="code" href="class_flock.html#a68af1602108455f9d339bc4c2994e9ab">Flock::nleafs</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">model</a>.support_size();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    std::vector&lt; size_t &gt; <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.reserve(this-&gt;<a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">ntrees</a>());</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="class_flock.html#a0fb9c1d463b2cd19a966aa85d5511a92">  228</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; std::string &gt; <a class="code" href="class_flock.html#a0fb9c1d463b2cd19a966aa85d5511a92">Flock::colnames</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; d : <a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>.push_back(d.nleafs());</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">model</a>.colnames();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="counters-meat_8hpp.html#a5e111f6687f261e4e28bd6528e7f5b48">res</a>;</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="class_flock.html#a58f2282d4cd764e9912c94b613aa58d2">  235</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#a58f2282d4cd764e9912c94b613aa58d2">Flock::parse_polytomies</a>(</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordtype">bool</span> verb,</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    std::vector&lt; size_t &gt; * dist</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;) <span class="keyword">const</span> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;{</div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="class_flock.html#a71d5966ea3fda9e2baedf76be6c837c6">  235</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#a71d5966ea3fda9e2baedf76be6c837c6">Flock::nterms</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <a class="code" href="geese-bones_8hpp.html#a08888c91f4cab1da64c8f8bf10b59c40">INITIALIZED</a>()</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">model</a>.nterms() + this-&gt;<a class="code" href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">nfuns</a>();</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordtype">size_t</span> ans = 0;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> = 0;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp; d : dat)</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    {</div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="class_flock.html#ad0f1cd362bc6a2dfbb81fa2abeff59cc">  243</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#ad0f1cd362bc6a2dfbb81fa2abeff59cc">Flock::support_size</a>() const <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;{</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">model</a>.support_size();</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">if</span> (verb)</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Checking tree %i\n&quot;</span>, <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordtype">size_t</span> tmp = d.parse_polytomies(verb, dist);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="class_flock.html#a0fb9c1d463b2cd19a966aa85d5511a92">  250</a></span>&#160;<span class="keyword">inline</span> std::vector&lt; std::string &gt; <a class="code" href="class_flock.html#a0fb9c1d463b2cd19a966aa85d5511a92">Flock::colnames</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">if</span> (tmp &gt; ans)</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            ans = tmp;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    }</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> ans;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="class_flock.html#a5ddb72e66fc90f45335e8752e290dc3e">  262</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_flock.html#a5ddb72e66fc90f45335e8752e290dc3e">Flock::print</a>()<span class="keyword"> const </span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">model</a>.colnames();</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="class_flock.html#a58f2282d4cd764e9912c94b613aa58d2">  257</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_flock.html#a58f2282d4cd764e9912c94b613aa58d2">Flock::parse_polytomies</a>(</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordtype">bool</span> verb,</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    std::vector&lt; size_t &gt; * dist</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;) <span class="keyword">const</span> <a class="code" href="counters-meat_8hpp.html#ae763aeff9df78ca7be5f904fa4bbdc09">noexcept</a></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;{</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordtype">size_t</span> ans = 0;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="comment">// Information relevant to print:</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="comment">// - Number of phylogenies</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="comment">// - Number of functions</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="comment">// - Total number of annotations.</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> = 0;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp; d : dat)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    {</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="comment">// Computing total number of annotations and events</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordtype">size_t</span> nzeros = 0u;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">if</span> (verb)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Checking tree %i\n&quot;</span>, <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>);</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordtype">size_t</span> nones  = 0u;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordtype">size_t</span> tmp = d.parse_polytomies(verb, dist);</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordtype">size_t</span> ndpl   = 0u;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordtype">size_t</span> nspe   = 0u;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp; tree : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>)</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    {</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        nzeros += tree.n_zeros;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        nones  += tree.n_ones;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        ndpl   += tree.n_dupl_events;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        nspe   += tree.n_spec_events;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    }</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;FLOCK (GROUP OF GEESE)\nINFO ABOUT THE PHYLOGENIES\n&quot;</span>);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of phylogenies         : %li\n&quot;</span>, <a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">ntrees</a>());</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    </div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of functions           : %li\n&quot;</span>, <a class="code" href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">nfuns</a>());</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of ann. [zeros; ones]  : [%li; %li]\n&quot;</span>, nzeros, nones);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of events [dupl; spec] : [%li; %li]\n&quot;</span>, ndpl, nspe);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    </div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Largest polytomy         : %li\n&quot;</span>, <a class="code" href="class_flock.html#a58f2282d4cd764e9912c94b613aa58d2">parse_polytomies</a>(<span class="keyword">false</span>));</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    </div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;\nINFO ABOUT THE SUPPORT\n&quot;</span>);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    </div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">model</a>.print();</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;}</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
-<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="class_flock.html#a00fde307995418d36deeedbc78f29a7a">  306</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_geese.html">Geese</a>* <a class="code" href="class_flock.html#a00fde307995418d36deeedbc78f29a7a">Flock::operator()</a>(<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>, <span class="keywordtype">bool</span> check_bounds)</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;{</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">if</span> (check_bounds &amp;&amp; <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> &gt;= <a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">ntrees</a>())</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Geese not found in the flock (out of range).&quot;</span>);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordflow">return</span> &amp;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>[<a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>];</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;}</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">if</span> (tmp &gt; ans)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            ans = tmp;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">return</span> ans;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="class_flock.html#a5ddb72e66fc90f45335e8752e290dc3e">  284</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_flock.html#a5ddb72e66fc90f45335e8752e290dc3e">Flock::print</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="comment">// Information relevant to print:</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="comment">// - Number of phylogenies</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="comment">// - Number of functions</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="comment">// - Total number of annotations.</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="comment">// Computing total number of annotations and events</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordtype">size_t</span> nzeros = 0u;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordtype">size_t</span> nones  = 0u;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordtype">size_t</span> ndpl   = 0u;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordtype">size_t</span> nspe   = 0u;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp; tree : this-&gt;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>)</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        nzeros += tree.n_zeros;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        nones  += tree.n_ones;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        ndpl   += tree.n_dupl_events;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        nspe   += tree.n_spec_events;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;FLOCK (GROUP OF GEESE)\nINFO ABOUT THE PHYLOGENIES\n&quot;</span>);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of phylogenies         : %li\n&quot;</span>, <a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">ntrees</a>());</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of functions           : %li\n&quot;</span>, <a class="code" href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">nfuns</a>());</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of ann. [zeros; ones]  : [%li; %li]\n&quot;</span>, nzeros, nones);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;# of events [dupl; spec] : [%li; %li]\n&quot;</span>, ndpl, nspe);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Largest polytomy         : %li\n&quot;</span>, <a class="code" href="class_flock.html#a58f2282d4cd764e9912c94b613aa58d2">parse_polytomies</a>(<span class="keyword">false</span>));</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;\nINFO ABOUT THE SUPPORT\n&quot;</span>);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">model</a>.print();</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;}</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="class_flock.html#a00fde307995418d36deeedbc78f29a7a">  328</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_geese.html">Geese</a>* <a class="code" href="class_flock.html#a00fde307995418d36deeedbc78f29a7a">Flock::operator()</a>(<span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>, <span class="keywordtype">bool</span> check_bounds)</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;{</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">if</span> (check_bounds &amp;&amp; <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a> &gt;= <a class="code" href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">ntrees</a>())</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;Geese not found in the flock (out of range).&quot;</span>);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">return</span> &amp;<a class="code" href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">dat</a>[<a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>];</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;}</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="abarry-configuration_8hpp_html_a2bd7dd8168e4165684de9dba0ae08469"><div class="ttname"><a href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a></div><div class="ttdeci">#define printf_barry</div><div class="ttdef"><b>Definition:</b> <a href="barry-configuration_8hpp_source.html#l00051">barry-configuration.hpp:51</a></div></div>
-<div class="ttc" id="aclass_flock_html_a00fde307995418d36deeedbc78f29a7a"><div class="ttname"><a href="class_flock.html#a00fde307995418d36deeedbc78f29a7a">Flock::operator()</a></div><div class="ttdeci">Geese * operator()(size_t i, bool check_bounds=true)</div><div class="ttdoc">Access the i-th geese element.</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00306">flock-meat.hpp:306</a></div></div>
+<div class="ttc" id="aclass_flock_html_a00fde307995418d36deeedbc78f29a7a"><div class="ttname"><a href="class_flock.html#a00fde307995418d36deeedbc78f29a7a">Flock::operator()</a></div><div class="ttdeci">Geese * operator()(size_t i, bool check_bounds=true)</div><div class="ttdoc">Access the i-th geese element.</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00328">flock-meat.hpp:328</a></div></div>
 <div class="ttc" id="aclass_flock_html_a0279e2b9f5e3b3f9289ea5e694075640"><div class="ttname"><a href="class_flock.html#a0279e2b9f5e3b3f9289ea5e694075640">Flock::model</a></div><div class="ttdeci">PhyloModel model</div><div class="ttdef"><b>Definition:</b> <a href="flock-bones_8hpp_source.html#l00023">flock-bones.hpp:23</a></div></div>
 <div class="ttc" id="aclass_flock_html_a0e3ce6d007f667eea9f036cddb6789b6"><div class="ttname"><a href="class_flock.html#a0e3ce6d007f667eea9f036cddb6789b6">Flock::rengine</a></div><div class="ttdeci">std::mt19937 rengine</div><div class="ttdef"><b>Definition:</b> <a href="flock-bones_8hpp_source.html#l00022">flock-bones.hpp:22</a></div></div>
-<div class="ttc" id="aclass_flock_html_a0fb9c1d463b2cd19a966aa85d5511a92"><div class="ttname"><a href="class_flock.html#a0fb9c1d463b2cd19a966aa85d5511a92">Flock::colnames</a></div><div class="ttdeci">std::vector&lt; std::string &gt; colnames() const</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00228">flock-meat.hpp:228</a></div></div>
+<div class="ttc" id="aclass_flock_html_a0fb9c1d463b2cd19a966aa85d5511a92"><div class="ttname"><a href="class_flock.html#a0fb9c1d463b2cd19a966aa85d5511a92">Flock::colnames</a></div><div class="ttdeci">std::vector&lt; std::string &gt; colnames() const</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00250">flock-meat.hpp:250</a></div></div>
 <div class="ttc" id="aclass_flock_html_a1010aa9fb40acb618c604c531e2528bb"><div class="ttname"><a href="class_flock.html#a1010aa9fb40acb618c604c531e2528bb">Flock::get_counters</a></div><div class="ttdeci">PhyloCounters * get_counters()</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00100">flock-meat.hpp:100</a></div></div>
 <div class="ttc" id="aclass_flock_html_a15ba537520410f84e924b0eab0a893f4"><div class="ttname"><a href="class_flock.html#a15ba537520410f84e924b0eab0a893f4">Flock::set_seed</a></div><div class="ttdeci">void set_seed(const size_t &amp;s)</div><div class="ttdoc">Set the seed of the model.</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00042">flock-meat.hpp:42</a></div></div>
 <div class="ttc" id="aclass_flock_html_a26462201318e4bf34756a2a14e2cc3fb"><div class="ttname"><a href="class_flock.html#a26462201318e4bf34756a2a14e2cc3fb">Flock::get_stats_target</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; * get_stats_target()</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00124">flock-meat.hpp:124</a></div></div>
-<div class="ttc" id="aclass_flock_html_a55cf3311be1c2129466a666bbe90a3fb"><div class="ttname"><a href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">Flock::nfuns</a></div><div class="ttdeci">size_t nfuns() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00171">flock-meat.hpp:171</a></div></div>
-<div class="ttc" id="aclass_flock_html_a58f2282d4cd764e9912c94b613aa58d2"><div class="ttname"><a href="class_flock.html#a58f2282d4cd764e9912c94b613aa58d2">Flock::parse_polytomies</a></div><div class="ttdeci">size_t parse_polytomies(bool verb=true, std::vector&lt; size_t &gt; *dist=nullptr) const noexcept</div><div class="ttdoc">Check polytomies and return the largest.</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00235">flock-meat.hpp:235</a></div></div>
-<div class="ttc" id="aclass_flock_html_a5ddb72e66fc90f45335e8752e290dc3e"><div class="ttname"><a href="class_flock.html#a5ddb72e66fc90f45335e8752e290dc3e">Flock::print</a></div><div class="ttdeci">void print() const</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00262">flock-meat.hpp:262</a></div></div>
+<div class="ttc" id="aclass_flock_html_a55cf3311be1c2129466a666bbe90a3fb"><div class="ttname"><a href="class_flock.html#a55cf3311be1c2129466a666bbe90a3fb">Flock::nfuns</a></div><div class="ttdeci">size_t nfuns() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00193">flock-meat.hpp:193</a></div></div>
+<div class="ttc" id="aclass_flock_html_a58f2282d4cd764e9912c94b613aa58d2"><div class="ttname"><a href="class_flock.html#a58f2282d4cd764e9912c94b613aa58d2">Flock::parse_polytomies</a></div><div class="ttdeci">size_t parse_polytomies(bool verb=true, std::vector&lt; size_t &gt; *dist=nullptr) const noexcept</div><div class="ttdoc">Check polytomies and return the largest.</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00257">flock-meat.hpp:257</a></div></div>
+<div class="ttc" id="aclass_flock_html_a5ddb72e66fc90f45335e8752e290dc3e"><div class="ttname"><a href="class_flock.html#a5ddb72e66fc90f45335e8752e290dc3e">Flock::print</a></div><div class="ttdeci">void print() const</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00284">flock-meat.hpp:284</a></div></div>
 <div class="ttc" id="aclass_flock_html_a5ddef5ec4a7b150a354db11bb6b0c593"><div class="ttname"><a href="class_flock.html#a5ddef5ec4a7b150a354db11bb6b0c593">Flock::init</a></div><div class="ttdeci">void init(size_t bar_width=BARRY_PROGRESS_BAR_WIDTH)</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00049">flock-meat.hpp:49</a></div></div>
 <div class="ttc" id="aclass_flock_html_a5e882cb60a36398180557662731d3c11"><div class="ttname"><a href="class_flock.html#a5e882cb60a36398180557662731d3c11">Flock::add_data</a></div><div class="ttdeci">size_t add_data(std::vector&lt; std::vector&lt; size_t &gt; &gt; &amp;annotations, std::vector&lt; size_t &gt; &amp;geneid, std::vector&lt; int &gt; &amp;parent, std::vector&lt; bool &gt; &amp;duplication)</div><div class="ttdoc">Add a tree to the flock.</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00006">flock-meat.hpp:6</a></div></div>
-<div class="ttc" id="aclass_flock_html_a68af1602108455f9d339bc4c2994e9ab"><div class="ttname"><a href="class_flock.html#a68af1602108455f9d339bc4c2994e9ab">Flock::nleafs</a></div><div class="ttdeci">std::vector&lt; size_t &gt; nleafs() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00199">flock-meat.hpp:199</a></div></div>
-<div class="ttc" id="aclass_flock_html_a71d5966ea3fda9e2baedf76be6c837c6"><div class="ttname"><a href="class_flock.html#a71d5966ea3fda9e2baedf76be6c837c6">Flock::nterms</a></div><div class="ttdeci">size_t nterms() const</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00213">flock-meat.hpp:213</a></div></div>
+<div class="ttc" id="aclass_flock_html_a68af1602108455f9d339bc4c2994e9ab"><div class="ttname"><a href="class_flock.html#a68af1602108455f9d339bc4c2994e9ab">Flock::nleafs</a></div><div class="ttdeci">std::vector&lt; size_t &gt; nleafs() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00221">flock-meat.hpp:221</a></div></div>
+<div class="ttc" id="aclass_flock_html_a71d5966ea3fda9e2baedf76be6c837c6"><div class="ttname"><a href="class_flock.html#a71d5966ea3fda9e2baedf76be6c837c6">Flock::nterms</a></div><div class="ttdeci">size_t nterms() const</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00235">flock-meat.hpp:235</a></div></div>
 <div class="ttc" id="aclass_flock_html_a9692be014117ae093ce160462dbde0d2"><div class="ttname"><a href="class_flock.html#a9692be014117ae093ce160462dbde0d2">Flock::get_model</a></div><div class="ttdeci">PhyloModel * get_model()</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00131">flock-meat.hpp:131</a></div></div>
 <div class="ttc" id="aclass_flock_html_aad9b90040d349a23b33e09292bb964db"><div class="ttname"><a href="class_flock.html#aad9b90040d349a23b33e09292bb964db">Flock::initialized</a></div><div class="ttdeci">bool initialized</div><div class="ttdef"><b>Definition:</b> <a href="flock-bones_8hpp_source.html#l00019">flock-bones.hpp:19</a></div></div>
 <div class="ttc" id="aclass_flock_html_ab5f4c94b0484772321b3856debdf3a58"><div class="ttname"><a href="class_flock.html#ab5f4c94b0484772321b3856debdf3a58">Flock::get_stats_support</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; * get_stats_support()</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00117">flock-meat.hpp:117</a></div></div>
-<div class="ttc" id="aclass_flock_html_ad0f1cd362bc6a2dfbb81fa2abeff59cc"><div class="ttname"><a href="class_flock.html#ad0f1cd362bc6a2dfbb81fa2abeff59cc">Flock::support_size</a></div><div class="ttdeci">size_t support_size() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00221">flock-meat.hpp:221</a></div></div>
+<div class="ttc" id="aclass_flock_html_ad0f1cd362bc6a2dfbb81fa2abeff59cc"><div class="ttname"><a href="class_flock.html#ad0f1cd362bc6a2dfbb81fa2abeff59cc">Flock::support_size</a></div><div class="ttdeci">size_t support_size() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00243">flock-meat.hpp:243</a></div></div>
 <div class="ttc" id="aclass_flock_html_add7c442fe0471c790c1945f7abbc2e56"><div class="ttname"><a href="class_flock.html#add7c442fe0471c790c1945f7abbc2e56">Flock::likelihood_joint</a></div><div class="ttdeci">double likelihood_joint(const std::vector&lt; double &gt; &amp;par, bool as_log=false, bool use_reduced_sequence=true, size_t ncores=1u)</div><div class="ttdoc">Returns the joint likelihood of the model.</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00138">flock-meat.hpp:138</a></div></div>
 <div class="ttc" id="aclass_flock_html_add876188b5f16af037525e71eaf7fc05"><div class="ttname"><a href="class_flock.html#add876188b5f16af037525e71eaf7fc05">Flock::get_support_fun</a></div><div class="ttdeci">PhyloSupport * get_support_fun()</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00110">flock-meat.hpp:110</a></div></div>
-<div class="ttc" id="aclass_flock_html_ae1f4eb8ade1c7f369e1f1eddbced3b2b"><div class="ttname"><a href="class_flock.html#ae1f4eb8ade1c7f369e1f1eddbced3b2b">Flock::nnodes</a></div><div class="ttdeci">std::vector&lt; size_t &gt; nnodes() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00185">flock-meat.hpp:185</a></div></div>
-<div class="ttc" id="aclass_flock_html_ae47e9d235c3e3e6f3bb574772f2463d0"><div class="ttname"><a href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">Flock::ntrees</a></div><div class="ttdeci">size_t ntrees() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00178">flock-meat.hpp:178</a></div></div>
+<div class="ttc" id="aclass_flock_html_ae1f4eb8ade1c7f369e1f1eddbced3b2b"><div class="ttname"><a href="class_flock.html#ae1f4eb8ade1c7f369e1f1eddbced3b2b">Flock::nnodes</a></div><div class="ttdeci">std::vector&lt; size_t &gt; nnodes() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00207">flock-meat.hpp:207</a></div></div>
+<div class="ttc" id="aclass_flock_html_ae47e9d235c3e3e6f3bb574772f2463d0"><div class="ttname"><a href="class_flock.html#ae47e9d235c3e3e6f3bb574772f2463d0">Flock::ntrees</a></div><div class="ttdeci">size_t ntrees() const noexcept</div><div class="ttdef"><b>Definition:</b> <a href="flock-meat_8hpp_source.html#l00200">flock-meat.hpp:200</a></div></div>
 <div class="ttc" id="aclass_flock_html_af493163235db2dcb44b8c5e615f52bdb"><div class="ttname"><a href="class_flock.html#af493163235db2dcb44b8c5e615f52bdb">Flock::dat</a></div><div class="ttdeci">std::vector&lt; Geese &gt; dat</div><div class="ttdef"><b>Definition:</b> <a href="flock-bones_8hpp_source.html#l00017">flock-bones.hpp:17</a></div></div>
 <div class="ttc" id="aclass_flock_html_afe255f66684b6607197954152686584a"><div class="ttname"><a href="class_flock.html#afe255f66684b6607197954152686584a">Flock::nfunctions</a></div><div class="ttdeci">size_t nfunctions</div><div class="ttdef"><b>Definition:</b> <a href="flock-bones_8hpp_source.html#l00018">flock-bones.hpp:18</a></div></div>
 <div class="ttc" id="aclass_geese_html"><div class="ttname"><a href="class_geese.html">Geese</a></div><div class="ttdoc">Annotated Phylo Model.</div><div class="ttdef"><b>Definition:</b> <a href="geese-bones_8hpp_source.html#l00103">geese-bones.hpp:103</a></div></div>
@@ -452,7 +474,7 @@ $(document).ready(function(){initNavTree('flock-meat_8hpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_c5954a04c87570f0664da134464d5428.html">geese</a></li><li class="navelem"><a class="el" href="flock-meat_8hpp.html">flock-meat.hpp</a></li>
-    <li class="footer">Generated on Tue Oct 3 2023 05:21:14 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Oct 4 2023 04:34:15 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
