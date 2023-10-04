@@ -13,7 +13,6 @@ inline void pset_loop(
     const std::vector< double > & par0,
     const std::vector<std::vector<bool>> & states,
     const std::vector< PhyloArray > & psets,
-    const std::vector<double> & psets_stats,
     const std::vector< std::vector< size_t > > & locations,
     const std::vector<geese::Node *> & node_offspring,
     const std::vector< double > & psetprobs
@@ -78,13 +77,6 @@ inline void pset_loop(
     try {
 
         off_mult *= psetprobs[n];
-        // barry::likelihood_(
-        //     &psets_stats[par0.size() * n],
-        //     par0,
-        //     norm_const_i,
-        //     par0.size(),
-        //     false
-        // );
 
     } catch (std::exception & e) {
 
@@ -166,9 +158,6 @@ inline double Geese::likelihood(
             const std::vector< PhyloArray > & psets =
                 *(model->get_pset(array_id));
 
-            const std::vector<double> & psets_stats =
-                *(model->get_pset_stats(array_id));
-
             std::vector< std::vector< size_t > > & locations = pset_loc[support_id];
 
             // Making sure parallelization makes sense
@@ -182,7 +171,7 @@ inline double Geese::likelihood(
             {
                 pset_loop(
                     n, s, nfunctions, node_id, array_id, totprob_n,
-                    par0, states, psets, psets_stats, locations, 
+                    par0, states, psets, locations, 
                     node_offspring, psetprobs[arrays2support[array_id]]
                 );
             }            

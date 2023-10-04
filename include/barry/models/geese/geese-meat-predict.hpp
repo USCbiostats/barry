@@ -118,7 +118,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
             // Retrieving powerset of stats and arrays
             const auto & pset_arrays = model->get_pset(parent.narray[s]);
-            const std::vector<double> * pset_target = model->get_pset_stats(
+            const double * pset_target = model->get_pset_stats(
                 parent.narray[s]
                 );
 
@@ -130,7 +130,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 const PhyloArray & array_p = pset_arrays->at(p);
                 std::vector<double> target_p(n_pars, 0.0);
                 for (size_t par_i = 0u; par_i < target_p.size(); ++par_i)
-                    target_p[par_i] = pset_target->operator[](p * n_pars + par_i);
+                    target_p[par_i] = *(pset_target + (p * n_pars + par_i));
 
                 // Adding to the map, we only do this during the first run,
                 // afterwards, we need to actually look for the array.

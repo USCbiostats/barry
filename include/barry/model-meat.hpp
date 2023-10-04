@@ -220,24 +220,40 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     update_normalizing_constants(params, ncores);
 
     size_t n_params = params.size();
+    pset_probs.resize(
+        pset_sizes_acc.back() + 
+        pset_sizes.back()
+        );
 
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp parallel for simd num_threads(ncores) \
-        shared(n_params, pset_stats, pset_probs, normalizing_constants, arrays2support, \
+        shared(n_params, pset_stats, pset_probs, normalizing_constants, pset_sizes, \
             params) \
         default(none)
     #endif
-    for (size_t s = 0u; s < pset_probs.size(); ++s)
+    for (size_t s = 0u; s < pset_sizes.size(); ++s)
     {
-        pset_probs[s].resize(pset_stats[s].size()/n_params);
-        for (size_t a = 0u; a < pset_probs[s].size(); ++a)
-        {
-            pset_probs[s][a] = 0.0;
-            for (size_t j = 0u; j < n_params; ++j)
-                pset_probs[s][a] += pset_stats[s][a * n_params + j] * params[j];
 
-            pset_probs[s][a] =
-                std::exp(pset_probs[s][a] BARRY_SAFE_EXP)/
+        // When does the pset starts
+        size_t pset_start = pset_sizes_acc[s];
+
+        // Looping over observations of the pset
+        for (size_t a = 0u; a < pset_sizes[s]; ++a)
+        {
+
+            // Start location in the array
+            size_t start_loc = pset_start * n_params + a * n_params;
+            
+            pset_probs[pset_start + a] = 0.0;
+
+            // Looping over the parameters
+            for (size_t j = 0u; j < n_params; ++j)
+                pset_probs[pset_start + a] +=
+                    pset_stats[start_loc + j] * params[j];
+
+            // Now turning into a probability
+            pset_probs[pset_start + a] =
+                std::exp(pset_probs[pset_start + a] BARRY_SAFE_EXP)/
                 normalizing_constants[s];
         }
 
@@ -359,6 +375,9 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::M
     keys2support(Model_.keys2support),
     pset_arrays(Model_.pset_arrays),
     pset_stats(Model_.pset_stats),
+    pset_probs(Model_.pset_probs),
+    pset_sizes(Model_.pset_sizes),
+    pset_sizes_acc(Model_.pset_sizes_acc),
     counters(new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters))),
     rules(new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules))),
     rules_dyn(new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn))),
@@ -419,6 +438,9 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type> &
         keys2support               = Model_.keys2support;
         pset_arrays                = Model_.pset_arrays;
         pset_stats                 = Model_.pset_stats;
+        pset_probs                 = Model_.pset_probs;
+        pset_sizes                 = Model_.pset_sizes;
+        pset_sizes_acc             = Model_.pset_sizes_acc;
         counters                   = new Counters<Array_Type,Data_Counter_Type>(*(Model_.counters));
         rules                      = new Rules<Array_Type,Data_Rule_Type>(*(Model_.rules));
         rules_dyn                  = new Rules<Array_Type,Data_Rule_Dyn_Type>(*(Model_.rules_dyn));
@@ -628,15 +650,16 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::add_arr
             
             // Making space for storing the support
             pset_arrays.resize(pset_arrays.size() + 1u);
-            pset_stats.resize(pset_stats.size() + 1u);
-            pset_probs.resize(pset_probs.size() + 1u);
+
+            // Current size of the powerset
+            size_t pset_stats_size = pset_stats.size();
             
             try
             {
                 
                 support_fun.calc(
                     &(pset_arrays[pset_arrays.size() - 1u]),
-                    &(pset_stats[pset_stats.size() - 1u])
+                    &(pset_stats[0u])
                 );
                 
             }
@@ -652,6 +675,17 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::add_arr
                 throw std::logic_error("");
                 
             }
+
+            // Recording the number of elements
+            pset_sizes.push_back(
+                (pset_stats.size() - pset_stats_size) / (counter_fun.size() + 1u)
+                );
+
+            pset_sizes_acc.push_back(
+                pset_sizes_acc.size() == 0u ?
+                    0u :
+                    pset_sizes_acc.back() + pset_sizes.back()
+                );
             
         }
         else
@@ -1135,7 +1169,7 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pse
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline const std::vector< double > *
+inline const double *
 Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pset_stats(
     const size_t & i
 ) {
@@ -1143,7 +1177,9 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pse
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    return &pset_stats[arrays2support[i]];
+    return &pset_stats[
+        pset_sizes_acc[arrays2support[i]] * (counter_fun.size() + 1u)
+        ];
 
 }
 
@@ -1348,37 +1384,45 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
 
     // Sampling an array
     size_t j = 0u;
-    std::vector< double > & probs = pset_probs[a];
-    if ((probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
+    const double * probs = pset_probs[pset_sizes_acc[a]];
+    if ((pset_probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
     // If precomputed, then no need to recalc support
     {
 
         while (cumprob < r)
-            cumprob += probs[j++];
+            cumprob += *(probs + j++);
 
         if (j > 0u)
             j--;
 
     } else { 
        
-        probs.resize(pset_arrays[a].size());
-        std::vector< double > temp_stats(params.size());
-        const std::vector< double > & stats = pset_stats[a];
+        // probs.resize(pset_arrays[a].size());
+        // std::vector< double > temp_stats(params.size());
+        // const std::vector< double > & stats = pset_stats[a];
 
-        int i_matches = -1;
-        for (size_t array = 0u; array < probs.size(); ++array)
-        {
+        // int i_matches = -1;
+        // for (size_t array = 0u; array < probs.size(); ++array)
+        // {
 
-            // Filling out the parameters
-            for (auto p = 0u; p < params.size(); ++p)
-                temp_stats[p] = stats[array * k + p];
+        //     // Filling out the parameters
+        //     for (auto p = 0u; p < params.size(); ++p)
+        //         temp_stats[p] = stats[array * k + p];
 
-            probs[array] = this->likelihood(params, temp_stats, i, false);
-            cumprob += probs[array];
+        //     probs[array] = this->likelihood(params, temp_stats, i, false);
+        //     cumprob += probs[array];
 
-            if (i_matches == -1 && cumprob >= r)
-                i_matches = array;
-        }
+        //     if (i_matches == -1 && cumprob >= r)
+        //         i_matches = array;
+        // }
+
+        update_pset_probs(params, 1u);
+
+        while (cumprob < r)
+            cumprob += *(probs + j++);
+
+        if (j > 0u)
+            j--;
 
         #ifdef BARRY_DEBUG
         if (i_matches < 0)
@@ -1436,17 +1480,20 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
         if (with_pset)
         {
             
+            // Current size of the powerset
+            size_t pset_stats_size = pset_stats.size();
+
             // Making space for storing the support
             pset_arrays.resize(pset_arrays.size() + 1u);
-            pset_stats.resize(pset_stats.size() + 1u);
-            pset_probs.resize(pset_probs.size() + 1u);
+            // pset_stats.resize(pset_stats.size() + 1u);
+            // pset_probs.resize(pset_probs.size() + 1u);
             
             try
             {
                 
                 support_fun.calc(
                     &(pset_arrays[pset_arrays.size() - 1u]),
-                    &(pset_stats[pset_stats.size() - 1u])
+                    &(pset_stats[0u])
                 );
                 
             }
@@ -1460,6 +1507,17 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
                 throw std::logic_error("");
                 
             }
+
+            // Recording the number of elements
+            pset_sizes.push_back(
+                (pset_stats.size() - pset_stats_size) / (counter_fun.size() + 1u)
+                );
+
+            pset_sizes_acc.push_back(
+                pset_sizes_acc.size() == 0u ?
+                    0u :
+                    pset_sizes_acc.back() + pset_sizes.back()
+                );
             
         }
         else
@@ -1700,7 +1758,7 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pse
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< std::vector<double> > *
+inline std::vector<double> *
 Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pset_stats() {
     return &pset_stats;
 }
