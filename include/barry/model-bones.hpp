@@ -380,7 +380,9 @@ public:
      */
     ///@{
     std::vector< std::vector< double > > * get_stats_target();
-    std::vector< double > * get_stats_support();
+    std::vector< double > * get_stats_support(); ///< Sufficient statistics of the support(s)
+    std::vector< size_t > * get_stats_support_sizes(); ///< Number of vectors included in the support.
+    std::vector< size_t > * get_stats_support_sizes_acc(); ///< Accumulated number of vectors included in the support.
     std::vector< size_t > * get_arrays2support();
     std::vector< std::vector< Array_Type > > * get_pset_arrays();
     std::vector< std::vector<double> > * get_pset_stats();  ///< Statistics of the support(s)

@@ -1553,6 +1553,22 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_sta
     return &stats_support;
 }
 
+// Implementation of get_stats_support_sizes()
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline std::vector< size_t > *
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_stats_support_sizes()
+{
+    return &stats_support_sizes;
+}
+
+// Implementation of get_stats_support_sizes_acc()
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline std::vector< size_t > *
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_stats_support_sizes_acc()
+{
+    return &stats_support_sizes_acc;
+}
+
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline std::vector< size_t > *
 Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_arrays2support()
