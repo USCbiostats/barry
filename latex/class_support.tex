@@ -24,7 +24,7 @@ void \mbox{\hyperlink{class_support_a50d9804b965b3b3a9f9fd6d0e60a3204}{init\+\_\
 \item 
 void \mbox{\hyperlink{class_support_a1f72e55e9f2ffbd5bb07ccecfa6ad876}{calc}} (std\+::vector$<$ Array\+\_\+\+Type $>$ $\ast$array\+\_\+bank=nullptr, std\+::vector$<$ double $>$ $\ast$stats\+\_\+bank=nullptr, size\+\_\+t max\+\_\+num\+\_\+elements\+\_\+=0u)
 \begin{DoxyCompactList}\small\item\em Computes the entire support. \end{DoxyCompactList}\item 
-std\+::vector$<$ double $>$ \mbox{\hyperlink{class_support_a47cc8dfe2705652a988cf77f0f27b43e}{get\+\_\+counts}} () const
+const std\+::vector$<$ double $>$ \& \mbox{\hyperlink{class_support_aaaec4ce57d2d79265289ab8a7b6f60d4}{get\+\_\+counts}} () const
 \item 
 std\+::vector$<$ double $>$ $\ast$ \mbox{\hyperlink{class_support_afc4fca55ca37dc97ed692687c38c7ce2}{get\+\_\+current\+\_\+stats}} ()
 \begin{DoxyCompactList}\small\item\em List current statistics. \end{DoxyCompactList}\item 
@@ -303,18 +303,18 @@ Vector of couter functions.
 
 
 
-Definition at line 594 of file support-\/meat.\+hpp.
+Definition at line 593 of file support-\/meat.\+hpp.
 
-\mbox{\Hypertarget{class_support_a47cc8dfe2705652a988cf77f0f27b43e}\label{class_support_a47cc8dfe2705652a988cf77f0f27b43e}} 
+\mbox{\Hypertarget{class_support_aaaec4ce57d2d79265289ab8a7b6f60d4}\label{class_support_aaaec4ce57d2d79265289ab8a7b6f60d4}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_counts@{get\_counts}}
 \index{get\_counts@{get\_counts}!Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}}
 \doxysubsubsection{\texorpdfstring{get\_counts()}{get\_counts()}}
 {\footnotesize\ttfamily template$<$typename Array\+\_\+\+Type , typename Data\+\_\+\+Counter\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Type , typename Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$ \\
-std\+::vector$<$ double $>$ \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+counts\hspace{0.3cm}{\ttfamily [inline]}}
+const std\+::vector$<$ double $>$ \& \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\+Counter\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Type, Data\+\_\+\+Rule\+\_\+\+Dyn\+\_\+\+Type $>$\+::get\+\_\+counts\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 558 of file support-\/meat.\+hpp.
+Definition at line 557 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_afc4fca55ca37dc97ed692687c38c7ce2}\label{class_support_afc4fca55ca37dc97ed692687c38c7ce2}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_current\_stats@{get\_current\_stats}}
@@ -329,7 +329,7 @@ List current statistics.
 
 
 
-Definition at line 572 of file support-\/meat.\+hpp.
+Definition at line 571 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_ac19420a6296244d85274261f39e4ceae}\label{class_support_ac19420a6296244d85274261f39e4ceae}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_data@{get\_data}}
@@ -340,7 +340,7 @@ const \mbox{\hyperlink{class_freq_table}{Freq\+Table}}$<$ double $>$ \& \mbox{\h
 
 
 
-Definition at line 589 of file support-\/meat.\+hpp.
+Definition at line 588 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a368a9c7797e1a76c3ee150070e66c212}\label{class_support_a368a9c7797e1a76c3ee150070e66c212}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_rules@{get\_rules}}
@@ -355,7 +355,7 @@ Vector of static rules (cells to iterate).
 
 
 
-Definition at line 599 of file support-\/meat.\+hpp.
+Definition at line 598 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a53daafcd49daac43c6e8841a8a17a05a}\label{class_support_a53daafcd49daac43c6e8841a8a17a05a}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!get\_rules\_dyn@{get\_rules\_dyn}}
@@ -370,7 +370,7 @@ Vector of dynamic rules (to include/exclude a realizaton).
 
 
 
-Definition at line 604 of file support-\/meat.\+hpp.
+Definition at line 603 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_a50d9804b965b3b3a9f9fd6d0e60a3204}\label{class_support_a50d9804b965b3b3a9f9fd6d0e60a3204}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!init\_support@{init\_support}}
@@ -392,7 +392,7 @@ void \mbox{\hyperlink{class_support}{Support}}$<$ Array\+\_\+\+Type, Data\+\_\+\
 
 
 
-Definition at line 577 of file support-\/meat.\+hpp.
+Definition at line 576 of file support-\/meat.\+hpp.
 
 \mbox{\Hypertarget{class_support_ac583eaddbf96b6825beb4aeb45bc3a99}\label{class_support_ac583eaddbf96b6825beb4aeb45bc3a99}} 
 \index{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$@{Support$<$ Array\_Type, Data\_Counter\_Type, Data\_Rule\_Type, Data\_Rule\_Dyn\_Type $>$}!reset\_array@{reset\_array}}

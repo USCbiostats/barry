@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['statistical_20models_1407',['Statistical Models',['../group__stat-models.html',1,'']]]
+  ['statistical_20models_1412',['Statistical Models',['../group__stat-models.html',1,'']]]
 ];

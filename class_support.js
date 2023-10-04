@@ -12,7 +12,7 @@ var class_support =
     [ "calc", "class_support.html#a1f72e55e9f2ffbd5bb07ccecfa6ad876", null ],
     [ "eval_rules_dyn", "class_support.html#a0f3a2ffc8015a7967b5fc892cd2e3888", null ],
     [ "get_counters", "class_support.html#a9f2237792f9688bf86ae89454048db9a", null ],
-    [ "get_counts", "class_support.html#a47cc8dfe2705652a988cf77f0f27b43e", null ],
+    [ "get_counts", "class_support.html#aaaec4ce57d2d79265289ab8a7b6f60d4", null ],
     [ "get_current_stats", "class_support.html#afc4fca55ca37dc97ed692687c38c7ce2", null ],
     [ "get_data", "class_support.html#ac19420a6296244d85274261f39e4ceae", null ],
     [ "get_rules", "class_support.html#a368a9c7797e1a76c3ee150070e66c212", null ],

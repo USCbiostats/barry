@@ -6,7 +6,7 @@ var class_flock =
     [ "colnames", "class_flock.html#a0fb9c1d463b2cd19a966aa85d5511a92", null ],
     [ "get_counters", "class_flock.html#a1010aa9fb40acb618c604c531e2528bb", null ],
     [ "get_model", "class_flock.html#a9692be014117ae093ce160462dbde0d2", null ],
-    [ "get_stats_support", "class_flock.html#ab5f4c94b0484772321b3856debdf3a58", null ],
+    [ "get_stats_support", "class_flock.html#a15096ee181dfa46c9dd30aacd41c0dc5", null ],
     [ "get_stats_target", "class_flock.html#a26462201318e4bf34756a2a14e2cc3fb", null ],
     [ "get_support_fun", "class_flock.html#add876188b5f16af037525e71eaf7fc05", null ],
     [ "init", "class_flock.html#a5ddef5ec4a7b150a354db11bb6b0c593", null ],
