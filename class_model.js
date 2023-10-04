@@ -27,6 +27,8 @@ var class_model =
     [ "get_rules", "class_model.html#a8796a5e54c0ba505129db2bc1e452d0d", null ],
     [ "get_rules_dyn", "class_model.html#aff4c85b28ba08c67b6d3308cf94fc30a", null ],
     [ "get_stats_support", "class_model.html#a689e68b499eb7bfd92a7f8318f51c121", null ],
+    [ "get_stats_support_sizes", "class_model.html#ad58c3af0e2785e39b43966d00b284ece", null ],
+    [ "get_stats_support_sizes_acc", "class_model.html#a0cc4d7632840ecdaeaf344b7839cec71", null ],
     [ "get_stats_target", "class_model.html#a5414f4d58c598c844bf0e7885e06488a", null ],
     [ "get_support_fun", "class_model.html#a5a887a9d87a1f86ccc783fd27a0a1ddc", null ],
     [ "likelihood", "class_model.html#a2b216befc5a05c5aa6607b9b617b14f6", null ],
