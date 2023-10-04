@@ -10,6 +10,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 )
 {
 
+
     // Splitting the probabilities
     std::vector< double > par_terms(par.begin(), par.end() - nfuns());
     std::vector< double > par_root(par.end() - nfuns(), par.end());
@@ -38,7 +39,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
     size_t root_id = preorder[0u];
     Node * tmp_node = &nodes[root_id];
     tmp_node->probability.resize(states.size(), 0.0);
-    double tmp_likelihood = likelihood(par, false, use_reduced_sequence);
+    double tmp_likelihood = likelihood(par, false, use_reduced_sequence, 1u, true);
 
     if (!std::isfinite(tmp_likelihood))
     {
@@ -57,10 +58,6 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
             throw std::runtime_error("Probability is not finite");
         }
             
-            
-
-        
-
         // Marginalizing the probabilities P(x_sf | D)
         for (size_t f = 0u; f < nfuns(); ++f)
         {
@@ -72,7 +69,6 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                 tmp_prob[f] += tmp_node->probability[s];
 
         }
-        
 
     }
 
@@ -80,7 +76,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
     res[nodes[root_id].ord] = tmp_prob;
     
     // Retrieving the powersets probabilities
-    const auto & pset_probs = *(model->get_pset_probs());
+    const auto & pset_probs     = *(model->get_pset_probs());
     const auto & arrays2support = *(model->get_arrays2support());
     const auto & pset_locations = *(model->get_pset_locations());
 
@@ -193,7 +189,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
                 // The first run, we only need to grow the list
                 above.push_back(
-                    pset_probs[pset_locations[support_id]]
+                    pset_probs[pset_locations[support_id] + p]
                     // model->likelihood(
                     //     par_terms, target_p, parent.narray[s], false
                     // )
