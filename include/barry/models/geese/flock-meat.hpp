@@ -150,17 +150,39 @@ inline double Flock::likelihood_joint(
     std::vector< double > par0(par.begin(), par.end() - nfunctions);
     model.update_normalizing_constants(par0, ncores);
 
+    // Figuring out core distribution
+    size_t nsubcores = ncores > 2u ? ncores - 2u : 1u;
+    ncores = ncores - nsubcores;
+
     if (as_log) {
 
-        for (auto& d : this->dat) 
-            ans += d.likelihood(par, as_log, use_reduced_sequence, ncores, true);
+        if (ncores > 1u)
+        {
+            #if defined(_OPENMP) || defined(__OPENMP)
+            #pragma omp parallel for reduction(+:ans) num_threads(ncores)
+            #endif
+            for (auto& d : this->dat) 
+                ans += d.likelihood(par, as_log, use_reduced_sequence, nsubcores, true);
+        } else {
+            for (auto& d : this->dat) 
+                ans += d.likelihood(par, as_log, use_reduced_sequence, nsubcores, true);
+        }
 
     }
     else
     {
 
-        for (auto& d : this->dat) 
-            ans *= d.likelihood(par, as_log, use_reduced_sequence, ncores, true);
+        if (ncores > 1u) 
+        {
+            #if defined(_OPENMP) || defined(__OPENMP)
+            #pragma omp parallel for reduction(*:ans) num_threads(ncores)
+            #endif
+            for (auto& d : this->dat) 
+                ans *= d.likelihood(par, as_log, use_reduced_sequence, nsubcores, true);
+        } else {
+            for (auto& d : this->dat) 
+                ans *= d.likelihood(par, as_log, use_reduced_sequence, nsubcores, true);
+        }
             
     }
     

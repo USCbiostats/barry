@@ -14,55 +14,36 @@ inline double update_normalizing_constant(
 )
 {
     double res = 0.0;
-    
-    if (n > 1000u)
+
+    std::vector< double > resv(n, 0.0);
+
+    for (size_t j = 0u; j < (k - 1u); ++j)
     {
 
-        std::vector< double > resv(n, 0.0);
-
-        for (size_t j = 0u; j < (k - 1u); ++j)
-        {
-
-            const double p = params[j];
-            
-            #if defined(__OPENMP) || defined(_OPENMP)
-            #pragma omp simd 
-            #elif defined(__GNUC__) && !defined(__clang__)
-                #pragma GCC ivdep
-            #endif
-            for (size_t i = 0u; i < n; ++i)
-                resv[i] += (*(support + i * k + 1u + j)) * p;
-
-        }
-
-        // Accumulate resv to a double res        
+        const double p = params[j];
+        
         #if defined(__OPENMP) || defined(_OPENMP)
-        #pragma omp simd reduction(+:res)
+        #pragma omp simd 
         #elif defined(__GNUC__) && !defined(__clang__)
             #pragma GCC ivdep
         #endif
         for (size_t i = 0u; i < n; ++i)
-        {
-            res += std::exp(resv[i] BARRY_SAFE_EXP) * (*(support + i * k));
-        }
-
-    } else {
-
-        for (size_t i = 0u; i < n; ++i)
-        {
-
-            double tmp = 0.0;
-            const double * support_n = support + i * k + 1u;
-            
-            for (size_t j = 0u; j < (k - 1u); ++j)
-                tmp += (*(support_n + j)) * params[j];
-            
-            res += std::exp(tmp BARRY_SAFE_EXP) * (*(support + i * k));
-
-        }
-
+            resv[i] += (*(support + i * k + 1u + j)) * p;
 
     }
+
+    // Accumulate resv to a double res        
+    #if defined(__OPENMP) || defined(_OPENMP)
+    #pragma omp simd reduction(+:res)
+    #elif defined(__GNUC__) && !defined(__clang__)
+        #pragma GCC ivdep
+    #endif
+    for (size_t i = 0u; i < n; ++i)
+    {
+        res += std::exp(resv[i] BARRY_SAFE_EXP) * (*(support + i * k));
+    }
+
+
 
 
     #ifdef BARRY_DEBUG
@@ -101,6 +82,10 @@ inline double likelihood_(
     double numerator = 0.0;
     
     // Computing the numerator
+    #pragma code_align 32
+    #if defined(__OPENMP) || defined(_OPENMP)
+    #pragma omp simd reduction(+:numerator)
+    #endif
     for (size_t j = 0u; j < n_params; ++j)
         numerator += *(stats_target + j) * params[j];
 
@@ -970,7 +955,8 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_no
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline const std::vector< Array_Type > * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_pset(
+inline const std::vector< Array_Type > *
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pset(
     const size_t & i
 ) {
 
@@ -983,7 +969,8 @@ inline const std::vector< Array_Type > * Model<Array_Type,Data_Counter_Type, Dat
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline const std::vector< double > * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_pset_stats(
+inline const std::vector< double > *
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pset_stats(
     const size_t & i
 ) {
 
@@ -1159,7 +1146,8 @@ template <
     typename Data_Rule_Type,
     typename Data_Rule_Dyn_Type
     >
-inline Array_Type Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
+inline Array_Type
+Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
     const size_t & i,
     const std::vector<double> & params
 ) {
@@ -1473,34 +1461,40 @@ inline std::vector< std::vector< double > > * Model<Array_Type,Data_Counter_Type
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< std::vector< double > > * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_stats_support()
+inline std::vector< std::vector< double > > *
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_stats_support()
 {
     return &stats_support;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< size_t > * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_arrays2support()
+inline std::vector< size_t > *
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_arrays2support()
 {
     return &arrays2support;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< std::vector< Array_Type > > * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_pset_arrays() {
+inline std::vector< std::vector< Array_Type > > *
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pset_arrays() {
     return &pset_arrays;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< std::vector<double> > * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_pset_stats() {
+inline std::vector< std::vector<double> > *
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pset_stats() {
     return &pset_stats;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< std::vector<double> > * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_pset_probs() {
+inline std::vector< std::vector<double> > *
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::get_pset_probs() {
     return &pset_probs;
 }
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: set_transform_model(
+inline void
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::set_transform_model(
     std::function<std::vector<double>(double *,size_t)> fun,
     std::vector< std::string > names
     )

@@ -171,7 +171,7 @@ inline double Geese::likelihood(
             std::vector< std::vector< size_t > > & locations = pset_loc[support_id];
 
             // Making sure parallelization makes sense
-            if (psets.size() < 1000)
+            if (psets.size() < 128)
                 ncores = 1u;
             
             // Summation over all possible values of X
