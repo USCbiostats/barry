@@ -8,14 +8,15 @@ inline void pset_loop(
     size_t s,
     size_t nfunctions,
     const size_t node_id,
-    double norm_const_i,
+    const size_t array_id,
     std::vector< double > & totprob_n,
     const std::vector< double > & par0,
     const std::vector<std::vector<bool>> & states,
     const std::vector< PhyloArray > & psets,
     const std::vector<double> & psets_stats,
     const std::vector< std::vector< size_t > > & locations,
-    const std::vector<geese::Node *> & node_offspring
+    const std::vector<geese::Node *> & node_offspring,
+    const std::vector< double > & psetprobs
 ) 
 {
     // Retrieving the pset
@@ -76,13 +77,14 @@ inline void pset_loop(
     // Use try catch in the following line
     try {
 
-        off_mult *= barry::likelihood_(
-            &psets_stats[par0.size() * n],
-            par0,
-            norm_const_i,
-            par0.size(),
-            false
-        );
+        off_mult *= psetprobs[n];
+        // barry::likelihood_(
+        //     &psets_stats[par0.size() * n],
+        //     par0,
+        //     norm_const_i,
+        //     par0.size(),
+        //     false
+        // );
 
     } catch (std::exception & e) {
 
@@ -111,7 +113,7 @@ inline double Geese::likelihood(
     bool as_log,
     bool use_reduced_sequence,
     size_t ncores,
-    bool no_update_normalizing_constant
+    bool no_update_pset_probs
 ) {
 
     // Checking whether the model is initialized
@@ -128,8 +130,8 @@ inline double Geese::likelihood(
     double ll = 0.0;
 
     // Updating normalizing constants
-    if (!no_update_normalizing_constant)
-        model->update_normalizing_constants(par0, ncores);
+    if (!no_update_pset_probs)
+        model->update_pset_probs(par0, ncores);
 
     // Following the prunning sequence
     const std::vector< size_t > & preseq = use_reduced_sequence ?
@@ -139,7 +141,7 @@ inline double Geese::likelihood(
     // hashes of the columns so it is fast to access then (saves time
     // hashing and looking in the map.)
     const auto & arrays2support = *(model->get_arrays2support());
-    const auto & normconst = model->get_normalizing_constants();
+    const auto & psetprobs      = *(model->get_pset_probs());
 
     for (auto& i : preseq)
     {
@@ -159,7 +161,6 @@ inline double Geese::likelihood(
             // Starting the prob
             size_t array_id = node.narray[s];
             size_t support_id = arrays2support[array_id];
-            double norm_const_i = normconst[support_id];
 
             // Retrieving the sets of arrays
             const std::vector< PhyloArray > & psets =
@@ -177,43 +178,14 @@ inline double Geese::likelihood(
             // Summation over all possible values of X
             const auto & node_offspring = node.offspring;
             std::vector< double > totprob_n(psets.size(), 0.0);
-            #if defined(_OPENMP) || defined(__OPENMP)
-            if (ncores > 1u)
-            {
-                #pragma omp parallel for num_threads(ncores) \
-                    shared(\
-                        locations, psets, psets_stats, totprob_n, node, states,\
-                        par0, node_offspring, nfunctions, array_id, norm_const_i, \
-                        s, node_id) default(none)
-                for (size_t n = 0u; n < psets.size(); ++n) 
-                {
-                    pset_loop(
-                        n, s, nfunctions, node_id, norm_const_i, totprob_n,
-                        par0, states, psets, psets_stats, locations, 
-                        node_offspring
-                    );
-                }
-            } else {
-                for (size_t n = 0u; n < psets.size(); ++n) 
-                {
-                    pset_loop(
-                        n, s, nfunctions, node_id, norm_const_i, totprob_n,
-                        par0, states, psets, psets_stats, locations, 
-                        node_offspring
-                    );
-                }
-            }
-            #else
             for (size_t n = 0u; n < psets.size(); ++n) 
             {
                 pset_loop(
-                    n, s, nfunctions, node_id, norm_const_i, totprob_n,
+                    n, s, nfunctions, node_id, array_id, totprob_n,
                     par0, states, psets, psets_stats, locations, 
-                    node_offspring
+                    node_offspring, psetprobs[arrays2support[array_id]]
                 );
-            }
-            #endif
-            
+            }            
 
             // Setting the probability at the node
             node.subtree_prob[s] = 0.0;

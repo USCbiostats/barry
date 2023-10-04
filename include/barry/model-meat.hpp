@@ -173,12 +173,107 @@ template <
     typename Data_Rule_Type,
     typename Data_Rule_Dyn_Type
     >
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::update_likelihoods(
+    const std::vector< double > & params,
+    size_t ncores
+) {
+    
+    update_normalizing_constants(params, ncores);
+
+    size_t n_params = params.size();
+
+    if (stats_likelihood.size() != stats_target.size())
+        stats_likelihood.resize(stats_target.size());
+
+    #if defined(__OPENMP) || defined(_OPENMP)
+    #pragma omp parallel for simd num_threads(ncores) \
+        shared(n_params, stats_target, normalizing_constants, arrays2support, \
+            params) \
+        default(none)
+    #endif
+    for (size_t s = 0u; s < stats_target.size(); ++s)
+    {
+        stats_likelihood[s] = 0.0;
+        for (size_t j = 0u; j < n_params; ++j)
+            stats_likelihood[s] += stats_target[s][j] * params[j];
+
+        stats_likelihood[s] =
+            std::exp(stats_likelihood[s] BARRY_SAFE_EXP)/
+            normalizing_constants[arrays2support[s]];
+    }
+    
+    return;
+    
+}
+
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::update_pset_probs(
+    const std::vector< double > & params,
+    size_t ncores
+) {
+
+    update_normalizing_constants(params, ncores);
+
+    size_t n_params = params.size();
+
+    #if defined(__OPENMP) || defined(_OPENMP)
+    #pragma omp parallel for simd num_threads(ncores) \
+        shared(n_params, pset_stats, pset_probs, normalizing_constants, arrays2support, \
+            params) \
+        default(none)
+    #endif
+    for (size_t s = 0u; s < pset_probs.size(); ++s)
+    {
+        pset_probs[s].resize(pset_stats[s].size()/n_params);
+        for (size_t a = 0u; a < pset_probs[s].size(); ++a)
+        {
+            pset_probs[s][a] = 0.0;
+            for (size_t j = 0u; j < n_params; ++j)
+                pset_probs[s][a] += pset_stats[s][a * n_params + j] * params[j];
+
+            pset_probs[s][a] =
+                std::exp(pset_probs[s][a] BARRY_SAFE_EXP)/
+                normalizing_constants[s];
+        }
+
+        #ifdef BARRY_DEBUG
+        // Making sure the probabilities add to one
+        double totprob = std::accumulate(
+            pset_probs[s].begin(), pset_probs[s].end(), 0.0
+        );
+
+        if (std::abs(totprob - 1) > 1e-6)
+            throw std::runtime_error(
+                std::string("Probabilities do not add to one! ") +
+                std::string("totprob = ") + std::to_string(totprob)
+            );
+
+        #endif
+    }
+    
+    return;
+
+}
+
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
 inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::Model() :
     stats_support(0u),
     stats_support_sizes(0u),
     stats_support_sizes_acc(0u),
     stats_support_n_arrays(0u),
-    stats_target(0u), arrays2support(0u),
+    stats_target(0u),
+    stats_likelihood(0u),
+    arrays2support(0u),
     keys2support(0u),
     pset_arrays(0u), pset_stats(0u),
     counters(new Counters<Array_Type,Data_Counter_Type>()),
@@ -216,7 +311,9 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::M
     stats_support_sizes(0u),
     stats_support_sizes_acc(0u),
     stats_support_n_arrays(0u),
-    stats_target(0u), arrays2support(0u), keys2support(0u), 
+    stats_target(0u),
+    stats_likelihood(0u),
+    arrays2support(0u), keys2support(0u), 
     pset_arrays(0u), pset_stats(0u),
     counters(new Counters<Array_Type,Data_Counter_Type>()),
     rules(new Rules<Array_Type,Data_Rule_Type>()),
@@ -257,6 +354,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::M
     stats_support_sizes_acc(Model_.stats_support_sizes_acc),
     stats_support_n_arrays(Model_.stats_support_n_arrays),
     stats_target(Model_.stats_target),
+    stats_likelihood(Model_.stats_likelihood),
     arrays2support(Model_.arrays2support),
     keys2support(Model_.keys2support),
     pset_arrays(Model_.pset_arrays),
@@ -316,6 +414,7 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type> &
         stats_support_sizes_acc    = Model_.stats_support_sizes_acc;
         stats_support_n_arrays     = Model_.stats_support_n_arrays;
         stats_target               = Model_.stats_target;
+        stats_likelihood           = Model_.stats_likelihood;
         arrays2support             = Model_.arrays2support;
         keys2support               = Model_.keys2support;
         pset_arrays                = Model_.pset_arrays;
@@ -995,11 +1094,29 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     
 }
 
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< double > &
-Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_normalizing_constants() {
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline const std::vector< double > &
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_normalizing_constants() const {
     
     return normalizing_constants;
+    
+}
+
+template<
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline const std::vector< double > &
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_likelihoods() const {
+    
+    return stats_likelihood;
     
 }
 

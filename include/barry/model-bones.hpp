@@ -64,6 +64,7 @@ protected:
     std::vector< size_t >                stats_support_sizes_acc; ///< Accumulated number of vectors included in the support.
     std::vector< size_t >                stats_support_n_arrays;  ///< Number of arrays included per support.
     std::vector< std::vector< double > > stats_target;            ///< Target statistics of the model
+    std::vector< double >                stats_likelihood;
     std::vector< size_t >                arrays2support;
     ///@}
 
@@ -135,6 +136,16 @@ public:
      * variable.
     */
     void update_normalizing_constants(
+        const std::vector< double > & params,
+        BARRY_NCORES_ARG(=1)
+        );
+
+    void update_likelihoods(
+        const std::vector< double > & params,
+        BARRY_NCORES_ARG(=1)
+        );
+
+    void update_pset_probs(
         const std::vector< double > & params,
         BARRY_NCORES_ARG(=1)
         );
@@ -298,7 +309,8 @@ public:
      * constant.
      */
     ///@{
-    std::vector< double > & get_normalizing_constants();
+    const std::vector< double > & get_normalizing_constants() const;
+    const std::vector< double > & get_likelihoods() const;
 
     const std::vector< Array_Type > * get_pset(
         const size_t & i
