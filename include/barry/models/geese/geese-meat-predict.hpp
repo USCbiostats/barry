@@ -296,6 +296,9 @@ inline std::vector< std::vector<double> > Geese::predict(
 
     std::reverse(preorder.begin(), preorder.end());
 
+    std::vector< double > par0(par.begin(), par.end() - nfuns());
+    model->update_pset_probs(par0, 1u);
+
     // Full prediction (first run, right now I am doing this
     // twice. Need to fix in the future)
     std::vector< std::vector<double> > res = predict_backend(
@@ -311,9 +314,6 @@ inline std::vector< std::vector<double> > Geese::predict(
             res_prob->at(nodes[i].ord) = nodes[i].probability;
 
     }
-
-    std::vector< double > par0(par.begin(), par.end() - nfuns());
-    model->update_pset_probs(par0, 1u);
 
     // In this case, we need to update the predictions, mostly of the annotated
     // leaf nodes. Because of 
