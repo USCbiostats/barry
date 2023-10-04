@@ -561,6 +561,13 @@ inline std::vector< double > Support<Array_Type,Data_Counter_Type,Data_Rule_Type
     
 }
 
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline const std::vector< double > & Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_counts() const {
+    
+    return data.get_data(); 
+    
+}
+
 // template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 // inline const MapVec_type<> * Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_counts_ptr() const {
     

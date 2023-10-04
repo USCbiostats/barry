@@ -114,7 +114,7 @@ inline PhyloSupport *  Flock::get_support_fun()
 
 }
 
-inline std::vector< std::vector< double > > *  Flock::get_stats_support()
+inline std::vector< double > *  Flock::get_stats_support()
 {
 
     return this->model.get_stats_support();

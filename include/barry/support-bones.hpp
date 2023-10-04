@@ -74,9 +74,9 @@ public:
     size_t max_num_elements = BARRY_MAX_NUM_ELEMENTS;
     
     // Temp variables to reduce memory allocation
-    std::vector< double >                current_stats;
-    std::vector< size_t >                coordinates_free;
-    std::vector< size_t >                coordinates_locked;
+    std::vector< double > current_stats;
+    std::vector< size_t > coordinates_free;
+    std::vector< size_t > coordinates_locked;
     size_t coordiantes_n_free;
     size_t coordiantes_n_locked;
     std::vector< double > change_stats;
@@ -184,6 +184,7 @@ public:
     );
     
     std::vector< double > get_counts() const;
+    const std::vector< double > & get_counts() const;
     std::vector< double > * get_current_stats(); ///< List current statistics.
     void print() const;
     

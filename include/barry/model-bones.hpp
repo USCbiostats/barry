@@ -59,9 +59,11 @@ protected:
      * - term k
      */
     ///@{
-    std::vector< std::vector< double > > stats_support;          ///< Sufficient statistics of the model (support)
-    std::vector< size_t >                stats_support_n_arrays; ///< Number of arrays included per support.
-    std::vector< std::vector< double > > stats_target;           ///< Target statistics of the model
+    std::vector< double >                stats_support;           ///< Sufficient statistics of the model (support)
+    std::vector< size_t >                stats_support_sizes;     ///< Number of vectors included in the support.
+    std::vector< size_t >                stats_support_sizes_acc; ///< Accumulated number of vectors included in the support.
+    std::vector< size_t >                stats_support_n_arrays;  ///< Number of arrays included per support.
+    std::vector< std::vector< double > > stats_target;            ///< Target statistics of the model
     std::vector< size_t >                arrays2support;
     ///@}
 
@@ -378,7 +380,7 @@ public:
      */
     ///@{
     std::vector< std::vector< double > > * get_stats_target();
-    std::vector< std::vector< double > > * get_stats_support();
+    std::vector< double > * get_stats_support();
     std::vector< size_t > * get_arrays2support();
     std::vector< std::vector< Array_Type > > * get_pset_arrays();
     std::vector< std::vector<double> > * get_pset_stats();  ///< Statistics of the support(s)

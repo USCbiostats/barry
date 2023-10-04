@@ -449,10 +449,10 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
     if (check_bounds) 
         out_of_range(0u, i);
 
+    #pragma code_align 32
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp simd
     #endif
-    #pragma code_align 32
     for (size_t j = 0u; j < N; ++j) 
         x->operator[](j) = el[POS(j, i)];//this->get_cell(iter->first, i, false);
     
