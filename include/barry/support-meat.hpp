@@ -553,14 +553,6 @@ inline bool Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
 // }
 
 //////////////////////////
-
-template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< double > Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_counts() const {
-    
-    return data.get_data(); 
-    
-}
-
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline const std::vector< double > & Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_counts() const {
     

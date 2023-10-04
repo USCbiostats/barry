@@ -183,7 +183,6 @@ public:
         size_t max_num_elements_ = 0u
     );
     
-    std::vector< double > get_counts() const;
     const std::vector< double > & get_counts() const;
     std::vector< double > * get_current_stats(); ///< List current statistics.
     void print() const;

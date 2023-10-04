@@ -145,7 +145,7 @@ inline void Model<Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_T
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp parallel for firstprivate(params) num_threads(ncores) \
         shared(n, normalizing_constants, first_calc_done, \
-            stats_support_sizes, stats_support_sizes_acc) \
+            stats_support, stats_support_sizes, stats_support_sizes_acc) \
         default(none)
     #endif
     for (size_t i = 0u; i < n; ++i)
@@ -157,7 +157,7 @@ inline void Model<Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_T
         first_calc_done[i] = true;
         normalizing_constants[i] = update_normalizing_constant(
             params, &stats_support[
-                stats_support_sizes_acc[i * k]
+                stats_support_sizes_acc[i] * k
                 ], k, n
         );
 
@@ -348,8 +348,6 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type> &
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: store_psets() noexcept {
-    // if (with_pset)
-    //   throw std::logic_error("Powerset storage alreay activated.");
     with_pset = true;
     return;
 }
@@ -486,7 +484,8 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Ty
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline size_t Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: add_array(
+inline size_t
+Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::add_array(
     const Array_Type & Array_,
     bool force_new
 ) {
@@ -615,6 +614,17 @@ inline size_t Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         first_calc_done.push_back(false);
 
         // Incrementing the size of the support set
+        if (stats_support_sizes.size() == 0u)
+        {
+            stats_support_sizes_acc.push_back(0u);    
+        } else {
+            stats_support_sizes_acc.push_back(
+                stats_support_sizes.back() + 
+                stats_support_sizes_acc.back()
+            );
+        }
+
+
         stats_support_sizes.push_back(
             
             (stats_support.size() - stats_support_size)/
@@ -649,16 +659,6 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         throw std::range_error("The requested support is out of range");
 
     size_t idx = arrays2support[i];
-
-    // Cummulative sum of the stats_support_sizes
-    std::vector< size_t > stats_support_sizes_acc;
-    stats_support_sizes_acc.reserve(stats_support_sizes.size());
-    size_t acc = 0u;
-    for (size_t i = 0u; i < stats_support_sizes.size(); ++i)
-    {
-        acc += stats_support_sizes[i];
-        stats_support_sizes_acc.push_back(acc);
-    }
 
     // Checking if this actually has a change of happening
     if (this->stats_support_sizes[idx] == 0u)
@@ -754,7 +754,9 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
         size_t n = stats_support_sizes[loc];
         
         normalizing_constants[loc] = update_normalizing_constant(
-            params, &stats_support[loc], k, n
+            params, &stats_support[
+                stats_support_sizes_acc[loc] * k
+                ], k, n
         );
         
         params_last[loc] = params;
@@ -1055,8 +1057,8 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Ty
         {
             printf_barry(
                 "%.2f, ",
-                stats_support_sizes_acc[
-                    stats_support_sizes_acc[l] * (k + 1) + j + 1
+                stats_support[
+                    stats_support_sizes_acc[l] * (k + 1u) + j + 1u
                     ]);
         }
 
@@ -1302,7 +1304,7 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
     MapVec_type< double, size_t >::const_iterator locator = keys2support.find(key);
     if (locator == keys2support.end())
     {
-        // throw std::out_of_range("Sampling from an array that has no support in the model.");
+        size_t stats_support_size = stats_support.size();
 
         // Adding to the map
         keys2support[key] = stats_support_sizes.size();
@@ -1385,6 +1387,26 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
         params_last.push_back(stats_target[0u]);
         normalizing_constants.push_back(0.0);
         first_calc_done.push_back(false);
+
+        // Incrementing the size of the support set
+        if (stats_support_sizes.size() == 0u)
+        {
+            stats_support_sizes_acc.push_back(0u);    
+        } else {
+            stats_support_sizes_acc.push_back(
+                stats_support_sizes.back() + 
+                stats_support_sizes_acc.back()
+            );
+        }
+
+
+        stats_support_sizes.push_back(
+            
+            (stats_support.size() - stats_support_size)/
+                (counter_fun.size() + 1u)
+
+            );
+
         
         i = arrays2support.size() - 1u;
     } else
@@ -1572,39 +1594,59 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::set_tra
 
     size_t k = counters->size(); 
 
-    auto stats_support_old = get_stats_support();
+    auto stats_support_old = stats_support;
 
     // Applying over the support
-    for (auto & n : stats_support_sizes)
+    for (size_t nsupport = 0u; nsupport < stats_support_sizes.size(); ++nsupport)
     {
 
-        // Iterating through the unique sets
-        // size_t n = s;
+        // How many observations in the support
+        size_t n = stats_support_sizes[nsupport];
+
+        // Iterating through each observation in the nsupport'th 
         for (size_t i = 0; i < n; ++i)
         {
 
             // Applying transformation and adding to the new set
             auto res = transform_model_fun(
                 &stats_support_old[
-                    stats_support_sizes_acc[i] * (k + 1u) + 1u
-                ],
+                    stats_support_sizes_acc[nsupport] * (k + 1u) +
+                    i * (k + 1u) + 1u
+                    ],
                 k
                 );
 
             if (res.size() != transform_model_term_names.size())
-                throw std::length_error("The transform vector from -transform_model_fun- does not match the size of -transform_model_term_names-.");
+                throw std::length_error(
+                    std::string("The transform vector from -transform_model_fun- ") +
+                    std::string(" does not match the size of ") + 
+                    std::string("-transform_model_term_names-.")
+                    );
+
+            // Resizing stats_support if the transform stats do not match the
+            // previous size
+            if ((nsupport == 0u) && (i == 0u) && (res.size() != k))
+                stats_support.resize(
+                    (res.size() + 1) * (
+                        stats_support_sizes_acc.back() +
+                        stats_support_sizes.back()
+                        )
+                );
 
             // Weigth
             stats_support[
-                stats_support_sizes_acc[i] * (res.size() + 1u)
+                stats_support_sizes_acc[nsupport] * (res.size() + 1u) +
+                (res.size() + 1u) * i
                 ] = stats_support_old[
-                    stats_support_sizes_acc[i] * (k + 1u) 
+                    stats_support_sizes_acc[nsupport] * (k + 1u) +
+                    i * (k + 1u)
                 ];
 
             // Copying the rest of the elements
             for (size_t j = 0u; j < res.size(); ++j)
                 stats_support[
-                    stats_support_sizes_acc[i] * (res.size() + 1u) + j + 1u
+                    stats_support_sizes_acc[nsupport] * (res.size() + 1u) +
+                    (res.size() + 1u) * i + j + 1u
                     ] = res[j];
 
         }
