@@ -26,8 +26,10 @@ class \mbox{\hyperlink{class_counter}{Counter$<$ Array\+\_\+\+Type, Data\+\_\+\+
 \item 
 \#define \mbox{\hyperlink{group__counting_ga6c20892d837efbb7da5227af44feca3c}{IF\+\_\+\+NOTMATCHES}}()
 \item 
-\#define \mbox{\hyperlink{group__counting_gac89fe9750bd62a338930ea730d23d0d2}{PHYLO\+\_\+\+COUNTER\+\_\+\+LAMBDA}}(a)
+\#define \mbox{\hyperlink{group__counting_gacab355d617fa06173807310d86b33944}{PHYLO\+\_\+\+RULE\+\_\+\+LAMBDA}}(a)
 \begin{DoxyCompactList}\small\item\em Extension of a simple counter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__counting_gac89fe9750bd62a338930ea730d23d0d2}{PHYLO\+\_\+\+COUNTER\+\_\+\+LAMBDA}}(a)
+\item 
 \#define \mbox{\hyperlink{group__counting_ga4a7a35cddb61f74a0ec3cb3893cf78b1}{PHYLO\+\_\+\+RULE\+\_\+\+DYN\+\_\+\+LAMBDA}}(a)
 \item 
 \#define \mbox{\hyperlink{group__counting_ga81c4979894537f31d3ecc06c5f6dd504}{PHYLO\+\_\+\+CHECK\+\_\+\+MISSING}}()
@@ -214,7 +216,7 @@ Definition at line 12 of file counters.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 42 of file counters.\+hpp.
+Definition at line 45 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gac89fe9750bd62a338930ea730d23d0d2}\label{group__counting_gac89fe9750bd62a338930ea730d23d0d2}} 
 \index{Counting@{Counting}!PHYLO\_COUNTER\_LAMBDA@{PHYLO\_COUNTER\_LAMBDA}}
@@ -230,11 +232,7 @@ Definition at line 42 of file counters.\+hpp.
 \end{DoxyCode}
 
 
-Extension of a simple counter. 
-
-It allows specifying extra arguments, in particular, the corresponding sets of rows to which this statistic may be relevant. This could be important in the case of, for example, counting correlation type statistics between function 1 and 2, and between function 1 and 3. 
-
-Definition at line 36 of file counters.\+hpp.
+Definition at line 39 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga4a7a35cddb61f74a0ec3cb3893cf78b1}\label{group__counting_ga4a7a35cddb61f74a0ec3cb3893cf78b1}} 
 \index{Counting@{Counting}!PHYLO\_RULE\_DYN\_LAMBDA@{PHYLO\_RULE\_DYN\_LAMBDA}}
@@ -250,7 +248,27 @@ Definition at line 36 of file counters.\+hpp.
 \end{DoxyCode}
 
 
-Definition at line 39 of file counters.\+hpp.
+Definition at line 42 of file counters.\+hpp.
+
+\mbox{\Hypertarget{group__counting_gacab355d617fa06173807310d86b33944}\label{group__counting_gacab355d617fa06173807310d86b33944}} 
+\index{Counting@{Counting}!PHYLO\_RULE\_LAMBDA@{PHYLO\_RULE\_LAMBDA}}
+\index{PHYLO\_RULE\_LAMBDA@{PHYLO\_RULE\_LAMBDA}!Counting@{Counting}}
+\doxysubsubsection{\texorpdfstring{PHYLO\_RULE\_LAMBDA}{PHYLO\_RULE\_LAMBDA}}
+{\footnotesize\ttfamily \#define PHYLO\+\_\+\+RULE\+\_\+\+LAMBDA(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    barry::Rule\_fun\_type<PhyloArray, PhyloRuleData> a = \(\backslash\)}
+\DoxyCodeLine{    [](\textcolor{keyword}{const} \mbox{\hyperlink{geese-types_8hpp_a3f0cae5b6ac5c728612da24e8aa3b5f6}{PhyloArray}} \& Array, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{counters-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}, \mbox{\hyperlink{geese-types_8hpp_a359d952b83e6ea8675c6ac65916a1cc0}{PhyloRuleData}} \& \mbox{\hyperlink{counters-meat_8hpp_a6fc02db1fc3ce220c7c5e2999822ecf7}{data}})}
+
+\end{DoxyCode}
+
+
+Extension of a simple counter. 
+
+It allows specifying extra arguments, in particular, the corresponding sets of rows to which this statistic may be relevant. This could be important in the case of, for example, counting correlation type statistics between function 1 and 2, and between function 1 and 3. 
+
+Definition at line 36 of file counters.\+hpp.
 
 
 
@@ -267,7 +285,7 @@ Function co-\/opting.
 
 Function co-\/opting of functions A and B happens when, for example, function B is gained as a new featured leveraging what function A already does; without losing function A. The sufficient statistic is defined as follows\+: \[ x_{pa}(1 - x_{pb})\sum_{i<j}\left[x_{ia}^p(1 - x_{ib}^p)x_{ja}^px_{jb}^p + x_{ja}^p(1 - x_{jb}^p)x_{ia}^px_{ib}^p\right] \] This algorithm implements the change statistic. 
 
-Definition at line 1296 of file counters.\+hpp.
+Definition at line 1299 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga9d57bfb85ca8ab5a943e46b461e42aea}\label{group__counting_ga9d57bfb85ca8ab5a943e46b461e42aea}} 
 \index{Counting@{Counting}!counter\_cogain@{counter\_cogain}}
@@ -281,7 +299,7 @@ Co-\/evolution (joint gain or loss)
 
 Needs to specify pairs of functions ({\ttfamily nfunA}, {\ttfamily nfunB}). 
 
-Definition at line 791 of file counters.\+hpp.
+Definition at line 794 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga8972c27d6e3dfa3fb980afce91dbd582}\label{group__counting_ga8972c27d6e3dfa3fb980afce91dbd582}} 
 \index{Counting@{Counting}!counter\_gains@{counter\_gains}}
@@ -295,7 +313,7 @@ Functional gains for a specific function ({\ttfamily nfun}).
 
 
 
-Definition at line 96 of file counters.\+hpp.
+Definition at line 99 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga8f28f78a8170fcd27f8888bfd2f99d52}\label{group__counting_ga8f28f78a8170fcd27f8888bfd2f99d52}} 
 \index{Counting@{Counting}!counter\_gains\_from\_0@{counter\_gains\_from\_0}}
@@ -309,7 +327,7 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. 
 
-Definition at line 1630 of file counters.\+hpp.
+Definition at line 1633 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gac5bf2141645db356fbd1333d56ce8444}\label{group__counting_gac5bf2141645db356fbd1333d56ce8444}} 
 \index{Counting@{Counting}!counter\_gains\_k\_offspring@{counter\_gains\_k\_offspring}}
@@ -323,7 +341,7 @@ k genes gain function nfun
 
 
 
-Definition at line 156 of file counters.\+hpp.
+Definition at line 159 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga347aabd9065d9ff8352e58fb282b8fd2}\label{group__counting_ga347aabd9065d9ff8352e58fb282b8fd2}} 
 \index{Counting@{Counting}!counter\_genes\_changing@{counter\_genes\_changing}}
@@ -337,7 +355,7 @@ Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with re
 
 
 
-Definition at line 228 of file counters.\+hpp.
+Definition at line 231 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga1f7678ddbb9f9084cb5fe1c79f205558}\label{group__counting_ga1f7678ddbb9f9084cb5fe1c79f205558}} 
 \index{Counting@{Counting}!counter\_k\_genes\_changing@{counter\_k\_genes\_changing}}
@@ -351,7 +369,7 @@ Indicator function. Equals to one if $k$ genes changed and zero otherwise.
 
 
 
-Definition at line 1394 of file counters.\+hpp.
+Definition at line 1397 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gaa6fbd08ef13dbe4b29a68e9200113feb}\label{group__counting_gaa6fbd08ef13dbe4b29a68e9200113feb}} 
 \index{Counting@{Counting}!counter\_less\_than\_p\_prop\_genes\_changing@{counter\_less\_than\_p\_prop\_genes\_changing}}
@@ -365,7 +383,7 @@ Indicator function. Equals to one if $k$ genes changed and zero otherwise.
 
 $<$ How many genes diverge the parent
 
-Definition at line 1514 of file counters.\+hpp.
+Definition at line 1517 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gac356c5c159d2f37088b162ed04c362ad}\label{group__counting_gac356c5c159d2f37088b162ed04c362ad}} 
 \index{Counting@{Counting}!counter\_longest@{counter\_longest}}
@@ -379,7 +397,7 @@ Longest branch mutates (either by gain or by loss)
 
 
 
-Definition at line 848 of file counters.\+hpp.
+Definition at line 851 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga6de412cdee1ec990e62edcb29c118824}\label{group__counting_ga6de412cdee1ec990e62edcb29c118824}} 
 \index{Counting@{Counting}!counter\_loss@{counter\_loss}}
@@ -393,7 +411,7 @@ Total count of losses for an specific function.
 
 
 
-Definition at line 591 of file counters.\+hpp.
+Definition at line 594 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gae0453a90fb7c8668a6845fe850477cc7}\label{group__counting_gae0453a90fb7c8668a6845fe850477cc7}} 
 \index{Counting@{Counting}!counter\_maxfuns@{counter\_maxfuns}}
@@ -407,7 +425,7 @@ Cap the number of functions per gene.
 
 
 
-Definition at line 529 of file counters.\+hpp.
+Definition at line 532 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gacd47917bea8489de870d1fc58f5c7076}\label{group__counting_gacd47917bea8489de870d1fc58f5c7076}} 
 \index{Counting@{Counting}!counter\_neofun@{counter\_neofun}}
@@ -421,7 +439,7 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 1018 of file counters.\+hpp.
+Definition at line 1021 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga1bf540113edfb5f96f2138370b6f77f6}\label{group__counting_ga1bf540113edfb5f96f2138370b6f77f6}} 
 \index{Counting@{Counting}!counter\_neofun\_a2b@{counter\_neofun\_a2b}}
@@ -435,7 +453,7 @@ Total number of neofunctionalization events.
 
 Needs to specify pairs of function. 
 
-Definition at line 1163 of file counters.\+hpp.
+Definition at line 1166 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga23beb6a43e5da922f7c364714a95a89e}\label{group__counting_ga23beb6a43e5da922f7c364714a95a89e}} 
 \index{Counting@{Counting}!counter\_overall\_changes@{counter\_overall\_changes}}
@@ -449,7 +467,7 @@ Total number of changes. Use this statistic to account for \char`\"{}preservatio
 
 
 
-Definition at line 643 of file counters.\+hpp.
+Definition at line 646 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga17277bd554ecacf1bc45165564723722}\label{group__counting_ga17277bd554ecacf1bc45165564723722}} 
 \index{Counting@{Counting}!counter\_overall\_gains@{counter\_overall\_gains}}
@@ -463,7 +481,7 @@ Overall functional gains.
 
 Total number of gains (irrespective of the function). 
 
-Definition at line 58 of file counters.\+hpp.
+Definition at line 61 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gac2eb4b7941b56f783eff66f5acfc656c}\label{group__counting_gac2eb4b7941b56f783eff66f5acfc656c}} 
 \index{Counting@{Counting}!counter\_overall\_gains\_from\_0@{counter\_overall\_gains\_from\_0}}
@@ -477,7 +495,7 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. 
 
-Definition at line 1696 of file counters.\+hpp.
+Definition at line 1699 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga8f65b1cc27fb2f27eb5525b5b36c19f8}\label{group__counting_ga8f65b1cc27fb2f27eb5525b5b36c19f8}} 
 \index{Counting@{Counting}!counter\_overall\_loss@{counter\_overall\_loss}}
@@ -491,7 +509,7 @@ Overall functional loss.
 
 
 
-Definition at line 481 of file counters.\+hpp.
+Definition at line 484 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gaf3bb2dd1c9db36df1d010cc691573243}\label{group__counting_gaf3bb2dd1c9db36df1d010cc691573243}} 
 \index{Counting@{Counting}!counter\_pairwise\_first\_gain@{counter\_pairwise\_first\_gain}}
@@ -505,7 +523,7 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. sum x(a)$^\wedge$3(1-\/x(b))$^\wedge$3 + x(b)$^\wedge$3(1-\/x(a))$^\wedge$3 + x(a)$^\wedge$3 $\ast$ x(b)$^\wedge$3 + (1 -\/ x(a))$^\wedge$3 $\ast$ (1-\/x(b))$^\wedge$3 
 
-Definition at line 1948 of file counters.\+hpp.
+Definition at line 1951 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gaa7de3c183a65a0701cbce03545421c7d}\label{group__counting_gaa7de3c183a65a0701cbce03545421c7d}} 
 \index{Counting@{Counting}!counter\_pairwise\_neofun\_singlefun@{counter\_pairwise\_neofun\_singlefun}}
@@ -519,7 +537,7 @@ Total number of neofunctionalization events sum\+\_\+u sum\+\_\+\{w $<$ u\} \mbo
 
 
 
-Definition at line 1099 of file counters.\+hpp.
+Definition at line 1102 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga8f177ab499b4fe4c4e091e972a933d2b}\label{group__counting_ga8f177ab499b4fe4c4e091e972a933d2b}} 
 \index{Counting@{Counting}!counter\_pairwise\_overall\_change@{counter\_pairwise\_overall\_change}}
@@ -533,7 +551,7 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. 
 
-Definition at line 1744 of file counters.\+hpp.
+Definition at line 1747 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gaaa5028dec97170c740ea270f19be9f77}\label{group__counting_gaaa5028dec97170c740ea270f19be9f77}} 
 \index{Counting@{Counting}!counter\_pairwise\_preserving@{counter\_pairwise\_preserving}}
@@ -547,7 +565,7 @@ Used when all the functions are in 0 (like the root node prob.)
 
 Needs to specify function a. sum x(a)$^\wedge$3(1-\/x(b))$^\wedge$3 + x(b)$^\wedge$3(1-\/x(a))$^\wedge$3 + x(a)$^\wedge$3 $\ast$ x(b)$^\wedge$3 + (1 -\/ x(a))$^\wedge$3 $\ast$ (1-\/x(b))$^\wedge$3 
 
-Definition at line 1809 of file counters.\+hpp.
+Definition at line 1812 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gaa8f376142a4cd889fede792686654d16}\label{group__counting_gaa8f376142a4cd889fede792686654d16}} 
 \index{Counting@{Counting}!counter\_preserve\_pseudogene@{counter\_preserve\_pseudogene}}
@@ -561,7 +579,7 @@ Keeps track of how many pairs of genes preserve pseudostate.
 
 
 
-Definition at line 297 of file counters.\+hpp.
+Definition at line 300 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga893edd882c9f9e72c4ee97a0576f36a6}\label{group__counting_ga893edd882c9f9e72c4ee97a0576f36a6}} 
 \index{Counting@{Counting}!counter\_prop\_genes\_changing@{counter\_prop\_genes\_changing}}
@@ -575,7 +593,7 @@ Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with re
 
 
 
-Definition at line 379 of file counters.\+hpp.
+Definition at line 382 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_ga23c694532337cb12a77a64f3202a14cf}\label{group__counting_ga23c694532337cb12a77a64f3202a14cf}} 
 \index{Counting@{Counting}!counter\_subfun@{counter\_subfun}}
@@ -589,7 +607,7 @@ Total count of Sub-\/functionalization events.
 
 It requires to specify data = \{funA, funB\} 
 
-Definition at line 702 of file counters.\+hpp.
+Definition at line 705 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counting_gac2b3fdac968043baa290218fff498fb7}\label{group__counting_gac2b3fdac968043baa290218fff498fb7}} 
 \index{Counting@{Counting}!get\_last\_name@{get\_last\_name}}
@@ -599,5 +617,5 @@ Definition at line 702 of file counters.\+hpp.
 
 
 
-Definition at line 45 of file counters.\+hpp.
+Definition at line 48 of file counters.\+hpp.
 

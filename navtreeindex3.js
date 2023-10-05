@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"class_rule.html#adbf6150c845f416ed853e763ed1483fc":[2,0,37,4],
 "class_rule.html#aef92e54d53dc77b5cad2f819b5f8f4bf":[2,0,37,0],
 "class_rule.html#af394f21c78f5ba0a17e1d15715b2ebcf":[2,0,37,6],
 "class_rules.html":[2,0,38],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "geese-types_8hpp.html#a295e1042dd5ede0902719e8ba9756561":[3,0,0,0,1,1,13,7],
 "geese-types_8hpp.html#a359d952b83e6ea8675c6ac65916a1cc0":[3,0,0,0,1,1,13,10],
 "geese-types_8hpp.html#a3637552ed3c8487108c5e36a36a4a3e7":[3,0,0,0,1,1,13,9],
-"geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6":[3,0,0,0,1,1,13,4],
-"geese-types_8hpp.html#aa13d1499132f5fb228d2b2077672b376":[3,0,0,0,1,1,13,5]
+"geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6":[3,0,0,0,1,1,13,4]
 };

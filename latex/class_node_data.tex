@@ -12,7 +12,7 @@ Data definition for the {\ttfamily Phylo\+Array} class.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_node_data_a0a90191ba4c987afa3406f829967d8e2}{Node\+Data}} (const std\+::vector$<$ double $>$ \&blengths\+\_\+, const std\+::vector$<$ bool $>$ \&states\+\_\+, bool duplication\+\_\+=true)
+\mbox{\hyperlink{class_node_data_ac15909ebdc70762c62481c987d18c710}{Node\+Data}} (const std\+::vector$<$ double $>$ \&blengths\+\_\+, const std\+::vector$<$ bool $>$ \&states\+\_\+, bool duplication\+\_\+=true, bool has\+\_\+leaf\+\_\+=false)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -22,7 +22,9 @@ std\+::vector$<$ double $>$ \mbox{\hyperlink{class_node_data_a02da5f097c10581321
 std\+::vector$<$ bool $>$ \mbox{\hyperlink{class_node_data_a33caaadde6afe892624501bdb0edaea6}{states}} = \{\}
 \item 
 bool \mbox{\hyperlink{class_node_data_a6c21d52091bb4fa6e3d431856da17caa}{duplication}} = true
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Whether the node is a duplication. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_node_data_a3631941c661ed7927bc58628cd7ab319}{has\+\_\+leaf}} = false
+\begin{DoxyCompactList}\small\item\em Whether the node has a leaf as offspring. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -35,15 +37,15 @@ Definition at line 15 of file geese-\/types.\+hpp.
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_node_data_a0a90191ba4c987afa3406f829967d8e2}\label{class_node_data_a0a90191ba4c987afa3406f829967d8e2}} 
+\mbox{\Hypertarget{class_node_data_ac15909ebdc70762c62481c987d18c710}\label{class_node_data_ac15909ebdc70762c62481c987d18c710}} 
 \index{NodeData@{NodeData}!NodeData@{NodeData}}
 \index{NodeData@{NodeData}!NodeData@{NodeData}}
 \doxysubsubsection{\texorpdfstring{NodeData()}{NodeData()}}
-{\footnotesize\ttfamily Node\+Data\+::\+Node\+Data (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{blengths\+\_\+,  }\item[{const std\+::vector$<$ bool $>$ \&}]{states\+\_\+,  }\item[{bool}]{duplication\+\_\+ = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Node\+Data\+::\+Node\+Data (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{blengths\+\_\+,  }\item[{const std\+::vector$<$ bool $>$ \&}]{states\+\_\+,  }\item[{bool}]{duplication\+\_\+ = {\ttfamily true},  }\item[{bool}]{has\+\_\+leaf\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Definition at line 35 of file geese-\/types.\+hpp.
+Definition at line 32 of file geese-\/types.\+hpp.
 
 
 
@@ -66,7 +68,25 @@ Definition at line 21 of file geese-\/types.\+hpp.
 
 
 
-Definition at line 31 of file geese-\/types.\+hpp.
+Whether the node is a duplication. 
+
+
+
+Definition at line 28 of file geese-\/types.\+hpp.
+
+\mbox{\Hypertarget{class_node_data_a3631941c661ed7927bc58628cd7ab319}\label{class_node_data_a3631941c661ed7927bc58628cd7ab319}} 
+\index{NodeData@{NodeData}!has\_leaf@{has\_leaf}}
+\index{has\_leaf@{has\_leaf}!NodeData@{NodeData}}
+\doxysubsubsection{\texorpdfstring{has\_leaf}{has\_leaf}}
+{\footnotesize\ttfamily bool Node\+Data\+::has\+\_\+leaf = false}
+
+
+
+Whether the node has a leaf as offspring. 
+
+
+
+Definition at line 29 of file geese-\/types.\+hpp.
 
 \mbox{\Hypertarget{class_node_data_a33caaadde6afe892624501bdb0edaea6}\label{class_node_data_a33caaadde6afe892624501bdb0edaea6}} 
 \index{NodeData@{NodeData}!states@{states}}

@@ -108,8 +108,8 @@ $(document).ready(function(){initNavTree('class_node_data.html',''); initResizab
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0a90191ba4c987afa3406f829967d8e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node_data.html#a0a90191ba4c987afa3406f829967d8e2">NodeData</a> (const std::vector&lt; double &gt; &amp;blengths_, const std::vector&lt; bool &gt; &amp;states_, bool duplication_=true)</td></tr>
-<tr class="separator:a0a90191ba4c987afa3406f829967d8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac15909ebdc70762c62481c987d18c710"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node_data.html#ac15909ebdc70762c62481c987d18c710">NodeData</a> (const std::vector&lt; double &gt; &amp;blengths_, const std::vector&lt; bool &gt; &amp;states_, bool duplication_=true, bool has_leaf_=false)</td></tr>
+<tr class="separator:ac15909ebdc70762c62481c987d18c710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -118,7 +118,11 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a33caaadde6afe892624501bdb0edaea6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node_data.html#a33caaadde6afe892624501bdb0edaea6">states</a> = {}</td></tr>
 <tr class="separator:a33caaadde6afe892624501bdb0edaea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c21d52091bb4fa6e3d431856da17caa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node_data.html#a6c21d52091bb4fa6e3d431856da17caa">duplication</a> = true</td></tr>
+<tr class="memdesc:a6c21d52091bb4fa6e3d431856da17caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the node is a duplication.  <a href="class_node_data.html#a6c21d52091bb4fa6e3d431856da17caa">More...</a><br /></td></tr>
 <tr class="separator:a6c21d52091bb4fa6e3d431856da17caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3631941c661ed7927bc58628cd7ab319"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node_data.html#a3631941c661ed7927bc58628cd7ab319">has_leaf</a> = false</td></tr>
+<tr class="memdesc:a3631941c661ed7927bc58628cd7ab319"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the node has a leaf as offspring.  <a href="class_node_data.html#a3631941c661ed7927bc58628cd7ab319">More...</a><br /></td></tr>
+<tr class="separator:a3631941c661ed7927bc58628cd7ab319"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Data definition for the <code>PhyloArray</code> class. </p>
@@ -126,8 +130,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="geese-types_8hpp_source.html#l00015">15</a> of file <a class="el" href="geese-types_8hpp_source.html">geese-types.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0a90191ba4c987afa3406f829967d8e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a90191ba4c987afa3406f829967d8e2">&#9670;&nbsp;</a></span>NodeData()</h2>
+<a id="ac15909ebdc70762c62481c987d18c710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac15909ebdc70762c62481c987d18c710">&#9670;&nbsp;</a></span>NodeData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,7 +155,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>duplication_</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>duplication_</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>has_leaf_</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -166,7 +176,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-types_8hpp_source.html#l00035">35</a> of file <a class="el" href="geese-types_8hpp_source.html">geese-types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese-types_8hpp_source.html#l00032">32</a> of file <a class="el" href="geese-types_8hpp_source.html">geese-types.hpp</a>.</p>
 
 </div>
 </div>
@@ -200,7 +210,27 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese-types_8hpp_source.html#l00031">31</a> of file <a class="el" href="geese-types_8hpp_source.html">geese-types.hpp</a>.</p>
+<p>Whether the node is a duplication. </p>
+
+<p class="definition">Definition at line <a class="el" href="geese-types_8hpp_source.html#l00028">28</a> of file <a class="el" href="geese-types_8hpp_source.html">geese-types.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3631941c661ed7927bc58628cd7ab319"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3631941c661ed7927bc58628cd7ab319">&#9670;&nbsp;</a></span>has_leaf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NodeData::has_leaf = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether the node has a leaf as offspring. </p>
+
+<p class="definition">Definition at line <a class="el" href="geese-types_8hpp_source.html#l00029">29</a> of file <a class="el" href="geese-types_8hpp_source.html">geese-types.hpp</a>.</p>
 
 </div>
 </div>
@@ -230,7 +260,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_node_data.html">NodeData</a></li>
-    <li class="footer">Generated on Thu Oct 5 2023 01:16:47 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Oct 5 2023 16:57:53 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

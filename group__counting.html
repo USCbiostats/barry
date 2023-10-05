@@ -125,8 +125,10 @@ Macros</h2></td></tr>
 <tr class="separator:gaadfa3455c6a85615e658a4f8e17dbc47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6c20892d837efbb7da5227af44feca3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counting.html#ga6c20892d837efbb7da5227af44feca3c">IF_NOTMATCHES</a>()</td></tr>
 <tr class="separator:ga6c20892d837efbb7da5227af44feca3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacab355d617fa06173807310d86b33944"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counting.html#gacab355d617fa06173807310d86b33944">PHYLO_RULE_LAMBDA</a>(a)</td></tr>
+<tr class="memdesc:gacab355d617fa06173807310d86b33944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extension of a simple counter.  <a href="group__counting.html#gacab355d617fa06173807310d86b33944">More...</a><br /></td></tr>
+<tr class="separator:gacab355d617fa06173807310d86b33944"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac89fe9750bd62a338930ea730d23d0d2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counting.html#gac89fe9750bd62a338930ea730d23d0d2">PHYLO_COUNTER_LAMBDA</a>(a)</td></tr>
-<tr class="memdesc:gac89fe9750bd62a338930ea730d23d0d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extension of a simple counter.  <a href="group__counting.html#gac89fe9750bd62a338930ea730d23d0d2">More...</a><br /></td></tr>
 <tr class="separator:gac89fe9750bd62a338930ea730d23d0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4a7a35cddb61f74a0ec3cb3893cf78b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__counting.html#ga4a7a35cddb61f74a0ec3cb3893cf78b1">PHYLO_RULE_DYN_LAMBDA</a>(a)</td></tr>
 <tr class="separator:ga4a7a35cddb61f74a0ec3cb3893cf78b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -413,7 +415,7 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (Array.D_ptr() == <span class="keyword">nullptr</span>) \</div>
 <div class="line">    throw std::logic_error(<span class="stringliteral">&quot;The array data is nullptr.&quot;</span>); \</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00042">42</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00045">45</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -434,13 +436,10 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    barry::Counter_fun_type&lt;PhyloArray, PhyloCounterData&gt; a = \</div>
 <div class="line">    [](<span class="keyword">const</span> <a class="code" href="geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6">PhyloArray</a> &amp; Array, <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>, <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <a class="code" href="class_phylo_counter_data.html">PhyloCounterData</a> &amp; <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>)</div>
-<div class="ttc" id="aclass_phylo_counter_data_html"><div class="ttname"><a href="class_phylo_counter_data.html">PhyloCounterData</a></div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00045">geese-types.hpp:45</a></div></div>
-<div class="ttc" id="ageese-types_8hpp_html_a3f0cae5b6ac5c728612da24e8aa3b5f6"><div class="ttname"><a href="geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6">PhyloArray</a></div><div class="ttdeci">barry::BArrayDense&lt; size_t, NodeData &gt; PhyloArray</div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00104">geese-types.hpp:104</a></div></div>
+<div class="ttc" id="aclass_phylo_counter_data_html"><div class="ttname"><a href="class_phylo_counter_data.html">PhyloCounterData</a></div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00044">geese-types.hpp:44</a></div></div>
+<div class="ttc" id="ageese-types_8hpp_html_a3f0cae5b6ac5c728612da24e8aa3b5f6"><div class="ttname"><a href="geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6">PhyloArray</a></div><div class="ttdeci">barry::BArrayDense&lt; size_t, NodeData &gt; PhyloArray</div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00103">geese-types.hpp:103</a></div></div>
 </div><!-- fragment -->
-<p>Extension of a simple counter. </p>
-<p>It allows specifying extra arguments, in particular, the corresponding sets of rows to which this statistic may be relevant. This could be important in the case of, for example, counting correlation type statistics between function 1 and 2, and between function 1 and 3. </p>
-
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00036">36</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00039">39</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -461,9 +460,35 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    barry::Rule_fun_type&lt;PhyloArray, PhyloRuleDynData&gt; a = \</div>
 <div class="line">    [](<span class="keyword">const</span> <a class="code" href="geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6">PhyloArray</a> &amp; Array, <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>, <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <a class="code" href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a> &amp; <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>)</div>
-<div class="ttc" id="aclass_phylo_rule_dyn_data_html"><div class="ttname"><a href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a></div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00074">geese-types.hpp:74</a></div></div>
+<div class="ttc" id="aclass_phylo_rule_dyn_data_html"><div class="ttname"><a href="class_phylo_rule_dyn_data.html">PhyloRuleDynData</a></div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00073">geese-types.hpp:73</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00039">39</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00042">42</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+
+</div>
+</div>
+<a id="gacab355d617fa06173807310d86b33944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacab355d617fa06173807310d86b33944">&#9670;&nbsp;</a></span>PHYLO_RULE_LAMBDA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PHYLO_RULE_LAMBDA</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    barry::Rule_fun_type&lt;PhyloArray, PhyloRuleData&gt; a = \</div>
+<div class="line">    [](<span class="keyword">const</span> <a class="code" href="geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6">PhyloArray</a> &amp; Array, <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>, <span class="keywordtype">size_t</span> <a class="code" href="counters-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>, <a class="code" href="geese-types_8hpp.html#a359d952b83e6ea8675c6ac65916a1cc0">PhyloRuleData</a> &amp; <a class="code" href="counters-meat_8hpp.html#a6fc02db1fc3ce220c7c5e2999822ecf7">data</a>)</div>
+<div class="ttc" id="ageese-types_8hpp_html_a359d952b83e6ea8675c6ac65916a1cc0"><div class="ttname"><a href="geese-types_8hpp.html#a359d952b83e6ea8675c6ac65916a1cc0">PhyloRuleData</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; size_t, size_t &gt; &gt; PhyloRuleData</div><div class="ttdef"><b>Definition:</b> <a href="geese-types_8hpp_source.html#l00100">geese-types.hpp:100</a></div></div>
+</div><!-- fragment -->
+<p>Extension of a simple counter. </p>
+<p>It allows specifying extra arguments, in particular, the corresponding sets of rows to which this statistic may be relevant. This could be important in the case of, for example, counting correlation type statistics between function 1 and 2, and between function 1 and 3. </p>
+
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00036">36</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -520,7 +545,7 @@ Macros</h2></td></tr>
 </p>
 <p> This algorithm implements the change statistic. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01296">1296</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01299">1299</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -573,7 +598,7 @@ Macros</h2></td></tr>
 <p>Co-evolution (joint gain or loss) </p>
 <p>Needs to specify pairs of functions (<code>nfunA</code>, <code>nfunB</code>). </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00791">791</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00794">794</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -619,7 +644,7 @@ Macros</h2></td></tr>
 
 <p>Functional gains for a specific function (<code>nfun</code>). </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00096">96</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00099">99</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -666,7 +691,7 @@ Macros</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01630">1630</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01633">1633</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -718,7 +743,7 @@ Macros</h2></td></tr>
 
 <p>k genes gain function nfun </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00156">156</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00159">159</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -758,7 +783,7 @@ Macros</h2></td></tr>
 
 <p>Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with regular trees.) </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00228">228</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00231">231</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -804,7 +829,7 @@ Macros</h2></td></tr>
 
 <p>Indicator function. Equals to one if \(k\) genes changed and zero otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01394">1394</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01397">1397</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -851,7 +876,7 @@ Macros</h2></td></tr>
 <p>Indicator function. Equals to one if \(k\) genes changed and zero otherwise. </p>
 <p>&lt; How many genes diverge the parent</p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01514">1514</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01517">1517</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -891,7 +916,7 @@ Macros</h2></td></tr>
 
 <p>Longest branch mutates (either by gain or by loss) </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00848">848</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00851">851</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -937,7 +962,7 @@ Macros</h2></td></tr>
 
 <p>Total count of losses for an specific function. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00591">591</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00594">594</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -989,7 +1014,7 @@ Macros</h2></td></tr>
 
 <p>Cap the number of functions per gene. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00529">529</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00532">532</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1042,7 +1067,7 @@ Macros</h2></td></tr>
 <p>Total number of neofunctionalization events. </p>
 <p>Needs to specify pairs of function. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01018">1018</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01021">1021</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1095,7 +1120,7 @@ Macros</h2></td></tr>
 <p>Total number of neofunctionalization events. </p>
 <p>Needs to specify pairs of function. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01163">1163</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01166">1166</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1135,7 +1160,7 @@ Macros</h2></td></tr>
 
 <p>Total number of changes. Use this statistic to account for "preservation". </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00643">643</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00646">646</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1176,7 +1201,7 @@ Macros</h2></td></tr>
 <p>Overall functional gains. </p>
 <p>Total number of gains (irrespective of the function). </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00058">58</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00061">61</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1217,7 +1242,7 @@ Macros</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01696">1696</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01699">1699</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1282,7 @@ Macros</h2></td></tr>
 
 <p>Overall functional loss. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00481">481</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00484">484</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1310,7 +1335,7 @@ Macros</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. sum x(a)^3(1-x(b))^3 + x(b)^3(1-x(a))^3 + x(a)^3 * x(b)^3 + (1 - x(a))^3 * (1-x(b))^3 </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01948">1948</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01951">1951</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1356,7 +1381,7 @@ Macros</h2></td></tr>
 
 <p>Total number of neofunctionalization events sum_u sum_{w &lt; u} [x(u,a)*(1 - x(w,a)) + (1 - x(u,a)) * x(w,a)] change stat: delta{x(u,a): 0-&gt;1} = 1 - 2 * x(w,a) </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01099">1099</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01102">1102</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1397,7 +1422,7 @@ Macros</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01744">1744</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01747">1747</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1450,7 +1475,7 @@ Macros</h2></td></tr>
 <p>Used when all the functions are in 0 (like the root node prob.) </p>
 <p>Needs to specify function a. sum x(a)^3(1-x(b))^3 + x(b)^3(1-x(a))^3 + x(a)^3 * x(b)^3 + (1 - x(a))^3 * (1-x(b))^3 </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01809">1809</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l01812">1812</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1502,7 +1527,7 @@ Macros</h2></td></tr>
 
 <p>Keeps track of how many pairs of genes preserve pseudostate. </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00297">297</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00300">300</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1542,7 +1567,7 @@ Macros</h2></td></tr>
 
 <p>Keeps track of how many genes are changing (either 0, 1, or 2 if dealing with regular trees.) </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00379">379</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00382">382</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1595,7 +1620,7 @@ Macros</h2></td></tr>
 <p>Total count of Sub-functionalization events. </p>
 <p>It requires to specify data = {funA, funB} </p>
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00702">702</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00705">705</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1623,7 +1648,7 @@ Macros</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00045">45</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geese_2counters_8hpp_source.html#l00048">48</a> of file <a class="el" href="geese_2counters_8hpp_source.html">counters.hpp</a>.</p>
 
 </div>
 </div>
@@ -1632,7 +1657,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Oct 5 2023 01:16:47 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Oct 5 2023 16:57:53 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

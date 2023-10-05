@@ -34,6 +34,7 @@ var group__rules_phylo =
     [ "operator()", "group__rules-phylo.html#ga66b7a40df357b79514dcbc4accfe679d", null ],
     [ "print", "group__rules-phylo.html#gae1617d2f94e8595c8fde0c6013e21a2d", null ],
     [ "rule_dyn_limit_changes", "group__rules-phylo.html#ga0773b2dbf4673181e45c93632a5f9cc3", null ],
+    [ "rule_leafs", "group__rules-phylo.html#ga276c18987041a32224c61990ae4d6ca1", null ],
     [ "~DEFMCounterData", "group__rules-phylo.html#ga0b09b4a0c405b1e2f694d39136bf87f6", null ],
     [ "~DEFMData", "group__rules-phylo.html#ga637f2c896da37c0f3a72bd0174ca718c", null ],
     [ "~DEFMRuleDynData", "group__rules-phylo.html#gad64e7379376d678c0d7795be221c5e3e", null ],

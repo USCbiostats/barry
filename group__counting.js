@@ -39,6 +39,7 @@ var group__counting =
     [ "PHYLO_CHECK_MISSING", "group__counting.html#ga81c4979894537f31d3ecc06c5f6dd504", null ],
     [ "PHYLO_COUNTER_LAMBDA", "group__counting.html#gac89fe9750bd62a338930ea730d23d0d2", null ],
     [ "PHYLO_RULE_DYN_LAMBDA", "group__counting.html#ga4a7a35cddb61f74a0ec3cb3893cf78b1", null ],
+    [ "PHYLO_RULE_LAMBDA", "group__counting.html#gacab355d617fa06173807310d86b33944", null ],
     [ "counter_co_opt", "group__counting.html#ga39768a8cbb21e6b775c382568a4f98f9", null ],
     [ "counter_cogain", "group__counting.html#ga9d57bfb85ca8ab5a943e46b461e42aea", null ],
     [ "counter_gains", "group__counting.html#ga8972c27d6e3dfa3fb980afce91dbd582", null ],
