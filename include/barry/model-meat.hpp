@@ -226,7 +226,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
         );
 
     #if defined(__OPENMP) || defined(_OPENMP)
-    #pragma omp parallel for simd num_threads(ncores) \
+    #pragma omp parallel for num_threads(ncores) collapse(1) \
         shared(n_params, pset_stats, pset_probs, normalizing_constants, pset_sizes, \
             params) \
         default(none)
@@ -238,6 +238,9 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
         size_t pset_start = pset_locations[s];
 
         // Looping over observations of the pset
+        #if defined(__OPENMP) || defined(_OPENMP)
+        #pragma omp simd 
+        #endif
         for (size_t a = 0u; a < pset_sizes[s]; ++a)
         {
 

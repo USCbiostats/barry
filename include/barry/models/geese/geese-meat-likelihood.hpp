@@ -24,7 +24,7 @@ inline void pset_loop(
     if (!x.is_dense())
         throw std::logic_error("This is only supported for dense arrays.");
 
-    const std::vector< size_t > & location_x = locations[n];
+    const size_t * location_x = &locations[n][0u];
 
     // Extracting the possible values of each offspring
     double off_mult = 1.0;
@@ -65,7 +65,7 @@ inline void pset_loop(
         }
 
         // Retrieving the location to the respective set of probabilities
-        off_mult *= n_off->subtree_prob[location_x[o]];
+        off_mult *= n_off->subtree_prob[*(location_x + o)];
 
     }
 
@@ -154,6 +154,7 @@ inline double Geese::likelihood(
             // Starting the prob
             size_t array_id = node.narray[s];
             size_t support_id = arrays2support[array_id];
+            const double * psetsprobs_s = &psetprobs[pset_locations[support_id]];
 
             // Retrieving the sets of arrays
             const std::vector< PhyloArray > & psets =
@@ -173,7 +174,7 @@ inline double Geese::likelihood(
                 pset_loop(
                     n, s, nfunctions, node_id, array_id, totprob_n,
                     par0, states, psets, locations, 
-                    node_offspring, &psetprobs[pset_locations[support_id]]
+                    node_offspring, psetsprobs_s
                 );
             }            
 
