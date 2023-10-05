@@ -449,7 +449,9 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
     if (check_bounds) 
         out_of_range(0u, i);
 
+    #ifdef __INTEL_LLVM_COMPILER
     #pragma code_align 32
+    #endif
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp simd
     #endif
