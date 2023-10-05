@@ -133,7 +133,8 @@ template <
     >
 inline void Model<Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::update_normalizing_constants(
     const std::vector< double > & params,
-    size_t ncores
+    size_t ncores,
+    int i
 ) {
 
     const size_t n = stats_support_sizes.size();
@@ -141,23 +142,30 @@ inline void Model<Array_Type, Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_T
     // Barrier to make sure paralelization makes sense
     if ((ncores > 1u) && (n < 128u))
         ncores = 1u;
+
+    
+    if (i >= 0)
+        ncores = 1u;
     
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp parallel for firstprivate(params) num_threads(ncores) \
         shared(n, normalizing_constants, first_calc_done, \
-            stats_support, stats_support_sizes, stats_support_sizes_acc) \
+            stats_support, stats_support_sizes, stats_support_sizes_acc, i) \
         default(none)
     #endif
-    for (size_t i = 0u; i < n; ++i)
+    for (size_t s = 0u; s < n; ++s)
     {
 
-        size_t k = params.size() + 1u;
-        size_t n = stats_support_sizes[i];
+        if ((i > -1) && (i != static_cast<int>(s)))
+            continue;
 
-        first_calc_done[i] = true;
-        normalizing_constants[i] = update_normalizing_constant(
+        size_t k = params.size() + 1u;
+        size_t n = stats_support_sizes[s];
+
+        first_calc_done[s] = true;
+        normalizing_constants[s] = update_normalizing_constant(
             params, &stats_support[
-                stats_support_sizes_acc[i] * k
+                stats_support_sizes_acc[s] * k
                 ], k, n
         );
 
@@ -214,7 +222,8 @@ template <
     >
 inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::update_pset_probs(
     const std::vector< double > & params,
-    size_t ncores
+    size_t ncores,
+    int i
 ) {
 
     update_normalizing_constants(params, ncores);
@@ -225,14 +234,21 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
         pset_sizes.back()
         );
 
+    // No need to paralelize if there is only one core
+    if (i >= 0)
+       ncores = 1u; 
+
     #if defined(__OPENMP) || defined(_OPENMP)
     #pragma omp parallel for num_threads(ncores) collapse(1) \
         shared(n_params, pset_stats, pset_probs, normalizing_constants, pset_sizes, \
-            params) \
+            params, i) \
         default(none)
     #endif
     for (size_t s = 0u; s < pset_sizes.size(); ++s)
     {
+
+        if ((i >= 0) && (i != static_cast<int>(s)))
+            continue;
 
         // When does the pset starts
         size_t pset_start = pset_locations[s];
@@ -262,9 +278,9 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
         #ifdef BARRY_DEBUG
         // Making sure the probabilities add to one
-        double totprob = std::accumulate(
-            pset_probs[s].begin(), pset_probs[s].end(), 0.0
-        );
+        double totprob = 0.0;
+        for (size_t i_ = 0u; i_ < pset_sizes[s]; ++i)
+            totprob =+ pset_probs[pset_start + i_];
 
         if (std::abs(totprob - 1) > 1e-6)
             throw std::runtime_error(
@@ -1384,9 +1400,16 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
     double r = urand(*rengine);
     double cumprob = 0.0;
 
+    // Updating the current pset
+    if (pset_probs.size() == 0u)
+    {
+        update_pset_probs(params, 1u, static_cast<int>(a));
+        params_last[a] = params;
+    }
+
     // Sampling an array
     size_t j = 0u;
-    if ((pset_probs.size() > 0u) && (vec_equal_approx(params, params_last[a])))
+    if (vec_equal_approx(params, params_last[a]))
     // If precomputed, then no need to recalc support
     {
 
@@ -1399,7 +1422,8 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
 
     } else { 
        
-        update_pset_probs(params, 1u);
+        update_pset_probs(params, 1u, static_cast<int>(a));
+        params_last[a] = params;
 
         const double * probs = &pset_probs[pset_locations[a]];
         while (cumprob < r)
@@ -1409,7 +1433,7 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
             j--;
 
         #ifdef BARRY_DEBUG
-        if (i_matches < 0)
+        if (j > pset_arrays.at(a).size())
             throw std::logic_error(
                 std::string(
                     "Something went wrong when sampling from a different set of.") +

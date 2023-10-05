@@ -139,7 +139,8 @@ public:
     */
     void update_normalizing_constants(
         const std::vector< double > & params,
-        BARRY_NCORES_ARG(=1)
+        BARRY_NCORES_ARG(=1),
+        int i = -1
         );
 
     void update_likelihoods(
@@ -149,7 +150,8 @@ public:
 
     void update_pset_probs(
         const std::vector< double > & params,
-        BARRY_NCORES_ARG(=1)
+        BARRY_NCORES_ARG(=1),
+        int i = -1
         );
     
     void set_rengine(std::mt19937 * rengine_, bool delete_ = false) {
