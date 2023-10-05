@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"class_rule.html#aef92e54d53dc77b5cad2f819b5f8f4bf":[2,0,37,0],
+"class_rule.html#af394f21c78f5ba0a17e1d15715b2ebcf":[2,0,37,6],
+"class_rules.html":[2,0,38],
+"class_rules.html#a3a7e889b85644a0109fa1bf94627dbcc":[2,0,38,12],
 "class_rules.html#a57f5ab44febba391b2a06d163d25b237":[2,0,38,1],
 "class_rules.html#a8fc43f76a3004b88566abaa3ede58bb1":[2,0,38,10],
 "class_rules.html#a93acdb3b29f83b97e0878977f208802f":[2,0,38,3],
@@ -173,8 +177,8 @@ var NAVTREEINDEX3 =
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1,0],
 "functions_func.html":[2,3,1],
+"functions_func.html":[2,3,1,0],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -223,7 +227,7 @@ var NAVTREEINDEX3 =
 "geese-meat-constructors_8hpp.html":[3,0,0,0,1,1,4],
 "geese-meat-constructors_8hpp_source.html":[3,0,0,0,1,1,4],
 "geese-meat-likelihood_8hpp.html":[3,0,0,0,1,1,5],
-"geese-meat-likelihood_8hpp.html#ad9cd1cb39fb3c9d515ce712a0da9fe05":[3,0,0,0,1,1,5,0],
+"geese-meat-likelihood_8hpp.html#a24e43c966c46ec26119b0b2d79d7533d":[3,0,0,0,1,1,5,0],
 "geese-meat-likelihood_8hpp_source.html":[3,0,0,0,1,1,5],
 "geese-meat-likelihood__exhaust_8hpp.html":[3,0,0,0,1,1,6],
 "geese-meat-likelihood__exhaust_8hpp_source.html":[3,0,0,0,1,1,6],
@@ -245,9 +249,5 @@ var NAVTREEINDEX3 =
 "geese-types_8hpp.html#a359d952b83e6ea8675c6ac65916a1cc0":[3,0,0,0,1,1,13,10],
 "geese-types_8hpp.html#a3637552ed3c8487108c5e36a36a4a3e7":[3,0,0,0,1,1,13,9],
 "geese-types_8hpp.html#a3f0cae5b6ac5c728612da24e8aa3b5f6":[3,0,0,0,1,1,13,4],
-"geese-types_8hpp.html#aa13d1499132f5fb228d2b2077672b376":[3,0,0,0,1,1,13,5],
-"geese-types_8hpp.html#aaa0d31fa9451a9d932757a6e8b2e63a5":[3,0,0,0,1,1,13,14],
-"geese-types_8hpp.html#ab98d083cd1e07929c2076ef99c5f2762":[3,0,0,0,1,1,13,11],
-"geese-types_8hpp.html#abf33b097799b4bfe44ec4477c592b0b9":[3,0,0,0,1,1,13,3],
-"geese-types_8hpp.html#ac548afdd21aee0bee668edce3a6e17eb":[3,0,0,0,1,1,13,13]
+"geese-types_8hpp.html#aa13d1499132f5fb228d2b2077672b376":[3,0,0,0,1,1,13,5]
 };

@@ -59,9 +59,9 @@ var NAVTREEINDEX =
 "annotated.html",
 "class_b_array_dense.html#abff8ef2f4bcd467ebbbb8ac3089fcd52",
 "class_freq_table.html#a7ed627807a61c484243636137609abcd",
-"class_rules.html#a57f5ab44febba391b2a06d163d25b237",
-"geese-types_8hpp.html#adca3ac8620de163d7d99549d410528f8",
-"group__rules-phylo.html#ga6bdc61aa25a629863002c9fb98a2acee"
+"class_rule.html#aef92e54d53dc77b5cad2f819b5f8f4bf",
+"geese-types_8hpp.html#aaa0d31fa9451a9d932757a6e8b2e63a5",
+"group__rules-phylo.html#ga66b7a40df357b79514dcbc4accfe679d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
