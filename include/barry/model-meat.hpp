@@ -226,7 +226,10 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     int i
 ) {
 
-    update_normalizing_constants(params, ncores);
+    update_normalizing_constants(params, ncores, i);
+    
+    if (i > -1)
+        params_last[i] = params;
 
     size_t n_params = params.size();
     pset_probs.resize(
@@ -1402,10 +1405,7 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
 
     // Updating the current pset
     if (pset_probs.size() == 0u)
-    {
         update_pset_probs(params, 1u, static_cast<int>(a));
-        params_last[a] = params;
-    }
 
     // Sampling an array
     size_t j = 0u;
@@ -1423,7 +1423,6 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
     } else { 
        
         update_pset_probs(params, 1u, static_cast<int>(a));
-        params_last[a] = params;
 
         const double * probs = &pset_probs[pset_locations[a]];
         while (cumprob < r)
