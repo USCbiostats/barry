@@ -141,6 +141,9 @@ inline void Geese::init(size_t bar_width) {
 
         this->model->store_psets();
 
+        // // Adding static rule
+        // rule_leafs(model->get_support_fun());
+
     }
 
     // Checking rseed, this is relevant when dealing with a flock. In the case of

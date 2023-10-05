@@ -42,8 +42,12 @@ inline std::vector< double > keygen_full(
     std::vector< double > dat = {
         static_cast<double>(array.nrow()) * 100000 +
          static_cast<double>(array.ncol()),
-         1000000.0, // state of the parent
-         array.D_ptr()->duplication ? 1.0 : 0.0 // type of the parent
+         // state of the parent
+         1000000.0, 
+         // type of the parent
+         array.D_ptr()->duplication ? 1.0 : 0.0, 
+         // Annotations with zeros
+         0.0 
     };
 
     // State of the parent
@@ -52,6 +56,13 @@ inline std::vector< double > keygen_full(
         dat[1u] += (i ? 1.0 : 0.0) * pow10;
         pow10 *= 10.0;
     }
+
+    // // Annotations with zeros
+    // pow10 = 1.0;
+    // for (const auto & cell: array.get_data()) {
+    //     dat[3u] += (cell == 9u ? 2.0 : static_cast<double>(cell)) * pow10;
+    //     pow10 *= 10.0;
+    // }
 
     return dat;
     
@@ -116,7 +127,7 @@ private:
      */
     ///@{
     std::mt19937 *                     rengine = nullptr;
-    PhyloModel *        model   = nullptr;
+    PhyloModel * model   = nullptr;
     std::vector< std::vector< bool > > states;
     size_t n_zeros       = 0u; ///< Number of zeros
     size_t n_ones        = 0u; ///< Number of ones

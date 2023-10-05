@@ -50,3 +50,7 @@ main.cachegrind.out: main.o
 
 10.o: 10-geese-predict.cpp
 	$(CPP) $(CPPFLAGS) -O2 -g 10-geese-predict.cpp -o 10.o
+
+# Target depends on cpp file
+%.o: %.cpp
+	$(CPP) $(CPPFLAGS) -O2 -g $< -o $@

@@ -25,18 +25,17 @@ public:
      */
     std::vector< bool > states = {};
     
-    /**
-     * 
-     */
-    bool duplication = true;
+    bool duplication = true; ///< Whether the node is a duplication.
+    bool has_leaf = false;   ///< Whether the node has a leaf as offspring.
     
-    // NodeData() : blengths(0u), states(0u) {};
     
     NodeData(
         const std::vector< double > & blengths_,
         const std::vector< bool > & states_,
-        bool duplication_ = true
-    ) : blengths(blengths_), states(states_), duplication(duplication_) {};
+        bool duplication_ = true,
+        bool has_leaf_ = false
+    ) : blengths(blengths_), states(states_), duplication(duplication_),
+        has_leaf(has_leaf_) {};
     
     // ~NodeData() {};
   
