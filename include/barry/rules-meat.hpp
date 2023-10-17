@@ -169,7 +169,7 @@ inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_names() const
 
     std::vector< std::string > out;
     out.reserve(this->size());
-    for (size_t i = 0u; i < out.size(); ++i)
+    for (size_t i = 0u; i < this->size(); ++i)
         out.push_back(this->data.at(i).get_name());
 
     return out;

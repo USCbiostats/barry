@@ -456,7 +456,6 @@ inline size_t Geese::nleafs() const noexcept
 inline size_t Geese::nterms() const
 {
 
-    INITIALIZED()
     return model->nterms() + this->nfuns();
 
 }
