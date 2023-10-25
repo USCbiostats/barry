@@ -80,7 +80,7 @@ barry::Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
  */
 inline void counter_ones(
     DEFMCounters * counters,
-    int covar_index = -1,
+    int covar_index   = -1,
     std::string vname = "",
     const std::vector< std::string > * x_names = nullptr
 )
@@ -103,7 +103,6 @@ inline void counter_ones(
 
         };
 
-
         if (vname == "")
         {
             if (x_names != nullptr)
@@ -119,9 +118,9 @@ inline void counter_ones(
             "Overall number of ones"
         );
 
-
-
-    } else {
+    }
+    else
+    {
 
         DEFM_COUNTER_LAMBDA(count_ones)
         {
@@ -589,10 +588,32 @@ inline void counter_transition_formula(
 
     std::vector< size_t > coords;
     std::vector< bool > signs;
+    std::string covar_name = "";
 
     defm_motif_parser(
-        formula, coords, signs, m_order, n_y
+        formula, coords, signs, m_order, n_y, covar_name, vname
     );
+
+    if ((covar_name != "") && (covar_index >= 0))
+        throw std::logic_error("Can't have both a formula and a covariate index.");
+
+    if (covar_name != "")
+    {
+
+        if (x_names != nullptr)
+        {
+            for (size_t i = 0u; i < x_names->size(); ++i)
+                if (x_names->operator[](i) == covar_name)
+                {
+                    covar_index = static_cast<int>(i);
+                    break;
+                }
+        }
+
+        if (covar_index < 0)
+            throw std::logic_error("The covariate name was not found in the list of covariates.");
+
+    }
 
     counter_transition(
         counters, coords, signs, m_order, n_y, covar_index, vname,

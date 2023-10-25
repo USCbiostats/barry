@@ -1272,8 +1272,8 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     }  
 
     // The vectors in the support reflec the size of nterms x entries
-    max_v /= static_cast<int>(nterms() + 1);
-    min_v /= static_cast<int>(nterms() + 1);
+    // max_v /= static_cast<int>(nterms() + 1);
+    // min_v /= static_cast<int>(nterms() + 1);
 
     printf_barry("Num. of Arrays       : %li\n", this->size());
     printf_barry("Support size         : %li\n", this->size_unique());
@@ -1282,7 +1282,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     if (with_pset)
     {
         printf_barry("Arrays in powerset   : %li\n",
-            std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u)
+            static_cast<size_t>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
         );
     }
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
