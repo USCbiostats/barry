@@ -11,16 +11,16 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{formula_8hpp_adbc5fa791a6bc568b9c69c479814d48f}{defm\+\_\+motif\+\_\+parser}} (std\+::string formula, std\+::vector$<$ size\+\_\+t $>$ \&locations, std\+::vector$<$ bool $>$ \&signs, size\+\_\+t m\+\_\+order, size\+\_\+t y\+\_\+ncol)
+void \mbox{\hyperlink{formula_8hpp_ac3dd02e5d1416bb30ff7d80a359f40d8}{defm\+\_\+motif\+\_\+parser}} (std\+::string formula, std\+::vector$<$ size\+\_\+t $>$ \&locations, std\+::vector$<$ bool $>$ \&signs, size\+\_\+t m\+\_\+order, size\+\_\+t y\+\_\+ncol, std\+::string \&covar\+\_\+name, std\+::string \&vname)
 \begin{DoxyCompactList}\small\item\em Parses a motif formula. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{formula_8hpp_adbc5fa791a6bc568b9c69c479814d48f}\label{formula_8hpp_adbc5fa791a6bc568b9c69c479814d48f}} 
+\mbox{\Hypertarget{formula_8hpp_ac3dd02e5d1416bb30ff7d80a359f40d8}\label{formula_8hpp_ac3dd02e5d1416bb30ff7d80a359f40d8}} 
 \index{formula.hpp@{formula.hpp}!defm\_motif\_parser@{defm\_motif\_parser}}
 \index{defm\_motif\_parser@{defm\_motif\_parser}!formula.hpp@{formula.hpp}}
 \doxysubsubsection{\texorpdfstring{defm\_motif\_parser()}{defm\_motif\_parser()}}
-{\footnotesize\ttfamily void defm\+\_\+motif\+\_\+parser (\begin{DoxyParamCaption}\item[{std\+::string}]{formula,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{locations,  }\item[{std\+::vector$<$ bool $>$ \&}]{signs,  }\item[{size\+\_\+t}]{m\+\_\+order,  }\item[{size\+\_\+t}]{y\+\_\+ncol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void defm\+\_\+motif\+\_\+parser (\begin{DoxyParamCaption}\item[{std\+::string}]{formula,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{locations,  }\item[{std\+::vector$<$ bool $>$ \&}]{signs,  }\item[{size\+\_\+t}]{m\+\_\+order,  }\item[{size\+\_\+t}]{y\+\_\+ncol,  }\item[{std\+::string \&}]{covar\+\_\+name,  }\item[{std\+::string \&}]{vname }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -38,7 +38,7 @@ The general notation is {\ttfamily \mbox{[}0\mbox{]}y\mbox{[}column id\mbox{]}\+
 
 \doxysubsubsection*{Intercept effects}
 
-Intercept effects only involve a single set of curly brackets. Using the \textquotesingle{}greater-\/than\textquotesingle{} symbol (i.\+e., \textquotesingle{}$<$\textquotesingle{}) is only for transition effects. When specifying intercept effects, users can skip the {\ttfamily row\+\_\+id}, e.\+g., {\ttfamily y0\+\_\+0} is equivalent to {\ttfamily y0}. If the passed {\ttfamily row id} is different from the Markov order, i.\+e., {\ttfamily row\+\_\+id != m\+\_\+order}, then the function returns with an error.
+Intercept effects only involve a single set of curly brackets. Using the \textquotesingle{}greater-\/than\textquotesingle{} symbol (i.\+e., \textquotesingle{}$>$\textquotesingle{}) is only for transition effects. When specifying intercept effects, users can skip the {\ttfamily row\+\_\+id}, e.\+g., {\ttfamily y0\+\_\+0} is equivalent to {\ttfamily y0}. If the passed {\ttfamily row id} is different from the Markov order, i.\+e., {\ttfamily row\+\_\+id != m\+\_\+order}, then the function returns with an error.
 
 Examples\+:
 

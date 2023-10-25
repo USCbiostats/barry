@@ -1360,8 +1360,8 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;    }  </div>
 <div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160; </div>
 <div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;    <span class="comment">// The vectors in the support reflec the size of nterms x entries</span></div>
-<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;    max_v /= <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(nterms() + 1);</div>
-<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;    min_v /= <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(nterms() + 1);</div>
+<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;    <span class="comment">// max_v /= static_cast&lt;int&gt;(nterms() + 1);</span></div>
+<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;    <span class="comment">// min_v /= static_cast&lt;int&gt;(nterms() + 1);</span></div>
 <div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160; </div>
 <div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Num. of Arrays       : %li\n&quot;</span>, this-&gt;size());</div>
 <div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Support size         : %li\n&quot;</span>, this-&gt;size_unique());</div>
@@ -1370,7 +1370,7 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;    <span class="keywordflow">if</span> (with_pset)</div>
 <div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;    {</div>
 <div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;        <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Arrays in powerset   : %li\n&quot;</span>,</div>
-<div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;            std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u)</div>
+<div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;            <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))</div>
 <div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;        );</div>
 <div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;    }</div>
 <div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;    <a class="code" href="barry-configuration_8hpp.html#a2bd7dd8168e4165684de9dba0ae08469">printf_barry</a>(<span class="stringliteral">&quot;Transform. Fun.      : %s\n&quot;</span>, transform_model_fun ? <span class="stringliteral">&quot;yes&quot;</span>: <span class="stringliteral">&quot;no&quot;</span>);</div>
@@ -2135,7 +2135,7 @@ $(document).ready(function(){initNavTree('model-meat_8hpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="model-meat_8hpp.html">model-meat.hpp</a></li>
-    <li class="footer">Generated on Tue Oct 17 2023 20:59:03 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Oct 25 2023 22:41:28 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

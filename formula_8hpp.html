@@ -113,13 +113,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:adbc5fa791a6bc568b9c69c479814d48f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formula_8hpp.html#adbc5fa791a6bc568b9c69c479814d48f">defm_motif_parser</a> (std::string formula, std::vector&lt; size_t &gt; &amp;locations, std::vector&lt; bool &gt; &amp;signs, size_t m_order, size_t y_ncol)</td></tr>
-<tr class="memdesc:adbc5fa791a6bc568b9c69c479814d48f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a motif formula.  <a href="formula_8hpp.html#adbc5fa791a6bc568b9c69c479814d48f">More...</a><br /></td></tr>
-<tr class="separator:adbc5fa791a6bc568b9c69c479814d48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3dd02e5d1416bb30ff7d80a359f40d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="formula_8hpp.html#ac3dd02e5d1416bb30ff7d80a359f40d8">defm_motif_parser</a> (std::string formula, std::vector&lt; size_t &gt; &amp;locations, std::vector&lt; bool &gt; &amp;signs, size_t m_order, size_t y_ncol, std::string &amp;covar_name, std::string &amp;vname)</td></tr>
+<tr class="memdesc:ac3dd02e5d1416bb30ff7d80a359f40d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a motif formula.  <a href="formula_8hpp.html#ac3dd02e5d1416bb30ff7d80a359f40d8">More...</a><br /></td></tr>
+<tr class="separator:ac3dd02e5d1416bb30ff7d80a359f40d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="adbc5fa791a6bc568b9c69c479814d48f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbc5fa791a6bc568b9c69c479814d48f">&#9670;&nbsp;</a></span>defm_motif_parser()</h2>
+<a id="ac3dd02e5d1416bb30ff7d80a359f40d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3dd02e5d1416bb30ff7d80a359f40d8">&#9670;&nbsp;</a></span>defm_motif_parser()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +155,19 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>y_ncol</em>&#160;</td>
+          <td class="paramname"><em>y_ncol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>covar_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>vname</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,7 +190,7 @@ Functions</h2></td></tr>
 </ul>
 <p>The general notation is <code>[0]y[column id]_[row id]</code>. A preceeding zero means that the value of the cell is considered to be zero. The column id goes between 0 and the number of columns in the array - 1 (so it is indexed from 0,) and the row id goes from 0 to m_order.</p>
 <h2>Intercept effects</h2>
-<p>Intercept effects only involve a single set of curly brackets. Using the 'greater-than' symbol (i.e., '&lt;') is only for transition effects. When specifying intercept effects, users can skip the <code>row_id</code>, e.g., <code>y0_0</code> is equivalent to <code>y0</code>. If the passed <code>row id</code> is different from the Markov order, i.e., <code>row_id != m_order</code>, then the function returns with an error.</p>
+<p>Intercept effects only involve a single set of curly brackets. Using the 'greater-than' symbol (i.e., '&gt;') is only for transition effects. When specifying intercept effects, users can skip the <code>row_id</code>, e.g., <code>y0_0</code> is equivalent to <code>y0</code>. If the passed <code>row id</code> is different from the Markov order, i.e., <code>row_id != m_order</code>, then the function returns with an error.</p>
 <p>Examples:</p>
 <ul>
 <li><code>"{y0, 0y1}"</code> is equivalent to set a motif with the first element equal to one and the second to zero.</li>
@@ -206,7 +218,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6e63e3665115632dc5d61b2d6d6c3354.html">barry</a></li><li class="navelem"><a class="el" href="dir_488ec4010567cc6d95c62bdcb57a6d3e.html">models</a></li><li class="navelem"><a class="el" href="dir_d7a554d3e09ed8456d56450fe8436947.html">defm</a></li><li class="navelem"><a class="el" href="formula_8hpp.html">formula.hpp</a></li>
-    <li class="footer">Generated on Tue Oct 17 2023 20:59:03 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Wed Oct 25 2023 22:41:28 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
