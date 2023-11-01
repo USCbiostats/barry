@@ -17,19 +17,27 @@
 
 ///@}
 
-
-#define MAKE_DEFM_HASHER(hasher,a,cov) barry::Hasher_fun_type<DEFMArray,DEFMCounterData> \
-    hasher = [cov](const DEFMArray & array, DEFMCounterData * d) { \
-        std::vector< double > res; \
-        /* Adding the column feature */ \
-        for (size_t i = 0u; i < array.nrow(); ++i) \
-            res.push_back(array.D()(i, cov)); \
-        /* Adding the fixed dims */ \
-        for (size_t i = 0u; i < (array.nrow() - 1); ++i) \
-            for (size_t j = 0u; j < array.ncol(); ++j) \
-                res.push_back(array(i, j)); \
-        return res;\
-    };
+/**
+ * @brief Data for the counters
+ * 
+ * @details This class is used to store the data for the counters. It is
+ * used by the `Counters` class.
+ * 
+ */
+#define MAKE_DEFM_HASHER(hasher,a,cov)                                  \
+    barry::Hasher_fun_type<DEFMArray, DEFMCounterData>                  \
+        hasher = [cov](const DEFMArray & array, DEFMCounterData * d) -> \
+           std::vector< double > {                                      \
+            std::vector< double > res;                                  \
+            /* Adding the column feature */                             \
+            for (size_t i = 0u; i < array.nrow(); ++i)                  \
+                res.push_back(array.D()(i, cov));                       \
+            /* Adding the fixed dims */                                 \
+            for (size_t i = 0u; i < (array.nrow() - 1); ++i)            \
+                for (size_t j = 0u; j < array.ncol(); ++j)              \
+                    res.push_back(array(i, j));                         \
+            return res;\
+        };
 
 
 /**@name Macros for defining counters
@@ -147,6 +155,18 @@ inline void counter_ones(
 
 }
 
+
+/**
+ * Calculates the logit intercept for the DEFM model.
+ *
+ * @param counters A pointer to the DEFMCounters object.
+ * @param n_y The number of response variables.
+ * @param which A vector of indices indicating which response variables to use. If empty, all response variables are used.
+ * @param covar_index The index of the covariate to use as the intercept. 
+ * @param vname The name of the variable to use as the intercept. If empty, the intercept is set to zero.
+ * @param x_names A pointer to a vector of strings containing the names of the covariates.
+ * @param y_names A pointer to a vector of strings containing the names of the response variables.
+ */
 inline void counter_logit_intercept(
     DEFMCounters * counters,
     size_t n_y,
@@ -611,14 +631,43 @@ inline void counter_transition_formula(
         }
 
         if (covar_index < 0)
-            throw std::logic_error("The covariate name was not found in the list of covariates.");
+            throw std::logic_error(
+                std::string("The covariate name '") +
+                covar_name +
+                std::string("' was not found in the list of covariates.")
+                );
 
     }
 
-    counter_transition(
-        counters, coords, signs, m_order, n_y, covar_index, vname,
-        x_names, y_names
-    );
+    // Checking the number of coords, could be single intercept
+    if (coords.size() == 1u)
+    {
+
+        // Getting the column
+        size_t coord = static_cast< size_t >(
+            std::floor(
+            static_cast<double>(coords[0u]) / static_cast<double>(m_order + 1)
+            ));
+
+        counter_logit_intercept(
+            counters, n_y, {coord},
+            covar_index,
+            vname,
+            x_names,
+            y_names
+        );
+
+    }
+    else 
+    {
+
+        counter_transition(
+            counters, coords, signs, m_order, n_y, covar_index, vname,
+            x_names, y_names
+        );
+
+    }
+
 
 }
 

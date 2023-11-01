@@ -175,17 +175,17 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
         "", &model3.get_X_names(), &model3.get_Y_names()
         );
     counter_transition_formula(
-        model3.get_counters(), "{y0} | X2", 2, 3, -1,
+        model3.get_counters(), "{y0} x X2", 2, 3, -1,
         "", &model3.get_X_names(), &model3.get_Y_names()
         );
 
     counter_transition_formula(
-        model3.get_counters(), "{0y0_0} > {1y0, 1y2} | X2(Space 1)", 2, 3, -1,
+        model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X2(Space 1)", 2, 3, -1,
         "", &model3.get_X_names(), &model3.get_Y_names()
         );
 
     counter_transition_formula(
-        model3.get_counters(), "{0y0_0} > {1y0, 1y2} | X1(excess)", 2, 3, -1,
+        model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X1(excess)", 2, 3, -1,
         "", &model3.get_X_names(), &model3.get_Y_names()
         );
 

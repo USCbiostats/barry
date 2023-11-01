@@ -59,12 +59,12 @@ inline void defm_motif_parser(
 
     std::regex pattern_intercept(
         std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
-        std::string("(\\s*\\|\\s*[^\\s]+([(][^)]+[)])?\\s*)?")
+        std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
         );
     std::regex pattern_transition(
         std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\}\\s*(>)\\s*") +
         std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
-        std::string("(\\s*\\|\\s*[^\\s]+([(][^)]+[)])?\\s*)?")
+        std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
         );
 
     auto empty = std::sregex_iterator();
@@ -82,8 +82,7 @@ inline void defm_motif_parser(
             throw std::logic_error("Transition effects are only valid when the data is a markov process.");
 
         // Matching the pattern '| [no spaces]$'
-        std::regex pattern_conditional(".+\\|\\s*([^\\s(]+)([(][^)]+[)])?\\s*$");
-        
+        std::regex pattern_conditional(".+[}]\\s+x\\s+([^(]+)([(][^)]+[)])?\\s*$");
         std::smatch condmatch;
         std::regex_match(formula, condmatch, pattern_conditional);
         // Extracting the [no_spaces] part of the conditional
@@ -97,7 +96,6 @@ inline void defm_motif_parser(
                 vname = vname.substr(1, vname.size() - 2);
 
         }
-
 
         // Will indicate where the arrow is located at
         size_t arrow_position = match.position(4u);
@@ -183,7 +181,7 @@ inline void defm_motif_parser(
     {
 
         // Matching the pattern '| [no spaces]$'
-        std::regex pattern_conditional(".+\\|\\s*([^\\s(]+)([(][^)]+[)])?\\s*$");
+        std::regex pattern_conditional(".+[}]\\s+x\\s+([^(]+)([(][^)]+[)])?\\s*$");
         std::smatch condmatch;
         std::regex_match(formula, condmatch, pattern_conditional);
         // Extracting the [no_spaces] part of the conditional
