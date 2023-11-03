@@ -149,18 +149,26 @@ inline void DEFMData::print() const {
  */
 ///@{
 
-class DEFMRuleDynData : public DEFMRuleData {
+class DEFMRuleDynData {
 public:
     const std::vector< double > * counts;
+    size_t pos;
+    size_t lb;
+    size_t ub;
     
     DEFMRuleDynData(
         const std::vector< double > * counts_,
-        std::vector< double > numbers_ = {},
-        std::vector< size_t > indices_ = {},
-        std::vector< bool > logical_ = {}
-        ) : DEFMRuleData(numbers_, indices_, logical_), counts(counts_) {};
+        size_t pos_,
+        size_t lb_,
+        size_t ub_
+        ) : counts(counts_), pos(pos_), lb(lb_), ub(ub_) {};
     
     ~DEFMRuleDynData() {};
+
+    const double operator()() const
+    {
+        return (*counts)[pos];
+    }
     
 };
 

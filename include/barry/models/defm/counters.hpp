@@ -795,6 +795,56 @@ inline void rules_dont_become_zero(
     return;
 }
 
+/**
+ * @brief Overall functional gains
+ * @param support Support of a model.
+ * @param pos Position of the focal statistic.
+ * @param lb Lower bound
+ * @param ub Upper bound
+ * @details 
+ * @return (void) adds a rule limiting the support of the model.
+ */
+inline void rule_constrain_support(
+    DEFMSupport * support,
+    size_t pos,
+    double lb,
+    double ub
+)
+{
+  
+    DEFM_RULEDYN_LAMBDA(tmp_rule)
+    {
+
+        if (data() < data.lb)
+            return false;
+        else if (data() > data.ub)
+            return false;
+        else
+            return true;
+      
+    };
+
+    
+    support->get_rules_dyn()->add_rule(
+        tmp_rule,
+        DEFMRuleDynData(
+            support->get_current_stats(),
+            pos, lb, ub
+            ),
+        support->get_counters()->get_names()[pos] +
+            "' within [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + std::string("]"),
+        std::string("When the support is ennumerated, only states where the statistic '") + 
+            support->get_counters()->get_names()[pos] +
+            std::to_string(pos) + "' falls within [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + "] are included."
+    );
+    
+    return;
+  
+}
+
+
 ///@}
 
 ///@}
