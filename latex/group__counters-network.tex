@@ -88,7 +88,9 @@ void \mbox{\hyperlink{group__counters-network_ga74d93c11efb7162666fa2fe461e0d752
 void \mbox{\hyperlink{group__counters-network_ga31452452bf9dad7f6c5767dcabfb4dbe}{rules\+\_\+markov\+\_\+fixed}} (\mbox{\hyperlink{group__rules-phylo_gaae5b274ab680fe97a6da3615ad08b45b}{DEFMRules}} $\ast$rules, size\+\_\+t markov\+\_\+order)
 \begin{DoxyCompactList}\small\item\em Number of edges. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__counters-network_gad1d106d42f394a9f6272d7bdf043e127}{rules\+\_\+dont\+\_\+become\+\_\+zero}} (\mbox{\hyperlink{group__rules-phylo_gaec94c2fbe37383fd6695bc2d60863077}{DEFMSupport}} $\ast$support, std\+::vector$<$ size\+\_\+t $>$ ids)
-\begin{DoxyCompactList}\small\item\em Blocks switching a one to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Blocks switching a one to zero. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__counters-network_gaa3845d70400db85c093d2a2acdfe40e7}{rule\+\_\+constrain\+\_\+support}} (\mbox{\hyperlink{group__rules-phylo_gaec94c2fbe37383fd6695bc2d60863077}{DEFMSupport}} $\ast$support, size\+\_\+t pos, double lb, double ub)
+\begin{DoxyCompactList}\small\item\em Overall functional gains. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -566,6 +568,34 @@ Definition at line 441 of file network.\+hpp.
 
 
 Definition at line 997 of file network.\+hpp.
+
+\mbox{\Hypertarget{group__counters-network_gaa3845d70400db85c093d2a2acdfe40e7}\label{group__counters-network_gaa3845d70400db85c093d2a2acdfe40e7}} 
+\index{Network counters@{Network counters}!rule\_constrain\_support@{rule\_constrain\_support}}
+\index{rule\_constrain\_support@{rule\_constrain\_support}!Network counters@{Network counters}}
+\doxysubsubsection{\texorpdfstring{rule\_constrain\_support()}{rule\_constrain\_support()}}
+{\footnotesize\ttfamily void rule\+\_\+constrain\+\_\+support (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__rules-phylo_gaec94c2fbe37383fd6695bc2d60863077}{DEFMSupport}} $\ast$}]{support,  }\item[{size\+\_\+t}]{pos,  }\item[{double}]{lb,  }\item[{double}]{ub }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overall functional gains. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em support} & \mbox{\hyperlink{class_support}{Support}} of a model. \\
+\hline
+{\em pos} & Position of the focal statistic. \\
+\hline
+{\em lb} & Lower bound \\
+\hline
+{\em ub} & Upper bound\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(void) adds a rule limiting the support of the model. 
+\end{DoxyReturn}
+
+
+Definition at line 807 of file counters.\+hpp.
 
 \mbox{\Hypertarget{group__counters-network_gad1d106d42f394a9f6272d7bdf043e127}\label{group__counters-network_gad1d106d42f394a9f6272d7bdf043e127}} 
 \index{Network counters@{Network counters}!rules\_dont\_become\_zero@{rules\_dont\_become\_zero}}

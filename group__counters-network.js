@@ -34,6 +34,7 @@ var group__counters_network =
     [ "counter_ttriads", "group__counters-network.html#gadadede01536081fb8b79e4d14368f946", null ],
     [ "counter_ttriads", "group__counters-network.html#ga465ebcc2edcdae4ff9cd7625f886681f", null ],
     [ "NETWORK_COUNTER", "group__counters-network.html#gad6539320de604e7c6e31e9fb152f70bd", null ],
+    [ "rule_constrain_support", "group__counters-network.html#gaa3845d70400db85c093d2a2acdfe40e7", null ],
     [ "rules_dont_become_zero", "group__counters-network.html#gad1d106d42f394a9f6272d7bdf043e127", null ],
     [ "rules_markov_fixed", "group__counters-network.html#ga31452452bf9dad7f6c5767dcabfb4dbe", null ]
 ];

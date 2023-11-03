@@ -31,9 +31,8 @@ var hierarchy =
     [ "DEFMModel", null, [
       [ "DEFM", "class_d_e_f_m.html", null ]
     ] ],
-    [ "DEFMRuleData", "class_d_e_f_m_rule_data.html", [
-      [ "DEFMRuleDynData", "class_d_e_f_m_rule_dyn_data.html", null ]
-    ] ],
+    [ "DEFMRuleData", "class_d_e_f_m_rule_data.html", null ],
+    [ "DEFMRuleDynData", "class_d_e_f_m_rule_dyn_data.html", null ],
     [ "Entries< Cell_Type >", "class_entries.html", null ],
     [ "Flock", "class_flock.html", null ],
     [ "FreqTable< T >", "class_freq_table.html", null ],

@@ -1,9 +1,13 @@
 var group__rules_phylo =
 [
     [ "DEFMRuleDynData", "class_d_e_f_m_rule_dyn_data.html", [
-      [ "DEFMRuleDynData", "group__rules-phylo.html#ga292bf598632c9832614a9ea2a988cf36", null ],
+      [ "DEFMRuleDynData", "group__rules-phylo.html#ga89bb43889a6cded44ff8f3541695c8a8", null ],
       [ "~DEFMRuleDynData", "group__rules-phylo.html#gad64e7379376d678c0d7795be221c5e3e", null ],
-      [ "counts", "group__rules-phylo.html#ga7b639c0b73814eec9015b82f7e2d8439", null ]
+      [ "operator()", "group__rules-phylo.html#gabb14cfba9583ef918adadba42aa6dd08", null ],
+      [ "counts", "group__rules-phylo.html#ga7b639c0b73814eec9015b82f7e2d8439", null ],
+      [ "lb", "group__rules-phylo.html#gaed4423cebc240480f3054a59c14918c7", null ],
+      [ "pos", "group__rules-phylo.html#ga9760013d213cfe94d98915158d8de9aa", null ],
+      [ "ub", "group__rules-phylo.html#ga4b1ec53a12795984ac2dcbbc9e0f4fff", null ]
     ] ],
     [ "DEFMCounter", "group__rules-phylo.html#gaf30ebbed148db068e31eaba91b5977a7", null ],
     [ "DEFMCounters", "group__rules-phylo.html#ga5c89d811265cdc84066476226ea138a8", null ],
@@ -22,7 +26,7 @@ var group__rules_phylo =
     [ "DEFMRuleData", "group__rules-phylo.html#gafb84c6ffe48f80056b15e0ae6bad4b3a", null ],
     [ "DEFMRuleData", "group__rules-phylo.html#ga97709e387171f34facb5410f1d726f9b", null ],
     [ "DEFMRuleData", "group__rules-phylo.html#ga9b5f63e38cfd56a22a2c00b1b11904bb", null ],
-    [ "DEFMRuleDynData", "group__rules-phylo.html#ga292bf598632c9832614a9ea2a988cf36", null ],
+    [ "DEFMRuleDynData", "group__rules-phylo.html#ga89bb43889a6cded44ff8f3541695c8a8", null ],
     [ "idx", "group__rules-phylo.html#ga7f779ce019f2eaa30af381500384d393", null ],
     [ "idx", "group__rules-phylo.html#gad92a95c8a2097d1a4cb0cf766409791c", null ],
     [ "is_true", "group__rules-phylo.html#ga6366be3b3f9e1d0bfd1455f0eee20429", null ],
@@ -31,6 +35,7 @@ var group__rules_phylo =
     [ "nrow", "group__rules-phylo.html#ga8d35cccda96180f18d4f87f3831e68d9", null ],
     [ "num", "group__rules-phylo.html#ga2145b3b46a20bf7ea646f0a76e4b74b8", null ],
     [ "num", "group__rules-phylo.html#ga492f81abc80e4de779c95ec8956b5e38", null ],
+    [ "operator()", "group__rules-phylo.html#gabb14cfba9583ef918adadba42aa6dd08", null ],
     [ "operator()", "group__rules-phylo.html#ga66b7a40df357b79514dcbc4accfe679d", null ],
     [ "print", "group__rules-phylo.html#gae1617d2f94e8595c8fde0c6013e21a2d", null ],
     [ "rule_dyn_limit_changes", "group__rules-phylo.html#ga0773b2dbf4673181e45c93632a5f9cc3", null ],
@@ -47,11 +52,14 @@ var group__rules_phylo =
     [ "indices", "group__rules-phylo.html#ga1d86306bc0d6299ecae2554e226809c1", null ],
     [ "init", "group__rules-phylo.html#ga87c654a27ccf0b679f804cb05f63f7e5", null ],
     [ "is_motif", "group__rules-phylo.html#ga34a1cd60ddd3aba7ff8145678d2827fe", null ],
+    [ "lb", "group__rules-phylo.html#gaed4423cebc240480f3054a59c14918c7", null ],
     [ "logical", "group__rules-phylo.html#ga83c21423b25668b2343196f11fdc4630", null ],
     [ "logical", "group__rules-phylo.html#ga8843c9a811b759251788fbedb2e65dde", null ],
     [ "numbers", "group__rules-phylo.html#ga42bd6d1deaa0d800a878ba9fe87d8b18", null ],
     [ "numbers", "group__rules-phylo.html#ga66f4ba8b2047a943a426e555a9b63937", null ],
     [ "obs_start", "group__rules-phylo.html#ga89a3ee0a0a27f78c47b010d5498e1fd2", null ],
+    [ "pos", "group__rules-phylo.html#ga9760013d213cfe94d98915158d8de9aa", null ],
+    [ "ub", "group__rules-phylo.html#ga4b1ec53a12795984ac2dcbbc9e0f4fff", null ],
     [ "X_ncol", "group__rules-phylo.html#ga13a6688217231167d87c033db3803209", null ],
     [ "X_nrow", "group__rules-phylo.html#gadf8ebba08c3c2b590494ed738c76482a", null ]
 ];

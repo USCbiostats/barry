@@ -61,7 +61,7 @@ var NAVTREEINDEX =
 "class_freq_table.html#a7ed627807a61c484243636137609abcd",
 "class_rule.html#adbf6150c845f416ed853e763ed1483fc",
 "geese-types_8hpp.html#aa13d1499132f5fb228d2b2077672b376",
-"group__rules-phylo.html#ga6366be3b3f9e1d0bfd1455f0eee20429"
+"group__rules-phylo.html#ga5d370202642dddaad6d211288fb41f4d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
