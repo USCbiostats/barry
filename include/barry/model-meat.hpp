@@ -1275,9 +1275,19 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     // max_v /= static_cast<int>(nterms() + 1);
     // min_v /= static_cast<int>(nterms() + 1);
 
-    printf_barry("Num. of Arrays       : %li\n", this->size());
-    printf_barry("Support size         : %li\n", this->size_unique());
-    printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
+    if (this->size() > 0u)
+    {
+        printf_barry("Num. of Arrays       : %li\n", this->size());
+        printf_barry("Support size         : %li\n", this->size_unique());
+        printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
+    }
+    else 
+    {
+        printf_barry("Num. of Arrays       : 0\n");
+        printf_barry("Support size         : -\n");
+        printf_barry("Support size range   : -\n");
+    }
+    
 
     if (with_pset)
     {
@@ -1285,8 +1295,9 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
             static_cast<size_t>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
         );
     }
+
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (%li)    :\n", this->nterms());
+    printf_barry("Model terms (% 2li)    :\n", this->nterms());
     for (auto & cn : this->colnames())
     {
         printf_barry(" - %s\n", cn.c_str());
@@ -1294,7 +1305,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules() > 0u)
     {
-        printf_barry("Model rules (%li)     :\n", this->nrules());
+    printf_barry("Model rules (%li)    :\n", this->nrules());
     
         for (auto & rn : rules->get_names())
         {
@@ -1304,7 +1315,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules_dyn() > 0u)
     {
-        printf_barry("Model rules dyn (%li):\n", this->nrules_dyn());
+    printf_barry("Model rules dyn (% 2li) :\n", this->nrules_dyn());
     
         for (auto & rn : rules_dyn->get_names())
         {
