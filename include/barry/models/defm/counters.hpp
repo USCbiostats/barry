@@ -314,17 +314,30 @@ inline void counter_transition(
     {
 
         auto indices = data.indices;
+        auto sgn     = data.logical;
+        int covaridx = indices[indices.size() - 1u];
 
-        for (size_t i = 0u; i < (indices.size() - 1u); ++i)
+        // Notice that the indices vector contains:
+        // - 1st, the indices of the motif. That's why we set the lenght
+        //   using -1.
+        // - the last is, the covariate index
+        for (size_t k = 0u; k < (indices.size() - 1u); ++k)
         {
-            if (
-                std::floor(indices[i] / Array.nrow()) >= 
-                static_cast<int>(Array.ncol())
-                )
+            if (indices[k] >= (Array.ncol()* Array.nrow()))
                 throw std::range_error("The motif includes entries out of range.");
         }
+
+        // Counting
+        const auto & array = Array.get_data();
+        for (size_t k = 0u; k < (indices.size() - 1); ++k)
+        {
+            auto cellv = array[indices[k]];
+            if (sgn[k] && (cellv != 1))
+                return 0.0;
+        }
             
-        return 0.0;
+        // If nothing happens, then is one or the covaridx
+        return (covaridx < 1000) ? Array.D()(Array.nrow() - 1u, covaridx) : 1.0;
         
     };
 

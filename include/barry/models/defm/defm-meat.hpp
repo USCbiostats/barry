@@ -75,7 +75,10 @@ inline void DEFM::simulate(
 
                 // Setting the data
                 tmp_array.set_data(
-                    new DEFMData(&tmp_array, X, (start_i + proc_n), X_ncol, ID_length),
+                    new DEFMData(
+                        &tmp_array, X, (start_i + proc_n), X_ncol, ID_length,
+                        this->column_major
+                        ),
                     true // Delete the data
                 );
 
@@ -253,7 +256,10 @@ inline void DEFM::init()
             // Creating the array for process n_proc and setting the data
             DEFMArray array(M_order + 1u, Y_ncol);
             array.set_data(
-                new DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
+                new DEFMData(
+                    &array, X, (start_i + n_proc), X_ncol, ID_length,
+                    this->column_major
+                    ),
                 true // Delete the data
             );
 
@@ -377,7 +383,10 @@ inline std::vector< double > DEFM::logodds(
             // Creating the array for process n_proc and setting the data
             DEFMArray array(M_order + 1u, Y_ncol);
             array.set_data(
-                new DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
+                new DEFMData(
+                    &array, X, (start_i + n_proc), X_ncol, ID_length,
+                    this->column_major
+                    ),
                 true // Delete the data
             );
 

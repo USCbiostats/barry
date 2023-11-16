@@ -23,6 +23,7 @@ public:
     size_t X_nrow; ///< Number of rows in the array of covariates.
     std::vector< size_t > covar_sort; /// Value where the sorting of the covariates is stored.
     std::vector< size_t > covar_used; /// Vector indicating which covariates are included in the model
+    bool column_major;
     
     DEFMData() {};
     
@@ -38,9 +39,10 @@ public:
         const double * covariates_,
         size_t obs_start_,
         size_t X_ncol_,
-        size_t X_nrow_
+        size_t X_nrow_,
+        bool column_major_
     ) : array(array_), covariates(covariates_), obs_start(obs_start_),
-    X_ncol(X_ncol_), X_nrow(X_nrow_) {}; 
+    X_ncol(X_ncol_), X_nrow(X_nrow_), column_major(column_major_) {}; 
 
     /**
      * @brief Access to the row (i) colum (j) data
@@ -117,7 +119,12 @@ public:
 
 inline double DEFMData::operator()(size_t i, size_t j) const
 {
-    return *(covariates + (obs_start + j * X_nrow + i));
+
+    if (column_major)
+        return *(covariates + (obs_start + i + X_nrow * j));
+    else
+        return *(covariates + ((obs_start + i) * X_ncol + j));
+
 }
 
 inline size_t DEFMData::ncol() const {
