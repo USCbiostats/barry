@@ -22,8 +22,8 @@ class \mbox{\hyperlink{class_d_e_f_m_rule_dyn_data}{DEFMRule\+Dyn\+Data}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{group__rules-phylo_gaa0a9abe59bcd6b7bf7943af55804487d}{DEFMData\+::\+DEFMData}} ()
-\begin{DoxyCompactList}\small\item\em Vector indicating which covariates are included in the model. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{group__rules-phylo_ga565c76b50a702e1cf86206d625fe512b}{DEFMData\+::\+DEFMData}} (\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}} $\ast$array\+\_\+, const double $\ast$covariates\+\_\+, size\+\_\+t obs\+\_\+start\+\_\+, size\+\_\+t X\+\_\+ncol\+\_\+, size\+\_\+t X\+\_\+nrow\+\_\+)
+\item 
+\mbox{\hyperlink{group__rules-phylo_gad72a80cdb0b623eccd73b925d1be8fe6}{DEFMData\+::\+DEFMData}} (\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}} $\ast$array\+\_\+, const double $\ast$covariates\+\_\+, size\+\_\+t obs\+\_\+start\+\_\+, size\+\_\+t X\+\_\+ncol\+\_\+, size\+\_\+t X\+\_\+nrow\+\_\+, bool column\+\_\+major\+\_\+)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{group__rules-phylo_ga66b7a40df357b79514dcbc4accfe679d}{DEFMData\+::operator()}} (size\+\_\+t \mbox{\hyperlink{counters-meat_8hpp_ae46bd26d7133dfe98f8cec7c5ac5c7a1}{i}}, size\+\_\+t \mbox{\hyperlink{statscounter-meat_8hpp_abf2d9f657468255c5b9964ea2b6e9e15}{j}}) const
 \begin{DoxyCompactList}\small\item\em Access to the row (i) colum (j) data. \end{DoxyCompactList}\item 
@@ -88,6 +88,8 @@ std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{group__rules-phylo_ga23b387e03
 \item 
 std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{group__rules-phylo_ga39494985671923d407e5c987662bd826}{DEFMData\+::covar\+\_\+used}}
 \begin{DoxyCompactList}\small\item\em Value where the sorting of the covariates is stored. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__rules-phylo_ga66b89e6865e12f4a37fb65c524dfef0a}{DEFMData\+::column\+\_\+major}}
+\begin{DoxyCompactList}\small\item\em Vector indicating which covariates are included in the model. \end{DoxyCompactList}\item 
 std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{group__rules-phylo_ga1798d8ea93c677ed7fbfb91a6fc568dd}{DEFMCounter\+Data\+::indices}}
 \item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{group__rules-phylo_ga42bd6d1deaa0d800a878ba9fe87d8b18}{DEFMCounter\+Data\+::numbers}}
@@ -154,7 +156,7 @@ typedef barry\+::\+Rules$<$ \mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f489
 
 
 
-Definition at line 179 of file defm-\/types.\+hpp.
+Definition at line 186 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga5c89d811265cdc84066476226ea138a8}\label{group__rules-phylo_ga5c89d811265cdc84066476226ea138a8}} 
 \index{Phylo rules@{Phylo rules}!DEFMCounters@{DEFMCounters}}
@@ -164,7 +166,7 @@ Definition at line 179 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 180 of file defm-\/types.\+hpp.
+Definition at line 187 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga9716da2197dde4338078d890e7ffcf05}\label{group__rules-phylo_ga9716da2197dde4338078d890e7ffcf05}} 
 \index{Phylo rules@{Phylo rules}!DEFMModel@{DEFMModel}}
@@ -174,7 +176,7 @@ Definition at line 180 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 183 of file defm-\/types.\+hpp.
+Definition at line 190 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gae7ef10f17b5ca193abec479ea233212f}\label{group__rules-phylo_gae7ef10f17b5ca193abec479ea233212f}} 
 \index{Phylo rules@{Phylo rules}!DEFMRule@{DEFMRule}}
@@ -184,7 +186,7 @@ Definition at line 183 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 186 of file defm-\/types.\+hpp.
+Definition at line 193 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga9a767b57f79612eb39de35038ee2d0ea}\label{group__rules-phylo_ga9a767b57f79612eb39de35038ee2d0ea}} 
 \index{Phylo rules@{Phylo rules}!DEFMRuleDyn@{DEFMRuleDyn}}
@@ -194,7 +196,7 @@ Definition at line 186 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 188 of file defm-\/types.\+hpp.
+Definition at line 195 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gaae5b274ab680fe97a6da3615ad08b45b}\label{group__rules-phylo_gaae5b274ab680fe97a6da3615ad08b45b}} 
 \index{Phylo rules@{Phylo rules}!DEFMRules@{DEFMRules}}
@@ -204,7 +206,7 @@ Definition at line 188 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 187 of file defm-\/types.\+hpp.
+Definition at line 194 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga38a5a5b78ba2b492093f0744a1166acb}\label{group__rules-phylo_ga38a5a5b78ba2b492093f0744a1166acb}} 
 \index{Phylo rules@{Phylo rules}!DEFMRulesDyn@{DEFMRulesDyn}}
@@ -214,7 +216,7 @@ Definition at line 187 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 189 of file defm-\/types.\+hpp.
+Definition at line 196 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga1b4873975ddde98ef40c841c6d3b447e}\label{group__rules-phylo_ga1b4873975ddde98ef40c841c6d3b447e}} 
 \index{Phylo rules@{Phylo rules}!DEFMStatsCounter@{DEFMStatsCounter}}
@@ -224,7 +226,7 @@ Definition at line 189 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 182 of file defm-\/types.\+hpp.
+Definition at line 189 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gaec94c2fbe37383fd6695bc2d60863077}\label{group__rules-phylo_gaec94c2fbe37383fd6695bc2d60863077}} 
 \index{Phylo rules@{Phylo rules}!DEFMSupport@{DEFMSupport}}
@@ -234,7 +236,7 @@ Definition at line 182 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 181 of file defm-\/types.\+hpp.
+Definition at line 188 of file defm-\/types.\+hpp.
 
 
 
@@ -253,7 +255,7 @@ Definition at line 181 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 72 of file defm-\/types.\+hpp.
+Definition at line 74 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gadd378b812c5aed4989605ee216c0cdb2}\label{group__rules-phylo_gadd378b812c5aed4989605ee216c0cdb2}} 
 \index{Phylo rules@{Phylo rules}!DEFMCounterData@{DEFMCounterData}}
@@ -263,7 +265,7 @@ Definition at line 72 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 73 of file defm-\/types.\+hpp.
+Definition at line 75 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gaa0a9abe59bcd6b7bf7943af55804487d}\label{group__rules-phylo_gaa0a9abe59bcd6b7bf7943af55804487d}} 
 \index{Phylo rules@{Phylo rules}!DEFMData@{DEFMData}}
@@ -273,17 +275,13 @@ Definition at line 73 of file defm-\/types.\+hpp.
 
 
 
-Vector indicating which covariates are included in the model. 
+Definition at line 28 of file defm-\/types.\+hpp.
 
-
-
-Definition at line 27 of file defm-\/types.\+hpp.
-
-\mbox{\Hypertarget{group__rules-phylo_ga565c76b50a702e1cf86206d625fe512b}\label{group__rules-phylo_ga565c76b50a702e1cf86206d625fe512b}} 
+\mbox{\Hypertarget{group__rules-phylo_gad72a80cdb0b623eccd73b925d1be8fe6}\label{group__rules-phylo_gad72a80cdb0b623eccd73b925d1be8fe6}} 
 \index{Phylo rules@{Phylo rules}!DEFMData@{DEFMData}}
 \index{DEFMData@{DEFMData}!Phylo rules@{Phylo rules}}
 \doxysubsubsection{\texorpdfstring{DEFMData()}{DEFMData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily DEFMData\+::\+DEFMData (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}} $\ast$}]{array\+\_\+,  }\item[{const double $\ast$}]{covariates\+\_\+,  }\item[{size\+\_\+t}]{obs\+\_\+start\+\_\+,  }\item[{size\+\_\+t}]{X\+\_\+ncol\+\_\+,  }\item[{size\+\_\+t}]{X\+\_\+nrow\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily DEFMData\+::\+DEFMData (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{defm-types_8hpp_a3ed5e2f1747dd4f4893565699469438f}{DEFMArray}} $\ast$}]{array\+\_\+,  }\item[{const double $\ast$}]{covariates\+\_\+,  }\item[{size\+\_\+t}]{obs\+\_\+start\+\_\+,  }\item[{size\+\_\+t}]{X\+\_\+ncol\+\_\+,  }\item[{size\+\_\+t}]{X\+\_\+nrow\+\_\+,  }\item[{bool}]{column\+\_\+major\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -300,7 +298,7 @@ Constructor.
 \end{DoxyParams}
 
 
-Definition at line 36 of file defm-\/types.\+hpp.
+Definition at line 37 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gafb84c6ffe48f80056b15e0ae6bad4b3a}\label{group__rules-phylo_gafb84c6ffe48f80056b15e0ae6bad4b3a}} 
 \index{Phylo rules@{Phylo rules}!DEFMRuleData@{DEFMRuleData}}
@@ -310,7 +308,7 @@ Definition at line 36 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 102 of file defm-\/types.\+hpp.
+Definition at line 104 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga97709e387171f34facb5410f1d726f9b}\label{group__rules-phylo_ga97709e387171f34facb5410f1d726f9b}} 
 \index{Phylo rules@{Phylo rules}!DEFMRuleData@{DEFMRuleData}}
@@ -320,7 +318,7 @@ Definition at line 102 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 110 of file defm-\/types.\+hpp.
+Definition at line 112 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga9b5f63e38cfd56a22a2c00b1b11904bb}\label{group__rules-phylo_ga9b5f63e38cfd56a22a2c00b1b11904bb}} 
 \index{Phylo rules@{Phylo rules}!DEFMRuleData@{DEFMRuleData}}
@@ -330,7 +328,7 @@ Definition at line 110 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 104 of file defm-\/types.\+hpp.
+Definition at line 106 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga89bb43889a6cded44ff8f3541695c8a8}\label{group__rules-phylo_ga89bb43889a6cded44ff8f3541695c8a8}} 
 \index{Phylo rules@{Phylo rules}!DEFMRuleDynData@{DEFMRuleDynData}}
@@ -340,7 +338,7 @@ Definition at line 104 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 159 of file defm-\/types.\+hpp.
+Definition at line 166 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga7f779ce019f2eaa30af381500384d393}\label{group__rules-phylo_ga7f779ce019f2eaa30af381500384d393}} 
 \index{Phylo rules@{Phylo rules}!idx@{idx}}
@@ -350,7 +348,7 @@ Definition at line 159 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 81 of file defm-\/types.\+hpp.
+Definition at line 83 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gad92a95c8a2097d1a4cb0cf766409791c}\label{group__rules-phylo_gad92a95c8a2097d1a4cb0cf766409791c}} 
 \index{Phylo rules@{Phylo rules}!idx@{idx}}
@@ -360,7 +358,7 @@ Definition at line 81 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 99 of file defm-\/types.\+hpp.
+Definition at line 101 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga6366be3b3f9e1d0bfd1455f0eee20429}\label{group__rules-phylo_ga6366be3b3f9e1d0bfd1455f0eee20429}} 
 \index{Phylo rules@{Phylo rules}!is\_true@{is\_true}}
@@ -370,7 +368,7 @@ Definition at line 99 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 83 of file defm-\/types.\+hpp.
+Definition at line 85 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga6bdc61aa25a629863002c9fb98a2acee}\label{group__rules-phylo_ga6bdc61aa25a629863002c9fb98a2acee}} 
 \index{Phylo rules@{Phylo rules}!is\_true@{is\_true}}
@@ -380,7 +378,7 @@ Definition at line 83 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 100 of file defm-\/types.\+hpp.
+Definition at line 102 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga8e70fc57678680180582741e5865fff2}\label{group__rules-phylo_ga8e70fc57678680180582741e5865fff2}} 
 \index{Phylo rules@{Phylo rules}!ncol@{ncol}}
@@ -390,7 +388,7 @@ Definition at line 100 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 123 of file defm-\/types.\+hpp.
+Definition at line 130 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga8d35cccda96180f18d4f87f3831e68d9}\label{group__rules-phylo_ga8d35cccda96180f18d4f87f3831e68d9}} 
 \index{Phylo rules@{Phylo rules}!nrow@{nrow}}
@@ -400,7 +398,7 @@ Definition at line 123 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 127 of file defm-\/types.\+hpp.
+Definition at line 134 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga2145b3b46a20bf7ea646f0a76e4b74b8}\label{group__rules-phylo_ga2145b3b46a20bf7ea646f0a76e4b74b8}} 
 \index{Phylo rules@{Phylo rules}!num@{num}}
@@ -410,7 +408,7 @@ Definition at line 127 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 82 of file defm-\/types.\+hpp.
+Definition at line 84 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga492f81abc80e4de779c95ec8956b5e38}\label{group__rules-phylo_ga492f81abc80e4de779c95ec8956b5e38}} 
 \index{Phylo rules@{Phylo rules}!num@{num}}
@@ -420,7 +418,7 @@ Definition at line 82 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 98 of file defm-\/types.\+hpp.
+Definition at line 100 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gabb14cfba9583ef918adadba42aa6dd08}\label{group__rules-phylo_gabb14cfba9583ef918adadba42aa6dd08}} 
 \index{Phylo rules@{Phylo rules}!operator()@{operator()}}
@@ -430,7 +428,7 @@ Definition at line 98 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 168 of file defm-\/types.\+hpp.
+Definition at line 175 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga66b7a40df357b79514dcbc4accfe679d}\label{group__rules-phylo_ga66b7a40df357b79514dcbc4accfe679d}} 
 \index{Phylo rules@{Phylo rules}!operator()@{operator()}}
@@ -454,7 +452,7 @@ double
 \end{DoxyReturn}
 
 
-Definition at line 118 of file defm-\/types.\+hpp.
+Definition at line 120 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gae1617d2f94e8595c8fde0c6013e21a2d}\label{group__rules-phylo_gae1617d2f94e8595c8fde0c6013e21a2d}} 
 \index{Phylo rules@{Phylo rules}!print@{print}}
@@ -464,7 +462,7 @@ Definition at line 118 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 131 of file defm-\/types.\+hpp.
+Definition at line 138 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga0773b2dbf4673181e45c93632a5f9cc3}\label{group__rules-phylo_ga0773b2dbf4673181e45c93632a5f9cc3}} 
 \index{Phylo rules@{Phylo rules}!rule\_dyn\_limit\_changes@{rule\_dyn\_limit\_changes}}
@@ -512,7 +510,7 @@ Definition at line 2052 of file counters.\+hpp.
 
 
 
-Definition at line 85 of file defm-\/types.\+hpp.
+Definition at line 87 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga637f2c896da37c0f3a72bd0174ca718c}\label{group__rules-phylo_ga637f2c896da37c0f3a72bd0174ca718c}} 
 \index{Phylo rules@{Phylo rules}!````~DEFMData@{$\sim$DEFMData}}
@@ -522,7 +520,7 @@ Definition at line 85 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 58 of file defm-\/types.\+hpp.
+Definition at line 60 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gad64e7379376d678c0d7795be221c5e3e}\label{group__rules-phylo_gad64e7379376d678c0d7795be221c5e3e}} 
 \index{Phylo rules@{Phylo rules}!````~DEFMRuleDynData@{$\sim$DEFMRuleDynData}}
@@ -532,7 +530,7 @@ Definition at line 58 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 166 of file defm-\/types.\+hpp.
+Definition at line 173 of file defm-\/types.\+hpp.
 
 
 
@@ -547,6 +545,20 @@ Definition at line 166 of file defm-\/types.\+hpp.
 
 Definition at line 19 of file defm-\/types.\+hpp.
 
+\mbox{\Hypertarget{group__rules-phylo_ga66b89e6865e12f4a37fb65c524dfef0a}\label{group__rules-phylo_ga66b89e6865e12f4a37fb65c524dfef0a}} 
+\index{Phylo rules@{Phylo rules}!column\_major@{column\_major}}
+\index{column\_major@{column\_major}!Phylo rules@{Phylo rules}}
+\doxysubsubsection{\texorpdfstring{column\_major}{column\_major}}
+{\footnotesize\ttfamily bool DEFMData\+::column\+\_\+major}
+
+
+
+Vector indicating which covariates are included in the model. 
+
+
+
+Definition at line 26 of file defm-\/types.\+hpp.
+
 \mbox{\Hypertarget{group__rules-phylo_ga7b639c0b73814eec9015b82f7e2d8439}\label{group__rules-phylo_ga7b639c0b73814eec9015b82f7e2d8439}} 
 \index{Phylo rules@{Phylo rules}!counts@{counts}}
 \index{counts@{counts}!Phylo rules@{Phylo rules}}
@@ -555,7 +567,7 @@ Definition at line 19 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 154 of file defm-\/types.\+hpp.
+Definition at line 161 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga23b387e03361640aa03c710bb6bf0a57}\label{group__rules-phylo_ga23b387e03361640aa03c710bb6bf0a57}} 
 \index{Phylo rules@{Phylo rules}!covar\_sort@{covar\_sort}}
@@ -603,7 +615,7 @@ Definition at line 20 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 67 of file defm-\/types.\+hpp.
+Definition at line 69 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga1d86306bc0d6299ecae2554e226809c1}\label{group__rules-phylo_ga1d86306bc0d6299ecae2554e226809c1}} 
 \index{Phylo rules@{Phylo rules}!indices@{indices}}
@@ -613,7 +625,7 @@ Definition at line 67 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 93 of file defm-\/types.\+hpp.
+Definition at line 95 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga87c654a27ccf0b679f804cb05f63f7e5}\label{group__rules-phylo_ga87c654a27ccf0b679f804cb05f63f7e5}} 
 \index{Phylo rules@{Phylo rules}!init@{init}}
@@ -623,7 +635,7 @@ Definition at line 93 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 96 of file defm-\/types.\+hpp.
+Definition at line 98 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga34a1cd60ddd3aba7ff8145678d2827fe}\label{group__rules-phylo_ga34a1cd60ddd3aba7ff8145678d2827fe}} 
 \index{Phylo rules@{Phylo rules}!is\_motif@{is\_motif}}
@@ -637,7 +649,7 @@ If false, then is a logit intercept.
 
 
 
-Definition at line 70 of file defm-\/types.\+hpp.
+Definition at line 72 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_gaed4423cebc240480f3054a59c14918c7}\label{group__rules-phylo_gaed4423cebc240480f3054a59c14918c7}} 
 \index{Phylo rules@{Phylo rules}!lb@{lb}}
@@ -647,7 +659,7 @@ Definition at line 70 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 156 of file defm-\/types.\+hpp.
+Definition at line 163 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga83c21423b25668b2343196f11fdc4630}\label{group__rules-phylo_ga83c21423b25668b2343196f11fdc4630}} 
 \index{Phylo rules@{Phylo rules}!logical@{logical}}
@@ -657,7 +669,7 @@ Definition at line 156 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 69 of file defm-\/types.\+hpp.
+Definition at line 71 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga8843c9a811b759251788fbedb2e65dde}\label{group__rules-phylo_ga8843c9a811b759251788fbedb2e65dde}} 
 \index{Phylo rules@{Phylo rules}!logical@{logical}}
@@ -667,7 +679,7 @@ Definition at line 69 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 94 of file defm-\/types.\+hpp.
+Definition at line 96 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga42bd6d1deaa0d800a878ba9fe87d8b18}\label{group__rules-phylo_ga42bd6d1deaa0d800a878ba9fe87d8b18}} 
 \index{Phylo rules@{Phylo rules}!numbers@{numbers}}
@@ -677,7 +689,7 @@ Definition at line 94 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 68 of file defm-\/types.\+hpp.
+Definition at line 70 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga66f4ba8b2047a943a426e555a9b63937}\label{group__rules-phylo_ga66f4ba8b2047a943a426e555a9b63937}} 
 \index{Phylo rules@{Phylo rules}!numbers@{numbers}}
@@ -687,7 +699,7 @@ Definition at line 68 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 92 of file defm-\/types.\+hpp.
+Definition at line 94 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga89a3ee0a0a27f78c47b010d5498e1fd2}\label{group__rules-phylo_ga89a3ee0a0a27f78c47b010d5498e1fd2}} 
 \index{Phylo rules@{Phylo rules}!obs\_start@{obs\_start}}
@@ -711,7 +723,7 @@ Definition at line 21 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 155 of file defm-\/types.\+hpp.
+Definition at line 162 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga4b1ec53a12795984ac2dcbbc9e0f4fff}\label{group__rules-phylo_ga4b1ec53a12795984ac2dcbbc9e0f4fff}} 
 \index{Phylo rules@{Phylo rules}!ub@{ub}}
@@ -721,7 +733,7 @@ Definition at line 155 of file defm-\/types.\+hpp.
 
 
 
-Definition at line 157 of file defm-\/types.\+hpp.
+Definition at line 164 of file defm-\/types.\+hpp.
 
 \mbox{\Hypertarget{group__rules-phylo_ga13a6688217231167d87c033db3803209}\label{group__rules-phylo_ga13a6688217231167d87c033db3803209}} 
 \index{Phylo rules@{Phylo rules}!X\_ncol@{X\_ncol}}

@@ -109,11 +109,10 @@ $(document).ready(function(){initNavTree('class_d_e_f_m_data.html',''); initResi
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:gaa0a9abe59bcd6b7bf7943af55804487d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rules-phylo.html#gaa0a9abe59bcd6b7bf7943af55804487d">DEFMData</a> ()</td></tr>
-<tr class="memdesc:gaa0a9abe59bcd6b7bf7943af55804487d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector indicating which covariates are included in the model.  <a href="group__rules-phylo.html#gaa0a9abe59bcd6b7bf7943af55804487d">More...</a><br /></td></tr>
 <tr class="separator:gaa0a9abe59bcd6b7bf7943af55804487d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga565c76b50a702e1cf86206d625fe512b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rules-phylo.html#ga565c76b50a702e1cf86206d625fe512b">DEFMData</a> (<a class="el" href="defm-types_8hpp.html#a3ed5e2f1747dd4f4893565699469438f">DEFMArray</a> *array_, const double *covariates_, size_t obs_start_, size_t X_ncol_, size_t X_nrow_)</td></tr>
-<tr class="memdesc:ga565c76b50a702e1cf86206d625fe512b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="group__rules-phylo.html#ga565c76b50a702e1cf86206d625fe512b">More...</a><br /></td></tr>
-<tr class="separator:ga565c76b50a702e1cf86206d625fe512b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad72a80cdb0b623eccd73b925d1be8fe6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rules-phylo.html#gad72a80cdb0b623eccd73b925d1be8fe6">DEFMData</a> (<a class="el" href="defm-types_8hpp.html#a3ed5e2f1747dd4f4893565699469438f">DEFMArray</a> *array_, const double *covariates_, size_t obs_start_, size_t X_ncol_, size_t X_nrow_, bool column_major_)</td></tr>
+<tr class="memdesc:gad72a80cdb0b623eccd73b925d1be8fe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="group__rules-phylo.html#gad72a80cdb0b623eccd73b925d1be8fe6">More...</a><br /></td></tr>
+<tr class="separator:gad72a80cdb0b623eccd73b925d1be8fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga66b7a40df357b79514dcbc4accfe679d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rules-phylo.html#ga66b7a40df357b79514dcbc4accfe679d">operator()</a> (size_t <a class="el" href="counters-meat_8hpp.html#ae46bd26d7133dfe98f8cec7c5ac5c7a1">i</a>, size_t <a class="el" href="statscounter-meat_8hpp.html#abf2d9f657468255c5b9964ea2b6e9e15">j</a>) const</td></tr>
 <tr class="memdesc:ga66b7a40df357b79514dcbc4accfe679d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access to the row (i) colum (j) data.  <a href="group__rules-phylo.html#ga66b7a40df357b79514dcbc4accfe679d">More...</a><br /></td></tr>
 <tr class="separator:ga66b7a40df357b79514dcbc4accfe679d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +148,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ga39494985671923d407e5c987662bd826"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rules-phylo.html#ga39494985671923d407e5c987662bd826">covar_used</a></td></tr>
 <tr class="memdesc:ga39494985671923d407e5c987662bd826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value where the sorting of the covariates is stored.  <a href="group__rules-phylo.html#ga39494985671923d407e5c987662bd826">More...</a><br /></td></tr>
 <tr class="separator:ga39494985671923d407e5c987662bd826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga66b89e6865e12f4a37fb65c524dfef0a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rules-phylo.html#ga66b89e6865e12f4a37fb65c524dfef0a">column_major</a></td></tr>
+<tr class="memdesc:ga66b89e6865e12f4a37fb65c524dfef0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector indicating which covariates are included in the model.  <a href="group__rules-phylo.html#ga66b89e6865e12f4a37fb65c524dfef0a">More...</a><br /></td></tr>
+<tr class="separator:ga66b89e6865e12f4a37fb65c524dfef0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Data class for <a class="el" href="class_d_e_f_m.html">DEFM</a> arrays. </p>
@@ -164,7 +166,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_d_e_f_m_data.html">DEFMData</a></li>
-    <li class="footer">Generated on Sat Nov 4 2023 04:10:53 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu Nov 16 2023 23:48:36 for barry: Your go-to motif accountant by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
