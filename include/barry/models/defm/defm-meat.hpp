@@ -215,7 +215,7 @@ inline DEFM::DEFM(
 }
 
 
-inline void DEFM::init() 
+inline void DEFM::init(bool force_new) 
 {
 
     // Adding the rule
@@ -275,7 +275,7 @@ inline void DEFM::init()
                         ));
 
             // Adding to the model
-            model_ord.push_back( this->add_array(array, true) );
+            model_ord.push_back( this->add_array(array, force_new) );
 
         }
 
