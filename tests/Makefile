@@ -1,4 +1,4 @@
-CPP=g++-10
+CPP=g++
 VPATH = ../include/barry
 BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
        counters-*.gcov model-*.gcov rules-*.gcov \
