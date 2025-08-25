@@ -22,16 +22,16 @@ mainsan.o: %.cpp
 checkv: mainv.o
 	valgrind --leak-check=full --track-origins=yes ./mainv.o #valgrind --tool=cachegrind ./main
 
-mainv.o: main.cpp
-	g++ $(CPPFLAGSV) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o mainv.o
+main: main.cpp
+	g++ $(CPPFLAGSV) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o main
 
 clean:
 	rm -f main*.o; rm -f *.gcov; rm -f *gcno; rm -f *gcda
 
-coverage: mainv.o
-	./mainv.o && gcov -r main.cpp && \
-		rm catch*.hpp.gcov && \
-		mv *.hpp.gcov gcov-files/ && $(MAKE) clean
+coverage: main
+	./main && gcov -r main.cpp && \
+	rm catch*.hpp.gcov && \
+	mv *.hpp.gcov gcov-files/ && $(MAKE) clean
 
 .PHONY: callgrind
 cachegrind: main.calgrind.out
