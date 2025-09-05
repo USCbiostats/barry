@@ -1252,11 +1252,11 @@ inline void  BArray<Cell_Type, Data_Type>:: print_n (
     }
 
     if (nrow < N) {
-        printf_barry("Skipping %lu rows. ", static_cast<size_t>(N - nrow));
+        printf_barry("Skipping %i rows. ", static_cast< int >(N - nrow));
     }
-
+    
     if (ncol < M) {
-        printf_barry("Skipping %lu columns. ", static_cast<size_t>(M - ncol));
+        printf_barry("Skipping %i columns. ", static_cast< int >(M - ncol));
     }
 
     if (nrow < N || ncol < M) {
