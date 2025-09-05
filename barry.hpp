@@ -28,9 +28,15 @@
 #ifndef BARRY_HPP
 #define BARRY_HPP 
 
+/* Versioning */
 #define BARRY_VERSION_MAYOR 0
-#define BARRY_VERSION_MINOR 1
-#define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR
+#define BARRY_VERSION_MINOR 2
+#define BARRY_VERSION_PATCH 0
+#define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR ## . ## BARRY_VERSION_PATCH
+
+static const int barry_version_major = BARRY_VERSION_MAYOR;
+static const int barry_version_minor = BARRY_VERSION_MINOR;
+static const int barry_version_patch = BARRY_VERSION_PATCH;
 
 /**
   * @brief barry: Your go-to motif accountant
@@ -171,8 +177,9 @@ namespace barry {
     template <typename T>
     void BARRY_DEBUG_VEC_PRINT(const std::vector<T> & a) {
         printf_barry("%s  [", BARRY_DEBUG_HEADER);
-        for(const auto & iter : (a)) 
+        for(const auto & iter : (a)) {
             printf_barry("%.4f ", static_cast<double>(iter));
+        }
         printf_barry("]\n");
         return;
     }
@@ -182,7 +189,9 @@ namespace barry {
     inline void BARRY_DEBUG_VEC_PRINT(const std::vector< int > & a) {
         printf_barry("%s  [", BARRY_DEBUG_HEADER);
         for(const auto & iter : (a)) 
+        {
             printf_barry("%i ", iter);
+        }
         printf_barry("]\n");
         return;
     }
@@ -191,7 +200,9 @@ namespace barry {
     inline void BARRY_DEBUG_VEC_PRINT(const std::vector< std::string > & a) {
         printf_barry("%s \n", BARRY_DEBUG_HEADER);
         for(const auto & iter : (a)) 
+        {
             printf_barry("%s %s\n", BARRY_DEBUG_HEADER, iter.c_str());
+        }
         printf_barry("%s \n", BARRY_DEBUG_HEADER);
         return;
     }
@@ -263,7 +274,9 @@ inline void Progress::next() {
     cur_loc = std::floor((++i) * step_size);
 
     for (int j = 0; j < (cur_loc - last_loc); ++j)
+    {
         printf_barry("|");
+    }
 
     last_loc = cur_loc;
 
@@ -851,7 +864,9 @@ inline void FreqTable<T>::print() const
         printf_barry("%7i | ", static_cast<int>(data[i * (k + 1u)]));
 
         for (size_t j = 1u; j < (k + 1u); ++j)
+        {
             printf_barry(" %.2f", data[i * (k + 1) + j]);
+        }
         printf_barry("\n");
 
         grand_total += static_cast<size_t>(data[i * (k + 1u)]);
@@ -2663,9 +2678,11 @@ inline void  BArray<Cell_Type, Data_Type>:: print_n (
         #endif
         for (size_t j = 0u; j < ncol; ++j) {
             if (this->is_empty(i, j, false))
+            {
                 printf_barry("    . ");
-            else 
+            } else {
                 printf_barry(" %.2f ", static_cast<double>(this->get_cell(i, j, false)));
+            }
             
         }
 
@@ -2673,14 +2690,17 @@ inline void  BArray<Cell_Type, Data_Type>:: print_n (
 
     }
 
-    if (nrow < N)
-        printf_barry("Skipping %lu rows. ", N - nrow);
+    if (nrow < N) {
+        printf_barry("Skipping %lu rows. ", static_cast<size_t>(N - nrow));
+    }
 
-    if (ncol < M)
-        printf_barry("Skipping %lu columns. ", M - ncol);
+    if (ncol < M) {
+        printf_barry("Skipping %lu columns. ", static_cast<size_t>(M - ncol));
+    }
 
-    if (nrow < N || ncol < M)
+    if (nrow < N || ncol < M) {
         printf_barry("\n");
+    }
     
     
     return;
@@ -4632,9 +4652,11 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
         {
 
             if (this->is_empty(i, j, false))
+            {
                 printf_barry("    . ");
-            else 
+            } else {
                 printf_barry(" %.2f ", static_cast<double>(this->get_cell(i, j, false)));
+            }
             
         }
 
@@ -6679,7 +6701,8 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
 
     // Starting from the name of the stats
     printf_barry("Position of variables:\n");
-    for (size_t i = 0u; i < n_counters; ++i) {
+    for (size_t i = 0u; i < n_counters; ++i)
+    {
         printf_barry("[% 2li] %s\n", i, counters->operator[](i).name.c_str());
     }
 
@@ -8768,21 +8791,32 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
     }  
 
     // The vectors in the support reflec the size of nterms x entries
-    max_v /= static_cast<int>(nterms() + 1);
-    min_v /= static_cast<int>(nterms() + 1);
+    // max_v /= static_cast<int>(nterms() + 1);
+    // min_v /= static_cast<int>(nterms() + 1);
 
-    printf_barry("Num. of Arrays       : %li\n", this->size());
-    printf_barry("Support size         : %li\n", this->size_unique());
-    printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
+    if (this->size() > 0u)
+    {
+        printf_barry("Num. of Arrays       : %li\n", this->size());
+        printf_barry("Support size         : %li\n", this->size_unique());
+        printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
+    }
+    else 
+    {
+        printf_barry("Num. of Arrays       : 0\n");
+        printf_barry("Support size         : -\n");
+        printf_barry("Support size range   : -\n");
+    }
+    
 
     if (with_pset)
     {
         printf_barry("Arrays in powerset   : %li\n",
-            std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u)
+            static_cast<size_t>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
         );
     }
+
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (%li)    :\n", this->nterms());
+    printf_barry("Model terms (% 2li)    :\n", this->nterms());
     for (auto & cn : this->colnames())
     {
         printf_barry(" - %s\n", cn.c_str());
@@ -8790,7 +8824,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules() > 0u)
     {
-        printf_barry("Model rules (%li)     :\n", this->nrules());
+    printf_barry("Model rules (%li)    :\n", this->nrules());
     
         for (auto & rn : rules->get_names())
         {
@@ -8800,7 +8834,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules_dyn() > 0u)
     {
-        printf_barry("Model rules dyn (%li):\n", this->nrules_dyn());
+    printf_barry("Model rules dyn (% 2li) :\n", this->nrules_dyn());
     
         for (auto & rn : rules_dyn->get_names())
         {
@@ -9802,8 +9836,8 @@ inline std::vector<std::string> Rules<Array_Type, Data_Type>::get_descriptions()
     
     std::vector< std::string > out;
     out.reserve(this->size());
-    for (size_t i = 0u; i < out.size(); ++i)
-        out.push_back(data.at(i).get_description());
+    for (size_t i = 0u; i < this->size(); ++i)
+        out.push_back(this->data.at(i).get_description());
 
     return out;
 

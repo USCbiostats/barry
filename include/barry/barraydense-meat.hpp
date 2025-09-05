@@ -987,9 +987,11 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
         {
 
             if (this->is_empty(i, j, false))
+            {
                 printf_barry("    . ");
-            else 
+            } else {
                 printf_barry(" %.2f ", static_cast<double>(this->get_cell(i, j, false)));
+            }
             
         }
 

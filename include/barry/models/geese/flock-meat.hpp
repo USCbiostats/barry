@@ -263,8 +263,9 @@ inline size_t Flock::parse_polytomies(
     for (const auto & d : dat)
     {
 
-        if (verb)
+        if (verb) {
             printf_barry("Checking tree %i\n", i);
+        }
 
         size_t tmp = d.parse_polytomies(verb, dist);
 

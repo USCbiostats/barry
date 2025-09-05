@@ -43,6 +43,7 @@ public:
     size_t X_nrow; ///< Number of rows in the array of covariates.
     std::vector< size_t > covar_sort; /// Value where the sorting of the covariates is stored.
     std::vector< size_t > covar_used; /// Vector indicating which covariates are included in the model
+    bool column_major;
     
     DEFMData() {};
     
@@ -58,9 +59,10 @@ public:
         const double * covariates_,
         size_t obs_start_,
         size_t X_ncol_,
-        size_t X_nrow_
+        size_t X_nrow_,
+        bool column_major_
     ) : array(array_), covariates(covariates_), obs_start(obs_start_),
-    X_ncol(X_ncol_), X_nrow(X_nrow_) {}; 
+    X_ncol(X_ncol_), X_nrow(X_nrow_), column_major(column_major_) {}; 
 
     /**
      * @brief Access to the row (i) colum (j) data
@@ -137,7 +139,12 @@ public:
 
 inline double DEFMData::operator()(size_t i, size_t j) const
 {
-    return *(covariates + (obs_start + j * X_nrow + i));
+
+    if (column_major)
+        return *(covariates + (obs_start + i + X_nrow * j));
+    else
+        return *(covariates + ((obs_start + i) * X_ncol + j));
+
 }
 
 inline size_t DEFMData::ncol() const {
@@ -155,7 +162,9 @@ inline void DEFMData::print() const {
 
         printf_barry("row %li (%li): ", i, obs_start + i);
         for (size_t j = 0u; j < X_ncol; ++j)
+        {
             printf_barry("% 5.2f, ", operator()(i, j));
+        }
         printf_barry("\n");
         
     }
@@ -169,18 +178,26 @@ inline void DEFMData::print() const {
  */
 ///@{
 
-class DEFMRuleDynData : public DEFMRuleData {
+class DEFMRuleDynData {
 public:
     const std::vector< double > * counts;
+    size_t pos;
+    size_t lb;
+    size_t ub;
     
     DEFMRuleDynData(
         const std::vector< double > * counts_,
-        std::vector< double > numbers_ = {},
-        std::vector< size_t > indices_ = {},
-        std::vector< bool > logical_ = {}
-        ) : DEFMRuleData(numbers_, indices_, logical_), counts(counts_) {};
+        size_t pos_,
+        size_t lb_,
+        size_t ub_
+        ) : counts(counts_), pos(pos_), lb(lb_), ub(ub_) {};
     
     ~DEFMRuleDynData() {};
+
+    const double operator()() const
+    {
+        return (*counts)[pos];
+    }
     
 };
 
@@ -252,7 +269,7 @@ typedef barry::Rules<DEFMArray, DEFMRuleDynData> DEFMRulesDyn;
  * ## Intercept effects
  * 
  * Intercept effects only involve a single set of curly brackets. Using the
- * 'greater-than' symbol (i.e., '<') is only for transition effects. When
+ * 'greater-than' symbol (i.e., '>') is only for transition effects. When
  * specifying intercept effects, users can skip the `row_id`, e.g.,
  * `y0_0` is equivalent to `y0`. If the passed `row id` is different from
  * the Markov order, i.e., `row_id != m_order`, then the function returns
@@ -282,7 +299,9 @@ inline void defm_motif_parser(
     std::vector< size_t > & locations,
     std::vector< bool > & signs,
     size_t m_order,
-    size_t y_ncol
+    size_t y_ncol,
+    std::string & covar_name,
+    std::string & vname
 )
 {
     // Resetting the results
@@ -290,11 +309,13 @@ inline void defm_motif_parser(
     signs.clear();
 
     std::regex pattern_intercept(
-        "\\{\\s*0?y[0-9]+(_[0-9]+)?(\\s*,\\s*0?y[0-9]+(_[0-9]+)?)*\\s*\\}"
+        std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
+        std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
         );
     std::regex pattern_transition(
-        std::string("\\{\\s*0?y[0-9]+(_[0-9]+)?(\\s*,\\s*0?y[0-9]+(_[0-9]+)?)*\\}\\s*(>)\\s*") +
-        std::string("\\{\\s*0?y[0-9]+(_[0-9]+)?(\\s*,\\s*0?y[0-9]+(_[0-9]+)?)*\\s*\\}")
+        std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\}\\s*(>)\\s*") +
+        std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
+        std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
         );
 
     auto empty = std::sregex_iterator();
@@ -311,6 +332,22 @@ inline void defm_motif_parser(
         if (m_order == 0)
             throw std::logic_error("Transition effects are only valid when the data is a markov process.");
 
+        // Matching the pattern '| [no spaces]$'
+        std::regex pattern_conditional(".+[}]\\s+x\\s+([^(]+)([(][^)]+[)])?\\s*$");
+        std::smatch condmatch;
+        std::regex_match(formula, condmatch, pattern_conditional);
+        // Extracting the [no_spaces] part of the conditional
+        if (!condmatch.empty())
+        {
+            covar_name = condmatch[1].str();
+            vname = condmatch[2].str();
+
+            // Removing starting and ending parenthesis
+            if (vname != "")
+                vname = vname.substr(1, vname.size() - 2);
+
+        }
+
         // Will indicate where the arrow is located at
         size_t arrow_position = match.position(4u);
 
@@ -326,13 +363,9 @@ inline void defm_motif_parser(
             size_t current_location = i->position(0u);
 
             // First value true/false
-            bool is_positive;
-            if (i->operator[](1u).str() == "")
-                is_positive = true;
-            else if (i->operator[](1u).str() == "0")
+            bool is_positive = true;
+            if (i->operator[](1u).str() == "0")
                 is_positive = false;
-            else
-                throw std::logic_error("The number preceding y should be either none or zero.");
 
             // Variable position
             size_t y_col = std::stoul(i->operator[](2u).str());
@@ -395,7 +428,23 @@ inline void defm_motif_parser(
     } 
     
     std::regex_match(formula, match, pattern_intercept);
-    if (!match.empty()){
+    if (!match.empty())
+    {
+
+        // Matching the pattern '| [no spaces]$'
+        std::regex pattern_conditional(".+[}]\\s+x\\s+([^(]+)([(][^)]+[)])?\\s*$");
+        std::smatch condmatch;
+        std::regex_match(formula, condmatch, pattern_conditional);
+        // Extracting the [no_spaces] part of the conditional
+        if (!condmatch.empty())
+        {
+            covar_name = condmatch[1].str();
+            vname = condmatch[2].str();
+
+            // Removing starting and ending parenthesis
+            if (vname != "")
+                vname = vname.substr(1, vname.size() - 2);
+        }
 
         // This pattern will match 
         std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
@@ -406,13 +455,9 @@ inline void defm_motif_parser(
         {
             
             // First value true/false
-            bool is_positive;
-            if (i->operator[](1u).str() == "")
-                is_positive = true;
-            else if (i->operator[](1u).str() == "0")
+            bool is_positive = true;
+            if (i->operator[](1u).str() == "0")
                 is_positive = false;
-            else
-                throw std::logic_error("The number preceding y should be either none or zero.");
 
             // Variable position
             size_t y_col = std::stoul(i->operator[](2u).str());
@@ -483,19 +528,27 @@ inline void defm_motif_parser(
 
 ///@}
 
-
-#define MAKE_DEFM_HASHER(hasher,a,cov) barry::Hasher_fun_type<DEFMArray,DEFMCounterData> \
-    hasher = [cov](const DEFMArray & array, DEFMCounterData * d) { \
-        std::vector< double > res; \
-        /* Adding the column feature */ \
-        for (size_t i = 0u; i < array.nrow(); ++i) \
-            res.push_back(array.D()(i, cov)); \
-        /* Adding the fixed dims */ \
-        for (size_t i = 0u; i < (array.nrow() - 1); ++i) \
-            for (size_t j = 0u; j < array.ncol(); ++j) \
-                res.push_back(array(i, j)); \
-        return res;\
-    };
+/**
+ * @brief Data for the counters
+ * 
+ * @details This class is used to store the data for the counters. It is
+ * used by the `Counters` class.
+ * 
+ */
+#define MAKE_DEFM_HASHER(hasher,a,cov)                                  \
+    barry::Hasher_fun_type<DEFMArray, DEFMCounterData>                  \
+        hasher = [cov](const DEFMArray & array, DEFMCounterData * d) -> \
+           std::vector< double > {                                      \
+            std::vector< double > res;                                  \
+            /* Adding the column feature */                             \
+            for (size_t i = 0u; i < array.nrow(); ++i)                  \
+                res.push_back(array.D()(i, cov));                       \
+            /* Adding the fixed dims */                                 \
+            for (size_t i = 0u; i < (array.nrow() - 1); ++i)            \
+                for (size_t j = 0u; j < array.ncol(); ++j)              \
+                    res.push_back(array(i, j));                         \
+            return res;\
+        };
 
 
 /**@name Macros for defining counters
@@ -546,7 +599,7 @@ barry::Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
  */
 inline void counter_ones(
     DEFMCounters * counters,
-    int covar_index = -1,
+    int covar_index   = -1,
     std::string vname = "",
     const std::vector< std::string > * x_names = nullptr
 )
@@ -569,7 +622,6 @@ inline void counter_ones(
 
         };
 
-
         if (vname == "")
         {
             if (x_names != nullptr)
@@ -585,9 +637,9 @@ inline void counter_ones(
             "Overall number of ones"
         );
 
-
-
-    } else {
+    }
+    else
+    {
 
         DEFM_COUNTER_LAMBDA(count_ones)
         {
@@ -614,6 +666,18 @@ inline void counter_ones(
 
 }
 
+
+/**
+ * Calculates the logit intercept for the DEFM model.
+ *
+ * @param counters A pointer to the DEFMCounters object.
+ * @param n_y The number of response variables.
+ * @param which A vector of indices indicating which response variables to use. If empty, all response variables are used.
+ * @param covar_index The index of the covariate to use as the intercept. 
+ * @param vname The name of the variable to use as the intercept. If empty, the intercept is set to zero.
+ * @param x_names A pointer to a vector of strings containing the names of the covariates.
+ * @param y_names A pointer to a vector of strings containing the names of the response variables.
+ */
 inline void counter_logit_intercept(
     DEFMCounters * counters,
     size_t n_y,
@@ -761,17 +825,30 @@ inline void counter_transition(
     {
 
         auto indices = data.indices;
+        auto sgn     = data.logical;
+        int covaridx = indices[indices.size() - 1u];
 
-        for (size_t i = 0u; i < (indices.size() - 1u); ++i)
+        // Notice that the indices vector contains:
+        // - 1st, the indices of the motif. That's why we set the lenght
+        //   using -1.
+        // - the last is, the covariate index
+        for (size_t k = 0u; k < (indices.size() - 1u); ++k)
         {
-            if (
-                std::floor(indices[i] / Array.nrow()) >= 
-                static_cast<int>(Array.ncol())
-                )
+            if (indices[k] >= (Array.ncol()* Array.nrow()))
                 throw std::range_error("The motif includes entries out of range.");
         }
+
+        // Counting
+        const auto & array = Array.get_data();
+        for (size_t k = 0u; k < (indices.size() - 1); ++k)
+        {
+            auto cellv = array[indices[k]];
+            if (sgn[k] && (cellv != 1))
+                return 0.0;
+        }
             
-        return 0.0;
+        // If nothing happens, then is one or the covaridx
+        return (covaridx < 1000) ? Array.D()(Array.nrow() - 1u, covaridx) : 1.0;
         
     };
 
@@ -1055,15 +1132,66 @@ inline void counter_transition_formula(
 
     std::vector< size_t > coords;
     std::vector< bool > signs;
+    std::string covar_name = "";
 
     defm_motif_parser(
-        formula, coords, signs, m_order, n_y
+        formula, coords, signs, m_order, n_y, covar_name, vname
     );
 
-    counter_transition(
-        counters, coords, signs, m_order, n_y, covar_index, vname,
-        x_names, y_names
-    );
+    if ((covar_name != "") && (covar_index >= 0))
+        throw std::logic_error("Can't have both a formula and a covariate index.");
+
+    if (covar_name != "")
+    {
+
+        if (x_names != nullptr)
+        {
+            for (size_t i = 0u; i < x_names->size(); ++i)
+                if (x_names->operator[](i) == covar_name)
+                {
+                    covar_index = static_cast<int>(i);
+                    break;
+                }
+        }
+
+        if (covar_index < 0)
+            throw std::logic_error(
+                std::string("The covariate name '") +
+                covar_name +
+                std::string("' was not found in the list of covariates.")
+                );
+
+    }
+
+    // Checking the number of coords, could be single intercept
+    if (coords.size() == 1u)
+    {
+
+        // Getting the column
+        size_t coord = static_cast< size_t >(
+            std::floor(
+            static_cast<double>(coords[0u]) / static_cast<double>(m_order + 1)
+            ));
+
+        counter_logit_intercept(
+            counters, n_y, {coord},
+            covar_index,
+            vname,
+            x_names,
+            y_names
+        );
+
+    }
+    else 
+    {
+
+        counter_transition(
+            counters, coords, signs, m_order, n_y, covar_index, vname,
+            x_names, y_names
+        );
+
+    }
+
 
 }
 
@@ -1191,6 +1319,56 @@ inline void rules_dont_become_zero(
     return;
 }
 
+/**
+ * @brief Overall functional gains
+ * @param support Support of a model.
+ * @param pos Position of the focal statistic.
+ * @param lb Lower bound
+ * @param ub Upper bound
+ * @details 
+ * @return (void) adds a rule limiting the support of the model.
+ */
+inline void rule_constrain_support(
+    DEFMSupport * support,
+    size_t pos,
+    double lb,
+    double ub
+)
+{
+  
+    DEFM_RULEDYN_LAMBDA(tmp_rule)
+    {
+
+        if (data() < data.lb)
+            return false;
+        else if (data() > data.ub)
+            return false;
+        else
+            return true;
+      
+    };
+
+    
+    support->get_rules_dyn()->add_rule(
+        tmp_rule,
+        DEFMRuleDynData(
+            support->get_current_stats(),
+            pos, lb, ub
+            ),
+        support->get_counters()->get_names()[pos] +
+            "' within [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + std::string("]"),
+        std::string("When the support is ennumerated, only states where the statistic '") + 
+            support->get_counters()->get_names()[pos] +
+            std::to_string(pos) + "' falls within [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + "] are included."
+    );
+    
+    return;
+  
+}
+
+
 ///@}
 
 ///@}
@@ -1266,7 +1444,7 @@ public:
         return *this;
     };
 
-    void init();
+    void init(bool force_new = true);
 
     void simulate(std::vector< double > par, int * y_out);
 
@@ -1403,7 +1581,10 @@ inline void DEFM::simulate(
 
                 // Setting the data
                 tmp_array.set_data(
-                    new DEFMData(&tmp_array, X, (start_i + proc_n), X_ncol, ID_length),
+                    new DEFMData(
+                        &tmp_array, X, (start_i + proc_n), X_ncol, ID_length,
+                        this->column_major
+                        ),
                     true // Delete the data
                 );
 
@@ -1540,7 +1721,7 @@ inline DEFM::DEFM(
 }
 
 
-inline void DEFM::init() 
+inline void DEFM::init(bool force_new) 
 {
 
     // Adding the rule
@@ -1581,7 +1762,10 @@ inline void DEFM::init()
             // Creating the array for process n_proc and setting the data
             DEFMArray array(M_order + 1u, Y_ncol);
             array.set_data(
-                new DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
+                new DEFMData(
+                    &array, X, (start_i + n_proc), X_ncol, ID_length,
+                    this->column_major
+                    ),
                 true // Delete the data
             );
 
@@ -1597,7 +1781,7 @@ inline void DEFM::init()
                         ));
 
             // Adding to the model
-            model_ord.push_back( this->add_array(array, true) );
+            model_ord.push_back( this->add_array(array, force_new) );
 
         }
 
@@ -1705,7 +1889,10 @@ inline std::vector< double > DEFM::logodds(
             // Creating the array for process n_proc and setting the data
             DEFMArray array(M_order + 1u, Y_ncol);
             array.set_data(
-                new DEFMData(&array, X, (start_i + n_proc), X_ncol, ID_length),
+                new DEFMData(
+                    &array, X, (start_i + n_proc), X_ncol, ID_length,
+                    this->column_major
+                    ),
                 true // Delete the data
             );
 

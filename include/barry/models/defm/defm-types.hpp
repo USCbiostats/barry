@@ -142,7 +142,9 @@ inline void DEFMData::print() const {
 
         printf_barry("row %li (%li): ", i, obs_start + i);
         for (size_t j = 0u; j < X_ncol; ++j)
+        {
             printf_barry("% 5.2f, ", operator()(i, j));
+        }
         printf_barry("\n");
         
     }

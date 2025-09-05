@@ -43,7 +43,9 @@ inline void Progress::next() {
     cur_loc = std::floor((++i) * step_size);
 
     for (int j = 0; j < (cur_loc - last_loc); ++j)
+    {
         printf_barry("|");
+    }
 
     last_loc = cur_loc;
 
