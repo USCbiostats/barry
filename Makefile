@@ -1,8 +1,10 @@
-.PHONY: docs tests clean phylo
+.PHONY: docs tests clean phylo test-portable
 docs:
 	cp -R mathjax docs/. && doxygen Doxyfile
 tests:
 	cd tests && $(MAKE) 
+test-portable:
+	cd tests && $(MAKE) test-portable
 coverage:
 	cd tests && $(MAKE) coverage
 clean:

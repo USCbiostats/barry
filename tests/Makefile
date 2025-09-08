@@ -9,8 +9,18 @@ CPPFLAGS= -std=c++17 -fopenmp -Wall -pedantic -march=native -Wbool-operation # o
 
 CPPFLAGSV= -std=c++17 -Wall -pedantic
 
+# Cross-platform compatible flags (no OpenMP, no march=native, no GCC-specific warnings)
+CPPFLAGS_PORTABLE= -std=c++17 -Wall -pedantic -O2
+
 check: main.o 
 	./main.o
+
+# Cross-platform test target
+test-portable: main-portable.o
+	./main-portable.o
+
+main-portable.o: main.cpp
+	$(CPP) $(CPPFLAGS_PORTABLE) main.cpp -g -o main-portable.o
 
 .PHONY: %.cpp
 main.o: %.cpp

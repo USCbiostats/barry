@@ -7,16 +7,83 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Linux - AMD64 and ARM64
+          - os: ubuntu-latest
+            arch: x64
+            name: "Linux (AMD64)"
+          - os: ubuntu-latest 
+            arch: arm64
+            name: "Linux (ARM64)"
+          # macOS - Intel and Apple Silicon
+          - os: macos-13
+            arch: x64
+            name: "macOS (Intel)"
+          - os: macos-latest
+            arch: arm64  
+            name: "macOS (Apple Silicon)"
+          # Windows - AMD64 only (ARM64 support limited)
+          - os: windows-latest
+            arch: x64
+            name: "Windows (AMD64)"
 
-    runs-on: ubuntu-latest
+    name: Test on ${{ matrix.name }}
 
     steps:
-    - uses: actions/checkout@v2
-    - name: make tests
+    - uses: actions/checkout@v4
+    
+    - name: Setup build environment (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++
+    
+    - name: Setup build environment (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        # Ensure we have a C++ compiler
+        which clang++ || echo "clang++ not found"
+        clang++ --version || echo "clang++ version check failed"
+    
+    - name: Setup build environment (Windows)
+      if: runner.os == 'Windows'
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        install: mingw-w64-x86_64-gcc
+    
+    - name: Build and run tests (Unix)
+      if: runner.os != 'Windows'
+      run: make test-portable
+    
+    - name: Build and run tests (Windows)
+      if: runner.os == 'Windows'
+      shell: msys2 {0}
+      run: |
+        cd tests
+        g++ -std=c++17 -Wall -pedantic -O2 main.cpp -g -o main-portable.exe
+        ./main-portable.exe
+
+  coverage:
+    runs-on: ubuntu-latest
+    name: Coverage Analysis
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup build environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++
+        
+    - name: Run coverage
       run: make coverage
 
-    - uses: codecov/codecov-action@v1
+    - uses: codecov/codecov-action@v4
       with:
         files: tests/gcov-files/* # optional
         #        flags: unittests # optional
