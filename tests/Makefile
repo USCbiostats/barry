@@ -39,7 +39,7 @@ clean:
 	rm -f main*.o; rm -f *.gcov; rm -f *gcno; rm -f *gcda
 
 coverage: mainv.o
-	./mainv.o && gcov -r main.cpp && \
+	./mainv.o && gcov -r mainv.o-main.cpp && \
 		rm catch*.hpp.gcov && \
 		mv *.hpp.gcov gcov-files/ && $(MAKE) clean
 
