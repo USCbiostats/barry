@@ -112,6 +112,22 @@ C triads          : 1
 Mutuals           : 3
 ```
 
+# Building and Testing
+
+The project includes a Makefile with various build targets. To see all available options, run:
+
+```bash
+make help
+```
+
+This will display all available targets including:
+- `tests` - Build and run tests with OpenMP
+- `test-portable` - Build and run tests without OpenMP (cross-platform)
+- `coverage` - Run tests with coverage analysis
+- `docs` - Generate documentation
+
+The default target is `help`, so running `make` without arguments will show the available options.
+
 # Features
 
 ## Efficient memory usage
