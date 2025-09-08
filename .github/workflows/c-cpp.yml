@@ -62,6 +62,36 @@ jobs:
         g++ -std=c++17 -Wall -pedantic -O2 main.cpp -g -o main-portable.exe
         ./main-portable.exe
 
+  test-openmp:
+    runs-on: ubuntu-latest
+    name: Test with OpenMP (Linux)
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup build environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++
+        
+    - name: Build and run tests with OpenMP
+      run: make tests
+
+  test-valgrind:
+    runs-on: ubuntu-latest
+    name: Memory leak check with Valgrind (Linux)
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup build environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++ valgrind
+        
+    - name: Build and run tests with valgrind
+      run: |
+        cd tests
+        make checkv
+
   coverage:
     runs-on: ubuntu-latest
     name: Coverage Analysis
