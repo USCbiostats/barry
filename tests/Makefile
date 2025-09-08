@@ -32,8 +32,8 @@ mainsan.o: %.cpp
 checkv: mainv.o
 	valgrind --leak-check=full --track-origins=yes ./mainv.o #valgrind --tool=cachegrind ./main
 
-mainv.o: main.cpp
-	g++ $(CPPFLAGSV) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o mainv.o
+main: main.cpp
+	g++ $(CPPFLAGSV) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o main
 
 clean:
 	rm -f main*.o; rm -f *.gcov; rm -f *gcno; rm -f *gcda
@@ -60,3 +60,7 @@ main.cachegrind.out: main.o
 
 10.o: 10-geese-predict.cpp
 	$(CPP) $(CPPFLAGS) -O2 -g 10-geese-predict.cpp -o 10.o
+
+# Target depends on cpp file
+%.o: %.cpp
+	$(CPP) $(CPPFLAGS) -O2 -g $< -o $@

@@ -18,7 +18,7 @@
  * ## Intercept effects
  * 
  * Intercept effects only involve a single set of curly brackets. Using the
- * 'greater-than' symbol (i.e., '<') is only for transition effects. When
+ * 'greater-than' symbol (i.e., '>') is only for transition effects. When
  * specifying intercept effects, users can skip the `row_id`, e.g.,
  * `y0_0` is equivalent to `y0`. If the passed `row id` is different from
  * the Markov order, i.e., `row_id != m_order`, then the function returns
@@ -48,7 +48,9 @@ inline void defm_motif_parser(
     std::vector< size_t > & locations,
     std::vector< bool > & signs,
     size_t m_order,
-    size_t y_ncol
+    size_t y_ncol,
+    std::string & covar_name,
+    std::string & vname
 )
 {
     // Resetting the results
@@ -56,11 +58,13 @@ inline void defm_motif_parser(
     signs.clear();
 
     std::regex pattern_intercept(
-        "\\{\\s*0?y[0-9]+(_[0-9]+)?(\\s*,\\s*0?y[0-9]+(_[0-9]+)?)*\\s*\\}"
+        std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
+        std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
         );
     std::regex pattern_transition(
-        std::string("\\{\\s*0?y[0-9]+(_[0-9]+)?(\\s*,\\s*0?y[0-9]+(_[0-9]+)?)*\\}\\s*(>)\\s*") +
-        std::string("\\{\\s*0?y[0-9]+(_[0-9]+)?(\\s*,\\s*0?y[0-9]+(_[0-9]+)?)*\\s*\\}")
+        std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\}\\s*(>)\\s*") +
+        std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
+        std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
         );
 
     auto empty = std::sregex_iterator();
@@ -77,6 +81,22 @@ inline void defm_motif_parser(
         if (m_order == 0)
             throw std::logic_error("Transition effects are only valid when the data is a markov process.");
 
+        // Matching the pattern '| [no spaces]$'
+        std::regex pattern_conditional(".+[}]\\s+x\\s+([^(]+)([(][^)]+[)])?\\s*$");
+        std::smatch condmatch;
+        std::regex_match(formula, condmatch, pattern_conditional);
+        // Extracting the [no_spaces] part of the conditional
+        if (!condmatch.empty())
+        {
+            covar_name = condmatch[1].str();
+            vname = condmatch[2].str();
+
+            // Removing starting and ending parenthesis
+            if (vname != "")
+                vname = vname.substr(1, vname.size() - 2);
+
+        }
+
         // Will indicate where the arrow is located at
         size_t arrow_position = match.position(4u);
 
@@ -92,13 +112,9 @@ inline void defm_motif_parser(
             size_t current_location = i->position(0u);
 
             // First value true/false
-            bool is_positive;
-            if (i->operator[](1u).str() == "")
-                is_positive = true;
-            else if (i->operator[](1u).str() == "0")
+            bool is_positive = true;
+            if (i->operator[](1u).str() == "0")
                 is_positive = false;
-            else
-                throw std::logic_error("The number preceding y should be either none or zero.");
 
             // Variable position
             size_t y_col = std::stoul(i->operator[](2u).str());
@@ -161,7 +177,23 @@ inline void defm_motif_parser(
     } 
     
     std::regex_match(formula, match, pattern_intercept);
-    if (!match.empty()){
+    if (!match.empty())
+    {
+
+        // Matching the pattern '| [no spaces]$'
+        std::regex pattern_conditional(".+[}]\\s+x\\s+([^(]+)([(][^)]+[)])?\\s*$");
+        std::smatch condmatch;
+        std::regex_match(formula, condmatch, pattern_conditional);
+        // Extracting the [no_spaces] part of the conditional
+        if (!condmatch.empty())
+        {
+            covar_name = condmatch[1].str();
+            vname = condmatch[2].str();
+
+            // Removing starting and ending parenthesis
+            if (vname != "")
+                vname = vname.substr(1, vname.size() - 2);
+        }
 
         // This pattern will match 
         std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
@@ -172,13 +204,9 @@ inline void defm_motif_parser(
         {
             
             // First value true/false
-            bool is_positive;
-            if (i->operator[](1u).str() == "")
-                is_positive = true;
-            else if (i->operator[](1u).str() == "0")
+            bool is_positive = true;
+            if (i->operator[](1u).str() == "0")
                 is_positive = false;
-            else
-                throw std::logic_error("The number preceding y should be either none or zero.");
 
             // Variable position
             size_t y_col = std::stoul(i->operator[](2u).str());

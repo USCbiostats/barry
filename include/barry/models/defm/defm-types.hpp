@@ -23,6 +23,7 @@ public:
     size_t X_nrow; ///< Number of rows in the array of covariates.
     std::vector< size_t > covar_sort; /// Value where the sorting of the covariates is stored.
     std::vector< size_t > covar_used; /// Vector indicating which covariates are included in the model
+    bool column_major;
     
     DEFMData() {};
     
@@ -38,9 +39,10 @@ public:
         const double * covariates_,
         size_t obs_start_,
         size_t X_ncol_,
-        size_t X_nrow_
+        size_t X_nrow_,
+        bool column_major_
     ) : array(array_), covariates(covariates_), obs_start(obs_start_),
-    X_ncol(X_ncol_), X_nrow(X_nrow_) {}; 
+    X_ncol(X_ncol_), X_nrow(X_nrow_), column_major(column_major_) {}; 
 
     /**
      * @brief Access to the row (i) colum (j) data
@@ -117,7 +119,12 @@ public:
 
 inline double DEFMData::operator()(size_t i, size_t j) const
 {
-    return *(covariates + (obs_start + j * X_nrow + i));
+
+    if (column_major)
+        return *(covariates + (obs_start + i + X_nrow * j));
+    else
+        return *(covariates + ((obs_start + i) * X_ncol + j));
+
 }
 
 inline size_t DEFMData::ncol() const {
@@ -135,7 +142,9 @@ inline void DEFMData::print() const {
 
         printf_barry("row %li (%li): ", i, obs_start + i);
         for (size_t j = 0u; j < X_ncol; ++j)
+        {
             printf_barry("% 5.2f, ", operator()(i, j));
+        }
         printf_barry("\n");
         
     }
@@ -149,18 +158,26 @@ inline void DEFMData::print() const {
  */
 ///@{
 
-class DEFMRuleDynData : public DEFMRuleData {
+class DEFMRuleDynData {
 public:
     const std::vector< double > * counts;
+    size_t pos;
+    size_t lb;
+    size_t ub;
     
     DEFMRuleDynData(
         const std::vector< double > * counts_,
-        std::vector< double > numbers_ = {},
-        std::vector< size_t > indices_ = {},
-        std::vector< bool > logical_ = {}
-        ) : DEFMRuleData(numbers_, indices_, logical_), counts(counts_) {};
+        size_t pos_,
+        size_t lb_,
+        size_t ub_
+        ) : counts(counts_), pos(pos_), lb(lb_), ub(ub_) {};
     
     ~DEFMRuleDynData() {};
+
+    const double operator()() const
+    {
+        return (*counts)[pos];
+    }
     
 };
 

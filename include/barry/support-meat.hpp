@@ -553,9 +553,8 @@ inline bool Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
 // }
 
 //////////////////////////
-
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
-inline std::vector< double > Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_counts() const {
+inline const std::vector< double > & Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::get_counts() const {
     
     return data.get_data(); 
     
@@ -578,7 +577,8 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
 
     // Starting from the name of the stats
     printf_barry("Position of variables:\n");
-    for (size_t i = 0u; i < n_counters; ++i) {
+    for (size_t i = 0u; i < n_counters; ++i)
+    {
         printf_barry("[% 2li] %s\n", i, counters->operator[](i).name.c_str());
     }
 

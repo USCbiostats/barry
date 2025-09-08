@@ -25,7 +25,7 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
         };
 
     DEFMArray A1(3, 3);
-    A1.set_data(new DEFMData(&A1, &covars[0u], 0, 2, 3), true);
+    A1.set_data(new DEFMData(&A1, &covars[0u], 0, 2, 3, true), true);
     A1(0, 0) = 1;
     A1(0, 1) = 1;
     A1(1, 1) = 1;
@@ -85,6 +85,8 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     // Creating the model, need to pass the data
     DEFM model(&id[0u], &Y[0u], &X[0u], 8, 3, 2, 2);
     model.get_model().store_psets();
+
+    model.set_names({"A", "B", "C"}, {"X1", "X2"});
     
     // Generating the model specification
     counter_ones(model.get_model().get_counters());
@@ -158,6 +160,66 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     std::vector< double > params2(model2.get_model().nterms(), 0.0);
     model2.simulate(params2, &out_sim2[0u]);
 
+    // Checking formulas -------------------------------------------------------
+
+    // Creating the model, need to pass the data
+    DEFM model3(&id[0u], &Y[0u], &X[0u], 8, 3, 2, 2);
+    model3.get_model().store_psets();
+
+    model3.set_names({"A", "B", "C"}, {"X1", "X2"});
+    
+    // Generating the model specification
+    counter_ones(model3.get_model().get_counters());
+    counter_transition_formula(
+        model3.get_counters(), "{y0}", 2, 3, -1,
+        "", &model3.get_X_names(), &model3.get_Y_names()
+        );
+    counter_transition_formula(
+        model3.get_counters(), "{y0} x X2", 2, 3, -1,
+        "", &model3.get_X_names(), &model3.get_Y_names()
+        );
+
+    counter_transition_formula(
+        model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X2(Space 1)", 2, 3, -1,
+        "", &model3.get_X_names(), &model3.get_Y_names()
+        );
+
+    counter_transition_formula(
+        model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X1(excess)", 2, 3, -1,
+        "", &model3.get_X_names(), &model3.get_Y_names()
+        );
+
+
+    model3.init();
+
+    DEFM model3b(&id[0u], &Y[0u], &X[0u], 8, 3, 2, 2);
+    model3b.get_model().store_psets();
+
+    model3b.set_names({"A", "B", "C"}, {"X1", "X2"});
+    
+    // Generating the model specification
+    counter_ones(model3b.get_model().get_counters());
+    counter_transition_formula(
+        model3b.get_counters(), "{y0}", 2, 3, -1,
+        "", &model3b.get_X_names(), &model3b.get_Y_names()
+        );
+    counter_transition_formula(
+        model3b.get_counters(), "{y0}", 2, 3, 1,
+        "", &model3b.get_X_names(), &model3b.get_Y_names()
+        );
+
+    counter_transition_formula(
+        model3b.get_counters(), "{0y0_0} > {1y0, 1y2}", 2, 3, 1,
+        "Space 1", &model3b.get_X_names(), &model3b.get_Y_names()
+        );
+
+    counter_transition_formula(
+        model3b.get_counters(), "{0y0_0} > {1y0, 1y2}", 2, 3, 0,
+        "excess", &model3b.get_X_names(), &model3b.get_Y_names()
+        );
+
+    model3b.init();
+
     #ifndef CATCH_CONFIG_MAIN
     auto res = model.get_model().likelihood_total(par0, true);
     model.get_model().print();
@@ -165,7 +227,17 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     model.get_model().print_stats(1u);
     model.get_model().print_stats(2u);
     (void) model.get_model().get_stats_target();
+    model.print();
+    model3.print();
+    model3b.print();
     return 0;
+    #else
+
+    auto terms3 = model3.get_counters()->get_names();
+    auto terms3b = model3b.get_counters()->get_names();
+
+    REQUIRE_THAT(terms3, Catch::Equals(terms3b));
+
     #endif
 
 
