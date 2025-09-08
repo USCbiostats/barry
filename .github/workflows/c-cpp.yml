@@ -106,7 +106,7 @@ jobs:
     - name: Run coverage
       run: make coverage
 
-    - uses: codecov/codecov-action@v4
+    - uses: codecov/codecov-action@v5
       with:
         files: tests/gcov-files/* # optional
         #        flags: unittests # optional
@@ -114,4 +114,5 @@ jobs:
         fail_ci_if_error: true # optional (default = false)
         gcov_path_exclude: tests/catch.hpp
         verbose: true # optional (default = false)
+        token: ${{ secrets.CODECOV_TOKEN }}
 
