@@ -7,16 +7,106 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Linux - AMD64 (standard GitHub runners)
+          - os: ubuntu-latest
+            name: "Linux (x64)"
+          # macOS - Intel and Apple Silicon
+          - os: macos-13
+            name: "macOS (Intel x64)"
+          - os: macos-latest
+            name: "macOS (Apple Silicon ARM64)"
+          # Windows - AMD64
+          - os: windows-latest
+            name: "Windows (x64)"
 
-    runs-on: ubuntu-latest
+    name: Test on ${{ matrix.name }}
 
     steps:
-    - uses: actions/checkout@v2
-    - name: make tests
+    - uses: actions/checkout@v4
+    
+    - name: Setup build environment (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++
+    
+    - name: Setup build environment (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        # Ensure we have a C++ compiler
+        which clang++ || echo "clang++ not found"
+        clang++ --version || echo "clang++ version check failed"
+    
+    - name: Setup build environment (Windows)
+      if: runner.os == 'Windows'
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        install: mingw-w64-x86_64-gcc
+    
+    - name: Build and run tests (Unix)
+      if: runner.os != 'Windows'
+      run: make test-portable
+    
+    - name: Build and run tests (Windows)
+      if: runner.os == 'Windows'
+      shell: msys2 {0}
+      run: |
+        cd tests
+        g++ -std=c++17 -Wall -pedantic -O2 main.cpp -g -o main-portable.exe
+        ./main-portable.exe
+
+  test-openmp:
+    runs-on: ubuntu-latest
+    name: Test with OpenMP (Linux)
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup build environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++
+        
+    - name: Build and run tests with OpenMP
+      run: make tests
+
+  test-valgrind:
+    runs-on: ubuntu-latest
+    name: Memory leak check with Valgrind (Linux)
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup build environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++ valgrind
+        
+    - name: Build and run tests with valgrind
+      run: |
+        cd tests
+        make checkv
+
+  coverage:
+    runs-on: ubuntu-latest
+    name: Coverage Analysis
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup build environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++
+        
+    - name: Run coverage
       run: make coverage
 
-    - uses: codecov/codecov-action@v1
+    - uses: codecov/codecov-action@v5
       with:
         files: tests/gcov-files/* # optional
         #        flags: unittests # optional
@@ -24,4 +114,5 @@ jobs:
         fail_ci_if_error: true # optional (default = false)
         gcov_path_exclude: tests/catch.hpp
         verbose: true # optional (default = false)
+        token: ${{ secrets.CODECOV_TOKEN }}
 
