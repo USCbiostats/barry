@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/cpp
 {
-	"name": "C++",
+	"name": "defm C++",
 	"build": {
 		"dockerfile": "Containerfile"
 	},
@@ -35,5 +35,6 @@
 	"mounts": [
         // Mount the .vscode configuration into the container
         "source=${localWorkspaceFolder}/.devcontainer/.vscode,target=/workspaces/${localWorkspaceFolderBasename}/.vscode,type=bind,consistency=cached"
-    ]
+    ],
+	"remoteUser": "root"
 }

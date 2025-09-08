@@ -7803,7 +7803,8 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
         #ifdef BARRY_DEBUG
         // Making sure the probabilities add to one
         double totprob = 0.0;
-            totprob += pset_probs[pset_start + i_];
+        for (size_t i_ = 0u; i_ < pset_sizes[s]; ++i)
+            totprob =+ pset_probs[pset_start + i_];
 
         if (std::abs(totprob - 1) > 1e-6)
             throw std::runtime_error(

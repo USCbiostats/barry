@@ -1,0 +1,8 @@
+- This repository implements an statistical framework for estimating markov models using sufficient statistics.
+- The code is implemented in C++ using template programming and header-only libraries.
+- Every new feature should be covered by unit tests. The unit tests should be generally simple and should be one `BARRY_TEST_CASE` each file, since the tests can also be executed as a single program (see how the macro is defined).
+- The code should be documented using Doxygen style comments.
+- The code should follow the style of the existing code as closely as possible.
+- The code should be efficient and avoid unnecessary computations or memory allocations.
+- The code should be portable and should not rely on platform-specific features or libraries.
+- The code should be compatible with C++17 or later.
