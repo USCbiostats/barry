@@ -30,16 +30,6 @@
 
 /* Versioning */
 #define BARRY_VERSION_MAYOR 0
-<<<<<<< HEAD
-#define BARRY_VERSION_MINOR 1
-#define BARRY_VERSION_PATCH 0
-
-static const size_t barry_version_mayor = BARRY_VERSION_MAYOR;
-static const size_t barry_version_minor = BARRY_VERSION_MINOR;
-static const size_t barry_version_patch = BARRY_VERSION_PATCH;
-
-#define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR ## . ## BARRY_VERSION_PATCH
-=======
 #define BARRY_VERSION_MINOR 2
 #define BARRY_VERSION_PATCH 0
 #define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR ## . ## BARRY_VERSION_PATCH
@@ -47,7 +37,6 @@ static const size_t barry_version_patch = BARRY_VERSION_PATCH;
 static const int barry_version_major = BARRY_VERSION_MAYOR;
 static const int barry_version_minor = BARRY_VERSION_MINOR;
 static const int barry_version_patch = BARRY_VERSION_PATCH;
->>>>>>> master
 
 /**
   * @brief barry: Your go-to motif accountant
