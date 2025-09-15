@@ -1215,9 +1215,6 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Ty
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    // const auto & S = stats_support[arrays2support[i]];
-    size_t array_id = arrays2support[i];
-
     size_t k       = nterms();
     size_t nunique = stats_support_sizes.size();
 
