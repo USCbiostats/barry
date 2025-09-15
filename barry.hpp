@@ -2663,7 +2663,8 @@ inline void  BArray<Cell_Type, Data_Type>:: print_n (
 
     std::va_list args;
     va_start(args, fmt);
-    printf_barry(fmt, args);
+    if (fmt != nullptr)
+        printf_barry(fmt, args);
     va_end(args);
 
     for (size_t i = 0u; i < nrow; ++i)
@@ -4640,7 +4641,8 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
   
     std::va_list args;
     va_start(args, fmt);
-    printf_barry(fmt, args);
+    if (fmt != nullptr)
+        printf_barry(fmt, args);
     va_end(args);
 
     for (size_t i = 0u; i < N; ++i)

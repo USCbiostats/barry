@@ -5,7 +5,13 @@ BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
        cell-*.gcov powerset-*.gcov support-*.gcov \
        statscounter*.gcov statsdb*.gcov
 
-CPPFLAGS= -std=c++17 -fopenmp -Wall -pedantic -march=native -Wbool-operation # only works with g++10
+ifdef NO_OPENMP
+_OPENMP=
+else
+_OPENMP=-fopenmp
+endif
+
+CPPFLAGS= -std=c++17 $(_OPENMP) -Wall -pedantic -march=native -Wbool-operation # only works with g++10
 
 CPPFLAGSV= -std=c++17 -Wall -pedantic
 

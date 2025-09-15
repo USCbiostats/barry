@@ -71,12 +71,9 @@ BARRY_TEST_CASE("Computing support for networks (with Model)", "[support w model
   netcounters::Network net2 = model.sample(0, p2);
 
   std::cout << "Printing networks" << std::endl;
-  std::cout << "Net 0" << std::endl;
-  net0.print();
-  std::cout << "Net 1" << std::endl;
-  net1.print();
-  std::cout << "Net 2" << std::endl;
-  net2.print();
+  net0.print("Net 0\n");
+  net1.print("Net 1\n");
+  net2.print("Net 2\n");
 
 
   std::vector< double > logs0(2);
