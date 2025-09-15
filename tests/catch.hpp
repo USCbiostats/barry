@@ -2888,15 +2888,15 @@ namespace Catch {
 
 namespace Catch {
 
-    auto getCurrentNanosecondsSinceEpoch() -> uint64_t;
-    auto getEstimatedClockResolution() -> uint64_t;
+    auto getCurrentNanosecondsSinceEpoch() -> size_t64_t;
+    auto getEstimatedClockResolution() -> size_t64_t;
 
     class Timer {
-        uint64_t m_nanoseconds = 0;
+        size_t64_t m_nanoseconds = 0;
     public:
         void start();
-        auto getElapsedNanoseconds() const -> uint64_t;
-        auto getElapsedMicroseconds() const -> uint64_t;
+        auto getElapsedNanoseconds() const -> size_t64_t;
+        auto getElapsedMicroseconds() const -> size_t64_t;
         auto getElapsedMilliseconds() const -> unsigned int;
         auto getElapsedSeconds() const -> double;
     };
@@ -3424,7 +3424,7 @@ namespace Matchers {
 
     namespace Floating {
 
-        enum class FloatingPointKind : uint8_t;
+        enum class FloatingPointKind : size_t8_t;
 
         struct WithinAbsMatcher : MatcherBase<double> {
             WithinAbsMatcher(double target, double margin);
@@ -3436,12 +3436,12 @@ namespace Matchers {
         };
 
         struct WithinUlpsMatcher : MatcherBase<double> {
-            WithinUlpsMatcher(double target, uint64_t ulps, FloatingPointKind baseType);
+            WithinUlpsMatcher(double target, size_t64_t ulps, FloatingPointKind baseType);
             bool match(double const& matchee) const override;
             std::string describe() const override;
         private:
             double m_target;
-            uint64_t m_ulps;
+            size_t64_t m_ulps;
             FloatingPointKind m_type;
         };
 
@@ -3464,8 +3464,8 @@ namespace Matchers {
 
     // The following functions create the actual matcher objects.
     // This allows the types to be inferred
-    Floating::WithinUlpsMatcher WithinULP(double target, uint64_t maxUlpDiff);
-    Floating::WithinUlpsMatcher WithinULP(float target, uint64_t maxUlpDiff);
+    Floating::WithinUlpsMatcher WithinULP(double target, size_t64_t maxUlpDiff);
+    Floating::WithinUlpsMatcher WithinULP(float target, size_t64_t maxUlpDiff);
     Floating::WithinAbsMatcher WithinAbs(double target, double margin);
     Floating::WithinRelMatcher WithinRel(double target, double eps);
     // defaults epsilon to 100*numeric_limits<double>::epsilon()
@@ -4556,9 +4556,9 @@ namespace Catch {
     // distributions.
     // The implementation is based on the PCG family (http://pcg-random.org)
     class SimplePcg32 {
-        using state_type = std::uint64_t;
+        using state_type = std::size_t64_t;
     public:
-        using result_type = std::uint32_t;
+        using result_type = std::size_t32_t;
         static constexpr result_type (min)() {
             return 0;
         }
@@ -4572,7 +4572,7 @@ namespace Catch {
         explicit SimplePcg32(result_type seed_);
 
         void seed(result_type seed_);
-        void discard(uint64_t skip);
+        void discard(size_t64_t skip);
 
         result_type operator()();
 
@@ -4583,12 +4583,12 @@ namespace Catch {
         // In theory we also need operator<< and operator>>
         // In practice we do not use them, so we will skip them for now
 
-        std::uint64_t m_state;
+        std::size_t64_t m_state;
         // This part of the state determines which "stream" of the numbers
         // is chosen -- we take it as a constant for Catch2, so we only
         // need to deal with seeding the main state.
         // Picked by reading 8 bytes from `/dev/random` :-)
-        static const std::uint64_t s_inc = (0x13ed0cc53f939476ULL << 1ULL) | 1ULL;
+        static const std::size_t64_t s_inc = (0x13ed0cc53f939476ULL << 1ULL) | 1ULL;
     };
 
 } // end namespace Catch
@@ -11498,7 +11498,7 @@ namespace {
     }
 
     template <typename FP>
-    bool almostEqualUlps(FP lhs, FP rhs, uint64_t maxUlpDiff) {
+    bool almostEqualUlps(FP lhs, FP rhs, size_t64_t maxUlpDiff) {
         // Comparison with NaN should always be false.
         // This way we can rule it out before getting into the ugly details
         if (Catch::isnan(lhs) || Catch::isnan(rhs)) {
@@ -11515,7 +11515,7 @@ namespace {
 
         // static cast as a workaround for IBM XLC
         auto ulpDiff = std::abs(static_cast<FP>(lc - rc));
-        return static_cast<uint64_t>(ulpDiff) <= maxUlpDiff;
+        return static_cast<size_t64_t>(ulpDiff) <= maxUlpDiff;
     }
 
 #if defined(CATCH_CONFIG_GLOBAL_NEXTAFTER)
@@ -11531,8 +11531,8 @@ namespace {
 #endif // ^^^ CATCH_CONFIG_GLOBAL_NEXTAFTER ^^^
 
 template <typename FP>
-FP step(FP start, FP direction, uint64_t steps) {
-    for (uint64_t i = 0; i < steps; ++i) {
+FP step(FP start, FP direction, size_t64_t steps) {
+    for (size_t64_t i = 0; i < steps; ++i) {
 #if defined(CATCH_CONFIG_GLOBAL_NEXTAFTER)
         start = Catch::nextafter(start, direction);
 #else
@@ -11560,7 +11560,7 @@ void write(std::ostream& out, FloatingPoint num) {
 namespace Matchers {
 namespace Floating {
 
-    enum class FloatingPointKind : uint8_t {
+    enum class FloatingPointKind : size_t8_t {
         Float,
         Double
     };
@@ -11581,10 +11581,10 @@ namespace Floating {
         return "is within " + ::Catch::Detail::stringify(m_margin) + " of " + ::Catch::Detail::stringify(m_target);
     }
 
-    WithinUlpsMatcher::WithinUlpsMatcher(double target, uint64_t ulps, FloatingPointKind baseType)
+    WithinUlpsMatcher::WithinUlpsMatcher(double target, size_t64_t ulps, FloatingPointKind baseType)
         :m_target{ target }, m_ulps{ ulps }, m_type{ baseType } {
         CATCH_ENFORCE(m_type == FloatingPointKind::Double
-                   || m_ulps < (std::numeric_limits<uint32_t>::max)(),
+                   || m_ulps < (std::numeric_limits<size_t32_t>::max)(),
             "Provided ULP is impossibly large for a float comparison.");
     }
 
@@ -11658,11 +11658,11 @@ namespace Floating {
 
 }// namespace Floating
 
-Floating::WithinUlpsMatcher WithinULP(double target, uint64_t maxUlpDiff) {
+Floating::WithinUlpsMatcher WithinULP(double target, size_t64_t maxUlpDiff) {
     return Floating::WithinUlpsMatcher(target, maxUlpDiff, Floating::FloatingPointKind::Double);
 }
 
-Floating::WithinUlpsMatcher WithinULP(float target, uint64_t maxUlpDiff) {
+Floating::WithinUlpsMatcher WithinULP(float target, size_t64_t maxUlpDiff) {
     return Floating::WithinUlpsMatcher(target, maxUlpDiff, Floating::FloatingPointKind::Float);
 }
 
@@ -12215,11 +12215,11 @@ namespace {
 
 #if defined(_MSC_VER)
 #pragma warning(push)
-#pragma warning(disable:4146) // we negate uint32 during the rotate
+#pragma warning(disable:4146) // we negate size_t32 during the rotate
 #endif
         // Safe rotr implementation thanks to John Regehr
-        uint32_t rotate_right(uint32_t val, uint32_t count) {
-            const uint32_t mask = 31;
+        size_t32_t rotate_right(size_t32_t val, size_t32_t count) {
+            const size_t32_t mask = 31;
             count &= mask;
             return (val >> count) | (val << (-count & mask));
         }
@@ -12241,17 +12241,17 @@ namespace {
         (*this)();
     }
 
-    void SimplePcg32::discard(uint64_t skip) {
+    void SimplePcg32::discard(size_t64_t skip) {
         // We could implement this to run in O(log n) steps, but this
         // should suffice for our use case.
-        for (uint64_t s = 0; s < skip; ++s) {
+        for (size_t64_t s = 0; s < skip; ++s) {
             static_cast<void>((*this)());
         }
     }
 
     SimplePcg32::result_type SimplePcg32::operator()() {
         // prepare the output value
-        const uint32_t xorshifted = static_cast<uint32_t>(((m_state >> 18u) ^ m_state) >> 27u);
+        const size_t32_t xorshifted = static_cast<size_t32_t>(((m_state >> 18u) ^ m_state) >> 27u);
         const auto output = rotate_right(xorshifted, m_state >> 59u);
 
         // advance state
@@ -14195,12 +14195,12 @@ namespace Catch {
 
     namespace {
         struct TestHasher {
-            using hash_t = uint64_t;
+            using hash_t = size_t64_t;
 
             explicit TestHasher( hash_t hashSuffix ):
                 m_hashSuffix{ hashSuffix } {}
 
-            uint32_t operator()( TestCase const& t ) const {
+            size_t32_t operator()( TestCase const& t ) const {
                 // FNV-1a hash with multiplication fold.
                 const hash_t prime = 1099511628211u;
                 hash_t hash = 14695981039346656037u;
@@ -14210,8 +14210,8 @@ namespace Catch {
                 }
                 hash ^= m_hashSuffix;
                 hash *= prime;
-                const uint32_t low{ static_cast<uint32_t>( hash ) };
-                const uint32_t high{ static_cast<uint32_t>( hash >> 32 ) };
+                const size_t32_t low{ static_cast<size_t32_t>( hash ) };
+                const size_t32_t high{ static_cast<size_t32_t>( hash >> 32 ) };
                 return low * high;
             }
 
@@ -14937,25 +14937,25 @@ namespace Catch {
 
 #include <chrono>
 
-static const uint64_t nanosecondsInSecond = 1000000000;
+static const size_t64_t nanosecondsInSecond = 1000000000;
 
 namespace Catch {
 
-    auto getCurrentNanosecondsSinceEpoch() -> uint64_t {
+    auto getCurrentNanosecondsSinceEpoch() -> size_t64_t {
         return std::chrono::duration_cast<std::chrono::nanoseconds>( std::chrono::high_resolution_clock::now().time_since_epoch() ).count();
     }
 
     namespace {
-        auto estimateClockResolution() -> uint64_t {
-            uint64_t sum = 0;
-            static const uint64_t iterations = 1000000;
+        auto estimateClockResolution() -> size_t64_t {
+            size_t64_t sum = 0;
+            static const size_t64_t iterations = 1000000;
 
             auto startTime = getCurrentNanosecondsSinceEpoch();
 
             for( std::size_t i = 0; i < iterations; ++i ) {
 
-                uint64_t ticks;
-                uint64_t baseTicks = getCurrentNanosecondsSinceEpoch();
+                size_t64_t ticks;
+                size_t64_t baseTicks = getCurrentNanosecondsSinceEpoch();
                 do {
                     ticks = getCurrentNanosecondsSinceEpoch();
                 } while( ticks == baseTicks );
@@ -14976,7 +14976,7 @@ namespace Catch {
             return sum/iterations;
         }
     }
-    auto getEstimatedClockResolution() -> uint64_t {
+    auto getEstimatedClockResolution() -> size_t64_t {
         static auto s_resolution = estimateClockResolution();
         return s_resolution;
     }
@@ -14984,10 +14984,10 @@ namespace Catch {
     void Timer::start() {
        m_nanoseconds = getCurrentNanosecondsSinceEpoch();
     }
-    auto Timer::getElapsedNanoseconds() const -> uint64_t {
+    auto Timer::getElapsedNanoseconds() const -> size_t64_t {
         return getCurrentNanosecondsSinceEpoch() - m_nanoseconds;
     }
-    auto Timer::getElapsedMicroseconds() const -> uint64_t {
+    auto Timer::getElapsedMicroseconds() const -> size_t64_t {
         return getElapsedNanoseconds()/1000;
     }
     auto Timer::getElapsedMilliseconds() const -> unsigned int {
@@ -15456,7 +15456,7 @@ namespace {
         CATCH_INTERNAL_ERROR("Invalid multibyte utf-8 start byte encountered");
     }
 
-    uint32_t headerValue(unsigned char c) {
+    size_t32_t headerValue(unsigned char c) {
         if ((c & 0xE0) == 0xC0) {
             return c & 0x1F;
         }
@@ -15569,7 +15569,7 @@ namespace {
                 // The next encBytes bytes must together be a valid utf-8
                 // This means: bitpattern 10XX XXXX and the extracted value is sane (ish)
                 bool valid = true;
-                uint32_t value = headerValue(c);
+                size_t32_t value = headerValue(c);
                 for (std::size_t n = 1; n < encBytes; ++n) {
                     unsigned char nc = m_str[idx + n];
                     valid &= ((nc & 0xC0) == 0x80);
@@ -16303,10 +16303,10 @@ class Duration {
         Seconds,
         Minutes
     };
-    static const uint64_t s_nanosecondsInAMicrosecond = 1000;
-    static const uint64_t s_nanosecondsInAMillisecond = 1000 * s_nanosecondsInAMicrosecond;
-    static const uint64_t s_nanosecondsInASecond = 1000 * s_nanosecondsInAMillisecond;
-    static const uint64_t s_nanosecondsInAMinute = 60 * s_nanosecondsInASecond;
+    static const size_t64_t s_nanosecondsInAMicrosecond = 1000;
+    static const size_t64_t s_nanosecondsInAMillisecond = 1000 * s_nanosecondsInAMicrosecond;
+    static const size_t64_t s_nanosecondsInASecond = 1000 * s_nanosecondsInAMillisecond;
+    static const size_t64_t s_nanosecondsInAMinute = 60 * s_nanosecondsInASecond;
 
     double m_inNanoseconds;
     Unit m_units;

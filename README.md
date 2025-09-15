@@ -34,7 +34,7 @@ graph, and count common statistics used in ERGMs:
 #include <ostream>
 #include "../include/barry.hpp"
 
-typedef std::vector< unsigned int > vuint;
+typedef std::vector< size_t > vsize_t;
 
 int main() {
   // Creating network of size six with five ties

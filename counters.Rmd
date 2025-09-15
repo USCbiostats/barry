@@ -15,12 +15,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```cpp
 
 // Common classes
-typedef unsigned int uint;
 typedef std::vector< int > ivec;
-typedef std::vector< uint > uvec;
+typedef std::vector< size_t > uvec;
 typedef std::vector< double > dvec;
-typedef std::unordered_map< uint, double > map2dbl;
-typedef std::unordered_map< uint, map2dbl > map2map;
+typedef std::unordered_map< size_t, double > map2dbl;
+typedef std::unordered_map< size_t, map2dbl > map2map;
 
 class array {
 public:
@@ -29,37 +28,37 @@ public:
   
   /* Queries
    */
-  uint nrow() const {return nrow_;}
-  uint ncol() const {return ncol_;}
-  bool is_blocked(uint row, uint col) const;
-  bool is_in_range(uint row, uint col) const;
+  size_t nrow() const {return nrow_;}
+  size_t ncol() const {return ncol_;}
+  bool is_blocked(size_t row, size_t col) const;
+  bool is_in_range(size_t row, size_t col) const;
   
   /* Return the content of a cell
    * @param row,col coordinates of the cell to be query.
    * @param check Logical. When `true` the function checks boundaries 
    *  before returning.
    */
-  int cell(uint row, uint col, bool check = true);
+  int cell(size_t row, size_t col, bool check = true);
   
   /* Return a full row or column as a 0/1 vector
    * 
    */
-  uvec row(uint i, bool check = true);
-  uvec col(uint i, bool check = true);
+  uvec row(size_t i, bool check = true);
+  uvec col(size_t i, bool check = true);
   
   /* Returns an interator that as value has the coordinates of the
    * non zero elements of the row.
    */
-  uvec::const_iterator row_const_iterator(uint i, bool check = true);
-  uvec::const_iterator col_const_iterator(uint i, bool check = true);
+  uvec::const_iterator row_const_iterator(size_t i, bool check = true);
+  uvec::const_iterator col_const_iterator(size_t i, bool check = true);
   
   // Actions
-  int set_cell_on(uint row, uint col, bool check = true);
-  int set_cell_off(uint row, uint col, bool check = true);
-  int toggle_cell(uint row, uint col, bool & added, bool check = true);
+  int set_cell_on(size_t row, size_t col, bool check = true);
+  int set_cell_off(size_t row, size_t col, bool check = true);
+  int toggle_cell(size_t row, size_t col, bool & added, bool check = true);
 
 private:
-  uint nrow_, ncol_;
+  size_t nrow_, ncol_;
   TBD blocked_;
   map2map data_;
 
@@ -69,7 +68,7 @@ private:
 Function definitions
 
 ```cpp
-int array::set_cell_on(uint row, uint col, bool check = true) {
+int array::set_cell_on(size_t row, size_t col, bool check = true) {
   
   if (check) {
   
@@ -90,7 +89,7 @@ int array::set_cell_on(uint row, uint col, bool check = true) {
   
 }
 
-int array::set_cell_off(uint row, uint col, bool check = true) {
+int array::set_cell_off(size_t row, size_t col, bool check = true) {
   
   if (check) {
   
@@ -111,7 +110,7 @@ int array::set_cell_off(uint row, uint col, bool check = true) {
   
 }
 
-int array::toggle_cell(uint row, uint col, bool & added, bool check = true) {
+int array::toggle_cell(size_t row, size_t col, bool & added, bool check = true) {
   
   // Checking boundaries
   if (check) {
@@ -150,7 +149,7 @@ public:
    * @param ptr Pointer to an `array` object
    * @param row,col Coordinates where to add it.
    */
-  int array_change(array_pointer array, uint row, uint col, bool check = true) :
+  int array_change(array_pointer array, size_t row, size_t col, bool check = true) :
   row_(row), col_(col), array_(array){
     
     // When turning cells on or off, we also check whether these have values
@@ -167,17 +166,17 @@ public:
   /* Update the change
    * 
    */
-  int toggle(uint row, uint col, bool check = true) {
+  int toggle(size_t row, size_t col, bool check = true) {
     return array_->toggle_cell(row, col, add_, check);
   }
   
   // Queries
-  uint row() {return row_;}
-  uint col() {return col_;}
+  size_t row() {return row_;}
+  size_t col() {return col_;}
   bool is_add() {return add_;}
   
 private:
-  uint row_, col_; 
+  size_t row_, col_; 
   array_pointer array_;
   bool add_;
   
@@ -217,7 +216,7 @@ In change statistics this is very straight forward to implent:
 // deletion or addition of a cell.
 struct array_operation {
   bool is_add;
-  uint row, col;
+  size_t row, col;
 };
 
 int change_single_gains(
