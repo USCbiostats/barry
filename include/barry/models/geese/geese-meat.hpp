@@ -686,12 +686,12 @@ inline void Geese::print() const
     printf_barry(
         "# of ann. [zeros; ones]  : [%i; %i]\n", 
         static_cast<int>(this->n_zeros), 
-        static_cast<int>(this->n_ones())
+        static_cast<int>(this->n_ones)
     );
     printf_barry(
         "# of events [dupl; spec] : [%i; %i]\n", 
         static_cast<int>(this->n_dupl_events), 
-        static_cast<int>(this->n_spec_events())
+        static_cast<int>(this->n_spec_events)
     );
     printf_barry("Largest polytomy         : %i\n", static_cast<int>(parse_polytomies(false)));
     printf_barry("\nINFO ABOUT THE SUPPORT\n");
