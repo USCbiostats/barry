@@ -140,7 +140,11 @@ inline void DEFMData::print() const {
     for (size_t i = 0u; i < array->nrow(); ++i)
     {
 
-        printf_barry("row %li (%li): ", i, obs_start + i);
+        printf_barry(
+            "row %i (%i): ",
+            static_cast<int>(i),
+            static_cast<int>(obs_start + i)
+        );
         for (size_t j = 0u; j < X_ncol; ++j)
         {
             printf_barry("% 5.2f, ", operator()(i, j));

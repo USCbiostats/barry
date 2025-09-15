@@ -110,9 +110,9 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     {
         for (size_t t = 0u; t < 4u; ++t)
         {
-            printf("Begin % 2li: ", i);
+            printf("Begin % 2i: ", static_cast<int>(i));
             for (size_t j = 0u; j < 3u; ++j)
-                printf("% 2i ", out_sim[ncell++]);
+                printf("% 2i ", static_cast<int>(out_sim[ncell++]));
             printf("end\n");
         }
     }

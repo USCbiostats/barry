@@ -306,16 +306,27 @@ inline void Flock::print() const
 
     printf_barry("FLOCK (GROUP OF GEESE)\nINFO ABOUT THE PHYLOGENIES\n");
     
-    printf_barry("# of phylogenies         : %li\n", ntrees());
+    printf_barry("# of phylogenies         : %i\n", static_cast<int>(ntrees()));
     
-    printf_barry("# of functions           : %li\n", nfuns());
-    
-    printf_barry("# of ann. [zeros; ones]  : [%li; %li]\n", nzeros, nones);
-    
-    printf_barry("# of events [dupl; spec] : [%li; %li]\n", ndpl, nspe);
-    
-    printf_barry("Largest polytomy         : %li\n", parse_polytomies(false));
-    
+    printf_barry("# of functions           : %i\n", static_cast<int>(nfuns()));
+
+    printf_barry(
+        "# of ann. [zeros; ones]  : [%i; %i]\n",
+        static_cast<int>(nzeros),
+        static_cast<int>(nones)
+    );
+
+    printf_barry(
+        "# of events [dupl; spec] : [%i; %i]\n",
+        static_cast<int>(ndpl),
+        static_cast<int>(nspe)
+    );
+
+    printf_barry(
+        "Largest polytomy         : %i\n",
+        static_cast<int>(parse_polytomies(false))
+    );
+
     printf_barry("\nINFO ABOUT THE SUPPORT\n");
     
     return this->model.print();

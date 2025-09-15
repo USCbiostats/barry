@@ -31,7 +31,7 @@
 /* Versioning */
 #define BARRY_VERSION_MAYOR 0
 #define BARRY_VERSION_MINOR 2
-#define BARRY_VERSION_PATCH 0
+#define BARRY_VERSION_PATCH 1
 #define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR ## . ## BARRY_VERSION_PATCH
 
 static const int barry_version_major = BARRY_VERSION_MAYOR;
@@ -873,7 +873,7 @@ inline void FreqTable<T>::print() const
 
     }
 
-    printf_barry("Grand total: %li\n", grand_total);
+    printf_barry("Grand total: %i\n", static_cast<int>(grand_total));
 
     return;
 
@@ -2663,7 +2663,8 @@ inline void  BArray<Cell_Type, Data_Type>:: print_n (
 
     std::va_list args;
     va_start(args, fmt);
-    printf_barry(fmt, args);
+    if (fmt != nullptr)
+        printf_barry(fmt, args);
     va_end(args);
 
     for (size_t i = 0u; i < nrow; ++i)
@@ -4640,13 +4641,14 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
   
     std::va_list args;
     va_start(args, fmt);
-    printf_barry(fmt, args);
+    if (fmt != nullptr)
+        printf_barry(fmt, args);
     va_end(args);
 
     for (size_t i = 0u; i < N; ++i)
     {
 
-        printf_barry("[%3li,] ", i);
+        printf_barry("[%3i,] ", static_cast<int>(i));
 
         for (size_t j = 0u; j < M; ++j)
         {
@@ -5074,6 +5076,8 @@ public:
     double init(Array_Type & Array, size_t i, size_t j);
     std::string get_name() const;
     std::string get_description() const;
+    void set_name(std::string new_name);
+    void set_description(std::string new_desc);
 
     /**
      * @brief Get and set the hasher function
@@ -5319,6 +5323,14 @@ COUNTER_TEMPLATE(std::string, get_name)() const {
 
 COUNTER_TEMPLATE(std::string, get_description)() const {
     return this->name;
+}
+
+COUNTER_TEMPLATE(void, set_name)(std::string new_name) {
+    name = new_name;
+}
+
+COUNTER_TEMPLATE(void, set_description)(std::string new_desc) {
+    desc = new_desc;
 }
 
 COUNTER_TEMPLATE(void, set_hasher)(Hasher_fun_type<Array_Type,Data_Type> fun) {
@@ -6703,7 +6715,11 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
     printf_barry("Position of variables:\n");
     for (size_t i = 0u; i < n_counters; ++i)
     {
-        printf_barry("[% 2li] %s\n", i, counters->operator[](i).name.c_str());
+        printf_barry(
+            "[% 2i] %s\n",
+            static_cast<int>(i),
+            counters->operator[](i).name.c_str()
+        );
     }
 
     data.print();
@@ -8734,16 +8750,13 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Ty
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    // const auto & S = stats_support[arrays2support[i]];
-    size_t array_id = arrays2support[i];
-
     size_t k       = nterms();
     size_t nunique = stats_support_sizes.size();
 
     for (size_t l = 0u; l < nunique; ++l)
     {
 
-        printf_barry("% 5li ", l);
+        printf_barry("% 5i ", static_cast<int>(l));
 
         printf_barry("counts: %.0f motif: ", stats_support[
             stats_support_sizes_acc[l] * (k + 1u) 
@@ -8796,8 +8809,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->size() > 0u)
     {
-        printf_barry("Num. of Arrays       : %li\n", this->size());
-        printf_barry("Support size         : %li\n", this->size_unique());
+        printf_barry(
+            "Num. of Arrays       : %i\n",
+            static_cast<int>(this->size())
+        );
+        printf_barry(
+            "Support size         : %i\n",
+            static_cast<int>(this->size_unique())
+        );
         printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
     }
     else 
@@ -8810,13 +8829,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (with_pset)
     {
-        printf_barry("Arrays in powerset   : %li\n",
-            static_cast<size_t>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
+        printf_barry("Arrays in powerset   : %i\n",
+            static_cast<int>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
         );
     }
 
+
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (% 2li)    :\n", this->nterms());
+    printf_barry("Model terms (%i)    :\n", static_cast<int>(this->nterms()));
     for (auto & cn : this->colnames())
     {
         printf_barry(" - %s\n", cn.c_str());
@@ -8824,7 +8844,10 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules() > 0u)
     {
-    printf_barry("Model rules (%li)    :\n", this->nrules());
+        printf_barry(
+            "Model rules (%i)     :\n",
+            static_cast<int>(this->nrules())
+        );
     
         for (auto & rn : rules->get_names())
         {
@@ -8834,7 +8857,10 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules_dyn() > 0u)
     {
-    printf_barry("Model rules dyn (% 2li) :\n", this->nrules_dyn());
+        printf_barry(
+            "Model rules dyn (%i):\n",
+            static_cast<int>(this->nrules_dyn())
+        );
     
         for (auto & rn : rules_dyn->get_names())
         {

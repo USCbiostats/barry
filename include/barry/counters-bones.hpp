@@ -81,6 +81,8 @@ public:
     double init(Array_Type & Array, size_t i, size_t j);
     std::string get_name() const;
     std::string get_description() const;
+    void set_name(std::string new_name);
+    void set_description(std::string new_desc);
 
     /**
      * @brief Get and set the hasher function

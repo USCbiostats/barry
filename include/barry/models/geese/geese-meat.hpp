@@ -510,7 +510,9 @@ inline size_t Geese::parse_polytomies(
             if (verb)
             {
                 printf_barry(
-                    "Node id: %li has polytomy size %li\n", n.second.id, noff
+                    "Node id: %i has polytomy size %i\n",
+                    static_cast<int>(n.second.id),
+                    static_cast<int>(noff)
                 );
             }
                 
@@ -642,7 +644,11 @@ inline void Geese::print_observed_counts()
         // Printing
         auto dpl = n.second.duplication ? "duplication" : "speciation";
         printf_barry("----------\n");
-        printf_barry("nodeid: % 3li (%s)\nstate: [", n.second.id, dpl);
+        printf_barry(
+            "nodeid: % 3i (%s)\nstate: [",
+            static_cast<int>(n.second.id),
+            dpl
+        );
         for (size_t f = 0u; f < nfuns(); ++f)
         {
             printf_barry("%i, ", (tmparray.D_ptr()->states[f] ? 1 : 0));
@@ -671,11 +677,23 @@ inline void Geese::print() const
     // - Number of nodes and leafs
     // - Number of annotated leafs (0/1)
     printf_barry("GEESE\nINFO ABOUT PHYLOGENY\n");
-    printf_barry("# of functions           : %li\n", this->nfuns());
-    printf_barry("# of nodes [int; leaf]   : [%li; %li]\n", this->nnodes() - this->nleafs(), this->nleafs());
-    printf_barry("# of ann. [zeros; ones]  : [%li; %li]\n", this->n_zeros, this->n_ones);
-    printf_barry("# of events [dupl; spec] : [%li; %li]\n", this->n_dupl_events, this->n_spec_events);
-    printf_barry("Largest polytomy         : %li\n", parse_polytomies(false));
+    printf_barry("# of functions           : %i\n", static_cast<int>(this->nfuns()));
+    printf_barry(
+        "# of nodes [int; leaf]   : [%i; %i]\n",
+        static_cast<int>(this->nnodes() - this->nleafs()),
+        static_cast<int>(this->nleafs())
+    );
+    printf_barry(
+        "# of ann. [zeros; ones]  : [%i; %i]\n", 
+        static_cast<int>(this->n_zeros), 
+        static_cast<int>(this->n_ones)
+    );
+    printf_barry(
+        "# of events [dupl; spec] : [%i; %i]\n", 
+        static_cast<int>(this->n_dupl_events), 
+        static_cast<int>(this->n_spec_events)
+    );
+    printf_barry("Largest polytomy         : %i\n", static_cast<int>(parse_polytomies(false)));
     printf_barry("\nINFO ABOUT THE SUPPORT\n");
     this->model->print();
 
@@ -688,7 +706,11 @@ inline void Geese::print_nodes() const
 
     for (const auto & n: nodes)
     {            
-        printf_barry("% 4li - Id: %li -- ", n.second.ord, n.second.id);
+        printf_barry(
+            "% 4i - Id: %i -- ",
+            static_cast<int>(n.second.ord),
+            static_cast<int>(n.second.id)
+        );
 
         // Node type
         printf_barry(
@@ -713,11 +735,11 @@ inline void Geese::print_nodes() const
             // Print with ']' if last element
             if (&a == &n.second.annotations.back())
             {
-                printf_barry("%li] -- ", a);
+                printf_barry("%i] -- ", static_cast<int>(a));
             }
             else
             {
-                printf_barry("%li, ", a);
+                printf_barry("%i, ", static_cast<int>(a));
             }
         }
 
@@ -726,7 +748,10 @@ inline void Geese::print_nodes() const
         {
             printf_barry("parent id: (none) -- ");
         } else {
-            printf_barry("parent id: %li -- ", n.second.parent->id);
+            printf_barry(
+                "parent id: %i -- ",
+                static_cast<int>(n.second.parent->id)
+            );
         }
 
         // Offspring information
@@ -738,11 +763,11 @@ inline void Geese::print_nodes() const
                 // Same as in previous loop
                 if (&o == &n.second.offspring.back())
                 {
-                    printf_barry("%li].", o->id);
+                    printf_barry("%i].", static_cast<int>(o->id));
                 }
                 else
                 {
-                    printf_barry("%li, ", o->id);
+                    printf_barry("%i, ", static_cast<int>(o->id));
                 }
             }
         }

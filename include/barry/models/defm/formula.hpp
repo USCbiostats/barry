@@ -36,12 +36,13 @@
  * which we call LHS, can only hold `row id` that are less than `m_order`.
  * 
  * 
- * 
- * @param formula 
- * @param locations 
- * @param signs 
- * @param m_order 
- * @param y_ncol 
+ * @param formula A string specifying the motif formula (see details).
+ * @param locations A vector of locations for the motif variables.
+ * @param signs A vector of signs for the motif variables.
+ * @param m_order The Markov order.
+ * @param y_ncol The number of columns in the response variable.
+ * @param covar_name A string to hold the name of the covariate (if any).
+ * @param vname A string to hold the variable name (if any).
  */
 inline void defm_motif_parser(
     std::string formula,

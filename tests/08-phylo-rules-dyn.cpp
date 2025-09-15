@@ -8,15 +8,15 @@ using namespace geese;
 class RuleDynD {
 public:
     const std::vector< double > * counts;
-    uint pos;
-    uint max_changes;
-    RuleDynD(const std::vector< double > * counts_, uint pos_, uint max_changes_) :
+    size_t pos;
+    size_t max_changes;
+    RuleDynD(const std::vector< double > * counts_, size_t pos_, size_t max_changes_) :
         counts(counts_), pos(pos_), max_changes(max_changes_) {};
     
     ~RuleDynD() {};
 };
 
-bool check_max_gains(const PhyloArray & A, uint i, uint j, RuleDynD * d)
+bool check_max_gains(const PhyloArray & A, size_t i, size_t j, RuleDynD * d)
 {
 
     // The count must be included iff the number of changes

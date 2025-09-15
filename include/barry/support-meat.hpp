@@ -579,7 +579,11 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
     printf_barry("Position of variables:\n");
     for (size_t i = 0u; i < n_counters; ++i)
     {
-        printf_barry("[% 2li] %s\n", i, counters->operator[](i).name.c_str());
+        printf_barry(
+            "[% 2i] %s\n",
+            static_cast<int>(i),
+            counters->operator[](i).name.c_str()
+        );
     }
 
     data.print();

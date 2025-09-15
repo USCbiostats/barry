@@ -223,7 +223,7 @@ inline void FreqTable<T>::print() const
 
     }
 
-    printf_barry("Grand total: %li\n", grand_total);
+    printf_barry("Grand total: %i\n", static_cast<int>(grand_total));
 
     return;
 

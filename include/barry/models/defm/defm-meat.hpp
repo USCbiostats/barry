@@ -61,7 +61,6 @@ inline void DEFM::simulate(
                 for (size_t y = 0u; y < Y_ncol; ++y)
                     *(y_out + n_entry++) = last_array(M_order, y, false);
 
-                // last_array.print("i: %li, proc_n: %li\n", i, proc_n);
 
             }
             else
@@ -82,16 +81,10 @@ inline void DEFM::simulate(
                     true // Delete the data
                 );
 
-                // Baseline
-                // tmp_array.print("baseline i: %li, proc_n: %li\n", i, proc_n);
-                // tmp_array.D().print();
-
                 model_num++;
                 last_array = this->sample(tmp_array, par);
                 for (size_t y = 0u; y < Y_ncol; ++y)
                     *(y_out + n_entry++) = last_array(M_order, y, false);
-
-                // last_array.print("generated i: %li, proc_n: %li\n", i, proc_n);
 
             }
 

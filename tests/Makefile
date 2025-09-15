@@ -5,7 +5,13 @@ BFILES=barr*.gcov geese-*.gcov flock-*.gcov \
        cell-*.gcov powerset-*.gcov support-*.gcov \
        statscounter*.gcov statsdb*.gcov
 
-CPPFLAGS= -std=c++17 -fopenmp -Wall -pedantic -march=native -Wbool-operation # only works with g++10
+ifdef NO_OPENMP
+_OPENMP=
+else
+_OPENMP=-fopenmp
+endif
+
+CPPFLAGS= -std=c++17 $(_OPENMP) -Wall -pedantic -march=native -Wbool-operation # only works with g++10
 
 CPPFLAGSV= -std=c++17 -Wall -pedantic
 
@@ -29,8 +35,8 @@ main.o: %.cpp
 mainsan.o: %.cpp
 	$(CPP) $(CPPFLAGS) -fsanitize=address -lasan -O1 main.cpp -g -o mainsan.o
 
-checkv: mainv.o
-	valgrind --leak-check=full --track-origins=yes ./mainv.o #valgrind --tool=cachegrind ./main
+checkv: main.o
+	valgrind --leak-check=full --track-origins=yes ./main.o
 
 main: main.cpp
 	g++ $(CPPFLAGSV) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o main
@@ -38,9 +44,10 @@ main: main.cpp
 clean:
 	rm -f main*.o; rm -f *.gcov; rm -f *gcno; rm -f *gcda
 
-coverage: mainv.o
-	./mainv.o && gcov -r mainv.o-main.cpp && \
-		rm catch*.hpp.gcov && \
+coverage: main
+	./main && gcov -r main.cpp && \
+		rm -f catch*.hpp.gcov && \
+		mkdir -p gcov-files && \
 		mv *.hpp.gcov gcov-files/ && $(MAKE) clean
 
 .PHONY: callgrind

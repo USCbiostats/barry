@@ -1215,16 +1215,13 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Ty
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    // const auto & S = stats_support[arrays2support[i]];
-    size_t array_id = arrays2support[i];
-
     size_t k       = nterms();
     size_t nunique = stats_support_sizes.size();
 
     for (size_t l = 0u; l < nunique; ++l)
     {
 
-        printf_barry("% 5li ", l);
+        printf_barry("% 5i ", static_cast<int>(l));
 
         printf_barry("counts: %.0f motif: ", stats_support[
             stats_support_sizes_acc[l] * (k + 1u) 
@@ -1277,8 +1274,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->size() > 0u)
     {
-        printf_barry("Num. of Arrays       : %li\n", this->size());
-        printf_barry("Support size         : %li\n", this->size_unique());
+        printf_barry(
+            "Num. of Arrays       : %i\n",
+            static_cast<int>(this->size())
+        );
+        printf_barry(
+            "Support size         : %i\n",
+            static_cast<int>(this->size_unique())
+        );
         printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
     }
     else 
@@ -1291,13 +1294,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (with_pset)
     {
-        printf_barry("Arrays in powerset   : %li\n",
-            static_cast<size_t>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
+        printf_barry("Arrays in powerset   : %i\n",
+            static_cast<int>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
         );
     }
 
+
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (% 2li)    :\n", this->nterms());
+    printf_barry("Model terms (%i)    :\n", static_cast<int>(this->nterms()));
     for (auto & cn : this->colnames())
     {
         printf_barry(" - %s\n", cn.c_str());
@@ -1305,7 +1309,10 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules() > 0u)
     {
-    printf_barry("Model rules (%li)    :\n", this->nrules());
+        printf_barry(
+            "Model rules (%i)     :\n",
+            static_cast<int>(this->nrules())
+        );
     
         for (auto & rn : rules->get_names())
         {
@@ -1315,7 +1322,10 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules_dyn() > 0u)
     {
-    printf_barry("Model rules dyn (% 2li) :\n", this->nrules_dyn());
+        printf_barry(
+            "Model rules dyn (%i):\n",
+            static_cast<int>(this->nrules_dyn())
+        );
     
         for (auto & rn : rules_dyn->get_names())
         {
