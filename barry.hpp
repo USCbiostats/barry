@@ -8834,9 +8834,7 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
         );
     }
 
-    printf_barry("Num. of Arrays       : %i\n", static_cast<int>(this->size()));
-    printf_barry("Support size         : %i\n", static_cast<int>(this->size_unique()));
-    printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
+
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
     printf_barry("Model terms (%i)    :\n", static_cast<int>(this->nterms()));
     for (auto & cn : this->colnames())

@@ -6,3 +6,4 @@
 - The code should be efficient and avoid unnecessary computations or memory allocations.
 - The code should be portable and should not rely on platform-specific features or libraries.
 - The code should be compatible with C++17 or later.
+- The file `./barry.hpp` is generated automatically and should not be modified directly. Comments on PRs should only be made if the file has not been updated correctly. The file can be generated using the `make` target `barry.hpp`.
