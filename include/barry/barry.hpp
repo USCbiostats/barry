@@ -31,7 +31,7 @@
 /* Versioning */
 #define BARRY_VERSION_MAYOR 0
 #define BARRY_VERSION_MINOR 2
-#define BARRY_VERSION_PATCH 0
+#define BARRY_VERSION_PATCH 1
 #define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR ## . ## BARRY_VERSION_PATCH
 
 static const int barry_version_major = BARRY_VERSION_MAYOR;
