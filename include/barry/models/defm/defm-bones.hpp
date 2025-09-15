@@ -50,7 +50,7 @@ public:
         return *this;
     };
 
-    void init();
+    void init(bool force_new = true);
 
     void simulate(std::vector< double > par, int * y_out);
 

@@ -17,19 +17,27 @@
 
 ///@}
 
-
-#define MAKE_DEFM_HASHER(hasher,a,cov) barry::Hasher_fun_type<DEFMArray,DEFMCounterData> \
-    hasher = [cov](const DEFMArray & array, DEFMCounterData * d) { \
-        std::vector< double > res; \
-        /* Adding the column feature */ \
-        for (size_t i = 0u; i < array.nrow(); ++i) \
-            res.push_back(array.D()(i, cov)); \
-        /* Adding the fixed dims */ \
-        for (size_t i = 0u; i < (array.nrow() - 1); ++i) \
-            for (size_t j = 0u; j < array.ncol(); ++j) \
-                res.push_back(array(i, j)); \
-        return res;\
-    };
+/**
+ * @brief Data for the counters
+ * 
+ * @details This class is used to store the data for the counters. It is
+ * used by the `Counters` class.
+ * 
+ */
+#define MAKE_DEFM_HASHER(hasher,a,cov)                                  \
+    barry::Hasher_fun_type<DEFMArray, DEFMCounterData>                  \
+        hasher = [cov](const DEFMArray & array, DEFMCounterData * d) -> \
+           std::vector< double > {                                      \
+            std::vector< double > res;                                  \
+            /* Adding the column feature */                             \
+            for (size_t i = 0u; i < array.nrow(); ++i)                  \
+                res.push_back(array.D()(i, cov));                       \
+            /* Adding the fixed dims */                                 \
+            for (size_t i = 0u; i < (array.nrow() - 1); ++i)            \
+                for (size_t j = 0u; j < array.ncol(); ++j)              \
+                    res.push_back(array(i, j));                         \
+            return res;\
+        };
 
 
 /**@name Macros for defining counters
@@ -80,7 +88,7 @@ barry::Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
  */
 inline void counter_ones(
     DEFMCounters * counters,
-    int covar_index = -1,
+    int covar_index   = -1,
     std::string vname = "",
     const std::vector< std::string > * x_names = nullptr
 )
@@ -103,7 +111,6 @@ inline void counter_ones(
 
         };
 
-
         if (vname == "")
         {
             if (x_names != nullptr)
@@ -119,9 +126,9 @@ inline void counter_ones(
             "Overall number of ones"
         );
 
-
-
-    } else {
+    }
+    else
+    {
 
         DEFM_COUNTER_LAMBDA(count_ones)
         {
@@ -148,6 +155,18 @@ inline void counter_ones(
 
 }
 
+
+/**
+ * Calculates the logit intercept for the DEFM model.
+ *
+ * @param counters A pointer to the DEFMCounters object.
+ * @param n_y The number of response variables.
+ * @param which A vector of indices indicating which response variables to use. If empty, all response variables are used.
+ * @param covar_index The index of the covariate to use as the intercept. 
+ * @param vname The name of the variable to use as the intercept. If empty, the intercept is set to zero.
+ * @param x_names A pointer to a vector of strings containing the names of the covariates.
+ * @param y_names A pointer to a vector of strings containing the names of the response variables.
+ */
 inline void counter_logit_intercept(
     DEFMCounters * counters,
     size_t n_y,
@@ -295,17 +314,30 @@ inline void counter_transition(
     {
 
         auto indices = data.indices;
+        auto sgn     = data.logical;
+        int covaridx = indices[indices.size() - 1u];
 
-        for (size_t i = 0u; i < (indices.size() - 1u); ++i)
+        // Notice that the indices vector contains:
+        // - 1st, the indices of the motif. That's why we set the lenght
+        //   using -1.
+        // - the last is, the covariate index
+        for (size_t k = 0u; k < (indices.size() - 1u); ++k)
         {
-            if (
-                std::floor(indices[i] / Array.nrow()) >= 
-                static_cast<int>(Array.ncol())
-                )
+            if (indices[k] >= (Array.ncol()* Array.nrow()))
                 throw std::range_error("The motif includes entries out of range.");
         }
+
+        // Counting
+        const auto & array = Array.get_data();
+        for (size_t k = 0u; k < (indices.size() - 1); ++k)
+        {
+            auto cellv = array[indices[k]];
+            if (sgn[k] && (cellv != 1))
+                return 0.0;
+        }
             
-        return 0.0;
+        // If nothing happens, then is one or the covaridx
+        return (covaridx < 1000) ? Array.D()(Array.nrow() - 1u, covaridx) : 1.0;
         
     };
 
@@ -589,15 +621,66 @@ inline void counter_transition_formula(
 
     std::vector< size_t > coords;
     std::vector< bool > signs;
+    std::string covar_name = "";
 
     defm_motif_parser(
-        formula, coords, signs, m_order, n_y
+        formula, coords, signs, m_order, n_y, covar_name, vname
     );
 
-    counter_transition(
-        counters, coords, signs, m_order, n_y, covar_index, vname,
-        x_names, y_names
-    );
+    if ((covar_name != "") && (covar_index >= 0))
+        throw std::logic_error("Can't have both a formula and a covariate index.");
+
+    if (covar_name != "")
+    {
+
+        if (x_names != nullptr)
+        {
+            for (size_t i = 0u; i < x_names->size(); ++i)
+                if (x_names->operator[](i) == covar_name)
+                {
+                    covar_index = static_cast<int>(i);
+                    break;
+                }
+        }
+
+        if (covar_index < 0)
+            throw std::logic_error(
+                std::string("The covariate name '") +
+                covar_name +
+                std::string("' was not found in the list of covariates.")
+                );
+
+    }
+
+    // Checking the number of coords, could be single intercept
+    if (coords.size() == 1u)
+    {
+
+        // Getting the column
+        size_t coord = static_cast< size_t >(
+            std::floor(
+            static_cast<double>(coords[0u]) / static_cast<double>(m_order + 1)
+            ));
+
+        counter_logit_intercept(
+            counters, n_y, {coord},
+            covar_index,
+            vname,
+            x_names,
+            y_names
+        );
+
+    }
+    else 
+    {
+
+        counter_transition(
+            counters, coords, signs, m_order, n_y, covar_index, vname,
+            x_names, y_names
+        );
+
+    }
+
 
 }
 
@@ -724,6 +807,56 @@ inline void rules_dont_become_zero(
     
     return;
 }
+
+/**
+ * @brief Overall functional gains
+ * @param support Support of a model.
+ * @param pos Position of the focal statistic.
+ * @param lb Lower bound
+ * @param ub Upper bound
+ * @details 
+ * @return (void) adds a rule limiting the support of the model.
+ */
+inline void rule_constrain_support(
+    DEFMSupport * support,
+    size_t pos,
+    double lb,
+    double ub
+)
+{
+  
+    DEFM_RULEDYN_LAMBDA(tmp_rule)
+    {
+
+        if (data() < data.lb)
+            return false;
+        else if (data() > data.ub)
+            return false;
+        else
+            return true;
+      
+    };
+
+    
+    support->get_rules_dyn()->add_rule(
+        tmp_rule,
+        DEFMRuleDynData(
+            support->get_current_stats(),
+            pos, lb, ub
+            ),
+        support->get_counters()->get_names()[pos] +
+            "' within [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + std::string("]"),
+        std::string("When the support is ennumerated, only states where the statistic '") + 
+            support->get_counters()->get_names()[pos] +
+            std::to_string(pos) + "' falls within [" + std::to_string(lb) + ", " +
+            std::to_string(ub) + "] are included."
+    );
+    
+    return;
+  
+}
+
 
 ///@}
 

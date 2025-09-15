@@ -33,6 +33,9 @@
  * 
  * 
  */
+#define PHYLO_RULE_LAMBDA(a) barry::Rule_fun_type<PhyloArray, PhyloRuleData> a = \
+    [](const PhyloArray & Array, size_t i, size_t j, PhyloRuleData & data)
+
 #define PHYLO_COUNTER_LAMBDA(a) barry::Counter_fun_type<PhyloArray, PhyloCounterData> a = \
     [](const PhyloArray & Array, size_t i, size_t j, PhyloCounterData & data)
 
@@ -2046,6 +2049,32 @@ inline void counter_pairwise_first_gain(
  * @param rules A pointer to a `PhyloRules` object (`Rules`<`PhyloArray`, `PhyloRuleData`>).
  */
 ///@{
+inline void rule_leafs(
+    PhyloSupport * support
+) {
+
+    PHYLO_RULE_LAMBDA(tmp_rule)
+    {
+        if (Array.D().has_leaf)
+        {
+            return Array(i, j) != 9u;
+        }
+
+        return true;
+    };
+
+    support->get_rules()->add_rule(
+        tmp_rule,
+        PhyloRuleData(),
+        "Fix annotated leafs",
+        "Reduces the support by fixing the cells of annotated leafs."
+    );
+
+    return;
+
+}
+
+
 /**
  * @brief Overall functional gains
  * @param support Support of a model.

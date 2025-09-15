@@ -141,6 +141,9 @@ inline void Geese::init(size_t bar_width) {
 
         this->model->store_psets();
 
+        // // Adding static rule
+        // rule_leafs(model->get_support_fun());
+
     }
 
     // Checking rseed, this is relevant when dealing with a flock. In the case of
@@ -453,7 +456,6 @@ inline size_t Geese::nleafs() const noexcept
 inline size_t Geese::nterms() const
 {
 
-    INITIALIZED()
     return model->nterms() + this->nfuns();
 
 }
@@ -506,7 +508,11 @@ inline size_t Geese::parse_polytomies(
         {
 
             if (verb)
-                printf_barry("Node id: %li has polytomy size %li\n", n.second.id, noff);
+            {
+                printf_barry(
+                    "Node id: %li has polytomy size %li\n", n.second.id, noff
+                );
+            }
                 
         }
 
@@ -638,13 +644,17 @@ inline void Geese::print_observed_counts()
         printf_barry("----------\n");
         printf_barry("nodeid: % 3li (%s)\nstate: [", n.second.id, dpl);
         for (size_t f = 0u; f < nfuns(); ++f)
+        {
             printf_barry("%i, ", (tmparray.D_ptr()->states[f] ? 1 : 0));
+        }
 
         printf_barry("]; Array:\n");
         tmparray.print();
         printf_barry("Counts: ");
         for (auto& c : counts)
+        {
             printf_barry("%.2f, ", c);
+        }
         printf_barry("\n");
 
     }
