@@ -26,3 +26,4 @@
 #include "14-variable-transformation.cpp"
 #include "15-defm-counts.cpp"
 #include "16-defm-counts-with-formulas.cpp"
+#include "17-defm-likelihood.cpp"

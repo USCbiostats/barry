@@ -11,34 +11,71 @@
  */
 ///@{
 
-
-
-
-
 ///@}
 
 /**
- * @brief Data for the counters
- * 
- * @details This class is used to store the data for the counters. It is
- * used by the `Counters` class.
- * 
+ * @brief Factory to create a hasher function for DEFMArray
+ * @param covar_index If >= 0, then the hasher will include the
+ * covariate at that index as part of the hash.
+ * @return A hasher function for DEFMArray
  */
-#define MAKE_DEFM_HASHER(hasher,a,cov)                                  \
-    barry::Hasher_fun_type<DEFMArray, DEFMCounterData>                  \
-        hasher = [cov](const DEFMArray & array, DEFMCounterData * d) -> \
-           std::vector< double > {                                      \
-            std::vector< double > res;                                  \
-            /* Adding the column feature */                             \
-            for (size_t i = 0u; i < array.nrow(); ++i)                  \
-                res.push_back(array.D()(i, cov));                       \
-            /* Adding the fixed dims */                                 \
-            for (size_t i = 0u; i < (array.nrow() - 1); ++i)            \
-                for (size_t j = 0u; j < array.ncol(); ++j)              \
-                    res.push_back(array(i, j));                         \
-            return res;\
+inline barry::Hasher_fun_type<DEFMArray, DEFMCounterData> 
+defm_hasher_factory(int covar_index = -1) {
+    
+    // With no covariate index, we skip adding that
+    // layer to the hasher
+    if (covar_index >= 0)
+    {
+
+        return [covar_index](
+            const DEFMArray & array,
+            DEFMCounterData * d
+        ) -> std::vector< double > {
+
+            std::vector< double > res;
+
+            // Adding the column feature
+            for (size_t i = 0u; i < array.nrow(); ++i)
+            {
+                res.push_back(array.D()(i, covar_index));
+            }
+
+            // Adding the fixed dims
+            for (size_t i = 0u; i < (array.nrow() - 1); ++i)
+            {
+                for (size_t j = 0u; j < array.ncol(); ++j)
+                {
+                    res.push_back(array(i, j));
+                }
+            }
+
+            return res;
         };
 
+    } else {
+        
+        return [](
+            const DEFMArray & array,
+            DEFMCounterData * d
+        ) -> std::vector< double > {
+
+            std::vector< double > res;
+
+            // Adding the fixed dims
+            for (size_t i = 0u; i < (array.nrow() - 1); ++i)
+            {
+                for (size_t j = 0u; j < array.ncol(); ++j)
+                {
+                    res.push_back(array(i, j));
+                }
+            }
+
+            return res;
+        };
+
+    }
+
+}
 
 /**@name Macros for defining counters
   */
@@ -98,7 +135,7 @@ inline void counter_ones(
     if (covar_index >= 0)
     {   
 
-        MAKE_DEFM_HASHER(hasher, array, covar_index)
+        auto hasher = defm_hasher_factory(covar_index);
 
         DEFM_COUNTER_LAMBDA(counter_tmp)
         {
@@ -233,7 +270,7 @@ inline void counter_logit_intercept(
             return Array.D()(i, data.idx(1u));
         };
 
-        MAKE_DEFM_HASHER(hasher, array, covar_index)
+        auto hasher = defm_hasher_factory(covar_index);
         bool hasher_added = false;
 
         std::string yname;
@@ -569,7 +606,7 @@ inline void counter_transition(
     if (covar_index >= 0)
     {
 
-        MAKE_DEFM_HASHER(hasher, array, covar_index)
+        auto hasher = defm_hasher_factory(covar_index);
 
         if (vname == "")
         {
@@ -709,7 +746,7 @@ inline void counter_fixed_effect(
         return 0.0;
     };
 
-    MAKE_DEFM_HASHER(hasher, array, covar_index)
+    auto hasher = defm_hasher_factory(covar_index);
 
     if (x_names != nullptr)
         vname = x_names->operator[](covar_index);

@@ -92,6 +92,14 @@ BARRY_TEST_CASE("Network counts work", "[counts]") {
   std::cout << "Expected counts: " << std::endl;
   // net.print();
   print(expected_counts);
+
+  counter.get_counters()->print();
+
+  // Changing the name of the first counter
+  counter.get_counters()->operator[](0).set_name("Number of edges");
+  counter.get_counters()->operator[](0).set_description("The number of edges in the network.");
+
+  counter.get_counters()->print(10, 50);
   
   #ifdef CATCH_CONFIG_MAIN
   REQUIRE_THAT(expected_counts, Catch::Approx(ans).epsilon(.001));

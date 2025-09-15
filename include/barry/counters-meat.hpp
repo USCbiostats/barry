@@ -105,7 +105,7 @@ COUNTER_TEMPLATE(std::string, get_name)() const {
 }
 
 COUNTER_TEMPLATE(std::string, get_description)() const {
-    return this->name;
+    return this->desc;
 }
 
 COUNTER_TEMPLATE(void, set_name)(std::string new_name) {
@@ -118,6 +118,16 @@ COUNTER_TEMPLATE(void, set_description)(std::string new_desc) {
 
 COUNTER_TEMPLATE(void, set_hasher)(Hasher_fun_type<Array_Type,Data_Type> fun) {
     hasher_fun = fun;
+}
+
+COUNTER_TEMPLATE(void, print)() const {
+
+    printf_barry("Counter:\n");
+    printf_barry("  Name       : %s\n", this->get_name().c_str());
+    printf_barry("  Description: %s\n", this->get_description().c_str());
+
+    return;
+
 }
 
 #define TMP_HASHER_CALL Hasher_fun_type<Array_Type,Data_Type>
@@ -280,6 +290,45 @@ COUNTERS_TEMPLATE(void, add_hash)(
 
     hasher = fun_;
 
+}
+
+COUNTERS_TEMPLATE(void, print)(
+    size_t max_length_name,
+    size_t max_length_desc
+) const {
+
+    // Iterating through the counters to see the maximum name length
+    size_t max_name_length = 0;
+    for (const auto & c : data)
+    {
+        max_name_length = std::max(max_name_length, c.get_name().size());
+    }
+
+    max_name_length = std::min(max_name_length, max_length_name);
+
+    // Figuring out the format string so it looks nice
+    char fmt[100];
+    snprintf(fmt, sizeof(fmt), "  - %%-%zus : %%s\n", max_name_length);
+
+    printf_barry("Counters (%zu):\n", this->size());
+    for (size_t i = 0u; i < this->size(); ++i)
+    {
+        // Figuring out the string to print (if needs truncation)
+        auto name_to_print = data.at(i).get_name();
+        if (name_to_print.size() > max_name_length)
+            name_to_print = name_to_print.substr(0, max_name_length - 3) + "...";
+        auto desc_to_print = data.at(i).get_description();
+        if (desc_to_print.size() > max_length_desc)
+            desc_to_print = desc_to_print.substr(0, max_length_desc - 3) + "...";
+
+        auto c = data.at(i);
+        printf_barry(
+            fmt,
+            // i,
+            name_to_print.c_str(),
+            desc_to_print.c_str()
+        );
+    }
 }
 
 #undef COUNTER_TYPE
