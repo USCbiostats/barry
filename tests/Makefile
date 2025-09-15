@@ -44,9 +44,10 @@ main: main.cpp
 clean:
 	rm -f main*.o; rm -f *.gcov; rm -f *gcno; rm -f *gcda
 
-coverage: mainv.o
-	./mainv.o && gcov -r mainv.o-main.cpp && \
-		rm catch*.hpp.gcov && \
+coverage: main
+	./main && gcov -r main.cpp && \
+		rm -f catch*.hpp.gcov && \
+		mkdir -p gcov-files && \
 		mv *.hpp.gcov gcov-files/ && $(MAKE) clean
 
 .PHONY: callgrind

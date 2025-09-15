@@ -4648,7 +4648,7 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
     for (size_t i = 0u; i < N; ++i)
     {
 
-        printf_barry("[%3li,] ", i);
+        printf_barry("[%3i,] ", static_cast<int>(i));
 
         for (size_t j = 0u; j < M; ++j)
         {
@@ -6715,7 +6715,11 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
     printf_barry("Position of variables:\n");
     for (size_t i = 0u; i < n_counters; ++i)
     {
-        printf_barry("[% 2li] %s\n", i, counters->operator[](i).name.c_str());
+        printf_barry(
+            "[% 2i] %s\n",
+            static_cast<int>(i),
+            counters->operator[](i).name.c_str()
+        );
     }
 
     data.print();
@@ -8752,7 +8756,7 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Ty
     for (size_t l = 0u; l < nunique; ++l)
     {
 
-        printf_barry("% 5li ", l);
+        printf_barry("% 5i ", static_cast<int>(l));
 
         printf_barry("counts: %.0f motif: ", stats_support[
             stats_support_sizes_acc[l] * (k + 1u) 

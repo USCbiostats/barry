@@ -1221,7 +1221,7 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Ty
     for (size_t l = 0u; l < nunique; ++l)
     {
 
-        printf_barry("% 5li ", l);
+        printf_barry("% 5i ", static_cast<int>(l));
 
         printf_barry("counts: %.0f motif: ", stats_support[
             stats_support_sizes_acc[l] * (k + 1u) 

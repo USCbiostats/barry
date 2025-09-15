@@ -982,7 +982,7 @@ template<typename Cell_Type, typename Data_Type> inline void BArrayDense<Cell_Ty
     for (size_t i = 0u; i < N; ++i)
     {
 
-        printf_barry("[%3li,] ", i);
+        printf_barry("[%3i,] ", static_cast<int>(i));
 
         for (size_t j = 0u; j < M; ++j)
         {
