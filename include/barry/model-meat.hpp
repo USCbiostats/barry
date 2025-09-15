@@ -1274,8 +1274,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->size() > 0u)
     {
-        printf_barry("Num. of Arrays       : %li\n", this->size());
-        printf_barry("Support size         : %li\n", this->size_unique());
+        printf_barry(
+            "Num. of Arrays       : %i\n",
+            static_cast<int>(this->size())
+        );
+        printf_barry(
+            "Support size         : %i\n",
+            static_cast<int>(this->size_unique())
+        );
         printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
     }
     else 
@@ -1288,8 +1294,8 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (with_pset)
     {
-        printf_barry("Arrays in powerset   : %li\n",
-            static_cast<size_t>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
+        printf_barry("Arrays in powerset   : %i\n",
+            static_cast<int>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
         );
     }
 

@@ -291,12 +291,13 @@ typedef barry::Rules<DEFMArray, DEFMRuleDynData> DEFMRulesDyn;
  * which we call LHS, can only hold `row id` that are less than `m_order`.
  * 
  * 
- * 
- * @param formula 
- * @param locations 
- * @param signs 
- * @param m_order 
- * @param y_ncol 
+ * @param formula A string specifying the motif formula (see details).
+ * @param locations A vector of locations for the motif variables.
+ * @param signs A vector of signs for the motif variables.
+ * @param m_order The Markov order.
+ * @param y_ncol The number of columns in the response variable.
+ * @param covar_name A string to hold the name of the covariate (if any).
+ * @param vname A string to hold the variable name (if any).
  */
 inline void defm_motif_parser(
     std::string formula,
@@ -1571,7 +1572,6 @@ inline void DEFM::simulate(
                 for (size_t y = 0u; y < Y_ncol; ++y)
                     *(y_out + n_entry++) = last_array(M_order, y, false);
 
-                // last_array.print("i: %li, proc_n: %li\n", i, proc_n);
 
             }
             else
@@ -1592,16 +1592,10 @@ inline void DEFM::simulate(
                     true // Delete the data
                 );
 
-                // Baseline
-                // tmp_array.print("baseline i: %li, proc_n: %li\n", i, proc_n);
-                // tmp_array.D().print();
-
                 model_num++;
                 last_array = this->sample(tmp_array, par);
                 for (size_t y = 0u; y < Y_ncol; ++y)
                     *(y_out + n_entry++) = last_array(M_order, y, false);
-
-                // last_array.print("generated i: %li, proc_n: %li\n", i, proc_n);
 
             }
 

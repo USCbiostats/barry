@@ -873,7 +873,7 @@ inline void FreqTable<T>::print() const
 
     }
 
-    printf_barry("Grand total: %li\n", grand_total);
+    printf_barry("Grand total: %i\n", static_cast<int>(grand_total));
 
     return;
 
@@ -5074,6 +5074,8 @@ public:
     double init(Array_Type & Array, size_t i, size_t j);
     std::string get_name() const;
     std::string get_description() const;
+    void set_name(std::string new_name);
+    void set_description(std::string new_desc);
 
     /**
      * @brief Get and set the hasher function
@@ -5319,6 +5321,14 @@ COUNTER_TEMPLATE(std::string, get_name)() const {
 
 COUNTER_TEMPLATE(std::string, get_description)() const {
     return this->name;
+}
+
+COUNTER_TEMPLATE(void, set_name)(std::string new_name) {
+    name = new_name;
+}
+
+COUNTER_TEMPLATE(void, set_description)(std::string new_desc) {
+    desc = new_desc;
 }
 
 COUNTER_TEMPLATE(void, set_hasher)(Hasher_fun_type<Array_Type,Data_Type> fun) {
@@ -8734,9 +8744,6 @@ inline void Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Ty
     if (i >= arrays2support.size())
         throw std::range_error("The requested support is out of range");
 
-    // const auto & S = stats_support[arrays2support[i]];
-    size_t array_id = arrays2support[i];
-
     size_t k       = nterms();
     size_t nunique = stats_support_sizes.size();
 
@@ -8796,8 +8803,14 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->size() > 0u)
     {
-        printf_barry("Num. of Arrays       : %li\n", this->size());
-        printf_barry("Support size         : %li\n", this->size_unique());
+        printf_barry(
+            "Num. of Arrays       : %i\n",
+            static_cast<int>(this->size())
+        );
+        printf_barry(
+            "Support size         : %i\n",
+            static_cast<int>(this->size_unique())
+        );
         printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
     }
     else 
@@ -8810,13 +8823,16 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (with_pset)
     {
-        printf_barry("Arrays in powerset   : %li\n",
-            static_cast<size_t>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
+        printf_barry("Arrays in powerset   : %i\n",
+            static_cast<int>(std::accumulate(pset_sizes.begin(), pset_sizes.end(), 0u))
         );
     }
 
+    printf_barry("Num. of Arrays       : %i\n", static_cast<int>(this->size()));
+    printf_barry("Support size         : %i\n", static_cast<int>(this->size_unique()));
+    printf_barry("Support size range   : [%i, %i]\n", min_v, max_v);
     printf_barry("Transform. Fun.      : %s\n", transform_model_fun ? "yes": "no");
-    printf_barry("Model terms (% 2li)    :\n", this->nterms());
+    printf_barry("Model terms (%i)    :\n", static_cast<int>(this->nterms()));
     for (auto & cn : this->colnames())
     {
         printf_barry(" - %s\n", cn.c_str());
@@ -8824,7 +8840,10 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules() > 0u)
     {
-    printf_barry("Model rules (%li)    :\n", this->nrules());
+        printf_barry(
+            "Model rules (%i)     :\n",
+            static_cast<int>(this->nrules())
+        );
     
         for (auto & rn : rules->get_names())
         {
@@ -8834,7 +8853,10 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
     if (this->nrules_dyn() > 0u)
     {
-    printf_barry("Model rules dyn (% 2li) :\n", this->nrules_dyn());
+        printf_barry(
+            "Model rules dyn (%i):\n",
+            static_cast<int>(this->nrules_dyn())
+        );
     
         for (auto & rn : rules_dyn->get_names())
         {

@@ -29,8 +29,8 @@ main.o: %.cpp
 mainsan.o: %.cpp
 	$(CPP) $(CPPFLAGS) -fsanitize=address -lasan -O1 main.cpp -g -o mainsan.o
 
-checkv: mainv.o
-	valgrind --leak-check=full --track-origins=yes ./mainv.o #valgrind --tool=cachegrind ./main
+checkv: main.o
+	valgrind --leak-check=full --track-origins=yes ./main.o
 
 main: main.cpp
 	g++ $(CPPFLAGSV) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o main
