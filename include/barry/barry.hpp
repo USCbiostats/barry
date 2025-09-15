@@ -30,7 +30,13 @@
 
 #define BARRY_VERSION_MAYOR 0
 #define BARRY_VERSION_MINOR 1
-#define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR
+#define BARRY_VERSION_PATCH 0
+
+static const size_t barry_version_mayor = BARRY_VERSION_MAYOR;
+static const size_t barry_version_minor = BARRY_VERSION_MINOR;
+static const size_t barry_version_patch = BARRY_VERSION_PATCH;
+
+#define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR ## . ## BARRY_VERSION_PATCH
 
 /**
   * @brief barry: Your go-to motif accountant

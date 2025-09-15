@@ -108,6 +108,14 @@ COUNTER_TEMPLATE(std::string, get_description)() const {
     return this->name;
 }
 
+COUNTER_TEMPLATE(void, set_name)(std::string new_name) {
+    name = new_name;
+}
+
+COUNTER_TEMPLATE(void, set_description)(std::string new_desc) {
+    desc = new_desc;
+}
+
 COUNTER_TEMPLATE(void, set_hasher)(Hasher_fun_type<Array_Type,Data_Type> fun) {
     hasher_fun = fun;
 }
