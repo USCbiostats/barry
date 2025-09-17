@@ -41,17 +41,13 @@
  * @param signs A vector of signs for the motif variables.
  * @param m_order The Markov order.
  * @param y_ncol The number of columns in the response variable.
- * @param covar_name A string to hold the name of the covariate (if any).
- * @param vname A string to hold the variable name (if any).
  */
 inline void defm_motif_parser(
     std::string formula,
     std::vector< size_t > & locations,
     std::vector< bool > & signs,
     size_t m_order,
-    size_t y_ncol,
-    std::string & covar_name,
-    std::string & vname
+    size_t y_ncol
 )
 {
     // Resetting the results
@@ -76,6 +72,7 @@ inline void defm_motif_parser(
 
     std::smatch match;
     std::regex_match(formula, match, pattern_transition);
+    std::string vname, covar_name;
     if (!match.empty())
     {
 

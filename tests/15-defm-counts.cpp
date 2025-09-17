@@ -172,21 +172,21 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     counter_ones(model3.get_model().get_counters());
     counter_transition_formula(
         model3.get_counters(), "{y0}", 2, 3, -1,
-        "", &model3.get_X_names(), &model3.get_Y_names()
+        &model3.get_X_names(), &model3.get_Y_names()
         );
     counter_transition_formula(
         model3.get_counters(), "{y0} x X2", 2, 3, -1,
-        "", &model3.get_X_names(), &model3.get_Y_names()
+        &model3.get_X_names(), &model3.get_Y_names()
         );
 
     counter_transition_formula(
         model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X2(Space 1)", 2, 3, -1,
-        "", &model3.get_X_names(), &model3.get_Y_names()
+        &model3.get_X_names(), &model3.get_Y_names()
         );
 
     counter_transition_formula(
         model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X1(excess)", 2, 3, -1,
-        "", &model3.get_X_names(), &model3.get_Y_names()
+        &model3.get_X_names(), &model3.get_Y_names()
         );
 
 
@@ -201,21 +201,21 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     counter_ones(model3b.get_model().get_counters());
     counter_transition_formula(
         model3b.get_counters(), "{y0}", 2, 3, -1,
-        "", &model3b.get_X_names(), &model3b.get_Y_names()
+        &model3b.get_X_names(), &model3b.get_Y_names()
         );
     counter_transition_formula(
         model3b.get_counters(), "{y0}", 2, 3, 1,
-        "", &model3b.get_X_names(), &model3b.get_Y_names()
+        &model3b.get_X_names(), &model3b.get_Y_names()
         );
 
     counter_transition_formula(
         model3b.get_counters(), "{0y0_0} > {1y0, 1y2}", 2, 3, 1,
-        "Space 1", &model3b.get_X_names(), &model3b.get_Y_names()
+        &model3b.get_X_names(), &model3b.get_Y_names()
         );
 
     counter_transition_formula(
         model3b.get_counters(), "{0y0_0} > {1y0, 1y2}", 2, 3, 0,
-        "excess", &model3b.get_X_names(), &model3b.get_Y_names()
+        &model3b.get_X_names(), &model3b.get_Y_names()
         );
 
     model3b.init();

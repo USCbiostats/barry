@@ -126,7 +126,6 @@ barry::Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
 inline void counter_ones(
     DEFMCounters * counters,
     int covar_index   = -1,
-    std::string vname = "",
     const std::vector< std::string > * x_names = nullptr
 )
 {
@@ -148,13 +147,11 @@ inline void counter_ones(
 
         };
 
-        if (vname == "")
-        {
-            if (x_names != nullptr)
-                vname = x_names->operator[](covar_index);
-            else
-                vname = std::string("attr")+ std::to_string(covar_index);
-        }
+        std::string vname;
+        if (x_names != nullptr)
+            vname = x_names->operator[](covar_index);
+        else
+            vname = std::string("attr")+ std::to_string(covar_index);
 
         counters->add_counter(
             counter_tmp, nullptr, hasher,
@@ -200,7 +197,6 @@ inline void counter_ones(
  * @param n_y The number of response variables.
  * @param which A vector of indices indicating which response variables to use. If empty, all response variables are used.
  * @param covar_index The index of the covariate to use as the intercept. 
- * @param vname The name of the variable to use as the intercept. If empty, the intercept is set to zero.
  * @param x_names A pointer to a vector of strings containing the names of the covariates.
  * @param y_names A pointer to a vector of strings containing the names of the response variables.
  */
@@ -209,7 +205,6 @@ inline void counter_logit_intercept(
     size_t n_y,
     std::vector< size_t > which = {},
     int covar_index = -1,
-    std::string vname = "",
     const std::vector< std::string > * x_names = nullptr,
     const std::vector< std::string > * y_names = nullptr
 ) {
@@ -226,6 +221,7 @@ inline void counter_logit_intercept(
     }
 
     // Case when no interaction happens, whatsoever.
+    std::string vname;
     if (covar_index < 0)
     {
 
@@ -273,22 +269,23 @@ inline void counter_logit_intercept(
         auto hasher = defm_hasher_factory(covar_index);
         bool hasher_added = false;
 
-        std::string yname;
+        std::string yname, vname;
         for (auto i : which)
         {
 
             if (y_names != nullptr)
-                yname = y_names->operator[](i);
-            else
-                yname = std::to_string(i);
-
-            if (vname == "")
             {
-                if (x_names != nullptr)
-                    vname = x_names->operator[](covar_index);
-                else
-                    vname = std::string("attr")+ std::to_string(covar_index);
+                yname = y_names->operator[](i);
             }
+            else
+            {
+                yname = std::to_string(i);
+            }
+
+            if (x_names != nullptr)
+                vname = x_names->operator[](covar_index);
+            else
+                vname = std::string("attr")+ std::to_string(covar_index);
 
             if (hasher_added)
                 counters->add_counter(
@@ -330,7 +327,6 @@ inline void counter_transition(
     size_t m_order,
     size_t n_y,
     int covar_index = -1,
-    std::string vname = "",
     const std::vector< std::string > * x_names = nullptr,
     const std::vector< std::string > * y_names = nullptr
 )
@@ -444,7 +440,7 @@ inline void counter_transition(
     };
 
     // Creating name of the structure
-    std::string name;
+    std::string name, vname;
     if (coords.size() == 1u)
         name = "";
     else
@@ -491,37 +487,7 @@ inline void counter_transition(
             name += "{";
         #endif
 
-    #ifdef BARRY_WITH_LATEX
-        #define UNI_SUB(a) \
-            (\
-                ((a) == 0) ? "_0" : (\
-                ((a) == 1) ? "_1" : (\
-                ((a) == 2) ? "_2" : (\
-                ((a) == 3) ? "_3" : (\
-                ((a) == 4) ? "_4" : (\
-                ((a) == 5) ? "_5" : (\
-                ((a) == 6) ? "_6" : (\
-                ((a) == 7) ? "_7" : (\
-                ((a) == 8) ? "_8" : \
-                "_9"))))))))\
-            )
-    #else
-        #define UNI_SUB(a) \
-            (\
-                ((a) == 0) ? u8"\u2080" : (\
-                ((a) == 1) ? u8"\u2081" : (\
-                ((a) == 2) ? u8"\u2082" : (\
-                ((a) == 3) ? u8"\u2083" : (\
-                ((a) == 4) ? u8"\u2084" : (\
-                ((a) == 5) ? u8"\u2085" : (\
-                ((a) == 6) ? u8"\u2086" : (\
-                ((a) == 7) ? u8"\u2087" : (\
-                ((a) == 8) ? u8"\u2088" : \
-                u8"\u2089"))))))))\
-            )
-    #endif
-
-    // If order is greater than zero, the starting point of the transtion
+        // If order is greater than zero, the starting point of the transtion
     for (size_t i = 0u; i < m_order; ++i)
     {
 
@@ -589,13 +555,11 @@ inline void counter_transition(
         #ifdef BARRY_WITH_LATEX
         name += (motif(m_order, j) < 0 ? "^-" : "^+" );
         #else
-        name += (motif(m_order, j) < 0 ? u8"\u207B" : u8"\u207A" );
+        name += (motif(m_order, j) < 0 ? "-" : "+" );
         #endif
 
 
     }
-
-    #undef UNI_SUB
 
     #ifdef BARRY_WITH_LATEX
     name += ")$";
@@ -608,13 +572,10 @@ inline void counter_transition(
 
         auto hasher = defm_hasher_factory(covar_index);
 
-        if (vname == "")
-        {
-            if (x_names != nullptr)
-                vname = x_names->operator[](covar_index);
-            else
-                vname = std::string("attr")+ std::to_string(covar_index);
-        }
+        if (x_names != nullptr)
+            vname = x_names->operator[](covar_index);
+        else
+            vname = std::string("attr")+ std::to_string(covar_index);
 
         counters->add_counter(
             count_ones, count_init, hasher,
@@ -650,8 +611,6 @@ inline void counter_transition_formula(
     std::string formula,
     size_t m_order,
     size_t n_y,
-    int covar_index = -1,
-    std::string vname = "",
     const std::vector< std::string > * x_names = nullptr,
     const std::vector< std::string > * y_names = nullptr
 ) {
@@ -661,11 +620,8 @@ inline void counter_transition_formula(
     std::string covar_name = "";
 
     defm_motif_parser(
-        formula, coords, signs, m_order, n_y, covar_name, vname
+        formula, coords, signs, m_order, n_y
     );
-
-    if ((covar_name != "") && (covar_index >= 0))
-        throw std::logic_error("Can't have both a formula and a covariate index.");
 
     if (covar_name != "")
     {
@@ -702,7 +658,6 @@ inline void counter_transition_formula(
         counter_logit_intercept(
             counters, n_y, {coord},
             covar_index,
-            vname,
             x_names,
             y_names
         );
@@ -712,7 +667,7 @@ inline void counter_transition_formula(
     {
 
         counter_transition(
-            counters, coords, signs, m_order, n_y, covar_index, vname,
+            counters, coords, signs, m_order, n_y, covar_index,
             x_names, y_names
         );
 
@@ -731,7 +686,6 @@ inline void counter_fixed_effect(
     DEFMCounters * counters,
     int covar_index,
     double k,
-    std::string vname = "",
     const std::vector< std::string > * x_names = nullptr
 )
 {
@@ -748,6 +702,7 @@ inline void counter_fixed_effect(
 
     auto hasher = defm_hasher_factory(covar_index);
 
+    std::string vname;
     if (x_names != nullptr)
         vname = x_names->operator[](covar_index);
     else
