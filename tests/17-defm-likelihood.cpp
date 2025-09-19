@@ -96,22 +96,23 @@ BARRY_TEST_CASE("DEFM likelihood computation", "[DEFM likelihood]") {
     DEFM model1b(&id[0u], &Y[0u], &X[0u], 8, 3, 2, 2);
 
     auto model_builder1 = [](auto & model_) -> void {
+
         model_.get_model().store_psets();
         model_.set_names({"A", "B", "C"}, {"X1", "X2"});
 
         // Using formula-based counters
         counter_ones(model_.get_model().get_counters());
         counter_transition_formula(
-            model_.get_counters(), "{y0}", 2, 3, -1,
-            "", &model_.get_X_names(), &model_.get_Y_names()
+            model_.get_counters(), "{y0}", 2, 3, 
+            &model_.get_X_names(), &model_.get_Y_names()
         );
         counter_transition_formula(
-            model_.get_counters(), "{y0} x X2", 2, 3, -1,
-            "", &model_.get_X_names(), &model_.get_Y_names()
+            model_.get_counters(), "{y0} x X2", 2, 3,
+            &model_.get_X_names(), &model_.get_Y_names()
         );
         counter_transition_formula(
-            model_.get_counters(), "{0y0_0} > {1y0, 1y2} x X1", 2, 3, -1,
-            "", &model_.get_X_names(), &model_.get_Y_names()
+            model_.get_counters(), "{0y0_0} > {1y0, 1y2} x X1", 2, 3,
+            &model_.get_X_names(), &model_.get_Y_names()
         );
     };
 

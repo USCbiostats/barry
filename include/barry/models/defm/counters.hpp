@@ -620,9 +620,10 @@ inline void counter_transition_formula(
     std::string covar_name = "";
 
     defm_motif_parser(
-        formula, coords, signs, m_order, n_y
+        formula, coords, signs, m_order, n_y, covar_name
     );
 
+    int covar_index = -1;
     if (covar_name != "")
     {
 

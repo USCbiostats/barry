@@ -46,7 +46,9 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     // counter_logit_intercept(counter.get_counters(), 3, {}, 0);
 
     // With formula
-    counter_transition_formula(counter.get_counters(), "{y0_0, 0y2_0} > {0y0, y2}", 2, 3);
+    counter_transition_formula(
+        counter.get_counters(), "{y0_0, 0y2_0} > {0y0, y2}", 2, 3
+    );
     counter_transition(counter.get_counters(), {0, 6, 2, 8}, {true, false, false, true}, 2, 3);
     
 
@@ -171,21 +173,21 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     // Generating the model specification
     counter_ones(model3.get_model().get_counters());
     counter_transition_formula(
-        model3.get_counters(), "{y0}", 2, 3, -1,
+        model3.get_counters(), "{y0}", 2, 3,
         &model3.get_X_names(), &model3.get_Y_names()
         );
     counter_transition_formula(
-        model3.get_counters(), "{y0} x X2", 2, 3, -1,
-        &model3.get_X_names(), &model3.get_Y_names()
-        );
-
-    counter_transition_formula(
-        model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X2(Space 1)", 2, 3, -1,
+        model3.get_counters(), "{y0} x X2", 2, 3,
         &model3.get_X_names(), &model3.get_Y_names()
         );
 
     counter_transition_formula(
-        model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X1(excess)", 2, 3, -1,
+        model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X2(Space 1)", 2, 3,
+        &model3.get_X_names(), &model3.get_Y_names()
+        );
+
+    counter_transition_formula(
+        model3.get_counters(), "{0y0_0} > {1y0, 1y2} x X1(excess)", 2, 3,
         &model3.get_X_names(), &model3.get_Y_names()
         );
 
@@ -200,21 +202,21 @@ BARRY_TEST_CASE("DEFM counts work", "[DEFM counts]") {
     // Generating the model specification
     counter_ones(model3b.get_model().get_counters());
     counter_transition_formula(
-        model3b.get_counters(), "{y0}", 2, 3, -1,
+        model3b.get_counters(), "{y0}", 2, 3,
         &model3b.get_X_names(), &model3b.get_Y_names()
         );
     counter_transition_formula(
-        model3b.get_counters(), "{y0}", 2, 3, 1,
-        &model3b.get_X_names(), &model3b.get_Y_names()
-        );
-
-    counter_transition_formula(
-        model3b.get_counters(), "{0y0_0} > {1y0, 1y2}", 2, 3, 1,
+        model3b.get_counters(), "{y0} x X2", 2, 3,
         &model3b.get_X_names(), &model3b.get_Y_names()
         );
 
     counter_transition_formula(
-        model3b.get_counters(), "{0y0_0} > {1y0, 1y2}", 2, 3, 0,
+        model3b.get_counters(), "{0y0_0} > {1y0, 1y2} x X2", 2, 3,
+        &model3b.get_X_names(), &model3b.get_Y_names()
+        );
+
+    counter_transition_formula(
+        model3b.get_counters(), "{0y0_0} > {1y0, 1y2} x X1", 2, 3,
         &model3b.get_X_names(), &model3b.get_Y_names()
         );
 
