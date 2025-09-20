@@ -30,9 +30,7 @@ BARRY_TEST_CASE("DEFM likelihood computation", "[DEFM likelihood]") {
 
         counter_ones(model_.get_model().get_counters());
         counter_ones(model_.get_model().get_counters(), 0);
-        counter_fixed_effect(model_.get_model().get_counters(), 0, 1.0);
-        counter_fixed_effect(model_.get_model().get_counters(), 1, 1.0);
-        counter_transition(model_.get_model().get_counters(), {0, 1, 2}, {}, 2, 3);
+        counter_generic(model_.get_model().get_counters(), {0, 1, 2}, {}, 2, 3);
         return;
     };
 
@@ -48,8 +46,8 @@ BARRY_TEST_CASE("DEFM likelihood computation", "[DEFM likelihood]") {
     model0b.print();
 
     // Test parameters
-    std::vector< double > par0 = {.5, -.1, .1, .2, -.05};
-    std::vector< double > par1 = {-0.2, 0.3, -0.1, 0.15, 0.08};
+    std::vector< double > par0 = {.5, -.1, -.05};
+    std::vector< double > par1 = {-0.2, 0.3, 0.08};
 
     // Computing likelihoods using total likelihood method
     std::vector< double > logs_total0a(2), logs_total0b(2);
@@ -102,15 +100,15 @@ BARRY_TEST_CASE("DEFM likelihood computation", "[DEFM likelihood]") {
 
         // Using formula-based counters
         counter_ones(model_.get_model().get_counters());
-        counter_transition_formula(
+        counter_formula(
             model_.get_counters(), "{y0}", 2, 3, 
             &model_.get_X_names(), &model_.get_Y_names()
         );
-        counter_transition_formula(
+        counter_formula(
             model_.get_counters(), "{y0} x X2", 2, 3,
             &model_.get_X_names(), &model_.get_Y_names()
         );
-        counter_transition_formula(
+        counter_formula(
             model_.get_counters(), "{0y0_0} > {1y0, 1y2} x X1", 2, 3,
             &model_.get_X_names(), &model_.get_Y_names()
         );

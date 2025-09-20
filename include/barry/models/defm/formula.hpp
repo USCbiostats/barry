@@ -4,7 +4,7 @@
  * @brief Parses a motif formula
  * 
  * @details This function will take the formula and generate the corresponding
- * input for defm::counter_transition(). Formulas can be specified in the
+ * input for defm::counter_generic(). Formulas can be specified in the
  * following ways:
  * 
  * - Intercept effect: {...} No transition, only including the current state.

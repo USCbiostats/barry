@@ -259,7 +259,7 @@ typedef barry::Rules<DEFMArray, DEFMRuleDynData> DEFMRulesDyn;
  * @brief Parses a motif formula
  * 
  * @details This function will take the formula and generate the corresponding
- * input for defm::counter_transition(). Formulas can be specified in the
+ * input for defm::counter_generic(). Formulas can be specified in the
  * following ways:
  * 
  * - Intercept effect: {...} No transition, only including the current state.
@@ -641,6 +641,8 @@ barry::Rule_fun_type<DEFMArray, DEFMRuleDynData> a = \
 /**
  * @brief Prevalence of ones
  * 
+ * This is similar to the `edges` term in ERGMs.
+ * 
  * @param counters Pointer ot a vector of counters
  * @param covar_index If >= than 0, then the interaction
  */
@@ -678,7 +680,9 @@ inline void counter_ones(
             counter_tmp, nullptr, hasher,
             DEFMCounterData({static_cast<size_t>(covar_index)}, {}, {}, true), 
             "Num. of ones x " + vname, 
-            "Overall number of ones"
+            "Overall number of ones" + (
+                covar_index >= 0 ? (" weighted by " + vname) : std::string("")
+            )
         );
 
     }
@@ -836,12 +840,34 @@ inline void counter_logit_intercept(
 }
 
 /**
- * @brief Prevalence of ones
+ * @brief Generalized counter for DEFM models
  * 
  * @param counters Pointer ot a vector of counters
- * @param covar_index If >= than 0, then the interaction
+ * @param signs A vector of signs for the motif variables. If empty, all
+ * are assumed to be positive. If the size does not match the size of
+ * -coords-, an error is thrown.
+ * @param coords A vector of coordinates for the motif variables.
+ * Each coordinate must be between 0 and (m_order + 1) * n_y - 1.
+ * The coordinates are specified in column-major order.
+ * @param m_order The Markov order of the data.
+ * @param n_y The number of response variables.
+ * @param covar_index If >= than 0, then the interaction with the covariate
+ * at that index will be included.
+ * @param x_names A pointer to a vector of strings containing the names of
+ * the covariates.
+ * @param y_names A pointer to a vector of strings containing the names of
+ * the response variables.
+ * 
+ * @details
+ * This function adds a counter to the DEFM model that can compute 
+ * either a motif-based count (combinations) or transitions. These
+ * can also be interacted with a covariate.
+ *
+ * If either `x_names` or `y_names` is nullptr, then generic names will be used.
+ * If both are provided, then the names will be used in the counter description.
+ * If only one is provided, then only that name will be used.
  */
-inline void counter_transition(
+inline void counter_generic(
     DEFMCounters * counters,
     std::vector< size_t > coords,
     std::vector< bool > signs,
@@ -1008,7 +1034,7 @@ inline void counter_transition(
             name += "{";
         #endif
 
-        // If order is greater than zero, the starting point of the transtion
+    // If order is greater than zero, the starting point of the transtion
     for (size_t i = 0u; i < m_order; ++i)
     {
 
@@ -1034,7 +1060,7 @@ inline void counter_transition(
             #ifdef BARRY_WITH_LATEX
                 name += (motif(i,j) < 0 ? "^-" : "^+");
             #else
-                name += (motif(i,j) < 0 ? u8"\u207B" : u8"\u207A");
+                name += (motif(i,j) < 0 ? "-" : "+");
             #endif
 
         }
@@ -1102,7 +1128,7 @@ inline void counter_transition(
             count_ones, count_init, hasher,
             DEFMCounterData(coords, {}, signs, coords.size() > 1u ? true : false), 
             name + " x " + vname, 
-            "Motif weighted by single attribute"
+            "Motif weighted by " + vname
         );
 
     } else {
@@ -1127,7 +1153,7 @@ inline void counter_transition(
  * @param counters Pointer ot a vector of counters
  * @param covar_index If >= than 0, then the interaction
  */
-inline void counter_transition_formula(
+inline void counter_formula(
     DEFMCounters * counters,
     std::string formula,
     size_t m_order,
@@ -1188,55 +1214,13 @@ inline void counter_transition_formula(
     else 
     {
 
-        counter_transition(
+        counter_generic(
             counters, coords, signs, m_order, n_y, covar_index,
             x_names, y_names
         );
 
     }
 
-
-}
-
-/**
- * @brief Prevalence of ones
- * 
- * @param counters Pointer ot a vector of counters
- * @param covar_index If >= than 0, then the interaction
- */
-inline void counter_fixed_effect(
-    DEFMCounters * counters,
-    int covar_index,
-    double k,
-    const std::vector< std::string > * x_names = nullptr
-)
-{
-
-    DEFM_COUNTER_LAMBDA(count_init)
-    {
-        return std::pow(Array.D()((size_t) i, data.idx(0u)), data.num(0u));
-    };
-
-    DEFM_COUNTER_LAMBDA(count_tmp)
-    {
-        return 0.0;
-    };
-
-    auto hasher = defm_hasher_factory(covar_index);
-
-    std::string vname;
-    if (x_names != nullptr)
-        vname = x_names->operator[](covar_index);
-    else
-        vname = std::string("attr")+ std::to_string(covar_index);
-
-    counters->add_counter(
-        count_tmp, count_init, hasher,
-        DEFMCounterData({static_cast<size_t>(covar_index)}, {k}, {}), 
-        "Fixed effect feature (" + vname + ")^" + std::to_string(k)
-    );
-
-    return;
 
 }
 
@@ -1260,7 +1244,7 @@ inline void rules_markov_fixed(
         no_self_tie,
         DEFMRuleData({},{markov_order}),
         std::string("Markov model of order ") + std::to_string(markov_order),
-        std::string("Blocks the first morder cells of the array.")
+        std::string("Blocks the first m-order cells of the array.")
         );
     
     return;
@@ -1270,11 +1254,11 @@ inline void rules_markov_fixed(
  * @brief Blocks switching a one to zero.
  * 
  * @param rules 
- * @param ids Ids of the variables that will follow this rule.
+ * @param term_indices Ids of the variables that will follow this rule.
  */
 inline void rules_dont_become_zero(
     DEFMSupport * support,
-    std::vector<size_t> ids
+    std::vector<size_t> term_indices
     ) {
     
     DEFM_RULE_LAMBDA(rule) {
@@ -1314,7 +1298,7 @@ inline void rules_dont_become_zero(
     
     support->get_rules()->add_rule(
         rule,
-        DEFMRuleData({}, {ids}),
+        DEFMRuleData({}, {term_indices}),
         std::string("Ones can't become zero"),
         std::string("Blocks cells that have became equal to one.")
         );
@@ -1325,7 +1309,7 @@ inline void rules_dont_become_zero(
 /**
  * @brief Overall functional gains
  * @param support Support of a model.
- * @param pos Position of the focal statistic.
+ * @param term_index Position of the focal statistic.
  * @param lb Lower bound
  * @param ub Upper bound
  * @details 
@@ -1333,7 +1317,7 @@ inline void rules_dont_become_zero(
  */
 inline void rule_constrain_support(
     DEFMSupport * support,
-    size_t pos,
+    size_t term_index,
     double lb,
     double ub
 )
@@ -1356,14 +1340,14 @@ inline void rule_constrain_support(
         tmp_rule,
         DEFMRuleDynData(
             support->get_current_stats(),
-            pos, lb, ub
+            term_index, lb, ub
             ),
-        support->get_counters()->get_names()[pos] +
+        support->get_counters()->get_names()[term_index] +
             "' within [" + std::to_string(lb) + ", " +
             std::to_string(ub) + std::string("]"),
-        std::string("When the support is ennumerated, only states where the statistic '") + 
-            support->get_counters()->get_names()[pos] +
-            std::to_string(pos) + "' falls within [" + std::to_string(lb) + ", " +
+        std::string("When the support is ennumerated, only states where the statistic '") +
+            support->get_counters()->get_names()[term_index] +
+            std::to_string(term_index) + "' falls within [" + std::to_string(lb) + ", " +
             std::to_string(ub) + "] are included."
     );
     
