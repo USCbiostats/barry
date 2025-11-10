@@ -7,6 +7,26 @@ on:
     branches: [ master ]
 
 jobs:
+  test-defm-r:
+    runs-on: ubuntu-latest
+    container: rocker/r2u:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: UofUEpiBio/defm
+          path: ./r-pkg
+
+      - name: Getting defm
+        run: |
+          install2.r --error Rcpp tinytest texreg
+          apt-get update && apt-get install -y --no-install-recommends pandoc
+          cp -r include/barry/ r-pkg/inst/include/barry/
+          R CMD build r-pkg
+          R CMD check --no-manual defm_*.tar.gz
+
   test:
     runs-on: ${{ matrix.os }}
     strategy:
