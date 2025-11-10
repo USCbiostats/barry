@@ -23,7 +23,7 @@ jobs:
         run: |
           install2.r --error Rcpp tinytest texreg
           apt-get update && apt-get install -y --no-install-recommends pandoc
-          cp -r include/defm/ r-pkg/inst/include/defm/
+          cp -r include/barry/ r-pkg/inst/include/barry/
           R CMD build r-pkg
           R CMD check --no-manual defm_*.tar.gz
 
