@@ -63,9 +63,10 @@ inline void defm_motif_parser(
         std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
         std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
         );
+    // Updated pattern to match one or more bracketed groups separated by '>'
     std::regex pattern_transition(
-        std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\}\\s*(>)\\s*") +
         std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
+        std::string("(\\s*>\\s*\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\})+") +
         std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
         );
 
@@ -103,79 +104,177 @@ inline void defm_motif_parser(
 
         }
 
-        // Will indicate where the arrow is located at
-        size_t arrow_position = match.position(4u);
+        // Find all bracketed groups to determine which time point each variable belongs to
+        std::regex bracket_pattern("\\{[^}]+\\}");
+        std::vector<std::pair<size_t, size_t>> bracket_ranges; // start, end positions
+        
+        auto brackets_begin = std::sregex_iterator(formula.begin(), formula.end(), bracket_pattern);
+        for (auto i = brackets_begin; i != empty; ++i)
+            bracket_ranges.push_back({i->position(), i->position() + i->length()});
 
-        // This pattern will match 
-        std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
+        size_t num_groups = bracket_ranges.size();
 
-        auto iter = std::sregex_iterator(formula.begin(), formula.end(), pattern);
-
-        for (auto i = iter; i != empty; ++i)
+        // For backwards compatibility, allow 2 groups (original behavior) or m_order+1 groups (new behavior)
+        if (num_groups == 2)
         {
+            // Original behavior: first group is LHS (time 0 to m_order-1), second is RHS (time m_order)
+            // Will use arrow_position to distinguish
+            size_t arrow_start = bracket_ranges[0].second;
+            size_t arrow_end = bracket_ranges[1].first;
 
-            // Baseline position
-            size_t current_location = i->position(0u);
+            // This pattern will match 
+            std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
 
-            // First value true/false
-            bool is_positive = true;
-            if (i->operator[](1u).str() == "0")
-                is_positive = false;
+            auto iter = std::sregex_iterator(formula.begin(), formula.end(), pattern);
 
-            // Variable position
-            size_t y_col = std::stoul(i->operator[](2u).str());
-            if (y_col >= y_ncol)
-                throw std::logic_error("The proposed column is out of range.");
-
-            // Time location
-            size_t y_row;
-            std::string tmp_str = i->operator[](4u).str();
-            if (m_order > 1)
+            for (auto i = iter; i != empty; ++i)
             {
-                // If missing, we replace with the location 
-                if (tmp_str == "")
+
+                // Baseline position
+                size_t current_location = i->position(0u);
+
+                // First value true/false
+                bool is_positive = true;
+                if (i->operator[](1u).str() == "0")
+                    is_positive = false;
+
+                // Variable position
+                size_t y_col = std::stoul(i->operator[](2u).str());
+                if (y_col >= y_ncol)
+                    throw std::logic_error("The proposed column is out of range.");
+
+                // Time location
+                size_t y_row;
+                std::string tmp_str = i->operator[](4u).str();
+                if (m_order > 1)
                 {
+                    // If missing, we replace with the location 
+                    if (tmp_str == "")
+                    {
 
-                    if (current_location > arrow_position)
-                        y_row = m_order;
+                        if (current_location >= bracket_ranges[1].first)
+                            y_row = m_order;
+                        else
+                            throw std::logic_error("LHS of transition must specify time when m_order > 1");
+
+                    } else
+                        y_row = std::stoul(tmp_str);
+
+                    if (y_row > m_order)
+                        throw std::logic_error("The proposed row is out of range.");
+
+
+                } else {
+
+                    // If missing, we replace with the location 
+                    if (tmp_str != "")
+                        y_row = std::stoul(tmp_str);
                     else
-                        throw std::logic_error("LHS of transition must specify time when m_order > 1");
+                        y_row = (current_location < bracket_ranges[1].first ? 0u: 1u);
 
-                } else
+                }
+
+                if (selected[y_col * (m_order + 1) + y_row])
+                    throw std::logic_error(
+                        "The term " + i->str() + " shows more than once in the formula.");
+
+                // Only the end of the chain can be located at position after the
+                // last bracket
+                if ((current_location >= bracket_ranges[1].first) && (y_row != m_order))
+                    throw std::logic_error(
+                        "Only the row " + std::to_string(m_order) +
+                        " can be specified at the RHS of the motif."
+                        );
+
+                selected[y_col * (m_order + 1) + y_row] = true;
+
+                locations.push_back(y_col * (m_order + 1) + y_row);
+                signs.push_back(is_positive);
+                
+
+            }
+        }
+        else if (num_groups == m_order + 1)
+        {
+            // New behavior: each group corresponds to a time point (0 to m_order)
+            
+            // This pattern will match 
+            std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
+
+            auto iter = std::sregex_iterator(formula.begin(), formula.end(), pattern);
+
+            for (auto i = iter; i != empty; ++i)
+            {
+
+                // Baseline position
+                size_t current_location = i->position(0u);
+
+                // First value true/false
+                bool is_positive = true;
+                if (i->operator[](1u).str() == "0")
+                    is_positive = false;
+
+                // Variable position
+                size_t y_col = std::stoul(i->operator[](2u).str());
+                if (y_col >= y_ncol)
+                    throw std::logic_error("The proposed column is out of range.");
+
+                // Determine which bracketed group this variable belongs to
+                size_t group_idx = 0;
+                for (size_t g = 0; g < bracket_ranges.size(); ++g)
+                {
+                    if (current_location >= bracket_ranges[g].first && 
+                        current_location < bracket_ranges[g].second)
+                    {
+                        group_idx = g;
+                        break;
+                    }
+                }
+
+                // Time location
+                size_t y_row;
+                std::string tmp_str = i->operator[](4u).str();
+                
+                // If row is explicitly specified, use it; otherwise infer from group position
+                if (tmp_str != "")
+                {
                     y_row = std::stoul(tmp_str);
+                    
+                    // Validate that explicit row matches the expected group position
+                    if (y_row != group_idx)
+                        throw std::logic_error(
+                            "Explicit row index " + std::to_string(y_row) + 
+                            " does not match the position in the formula (group " + 
+                            std::to_string(group_idx) + ").");
+                }
+                else
+                {
+                    // Infer row from bracketed group position
+                    y_row = group_idx;
+                }
 
                 if (y_row > m_order)
                     throw std::logic_error("The proposed row is out of range.");
 
+                if (selected[y_col * (m_order + 1) + y_row])
+                    throw std::logic_error(
+                        "The term " + i->str() + " shows more than once in the formula.");
 
-            } else {
+                selected[y_col * (m_order + 1) + y_row] = true;
 
-                // If missing, we replace with the location 
-                if (tmp_str != "")
-                    y_row = std::stoul(tmp_str);
-                else
-                    y_row = (current_location < arrow_position ? 0u: 1u);
+                locations.push_back(y_col * (m_order + 1) + y_row);
+                signs.push_back(is_positive);
+                
 
             }
-
-            if (selected[y_col * (m_order + 1) + y_row])
-                throw std::logic_error(
-                    "The term " + i->str() + " shows more than once in the formula.");
-
-            // Only the end of the chain can be located at position after the
-            // arrow
-            if ((current_location > arrow_position) && (y_row != m_order))
-                throw std::logic_error(
-                    "Only the row " + std::to_string(m_order) +
-                    " can be specified at the RHS of the motif."
-                    );
-
-            selected[y_col * (m_order + 1) + y_row] = true;
-
-            locations.push_back(y_col * (m_order + 1) + y_row);
-            signs.push_back(is_positive);
-            
-
+        }
+        else
+        {
+            throw std::logic_error(
+                "For a Markov model of order " + std::to_string(m_order) + 
+                ", transition formulas must have either 2 bracketed groups " +
+                "(for backwards compatibility) or exactly " + std::to_string(m_order + 1) + 
+                " bracketed groups (found " + std::to_string(num_groups) + ").");
         }
 
         return;
