@@ -824,7 +824,7 @@ inline void rule_constrain_support(
         support->get_counters()->get_names()[term_index] +
             "' within [" + std::to_string(lb) + ", " +
             std::to_string(ub) + std::string("]"),
-        std::string("When the support is ennumerated, only states where the statistic '") +
+        std::string("When the support is enumerated, only states where the statistic '") +
             support->get_counters()->get_names()[term_index] +
             std::to_string(term_index) + "' falls within [" + std::to_string(lb) + ", " +
             std::to_string(ub) + "] are included."

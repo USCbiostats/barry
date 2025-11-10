@@ -38,9 +38,9 @@ BARRY_TEST_CASE("DEFM motif formula", "[DEFM motif formula]") {
     defm::defm_motif_parser("{y1_0, y3} > {y1_1, 0y3_1}", res_locations2a, res_sign2a, 1, 4, covar_name2a);
     defm::defm_motif_parser("{y1}", res_locations3a, res_sign3a, 1, 4, covar_name3a);
 
-    defm::defm_motif_parser("{y1_1, y3} x abc1", res_locations1b, res_sign1b, 1, 4, covar_name1a);
-    defm::defm_motif_parser("{y1_0, y3_0} > {y1, 0y3_1} x abc2", res_locations2b, res_sign2b, 1, 4, covar_name2a);
-    defm::defm_motif_parser("{y1_1} x abc3", res_locations3b, res_sign3b, 1, 4, covar_name3a);
+    defm::defm_motif_parser("{y1_1, y3} x abc1", res_locations1b, res_sign1b, 1, 4, covar_name1);
+    defm::defm_motif_parser("{y1_0, y3_0} > {y1, 0y3_1} x abc2", res_locations2b, res_sign2b, 1, 4, covar_name2);
+    defm::defm_motif_parser("{y1_1} x abc3", res_locations3b, res_sign3b, 1, 4, covar_name3);
 
 
     #ifdef CATCH_CONFIG_MAIN
