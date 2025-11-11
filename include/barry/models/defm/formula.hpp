@@ -31,9 +31,24 @@
  * 
  * ## Transition effects
  * 
- * Transition effects can be specified using two sets of curly brackets and
- * an greater-than symbol, i.e., `{...} > {...}`. The first set of brackets,
- * which we call LHS, can only hold `row id` that are less than `m_order`.
+ * Transition effects can be specified using curly brackets separated by
+ * greater-than symbols ('>').
+ * 
+ * **Two-group mode (backwards compatible):** `{...} > {...}`
+ * - First group (LHS): Variables at times 0 to m_order-1. When m_order > 1,
+ *   row indices must be explicitly specified.
+ * - Second group (RHS): Variables at time m_order. Row indices can be omitted
+ *   and will default to m_order.
+ * 
+ * **Multi-group mode (explicit):** `{...} > {...} > ... > {...}` (m_order+1 groups)
+ * - Each group corresponds to a specific time point (0, 1, ..., m_order).
+ * - Row indices can be omitted and will be inferred from group position.
+ * - If specified, row indices must match the group position.
+ * 
+ * Examples:
+ * - Order 1: `{y0_0} > {y0_1}` or `{y0_0} > {y0}` (both valid)
+ * - Order 2: `{y0_0} > {y0}` (2-group, implicit final time)
+ * - Order 2: `{y0_0} > {y0_1} > {y0_2}` (3-group, all explicit)
  * 
  * 
  * @param formula A string specifying the motif formula (see details).
@@ -117,10 +132,9 @@ inline void defm_motif_parser(
         // For backwards compatibility, allow 2 groups (original behavior) or m_order+1 groups (new behavior)
         if (num_groups == 2)
         {
-            // Original behavior: first group is LHS (time 0 to m_order-1), second is RHS (time m_order)
-            // Will use arrow_position to distinguish
-            size_t arrow_start = bracket_ranges[0].second;
-            size_t arrow_end = bracket_ranges[1].first;
+            // Two-group mode (backwards compatible):
+            // - First group: variables at time 0 to m_order-1 (must have explicit row when m_order > 1)
+            // - Second group: variables at time m_order (row can be implicit or explicit)
 
             // This pattern will match 
             std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
@@ -178,8 +192,7 @@ inline void defm_motif_parser(
                     throw std::logic_error(
                         "The term " + i->str() + " shows more than once in the formula.");
 
-                // Only the end of the chain can be located at position after the
-                // last bracket
+                // Only variables at time m_order can be in the RHS (second bracketed group)
                 if ((current_location >= bracket_ranges[1].first) && (y_row != m_order))
                     throw std::logic_error(
                         "Only the row " + std::to_string(m_order) +
@@ -220,16 +233,28 @@ inline void defm_motif_parser(
                     throw std::logic_error("The proposed column is out of range.");
 
                 // Determine which bracketed group this variable belongs to
+                // Note: The regex pattern ensures all variables are within bracketed groups,
+                // as the pattern only matches content inside brackets. Variables in covariate
+                // expressions (after 'x') are handled separately by pattern_conditional above.
                 size_t group_idx = 0;
+                bool found_group = false;
                 for (size_t g = 0; g < bracket_ranges.size(); ++g)
                 {
                     if (current_location >= bracket_ranges[g].first && 
                         current_location < bracket_ranges[g].second)
                     {
                         group_idx = g;
+                        found_group = true;
                         break;
                     }
                 }
+                
+                // Safety check: ensure the variable was found in a bracketed group
+                // This should never happen given the regex, but verify for safety
+                if (!found_group)
+                    throw std::logic_error(
+                        "Internal error: variable " + i->str() + 
+                        " not found within any bracketed group.");
 
                 // Time location
                 size_t y_row;
