@@ -115,6 +115,250 @@ BARRY_TEST_CASE("DEFM motif formula with order 2", "[DEFM motif formula order 2]
     }
     #endif
 
+    // =========================================================================
+    // Error testing section - testing all throw statements
+    // =========================================================================
+
+    // Test error: Transition with m_order = 0
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y0} > {y1}", res_locations1, res_sign1, 0, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y0} > {y1}", res_locations1, res_sign1, 0, 4, covar_name1);
+        printf("ERROR: Should have thrown for m_order=0 with transition\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Column out of range (2-group mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y5_0} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y5_0} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for column out of range\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: LHS without time specification when m_order > 1 (2-group mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1} > {y2_2}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1} > {y2_2}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for LHS without time when m_order > 1\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Row out of range (2-group mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1_0} > {y1_5}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1_0} > {y1_5}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for row out of range\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Duplicate term (2-group mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1_0, y1_0} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1_0, y1_0} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for duplicate term\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: RHS with non-m_order row (2-group mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1_0} > {y1_1}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1_0} > {y1_1}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for RHS with non-m_order row\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Column out of range (m_order+1 mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y5_0} > {y1_1} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y5_0} > {y1_1} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for column out of range in m_order+1 mode\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Explicit row mismatch (m_order+1 mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1_1} > {y1_1} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1_1} > {y1_1} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for explicit row mismatch\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Row out of range (m_order+1 mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1_0} > {y1_1} > {y1_5}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1_0} > {y1_1} > {y1_5}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for row out of range in m_order+1 mode\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Duplicate term (m_order+1 mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1_0, y1_0} > {y1_1} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1_0, y1_0} > {y1_1} > {y1_2}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for duplicate term in m_order+1 mode\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Wrong number of groups (not 2 or m_order+1)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1_0} > {y1_1} > {y1_2} > {y1_3}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1_0} > {y1_1} > {y1_2} > {y1_3}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for wrong number of groups\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Column out of range (intercept mode)
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y5}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y5}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for column out of range in intercept mode\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Intercept with past event
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1_0}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1_0}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for intercept with past event\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Duplicate in intercept
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("{y1, y1}", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("{y1, y1}", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for duplicate in intercept\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
+    // Test error: Wrong syntax
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE_THROWS_AS(
+        defm::defm_motif_parser("invalid formula", res_locations1, res_sign1, 2, 4, covar_name1),
+        std::logic_error
+    );
+    #else
+    try {
+        defm::defm_motif_parser("invalid formula", res_locations1, res_sign1, 2, 4, covar_name1);
+        printf("ERROR: Should have thrown for wrong syntax\n");
+        return 1;
+    } catch (const std::logic_error& e) {
+        // Expected
+    }
+    #endif
+
     #ifndef CATCH_CONFIG_MAIN
     return 0;
     #endif
