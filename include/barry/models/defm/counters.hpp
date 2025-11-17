@@ -551,11 +551,7 @@ inline void counter_generic(
         // Add arrow if not the last time point
         if (i < m_order)
         {
-            #ifdef BARRY_WITH_LATEX
-                name += " -> ";
-            #else
-                name += u8"\u21E8";
-            #endif
+            >
         }
     }
 
