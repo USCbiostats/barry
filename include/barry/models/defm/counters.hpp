@@ -551,7 +551,7 @@ inline void counter_generic(
         // Add arrow if not the last time point
         if (i < m_order)
         {
-            >
+            name += ">";
         }
     }
 
