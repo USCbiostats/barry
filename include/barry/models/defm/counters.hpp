@@ -486,43 +486,41 @@ inline void counter_generic(
         
     }
 
-    // Checking if any prior to the event
-    bool any_before_event = false;
-    
-    for (size_t i = 0u; i < m_order; ++i)
-    {
-        for (size_t j = 0u; j < n_y; ++j)
-        {
-            if (motif(i,j) != 0)
-            {
-                any_before_event = true;
-                break;
-            }
-
-        }
-    }
-    
     #ifdef BARRY_WITH_LATEX
         name += "$";
     #endif
 
-    if (any_before_event)
+    // Generate name by showing each time point separately
+    // Loop through all time points (0 to m_order)
+    for (size_t i = 0u; i <= m_order; ++i)
+    {
+        // Check if this time point has any variables
+        bool has_vars = false;
+        for (size_t j = 0u; j < n_y; ++j)
+        {
+            if (motif(i, j) != 0)
+            {
+                has_vars = true;
+                break;
+            }
+        }
+
+        if (!has_vars)
+            continue;
+
+        // Open bracket for this time point
         #ifdef BARRY_WITH_LATEX
             name += "(";
         #else
             name += "{";
         #endif
 
-    // If order is greater than zero, the starting point of the transtion
-    for (size_t i = 0u; i < m_order; ++i)
-    {
-
+        // Add variables for this time point
         bool row_start = true;
         for (size_t j = 0u; j < n_y; ++j)
         {
-
             // Is it included?
-            if (motif(i,j) == 0)
+            if (motif(i, j) == 0)
                 continue;
 
             // Is not the first?
@@ -537,60 +535,28 @@ inline void counter_generic(
                 name += (std::string("y") + std::to_string(j));
 
             #ifdef BARRY_WITH_LATEX
-                name += (motif(i,j) < 0 ? "^-" : "^+");
+                name += (motif(i, j) < 0 ? "^-" : "^+");
             #else
-                name += (motif(i,j) < 0 ? "-" : "+");
+                name += (motif(i, j) < 0 ? "-" : "+");
             #endif
-
         }
 
-    }
-
-    // If it has starting point, then need to close.
-    if (any_before_event & (m_order > 0u))
+        // Close bracket for this time point
         #ifdef BARRY_WITH_LATEX
-            name += ") -> (";
+            name += ")";
         #else
-            name += std::string("}") + u8"\u21E8" + std::string("{");
-        #endif
-    else
-        #ifdef BARRY_WITH_LATEX
-            name += "(";
-        #else
-            name += "{";
+            name += "}";
         #endif
 
-    // Looking onto the transtions
-    bool row_start = true;
-    for (size_t j = 0u; j < n_y; ++j)
-    {
-
-        if (motif(m_order, j) == 0)
-            continue;
-
-        if (row_start)
-            row_start = false;
-        else
-            name += ", ";
-
-        if (y_names != nullptr)
-            name += y_names->operator[](j);
-        else
-            name += (std::string("y") + std::to_string(j));
-
-        #ifdef BARRY_WITH_LATEX
-        name += (motif(m_order, j) < 0 ? "^-" : "^+" );
-        #else
-        name += (motif(m_order, j) < 0 ? "-" : "+" );
-        #endif
-
-
+        // Add arrow if not the last time point
+        if (i < m_order)
+        {
+            name += ">";
+        }
     }
 
     #ifdef BARRY_WITH_LATEX
-    name += ")$";
-    #else
-    name += "}";
+    name += "$";
     #endif
 
     if (covar_index >= 0)

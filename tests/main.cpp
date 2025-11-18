@@ -28,3 +28,4 @@
 #include "16-defm-counts-with-formulas.cpp"
 #include "16b-defm-counts-with-formulas.cpp"
 #include "17-defm-likelihood.cpp"
+#include "18-defm-counter-names.cpp"
