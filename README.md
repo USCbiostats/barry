@@ -62,11 +62,11 @@ int main() {
 
   // Creating counter object for the network and adding stats to count
   netcounters::NetStatsCounter counter(&net);
-  netcounters::counter_edges(counter.counters);
-  netcounters::counter_ttriads(counter.counters);
-  netcounters::counter_isolates(counter.counters);
-  netcounters::counter_ctriads(counter.counters);
-  netcounters::counter_mutual(counter.counters);
+  netcounters::counter_edges(counter.get_counters());
+  netcounters::counter_ttriads(counter.get_counters());
+  netcounters::counter_isolates(counter.get_counters());
+  netcounters::counter_ctriads(counter.get_counters());
+  netcounters::counter_mutual(counter.get_counters());
   
   // Counting and printing the results
   std::vector< double > counts = counter.count_all();
