@@ -31,7 +31,7 @@
 /* Versioning */
 #define BARRY_VERSION_MAYOR 0
 #define BARRY_VERSION_MINOR 2
-#define BARRY_VERSION_PATCH 1
+#define BARRY_VERSION_PATCH 2
 #define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR ## . ## BARRY_VERSION_PATCH
 
 static const int barry_version_major = BARRY_VERSION_MAYOR;
@@ -1758,11 +1758,11 @@ template<typename Cell_Type, typename Data_Type> inline bool  BArray<Cell_Type, 
 ) {
     
     // Dimension and number of cells used
-    if ((N != Array_.nrow()) | (M != Array_.ncol()) | (NCells != Array_.nnozero()))
+    if ((N != Array_.nrow()) || (M != Array_.ncol()) || (NCells != Array_.nnozero()))
         return false;
     
     // One holds, and the other doesn't.
-    if ((!data & Array_.data) | (data & !Array_.data))
+    if ((!data && Array_.data) || (data && !Array_.data))
         return false;
     
     if (this->el_ij != Array_.el_ij)
@@ -3959,11 +3959,11 @@ inline bool BArrayDense<Cell_Type, Data_Type>::operator== (
 ) {
     
     // Dimension and number of cells used
-    if ( (N != Array_.nrow()) | (M != Array_.ncol()) )
+    if ( (N != Array_.nrow()) || (M != Array_.ncol()) )
         return false;
     
     // One holds, and the other doesn't.
-    if ((!data & Array_.data) | (data & !Array_.data))
+    if ((!data && Array_.data) || (data && !Array_.data))
         return false;
     
     if (this->el != Array_.el)
@@ -6377,7 +6377,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
             coord_j
             );
         
-        if ((tmp_chng < DBL_MIN) & (tmp_chng > -DBL_MIN))
+        if ((tmp_chng < DBL_MIN) && (tmp_chng > -DBL_MIN))
         {
 
             change_stats[pos * n_counters + n] = 0.0;
@@ -6504,7 +6504,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
             coord_j
             );
 
-        if ((tmp_chng < DBL_MIN) & (tmp_chng > -DBL_MIN))
+        if ((tmp_chng < DBL_MIN) && (tmp_chng > -DBL_MIN))
         {
 
             change_stats[pos * n_counters + n] = 0.0;
@@ -10517,7 +10517,7 @@ inline void counter_ttriads(NetCounters<NetworkDense> * counters)
             if ((Array.colsum(k) == BARRY_ZERO_NETWORK_DENSE) && (Array.rowsum(k) == BARRY_ZERO_NETWORK_DENSE))
                 continue;
 
-            if ((j != k) & (i != k))
+            if ((j != k) && (i != k))
             {
 
                 if (dat[k * N + i] != BARRY_ZERO_NETWORK_DENSE)
@@ -11384,7 +11384,7 @@ inline void counter_degree(
     double pji = static_cast<double>(Array(j + s, i + s, false));
 
 // Variables in case that the current cell corresponds to the Perceived
-#define CSS_CASE_PERCEIVED() else if (((i >= s) && (i < e)) & ((j >= s) && (j < e)))
+#define CSS_CASE_PERCEIVED() else if (((i >= s) && (i < e)) && ((j >= s) && (j < e)))
 
 // i_: i-th index of the cell
 // j_: j-th index of the cell
@@ -11409,7 +11409,7 @@ inline void counter_degree(
 #define CSS_CHECK_SIZE_INIT() \
     /* The indices fall within the network */ \
     if ((data.indices.at(0) > Array.ncol()) \
-    | (data.indices.at(2) > Array.ncol())) \
+    || (data.indices.at(2) > Array.ncol())) \
         throw std::range_error("The network does not match the prescribed size."); 
 
 #define CSS_CHECK_SIZE() for (size_t i = 0u; i < end_.size(); ++i) {\

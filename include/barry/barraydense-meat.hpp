@@ -293,11 +293,11 @@ inline bool BArrayDense<Cell_Type, Data_Type>::operator== (
 ) {
     
     // Dimension and number of cells used
-    if ( (N != Array_.nrow()) | (M != Array_.ncol()) )
+    if ( (N != Array_.nrow()) || (M != Array_.ncol()) )
         return false;
     
     // One holds, and the other doesn't.
-    if ((!data & Array_.data) | (data & !Array_.data))
+    if ((!data && Array_.data) || (data && !Array_.data))
         return false;
     
     if (this->el != Array_.el)
