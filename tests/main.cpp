@@ -29,4 +29,5 @@
 #include "16b-defm-counts-with-formulas.cpp"
 #include "17-defm-likelihood.cpp"
 #include "18-defm-counter-names.cpp"
+#include "19-freqtable-collisions.cpp"
 #include "20-defm-simulate-torus.cpp"
