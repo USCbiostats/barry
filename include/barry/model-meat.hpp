@@ -1642,7 +1642,13 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
 
     // Making sure the powerset probabilities for this support are current
     // before sampling from them (mirrors the sample(size_t, params) path).
-    if (!first_calc_done[a] || !vec_equal_approx(params, params_last[a]))
+    // `pset_probs` may still be empty here: init() adds arrays without sizing
+    // it, and a prior likelihood() call sets first_calc_done/params_last
+    // without ever filling it. Guard against both so we never index into an
+    // unpopulated buffer.
+    if (pset_probs.empty() ||
+        !first_calc_done[a] ||
+        !vec_equal_approx(params, params_last[a]))
         update_pset_probs(params, 1u, static_cast<int>(a));
 
     // Sampling an array

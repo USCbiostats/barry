@@ -10,16 +10,26 @@
 // strong penalty on extra ones, the walk is deterministic, so every
 // simulated row must have exactly one active state that advances by one.
 //
-// Before the fix, the walk broke the first time a mid-simulation
-// conditioning state was revisited (row 13 in the README example): the
-// sampler resolved the reused support through arrays2support a second time
-// and drew from the wrong (all-zeros) support, collapsing the process.
+// Two individuals are simulated with *different* starting states. This
+// exercises both bugs the fix addresses:
+//
+//  - Model::sample(Array&): before the fix the walk broke the first time a
+//    mid-simulation conditioning state was revisited (row 13 in the README
+//    example); the reused support was mapped through arrays2support a second
+//    time and the sampler drew from the wrong (all-zeros) support.
+//
+//  - DEFM::simulate: the first process of the 2nd+ individual was sampled
+//    with a support index where an array index was expected, so a second
+//    individual starting in a distinct state took a wrong first step.
 
 BARRY_TEST_CASE("DEFM simulate torus keeps moving", "[DEFM simulate torus]") {
 
     using namespace defm;
 
-    const size_t n  = 20u;
+    const size_t per = 12u;               // rows per individual
+    const std::vector< size_t > starts = {0u, 3u}; // initial active state
+    const size_t nind = starts.size();
+    const size_t n  = per * nind;
     const size_t ny = 10u;
     const size_t nx = 1u;
 
@@ -27,8 +37,15 @@ BARRY_TEST_CASE("DEFM simulate torus keeps moving", "[DEFM simulate torus]") {
     std::vector< int >    y(n * ny, 0);
     std::vector< double > x(n * nx, 0.0);
 
-    // Column-major storage; the walk starts with y0 active.
-    y[0] = 1;
+    // One individual per block of `per` rows; each starts with its own state
+    // active. Storage is column-major: index(row, col) = row + col * n.
+    for (size_t k = 0u; k < nind; ++k)
+    {
+        size_t base_row = k * per;
+        for (size_t r = base_row; r < (k + 1u) * per; ++r)
+            id[r] = static_cast< int >(k) + 1;
+        y[base_row + starts[k] * n] = 1;
+    }
 
     DEFM model(&id[0], &y[0], &x[0], n, ny, nx, 1u, true, true);
 
@@ -52,31 +69,41 @@ BARRY_TEST_CASE("DEFM simulate torus keeps moving", "[DEFM simulate torus]") {
     std::vector< double > par(ny, 200.0);
     par.push_back(-20.0);
 
+    // simulate() only writes the sampled rows; the first (baseline) row of
+    // each individual is left untouched, so seed those for the assertions.
     std::vector< int > out(n * ny, 0);
-    out[0] = 1; // baseline row (simulate() only writes rows 2..n)
+    for (size_t k = 0u; k < nind; ++k)
+        out[(k * per) * ny + starts[k]] = 1;
 
     model.simulate(par, &out[0]);
 
-    // Each row must have exactly one active state, advancing by one.
+    // Within each individual, every row must have exactly one active state,
+    // advancing by one from that individual's starting state.
     bool ok = true;
-    for (size_t r = 0u; r < n; ++r)
+    for (size_t k = 0u; k < nind; ++k)
     {
-        size_t active     = ny;      // sentinel: "none"
-        size_t n_active   = 0u;
-        for (size_t c = 0u; c < ny; ++c)
-            if (out[r * ny + c] == 1)
-            {
-                active = c;
-                ++n_active;
-            }
-
-        size_t expected = r % ny;    // y0, y1, ..., y9, y0, ...
-        if ((n_active != 1u) || (active != expected))
+        for (size_t rr = 0u; rr < per; ++rr)
         {
-            ok = false;
-            std::cout << "Row " << (r + 1u) << ": expected single active state y"
-                      << expected << ", got " << n_active << " active (first at "
-                      << (active == ny ? -1 : static_cast<int>(active)) << ")\n";
+            size_t row       = k * per + rr;
+            size_t active    = ny;      // sentinel: "none"
+            size_t n_active  = 0u;
+            for (size_t c = 0u; c < ny; ++c)
+                if (out[row * ny + c] == 1)
+                {
+                    active = c;
+                    ++n_active;
+                }
+
+            size_t expected = (starts[k] + rr) % ny;
+            if ((n_active != 1u) || (active != expected))
+            {
+                ok = false;
+                std::cout << "Individual " << (k + 1u) << ", row " << (rr + 1u)
+                          << ": expected single active state y" << expected
+                          << ", got " << n_active << " active (first at "
+                          << (active == ny ? -1 : static_cast<int>(active))
+                          << ")\n";
+            }
         }
     }
 
