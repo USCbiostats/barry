@@ -396,7 +396,11 @@ struct vecHasher
 
     std::size_t operator()(std::vector< T > const&  dat) const noexcept
     {
-        
+
+        // Well-defined for empty input (the loop below reads dat[0u]).
+        if (dat.empty())
+            return 0u;
+
         std::hash< T > hasher;
 
         // Finalizer from splitmix64: std::hash of arithmetic types is
@@ -405,15 +409,17 @@ struct vecHasher
         // step the low bits of the combined hash carry almost no entropy,
         // and unordered containers that mask the hash with a power-of-two
         // bucket count put (nearly) all keys in a single bucket, turning
-        // lookups into O(n).
-        auto mix64 = [](std::size_t z) -> std::size_t {
+        // lookups into O(n). The mixing runs in an explicit 64-bit
+        // accumulator so the avalanche is identical where size_t is 32-bit
+        // (the constants and shifts are 64-bit).
+        auto mix64 = [](std::uint64_t z) -> std::uint64_t {
             z += 0x9e3779b97f4a7c15ULL;
             z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;
             z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;
             return z ^ (z >> 31);
         };
 
-        std::size_t hash = mix64(hasher(dat[0u]));
+        std::uint64_t hash = mix64(hasher(dat[0u]));
 
         // ^ makes bitwise XOR
         // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
@@ -422,8 +428,8 @@ struct vecHasher
             for (size_t i = 1u; i < dat.size(); ++i)
                 hash ^= mix64(hasher(dat[i])) + 0x9e3779b9 + (hash<<6) + (hash>>2);
 
-        return hash;
-        
+        return static_cast< std::size_t >(hash);
+
     }
 
 };
@@ -802,7 +808,7 @@ inline size_t FreqTable<T>::add(
 
         if (x.size() != k)
             throw std::length_error(
-                "The value you are trying to add doesn't have the same lenght used in the database."
+                "The value you are trying to add doesn't have the same length used in the database."
                 );
 
         #if __cplusplus > 201700L
@@ -970,6 +976,10 @@ template<typename T>
 inline size_t FreqTable<T>::make_hash(const std::vector< T > & x) const
 {
 
+    // Well-defined for empty input (the loop below reads x[0u]).
+    if (x.empty())
+        return 0u;
+
     std::hash< T > hasher;
 
     // Finalizer from splitmix64: std::hash of arithmetic types is usually
@@ -977,15 +987,17 @@ inline size_t FreqTable<T>::make_hash(const std::vector< T > & x) const
     // the low ~50 bits zero). Without this avalanche step, the low bits of
     // the combined hash carry almost no entropy, and unordered containers
     // that mask the hash with a power-of-two bucket count put (nearly) all
-    // keys in a single bucket, turning lookups into O(n).
-    auto mix64 = [](size_t z) -> size_t {
+    // keys in a single bucket, turning lookups into O(n). The mixing runs
+    // in an explicit 64-bit accumulator so the avalanche is identical where
+    // size_t is 32-bit (the constants and shifts are 64-bit).
+    auto mix64 = [](std::uint64_t z) -> std::uint64_t {
         z += 0x9e3779b97f4a7c15ULL;
         z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;
         z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;
         return z ^ (z >> 31);
     };
 
-    std::size_t hash = mix64(hasher(x[0u]));
+    std::uint64_t hash = mix64(hasher(x[0u]));
 
     // ^ makes bitwise XOR
     // 0x9e3779b9 is a 32 bit constant (comes from the golden ratio)
@@ -994,7 +1006,7 @@ inline size_t FreqTable<T>::make_hash(const std::vector< T > & x) const
         for (size_t i = 1u; i < x.size(); ++i)
             hash ^= mix64(hasher(x[i])) + 0x9e3779b9 + (hash<<6) + (hash>>2);
 
-    return hash;
+    return static_cast< size_t >(hash);
 
 }
 

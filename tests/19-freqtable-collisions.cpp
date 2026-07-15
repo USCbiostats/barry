@@ -50,4 +50,10 @@ BARRY_TEST_CASE("FreqTable keeps distinct stats separate on hash collisions", "[
     tab2.add(b, &h);
     REQUIRE(tab2.size() == 2u);
 
+    // make_hash must be well-defined (no out-of-bounds read) for an empty
+    // vector; it returns a fixed value rather than reading element 0.
+    barry::FreqTable<double> tab3;
+    std::vector< double > empty;
+    REQUIRE(tab3.make_hash(empty) == tab3.make_hash(empty));
+
 }
