@@ -41,9 +41,8 @@ inline void DEFM::simulate(
     int * y_out
 ) {
 
-    size_t model_num = 0u; 
+    size_t model_num = 0u;
     size_t n_entry = M_order * Y_ncol;
-    auto idx = this->get_arrays2support();
     DEFMArray last_array;
     for (size_t i = 0u; i < N; ++i)
     {
@@ -57,7 +56,11 @@ inline void DEFM::simulate(
             // In the first process, we take the data as is
             if (proc_n == 0u)
             {
-                last_array = this->sample(idx->at(model_num++), par);
+                // `model_num` is an array index; the sample(size_t, par)
+                // overload resolves it to a support internally. Passing
+                // idx->at(model_num) (a support index) would map it through
+                // arrays2support a second time and pick the wrong support.
+                last_array = this->sample(model_num++, par);
                 for (size_t y = 0u; y < Y_ncol; ++y)
                     *(y_out + n_entry++) = last_array(M_order, y, false);
 
