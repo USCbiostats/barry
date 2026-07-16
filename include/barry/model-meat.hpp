@@ -1627,65 +1627,39 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
         // Retrieving the corresponding position in the support
         i = locator->second;
 
-    // Getting the index
-    size_t a = arrays2support[i];
-    
+    // Getting the support index. In the new-array branch above, `i` is an
+    // array index and must be resolved through `arrays2support`. In the
+    // reuse branch, `keys2support` already stores a SUPPORT index, so
+    // `locator->second` (assigned to `i`) is the support index directly and
+    // must NOT be mapped through `arrays2support` a second time.
+    size_t a = (locator == keys2support.end()) ?
+        arrays2support[i] : i;
+
     // Generating a random
     std::uniform_real_distribution<> urand(0, 1);
     double r = urand(*rengine);
     double cumprob = 0.0;
 
-    size_t k = params.size();
+    // Making sure the powerset probabilities for this support are current
+    // before sampling from them (mirrors the sample(size_t, params) path).
+    // `pset_probs` may still be empty here: init() adds arrays without sizing
+    // it, and a prior likelihood() call sets first_calc_done/params_last
+    // without ever filling it. Guard against both so we never index into an
+    // unpopulated buffer.
+    if (pset_probs.empty() ||
+        !first_calc_done[a] ||
+        !vec_equal_approx(params, params_last[a]))
+        update_pset_probs(params, 1u, static_cast<int>(a));
 
     // Sampling an array
     size_t j = 0u;
     double * probs = &pset_probs[ pset_locations[a] ];
-    if (first_calc_done[a] && (vec_equal_approx(params, params_last[a])))
-    // If precomputed, then no need to recalc support
-    {
+    while (cumprob < r)
+        cumprob += *(probs + j++);
 
-        while (cumprob < r)
-            cumprob += *(probs + j++);
+    if (j > 0u)
+        j--;
 
-        if (j > 0u)
-            j--;
-
-    } else { 
-       
-        // probs.resize(pset_arrays[a].size());
-        std::vector< double > temp_stats(params.size());
-        const double * stats = &pset_stats[pset_locations[a] * k];
-
-        int i_matches = -1;
-        for (size_t array = 0u; array < pset_sizes[a]; ++array)
-        {
-
-            // Filling out the parameters
-            for (auto p = 0u; p < params.size(); ++p)
-                temp_stats[p] = stats[array * k + p];
-
-            *(probs + array) = this->likelihood(params, temp_stats, i, false);
-            cumprob += *(probs + array);
-
-            if (i_matches == -1 && cumprob >= r)
-                i_matches = array;
-        }
-
-        #ifdef BARRY_DEBUG
-        if (i_matches < 0)
-            throw std::logic_error(
-                std::string(
-                    "Something went wrong when sampling from a different set of.") +
-                std::string("parameters. Please report this bug: ") +
-                std::string(" cumprob: ") + std::to_string(cumprob) +
-                std::string(" r: ") + std::to_string(r)
-                );
-        #endif
-
-        j = i_matches;
-        first_calc_done[a] = true;
-    }
-    
 
     #ifdef BARRY_DEBUG
     return this->pset_arrays.at(a).at(j);   
