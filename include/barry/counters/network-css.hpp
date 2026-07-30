@@ -45,7 +45,7 @@
     double pji = static_cast<double>(Array(j + s, i + s, false));
 
 // Variables in case that the current cell corresponds to the Perceived
-#define CSS_CASE_PERCEIVED() else if (((i >= s) && (i < e)) & ((j >= s) && (j < e)))
+#define CSS_CASE_PERCEIVED() else if (((i >= s) && (i < e)) && ((j >= s) && (j < e)))
 
 // i_: i-th index of the cell
 // j_: j-th index of the cell
@@ -70,7 +70,7 @@
 #define CSS_CHECK_SIZE_INIT() \
     /* The indices fall within the network */ \
     if ((data.indices.at(0) > Array.ncol()) \
-    | (data.indices.at(2) > Array.ncol())) \
+    || (data.indices.at(2) > Array.ncol())) \
         throw std::range_error("The network does not match the prescribed size."); 
 
 #define CSS_CHECK_SIZE() for (size_t i = 0u; i < end_.size(); ++i) {\

@@ -319,11 +319,11 @@ template<typename Cell_Type, typename Data_Type> inline bool  BArray<Cell_Type, 
 ) {
     
     // Dimension and number of cells used
-    if ((N != Array_.nrow()) | (M != Array_.ncol()) | (NCells != Array_.nnozero()))
+    if ((N != Array_.nrow()) || (M != Array_.ncol()) || (NCells != Array_.nnozero()))
         return false;
     
     // One holds, and the other doesn't.
-    if ((!data & Array_.data) | (data & !Array_.data))
+    if ((!data && Array_.data) || (data && !Array_.data))
         return false;
     
     if (this->el_ij != Array_.el_ij)

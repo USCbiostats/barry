@@ -14,8 +14,8 @@
     size_t DATA_AT = data[0u];
 
 #define IS_EITHER()      (DATA_AT == Geese::etype_either)
-#define IS_DUPLICATION() ((DATA_AT == Geese::etype_duplication) & (DPL))
-#define IS_SPECIATION()  ((DATA_AT == Geese::etype_speciation) & (!DPL))
+#define IS_DUPLICATION() ((DATA_AT == Geese::etype_duplication) && (DPL))
+#define IS_SPECIATION()  ((DATA_AT == Geese::etype_speciation) && (!DPL))
 
 #define IF_MATCHES() MAKE_DUPL_VARS() \
     if (IS_EITHER() || IS_DUPLICATION() || IS_SPECIATION())
@@ -334,7 +334,7 @@ inline void counter_preserve_pseudogene(
         auto nfunA = data[1u];
         auto nfunB = data[2u];
 
-        if ((i != nfunA) & (i != nfunB))
+        if ((i != nfunA) && (i != nfunB))
             return 0.0;
 
         if (Array.D_ptr()->states[data[1u]] || Array.D_ptr()->states[data[2u]])
@@ -455,7 +455,7 @@ inline void counter_prop_genes_changing(
         }
 
         // Case 1: j hasn't changed
-        if ((!j_used_to_diverge & !j_diverges) | (j_used_to_diverge & j_diverges))
+        if ((!j_used_to_diverge && !j_diverges) || (j_used_to_diverge && j_diverges))
             return 0.0;
         // Case 2: j NOW diverges
         else if (j_diverges)
@@ -945,8 +945,8 @@ inline void counter_longest(
         
         // Just compute the change statistic directly
         return
-            ( ((nmutate == 0) & (nmutate_longest > 0)) ? 1.0 : 0.0 ) +
-            ( ((nmutate_prev == 0) & (nmutate_longest_prev > 0)) ? 1.0 : 0.0 );
+            ( ((nmutate == 0) && (nmutate_longest > 0)) ? 1.0 : 0.0 ) +
+            ( ((nmutate_prev == 0) && (nmutate_longest_prev > 0)) ? 1.0 : 0.0 );
 
     };
     
@@ -1314,7 +1314,7 @@ inline void counter_co_opt(
         const size_t funB = data[2u];
 
         // If the change is out of scope, then nothing to do
-        if ((i != funA) & (i != funB))
+        if ((i != funA) && (i != funB))
             return 0.0;
 
         // If the parent does not have the initial state, then it makes no sense
@@ -1488,7 +1488,7 @@ inline void counter_k_genes_changing(
 
         auto count_prev = count;
         // Case 1: j hasn't changed
-        if ((!j_used_to_diverge & !j_diverges) | (j_used_to_diverge & j_diverges))
+        if ((!j_used_to_diverge && !j_diverges) || (j_used_to_diverge && j_diverges))
             return 0.0;
         // Case 2: j NOW diverges
         else if (j_diverges)
@@ -1601,7 +1601,7 @@ inline void counter_less_than_p_prop_genes_changing(
 
         auto count_prev = count;
         // Case 1: j hasn't changed
-        if ((!j_used_to_diverge & !j_diverges) | (j_used_to_diverge & j_diverges))
+        if ((!j_used_to_diverge && !j_diverges) || (j_used_to_diverge && j_diverges))
             return 0.0;
         // Case 2: j NOW diverges
         else if (j_diverges)
