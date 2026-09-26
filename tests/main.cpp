@@ -31,3 +31,4 @@
 #include "18-defm-counter-names.cpp"
 #include "19-freqtable-collisions.cpp"
 #include "20-defm-simulate-torus.cpp"
+#include "21-defm-formula-parser.cpp"
