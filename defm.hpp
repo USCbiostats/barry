@@ -304,8 +304,16 @@ typedef barry::Rules<DEFMArray, DEFMRuleDynData> DEFMRulesDyn;
  * - Order 1: `{y0_0} > {y0_1}` or `{y0_0} > {y0}` (both valid)
  * - Order 2: `{y0_0} > {y0}` (2-group, implicit final time)
  * - Order 2: `{y0_0} > {y0_1} > {y0_2}` (3-group, all explicit)
- * 
- * 
+ *
+ * ## Covariate interactions
+ *
+ * Both intercept and transition effects can be interacted with a covariate
+ * by appending `x [covariate name]`, e.g., `{y0} > {y1} x Female`. The `x`
+ * must be followed by whitespace. An optional label in parenthesis can
+ * follow the covariate name. Motif variables are only read from the
+ * bracketed groups, so covariate names such as `Day1` are allowed.
+ *
+ *
  * @param formula A string specifying the motif formula (see details).
  * @param locations A vector of locations for the motif variables.
  * @param signs A vector of signs for the motif variables.
@@ -329,15 +337,28 @@ inline void defm_motif_parser(
     signs.clear();
     covar_name = "";
 
+    // A single bracketed group, e.g., {y0, 0y1_1}. Only non-capturing groups
+    // are used so the capture indices of the full patterns are predictable.
+    const std::string pattern_group(
+        "\\{\\s*[01]?y[0-9]+(?:_[0-9]+)?(?:\\s*,\\s*[01]?y[0-9]+(?:_[0-9]+)?)*\\s*\\}"
+    );
+
+    // Optional covariate interaction: 'x covar_name' followed by an optional
+    // label in parenthesis. The 'x' must be followed by whitespace so that
+    // the covariate name is unambiguous.
+    // Captures: [2] = covariate name, [3] = label (with parenthesis).
+    const std::string pattern_covar(
+        "(?:\\s*x\\s+([^\\s(]+)\\s*([(].+[)])?)?\\s*"
+    );
+
+    // Captures: [1] = the motif part of the formula (the bracketed groups).
     std::regex pattern_intercept(
-        std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
-        std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
+        "\\s*(" + pattern_group + ")" + pattern_covar
         );
     // Updated pattern to match one or more bracketed groups separated by '>'
     std::regex pattern_transition(
-        std::string("\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\}") +
-        std::string("(\\s*>\\s*\\{\\s*[01]?y[0-9]+(_[0-9]+)?(\\s*,\\s*[01]?y[0-9]+(_[0-9]+)?)*\\s*\\})+") +
-        std::string("(\\s*x\\s*[^\\s]+([(].+[)])?\\s*)?")
+        "\\s*(" + pattern_group + "(?:\\s*>\\s*" + pattern_group + ")+)" +
+        pattern_covar
         );
 
     auto empty = std::sregex_iterator();
@@ -346,39 +367,37 @@ inline void defm_motif_parser(
     // selected
     std::vector< bool > selected((m_order + 1) * y_ncol, false);
 
+    // Variables are only searched within the motif part of the formula, so
+    // names in the covariate (e.g., 'Day1') are not taken as motif terms.
+    std::string motif;
+    std::string vname;
+    auto extract_parts = [&](const std::smatch & m) -> void {
+
+        motif      = m[1u].str();
+        covar_name = m[2u].str();
+        vname      = m[3u].str();
+
+        // Removing starting and ending parenthesis
+        if (vname != "")
+            vname = vname.substr(1, vname.size() - 2);
+
+    };
+
     std::smatch match;
     std::regex_match(formula, match, pattern_transition);
-    std::string vname;
     if (!match.empty())
     {
 
         if (m_order == 0)
             throw std::logic_error("Transition effects are only valid when the data is a markov process.");
 
-        // Matching the pattern '| [no spaces]$'
-        std::regex pattern_conditional(
-            ".+[}]\\s+x\\s+([^(]+)([(][^)]+[)])?\\s*$"
-        );
-
-        std::smatch condmatch;
-        std::regex_match(formula, condmatch, pattern_conditional);
-        // Extracting the [no_spaces] part of the conditional
-        if (!condmatch.empty())
-        {
-            covar_name = condmatch[1].str();
-            vname = condmatch[2].str();
-
-            // Removing starting and ending parenthesis
-            if (vname != "")
-                vname = vname.substr(1, vname.size() - 2);
-
-        }
+        extract_parts(match);
 
         // Find all bracketed groups to determine which time point each variable belongs to
         std::regex bracket_pattern("\\{[^}]+\\}");
         std::vector<std::pair<size_t, size_t>> bracket_ranges; // start, end positions
-        
-        auto brackets_begin = std::sregex_iterator(formula.begin(), formula.end(), bracket_pattern);
+
+        auto brackets_begin = std::sregex_iterator(motif.begin(), motif.end(), bracket_pattern);
         for (auto i = brackets_begin; i != empty; ++i)
             bracket_ranges.push_back({i->position(), i->position() + i->length()});
 
@@ -394,7 +413,7 @@ inline void defm_motif_parser(
             // This pattern will match 
             std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
 
-            auto iter = std::sregex_iterator(formula.begin(), formula.end(), pattern);
+            auto iter = std::sregex_iterator(motif.begin(), motif.end(), pattern);
 
             for (auto i = iter; i != empty; ++i)
             {
@@ -429,13 +448,9 @@ inline void defm_motif_parser(
                     } else
                         y_row = std::stoul(tmp_str);
 
-                    if (y_row > m_order)
-                        throw std::logic_error("The proposed row is out of range.");
-
-
                 } else {
 
-                    // If missing, we replace with the location 
+                    // If missing, we replace with the location
                     if (tmp_str != "")
                         y_row = std::stoul(tmp_str);
                     else
@@ -443,9 +458,8 @@ inline void defm_motif_parser(
 
                 }
 
-                if (selected[y_col * (m_order + 1) + y_row])
-                    throw std::logic_error(
-                        "The term " + i->str() + " shows more than once in the formula.");
+                if (y_row > m_order)
+                    throw std::logic_error("The proposed row is out of range.");
 
                 // Only variables at time m_order can be in the RHS (second bracketed group)
                 if ((current_location >= bracket_ranges[1].first) && (y_row != m_order))
@@ -453,6 +467,17 @@ inline void defm_motif_parser(
                         "Only the row " + std::to_string(m_order) +
                         " can be specified at the RHS of the motif."
                         );
+
+                // And only variables before time m_order can be in the LHS
+                if ((current_location < bracket_ranges[1].first) && (y_row >= m_order))
+                    throw std::logic_error(
+                        "Only rows 0 to " + std::to_string(m_order - 1) +
+                        " can be specified at the LHS of the motif."
+                        );
+
+                if (selected[y_col * (m_order + 1) + y_row])
+                    throw std::logic_error(
+                        "The term " + i->str() + " shows more than once in the formula.");
 
                 selected[y_col * (m_order + 1) + y_row] = true;
 
@@ -469,7 +494,7 @@ inline void defm_motif_parser(
             // This pattern will match 
             std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
 
-            auto iter = std::sregex_iterator(formula.begin(), formula.end(), pattern);
+            auto iter = std::sregex_iterator(motif.begin(), motif.end(), pattern);
 
             for (auto i = iter; i != empty; ++i)
             {
@@ -565,25 +590,12 @@ inline void defm_motif_parser(
     if (!match.empty())
     {
 
-        // Matching the pattern '| [no spaces]$'
-        std::regex pattern_conditional(".+[}]\\s+x\\s+([^(]+)([(][^)]+[)])?\\s*$");
-        std::smatch condmatch;
-        std::regex_match(formula, condmatch, pattern_conditional);
-        // Extracting the [no_spaces] part of the conditional
-        if (!condmatch.empty())
-        {
-            covar_name = condmatch[1].str();
-            vname = condmatch[2].str();
-
-            // Removing starting and ending parenthesis
-            if (vname != "")
-                vname = vname.substr(1, vname.size() - 2);
-        }
+        extract_parts(match);
 
         // This pattern will match 
         std::regex pattern("(0?)y([0-9]+)(_([0-9]+))?");
 
-        auto iter = std::sregex_iterator(formula.begin(), formula.end(), pattern);
+        auto iter = std::sregex_iterator(motif.begin(), motif.end(), pattern);
 
         for (auto i = iter; i != empty; ++i)
         {
@@ -1624,9 +1636,8 @@ inline void DEFM::simulate(
     int * y_out
 ) {
 
-    size_t model_num = 0u; 
+    size_t model_num = 0u;
     size_t n_entry = M_order * Y_ncol;
-    auto idx = this->get_arrays2support();
     DEFMArray last_array;
     for (size_t i = 0u; i < N; ++i)
     {
@@ -1640,7 +1651,11 @@ inline void DEFM::simulate(
             // In the first process, we take the data as is
             if (proc_n == 0u)
             {
-                last_array = this->sample(idx->at(model_num++), par);
+                // `model_num` is an array index; the sample(size_t, par)
+                // overload resolves it to a support internally. Passing
+                // idx->at(model_num) (a support index) would map it through
+                // arrays2support a second time and pick the wrong support.
+                last_array = this->sample(model_num++, par);
                 for (size_t y = 0u; y < Y_ncol; ++y)
                     *(y_out + n_entry++) = last_array(M_order, y, false);
 
