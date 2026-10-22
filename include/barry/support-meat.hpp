@@ -171,7 +171,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
             coord_j
             );
         
-        if ((tmp_chng < DBL_MIN) & (tmp_chng > -DBL_MIN))
+        if ((tmp_chng < DBL_MIN) && (tmp_chng > -DBL_MIN))
         {
 
             change_stats[pos * n_counters + n] = 0.0;
@@ -298,7 +298,7 @@ inline void Support<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_T
             coord_j
             );
 
-        if ((tmp_chng < DBL_MIN) & (tmp_chng > -DBL_MIN))
+        if ((tmp_chng < DBL_MIN) && (tmp_chng > -DBL_MIN))
         {
 
             change_stats[pos * n_counters + n] = 0.0;
