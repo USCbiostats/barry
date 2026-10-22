@@ -5,6 +5,10 @@ and how it computes exact likelihoods. They are written in Markdown with
 GitHub-compatible math (`$...$` and fenced `math` blocks), so they render the
 same on GitHub and on this site.
 
+See [Likelihood, gradient, and Hessian](likelihood-derivatives.md) for the
+derivation of the exact log-likelihood and its derivatives, their implementation,
+and an example.
+
 ## Efficient memory usage
 
 In pooled-data models, barry avoids computing and storing the same support
