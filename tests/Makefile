@@ -42,7 +42,7 @@ mainv.o: main.cpp
 	$(CPP) $(CPPFLAGSV) -O1 -g -DBARRY_VALGRIND main.cpp -o mainv.o
 
 checkv: mainv.o
-	valgrind --leak-check=full --track-origins=yes ./mainv.o
+	valgrind --leak-check=full --track-origins=yes --error-exitcode=1 ./mainv.o
 
 main: main.cpp
 	g++ $(CPPFLAGSV) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o main
