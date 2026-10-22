@@ -1,0 +1,265 @@
+# Plan: analytic gradient and Hessian for exact-likelihood models
+
+**Status:** proposal · **Branch:** `plan/defm-gradient-hessian` · **Date:** 2026-10-21
+
+## Motivation
+
+Users fitting DEFMs through the `defm` R package report fits of up to 4 hours
+for models with 5 binary outcomes, Markov order 1, and each outcome intercept
+interacted with ~22 baseline covariates (K ≈ 122 parameters, ~8,800 rows).
+
+A synthetic benchmark with that shape (2,000 individuals, 8,994 rows,
+21 binary covariates, random data) gives:
+
+| Spec                                  |   K | Unique supports / arrays | Time per `loglike_defm` |
+|---------------------------------------|----:|-------------------------:|------------------------:|
+| logit intercepts + motifs × site      |  17 |                 96 / 6,994 |                0.05 ms |
+| + intercepts × site                   |  27 |                 96 / 6,994 |                0.10 ms |
+| + intercepts × all covariates         | 122 |          **5,789** / 6,994 |               **23 ms** |
+
+Two things compound:
+
+1. **No derivatives.** `defm_mle()` hands only the objective to
+   `stats4::mle()`, so `optim()` (L-BFGS-B) approximates each gradient with
+   finite differences (≈ 2K = 244 evaluations, ~6 s here), and `mle()` then
+   builds the Hessian numerically (`optim(..., hessian = TRUE)`, ≈ 4K² ≈ 60,000
+   evaluations, ~23 min here).
+2. **Expensive evaluations.** Covariate-interaction counters add the
+   covariate values to the support hash, so almost every array gets its own
+   support (83 % above), and each support stores all 2⁵ configurations × K
+   statistics.
+
+This plan addresses (1), which is the largest and most general win: it applies
+to every barry model whose likelihood is computed by full enumeration of the
+support (DEFM, and the ERGM-style models used by `ergmito`). Item (2) is listed
+as follow-up work at the end.
+
+## Prior art: `ergmito`
+
+`ergmito` (same author) already implements the exact gradient and Hessian for
+the same likelihood form:
+
+- `ergmito/src/likelihood.h`, `ergmito_ptr::exact_gradient()`: observed minus
+  expected statistics, reusing the cached `exp(statmat * params)` from the
+  normalizing-constant update.
+- `ergmito/src/ergmito_ptr.cpp`, `exact_hessiani()`: per-network
+  `-(Σ w z t tᵀ · Z − (Σ w z t)(Σ w z t)ᵀ) / Z²`, summed over networks.
+
+We port the math, not the code: `ergmito` is Armadillo-based, while barry is
+dependency-free and stores supports as a flat `std::vector<double>`. Three
+differences matter:
+
+- barry de-duplicates supports, so each support's contribution must be
+  weighted by the number of arrays that share it (`stats_support_n_arrays`).
+- `exact_hessiani()` exponentiates without any shift, so it can overflow.
+  barry should shift by the per-support maximum instead.
+- `ergmito` supports offsets and barry does not, so we can drop them.
+
+## The math
+
+### Notation
+
+- Arrays (observations) $a = 1, \dots, A$, with observed sufficient statistics
+  $s_a \in \mathbb{R}^K$ (`stats_target[a]`).
+- Unique supports $u = 1, \dots, U$. Support $u$ is a list of $n_u$ distinct
+  statistic vectors $t_{u1}, \dots, t_{un_u} \in \mathbb{R}^K$ with
+  multiplicities (weights) $w_{u1}, \dots, w_{un_u}$, stored row-wise in
+  `stats_support` starting at `stats_support_sizes_acc[u] * (K + 1)`, each row
+  being $(w_{ui}, t_{ui}^\top)$.
+- $m_u$ is the number of arrays mapped to support $u$
+  (`stats_support_n_arrays[u]`). Then $\sum_u m_u = A$.
+- Parameters $\theta \in \mathbb{R}^K$.
+
+### Log-likelihood (already implemented in `likelihood_total`)
+
+$$
+Z_u(\theta) = \sum_{i=1}^{n_u} w_{ui} \exp\!\left(\theta^\top t_{ui}\right),
+\qquad
+\ell(\theta) = \sum_{a=1}^{A} \theta^\top s_a \;-\; \sum_{u=1}^{U} m_u \log Z_u(\theta).
+$$
+
+### Gradient (score)
+
+Let $p_{ui}(\theta) = w_{ui}\exp(\theta^\top t_{ui}) / Z_u(\theta)$, the model
+probability of configuration $i$ within support $u$, and
+$\mu_u(\theta) = \sum_i p_{ui}\, t_{ui} = \mathbb{E}_\theta[t \mid u]$.
+Because $\partial \log Z_u / \partial \theta = \mu_u$,
+
+$$
+\nabla \ell(\theta) = \sum_{a} s_a \;-\; \sum_{u} m_u\, \mu_u(\theta).
+$$
+
+The first term is constant in $\theta$ and can be precomputed once at
+`init()`: $S = \sum_a s_a$.
+
+### Hessian (observed = expected information)
+
+Because $\partial \mu_u / \partial \theta^\top = \operatorname{Cov}_\theta[t \mid u]$,
+
+$$
+\nabla^2 \ell(\theta) = -\sum_{u} m_u\, \Sigma_u(\theta),
+\qquad
+\Sigma_u(\theta) = \sum_i p_{ui}\, (t_{ui} - \mu_u)(t_{ui} - \mu_u)^\top .
+$$
+
+Properties that we rely on:
+
+- $\nabla^2 \ell$ is negative semi-definite, so $\ell$ is concave and the MLE
+  (when it exists) is unique. Newton–Raphson is a valid optimizer.
+- In a canonical exponential family the observed and expected information
+  coincide: $I(\hat\theta) = -\nabla^2 \ell(\hat\theta)$ and
+  $\widehat{\operatorname{Var}}(\hat\theta) = I(\hat\theta)^{-1}$.
+- Using the centered form $(t - \mu)(t - \mu)^\top$ rather than
+  $\mathbb{E}[tt^\top] - \mu\mu^\top$ avoids catastrophic cancellation
+  (ergmito uses the uncentered form).
+
+### Numerically stable evaluation
+
+Per support, with $\eta_{ui} = \theta^\top t_{ui}$ and
+$c_u = \max_i \eta_{ui}$:
+
+$$
+\tilde z_{ui} = w_{ui} \exp(\eta_{ui} - c_u), \quad
+\tilde Z_u = \sum_i \tilde z_{ui}, \quad
+\log Z_u = c_u + \log \tilde Z_u, \quad
+p_{ui} = \tilde z_{ui} / \tilde Z_u .
+$$
+
+This replaces the fixed `BARRY_SAFE_EXP` (−100) shift for the new code paths
+and is exact (the shift cancels in $p_{ui}$ and is added back in $\log Z_u$).
+
+### Cost
+
+For one pass over all supports, with $N = \sum_u n_u$ support rows:
+
+| Quantity              | Cost            | Benchmark above (N ≈ 185k, K = 122) |
+|-----------------------|-----------------|-------------------------------------|
+| $\ell$                | $O(NK)$         | ≈ 23 ms (measured)                  |
+| $\ell$ and $\nabla\ell$ (fused) | $O(NK)$ | ≈ 2× $\ell$                     |
+| $\nabla^2\ell$        | $O(NK^2)$       | ≈ 1–3 s, computed once at the MLE    |
+
+Compared with finite differences, each gradient goes from ≈ 2K evaluations to
+≈ 2, and the final Hessian from ≈ 4K² evaluations to one $O(NK^2)$ pass. For
+the K = 122 model that is roughly 6 s → 50 ms per gradient and 23 min → ~2 s
+for the Hessian.
+
+### Sanity checks the implementation must pass
+
+- $\nabla\ell$ and $\nabla^2\ell$ match central finite differences of
+  `likelihood_total` (relative error < 1e-6) on several random $\theta$.
+- A DEFM with only `counter_logit_intercept` terms (with and without
+  covariates) and order 0 is a set of independent logistic regressions:
+  gradient and Hessian must match the closed-form logistic score
+  $X^\top(y - \hat p)$ and $-X^\top \operatorname{diag}(\hat p(1-\hat p)) X$.
+- The gradient is zero at the MLE, and $-\nabla^2\ell$ is symmetric positive
+  definite there.
+- Results are identical with `ncores = 1` and `ncores > 1`, and with
+  `transform_model()` active (the derivatives are with respect to the
+  parameters of the transformed statistics, which are what is stored).
+
+## Implementation plan
+
+### Phase 1: barry core (`include/barry/model-*.hpp`)
+
+1. **Free helpers** next to `update_normalizing_constant()` in
+   `model-meat.hpp`:
+
+   ```cpp
+   // Fills mu (length k - 1) with E[t | support] and returns log Z.
+   inline double update_expected_stats(
+       const std::vector< double > & params,
+       const double * support, size_t k, size_t n,
+       double * mu, std::vector< double > & eta_buffer
+   );
+
+   // Adds weight * Cov[t | support] to H (row-major, (k-1) x (k-1)).
+   inline void add_covariance(
+       const std::vector< double > & params,
+       const double * support, size_t k, size_t n,
+       double weight, double * H, std::vector< double > & eta_buffer
+   );
+   ```
+
+2. **`Model` methods** (declared in `model-bones.hpp` beside
+   `likelihood_total`):
+
+   ```cpp
+   // Gradient of the total log-likelihood.
+   std::vector< double > likelihood_total_grad(
+       const std::vector< double > & params, BARRY_NCORES_ARG(=1)
+   );
+
+   // Log-likelihood and gradient in one pass (what optimizers want).
+   double likelihood_total_and_grad(
+       const std::vector< double > & params,
+       std::vector< double > & grad, BARRY_NCORES_ARG(=1)
+   );
+
+   // Hessian of the total log-likelihood, row-major K x K.
+   std::vector< double > likelihood_total_hess(
+       const std::vector< double > & params, BARRY_NCORES_ARG(=1)
+   );
+   ```
+
+   - Precompute $S = \sum_a s_a$ lazily (invalidate when arrays are added or
+     the transform changes).
+   - Parallelize over supports with OpenMP, using per-thread gradient/Hessian
+     accumulators reduced at the end (no atomics in the inner loop). Skip
+     parallelism for small $U$, as `update_normalizing_constants` already does.
+   - As a side effect, the fused method refreshes `normalizing_constants`,
+     `params_last` and `first_calc_done`, so a subsequent `likelihood_total()`
+     at the same $\theta$ reuses them.
+   - Supports with `stats_support_sizes[u] == 0` are skipped. They already
+     make $\ell = -\infty$.
+
+3. **`DEFM` passthroughs** are not needed (the methods live on `Model`), but
+   `DEFM` docs should mention them.
+
+4. **Tests** (`tests/22-likelihood-gradient-hessian.cpp`, wired into
+   `tests/main.cpp`): the sanity checks listed above, on a DEFM (with
+   covariate interactions and a transition motif) and on a small ERGM, plus
+   a `ncores = 2` run.
+
+5. **Benchmark** (`tests/13-likelihood-benchmark.cpp` or a new file under
+   `benchmarks/`): time `likelihood_total`, `likelihood_total_and_grad`, and
+   `likelihood_total_hess` on the K = 122 synthetic DEFM.
+
+### Phase 2: `defm` R package (separate PR in that repo, after barry is vendored)
+
+1. Rcpp exports `loglike_defm_grad(m, par)`, `loglike_defm_hess(m, par)`, and
+   add an `ncores` argument to `loglike_defm()` and the new functions.
+2. Rewrite `defm_mle()` to call `stats::optim()` directly with `fn`, `gr`,
+   and `hessian = FALSE`. Then build the `mle` / `defm_mle` object manually,
+   with `vcov = solve(-loglike_defm_hess(m, coef))`, so the class contract
+   (`coef()`, `vcov()`, `summary()`, `logLik()`, `AIC()`) is unchanged.
+   `stats4::mle()` always asks `optim()` for a numeric Hessian, so it cannot
+   be kept as is.
+3. Optional `method = "newton"`: damped Newton–Raphson with step halving.
+   The objective is concave, so this typically converges in 10–20 iterations.
+4. tinytest integration tests in `inst/tinytest/`: `defm_mle()` estimates
+   and SEs match the previous implementation (tolerance ~1e-4) on
+   `valentesns`, and match `glm()` for intercept-only specs.
+
+### Phase 3: follow-ups that reduce the cost per evaluation
+
+These are independent of the derivatives and can be scheduled separately.
+
+1. **Drop lagged rows from the support hash when no counter looks at them.**
+   `keygen_defm` and `defm_hasher_factory` always include rows
+   $0, \dots, M-1$. With only current-time terms, that splits each support up
+   to $2^{J \cdot M}$ ways for nothing (≤ 4.5× fewer supports in the
+   benchmark). A counter could declare whether it reads past rows.
+2. **Exploit the DEFM structure.** For logit-intercept-type terms the linear
+   predictor is $\sum_j y_j(\beta_j + x^\top\gamma_j)$. Computing the $J$
+   per-outcome log-odds once per array and enumerating only the motif terms
+   over the $2^J$ configurations would avoid storing and multiplying the full
+   $2^J \times K$ support matrix.
+3. **`store_psets()` is always on in the `DEFM` constructor.** The benchmark
+   model keeps 185k powerset arrays in memory. Make it opt-in (only `simulate`
+   and `sample` need it).
+
+## Out of scope
+
+- Changing the likelihood itself, the counters, or the R-level formula
+  interface.
+- MCMC-MLE or other approximations. The exact likelihood stays exact.
