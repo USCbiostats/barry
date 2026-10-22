@@ -82,10 +82,12 @@ BARRY_TEST_CASE("DEFM motif formula with order 2", "[DEFM motif formula order 2]
     // Now test with counter_generic to ensure it works correctly
     // Create a simple DEFM model with m_order=2
     std::vector< int > id = {0, 0, 0, 0};
+    // 4 rows (visits) x 4 outcomes, column-major: one line per outcome
     std::vector< int > Y  = {
-        0, 0, 1, 1,  // Time 0
-        0, 0, 1, 0,  // Time 1
-        0, 0, 0, 1   // Time 2
+        0, 0, 1, 1,  // y0
+        0, 0, 1, 0,  // y1
+        0, 0, 0, 1,  // y2
+        0, 1, 0, 1   // y3
     };
     std::vector< double > X = {
         1.0, 1.0, 1.0, 1.0  // Dummy covariate

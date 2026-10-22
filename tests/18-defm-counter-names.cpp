@@ -8,10 +8,12 @@ BARRY_TEST_CASE("DEFM counter names", "[DEFM counter names]") {
     // Setup data for testing - markov order 2
     // We need id_length = number of time observations
     std::vector<int> id = {0, 0, 0, 0};
+    // 4 rows (visits) x 4 outcomes, column-major: one line per outcome
     std::vector<int> Y = {
-        1, 0, 1, 0,  // Time 0
-        0, 1, 0, 1,  // Time 1
-        1, 0, 1, 0   // Time 2
+        1, 0, 1, 0,  // A
+        0, 1, 0, 1,  // B
+        1, 0, 1, 0,  // C
+        0, 1, 0, 1   // D
     };
     std::vector<double> X = {1.0, 1.0, 1.0, 1.0};
 
