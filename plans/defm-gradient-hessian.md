@@ -1,6 +1,6 @@
 # Plan: analytic gradient and Hessian for exact-likelihood models
 
-**Status:** Phase 1 implemented · **Branch:** `plan/defm-gradient-hessian` · **Date:** 2026-10-21
+**Status:** Phases 1–2 implemented · **Branch:** `plan/defm-gradient-hessian` · **Date:** 2026-10-21
 
 ## Motivation
 
@@ -241,21 +241,32 @@ for the Hessian.
    alone because it walks each support row by row (contiguous) instead of
    column by column.
 
-### Phase 2: `defm` R package (separate PR in that repo, after barry is vendored)
+### Phase 2: `defm` R package: **implemented in [UofUEpiBio/defm#14](https://github.com/UofUEpiBio/defm/pull/14)**
 
-1. Rcpp exports `loglike_defm_grad(m, par)`, `loglike_defm_hess(m, par)`, and
-   add an `ncores` argument to `loglike_defm()` and the new functions.
-2. Rewrite `defm_mle()` to call `stats::optim()` directly with `fn`, `gr`,
-   and `hessian = FALSE`. Then build the `mle` / `defm_mle` object manually,
-   with `vcov = solve(-loglike_defm_hess(m, coef))`, so the class contract
+defm gets the barry headers from the barry R package (`LinkingTo: barry`,
+installed from USCbiostats/barryr). So the merge order is: this PR, then a
+header sync into barryr, then defm#14.
+
+1. Rcpp exports `loglike_defm_grad(m, par, ncores = 1)` and
+   `loglike_defm_hess(m, par, ncores = 1)`, plus an `ncores` argument for
+   `loglike_defm()`. Its default stays at 2, the current behavior.
+2. `defm_mle()` calls `stats::optim()` directly with `fn` and `gr`, then
+   builds the `mle` / `defm_mle` object with
+   `vcov = solve(-loglike_defm_hess(m, coef))`. The class contract
    (`coef()`, `vcov()`, `summary()`, `logLik()`, `AIC()`) is unchanged.
-   `stats4::mle()` always asks `optim()` for a numeric Hessian, so it cannot
-   be kept as is.
-3. Optional `method = "newton"`: damped Newton–Raphson with step halving.
-   The objective is concave, so this typically converges in 10–20 iterations.
-4. tinytest integration tests in `inst/tinytest/`: `defm_mle()` estimates
-   and SEs match the previous implementation (tolerance ~1e-4) on
-   `valentesns`, and match `glm()` for intercept-only specs.
+   - New arguments: `method`, `fixed`, `ncores`, and `control`.
+   - The stored call is `defm_mle(...)` itself, so `profile()` /
+     `confint()` refits work. They failed before.
+   - A singular Hessian gives an `NA` vcov with a warning.
+3. `method = "newton"`: Newton–Raphson with step halving, falling back to
+   steepest descent if the Hessian is singular.
+4. `inst/tinytest/test_gradient.R`: 30 expectations covering finite
+   differences, agreement with the previous fit and with `glm()`, Newton,
+   BFGS, fixed parameters, and refits.
+
+Result on the simulated K = 122 model: `defm_mle()` takes 2.0 s (L-BFGS-B,
+54 iterations) or 1.3 s (Newton, 6 iterations). The previous approach is
+estimated at ~23 min.
 
 ### Phase 3: follow-ups that reduce the cost per evaluation
 
