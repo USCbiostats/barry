@@ -57,6 +57,9 @@ differences matter:
 
 ## The math
 
+The reference version of this section, with implementation details, is
+[`doc/likelihood-derivatives.md`](../doc/likelihood-derivatives.md).
+
 ### Notation
 
 - Arrays (observations) $a = 1, \dots, A$, with observed sufficient statistics

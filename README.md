@@ -144,6 +144,10 @@ One of the key features of `barry` is that it will handle memory efficiently. In
 More information can be found in the Doxygen website [here](https://uscbiostats.github.io/barry) and in the PDF version
 of the documentation [here](https://github.com/USCbiostats/barry/blob/gh-pages/latex/refman.pdf).
 
+The math behind the exact log-likelihood, its gradient, and its Hessian, and
+how barry computes them, is described in
+[doc/likelihood-derivatives.md](doc/likelihood-derivatives.md).
+
 # Code of Conduct
 
 Please note that the `barry` project is released with a

@@ -320,6 +320,8 @@ public:
      * \f]
      * These functions do not modify the model (nor its cached normalizing
      * constants), and are computed with a stable (max-shifted) exponent.
+     * The derivation and implementation details are in
+     * `doc/likelihood-derivatives.md`.
      *
      * @param params Vector of parameters.
      * @param grad Output vector, resized to `nterms()` and filled with the

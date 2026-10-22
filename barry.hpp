@@ -7579,6 +7579,8 @@ public:
      * \f]
      * These functions do not modify the model (nor its cached normalizing
      * constants), and are computed with a stable (max-shifted) exponent.
+     * The derivation and implementation details are in
+     * `doc/likelihood-derivatives.md`.
      *
      * @param params Vector of parameters.
      * @param grad Output vector, resized to `nterms()` and filled with the
@@ -7897,6 +7899,7 @@ inline double likelihood_(
  * @param mu Output pointer to `k - 1` elements, filled with \f$\mu\f$.
  * @return The log of the normalizing constant, \f$\log Z\f$, or `-Inf` if the
  * support is empty.
+ * @see `doc/likelihood-derivatives.md` for the derivation.
  */
 inline double update_expected_stats(
     const std::vector< double > & params,
@@ -7965,6 +7968,7 @@ inline double update_expected_stats(
  * @param weight Multiplier \f$m\f$ (number of arrays sharing the support).
  * @param H Pointer to a row-major `(k - 1) x (k - 1)` matrix.
  * @param dev Buffer of length `k - 1` used to store \f$t_i - \mu\f$.
+ * @see `doc/likelihood-derivatives.md` for the derivation.
  */
 inline void add_covariance(
     const double * support,
