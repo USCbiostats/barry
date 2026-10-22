@@ -1,4 +1,4 @@
-.PHONY: docs tests clean phylo test-portable help
+.PHONY: docs preview doxygen tests clean phylo test-portable help
 
 # Default target
 help:
@@ -8,7 +8,9 @@ help:
 	@echo "  tests          - Build and run tests with OpenMP"
 	@echo "  test-portable  - Build and run tests without OpenMP (cross-platform)"
 	@echo "  coverage       - Run tests with coverage analysis"
-	@echo "  docs           - Generate documentation with Doxygen"
+	@echo "  docs           - Build the documentation website (MkDocs + mkdoxy) into site/"
+	@echo "  preview        - Serve the documentation website locally"
+	@echo "  doxygen        - Generate the plain Doxygen HTML into doxygen-html/"
 	@echo "  clean          - Clean build artifacts"
 	@echo "  phylo          - Build and test phylogenetic simulation example"
 	@echo "  prof           - Profile phylogenetic example with callgrind"
@@ -17,8 +19,20 @@ help:
 	@echo ""
 	@echo "For more information, see the README.md file."
 
+# Documentation (requires uv and doxygen); same setup as epiworld
+UV            ?= uv
+MKDOCS_SPEC   = mkdocs<2
+MATERIAL_SPEC = mkdocs-material>=9.7.5,<10
+MKDOXY_SPEC   = mkdoxy
+MKDOCS_RUN    = NO_MKDOCS_2_WARNING=1 $(UV) tool run --from '$(MKDOCS_SPEC)' \
+	--with '$(MATERIAL_SPEC)' --with '$(MKDOXY_SPEC)' mkdocs
+
 docs:
-	cp -R mathjax docs/. && doxygen Doxyfile
+	$(MKDOCS_RUN) build
+preview:
+	$(MKDOCS_RUN) serve -a 0.0.0.0:8000
+doxygen:
+	doxygen Doxyfile && cp -R mathjax doxygen-html/.
 tests:
 	cd tests && $(MAKE) 
 test-portable:
@@ -34,7 +48,7 @@ prof:
 	cd examples/&& \
 		g++ -std=c++11 -Wall -g -O2 -Wpedantic phylo-suff-stats.cpp -o phylo-suff-stats && \
 		valgrind --tool=callgrind ./phylo-suff-stats
-.PHONY: help docs tests clean phylo test-portable prof counts coverage
+.PHONY: help docs preview doxygen tests clean phylo test-portable prof counts coverage
 
 counts:
 	cloc include/** tests/*.cpp examples/

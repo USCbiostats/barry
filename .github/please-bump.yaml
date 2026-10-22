@@ -1,0 +1,27 @@
+version: 1
+defaults:
+  # Releases are tagged v0.2.1, v0.2.2, ...
+  tag-pattern: "v{version}"
+
+types:
+  # barry spells the major-version macro BARRY_VERSION_MAYOR, so the
+  # cpp-semantic preset (which looks for VERSION_MAJOR) does not apply.
+  barry-header:
+    scheme: numeric
+    part-labels: [major, minor, patch]
+    parts:
+      major: '#define BARRY_VERSION_MAYOR ([0-9]+)'
+      minor: '#define BARRY_VERSION_MINOR ([0-9]+)'
+      patch: '#define BARRY_VERSION_PATCH ([0-9]+)'
+    assemble: "{major}.{minor}.{patch}"
+
+groups:
+  barry:
+    paths:
+      - include/barry/
+      - barry.hpp
+    preset: barry-header
+    # The single header is generated from include/barry, so both must agree.
+    files:
+      - include/barry/barry.hpp
+      - barry.hpp

@@ -1,10 +1,11 @@
 [![C/C++ CI](https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/USCbiostats/barry/actions/workflows/c-cpp.yml)
-[![Doxygen docs](https://github.com/USCbiostats/barry/actions/workflows/doxy-action.yml/badge.svg)](https://USCbiostats.github.io/barry)
+[![Documentation](https://github.com/USCbiostats/barry/actions/workflows/docs.yml/badge.svg)](https://USCbiostats.github.io/barry)
 [![codecov](https://codecov.io/gh/USCbiostats/barry/branch/master/graph/badge.svg?token=qGBTD4GJDL)](https://codecov.io/gh/USCbiostats/barry)
 [![Integrative Methods of Analysis for Genetic Epidemiology](https://raw.githubusercontent.com/USCbiostats/badges/master/tommy-image-badge.svg)](https://image.usc.edu)
 
 <h1>Barry: your to-go motif accountant<img src="design/logo.svg" style="max-width:200px;width:50%;" align="right"></h1>
 
+<!-- --8<-- [start:intro] -->
 [This repository](https://github.com/USCbiostats/barry) contains a C++ template library that essentially counts sufficient statistics on binary arrays. Its primary goal is to provide a general framework for building discrete exponential-family models. A particular example is Exponential Random Graph Models (ERGMs), but we can use `barry` to deal with non-square arrays.
 
 Among the key features included in `barry`, we have:
@@ -16,13 +17,15 @@ Among the key features included in `barry`, we have:
 * Discrete Exponential Family Models module (DEFMs).
 * Pooled DEFMs.
 
-To use barry, you can either download the entire repository or, since it is header-only, the single header version [`barry.hpp`](barry.hpp). 
+To use barry, you can either download the entire repository or, since it is header-only, the single header version [`barry.hpp`](https://github.com/USCbiostats/barry/blob/master/barry.hpp).
 
 This library was created and maintained by [Dr. George G. Vega Yon](https://ggvy.cl) as part of
 his doctoral dissertation ["Essays on Bioinformatics and Social Network Analysis: Statistical and Computational Methods for Complex Systems."](https://digitallibrary.usc.edu/asset-management/2A3BF1WAN5IH)
+<!-- --8<-- [end:intro] -->
 
 # Examples
 
+<!-- --8<-- [start:examples] -->
 ## Counting statistics in a graph
 
 In the following code we create an array of size 5x5 of class `Network`
@@ -111,9 +114,11 @@ Isolates          : 2
 C triads          : 1
 Mutuals           : 3
 ```
+<!-- --8<-- [end:examples] -->
 
 # Building and Testing
 
+<!-- --8<-- [start:building] -->
 The project includes a Makefile with various build targets. To see all available options, run:
 
 ```bash
@@ -127,6 +132,7 @@ This will display all available targets including:
 - `docs` - Generate documentation
 
 The default target is `help`, so running `make` without arguments will show the available options.
+<!-- --8<-- [end:building] -->
 
 # Features
 
@@ -141,8 +147,11 @@ One of the key features of `barry` is that it will handle memory efficiently. In
 
 # Documentation
 
-More information can be found in the Doxygen website [here](https://uscbiostats.github.io/barry) and in the PDF version
-of the documentation [here](https://github.com/USCbiostats/barry/blob/gh-pages/latex/refman.pdf).
+The documentation website, with implementation notes and the API reference,
+is at <https://uscbiostats.github.io/barry>. It is built with
+[MkDocs](https://www.mkdocs.org) and [mkdoxy](https://github.com/JakubAndrysek/MkDoxy)
+from the files in [`docs/`](docs/) and the Doxygen comments in the headers
+(run `make docs` or `make preview` to build it locally).
 
 # Code of Conduct
 

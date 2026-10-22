@@ -1,0 +1,109 @@
+site_name: barry
+site_description: Your go-to motif accountant. A C++ template library for discrete exponential-family models
+site_url: https://USCbiostats.github.io/barry
+
+repo_name: USCbiostats/barry
+repo_url: https://github.com/USCbiostats/barry
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  logo: assets/branding/logo.svg
+  favicon: assets/branding/logo.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Implementation:
+    - impl/index.md
+  - API Reference:
+    - Overview: api/index.md
+    - Classes: barry/annotated.md
+    - Files: barry/files.md
+    - Namespaces: barry/namespaces.md
+
+hooks:
+  - script/mkdocs_hooks.py
+
+plugins:
+  - search
+  - mkdoxy:
+      projects:
+        barry:
+          src-dirs: include/
+          full-doc: true
+          doxy-cfg:
+            FILE_PATTERNS: "*.hpp *.h"
+            RECURSIVE: YES
+            EXTRACT_ALL: YES
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: math
+          class: arithmatex
+          format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {kwds: {mode: generic, tag: div}}
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+    absolute_links: warn
+  links:
+    not_found: warn
+    absolute_links: warn
+    unrecognized_links: warn
