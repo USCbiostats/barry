@@ -35,8 +35,14 @@ main.o: %.cpp
 mainsan.o: %.cpp
 	$(CPP) $(CPPFLAGS) -fsanitize=address -lasan -O1 main.cpp -g -o mainsan.o
 
-checkv: main.o
-	valgrind --leak-check=full --track-origins=yes ./main.o
+# Valgrind cannot emulate every instruction -march=native may emit (e.g.,
+# AVX-512 on some CI runners), so the valgrind build uses portable flags,
+# without OpenMP, and BARRY_VALGRIND to shorten the slowest tests.
+mainv.o: main.cpp
+	$(CPP) $(CPPFLAGSV) -O1 -g -DBARRY_VALGRIND main.cpp -o mainv.o
+
+checkv: mainv.o
+	valgrind --leak-check=full --track-origins=yes ./mainv.o
 
 main: main.cpp
 	g++ $(CPPFLAGSV) -g -O1 -fprofile-arcs -ftest-coverage main.cpp -DBARRY_VALGRIND -o main
