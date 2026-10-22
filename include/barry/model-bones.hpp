@@ -305,6 +305,48 @@ public:
     ///@}
 
     /**
+     * @name Derivatives of the total log-likelihood
+     * @details Exact gradient and Hessian of the total log-likelihood
+     * \f[
+     * \ell(\theta) = \sum_a \theta^{\mbox{t}}s_a - \sum_u m_u\log Z_u(\theta)
+     * \f]
+     * where \f$s_a\f$ are the observed statistics of array \f$a\f$,
+     * \f$Z_u\f$ is the normalizing constant of support \f$u\f$, and
+     * \f$m_u\f$ is the number of arrays sharing that support. Then
+     * \f[
+     * \nabla\ell(\theta) = \sum_a s_a - \sum_u m_u \mathbb{E}_\theta[t | u],
+     * \quad
+     * \nabla^2\ell(\theta) = -\sum_u m_u \mbox{Cov}_\theta[t | u].
+     * \f]
+     * These functions do not modify the model (nor its cached normalizing
+     * constants), and are computed with a stable (max-shifted) exponent.
+     *
+     * @param params Vector of parameters.
+     * @param grad Output vector, resized to `nterms()` and filled with the
+     * gradient.
+     * @return `likelihood_total_and_grad()` returns the log-likelihood,
+     * `likelihood_total_grad()` the gradient, and `likelihood_total_hess()`
+     * the Hessian as a row-major `nterms() x nterms()` vector.
+     */
+    ///@{
+    double likelihood_total_and_grad(
+        const std::vector<double> & params,
+        std::vector<double> & grad,
+        BARRY_NCORES_ARG(=1)
+    ) const;
+
+    std::vector< double > likelihood_total_grad(
+        const std::vector<double> & params,
+        BARRY_NCORES_ARG(=1)
+    ) const;
+
+    std::vector< double > likelihood_total_hess(
+        const std::vector<double> & params,
+        BARRY_NCORES_ARG(=1)
+    ) const;
+    ///@}
+
+    /**
      * @name Extract elements by index 
      * @param i Index relative to the array in the model.
      * @param params A new vector of model parameters to compute the normalizing

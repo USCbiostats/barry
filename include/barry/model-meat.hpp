@@ -124,7 +124,134 @@ inline double likelihood_(
     #endif
 
     return ans;
-    
+
+}
+
+/**
+ * @brief Probabilities and expected statistics of a single support
+ * @details Computes, in a numerically stable way (shifting the exponent by its
+ * maximum), the probability of each row of the support and the expected value
+ * of the sufficient statistics:
+ * \f[
+ * p_i = \frac{w_i\exp{\left(\theta^{\mbox{t}}t_i\right)}}{Z},\quad
+ * \mu = \sum_i p_i t_i
+ * \f]
+ * @param params Vector of model parameters (length `k - 1`).
+ * @param support Pointer to the first element of the support. Each row has
+ * `k` elements: the weight followed by the `k - 1` statistics.
+ * @param k Number of elements per row (number of terms + 1).
+ * @param n Number of rows in the support.
+ * @param probs Output vector, resized to `n` and filled with \f$p_i\f$.
+ * @param mu Output pointer to `k - 1` elements, filled with \f$\mu\f$.
+ * @return The log of the normalizing constant, \f$\log Z\f$, or `-Inf` if the
+ * support is empty.
+ */
+inline double update_expected_stats(
+    const std::vector< double > & params,
+    const double * support,
+    size_t k,
+    size_t n,
+    std::vector< double > & probs,
+    double * mu
+)
+{
+
+    const size_t nterms = k - 1u;
+    std::fill(mu, mu + nterms, 0.0);
+    probs.resize(n);
+
+    // Linear predictor of each row, and its maximum (among rows with weight)
+    double eta_max = -std::numeric_limits< double >::infinity();
+    for (size_t i = 0u; i < n; ++i)
+    {
+
+        const double * row = support + i * k + 1u;
+        double eta = 0.0;
+        for (size_t j = 0u; j < nterms; ++j)
+            eta += row[j] * params[j];
+
+        probs[i] = eta;
+        if ((*(support + i * k) > 0.0) && (eta > eta_max))
+            eta_max = eta;
+
+    }
+
+    if (std::isinf(eta_max) && (eta_max < 0.0))
+        return -std::numeric_limits< double >::infinity();
+
+    // Shifted (unnormalized) probabilities
+    double z = 0.0;
+    for (size_t i = 0u; i < n; ++i)
+    {
+        probs[i] = *(support + i * k) * std::exp(probs[i] - eta_max);
+        z += probs[i];
+    }
+
+    for (size_t i = 0u; i < n; ++i)
+    {
+
+        probs[i] /= z;
+
+        const double * row = support + i * k + 1u;
+        for (size_t j = 0u; j < nterms; ++j)
+            mu[j] += probs[i] * row[j];
+
+    }
+
+    return eta_max + std::log(z);
+
+}
+
+/**
+ * @brief Adds the (weighted) covariance of the statistics of a support
+ * @details Adds \f$-m \sum_i p_i (t_i - \mu)(t_i - \mu)^{\mbox{t}}\f$ to the
+ * lower triangle of `H`. The inputs `probs` and `mu` are the outputs of
+ * `update_expected_stats()` for the same support and parameters.
+ * @param support,k,n See `update_expected_stats()`.
+ * @param probs Probabilities of each row of the support.
+ * @param mu Expected statistics (`k - 1` elements).
+ * @param weight Multiplier \f$m\f$ (number of arrays sharing the support).
+ * @param H Pointer to a row-major `(k - 1) x (k - 1)` matrix.
+ * @param dev Buffer of length `k - 1` used to store \f$t_i - \mu\f$.
+ */
+inline void add_covariance(
+    const double * support,
+    size_t k,
+    size_t n,
+    const std::vector< double > & probs,
+    const double * mu,
+    double weight,
+    double * H,
+    double * dev
+)
+{
+
+    const size_t nterms = k - 1u;
+    for (size_t i = 0u; i < n; ++i)
+    {
+
+        if (probs[i] == 0.0)
+            continue;
+
+        const double * row = support + i * k + 1u;
+        for (size_t j = 0u; j < nterms; ++j)
+            dev[j] = row[j] - mu[j];
+
+        const double w = weight * probs[i];
+        for (size_t j0 = 0u; j0 < nterms; ++j0)
+        {
+
+            const double wd = w * dev[j0];
+            double * H_row = H + j0 * nterms;
+            for (size_t j1 = 0u; j1 <= j0; ++j1)
+                H_row[j1] -= wd * dev[j1];
+
+        }
+
+    }
+
+    return;
+
 }
 
 template <
@@ -1153,6 +1280,185 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     
     return res;
     
+}
+
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::likelihood_total_and_grad(
+    const std::vector<double> & params,
+    std::vector<double> & grad,
+    size_t ncores
+) const {
+
+    const size_t K = nterms();
+    if (params.size() != K)
+        throw std::length_error(
+            "The length of -params- (" + std::to_string(params.size()) +
+            ") doesn't match the number of terms in the model (" +
+            std::to_string(K) + ")."
+            );
+
+    // Observed part of the gradient: sum of the target statistics
+    grad.assign(K, 0.0);
+    for (const auto & s : stats_target)
+        for (size_t j = 0u; j < K; ++j)
+            grad[j] += s[j];
+
+    double res = 0.0;
+    for (size_t j = 0u; j < K; ++j)
+        res += grad[j] * params[j];
+
+    // Expected part: one pass over the unique supports
+    const size_t n_supports = stats_support_sizes.size();
+    if ((ncores > 1u) && (n_supports < 128u))
+        ncores = 1u;
+
+    double log_z_total = 0.0;
+
+    #if defined(__OPENMP) || defined(_OPENMP)
+    #pragma omp parallel num_threads(ncores) reduction(+:log_z_total)
+    #endif
+    {
+
+        std::vector< double > probs;
+        std::vector< double > mu(K);
+        std::vector< double > mu_total(K, 0.0);
+
+        #if defined(__OPENMP) || defined(_OPENMP)
+        #pragma omp for schedule(static)
+        #endif
+        for (size_t u = 0u; u < n_supports; ++u)
+        {
+
+            const double m_u = static_cast< double >(stats_support_n_arrays[u]);
+            const double log_z = update_expected_stats(
+                params,
+                stats_support.data() + stats_support_sizes_acc[u] * (K + 1u),
+                K + 1u,
+                stats_support_sizes[u],
+                probs,
+                mu.data()
+            );
+
+            log_z_total += m_u * log_z;
+
+            // Empty support: the log-likelihood is -Inf
+            if (std::isinf(log_z))
+                continue;
+
+            for (size_t j = 0u; j < K; ++j)
+                mu_total[j] += m_u * mu[j];
+
+        }
+
+        #if defined(__OPENMP) || defined(_OPENMP)
+        #pragma omp critical
+        #endif
+        for (size_t j = 0u; j < K; ++j)
+            grad[j] -= mu_total[j];
+
+    }
+
+    return res - log_z_total;
+
+}
+
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline std::vector< double > Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::likelihood_total_grad(
+    const std::vector<double> & params,
+    size_t ncores
+) const {
+
+    std::vector< double > grad;
+    likelihood_total_and_grad(params, grad, ncores);
+    return grad;
+
+}
+
+template <
+    typename Array_Type,
+    typename Data_Counter_Type,
+    typename Data_Rule_Type,
+    typename Data_Rule_Dyn_Type
+    >
+inline std::vector< double > Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::likelihood_total_hess(
+    const std::vector<double> & params,
+    size_t ncores
+) const {
+
+    const size_t K = nterms();
+    if (params.size() != K)
+        throw std::length_error(
+            "The length of -params- (" + std::to_string(params.size()) +
+            ") doesn't match the number of terms in the model (" +
+            std::to_string(K) + ")."
+            );
+
+    std::vector< double > H(K * K, 0.0);
+
+    const size_t n_supports = stats_support_sizes.size();
+    if ((ncores > 1u) && (n_supports < 128u))
+        ncores = 1u;
+
+    #if defined(__OPENMP) || defined(_OPENMP)
+    #pragma omp parallel num_threads(ncores)
+    #endif
+    {
+
+        std::vector< double > probs;
+        std::vector< double > mu(K);
+        std::vector< double > dev(K);
+        std::vector< double > H_local(K * K, 0.0);
+
+        #if defined(__OPENMP) || defined(_OPENMP)
+        #pragma omp for schedule(static)
+        #endif
+        for (size_t u = 0u; u < n_supports; ++u)
+        {
+
+            const double * support =
+                stats_support.data() + stats_support_sizes_acc[u] * (K + 1u);
+
+            const double log_z = update_expected_stats(
+                params, support, K + 1u, stats_support_sizes[u], probs,
+                mu.data()
+            );
+
+            if (std::isinf(log_z))
+                continue;
+
+            add_covariance(
+                support, K + 1u, stats_support_sizes[u], probs, mu.data(),
+                static_cast< double >(stats_support_n_arrays[u]),
+                H_local.data(), dev.data()
+            );
+
+        }
+
+        #if defined(__OPENMP) || defined(_OPENMP)
+        #pragma omp critical
+        #endif
+        for (size_t j = 0u; j < (K * K); ++j)
+            H[j] += H_local[j];
+
+    }
+
+    // Only the lower triangle was filled
+    for (size_t j0 = 0u; j0 < K; ++j0)
+        for (size_t j1 = 0u; j1 < j0; ++j1)
+            H[j1 * K + j0] = H[j0 * K + j1];
+
+    return H;
+
 }
 
 template <

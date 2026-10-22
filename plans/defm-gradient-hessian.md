@@ -1,6 +1,6 @@
 # Plan: analytic gradient and Hessian for exact-likelihood models
 
-**Status:** proposal · **Branch:** `plan/defm-gradient-hessian` · **Date:** 2026-10-21
+**Status:** Phase 1 implemented · **Branch:** `plan/defm-gradient-hessian` · **Date:** 2026-10-21
 
 ## Motivation
 
@@ -159,24 +159,24 @@ for the Hessian.
 
 ## Implementation plan
 
-### Phase 1: barry core (`include/barry/model-*.hpp`)
+### Phase 1: barry core (`include/barry/model-*.hpp`): **implemented**
 
 1. **Free helpers** next to `update_normalizing_constant()` in
    `model-meat.hpp`:
 
    ```cpp
-   // Fills mu (length k - 1) with E[t | support] and returns log Z.
+   // Fills probs (p_i) and mu (E[t | support]); returns log Z (-Inf if empty).
    inline double update_expected_stats(
        const std::vector< double > & params,
        const double * support, size_t k, size_t n,
-       double * mu, std::vector< double > & eta_buffer
+       std::vector< double > & probs, double * mu
    );
 
-   // Adds weight * Cov[t | support] to H (row-major, (k-1) x (k-1)).
+   // Adds -weight * Cov[t | support] to the lower triangle of H (row-major).
    inline void add_covariance(
-       const std::vector< double > & params,
        const double * support, size_t k, size_t n,
-       double weight, double * H, std::vector< double > & eta_buffer
+       const std::vector< double > & probs, const double * mu,
+       double weight, double * H, double * dev
    );
    ```
 
@@ -184,45 +184,62 @@ for the Hessian.
    `likelihood_total`):
 
    ```cpp
-   // Gradient of the total log-likelihood.
-   std::vector< double > likelihood_total_grad(
-       const std::vector< double > & params, BARRY_NCORES_ARG(=1)
-   );
-
-   // Log-likelihood and gradient in one pass (what optimizers want).
    double likelihood_total_and_grad(
        const std::vector< double > & params,
        std::vector< double > & grad, BARRY_NCORES_ARG(=1)
-   );
+   ) const;
 
-   // Hessian of the total log-likelihood, row-major K x K.
+   std::vector< double > likelihood_total_grad(
+       const std::vector< double > & params, BARRY_NCORES_ARG(=1)
+   ) const;
+
+   // Row-major K x K.
    std::vector< double > likelihood_total_hess(
        const std::vector< double > & params, BARRY_NCORES_ARG(=1)
-   );
+   ) const;
    ```
 
-   - Precompute $S = \sum_a s_a$ lazily (invalidate when arrays are added or
-     the transform changes).
-   - Parallelize over supports with OpenMP, using per-thread gradient/Hessian
-     accumulators reduced at the end (no atomics in the inner loop). Skip
-     parallelism for small $U$, as `update_normalizing_constants` already does.
-   - As a side effect, the fused method refreshes `normalizing_constants`,
-     `params_last` and `first_calc_done`, so a subsequent `likelihood_total()`
-     at the same $\theta$ reuses them.
-   - Supports with `stats_support_sizes[u] == 0` are skipped. They already
-     make $\ell = -\infty$.
+   - The methods are parallelized over supports with OpenMP, using
+     per-thread accumulators reduced in a critical section. They fall back to
+     one thread when there are fewer than 128 supports.
+   - Supports with no rows contribute $-\infty$ to $\ell$ and nothing to the
+     derivatives.
+   - Differences from the original proposal:
+     - The methods are `const` and do **not** touch the
+       `normalizing_constants` / `params_last` cache. This keeps them thread
+       safe and avoids mixing the stable $\log Z$ with the `BARRY_SAFE_EXP`
+       convention. The fused function already returns $\ell$, so the cache
+       isn't needed.
+     - $S = \sum_a s_a$ is recomputed on each call rather than cached. It costs
+       $O(AK)$, negligible next to the support pass, and needs no
+       invalidation logic.
 
-3. **`DEFM` passthroughs** are not needed (the methods live on `Model`), but
-   `DEFM` docs should mention them.
+3. **Tests** (`tests/22-likelihood-gradient-hessian.cpp`, in
+   `tests/main.cpp`). Results on macOS clang, no OpenMP:
 
-4. **Tests** (`tests/22-likelihood-gradient-hessian.cpp`, wired into
-   `tests/main.cpp`): the sanity checks listed above, on a DEFM (with
-   covariate interactions and a transition motif) and on a small ERGM, plus
-   a `ncores = 2` run.
+   | Check | Result |
+   |---|---|
+   | DEFM (K = 11, 180 supports) with covariate interactions, a motif, and a covariate-interacted transition term, vs. central differences | gradient 4e-7, Hessian 4e-9 |
+   | Order-0 logit-intercept DEFM vs. closed-form logistic score/Hessian | ~1e-15 |
+   | Newton–Raphson from zero | converges to $\lVert\nabla\ell\rVert_\infty$ ≈ 6e-14 |
+   | ERGM (3 networks) vs. central differences, before and after `set_transform_model()` | ~1e-9 |
+   | Other properties | Hessian symmetric, $-\nabla^2\ell$ positive definite; `ncores = 2` matches `ncores = 1`; wrong parameter length throws |
 
-5. **Benchmark** (`tests/13-likelihood-benchmark.cpp` or a new file under
-   `benchmarks/`): time `likelihood_total`, `likelihood_total_and_grad`, and
-   `likelihood_total_hess` on the K = 122 synthetic DEFM.
+4. **Benchmark** (`benchmarks/01-defm-derivatives/`, simulated data).
+   Model: 8,979 rows, 6,979 arrays, 6,979 unique supports, K = 122,
+   1 core, macOS clang `-O3`.
+
+   | Quantity | Time |
+   |---|---:|
+   | `likelihood_total` | 22.3 ms |
+   | `likelihood_total_and_grad` | **16.4 ms** |
+   | Gradient by central differences (2K evals) | 5,439 ms |
+   | `likelihood_total_hess` | **234 ms** |
+   | Hessian by finite differences (4K² evals) | ~22 min |
+
+   The fused likelihood + gradient is faster than the existing likelihood
+   alone because it walks each support row by row (contiguous) instead of
+   column by column.
 
 ### Phase 2: `defm` R package (separate PR in that repo, after barry is vendored)
 
