@@ -1,7 +1,8 @@
 #include "tests.hpp"
 #include "../include/barry/models/defm.hpp"
 
-// Largest relative difference between two vectors
+// Largest relative difference between two vectors. Returns Inf if any
+// entry (or difference) is not finite, so tolerance checks fail on NaN/Inf.
 inline double grad_test_maxreldiff(
     const std::vector< double > & a,
     const std::vector< double > & b
@@ -14,6 +15,9 @@ inline double grad_test_maxreldiff(
     for (size_t i = 0u; i < a.size(); ++i)
     {
         double d = std::fabs(a[i] - b[i]) / std::max(1.0, std::fabs(b[i]));
+        if (!std::isfinite(a[i]) || !std::isfinite(b[i]) || !std::isfinite(d))
+            return std::numeric_limits< double >::infinity();
+
         if (d > ans)
             ans = d;
     }
@@ -120,7 +124,8 @@ inline std::vector< double > grad_test_solve(
 
 }
 
-// Whether a symmetric matrix (row-major) is positive definite (Cholesky)
+// Whether a symmetric matrix (row-major) is positive definite (Cholesky).
+// Non-finite matrices are not positive definite.
 inline bool grad_test_is_posdef(const std::vector< double > & A, size_t K)
 {
 
@@ -132,6 +137,9 @@ inline bool grad_test_is_posdef(const std::vector< double > & A, size_t K)
             double s = A[i * K + j];
             for (size_t k = 0u; k < j; ++k)
                 s -= L[i * K + k] * L[j * K + k];
+
+            if (!std::isfinite(s))
+                return false;
 
             if (i == j)
             {
@@ -151,6 +159,20 @@ inline bool grad_test_is_posdef(const std::vector< double > & A, size_t K)
 BARRY_TEST_CASE("Gradient and Hessian of the likelihood", "[likelihood derivatives]") {
 
     using namespace defm;
+
+    // The comparison helpers must not let non-finite values pass
+    const double nan_ = std::numeric_limits< double >::quiet_NaN();
+    const double inf_ = std::numeric_limits< double >::infinity();
+
+    #ifdef CATCH_CONFIG_MAIN
+    REQUIRE(std::isinf(grad_test_maxreldiff({nan_}, {1.0})));
+    REQUIRE(std::isinf(grad_test_maxreldiff({1.0}, {nan_})));
+    REQUIRE(std::isinf(grad_test_maxreldiff({inf_}, {inf_})));
+    REQUIRE(grad_test_maxreldiff({1.0, 2.0}, {1.0, 2.0}) == 0.0);
+    REQUIRE_FALSE(grad_test_is_posdef({nan_}, 1u));
+    REQUIRE_FALSE(grad_test_is_posdef({1.0, nan_, nan_, 1.0}, 2u));
+    REQUIRE(grad_test_is_posdef({2.0, 1.0, 1.0, 2.0}, 2u));
+    #endif
 
     // Simulated panel: 60 individuals, 4 visits, 3 outcomes, 2 covariates
     // (one binary, one continuous so most arrays get their own support).
@@ -411,6 +433,7 @@ BARRY_TEST_CASE("Gradient and Hessian of the likelihood", "[likelihood derivativ
     REQUIRE(err_net_t_grad < 1e-5);
     REQUIRE(err_net_t_hess < 1e-5);
     REQUIRE_THROWS_AS(model_net.likelihood_total_grad(par_net), std::length_error);
+    REQUIRE_THROWS_AS(model_net.likelihood_total_hess(par_net), std::length_error);
     #endif
 
 }
