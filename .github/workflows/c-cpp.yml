@@ -19,11 +19,23 @@ jobs:
           repository: UofUEpiBio/defm
           path: ./r-pkg
 
-      - name: Getting defm
+      # defm gets the barry headers from the barry R package (barryr), so we
+      # vendor this version of the headers into barryr and install it first.
+      - uses: actions/checkout@v4
+        with:
+          repository: USCbiostats/barryr
+          path: ./barryr
+
+      - name: Installing barryr with these headers
         run: |
-          install2.r --error Rcpp tinytest texreg
+          install2.r --error Rcpp tinytest texreg knitr
           apt-get update && apt-get install -y --no-install-recommends pandoc
-          cp -r include/barry/ r-pkg/inst/include/barry/
+          rm -rf barryr/inst/include/barry
+          cp -r include/barry barryr/inst/include/barry
+          R CMD INSTALL barryr
+
+      - name: Checking defm
+        run: |
           R CMD build r-pkg
           R CMD check --no-manual defm_*.tar.gz
 

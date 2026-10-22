@@ -153,6 +153,10 @@ is at <https://uscbiostats.github.io/barry>. It is built with
 from the files in [`docs/`](docs/) and the Doxygen comments in the headers
 (run `make docs` or `make preview` to build it locally).
 
+The math behind the exact log-likelihood, its gradient, and its Hessian, and
+how barry computes them, is described in
+[doc/likelihood-derivatives.md](doc/likelihood-derivatives.md).
+
 # Code of Conduct
 
 Please note that the `barry` project is released with a
