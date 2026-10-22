@@ -1,0 +1,1 @@
+--8<-- "doc/likelihood-derivatives.md"
