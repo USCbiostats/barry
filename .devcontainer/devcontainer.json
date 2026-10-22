@@ -1,40 +1,39 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/cpp
 {
-	"name": "defm C++",
+	"name": "barry Dev Container",
 	"build": {
-		"dockerfile": "Containerfile"
+		"dockerfile": "Containerfile",
+		"context": ".."
 	},
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+	"postCreateCommand": "bash .devcontainer/post-create.sh",
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	// `make preview` serves the documentation on this port
+	"forwardPorts": [8000],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "gcc -v",
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root",
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"ms-vscode.cpptools",
 				"ms-vscode.cpptools-extension-pack",
-                "bierner.markdown-mermaid",
-                "github.vscode-github-actions"
+				"github.vscode-github-actions",
+				"matepek.vscode-catch2-test-adapter",
+				"bierner.markdown-mermaid"
 			]
 		}
 	},
-	// "features": {
-    //     "ghcr.io/devcontainers/features/github-cli:1": {}
-    // },
+
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"version": "2.68.1"
+		}
+	},
+
 	"mounts": [
-        // Mount the .vscode configuration into the container
-        "source=${localWorkspaceFolder}/.devcontainer/.vscode,target=/workspaces/${localWorkspaceFolderBasename}/.vscode,type=bind,consistency=cached"
-    ],
-	"remoteUser": "root"
+		// Mount the .vscode configuration into the container
+		"source=${localWorkspaceFolder}/.devcontainer/.vscode,target=/workspaces/${localWorkspaceFolderBasename}/.vscode,type=bind,consistency=cached"
+	]
 }
