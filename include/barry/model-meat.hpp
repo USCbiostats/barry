@@ -133,7 +133,7 @@ inline double likelihood_(
  * maximum), the probability of each row of the support and the expected value
  * of the sufficient statistics:
  * \f[
- * p_i(\theta) = \Pr_{\mathcal{Y}}(Y = t_i; \theta) = \frac{w_i\exp{\left(\theta^{\mbox{t}}t_i\right)}}{Z},\quad
+ * p_i(\theta) = \mathrm{Pr}_{\mathcal{Y}}(Y = t_i; \theta) = \frac{w_i\exp{\left(\theta^{\mbox{t}}t_i\right)}}{Z},\quad
  * \mu = \sum_i p_i t_i
  * \f]
  * @param params Vector of model parameters (length `k - 1`).

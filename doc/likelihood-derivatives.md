@@ -17,7 +17,7 @@ vector $t_i$. Given parameters $\theta \in \mathbb{R}^K$, the probability of
 the observed array is
 
 ```math
-\Pr_{\mathcal{Y}}(Y = s_a; \theta) = \frac{\exp(\theta^\top s_a)}{Z(\theta)},
+\mathrm{Pr}_{\mathcal{Y}}(Y = s_a; \theta) = \frac{\exp(\theta^\top s_a)}{Z(\theta)},
 \qquad
 Z(\theta) = \sum_{i=1}^{n} w_i \exp(\theta^\top t_i).
 ```
@@ -41,7 +41,7 @@ Define the probability of row $i$ of support $u$ and the expected statistics
 within that support:
 
 ```math
-p_{ui}(\theta) = \Pr_{\mathcal{Y}_u}(Y = t_{ui}; \theta) = \frac{w_{ui}\exp(\theta^\top t_{ui})}{Z_u(\theta)},
+p_{ui}(\theta) = \mathrm{Pr}_{\mathcal{Y}_u}(Y = t_{ui}; \theta) = \frac{w_{ui}\exp(\theta^\top t_{ui})}{Z_u(\theta)},
 \qquad
 \mu_u(\theta) = \sum_i p_{ui}\, t_{ui} = \mathbb{E}_{\mathcal{Y}_u}[t; \theta].
 ```

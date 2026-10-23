@@ -7,7 +7,7 @@
  * This class allows generating discrete exponential models in the form of a linear
  * exponential model:
  * \f[
- * \Pr_{\mathcal{A}}(A = a; \theta) = \frac{
+ * \mathrm{Pr}_{\mathcal{A}}(A = a; \theta) = \frac{
  *    \exp{\left(\theta^{\mbox{t}}c(A)\right)}
  *  }{
  *    \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mbox{t}}c(A')\right)}
@@ -383,7 +383,7 @@ public:
      * @brief Conditional probability ("Gibbs sampler")
      * 
      * @details Computes the conditional probability of observing
-     * \Pr_{\mathcal{Y}}\left(Y(i,j) = 1 \mid Y^C; \theta\right), i.e., the probability of observing the entry Y(i,j) equal
+     * \mathrm{Pr}_{\mathcal{Y}}\left(Y(i,j) = 1 \mid Y^C; \theta\right), i.e., the probability of observing the entry Y(i,j) equal
      * to one given the rest of the array.
      * 
      * @param Array_ Array to check

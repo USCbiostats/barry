@@ -7266,7 +7266,7 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::add_rule(
  * This class allows generating discrete exponential models in the form of a linear
  * exponential model:
  * \f[
- * \Pr_{\mathcal{A}}(A = a; \theta) = \frac{
+ * \mathrm{Pr}_{\mathcal{A}}(A = a; \theta) = \frac{
  *    \exp{\left(\theta^{\mbox{t}}c(A)\right)}
  *  }{
  *    \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mbox{t}}c(A')\right)}
@@ -7642,7 +7642,7 @@ public:
      * @brief Conditional probability ("Gibbs sampler")
      * 
      * @details Computes the conditional probability of observing
-     * \Pr_{\mathcal{Y}}\left(Y(i,j) = 1 \mid Y^C; \theta\right), i.e., the probability of observing the entry Y(i,j) equal
+     * \mathrm{Pr}_{\mathcal{Y}}\left(Y(i,j) = 1 \mid Y^C; \theta\right), i.e., the probability of observing the entry Y(i,j) equal
      * to one given the rest of the array.
      * 
      * @param Array_ Array to check
@@ -7887,7 +7887,7 @@ inline double likelihood_(
  * maximum), the probability of each row of the support and the expected value
  * of the sufficient statistics:
  * \f[
- * p_i(\theta) = \Pr_{\mathcal{Y}}(Y = t_i; \theta) = \frac{w_i\exp{\left(\theta^{\mbox{t}}t_i\right)}}{Z},\quad
+ * p_i(\theta) = \mathrm{Pr}_{\mathcal{Y}}(Y = t_i; \theta) = \frac{w_i\exp{\left(\theta^{\mbox{t}}t_i\right)}}{Z},\quad
  * \mu = \sum_i p_i t_i
  * \f]
  * @param params Vector of model parameters (length `k - 1`).

@@ -83,7 +83,7 @@ $$
 
 ### Gradient (score)
 
-Let $p_{ui}(\theta) = \Pr_{\mathcal{Y}_u}(Y = t_{ui}; \theta) = w_{ui}\exp(\theta^\top t_{ui}) / Z_u(\theta)$, the model
+Let $p_{ui}(\theta) = \mathrm{Pr}_{\mathcal{Y}_u}(Y = t_{ui}; \theta) = w_{ui}\exp(\theta^\top t_{ui}) / Z_u(\theta)$, the model
 probability of configuration $i$ within support $u$, and
 $\mu_u(\theta) = \sum_i p_{ui}\, t_{ui} = \mathbb{E}_{\mathcal{Y}_u}[t; \theta]$.
 Because $\partial \log Z_u / \partial \theta = \mu_u$,
