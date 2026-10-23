@@ -7266,10 +7266,10 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::add_rule(
  * This class allows generating discrete exponential models in the form of a linear
  * exponential model:
  * \f[
- * \frac{
- *    \exp{\left(\theta^{\mbox{t}}c(A)\right)}
+ * \mathrm{Pr}_{\mathcal{A}}(A = a; \theta) = \frac{
+ *    \exp{\left(\theta^{\mathbf{t}}c(A)\right)}
  *  }{
- *    \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mbox{t}}c(A')\right)}
+ *    \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mathbf{t}}c(A')\right)}
  *  }
  * \f]
  * 
@@ -7567,15 +7567,15 @@ public:
      * @name Derivatives of the total log-likelihood
      * @details Exact gradient and Hessian of the total log-likelihood
      * \f[
-     * \ell(\theta) = \sum_a \theta^{\mbox{t}}s_a - \sum_u m_u\log Z_u(\theta)
+     * \ell(\theta) = \sum_a \theta^{\mathbf{t}}s(y_a) - \sum_u m_u\log \eta_u(\theta)
      * \f]
-     * where \f$s_a\f$ are the observed statistics of array \f$a\f$,
-     * \f$Z_u\f$ is the normalizing constant of support \f$u\f$, and
+     * where \f$s(y_a)\f$ are the observed statistics of array \f$y_a\f$,
+     * \f$\eta_u\f$ is the normalizing constant of support \f$u\f$, and
      * \f$m_u\f$ is the number of arrays sharing that support. Then
      * \f[
-     * \nabla\ell(\theta) = \sum_a s_a - \sum_u m_u \mathbb{E}_\theta[t | u],
+     * \nabla\ell(\theta) = \sum_a s(y_a) - \sum_u m_u \mathbb{E}_{\mathcal{Y}_u}[s(Y); \theta],
      * \quad
-     * \nabla^2\ell(\theta) = -\sum_u m_u \mbox{Cov}_\theta[t | u].
+     * \nabla^2\ell(\theta) = -\sum_u m_u \mbox{Cov}_{\mathcal{Y}_u}[s(Y); \theta].
      * \f]
      * These functions do not modify the model (nor its cached normalizing
      * constants), and are computed with a stable (max-shifted) exponent.
@@ -7642,7 +7642,7 @@ public:
      * @brief Conditional probability ("Gibbs sampler")
      * 
      * @details Computes the conditional probability of observing
-     * P{Y(i,j) = | Y^C, theta}, i.e., the probability of observing the entry Y(i,j) equal
+     * \mathrm{Pr}_{\mathcal{Y}}\left(Y(i,j) = 1 \mid Y^C; \theta\right), i.e., the probability of observing the entry Y(i,j) equal
      * to one given the rest of the array.
      * 
      * @param Array_ Array to check
@@ -7887,8 +7887,8 @@ inline double likelihood_(
  * maximum), the probability of each row of the support and the expected value
  * of the sufficient statistics:
  * \f[
- * p_i = \frac{w_i\exp{\left(\theta^{\mbox{t}}t_i\right)}}{Z},\quad
- * \mu = \sum_i p_i t_i
+ * p_i(\theta) = \mathrm{Pr}_{\mathcal{Y}}(Y = y_i; \theta) = \frac{w_i\exp{\left(\theta^{\mathbf{t}}s(y_i)\right)}}{\eta},\quad
+ * \mu = \sum_i p_i s(y_i)
  * \f]
  * @param params Vector of model parameters (length `k - 1`).
  * @param support Pointer to the first element of the support. Each row has
@@ -7897,7 +7897,7 @@ inline double likelihood_(
  * @param n Number of rows in the support.
  * @param probs Output vector, resized to `n` and filled with \f$p_i\f$.
  * @param mu Output pointer to `k - 1` elements, filled with \f$\mu\f$.
- * @return The log of the normalizing constant, \f$\log Z\f$, or `-Inf` if the
+ * @return The log of the normalizing constant, \f$\log \eta\f$, or `-Inf` if the
  * support is empty.
  * @see `doc/likelihood-derivatives.md` for the derivation.
  */
@@ -7959,7 +7959,7 @@ inline double update_expected_stats(
 
 /**
  * @brief Adds the (weighted) covariance of the statistics of a support
- * @details Adds \f$-m \sum_i p_i (t_i - \mu)(t_i - \mu)^{\mbox{t}}\f$ to the
+ * @details Adds \f$-m \sum_i p_i (s(y_i) - \mu)(s(y_i) - \mu)^{\mathbf{t}}\f$ to the
  * lower triangle of `H`. The inputs `probs` and `mu` are the outputs of
  * `update_expected_stats()` for the same support and parameters.
  * @param support,k,n See `update_expected_stats()`.
@@ -7967,7 +7967,7 @@ inline double update_expected_stats(
  * @param mu Expected statistics (`k - 1` elements).
  * @param weight Multiplier \f$m\f$ (number of arrays sharing the support).
  * @param H Pointer to a row-major `(k - 1) x (k - 1)` matrix.
- * @param dev Buffer of length `k - 1` used to store \f$t_i - \mu\f$.
+ * @param dev Buffer of length `k - 1` used to store \f$s(y_i) - \mu\f$.
  * @see `doc/likelihood-derivatives.md` for the derivation.
  */
 inline void add_covariance(
