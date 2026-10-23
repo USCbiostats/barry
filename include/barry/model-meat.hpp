@@ -133,8 +133,8 @@ inline double likelihood_(
  * maximum), the probability of each row of the support and the expected value
  * of the sufficient statistics:
  * \f[
- * p_i(\theta) = \mathrm{Pr}_{\mathcal{Y}}(Y = t_i; \theta) = \frac{w_i\exp{\left(\theta^{\mbox{t}}t_i\right)}}{Z},\quad
- * \mu = \sum_i p_i t_i
+ * p_i(\theta) = \mathrm{Pr}_{\mathcal{Y}}(Y = y_i; \theta) = \frac{w_i\exp{\left(\theta^{\mathbf{t}}s(y_i)\right)}}{\eta},\quad
+ * \mu = \sum_i p_i s(y_i)
  * \f]
  * @param params Vector of model parameters (length `k - 1`).
  * @param support Pointer to the first element of the support. Each row has
@@ -143,7 +143,7 @@ inline double likelihood_(
  * @param n Number of rows in the support.
  * @param probs Output vector, resized to `n` and filled with \f$p_i\f$.
  * @param mu Output pointer to `k - 1` elements, filled with \f$\mu\f$.
- * @return The log of the normalizing constant, \f$\log Z\f$, or `-Inf` if the
+ * @return The log of the normalizing constant, \f$\log \eta\f$, or `-Inf` if the
  * support is empty.
  * @see `doc/likelihood-derivatives.md` for the derivation.
  */
@@ -205,7 +205,7 @@ inline double update_expected_stats(
 
 /**
  * @brief Adds the (weighted) covariance of the statistics of a support
- * @details Adds \f$-m \sum_i p_i (t_i - \mu)(t_i - \mu)^{\mbox{t}}\f$ to the
+ * @details Adds \f$-m \sum_i p_i (s(y_i) - \mu)(s(y_i) - \mu)^{\mathbf{t}}\f$ to the
  * lower triangle of `H`. The inputs `probs` and `mu` are the outputs of
  * `update_expected_stats()` for the same support and parameters.
  * @param support,k,n See `update_expected_stats()`.
@@ -213,7 +213,7 @@ inline double update_expected_stats(
  * @param mu Expected statistics (`k - 1` elements).
  * @param weight Multiplier \f$m\f$ (number of arrays sharing the support).
  * @param H Pointer to a row-major `(k - 1) x (k - 1)` matrix.
- * @param dev Buffer of length `k - 1` used to store \f$t_i - \mu\f$.
+ * @param dev Buffer of length `k - 1` used to store \f$s(y_i) - \mu\f$.
  * @see `doc/likelihood-derivatives.md` for the derivation.
  */
 inline void add_covariance(

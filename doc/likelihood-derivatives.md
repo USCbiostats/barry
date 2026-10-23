@@ -9,17 +9,17 @@ derives the log-likelihood, its gradient, and its Hessian, and explains how
 
 ## The model
 
-Each observation (an *array*) $a = 1, \dots, A$ has observed sufficient
-statistics $s_a \in \mathbb{R}^K$. Its support, denoted \(\mathcal{Y}\), is a set of distinct
-statistic vectors $t_1, \dots, t_n$ with multiplicities (weights)
-$w_1, \dots, w_n$, where $w_i$ counts the configurations that share the
-vector $t_i$. Given parameters $\theta \in \mathbb{R}^K$, the probability of
+Each observation (an *array*) $y_a$, $a = 1, \dots, A$, has sufficient
+statistics $s(y_a) \in \mathbb{R}^K$. Its support, denoted \(\mathcal{Y}\), is a set of distinct
+configurations $y_1, \dots, y_n$ with multiplicities (weights)
+$w_1, \dots, w_n$, where $w_i$ counts the configurations sharing the
+sufficient-statistic vector $s(y_i)$. Given parameters $\theta \in \mathbb{R}^K$, the probability of
 the observed array is
 
 ```math
-\mathrm{Pr}_{\mathcal{Y}}(Y = s_a; \theta) = \frac{\exp(\theta^\top s_a)}{Z(\theta)},
+\mathrm{Pr}_{\mathcal{Y}}(Y = y_a; \theta) = \frac{\exp(\theta^{\mathbf{t}}s(y_a))}{\eta(\theta)},
 \qquad
-Z(\theta) = \sum_{i=1}^{n} w_i \exp(\theta^\top t_i).
+\eta(\theta) = \sum_{i=1}^{n} w_i \exp(\theta^{\mathbf{t}}s(y_i)).
 ```
 
 Arrays that have the same support (as decided by the counters' hashers) share
@@ -32,7 +32,7 @@ only once. Denote support $u$ by $\mathcal{Y}_u$. Let $m_u$ be the number of arr
 Assuming independent arrays,
 
 ```math
-\ell(\theta) = \sum_{a=1}^{A} \theta^\top s_a - \sum_{u=1}^{U} m_u \log Z_u(\theta).
+\ell(\theta) = \sum_{a=1}^{A} \theta^{\mathbf{t}}s(y_a) - \sum_{u=1}^{U} m_u \log \eta_u(\theta).
 ```
 
 ## Gradient
@@ -41,26 +41,26 @@ Define the probability of row $i$ of support $u$ and the expected statistics
 within that support:
 
 ```math
-p_{ui}(\theta) = \mathrm{Pr}_{\mathcal{Y}_u}(Y = t_{ui}; \theta) = \frac{w_{ui}\exp(\theta^\top t_{ui})}{Z_u(\theta)},
+p_{ui}(\theta) = \mathrm{Pr}_{\mathcal{Y}_u}(Y = y_{ui}; \theta) = \frac{w_{ui}\exp(\theta^{\mathbf{t}}s(y_{ui}))}{\eta_u(\theta)},
 \qquad
-\mu_u(\theta) = \sum_i p_{ui}\, t_{ui} = \mathbb{E}_{\mathcal{Y}_u}[t; \theta].
+\mu_u(\theta) = \sum_i p_{ui}\, s(y_{ui}) = \mathbb{E}_{\mathcal{Y}_u}[s(Y); \theta].
 ```
 
-Since $\partial \log Z_u / \partial\theta = \mu_u$, the gradient (score) is
+Since $\partial \log \eta_u / \partial\theta = \mu_u$, the gradient (score) is
 the observed minus the expected statistics:
 
 ```math
-\nabla \ell(\theta) = \sum_{a} s_a - \sum_{u} m_u\, \mu_u(\theta).
+\nabla \ell(\theta) = \sum_{a} s(y_a) - \sum_{u} m_u\, \mu_u(\theta).
 ```
 
 ## Hessian
 
-Since $\partial \mu_u / \partial\theta^\top = \operatorname{Cov}_{\mathcal{Y}_u}[t; \theta]$,
+Since $\partial \mu_u / \partial\theta^{\mathbf{t}} = \operatorname{Cov}_{\mathcal{Y}_u}[s(Y); \theta]$,
 
 ```math
 \nabla^2 \ell(\theta) = -\sum_{u} m_u\, \Sigma_u(\theta),
 \qquad
-\Sigma_u(\theta) = \sum_i p_{ui}\,(t_{ui} - \mu_u)(t_{ui} - \mu_u)^\top.
+\Sigma_u(\theta) = \sum_i p_{ui}\,(s(y_{ui}) - \mu_u)(s(y_{ui}) - \mu_u)^{\mathbf{t}}.
 ```
 
 The Hessian does not depend on the observed statistics, and it is negative
@@ -77,36 +77,36 @@ semi-definite. Consequences:
 
 ## Numerically stable evaluation
 
-$\exp(\theta^\top t)$ easily overflows. Within each support, the derivative
-code subtracts the largest linear predictor, $c_u = \max_i \theta^\top t_{ui}$
+$\exp(\theta^{\mathbf{t}}s(y))$ easily overflows. Within each support, the derivative
+code subtracts the largest linear predictor, $c_u = \max_i \theta^{\mathbf{t}}s(y_{ui})$
 (over rows with positive weight):
 
 ```math
-\tilde z_{ui} = w_{ui}\exp(\theta^\top t_{ui} - c_u),
+\tilde z_{ui} = w_{ui}\exp(\theta^{\mathbf{t}}s(y_{ui}) - c_u),
 \qquad
 p_{ui} = \frac{\tilde z_{ui}}{\sum_i \tilde z_{ui}},
 \qquad
-\log Z_u = c_u + \log \sum_i \tilde z_{ui}.
+\log \eta_u = c_u + \log \sum_i \tilde z_{ui}.
 ```
 
-The shift cancels exactly in $p_{ui}$ and is added back to $\log Z_u$. The
-Hessian uses the centered form $(t - \mu)(t - \mu)^\top$, which avoids the
-cancellation that $\mathbb{E}[tt^\top] - \mu\mu^\top$ suffers from.
+The shift cancels exactly in $p_{ui}$ and is added back to $\log \eta_u$. The
+Hessian uses the centered form $(s(Y) - \mu)(s(Y) - \mu)^{\mathbf{t}}$, which avoids the
+cancellation that $\mathbb{E}[s(Y)s(Y)^{\mathbf{t}}] - \mu\mu^{\mathbf{t}}$ suffers from.
 (`likelihood_total()` instead uses the fixed shift `BARRY_SAFE_EXP`.)
 
 ## Implementation
 
 The supports live in `Model::stats_support` as one flat, row-major vector.
 Row $i$ of support $u$ has $K + 1$ entries, the weight followed by the
-statistics, $(w_{ui}, t_{ui}^\top)$:
+statistics, $(w_{ui}, s(y_{ui})^{\mathbf{t}})$:
 
 | Member | Content |
 |---|---|
-| `stats_support` | All support rows, $(w, t^\top)$, concatenated |
+| `stats_support` | All support rows, $(w, s(y)^{\mathbf{t}})$, concatenated |
 | `stats_support_sizes[u]` | Number of rows $n_u$ of support $u$ |
 | `stats_support_sizes_acc[u]` | Index of the first row of support $u$ |
 | `stats_support_n_arrays[u]` | $m_u$, the number of arrays sharing support $u$ |
-| `stats_target[a]` | Observed statistics $s_a$ |
+| `stats_target[a]` | Observed statistics $s(y_a)$ |
 
 If the model is transformed (`Model::set_transform_model()`), both the
 supports and the targets are stored transformed. The derivatives are then
@@ -123,7 +123,7 @@ Here $N = \sum_u n_u$ is the total number of support rows. Two free functions
 in `model-meat.hpp` do the per-support work:
 
 - `update_expected_stats()` computes $p_{ui}$ and $\mu_u$ for one support,
-  with the max shift, and returns $\log Z_u$ (or $-\infty$ for an empty
+  with the max shift, and returns $\log \eta_u$ (or $-\infty$ for an empty
   support).
 - `add_covariance()` adds $-m_u\,\Sigma_u$ to the lower triangle of the
   Hessian.
@@ -160,8 +160,8 @@ variance-covariance matrix from the exact Hessian.
   with covariate interactions and transition terms, and for an ERGM before
   and after a model transformation;
 - an order-0 DEFM with only logit intercepts against the closed-form
-  logistic-regression score $X^\top(y - \hat p)$ and Hessian
-  $-X^\top \operatorname{diag}\{\hat p(1 - \hat p)\} X$;
+  logistic-regression score $X^{\mathbf{t}}(y - \hat p)$ and Hessian
+  $-X^{\mathbf{t}} \operatorname{diag}\{\hat p(1 - \hat p)\} X$;
 - that Newton–Raphson converges to a zero gradient, and that the Hessian is
   symmetric, negative definite, and the same with one or more threads.
 

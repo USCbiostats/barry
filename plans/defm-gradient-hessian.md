@@ -62,13 +62,13 @@ The reference version of this section, with implementation details, is
 
 ### Notation
 
-- Arrays (observations) $a = 1, \dots, A$, with observed sufficient statistics
-  $s_a \in \mathbb{R}^K$ (`stats_target[a]`).
+- Arrays (observations) $y_a$, $a = 1, \dots, A$, with observed sufficient
+  statistics $s(y_a) \in \mathbb{R}^K$ (`stats_target[a]`).
 - Unique supports $u = 1, \dots, U$. Denote support $u$ by $\mathcal{Y}_u$; it is a list of $n_u$ distinct
   statistic vectors $t_{u1}, \dots, t_{un_u} \in \mathbb{R}^K$ with
   multiplicities (weights) $w_{u1}, \dots, w_{un_u}$, stored row-wise in
   `stats_support` starting at `stats_support_sizes_acc[u] * (K + 1)`, each row
-  being $(w_{ui}, t_{ui}^\top)$.
+  being $(w_{ui}, s(y_{ui})^{\mathbf{t}})$.
 - $m_u$ is the number of arrays mapped to support $u$
   (`stats_support_n_arrays[u]`). Then $\sum_u m_u = A$.
 - Parameters $\theta \in \mathbb{R}^K$.
@@ -76,33 +76,33 @@ The reference version of this section, with implementation details, is
 ### Log-likelihood (already implemented in `likelihood_total`)
 
 $$
-Z_u(\theta) = \sum_{i=1}^{n_u} w_{ui} \exp\!\left(\theta^\top t_{ui}\right),
+\eta_u(\theta) = \sum_{i=1}^{n_u} w_{ui} \exp\!\left(\theta^{\mathbf{t}}s(y_{ui})\right),
 \qquad
-\ell(\theta) = \sum_{a=1}^{A} \theta^\top s_a \;-\; \sum_{u=1}^{U} m_u \log Z_u(\theta).
+\ell(\theta) = \sum_{a=1}^{A} \theta^{\mathbf{t}}s(y_a) \;-\; \sum_{u=1}^{U} m_u \log \eta_u(\theta).
 $$
 
 ### Gradient (score)
 
-Let $p_{ui}(\theta) = \mathrm{Pr}_{\mathcal{Y}_u}(Y = t_{ui}; \theta) = w_{ui}\exp(\theta^\top t_{ui}) / Z_u(\theta)$, the model
+Let $p_{ui}(\theta) = \mathrm{Pr}_{\mathcal{Y}_u}(Y = y_{ui}; \theta) = w_{ui}\exp(\theta^{\mathbf{t}}s(y_{ui})) / \eta_u(\theta)$, the model
 probability of configuration $i$ within support $u$, and
-$\mu_u(\theta) = \sum_i p_{ui}\, t_{ui} = \mathbb{E}_{\mathcal{Y}_u}[t; \theta]$.
-Because $\partial \log Z_u / \partial \theta = \mu_u$,
+$\mu_u(\theta) = \sum_i p_{ui}\, s(y_{ui}) = \mathbb{E}_{\mathcal{Y}_u}[s(Y); \theta]$.
+Because $\partial \log \eta_u / \partial \theta = \mu_u$,
 
 $$
-\nabla \ell(\theta) = \sum_{a} s_a \;-\; \sum_{u} m_u\, \mu_u(\theta).
+\nabla \ell(\theta) = \sum_{a} s(y_a) \;-\; \sum_{u} m_u\, \mu_u(\theta).
 $$
 
 The first term is constant in $\theta$ and can be precomputed once at
-`init()`: $S = \sum_a s_a$.
+`init()`: $S = \sum_a s(y_a)$.
 
 ### Hessian (observed = expected information)
 
-Because $\partial \mu_u / \partial \theta^\top = \operatorname{Cov}_{\mathcal{Y}_u}[t; \theta]$,
+Because $\partial \mu_u / \partial \theta^{\mathbf{t}} = \operatorname{Cov}_{\mathcal{Y}_u}[s(Y); \theta]$,
 
 $$
 \nabla^2 \ell(\theta) = -\sum_{u} m_u\, \Sigma_u(\theta),
 \qquad
-\Sigma_u(\theta) = \sum_i p_{ui}\, (t_{ui} - \mu_u)(t_{ui} - \mu_u)^\top .
+\Sigma_u(\theta) = \sum_i p_{ui}\, (s(y_{ui}) - \mu_u)(s(y_{ui}) - \mu_u)^{\mathbf{t}} .
 $$
 
 Properties that we rely on:
@@ -112,24 +112,24 @@ Properties that we rely on:
 - In a canonical exponential family the observed and expected information
   coincide: $I(\hat\theta) = -\nabla^2 \ell(\hat\theta)$ and
   $\widehat{\operatorname{Var}}(\hat\theta) = I(\hat\theta)^{-1}$.
-- Using the centered form $(t - \mu)(t - \mu)^\top$ rather than
-  $\mathbb{E}[tt^\top] - \mu\mu^\top$ avoids catastrophic cancellation
+- Using the centered form $(s(Y) - \mu)(s(Y) - \mu)^{\mathbf{t}}$ rather than
+  $\mathbb{E}[s(Y)s(Y)^{\mathbf{t}}] - \mu\mu^{\mathbf{t}}$ avoids catastrophic cancellation
   (ergmito uses the uncentered form).
 
 ### Numerically stable evaluation
 
-Per support, with $\eta_{ui} = \theta^\top t_{ui}$ and
-$c_u = \max_i \eta_{ui}$:
+Per support, with $\xi_{ui} = \theta^{\mathbf{t}}s(y_{ui})$ and
+$c_u = \max_i \xi_{ui}$:
 
 $$
-\tilde z_{ui} = w_{ui} \exp(\eta_{ui} - c_u), \quad
-\tilde Z_u = \sum_i \tilde z_{ui}, \quad
-\log Z_u = c_u + \log \tilde Z_u, \quad
-p_{ui} = \tilde z_{ui} / \tilde Z_u .
+\tilde z_{ui} = w_{ui} \exp(\xi_{ui} - c_u), \quad
+\tilde \eta_u = \sum_i \tilde z_{ui}, \quad
+\log \eta_u = c_u + \log \tilde \eta_u, \quad
+p_{ui} = \tilde z_{ui} / \tilde \eta_u .
 $$
 
 This replaces the fixed `BARRY_SAFE_EXP` (−100) shift for the new code paths
-and is exact (the shift cancels in $p_{ui}$ and is added back in $\log Z_u$).
+and is exact (the shift cancels in $p_{ui}$ and is added back in $\log \eta_u$).
 
 ### Cost
 
@@ -153,7 +153,7 @@ for the Hessian.
 - A DEFM with only `counter_logit_intercept` terms (with and without
   covariates) and order 0 is a set of independent logistic regressions:
   gradient and Hessian must match the closed-form logistic score
-  $X^\top(y - \hat p)$ and $-X^\top \operatorname{diag}(\hat p(1-\hat p)) X$.
+  $X^{\mathbf{t}}(y - \hat p)$ and $-X^{\mathbf{t}} \operatorname{diag}(\hat p(1-\hat p)) X$.
 - The gradient is zero at the MLE, and $-\nabla^2\ell$ is symmetric positive
   definite there.
 - Results are identical with `ncores = 1` and `ncores > 1`, and with
@@ -168,7 +168,7 @@ for the Hessian.
    `model-meat.hpp`:
 
    ```cpp
-   // Fills probs (p_i) and mu (E[t | support]); returns log Z (-Inf if empty).
+   // Fills probs (p_i) and mu (E[s(Y) | support]); returns log eta (-Inf if empty).
    inline double update_expected_stats(
        const std::vector< double > & params,
        const double * support, size_t k, size_t n,
@@ -210,7 +210,7 @@ for the Hessian.
    - Differences from the original proposal:
      - The methods are `const` and do **not** touch the
        `normalizing_constants` / `params_last` cache. This keeps them thread
-       safe and avoids mixing the stable $\log Z$ with the `BARRY_SAFE_EXP`
+       safe and avoids mixing the stable $\log \eta$ with the `BARRY_SAFE_EXP`
        convention. The fused function already returns $\ell$, so the cache
        isn't needed.
      - $S = \sum_a s_a$ is recomputed on each call rather than cached. It costs
@@ -281,7 +281,7 @@ These are independent of the derivatives and can be scheduled separately.
    to $2^{J \cdot M}$ ways for nothing (≤ 4.5× fewer supports in the
    benchmark). A counter could declare whether it reads past rows.
 2. **Exploit the DEFM structure.** For logit-intercept-type terms the linear
-   predictor is $\sum_j y_j(\beta_j + x^\top\gamma_j)$. Computing the $J$
+   predictor is $\sum_j y_j(\beta_j + x^{\mathbf{t}}\gamma_j)$. Computing the $J$
    per-outcome log-odds once per array and enumerating only the motif terms
    over the $2^J$ configurations would avoid storing and multiplying the full
    $2^J \times K$ support matrix.

@@ -13,3 +13,9 @@ semicolon. For example:
 For support-specific quantities, use the relevant support index, such as
 `\mathrm{Pr}_{\mathcal{Y}_u}(Y = y; \theta)`. Apply the same convention to related
 expectation and covariance notation where appropriate.
+
+Use `\mathbf{t}` as the transpose marker (for example,
+`\theta^{\mathbf{t}}`). Denote normalizing constants by `\eta`, not `Z`.
+Write probabilities in terms of the observed outcome and its sufficient
+statistics, for example
+`\mathrm{Pr}_{\mathcal{Y}}(Y = y; \theta) = \exp(\theta^{\mathbf{t}}s(y)) / \eta(\theta)`.
