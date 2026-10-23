@@ -10,21 +10,21 @@ derives the log-likelihood, its gradient, and its Hessian, and explains how
 ## The model
 
 Each observation (an *array*) $a = 1, \dots, A$ has observed sufficient
-statistics $s_a \in \mathbb{R}^K$. Its support is a set of distinct
+statistics $s_a \in \mathbb{R}^K$. Its support, denoted \(\mathcal{Y}\), is a set of distinct
 statistic vectors $t_1, \dots, t_n$ with multiplicities (weights)
 $w_1, \dots, w_n$, where $w_i$ counts the configurations that share the
 vector $t_i$. Given parameters $\theta \in \mathbb{R}^K$, the probability of
 the observed array is
 
 ```math
-P_\theta(s_a) = \frac{\exp(\theta^\top s_a)}{Z(\theta)},
+\Pr_{\mathcal{Y}}(Y = s_a; \theta) = \frac{\exp(\theta^\top s_a)}{Z(\theta)},
 \qquad
 Z(\theta) = \sum_{i=1}^{n} w_i \exp(\theta^\top t_i).
 ```
 
 Arrays that have the same support (as decided by the counters' hashers) share
 it, so barry stores and evaluates each **unique support** $u = 1, \dots, U$
-only once. Let $m_u$ be the number of arrays that map to support $u$
+only once. Denote support $u$ by $\mathcal{Y}_u$. Let $m_u$ be the number of arrays that map to support $u$
 ($\sum_u m_u = A$).
 
 ## Log-likelihood
@@ -41,9 +41,9 @@ Define the probability of row $i$ of support $u$ and the expected statistics
 within that support:
 
 ```math
-p_{ui}(\theta) = \frac{w_{ui}\exp(\theta^\top t_{ui})}{Z_u(\theta)},
+p_{ui}(\theta) = \Pr_{\mathcal{Y}_u}(Y = t_{ui}; \theta) = \frac{w_{ui}\exp(\theta^\top t_{ui})}{Z_u(\theta)},
 \qquad
-\mu_u(\theta) = \sum_i p_{ui}\, t_{ui} = \mathbb{E}_\theta[t \mid u].
+\mu_u(\theta) = \sum_i p_{ui}\, t_{ui} = \mathbb{E}_{\mathcal{Y}_u}[t; \theta].
 ```
 
 Since $\partial \log Z_u / \partial\theta = \mu_u$, the gradient (score) is
@@ -55,7 +55,7 @@ the observed minus the expected statistics:
 
 ## Hessian
 
-Since $\partial \mu_u / \partial\theta^\top = \operatorname{Cov}_\theta[t \mid u]$,
+Since $\partial \mu_u / \partial\theta^\top = \operatorname{Cov}_{\mathcal{Y}_u}[t; \theta]$,
 
 ```math
 \nabla^2 \ell(\theta) = -\sum_{u} m_u\, \Sigma_u(\theta),

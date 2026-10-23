@@ -64,7 +64,7 @@ The reference version of this section, with implementation details, is
 
 - Arrays (observations) $a = 1, \dots, A$, with observed sufficient statistics
   $s_a \in \mathbb{R}^K$ (`stats_target[a]`).
-- Unique supports $u = 1, \dots, U$. Support $u$ is a list of $n_u$ distinct
+- Unique supports $u = 1, \dots, U$. Denote support $u$ by $\mathcal{Y}_u$; it is a list of $n_u$ distinct
   statistic vectors $t_{u1}, \dots, t_{un_u} \in \mathbb{R}^K$ with
   multiplicities (weights) $w_{u1}, \dots, w_{un_u}$, stored row-wise in
   `stats_support` starting at `stats_support_sizes_acc[u] * (K + 1)`, each row
@@ -83,9 +83,9 @@ $$
 
 ### Gradient (score)
 
-Let $p_{ui}(\theta) = w_{ui}\exp(\theta^\top t_{ui}) / Z_u(\theta)$, the model
+Let $p_{ui}(\theta) = \Pr_{\mathcal{Y}_u}(Y = t_{ui}; \theta) = w_{ui}\exp(\theta^\top t_{ui}) / Z_u(\theta)$, the model
 probability of configuration $i$ within support $u$, and
-$\mu_u(\theta) = \sum_i p_{ui}\, t_{ui} = \mathbb{E}_\theta[t \mid u]$.
+$\mu_u(\theta) = \sum_i p_{ui}\, t_{ui} = \mathbb{E}_{\mathcal{Y}_u}[t; \theta]$.
 Because $\partial \log Z_u / \partial \theta = \mu_u$,
 
 $$
@@ -97,7 +97,7 @@ The first term is constant in $\theta$ and can be precomputed once at
 
 ### Hessian (observed = expected information)
 
-Because $\partial \mu_u / \partial \theta^\top = \operatorname{Cov}_\theta[t \mid u]$,
+Because $\partial \mu_u / \partial \theta^\top = \operatorname{Cov}_{\mathcal{Y}_u}[t; \theta]$,
 
 $$
 \nabla^2 \ell(\theta) = -\sum_{u} m_u\, \Sigma_u(\theta),

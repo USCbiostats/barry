@@ -7,7 +7,7 @@
  * This class allows generating discrete exponential models in the form of a linear
  * exponential model:
  * \f[
- * \frac{
+ * \Pr_{\mathcal{A}}(A = a; \theta) = \frac{
  *    \exp{\left(\theta^{\mbox{t}}c(A)\right)}
  *  }{
  *    \sum_{A'\in \mathcal{A}}\exp{\left(\theta^{\mbox{t}}c(A')\right)}
@@ -314,9 +314,9 @@ public:
      * \f$Z_u\f$ is the normalizing constant of support \f$u\f$, and
      * \f$m_u\f$ is the number of arrays sharing that support. Then
      * \f[
-     * \nabla\ell(\theta) = \sum_a s_a - \sum_u m_u \mathbb{E}_\theta[t | u],
+     * \nabla\ell(\theta) = \sum_a s_a - \sum_u m_u \mathbb{E}_{\mathcal{Y}_u}[t; \theta],
      * \quad
-     * \nabla^2\ell(\theta) = -\sum_u m_u \mbox{Cov}_\theta[t | u].
+     * \nabla^2\ell(\theta) = -\sum_u m_u \mbox{Cov}_{\mathcal{Y}_u}[t; \theta].
      * \f]
      * These functions do not modify the model (nor its cached normalizing
      * constants), and are computed with a stable (max-shifted) exponent.
@@ -383,7 +383,7 @@ public:
      * @brief Conditional probability ("Gibbs sampler")
      * 
      * @details Computes the conditional probability of observing
-     * P{Y(i,j) = | Y^C, theta}, i.e., the probability of observing the entry Y(i,j) equal
+     * \Pr_{\mathcal{Y}}\left(Y(i,j) = 1 \mid Y^C; \theta\right), i.e., the probability of observing the entry Y(i,j) equal
      * to one given the rest of the array.
      * 
      * @param Array_ Array to check
