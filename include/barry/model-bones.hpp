@@ -3,6 +3,16 @@
 
 /**
  * @ingroup stat-models
+ * @brief Methods available for approximate (MCMC) sampling
+ * @details See `Model::sample_approx()`.
+ * - `tnt`: Metropolis-Hastings with the tie/no-tie (TNT) proposal.
+ */
+enum class SampleApproxMethod {
+    tnt
+};
+
+/**
+ * @ingroup stat-models
  * @brief General framework for discrete exponential models.
  * This class allows generating discrete exponential models in the form of a linear
  * exponential model:
@@ -129,6 +139,11 @@ protected:
 
     std::vector< std::string > transform_model_term_names;
     
+    /**
+     * @brief Draws a uniform random number in [0, 1), creating the random
+     * engine if it does not exist yet.
+     */
+    double runif_();
 public:
 
     /**
@@ -398,6 +413,121 @@ public:
         size_t i,
         size_t j
     );
+
+    /**
+     * @name Approximate (MCMC) sampling
+     * @brief Sampling arrays without computing the support
+     *
+     * @details These functions draw arrays from
+     * \f[
+     * \mathrm{Pr}_{\mathcal{Y}}(Y = y; \theta) =
+     *   \frac{\exp\left(\theta^{\mathbf{t}}s(y)\right)}{\eta(\theta)}
+     * \f]
+     * using Markov chain Monte Carlo, so neither the support nor
+     * `store_psets()` is needed. The default (and currently only) method is
+     * Metropolis-Hastings with the tie/no-tie (TNT) proposal: with
+     * probability 1/2 a random non-zero free cell is proposed for removal;
+     * otherwise a random free cell is toggled. A proposal moving from
+     * \f$y\f$ to \f$y'\f$ is accepted with probability
+     * \f[
+     * \min\left\{1,
+     *   \exp\left(\theta^{\mathbf{t}}\left[s(y') - s(y)\right]\right)
+     *   \frac{q(y' \to y)}{q(y \to y')}\right\},
+     * \f]
+     * where \f$q\f$ is the TNT proposal probability. Statistics are updated
+     * with change statistics only (never recounted), and the chain state
+     * persists across calls through `SampleApproxState`. This allows running
+     * a burn-in, changing \f$\theta\f$ between calls (as in stochastic
+     * approximation), and streaming sufficient statistics (as needed by
+     * MCMC-MLE) without storing arrays.
+     *
+     * Free cells are those allowed by the model rules (`get_rules()`);
+     * proposals leading to states that fail the dynamic rules
+     * (`get_rules_dyn()`) are rejected. Dynamic rules are evaluated on the
+     * statistics of the proposed state, so rules that inspect the array
+     * itself are not supported.
+     *
+     * See `doc/sample-approx.md` for details.
+     */
+    ///@{
+    /**
+     * @brief Persistent state of an approximate sampler
+     */
+    struct SampleApproxState {
+        Array_Type            array;          ///< Current state.
+        std::vector< double > stats;          ///< Raw sufficient statistics of `array` (before `transform_model_fun`).
+        std::vector< size_t > free;           ///< Free cells as (i, j) pairs.
+        std::vector< size_t > ties;           ///< Indices (into `free`) of the non-zero free cells.
+        std::vector< int >    pos;            ///< Position of each free cell in `ties` (-1 if empty).
+        size_t                nsteps    = 0u; ///< Total number of proposals so far.
+        size_t                naccepted = 0u; ///< Total number of accepted proposals so far.
+    };
+
+    /**
+     * @brief Creates the state of an approximate sampler
+     * @param Array_ Starting array. Must satisfy the dynamic rules.
+     */
+    SampleApproxState sample_approx_init(const Array_Type & Array_);
+
+    /**
+     * @brief Runs an approximate sampler, updating its state in place
+     * @param state State created by `sample_approx_init()`.
+     * @param params Vector of parameters (can change between calls).
+     * @param n Number of statistics to record.
+     * @param thin Number of proposals between recorded statistics. In total,
+     * `n * thin` proposals are made.
+     * @param stats_out When not `nullptr`, the statistics of the current
+     * state (after `transform_model_fun`, i.e., on the scale of
+     * `get_stats_target()`) are appended every `thin` proposals, giving `n`
+     * rows of `nterms()` values (row-major). Use `nullptr` for burn-in.
+     * @param method Sampling method.
+     */
+    void sample_approx(
+        SampleApproxState & state,
+        const std::vector< double > & params,
+        size_t n                          = 1u,
+        size_t thin                       = 1u,
+        std::vector< double > * stats_out = nullptr,
+        SampleApproxMethod method         = SampleApproxMethod::tnt
+    );
+
+    /**
+     * @brief Draws a single array with an approximate sampler
+     * @param Array_ Starting array. Must satisfy the dynamic rules.
+     * @param params Vector of parameters.
+     * @param nsteps Number of proposals.
+     * @param stats_out When not `nullptr`, the statistics are appended after
+     * every proposal (`nsteps` rows of `nterms()` values).
+     * @param method Sampling method.
+     * @return The array after `nsteps` proposals.
+     */
+    Array_Type sample_approx(
+        const Array_Type & Array_,
+        const std::vector< double > & params,
+        size_t nsteps                     = 16384u,
+        std::vector< double > * stats_out = nullptr,
+        SampleApproxMethod method         = SampleApproxMethod::tnt
+    );
+    ///@}
+
+protected:
+
+    /**
+     * @brief One Metropolis-Hastings step with the tie/no-tie proposal
+     */
+    void sample_approx_tnt_step_(
+        SampleApproxState & state,
+        const std::vector< double > & params
+    );
+
+    /**
+     * @brief Applies `transform_model_fun` (if any) to raw statistics
+     */
+    std::vector< double > transform_stats_(
+        const std::vector< double > & stats
+    );
+
+public:
     
     /**
      * @name Size of the model

@@ -77,38 +77,55 @@ BARRY_TEST_CASE("DEFM simulate torus keeps moving", "[DEFM simulate torus]") {
 
     model.simulate(par, &out[0]);
 
+    // The approximate (MCMC) sampler should produce the same walk
+    std::vector< int > out_approx(out.size(), 0);
+    for (size_t k = 0u; k < nind; ++k)
+        out_approx[(k * per) * ny + starts[k]] = 1;
+
+    model.simulate_approx(par, &out_approx[0], 500u);
+
     // Within each individual, every row must have exactly one active state,
     // advancing by one from that individual's starting state.
-    bool ok = true;
-    for (size_t k = 0u; k < nind; ++k)
-    {
-        for (size_t rr = 0u; rr < per; ++rr)
-        {
-            size_t row       = k * per + rr;
-            size_t active    = ny;      // sentinel: "none"
-            size_t n_active  = 0u;
-            for (size_t c = 0u; c < ny; ++c)
-                if (out[row * ny + c] == 1)
-                {
-                    active = c;
-                    ++n_active;
-                }
+    auto check_walk = [&](const std::vector< int > & res) {
 
-            size_t expected = (starts[k] + rr) % ny;
-            if ((n_active != 1u) || (active != expected))
+        bool ok = true;
+        for (size_t k = 0u; k < nind; ++k)
+        {
+            for (size_t rr = 0u; rr < per; ++rr)
             {
-                ok = false;
-                std::cout << "Individual " << (k + 1u) << ", row " << (rr + 1u)
-                          << ": expected single active state y" << expected
-                          << ", got " << n_active << " active (first at "
-                          << (active == ny ? -1 : static_cast<int>(active))
-                          << ")\n";
+                size_t row       = k * per + rr;
+                size_t active    = ny;      // sentinel: "none"
+                size_t n_active  = 0u;
+                for (size_t c = 0u; c < ny; ++c)
+                    if (res[row * ny + c] == 1)
+                    {
+                        active = c;
+                        ++n_active;
+                    }
+
+                size_t expected = (starts[k] + rr) % ny;
+                if ((n_active != 1u) || (active != expected))
+                {
+                    ok = false;
+                    std::cout << "Individual " << (k + 1u) << ", row " << (rr + 1u)
+                              << ": expected single active state y" << expected
+                              << ", got " << n_active << " active (first at "
+                              << (active == ny ? -1 : static_cast<int>(active))
+                              << ")\n";
+                }
             }
         }
-    }
+
+        return ok;
+
+    };
+
+    bool ok        = check_walk(out);
+    bool ok_approx = check_walk(out_approx);
 
     #ifdef CATCH_CONFIG_MAIN
     REQUIRE(ok);
+    REQUIRE(ok_approx);
     #else
     if (!ok)
         std::cout << "FAIL: torus walk did not advance as expected." << std::endl;

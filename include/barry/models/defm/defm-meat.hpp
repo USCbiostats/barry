@@ -36,10 +36,8 @@ inline std::vector< double > keygen_defm(
 #define DEFM_LOOP_ARRAYS(a) \
     for (size_t a = 0u; a < (nobs_i - M_order); ++a)
 
-inline void DEFM::simulate(
-    std::vector< double > par,
-    int * y_out
-) {
+template< typename Sampler >
+inline void DEFM::simulate_(int * y_out, Sampler sampler) {
 
     size_t model_num = 0u;
     size_t n_entry = M_order * Y_ncol;
@@ -56,11 +54,10 @@ inline void DEFM::simulate(
             // In the first process, we take the data as is
             if (proc_n == 0u)
             {
-                // `model_num` is an array index; the sample(size_t, par)
-                // overload resolves it to a support internally. Passing
-                // idx->at(model_num) (a support index) would map it through
-                // arrays2support a second time and pick the wrong support.
-                last_array = this->sample(model_num++, par);
+                DEFMArray tmp_array;
+                last_array = sampler(
+                    tmp_array, model_num++, true, start_i + proc_n + M_order
+                );
                 for (size_t y = 0u; y < Y_ncol; ++y)
                     *(y_out + n_entry++) = last_array(M_order, y, false);
 
@@ -84,8 +81,9 @@ inline void DEFM::simulate(
                     true // Delete the data
                 );
 
-                model_num++;
-                last_array = this->sample(tmp_array, par);
+                last_array = sampler(
+                    tmp_array, model_num++, false, start_i + proc_n + M_order
+                );
                 for (size_t y = 0u; y < Y_ncol; ++y)
                     *(y_out + n_entry++) = last_array(M_order, y, false);
 
@@ -98,6 +96,72 @@ inline void DEFM::simulate(
         n_entry += M_order * Y_ncol;
 
     }
+
+}
+
+inline void DEFM::simulate(
+    std::vector< double > par,
+    int * y_out
+) {
+
+    simulate_(
+        y_out,
+        [&](DEFMArray & array, size_t model_num, bool first, size_t) {
+
+            // `model_num` is an array index; the sample(size_t, par)
+            // overload resolves it to a support internally. Passing
+            // idx->at(model_num) (a support index) would map it through
+            // arrays2support a second time and pick the wrong support.
+            if (first)
+                return this->sample(model_num, par);
+
+            return this->sample(array, par);
+
+        }
+    );
+
+}
+
+inline void DEFM::simulate_approx(
+    std::vector< double > par,
+    int * y_out,
+    size_t nsteps
+) {
+
+    simulate_(
+        y_out,
+        [&](DEFMArray & array, size_t, bool first, size_t row) {
+
+            size_t first_row = row - M_order;
+            if (first)
+            {
+
+                // Building the array from the observed data (as in logodds())
+                array = DEFMArray(M_order + 1u, Y_ncol);
+                array.set_data(
+                    new DEFMData(
+                        &array, X, first_row, X_ncol, ID_length,
+                        this->column_major
+                        ),
+                    true // Delete the data
+                );
+
+                for (size_t k = 0u; k < Y_ncol; ++k)
+                    for (size_t o = 0u; o < (M_order + 1u); ++o)
+                        array(o, k) = *(Y + k * ID_length + first_row + o);
+
+            } else {
+
+                // Starting from the observed last row
+                for (size_t k = 0u; k < Y_ncol; ++k)
+                    array(M_order, k) = *(Y + k * ID_length + row);
+
+            }
+
+            return this->sample_approx(array, par, nsteps);
+
+        }
+    );
 
 }
 
