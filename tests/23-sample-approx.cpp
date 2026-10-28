@@ -182,6 +182,35 @@ BARRY_TEST_CASE("Approximate sampling (TNT)", "[sample approx]") {
     std::vector< double > stream_single;
     Network draw = model.sample_approx(net, par_sparse, 100u, &stream_single);
 
+    // Locked cells keep their starting values, as in the exact support ------
+    NetModel<Network> model_lock;
+    model_lock.store_psets();
+    counter_edges<>(model_lock.get_counters());
+    rules_zerodiag<>(model_lock.get_rules());
+
+    Network net_lock(3, 3);
+    net_lock.set_data(new NetworkData({0, 0, 0}), true);
+    net_lock(0, 0) = 1;
+    net_lock(0, 1) = 1;
+    model_lock.add_array(net_lock);
+    model_lock.set_seed(8u);
+
+    bool lock_exact_ok  = true;
+    bool lock_approx_ok = true;
+    auto state_lock = model_lock.sample_approx_init(net_lock);
+    for (size_t s = 0u; s < 50u; ++s)
+    {
+        Network x = model_lock.sample(0u, {-1.0});
+        if (static_cast< double >(static_cast< const Network & >(x)(0, 0)) == 0.0)
+            lock_exact_ok = false;
+
+        model_lock.sample_approx(state_lock, {-1.0}, 10u);
+        if (static_cast< double >(
+            static_cast< const Network & >(state_lock.array)(0, 0)
+        ) == 0.0)
+            lock_approx_ok = false;
+    }
+
     // Dynamic rules: at most 3 edges -------------------------------------------
     NetModel<Network> model_dyn;
     counter_edges<>(model_dyn.get_counters());
@@ -232,6 +261,10 @@ BARRY_TEST_CASE("Approximate sampling (TNT)", "[sample approx]") {
 
     REQUIRE(stream_single.size() == 100u * 3u);
     REQUIRE(draw.nrow() == 4u);
+
+    REQUIRE(lock_exact_ok);
+    REQUIRE(lock_approx_ok);
+    REQUIRE(state_lock.free.size() / 2u == 6u);
 
     REQUIRE(max_edges <= 3.0);
     REQUIRE(max_edges == 3.0);

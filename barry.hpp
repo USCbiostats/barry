@@ -7701,7 +7701,9 @@ public:
      * MCMC-MLE) without storing arrays.
      *
      * Free cells are those allowed by the model rules (`get_rules()`);
-     * proposals leading to states that fail the dynamic rules
+     * cells locked by the rules keep their values from the starting array,
+     * exactly as in the support used by `sample()` (e.g., the Markov rows
+     * of a DEFM). Proposals leading to states that fail the dynamic rules
      * (`get_rules_dyn()`) are rejected. Dynamic rules are evaluated on the
      * statistics of the proposed state, so rules that inspect the array
      * itself are not supported.
@@ -7724,7 +7726,10 @@ public:
 
     /**
      * @brief Creates the state of an approximate sampler
-     * @param Array_ Starting array. Must satisfy the dynamic rules.
+     * @param Array_ Starting array. Must satisfy the dynamic rules. Cells
+     * locked by the rules are kept at their values in `Array_` (the chain
+     * conditions on them), so they should hold the intended values, e.g.,
+     * an empty diagonal when using `rules_zerodiag`.
      */
     SampleApproxState sample_approx_init(const Array_Type & Array_);
 
@@ -9935,7 +9940,9 @@ inline typename MODEL_TYPE()::SampleApproxState MODEL_TYPE()::sample_approx_init
     SampleApproxState state;
     state.array = Array_;
 
-    // Free cells, as in the support
+    // Free cells, as in the support. Locked cells keep their values from
+    // Array_ (the support conditions on them too, e.g., DEFM's Markov rows),
+    // so non-zero locked cells are not an error.
     rules->get_seq(state.array, &state.free, nullptr);
 
     // Current ties (non-zero free cells)

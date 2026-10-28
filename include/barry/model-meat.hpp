@@ -2051,7 +2051,9 @@ inline typename MODEL_TYPE()::SampleApproxState MODEL_TYPE()::sample_approx_init
     SampleApproxState state;
     state.array = Array_;
 
-    // Free cells, as in the support
+    // Free cells, as in the support. Locked cells keep their values from
+    // Array_ (the support conditions on them too, e.g., DEFM's Markov rows),
+    // so non-zero locked cells are not an error.
     rules->get_seq(state.array, &state.free, nullptr);
 
     // Current ties (non-zero free cells)

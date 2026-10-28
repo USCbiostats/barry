@@ -64,6 +64,13 @@ proposed through both branches but an empty cell only through the second.
 Without it, the chain would converge to the wrong distribution unless the
 array happens to be about half full.
 
+Cells locked by the rules (`get_rules()`) are never proposed, so they keep
+their values from the starting array. This is the same as the support used by
+`sample()`, which also conditions on the locked cells: for example, the
+Markov rows of a DEFM are locked and generally non-zero. The starting array
+should therefore hold the intended values in locked cells (e.g., an empty
+diagonal with `rules_zerodiag`).
+
 Proposals leading to states that fail the dynamic rules (`get_rules_dyn()`)
 are rejected. Dynamic rules are evaluated on the raw statistics of the
 proposed state (as DEFM and GEESE rules do); rules that inspect the array
