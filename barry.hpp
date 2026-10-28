@@ -30,7 +30,7 @@
 
 /* Versioning */
 #define BARRY_VERSION_MAYOR 0
-#define BARRY_VERSION_MINOR 3
+#define BARRY_VERSION_MINOR 4
 #define BARRY_VERSION_PATCH 0
 #define BARRY_VERSION BARRY_VERSION_MAYOR ## . ## BARRY_VERSION_MINOR ## . ## BARRY_VERSION_PATCH
 
@@ -7262,6 +7262,16 @@ inline void PowerSet<Array_Type,Data_Rule_Type>::add_rule(
 
 /**
  * @ingroup stat-models
+ * @brief Methods available for approximate (MCMC) sampling
+ * @details See `Model::sample_approx()`.
+ * - `tnt`: Metropolis-Hastings with the tie/no-tie (TNT) proposal.
+ */
+enum class SampleApproxMethod {
+    tnt
+};
+
+/**
+ * @ingroup stat-models
  * @brief General framework for discrete exponential models.
  * This class allows generating discrete exponential models in the form of a linear
  * exponential model:
@@ -7388,6 +7398,11 @@ protected:
 
     std::vector< std::string > transform_model_term_names;
     
+    /**
+     * @brief Draws a uniform random number in [0, 1), creating the random
+     * engine if it does not exist yet.
+     */
+    double runif_();
 public:
 
     /**
@@ -7657,6 +7672,126 @@ public:
         size_t i,
         size_t j
     );
+
+    /**
+     * @name Approximate (MCMC) sampling
+     * @brief Sampling arrays without computing the support
+     *
+     * @details These functions draw arrays from
+     * \f[
+     * \mathrm{Pr}_{\mathcal{Y}}(Y = y; \theta) =
+     *   \frac{\exp\left(\theta^{\mathbf{t}}s(y)\right)}{\eta(\theta)}
+     * \f]
+     * using Markov chain Monte Carlo, so neither the support nor
+     * `store_psets()` is needed. The default (and currently only) method is
+     * Metropolis-Hastings with the tie/no-tie (TNT) proposal: with
+     * probability 1/2 a random non-zero free cell is proposed for removal;
+     * otherwise a random free cell is toggled. A proposal moving from
+     * \f$y\f$ to \f$y'\f$ is accepted with probability
+     * \f[
+     * \min\left\{1,
+     *   \exp\left(\theta^{\mathbf{t}}\left[s(y') - s(y)\right]\right)
+     *   \frac{q(y' \to y)}{q(y \to y')}\right\},
+     * \f]
+     * where \f$q\f$ is the TNT proposal probability. Statistics are updated
+     * with change statistics only (never recounted), and the chain state
+     * persists across calls through `SampleApproxState`. This allows running
+     * a burn-in, changing \f$\theta\f$ between calls (as in stochastic
+     * approximation), and streaming sufficient statistics (as needed by
+     * MCMC-MLE) without storing arrays.
+     *
+     * Free cells are those allowed by the model rules (`get_rules()`);
+     * cells locked by the rules keep their values from the starting array,
+     * exactly as in the support used by `sample()` (e.g., the Markov rows
+     * of a DEFM). Proposals leading to states that fail the dynamic rules
+     * (`get_rules_dyn()`) are rejected. Dynamic rules are evaluated on the
+     * statistics of the proposed state, so rules that inspect the array
+     * itself are not supported.
+     *
+     * See `doc/sample-approx.md` for details.
+     */
+    ///@{
+    /**
+     * @brief Persistent state of an approximate sampler
+     */
+    struct SampleApproxState {
+        Array_Type            array;          ///< Current state.
+        std::vector< double > stats;          ///< Raw sufficient statistics of `array` (before `transform_model_fun`).
+        std::vector< size_t > free;           ///< Free cells as (i, j) pairs.
+        std::vector< size_t > ties;           ///< Indices (into `free`) of the non-zero free cells.
+        std::vector< int >    pos;            ///< Position of each free cell in `ties` (-1 if empty).
+        size_t                nsteps    = 0u; ///< Total number of proposals so far.
+        size_t                naccepted = 0u; ///< Total number of accepted proposals so far.
+    };
+
+    /**
+     * @brief Creates the state of an approximate sampler
+     * @param Array_ Starting array. Must satisfy the dynamic rules. Cells
+     * locked by the rules are kept at their values in `Array_` (the chain
+     * conditions on them), so they should hold the intended values, e.g.,
+     * an empty diagonal when using `rules_zerodiag`.
+     */
+    SampleApproxState sample_approx_init(const Array_Type & Array_);
+
+    /**
+     * @brief Runs an approximate sampler, updating its state in place
+     * @param state State created by `sample_approx_init()`.
+     * @param params Vector of parameters (can change between calls).
+     * @param n Number of statistics to record.
+     * @param thin Number of proposals between recorded statistics. In total,
+     * `n * thin` proposals are made.
+     * @param stats_out When not `nullptr`, the statistics of the current
+     * state (after `transform_model_fun`, i.e., on the scale of
+     * `get_stats_target()`) are appended every `thin` proposals, giving `n`
+     * rows of `nterms()` values (row-major). Use `nullptr` for burn-in.
+     * @param method Sampling method.
+     */
+    void sample_approx(
+        SampleApproxState & state,
+        const std::vector< double > & params,
+        size_t n                          = 1u,
+        size_t thin                       = 1u,
+        std::vector< double > * stats_out = nullptr,
+        SampleApproxMethod method         = SampleApproxMethod::tnt
+    );
+
+    /**
+     * @brief Draws a single array with an approximate sampler
+     * @param Array_ Starting array. Must satisfy the dynamic rules.
+     * @param params Vector of parameters.
+     * @param nsteps Number of proposals.
+     * @param stats_out When not `nullptr`, the statistics are appended after
+     * every proposal (`nsteps` rows of `nterms()` values).
+     * @param method Sampling method.
+     * @return The array after `nsteps` proposals.
+     */
+    Array_Type sample_approx(
+        const Array_Type & Array_,
+        const std::vector< double > & params,
+        size_t nsteps                     = 16384u,
+        std::vector< double > * stats_out = nullptr,
+        SampleApproxMethod method         = SampleApproxMethod::tnt
+    );
+    ///@}
+
+protected:
+
+    /**
+     * @brief One Metropolis-Hastings step with the tie/no-tie proposal
+     */
+    void sample_approx_tnt_step_(
+        SampleApproxState & state,
+        const std::vector< double > & params
+    );
+
+    /**
+     * @brief Applies `transform_model_fun` (if any) to raw statistics
+     */
+    std::vector< double > transform_stats_(
+        const std::vector< double > & stats
+    );
+
+public:
     
     /**
      * @name Size of the model
@@ -9763,6 +9898,263 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
 
     
 }
+
+#define MODEL_TEMPLATE_ARGS() <Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>
+
+#define MODEL_TYPE() Model MODEL_TEMPLATE_ARGS()
+
+#define MODEL_TEMPLATE(a,b) \
+    template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type> \
+    inline a MODEL_TYPE()::b
+
+MODEL_TEMPLATE(double, runif_)() {
+
+    if (rengine == nullptr)
+    {
+        rengine        = new std::mt19937(std::random_device{}());
+        delete_rengine = true;
+    }
+
+    std::uniform_real_distribution<> urand(0, 1);
+    return urand(*rengine);
+
+}
+
+MODEL_TEMPLATE(std::vector< double >, transform_stats_)(
+    const std::vector< double > & stats
+) {
+
+    if (!transform_model_fun)
+        return stats;
+
+    std::vector< double > tmp(stats);
+    return transform_model_fun(&tmp[0u], tmp.size());
+
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline typename MODEL_TYPE()::SampleApproxState MODEL_TYPE()::sample_approx_init(
+    const Array_Type & Array_
+) {
+
+    SampleApproxState state;
+    state.array = Array_;
+
+    // Free cells, as in the support. Locked cells keep their values from
+    // Array_ (the support conditions on them too, e.g., DEFM's Markov rows),
+    // so non-zero locked cells are not an error.
+    rules->get_seq(state.array, &state.free, nullptr);
+
+    // Current ties (non-zero free cells)
+    size_t nfree = state.free.size() / 2u;
+    state.pos.resize(nfree, -1);
+    for (size_t k = 0u; k < nfree; ++k)
+    {
+
+        const Array_Type & A = state.array;
+        if (static_cast< double >(A(state.free[k * 2u], state.free[k * 2u + 1u], false)) != 0.0)
+        {
+            state.pos[k] = static_cast< int >(state.ties.size());
+            state.ties.push_back(k);
+        }
+
+    }
+
+    // Initial (raw) sufficient statistics
+    counter_fun.reset_array(&state.array);
+    state.stats = counter_fun.count_all();
+
+    if (!support_fun.eval_rules_dyn(state.stats, 0u, 0u))
+        throw std::logic_error(
+            "The starting array does not satisfy the dynamic rules."
+        );
+
+    return state;
+
+}
+
+MODEL_TEMPLATE(void, sample_approx_tnt_step_)(
+    SampleApproxState & state,
+    const std::vector< double > & params
+) {
+
+    size_t D = state.free.size() / 2u;
+    size_t E = state.ties.size();
+
+    state.nsteps++;
+    if (D == 0u)
+        return;
+
+    // Picking a cell: with probability 1/2 (if there are ties) a tie, otherwise
+    // any free cell. Indices are drawn from uniforms so results do not depend
+    // on the standard library's integer distributions.
+    size_t k;
+    if ((E > 0u) && (runif_() < 0.5))
+        k = state.ties[std::min(static_cast< size_t >(runif_() * E), E - 1u)];
+    else
+        k = std::min(static_cast< size_t >(runif_() * D), D - 1u);
+
+    size_t i = state.free[k * 2u];
+    size_t j = state.free[k * 2u + 1u];
+    bool is_tie = state.pos[k] >= 0;
+
+    // Change statistics are computed with the cell set to one, as when
+    // computing the support.
+    Array_Type & A = state.array;
+    if (!is_tie)
+        A.insert_cell(i, j, A.default_val(), false, false);
+
+    size_t nterms_raw = counters->size();
+    std::vector< double > stats_new(state.stats);
+    for (size_t n = 0u; n < nterms_raw; ++n)
+    {
+
+        double delta = counters->operator[](n).count(A, i, j);
+        stats_new[n] += is_tie ? -delta : delta;
+
+    }
+
+    // Change in the linear predictor
+    double logratio;
+    if (transform_model_fun)
+    {
+
+        std::vector< double > t_old = transform_stats_(state.stats);
+        std::vector< double > t_new = transform_stats_(stats_new);
+        logratio = 0.0;
+        for (size_t n = 0u; n < params.size(); ++n)
+            logratio += params[n] * (t_new[n] - t_old[n]);
+
+    } else {
+
+        logratio = 0.0;
+        for (size_t n = 0u; n < params.size(); ++n)
+            logratio += params[n] * (stats_new[n] - state.stats[n]);
+
+    }
+
+    // Proposal ratio q(y' -> y) / q(y -> y'). The probability of proposing
+    // cell c from a state with e ties is 1/2 * 1{c is a tie} / e + 1/2 / D
+    // if e > 0, and 1 / D otherwise.
+    auto q = [D](bool tie, size_t e) -> double {
+        if (e == 0u)
+            return 1.0 / static_cast< double >(D);
+        return (tie ? 0.5 / static_cast< double >(e) : 0.0) +
+            0.5 / static_cast< double >(D);
+    };
+
+    size_t E_new = is_tie ? E - 1u : E + 1u;
+    logratio += std::log(q(!is_tie, E_new)) - std::log(q(is_tie, E));
+
+    // Accepting or rejecting
+    bool accept = std::log(runif_()) < logratio;
+    if (accept && (support_fun.get_rules_dyn()->size() > 0u))
+        accept = support_fun.eval_rules_dyn(stats_new, i, j);
+
+    if (!accept)
+    {
+
+        if (!is_tie)
+            A.rm_cell(i, j, false, false);
+
+        return;
+
+    }
+
+    state.naccepted++;
+    state.stats = std::move(stats_new);
+
+    if (is_tie)
+    {
+
+        // Swap-with-last removal from the list of ties
+        size_t p    = static_cast< size_t >(state.pos[k]);
+        size_t last = state.ties.back();
+        state.ties[p]    = last;
+        state.pos[last]  = static_cast< int >(p);
+        state.ties.pop_back();
+        state.pos[k] = -1;
+
+        A.rm_cell(i, j, false, false);
+
+    } else {
+
+        state.pos[k] = static_cast< int >(state.ties.size());
+        state.ties.push_back(k);
+
+    }
+
+    return;
+
+}
+
+MODEL_TEMPLATE(void, sample_approx)(
+    SampleApproxState & state,
+    const std::vector< double > & params,
+    size_t n,
+    size_t thin,
+    std::vector< double > * stats_out,
+    SampleApproxMethod method
+) {
+
+    if (params.size() != nterms())
+        throw std::length_error(
+            "The length of params (" + std::to_string(params.size()) +
+            ") does not match the number of terms (" +
+            std::to_string(nterms()) + ")."
+        );
+
+    if (thin == 0u)
+        throw std::invalid_argument("thin must be greater than zero.");
+
+    if (stats_out != nullptr)
+        stats_out->reserve(stats_out->size() + n * nterms());
+
+    for (size_t s = 0u; s < n; ++s)
+    {
+
+        for (size_t t = 0u; t < thin; ++t)
+        {
+            switch (method)
+            {
+            case SampleApproxMethod::tnt:
+                sample_approx_tnt_step_(state, params);
+                break;
+            default:
+                throw std::invalid_argument("Unknown sampling method.");
+            }
+        }
+
+        if (stats_out != nullptr)
+        {
+            std::vector< double > tmp = transform_stats_(state.stats);
+            stats_out->insert(stats_out->end(), tmp.begin(), tmp.end());
+        }
+
+    }
+
+    return;
+
+}
+
+MODEL_TEMPLATE(Array_Type, sample_approx)(
+    const Array_Type & Array_,
+    const std::vector< double > & params,
+    size_t nsteps,
+    std::vector< double > * stats_out,
+    SampleApproxMethod method
+) {
+
+    SampleApproxState state = sample_approx_init(Array_);
+    sample_approx(state, params, nsteps, 1u, stats_out, method);
+
+    return state.array;
+
+}
+
+#undef MODEL_TEMPLATE
+#undef MODEL_TYPE
+#undef MODEL_TEMPLATE_ARGS
 
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline const std::mt19937 * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_rengine() const {

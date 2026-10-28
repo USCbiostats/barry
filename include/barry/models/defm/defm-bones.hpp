@@ -32,6 +32,16 @@ private:
     std::vector< size_t > model_ord;    ///< Order of the model
     ///@}
 
+    /**
+     * @brief Shared loop of `simulate()` and `simulate_approx()`
+     * @details `sampler(array, model_num, first, row)` returns a draw for
+     * the array of process `model_num`. When `first` is `false`, `array`
+     * holds the previous draw shifted one row up, with an empty last row;
+     * `row` is the index (in `Y`) of the last row of the array.
+     */
+    template< typename Sampler >
+    void simulate_(int * y_out, Sampler sampler);
+
 public:
 
     DEFM(
@@ -53,6 +63,21 @@ public:
     void init(bool force_new = true);
 
     void simulate(std::vector< double > par, int * y_out);
+
+    /**
+     * @brief Simulates the process with the approximate (MCMC) sampler
+     * @details Same as `simulate()`, but each row is drawn with
+     * `Model::sample_approx()`, so the supports are not needed. Each draw
+     * starts from the observed values of the row.
+     * @param par Vector of parameters.
+     * @param y_out Output (same layout as in `simulate()`).
+     * @param nsteps Number of proposals per row.
+     */
+    void simulate_approx(
+        std::vector< double > par,
+        int * y_out,
+        size_t nsteps = 1000u
+    );
 
     size_t get_n_y() const;
     size_t get_n_obs() const;

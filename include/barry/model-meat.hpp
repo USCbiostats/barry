@@ -2010,6 +2010,263 @@ inline double Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_
     
 }
 
+#define MODEL_TEMPLATE_ARGS() <Array_Type,Data_Counter_Type,Data_Rule_Type,Data_Rule_Dyn_Type>
+
+#define MODEL_TYPE() Model MODEL_TEMPLATE_ARGS()
+
+#define MODEL_TEMPLATE(a,b) \
+    template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type> \
+    inline a MODEL_TYPE()::b
+
+MODEL_TEMPLATE(double, runif_)() {
+
+    if (rengine == nullptr)
+    {
+        rengine        = new std::mt19937(std::random_device{}());
+        delete_rengine = true;
+    }
+
+    std::uniform_real_distribution<> urand(0, 1);
+    return urand(*rengine);
+
+}
+
+MODEL_TEMPLATE(std::vector< double >, transform_stats_)(
+    const std::vector< double > & stats
+) {
+
+    if (!transform_model_fun)
+        return stats;
+
+    std::vector< double > tmp(stats);
+    return transform_model_fun(&tmp[0u], tmp.size());
+
+}
+
+template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
+inline typename MODEL_TYPE()::SampleApproxState MODEL_TYPE()::sample_approx_init(
+    const Array_Type & Array_
+) {
+
+    SampleApproxState state;
+    state.array = Array_;
+
+    // Free cells, as in the support. Locked cells keep their values from
+    // Array_ (the support conditions on them too, e.g., DEFM's Markov rows),
+    // so non-zero locked cells are not an error.
+    rules->get_seq(state.array, &state.free, nullptr);
+
+    // Current ties (non-zero free cells)
+    size_t nfree = state.free.size() / 2u;
+    state.pos.resize(nfree, -1);
+    for (size_t k = 0u; k < nfree; ++k)
+    {
+
+        const Array_Type & A = state.array;
+        if (static_cast< double >(A(state.free[k * 2u], state.free[k * 2u + 1u], false)) != 0.0)
+        {
+            state.pos[k] = static_cast< int >(state.ties.size());
+            state.ties.push_back(k);
+        }
+
+    }
+
+    // Initial (raw) sufficient statistics
+    counter_fun.reset_array(&state.array);
+    state.stats = counter_fun.count_all();
+
+    if (!support_fun.eval_rules_dyn(state.stats, 0u, 0u))
+        throw std::logic_error(
+            "The starting array does not satisfy the dynamic rules."
+        );
+
+    return state;
+
+}
+
+MODEL_TEMPLATE(void, sample_approx_tnt_step_)(
+    SampleApproxState & state,
+    const std::vector< double > & params
+) {
+
+    size_t D = state.free.size() / 2u;
+    size_t E = state.ties.size();
+
+    state.nsteps++;
+    if (D == 0u)
+        return;
+
+    // Picking a cell: with probability 1/2 (if there are ties) a tie, otherwise
+    // any free cell. Indices are drawn from uniforms so results do not depend
+    // on the standard library's integer distributions.
+    size_t k;
+    if ((E > 0u) && (runif_() < 0.5))
+        k = state.ties[std::min(static_cast< size_t >(runif_() * E), E - 1u)];
+    else
+        k = std::min(static_cast< size_t >(runif_() * D), D - 1u);
+
+    size_t i = state.free[k * 2u];
+    size_t j = state.free[k * 2u + 1u];
+    bool is_tie = state.pos[k] >= 0;
+
+    // Change statistics are computed with the cell set to one, as when
+    // computing the support.
+    Array_Type & A = state.array;
+    if (!is_tie)
+        A.insert_cell(i, j, A.default_val(), false, false);
+
+    size_t nterms_raw = counters->size();
+    std::vector< double > stats_new(state.stats);
+    for (size_t n = 0u; n < nterms_raw; ++n)
+    {
+
+        double delta = counters->operator[](n).count(A, i, j);
+        stats_new[n] += is_tie ? -delta : delta;
+
+    }
+
+    // Change in the linear predictor
+    double logratio;
+    if (transform_model_fun)
+    {
+
+        std::vector< double > t_old = transform_stats_(state.stats);
+        std::vector< double > t_new = transform_stats_(stats_new);
+        logratio = 0.0;
+        for (size_t n = 0u; n < params.size(); ++n)
+            logratio += params[n] * (t_new[n] - t_old[n]);
+
+    } else {
+
+        logratio = 0.0;
+        for (size_t n = 0u; n < params.size(); ++n)
+            logratio += params[n] * (stats_new[n] - state.stats[n]);
+
+    }
+
+    // Proposal ratio q(y' -> y) / q(y -> y'). The probability of proposing
+    // cell c from a state with e ties is 1/2 * 1{c is a tie} / e + 1/2 / D
+    // if e > 0, and 1 / D otherwise.
+    auto q = [D](bool tie, size_t e) -> double {
+        if (e == 0u)
+            return 1.0 / static_cast< double >(D);
+        return (tie ? 0.5 / static_cast< double >(e) : 0.0) +
+            0.5 / static_cast< double >(D);
+    };
+
+    size_t E_new = is_tie ? E - 1u : E + 1u;
+    logratio += std::log(q(!is_tie, E_new)) - std::log(q(is_tie, E));
+
+    // Accepting or rejecting
+    bool accept = std::log(runif_()) < logratio;
+    if (accept && (support_fun.get_rules_dyn()->size() > 0u))
+        accept = support_fun.eval_rules_dyn(stats_new, i, j);
+
+    if (!accept)
+    {
+
+        if (!is_tie)
+            A.rm_cell(i, j, false, false);
+
+        return;
+
+    }
+
+    state.naccepted++;
+    state.stats = std::move(stats_new);
+
+    if (is_tie)
+    {
+
+        // Swap-with-last removal from the list of ties
+        size_t p    = static_cast< size_t >(state.pos[k]);
+        size_t last = state.ties.back();
+        state.ties[p]    = last;
+        state.pos[last]  = static_cast< int >(p);
+        state.ties.pop_back();
+        state.pos[k] = -1;
+
+        A.rm_cell(i, j, false, false);
+
+    } else {
+
+        state.pos[k] = static_cast< int >(state.ties.size());
+        state.ties.push_back(k);
+
+    }
+
+    return;
+
+}
+
+MODEL_TEMPLATE(void, sample_approx)(
+    SampleApproxState & state,
+    const std::vector< double > & params,
+    size_t n,
+    size_t thin,
+    std::vector< double > * stats_out,
+    SampleApproxMethod method
+) {
+
+    if (params.size() != nterms())
+        throw std::length_error(
+            "The length of params (" + std::to_string(params.size()) +
+            ") does not match the number of terms (" +
+            std::to_string(nterms()) + ")."
+        );
+
+    if (thin == 0u)
+        throw std::invalid_argument("thin must be greater than zero.");
+
+    if (stats_out != nullptr)
+        stats_out->reserve(stats_out->size() + n * nterms());
+
+    for (size_t s = 0u; s < n; ++s)
+    {
+
+        for (size_t t = 0u; t < thin; ++t)
+        {
+            switch (method)
+            {
+            case SampleApproxMethod::tnt:
+                sample_approx_tnt_step_(state, params);
+                break;
+            default:
+                throw std::invalid_argument("Unknown sampling method.");
+            }
+        }
+
+        if (stats_out != nullptr)
+        {
+            std::vector< double > tmp = transform_stats_(state.stats);
+            stats_out->insert(stats_out->end(), tmp.begin(), tmp.end());
+        }
+
+    }
+
+    return;
+
+}
+
+MODEL_TEMPLATE(Array_Type, sample_approx)(
+    const Array_Type & Array_,
+    const std::vector< double > & params,
+    size_t nsteps,
+    std::vector< double > * stats_out,
+    SampleApproxMethod method
+) {
+
+    SampleApproxState state = sample_approx_init(Array_);
+    sample_approx(state, params, nsteps, 1u, stats_out, method);
+
+    return state.array;
+
+}
+
+#undef MODEL_TEMPLATE
+#undef MODEL_TYPE
+#undef MODEL_TEMPLATE_ARGS
+
 template <typename Array_Type, typename Data_Counter_Type, typename Data_Rule_Type, typename Data_Rule_Dyn_Type>
 inline const std::mt19937 * Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>:: get_rengine() const {
     return this->rengine;

@@ -9,6 +9,9 @@ See [Likelihood, gradient, and Hessian](likelihood-derivatives.md) for the
 derivation of the exact log-likelihood and its derivatives, their implementation,
 and an example.
 
+See [Approximate sampling (MCMC)](sample-approx.md) for the tie/no-tie
+sampler, which draws arrays without computing the support.
+
 ## Efficient memory usage
 
 In pooled-data models, barry avoids computing and storing the same support

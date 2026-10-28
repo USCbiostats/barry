@@ -1,0 +1,1 @@
+--8<-- "doc/sample-approx.md"
