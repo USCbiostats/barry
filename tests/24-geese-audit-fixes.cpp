@@ -47,6 +47,11 @@ BARRY_TEST_CASE("GEESE audit fixes", "[geese-audit]")
 
     size_t narrays = g.get_model()->get_arrays2support()->size();
 
+    // Value computed before the fixes (plans/geese-audit/results.txt)
+    Ann ann_tip3 = ann;
+    ann_tip3[3] = {1};
+    REQUIRE(fresh(ann_tip3) == Approx(0.4071904237454682).epsilon(1e-12));
+
     // Missing -> observed
     g.update_annotations(2, {1});
     ann[2] = {1};
@@ -74,6 +79,12 @@ BARRY_TEST_CASE("GEESE audit fixes", "[geese-audit]")
     size_t narrays_h = h.get_model()->get_arrays2support()->size();
     auto loo = h.predict(par, nullptr, true);
     REQUIRE(h.get_model()->get_arrays2support()->size() == narrays_h);
+
+    // Values computed before the fixes (plans/geese-audit/results.txt)
+    REQUIRE(h.likelihood(par) == Approx(0.07809990947097682).epsilon(1e-12));
+    REQUIRE(loo[2][0] == Approx(0.5272873804128089).epsilon(1e-12));
+    REQUIRE(loo[3][0] == Approx(0.6846375092305400).epsilon(1e-12));
+    REQUIRE(loo[4][0] == Approx(0.3501804795632941).epsilon(1e-12));
 
     for (size_t tip : {2u, 3u, 4u})
     {
@@ -174,5 +185,39 @@ BARRY_TEST_CASE("GEESE audit fixes", "[geese-audit]")
     geese_audit_init(e2);
     REQUIRE(e2.likelihood(par) == Approx(l_sparse).epsilon(1e-12));
     REQUIRE(e2.likelihood_exhaust(par) == Approx(l_sparse).epsilon(1e-12));
+
+    // Finding 6: no underflow on large trees -----------------------------------
+    // With all parameters at 0, each of the n observed tips is a fair coin.
+    size_t n = 1100u;
+    Ann ann_big(2 * n - 1, {9});
+    std::vector< size_t > id_big(2 * n - 1);
+    std::vector< int >    parent_big(2 * n - 1, -1);
+    std::vector< bool >   dupl_big(2 * n - 1, true);
+    for (size_t i = 0u; i < id_big.size(); ++i)
+    {
+        id_big[i] = i;
+        if (i > 0u)
+            parent_big[i] = static_cast< int >((i - 1) / 2);
+        if (i >= (n - 1))
+            ann_big[i] = {1};
+    }
+
+    Geese big(ann_big, id_big, parent_big, dupl_big);
+    geese_audit_init(big);
+
+    std::vector< double > par0 = {0, 0, 0};
+    REQUIRE(
+        big.likelihood(par0, true) ==
+        Approx(-static_cast< double >(n) * std::log(2.0)).epsilon(1e-10)
+    );
+    REQUIRE(big.likelihood(par0, true, false) == Approx(big.likelihood(par0, true)));
+
+    // Posteriors are still probabilities
+    auto pred_big = big.predict(par0);
+    bool all_probs = true;
+    for (const auto & p : pred_big)
+        all_probs = all_probs && (p[0] >= 0.0) && (p[0] <= 1.0);
+
+    REQUIRE(all_probs);
 
 }

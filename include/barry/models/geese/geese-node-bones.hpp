@@ -25,7 +25,8 @@ public:
     std::vector< size_t > narray    = {};      ///< ID of the array in the model
     bool                  visited   = false;
 
-    std::vector< double > subtree_prob; ///< Induced subtree probabilities
+    std::vector< double > subtree_prob; ///< Induced subtree probabilities (scaled)
+    double                log_scale = 0.0; ///< Log of the factor removed from subtree_prob (whole subtree)
     std::vector< double > probability;  ///< The probability of observing each state
     
     /**
@@ -76,6 +77,7 @@ inline Node::Node(Node && x) noexcept :
     narray(std::move(x.narray)),
     visited(x.visited),
     subtree_prob(std::move(x.subtree_prob)),
+    log_scale(x.log_scale),
     probability(std::move(x.probability)) {
 
     return;
@@ -91,6 +93,7 @@ inline Node::Node(const Node & x) :
     narray(x.narray),
     visited(x.visited),
     subtree_prob(x.subtree_prob),
+    log_scale(x.log_scale),
     probability(x.probability) {
 
         return;

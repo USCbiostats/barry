@@ -338,7 +338,10 @@ inline void Geese::update_annotations(
     // Rebuilding the reduced sequence. Nodes left out of it must integrate
     // to one, so stale messages from previous calls are reset.
     for (auto & n : nodes)
+    {
         std::fill(n.second.subtree_prob.begin(), n.second.subtree_prob.end(), 1.0);
+        n.second.log_scale = 0.0;
+    }
 
     reduced_sequence.clear();
     calc_reduced_sequence();
@@ -451,8 +454,10 @@ inline std::vector< double > Geese::get_probabilities() const
     for (auto& i : sequence)
     {
 
-        for (auto& p : this->nodes.at(i).subtree_prob)
-            res.push_back(p);
+        // Undoing the scaling applied during pruning
+        const auto & n = this->nodes.at(i);
+        for (auto& p : n.subtree_prob)
+            res.push_back(p * std::exp(n.log_scale));
 
     }
 
