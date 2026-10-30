@@ -17,7 +17,7 @@ inline std::vector< std::vector< size_t > > Geese::simulate(
 
     // Scaling root
     for (auto& p : par_root) {
-        p = std::exp(p)/(std::exp(p) + 1);
+        p = logistic(p);
     }
 
     // Making room 
@@ -42,7 +42,7 @@ inline std::vector< std::vector< size_t > > Geese::simulate(
     double r         = urand(*rengine);
     size_t idx = 0u;
     double cumprob = rootp[idx];
-    while ((idx < rootp.size()) && (cumprob < r))
+    while (((idx + 1u) < rootp.size()) && (cumprob < r))
     {
         cumprob += rootp[++idx];
     }

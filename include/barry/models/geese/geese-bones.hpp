@@ -22,6 +22,17 @@ inline std::vector< Ta > vector_caster(const std::vector< Tb > & x) {
 #define INITIALIZED() if (!this->initialized) \
     throw std::logic_error("The model has not been initialized yet.");
 
+// Numerically stable logistic function (avoids inf/inf for large p)
+inline double logistic(double p) {
+
+    if (p >= 0.0)
+        return 1.0 / (1.0 + std::exp(-p));
+
+    double ep = std::exp(p);
+    return ep / (1.0 + ep);
+
+}
+
 // The same need to be locked
 RULE_FUNCTION(rule_empty_free) {
 
@@ -38,24 +49,17 @@ inline std::vector< double > keygen_full(
     const PhyloCounterData * d
     ) {
 
-    // Baseline data: nrows and columns
+    // Baseline data: nrows, columns, and type of the parent
     std::vector< double > dat = {
-        static_cast<double>(array.nrow()) * 100000 +
-         static_cast<double>(array.ncol()),
-         // state of the parent
-         1000000.0, 
-         // type of the parent
-         array.D_ptr()->duplication ? 1.0 : 0.0, 
-         // Annotations with zeros
-         0.0 
+        static_cast<double>(array.nrow()),
+        static_cast<double>(array.ncol()),
+        array.D_ptr()->duplication ? 1.0 : 0.0
     };
 
-    // State of the parent
-    double pow10 = 1.0;
-    for (bool i : array.D_ptr()->states) {
-        dat[1u] += (i ? 1.0 : 0.0) * pow10;
-        pow10 *= 10.0;
-    }
+    // State of the parent, one element per function (packing the states
+    // into a single double collides for 17+ functions)
+    for (bool i : array.D_ptr()->states)
+        dat.push_back(i ? 1.0 : 0.0);
 
     // // Annotations with zeros
     // pow10 = 1.0;
@@ -199,8 +203,9 @@ public:
         std::vector< bool > &                duplication
         );
 
-    // Copy constructor
-    Geese(const Geese & model_, bool copy_data = true);
+    // Copy constructor (deleted: nodes hold pointers to each other and the
+    // model; use move semantics instead)
+    Geese(const Geese & model_) = delete;
     
     // Constructor move
     Geese(Geese && x) noexcept;

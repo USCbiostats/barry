@@ -56,18 +56,20 @@ inline std::vector< std::vector<double> > Geese::predict_exhaust_backend(
 
     // Scaling root
     for (auto& p : par_root)
-        p = std::exp(p)/(std::exp(p) + 1);
+        p = logistic(p);
 
     double baseline_likelihood = this->likelihood(par);
 
     // Computing all combinations ----------------------------------------------
     // The base PhyloArray will store the original set of annotations.
+    // Internal annotations are ignored, as in the pruning algorithm.
     PhyloArray base(nfuns(), nnodes());
     for (auto& n : nodes)
     {
 
         for (size_t f = 0u; f < nfuns(); ++f)
-            base(f, n.second.ord) = n.second.annotations[f];
+            base(f, n.second.ord) = n.second.is_leaf() ?
+                n.second.annotations[f] : 9u;
 
     }
 

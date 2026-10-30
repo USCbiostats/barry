@@ -17,7 +17,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Scaling root
     for (auto& p : par_root)
-        p = std::exp(p)/(std::exp(p) + 1);
+        p = logistic(p);
 
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(this->states.size(), 1.0);
@@ -39,11 +39,16 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
     size_t root_id = preorder[0u];
     Node * tmp_node = &nodes[root_id];
     tmp_node->probability.resize(states.size(), 0.0);
-    double tmp_likelihood = likelihood(par, false, use_reduced_sequence, 1u, true);
+    likelihood(par, false, use_reduced_sequence, 1u, true);
 
-    if (!std::isfinite(tmp_likelihood))
+    // Normalizing with the (scaled) root messages, so the scale cancels out
+    double tmp_likelihood = 0.0;
+    for (size_t s = 0u; s < states.size(); ++s)
+        tmp_likelihood += tmp_node->subtree_prob[s] * rootp[s];
+
+    if (!std::isfinite(tmp_likelihood) || (tmp_likelihood <= 0.0))
     {
-        throw std::runtime_error("Likelihood is not finite");
+        throw std::runtime_error("Likelihood is not finite or is zero");
     }
 
     for (size_t s = 0u; s < states.size(); ++s)
@@ -103,11 +108,16 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
         psets.reserve(states.size());
 
         // Making space for the offspring
+        double parent_scale = parent.log_scale;
         for (auto & off : parent.offspring)
         {
             off->probability.resize(states.size(), 0.0);
             std::fill(off->probability.begin(), off->probability.end(), 0.0);
+            parent_scale -= off->log_scale;
         }
+
+        // Factor this node's own subtree_prob was divided by during pruning
+        parent_scale = std::exp(parent_scale);
 
         // Iterating through the parent states
         for (size_t s = 0u; s < states.size(); ++s)
@@ -193,7 +203,8 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
                     // model->likelihood(
                     //     par_terms, target_p, parent.narray[s], false
                     // )
-                    *  parent.probability[s] / parent.subtree_prob[s]
+                    *  parent.probability[s] /
+                    (parent.subtree_prob[s] * parent_scale)
                 );
 
 
@@ -295,6 +306,12 @@ inline std::vector< std::vector<double> > Geese::predict(
         preorder = this->sequence;
 
     std::reverse(preorder.begin(), preorder.end());
+
+    // Nothing to predict (only_annotated on a tree without annotations)
+    if (preorder.empty())
+        return std::vector< std::vector<double> >(
+            nnodes(), std::vector<double>(nfuns(), 0.0)
+        );
 
     std::vector< double > par0(par.begin(), par.end() - nfuns());
     model->update_pset_probs(par0, 1u);

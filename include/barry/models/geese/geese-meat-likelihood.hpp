@@ -117,9 +117,10 @@ inline double Geese::likelihood(
 
     // Scaling root
     for (auto& p : par_root)
-        p = std::exp(p)/(std::exp(p) + 1);
+        p = logistic(p);
 
     double ll = 0.0;
+    double root_log_scale = 0.0;
 
     // Updating normalizing constants
     if (!no_update_pset_probs)
@@ -190,9 +191,29 @@ inline double Geese::likelihood(
 
         }
 
+        // Rescaling to avoid underflow. log_scale accumulates the factors
+        // removed over the whole subtree (leaves and excluded nodes have 0).
+        node.log_scale = 0.0;
+        for (const auto & o : node.offspring)
+            node.log_scale += o->log_scale;
+
+        double maxprob = *std::max_element(
+            node.subtree_prob.begin(), node.subtree_prob.end()
+        );
+
+        if (maxprob > 0.0)
+        {
+            for (auto & p : node.subtree_prob)
+                p /= maxprob;
+
+            node.log_scale += std::log(maxprob);
+        }
+
         // All probabilities should be completed at this point
         if (node.parent == nullptr)
         {
+
+            root_log_scale = node.log_scale;
 
             for (size_t s = 0u; s < states.size(); ++s)
             {
@@ -217,10 +238,11 @@ inline double Geese::likelihood(
     // that we are looking at a completely unnanotated tree,
     // thus the likelihood should be one
     if (preseq.size() == 0u)
-        return as_log ? -std::numeric_limits<double>::infinity() : 1.0;
+        return as_log ? 0.0 : 1.0;
 
 
-    return as_log ? std::log(ll) : ll;
+    return as_log ?
+        (std::log(ll) + root_log_scale) : (ll * std::exp(root_log_scale));
 
 }
 #endif
