@@ -7374,6 +7374,17 @@ protected:
     std::vector< double > normalizing_constants;
     std::vector< bool > first_calc_done;
 
+    /**@brief Parameters used to compute each block of `pset_probs`. Kept
+     * separate from `params_last`, which also certifies normalizing constants
+     * computed without updating `pset_probs`. */
+    std::vector< std::vector<double> > pset_params_last;
+
+    bool pset_probs_current(size_t s, const std::vector< double > & params) const {
+        return (s < pset_params_last.size()) &&
+            (pset_params_last[s].size() == params.size()) &&
+            vec_equal_approx(params, pset_params_last[s]);
+    }
+
     bool delete_counters  = false;
     bool delete_rules     = false;
     bool delete_rules_dyn = false;
@@ -8313,7 +8324,13 @@ inline void Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Typ
 
         #endif
     }
-    
+
+    // Recording which parameters each updated block corresponds to
+    pset_params_last.resize(pset_sizes.size());
+    for (size_t s = 0u; s < pset_sizes.size(); ++s)
+        if ((i < 0) || (i == static_cast<int>(s)))
+            pset_params_last[s] = params;
+
     return;
 
 }
@@ -8434,17 +8451,20 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::M
     transform_model_fun(Model_.transform_model_fun),
     transform_model_term_names(Model_.transform_model_term_names)
     {
-    
+
+    pset_params_last = Model_.pset_params_last;
+    with_pset        = Model_.with_pset;
+
     // Counters are shared
     support_fun.set_counters(counters);
     counter_fun.set_counters(counters);
-    
+
     // Rules are shared
     support_fun.set_rules(rules);
     support_fun.set_rules_dyn(rules_dyn);
 
     return;
-    
+
 }
 
 template <
@@ -8492,6 +8512,8 @@ inline Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type> &
         params_last                = Model_.params_last;
         normalizing_constants      = Model_.normalizing_constants;
         first_calc_done            = Model_.first_calc_done;
+        pset_params_last           = Model_.pset_params_last;
+        with_pset                  = Model_.with_pset;
         transform_model_fun        = Model_.transform_model_fun;
         transform_model_term_names = Model_.transform_model_term_names;
 
@@ -9630,46 +9652,18 @@ Model<Array_Type,Data_Counter_Type,Data_Rule_Type, Data_Rule_Dyn_Type>::sample(
     double r = urand(*rengine);
     double cumprob = 0.0;
 
-    // Updating the current pset
-    if (pset_probs.size() == 0u)
+    // Making sure the powerset probabilities are current
+    if (!pset_probs_current(a, params))
         update_pset_probs(params, 1u, static_cast<int>(a));
 
-    // Sampling an array
+    // Sampling an array (bounded, in case roundoff leaves cumprob < r)
     size_t j = 0u;
-    if (vec_equal_approx(params, params_last[a]))
-    // If precomputed, then no need to recalc support
-    {
+    const double * probs = &pset_probs[pset_locations[a]];
+    while ((j < pset_sizes[a]) && (cumprob < r))
+        cumprob += *(probs + j++);
 
-        const double * probs = &pset_probs[pset_locations[a]];
-        while (cumprob < r)
-            cumprob += *(probs + j++);
-
-        if (j > 0u)
-            j--;
-
-    } else { 
-       
-        update_pset_probs(params, 1u, static_cast<int>(a));
-
-        const double * probs = &pset_probs[pset_locations[a]];
-        while (cumprob < r)
-            cumprob += *(probs + j++);
-
-        if (j > 0u)
-            j--;
-
-        #ifdef BARRY_DEBUG
-        if (j > pset_arrays.at(a).size())
-            throw std::logic_error(
-                std::string(
-                    "Something went wrong when sampling from a different set of.") +
-                std::string("parameters. Please report this bug: ") +
-                std::string(" cumprob: ") + std::to_string(cumprob) +
-                std::string(" r: ") + std::to_string(r)
-                );
-        #endif
-        
-    }
+    if (j > 0u)
+        j--;
     
     #ifdef BARRY_DEBUG
     return this->pset_arrays.at(a).at(j);   
@@ -9839,19 +9833,16 @@ inline Array_Type Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_
 
     // Making sure the powerset probabilities for this support are current
     // before sampling from them (mirrors the sample(size_t, params) path).
-    // `pset_probs` may still be empty here: init() adds arrays without sizing
-    // it, and a prior likelihood() call sets first_calc_done/params_last
-    // without ever filling it. Guard against both so we never index into an
-    // unpopulated buffer.
-    if (pset_probs.empty() ||
-        !first_calc_done[a] ||
-        !vec_equal_approx(params, params_last[a]))
+    // `pset_params_last` is only set by update_pset_probs(), so this also
+    // covers an empty `pset_probs` and a prior likelihood() call that updated
+    // only the normalizing constants.
+    if (!pset_probs_current(a, params))
         update_pset_probs(params, 1u, static_cast<int>(a));
 
-    // Sampling an array
+    // Sampling an array (bounded, in case roundoff leaves cumprob < r)
     size_t j = 0u;
     double * probs = &pset_probs[ pset_locations[a] ];
-    while (cumprob < r)
+    while ((j < pset_sizes[a]) && (cumprob < r))
         cumprob += *(probs + j++);
 
     if (j > 0u)
@@ -10380,6 +10371,9 @@ Model<Array_Type,Data_Counter_Type, Data_Rule_Type, Data_Rule_Dyn_Type>::set_tra
     // And, resizing the last set of parameters
     for (auto & p : params_last)
         p.resize(transform_model_term_names.size());
+
+    // The pset stats changed, so stored probabilities are no longer valid
+    pset_params_last.clear();
 
     return;
 

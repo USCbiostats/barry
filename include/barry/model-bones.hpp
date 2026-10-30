@@ -115,6 +115,17 @@ protected:
     std::vector< double > normalizing_constants;
     std::vector< bool > first_calc_done;
 
+    /**@brief Parameters used to compute each block of `pset_probs`. Kept
+     * separate from `params_last`, which also certifies normalizing constants
+     * computed without updating `pset_probs`. */
+    std::vector< std::vector<double> > pset_params_last;
+
+    bool pset_probs_current(size_t s, const std::vector< double > & params) const {
+        return (s < pset_params_last.size()) &&
+            (pset_params_last[s].size() == params.size()) &&
+            vec_equal_approx(params, pset_params_last[s]);
+    }
+
     bool delete_counters  = false;
     bool delete_rules     = false;
     bool delete_rules_dyn = false;

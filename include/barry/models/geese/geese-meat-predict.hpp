@@ -17,7 +17,7 @@ inline std::vector< std::vector<double> > Geese::predict_backend(
 
     // Scaling root
     for (auto& p : par_root)
-        p = std::exp(p)/(std::exp(p) + 1);
+        p = logistic(p);
 
     // Generating probabilities at the root-level (root state)
     std::vector< double > rootp(this->states.size(), 1.0);
@@ -295,6 +295,12 @@ inline std::vector< std::vector<double> > Geese::predict(
         preorder = this->sequence;
 
     std::reverse(preorder.begin(), preorder.end());
+
+    // Nothing to predict (only_annotated on a tree without annotations)
+    if (preorder.empty())
+        return std::vector< std::vector<double> >(
+            nnodes(), std::vector<double>(nfuns(), 0.0)
+        );
 
     std::vector< double > par0(par.begin(), par.end() - nfuns());
     model->update_pset_probs(par0, 1u);

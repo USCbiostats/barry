@@ -294,21 +294,54 @@ inline void Geese::update_annotations(
     INITIALIZED()
 
     // Is this node present?
-    if (nodes.find(nodeid) == nodes.end())
+    auto iter = nodes.find(nodeid);
+    if (iter == nodes.end())
         throw std::length_error("The requested node is not present.");
 
-    if (nodes[nodeid].annotations.size() != newann.size())
+    Node & node = iter->second;
+
+    if (node.annotations.size() != newann.size())
         throw std::length_error("Incorrect length of the new annotations.");
 
-    // Resetting the annotations, and updating the stats from the
-    // parent node
-    nodes[nodeid].annotations = newann;
+    for (const auto & a : newann)
+        if ((a != 0u) && (a != 1u) && (a != 9u))
+            throw std::invalid_argument("Annotations must be 0, 1, or 9 (missing).");
 
-    // This only makes sense (for now) if it is a tip 
-    if (!nodes[nodeid].is_leaf())
+    // Internal annotations are stored but ignored by the model
+    if (!node.is_leaf())
+    {
+        node.annotations = newann;
         return;
+    }
 
-    init_node(*nodes[nodeid].parent);
+    // Updating the annotation counts
+    for (const auto & a : node.annotations)
+    {
+        if (a == 1u)
+            this->n_ones--;
+        else if (a == 0u)
+            this->n_zeros--;
+    }
+
+    for (const auto & a : newann)
+    {
+        if (a == 1u)
+            this->n_ones++;
+        else if (a == 0u)
+            this->n_zeros++;
+    }
+
+    // The parent's arrays need not be rebuilt: the support does not depend on
+    // the leaf annotations, which pruning reads directly from the node.
+    node.annotations = newann;
+
+    // Rebuilding the reduced sequence. Nodes left out of it must integrate
+    // to one, so stale messages from previous calls are reset.
+    for (auto & n : nodes)
+        std::fill(n.second.subtree_prob.begin(), n.second.subtree_prob.end(), 1.0);
+
+    reduced_sequence.clear();
+    calc_reduced_sequence();
 
     return;
 

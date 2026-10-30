@@ -17,7 +17,7 @@ inline double Geese::likelihood_exhaust(
 
     // Scaling root
     for (auto& p : par_root)
-        p = std::exp(p)/(std::exp(p) + 1);
+        p = logistic(p);
 
     // This is only worthwhile if the number of nodes is small
     if (this->nnodes() > 6)
@@ -27,12 +27,14 @@ inline double Geese::likelihood_exhaust(
         throw std::overflow_error("Too many functions! Exhaust calculation of likelihood cannot be done for such cases.");
 
     // Computing all combinations ----------------------------------------------
+    // Internal annotations are ignored, as in the pruning algorithm.
     PhyloArray base(nfuns(), nnodes());
     for (auto& n : nodes)
     {
 
         for (size_t i = 0u; i < nfuns(); ++i)
-            base(i, n.second.ord) = n.second.annotations[i];
+            base(i, n.second.ord) = n.second.is_leaf() ?
+                n.second.annotations[i] : 9u;
             
     }
 
@@ -100,7 +102,7 @@ inline double Geese::likelihood_exhaust(
                 for (size_t o = 0u; o < node->offspring.size(); ++o)
                 {
 
-                    if (s->get_cell(a, node->offspring[o]->id) == 1u)
+                    if (s->get_cell(a, node->offspring[o]->ord) == 1u)
                         transition(a, o) = 1u;
 
                 }

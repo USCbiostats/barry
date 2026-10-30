@@ -34,3 +34,4 @@
 #include "21-defm-formula-parser.cpp"
 #include "22-likelihood-gradient-hessian.cpp"
 #include "23-sample-approx.cpp"
+#include "24-geese-audit-fixes.cpp"

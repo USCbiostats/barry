@@ -117,7 +117,7 @@ inline double Geese::likelihood(
 
     // Scaling root
     for (auto& p : par_root)
-        p = std::exp(p)/(std::exp(p) + 1);
+        p = logistic(p);
 
     double ll = 0.0;
 
@@ -217,7 +217,7 @@ inline double Geese::likelihood(
     // that we are looking at a completely unnanotated tree,
     // thus the likelihood should be one
     if (preseq.size() == 0u)
-        return as_log ? -std::numeric_limits<double>::infinity() : 1.0;
+        return as_log ? 0.0 : 1.0;
 
 
     return as_log ? std::log(ll) : ll;
