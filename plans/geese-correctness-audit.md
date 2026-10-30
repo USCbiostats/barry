@@ -1,6 +1,6 @@
 # GEESE correctness audit and fix plan
 
-**Status:** Proposed; no fixes in this PR.
+**Status:** Fixed in this PR.
 
 **Audited Barry revision:** `70901def12dd6a991b1f640c182467edc4e165c2`
 (2026-10-29).
@@ -8,7 +8,8 @@
 Paths are relative to `include/barry/`. The [reproducer](geese-audit/reproduce.cpp)
 and its [output](geese-audit/results.txt) cover findings 1–9; a second build
 on 2026-10-30 gave identical output. Findings 10–12 were added in review from
-code inspection and have not been executed yet.
+code inspection. The regression tests cover 10 and 11; the sampling-loop
+bounds in 12 are not tested directly (they only matter on roundoff).
 
 ```sh
 c++ -std=c++17 -O0 -g -Iinclude plans/geese-audit/reproduce.cpp -o /tmp/barry-geese-audit
@@ -39,63 +40,51 @@ duplications, parameters `(-2,-1,0.3)`, and 9 for missing annotations.
 
 The `counters` mode (384 configurations) and `loo-check` mode found no problems.
 
-## Fix plan
+## Fixes (this PR)
 
-Two Barry PRs, then one GEESE PR. Every fix gets one Catch regression test,
-built from its reproducer mode, in the existing `tests/06-geese.cpp` …
-`tests/10-geese-predict.cpp` files. The fixed `likelihood_exhaust` is the
-reference for small trees; no separate enumerator is needed.
+All fixes are in this PR. Regression tests are in
+`tests/24-geese-audit-fixes.cpp`; they compare against freshly built models,
+`likelihood_exhaust`, and values computed before the fixes
+(`results.txt`). The full suite passes (`make test-portable`).
 
-### PR 1 — small fixes (all findings except 6)
+- **1 and 10, `update_annotations`:** no longer calls `init_node(*parent)`, so
+  updates do not add arrays to the model. It validates values (0, 1, or 9),
+  updates the annotation counts, resets `subtree_prob` (and `log_scale`), and
+  rebuilds `reduced_sequence`.
+- **2:** an empty traversal returns `as_log ? 0.0 : 1.0`; `predict` returns
+  early on an empty `preorder`.
+- **3 and 12:** `Model` has a new `pset_params_last`, written only by
+  `update_pset_probs` and checked by both `sample` overloads. Cumulative
+  sampling loops, including the root draw in `Geese::simulate`, stop at the
+  last state.
+- **4 and 11:** the `Geese` copy constructor is deleted (Barry's tests, `Flock`,
+  and the GEESE R package do not use it). `Model` copies keep `with_pset`.
+- **5:** a stable `logistic()` helper is used at all five call sites.
+- **6:** each node's `subtree_prob` is divided by its maximum, and
+  `Node::log_scale` accumulates the log factors over the subtree. The log
+  likelihood adds the root's `log_scale`; `predict_backend` normalizes the root
+  posterior directly and divides by each node's own factor;
+  `get_probabilities()` undoes the scaling.
+- **7:** `keygen_full` stores one key element per parent-state bit.
+- **8:** `likelihood_exhaust` uses `ord`.
+- **9:** internal annotations are **ignored** everywhere: the exhaustive
+  likelihood and prediction now treat them as missing, as pruning always did.
+  Rejecting them was considered, but existing callers (for example,
+  `tests/07-geese-flock.cpp`) pass internal annotations.
 
-Each item is a few lines.
+The reproducer documents the audited revision. It does not compile against
+the fixed code because mode `basic` copies a `Geese` object.
 
-- **1 and 10, `update_annotations`:** reject non-leaf nodes and values other
-  than 0, 1, or 9. Replace the `init_node(*parent)` call with: set
-  `annotations`, clear `reduced_sequence`, reset `subtree_prob` to 1 for every
-  node, and call `calc_reduced_sequence()`. The rebuild is safe to drop because
-  `keygen_full` ignores cell values and pruning reads leaf annotations directly.
-  Test: an updated model matches a freshly built one (missing→observed and
-  observed→missing), and the model's array count is unchanged after LOO.
-- **2:** return `as_log ? 0.0 : 1.0`; make `predict` return early on an empty
-  `preorder`.
-- **3:** add a `pset_params_last` vector to `Model`, written only inside
-  `update_pset_probs` for every block it recomputes (including `i == -1`) and
-  read only by the two `sample` overloads. This is separate from `params_last`,
-  which also tracks normalizing constants. Test: `simulate(a)`,
-  `likelihood(b)`, `simulate(a)` with a fixed seed matches a fresh model.
-- **4 and 11:** delete the `Geese` copy constructor (`= delete`, as the
-  assignment operators already are). Barry's tests, `Flock` (which uses move),
-  and the GEESE R package do not use it. If something turns out to need it,
-  fall back to: rebind `parent` pointers, copy `with_pset` in `Model`, and call
-  `model->set_rengine`.
-- **5:** add `inline double logistic(double p)` (`1/(1+exp(-p))` for
-  `p >= 0`, otherwise `exp(p)/(1+exp(p))`) and use it at the five call sites.
-- **7:** in `keygen_full`, `push_back` one element per parent-state bit instead
-  of summing powers of 10.
-- **8:** `offspring[o]->id` → `offspring[o]->ord`.
-- **9:** reject non-missing internal annotations in the constructor (and, via
-  item 1, in `update_annotations`). Conditioning on ancestral annotations can be
-  a separate feature later if it is needed.
-- **12:** stop each cumulative-probability loop at the last state.
+### GEESE R package (follow-up)
 
-### PR 2 — numerical underflow (finding 6)
-
-This only matters once a tree has on the order of a thousand informative tips,
-so it can follow PR 1. Per node, divide `subtree_prob` by its maximum and store
-that factor's log in a new `log_scale` member. The log likelihood adds the
-scales of all included nodes. `predict_backend` normalizes the root posterior
-directly and divides the `above` term by the parent's own scale factor (all
-other scales cancel). Test: 1,100 fair-coin tips give `-1100 * log(2)`, and
-small trees match `likelihood_exhaust` to 1e-12.
-
-### GEESE R package
-
-Vendor each Barry fix as it merges. Add tinytest integration tests in
-`inst/tinytest/` for: `predict_geese(..., leave_one_out = TRUE)` with default
-arguments, a Flock with one all-missing tree, likelihood followed by
-simulation, and the error on internal annotations. Rerun any parameter-recovery
-results that used simulation after likelihood evaluation (finding 3).
+- `src/geese-common.cpp` (`get_probabilities`) reads `node.subtree_prob`
+  directly; with scaling it must call `Geese::get_probabilities()` instead.
+- Add tinytest integration tests in `inst/tinytest/` for
+  `predict_geese(..., leave_one_out = TRUE)` with default arguments, a Flock
+  with one all-missing tree, likelihood followed by simulation, and internal
+  annotations being ignored.
+- Rerun any parameter-recovery results that used simulation after likelihood
+  evaluation (finding 3).
 
 ## Not in scope
 
